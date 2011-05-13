@@ -1,4 +1,4 @@
-namespace :food_safe do
+namespace :yin11 do
   desc "db:drop then db:seed"
   task :reset do
     Rake::Task['db:drop'].invoke

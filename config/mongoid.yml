@@ -8,11 +8,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: food_safe_development
+  database: yin11_development
 
 test:
   <<: *defaults
-  database: food_safe_test
+  database: yin11_test
 
 # set these environment variables on your prod server
 production:
