@@ -1,0 +1,12 @@
+<h1>Foods List</h1>
+<div class="food_conflicts">
+    <% get_conflicts_of(@foods).each do |conflict| %>
+        <p><%= [conflict[:food1], conflict[:food2], conflict[:detail]].join(" ")  %></p>
+    <% end %>
+</div>
+
+<% @foods.each do |food| %>
+    <%= render :partial => "food_info", :locals => {:food => food, :user => @user} %>
+    <hr/>
+<% end %>
+

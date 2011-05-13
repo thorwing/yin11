@@ -1,0 +1,9 @@
+<h1>Profile#show</h1>
+<p>Find me in app/views/profile/show.html.erb</p>
+
+<p>
+  <b>City:</b>
+  <%= @user.address.city.name if @user.address_city %>
+</p>
+
+<%= link_to t("profile.edit"), profile_edit_path %>

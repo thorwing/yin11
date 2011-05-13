@@ -1,0 +1,18 @@
+<div class="food_articles">
+
+    <h2><%= t("foods.recent_news", :name => food.name) %></h2>
+    <% get_related_articles_of(food, user).each_with_index do |article, index| %>
+        <div id=<%="food_article_#{index}" %>><%= article.title %></div>
+    <% end %>
+</div>
+
+<div class="food_reviews">
+    <h2><%= t("foods.safty_indicator") %></h2>
+    <h2><%= t("foods.recent_exams", :name => food.name) %></h2>
+    <% get_related_reviews_of(food).each do |review| %>
+        <%= review.title %>
+    <% end %>
+</div>
+<div class="food_tips">
+    <h2><%= t("foods.safty_tips", :name => food.name) %></h2>
+</div>

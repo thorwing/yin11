@@ -1,0 +1,10 @@
+<h1>Profile#edit</h1>
+<p>Find me in app/views/profile/edit.html.erb</p>
+
+<%= form_tag :controller => "profile", :action => "update", :method => :post do %>
+    <div class="field">
+      <b><%= t("profile.address_city") %></b><br/>
+      <%= text_field_tag "profile[address_city]" %>
+    </div>
+    <%= submit_tag t("profile.submit") %>
+<% end %>

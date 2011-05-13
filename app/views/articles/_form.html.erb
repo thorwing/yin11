@@ -1,0 +1,33 @@
+<%= form_for(@article) do |f| %>
+  <%= render "shared/error_messages", :target => @article %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :food_tokens %><br />
+    <%= f.text_field :food_tokens, 'data-pre' => (f.object.foods.map { |fo| { :id => fo.id, :name => fo.name }}).to_json %>
+  </div>
+  <div class="field">
+    <%= f.label :city_tokens %><br />
+    <%= f.text_field :city_tokens, 'data-pre' => (f.object.cities.map { |c| { :id => c.id, :name => c.name }}).to_json %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vendor %><br />
+    <%= text_field_tag "article[vendor]", params[:vendor] %>
+  </div>
+  <div class="actions">
+    <%= f.submit t("articles.post") %>
+  </div>
+<% end %>

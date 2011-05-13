@@ -1,0 +1,41 @@
+<%= form_for(@review) do |f| %>
+  <%= render "shared/error_messages", :target => @review %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :food %><br />
+    <%= text_field_tag "review[food]", params[:food] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vendor %><br />
+    <%= text_field_tag "review[vendor]", params[:vendor] %>
+  </div>
+
+  <div>
+    <%= f.label "wiki pages" %>
+    <%= f.text_field :reference_tokens, 'data-pre' => (f.object.references.map { |p| { :id => p.id, :name => p.title }}).to_json %>
+  </div>
+
+  <%= f.fields_for :checkpoints do |builder| %>
+    <%= render 'checkpoint_fields', :f => builder %>
+  <% end %>
+  <hr/>
+
+  <div class=".add_new_field">
+    <%= link_to_add_fields  t("reviews.add_new_checkpoint"), f, :checkpoints %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_field :comment %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t("reviews.post") %>
+  </div>
+<% end %>

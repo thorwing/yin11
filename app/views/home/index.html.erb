@@ -1,0 +1,22 @@
+<% if @user %>
+    <h1>Welcome, <%= @user.login_name %></h1>
+<% else %>
+    <div>
+        <h2><%= t("authentication.quick_login")  %></h2>
+        <%= render "shared/quick_login" %>
+    </div>
+<% end %>
+
+<div id="foods_search">
+    <%= form_tag '/foods', :method => :get do %>
+        <p>
+            <%= t("home.foods_buy_question") %>
+        </p>
+        <p>
+            <%= text_field_tag :foods %>
+            <%= submit_tag t("home.foods_search_button") %><br/>
+            <%= t("home.multiple_foods_suggestion")  %>
+        </p>
+    <% end %>
+</div>
+

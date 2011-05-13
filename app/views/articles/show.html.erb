@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @article.title %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @article.source %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @article.content %>
+</p>
+<p>
+  <b>Foods:</b>
+  <% @article.foods.each do |food| %>
+    <p><%= food.name %></p>
+  <% end %>
+</p>
+<p>
+  <b>Cities:</b>
+  <% @article.cities.each do |city| %>
+    <p><%= city.name %></p>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

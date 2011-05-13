@@ -1,0 +1,30 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  authentication:
+    log_out: "Log out"
+    log_in: "Log in"
+    sign_up: "Sign Up"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Password Confirmation"
+    login_name: "User Name"
+    invitation_code: "Invitation Code"
+    forgot_password: "Forgot password?"
+    please_login: "Please login."
+    invalid_usr_pwd: "Invalid email address or password, please try again."
+    invalid_invitation: "Invalid invitation code."
+    logged_out: "You have logged out."
+    no_such_user: "No such user."
+    recovery_mail_sent: "Recovery email is sent, please check it."
+    invalid_reset_pwd_token: "Invalid Token."
+    pwd_confirmation_not_match: "Your password confirmation doesn't match your new password, please enter again."
+    pwd_reset: "Your password has been reset."
+    remember_me: "Remember me"
+
+  home:
+    food_buy_question: "Which foods to buy?"
+    vendor_buy_question: "Where to buy foods?"
+
+

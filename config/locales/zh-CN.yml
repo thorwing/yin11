@@ -1,0 +1,72 @@
+zh-CN:
+  general:
+    title: 标题
+    content: 内容
+
+  authentication:
+    log_out: "登出"
+    log_in: "登入"
+    quick_login: "快速登录"
+    sign_up: "注册"
+    email: "邮箱地址"
+    password: "密码"
+    password_confirmation: "确认密码"
+    login_name: "用户名"
+    invitation_code: "邀请码"
+    forgot_password: "忘记密码了?"
+    please_login: "请登入。"
+    invalid_usr_pwd: "邮件地址或密码无效，请再试一次。"
+    invalid_invitation: "邀请码无效。"
+    logged_out: "您已经登出。"
+    no_such_user: "不存在该用户。"
+    recovery_mail_sent: "密码恢复邮件已经发出，请查收。"
+    invalid_reset_pwd_token: "无效的密码恢复密钥"
+    pwd_confirmation_not_match: "确认用的密码不符合您第一次输入的密码，请再试一次。"
+    pwd_reset: "您的密码已被更改。"
+    remember_me: "记住我"
+
+  profile:
+    edit: 修改
+    submit: 完成
+    address_city: 城市
+    address_area: 区
+    address_street: 街道
+    profile_updated_notice: 信息已更新
+
+  home:
+    foods_buy_question: "买什么食物呢？"
+    vendor_buy_question: "上哪去买呢？"
+    multiple_foods_suggestion: "可以填写多个食物，我们会为您检查是否有相克的食物"
+    foods_search_button: "搜索"
+    vendor_search_button: "搜索"
+
+  foods:
+    recent_news: 最近关于%{name}的食品安全新闻
+    safty_indicator: 食物安全风向标
+    recent_exams: 最近对于%{name}的评论
+    safty_tips: %{name}的安全食用知识
+
+  reviews:
+    post_new_review: 发表新评论
+    new_review: 新评论
+    add_new_checkpoint: 添加检查点
+    post: 发表
+
+  articles:
+    post_new_article: 发表新文章
+    new_article: 新文章
+    post: 发表
+    article_posted_notice: 文章已发布
+
+  wiki:
+    search: 搜索
+    new_page_with: 新建一个页面，关于%{title}
+    no_result: 找不到和查询相匹配的结果。
+    create_new_page_advice: 您可以新建這個頁面
+    new_page: 新页面
+    save: 保存
+    created_page_notice: 页面已添加
+    conflict_section_header: 相克的食物
+
+
+

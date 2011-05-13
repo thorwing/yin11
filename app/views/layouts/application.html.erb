@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yin11</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "jquery.rails.js", "application", "jquery.tokeninput"  %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<%= yield %>
+
+<!-- BEGIN :: Notice Board -->
+<div id="notice_board">
+    <% flash.each do |name, msg| %>
+        <%= content_tag :div, :class => "flash_#{name}" do -%>
+            <%= msg %>
+        <% end -%>
+    <% end %>
+</div>
+<!-- //END :: Notice Board -->
+
+</body>
+</html>
