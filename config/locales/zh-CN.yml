@@ -2,6 +2,10 @@ zh-CN:
   general:
     title: 标题
     content: 内容
+    delete: 删除
+    show: 查看
+    submit: 完成
+    edit: 修改
 
   authentication:
     log_out: "登出"
@@ -24,6 +28,9 @@ zh-CN:
     pwd_confirmation_not_match: "确认用的密码不符合您第一次输入的密码，请再试一次。"
     pwd_reset: "您的密码已被更改。"
     remember_me: "记住我"
+
+  menu:
+    my_reviews: 我的评价
 
   profile:
     edit: 修改
@@ -48,9 +55,11 @@ zh-CN:
 
   reviews:
     post_new_review: 发表新评论
-    new_review: 新评论
+    new_review: 新评价
     add_new_checkpoint: 添加检查点
-    post: 发表
+    title_review: 报告
+    title_the: 的
+    only_author_self_notice: 只有作者才可以执行此操作
 
   articles:
     post_new_article: 发表新文章

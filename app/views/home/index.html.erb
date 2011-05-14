@@ -20,3 +20,18 @@
     <% end %>
 </div>
 
+<div id="menu">
+    <%= link_to t("menu.my_reviews"), reviews_path %>
+</div>
+
+<div id="new_review">
+  <%= link_to t("reviews.new_review"), new_review_path %>
+</div>
+<div id="reviews_block">
+  <% @recent_reviews.each do |review| %>
+    <h4><%= review.title %></h4>
+    <blockquote><%= review.comment %></blockquote>
+  <% end %>
+</div>
+
+

@@ -2,11 +2,12 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.xml
   def index
-    @vendors = Vendor.all
+    @vendors = params[:q] ? Vendor.where(:name => /#{params[:q]}?/) : Vendor.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @vendors }
+      format.json { render :json => @vendors.map { |f| {:id => f.id, :name => f.name} } }
     end
   end
 

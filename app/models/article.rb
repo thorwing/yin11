@@ -23,6 +23,6 @@ class Article
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :foods
 
-  tokenize_models :cities, :foods
+  tokenize_many :cities, :foods
 
 end

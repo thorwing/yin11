@@ -3,20 +3,25 @@
 #TODO
 def generate_user_info (name)
   case name
-      when "Tester"
-        email = "tester@test.de"
-        password = "iamtester"
-        login_name = "Tester"
+      when "David User"
+        email = "david@yin11.com"
+        password = "iamdavid"
+        login_name = "David"
         role = 1
-      when "Editor"
-        email = "editor@test.de"
+      when "Kate Tester"
+        email = "kate@yin11.com"
+        password = "iamkate"
+        login_name = "Kate"
+        role = 1
+      when "Castle Editor"
+        email = "editor@yin11.com"
         password = "iameditor"
-        login_name = "Editor"
+        login_name = "Castle"
         role = 2
-      when "Admin"
-        email = "admin@test.de"
+      when "Ray Admin"
+        email = "admin@yin11.com"
         password = "superuser"
-        login_name = "Administrator"
+        login_name = "Ray"
         role = 9
       else
         assert false

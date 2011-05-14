@@ -12,24 +12,19 @@ function remove_fields(link) {
 }
 
 $(function() {
-    $("#article_city_tokens").tokenInput("/cities.json", {
+    function tokenize_input(element_selector, data_source, tokenLimit) {
+    $(element_selector).tokenInput(data_source, {
         crossDomain: false,
-        prePopulate: $("#article_city_tokens").data("pre"),
-        theme: "facebook"
+        prePopulate: $(element_selector).data("pre"),
+        theme: "facebook",
+        tokenLimit: tokenLimit,
+        hintText: "输入关键词",
+        noResultsText: "没有结果",
+        searchingText: "搜索中"
     });
-    $("#article_food_tokens").tokenInput("/foods.json", {
-        crossDomain: false,
-        prePopulate: $("#article_food_tokens").data("pre"),
-        theme: "facebook"
-    });
-    $("#article_food_tokens").tokenInput("/foods.json", {
-        crossDomain: false,
-        prePopulate: $("#article_food_tokens").data("pre"),
-        theme: "facebook"
-    });
-    $("#review_reference_tokens").tokenInput("/wiki/page_list.json", {
-        crossDomain: false,
-        prePopulate: $("#review_reference_tokens").data("pre"),
-        theme: "facebook"
-    });
+}
+    tokenize_input("#article_city_tokens", "/cities.json", 10);
+    tokenize_input("#article_food_tokens", "/foods.json", 10);
+    tokenize_input("#review_food_token", "/foods.json", 1);
+    tokenize_input("#review_vendor_token", "/vendors.json", 1);
 });

@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :user }
+  before_filter(:only => [:destroy]) {|c| c.require_permission :admin }
+  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
 
   # GET /reviews
   # GET /reviews.xml
   def index
-    @reviews = Review.all
+    @my_reviews = Review.where(author_id: current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,9 +30,9 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
 
-    1.times do
-      @review.checkpoints.build(:title => "sample")
-    end
+#    1.times do
+#      @review.checkpoints.build(:title => "sample")
+#    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,10 +49,11 @@ class ReviewsController < ApplicationController
   # POST /reviews.xml
   def create
     @review = Review.new(params[:review])
+    @review.author = current_user
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to(@review, :notice => 'Review was successfully created.') }
+        format.html { redirect_to(reviews_path, :notice => 'Review was successfully created.') }
         format.xml  { render :xml => @review, :status => :created, :location => @review }
       else
         format.html { render :action => "new" }
@@ -66,7 +69,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
-        format.html { redirect_to(@review, :notice => 'Review was successfully updated.') }
+        format.html { redirect_to(reviews_path, :notice => 'Review was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -13,12 +13,10 @@ class Address
     self.street, self.building = address_detail.split(" ", 2)
   end
 
-  #Relationships
-  embedded_in :user
-
   #cached_values
   associate_models :City, :Province, :Area
-#  field :city_id
+
+  #  field :city_id
 #  field :province_id
 #  field :area_id
 #
@@ -36,5 +34,10 @@ class Address
 #    area = Area.find(self.area_id)
 #    area
 #  end
+
+  #Relationships
+  embedded_in :user
+  embedded_in :vendor
+
 
 end

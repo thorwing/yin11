@@ -28,3 +28,15 @@ When /^I search wiki for "(.+)"$/ do |item|
   fill_in "query", :with => item
   click_button "搜索"
 end
+
+When /^I post a sample review$/ do
+  When %(I go to the home page)
+  And %(I follow "新评价" within "#new_review")
+  And %(I fill in "review_food_token" with "西瓜")
+  And %(I select "上海" from "review_vendor_city")
+  And %(I fill in "review_vendor_street" with "大华二路")
+  And %(I fill in "review_vendor_name" with "XX水果超市")
+  And %(I choose "review_severity_1")
+  And %(I fill in "review_comment" with "西瓜切开来后发现已经熟过头了。")
+  And %(I press "完成")
+end

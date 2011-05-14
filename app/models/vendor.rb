@@ -1,8 +1,15 @@
 class Vendor
   include Mongoid::Document
-  field :name, :type => String
+  field :name
+
+  attr_accessible :name
+
+  #validators
+  validates_presence_of :name
+  validates_uniqueness_of :name
 
   #Relationships
-  has_many :products
+  embeds_one :address
+  has_many :reviews
 
 end

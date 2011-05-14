@@ -2,40 +2,48 @@
   <%= render "shared/error_messages", :target => @review %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :food_token %><br />
+    <%= f.text_field :food_token, 'data-pre' => (f.object.food ? [{ :id => f.object.food.id, :name => f.object.food.name }] : []).to_json %>
+  </div>
+
+  <div id="associated_vendor">
+    <b>Existed vendor</b>
+    <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
+  </div>
+
+  <div id="new_vendor">
+      <b>New vendor</b>
+      <div class="field">
+        <%= f.label "city" %><br />
+        <%= f.select :vendor_city, options_for_select(get_cities_for_select, @review.vendor_city)%>
+      </div>
+      <div class="field">
+        <%= f.label "street" %><br />
+        <%= f.text_field :vendor_street %>
+      </div>
+      <div class="field">
+        <%= f.label "name" %><br />
+        <%= f.text_field :vendor_name %>
+      </div>
   </div>
 
   <div class="field">
-    <%= f.label :food %><br />
-    <%= text_field_tag "review[food]", params[:food] %>
+    <%= f.label :severity %><br />
+    <%= f.radio_button(:severity, 0) %>
+    <%= "pass" %>
+    <%= f.radio_button(:severity, 1) %>
+    <%= "fails_1" %>
+    <%= f.radio_button(:severity, 2) %>
+    <%= "fails_2" %>
+    <%= f.radio_button(:severity, 3) %>
+    <%= "fails_3" %>
   </div>
-
-  <div class="field">
-    <%= f.label :vendor %><br />
-    <%= text_field_tag "review[vendor]", params[:vendor] %>
-  </div>
-
-  <div>
-    <%= f.label "wiki pages" %>
-    <%= f.text_field :reference_tokens, 'data-pre' => (f.object.references.map { |p| { :id => p.id, :name => p.title }}).to_json %>
-  </div>
-
-  <%= f.fields_for :checkpoints do |builder| %>
-    <%= render 'checkpoint_fields', :f => builder %>
-  <% end %>
-  <hr/>
-
-  <div class=".add_new_field">
-    <%= link_to_add_fields  t("reviews.add_new_checkpoint"), f, :checkpoints %>
-  </div>
-
   <div class="field">
     <%= f.label :comment %><br />
     <%= f.text_field :comment %>
   </div>
 
   <div class="actions">
-    <%= f.submit t("reviews.post") %>
+    <%= f.submit t("general.submit") %>
   </div>
 <% end %>

@@ -105,4 +105,22 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+
+  def the_author_himself(class_name, object_id, or_admin = false)
+    has_permission = false
+    has_permission = true if or_admin && current_user.is_admin?
+    unless has_permission
+      class_name.capitalize!
+      object = eval "#{class_name}.find(\"#{object_id}\")"
+      #TODO
+      has_permission = (object.author_id == current_user.id)
+    end
+
+    if has_permission
+      true
+    else
+      redirect_to :root, :notice => t("reviews.only_author_self_notice")
+      false
+    end
+  end
 end

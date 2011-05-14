@@ -4,18 +4,19 @@
   <tr>
     <th>Title</th>
     <th>Comment</th>
+    <th>Severity</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @reviews.each do |review| %>
+<% @my_reviews.each do |review| %>
   <tr>
     <td><%= review.title %></td>
     <td><%= review.comment %></td>
-    <td><%= link_to 'Show', review %></td>
-    <td><%= link_to 'Edit', edit_review_path(review) %></td>
-    <td><%= link_to 'Destroy', review, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= "severity:" + review.severity.to_s %></td>
+    <td><%= link_to t("general.show"), review %></td>
+    <td><%= link_to t("general.edit"), edit_review_path(review) %></td>
   </tr>
 <% end %>
 </table>

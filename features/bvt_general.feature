@@ -2,8 +2,8 @@ Feature: general usage
   User can do some basic stuff
 
   Background:
-    Given There is a "Tester"
-    And There is a "Editor"
+    Given There is a "David User"
+    And There is a "Castle Editor"
     And There are minimal testing records
 
   Scenario: Guest can visit the entry page
@@ -20,9 +20,8 @@ Feature: general usage
     And I should see "西瓜的安全食用知识"
     And I should not see "最近关于牛奶的食品安全新闻"
 
-
   Scenario: Registered user can post a examination about food and that examination will be rendered to others
-    When I log in as "Tester"
+    When I log in as "David User"
     And I go to the reviews page
     And I follow "发表新评论"
     And I fill in "review_title" with "新人评论西瓜"
@@ -42,7 +41,7 @@ Feature: general usage
     Then I should see "新人评论西瓜" within "div.food_reviews"
 
   Scenario: Editor can post a news and that news will be rendered to others
-    When I log in as "Editor"
+    When I log in as "Castle Editor"
     And I go to the articles page
     And I follow "发表新文章"
     And I fill in "article_title" with "土豆刷绿漆，冒充西瓜"
@@ -58,13 +57,12 @@ Feature: general usage
     And I search for "西瓜"
     Then I should see "土豆刷绿漆，冒充西瓜" within "div.food_articles"
 
-  @focus
   Scenario: User can search for conflicts with two different foods
     When I search for "牛奶 橙子"
     Then I should see "牛奶 橙子 影响维生素吸收"
 
   Scenario Outline: User can update his profile and that's gonna affect the search
-    When I log in as "Tester"
+    When I log in as "David User"
     And I go to the profile page
     And I follow "修改"
     And I fill in "profile_address_city" with "<city_id>"
@@ -77,9 +75,8 @@ Feature: general usage
       | 021     | #food_article_0 |
       | 010     | #food_article_1 |
 
-  @focus
   Scenario: Registered user can write a wiki page about food
-    When I log in as "Tester"
+    When I log in as "David User"
     And I go to the wiki page
     And I search wiki for "西瓜"
     Then I should see "找不到和查询相匹配的结果。"
@@ -91,6 +88,8 @@ Feature: general usage
     And I select "食物" from "page_category_id"
     And I press "保存"
     Then I should see "页面已添加"
+
+
 
 
 
