@@ -22,7 +22,6 @@ Feature: smoke tests for Review
     And I should see "severity:1"
     And I should see "西瓜切开来后发现已经熟过头了。"
 
-  @focus
   Scenario: User can edit his own review about a existed vendor, and user can't delete his review
     When I log in as "David User"
     And I post a sample review
@@ -32,7 +31,7 @@ Feature: smoke tests for Review
     Then I should see "上海 大华二路 XX水果超市 的 西瓜"
     And I follow "修改"
     Then I choose "review_severity_3"
-    And I fill in "review_comment" with "而且这个西瓜是打了催熟剂的"
+    And I fill in "review_content" with "而且这个西瓜是打了催熟剂的"
     And I press "完成"
     Then I should be on the reviews page
     Then show me the page
@@ -51,6 +50,34 @@ Feature: smoke tests for Review
     And I should see "只有作者才可以执行此操作"
 
   @focus
+  Scenario: User can vote for a review.
+    When I log in as "David User"
+    And I post a sample review
+
+    When I log in as "Kate Tester"
+    Then I should see "David 报告 上海 大华二路 XX水果超市 的 西瓜 :"
+    When I follow "up" within ".review_item"
+    Then I should see "1" within ".review_item"
+
+  @focus
+  Scenario:  User can comment on a review, comments can be nested.
+    When I log in as "David User"
+    And I post a sample review
+
+    When I log in as "Kate Tester"
+    Then I should see "David 报告 上海 大华二路 XX水果超市 的 西瓜 :"
+    When I follow "查看" within ".review_item"
+    And I fill in "review_commnet" with "很有用的评价"
+    And I press "添加"
+    Then I should see "1 comment" within ".review_item"
+
+    When I log in as "David User"
+    When I follow "查看" within ".review_item"
+    And I fill in "review_commnet" with "谢谢"
+    And I press "添加"
+    Then I should see "2 comment" within ".review_item"
+
+  @focus
   Scenario: User will get rewards because of posting reviews.
     Given There is a basic badge
     When I log in as "David User"
@@ -59,12 +86,6 @@ Feature: smoke tests for Review
     When I go to the home page
     And I follow "徽章" within "#menu"
     Then I should see "新手徽章" within "#my_badges"
-
-  @focus
-  Scenario: User can vote for a review.
-
-  @focus
-  Scenario:  User can comment on a review, comments can be nested.
 
   @focus
   Scenario:  Repeat the above steps for tech-review

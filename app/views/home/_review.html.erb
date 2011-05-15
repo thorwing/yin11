@@ -1,0 +1,12 @@
+<div class="review_item">
+    <h4><%= review.title %></h4>
+    <blockquote><%= review.content %></blockquote>
+    <% if has_permission?(:user) %>
+        <div class="review_vote">
+            <%= review.votes %>
+            <%= link_to "up", vote_review_path(review, :delta => 1), :method => :put %>
+            <%= link_to "down", vote_review_path(review, :delta => -1), :method => :put %>
+        </div>
+     <% end %>
+    <%= link_to t("general.show"), review %>
+</div>

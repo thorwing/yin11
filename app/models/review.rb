@@ -3,15 +3,17 @@ class Review
   include Mongoid::Timestamps
   include AssociatedModels
 
-  field :comment
+  field :content
   field :severity, :type => Integer, :default => 0
-
-  #attr_accessible :comment, :severity
 
   #cached values
   field :vendor_name
   field :vendor_city
   field :vendor_street
+
+  field :votes, :type => Integer, :default => 0
+  field :fan_ids, :type => Array, :default => []
+  field :hater_ids, :type => Array, :default => []
 
   #Relationships
   belongs_to :food
@@ -20,12 +22,15 @@ class Review
 
   tokenize_one :food, :vendor
 
+  #Validators
+  validates_presence_of :food_id
+
   def title
     [self.author.login_name, I18n.translate("reviews.title_review"), self.vendor.try(:address).try(:city).try(:name), self.vendor.try(:address).try(:street),
-    self.vendor.try(:name), I18n.translate("reviews.title_the"), self.food.name, ":"].join(" ")
+    self.vendor.try(:name), I18n.translate("reviews.title_the"), self.food.try(:name), ":"].join(" ")
   end
 
-  attr_accessible :comment, :severity, :vendor_name, :vendor_city, :vendor_street
+  attr_accessible :content, :severity, :vendor_name, :vendor_city, :vendor_street
 
   before_save :update_vendor
 

@@ -89,4 +89,61 @@ class ReviewsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def vote
+    @review = Review.find(params[:id])
+    delta = params[:delta].to_i
+
+    if delta > 0
+      if @review.fan_ids.include?(current_user.id)
+        delta *= -1
+        @review.fan_ids.delete(current_user.id)
+      elsif @review.hater_ids.include?(current_user.id)
+        @review.hater_ids.delete(current_user.id)
+      else
+        @review.fan_ids << current_user.id
+      end
+    else
+      if @review.hater_ids.include?(current_user.id)
+        delta *= -1
+        @review.hater_ids.delete(current_user.id)
+      elsif @review.fan_ids.include?(current_user.id)
+        @review.fan_ids.delete(current_user.id)
+      else
+        @review.hater_ids << current_user.id
+      end
+    end
+
+    weight = delta * get_vote_weight_of_current_user
+    @review.votes += weight
+
+    respond_to do |format|
+      if @review.save
+        format.html {redirect_to root_path}
+        format.xml {head :ok}
+        format.js {render :content_type => 'text/javascript'}
+      else
+        format.html { redirect_to @review }
+        format.xml  { render :xml => @review.errors, :status => :unprocessable_entity }
+        format.js { head :unprocessable_entity }
+      end
+    end
+
+  end
+
+  protected
+  def get_vote_weight_of_current_user
+    weight = 0
+
+    if current_user
+      if current_user.is_admin?
+        weight = 5
+      elsif current_user.is_editor?
+        weight = 3
+      else
+        weight = 1
+      end
+    end
+    weight
+  end
 end

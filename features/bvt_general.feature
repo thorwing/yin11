@@ -31,7 +31,7 @@ Feature: general usage
     And I fill in "review_checkpoints_attributes_0_title" with "敲起来的声音正常"
     And I check "review_checkpoints_attributes_0_pass"
 
-    And I fill in "review_comment" with "按照检测方法，第一步先敲，第二步听声音，第三步判断是否是正常的西瓜。"
+    And I fill in "review_content" with "按照检测方法，第一步先敲，第二步听声音，第三步判断是否是正常的西瓜。"
     And I press "发表"
 
     When I log out

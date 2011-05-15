@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Comment</th>
+    <th>Content</th>
     <th>Severity</th>
     <th></th>
     <th></th>
@@ -13,7 +13,7 @@
 <% @my_reviews.each do |review| %>
   <tr>
     <td><%= review.title %></td>
-    <td><%= review.comment %></td>
+    <td><%= review.content %></td>
     <td><%= "severity:" + review.severity.to_s %></td>
     <td><%= link_to t("general.show"), review %></td>
     <td><%= link_to t("general.edit"), edit_review_path(review) %></td>

@@ -9,7 +9,11 @@ Yin11::Application.routes.draw do
 
   resources :articles
 
-  resources :reviews
+  resources :reviews do
+    member do
+      put "vote"
+    end
+  end
 
   resources :tips
 

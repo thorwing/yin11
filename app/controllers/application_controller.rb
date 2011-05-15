@@ -1,5 +1,22 @@
 class ApplicationController < ActionController::Base
 
+  helper_method :current_user , :has_permission?
+
+  def has_permission?(permission)
+    has_permission = false
+    if current_user
+      case permission
+        when :user
+          has_permission = true
+        when :editor
+          has_permission = current_user.is_editor? || current_user.is_admin?
+        when :admin
+          has_permission = current_user.is_admin?
+      end
+    end
+    has_permission
+  end
+
   def current_user
       @current_user ||= (login_from_session || login_from_cookie) unless @current_user == false
   end
@@ -84,21 +101,9 @@ class ApplicationController < ActionController::Base
 
 
   protected
-   #TODO
+  #TODO
   def require_permission(permission)
-    has_permission = false
-    if current_user
-      case permission
-        when :user
-          has_permission = true
-        when :editor
-          has_permission = current_user.is_editor? || current_user.is_admin?
-        when :admin
-          has_permission = current_user.is_admin?
-      end
-    end
-
-    if has_permission
+    if has_permission?(permission)
       true
     else
       redirect_to :log_in, :notice => "You need #{permission} permission"

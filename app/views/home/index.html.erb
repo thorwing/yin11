@@ -29,8 +29,7 @@
 </div>
 <div id="reviews_block">
   <% @recent_reviews.each do |review| %>
-    <h4><%= review.title %></h4>
-    <blockquote><%= review.comment %></blockquote>
+    <%= render "review", :review => review %>
   <% end %>
 </div>
 
