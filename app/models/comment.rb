@@ -1,8 +1,11 @@
 class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Ancestry
+  has_ancestry
 
   field :content
+  field :ancestry
 
   #Relationships
   embedded_in :review

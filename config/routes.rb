@@ -10,8 +10,11 @@ Yin11::Application.routes.draw do
   resources :articles
 
   resources :reviews do
+    resources :comments
     member do
       put "vote"
+      get "new_comment"
+      post "add_comment"
     end
   end
 

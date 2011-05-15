@@ -66,6 +66,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="mongoid-ancestry" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="rails" version="3.0.7" bound="EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -150,6 +156,8 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-expectations (v2.5.0, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/rspec-expectations-2.5.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] term-ansicolor (v1.0.5, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/term-ansicolor-1.0.5)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] celerity (v0.8.9, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/celerity-0.8.9)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] ancestry (v1.2.4, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/ancestry-1.2.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] mongoid-ancestry (v0.2.2, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/mongoid-ancestry-0.2.2)" level="application" />
   </component>
 </module>
 

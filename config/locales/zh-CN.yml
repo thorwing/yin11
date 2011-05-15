@@ -54,12 +54,15 @@ zh-CN:
     safty_tips: %{name}的安全食用知识
 
   reviews:
-    post_new_review: 发表新评论
-    new_review: 新评价
+    post_new_review: 发表新测评
+    new_review: 新测评
     add_new_checkpoint: 添加检查点
     title_review: 报告
     title_the: 的
     only_author_self_notice: 只有作者才可以执行此操作
+
+  comments:
+    post: 添加
 
   articles:
     post_new_article: 发表新文章

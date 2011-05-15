@@ -128,7 +128,35 @@ class ReviewsController < ApplicationController
         format.js { head :unprocessable_entity }
       end
     end
+  end
 
+  def new_comment
+    @review = Review.find(params[:id])
+    if params[:parent_comment_id].present?
+      parent_comment = @review.comments.find(params[:parent_comment_id])
+      @comment = parent_comment.children.build(:content => params[:content])
+    else
+      @comment = Comment.new(:content => params[:content])
+    end
+  end
+
+  def add_comment
+    @review = Review.find(params[:id])
+    if params[:parent_comment_id].present?
+      parent_comment = @review.comments.find(params[:parent_comment_id])
+      new_comment = parent_comment.children.build(:content => params[:content], :user_id => current_user.id)
+      #parent_comment.children.create(:content => params[:content], :user_id => current_user.id)
+      @review.comments << new_comment
+    else
+      @review.comments ||= []
+      @review.comments << Comment.new(:content => params[:content], :user_id => current_user.id)
+    end
+
+     respond_to do |format|
+        format.html {redirect_to @review}
+        format.xml {head :ok}
+        format.js {render :content_type => 'text/javascript'}
+    end
   end
 
   protected

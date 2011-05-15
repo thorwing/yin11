@@ -28,6 +28,8 @@ gem "bson_ext", "~> 1.3"
 
 gem "bcrypt-ruby", :require => "bcrypt"
 
+gem "mongoid-ancestry"
+
 #factory_girl is also used for db seeds
 gem 'factory_girl_rails'
 

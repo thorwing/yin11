@@ -1,0 +1,6 @@
+<div>
+    <%= comment.user.login_name %> :  <blockquote> <%= comment.content %></blockquote>
+    <div class="actions">
+        <%= link_to "Reply", new_comment_review_path(@review, :parent_comment_id => comment.id) %>
+    </div>
+</div>

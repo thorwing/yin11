@@ -8,5 +8,9 @@
             <%= link_to "down", vote_review_path(review, :delta => -1), :method => :put %>
         </div>
      <% end %>
-    <%= link_to t("general.show"), review %>
+    <%= review.comments.size.to_s %> comments
+    <div class="actions">
+        <%= link_to "Reply", new_comment_review_path(review) %> |
+        <%= link_to t("general.show"), review %>
+    </div>
 </div>

@@ -19,6 +19,7 @@ class Review
   belongs_to :food
   belongs_to :vendor
   belongs_to :author, :class_name => "User"
+  embeds_many :comments
 
   tokenize_one :food, :vendor
 

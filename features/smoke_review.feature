@@ -49,7 +49,6 @@ Feature: smoke tests for Review
     Then I should be on the home page
     And I should see "只有作者才可以执行此操作"
 
-  @focus
   Scenario: User can vote for a review.
     When I log in as "David User"
     And I post a sample review
@@ -59,7 +58,6 @@ Feature: smoke tests for Review
     When I follow "up" within ".review_item"
     Then I should see "1" within ".review_item"
 
-  @focus
   Scenario:  User can comment on a review, comments can be nested.
     When I log in as "David User"
     And I post a sample review
@@ -67,15 +65,18 @@ Feature: smoke tests for Review
     When I log in as "Kate Tester"
     Then I should see "David 报告 上海 大华二路 XX水果超市 的 西瓜 :"
     When I follow "查看" within ".review_item"
-    And I fill in "review_commnet" with "很有用的评价"
+    And I fill in "content" with "很有用的评价" within ".new_comment"
     And I press "添加"
-    Then I should see "1 comment" within ".review_item"
+    And I go to the home page
+    Then I should see "1 comments" within ".review_item"
 
     When I log in as "David User"
     When I follow "查看" within ".review_item"
-    And I fill in "review_commnet" with "谢谢"
+    And I follow "Reply"
+    And I fill in "content" with "谢谢" within ".new_comment"
     And I press "添加"
-    Then I should see "2 comment" within ".review_item"
+    And I go to the home page
+    Then I should see "2 comments" within ".review_item"
 
   @focus
   Scenario: User will get rewards because of posting reviews.
