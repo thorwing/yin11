@@ -8,14 +8,14 @@ Feature: usage about permissions
 
   Scenario: guest can't post any reviews and will be asked to sign up
     When I go to the reviews page
-    And I follow "发表新评论"
+    And I follow "发表新测评"
     Then I should be on the log_in page
 
   Scenario: registered user can post a review about food
     When I log in as "David User"
     And I go to the reviews page
-    And I follow "发表新评论"
-    Then I should see "新评论"
+    And I follow "发表新测评"
+    Then I should see "新测评"
 
   Scenario: guest and normal user can't post any articles and will be asked to sign up
     When I go to the articles page

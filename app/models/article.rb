@@ -7,6 +7,8 @@ class Article
   field :source
   field :content
 
+  attr_accessible :title, :source, :content
+
   scope :in_days_of, ->(days_in_number) {where(:created_at.gt => days_in_number.days.ago )}
   scope :about, ->(food) {any_in(food_ids: [food.is_a?(Food) ? food.id : food])}
   scope :in_city, ->(city) {any_in(city_ids: [city.is_a?(City) ? city.id : city])}

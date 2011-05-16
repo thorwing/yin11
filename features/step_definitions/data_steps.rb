@@ -36,7 +36,6 @@ Given /^There is a "(.+)"$/ do |name|
   Factory(:user, :email => email, :login_name => login_name, :password => password, :role => role)
 end
 
-
 Given /^There are minimal testing records$/ do
   watermelon = Factory(:food, :name=> "西瓜")
   orange = Factory(:food, :name => "橙子")

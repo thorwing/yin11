@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @my_reviews = Review.where(author_id: current_user.id)
+    @reviews = Review.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,6 +50,15 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
     @review.author = current_user
+    current_user.posted_reviews += 1
+    current_user.save
+
+    #TODO
+    Badge.all.each do |badge|
+      if badge.can_be_awarded_to?(current_user)
+        badge.give_to_user_and_save(current_user)
+      end
+    end
 
     respond_to do |format|
       if @review.save

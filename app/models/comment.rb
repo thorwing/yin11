@@ -6,6 +6,7 @@ class Comment
 
   field :content
   field :ancestry
+  index :ancestry
 
   #Relationships
   embedded_in :review

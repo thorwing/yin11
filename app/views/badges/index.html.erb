@@ -5,7 +5,7 @@
     <th>Name</th>
     <th>Description</th>
     <th>Repeatable</th>
-    <th></th>
+    <th>NumberOfOwners</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,6 +15,7 @@
     <td><%= badge.name %></td>
     <td><%= badge.description %></td>
     <td><%= badge.repeatable %></td>
+    <td><%= badge.number_of_owners %></td>
     <td><%= link_to 'Show', badge %></td>
     <td><%= link_to 'Edit', edit_badge_path(badge) %></td>
     <td><%= link_to 'Destroy', badge, :confirm => 'Are you sure?', :method => :delete %></td>

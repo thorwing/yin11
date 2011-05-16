@@ -12,6 +12,7 @@ module FoodsHelper
     result = []
     result = Article.in_days_of(7).about(food).in_city(user.address.city_id).desc(:created_at).limit(FOOD_ARTICLES_LIMIT) if user
 
+
     if result.size < FOOD_ARTICLES_LIMIT
       result = result | Article.in_days_of(14).about(food).desc(:created_at)
     end

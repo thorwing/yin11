@@ -9,6 +9,8 @@ Factory(:user, :email => "admin@test.de", :login_name => "Admin", :password => "
 
 Factory(:food, :name => "西瓜")
 
+Factory(:badge, :name => "新手上路", :description => "发表一篇测评", :user_field => "posted_reviews", :comparator => 8, :compared_value => "1" )
+
 File.open(File.join(RAILS_ROOT, 'app/assets/wiki_categories.txt')).each_line { |c|
   Factory(:wiki_category, :name => c)
 }

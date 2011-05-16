@@ -22,23 +22,13 @@ Feature: general usage
 
   Scenario: Registered user can post a examination about food and that examination will be rendered to others
     When I log in as "David User"
-    And I go to the reviews page
-    And I follow "发表新评论"
-    And I fill in "review_title" with "新人评论西瓜"
-    And I fill in "review_food" with "西瓜"
-    And I fill in "review_vendor" with "君临超市"
-
-    And I fill in "review_checkpoints_attributes_0_title" with "敲起来的声音正常"
-    And I check "review_checkpoints_attributes_0_pass"
-
-    And I fill in "review_content" with "按照检测方法，第一步先敲，第二步听声音，第三步判断是否是正常的西瓜。"
-    And I press "发表"
+    And I post a sample review
 
     When I log out
     And I go to the home page
     And I fill in "foods" with "西瓜"
     And I press "搜索" within "#foods_search"
-    Then I should see "新人评论西瓜" within "div.food_reviews"
+    Then I should see "David 报告 上海 大华二路 XX水果超市 的 西瓜 :" within "div.food_reviews"
 
   Scenario: Editor can post a news and that news will be rendered to others
     When I log in as "Castle Editor"
