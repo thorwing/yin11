@@ -1,8 +1,12 @@
 class TipsController < ApplicationController
+  TIPS_SEARCH_LIMIT = 5
+
   # GET /tips
   # GET /tips.xml
   def index
     @tips = Tip.all
+
+    @tips_participated_by_me = current_user ? Tip.any_in(participator_ids: [current_user.id]) : []
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +28,11 @@ class TipsController < ApplicationController
   # GET /tips/new
   # GET /tips/new.xml
   def new
-    @tip = Tip.new
+    unless params[:type] && params[:title]
+      redirect_to :back, :notice => "Invalid parameters for Tip."
+    end
+
+    @tip = Tip.new(:title => params[:title], :type => params[:type].to_i)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +49,7 @@ class TipsController < ApplicationController
   # POST /tips.xml
   def create
     @tip = Tip.new(params[:tip])
+    @tip.participators << current_user
 
     respond_to do |format|
       if @tip.save
@@ -78,6 +87,30 @@ class TipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(tips_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def search
+    @results = []
+    query = params[:search]
+    if query
+      @exact_match = Tip.first(conditions: {title: query})
+      tag_names = query.split
+
+      if tag_names.size <= 1
+        @results = Tip.where(:title => /#{query}?}/)
+      else
+        exact_results = nil
+        tag_names.each do |tag_name|
+          exact_results = exact_results ? exact_results.any_in(tag_ids: [tag_name]) : Tip.any_in(tag_ids: [tag_name])
+        end
+
+        @results = exact_results.order_by([:updated_at, :desc]) if exact_results
+
+        if exact_results.size < TIPS_SEARCH_LIMIT
+          @results = @results | Tip.any_in(tag_ids: tag_names)
+        end
+      end
     end
   end
 end

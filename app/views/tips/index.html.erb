@@ -1,5 +1,31 @@
 <h1>Listing tips</h1>
 
+<div class="search_fields">
+  <%= form_tag :controller => "tips", :action => "search" do %>
+    <%= text_field_tag "search", "" %>
+    <%= submit_tag t("general.search") %>
+  <% end %>
+</div>
+
+<div id="recent_tips">
+  <h3><%= t("tips.recent_tips") %></h3>
+</div>
+
+<div id="hot_tips">
+  <h3><%= t("tips.hot_tips") %></h3>
+</div>
+
+<div id="tips_participated_by_me">
+  <h3><%= t("tips.tips_participated_by_me") %></h3>
+  <% @tips_participated_by_me.each do |tip| %>
+    <%= render "tip_item", :object => tip %>
+  <% end %>
+</div>
+
+<div id="tips_tagged_by_me">
+  <h3><%= t("tips.tips_tagged_by_me") %></h3>
+</div>
+
 <table>
   <tr>
     <th>Title</th>

@@ -18,7 +18,11 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :tips
+  resources :tips do
+    collection do
+      post "search"
+    end
+  end
 
   resources :badges
 

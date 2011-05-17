@@ -1,0 +1,15 @@
+<div id="search_results">
+    <% if @exact_match %>
+      <%= render "tip_item", :object => tip %>
+    <% else %>
+        <%= t("tips.exact_tip_not_found", :title => params[:search]) %>
+        <%= t("tips.please_create") %><br/>
+        <%= link_to t("tips.handle_tip", :title => params[:search]), new_tip_path(:type => 1, :title => params[:search]) %><br/>
+        <%= link_to t("tips.exam_tip", :title => params[:search]), new_tip_path(:type => 2, :title => params[:search]) %><br/>
+
+        其他结果:
+        <% @results.each do |tip| %>
+          <%= render "tip_item", :object => tip %>
+        <% end %>
+    <% end %>
+</div>

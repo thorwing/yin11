@@ -19,6 +19,7 @@ class User
   #Relationships
   embeds_one :address
   has_many :reviews
+  has_and_belongs_to_many :participated_tips, :class_name => "Tip"
   has_and_belongs_to_many :badges
 
   attr_accessor :password
@@ -33,6 +34,10 @@ class User
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 6, :on => :create, :message => I18n.t("views.validation_message.password_is_too_short")
   validates_associated :address
+
+  USER_ROLE = 1
+  EDITOR_ROLE = 2
+  ADMIN_ROLE = 9
 
   def address_city
     self.address.city_id
@@ -113,11 +118,11 @@ class User
   end
 
   def is_editor?
-    self.role == 2
+    self.role == EDITOR_ROLE
   end
 
   def is_admin?
-    self.role == 9
+    self.role == ADMIN_ROLE
   end
 
   private

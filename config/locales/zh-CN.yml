@@ -6,6 +6,7 @@ zh-CN:
     show: 查看
     submit: 完成
     edit: 修改
+    search: 搜索
 
   authentication:
     log_out: "登出"
@@ -70,6 +71,20 @@ zh-CN:
     new_article: 新文章
     post: 发表
     article_posted_notice: 文章已发布
+
+  tips:
+    recent_tips: 最近更新的贴士
+    hot_tips: 热门贴士
+    tips_participated_by_me: 我参与的贴士
+    tips_tagged_by_me: 我收藏的贴士
+    title_length_validate_msg: 标题要求最短%{min},最长%{max}个字符
+    content_length_validate_msg: 内容要求不超过%{max}个字符
+    title_presence_validate_msg: 标题不能为空
+    exact_tip_not_found: 没有找到标题为<%{title}>的贴士
+    please_create: "欢迎您创建:"
+    handle_tip: "食物处理贴士: <%{title}>"
+    exam_tip: "食物测评贴士: <%{title}>"
+
 
   wiki:
     search: 搜索

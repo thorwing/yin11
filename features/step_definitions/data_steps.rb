@@ -48,5 +48,12 @@ Given /^There are minimal testing records$/ do
 
   category_1 =  Factory(:wiki_category, :name => "食物")
   milk_page = WikiPage.create(:title => milk.name, :content => '<h2 class="wiki_sec_h" id="conflict_sec">食物相克</h2><ul><li>橙子: 影响维生素吸收</li></ul><h2 class="wiki_sec_h">其它</h2><p>&nbsp;&nbsp;&nbsp;&nbsp; 测试文本</p>')
+end
 
+
+Given /^There is a sample tip$/ do
+  tip = Tip.new(:title => "西瓜判熟技巧", :content => " 一看，二拍，三听")
+  tip.type = 2
+  tip.tags << Tag.new(:title => "西瓜") << Tag.new(:title => "处理技巧")
+  tip.save
 end
