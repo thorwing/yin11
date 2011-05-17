@@ -1,4 +1,6 @@
 class TipsController < ApplicationController
+  before_filter(:except => [:index, :show, :search]) { |c| c.require_permission :user }
+  before_filter(:only => [:destroy]) {|c| c.require_permission :admin }
   TIPS_SEARCH_LIMIT = 5
 
   # GET /tips
@@ -7,6 +9,8 @@ class TipsController < ApplicationController
     @tips = Tip.all
 
     @tips_participated_by_me = current_user ? Tip.any_in(participator_ids: [current_user.id]) : []
+    @hot_tips = Tip.order_by([:votes, :desc]).limit(5)
+    @recent_tips = Tip.order_by([:updated_at, :desc]).limit(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,9 +34,11 @@ class TipsController < ApplicationController
   def new
     unless params[:type] && params[:title]
       redirect_to :back, :notice => "Invalid parameters for Tip."
+      return
     end
 
-    @tip = Tip.new(:title => params[:title], :type => params[:type].to_i)
+    @tip = Tip.new(:title => params[:title])
+    @tip.type = params[:type].to_i
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +55,7 @@ class TipsController < ApplicationController
   # POST /tips.xml
   def create
     @tip = Tip.new(params[:tip])
+    @tip.type = params["tip"]["type"].to_i
     @tip.participators << current_user
 
     respond_to do |format|
@@ -66,6 +73,7 @@ class TipsController < ApplicationController
   # PUT /tips/1.xml
   def update
     @tip = Tip.find(params[:id])
+    @tip.type = params["tip"]["type"].to_i
 
     respond_to do |format|
       if @tip.update_attributes(params[:tip])
@@ -113,4 +121,45 @@ class TipsController < ApplicationController
       end
     end
   end
+
+  def vote
+    @tip = Tip.find(params[:id])
+    delta = params[:delta].to_i
+
+    if delta > 0
+      if @tip.fan_ids.include?(current_user.id)
+        delta *= -1
+        @tip.fan_ids.delete(current_user.id)
+      elsif @tip.hater_ids.include?(current_user.id)
+        @tip.hater_ids.delete(current_user.id)
+      else
+        @tip.fan_ids << current_user.id
+      end
+    else
+      if @tip.hater_ids.include?(current_user.id)
+        delta *= -1
+        @tip.hater_ids.delete(current_user.id)
+      elsif @tip.fan_ids.include?(current_user.id)
+        @tip.fan_ids.delete(current_user.id)
+      else
+        @tip.hater_ids << current_user.id
+      end
+    end
+
+    weight = delta * get_vote_weight_of_current_user
+    @tip.votes += weight
+
+    respond_to do |format|
+      if @tip.save
+        format.html {redirect_to tips_path}
+        format.xml {head :ok}
+        format.js {render :content_type => 'text/javascript'}
+      else
+        format.html { redirect_to @tip }
+        format.xml  { render :xml => @tip.errors, :status => :unprocessable_entity }
+        format.js { head :unprocessable_entity }
+      end
+    end
+  end
+
 end

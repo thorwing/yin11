@@ -1,6 +1,6 @@
 <div id="search_results">
     <% if @exact_match %>
-      <%= render "tip_item", :object => tip %>
+      <%= render :partial => "tip_item", :locals => { :tip => @exact_match} %>
     <% else %>
         <%= t("tips.exact_tip_not_found", :title => params[:search]) %>
         <%= t("tips.please_create") %><br/>
@@ -9,7 +9,7 @@
 
         其他结果:
         <% @results.each do |tip| %>
-          <%= render "tip_item", :object => tip %>
+          <%= render :partial => "tip_item", :locals => { :tip => tip} %>
         <% end %>
     <% end %>
 </div>

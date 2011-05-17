@@ -40,3 +40,12 @@ When /^I post a sample review$/ do
   And %(I fill in "review_content" with "西瓜切开来后发现已经熟过头了。")
   And %(I press "完成")
 end
+
+When /^I post a sample tip$/ do
+    When %(I go to the tips page)
+    And %(I fill in "search" with "辨别西瓜是否含有催熟剂")
+    And %(I press "搜索")
+    When %(I follow "食物测评贴士: <辨别西瓜是否含有催熟剂>")
+    And %(I fill in "tip_content" with "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。")
+    And %(I press "完成")
+end

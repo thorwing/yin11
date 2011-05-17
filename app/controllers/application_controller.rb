@@ -128,4 +128,19 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+
+  def get_vote_weight_of_current_user
+    weight = 0
+
+    if current_user
+      if current_user.is_admin?
+        weight = 5
+      elsif current_user.is_editor?
+        weight = 3
+      else
+        weight = 1
+      end
+    end
+    weight
+  end
 end
