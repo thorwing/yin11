@@ -1,5 +1,5 @@
-<% if @user %>
-    <h1>Welcome, <%= @user.login_name %></h1>
+<% if current_user %>
+    <h1>Welcome, <%= current_user.login_name %></h1>
 <% else %>
     <div>
         <h2><%= t("authentication.quick_login")  %></h2>
@@ -28,10 +28,18 @@
 <div id="new_review">
   <%= link_to t("reviews.new_review"), new_review_path %>
 </div>
-<div id="reviews_block">
-  <% @recent_reviews.each do |review| %>
-    <%= render "review", :review => review %>
-  <% end %>
+<div id="food_info_block">
+    <% @interested_info.each do |food_name, info_object| %>
+        <h3><%= food_name %></h3>
+        <% info_object.each do |info| %>
+            <% if info.is_a?(Review) %>
+                <%= render "reviews/review_item", :review => info %>
+            <% elsif info.is_a?(Article) %>
+                <%= render "articles/article_item", :article => info %>
+            <% end %>
+        <% end %>
+    <% end %>
 </div>
+
 
 

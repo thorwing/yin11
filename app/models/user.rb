@@ -17,13 +17,13 @@ class User
   field :posted_reviews, :type => Integer, :default => 0
 
   #Relationships
-  embeds_one :address
+  embeds_one :profile
   has_many :reviews
   has_and_belongs_to_many :participated_tips, :class_name => "Tip"
   has_and_belongs_to_many :badges
 
   attr_accessor :password
-  attr_accessible :email, :login_name, :password, :password_confirmation, :avatar, :address_city
+  attr_accessible :email, :login_name, :password, :password_confirmation, :avatar
 
   #Validators
   validates :email,
@@ -33,25 +33,18 @@ class User
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 6, :on => :create, :message => I18n.t("views.validation_message.password_is_too_short")
-  validates_associated :address
+  validates_associated :profile
 
   USER_ROLE = 1
   EDITOR_ROLE = 2
   ADMIN_ROLE = 9
 
-  def address_city
-    self.address.city_id
-  end
-  def address_city=(city_id)
-    self.address.city_id = city_id
-  end
-
   #Others
-  after_initialize :build_address
+  after_initialize :build_profile
   before_save :encrypt_password
 
-  def build_address
-    self.address ||= Address.new
+  def build_profile
+    self.profile ||= Profile.new
   end
 
   def self.authenticate(email, password)

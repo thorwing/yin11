@@ -31,7 +31,11 @@ Yin11::Application.routes.draw do
 
   resources :vendors
 
-  resources :foods
+  resources :foods do
+    member do
+      put "watch"
+    end
+  end
 
   resources :products
 

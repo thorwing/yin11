@@ -12,7 +12,7 @@ class ProfileController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(params[:profile])
+    if @user.profile.update_attributes(params[:profile])
       redirect_to profile_show_path, :notice => t("profile.profile_updated_notice")
     else
       redirect_to profile_show_path, :notice => "Error"

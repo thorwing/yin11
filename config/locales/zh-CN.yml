@@ -55,6 +55,8 @@ zh-CN:
     safty_indicator: 食物安全风向标
     recent_exams: 最近对于%{name}的评论
     safty_tips: %{name}的安全食用知识
+    why_add_to_watch_list: 为什么要把食物收藏到<我的菜单>
+    add_to_watch_list: 把%{name}收藏到<我的菜单>
 
   reviews:
     post_new_review: 发表新测评

@@ -1,4 +1,7 @@
 class FoodsController < ApplicationController
+  before_filter(:except => [:index, :show]) { |c| c.require_permission :user }
+  before_filter(:only => [:destroy, :edit, :update, :new, :create]) {|c| c.require_permission :admin }
+
   # GET /foods
   # GET /foods.xml
   def index
@@ -87,6 +90,17 @@ class FoodsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(foods_url) }
+      format.xml  { head :ok }
+    end
+  end
+
+  def watch
+    @food = Food.find(params[:id])
+    current_user.profile.cared_foods << @food.name unless current_user.profile.cared_foods.include?(@food.name)
+    current_user.profile.save
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
       format.xml  { head :ok }
     end
   end

@@ -36,7 +36,7 @@ class Address
 #  end
 
   #Relationships
-  embedded_in :user
+  embedded_in :profile
   embedded_in :vendor
 
 

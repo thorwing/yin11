@@ -16,7 +16,7 @@
     <td><%= review.content %></td>
     <td><%= "severity:" + review.severity.to_s %></td>
     <td><%= link_to t("general.show"), review %></td>
-    <td><%= link_to t("general.edit"), edit_review_path(review) %></td>
+    <td><%= link_to t("general.change"), edit_review_path(review) %></td>
   </tr>
 <% end %>
 </table>
