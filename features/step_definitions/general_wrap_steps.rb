@@ -29,6 +29,12 @@ When /^I search wiki for "(.+)"$/ do |item|
   click_button "搜索"
 end
 
+When /^I search tips for "(.+)"$/ do |item|
+  visit path_to("the tips page")
+  fill_in "search", :with => item
+  click_button "搜索"
+end
+
 When /^I post a sample review$/ do
   When %(I go to the home page)
   And %(I follow "新测评" within "#new_review")
@@ -46,6 +52,6 @@ When /^I post a sample tip$/ do
     And %(I fill in "search" with "辨别西瓜是否含有催熟剂")
     And %(I press "搜索")
     When %(I follow "食物测评贴士: <辨别西瓜是否含有催熟剂>")
-    And %(I fill in "tip_content" with "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。")
+    And %(I fill in "content" with "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。")
     And %(I press "完成")
 end

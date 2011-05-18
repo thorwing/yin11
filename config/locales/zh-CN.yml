@@ -5,8 +5,9 @@ zh-CN:
     delete: 删除
     show: 查看
     submit: 完成
-    edit: 修改
+    change: 修改
     search: 搜索
+    edit: 编辑
 
   authentication:
     log_out: "登出"

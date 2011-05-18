@@ -9,8 +9,8 @@
     <%= f.label f.object.title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <%= f.label "content" %><br />
+    <%= text_field_tag "content", f.object.current_content %>
   </div>
   <div class="actions">
     <%= f.submit t("general.submit") %>

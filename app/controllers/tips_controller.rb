@@ -56,7 +56,7 @@ class TipsController < ApplicationController
   def create
     @tip = Tip.new(params[:tip])
     @tip.type = params["tip"]["type"].to_i
-    @tip.participators << current_user
+    @tip.revise(current_user, params[:content])
 
     respond_to do |format|
       if @tip.save
@@ -73,10 +73,11 @@ class TipsController < ApplicationController
   # PUT /tips/1.xml
   def update
     @tip = Tip.find(params[:id])
-    @tip.type = params["tip"]["type"].to_i
+    #@tip.type = params["tip"]["type"].to_i
+    @tip.revise(current_user, params[:content])
 
     respond_to do |format|
-      if @tip.update_attributes(params[:tip])
+      if @tip.save
         format.html { redirect_to(@tip, :notice => 'Tip was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -100,8 +101,8 @@ class TipsController < ApplicationController
 
   def search
     @results = []
-    query = params[:search]
-    if query
+    query = params[:search].strip
+    if query.present?
       @exact_match = Tip.first(conditions: {title: query})
       tag_names = query.split
 
@@ -119,6 +120,9 @@ class TipsController < ApplicationController
           @results = @results | Tip.any_in(tag_ids: tag_names)
         end
       end
+    else
+      redirect_to :back, :notice => "please enter search string"
+      return
     end
   end
 

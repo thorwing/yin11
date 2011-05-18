@@ -52,8 +52,10 @@ end
 
 
 Given /^There is a sample tip$/ do
-  tip = Tip.new(:title => "西瓜判熟技巧", :content => " 一看，二拍，三听")
+  tip = Tip.new(:title => "西瓜判熟技巧")
   tip.type = 2
+  tip.current_content = "一看，二拍，三听"
+  tip.revisions << Revision.new(:content => "一看，二拍，三听")
   tip.tags << Tag.new(:title => "西瓜") << Tag.new(:title => "处理技巧")
   tip.save
 end

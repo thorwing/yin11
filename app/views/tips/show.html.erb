@@ -7,9 +7,9 @@
 
 <p>
   <b>Content:</b>
-  <%= @tip.content %>
+  <%= @tip.current_content %>
 </p>
 
 
-<%= link_to 'Edit', edit_tip_path(@tip) %> |
+<%= link_to t("general.edit"), edit_tip_path(@tip) %> |
 <%= link_to 'Back', tips_path %>

@@ -1,6 +1,6 @@
 <div class="tip_item">
     <%= link_to tip.title, tip %><br/>
-    <%= tip.content %>
+    <%= tip.current_content %>
     <% if has_permission?(:user) %>
         <div class="tip_vote">
             <%= tip.votes %>
