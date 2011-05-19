@@ -30,6 +30,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem "mongoid-ancestry"
 
+gem "tiny_mce"
+
 #factory_girl is also used for db seeds
 gem 'factory_girl_rails'
 

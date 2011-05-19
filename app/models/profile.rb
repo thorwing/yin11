@@ -16,7 +16,7 @@ class Profile
     self.address.city_id = city_id
   end
 
-  attr_accessible :address_city
+  attr_accessible :address_city, :display_articles, :display_reviews, :receive_mails
 
   validates_associated :address
 

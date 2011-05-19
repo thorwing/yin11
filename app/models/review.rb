@@ -2,6 +2,7 @@ class Review
   include Mongoid::Document
   include Mongoid::Timestamps
   include AssociatedModels
+  include Votable
 
   field :content
   field :severity, :type => Integer, :default => 0
@@ -10,10 +11,6 @@ class Review
   field :vendor_name
   field :vendor_city
   field :vendor_street
-
-  field :votes, :type => Integer, :default => 0
-  field :fan_ids, :type => Array, :default => []
-  field :hater_ids, :type => Array, :default => []
 
   #Relationships
   belongs_to :food

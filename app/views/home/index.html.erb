@@ -29,15 +29,29 @@
   <%= link_to t("reviews.new_review"), new_review_path %>
 </div>
 <div id="food_info_block">
-    <% @interested_info.each do |food_name, info_object| %>
-        <h3><%= food_name %></h3>
-        <% info_object.each do |info| %>
-            <% if info.is_a?(Review) %>
-                <%= render "reviews/review_item", :review => info %>
-            <% elsif info.is_a?(Article) %>
-                <%= render "articles/article_item", :article => info %>
+    <% if @interested_info %>
+        <% @interested_info.each do |food_name, info_object| %>
+            <h3><%= food_name %></h3>
+            <% info_object.each_with_index do |info, index| %>
+              <div id="<%="info_item_#{index}"%>">
+                <% if info.is_a?(Review) %>
+                    <%= render "reviews/review_item", :review => info %>
+                <% elsif info.is_a?(Article) %>
+                    <%= render "articles/article_item", :article => info %>
+                <% end %>
+              </div>
             <% end %>
         <% end %>
+    <% elsif @recent_info %>
+        <% @recent_info.each_with_index do |info, index| %>
+              <div id="<%="info_item_#{index}"%>">
+                <% if info.is_a?(Review) %>
+                    <%= render "reviews/review_item", :review => info %>
+                <% elsif info.is_a?(Article) %>
+                    <%= render "articles/article_item", :article => info %>
+                <% end %>
+              </div>
+            <% end %>
     <% end %>
 </div>
 

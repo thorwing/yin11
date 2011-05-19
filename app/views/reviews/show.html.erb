@@ -10,6 +10,10 @@
   <%= @review.content %>
 </p>
 
+<p>
+  <%= "severity:" + @review.severity.to_s %>
+</p>
+
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
 

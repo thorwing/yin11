@@ -2,6 +2,7 @@ class Article
   include Mongoid::Document
   include Mongoid::Timestamps
   include AssociatedModels
+  include Votable
 
   field :title
   field :source

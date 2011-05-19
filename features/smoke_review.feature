@@ -35,7 +35,6 @@ Feature: smoke tests for Review
     And I choose "review_severity_3"
     And I fill in "review_content" with "而且这个西瓜是打了催熟剂的"
     And I press "完成"
-    Then I should be on the reviews page
     And I should see "David 报告 上海 大华二路 XX水果超市 的 西瓜 :"
     And I should see "severity:3"
     And I should see "而且这个西瓜是打了催熟剂的"

@@ -3,7 +3,7 @@
 
 <p>
   <b>City:</b>
-  <%= @user.profile.address.city.name if @user.profile.address_city %>
+  <%= @user.profile.address.city.name if @user.profile.address_city.present? %>
 </p>
 
 <%= link_to t("profile.edit"), profile_edit_path %>

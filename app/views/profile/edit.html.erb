@@ -6,5 +6,24 @@
       <b><%= t("profile.address_city") %></b><br/>
       <%= text_field_tag "profile[address_city]" %>
     </div>
+
+    <div class="field">
+      <b><%= t("profile.display_articles") %></b><br/>
+      <%= hidden_field_tag "profile[display_articles]", false %>
+      <%= check_box_tag "profile[display_articles]", true, current_user.profile.display_articles %>
+    </div>
+
+    <div class="field">
+      <b><%= t("profile.display_reviews") %></b><br/>
+      <%= hidden_field_tag "profile[display_reviews]", false %>
+      <%= check_box_tag "profile[display_reviews]", true, current_user.profile.display_reviews %>
+    </div>
+
+    <div class="field">
+      <b><%= t("profile.receive_mails") %></b><br/>
+      <%= hidden_field_tag "profile[receive_mails]", false %>
+      <%= check_box_tag "profile[receive_mails]", true, current_user.profile.receive_mails %>
+    </div>
+
     <%= submit_tag t("profile.submit") %>
 <% end %>

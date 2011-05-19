@@ -78,7 +78,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
-        format.html { redirect_to(reviews_path, :notice => 'Review was successfully updated.') }
+        format.html { redirect_to(@review, :notice => 'Review was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

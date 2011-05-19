@@ -88,6 +88,12 @@
       </requirement>
       <source from="Gemfile" />
     </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="tiny_mce" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
@@ -158,6 +164,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] celerity (v0.8.9, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/celerity-0.8.9)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] ancestry (v1.2.4, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/ancestry-1.2.4)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] mongoid-ancestry (v0.2.2, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/mongoid-ancestry-0.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] tiny_mce (v0.1.4, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/tiny_mce-0.1.4)" level="application" />
   </component>
 </module>
 
