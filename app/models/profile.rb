@@ -1,6 +1,7 @@
 class Profile
   include Mongoid::Document
-  field :cared_foods, :type => Array, :default => []
+  #food names
+  field :watching_foods, :type => Array, :default => []
   field :display_articles, :type => Boolean, :default => true
   field :display_reviews, :type => Boolean, :default => true
   field :receive_mails, :type => Boolean, :default => true
@@ -14,6 +15,12 @@ class Profile
   end
   def address_city=(city_id)
     self.address.city_id = city_id
+  end
+
+  def add_foods(foods = [])
+    for food in foods
+      self.watching_foods << food unless self.watching_foods.include?(food)
+    end
   end
 
   attr_accessible :address_city, :display_articles, :display_reviews, :receive_mails

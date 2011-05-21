@@ -24,8 +24,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :vendor %><br />
-    <%= text_field_tag "article[vendor]", params[:vendor] %>
+    <%= f.label :vendor_token %><br />
+    <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
   </div>
   <div class="actions">
     <%= f.submit t("articles.post") %>

@@ -4,6 +4,12 @@ class Review
   include AssociatedModels
   include Votable
 
+  scope :in_days_of, ->(days_in_number) {where(:created_at.gt => days_in_number.days.ago )}
+  scope :about, ->(food) {where(food_id: food.is_a?(Food) ? food.id : food)}
+#  scope :in_city, ->(city) {any_in(city_ids: [city.is_a?(City) ? city.id : city])}
+#  scope :not_in_city, ->(city) {not_in(city_ids: [city.is_a?(City) ? city.id : city])}
+
+  field :title
   field :content
   field :severity, :type => Integer, :default => 0
 
@@ -21,14 +27,15 @@ class Review
   tokenize_one :food, :vendor
 
   #Validators
+  validates_presence_of :title, :message => I18n.translate("general.title_presence_validate_msg.title_presence_validate_msg")
   validates_presence_of :food_id
 
-  def title
-    [self.author.login_name, I18n.translate("reviews.title_review"), self.vendor.try(:address).try(:city).try(:name), self.vendor.try(:address).try(:street),
-    self.vendor.try(:name), I18n.translate("reviews.title_the"), self.food.try(:name), ":"].join(" ")
-  end
+#  def title
+#    [self.author.login_name, I18n.translate("reviews.title_review"), self.vendor.try(:address).try(:city).try(:name), self.vendor.try(:address).try(:street),
+#    self.vendor.try(:name), I18n.translate("reviews.title_the"), self.food.try(:name), ":"].join(" ")
+#  end
 
-  attr_accessible :content, :severity, :vendor_name, :vendor_city, :vendor_street
+  attr_accessible :title, :content, :severity, :vendor_name, :vendor_city, :vendor_street
 
   before_save :update_vendor
 

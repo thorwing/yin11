@@ -8,6 +8,15 @@ zh-CN:
     change: 修改
     search: 搜索
     edit: 编辑
+    add: 添加
+    severity_0: 无异常报告
+    severity_1: 注意
+    severity_2: 警惕
+    severity_3: 严重
+
+  validations:
+    general:
+      title_presence_validate_msg: 标题不能为空
 
   authentication:
     log_out: "登出"
@@ -53,6 +62,9 @@ zh-CN:
     multiple_foods_suggestion: "可以填写多个食物，我们会为您检查是否有相克的食物"
     foods_search_button: "搜索"
     vendor_search_button: "搜索"
+    control_panel:
+      watching_foods: 关注的食物
+      add_foods_to_watch: 添加食物到关注列表
 
   foods:
     recent_news: 最近关于%{name}的食品安全新闻
@@ -86,7 +98,6 @@ zh-CN:
     tips_tagged_by_me: 我收藏的贴士
     title_length_validate_msg: 标题要求最短%{min},最长%{max}个字符
     content_length_validate_msg: 内容要求不超过%{max}个字符
-    title_presence_validate_msg: 标题不能为空
     exact_tip_not_found: 没有找到标题为<%{title}>的贴士
     please_create: "欢迎您创建:"
     handle_tip: "食物处理贴士: <%{title}>"

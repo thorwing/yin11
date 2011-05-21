@@ -18,4 +18,22 @@ module ApplicationHelper
   def get_cities_for_select()
     City.all.collect {|c|[ c.name, c.id ]}
   end
+
+  def get_severity_of_food(food)
+    reviews = Review.in_days_of(7).about(food).desc(:updated_at)
+
+    severity_score = (reviews.size > 0) ?  reviews.inject(0){ |sum, s| sum + s.severity } / reviews.size : 0
+    if severity_score < 1
+      severity_level = 0
+    elsif severity_score < 5
+      severity_level = 1
+    elsif severity_score < 10
+      severity_level = 2
+    else
+      severity_level = 3
+    end
+
+    I18n.translate("general.severity_#{severity_level}")
+  end
+
 end

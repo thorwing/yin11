@@ -46,6 +46,8 @@ Given /^There are minimal testing records$/ do
   article_1 = Factory(:article, :title => "三聚氰胺再现上海", :cities => [shanghai], :foods => [milk])
   article_2 = Factory(:article, :title => "北京禁止商贩往水里兑牛奶", :cities => [beijing], :foods => [milk])
 
+  vendor = Vendor.create(:name => "乐购超市")
+
   category_1 =  Factory(:wiki_category, :name => "食物")
   milk_page = WikiPage.create(:title => milk.name, :content => '<h2 class="wiki_sec_h" id="conflict_sec">食物相克</h2><ul><li>橙子: 影响维生素吸收</li></ul><h2 class="wiki_sec_h">其它</h2><p>&nbsp;&nbsp;&nbsp;&nbsp; 测试文本</p>')
 end

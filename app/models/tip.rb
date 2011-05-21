@@ -1,14 +1,12 @@
 class Tip
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Votable
 
   field :title
   field :type, :type => Integer, :default => 0
 
   #cached values
-  field :votes, :type => Integer, :default => 0
-  field :fan_ids, :type => Array, :default => []
-  field :hater_ids, :type => Array, :default => []
   field :current_content
 
   #relationships
@@ -20,7 +18,7 @@ class Tip
   attr_accessible :title
 
   validates_uniqueness_of :title
-  validates_presence_of :title, :message => I18n.translate("tips.title_presence_validate_msg")
+  validates_presence_of :title, :message => I18n.translate("title_presence_validate_msg")
   validates_length_of :title, :minimum => 2, :maximum => 20, :message => I18n.translate("tips.title_length_validate_msg", :min => 2, :max => 20)
 #  validates_presence_of :content
 #  validates_length_of :content, :maximum => 140, :message => I18n.translate("tips.content_length_validate_msg", :max => 140)

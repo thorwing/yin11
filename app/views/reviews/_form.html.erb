@@ -7,7 +7,7 @@
   </div>
 
   <div id="associated_vendor">
-    <b>Existed vendor</b>
+    <b><%= f.label :vendor_token %></b>
     <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
   </div>
 
@@ -37,6 +37,10 @@
     <%= "fails_2" %>
     <%= f.radio_button(:severity, 3) %>
     <%= "fails_3" %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :content %><br />

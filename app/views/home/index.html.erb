@@ -1,11 +1,3 @@
-<% if current_user %>
-    <h1>Welcome, <%= current_user.login_name %></h1>
-<% else %>
-    <div>
-        <h2><%= t("authentication.quick_login")  %></h2>
-        <%= render "shared/quick_login" %>
-    </div>
-<% end %>
 
 <div id="foods_search">
     <%= form_tag '/foods', :method => :get do %>
@@ -54,6 +46,57 @@
             <% end %>
     <% end %>
 </div>
+
+
+<div id="control_panel">
+    <% if current_user %>
+        <div id="user_panel">
+            <h3><%= current_user.login_name %></h3>
+            <img id="current_user_avator" src="http://flickholdr.com/64/64/captain" />
+        </div>
+        <div id="foods_watch_list">
+            <h3><%= t("home.control_panel.watching_foods") %></h3>
+            <% @watching_foods.each do |food| %>
+                <p>
+                  <%= food.name %> <%= get_severity_of_food(food) %>
+                </p>
+            <% end %>
+            <a href="#">>显示更多</a>
+            <br/>
+            <%= form_tag :action => "watch_foods" do %>
+              <label><%= t("home.control_panel.add_foods_to_watch") %></label>
+              <%= text_field_tag "added_foods" %>
+              <%= submit_tag t("general.add") %>
+              <p>添加您感兴趣的食物，您身边的食物安全动向早知道。</p>
+            <% end %>
+        </div>
+        <div id="category_panel">
+            <h3>所有分类</h3>
+            <h4>肉类</h4>
+            <h5>猪肉</h5>
+            <h5>牛肉</h5>
+            <br/>
+            <h4>蔬菜</h4>
+            <h5>青菜</h5>
+            <br/>
+            <h4>农副</h4>
+            <h5>牛奶</h5>
+            <br/>
+            <h4>成品</h4>
+            <h5>太仓肉松</h5>
+            <br/>
+            <h4>商家</h4>
+            <h5>乐购超市</h5>
+        </div>
+    <% else %>
+        <div id="login_panel">
+            <h3><%= t("authentication.quick_login")  %></h3>
+            <%= render "shared/quick_login" %>
+        </div>
+    <% end %>
+</div>
+
+
 
 
 

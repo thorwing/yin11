@@ -7,6 +7,8 @@ Yin11::Application.routes.draw do
   get "profile/edit"
   post "profile/update"
 
+  post "home/watch_foods"
+
   resources :articles
 
   resources :reviews do

@@ -35,6 +35,11 @@ When /^I search tips for "(.+)"$/ do |item|
   click_button "搜索"
 end
 
+When /^I fill vendor token field "(.+)" with "(.+)"$/ do |field, name|
+  vendor = Vendor.first(conditions: { name: name })
+  fill_in field, :with => vendor.id
+end
+
 When /^I post a sample review$/ do
   When %(I go to the home page)
   And %(I follow "新测评" within "#new_review")
@@ -43,6 +48,7 @@ When /^I post a sample review$/ do
   And %(I fill in "review_vendor_street" with "大华二路")
   And %(I fill in "review_vendor_name" with "XX水果超市")
   And %(I choose "review_severity_1")
+  And %(I fill in "review_title" with "买到烂西瓜")
   And %(I fill in "review_content" with "西瓜切开来后发现已经熟过头了。")
   And %(I press "完成")
 end

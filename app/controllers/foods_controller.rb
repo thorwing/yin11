@@ -96,7 +96,7 @@ class FoodsController < ApplicationController
 
   def watch
     @food = Food.find(params[:id])
-    current_user.profile.cared_foods << @food.name unless current_user.profile.cared_foods.include?(@food.name)
+    current_user.profile.watching_foods << @food.name unless current_user.profile.watching_foods.include?(@food.name)
     current_user.profile.save
 
     respond_to do |format|

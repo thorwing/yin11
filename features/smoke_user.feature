@@ -2,6 +2,7 @@ Feature: smoke tests for User
   User can add foods to watching list, so they will be notified about the news of those foods
   User can fill in the detail of their address, so these info will help the search
   User can customize his home page
+  User can see his reviews on his profile page
 
   User can watch(focus) another people (integration with WeiBo)
 
@@ -51,7 +52,7 @@ Feature: smoke tests for User
 
     When I post a sample review
     And I go to the home page
-    Then I should see "David 报告 上海 大华二路 XX水果超市 的 西瓜 :"
+    Then I should see "买到烂西瓜"
 
     When I go to the profile page
     And I follow "修改"
@@ -60,4 +61,11 @@ Feature: smoke tests for User
     And I go to the home page
     Then I should not see "David 报告 上海 大华二路 XX水果超市 的 西瓜 :"
 
+  @focus
+  Scenario: User can see his reviews on his profile page
+    When I log in as "David User"
+    And I post a sample review
+    And I go to the profile page
+    And I follow "我的测评"
+    Then I should see "买到烂西瓜"
 

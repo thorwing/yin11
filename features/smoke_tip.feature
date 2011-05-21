@@ -62,7 +62,6 @@ Feature: smoke tests for Tips
     Then I should see "辨别西瓜是否含有催熟剂" within "#recent_tips"
     And I should see "1" within "#recent_tips"
 
-  @focus
   Scenario: User can edit others tip, and the change will be stored in revision, it will not be used immediately
     When I log in as "David User"
     And I post a sample tip
@@ -79,7 +78,6 @@ Feature: smoke tests for Tips
     Then I should see "随便改改，恶作剧"
     And I should not see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
-  @focus
   Scenario: Admin can merge two tips
 
 

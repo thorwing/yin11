@@ -1,19 +1,21 @@
-<%=  %>
-
 <%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag t("authentication.email") %><br />
-    <%= email_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag t("authentication.password") %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p>
-    <%= check_box_tag "remember_me", "1", true %>
-    <%= t("authentication.remember_me") %>
-  </p>
-  <%= submit_tag t("authentication.log_in") %>
-  <br/>
-  <%= link_to t("authentication.sign_up"), sign_up_path %>
+    <table>
+        <tr>
+            <th/>
+            <th/>
+        </tr>
+        <tr>
+            <td><%= label_tag t("authentication.email") %></td>
+            <td><%= email_field_tag :email, params[:email] %></td>
+        </tr>
+        <tr>
+            <td><%= label_tag t("authentication.password") %></td>
+            <td><%= password_field_tag :password %></td>
+        </tr>
+        <tr>
+            <td><%= check_box_tag "remember_me", "1", true %><%= t("authentication.remember_me") %></td>
+        </tr>
+    </table>
+    <%= submit_tag t("authentication.log_in") %>
+    <%= link_to t("authentication.sign_up"), sign_up_path %>
 <% end %>

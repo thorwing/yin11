@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user , :has_permission?
   helper_method :get_related_reviews_of, :get_related_articles_of, :get_conflicts_of
   FOOD_ARTICLES_LIMIT = 5
+  FOOD_REVIEWS_LIMIT = 5
 
   def has_permission?(permission)
     has_permission = false
@@ -145,8 +146,14 @@ class ApplicationController < ActionController::Base
 
   #TODO
   def get_related_reviews_of(food)
-    related_reviews =  Review.where(food_id: food.id)
-    related_reviews
+
+    result = Review.in_days_of(7).about(food).desc(:updated_at).limit(FOOD_REVIEWS_LIMIT)
+
+    if result.size < FOOD_REVIEWS_LIMIT
+      result = result | Review.in_days_of(14).about(food).desc(:updated_at)
+    end
+
+    result.size > FOOD_REVIEWS_LIMIT ? result[0...FOOD_REVIEWS_LIMIT - 1] : result
   end
 
   def get_related_articles_of(food, user = nil)
