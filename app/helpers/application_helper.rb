@@ -36,4 +36,10 @@ module ApplicationHelper
     I18n.translate("general.severity_#{severity_level}")
   end
 
+  def nested_comments(item, comments)
+    comments.map do |comment, sub_comments|
+      render("info_item/comment", :item => item, :comment => comment) + content_tag(:div, nested_comments(item, sub_comments), :class => "nested_comments")
+    end.join.html_safe
+  end
+
 end

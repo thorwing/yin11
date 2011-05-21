@@ -8,16 +8,14 @@ Yin11::Application.routes.draw do
   post "profile/update"
 
   post "home/watch_foods"
+  put "home/vote"
+  get "home/new_comment"
+  post "home/add_comment"
 
   resources :articles
 
   resources :reviews do
     resources :comments
-    member do
-      put "vote"
-      get "new_comment"
-      post "add_comment"
-    end
   end
 
   resources :tips do

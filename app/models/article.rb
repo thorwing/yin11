@@ -17,6 +17,7 @@ class Article
   belongs_to :vendor
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :foods
+  embeds_many :comments
 
   tokenize_many :cities, :foods
   tokenize_one :vendor

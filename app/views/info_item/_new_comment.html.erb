@@ -1,5 +1,7 @@
 <div class="new_comment">
-    <%= form_tag :controller => "reviews", :action=> "add_comment" do %>
+    <%= form_tag :controller => "home", :action=> "add_comment" do %>
+      <%= hidden_field_tag :id, item.id %>
+      <%= hidden_field_tag :type, item.class.name %>
       <%= hidden_field_tag :parent_comment_id, params[:parent_comment_id]%>
       <p>
         <%= label_tag :content, "New Comment" %><br />

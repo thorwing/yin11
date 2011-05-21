@@ -25,23 +25,15 @@
         <% @interested_info.each do |food_name, info_object| %>
             <h3><%= food_name %></h3>
             <% info_object.each_with_index do |info, index| %>
-              <div id="<%="info_item_#{index}"%>">
-                <% if info.is_a?(Review) %>
-                    <%= render "reviews/review_item", :review => info %>
-                <% elsif info.is_a?(Article) %>
-                    <%= render "articles/article_item", :article => info %>
-                <% end %>
+              <div class="info_item" id="<%="info_item_#{index}"%>">
+                <%= render "info_item/info_item", :item => info %>
               </div>
             <% end %>
         <% end %>
     <% elsif @recent_info %>
         <% @recent_info.each_with_index do |info, index| %>
-              <div id="<%="info_item_#{index}"%>">
-                <% if info.is_a?(Review) %>
-                    <%= render "reviews/review_item", :review => info %>
-                <% elsif info.is_a?(Article) %>
-                    <%= render "articles/article_item", :article => info %>
-                <% end %>
+              <div class="info_item" id="<%="info_item_#{index}"%>">
+                <%= render "info_item/info_item", :item => info %>
               </div>
             <% end %>
     <% end %>
@@ -70,30 +62,24 @@
               <p>添加您感兴趣的食物，您身边的食物安全动向早知道。</p>
             <% end %>
         </div>
-        <div id="category_panel">
-            <h3>所有分类</h3>
-            <h4>肉类</h4>
-            <h5>猪肉</h5>
-            <h5>牛肉</h5>
-            <br/>
-            <h4>蔬菜</h4>
-            <h5>青菜</h5>
-            <br/>
-            <h4>农副</h4>
-            <h5>牛奶</h5>
-            <br/>
-            <h4>成品</h4>
-            <h5>太仓肉松</h5>
-            <br/>
-            <h4>商家</h4>
-            <h5>乐购超市</h5>
-        </div>
     <% else %>
         <div id="login_panel">
             <h3><%= t("authentication.quick_login")  %></h3>
             <%= render "shared/quick_login" %>
         </div>
     <% end %>
+
+    <div id="foods_buzz">
+      <% if @foods_buzz %>
+          <h3>所有分类</h3>
+          <% @foods_buzz.each do |category, foods| %>
+            <h4><%= category.name if category %></h4>
+            <% foods.each do |food| %>
+                <h5><%= food.name %></h5>
+            <% end %>
+          <% end %>
+      <% end %>
+    </div>
 </div>
 
 

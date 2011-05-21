@@ -89,24 +89,23 @@ Feature: general usage
     And I should see "牛奶" within "#foods_watch_list"
     And I should see "注意" within "#foods_watch_list"
 
-  @focus
   Scenario: I should see popular foods' categories on home page
     When I log in as "David User"
     And I go to the home page
+    Then I should see "奶制品" within "#foods_buzz"
     Then I should see "牛奶" within "#foods_buzz"
 
     When I post a sample review
     And I go to the home page
     Then I should see "西瓜" within "#foods_buzz"
 
-  @focus
   Scenario: Hot and recent food info will be marked as HOT
     When I log in as "David User"
     And I post a sample tip
 
     And I search tips for "辨别西瓜是否含有催熟剂"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-    Then I should not see "up" within ".tip_item"
+    Then I should see "up" within ".tip_item"
 
     When I log in as "Kate Tester"
     And I search tips for "辨别西瓜是否含有催熟剂"
@@ -119,7 +118,7 @@ Feature: general usage
     When I follow "up" within ".tip_item"
 
     Then I should see "辨别西瓜是否含有催熟剂" within "#recent_tips"
-    And I should see "hot_food_info" within "#recent_tips"
+    And I should see "辨别西瓜是否含有催熟剂" within "#hot_tips"
 
 
 

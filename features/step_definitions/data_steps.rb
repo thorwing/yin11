@@ -37,9 +37,11 @@ Given /^There is a "(.+)"$/ do |name|
 end
 
 Given /^There are minimal testing records$/ do
-  watermelon = Factory(:food, :name=> "西瓜")
-  orange = Factory(:food, :name => "橙子")
-  milk = Factory(:food, :name => "牛奶")
+  FoodsGenerator::generate_foods
+
+  watermelon = Food.first(conditions: {name: "西瓜"})
+  orange = Food.first(conditions: {name: "橙子"})
+  milk = Food.first(conditions: {name: "牛奶"})
 
   shanghai = Factory(:city, :code => "021", :name => "上海", :post_code => "20000" )
   beijing = Factory(:city, :code => "010", :name => "北京", :post_code => "10000" )

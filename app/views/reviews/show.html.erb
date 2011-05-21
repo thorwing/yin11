@@ -18,7 +18,7 @@
 <%= link_to 'Back', reviews_path %>
 
 <p>Comments:</p>
-<%= nested_comments @review.comments.arrange(:order => :created_at) %>
+<%= nested_comments(@review, @review.comments.arrange(:order => :created_at)) %>
 <div class="new_comment">
-    <%= render "new_comment" %>
+    <%= render "info_item/new_comment", :item => @review %>
 </div>
