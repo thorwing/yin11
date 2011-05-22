@@ -26,17 +26,17 @@ class Review
 
   tokenize_one :food, :vendor
 
-  #Validators
-  validates_presence_of :title, :message => I18n.translate("general.title_presence_validate_msg.title_presence_validate_msg")
-  validates_presence_of :food_id
-
-#  def title
-#    [self.author.login_name, I18n.translate("reviews.title_review"), self.vendor.try(:address).try(:city).try(:name), self.vendor.try(:address).try(:street),
-#    self.vendor.try(:name), I18n.translate("reviews.title_the"), self.food.try(:name), ":"].join(" ")
-#  end
-
   attr_accessible :title, :content, :severity, :vendor_name, :vendor_city, :vendor_street
 
+  #Validators
+  #validates_presence_of :food_id
+
+  validates_presence_of :title, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.title") )
+  validates_length_of :title, :maximum => 20, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.title"),
+                                                                         :max => 20)
+  validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content") )
+  validates_length_of :content, :minimum => 10, :maximum => 2000, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),
+                                                                           :min => 20, :max => 2000)
   before_save :update_vendor
 
   def update_vendor

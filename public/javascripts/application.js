@@ -29,4 +29,5 @@ $(function() {
     tokenize_input("#review_food_token", "/foods.json", 1);
     tokenize_input("#review_vendor_token", "/vendors.json", 1);
     tokenize_input("#added_foods", "/foods.json", 10);
+    tokenize_input("#profile_address_attributes_city_token", "/cities.json", 1);
 });

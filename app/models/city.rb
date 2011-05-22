@@ -3,7 +3,7 @@ class City
   field :code
   key :code
   field :name
-  field :post_code
+  field :postcode
 
   #Relationships
   belongs_to :province
@@ -11,7 +11,7 @@ class City
   has_and_belongs_to_many :articles
 
   #Validators
-  validates_presence_of :code, :name, :post_code
-  validates_uniqueness_of :code, :name, :post_code
+  validates_presence_of :code, :name, :postcode
+  validates_uniqueness_of :code, :name, :postcode
   validates_associated :areas
 end

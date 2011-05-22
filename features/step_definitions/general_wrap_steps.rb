@@ -23,12 +23,6 @@ When /^I search for "(.+)"$/ do |foods|
   click_button "搜索"
 end
 
-When /^I search wiki for "(.+)"$/ do |item|
-  visit path_to("the wiki page")
-  fill_in "query", :with => item
-  click_button "搜索"
-end
-
 When /^I search tips for "(.+)"$/ do |item|
   visit path_to("the tips page")
   fill_in "search", :with => item

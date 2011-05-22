@@ -1,29 +1,30 @@
 <h1>Profile#edit</h1>
 <p>Find me in app/views/profile/edit.html.erb</p>
 
-<%= form_tag :controller => "profile", :action => "update", :method => :post do %>
-    <div class="field">
-      <b><%= t("profile.address_city") %></b><br/>
-      <%= text_field_tag "profile[address_city]" %>
-    </div>
+<%= form_for :profile, @profile, :url => profile_update_path, :as => :post do |f| %>
+    <%= f.fields_for :address do |builder| %>
+        <div class="field">
+          <b><%= t("address.city") %></b><br/>
+          <%= builder.text_field :city_token, 'data-pre' => (@profile.address.city ? [{ :id => @profile.address.city.id, :name => @profile.address.city.name }] : []).to_json %>
+        </div>
+    <% end %>
 
     <div class="field">
       <b><%= t("profile.display_articles") %></b><br/>
-      <%= hidden_field_tag "profile[display_articles]", false %>
-      <%= check_box_tag "profile[display_articles]", true, current_user.profile.display_articles %>
+
+      <%= f.check_box :display_articles, {}, true, false %>
     </div>
 
     <div class="field">
       <b><%= t("profile.display_reviews") %></b><br/>
-      <%= hidden_field_tag "profile[display_reviews]", false %>
-      <%= check_box_tag "profile[display_reviews]", true, current_user.profile.display_reviews %>
+
+      <%= f.check_box :display_reviews, {}, true, false %>
     </div>
 
     <div class="field">
       <b><%= t("profile.receive_mails") %></b><br/>
-      <%= hidden_field_tag "profile[receive_mails]", false %>
-      <%= check_box_tag "profile[receive_mails]", true, current_user.profile.receive_mails %>
+      <%= f.check_box :receive_mails, {}, true, false %>
     </div>
 
-    <%= submit_tag t("profile.submit") %>
+    <%= f.submit t("general.submit") %>
 <% end %>

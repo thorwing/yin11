@@ -3,16 +3,15 @@ class ProfileController < ApplicationController
 
   def show
     #referesh
-    @user = current_user
+    @my_reviews = current_user.reviews
   end
 
   def edit
-    @user = current_user
+    @profile = current_user.profile
   end
 
   def update
-    @user = current_user
-    if @user.profile.update_attributes(params[:profile])
+    if current_user.profile.update_attributes(params[:profile])
       redirect_to profile_show_path, :notice => t("profile.profile_updated_notice")
     else
       redirect_to profile_show_path, :notice => "Error"

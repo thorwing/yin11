@@ -43,15 +43,13 @@ Given /^There are minimal testing records$/ do
   orange = Food.first(conditions: {name: "橙子"})
   milk = Food.first(conditions: {name: "牛奶"})
 
-  shanghai = Factory(:city, :code => "021", :name => "上海", :post_code => "20000" )
-  beijing = Factory(:city, :code => "010", :name => "北京", :post_code => "10000" )
-  article_1 = Factory(:article, :title => "三聚氰胺再现上海", :cities => [shanghai], :foods => [milk])
-  article_2 = Factory(:article, :title => "北京禁止商贩往水里兑牛奶", :cities => [beijing], :foods => [milk])
+  shanghai = Factory(:city, :code => "021", :name => "上海", :postcode => "20000" )
+  beijing = Factory(:city, :code => "010", :name => "北京", :postcode => "10000" )
+  article_1 = Factory(:article, :title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。",  :cities => [shanghai], :foods => [milk])
+  article_2 = Factory(:article, :title => "北京禁止商贩往水里兑牛奶", :content => "北京市政府严令禁止向水里兑牛奶的行为。", :cities => [beijing], :foods => [milk])
 
   vendor = Vendor.create(:name => "乐购超市")
 
-  category_1 =  Factory(:wiki_category, :name => "食物")
-  milk_page = WikiPage.create(:title => milk.name, :content => '<h2 class="wiki_sec_h" id="conflict_sec">食物相克</h2><ul><li>橙子: 影响维生素吸收</li></ul><h2 class="wiki_sec_h">其它</h2><p>&nbsp;&nbsp;&nbsp;&nbsp; 测试文本</p>')
 end
 
 

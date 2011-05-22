@@ -17,11 +17,10 @@ class Tip
 
   attr_accessible :title
 
-  validates_uniqueness_of :title
-  validates_presence_of :title, :message => I18n.translate("title_presence_validate_msg")
-  validates_length_of :title, :minimum => 2, :maximum => 20, :message => I18n.translate("tips.title_length_validate_msg", :min => 2, :max => 20)
-#  validates_presence_of :content
-#  validates_length_of :content, :maximum => 140, :message => I18n.translate("tips.content_length_validate_msg", :max => 140)
+  validates_uniqueness_of :title, :message => I18n.translate("validations.general.uniqueness_msg", :field => I18n.translate("general.name"))
+  validates_presence_of :title, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.name"))
+  validates_length_of :title, :maximum => 20, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.title"),
+                                                                         :max => 20)
   validates_inclusion_of :type, :in => 1..2
 
   HANDLE_TIP = 1

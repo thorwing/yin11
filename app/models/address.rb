@@ -4,6 +4,7 @@ class Address
 
   field :street
   field :building
+  field :postcode
 
   def detail
     [self.street, self.building].join(" ")
@@ -15,29 +16,14 @@ class Address
 
   #cached_values
   associate_models :City, :Province, :Area
-
-  #  field :city_id
-#  field :province_id
-#  field :area_id
-#
-#  def city
-#    city = City.find(self.city_id)
-#    city
-#  end
-#
-#  def province
-#    province = City.find(self.province_id)
-#    province
-#  end
-#
-#  def area
-#    area = Area.find(self.area_id)
-#    area
-#  end
+  tokenize_one :city, :province
 
   #Relationships
   embedded_in :profile
   embedded_in :vendor
 
+  validates_length_of :street, :maximum => 20, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("address.street"), :max => 20)
+  validates_length_of :building, :maximum => 20, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("address.building"), :max => 20)
+  validates_length_of :postcode, :maximum => 10, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("address.postcode"), :max => 20)
 
 end

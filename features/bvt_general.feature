@@ -47,15 +47,11 @@ Feature: general usage
     And I search for "西瓜"
     Then I should see "土豆刷绿漆，冒充西瓜" within "div.food_articles"
 
-  Scenario: User can search for conflicts with two different foods
-    When I search for "牛奶 橙子"
-    Then I should see "牛奶 橙子 影响维生素吸收"
-
   Scenario Outline: User can update his profile and that's gonna affect the search
     When I log in as "David User"
     And I go to the profile page
     And I follow "修改"
-    And I fill in "profile_address_city" with "<city_id>"
+    And I fill in "profile_address_attributes_city_token" with "<city_id>"
     And I press "完成"
     And I search for "牛奶"
     Then I should see "三聚氰胺再现上海" within "<container>"
@@ -64,20 +60,6 @@ Feature: general usage
       | city_id | container       |
       | 021     | #food_article_0 |
       | 010     | #food_article_1 |
-
-  Scenario: Registered user can write a wiki page about food
-    When I log in as "David User"
-    And I go to the wiki page
-    And I search wiki for "西瓜"
-    Then I should see "找不到和查询相匹配的结果。"
-
-    When I follow "西瓜"
-    Then I should see "新页面"
-
-    When I fill in "page_content" with "夏日圣品"
-    And I select "食物" from "page_category_id"
-    And I press "保存"
-    Then I should see "页面已添加"
 
   Scenario: I should see my collection on home page
     When I log in as "David User"

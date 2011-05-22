@@ -3,7 +3,14 @@
 
 <p>
   <b>City:</b>
-  <%= @user.profile.address.city.name if @user.profile.address_city.present? %>
+  <%= current_user.profile.address.try(:city).try(:name) %>
 </p>
 
-<%= link_to t("profile.edit"), profile_edit_path %>
+<p>
+  <b><%= t("profile.my_reviews") %></b>
+  <% @my_reviews.each do |review| %>
+    <%= render "info_item/info_item", :item => review %>
+  <% end %>
+</p>
+
+<%= link_to t("general.change"), profile_edit_path %>

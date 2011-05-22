@@ -24,7 +24,7 @@ Feature: smoke tests for User
 
     And I go to the profile page
     And I follow "修改"
-    And I fill in "profile_address_city" with "<city_id>"
+    And I fill in "profile_address_attributes_city_token" with "<city_id>"
     And I press "完成"
     And I go to the home page
     #Then I should see "三聚氰胺再现上海" within "<container>"
@@ -61,11 +61,9 @@ Feature: smoke tests for User
     And I go to the home page
     Then I should not see "David 报告 上海 大华二路 XX水果超市 的 西瓜 :"
 
-  @focus
   Scenario: User can see his reviews on his profile page
     When I log in as "David User"
     And I post a sample review
     And I go to the profile page
-    And I follow "我的测评"
     Then I should see "买到烂西瓜"
 

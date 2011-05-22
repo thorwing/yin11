@@ -11,7 +11,7 @@ module AssociatedModels
         class_eval %(
           field :#{model_id}
         )
-        define_method(arg.downcase) { eval("#{arg}.find(self.#{model_id})") }
+        define_method(arg.downcase) { eval("#{arg}.find(self.#{model_id}) if self.#{model_id}.present?") }
       end
     end
 

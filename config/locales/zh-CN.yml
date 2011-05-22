@@ -2,6 +2,7 @@ zh-CN:
   general:
     title: 标题
     content: 内容
+    name: 名称
     delete: 删除
     show: 查看
     submit: 完成
@@ -16,7 +17,12 @@ zh-CN:
 
   validations:
     general:
-      title_presence_validate_msg: 标题不能为空
+      presence_msg: %{field}不能为空
+      uniqueness_msg: 相同的%{field}已存在
+      max_length_msg: %{field}不能超过%{max}个字符
+      min_length_msg: %{field}不能少于%{min}个字符
+      length_msg: %{field}长度必须介于%{min}和%{min}个字符之间
+
 
   authentication:
     log_out: "登出"
@@ -44,16 +50,20 @@ zh-CN:
     my_reviews: 我的评价
     badges: 徽章
 
+  address:
+    province: 省
+    city: 城市
+    area: 区
+    street: 街道
+    building: 房间
+    postcode: 邮政编码
+
   profile:
-    edit: 修改
-    submit: 完成
-    address_city: 城市
-    address_area: 区
-    address_street: 街道
     display_articles: 在主页上显示有关监察列表中食物的新闻
     display_reviews: 在主页上显示有关监察列表中食物的测评
     receive_mails: 接受关于监察列表中食物安全动向的报告邮件
 
+    my_reviews: 我的测评
     profile_updated_notice: 信息已更新
 
   home:
@@ -86,6 +96,7 @@ zh-CN:
     post: 添加
 
   articles:
+    source: 来源
     post_new_article: 发表新文章
     new_article: 新文章
     post: 发表
@@ -102,17 +113,5 @@ zh-CN:
     please_create: "欢迎您创建:"
     handle_tip: "食物处理贴士: <%{title}>"
     exam_tip: "食物测评贴士: <%{title}>"
-
-
-  wiki:
-    search: 搜索
-    new_page_with: 新建一个页面，关于%{title}
-    no_result: 找不到和查询相匹配的结果。
-    create_new_page_advice: 您可以新建這個頁面
-    new_page: 新页面
-    save: 保存
-    created_page_notice: 页面已添加
-    conflict_section_header: 相克的食物
-
 
 

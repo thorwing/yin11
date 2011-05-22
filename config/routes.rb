@@ -44,17 +44,6 @@ Yin11::Application.routes.draw do
   resources :users
   resource :sessions, :only => [:new, :create, :destroy]
 
-  #Wiki
-  match "wiki" => "wiki#index"
-  match "wiki/new" => "wiki#new"
-  match "wiki/show" => "wiki#show"
-  match "wiki/edit" => "wiki#edit"
-  match "wiki/list" => "wiki#list"
-  match "wiki/search" => "wiki#search"
-  match "wiki/save" => "wiki#save"
-  match "wiki/page_list" => "wiki#page_list"
-
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
