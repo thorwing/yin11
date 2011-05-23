@@ -69,7 +69,7 @@ zh-CN:
   home:
     foods_buy_question: "买什么食物呢？"
     vendor_buy_question: "上哪去买呢？"
-    multiple_foods_suggestion: "可以填写多个食物，我们会为您检查是否有相克的食物"
+    multiple_foods_suggestion: "可以同时搜索多个食物，并用空格分开。比如: 西瓜 牛奶"
     foods_search_button: "搜索"
     vendor_search_button: "搜索"
     control_panel:

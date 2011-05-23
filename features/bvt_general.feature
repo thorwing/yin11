@@ -9,7 +9,7 @@ Feature: general usage
   Scenario: Guest can visit the entry page
     Given I go to the home page
     Then I should see "买什么食物呢？"
-    And I should see "可以填写多个食物，我们会为您检查是否有相克的食物"
+    And I should see "可以同时搜索多个食物，并用空格分开。比如: 西瓜 牛奶"
     And I should see "快速登录"
 
   Scenario: Guest can search for food
@@ -87,18 +87,19 @@ Feature: general usage
 
     And I search tips for "辨别西瓜是否含有催熟剂"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-    Then I should see "up" within ".tip_item"
+    Then I should see "up" within ".info_item"
 
     When I log in as "Kate Tester"
     And I search tips for "辨别西瓜是否含有催熟剂"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-    When I follow "up" within ".tip_item"
+    When I follow "up" within ".info_item"
 
     When I log in as "Ray Admin"
     And I search tips for "辨别西瓜是否含有催熟剂"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-    When I follow "up" within ".tip_item"
+    When I follow "up" within ".info_item"
 
+    When I go to the tips page
     Then I should see "辨别西瓜是否含有催熟剂" within "#recent_tips"
     And I should see "辨别西瓜是否含有催熟剂" within "#hot_tips"
 

@@ -56,7 +56,7 @@ class TipsController < ApplicationController
   def create
     @tip = Tip.new(params[:tip])
     @tip.type = params["tip"]["type"].to_i
-    @tip.revise(current_user, params[:content])
+    @tip.revise(current_user)
 
     respond_to do |format|
       if @tip.save
@@ -73,10 +73,11 @@ class TipsController < ApplicationController
   # PUT /tips/1.xml
   def update
     @tip = Tip.find(params[:id])
-    #@tip.type = params["tip"]["type"].to_i
+    @tip.update_attributes(params[:tip])
+    @tip.revise(current_user)
 
     respond_to do |format|
-      if @tip.revise(current_user, params[:content])
+      if @tip.save
         format.html { redirect_to(@tip, :notice => 'Tip was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -122,46 +123,6 @@ class TipsController < ApplicationController
     else
       redirect_to :back, :notice => "please enter search string"
       return
-    end
-  end
-
-  def vote
-    @tip = Tip.find(params[:id])
-    delta = params[:delta].to_i
-
-    if delta > 0
-      if @tip.fan_ids.include?(current_user.id)
-        delta *= -1
-        @tip.fan_ids.delete(current_user.id)
-      elsif @tip.hater_ids.include?(current_user.id)
-        @tip.hater_ids.delete(current_user.id)
-      else
-        @tip.fan_ids << current_user.id
-      end
-    else
-      if @tip.hater_ids.include?(current_user.id)
-        delta *= -1
-        @tip.hater_ids.delete(current_user.id)
-      elsif @tip.fan_ids.include?(current_user.id)
-        @tip.fan_ids.delete(current_user.id)
-      else
-        @tip.hater_ids << current_user.id
-      end
-    end
-
-    weight = delta * get_vote_weight_of_current_user
-    @tip.votes += weight
-
-    respond_to do |format|
-      if @tip.save
-        format.html {redirect_to tips_path}
-        format.xml {head :ok}
-        format.js {render :content_type => 'text/javascript'}
-      else
-        format.html { redirect_to @tip }
-        format.xml  { render :xml => @tip.errors, :status => :unprocessable_entity }
-        format.js { head :unprocessable_entity }
-      end
     end
   end
 

@@ -39,7 +39,6 @@ Feature: smoke tests for Review
     And I should see "而且这个西瓜是打了催熟剂的"
     And I should see "severity:3"
 
-
 #  # should be tested by using spec#routing
 #  Scenario: user can't delete his review
 #    When I go to the reviews page

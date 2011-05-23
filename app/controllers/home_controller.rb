@@ -65,7 +65,7 @@ class HomeController < ApplicationController
 
     respond_to do |format|
       if object.save
-        format.html {redirect_to root_path}
+        format.html {redirect_to :root }
         format.xml {head :ok}
         format.js {render :content_type => 'text/javascript'}
       else
@@ -107,14 +107,10 @@ class HomeController < ApplicationController
 
   protected
   def get_item_based_on(type, id)
-    case type
-      when "Review"
-        item = Review.find(id)
-      when "Article"
-        item = Article.find(id)
-      else
-        raise "not supported votable type"
+    begin
+      eval("#{type}.find(id)")
+    rescue
+       raise "not supported votable type: " + type
     end
-    item
   end
 end

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user , :has_permission?
-  helper_method :get_related_reviews_of, :get_related_articles_of, :get_conflicts_of
+  helper_method :get_related_reviews_of, :get_related_articles_of
   FOOD_ARTICLES_LIMIT = 5
   FOOD_REVIEWS_LIMIT = 5
 
@@ -167,10 +167,10 @@ class ApplicationController < ActionController::Base
     result.size > FOOD_ARTICLES_LIMIT ? result[0...FOOD_ARTICLES_LIMIT - 1] : result
   end
 
-  def get_conflicts_of(foods)
-    result = []
-    return result if foods.size < 2
-    result
-  end
+#  def get_conflicts_of(foods)
+#    result = []
+#    return result if foods.size < 2
+#    result
+#  end
 
 end

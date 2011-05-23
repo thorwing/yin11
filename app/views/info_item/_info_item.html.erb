@@ -1,15 +1,16 @@
-<h4><%= item.title %></h4>
-<blockquote><%= item.content %></blockquote>
-<% if has_permission?(:user) %>
-    <div class="item_vote">
-        <%= item.votes %>
-        <%= link_to "up", home_vote_path(:id => item.id, :type => item.class.name, :delta => 1), :method => :put %>
-        <%= link_to "down", home_vote_path(:id => item.id, :type => item.class.name, :delta => -1), :method => :put %>
+<div class="info_item">
+    <h4><%= item.title %></h4>
+    <%= link_to item.content, item %>
+    <% if has_permission?(:user) %>
+        <div class="item_vote">
+            <%= item.votes %>
+            <%= link_to "up", home_vote_path(:id => item.id, :type => item.class.name, :delta => 1), :method => :put %>
+            <%= link_to "down", home_vote_path(:id => item.id, :type => item.class.name, :delta => -1), :method => :put %>
+        </div>
+     <% end %>
+    <%= item.comments.size %> comments
+    <div class="actions">
+        <%= link_to "Reply", home_new_comment_path(:id => item.id, :type => item.class.name) %> |
+        <%= link_to t("general.show"), item %>
     </div>
- <% end %>
-<%= item.comments.size %> comments
-<div class="actions">
-    <%= link_to "Reply", home_new_comment_path(:id => item.id, :type => item.class.name) %> |
-    <%= link_to t("general.show"), item %>
 </div>
-

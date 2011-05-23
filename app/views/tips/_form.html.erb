@@ -10,7 +10,7 @@
   </div>
   <div class="field">
     <%= f.label "content" %><br />
-    <%= text_area_tag "content", f.object.current_content, :maxlength => 2000, :rows => 8 %>
+    <%= f.text_area :content, :maxlength => 10000, :rows => 8 %>
   </div>
   <div class="actions">
     <%= f.submit t("general.submit") %>
