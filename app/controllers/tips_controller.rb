@@ -74,10 +74,9 @@ class TipsController < ApplicationController
   def update
     @tip = Tip.find(params[:id])
     #@tip.type = params["tip"]["type"].to_i
-    @tip.revise(current_user, params[:content])
 
     respond_to do |format|
-      if @tip.save
+      if @tip.revise(current_user, params[:content])
         format.html { redirect_to(@tip, :notice => 'Tip was successfully updated.') }
         format.xml  { head :ok }
       else

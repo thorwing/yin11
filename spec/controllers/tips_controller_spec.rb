@@ -6,6 +6,12 @@ require 'spec_helper'
 
 describe TipsController do
 
+  before(:each) do
+    @admin = Factory.create(:user, :login_name => "admin", :email => "admin@yin11.com", :password => "superuser", :role => 9)
+    @tester = Factory.create(:user, :login_name => "tester", :email => "tester@yin11.com", :password => "iamtester", :role => 1)
+    controller.stub!(:current_user).and_return(@tester)
+  end
+
   def mock_tip(stubs={})
     @mock_tip ||= mock_model(Tip, stubs).as_null_object
   end
@@ -29,7 +35,7 @@ describe TipsController do
   describe "GET new" do
     it "assigns a new tip as @tip" do
       Tip.stub(:new) { mock_tip }
-      get :new
+      get :new, :title => "test", :type => "1"
       assigns(:tip).should be(mock_tip)
     end
   end
@@ -76,7 +82,7 @@ describe TipsController do
     describe "with valid params" do
       it "updates the requested tip" do
         Tip.stub(:find).with("37") { mock_tip }
-        mock_tip.should_receive(:update_attributes).with({'these' => 'params'})
+        mock_tip.should_receive(:revise).with(@tester, nil)
         put :update, :id => "37", :tip => {'these' => 'params'}
       end
 
@@ -110,12 +116,16 @@ describe TipsController do
 
   describe "DELETE destroy" do
     it "destroys the requested tip" do
+      controller.stub!(:current_user).and_return(@admin)
+
       Tip.stub(:find).with("37") { mock_tip }
       mock_tip.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
 
     it "redirects to the tips list" do
+      controller.stub!(:current_user).and_return(@admin)
+
       Tip.stub(:find) { mock_tip }
       delete :destroy, :id => "1"
       response.should redirect_to(tips_url)

@@ -6,6 +6,12 @@ require 'spec_helper'
 
 describe ReviewsController do
 
+  before(:each) do
+    @admin = Factory.create(:user, :login_name => "admin", :email => "admin@yin11.com", :password => "superuser", :role => 9)
+    @tester = Factory.create(:user, :login_name => "tester", :email => "tester@yin11.com", :password => "iamtester", :role => 1)
+    controller.stub!(:current_user).and_return(@tester)
+  end
+
   def mock_review(stubs={})
     @mock_review ||= mock_model(Review, stubs).as_null_object
   end
@@ -37,6 +43,8 @@ describe ReviewsController do
   describe "GET edit" do
     it "assigns the requested review as @review" do
       Review.stub(:find).with("37") { mock_review }
+      mock_review.should_receive(:author_id).and_return(@tester.id)
+
       get :edit, :id => "37"
       assigns(:review).should be(mock_review)
     end
@@ -76,18 +84,21 @@ describe ReviewsController do
     describe "with valid params" do
       it "updates the requested review" do
         Review.stub(:find).with("37") { mock_review }
+        mock_review.should_receive(:author_id).and_return(@tester.id)
         mock_review.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :review => {'these' => 'params'}
       end
 
       it "assigns the requested review as @review" do
         Review.stub(:find) { mock_review(:update_attributes => true) }
+        mock_review.should_receive(:author_id).and_return(@tester.id)
         put :update, :id => "1"
         assigns(:review).should be(mock_review)
       end
 
       it "redirects to the review" do
         Review.stub(:find) { mock_review(:update_attributes => true) }
+        mock_review.should_receive(:author_id).and_return(@tester.id)
         put :update, :id => "1"
         response.should redirect_to(review_url(mock_review))
       end
@@ -96,12 +107,14 @@ describe ReviewsController do
     describe "with invalid params" do
       it "assigns the review as @review" do
         Review.stub(:find) { mock_review(:update_attributes => false) }
+        mock_review.should_receive(:author_id).and_return(@tester.id)
         put :update, :id => "1"
         assigns(:review).should be(mock_review)
       end
 
       it "re-renders the 'edit' template" do
         Review.stub(:find) { mock_review(:update_attributes => false) }
+        mock_review.should_receive(:author_id).and_return(@tester.id)
         put :update, :id => "1"
         response.should render_template("edit")
       end
@@ -110,12 +123,16 @@ describe ReviewsController do
 
   describe "DELETE destroy" do
     it "destroys the requested review" do
+      controller.stub!(:current_user).and_return(@admin)
+
       Review.stub(:find).with("37") { mock_review }
       mock_review.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
 
     it "redirects to the reviews list" do
+      controller.stub!(:current_user).and_return(@admin)
+
       Review.stub(:find) { mock_review }
       delete :destroy, :id => "1"
       response.should redirect_to(reviews_url)

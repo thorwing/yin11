@@ -27,18 +27,25 @@ class Tip
   EXAM_TIP =  2
 
   def revise(author, content)
-    revisions_size = self.new_record? ? 0 : self.revisions.size
-    if (revisions_size > 0) and self.current_content == content
-      #'You have tried to save page "#{name}" without changing its content'
-      return
+    if author.present? and content.present?
+      revisions_size = self.new_record? ? 0 : self.revisions.size
+      if (revisions_size > 0) and self.current_content == content
+        #'You have tried to save page "#{name}" without changing its content'
+        return false
+      end
+
+      self.participators << author unless self.participator_ids.include?(author.id)
+
+      self.current_content = content
+
+      self.revisions << Revision.new(:content => content, :author => author)
+
+      self.save
+
+      true
+    else
+      false
     end
-
-    self.participators << author unless self.participator_ids.include?(author.id)
-
-    self.current_content = content
-
-    self.revisions << Revision.new(:content => content, :author => author)
-
   end
 
   private

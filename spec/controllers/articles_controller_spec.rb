@@ -6,6 +6,11 @@ require 'spec_helper'
 
 describe ArticlesController do
 
+  before(:each) do
+    @editor = Factory.create(:user, :login_name => "editor", :email => "editor@yin11.com", :password => "iameditor", :role => 2)
+    controller.stub!(:current_user).and_return(@editor)
+  end
+
   def mock_article(stubs={})
     @mock_article ||= mock_model(Article, stubs).as_null_object
   end

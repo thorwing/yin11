@@ -62,6 +62,7 @@ Feature: smoke tests for Tips
     Then I should see "辨别西瓜是否含有催熟剂" within "#recent_tips"
     And I should see "1" within "#recent_tips"
 
+  @focus
   Scenario: User can edit others tip, and the change will be stored in revision, it will not be used immediately
     When I log in as "David User"
     And I post a sample tip

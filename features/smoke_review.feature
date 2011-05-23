@@ -17,7 +17,6 @@ Feature: smoke tests for Review
   Scenario: User can post normal review from homepage, and he create a new vendor ( it will be better if we can make a popup window here)
     When I log in as "David User"
     And I post a sample review
-    Then I should be on the reviews page
     And I should see "买到烂西瓜"
     And I should see "severity:1"
     And I should see "西瓜切开来后发现已经熟过头了。"
