@@ -1,8 +1,11 @@
 class Badge
   include Mongoid::Document
+  scope :enabled, where(disabled: false)
+
   field :name
   field :description
   field :repeatable, :type => Boolean, :default => false
+  field :disabled, :type => Boolean, :default => false
 
   field :contribution_field
   field :comparator, :type => Integer, :default => 0
@@ -17,6 +20,8 @@ class Badge
   #validators
   validates_uniqueness_of :name
   validates_presence_of :name
+
+  attr_accessible :name, :description, :repeatable, :disabled, :contribution_field, :comparator, :compared_value
 
   COMPARATOR_HASH = {
   :COMPARISON_UNDEFINED => 0,
@@ -48,7 +53,9 @@ class Badge
 	:COMPARISON_DOES_NOT_CONTAIN_CURRENT_USER => 70 }
 
   def is_available_to?(user)
-    if self.user_ids.include?(user.id) && (not self.repeatable)
+    if self.disabled
+      false
+    elsif self.user_ids.include?(user.id) && (not self.repeatable)
       false
     else
       true

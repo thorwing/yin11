@@ -11,6 +11,8 @@ zh-CN:
     edit: 编辑
     add: 添加
     new: 新建
+    enable: 启用
+    disable: 禁用
     severity_0: 无异常报告
     severity_1: 注意
     severity_2: 警惕

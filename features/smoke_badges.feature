@@ -78,7 +78,18 @@ Feature: smoke tests for Badges
     And I follow "徽章" within "#menu"
     Then I should not see "1 owners"
 
-
+  Scenario: Only Admin can disable badges.
+    Given the following badge exists:
+    | name     | description  | contribution_field | comparator | compared_value |
+    | 新手上路 | 发表一篇测评 | created_reviews    | 8          | 1              |
+    When I log in as "Ray Admin"
+    And I go to the badges page
+    And I follow "新手上路"
+    And I follow "修改"
+    And I check "badge_disabled"
+    And I press "完成"
+    When I go to the badges page
+    Then I should not see "新手上路"
 
   Scenario: User will get rewards because of posting reviews.
     Given the following badge exists:
@@ -89,7 +100,7 @@ Feature: smoke tests for Badges
 
     When I go to the home page
     And I follow "徽章" within "#menu"
-    Then I should see "1"
+    Then I should see "1 owners"
 
 
 

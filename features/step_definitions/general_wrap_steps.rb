@@ -61,3 +61,4 @@ When /^I add "(.+)" to watching foods list$/ do |food|
     Then %(I should see "为什么要把食物收藏到<我的菜单>")
     And %(I follow "把#{food}收藏到<我的菜单>")
 end
+

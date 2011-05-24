@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :repeatable %><br />
-    <%= f.check_box :repeatable %>
+    <%= f.check_box :repeatable, {}, true, false %>
   </div>
   <div class="field">
     <%= f.label :contribution_field %><br />
@@ -34,6 +34,10 @@
   <div class="field">
     <%= f.label :compared_value %><br />
     <%= f.text_field :compared_value %>
+  </div>
+  <div class="field">
+    <%= f.label :disabled %><br />
+    <%= f.check_box :disabled, {}, true, false %>
   </div>
   <div class="actions">
     <%= f.submit t("general.submit") %>

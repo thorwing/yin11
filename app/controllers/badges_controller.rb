@@ -4,7 +4,7 @@ class BadgesController < ApplicationController
   # GET /badges
   # GET /badges.xml
   def index
-    @badges = Badge.all
+    @badges = Badge.enabled
 
     respond_to do |format|
       format.html # index.html.erb
