@@ -10,10 +10,12 @@ zh-CN:
     search: 搜索
     edit: 编辑
     add: 添加
+    new: 新建
     severity_0: 无异常报告
     severity_1: 注意
     severity_2: 警惕
     severity_3: 严重
+    are_you_sure_to_delete: 确定要删除吗？
 
   validations:
     general:

@@ -12,10 +12,10 @@
 
 <% @badges.each do |badge| %>
   <tr>
-    <td><%= badge.name %></td>
+    <td><%= link_to badge.name, badge %></td>
     <td><%= badge.description %></td>
     <td><%= badge.repeatable %></td>
-    <td><%= badge.number_of_owners %></td>
+    <td><%= badge.number_of_owners %> owners</td>
     <td><%= link_to 'Show', badge %></td>
     <td><%= link_to 'Edit', edit_badge_path(badge) %></td>
     <td><%= link_to 'Destroy', badge, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -25,4 +25,6 @@
 
 <br />
 
-<%= link_to 'New Badge', new_badge_path %>
+<% if has_permission?(:admin) %>
+    <%= link_to t("general.new"), new_badge_path %>
+<% end %>

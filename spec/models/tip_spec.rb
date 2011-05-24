@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "bvt" do
   it "simpley create a tip" do
-    tip = Factory.create(:tip, :title => "test", :type => 1)
+    tip = Factory.create(:tip, :title => "test", :content => "1234567890", :type => 1)
     tip.should_not be_new_record
     tip.should_not be_nil
   end

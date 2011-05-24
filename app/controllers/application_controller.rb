@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user , :has_permission?
-  helper_method :get_related_reviews_of, :get_related_articles_of
+  helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself
   FOOD_ARTICLES_LIMIT = 5
   FOOD_REVIEWS_LIMIT = 5
 

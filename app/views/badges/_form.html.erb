@@ -23,7 +23,19 @@
     <%= f.label :repeatable %><br />
     <%= f.check_box :repeatable %>
   </div>
+  <div class="field">
+    <%= f.label :contribution_field %><br />
+    <%= f.select :contribution_field, options_for_select(get_fields_of(Contribution), @badge.contribution_field) %>
+  </div>
+  <div class="field">
+    <%= f.label :comparator %><br />
+    <%= f.select :comparator, options_for_select(get_comparators, @badge.comparator) %>
+  </div>
+  <div class="field">
+    <%= f.label :compared_value %><br />
+    <%= f.text_field :compared_value %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t("general.submit") %>
   </div>
 <% end %>

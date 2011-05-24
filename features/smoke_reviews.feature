@@ -1,4 +1,4 @@
-Feature: smoke tests for Review
+Feature: smoke tests for Reviews
   User can create, edit(only his own) review.
   User can not delete his review.
   Review is food-oriented, location-oriented
@@ -79,17 +79,6 @@ Feature: smoke tests for Review
     And I press "添加"
     And I go to the home page
     Then I should see "2 comments" within ".info_item"
-
-  Scenario: User will get rewards because of posting reviews.
-    Given the following badge exists:
-    | name     | description  | user_field     | comparator | compared_value |
-    | 新手上路 | 发表一篇测评 | posted_reviews | 8          | 1              |
-    When I log in as "David User"
-    And I post a sample review
-
-    When I go to the home page
-    And I follow "徽章" within "#menu"
-    Then I should see "1"
 
   Scenario:  Repeat the above steps for tech-review
 

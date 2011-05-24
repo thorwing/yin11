@@ -31,5 +31,9 @@ describe TipsController do
       { :delete => "/tips/1" }.should route_to(:controller => "tips", :action => "destroy", :id => "1")
     end
 
+    it "recognizes and generates #search" do
+      { :post => "/tips/search" }.should route_to(:controller => "tips", :action => "search")
+    end
+
   end
 end

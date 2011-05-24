@@ -6,8 +6,6 @@ class TipsController < ApplicationController
   # GET /tips
   # GET /tips.xml
   def index
-    @tips = Tip.all
-
     @tips_participated_by_me = current_user ? Tip.any_in(participator_ids: [current_user.id]) : []
     @hot_tips = Tip.order_by([:votes, :desc]).limit(5)
     @recent_tips = Tip.order_by([:updated_at, :desc]).limit(5)

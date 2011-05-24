@@ -16,5 +16,7 @@
 </p>
 
 
-<%= link_to 'Edit', edit_badge_path(@badge) %> |
+<% if has_permission?(:admin) %>
+<%= link_to t("general.change"), edit_badge_path(@badge) %> |
+<% end %>
 <%= link_to 'Back', badges_path %>

@@ -14,7 +14,8 @@
   <%= "severity:" + @review.severity.to_s %>
 </p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to t("general.edit"), edit_review_path(@review) %> |
+<%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete %>
 <%= link_to 'Back', reviews_path %>
 
 <p>Comments:</p>

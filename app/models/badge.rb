@@ -4,7 +4,7 @@ class Badge
   field :description
   field :repeatable, :type => Boolean, :default => false
 
-  field :user_field
+  field :contribution_field
   field :comparator, :type => Integer, :default => 0
   field :compared_value
 
@@ -68,10 +68,10 @@ class Badge
       when COMPARATOR_HASH[:COMPARISON_GREATER_THAN_OR_EQUAL]
         temp_comparator = ">="
       else
-        raise "unsupported comparator"
+        raise "unsupported comparator: " + self.comparator.to_s
     end
 
-    result = eval "user.try(:#{self.user_field})#{temp_comparator}#{self.compared_value}"
+    result = eval "user.contribution.try(:#{self.contribution_field})#{temp_comparator}#{self.compared_value}"
     result
   end
 

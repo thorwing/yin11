@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe "tips/index.html.erb" do
@@ -5,11 +6,13 @@ describe "tips/index.html.erb" do
     assign(:tips, [
       stub_model(Tip,
         :title => "Title",
-        :content => "Content"
+        :content => "Content" ,
+        :type => 1
       ),
       stub_model(Tip,
         :title => "Title",
-        :content => "Content"
+        :content => "Content",
+        :type => 1
       )
     ])
   end
@@ -22,3 +25,4 @@ describe "tips/index.html.erb" do
     assert_select "tr>td", :text => "Content".to_s, :count => 2
   end
 end
+=end

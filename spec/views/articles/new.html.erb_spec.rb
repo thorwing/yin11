@@ -5,7 +5,7 @@ describe "articles/new.html.erb" do
     assign(:article, stub_model(Article,
       :title => "MyString",
       :source => "MyString",
-      :content => "MyString"
+      :content => "MyString123"
     ).as_new_record)
   end
 
@@ -16,7 +16,7 @@ describe "articles/new.html.erb" do
     assert_select "form", :action => articles_path, :method => "post" do
       assert_select "input#article_title", :name => "article[title]"
       assert_select "input#article_source", :name => "article[source]"
-      assert_select "input#article_content", :name => "article[content]"
+      assert_select "textarea#article_content", :name => "article[content]"
     end
   end
 end

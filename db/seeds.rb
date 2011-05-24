@@ -18,7 +18,7 @@
   article_2 = Factory(:article, :title => "北京禁止商贩往水里兑牛奶", :content => "北京市政府严令禁止向水里兑牛奶的行为。", :cities => [beijing], :foods => [milk])
   article_3 = Factory(:article, :title => "上海橙子上蜡", :content => "近日，上海市的水果市场上出现了上了蜡的橙子。", :cities => [shanghai], :foods => [orange])
 
-  Factory(:badge, :name => "新手上路", :description => "发表一篇测评", :user_field => "posted_reviews", :comparator => 8, :compared_value => "1" )
+  Factory(:badge, :name => "新手上路", :description => "发表一篇测评", :field => "posted_reviews", :comparator => 8, :compared_value => "1" )
 
   File.open(File.join(RAILS_ROOT, 'app/assets/provinces.txt')).each_line { |p|
     code, name, short_name, main_city_id, type = p.split(" ")

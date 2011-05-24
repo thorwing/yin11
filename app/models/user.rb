@@ -13,11 +13,9 @@ class User
   field :remember_token
   field :remember_token_expires_at, :type => Time
 
-  #cached values
-  field :posted_reviews, :type => Integer, :default => 0
-
   #Relationships
   embeds_one :profile
+  embeds_one :contribution
   has_many :reviews, :inverse_of => "author"
   has_and_belongs_to_many :participated_tips, :class_name => "Tip"
   has_and_belongs_to_many :badges
@@ -33,18 +31,19 @@ class User
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 6, :on => :create, :message => I18n.t("views.validation_message.password_is_too_short")
-  validates_associated :profile
+  validates_associated :profile, :contribution
 
   USER_ROLE = 1
   EDITOR_ROLE = 2
   ADMIN_ROLE = 9
 
   #Others
-  after_initialize :build_profile
+  after_initialize :build_records
   before_save :encrypt_password
 
-  def build_profile
+  def build_records
     self.profile ||= Profile.new
+    self.contribution ||= Contribution.new
   end
 
   def self.authenticate(email, password)

@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :user }
-  before_filter(:only => [:destroy]) {|c| c.require_permission :admin }
-  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
+  before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
 
   # GET /reviews
   # GET /reviews.xml
@@ -50,7 +49,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
     @review.author = current_user
-    current_user.posted_reviews += 1
+    current_user.contribution.created_reviews += 1
     current_user.save
 
     #TODO

@@ -19,6 +19,10 @@ module ApplicationHelper
     City.all.collect {|c|[ c.name, c.id ]}
   end
 
+  def get_fields_of(class_name)
+    eval( %(#{class_name}.fields.collect{|k,v| [k, k]}.reject{|a| ["_type", "_id"].include? a[0] }) )
+  end
+
   def get_severity_of_food(food)
     reviews = Review.in_days_of(7).about(food).desc(:updated_at)
 

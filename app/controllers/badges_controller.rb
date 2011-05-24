@@ -1,4 +1,6 @@
 class BadgesController < ApplicationController
+  before_filter(:except => [:index, :show]) { |c| c.require_permission :admin }
+
   # GET /badges
   # GET /badges.xml
   def index
