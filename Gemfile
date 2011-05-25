@@ -23,6 +23,9 @@ gem 'rails', '3.0.7'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
+#temp workaround
+gem 'rake', '~> 0.8.7'
+
 gem "mongoid", "~> 2.0"
 gem "bson_ext", "~> 1.3"
 
