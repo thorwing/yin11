@@ -135,7 +135,6 @@ Feature: smoke tests for Badges
     When I log in as "David User"
     Then I should see "西瓜被打了催熟剂"
     When I follow "down" within ".info_item"
-    Then I should see "1" within ".info_item"
 
     When I go to the profile page
     Then I should see "批评家"

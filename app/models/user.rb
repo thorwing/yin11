@@ -109,6 +109,23 @@ class User
     self.save
   end
 
+  def ask_for_badges
+    #TODO
+    Badge.all.each do |badge|
+      if badge.can_be_awarded_to?(self)
+        badge.give_to_user!(self)
+      end
+    end
+  end
+
+  def make_contribution(field, delta)
+    begin
+      eval %( self.contribution.#{field}+=#{delta})
+      ask_for_badges
+    rescue
+    end
+  end
+
   def is_editor?
     self.role == EDITOR_ROLE
   end

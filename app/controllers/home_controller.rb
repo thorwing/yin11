@@ -40,6 +40,8 @@ class HomeController < ApplicationController
 
     delta = params[:delta].to_i
 
+    first_vote = false
+
     if delta > 0
       if object.fan_ids.include?(current_user.id)
         delta *= -1
@@ -48,6 +50,7 @@ class HomeController < ApplicationController
         object.hater_ids.delete(current_user.id)
       else
         object.fan_ids << current_user.id
+        first_vote = true
       end
     else
       if object.hater_ids.include?(current_user.id)
@@ -57,11 +60,15 @@ class HomeController < ApplicationController
         object.fan_ids.delete(current_user.id)
       else
         object.hater_ids << current_user.id
+        first_vote = true
       end
     end
 
     weight = delta * get_vote_weight_of_current_user
     object.votes += weight
+
+    current_user.make_contribution(:total_up_votes, 1) if first_vote && weight > 0
+    current_user.make_contribution(:total_down_votes, 1) if first_vote && weight < 0
 
     respond_to do |format|
       if object.save

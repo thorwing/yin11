@@ -49,15 +49,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
     @review.author = current_user
-    current_user.contribution.created_reviews += 1
+    current_user.make_contribution(:created_reviews, 1)
     current_user.save
-
-    #TODO
-    Badge.all.each do |badge|
-      if badge.can_be_awarded_to?(current_user)
-        badge.give_to_user!(current_user)
-      end
-    end
 
     respond_to do |format|
       if @review.save
