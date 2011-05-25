@@ -128,6 +128,18 @@ Feature: smoke tests for Badges
       | name   | description    | contribution_field | comparator | compared_value |
       | 批评家 | 投出第一票down | total_down_votes   | 8          | 1              |
 
+    And the following article exists:
+      | title            | content                            | food_tokens |
+      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
+
+    When I log in as "David User"
+    Then I should see "西瓜被打了催熟剂"
+    When I follow "down" within ".info_item"
+    Then I should see "1" within ".info_item"
+
+    When I go to the profile page
+    Then I should see "批评家"
+
   Scenario: User can get a badge for leaving 10 comments
     Given the following badge exists:
       | name   | description | contribution_field | comparator | compared_value |

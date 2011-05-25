@@ -30,8 +30,9 @@
 <p>
   <b>Images(<%= @article.images.size%>):</b>
 
-  <% @article.images.each_with_index do |image, index| %>
-    <p><%= index %><%= get_image(image) %></p>
+  <% @article.images.each do |image| %>
+    <p><%= get_image(image) %></p>
+    <p><%= image.description %></p>
   <% end %>
 </p>
 

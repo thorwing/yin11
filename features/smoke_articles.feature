@@ -5,7 +5,7 @@ Feature: smoke tests for Articles
   Editor can upload images for an article, and one of the images will be displayed as thumbnail.
   Editor can add descriptions on images.
   User can vote fro a article.
-  User can comment on a articel, comments can be nested.
+  User can comment on a article, comments can be nested.
 
   Background:
     Given There is a "David User"
@@ -60,22 +60,46 @@ Feature: smoke tests for Articles
     Then I should not see "西瓜被打了催熟剂" within "div.food_articles"
 
   @focus
-  @javascript
   Scenario: Editor can upload images for an article, and one of the images will be displayed as thumbnail.
+    When I log in as "Castle Editor"
+    And I go to the new_article page
+    And I fill in "article_title" with "西瓜被打了催熟剂"
+    And I fill in "article_content" with "本报讯，今日很多西瓜都被打了催熟剂"
+    #And I follow "添加图片"
+    #And I fill in "article_images_attributes_0_remote_image_url" with "http://rubyonrails.org/images/rails.png" by Selenium
+    And I fill in "article_images_attributes_0_remote_image_url" with "http://rubyonrails.org/images/rails.png"
+    And I fill in "article_images_attributes_0_description" with "Rails标志"
+    And I press "发表"
+    Then I should see "Images(1):"
+    And I should see "Rails标志"
+
+  Scenario: User can vote fro a article.
     Given the following article exists:
       | title            | content                            | food_tokens |
       | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
-    When I log in as "Castle Editor"
-    And I go to the articles page
-    And I follow "西瓜被打了催熟剂"
-    And I follow "编辑"
-    And I follow "添加图片"
-    And I fill in "article_images_attributes_0_remote_image_url" with "http://rubyonrails.org/images/rails.png"
-    And I press "完成"
-    Then I should see "Images(1):"
 
-  Scenario: Editor can add descriptions on images.
+    When I log in as "David User"
+    Then I should see "西瓜被打了催熟剂"
+    When I follow "up" within ".info_item"
+    Then I should see "1" within ".info_item"
 
-  Scenario: User can vote fro a article.
+  Scenario: User can comment on a article, comments can be nested.
+    Given the following article exists:
+      | title            | content                            | food_tokens |
+      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
 
-  Scenario: User can comment on a articel, comments can be nested.
+    When I log in as "Kate Tester"
+    Then I should see "西瓜被打了催熟剂"
+    When I follow "查看" within ".info_item"
+    And I fill in "content" with "很有用的评价" within ".new_comment"
+    And I press "添加"
+    And I go to the home page
+    Then I should see "1 comments" within ".info_item"
+
+    When I log in as "David User"
+    When I follow "查看" within ".info_item"
+    And I follow "Reply"
+    And I fill in "content" with "谢谢" within ".new_comment"
+    And I press "添加"
+    And I go to the home page
+    Then I should see "2 comments" within ".info_item"
