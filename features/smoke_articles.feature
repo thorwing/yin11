@@ -65,4 +65,5 @@ Feature: smoke tests for Articles
   Scenario: Editor can add descriptions on images.
 
   Scenario: User can vote fro a article.
+
   Scenario: User can comment on a articel, comments can be nested.
