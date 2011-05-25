@@ -4,6 +4,8 @@ class ProfileController < ApplicationController
   def show
     #referesh
     @my_reviews = current_user.reviews
+    @my_badge_ids = current_user.badge_ids
+    @my_badges = current_user.badges
   end
 
   def edit

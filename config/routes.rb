@@ -11,6 +11,7 @@ Yin11::Application.routes.draw do
   put "home/vote"
   get "home/new_comment"
   post "home/add_comment"
+  put "home/toggle_disabled"
 
   resources :articles
 

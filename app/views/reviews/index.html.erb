@@ -12,7 +12,7 @@
 
 <% @reviews.each do |review| %>
   <tr>
-    <td><%= review.title %></td>
+    <td><%= link_to review.title, review %></td>
     <td><%= review.content %></td>
     <td><%= "severity:" + review.severity.to_s %></td>
     <td><%= link_to t("general.show"), review %></td>

@@ -1,18 +1,17 @@
 class Badge
   include Mongoid::Document
-  scope :enabled, where(disabled: false)
+  include Available
 
   field :name
   field :description
   field :repeatable, :type => Boolean, :default => false
-  field :disabled, :type => Boolean, :default => false
 
   field :contribution_field
   field :comparator, :type => Integer, :default => 0
   field :compared_value
 
   #cached values
-  field :number_of_owners, :type => Integer, :default => 0
+  field :count_of_awarded, :type => Integer, :default => 0
 
   #Relationship
   has_and_belongs_to_many :users
@@ -70,6 +69,8 @@ class Badge
         temp_comparator = "=="
       when COMPARATOR_HASH[:COMPARISON_IS_NOT]
         temp_comparator = "!="
+      when COMPARATOR_HASH[:COMPARISON_EQUAL_TO]
+        temp_comparator = "=="
       when COMPARATOR_HASH[:COMPARISON_LESS_THAN_OR_EQUAL]
         temp_comparator = "<="
       when COMPARATOR_HASH[:COMPARISON_GREATER_THAN_OR_EQUAL]
@@ -82,10 +83,15 @@ class Badge
     result
   end
 
-  def give_to_user_and_save(user)
-    self.users << user
-    self.number_of_owners += 1
+  def give_to_user!(user)
+    self.user_ids ||= []
+    self.user_ids << user.id
+    self.count_of_awarded += 1
     self.save
+
+    user.badge_ids ||= []
+    user.badge_ids << self.id
+    user.save
   end
 
 end

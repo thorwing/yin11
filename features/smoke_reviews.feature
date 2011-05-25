@@ -22,19 +22,18 @@ Feature: smoke tests for Reviews
     And I should see "西瓜切开来后发现已经熟过头了。"
 
   @focus
-  Scenario: User can edit his own review about a existed vendor, and user can't delete his review
+  Scenario: User can edit his own review
     When I log in as "David User"
     And I post a sample review
 
-    When I go to the home page
-    And I follow "我的评价" within "#menu"
-    Then I should see "买到烂西瓜"
-    And I follow "修改"
+    When I go to the reviews page
+    And I follow "买到烂西瓜"
+    And I follow "编辑"
     #has to fill the food again because of the data-pre is skipped in testing
-    And I fill in "review_food_token" with "西瓜"
-    And I choose "review_severity_3"
+    #And I choose "review_severity_3"
     And I fill in "review_content" with "而且这个西瓜是打了催熟剂的"
     And I press "完成"
+    Then I should see "Review was successfully updated."
     And I should see "买到烂西瓜"
     And I should see "而且这个西瓜是打了催熟剂的"
     And I should see "severity:3"

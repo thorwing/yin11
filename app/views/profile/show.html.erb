@@ -7,9 +7,17 @@
 </p>
 
 <p>
-  <b><%= t("profile.my_reviews") %></b>
+  <p><%= t("profile.my_reviews") %></p>
   <% @my_reviews.each do |review| %>
-    <%= render "info_item/info_item", :item => review %>
+    <%= render "shared/info_item", :item => review %>
+  <% end %>
+</p>
+
+<p>
+  <p><%= t("profile.my_badges") %></p>
+
+  <% @my_badges.each do |badge| %>
+    <p><%= link_to badge.name + ( @my_badge_ids.count(badge.id) > 1 ? " #{@my_badge_ids.count(badge.id)}" : ""), badge %></p>
   <% end %>
 </p>
 

@@ -53,9 +53,9 @@ class ReviewsController < ApplicationController
     current_user.save
 
     #TODO
-    Badge.enabled.each do |badge|
+    Badge.all.each do |badge|
       if badge.can_be_awarded_to?(current_user)
-        badge.give_to_user_and_save(current_user)
+        badge.give_to_user!(current_user)
       end
     end
 

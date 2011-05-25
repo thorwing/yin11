@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
+<%= render "shared/toggle_disabled", :item => @badge if has_permission?(:admin) %>
+
 <%= link_to t("general.show"), @badge %> |
 <%= link_to 'Back', badges_path %>

@@ -2,6 +2,7 @@ class Article
   include Mongoid::Document
   include Mongoid::Timestamps
   include AssociatedModels
+  include Available
   include Informative
 
   scope :in_days_of, ->(days_in_number) {where(:created_at.gt => days_in_number.days.ago )}

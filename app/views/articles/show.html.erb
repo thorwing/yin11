@@ -30,10 +30,12 @@
 <p>Comments:</p>
 <%= nested_comments(@article, @article.comments.arrange(:order => :created_at)) %>
 <div class="new_comment">
-    <%= render "info_item/new_comment", :item => @article %>
+    <%= render "shared/new_comment", :item => @article %>
 </div>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+<% if has_permission?(:editor) %>
+    <%= link_to t("general.edit"), edit_article_path(@article) %> |
+<% end %>
 <%= link_to 'Back', articles_path %>
 
 

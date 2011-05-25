@@ -158,10 +158,10 @@ class ApplicationController < ActionController::Base
 
   def get_related_articles_of(food, user = nil)
     result = []
-    result = Article.in_days_of(7).about(food).in_city(user.profile.address.city_id).desc(:created_at).limit(FOOD_ARTICLES_LIMIT) if user
+    result = Article.enabled.in_days_of(7).about(food).in_city(user.profile.address.city_id).desc(:created_at).limit(FOOD_ARTICLES_LIMIT) if user
 
     if result.size < FOOD_ARTICLES_LIMIT
-      result = result | Article.in_days_of(14).about(food).desc(:created_at)
+      result = result | Article.enabled.in_days_of(14).about(food).desc(:created_at)
     end
 
     result.size > FOOD_ARTICLES_LIMIT ? result[0...FOOD_ARTICLES_LIMIT - 1] : result

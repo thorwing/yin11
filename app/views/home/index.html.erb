@@ -26,14 +26,14 @@
             <h3><%= food_name %></h3>
             <% info_object.each_with_index do |info, index| %>
               <div class="info_item" id="<%="info_item_#{index}"%>">
-                <%= render "info_item/info_item", :item => info %>
+                <%= render "shared/info_item", :item => info %>
               </div>
             <% end %>
         <% end %>
     <% elsif @recent_info %>
         <% @recent_info.each_with_index do |info, index| %>
               <div class="info_item" id="<%="info_item_#{index}"%>">
-                <%= render "info_item/info_item", :item => info %>
+                <%= render "shared/info_item", :item => info %>
               </div>
             <% end %>
     <% end %>

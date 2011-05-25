@@ -56,6 +56,18 @@ When /^I post a sample tip$/ do
     And %(I press "完成")
 end
 
+When /^I post a sample article$/ do
+    When %(I go to the articles page)
+    And %(I follow "发表新文章")
+    And %(I fill in "article_title" with "土豆刷绿漆，冒充西瓜")
+    And %(I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。")
+    And %(I fill in "article_source" with "神农食品报")
+    And %(I fill in "article_food_tokens" with "西瓜")
+    And %(I fill in "article_city_tokens" with "021")
+    And %(I fill vendor token field "article_vendor_token" with "乐购超市")
+    And %(I press "发表")
+end
+
 When /^I add "(.+)" to watching foods list$/ do |food|
     When %(I search for "#{food}")
     Then %(I should see "为什么要把食物收藏到<我的菜单>")

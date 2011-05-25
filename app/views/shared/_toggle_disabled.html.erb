@@ -1,0 +1,3 @@
+<div class="toggle_disabled">
+    <%= link_to item.disabled ? t("general.enable") : t("general.disable"), home_toggle_disabled_path(:id => item.id, :type => item.class.name), :method => :put %>
+</div>

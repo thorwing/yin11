@@ -19,12 +19,11 @@ Feature: usage about permissions
 
   Scenario: guest and normal user can't post any articles and will be asked to sign up
     When I go to the articles page
-    And I follow "发表新文章"
+    And I go to the new_article page
     Then I should be on the log_in page
 
     When I log in as "David User"
-    And I go to the articles page
-    And I follow "发表新文章"
+    And I go to the new_article page
     Then I should be on the log_in page
 
   Scenario: editor can post a article about food

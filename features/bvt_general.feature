@@ -103,7 +103,16 @@ Feature: general usage
     Then I should see "辨别西瓜是否含有催熟剂" within "#recent_tips"
     And I should see "辨别西瓜是否含有催熟剂" within "#hot_tips"
 
+  Scenario: User will get rewards because of posting reviews.
+    Given the following badge exists:
+    | name     | description  | contribution_field | comparator | compared_value |
+    | 新手上路 | 发表一篇测评 | created_reviews    | 8          | 1              |
+    When I log in as "David User"
+    And I post a sample review
 
+    When I go to the home page
+    And I follow "徽章" within "#menu"
+    Then I should see "1 times"
 
 
 

@@ -12,7 +12,7 @@
 
 <% @articles.each do |article| %>
   <tr>
-    <td><%= article.title %></td>
+    <td><%= link_to article.title, article %></td>
     <td><%= article.source %></td>
     <td><%= article.content %></td>
     <td><%= link_to 'Show', article %></td>
@@ -24,4 +24,6 @@
 
 <br />
 
-<%= link_to t("articles.post_new_article"), new_article_path %>
+<% if has_permission?(:editor) %>
+    <%= link_to t("articles.post_new_article"), new_article_path %>
+<% end %>

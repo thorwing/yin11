@@ -10,21 +10,21 @@
 <div id="recent_tips">
   <h3><%= t("tips.recent_tips") %></h3>
    <% @recent_tips.each do |tip| %>
-    <%= render "info_item/info_item", :item => tip  %>
+    <%= render "shared/info_item", :item => tip  %>
   <% end %>
 </div>
 
 <div id="hot_tips">
   <h3><%= t("tips.hot_tips") %></h3>
   <% @hot_tips.each do |tip| %>
-    <%= render "info_item/info_item", :item => tip  %>
+    <%= render "shared/info_item", :item => tip  %>
   <% end %>
 </div>
 
 <div id="tips_participated_by_me">
   <h3><%= t("tips.tips_participated_by_me") %></h3>
   <% @tips_participated_by_me.each do |tip| %>
-    <%= render "info_item/info_item", :item => tip  %>
+    <%= render "shared/info_item", :item => tip  %>
   <% end %>
 </div>
 
