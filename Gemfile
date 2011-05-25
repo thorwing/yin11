@@ -23,7 +23,7 @@ gem 'rails', '3.0.7'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
-#temp workaround
+#temp workaround, rake 0.9.0 caused a problem on Heroku
 gem 'rake', '~> 0.8.7'
 
 gem "mongoid", "~> 2.0"
@@ -34,6 +34,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem "mongoid-ancestry"
 
 gem "tiny_mce"
+
+gem 'carrierwave'
 
 #factory_girl is also used for db seeds
 gem 'factory_girl_rails'

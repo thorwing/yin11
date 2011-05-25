@@ -1,13 +1,21 @@
 <h1>Profile#edit</h1>
 <p>Find me in app/views/profile/edit.html.erb</p>
 
-<%= form_for :profile, @profile, :url => profile_update_path, :as => :post do |f| %>
-    <%= f.fields_for :address do |builder| %>
-        <div class="field">
+<%= form_for :profile, @profile, :url => profile_update_path, :as => :post, :html => {:multipart => true} do |f| %>
+
+    <div class="field">
+        <b> <%= t("profile.avatar") %></b><br/>
+        <%= f.file_field :avatar %> <br/>
+        <b><%= t("general.image_link") %></b> <br/>
+        <%= f.text_field :remote_avatar_url %>
+    </div>
+
+    <div class="field">
+        <%= f.fields_for :address do |builder| %>
           <b><%= t("address.city") %></b><br/>
           <%= builder.text_field :city_token, 'data-pre' => (@profile.address.city ? [{ :id => @profile.address.city.id, :name => @profile.address.city.name }] : []).to_json %>
-        </div>
-    <% end %>
+        <% end %>
+    </div>
 
     <div class="field">
       <b><%= t("profile.display_articles") %></b><br/>

@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
 
     respond_to do |format|
-      if @article.save
+      if @article.save && @article.images.each(&:save)
         format.html { redirect_to(@article, :notice => t("articles.article_posted_notice") ) }
         format.xml  { render :xml => @article, :status => :created, :location => @article }
       else

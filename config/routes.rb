@@ -3,6 +3,8 @@ Yin11::Application.routes.draw do
   match "log_in" => "sessions#new"
   match "sign_up" => "users#new"
 
+  match "/images/uploads/*path" => "gridfs#serve"
+
   get "profile/show"
   get "profile/edit"
   post "profile/update"

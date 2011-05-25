@@ -2,6 +2,10 @@
 <p>Find me in app/views/profile/show.html.erb</p>
 
 <p>
+  <%= get_avatar(current_user) %>
+</p>
+
+<p>
   <b>City:</b>
   <%= current_user.profile.address.try(:city).try(:name) %>
 </p>

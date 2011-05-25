@@ -3,6 +3,7 @@ zh-CN:
     title: 标题
     content: 内容
     name: 名称
+    description: 描述
     delete: 删除
     show: 查看
     submit: 完成
@@ -63,10 +64,10 @@ zh-CN:
     postcode: 邮政编码
 
   profile:
+    avatar: 头像
     display_articles: 在主页上显示有关监察列表中食物的新闻
     display_reviews: 在主页上显示有关监察列表中食物的测评
     receive_mails: 接受关于监察列表中食物安全动向的报告邮件
-
     my_reviews: 我的测评
     my_badges: 我的徽章
     profile_updated_notice: 信息已更新
@@ -119,4 +120,8 @@ zh-CN:
     handle_tip: "食物处理贴士: <%{title}>"
     exam_tip: "食物测评贴士: <%{title}>"
 
+  images:
+    image: 图片
+    remote_link: 图片链接
+    add_image: 添加图片
 

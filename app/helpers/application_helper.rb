@@ -15,6 +15,24 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
 
+  def get_avatar(user)
+    if user.profile.avatar?
+      logger = Logger.new(STDOUT)
+      logger.info user.profile.avatar.url.to_s
+      image_tag(user.profile.avatar.url, :width => 64, :height => 64)
+    else
+      image_tag("default_user.png", :width => 64, :height => 64)
+    end
+  end
+
+  def get_image(image)
+    logger = Logger.new(STDOUT)
+    logger.info image.image.url.to_s
+    if image.image?
+      image_tag(image.image.url, :width => 100, :height => 100)
+    end
+  end
+
   def get_cities_for_select()
     City.all.collect {|c|[ c.name, c.id ]}
   end

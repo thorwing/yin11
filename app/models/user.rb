@@ -21,7 +21,7 @@ class User
   has_and_belongs_to_many :badges
 
   attr_accessor :password
-  attr_accessible :email, :login_name, :password, :password_confirmation, :avatar
+  attr_accessible :email, :login_name, :password, :password_confirmation
 
   #Validators
   validates :email,

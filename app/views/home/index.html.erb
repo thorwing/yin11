@@ -44,7 +44,7 @@
     <% if current_user %>
         <div id="user_panel">
             <h3><%= current_user.login_name %></h3>
-            <img id="current_user_avator" src="http://flickholdr.com/64/64/captain" />
+            <%= get_avatar(current_user) %>
         </div>
         <div id="foods_watch_list">
             <h3><%= t("home.control_panel.watching_foods") %></h3>

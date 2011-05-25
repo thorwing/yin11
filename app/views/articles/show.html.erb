@@ -27,6 +27,14 @@
   <% end %>
 </p>
 
+<p>
+  <b>Images(<%= @article.images.size%>):</b>
+
+  <% @article.images.each_with_index do |image, index| %>
+    <p><%= index %><%= get_image(image) %></p>
+  <% end %>
+</p>
+
 <p>Comments:</p>
 <%= nested_comments(@article, @article.comments.arrange(:order => :created_at)) %>
 <div class="new_comment">

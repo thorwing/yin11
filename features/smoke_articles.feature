@@ -59,8 +59,20 @@ Feature: smoke tests for Articles
     When I search for "西瓜"
     Then I should not see "西瓜被打了催熟剂" within "div.food_articles"
 
+  @focus
+  @javascript
   Scenario: Editor can upload images for an article, and one of the images will be displayed as thumbnail.
-
+    Given the following article exists:
+      | title            | content                            | food_tokens |
+      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
+    When I log in as "Castle Editor"
+    And I go to the articles page
+    And I follow "西瓜被打了催熟剂"
+    And I follow "编辑"
+    And I follow "添加图片"
+    And I fill in "article_images_attributes_0_remote_image_url" with "http://rubyonrails.org/images/rails.png"
+    And I press "完成"
+    Then I should see "Images(1):"
 
   Scenario: Editor can add descriptions on images.
 
