@@ -1,5 +1,12 @@
 <h1>Listing vendors</h1>
 
+<div class="search_fields">
+  <%= form_tag :action => "search" do %>
+    <%= text_field_tag "search", "" %>
+    <%= submit_tag t("general.search") %>
+  <% end %>
+</div>
+
 <table>
   <tr>
     <th>Name</th>
@@ -10,7 +17,7 @@
 
 <% @vendors.each do |vendor| %>
   <tr>
-    <td><%= vendor.name %></td>
+    <td><%= link_to vendor.name, vendor %></td>
     <td><%= link_to 'Show', vendor %></td>
     <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
     <td><%= link_to 'Destroy', vendor, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -1,7 +1,8 @@
 class Vendor
   include Mongoid::Document
+  include Available
   field :name
-
+  field :verified, :type => Boolean, :default => false
   attr_accessible :name
 
   #validators

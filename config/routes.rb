@@ -32,7 +32,11 @@ Yin11::Application.routes.draw do
 
   resources :badges
 
-  resources :vendors
+  resources :vendors do
+    collection do
+      post "search"
+    end
+  end
 
   resources :foods do
     member do
