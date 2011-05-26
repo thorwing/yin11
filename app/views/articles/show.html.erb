@@ -43,8 +43,8 @@
 </div>
 
 <% if has_permission?(:editor) %>
-    <%= link_to t("general.edit"), edit_article_path(@article) %> |
+    <%= link_to t("general.edit"), edit_article_path(@article), :class => "button" %>
 <% end %>
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Back', articles_path, :class => "button" %>
 
 

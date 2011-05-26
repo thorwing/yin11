@@ -1,86 +1,89 @@
 
-<div id="foods_search">
-    <%= form_tag '/foods', :method => :get do %>
-        <p>
-            <%= t("home.foods_buy_question") %>
-        </p>
-        <p>
-            <%= text_field_tag :foods %>
-            <%= submit_tag t("home.foods_search_button") %><br/>
-            <%= t("home.multiple_foods_suggestion")  %>
-        </p>
-    <% end %>
-</div>
-
-<div id="menu">
-    <%= link_to t("menu.my_reviews"), reviews_path %>
-    <%= link_to t("menu.badges"), badges_path %>
-</div>
-
-<div id="new_review">
-  <%= link_to t("reviews.new_review"), new_review_path %>
-</div>
-<div id="food_info_block">
-    <% if @interested_info %>
-        <% @interested_info.each do |food_name, info_object| %>
-            <h3><%= food_name %></h3>
-            <% info_object.each_with_index do |info, index| %>
-              <div class="info_item" id="<%="info_item_#{index}"%>">
-                <%= render "shared/info_item", :item => info %>
-              </div>
-            <% end %>
-        <% end %>
-    <% elsif @recent_info %>
-        <% @recent_info.each_with_index do |info, index| %>
-              <div class="info_item" id="<%="info_item_#{index}"%>">
-                <%= render "shared/info_item", :item => info %>
-              </div>
-            <% end %>
-    <% end %>
-</div>
-
-
-<div id="control_panel">
-    <% if current_user %>
-        <div id="user_panel">
-            <h3><%= current_user.login_name %></h3>
-            <%= get_avatar(current_user) %>
+<div id="block_search" class="block">
+    <div class="block_inside">
+        <div class="image_block">
+            <%= image_tag "safe_food.png" %>
         </div>
-        <div id="foods_watch_list">
-            <h3><%= t("home.control_panel.watching_foods") %></h3>
-            <% @watching_foods.each do |food| %>
-                <p>
-                  <%= food.name %> <%= get_severity_of_food(food) %>
-                </p>
-            <% end %>
-            <a href="#">>显示更多</a>
-            <br/>
-            <%= form_tag :action => "watch_foods" do %>
-              <label><%= t("home.control_panel.add_foods_to_watch") %></label>
-              <%= text_field_tag "added_foods" %>
-              <%= submit_tag t("general.add") %>
-              <p>添加您感兴趣的食物，您身边的食物安全动向早知道。</p>
+        <div class="text_block">
+            <h2><%= t("home.foods_buy_question") %></h2>
+            <p><%= t("home.foods_buy_question_description") %></p>
+            <%= form_tag '/foods', :method => :get do %>
+                    <%= text_field_tag :foods %>
+                    <%= submit_tag t("home.foods_search_button") %><br/>
+                    <p><%= t("home.multiple_foods_suggestion")  %></p>
             <% end %>
         </div>
-    <% else %>
-        <div id="login_panel">
-            <h3><%= t("authentication.quick_login")  %></h3>
-            <%= render "shared/quick_login" %>
-        </div>
-    <% end %>
-
-    <div id="foods_buzz">
-      <% if @foods_buzz %>
-          <h3>所有分类</h3>
-          <% @foods_buzz.each do |category, foods| %>
-            <h4><%= category.name if category %></h4>
-            <% foods.each do |food| %>
-                <h5><%= food.name %></h5>
-            <% end %>
-          <% end %>
-      <% end %>
     </div>
 </div>
+
+<div id="two_columns_block">
+     <div id="info_items">
+        <div id="new_review">
+            <%= link_to t("reviews.new_review"), new_review_path %>
+        </div>
+
+        <% if @interested_info %>
+            <% @interested_info.each do |food_name, info_object| %>
+                <h3><%= food_name %></h3>
+                    <% info_object.each_with_index do |info, index| %>
+                    <div class="info_item" id="<%="info_item_#{index}"%>">
+                        <%= render "shared/info_item", :item => info %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% elsif @recent_info %>
+            <% @recent_info.each_with_index do |info, index| %>
+                <div class="info_item" id="<%="info_item_#{index}"%>">
+                    <%= render "shared/info_item", :item => info %>
+                </div>
+            <% end %>
+        <% end %>
+     </div> <!--end of info_items -->
+
+     <div id="control_panel">
+        <% if current_user %>
+            <div id="user_panel">
+                <h3><%= current_user.login_name %></h3>
+                <%= get_avatar(current_user) %>
+                <% if @watching_foods.size > 0 %>
+                    <h3><%= t("home.control_panel.watching_foods") %></h3>
+                    <% @watching_foods.each do |food| %>
+                        <p>
+                          <%= food.name %> <%= get_severity_of_food(food) %>
+                        </p>
+                    <% end %>
+                    <%= link_to t("home.control_panel.more"), "#" %>
+                <% end %>
+                <%= form_tag :action => "watch_foods" do %>
+                    <%= text_field_tag "added_foods" %>
+                    <%= submit_tag t("general.add") %>
+                    <p><%= t("home.control_panel.add_foods_suggestion") %></p>
+                <% end %>
+            </div>
+        <% else %>
+            <div id="login_panel">
+                <h3><%= t("authentication.quick_login")  %></h3>
+                <%= render "shared/quick_login" %>
+            </div>
+        <% end %>
+
+        <div id="foods_buzz">
+          <% if @foods_buzz %>
+              <h3><%= t("home.foods_buzz") %></h3>
+              <% @foods_buzz.each do |category, foods| %>
+                <h4><%= category.name if category %></h4>
+                <% foods.each do |food| %>
+                    <h5><%= food.name %></h5>
+                <% end %>
+                <br/>
+              <% end %>
+          <% end %>
+        </div> <!--end of foods_buzz -->
+    </div> <!--end of control_panel -->
+</div><!--end of two_columns_block -->
+
+
+
 
 
 

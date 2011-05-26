@@ -1,9 +1,14 @@
 zh-CN:
+  site:
+    name: 银筷子
+    description: 关注 食品 食物 安全
+
   general:
     title: 标题
     content: 内容
     name: 名称
     description: 描述
+    comment: 评论
     delete: 删除
     show: 查看
     submit: 完成
@@ -16,6 +21,7 @@ zh-CN:
     disable: 禁用
     lock: 锁定
     unlock: 解锁
+    detail: >详情
     severity_0: 无异常报告
     severity_1: 注意
     severity_2: 警惕
@@ -54,7 +60,10 @@ zh-CN:
     remember_me: "记住我"
 
   menu:
-    my_reviews: 我的评价
+    home: 主页
+    prfile: 个人资料
+    articles: 新闻
+    reviews: 测评
     badges: 徽章
 
   address:
@@ -75,14 +84,18 @@ zh-CN:
     profile_updated_notice: 信息已更新
 
   home:
-    foods_buy_question: "买什么食物呢？"
+    foods_buy_question: "您的餐桌安全吗？"
+    foods_buy_question_description: 瘦肉精，三聚氰胺...食品安全问题层出不穷。为了您和您家人的健康，查查看您身边的食品是否安全。
     vendor_buy_question: "上哪去买呢？"
     multiple_foods_suggestion: "可以同时搜索多个食物，并用空格分开。比如: 西瓜 牛奶"
     foods_search_button: "搜索"
     vendor_search_button: "搜索"
+    foods_buzz: 热门食物
     control_panel:
-      watching_foods: 关注的食物
+      watching_foods: "关注的食物:"
+      more: >更多
       add_foods_to_watch: 添加食物到关注列表
+      add_foods_suggestion: 添加您感兴趣的食物，您身边的食物安全动向早知道。
 
   foods:
     recent_news: 最近关于%{name}的食品安全新闻

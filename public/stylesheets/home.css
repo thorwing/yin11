@@ -1,0 +1,99 @@
+@charset "utf-8";
+/* CSS Document */
+
+#two_columns_block {
+	overflow:hidden;
+	margin-bottom:20px;
+}
+
+/*
+	Search-Block-Style
+*/
+
+#block_search h2 {
+	color:#3B7B3B
+}
+
+
+/*
+	Info-Item-Home-Styles
+*/
+
+#info_items {
+	width:615px;
+	margin-right:25px;
+	float:left;
+}
+.info_item {
+	border:1px solid #a3a09e;
+	margin-bottom:10px;
+	position:relative;
+	padding:2px 3px 1px 3px;
+	background:#FFFFFF;
+    min-height: 140px;
+}
+
+.info_item h3 {
+	color:#000000;
+}
+
+.info_item .interaction_fields { float:right; margin-left:15px; margin-right:5px;}
+.info_item .interaction_fields .thumbnail {display:block;}
+.info_item .interaction_fields a { margin-right: 5px;}
+
+.info_item .vote_fields {
+	float:left;
+	margin-right:10px;
+	text-align:center;
+	min-width:40px;
+}
+
+.info_item .vote_button {
+	display:block;
+}
+
+.info_item span.votes {
+	font-size:18px;
+	font-family:"Comic Sans MS", cursive;
+}
+
+.info_item .truncated_content {
+    margin-left: 50px;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+/*
+	Control-Panel-Styles
+*/
+
+#control_panel {
+	float:right;
+	width:300px;
+	background:#FFFFFF;
+	padding-left:10px;
+	margin-bottom:20px;
+}
+
+/*
+	Add-Foods-Watch-List
+*/
+#control_panel .token-input-list-facebook
+{
+    width:200px;
+}
+#control_panel div.token-input-dropdown-facebook
+{
+    width:200px;
+}
+
+#foods_buzz h4 {
+	display:inline-block;
+	padding-right: 5px;
+	color:#000000;
+}
+
+#foods_buzz h5 {
+	display:inline-block;
+	padding-right: 1px;
+}

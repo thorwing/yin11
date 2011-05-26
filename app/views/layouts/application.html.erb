@@ -1,15 +1,13 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
-  <title>Yin11</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "application", "home", "token-input-facebook" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "jquery.rails.js", "application", "jquery.tokeninput"  %>
   <%= include_tiny_mce_if_needed %>
   <%= csrf_meta_tag %>
+  <title><%= t("site.name") %></title>
 </head>
 <body>
-
-<%= yield %>
 
 <!-- BEGIN :: Notice Board -->
 <div id="notice_board">
@@ -20,6 +18,58 @@
     <% end %>
 </div>
 <!-- //END :: Notice Board -->
+
+<div id="main">
+    <div class="container">
+        <div id="header">
+            <ul id="menu">
+                <li><%= link_to t("menu.home"), root_path %></li>
+                <li><%= link_to t("menu.prfile"), profile_show_path %></li>
+                <li><%= link_to t("menu.articles"), articles_path %></li>
+                <li><%= link_to t("menu.reviews"), reviews_path %></li>
+                <li><%= link_to t("menu.badges"), badges_path %></li>
+            </ul>
+            <div id="logo">
+                <h1><%= t("site.name") %></h1>
+                <small><%= t("site.description") %></small>
+            </div>
+        </div> <!--end of header -->
+
+        <div id="content">
+            <%= yield %>
+        </div> <!--end of content -->
+
+	</div> <!--end of container -->
+</div> <!--end of main -->
+
+<div id="footer">
+    <div class="container">
+
+        <div class="footer_column long">
+            <h3>银筷子</h3>
+            <p>需要进一步使用Photoshop来美化页面。</p>
+        </div>
+
+        <div class="footer_column">
+            <h3>More Links</h3>
+            <ul>
+                <li><a href="http://vectortuts.com">VECTORTUTS</a></li>
+                <li><a href="http://activeden.net">FlashDen</a></li>
+                <li><a href="http://audiojungle.net">AudioJungle</a></li>
+                <li><a href="http://freelanceswitch.com">FreelanceSwitch</a></li>
+                <li><a href="http://faveup.com">FaveUp</a></li>
+            </ul>
+        </div>
+
+        <div class="footer_column">
+            <h3>RSS</h3>
+            <ul>
+                <li><a href="">RSS Feed</a></li>
+                <li><a href="">What is RSS?</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
