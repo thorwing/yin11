@@ -21,7 +21,6 @@ zh-CN:
     disable: 禁用
     lock: 锁定
     unlock: 解锁
-    detail: >详情
     severity_0: 无异常报告
     severity_1: 注意
     severity_2: 警惕
@@ -144,4 +143,11 @@ zh-CN:
     image: 图片
     remote_link: 图片链接
     add_image: 添加图片
+
+  info_items:
+    detail: 详情>>
+    ago: 以前
+    article: 新闻
+    review: 测评
+    tip: 贴士
 

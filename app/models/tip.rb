@@ -1,6 +1,5 @@
 class Tip
   include Mongoid::Document
-  include Mongoid::Timestamps
   include Informative
 
   field :type, :type => Integer, :default => 0

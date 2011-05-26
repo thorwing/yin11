@@ -52,6 +52,13 @@
 	display:block;
 }
 
+.info_item .vote_button.up { background: url(/images/vote_up_button.png) center no-repeat; text-indent:-9999px;}
+.info_item .vote_button.up_voted { background: url(/images/voted_up_button.png) center no-repeat; text-indent:-9999px;}
+.info_item .vote_button.up:hover { background: url(/images/voted_up_button.png) center no-repeat; text-indent:-9999px;}
+.info_item .vote_button.down { background: url(/images/vote_down_button.png) center no-repeat; text-indent:-9999px;}
+.info_item .vote_button.down_voted { background: url(/images/voted_down_button.png) center no-repeat; text-indent:-9999px;}
+.info_item .vote_button.down:hover { background: url(/images/voted_down_button.png) center no-repeat; text-indent:-9999px;}
+
 .info_item span.votes {
 	font-size:18px;
 	font-family:"Comic Sans MS", cursive;
@@ -59,8 +66,6 @@
 
 .info_item .truncated_content {
     margin-left: 50px;
-    max-height: 200px;
-    overflow: hidden;
 }
 
 /*

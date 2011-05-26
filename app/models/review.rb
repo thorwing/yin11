@@ -1,6 +1,5 @@
 class Review
   include Mongoid::Document
-  include Mongoid::Timestamps
   include AssociatedModels
   include Informative
 

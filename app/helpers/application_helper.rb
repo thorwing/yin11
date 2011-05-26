@@ -64,4 +64,27 @@ module ApplicationHelper
     end.join.html_safe
   end
 
+  def truncate_content(item, length)
+    text = strip_tags(item.content)
+    if length < text.size
+      content_tag(:span, text[0..length] + "...")
+    else
+      text
+    end
+  end
+
+  def get_clues_of_item(item)
+    result = []
+    result << link_to(t("info_items.#{item.class.name.downcase}"), item.class.name.downcase.pluralize )
+
+    if item.is_a?(Article)
+      (result << t("articles.source") + ": " + item.source) if item.source.present?
+      (result << item.cities[0].name) if item.cities.size > 0
+      item.foods.each do |food|
+        result << link_to(food.name, foods_path(:foods => food.name))
+      end
+    end
+
+    result
+  end
 end

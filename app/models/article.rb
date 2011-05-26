@@ -1,6 +1,5 @@
 class Article
   include Mongoid::Document
-  include Mongoid::Timestamps
   include AssociatedModels
   include Available
   include Informative

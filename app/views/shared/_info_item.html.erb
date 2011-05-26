@@ -1,7 +1,13 @@
 <div class="vote_fields">
-    <%= link_to "up", home_vote_path(:id => item.id, :type => item.class.name, :delta => 1), :method => :put, :class => "vote_button" if has_permission?(:user) %>
-    <span class="votes"><%= item.votes %></span>
-    <%= link_to "down", home_vote_path(:id => item.id, :type => item.class.name, :delta => -1), :method => :put, :class => "vote_button" if has_permission?(:user)  %>
+    <% if has_permission?(:user) %>
+        <%= link_to "up", home_vote_path(:id => item.id, :type => item.class.name, :delta => 1), :method => :put,
+                    :class => item.fan_ids.include?(current_user.id) ? "vote_button up_voted" : "vote_button up" %>
+        <span class="votes"><%= item.votes %></span>
+        <%= link_to "down", home_vote_path(:id => item.id, :type => item.class.name, :delta => -1), :method => :put,
+                    :class => item.hater_ids.include?(current_user.id) ? "vote_button down_voted" : "vote_button down"  %>
+    <% else %>
+        <span class="votes"><%= item.votes %></span>
+    <% end %>
 </div>
 <div class="interaction_fields">
     <img src="http://flickholdr.com/100/100/bread" class="thumbnail" alt="PSDTUTS" />
@@ -9,10 +15,13 @@
     <%= item.comments.size %> comments
 </div>
 <h3><%= link_to item.title, item %></h3>
-<small>新闻</small>
-<small>|来源：新浪|上海|牛肉|2011-05-17 8:27</small>
+
+<% clues = get_clues_of_item(item); clues.each_with_index do |clue, index| %>
+    <%= content_tag(:small, clue) %> <%= "|" if index < clues.size - 1 %>
+<% end %>
 <div class="truncated_content">
-  <span class="truncated"><%= strip_tags(item.content) %></span>
-  <%= link_to t("general.detail"), item %>
+  <%= truncate_content(item, 100) %>
+  <%= link_to(t("info_items.detail"), item)  %>
+  <%= distance_of_time_in_words(item.updated_at, Time.now) %><%= t("info_items.ago") %>
 </div>
 

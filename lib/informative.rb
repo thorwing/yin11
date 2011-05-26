@@ -1,6 +1,7 @@
 module Informative
   def self.included(base)
     base.class_eval do
+      include Mongoid::Timestamps
       field :title
       field :content
 
