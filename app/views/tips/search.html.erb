@@ -1,6 +1,6 @@
 <div id="search_results">
     <% if @exact_match %>
-      <%= render "shared/info_item", :item => @exact_match %>
+        <%= render "shared/info_item", :item => @exact_match %>
     <% else %>
         <%= t("tips.exact_tip_not_found", :title => params[:search]) %>
         <%= t("tips.please_create") %><br/>

@@ -59,25 +59,26 @@ Feature: smoke tests for Reviews
     When I follow "up" within ".info_item"
     Then I should see "1" within ".info_item"
 
+  @focus
   Scenario:  User can comment on a review, comments can be nested.
     When I log in as "David User"
     And I post a sample review
 
     When I log in as "Kate Tester"
+
     Then I should see "买到烂西瓜"
-    When I follow "查看" within ".info_item"
+    When I follow "买到烂西瓜"
     And I fill in "content" with "很有用的评价" within ".new_comment"
     And I press "添加"
     And I go to the home page
-    Then I should see "1 comments" within ".info_item"
+    Then I should see "1 comments"
 
     When I log in as "David User"
-    When I follow "查看" within ".info_item"
-    And I follow "Reply"
+    When I follow "买到烂西瓜"
     And I fill in "content" with "谢谢" within ".new_comment"
     And I press "添加"
     And I go to the home page
-    Then I should see "2 comments" within ".info_item"
+    Then I should see "2 comments"
 
   Scenario:  Repeat the above steps for tech-review
 

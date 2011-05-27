@@ -31,6 +31,7 @@
 	padding:2px 3px 1px 3px;
 	background:#FFFFFF;
     min-height: 140px;
+    width:600px;
 }
 
 .info_item h3 {
@@ -62,6 +63,10 @@
 .info_item span.votes {
 	font-size:18px;
 	font-family:"Comic Sans MS", cursive;
+}
+
+.info_item .clues {
+    margin-left: 50px;
 }
 
 .info_item .truncated_content {

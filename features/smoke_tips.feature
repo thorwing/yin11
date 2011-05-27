@@ -70,7 +70,7 @@ Feature: smoke tests for Tips
     When I log in as "Kate Tester"
     When I go to the tips page
     And I should see "辨别西瓜是否含有催熟剂" within ".info_item"
-    And I follow "查看" within ".info_item"
+    And I follow "辨别西瓜是否含有催熟剂" within ".info_item"
     And I follow "编辑"
 
     And I fill in "tip_content" with "随便改改,恶作剧，字数补丁。"

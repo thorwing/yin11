@@ -8,7 +8,7 @@ Feature: general usage
 
   Scenario: Guest can visit the entry page
     Given I go to the home page
-    Then I should see "买什么食物呢？"
+    Then I should see "您的餐桌安全吗？"
     And I should see "可以同时搜索多个食物，并用空格分开。比如: 西瓜 牛奶"
     And I should see "快速登录"
 
@@ -27,7 +27,7 @@ Feature: general usage
     When I log out
     And I go to the home page
     And I fill in "foods" with "西瓜"
-    And I press "搜索" within "#foods_search"
+    And I press "搜索" within "#block_search"
     Then I should see "买到烂西瓜" within "div.food_reviews"
 
   Scenario: Editor can post a news and that news will be rendered to others
@@ -65,11 +65,11 @@ Feature: general usage
     When I log in as "David User"
     And I post a sample review
     And I go to the home page
-    And I fill in "added_foods" with "西瓜,牛奶" within "#foods_watch_list"
-    And I press "添加" within "#foods_watch_list"
-    Then I should see "西瓜" within "#foods_watch_list"
-    And I should see "牛奶" within "#foods_watch_list"
-    And I should see "注意" within "#foods_watch_list"
+    And I fill in "added_foods" with "西瓜,牛奶" within "#control_panel"
+    And I press "添加" within "#control_panel"
+    Then I should see "西瓜" within "#control_panel"
+    And I should see "牛奶" within "#control_panel"
+    And I should see "注意" within "#control_panel"
 
   Scenario: I should see popular foods' categories on home page
     When I log in as "David User"
