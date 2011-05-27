@@ -8,7 +8,6 @@ zh-CN:
     content: 内容
     name: 名称
     description: 描述
-    comment: 评论
     delete: 删除
     show: 查看
     submit: 完成
@@ -17,6 +16,7 @@ zh-CN:
     edit: 编辑
     add: 添加
     new: 新建
+    back: 返回
     enable: 启用
     disable: 禁用
     lock: 锁定
@@ -111,20 +111,24 @@ zh-CN:
 
   reviews:
     post_new_review: 发表新测评
-    new_review: 新测评
+    new_review: 我要写测评
     add_new_checkpoint: 添加检查点
     title_review: 报告
     title_the: 的
     only_author_self_notice: 只有作者才可以执行此操作
 
   comments:
-    post: 添加
+    comments: "评论:"
+    post: 添加评论
+    reply: 回复
 
   articles:
     source: 来源
     post_new_article: 发表新文章
     new_article: 新文章
     post: 发表
+    involved_foods: 涉及食物
+    involved_cities: 城市
     article_posted_notice: 文章已发布
 
   tips:
@@ -140,6 +144,7 @@ zh-CN:
     exam_tip: "食物测评贴士: <%{title}>"
 
   images:
+    images: 图片
     image: 图片
     remote_link: 图片链接
     add_image: 添加图片
@@ -150,4 +155,5 @@ zh-CN:
     article: 新闻
     review: 测评
     tip: 贴士
+    add_comment: +评论
 

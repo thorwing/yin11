@@ -1,36 +1,29 @@
 @charset "utf-8";
 /* CSS Document */
 
-#two_columns_block {
-	overflow:hidden;
+.two_columns_container {
 	margin-bottom:20px;
+    margin: 0 auto; /* 侧边的自动值与宽度结合使用，可以将布局居中对齐 */
+	overflow: hidden; /* 此声明可使 .container 了解其内部浮动列的结束位置以及包含列的位置 */
 }
-
-/*
-	Search-Block-Style
-*/
-
-#block_search h2 {
-	color:#3B7B3B
-}
-
 
 /*
 	Info-Item-Home-Styles
 */
 
 #info_items {
-	width:615px;
-	margin-right:25px;
+	width:600px;
+	padding-right:10px;
+    border-right:1px solid #dbdbdb;
 	float:left;
 }
 .info_item {
-	border:1px solid #a3a09e;
+	border-top:1px solid #dbdbdb;
 	margin-bottom:10px;
 	position:relative;
 	padding:2px 3px 1px 3px;
 	background:#FFFFFF;
-    min-height: 140px;
+    min-height: 120px;
     width:600px;
 }
 
@@ -82,7 +75,12 @@
 	width:300px;
 	background:#FFFFFF;
 	padding-left:10px;
-	margin-bottom:20px;
+}
+
+#control_panel .sub_panel {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+	border-top:1px solid #dbdbdb;
 }
 
 /*

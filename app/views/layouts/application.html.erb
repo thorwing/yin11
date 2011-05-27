@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-  <%= stylesheet_link_tag "application", "home", "token-input-facebook" %>
+  <%= stylesheet_link_tag "application", "home", "content", "comment", "token-input-facebook" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "jquery.rails.js", "application", "jquery.tokeninput"  %>
   <%= include_tiny_mce_if_needed %>
   <%= csrf_meta_tag %>
@@ -35,7 +35,7 @@
             </div>
         </div> <!--end of header -->
 
-        <div id="content">
+        <div id="content_block" class="block">
             <%= yield %>
         </div> <!--end of content -->
 

@@ -12,8 +12,7 @@
     </div>
     <div class="interaction_fields">
         <img src="http://flickholdr.com/100/100/bread" class="thumbnail" alt="PSDTUTS" />
-        <%= link_to t("general.comment"), home_new_comment_path(:id => item.id, :type => item.class.name), :class => "button" %>
-        <%= item.comments.size %> comments
+        <%= link_to t("info_items.add_comment") + "(#{item.comments.size})", home_new_comment_path(:id => item.id, :type => item.class.name)%>
     </div>
     <h3><%= link_to item.title, item %></h3>
     <div class="clues">

@@ -3,10 +3,7 @@
       <%= hidden_field_tag :id, item.id %>
       <%= hidden_field_tag :type, item.class.name %>
       <%= hidden_field_tag :parent_comment_id, params[:parent_comment_id]%>
-      <p>
-        <%= label_tag :content, "New Comment" %><br />
-        <%= text_area_tag :content, "", :maxlength => 140, :rows => 8 %>
-      </p>
-      <p><%= submit_tag t("comments.post") %></p>
+      <p><%= text_area_tag :content, "", :maxlength => 140, :rows => 8 %></p>
+      <p><%= submit_tag t("comments.post"), :class => "button" %></p>
     <% end %>
 </div>

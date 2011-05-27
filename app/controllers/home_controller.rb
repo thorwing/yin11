@@ -100,6 +100,7 @@ class HomeController < ApplicationController
       new_comment = parent_comment.children.build(:content => params[:content], :user_id => current_user.id)
       #parent_comment.children.create(:content => params[:content], :user_id => current_user.id)
       item.comments << new_comment
+      #item.comments << Comment.create(:content => params[:content], :user_id => current_user.id, :parent_id => parent_comment.id)
     else
       item.comments ||= []
       item.comments << Comment.new(:content => params[:content], :user_id => current_user.id)

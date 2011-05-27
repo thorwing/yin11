@@ -1,25 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="content_block_inside">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @review.title %>
-</p>
+    <p>
+      <b>Title:</b>
+      <%= @review.title %>
+    </p>
 
-<p>
-  <b>Content:</b>
-  <%= @review.content %>
-</p>
+    <p>
+      <b>Content:</b>
+      <%= @review.content %>
+    </p>
 
-<p>
-  <%= "severity:" + @review.severity.to_s %>
-</p>
+    <p>
+      <%= "severity:" + @review.severity.to_s %>
+    </p>
 
-<%= link_to t("general.edit"), edit_review_path(@review) %> |
-<%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete %>
-<%= link_to 'Back', reviews_path %>
+    <%= link_to t("general.edit"), edit_review_path(@review) %> |
+    <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete %>
+    <%= link_to 'Back', reviews_path %>
 
-<p>Comments:</p>
-<%= nested_comments(@review, @review.comments.arrange(:order => :created_at)) %>
-<div class="new_comment">
-    <%= render "shared/new_comment", :item => @review %>
+    <p>Comments:</p>
+    <%= nested_comments(@review, @review.comments.arrange(:order => :created_at)) %>
+    <div class="new_comment">
+        <%= render "shared/new_comment", :item => @review %>
+    </div>
 </div>

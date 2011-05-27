@@ -5,7 +5,7 @@ body {
 	margin:0px;
 	padding:0px;
 	background-color:#3B7B3B;
-	color:#72706B;
+	color: #333230;
 	font-size:12px;
 	line-height:19px;
 }
@@ -17,6 +17,7 @@ body {
 h2 {
 	margin:0px 0px 10px 0px;
 	font-size:24px;
+    color:#3B7B3B;
 }
 h3 {
 	margin:5px 0px 10px 0px;
@@ -44,9 +45,9 @@ a {
 a:hover { text-decoration:underline; }
 p { margin: 0px 0px 15px 0px; }
 
-a.button {
-	background:#3B7B3B url(/images/button_bg_o.jpg) repeat-x;
-	padding:5px 10px 5px 10px;
+a.button, input.button {
+	background:#007de2 url(/images/button_bg_o.jpg) repeat-x;
+	padding:3px 6px 3px 6px;
 	color: #ffffff;
 	text-decoration: none;
 	border:1px solid #32312f;
@@ -54,9 +55,13 @@ a.button {
 	font-size:12px;
 	line-height:25px;
 }
-a.button:hover {
-	background:#007de2 url(/images/button_bg.jpg) repeat-x;
+a.button:hover, input.button:hover {
+	background:#3B7B3B  url(/images/button_bg.jpg) repeat-x;
 	border-color:#007de2;
+}
+
+span.trivial {
+    color:#dbdbdb;
 }
 
 /*
@@ -70,6 +75,7 @@ a.button:hover {
 	background-image:url(/images/background_light.jpg);
 	background-repeat:no-repeat;
 	min-height:400px;
+    padding-bottom: 2px;
 }
 
 #footer {
@@ -130,7 +136,7 @@ ul#menu li a.active, ul#menu li a:hover {
 .block {
 	border:1px solid #a3a09e;
 	background-color:#ffffff;
-	margin-bottom:20px;
+	margin-bottom:10px;
 	position:relative;
 }
 .block_inside {
@@ -185,17 +191,4 @@ ul#menu li a.active, ul#menu li a:hover {
 	list-style:none;
 	margin:0px;
 	padding:0px;
-}
-
-
-/*
-	Comments-Styles
-*/
-
-.nested_comments {
-  margin-left: 30px;
-}
-
-.nested_comments .nested_comments .nested_comments .nested_comments {
-  margin-left: 0;
 }

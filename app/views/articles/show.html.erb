@@ -1,50 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="content_block_inside">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @article.title %>
-</p>
+    <h3><%= @article.title %></h3>
+    <small><%= t("articles.source") %>: <%= @article.source %></small>
+    <br/>
+    <small>
+      <%= t("articles.involved_cities") %>:
+      <% @article.cities.each_with_index do |city, index| %>
+        <%= city.name %><%= "|" if index < @article.cities.size - 1 %>
+      <% end %>
+    </small>
+    <br/>
+    <small>
+      <%= t("articles.involved_foods") %>:
+      <% @article.foods.each_with_index do |food, index| %>
+        <%= food.name %><%= "|" if index < @article.foods.size - 1 %>
+      <% end %>
+    </small>
+    <br/>
+    <p>
+      <%= raw @article.content %>
+    </p>
+    <p>
+      <b><%= t("images.images") %>(<%= @article.images.size%>):</b>
 
-<p>
-  <b>Source:</b>
-  <%= @article.source %>
-</p>
+      <% @article.images.each do |image| %>
+        <p><%= get_image(image) %></p>
+        <p><%= image.description %></p>
+      <% end %>
+    </p>
 
-<p>
-  <b>Content:</b>
-  <%= raw @article.content %>
-</p>
-<p>
-  <b>Foods:</b>
-  <% @article.foods.each do |food| %>
-    <p><%= food.name %></p>
-  <% end %>
-</p>
-<p>
-  <b>Cities:</b>
-  <% @article.cities.each do |city| %>
-    <p><%= city.name %></p>
-  <% end %>
-</p>
+    <small><%= t("comments.comments") %></small><br/>
+    <%= nested_comments(@article, @article.comments.arrange(:order => :created_at)) %>
+    <div class="new_comment">
+        <%= render "shared/new_comment", :item => @article %>
+    </div>
 
-<p>
-  <b>Images(<%= @article.images.size%>):</b>
-
-  <% @article.images.each do |image| %>
-    <p><%= get_image(image) %></p>
-    <p><%= image.description %></p>
-  <% end %>
-</p>
-
-<p>Comments:</p>
-<%= nested_comments(@article, @article.comments.arrange(:order => :created_at)) %>
-<div class="new_comment">
-    <%= render "shared/new_comment", :item => @article %>
+    <% if has_permission?(:editor) %>
+        <%= link_to t("general.edit"), edit_article_path(@article), :class => "button" %> |
+    <% end %>
 </div>
-
-<% if has_permission?(:editor) %>
-    <%= link_to t("general.edit"), edit_article_path(@article), :class => "button" %>
-<% end %>
-<%= link_to 'Back', articles_path, :class => "button" %>
-
 
