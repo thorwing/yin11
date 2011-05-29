@@ -25,7 +25,7 @@ class Review
 
   tokenize_one :food, :vendor
 
-  attr_accessible :severity, :vendor_name, :vendor_city, :vendor_street
+  attr_accessible :severity, :vendor_name, :vendor_city, :vendor_street, :checkpoints_attributes
 
   #Validators
   #validates_presence_of :food_id

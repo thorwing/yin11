@@ -14,7 +14,7 @@ div .tab_control .tab_header{
     float:left;
     clear:both;
     width:100%;
-    background:#DAE0D2 url("/images/bg.gif")
+    background:#DAE0D2 url("/images/tab_control/bg.gif")
           repeat-x bottom;
     font-size:93%;
     line-height:normal;
@@ -30,23 +30,23 @@ div .tab_control .tab_header li{
     float:left;
     margin:0;
     padding:0 0 0 9px;
-    background:url("/images/norm_right.gif") no-repeat right top;
+    background:url("/images/tab_control/norm_right.gif") no-repeat right top;
  }
 
 div .tab_control .tab_header a{
     float:left;
     display:block;
-    background:url("/images/norm_left.gif")
+    background:url("/images/tab_control/norm_left.gif")
           no-repeat left top;
     padding:5px 15px 4px 6px;
  }
 
 div .tab_control .tab_header .tab_item.active {
-    background-image:url("/images/norm_right_on.gif");
+    background-image:url("/images/tab_control/norm_right_on.gif");
 }
 
 div .tab_control .tab_header .tab_item.active a {
-    background-image:url("/images/norm_left_on.gif");
+    background-image:url("/images/tab_control/norm_left_on.gif");
     padding-bottom:5px;
 }
 

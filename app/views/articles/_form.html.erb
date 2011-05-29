@@ -32,9 +32,7 @@
     <%= render "image_fields", :f => builder %>
   <% end %>
 
-  <div class=".add_new_field">
-    <%= link_to_add_fields  t("images.add_image"), f, :images %>
-</div>
+  <%= link_to_add_fields  t("images.add_image"), f, :images %>
 
   <div class="actions">
     <%= f.submit t("articles.post") %>

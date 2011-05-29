@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+div.fields_group {
+    border: 1px solid gray;
+    margin: 5px 0 5px 0
+}
+
+
+
+.fancy_check {
+    background-position: 0px 0px;
+    background-image: url("/images/good_thumb.png");
+    background-repeat: no-repeat;
+}

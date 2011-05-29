@@ -13,6 +13,7 @@ class TipsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tips }
+      format.json { render :json => Tip.all.map { |t| {:id => t.id, :name => t.title} } }
     end
   end
 
