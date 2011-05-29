@@ -1,27 +1,18 @@
 <div class="content_block_inside">
-    <p id="notice"><%= notice %></p>
+    <h2><%= @review.title %></h2>
+    <p><%= raw @review.content %></p>
 
     <p>
-      <b>Title:</b>
-      <%= @review.title %>
+      <%= t("reviews.severity") + ": " + t("reviews.severity_#{@review.severity}")%>
+      <%= image_tag "severity_#{@review.severity}_small.png" %>
     </p>
 
-    <p>
-      <b>Content:</b>
-      <%= @review.content %>
-    </p>
-
-    <p>
-      <%= "severity:" + @review.severity.to_s %>
-    </p>
-
-    <%= link_to t("general.edit"), edit_review_path(@review) %> |
-    <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete %>
-    <%= link_to 'Back', reviews_path %>
-
-    <p>Comments:</p>
+    <h3><%= t("comments.comments") %></h3>
     <%= nested_comments(@review, @review.comments.arrange(:order => :created_at)) %>
     <div class="new_comment">
         <%= render "shared/new_comment", :item => @review %>
     </div>
+
+    <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>
+    <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
 </div>

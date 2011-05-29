@@ -27,13 +27,17 @@ zh-CN:
     severity_3: 严重
     are_you_sure_to_delete: 确定要删除吗？
 
+  sub_titles:
+    new_review: 新测评
+    edit_review: 编辑测评
+
   validations:
     general:
       presence_msg: %{field}不能为空
       uniqueness_msg: 相同的%{field}已存在
       max_length_msg: %{field}不能超过%{max}个字符
       min_length_msg: %{field}不能少于%{min}个字符
-      length_msg: %{field}长度必须介于%{min}和%{min}个字符之间
+      length_msg: %{field}长度必须介于%{min}和%{max}个字符之间
 
 
   authentication:
@@ -97,6 +101,7 @@ zh-CN:
       add_foods_suggestion: 添加您感兴趣的食物，您身边的食物安全动向早知道。
 
   foods:
+    foods: 食物
     recent_news: 最近关于%{name}的食品安全新闻
     safty_indicator: 食物安全风向标
     recent_exams: 最近对于%{name}的评论
@@ -105,16 +110,25 @@ zh-CN:
     add_to_watch_list: 把%{name}收藏到<我的菜单>
 
   vendors:
+    vendor: 商户
+    non_existed_vendor: 商户未创建?
     exact_vendor_not_found: 没有找到名为<%{name}>的商户
     please_create: "欢迎您创建:"
     normal_vendor: "商户: <%{name}>"
 
   reviews:
     post_new_review: 发表新测评
+    edit_review: 编辑 <%{title}>
     new_review: 我要写测评
     add_new_checkpoint: 添加检查点
     title_review: 报告
     title_the: 的
+    severity: 严重程度
+    severity_0: 安全
+    severity_1: 注意
+    severity_2: 警惕
+    severity_3: 严重
+
     only_author_self_notice: 只有作者才可以执行此操作
 
   comments:

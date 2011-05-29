@@ -15,16 +15,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :food_tokens %><br />
+    <%= f.label t("foods.foods") %><br />
     <%= f.text_field :food_tokens, 'data-pre' => (f.object.foods.map { |fo| { :id => fo.id, :name => fo.name }}).to_json %>
   </div>
   <div class="field">
-    <%= f.label :city_tokens %><br />
+    <%= f.label t("address.city") %><br />
     <%= f.text_field :city_tokens, 'data-pre' => (f.object.cities.map { |c| { :id => c.id, :name => c.name }}).to_json %>
   </div>
 
   <div class="field">
-    <%= f.label :vendor_token %><br />
+    <%= f.label t("vendors.vendor") %><br />
     <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
   </div>
 

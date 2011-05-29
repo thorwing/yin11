@@ -1,6 +1,6 @@
-<h1>Editing review</h1>
+<div class="content_block_inside">
+    <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @review %> |
-<%= link_to 'Back', reviews_path %>
+    <%= link_to t("general.show"), @review, :class => "button" %> |
+    <%= link_to t("general.back"), reviews_path, :class => "button" %>
+</div>

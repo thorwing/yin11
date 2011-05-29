@@ -1,53 +1,69 @@
 <%= form_for(@review) do |f| %>
   <%= render "shared/error_messages", :target => @review %>
-
   <div class="field">
-    <%= f.label :food_token %><br />
-    <%= f.text_field :food_token, 'data-pre' => (f.object.food ? [{ :id => f.object.food.id, :name => f.object.food.name }] : []).to_json %>
-  </div>
-
-  <div id="associated_vendor">
-    <b><%= f.label :vendor_token %></b>
-    <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
-  </div>
-
-  <div id="new_vendor">
-      <b>New vendor</b>
-      <div class="field">
-        <%= f.label "city" %><br />
-        <%= f.select :vendor_city, options_for_select(get_cities_for_select, @review.vendor_city)%>
-      </div>
-      <div class="field">
-        <%= f.label "street" %><br />
-        <%= f.text_field :vendor_street %>
-      </div>
-      <div class="field">
-        <%= f.label "name" %><br />
-        <%= f.text_field :vendor_name %>
-      </div>
-  </div>
-
-  <div class="field">
-    <%= f.label :severity %><br />
-    <%= f.radio_button(:severity, 0) %>
-    <%= "pass" %>
-    <%= f.radio_button(:severity, 1) %>
-    <%= "fails_1" %>
-    <%= f.radio_button(:severity, 2) %>
-    <%= "fails_2" %>
-    <%= f.radio_button(:severity, 3) %>
-    <%= "fails_3" %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, t("general.title") %><%= mark_required(@review, :title) %><br/>
     <%= f.text_field :title, :maxlength => 20 %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, :maxlength => 10000, :rows => 5 %>
+    <%= f.label :content, t("general.content") %><%= mark_required(@review, :content) %><%= mark_required_length(@review, :content) %><br/>
+    <%= f.text_area :content, :class => "mceEditor", :maxlength => 10000 %>
   </div>
 
+  <div class="field">
+    <%= f.label :food_token, t("foods.foods") %><br />
+    <%= f.text_field :food_token, 'data-pre' => (f.object.food ? [{ :id => f.object.food.id, :name => f.object.food.name }] : []).to_json %>
+  </div>
+
+  <% tab_control do %>
+    <div class="tab_header">
+    <ul>
+        <%= local_tab_page( t("vendors.vendor"), true) do %>
+            <div id="field">
+                <%= f.label :vendor_token, t("vendors.vendor") %>
+                <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
+            </div>
+        <% end %>
+        <%= local_tab_page( t("vendors.non_existed_vendor")) do %>
+            <div id="new_vendor">
+                <b>New vendor</b>
+                <div class="field">
+                <%= f.label "city" %><br />
+                <%= f.select :vendor_city, options_for_select(get_cities_for_select, @review.vendor_city)%>
+                </div>
+                <div class="field">
+                <%= f.label "street" %><br />
+                <%= f.text_field :vendor_street %>
+                </div>
+                <div class="field">
+                <%= f.label "name" %><br />
+                <%= f.text_field :vendor_name %>
+                </div>
+            </div>
+        <% end %>
+    </ul>
+    </div>
+    <% tab_content do %>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :severity, t("reviews.severity") %><br />
+    <%= f.radio_button(:severity, 0) %>
+    <%= t("reviews.severity_0") %>
+    <%= image_tag "severity_0_small.png" %>
+    <%= f.radio_button(:severity, 1) %>
+    <%= t("reviews.severity_1") %>
+    <%= image_tag "severity_1_small.png" %>
+    <%= f.radio_button(:severity, 2) %>
+    <%= t("reviews.severity_2") %>
+    <%= image_tag "severity_2_small.png" %>
+    <%= f.radio_button(:severity, 3) %>
+    <%= t("reviews.severity_3") %>
+    <%= image_tag "severity_3_small.png" %>
+  </div>
+
+
   <div class="actions">
-    <%= f.submit t("general.submit") %>
+    <%= f.submit t("general.submit"), :class => "button" %>
   </div>
 <% end %>

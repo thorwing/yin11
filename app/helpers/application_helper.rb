@@ -3,6 +3,15 @@ module ApplicationHelper
     "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
 
+  def mark_required_length(object, attribute)
+    validators = object.class.validators_on(attribute).select{ |v| v.class == ActiveModel::Validations::LengthValidator }
+    if validators.size > 0
+      content_tag(:span, "(" + validators[0].options[:message] + ")", :class => "trivial")
+    else
+      ""
+    end
+  end
+
   def link_to_add_fields(name, f, association)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
@@ -72,6 +81,35 @@ module ApplicationHelper
       text
     end
   end
+
+  ### for tab control
+  def tab_control(&block)
+    content_tag(:div, :class => "tab_control", &block )
+  end
+
+  def tab_page (name, options= {})
+    link_to_unless_current(name, options, :class => "tab_header" ) do
+      content_tag(:span, name, :class => "tab_highlighted_header")
+    end
+  end
+
+  def remote_tab_page (name, options={})
+    link_to_unless_current(name, options, :class => "tab_header", :remote => true ) do
+      content_tag(:span, name, :class => "tab_highlighted_header")
+    end
+  end
+
+  def local_tab_page (name, active = false, &block)
+    content = content_tag(:div, name, :class => "tab_content" , &block)
+    @active_tab_content = content if active
+    content_tag(:li, link_to_function(name, "show_tab_content(this, \"#{escape_javascript(content)}\")"), :class => active ? "tab_item active" :"tab_item")
+  end
+
+  def tab_content(&block)
+    @active_tab_content ? @active_tab_content : content_tag(:div, :class => "tab_content", &block)
+  end
+
+  ### end for tab control
 
   def get_clues_of_item(item)
     result = []

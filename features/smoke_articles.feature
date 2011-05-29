@@ -1,3 +1,5 @@
+#encoding utf-8
+
 Feature: smoke tests for Articles
   Only Editor and Admin can create new articles.
   Only Editor and Admin can edit articles.
@@ -73,7 +75,7 @@ Feature: smoke tests for Articles
     Then I should see "Images(1):"
     And I should see "Rails标志"
 
-  Scenario: User can vote fro a article.
+  Scenario: User can vote for a article.
     Given the following article exists:
       | title            | content                            | food_tokens |
       | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
@@ -94,11 +96,11 @@ Feature: smoke tests for Articles
     And I fill in "content" with "很有用的评价" within ".new_comment"
     And I press "添加"
     And I go to the home page
-    Then I should see "1 comments" within ".info_item"
+    Then I should see "评论(1)" within ".info_item"
 
     When I log in as "David User"
     When I follow "西瓜被打了催熟剂" within ".info_item"
     And I fill in "content" with "谢谢" within ".new_comment"
     And I press "添加"
     And I go to the home page
-    Then I should see "2 comments" within ".info_item"
+    Then I should see "评论(2)" within ".info_item"

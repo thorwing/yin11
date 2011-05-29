@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :user }
   before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
+  uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
 
   # GET /reviews
   # GET /reviews.xml
@@ -29,6 +30,8 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
 
+    @sub_title = t("sub_titles.new_review")
+
 #    1.times do
 #      @review.checkpoints.build(:title => "sample")
 #    end
@@ -42,6 +45,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
+
+    @sub_title = t("sub_titles.edit_review")
   end
 
   # POST /reviews

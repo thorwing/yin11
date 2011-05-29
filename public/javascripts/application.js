@@ -11,6 +11,12 @@ function remove_fields(link) {
   $(link).parent().hide();
 }
 
+function show_tab_content(link, content) {
+  $(link).parents(".tab_header").find(".active").removeClass("active");
+  $(link).parent().addClass("active");
+  $(link).parents(".tab_control").children("div.tab_content").replaceWith(content);
+}
+
 $(function() {
     function tokenize_input(element_selector, data_source, tokenLimit) {
     $(element_selector).tokenInput(data_source, {

@@ -71,16 +71,29 @@ Feature: smoke tests for Reviews
     And I fill in "content" with "很有用的评价" within ".new_comment"
     And I press "添加"
     And I go to the home page
-    Then I should see "1 comments"
+    Then I should see "评论(1)"
 
     When I log in as "David User"
     When I follow "买到烂西瓜"
     And I fill in "content" with "谢谢" within ".new_comment"
     And I press "添加"
     And I go to the home page
-    Then I should see "2 comments"
+    Then I should see "评论(2)"
 
+  @focus
   Scenario:  Repeat the above steps for tech-review
+    Given the following tips exists:
+    | title          | content                          |
+    | 瘦肉精猪肉目测 | 看肉质是否松散，按一下看是否出水 |
+
+    When I log in as "David User"
+    And I follow "我要写测评"
+    And I follow "添加一个检查点"
+    And I fill in "check_point_tip" with "瘦肉精猪肉目测"
+    And I check "check_point_failed"
+    And I fill in "review_title" with "买到打了瘦肉精的猪肉"
+    And I fill in "review_content" with "根据测试项目，今天买到打了瘦肉精的猪肉。"
+    And I press "发表"
 
 
 

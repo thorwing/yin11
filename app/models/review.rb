@@ -19,6 +19,9 @@ class Review
   belongs_to :food
   belongs_to :vendor
   belongs_to :author, :class_name => "User"
+  embeds_many :checkpoints
+
+  accepts_nested_attributes_for :checkpoints, :allow_destroy => true
 
   tokenize_one :food, :vendor
 

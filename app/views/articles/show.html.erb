@@ -31,6 +31,7 @@
     </p>
 
     <small><%= t("comments.comments") %></small><br/>
+  <%= debug @article.comments.arrange %>
     <%= nested_comments(@article, @article.comments.arrange(:order => :created_at)) %>
     <div class="new_comment">
         <%= render "shared/new_comment", :item => @article %>

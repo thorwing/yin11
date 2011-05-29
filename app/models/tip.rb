@@ -11,7 +11,7 @@ class Tip
   has_and_belongs_to_many :tags
 
   validates_uniqueness_of :title, :message => I18n.translate("validations.general.uniqueness_msg", :field => I18n.translate("general.name"))
-  validates_inclusion_of :type, :in => 1..2
+  #validates_inclusion_of :type, :in => 1..2
 
   HANDLE_TIP = 1
   EXAM_TIP =  2

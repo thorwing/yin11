@@ -1,21 +1,21 @@
 <!DOCTYPE>
 <html>
 <head>
-  <%= stylesheet_link_tag "application", "home", "content", "comment", "token-input-facebook" %>
+  <%= stylesheet_link_tag "application", "home", "content", "comment", "tab_control", "token-input-facebook" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "jquery.rails.js", "application", "jquery.tokeninput"  %>
   <%= include_tiny_mce_if_needed %>
   <%= csrf_meta_tag %>
-  <title><%= t("site.name") %></title>
+  <title><%= t("site.name") %><%= ": #{@sub_title}" if @sub_title.present? %></title>
 </head>
 <body>
 
 <!-- BEGIN :: Notice Board -->
 <div id="notice_board">
-    <% flash.each do |name, msg| %>
-        <%= content_tag :div, :class => "flash_#{name}" do -%>
-            <%= msg %>
-        <% end -%>
-    <% end %>
+   <% flash.each do |name, msg| %>
+       <%= content_tag :div, :class => "flash_#{name}" do -%>
+           <%= msg %>
+       <% end -%>
+   <% end %>
 </div>
 <!-- //END :: Notice Board -->
 
