@@ -16,7 +16,6 @@ class Article
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :foods
   has_many :images
-
   tokenize_many :cities, :foods
   tokenize_one :vendor
 

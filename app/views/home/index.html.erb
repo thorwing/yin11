@@ -9,8 +9,8 @@
             <p><%= t("home.foods_buy_question_description") %></p>
             <%= form_tag '/foods', :method => :get do %>
                     <%= text_field_tag :foods %>
-                    <%= submit_tag t("home.foods_search_button") %><br/>
-                    <p><%= t("home.multiple_foods_suggestion")  %></p>
+                    <%= submit_tag t("home.foods_search_button"), :class => "button" %><br/>
+                    <p class="trivial"><%= t("home.multiple_foods_suggestion")  %></p>
             <% end %>
         </div>
     </div>
@@ -54,8 +54,8 @@
                 <% end %>
                 <%= form_tag :action => "watch_foods" do %>
                     <%= text_field_tag "added_foods" %>
-                    <%= submit_tag t("general.add") %>
-                    <p><%= t("home.control_panel.add_foods_suggestion") %></p>
+                    <%= submit_tag t("general.add"), :class => "button" %>
+                    <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>
                 <% end %>
             </div>
         <% else %>

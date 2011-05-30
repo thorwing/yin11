@@ -19,9 +19,9 @@
     <%= f.fields_for :checkpoints do |builder| %>
         <%= render "checkpoint_fields", :f => builder %>
     <% end %>
-    <%= link_to_add_fields  t("reviews.add_checkpoint"), f, :checkpoints %>
+    <p><%= link_to_add_fields  t("reviews.add_checkpoint"), f, :checkpoints %></p>
 
-    <p><%= f.label :severity, t("reviews.severity") %></p>
+    <%= f.label :severity, t("reviews.severity") %><br/>
     <div id="severity_options" class="two_columns_container">
         <div class="left_column">
           <div class="field">
@@ -45,6 +45,14 @@
             <label class="severity_image severity_<%= @review.severity %>"></label>
         </div>
     </div>
+  </div>
+
+  <div class="fields_group">
+    <%= f.fields_for :images do |builder| %>
+        <%= render "image_fields", :f => builder %>
+    <% end %>
+
+    <%= link_to_add_fields  t("images.add_image"), f, :images %>
   </div>
 
   <% if false %>

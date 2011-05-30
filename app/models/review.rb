@@ -20,6 +20,7 @@ class Review
   belongs_to :vendor
   belongs_to :author, :class_name => "User"
   embeds_many :checkpoints
+  has_many :images
 
   accepts_nested_attributes_for :checkpoints, :allow_destroy => true
 

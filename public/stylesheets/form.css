@@ -1,6 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 
+.content_block_inside {
+    padding: 10px;
+}
+
 div.fields_group {
     border: 1px solid gray;
     margin: 5px 0 5px 0;

@@ -8,5 +8,6 @@ class Image
 
   #relationships
   belongs_to :article
+  belongs_to :review
 
 end

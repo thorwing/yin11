@@ -126,15 +126,17 @@ zh-CN:
     title_review: 报告
     referenced_tip: 依据贴士
     checkpoint_pass: 通过
+    checkpoints: 检查点
     title_the: 的
     content: 补充
-    add_checkpoint: 添加一个检查点
+    add_checkpoint: +检查点
     severity: 测评结果
     severity_0: 安全
     severity_1: 注意
     severity_2: 警惕
     severity_3: 严重
-
+    created_notice: 测评已发布
+    updated_notice: 测评已更新
     only_author_self_notice: 只有作者才可以执行此操作
 
   comments:
@@ -167,7 +169,7 @@ zh-CN:
     images: 图片
     image: 图片
     remote_link: 图片链接
-    add_image: 添加图片
+    add_image: +图片
 
   info_items:
     detail: 详情>>

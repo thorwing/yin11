@@ -2,7 +2,9 @@
     <h2><%= @review.title %></h2>
     <p><%= raw @review.content %></p>
 
-    <div class="fields_group">
+
+    <% if @review.checkpoints.size > 0 %>
+      <%= t("reviews.checkpoints") %>
       <table>
           <tr>
             <th><%= t("general.name") %></th>
@@ -15,19 +17,22 @@
             </tr>
         <% end %>
       </table>
-        <p>
-          <%= t("reviews.severity") + ": " + t("reviews.severity_#{@review.severity}")%><br/>
-          <%= image_tag "severity_#{@review.severity}_small.png" %>
-        </p>
-    </div>
+    <% end %>
+    <p>
+      <%= t("reviews.severity") + ": " + t("reviews.severity_#{@review.severity}")%><br/>
+      <%= image_tag "severity_#{@review.severity}_small.png" %>
+    </p>
 
+     <% if the_author_himself(Review.name, @review.id, true) %>
+        <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>
+        <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+    <% end %>
+
+    <hr/>
 
     <h3><%= t("comments.comments") %></h3>
     <%= nested_comments(@review, @review.comments.arrange(:order => :created_at)) %>
-    <div class="new_comment">
-        <%= render "shared/new_comment", :item => @review %>
-    </div>
 
-    <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>
-    <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+    <%= render "shared/new_comment", :item => @review if current_user %>
+
 </div>

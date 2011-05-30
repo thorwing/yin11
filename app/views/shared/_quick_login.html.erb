@@ -16,6 +16,6 @@
             <td><%= check_box_tag "remember_me", "1", true %><%= t("authentication.remember_me") %></td>
         </tr>
     </table>
-    <%= submit_tag t("authentication.log_in") %>
+    <%= submit_tag t("authentication.log_in"), :class => "button" %>
     <%= link_to t("authentication.sign_up"), sign_up_path %>
 <% end %>
