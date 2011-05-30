@@ -1,5 +1,6 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
+
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
@@ -40,9 +41,13 @@ $(function() {
     //tokenize_input(".one_token .one_tip", "/tips.json", 1);
 });
 
-
+//When Dom is ready:
 $(document).ready(function(){
 	$("select, input:checkbox, input:radio, input:file").uniform();
+
+//    $.facebox.settings.closeImage = url('/images/facebox/closelabel.png');
+//    $.facebox.settings.loadingImage = url('/images/facebox/loading.gif');
+    $('a[rel*=facebox]').facebox();
 });
 
 $(document).ready(function(){
@@ -56,3 +61,4 @@ $(document).ready(function(){
         $("label.severity_image").addClass("severity_" + value);
     });
 });
+

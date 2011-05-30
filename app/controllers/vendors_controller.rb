@@ -1,4 +1,6 @@
 class VendorsController < ApplicationController
+  before_filter(:only => [:new, :create]) { |c| c.require_permission :user }
+  before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
   # GET /vendors
   # GET /vendors.xml
   def index
@@ -26,9 +28,12 @@ class VendorsController < ApplicationController
   # GET /vendors/new.xml
   def new
     @vendor = Vendor.new
-
     respond_to do |format|
-      format.html # new.html.erb
+      if params[:popup]
+        format.html {render "remote_new", :layout => "popup" }
+      else
+        format.html # new.html.erb
+      end
       format.xml  { render :xml => @vendor }
     end
   end
@@ -51,6 +56,7 @@ class VendorsController < ApplicationController
       if @vendor.save
         format.html { redirect_to(@vendor, :notice => 'Vendor was successfully created.') }
         format.xml  { render :xml => @vendor, :status => :created, :location => @vendor }
+        format.js {render :content_type => 'text/javascript'}
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }

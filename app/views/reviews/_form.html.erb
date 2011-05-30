@@ -11,7 +11,7 @@
 
   <div id="field">
     <%= f.label :vendor_token, t("vendors.vendor") %>
-    (<%= t("vendors.vendor_not_found") %> <%= link_to  t("vendors.quick_create_vendor"), "#" %>)
+    (<%= t("vendors.vendor_not_found") %> <%= link_to t("vendors.quick_create_vendor"), new_vendor_path(:popup => true), :rel => "facebox" %>)<br/>
     <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
   </div>
 

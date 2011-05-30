@@ -8,13 +8,13 @@ div.fields_group {
 }
 
 div.field {
-    overflow:auto;
+    overflow:hidden;
 }
 
 #severity_options {
     float:left;
     clear:both;
-    width:200px;
+    width:150px;
 }
 
 label.severity_image {

@@ -116,6 +116,7 @@ zh-CN:
     exact_vendor_not_found: 没有找到名为<%{name}>的商户
     please_create: "欢迎您创建:"
     normal_vendor: "商户: <%{name}>"
+    new_vendor: 新商户
 
   reviews:
     post_new_review: 发表新测评

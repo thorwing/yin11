@@ -1,4 +1,6 @@
-<%= form_for(@vendor) do |f| %>
+<h2><%= t("vendors.new_vendor") %></h2>
+
+<%= form_for @vendor, :remote => true do |f| %>
   <%= render "shared/error_messages", :target => @vendor %>
 
   <div class="field">
