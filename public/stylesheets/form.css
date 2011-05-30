@@ -3,13 +3,35 @@
 
 div.fields_group {
     border: 1px solid gray;
-    margin: 5px 0 5px 0
+    margin: 5px 0 5px 0;
+    overflow:auto;
 }
 
+div.field {
+    overflow:auto;
+}
 
+#severity_options {
+    float:left;
+    clear:both;
+    width:200px;
+}
 
-.fancy_check {
-    background-position: 0px 0px;
-    background-image: url("/images/good_thumb.png");
-    background-repeat: no-repeat;
+label.severity_image {
+    width:48px;
+    height:64px;
+    display:block;
+}
+
+label.severity_image.severity_0 {
+    background-image:url("/images/severity_0_small.png");
+}
+label.severity_image.severity_1 {
+    background-image:url("/images/severity_1_small.png");
+}
+label.severity_image.severity_2 {
+    background-image:url("/images/severity_2_small.png");
+}
+label.severity_image.severity_3 {
+    background-image:url("/images/severity_3_small.png");
 }

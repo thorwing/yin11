@@ -4,6 +4,7 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   $(link).before(content.replace(regexp, new_id));
+  $("select, input:checkbox, input:radio, input:file").uniform();
 }
 
 function remove_fields(link) {
@@ -37,4 +38,21 @@ $(function() {
     tokenize_input("#added_foods", "/foods.json", 10);
     tokenize_input("#profile_address_attributes_city_token", "/cities.json", 1);
     //tokenize_input(".one_token .one_tip", "/tips.json", 1);
+});
+
+
+$(document).ready(function(){
+	$("select, input:checkbox, input:radio, input:file").uniform();
+});
+
+$(document).ready(function(){
+    $(".severity_radio").change(function(){
+        $("label.severity_image").removeClass("severity_0");
+        $("label.severity_image").removeClass("severity_1");
+        $("label.severity_image").removeClass("severity_2");
+        $("label.severity_image").removeClass("severity_3");
+
+        var value = $(".severity_radio:checked").val();
+        $("label.severity_image").addClass("severity_" + value);
+    });
 });

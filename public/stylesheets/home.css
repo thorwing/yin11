@@ -7,6 +7,14 @@
 	overflow: hidden; /* 此声明可使 .container 了解其内部浮动列的结束位置以及包含列的位置 */
 }
 
+.left_column {
+	float:left;
+}
+
+.right_column {
+    float:right;
+}
+
 /*
 	Info-Item-Home-Styles
 */
@@ -15,7 +23,6 @@
 	width:600px;
 	padding-right:10px;
     border-right:1px solid #dbdbdb;
-	float:left;
 }
 .info_item {
 	border-top:1px solid #dbdbdb;
@@ -71,7 +78,6 @@
 */
 
 #control_panel {
-	float:right;
 	width:300px;
 	background:#FFFFFF;
 	padding-left:10px;

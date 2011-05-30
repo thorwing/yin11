@@ -2,10 +2,25 @@
     <h2><%= @review.title %></h2>
     <p><%= raw @review.content %></p>
 
-    <p>
-      <%= t("reviews.severity") + ": " + t("reviews.severity_#{@review.severity}")%>
-      <%= image_tag "severity_#{@review.severity}_small.png" %>
-    </p>
+    <div class="fields_group">
+      <table>
+          <tr>
+            <th><%= t("general.name") %></th>
+            <th><%= t("reviews.checkpoint_pass") %></th>
+          </tr>
+        <% @review.checkpoints.each do |checkpoint| %>
+            <tr>
+              <td><%= checkpoint.name %></td>
+              <td><%= image_tag checkpoint.pass ? "good_thumb.png"  : "bad_thumb.png" %></td>
+            </tr>
+        <% end %>
+      </table>
+        <p>
+          <%= t("reviews.severity") + ": " + t("reviews.severity_#{@review.severity}")%><br/>
+          <%= image_tag "severity_#{@review.severity}_small.png" %>
+        </p>
+    </div>
+
 
     <h3><%= t("comments.comments") %></h3>
     <%= nested_comments(@review, @review.comments.arrange(:order => :created_at)) %>

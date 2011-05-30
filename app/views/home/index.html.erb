@@ -21,7 +21,7 @@
 </div>
 
 <div class="two_columns_container" >
-     <div id="info_items">
+     <div id="info_items" class="left_column">
         <% if @interested_info %>
             <% @interested_info.each do |food_name, info_object| %>
                 <h3><%= food_name %></h3>
@@ -36,7 +36,7 @@
         <% end %>
      </div> <!--end of info_items -->
 
-     <div id="control_panel">
+     <div id="control_panel" class="right_column">
         <% if current_user %>
             <div id="user_panel" class="sub_panel">
                 <h3><%= current_user.login_name %></h3>
