@@ -1,7 +1,7 @@
 class Image
   include Mongoid::Document
   include Mongoid::Timestamps::Updated
-  field :description
+  field :caption
   mount_uploader :image, ImageUploader
 
   attr_accessible :image, :remote_image_url, :description
@@ -9,5 +9,6 @@ class Image
   #relationships
   belongs_to :article
   belongs_to :review
+  belongs_to :tip
 
 end

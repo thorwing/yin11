@@ -10,8 +10,11 @@ module Informative
       field :hater_ids, :type => Array, :default => []
 
       embeds_many :comments
+      has_many :images
 
-      attr_accessible :title, :content
+      accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_image_url].blank? }, :allow_destroy => true
+
+      attr_accessible :title, :content, :images_attributes
 
       validates_presence_of :title, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.title") )
       validates_length_of :title, :maximum => 20, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.title"),

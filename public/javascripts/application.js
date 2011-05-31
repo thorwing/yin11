@@ -48,6 +48,7 @@ $(document).ready(function(){
 //    $.facebox.settings.closeImage = url('/images/facebox/closelabel.png');
 //    $.facebox.settings.loadingImage = url('/images/facebox/loading.gif');
     $('a[rel*=facebox]').facebox();
+    $('a[rel*=lightbox]').slimbox();
 });
 
 $(document).ready(function(){

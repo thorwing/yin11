@@ -15,13 +15,10 @@ class Article
   belongs_to :vendor
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :foods
-  has_many :images
   tokenize_many :cities, :foods
   tokenize_one :vendor
 
-  accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_image_url].blank? }, :allow_destroy => true
-
-  attr_accessible :source, :images_attributes
+  attr_accessible :source
 
   validates_length_of :source, :maximum => 20, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.source"), :max => 20)
 

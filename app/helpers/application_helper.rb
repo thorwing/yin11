@@ -38,7 +38,16 @@ module ApplicationHelper
     logger = Logger.new(STDOUT)
     logger.info image.image.url.to_s
     if image.image?
-      image_tag(image.image.url, :width => 100, :height => 100)
+      image_tag(image.image.url)
+    end
+  end
+
+  def get_thumbnail(image, group = false)
+    logger = Logger.new(STDOUT)
+    logger.info image.image.url.to_s
+    if image.image?
+      link_to(image_tag(image.image.url, :border => 0, :width => 100, :height => 100, :alt => "image_thumbnail"),
+              image.image.url, :title => image.caption, :rel => group ? "lightbox-group" : "lightbox" , :class => "thumbnail" )
     end
   end
 

@@ -11,7 +11,11 @@
         <% end %>
     </div>
     <div class="interaction_fields">
-        <img src="http://flickholdr.com/100/100/bread" class="thumbnail" alt="PSDTUTS" />
+        <% if item.images.size > 0 %>
+            <%= get_thumbnail(item.images[0]) %>
+        <% else %>
+            <img src="http://flickholdr.com/100/100/bread" class="thumbnail" alt="PSDTUTS" />
+        <% end %>
         <%= link_to t("info_items.add_comment") + "(#{item.comments.size})", home_new_comment_path(:id => item.id, :type => item.class.name)%>
     </div>
     <h3><%= link_to item.title, item %></h3>

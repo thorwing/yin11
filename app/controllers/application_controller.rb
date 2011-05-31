@@ -112,6 +112,7 @@ class ApplicationController < ActionController::Base
   end
 
   def the_author_himself(class_name, object_id, or_admin = false)
+    return false unless current_user
     has_permission = false
     has_permission = true if or_admin && current_user.is_admin?
     unless has_permission
