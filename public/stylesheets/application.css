@@ -34,8 +34,9 @@ small {
 	font-weight:bold;
 	font-size:11px;
 	display:inline-block;
-	margin-bottom:5px;
+    margin-bottom: 5px;
 }
+
 a {
 	color:#008000;
 	text-decoration:none;
@@ -44,9 +45,9 @@ a:hover { text-decoration:underline; }
 p { margin: 0px 0px 15px 0px; }
 
 a.button, input.button {
-	background:#007de2 url(/images/button_bg.jpg) repeat-x;
+	background:#3B7B3B;
 	padding:3px 6px 3px 6px;
-	color: #ffffff;
+	color: #FFFFFF;
 	text-decoration: none;
 	border:1px solid #32312f;
 	text-transform:uppercase;
@@ -56,7 +57,7 @@ a.button, input.button {
     margin-bottom:2px;
 }
 a.button:hover, input.button:hover {
-	background:#3B7B3B;
+	background:#386fb2;
     cursor:pointer;
 }
 

@@ -19,7 +19,7 @@ class HomeController < ApplicationController
     else
       @recent_info = []
       @recent_info = Review.desc(:updated_at)[0..9] + Article.desc(:updated_at)[0..9]
-      @recent_info = @recent_info.sort!{ |a, b| a.votes <=> b.votes}.reverse()
+      @recent_info = @recent_info.sort!{ |a, b| a.votes <=> b.votes}.reverse()[0..4]
     end
 
     #TODO
