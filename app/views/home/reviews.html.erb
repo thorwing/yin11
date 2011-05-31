@@ -1,0 +1,3 @@
+<% @reviews.each_with_index do |review, index| %>
+    <%= render "review_item", :review => review, :index => index %>
+<% end %>

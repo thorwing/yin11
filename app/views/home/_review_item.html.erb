@@ -1,0 +1,32 @@
+<div class="review_item">
+    <div class="left_fields">
+        <%= render "shared/vote_fields", :item => review %>
+        <%= get_severity_image(review, 24, 32) %>
+    </div>
+    <div class="central_fields">
+        <h3><%= link_to review.title, review %></h3>
+        <div class="clues">
+            <% clues = get_clues_of_item(review); clues.each_with_index do |clue, index| %>
+                <%= content_tag(:small, clue) %> <%= "|" if index < clues.size - 1 %>
+            <% end %>
+        </div>
+        <p>
+          <%= truncate_content(review, 100) %>
+          <%= link_to(t("info_items.detail"), review)  %>
+          <span class="trivial">
+            <%= distance_of_time_in_words(review.updated_at, Time.now) %><%= t("info_items.ago") %>
+            <%= t("reviews.posted_by") %><%= review.author.login_name %>
+          </span>
+        </p>
+    </div>
+
+    <div class="right_fields">
+        <% if review.images.size > 0 %>
+            <%= link_to get_image(review.images[0], 100, 75), review %>
+        <% else %>
+            <%= image_tag "http://flickholdr.com/100/75/bread", :width => 100, :height => 75; %>
+        <% end %>
+        <%= link_to t("info_items.add_comment") + "(#{review.comments.size})", home_new_comment_path(:id => review.id, :type => review.class.name)%>
+    </div>
+</div>
+

@@ -60,6 +60,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="kaminari" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="launchy" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -186,6 +192,15 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] carrierwave (vCarrierWave::VERSION, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/bundler/gems/carrierwave-1f7d121653e5)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] gem_plugin (v0.2.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/gem_plugin-0.2.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] mongrel (v1.2.0.pre2, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/mongrel-1.2.0.pre2-x86-mingw32)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] kaminari (v0.10.4, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/kaminari-0.10.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rails (v3.0.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/rails-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activerecord (v3.0.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activesupport (v3.0.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] railties (v3.0.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.0.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/activemodel-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activeresource (v3.0.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/activeresource-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] actionmailer (v3.0.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/actionmailer-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] actionpack (v3.0.3, C:/ROR/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3)" level="application" />
   </component>
 </module>
 

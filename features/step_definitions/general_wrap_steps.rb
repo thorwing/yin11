@@ -37,7 +37,7 @@ end
 When /^I post a sample review$/ do
   When %(I go to the home page)
   And %(I follow "我要写测评" within "#actions_menu")
-  And %(I fill in "review_food_token" with "西瓜")
+  And %(I fill in "review_food_tokens" with "西瓜")
   And %(I select "上海" from "review_vendor_city")
   And %(I fill in "review_vendor_street" with "大华二路")
   And %(I fill in "review_vendor_name" with "XX水果超市")

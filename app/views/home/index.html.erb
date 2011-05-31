@@ -1,10 +1,26 @@
 
-<div id="block_search" class="block">
+<div id="news_block" class="block">
     <div class="block_inside">
-        <div class="image_block">
-            <%= image_tag "safe_food.png" %>
+        <div id="image_frame">
+            <div id="s3slider">
+               <ul id="s3sliderContent">
+                 <% @hot_articles.each do |article| %>
+                    <li class="s3sliderImage">
+                        <%= link_to (image_tag "http://flickholdr.com/400/250", :width => 400, :height => 250, :border => 0), article  %>
+                        <span><h3><%= article.title %></h3></span>
+                  </li>
+                 <% end %>
+               </ul>
+            </div>
         </div>
-        <div class="text_block">
+        <div id="articles_frame">
+            <ul>
+                <% @hot_articles.each do |article| %>
+                    <li><h4><%= link_to article.title, article %></h4></li>
+                <% end %>
+            </ul>
+        </div>
+        <div id="search_frame">
             <h2><%= t("home.foods_buy_question") %></h2>
             <p><%= t("home.foods_buy_question_description") %></p>
             <%= form_tag '/foods', :method => :get do %>
@@ -21,20 +37,11 @@
 </div>
 
 <div class="two_columns_container" >
-     <div id="info_items" class="left_column">
-        <% if @interested_info %>
-            <% @interested_info.each do |food_name, info_object| %>
-                <h3><%= food_name %></h3>
-                    <% info_object.each_with_index do |info, index| %>
-                    <%= render "shared/info_item", :item => info, :index => index %>
-                <% end %>
-            <% end %>
-        <% elsif @recent_info %>
-            <% @recent_info.each_with_index do |info, index| %>
-                <%= render "shared/info_item", :item => info, :index => index %>
-            <% end %>
-        <% end %>
-     </div> <!--end of info_items -->
+    <div id="reviews_page" class="left_column">
+    <% @reviews.each_with_index do |review, index| %>
+        <%= render "review_item", :review => review, :index => index %>
+    <% end %>
+    </div> <!--end of info_items -->
 
      <div id="control_panel" class="right_column">
         <% if current_user %>
@@ -43,7 +50,7 @@
                 <%= get_avatar(current_user) %>
             </div>
             <div id="watch_list_panel" class="sub_panel">
-                <% if @watching_foods.size > 0 %>
+                <% if @watching_foods && @watching_foods.size > 0 %>
                     <h3><%= t("home.control_panel.watching_foods") %></h3>
                     <% @watching_foods.each do |food| %>
                         <p>

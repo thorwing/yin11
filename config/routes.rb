@@ -9,6 +9,7 @@ Yin11::Application.routes.draw do
   get "profile/edit"
   post "profile/update"
 
+  get "home/reviews"
   post "home/watch_foods"
   put "home/vote"
   get "home/new_comment"

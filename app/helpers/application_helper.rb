@@ -34,12 +34,16 @@ module ApplicationHelper
     end
   end
 
-  def get_image(image)
+  def get_image(image, width = 100, height = 100)
     logger = Logger.new(STDOUT)
     logger.info image.image.url.to_s
     if image.image?
-      image_tag(image.image.url)
+      image_tag(image.image.url, :width => width, :height => height, :border => 0)
     end
+  end
+
+  def get_severity_image(review, width = 48, height = 64)
+     image_tag("severity_#{review.severity}_small.png", :width => width, :height => height)
   end
 
   def get_thumbnail(image, group = false)
@@ -122,9 +126,15 @@ module ApplicationHelper
 
   def get_clues_of_item(item)
     result = []
-    result << link_to(t("info_items.#{item.class.name.downcase}"), item.class.name.downcase.pluralize )
+
+    if item.is_a?(Review)
+      item.foods.each do |food|
+        result << link_to(food.name, foods_path(:foods => food.name))
+      end
+    end
 
     if item.is_a?(Article)
+      result << link_to(t("info_items.#{item.class.name.downcase}"), item.class.name.downcase.pluralize )
       (result << t("articles.source") + ": " + item.source) if item.source.present?
       (result << item.cities[0].name) if item.cities.size > 0
       item.foods.each do |food|

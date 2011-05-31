@@ -37,6 +37,8 @@ gem "tiny_mce"
 
 gem 'carrierwave'
 
+gem 'kaminari'
+
 #factory_girl is also used for db seeds
 gem 'factory_girl_rails'
 

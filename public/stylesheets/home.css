@@ -16,10 +16,68 @@
 }
 
 /*
+	News-Block-Styles
+*/
+
+#image_frame {
+	border:1px solid #b5b5b5;
+	background-color:#d2d2d2;
+	padding:5px;
+	float:left;
+}
+
+#image_frame img {
+	border:1px solid #b5b5b5;
+}
+
+#articles_frame {
+    float:left;
+    width:250px;
+    height:250px;
+    margin-left: 10px;
+    border-left: 1px solid gray;
+    border-right:1px solid gray;
+}
+
+#search_frame {
+	float:left;
+	width:250px;
+	margin-left:10px;
+}
+
+/*
+	Review-Item-Home-Styles
+*/
+#reviews_page {
+	width:600px;
+	padding-right:10px;
+    border-right:1px solid #dbdbdb;
+}
+.review_item {
+	border-top:1px solid #dbdbdb;
+	margin-bottom:10px;
+	position:relative;
+	padding:2px 3px 1px 3px;
+	background:#FFFFFF;
+    width:600px;
+    overflow:hidden;
+}
+
+.review_item .left_fields { float:left; margin-right:5px;}
+.review_item .left_fields img { float:left; vertical-align:middle;}
+.review_item .central_fields { float:left;}
+.review_item .right_fields { float:right; overflow:hidden; width:100px;}
+.review_item .right_fields img  {display:block; clear:both;}
+
+.info_item .clues {
+    margin-left: 40px;
+}
+\
+/*
 	Info-Item-Home-Styles
 */
 
-#info_items {
+#info_items_page {
 	width:600px;
 	padding-right:10px;
     border-right:1px solid #dbdbdb;
@@ -42,29 +100,6 @@
 .info_item .interaction_fields .thumbnail {display:block;}
 .info_item .interaction_fields a { margin-right: 5px;}
 
-.info_item .vote_fields {
-	float:left;
-	margin-right:10px;
-	text-align:center;
-	min-width:30px;
-}
-
-.info_item .vote_button {
-	display:block;
-}
-
-.info_item .vote_button.up { background: url(/images/vote_up_button.png) center no-repeat; text-indent:-9999px;}
-.info_item .vote_button.up_voted { background: url(/images/voted_up_button.png) center no-repeat; text-indent:-9999px;}
-.info_item .vote_button.up:hover { background: url(/images/voted_up_button.png) center no-repeat; text-indent:-9999px;}
-.info_item .vote_button.down { background: url(/images/vote_down_button.png) center no-repeat; text-indent:-9999px;}
-.info_item .vote_button.down_voted { background: url(/images/voted_down_button.png) center no-repeat; text-indent:-9999px;}
-.info_item .vote_button.down:hover { background: url(/images/voted_down_button.png) center no-repeat; text-indent:-9999px;}
-
-.info_item span.votes {
-	font-size:18px;
-	font-family:"Comic Sans MS", cursive;
-}
-
 .info_item .clues {
     margin-left: 40px;
 }
@@ -72,6 +107,25 @@
 .info_item .truncated_content {
     margin-left: 40px;
 }
+
+
+/*
+	Vote-Fields-Styles
+*/
+
+.vote_fields {
+	float:left;
+	text-align:center;
+	min-width:30px;
+}
+.vote_fields .vote_button { display:block; }
+.vote_fields .vote_button.up { background: url(/images/vote_up_button.png) center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.up_voted { background: url(/images/voted_up_button.png) center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.up:hover { background: url(/images/voted_up_button.png) center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.down { background: url(/images/vote_down_button.png) center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.down_voted { background: url(/images/voted_down_button.png) center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.down:hover { background: url(/images/voted_down_button.png) center no-repeat; text-indent:-9999px;}
+.vote_fields span.votes {font-size:18px; font-family:"Comic Sans MS", cursive;}
 
 /*
 	Control-Panel-Styles

@@ -16,19 +16,17 @@ class Review
   field :vendor_street
 
   #Relationships
-  belongs_to :food
+  has_and_belongs_to_many :foods
   belongs_to :vendor
   belongs_to :author, :class_name => "User"
   embeds_many :checkpoints
 
   accepts_nested_attributes_for :checkpoints,  :reject_if => lambda { |c| c[:name].blank? }, :allow_destroy => true
 
-  tokenize_one :food, :vendor
+  tokenize_many :foods
+  tokenize_one :vendor
 
   attr_accessible :severity, :vendor_name, :vendor_city, :vendor_street, :checkpoints_attributes
-
-  #Validators
-  #validates_presence_of :food_id
 
   before_save :update_vendor
 

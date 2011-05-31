@@ -5,8 +5,8 @@
     <%= f.text_field :title, :maxlength => 20 %>
   </div>
   <div class="field">
-    <%= f.label :food_token, t("foods.foods") %><br />
-    <%= f.text_field :food_token, 'data-pre' => (f.object.food ? [{ :id => f.object.food.id, :name => f.object.food.name }] : []).to_json %>
+    <%= f.label :food_tokens, t("foods.foods") %><br />
+    <%= f.text_field :food_tokens, 'data-pre' => (f.object.foods.map { |f| { :id => f.id, :name => f.name }}).to_json %>
   </div>
 
   <div id="field">

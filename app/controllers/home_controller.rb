@@ -1,29 +1,23 @@
 class HomeController < ApplicationController
 
   def index
-    @watching_foods = []
-
     if current_user && current_user.profile.watching_foods.size > 0
       #TODO
       @watching_foods = Food.any_in(name: current_user.profile.watching_foods)
-      @interested_info = {}
-      for id in current_user.profile.watching_foods do
-        food = Food.find(id)
-        food_info = []
-        food_info = get_related_reviews_of(food).inject([]){ |info_array, review| info_array << review } if current_user.profile.display_reviews
-        #TODO
-       # raise get_related_articles_of(food, current_user).size.to_s
-        food_info += get_related_articles_of(food, current_user).inject([]){ |info_array, article| info_array << article } if current_user.profile.display_articles
-        @interested_info[food.name] = food_info.sort{ |a, b| a.votes <=> b.votes}.reverse()[0..2]
-      end
-    else
-      @recent_info = []
-      @recent_info = Review.desc(:updated_at)[0..9] + Article.desc(:updated_at)[0..9]
-      @recent_info = @recent_info.sort!{ |a, b| a.votes <=> b.votes}.reverse()[0..4]
     end
+
+    @reviews = Review.desc(:updated_at).page(1).per(2)
+    @hot_articles = Article.desc(:updated_at).limit(6)
 
     #TODO
     @foods_buzz = Food.desc([:review_ids, :article_ids]).limit(5).group_by{ |f| f.categories[0] }
+  end
+
+  def reviews
+    @reviews = Review.desc(:updated_at).page(params[:page]).per(2)
+    respond_to do |format|
+      format.html {render :reviews, :layout => false}
+    end
   end
 
   def watch_foods
@@ -131,5 +125,23 @@ class HomeController < ApplicationController
     rescue
        raise "not supported type: " + type
     end
+  end
+
+  def get_info_items(page, per)
+    result = []
+    if current_user && current_user.profile.watching_foods.size > 0
+      for id in current_user.profile.watching_foods do
+        food = Food.find(id)
+        food_info = []
+        food_info = get_related_reviews_of(food).inject([]){ |info_array, review| info_array << review } if current_user.profile.display_reviews
+        #TODO
+        food_info += get_related_articles_of(food, current_user).inject([]){ |info_array, article| info_array << article } if current_user.profile.display_articles
+        result |= food_info.sort{ |a, b| a.votes <=> b.votes}.reverse()[0..2]
+      end
+    else
+      result = Review.desc(:updated_at).page(page).per(per/2) + Article.desc(:updated_at).per(per/2)
+      result = result.sort!{ |a, b| a.votes <=> b.votes}.reverse()[0..4]
+    end
+    result
   end
 end

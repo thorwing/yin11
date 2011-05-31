@@ -122,6 +122,7 @@ zh-CN:
     post_new_review: 发表新测评
     edit_review: 编辑 <%{title}>
     new_review: 我要写测评
+    see_more_reviews: 查看更多测评
     add_new_checkpoint: 添加检查点
     title_review: 报告
     referenced_tip: 依据贴士
@@ -135,6 +136,7 @@ zh-CN:
     severity_1: 注意
     severity_2: 警惕
     severity_3: 严重
+    posted_by: "发布者: "
     created_notice: 测评已发布
     updated_notice: 测评已更新
     only_author_self_notice: 只有作者才可以执行此操作

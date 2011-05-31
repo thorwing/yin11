@@ -34,7 +34,7 @@ $(function() {
     tokenize_input("#article_city_tokens", "/cities.json", 10);
     tokenize_input("#article_food_tokens", "/foods.json", 10);
     tokenize_input("#article_vendor_token", "/vendors.json", 1);
-    tokenize_input("#review_food_token", "/foods.json", 1);
+    tokenize_input("#review_food_tokens", "/foods.json", 10);
     tokenize_input("#review_vendor_token", "/vendors.json", 1);
     tokenize_input("#added_foods", "/foods.json", 10);
     tokenize_input("#profile_address_attributes_city_token", "/cities.json", 1);
@@ -48,7 +48,25 @@ $(document).ready(function(){
 //    $.facebox.settings.closeImage = url('/images/facebox/closelabel.png');
 //    $.facebox.settings.loadingImage = url('/images/facebox/loading.gif');
     $('a[rel*=facebox]').facebox();
-    $('a[rel*=lightbox]').slimbox();
+
+    /*if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
+	jQuery(function($) {
+		$("a[rel^='lightbox']").slimbox({*//* Put custom options here *//*}, null, function(el) {
+			return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));
+		});
+	});
+}*/
+
+$('a[rel*=lightbox]').slimbox();
+
+$('#s3slider').s3Slider({
+    timeOut: 4000
+});
+
+$('#reviews_page').pageless({ totalPages: 3
+                       , url: '/home/reviews'
+                       });
+
 });
 
 $(document).ready(function(){
