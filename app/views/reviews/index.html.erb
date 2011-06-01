@@ -1,26 +1,10 @@
-<h1>Listing reviews</h1>
+<div class="content_block_inside">
+    <h2><%= t("reviews.reviews") %></h2>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Severity</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <%= paginate @reviews %>
+    <% @reviews.each do |review| %>
+        <%= render "shared/review_item", :review => review %>
+    <% end %>
 
-<% @reviews.each do |review| %>
-  <tr>
-    <td><%= link_to review.title, review %></td>
-    <td><%= review.content %></td>
-    <td><%= "severity:" + review.severity.to_s %></td>
-    <td><%= link_to t("general.show"), review %></td>
-    <td><%= link_to t("general.change"), edit_review_path(review) %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to t("reviews.post_new_review"), new_review_path %>
+    <%= link_to t("reviews.post_new_review"), new_review_path, :class => "button" %>
+</div>

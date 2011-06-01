@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @reviews = Review.all
+    @reviews = Review.desc(:updated_at, :votes).page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb

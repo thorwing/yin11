@@ -48,6 +48,7 @@ $(document).ready(function(){
 //    $.facebox.settings.closeImage = url('/images/facebox/closelabel.png');
 //    $.facebox.settings.loadingImage = url('/images/facebox/loading.gif');
     $('a[rel*=facebox]').facebox();
+    $('a[rel*=lightbox]').slimbox();
 
     /*if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
 	jQuery(function($) {
@@ -56,8 +57,6 @@ $(document).ready(function(){
 		});
 	});
 }*/
-
-$('a[rel*=lightbox]').slimbox();
 
 $('#s3slider').s3Slider({
     timeOut: 4000

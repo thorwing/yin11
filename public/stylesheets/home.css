@@ -63,8 +63,9 @@
     overflow:hidden;
 }
 
-.review_item .left_fields { float:left; margin-right:5px;}
-.review_item .left_fields img { float:left; vertical-align:middle;}
+.review_item .left_fields { float:left; margin-right:8px;}
+.review_item .vote_fields { margin-top:5px;}
+.review_item .left_fields img { float:left; margin-top:10px;}
 .review_item .central_fields { float:left;}
 .review_item .right_fields { float:right; overflow:hidden; width:100px;}
 .review_item .right_fields img  {display:block; clear:both;}

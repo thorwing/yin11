@@ -119,6 +119,7 @@ zh-CN:
     new_vendor: 新商户
 
   reviews:
+    reviews: 所有测评
     post_new_review: 发表新测评
     edit_review: 编辑 <%{title}>
     new_review: 我要写测评
@@ -181,3 +182,8 @@ zh-CN:
     tip: 贴士
     add_comment: +评论
 
+  views:
+    pagination:
+      previous: "&lt; 上一页"
+      next: "下一页 &gt;"
+      truncate: "..."
