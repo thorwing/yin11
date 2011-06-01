@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :set_locale
   helper_method :current_user , :has_permission?
   helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself
   FOOD_ARTICLES_LIMIT = 5
@@ -101,12 +102,33 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def set_locale
+    I18n.locale = "zh-CN"
+  end
+
+# redirect somewhere that will eventually return back to here
+  def redirect_away(*params)
+    session[:original_uri] = request.request_uri
+    redirect_to(*params)
+  end
+
+  # returns the person to either the original url from a redirect_away or to a default url
+  def redirect_back(*params)
+    uri = session[:original_uri]
+    session[:original_uri] = nil
+    if uri
+      redirect_to uri
+    else
+      redirect_to(*params)
+    end
+  end
+
   #TODO
   def require_permission(permission)
     if has_permission?(permission)
       true
     else
-      redirect_to :log_in, :notice => "You need #{permission} permission"
+      redirect_away :log_in, :notice => "You need #{permission} permission"
       false
     end
   end

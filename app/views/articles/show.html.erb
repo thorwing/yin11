@@ -33,9 +33,9 @@
     <small><%= t("comments.comments") %></small><br/>
   <%= debug @article.comments.arrange %>
     <%= nested_comments(@article, @article.comments.arrange(:order => :created_at)) %>
-    <div class="new_comment">
+    <% if current_user %>
         <%= render "shared/new_comment", :item => @article %>
-    </div>
+    <% end %>
 
     <% if has_permission?(:editor) %>
         <%= link_to t("general.edit"), edit_article_path(@article), :class => "button" %> |

@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <%= stylesheet_link_tag "application", "home", "comment", "tab_control", "form", "token-input-facebook", "uniform.aristo", "facebox", "slimbox2", "s3Slider" %>
+  <%= stylesheet_link_tag "application", "home", "comment", "tab_control", "form", "token-input-facebook", "uniform.aristo", "facebox", "slimbox2" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "jquery.rails.js",
-                             "application", "jquery.tokeninput", "jquery.uniform", "facebox", "slimbox2", "s3Slider", "jquery.pageless" %>
+                             "application", "jquery.tokeninput", "jquery.uniform", "facebox", "slimbox2", "jquery.pageless" %>
+  <%= yield :header_including %>
   <%= include_tiny_mce_if_needed %>
   <%= csrf_meta_tag %>
   <title><%= t("site.name") %><%= ": #{@sub_title}" if @sub_title.present? %></title>
