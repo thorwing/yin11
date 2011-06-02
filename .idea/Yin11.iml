@@ -96,6 +96,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="rake" version="0.8.7" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="rspec-rails" version="2.4" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
