@@ -86,6 +86,24 @@ module ApplicationHelper
     end.join.html_safe
   end
 
+  def patch_ancestry(tree)
+    fake_root_nodes = []
+    tree.each do |k,v|
+      if k.ancestry.present?
+        #not a real root node
+        fake_root_nodes << {k => v}
+        tree.delete(k)
+      end
+    end
+
+    fake_root_nodes.each do |pair|
+      parent_node = tree.find{|n| n[0].id.to_s == pair.first[0].ancestry}.first
+      tree[parent_node] = pair
+    end
+
+    tree
+  end
+
   def truncate_content(item, length)
     text = strip_tags(item.content)
     if length < text.size
