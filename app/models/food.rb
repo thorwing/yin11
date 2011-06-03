@@ -2,8 +2,9 @@ class Food
   include Mongoid::Document
   field :name
   key :name
+  field :aliases, :type => Array, :default => []
 
-  #Relationships
+#Relationships
   has_and_belongs_to_many :articles
   has_and_belongs_to_many :reviews
   has_and_belongs_to_many :categories

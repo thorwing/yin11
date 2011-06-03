@@ -34,9 +34,8 @@
     float:left;
     width:250px;
     height:250px;
-    margin-left: 10px;
-    border-left: 1px solid gray;
     border-right:1px solid gray;
+    line-height: 15px;
 }
 
 #search_frame {

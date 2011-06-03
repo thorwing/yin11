@@ -168,6 +168,9 @@ zh-CN:
     handle_tip: "食物处理贴士: <%{title}>"
     exam_tip: "食物测评贴士: <%{title}>"
 
+  questions:
+    new_question: 我有疑问
+
   images:
     images: 图片
     image: 图片
