@@ -24,7 +24,7 @@ gem 'rails', '3.0.7'
 # gem 'aws-s3', :require => 'aws/s3'
 
 #temp workaround, rake 0.9.0(and 0.9.1?) caused a problem on Heroku
-gem 'rake', '~> 0.8.7'
+gem "rake", "~> 0.8.7"
 
 gem "mongoid", "~> 2.0"
 gem "bson_ext", "~> 1.3"
@@ -56,8 +56,4 @@ group :test do
     # gem "selenium-rails"
     # gem "selenium-webdriver"
     gem "spork", "~> 0.9.0.rc6"
-end
-
-group :development do
-  gem "mongrel"
 end
