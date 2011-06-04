@@ -21,16 +21,17 @@ function show_tab_content(link, content) {
 
 $(function() {
     function tokenize_input(element_selector, data_source, tokenLimit) {
-    $(element_selector).tokenInput(data_source, {
-        crossDomain: false,
-        prePopulate: $(element_selector).data("pre"),
-        theme: "facebook",
-        tokenLimit: tokenLimit,
-        hintText: "输入关键词",
-        noResultsText: "没有结果",
-        searchingText: "搜索中"
-    });
-}
+        $(element_selector).tokenInput(data_source, {
+            crossDomain: false,
+            prePopulate: $(element_selector).data("pre"),
+            theme: "facebook",
+            tokenLimit: tokenLimit,
+            hintText: "输入关键词",
+            noResultsText: "没有结果",
+            searchingText: "搜索中"
+        });
+    }
+
     tokenize_input("#article_city_tokens", "/cities.json", 10);
     tokenize_input("#article_food_tokens", "/foods.json", 10);
     tokenize_input("#article_vendor_token", "/vendors.json", 1);
