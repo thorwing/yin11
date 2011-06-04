@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_filter :set_locale
-  helper_method :current_user , :has_permission?
+  before_filter :set_locale, :set_city
+  helper_method :current_user , :has_permission?, :current_city
   helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself
   FOOD_ARTICLES_LIMIT = 5
   FOOD_REVIEWS_LIMIT = 5
@@ -99,6 +99,26 @@ class ApplicationController < ActionController::Base
     cookies[:auth_token] = {
         :value => @current_user.remember_token,
         :expires => @current_user.remember_token_expires_at }
+  end
+
+  def set_city
+    if session[:current_city].blank?
+      ip_number = request.remote_ip.split('.').each_with_index.inject(0) {|sum, (elm,i)| sum + elm.to_i * (256 ** (3-i)) }
+      city_name = CityIp.first(conditions: {:start_ip.lte => ip_number, :end_ip.gte => ip_number})
+      city_name ||= t("system.default_city")
+      #session[:current_city] = city_name
+      @current_city = City.first(conditions: {name: city_name})
+      session[:current_city] = @current_city.name
+    end
+  end
+
+  def current_city
+    @current_city ||= City.first(conditions: {name: session[:current_city]})
+  end
+
+  def current_city=(new_city)
+    @current_city = new_city
+    session[:current_city] = @current_city.name
   end
 
   protected

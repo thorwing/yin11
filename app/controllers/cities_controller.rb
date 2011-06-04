@@ -6,4 +6,5 @@ class CitiesController < ApplicationController
       format.json { render :json => @cities.map { |c| {:id => c.id, :name => c.name} } }
     end
   end
+
 end

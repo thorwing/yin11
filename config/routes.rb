@@ -8,6 +8,8 @@ Yin11::Application.routes.draw do
   get "profile/show"
   get "profile/edit"
   post "profile/update"
+  get "profile/edit_current_city"
+  post "profile/update_current_city"
 
   get "home/reviews"
   post "home/watch_foods"

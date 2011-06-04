@@ -21,7 +21,6 @@ Feature: smoke tests for Reviews
     And I should see "severity:1"
     And I should see "西瓜切开来后发现已经熟过头了。"
 
-  @focus
   Scenario: User can edit his own review
     When I log in as "David User"
     And I post a sample review
@@ -59,7 +58,6 @@ Feature: smoke tests for Reviews
     When I follow "up" within ".info_item"
     Then I should see "1" within ".info_item"
 
-  @focus
   Scenario:  User can comment on a review, comments can be nested.
     When I log in as "David User"
     And I post a sample review
@@ -80,7 +78,6 @@ Feature: smoke tests for Reviews
     And I go to the home page
     Then I should see "评论(2)"
 
-  @focus
   Scenario:  Repeat the above steps for tech-review
     Given the following tips exists:
     | title          | content                          |
@@ -94,6 +91,14 @@ Feature: smoke tests for Reviews
     And I fill in "review_title" with "买到打了瘦肉精的猪肉"
     And I fill in "review_content" with "根据测试项目，今天买到打了瘦肉精的猪肉。"
     And I press "发表"
+
+  @focus
+  Scenario:  User's city will be detected.
+    When I log in as "David User"
+    And I follow "我要写测评"
+    Then I should see "北京"
+    And I should see "切换城市"
+
 
 
 

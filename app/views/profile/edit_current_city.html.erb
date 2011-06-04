@@ -1,0 +1,12 @@
+<h2><%= t("address.change_city") %></h2>
+
+<%= form_tag profile_update_current_city_path, :remote => true do%>
+
+  <div class="field">
+   <b><%= t("address.city") %></b><br/>
+    <%= select_tag "new_city", options_for_select(get_cities_for_select, current_city.name)%>
+  </div>
+  <div class="actions">
+    <%= submit_tag t("general.submit"), :class => "button" %>
+  </div>
+<% end %>

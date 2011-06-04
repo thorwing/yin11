@@ -72,7 +72,7 @@ Feature: smoke tests for Articles
     And I fill in "article_images_attributes_0_remote_image_url" with "http://rubyonrails.org/images/rails.png"
     And I fill in "article_images_attributes_0_description" with "Rails标志"
     And I press "发表"
-    Then I should see "Images(1):"
+    Then I should see "图片(1):"
     And I should see "Rails标志"
 
   Scenario: User can vote for a article.

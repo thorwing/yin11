@@ -6,6 +6,9 @@ class VendorsController < ApplicationController
   def index
     @vendors = params[:q] ? Vendor.where(:name => /#{params[:q]}?/) : Vendor.all
 
+    logger = Logger.new(STDOUT)
+    logger.info ">>> parameters:" + params[:q]
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @vendors }
@@ -60,6 +63,7 @@ class VendorsController < ApplicationController
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
+        format.js {render :content_type => 'text/javascript'}
       end
     end
   end

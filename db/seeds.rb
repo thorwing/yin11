@@ -25,9 +25,14 @@
     Factory(:province, :code => code, :name => name, :short_name => short_name, :main_city_id => main_city_id, :type => type)
   }
 
-File.open(File.join(RAILS_ROOT, 'app/assets/cities.txt')).each_line { |c|
-  code, province_code, name, postcode = c.split(" ")
-  province = Province.first(:conditions => {:code => province_code } )
-  city = province.cities.build(:code => code, :name => name, :postcode => postcode)
-  city.save
-}
+  File.open(File.join(RAILS_ROOT, 'app/assets/cities.txt')).each_line { |c|
+    code, province_code, name, postcode = c.split(" ")
+    province = Province.first(:conditions => {:code => province_code } )
+    city = province.cities.build(:code => code, :name => name, :postcode => postcode)
+    city.save
+  }
+
+  File.open(File.join(RAILS_ROOT, 'app/assets/city_ip.txt')).each_line { |c|
+    start_ip, end_ip, province_name, city_name = c.split(" ")
+    CityIp.create(:start_ip => start_ip, :end_ip => end_ip, :province_name => province_name, :city_name => city_name)
+  }

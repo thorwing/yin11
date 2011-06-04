@@ -20,4 +20,23 @@ class ProfileController < ApplicationController
     end
   end
 
+  def edit_current_city
+    respond_to do |format|
+      if params[:popup]
+        format.html {render "edit_current_city", :layout => "popup" }
+      else
+        format.html # new.html.erb
+      end
+    end
+  end
+
+  def update_current_city
+    self.current_city = City.find(params[:new_city]) if params[:new_city].present?
+    @current_city_name = self.current_city.name
+
+    respond_to do |format|
+      format.js {render :content_type => 'text/javascript'}
+    end
+  end
+
 end

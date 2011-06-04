@@ -19,7 +19,7 @@ class FoodsGenerator
   end
 
   def self.add_food(name, category, aliases)
-    puts category + " << " + name + ": " + aliases.to_s
+    #puts category + " << " + name + ": " + aliases.to_s
     food = Food.first(conditions: {name: name})
     food ||= Food.new(:name => name)
     category = Category.first(conditions: {name: category})
@@ -37,7 +37,7 @@ class FoodsGenerator
   def self.add_category(name, parent)
     parent_category = parent.present? ? Category.first(conditions: {name: parent}) : nil
     if parent_category
-      puts parent_category.name + " -> " + name
+      #puts parent_category.name + " -> " + name
       parent_category.children.create(:name => name)
     else
       #puts node
