@@ -28,9 +28,6 @@ Yin11::Application.routes.draw do
     collection do
       post "search"
     end
-    member do
-      put "vote"
-    end
   end
 
   resources :badges

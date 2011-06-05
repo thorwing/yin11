@@ -44,6 +44,10 @@
 	margin-left:10px;
 }
 
+#actions_menu {
+    margin-left:20px;
+}
+
 /*
 	Review-Item-Home-Styles
 */
@@ -146,7 +150,7 @@
 /*
 	Add-Foods-Watch-List
 */
-#control_panel .token-input-list-facebook
+#control_panel ul.token-input-list-facebook
 {
     width:200px;
 }

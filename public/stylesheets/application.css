@@ -68,6 +68,8 @@ a.button:hover, input.button:hover {
 .avatar {
     width:64px;
     height:64px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     vertical-align:top;
 }
 

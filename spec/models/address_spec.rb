@@ -19,11 +19,11 @@ describe "boundary" do
     @user.profile.address.valid?.should equal false
   end
 
-  it "building's max length is 20" do
+  it "place's max length is 20" do
     @user = Factory.create(:user, :email => "test@test.de", :login_name => "tester", :password => "123456")
-    @user.profile.address.building = "12345678901234567890"
+    @user.profile.address.place = "12345678901234567890"
     @user.profile.address.valid?.should equal true
-    @user.profile.address.building = "123456789012345678901"
+    @user.profile.address.place = "123456789012345678901"
     @user.profile.address.valid?.should equal false
   end
 

@@ -2,10 +2,10 @@
   <%= render "shared/error_messages", :target => @review %>
   <div class="field">
     <%= f.label :title, t("general.title") %><%= mark_required(@review, :title) %><br/>
-    <%= f.text_field :title, :maxlength => 20 %>
+    <%= f.text_field :title, :maxlength => 40 %>
   </div>
   <div class="field">
-    <%= f.label :food_tokens, t("foods.foods") %><br />
+    <%= f.label :food_tokens, t("foods.foods") %><br/>
     <%= f.text_field :food_tokens, 'data-pre' => (f.object.foods.map { |f| { :id => f.id, :name => f.name }}).to_json %>
   </div>
 

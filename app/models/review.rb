@@ -10,11 +10,6 @@ class Review
 
   field :severity, :type => Integer, :default => 0
 
-  #cached values
-  field :vendor_name
-  field :vendor_city
-  field :vendor_street
-
   #Relationships
   has_and_belongs_to_many :foods
   belongs_to :vendor
@@ -26,20 +21,11 @@ class Review
   tokenize_many :foods
   tokenize_one :vendor
 
-  attr_accessible :severity, :vendor_name, :vendor_city, :vendor_street, :checkpoints_attributes
+  #override the settings in Informative
+  validates_length_of :content, :maximum => 10000, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.content"),
+                                                                           :max => 10000)
 
-  before_save :update_vendor
-
-  def update_vendor
-    if self.vendor.nil?
-      if self.vendor_name.present?
-        self.vendor = Vendor.new
-        self.vendor.name = self.vendor_name
-        self.vendor.create_address(:city_id => self.vendor_city, :street => self.vendor_street)
-        self.vendor.save
-      end
-    end
-  end
+  attr_accessible :severity, :checkpoints_attributes
 
 
 #  embeds_many :checkpoints

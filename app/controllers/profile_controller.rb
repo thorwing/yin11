@@ -1,15 +1,19 @@
 class ProfileController < ApplicationController
   before_filter { |c| c.require_permission :user }
+  layout :resolve_layout
 
   def show
     #referesh
-    @my_reviews = current_user.reviews
+    @my_recent_reviews = current_user.reviews.desc(:updated_at).limit(3)
     @my_badge_ids = current_user.badge_ids
     @my_badges = current_user.badges
   end
 
   def edit
-    @profile = current_user.profile
+    current_user.profile.addresses || current_user.profile.addresses.build
+    @my_recent_reviews = current_user.reviews.desc(:updated_at).limit(3)
+    @my_badge_ids = current_user.badge_ids
+    @my_badges = current_user.badges
   end
 
   def update
@@ -36,6 +40,16 @@ class ProfileController < ApplicationController
 
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}
+    end
+  end
+
+  private
+  def resolve_layout
+    case action_name
+      when 'edit'
+        "map"
+      else
+        "application"
     end
   end
 

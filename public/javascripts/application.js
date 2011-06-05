@@ -5,7 +5,7 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   $(link).before(content.replace(regexp, new_id));
-  $("select, input:checkbox, input:radio, input:file").uniform();
+  $("input:checkbox, input:radio, input:file").uniform();
 }
 
 function remove_fields(link) {
@@ -44,7 +44,10 @@ $(function() {
 
 //When Dom is ready:
 $(document).ready(function(){
-	$("select, input:checkbox, input:radio, input:file").uniform();
+	$("input:checkbox, input:radio, input:file").uniform({
+        fileDefaultText: '无',
+        fileBtnText: "选择图片"
+    });
 
 //    $.facebox.settings.closeImage = url('/images/facebox/closelabel.png');
 //    $.facebox.settings.loadingImage = url('/images/facebox/loading.gif');

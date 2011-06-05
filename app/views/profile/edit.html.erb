@@ -1,38 +1,46 @@
-<h1>Profile#edit</h1>
-<p>Find me in app/views/profile/edit.html.erb</p>
+<div class="content_block_inside">
+    <h2><%= t("profile.edit_profile") %></h2>
+    <%= form_for :profile, current_user.profile, :url => profile_update_path, :as => :post, :html => {:multipart => true} do |f| %>
+        <div class="field">
+            <h3><%= current_user.login_name %></h3>
+            <%= get_avatar(current_user) %>
+            <p>
+              <%= t("profile.change_avator") %><br/>
+              <%= f.file_field :avatar %> <br/>
+            </P>
+        </div>
 
-<%= form_for :profile, @profile, :url => profile_update_path, :as => :post, :html => {:multipart => true} do |f| %>
+        <div class="field">
+          <%= t("profile.receive_mails") %>
+          <%= f.check_box :receive_mails, {}, true, false %>
+        </div>
 
-    <div class="field">
-        <b> <%= t("profile.avatar") %></b><br/>
-        <%= f.file_field :avatar %> <br/>
-        <b><%= t("general.image_link") %></b> <br/>
-        <%= f.text_field :remote_avatar_url %>
-    </div>
+        <div class="fields_group">
+            <h3><%= t("profile.interested_places") %></h3>
+            <span class="trivial"><%= f.label :detail, t("address.detail_hint") %></span>
+            <%= f.fields_for :addresses do |builder| %>
+                <%= render "address_fields", :f => builder %>
+            <% end %>
+            <p><%= link_to_add_fields_with_map t("profile.add_place"), f, :addresses %></p>
+        </div>
 
-    <div class="field">
-        <%= f.fields_for :address do |builder| %>
-          <b><%= t("address.city") %></b><br/>
-          <%= builder.text_field :city_token, 'data-pre' => (@profile.address.city ? [{ :id => @profile.address.city.id, :name => @profile.address.city.name }] : []).to_json %>
-        <% end %>
-    </div>
+        <div class="fields_group">
+            <h3><%= t("profile.my_recent_reviews") %></h3>
+            <ul>
+            <% @my_recent_reviews.each do |review| %>
+               <li><%= link_to review.title, review %></li>
+            <% end %>
+            </ul>
+            <%= link_to t("general.more"), "#" %>
+        </div>
 
-    <div class="field">
-      <b><%= t("profile.display_articles") %></b><br/>
+        <div class="fields_group">
+            <h3><%= t("profile.my_badges") %></h3>
+            <% @my_badges.each do |badge| %>
+                <p><%= link_to badge.name + ( @my_badge_ids.count(badge.id) > 1 ? " #{@my_badge_ids.count(badge.id)}" : ""), badge %></p>
+            <% end %>
+        </div>
 
-      <%= f.check_box :display_articles, {}, true, false %>
-    </div>
-
-    <div class="field">
-      <b><%= t("profile.display_reviews") %></b><br/>
-
-      <%= f.check_box :display_reviews, {}, true, false %>
-    </div>
-
-    <div class="field">
-      <b><%= t("profile.receive_mails") %></b><br/>
-      <%= f.check_box :receive_mails, {}, true, false %>
-    </div>
-
-    <%= f.submit t("general.submit") %>
-<% end %>
+        <%= f.submit t("general.submit"), :class => "button" %>
+    <% end %>
+</div>

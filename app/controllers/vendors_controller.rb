@@ -1,14 +1,15 @@
 class VendorsController < ApplicationController
   before_filter(:only => [:new, :create]) { |c| c.require_permission :user }
   before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
-  layout "map", :only => [:new]
+  layout :resolve_layout
+
   # GET /vendors
   # GET /vendors.xml
   def index
     @vendors = params[:q] ? Vendor.where(:name => /#{params[:q]}?/) : Vendor.all
 
     logger = Logger.new(STDOUT)
-    logger.info ">>> parameters:" + params[:q]
+    logger.info ">>> parameters:" + params[:q] if params[:q]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,6 +33,7 @@ class VendorsController < ApplicationController
   # GET /vendors/new.xml
   def new
     @vendor = Vendor.new
+    @vendor.build_address
     respond_to do |format|
       if params[:popup]
         format.html {render "remote_new", :layout => "popup" }
@@ -120,6 +122,16 @@ class VendorsController < ApplicationController
     else
       redirect_to :back, :notice => "please enter search string"
       return
+    end
+  end
+
+  private
+  def resolve_layout
+    case action_name
+      when 'new', 'edit'
+        "map"
+      else
+        "application"
     end
   end
 

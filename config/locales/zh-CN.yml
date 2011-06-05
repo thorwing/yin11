@@ -24,6 +24,7 @@ zh-CN:
     disable: 禁用
     lock: 锁定
     unlock: 解锁
+    more: 更多
     severity_0: 无异常报告
     severity_1: 注意
     severity_2: 警惕
@@ -76,18 +77,23 @@ zh-CN:
     province: 省
     city: 城市
     change_city: 切换城市
-    area: 区
+    district: 区
     street: 街道
-    building: 房间
+    place: 地点
+    detail_hint: "地址格式: 南京东路1809号 第一食品商店"
     postcode: 邮政编码
 
   profile:
+    profile: 个人资料
+    edit_profile: 编辑个人资料
+    login_name: 用户名
     avatar: 头像
-    display_articles: 在主页上显示有关监察列表中食物的新闻
-    display_reviews: 在主页上显示有关监察列表中食物的测评
+    change_avator: 换一张头像
+    interested_places: "感兴趣的地方:"
+    add_place: +地点
     receive_mails: 接受关于监察列表中食物安全动向的报告邮件
-    my_reviews: 我的测评
-    my_badges: 我的徽章
+    my_recent_reviews: "最近发表的测评:"
+    my_badges: "我的徽章:"
     profile_updated_notice: 信息已更新
 
   home:

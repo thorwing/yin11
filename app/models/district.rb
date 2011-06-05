@@ -1,4 +1,4 @@
-class Area
+class District
   include Mongoid::Document
   field :name
 

@@ -39,3 +39,12 @@ label.severity_image.severity_2 {
 label.severity_image.severity_3 {
     background-image:url("/images/severity_3_small.png");
 }
+
+ul.token-input-list-facebook
+{
+    width:200px;
+}
+div.token-input-dropdown-facebook
+{
+    width:200px;
+}

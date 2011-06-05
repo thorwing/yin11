@@ -67,3 +67,8 @@ Feature: smoke tests for User
     And I go to the profile page
     Then I should see "买到烂西瓜"
 
+  Scenario: User can update his profile, and add some places that he is interested in
+    When I log in as "David User"
+    And I go to the profile page
+    Then I should see "感兴趣的地方"
+    And I should see

@@ -11,6 +11,9 @@ class Tip
   has_and_belongs_to_many :tags
 
   validates_uniqueness_of :title, :message => I18n.translate("validations.general.uniqueness_msg", :field => I18n.translate("general.name"))
+  validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content") )
+  validates_length_of :content, :minimum => 10, :maximum => 10000, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),
+                                                                        :min => 10, :max => 10000)
   #validates_inclusion_of :type, :in => 1..2
 
   HANDLE_TIP = 1

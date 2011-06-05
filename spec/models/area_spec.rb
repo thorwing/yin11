@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Area do
+describe District do
   pending "add some examples to (or delete) #{__FILE__}"
 end

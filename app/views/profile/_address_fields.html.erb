@@ -1,0 +1,9 @@
+<div class="field">
+  <div class="map_address">
+    <%= f.text_field :point, {:class => "map_point"} %>
+    <%= t("address.city") %>
+    <%= f.select :city_id, options_for_select(get_cities_for_select, current_city.id), {}, {:class => "map_city"} %>
+    <%= f.text_field :detail, {:class => "map_place"} %>
+    <div id="map_container"></div>
+  </div>
+</div>

@@ -1,28 +1,42 @@
-<h1>Profile#show</h1>
-<p>Find me in app/views/profile/show.html.erb</p>
+<div class="content_block_inside">
+    <h2><%= t("profile.profile") %></h2>
+    <%= form_for :profile, @profile, :url => profile_update_path, :as => :post, :html => {:multipart => true} do |f| %>
+        <div class="field">
+            <h3><%= current_user.login_name %></h3>
+            <%= get_avatar(current_user) %>
+            <p>
+              <%= t("profile.change_avator") %><br/>
+              <%= f.file_field :avatar %> <br/>
+            </P>
+        </div>
 
-<p>
-  <%= get_avatar(current_user) %>
-</p>
+        <div class="field">
+          <%= t("profile.receive_mails") %>
+          <%= f.check_box :receive_mails, {}, true, false %>
+        </div>
 
-<p>
-  <b>City:</b>
-  <%= current_user.profile.address.try(:city).try(:name) %>
-</p>
+        <div class="fields_group">
+            <h3><%= t("profile.interested_places") %></h3>
+        </div>
 
-<p>
-  <p><%= t("profile.my_reviews") %></p>
-  <% @my_reviews.each do |review| %>
-    <%= render "shared/info_item", :item => review %>
-  <% end %>
-</p>
+        <div class="fields_group">
+            <h3><%= t("profile.my_recent_reviews") %></h3>
+            <ul>
+            <% @my_recent_reviews.each do |review| %>
+               <li><%= link_to review.title, review %></li>
+            <% end %>
+            </ul>
+            <%= link_to t("general.more"), "#" %>
+        </div>
 
-<p>
-  <p><%= t("profile.my_badges") %></p>
+        <div class="fields_group">
+            <h3><%= t("profile.my_badges") %></h3>
+            <% @my_badges.each do |badge| %>
+                <p><%= link_to badge.name + ( @my_badge_ids.count(badge.id) > 1 ? " #{@my_badge_ids.count(badge.id)}" : ""), badge %></p>
+            <% end %>
+        </div>
 
-  <% @my_badges.each do |badge| %>
-    <p><%= link_to badge.name + ( @my_badge_ids.count(badge.id) > 1 ? " #{@my_badge_ids.count(badge.id)}" : ""), badge %></p>
-  <% end %>
-</p>
+        <%= f.submit t("general.submit"), :class => "button" %>
+    <% end %>
 
-<%= link_to t("general.change"), profile_edit_path %>
+</div>
