@@ -80,8 +80,10 @@ zh-CN:
     district: 区
     street: 街道
     place: 地点
+    detail: 详细地址
     detail_hint: "地址格式: 南京东路1809号 第一食品商店"
     postcode: 邮政编码
+    checking: 正在检查地址
 
   profile:
     profile: 个人资料

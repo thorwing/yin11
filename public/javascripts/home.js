@@ -5,6 +5,7 @@ $(document).ready(function(){
     });
 
     $('#reviews_page').pageless({ totalPages: 3
-                       , url: '/home/reviews'
+       , url: '/home/reviews'
+       , loaderImage: "/images/pageless/load.gif"
     });
 });

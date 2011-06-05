@@ -23,6 +23,15 @@
       <%= image_tag "severity_#{@review.severity}_small.png" %>
     </div>
 
+    <% if @review.vendor and @review.vendor.address %>
+        <div id="map_address">
+          <%= hidden_field "hidden_city", @review.vendor.address.city.name, {:class => "map_city"} %>
+          <%= hidden_field_tag "hidden_street", @review.vendor.address.street, {:class => "map_street"} %>
+          <%= hidden_field_tag "hidden_place", @review.vendor.name, {:class => "map_place"} %>
+          <div id="map_container"></div>
+        </div>
+    <% end %>
+
     <div id="gallery" class="block">
       <div class="block_inside">
           <% @review.images.each do |image| %>

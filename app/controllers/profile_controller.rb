@@ -5,15 +5,11 @@ class ProfileController < ApplicationController
   def show
     #referesh
     @my_recent_reviews = current_user.reviews.desc(:updated_at).limit(3)
-    @my_badge_ids = current_user.badge_ids
-    @my_badges = current_user.badges
   end
 
   def edit
     current_user.profile.addresses || current_user.profile.addresses.build
     @my_recent_reviews = current_user.reviews.desc(:updated_at).limit(3)
-    @my_badge_ids = current_user.badge_ids
-    @my_badges = current_user.badges
   end
 
   def update

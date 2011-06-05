@@ -15,6 +15,7 @@ $(document).ready(function(){
     var place = $(".map_place").val();
     var street = $(".map_street").val();
     var city = $(".map_city :selected").text();
+
     update_map(city, street, place);
 
     add_listeners();
@@ -45,9 +46,15 @@ function add_listeners() {
 
 function update_map_from_listener(control) {
     var parent = $(control).parents("div.map_address");
+    var indicator = parent.find(".map_indicator");
+    indicator.removeClass("valid");
+    indicator.removeClass("invalid");
+    indicator.addClass("checking");
+
     var place = parent.find(".map_place").val();
     var street = parent.find(".map_street").val();
     var city = parent.find(".map_city").find("option:selected").text();
+
     update_map(city, street, place, control);
 }
 
@@ -63,12 +70,24 @@ function update_map(city, street, place, control) {
 
                 if(control)
                 {
-                    $(control).parents("div.map_address").find(".map_point").val(point.lng + "," + point.lat);
+                    var parent = $(control).parents("div.map_address");
+                    parent.find(".map_point").val(point.lng + "," + point.lat);
+                    var indicator = parent.find(".map_indicator");
+                    indicator.removeClass("checking");
+                    indicator.addClass("valid");
                 }
             }
             else
             {
                 map.centerAndZoom(city);
+
+                if(control)
+                {
+                    var parent = $(control).parents("div.map_address");
+                    var indicator = parent.find(".map_indicator");
+                    indicator.removeClass("checking");
+                    indicator.addClass("invalid");
+                }
             }
         }, city);
     }

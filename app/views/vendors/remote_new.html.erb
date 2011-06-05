@@ -7,14 +7,18 @@
     <%= f.label :name, t("general.name") %><br />
     <%= text_field_tag "vendor[name]", @vendor.name.present? ? @vendor.name : params[:name] %>
   </div>
-  <div class="field">
-    <%= t("address.city") %><br/>
-    <%= select_tag :city_id, options_for_select(get_cities_for_select, current_city.id)%>
-  </div>
-  <div class="field">
-    <%= t("address.street") %><br/>
-    <%= text_field_tag :street %>
-  </div>
+  <%= f.fields_for :address do |builder| %>
+      <div class="field">
+        <%= t("address.city") %><br/>
+        <%= builder.select :city_id, options_for_select(get_cities_for_select, current_city.id)%>
+      </div>
+      <div class="field">
+        <%= t("address.street") %><br/>
+        <%= builder.text_field :street %>
+      </div>
+      <div id="map_container"></div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit t("general.submit"), :class => "button" %>
   </div>

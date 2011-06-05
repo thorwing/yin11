@@ -1,42 +1,33 @@
 <div class="content_block_inside">
     <h2><%= t("profile.profile") %></h2>
-    <%= form_for :profile, @profile, :url => profile_update_path, :as => :post, :html => {:multipart => true} do |f| %>
-        <div class="field">
-            <h3><%= current_user.login_name %></h3>
-            <%= get_avatar(current_user) %>
-            <p>
-              <%= t("profile.change_avator") %><br/>
-              <%= f.file_field :avatar %> <br/>
-            </P>
-        </div>
+    <div class="field">
+        <h3><%= current_user.login_name %></h3>
+        <%= get_avatar(current_user) %>
+    </div>
 
-        <div class="field">
-          <%= t("profile.receive_mails") %>
-          <%= f.check_box :receive_mails, {}, true, false %>
-        </div>
+    <div class="fields_group">
+        <h3><%= t("profile.interested_places") %></h3>
+        <% current_user.profile.addresses.each do |address| %>
+            <%= address.city.name %>: <%= address.detail %>
+        <% end %>
+    </div>
 
-        <div class="fields_group">
-            <h3><%= t("profile.interested_places") %></h3>
-        </div>
+    <div class="fields_group">
+        <h3><%= t("profile.my_recent_reviews") %></h3>
+        <ul>
+        <% @my_recent_reviews.each do |review| %>
+           <li><%= link_to review.title, review %></li>
+        <% end %>
+        </ul>
+        <%= link_to t("general.more"), "#" %>
+    </div>
 
-        <div class="fields_group">
-            <h3><%= t("profile.my_recent_reviews") %></h3>
-            <ul>
-            <% @my_recent_reviews.each do |review| %>
-               <li><%= link_to review.title, review %></li>
-            <% end %>
-            </ul>
-            <%= link_to t("general.more"), "#" %>
-        </div>
+    <div class="fields_group">
+        <h3><%= t("profile.my_badges") %></h3>
+        <% current_user.badges.each do |badge| %>
+            <p><%= link_to badge.name + (  current_user.badge_ids.count(badge.id) > 1 ? " #{ current_user.badge_ids.count(badge.id)}" : ""), badge %></p>
+        <% end %>
+    </div>
 
-        <div class="fields_group">
-            <h3><%= t("profile.my_badges") %></h3>
-            <% @my_badges.each do |badge| %>
-                <p><%= link_to badge.name + ( @my_badge_ids.count(badge.id) > 1 ? " #{@my_badge_ids.count(badge.id)}" : ""), badge %></p>
-            <% end %>
-        </div>
-
-        <%= f.submit t("general.submit"), :class => "button" %>
-    <% end %>
-
+    <%= link_to t("general.change"), profile_edit_path, :class => "button" %>
 </div>

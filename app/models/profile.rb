@@ -12,7 +12,7 @@ class Profile
   embeds_many :addresses
 
   accepts_nested_attributes_for :addresses, :reject_if => lambda { |a| a[:point].blank? }, :allow_destroy => true
-  attr_accessible :receive_mails, :address_attributes, :avatar
+  attr_accessible :receive_mails, :addresses_attributes, :avatar
 
   validates_associated :addresses
 

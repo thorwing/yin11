@@ -37,8 +37,8 @@
 
         <div class="fields_group">
             <h3><%= t("profile.my_badges") %></h3>
-            <% @my_badges.each do |badge| %>
-                <p><%= link_to badge.name + ( @my_badge_ids.count(badge.id) > 1 ? " #{@my_badge_ids.count(badge.id)}" : ""), badge %></p>
+            <% current_user.badges.each do |badge| %>
+                <p><%= link_to badge.name + (  current_user.badge_ids.count(badge.id) > 1 ? " #{ current_user.badge_ids.count(badge.id)}" : ""), badge %></p>
             <% end %>
         </div>
 

@@ -1,10 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="content_block_inside">
+    <h2><%= @vendor.name %></h2>
+    <div class="field">
+        <label><%= t("address.city") %></label>
+        <%= @vendor.address.city.name %>
+    </div>
+    <div class="field">
+        <label><%= t("address.detail") %></label>
+        <%= @vendor.address.detail %>
+    </div>
 
-<p>
-  <b>Name:</b>
-  <%= @vendor.name %>
-</p>
-
-
-<%= link_to t("general.edit"), edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+    <%= link_to t("general.edit"), edit_vendor_path(@vendor) %> |
+    <%= link_to t("general.back"), vendors_path %>
+</div>
