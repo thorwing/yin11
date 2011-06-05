@@ -5,3 +5,7 @@
     width:200px;
     height:200px;
 }
+
+.profile_address_map {
+    display:none;
+}

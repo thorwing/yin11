@@ -18,6 +18,7 @@
         <div class="fields_group">
             <h3><%= t("profile.interested_places") %></h3>
             <span class="trivial"><%= f.label :detail, t("address.detail_hint") %></span>
+            <div id="map_container" class="profile_address_map"></div>
             <%= f.fields_for :addresses do |builder| %>
                 <%= render "address_fields", :f => builder %>
             <% end %>

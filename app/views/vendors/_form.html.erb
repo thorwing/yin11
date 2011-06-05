@@ -1,23 +1,24 @@
 <%= form_for(@vendor) do |f| %>
   <%= render "shared/error_messages", :target => @vendor %>
-  <div class="field">
-    <%= f.label :name, t("general.name") %><br />
-    <%= text_field_tag "vendor[name]", @vendor.name.present? ? @vendor.name : params[:name], {:class => "map_place"} %>
+  <div class="map_address">
+      <div class="field">
+        <%= f.label :name, t("general.name") %><br />
+        <%= text_field_tag "vendor[name]", @vendor.name.present? ? @vendor.name : params[:name], {:class => "map_place"} %>
+      </div>
+      <%= f.fields_for :address do |builder| %>
+
+          <%= builder.hidden_field :point, {:class => "map_point"} %>
+          <div class="field">
+            <%= t("address.city") %><br/>
+            <%= builder.select :city_id, options_for_select(get_cities_for_select, current_city.id), {}, {:class => "map_city"} %>
+          </div>
+          <div class="field">
+            <%= t("address.street") %><br/>
+            <%= builder.text_field :street, {:class => "map_street"} %>
+          </div>
+          <div id="map_container"></div>
+      <% end %>
   </div>
-  <%= f.fields_for :address do |builder| %>
-    <div class="map_address">
-      <%= builder.hidden_field :point, {:class => "map_point"} %>
-      <div class="field">
-        <%= t("address.city") %><br/>
-        <%= builder.select :city_id, options_for_select(get_cities_for_select, current_city.id), {}, {:class => "map_city"} %>
-      </div>
-      <div class="field">
-        <%= t("address.street") %><br/>
-        <%= builder.text_field :street, {:class => "map_street"} %>
-      </div>
-      <div id="map_container"></div>
-    </div>
-  <% end %>
 
   <div class="actions">
     <%= f.submit t("general.submit"), :class => "button" %>
