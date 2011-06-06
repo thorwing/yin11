@@ -12,18 +12,31 @@ function add_fields_with_map(link, association, content) {
 $(document).ready(function(){
     initialize_map();
 
-    var place = $(".map_place").val();
-    var street = $(".map_street").val();
-    var city = $(".map_city :selected").text();
+    if ($(".map_point_lng").length != 0 && $(".map_point_lat").length != 0)
+    {
+        var lng = $(".map_point_lng").val();
+        var lat = $(".map_point_lat").val();
+        if(lng && lat)
+        {
+            var point = new BMap.Point(lng, lat);  // 创建点坐标
+            update_map_with_point(point);
+        }
+    }
+    else
+    {
+        var place = $(".map_place").val();
+        var street = $(".map_street").val();
+        var city = $(".map_city :selected").text();
 
-    update_map(city, street, place);
+        update_map(city, street, place, null);
+    }
 
     add_listeners();
 });
 
 function initialize_map() {
     map = new BMap.Map("map_container");          // 创建地图实例
-    map.centerAndZoom("北京");    // 初始化地图
+    //map.centerAndZoom("北京");    // 初始化地图
     map.enableScrollWheelZoom();  // 开启鼠标滚轮缩放
     map.enableKeyboard();         // 开启键盘控制
     map.enableContinuousZoom();   // 开启连续缩放效果
@@ -58,6 +71,12 @@ function update_map_from_listener(control) {
     update_map(city, street, place, control);
 }
 
+function update_map_with_point(point)
+{
+    map.centerAndZoom(point, 16);
+    map.addOverlay(new BMap.Marker(point));
+}
+
 function update_map(city, street, place, control) {
     if (street != null || place != null)
     {
@@ -65,8 +84,7 @@ function update_map(city, street, place, control) {
         // 将地址解析结果显示在地图上,并调整地图视野
         myGeo.getPoint( city +  " " + street + " " + place, function(point){
             if (point) {
-                map.centerAndZoom(point, 16);
-                map.addOverlay(new BMap.Marker(point));
+                update_map_with_point(point);
 
                 if(control)
                 {

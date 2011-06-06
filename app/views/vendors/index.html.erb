@@ -1,30 +1,16 @@
-<h1>Listing vendors</h1>
+<div class="content_block_inside">
+    <h2><%= t("vendors.vendors") %></h2>
 
-<div class="search_fields">
-  <%= form_tag :action => "search" do %>
-    <%= text_field_tag "search", "" %>
-    <%= submit_tag t("general.search") %>
-  <% end %>
+    <div class="search_fields">
+      <%= form_tag :action => "search" do %>
+        <%= text_field_tag "search", "" %>
+        <%= submit_tag t("general.search"), :class => "button" %>
+      <% end %>
+    </div>
+
+    <% @vendors.each do |vendor| %>
+        <%= render "vendor_item", :vendor => vendor  %>
+    <% end %>
+    <br />
+    <%= link_to t("vendors.create_vendor"), new_vendor_path, :class => "button" %>
 </div>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @vendors.each do |vendor| %>
-  <tr>
-    <td><%= link_to vendor.name, vendor %></td>
-    <td><%= link_to 'Show', vendor %></td>
-    <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-    <td><%= link_to 'Destroy', vendor, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Vendor', new_vendor_path %>

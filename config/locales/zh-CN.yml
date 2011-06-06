@@ -123,12 +123,14 @@ zh-CN:
 
   vendors:
     vendor: 商户
+    vendors: 所有商户
     vendor_not_found: 没找到?
     quick_create_vendor: 点击这里，快速创建商户
     exact_vendor_not_found: 没有找到名为<%{name}>的商户
     please_create: "欢迎您创建:"
     normal_vendor: "商户: <%{name}>"
     new_vendor: 新商户
+    create_vendor: 新建商户
 
   reviews:
     reviews: 所有测评

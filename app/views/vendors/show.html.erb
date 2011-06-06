@@ -1,14 +1,19 @@
 <div class="content_block_inside">
     <h2><%= @vendor.name %></h2>
     <div class="field">
-        <label><%= t("address.city") %></label>
-        <%= @vendor.address.city.name %>
-    </div>
-    <div class="field">
-        <label><%= t("address.detail") %></label>
-        <%= @vendor.address.detail %>
+        <%= t("address.detail") %>: <%= @vendor.address.city.name %> <%= @vendor.address.detail %>
     </div>
 
-    <%= link_to t("general.edit"), edit_vendor_path(@vendor) %> |
-    <%= link_to t("general.back"), vendors_path %>
+    <%= render "shared/display_map", :address => @vendor.address %>
+
+    <div class="fields_group">
+        <h3><%= t("reviews.reviews") %>(<%= @vendor.reviews.size %>)</h3>
+        <ul>
+        <% @vendor.reviews.each do |review| %>
+           <li><%= link_to review.title, review %></li>
+        <% end %>
+        </ul>
+    </div>
+
+    <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %>
 </div>

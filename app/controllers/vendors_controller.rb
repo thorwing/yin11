@@ -128,10 +128,10 @@ class VendorsController < ApplicationController
   private
   def resolve_layout
     case action_name
-      when 'new', 'edit'
+      when 'new', 'edit', 'show'
         "map"
       else
-        "application"
+        'application'
     end
   end
 

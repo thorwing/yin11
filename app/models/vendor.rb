@@ -17,4 +17,10 @@ class Vendor
 
   accepts_nested_attributes_for :address, :allow_destroy => true
 
+  before_save :update_address
+
+  def update_address
+    self.address.place = self.name
+  end
+
 end

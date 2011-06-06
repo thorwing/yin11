@@ -5,7 +5,17 @@ class Address
   field :street
   field :place
   field :postcode
-  field :point
+  field :point_lng, :type => Float
+  field :point_lat, :type => Float
+
+  def point
+    [self.point_lng.to_s, self.point_lat.to_s].join(",")
+  end
+
+  def point=(address_point)
+    self.point_lng = address_point.split(",")[0].to_f
+    self.point_lat = address_point.split(",")[1].to_f
+  end
 
   def detail
     [self.street, self.place].join(" ")
