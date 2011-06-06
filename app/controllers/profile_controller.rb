@@ -8,7 +8,7 @@ class ProfileController < ApplicationController
   end
 
   def edit
-    current_user.profile.addresses || current_user.profile.addresses.build
+    current_user.profile.watching_addresses || current_user.profile.watching_addresses.build
     @my_recent_reviews = current_user.reviews.desc(:updated_at).limit(3)
   end
 

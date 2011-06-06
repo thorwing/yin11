@@ -54,7 +54,7 @@
                 <h3><%= current_user.login_name %></h3>
                 <%= get_avatar(current_user) %>
             </div>
-            <div id="watch_list_panel" class="sub_panel">
+            <div id="foods_watching_list" class="sub_panel">
                 <% if @watching_foods && @watching_foods.size > 0 %>
                     <h3><%= t("home.control_panel.watching_foods") %></h3>
                     <% @watching_foods.each do |food| %>
@@ -69,6 +69,10 @@
                     <%= submit_tag t("general.add"), :class => "button" %>
                     <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>
                 <% end %>
+            </div>
+            <div id="address_watching_list" class="sub_panel">
+                <%= link_to t("home.control_panel.update_profile"), profile_edit_path %>
+                <span class="trivial"><%= t("home.control_panel.add_address_suggestion") %></span>
             </div>
         <% else %>
             <div id="login_panel" class="sub_panel">

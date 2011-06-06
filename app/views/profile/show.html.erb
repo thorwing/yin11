@@ -7,7 +7,7 @@
 
     <div class="fields_group">
         <h3><%= t("profile.interested_places") %></h3>
-        <% current_user.profile.addresses.each do |address| %>
+        <% current_user.profile.watching_addresses.each do |address| %>
             <%= address.city.name %>: <%= address.detail %>
         <% end %>
     </div>

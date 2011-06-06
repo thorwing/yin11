@@ -19,10 +19,10 @@
             <h3><%= t("profile.interested_places") %></h3>
             <span class="trivial"><%= f.label :detail, t("address.detail_hint") %></span>
             <div id="map_container" class="profile_address_map"></div>
-            <%= f.fields_for :addresses do |builder| %>
-                <%= render "address_fields", :f => builder %>
+            <%= f.fields_for :watching_addresses do |builder| %>
+                <%= render "watching_address_fields", :f => builder %>
             <% end %>
-            <p><%= link_to_add_fields_with_map t("profile.add_place"), f, :addresses %></p>
+            <p><%= link_to_add_fields_with_map t("profile.add_place"), f, :watching_addresses %></p>
         </div>
 
         <div class="fields_group">

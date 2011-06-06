@@ -13,7 +13,7 @@
         <% @review.checkpoints.each do |checkpoint| %>
             <tr>
               <td><%= checkpoint.name %></td>
-              <td><%= image_tag checkpoint.pass ? "good_thumb.png"  : "bad_thumb.png" %></td>
+              <td><%= image_tag checkpoint.pass ? "correct_icon.gif"  : "wrong_icon.gif" %></td>
             </tr>
         <% end %>
       </table>

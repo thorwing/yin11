@@ -9,12 +9,12 @@ class Profile
 
   #relationships
   embedded_in :user
-  embeds_many :addresses
+  embeds_many :watching_addresses, :class_name => "Address"
 
-  accepts_nested_attributes_for :addresses, :reject_if => lambda { |a| a[:point].blank? }, :allow_destroy => true
-  attr_accessible :receive_mails, :addresses_attributes, :avatar
+  accepts_nested_attributes_for :watching_addresses, :reject_if => lambda { |a| a[:point].blank? }, :allow_destroy => true
+  attr_accessible :receive_mails, :watching_addresses_attributes, :avatar
 
-  validates_associated :addresses
+  validates_associated :watching_addresses
 
   def add_foods(foods = [])
     for food in foods
