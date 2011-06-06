@@ -4,7 +4,7 @@ class Review
   include Informative
 
   scope :in_days_of, ->(days_in_number) {where(:created_at.gt => days_in_number.days.ago )}
-  scope :about, ->(food) {where(food_id: food.is_a?(Food) ? food.id : food)}
+  scope :about, ->(food) {any_in(food_ids: [food.is_a?(Food) ? food.id : food])}
 #  scope :in_city, ->(city) {any_in(city_ids: [city.is_a?(City) ? city.id : city])}
 #  scope :not_in_city, ->(city) {not_in(city_ids: [city.is_a?(City) ? city.id : city])}
 

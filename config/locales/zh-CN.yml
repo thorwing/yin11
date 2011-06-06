@@ -121,8 +121,8 @@ zh-CN:
     safty_indicator: 食物安全风向标
     recent_exams: 最近对于%{name}的评论
     safty_tips: %{name}的安全食用知识
-    why_add_to_watch_list: 为什么要把食物收藏到<我的菜单>
-    add_to_watch_list: 把%{name}收藏到<我的菜单>
+    why_add_to_watch_list: "把食物收藏到<我的菜单>，关于该食物的安全动向早知道。"
+    add_to_watch_list: 收藏
 
   vendors:
     vendor: 商户
@@ -165,6 +165,7 @@ zh-CN:
     reply: 回复
 
   articles:
+    articles: 所有文章
     source: 来源
     post_new_article: 发表新文章
     new_article: 新文章
@@ -184,6 +185,9 @@ zh-CN:
     please_create: "欢迎您创建:"
     handle_tip: "食物处理贴士: <%{title}>"
     exam_tip: "食物测评贴士: <%{title}>"
+
+  badges:
+    badges: 所有徽章
 
   questions:
     new_question: 我有疑问

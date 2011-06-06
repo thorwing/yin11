@@ -1,23 +1,25 @@
 <div class="food_item">
-    <%= food.name %>
-    <%= t("foods.why_add_to_watch_list") %>
-    <%= link_to t("foods.add_to_watch_list", :name => food.name), watch_food_path(food), :method => :put %>
+    <h3><%= food.name %></h3>
+    <%= link_to t("foods.add_to_watch_list"), :method => :put %>
+    <span class="trivial"><%= t("foods.why_add_to_watch_list") %></span>
 
     <div class="food_articles">
-        <h2><%= t("foods.recent_news", :name => food.name) %></h2>
+        <h4><%= t("foods.recent_news", :name => food.name) %></h4>
         <% get_related_articles_of(food, user).each_with_index do |article, index| %>
             <div id="<%="food_article_#{index}" %>"><%= article.title %></div>
         <% end %>
     </div>
 
     <div class="food_reviews">
-        <h2><%= t("foods.safty_indicator") %></h2>
-        <h2><%= t("foods.recent_exams", :name => food.name) %></h2>
-        <% get_related_reviews_of(food).each do |review| %>
-            <%= review.title %>
-        <% end %>
+        <h4><%= t("foods.safty_indicator") %></h4>
+        <h4><%= t("foods.recent_exams", :name => food.name) %></h4>
+        <ul>
+            <% get_related_reviews_of(food).each do |review| %>
+                <li><%= link_to review.title, review %></li>
+            <% end %>
+        </ul>
     </div>
     <div class="food_tips">
-        <h2><%= t("foods.safty_tips", :name => food.name) %></h2>
+        <h4><%= t("foods.safty_tips", :name => food.name) %></h4>
     </div>
 </div>

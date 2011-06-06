@@ -87,7 +87,7 @@
               <% @foods_buzz.each do |category, foods| %>
                 <h4><%= category.name if category %></h4>
                 <% foods.each do |food| %>
-                    <h5><%= food.name %></h5>
+                    <h5><%= link_to food.name, foods_path(:foods => food.name) %></h5>
                 <% end %>
                 <br/>
               <% end %>
