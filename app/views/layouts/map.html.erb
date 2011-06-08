@@ -6,8 +6,7 @@
 <% end %>
 
 <% content_for :deferred_javascript do %>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
-    <%= javascript_include_tag "map" %>
+    <%= javascript_include_tag "http://api.map.baidu.com/api?v=1.2", "map" %>
 <% end %>
 
 

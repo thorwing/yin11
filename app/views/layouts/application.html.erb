@@ -4,7 +4,7 @@
   <%= stylesheet_link_tag "token-input-facebook", "uniform.aristo", "facebox", "slimbox2", "application", "home", "comment", "tab_control", "form" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "jquery.rails.js",
                              "application", "jquery.tokeninput", "jquery.uniform.min", "facebox", "slimbox2", "jquery.pageless.min" %>
-  <%= yield :header_including %>
+  <%= yield :header_including if content_for?(:header_including) %>
   <%= include_tiny_mce_if_needed %>
   <%= csrf_meta_tag %>
   <title><%= t("site.name") %><%= ": #{@sub_title}" if @sub_title.present? %></title>
@@ -73,6 +73,6 @@
     </div>
 </div>
 
-<% yield :deferred_javascript %>
+<%= yield :deferred_javascript if content_for?(:deferred_javascript) %>
 </body>
 </html>
