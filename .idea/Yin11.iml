@@ -72,6 +72,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="mechanize" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="mongoid" version="2.0" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -190,6 +196,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] erubis (v2.6.6, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/erubis-2.6.6)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] actionpack (v3.0.7, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.7)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.8.7, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/rake-0.8.7)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] mechanize (v1.0.0, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/mechanize-1.0.0)" level="application" />
   </component>
 </module>
 

@@ -42,6 +42,8 @@ gem 'kaminari'
 #factory_girl is also used for db seeds
 gem 'factory_girl_rails'
 
+gem "mechanize"
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
