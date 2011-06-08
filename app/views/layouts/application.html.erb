@@ -6,6 +6,7 @@
                              "application", "jquery.tokeninput", "jquery.uniform.min", "facebox", "slimbox2", "jquery.pageless.min" %>
   <%= yield :header_including if content_for?(:header_including) %>
   <%= include_tiny_mce_if_needed %>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <%= csrf_meta_tag %>
   <title><%= t("site.name") %><%= ": #{@sub_title}" if @sub_title.present? %></title>
 </head>
