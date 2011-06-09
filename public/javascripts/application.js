@@ -61,7 +61,6 @@ $(document).ready(function(){
 		});
 	});
 }*/
-
 });
 
 $(document).ready(function(){
@@ -74,5 +73,9 @@ $(document).ready(function(){
         var value = $(".severity_radio:checked").val();
         $("label.severity_image").addClass("severity_" + value);
     });
+});
+
+$(document).ready(function() {
+    $(".date_picker").datepicker({ maxDate: +0, minDate: -7 });
 });
 

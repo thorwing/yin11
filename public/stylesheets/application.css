@@ -134,17 +134,25 @@ a.button:hover, input.button:hover {
 	height:76px;
 }
 
-
-ul#menu {
-	margin:0px; padding:0px;
-	position:absolute;
-	right: 0px;
+/*
+	General-Menu-Styles
+*/
+ul.menu {
+    margin:0px; padding:0px;
 }
-ul#menu li {
+ul.menu li {
 	display:inline;
 	margin-left:12px;
 }
-ul#menu li a {
+
+/*
+	Top-Menu-Styles
+*/
+ul#top_menu {
+	position:absolute;
+	right: 0px;
+}
+ul#top_menu li a {
 	text-decoration:none;
 	color:#3B7B3B;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
@@ -152,7 +160,7 @@ ul#menu li a {
 	font-weight:bold;
 	text-transform:uppercase;
 }
-ul#menu li a.active, ul#menu li a:hover {
+ul#top_menu li a.active, ul#menu li a:hover {
 	color:#211e1e;
 }
 

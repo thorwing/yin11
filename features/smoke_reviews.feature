@@ -95,7 +95,7 @@ Feature: smoke tests for Reviews
   @focus
   Scenario:  User's city will be detected.
     When I log in as "David User"
-    And I follow "我要写测评"
+    And I follow "测评" within "#actions_menu"
     Then I should see "北京"
     And I should see "切换城市"
 

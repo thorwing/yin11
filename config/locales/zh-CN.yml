@@ -11,6 +11,7 @@ zh-CN:
     content: 内容
     name: 名称
     description: 描述
+    date: 日期
     delete: 删除
     show: 查看
     submit: 完成
@@ -158,6 +159,10 @@ zh-CN:
     created_notice: 测评已发布
     updated_notice: 测评已更新
     only_author_self_notice: 只有作者才可以执行此操作
+
+  recommendations:
+    recommendation: 健康一餐
+    new_recommendation: 分享我的健康一餐
 
   comments:
     comments: "评论:"

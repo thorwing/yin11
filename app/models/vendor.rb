@@ -20,7 +20,7 @@ class Vendor
   before_save :update_address
 
   def update_address
-    self.address.place = self.name
+    self.address.place = self.name if self.address
   end
 
 end

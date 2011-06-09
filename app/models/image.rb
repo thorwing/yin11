@@ -9,7 +9,7 @@ class Image
 
   #relationships
   belongs_to :article
-  belongs_to :review
+  belongs_to :opinion
   belongs_to :tip
 
 end

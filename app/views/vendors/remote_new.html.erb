@@ -9,8 +9,8 @@
   </div>
   <%= f.fields_for :address do |builder| %>
       <div class="field">
-        <%= t("address.city") %><br/>
-        <%= builder.select :city_id, options_for_select(get_cities_for_select, current_city.id)%>
+        <%= current_city.name %>
+        <%= hidden_field_tag :city_id, current_city.id %>
       </div>
       <div class="field">
         <%= t("address.street") %><br/>

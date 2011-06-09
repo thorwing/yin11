@@ -61,7 +61,6 @@ Feature: smoke tests for Articles
     When I search for "西瓜"
     Then I should not see "西瓜被打了催熟剂" within "div.food_articles"
 
-  @focus
   Scenario: Editor can upload images for an article, and one of the images will be displayed as thumbnail.
     When I log in as "Castle Editor"
     And I go to the new_article page

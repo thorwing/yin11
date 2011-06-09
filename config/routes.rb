@@ -1,4 +1,8 @@
 Yin11::Application.routes.draw do
+  resources :criticisms
+
+  resources :recommendations
+
   match "log_out" => "sessions#destroy"
   match "log_in" => "sessions#new"
   match "sign_up" => "users#new"
@@ -18,7 +22,13 @@ Yin11::Application.routes.draw do
   post "home/add_comment"
   put "home/toggle_disabled"
 
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
+
+  resources :recommendations do
+    resources :comments
+  end
 
   resources :reviews do
     resources :comments
