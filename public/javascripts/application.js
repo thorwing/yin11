@@ -4,8 +4,8 @@
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-  $(link).before(content.replace(regexp, new_id));
-  $("input:checkbox, input:radio, input:file").uniform();
+  $(link).after(content.replace(regexp, new_id));
+  $("input:checkbox, input:file").uniform();
 }
 
 function remove_fields(link) {
@@ -44,7 +44,7 @@ $(function() {
 
 //When Dom is ready:
 $(document).ready(function(){
-	$("input:checkbox, input:radio, input:file").uniform({
+	$("input:checkbox, input:file").uniform({
         fileDefaultText: '无',
         fileBtnText: "选择图片"
     });
@@ -75,7 +75,10 @@ $(document).ready(function(){
     });
 });
 
+//JQuery UI
 $(document).ready(function() {
     $(".date_picker").datepicker({ maxDate: +0, minDate: -7 });
+    $(".radio_group" ).buttonset();
+    //$(".button" ).button();
 });
 

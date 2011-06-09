@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new.xml
   def new
     @review = Review.new
+    @review.reported_on = DateTime.now
 
     @sub_title = t("sub_titles.new_review")
 

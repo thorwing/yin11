@@ -15,12 +15,6 @@ div.field {
     overflow:hidden;
 }
 
-#severity_options {
-    float:left;
-    clear:both;
-    width:150px;
-}
-
 label.severity_image {
     width:48px;
     height:64px;

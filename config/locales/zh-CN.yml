@@ -163,6 +163,9 @@ zh-CN:
   recommendations:
     recommendation: 健康一餐
     new_recommendation: 分享我的健康一餐
+    recommendation_suggestion_1: "您刚刚吃了健康的一餐，食物安全，卫生，又有营养。现在将这健康一餐和大家一起分享吧！越多的用户喜爱您的分享，您将获得更多的积分。"
+    recommendation_suggestion_2: "在何时何地，您吃了什么食物？您用了什么手段来确保这一餐是安全又卫生的？"
+
 
   comments:
     comments: "评论:"
