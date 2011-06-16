@@ -145,6 +145,7 @@ zh-CN:
     add_new_checkpoint: 添加检查点
     title_review: 报告
     referenced_tip: 依据贴士
+    upload_image_tip: "(请至少上传一张图片,最多5张)"
     checkpoint_pass: 通过
     checkpoints: 检查点
     title_the: 的

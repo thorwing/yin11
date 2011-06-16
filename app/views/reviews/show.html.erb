@@ -1,8 +1,12 @@
 <div class="content_block_inside">
     <h2><%= @review.title %></h2>
+    <span class="trivial"><%= @review.reported_on_string %></span>
+    <div class="clues">
+        <% clues = get_clues_of_item(@review); clues.each_with_index do |clue, index| %>
+            <%= content_tag(:small, clue) %> <%= "|" if index < clues.size - 1 %>
+        <% end %>
+    </div>
     <p><%= raw @review.content %></p>
-
-
     <% if @review.checkpoints.size > 0 %>
       <%= t("reviews.checkpoints") %>
       <table>
@@ -19,21 +23,23 @@
       </table>
     <% end %>
     <div>
-      <%= t("reviews.severity") + ": " + t("reviews.severity_#{@review.severity}")%><br/>
-      <%= image_tag "severity_#{@review.severity}_small.png" %>
+      <%= get_severity_image(@review) %>
+      <%= t("reviews.severity_#{@review.severity}")%>
     </div>
 
     <% if @review.vendor and @review.vendor.address %>
         <%= render "shared/display_map", :address =>  @review.vendor.address %>
     <% end %>
 
-    <div id="gallery" class="block">
-      <div class="block_inside">
-          <% @review.images.each do |image| %>
-              <%= get_thumbnail(image, true) %>
-          <% end %>
-      </div>
-    </div>
+    <% if @review.images.size > 0 %>
+        <div id="gallery" class="block">
+          <div class="block_inside">
+              <% @review.images.each do |image| %>
+                  <%= get_thumbnail(image, true) %>
+              <% end %>
+          </div>
+        </div>
+    <% end %>
 
      <% if the_author_himself(Review.name, @review.id, true) %>
         <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>

@@ -3,7 +3,8 @@
 <head>
   <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css", "token-input-facebook", "uniform.aristo", "facebox", "slimbox2", "application", "home", "comment", "tab_control", "form" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js", "jquery.rails.js",
-                             "application", "jquery.tokeninput", "jquery.uniform.min", "facebox", "slimbox2", "jquery.pageless.min" %>
+                             "application", "jquery.tokeninput", "jquery.uniform.min", "facebox", "slimbox2", "jquery.pageless.min",
+                             "jquery.metadata" %>
   <%= yield :header_including if content_for?(:header_including) %>
   <%= include_tiny_mce_if_needed %>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

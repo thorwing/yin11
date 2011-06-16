@@ -51,7 +51,7 @@ module ApplicationHelper
     end
   end
 
-  def get_severity_image(review, width = 48, height = 64)
+  def get_severity_image(review, width = 24, height = 32)
      image_tag("severity_#{review.severity}_small.png", :width => width, :height => height)
   end
 

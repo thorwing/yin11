@@ -1,28 +1,26 @@
 <%= form_for opinion, :html => { :multipart => true } do |f| %>
   <%= render "shared/error_messages", :target => opinion %>
   <div class="field">
-    <%= f.label :title, t("general.title") %><%= mark_required(opinion, :title) %><br/>
+    <%= f.label :title, t("general.title") %><%= mark_required(opinion, :title) %><%= mark_required_length(opinion, :title) %><br/>
     <%= f.text_field :title, :maxlength => 40 %>
   </div>
   <div class="field">
     <%= f.label :food_tokens, t("foods.foods") %><br/>
     <%= f.text_field :food_tokens, 'data-pre' => (f.object.foods.map { |f| { :id => f.id, :name => f.name }}).to_json %>
   </div>
+  <div id="field">
+    <%= f.label :vendor_token, t("vendors.vendor") %>
+    (<%= t("vendors.vendor_not_found") %> <%= link_to t("vendors.quick_create_vendor"), new_vendor_path(:popup => true), :rel => "facebox" %>)<br/>
+    <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)
+    <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
+  </div>
   <div class="field">
     <%= f.label :reported_on_string, t("general.date") %><br/>
     <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
   </div>
-  <div id="field">
-    <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)
-  </div>
 
-  <div id="field">
-    <%= f.label :vendor_token, t("vendors.vendor") %>
-    (<%= t("vendors.vendor_not_found") %> <%= link_to t("vendors.quick_create_vendor"), new_vendor_path(:popup => true), :rel => "facebox" %>)<br/>
-    <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
-  </div>
 
-  <% if opinion.is_a?(Review) %>
+  <% if false %>
       <div class="fields_group">
         <%= f.fields_for :checkpoints do |builder| %>
             <%= render "checkpoint_fields", :f => builder %>
@@ -44,12 +42,16 @@
       </div>
   <% end %>
 
+  <%= f.label :images, t("images.images") %>
+  <%= mark_required(opinion, :images) %>
+  <%= content_tag(:span, t("reviews.upload_image_tip"), :class => "trivial" ) if opinion.is_a?(Review) %>
   <div class="fields_group">
-    <%= f.fields_for :images do |builder| %>
-        <%= render "image_fields", :f => builder %>
-    <% end %>
-
+    <%= hidden_field_tag "images_counter", opinion.images ?  opinion.images.size : 0, 'data-max' => 5 %>
     <%= link_to_add_fields  t("images.add_image"), f, :images %>
+    <br/>
+    <% opinion.images.each do |image| %>
+        <%= get_thumbnail(image, true) %>
+    <% end %>
   </div>
 
   <% if false %>

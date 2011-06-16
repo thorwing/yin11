@@ -5,7 +5,20 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
   $(link).after(content.replace(regexp, new_id));
-  $("input:checkbox, input:file").uniform();
+  var counter = $(link).prev("input[id$='counter']");
+  if(counter) {
+    var count = parseInt(counter.val()) + 1;
+    counter.val(count);
+    //TODO
+      $.metadata.setType("html5");
+      var data = counter.metadata();
+      if (data.max) {
+          var max = parseInt(data.max);
+          if(count >= max) {
+            $(link).hide();
+          }
+      }
+  }
 }
 
 function remove_fields(link) {
@@ -44,11 +57,6 @@ $(function() {
 
 //When Dom is ready:
 $(document).ready(function(){
-	$("input:checkbox, input:file").uniform({
-        fileDefaultText: '无',
-        fileBtnText: "选择图片"
-    });
-
 //    $.facebox.settings.closeImage = url('/images/facebox/closelabel.png');
 //    $.facebox.settings.loadingImage = url('/images/facebox/loading.gif');
     $('a[rel*=facebox]').facebox();
