@@ -30,7 +30,6 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/new.xml
   def new
     @recommendation = Recommendation.new
-    @recommendation.reported_on = DateTime.now
 
     respond_to do |format|
       format.html # new.html.erb

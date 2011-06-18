@@ -12,7 +12,8 @@ class Opinion
   field :reported_on, :type => DateTime
 
   def reported_on_string
-    self.reported_on.strftime('%m/%d/%Y')
+    reported_on ||= DateTime.now
+    reported_on.strftime('%m/%d/%Y')
   end
 
   def reported_on_string=(reported_on_str)

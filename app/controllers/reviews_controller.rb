@@ -30,7 +30,6 @@ class ReviewsController < ApplicationController
   # GET /reviews/new.xml
   def new
     @review = Review.new
-    @review.reported_on = DateTime.now
 
     @sub_title = t("sub_titles.new_review")
 
@@ -56,6 +55,13 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
     @review.author = current_user
+    params[:images][0..4].each do |image_id|
+      image = Image.find(image_id)
+      image.opinion_id = @review.id
+      image.save
+      #@review.image_ids << image_id
+    end
+
     current_user.make_contribution(:created_reviews, 1)
     current_user.save
 
@@ -74,6 +80,18 @@ class ReviewsController < ApplicationController
   # PUT /reviews/1.xml
   def update
     @review = Review.find(params[:id])
+
+    @review.images.each do |image|
+      image.delete unless params[:images][0..4].include? image.id.to_s
+    end
+
+    params[:images][0..4].each do |image_id|
+      image = Image.find(image_id)
+      if image.opinion_id.blank?
+        image.opinion_id = @review.id
+        image.save
+      end
+    end
 
     respond_to do |format|
       if @review.update_attributes(params[:review])

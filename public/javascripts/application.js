@@ -32,6 +32,14 @@ function show_tab_content(link, content) {
   $(link).parents(".tab_control").children("div.tab_content").replaceWith(content);
 }
 
+function delete_image(link) {
+    $(link).parent().remove();
+    var image_count = $('.image').size();
+    if (image_count < 5) {
+        $('#image_upload_container').show();
+    }
+}
+
 $(function() {
     function tokenize_input(element_selector, data_source, tokenLimit) {
         $(element_selector).tokenInput(data_source, {

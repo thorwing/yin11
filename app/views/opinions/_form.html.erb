@@ -45,14 +45,21 @@
   <%= f.label :images, t("images.images") %>
   <%= mark_required(opinion, :images) %>
   <%= content_tag(:span, t("reviews.upload_image_tip"), :class => "trivial" ) if opinion.is_a?(Review) %>
+
+  <%= hidden_field_tag "images_counter", opinion.images ?  opinion.images.size : 0, 'data-max' => 5 %>
   <div class="fields_group">
-    <%= hidden_field_tag "images_counter", opinion.images ?  opinion.images.size : 0, 'data-max' => 5 %>
-    <%= link_to_add_fields  t("images.add_image"), f, :images %>
-    <br/>
-    <% opinion.images.each do |image| %>
-        <%= get_thumbnail(image, true) %>
-    <% end %>
+      <% opinion.images.each do |image| %>
+        <%= render "images/image", :image => image %>
+      <% end %>
+      <div class="images"></div>
+      <div id="image_upload_container">
+        <div id="image_upload"></div>
+      </div>
   </div>
+
+  <noscript>
+    <p><%= t("general.javascript_please") %></p>
+  </noscript>
 
   <% if false %>
   <% tab_control do %>
@@ -97,3 +104,6 @@
     <%= f.submit t("general.submit"), :class => "button" %>
   </div>
 <% end %>
+
+<%= javascript_include_tag '/uploadify/swfobject.js', '/uploadify/jquery.uploadify.v2.1.4.min.js' %>
+<%= image_uploadify %>

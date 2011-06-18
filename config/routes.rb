@@ -31,6 +31,7 @@ Yin11::Application.routes.draw do
   end
 
   resources :reviews do
+    resources :images
     resources :comments
   end
 

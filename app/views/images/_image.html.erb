@@ -1,0 +1,6 @@
+<span class="image">
+    <%= hidden_field_tag "images[]", image.id %>
+    <%= get_thumbnail(image, true) %>
+    <%= link_to_function "x", "delete_image(this)" %>
+</span>
+

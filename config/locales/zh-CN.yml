@@ -32,6 +32,7 @@ zh-CN:
     severity_2: 警惕
     severity_3: 严重
     are_you_sure_to_delete: 确定要删除吗？
+    javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
 
   sub_titles:
     new_review: 新测评
@@ -205,7 +206,7 @@ zh-CN:
     images: 图片
     image: 图片
     remote_link: 图片链接
-    add_image: +图片
+    add_image: 上传图片
 
   info_items:
     detail: 详情>>
