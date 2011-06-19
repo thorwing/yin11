@@ -2,7 +2,5 @@
 
 <%= render 'form' %>
 
-<%= render "shared/toggle_disabled", :item => @article if has_permission?(:editor) %>
-
 <%= link_to 'Show', @article %> |
 <%= link_to 'Back', articles_path %>

@@ -30,7 +30,7 @@ namespace :yin11 do
         content = agent.page.at("#article").content
         puts title + " -> " + DateTime.parse(time).strftime('%m/%d/%Y')
 
-        Article.find_or_create_by(:title => title, :content => content, :published_on => DateTime.parse(time), :category => category)
+        Article.find_or_create_by(:title => title, :content => content, :published_on => DateTime.parse(time), :category => category, :disabled => true)
         count += 1
       end
     end

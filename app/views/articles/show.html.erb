@@ -2,7 +2,7 @@
     <p id="notice"><%= notice %></p>
 
     <h3><%= @article.title %></h3>
-    <p class="trivial"><%= @article.published_on.strftime('%m/%d/%Y') %></p>
+    <p class="trivial"><%= @article.published_on.strftime('%m/%d/%Y') if @article.published_on %></p>
     <small><%= t("articles.source") %>: <%= @article.source %></small>
     <br/>
     <small>

@@ -28,6 +28,9 @@
         <div id="header">
             <ul class="menu" id="top_menu">
                 <li><%= link_to t("menu.home"), root_path %></li>
+                <% if current_user && current_user.is_admin? %>
+                    <li><%= link_to t("menu.admin"), admin_root_path %></li>
+                <% end %>
                 <li><%= link_to t("menu.articles"), articles_path %></li>
                 <li><%= link_to t("menu.reviews"), reviews_path %></li>
                 <li><%= link_to t("menu.badges"), badges_path %></li>

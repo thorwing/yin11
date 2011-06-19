@@ -4,6 +4,8 @@ module Available
       scope :enabled, where(disabled: false)
       scope :disabled, where(disabled: true)
       field :disabled, :type => Boolean, :default => false
+
+      attr_accessible :disabled
     end
   end
 end

@@ -6,10 +6,6 @@
     <%= f.text_field :title, :maxlength => 20 %>
   </div>
   <div class="field">
-    <%= f.label :authorized %><br />
-    <%= f.check_box :authorized, {}, true, false %>
-  </div>
-  <div class="field">
     <%= f.label :published_on, t("general.date") %><br/>
     <%= f.text_field :published_on, {:class => "date_picker"} %>
   </div>

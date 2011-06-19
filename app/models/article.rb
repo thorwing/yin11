@@ -4,7 +4,7 @@ class Article
   include Available
   include Informative
 
-  default_scope where(:authorized => true )
+  default_scope where(:disabled => false )
   scope :in_days_of, ->(days_in_number) {where(:created_at.gt => days_in_number.days.ago )}
   scope :about, ->(food) {any_in(food_ids: [food.is_a?(Food) ? food.id : food])}
   scope :in_city, ->(city) {any_in(city_ids: [city.is_a?(City) ? city.id : city])}
@@ -12,7 +12,6 @@ class Article
 
   field :source
   field :published_on, :type => DateTime
-  field :authorized, :type => Boolean, :default => false
   field :category
 
   #Relationships
@@ -22,7 +21,7 @@ class Article
   tokenize_many :cities, :foods
   tokenize_one :vendor
 
-  attr_accessible :source, :published_on, :category, :authorized
+  attr_accessible :source, :published_on, :category
 
   validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content") )
   validates_length_of :content, :minimum => 10, :maximum => 10000, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),

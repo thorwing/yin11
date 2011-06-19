@@ -2,7 +2,5 @@
 
 <%= render 'form' %>
 
-<%= render "shared/toggle_disabled", :item => @vendor if has_permission?(:editor) %>
-
 <%= link_to 'Show', @vendor %> |
 <%= link_to 'Back', vendors_path %>
