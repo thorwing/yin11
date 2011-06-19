@@ -55,6 +55,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params[:review])
     @review.author = current_user
+
     params[:images][0..4].each do |image_id|
       image = Image.find(image_id)
       image.opinion_id = @review.id

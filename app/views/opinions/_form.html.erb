@@ -26,19 +26,21 @@
             <%= render "checkpoint_fields", :f => builder %>
         <% end %>
         <p><%= link_to_add_fields  t("reviews.add_checkpoint"), f, :checkpoints %></p>
+      </div>
+  <% end %>
 
+  <% if opinion.is_a?(Review) %>
+      <div class="field">
         <%= f.label :severity, t("reviews.severity") %><br/>
-
-        <div class="radio_group">
-            <%= f.radio_button(:severity, 0, :checked => opinion.severity == 0, :class => "severity_radio") %><label for="review_severity_0"> <%= t("reviews.severity_0") %></label>
-            <%= f.radio_button(:severity, 1, :checked => opinion.severity == 1, :class => "severity_radio") %><label for="review_severity_1"> <%= t("reviews.severity_1") %></label>
-            <%= f.radio_button(:severity, 2, :checked => opinion.severity == 2, :class => "severity_radio") %><label for="review_severity_2"> <%= t("reviews.severity_2") %></label>
-            <%= f.radio_button(:severity, 3, :checked => opinion.severity == 3, :class => "severity_radio") %><label for="review_severity_3"> <%= t("reviews.severity_3") %></label>
-	    </div>
-        <div>
-            <label class="severity_image severity_<%= opinion.severity %>"></label>
-        </div>
-
+            <div>
+                <label class="severity_image severity_<%= opinion.severity %>"></label>
+            </div>
+            <div class="radio_group">
+                <%= f.radio_button(:severity, 0, :checked => opinion.severity == 0, :class => "severity_radio") %><label for="review_severity_0"> <%= t("reviews.severity_0") %></label>
+                <%= f.radio_button(:severity, 1, :checked => opinion.severity == 1, :class => "severity_radio") %><label for="review_severity_1"> <%= t("reviews.severity_1") %></label>
+                <%= f.radio_button(:severity, 2, :checked => opinion.severity == 2, :class => "severity_radio") %><label for="review_severity_2"> <%= t("reviews.severity_2") %></label>
+                <%= f.radio_button(:severity, 3, :checked => opinion.severity == 3, :class => "severity_radio") %><label for="review_severity_3"> <%= t("reviews.severity_3") %></label>
+            </div>
       </div>
   <% end %>
 
@@ -106,4 +108,4 @@
 <% end %>
 
 <%= javascript_include_tag '/uploadify/swfobject.js', '/uploadify/jquery.uploadify.v2.1.4.min.js' %>
-<%= image_uploadify %>
+<%= image_uploadify opinion %>

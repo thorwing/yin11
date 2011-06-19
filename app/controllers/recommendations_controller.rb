@@ -47,6 +47,12 @@ class RecommendationsController < ApplicationController
   def create
     @recommendation = Recommendation.new(params[:recommendation])
 
+    params[:images][0..4].each do |image_id|
+      image = Image.find(image_id)
+      image.opinion_id = @review.id
+      image.save
+    end
+
     respond_to do |format|
       if @recommendation.save
         format.html { redirect_to(@recommendation, :notice => 'Recommendation was successfully created.') }
@@ -62,6 +68,18 @@ class RecommendationsController < ApplicationController
   # PUT /recommendations/1.xml
   def update
     @recommendation = Recommendation.find(params[:id])
+
+    @recommendation.images.each do |image|
+      image.delete unless params[:images][0..4].include? image.id.to_s
+    end
+
+    params[:images][0..4].each do |image_id|
+      image = Image.find(image_id)
+      if image.opinion_id.blank?
+        image.opinion_id = @review.id
+        image.save
+      end
+    end
 
     respond_to do |format|
       if @recommendation.update_attributes(params[:recommendation])

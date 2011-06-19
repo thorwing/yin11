@@ -19,7 +19,7 @@
     </small>
     <br/>
     <p>
-      <%= raw @article.content %>
+      <%= simple_format @article.content %>
     </p>
     <p>
       <b><%= t("images.images") %>(<%= @article.images.size%>):</b>

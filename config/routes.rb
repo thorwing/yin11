@@ -31,9 +31,10 @@ Yin11::Application.routes.draw do
   end
 
   resources :reviews do
-    resources :images
     resources :comments
   end
+
+  resources :images, :only => [:create]
 
   resources :tips do
     collection do
