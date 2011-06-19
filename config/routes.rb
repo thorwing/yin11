@@ -1,5 +1,6 @@
 Yin11::Application.routes.draw do
-  resources :criticisms
+
+
 
   resources :recommendations
 

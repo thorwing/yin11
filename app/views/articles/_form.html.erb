@@ -6,8 +6,20 @@
     <%= f.text_field :title, :maxlength => 20 %>
   </div>
   <div class="field">
+    <%= f.label :authorized %><br />
+    <%= f.check_box :authorized, {}, true, false %>
+  </div>
+  <div class="field">
+    <%= f.label :published_on, t("general.date") %><br/>
+    <%= f.text_field :published_on, {:class => "date_picker"} %>
+  </div>
+  <div class="field">
     <%= f.label :source %><br />
     <%= f.text_field :source, :maxlength => 20 %>
+  </div>
+  <div class="field">
+    <%= f.label :category, t("general.category") %><br/>
+    <%= f.select :category, options_for_select(["case", "knowledge"], @article.category) %>
   </div>
   <div class="field">
     <%= f.label :content %><br />

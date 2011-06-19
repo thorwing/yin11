@@ -2,6 +2,7 @@
     <p id="notice"><%= notice %></p>
 
     <h3><%= @article.title %></h3>
+    <p class="trivial"><%= @article.published_on.strftime('%m/%d/%Y') %></p>
     <small><%= t("articles.source") %>: <%= @article.source %></small>
     <br/>
     <small>
@@ -31,7 +32,7 @@
     </p>
 
     <small><%= t("comments.comments") %></small><br/>
-  <%= debug @article.comments.arrange %>
+    <%= debug @article.comments.arrange %>
     <%= nested_comments(@article, @article.comments.arrange(:order => :created_at)) %>
     <% if current_user %>
         <%= render "shared/new_comment", :item => @article %>
