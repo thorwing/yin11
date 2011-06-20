@@ -1,0 +1,23 @@
+<h2><%= t("foods.create_food") %></h2>
+
+<%= form_for @food, :remote => true do |f| %>
+  <%= render "shared/error_messages", :target => @food %>
+
+  <div class="field">
+    <%= f.label :name, t("general.name") %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :aliases_string, t("foods.aliases") %><br />
+    <%= f.text_field :aliases_string %>
+  </div>
+  <div class="field">
+    <%= f.label :category_ids, t("foods.categories") %><br />
+    <%= f.select :category_ids, options_for_select(Category.all.map{ |c| [c.name, c.id] }), :multiple => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit t("general.submit"), :class => "button" %>
+  </div>
+
+<% end %>
+

@@ -12,6 +12,7 @@ class FoodsController < ApplicationController
       @foods = Food.any_in(name: foods_to_search)
     elsif params[:q]
       @foods = Food.where(:name => /#{params[:q]}?/)
+      @foods |= Food.any_in(:aliases => [/#{params[:q]}?/])
     else
       @foods = Food.all
     end
@@ -19,7 +20,7 @@ class FoodsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @foods }
-      format.json { render :json => @foods.map { |f| {:id => f.id, :name => f.name} } }
+      format.json { render :json => @foods.map { |f| {:id => f.id, :name => f.name } } }
     end
   end
 
@@ -40,7 +41,11 @@ class FoodsController < ApplicationController
     @food = Food.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      if params[:popup]
+        format.html {render "remote_new", :layout => "popup" }
+      else
+        format.html # new.html.erb
+      end
       format.xml  { render :xml => @food }
     end
   end
@@ -53,15 +58,26 @@ class FoodsController < ApplicationController
   # POST /foods
   # POST /foods.xml
   def create
-    @food = Food.new(params[:food])
-
-    respond_to do |format|
-      if @food.save
-        format.html { redirect_to(@food, :notice => 'Food was successfully created.') }
-        format.xml  { render :xml => @food, :status => :created, :location => @food }
-      else
+    name = params[:food][:name]
+    if Food.any_in(aliases: [name]).all.size > 0
+      respond_to do |format|
         format.html { render :action => "new" }
         format.xml  { render :xml => @food.errors, :status => :unprocessable_entity }
+        format.js {render :content_type => 'text/javascript'}
+      end
+    else
+      @food = Food.new(params[:food])
+
+      respond_to do |format|
+        if @food.save
+          format.html { redirect_to(@food, :notice => 'Food was successfully created.') }
+          format.xml  { render :xml => @food, :status => :created, :location => @food }
+          format.js {render :content_type => 'text/javascript'}
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @food.errors, :status => :unprocessable_entity }
+          format.js {render :content_type => 'text/javascript'}
+        end
       end
     end
   end

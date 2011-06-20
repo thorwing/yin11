@@ -121,6 +121,11 @@ zh-CN:
 
   foods:
     foods: 食物
+    create_food: 新建食物
+    aliases: 别名
+    categories: 类别
+    food_not_found: 没找到?
+    quick_create_food: 点击这里，快速创建食物
     recent_news: 最近关于%{name}的食品安全新闻
     safty_indicator: 食物安全风向标
     recent_exams: 最近对于%{name}的评论
