@@ -1,0 +1,38 @@
+<div class="content_block_inside">
+    <p id="notice"><%= notice %></p>
+
+    <h3><%= @article.title %></h3>
+    <p class="trivial"><%= @article.published_on.strftime('%m/%d/%Y') if @article.published_on %></p>
+    <small><%= t("articles.source") %>: <%= @article.source %></small>
+    <br/>
+    <small>
+      <%= t("articles.involved_cities") %>:
+      <% @article.cities.each_with_index do |city, index| %>
+        <%= city.name %><%= "|" if index < @article.cities.size - 1 %>
+      <% end %>
+    </small>
+    <br/>
+    <small>
+      <%= t("articles.involved_foods") %>:
+      <% @article.foods.each_with_index do |food, index| %>
+        <%= food.name %><%= "|" if index < @article.foods.size - 1 %>
+      <% end %>
+    </small>
+    <br/>
+    <p>
+      <%= simple_format @article.content %>
+    </p>
+    <p>
+      <b><%= t("images.images") %>(<%= @article.images.size%>):</b>
+
+      <% @article.images.each do |image| %>
+        <p><%= get_image(image) %></p>
+        <p><%= image.description %></p>
+      <% end %>
+    </p>
+
+    <% if has_permission?(:editor) %>
+        <%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button" %>
+    <% end %>
+</div>
+
