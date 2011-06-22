@@ -1,3 +1,3 @@
-class Recommendation < Opinion
+class Recommendation < InfoItem
 
 end

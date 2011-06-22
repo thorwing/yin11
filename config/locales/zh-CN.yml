@@ -43,10 +43,9 @@ zh-CN:
     general:
       presence_msg: %{field}不能为空
       uniqueness_msg: 相同的%{field}已存在
-      max_length_msg: %{field}不能超过%{max}个字符
-      min_length_msg: %{field}不能少于%{min}个字符
-      length_msg: %{field}长度必须介于%{min}和%{max}个字符之间
-
+      max_length_msg: %{field}不超过%{max}个字符
+      min_length_msg: %{field}不少于%{min}个字符
+      length_msg: %{field}长度须介于%{min}和%{max}个字符之间
 
   authentication:
     log_out: "登出"
@@ -189,6 +188,10 @@ zh-CN:
     post: 发表
     involved_foods: 涉及食物
     involved_cities: 城市
+    source_name: 媒体名称
+    source_site: 网站
+    source_url: 链接
+
     article_posted_notice: 文章已发布
 
   tips:

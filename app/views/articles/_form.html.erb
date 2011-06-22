@@ -1,59 +1,40 @@
+
 <%= form_for @article, :html => { :multipart => true } do |f| %>
-  <%= render "shared/error_messages", :target => @article %>
+    <%= render "shared/error_messages", :target => @article %>
 
-  <div class="field">
-    <%= f.label :title, t("general.title") %><br />
-    <%= f.text_field :title, :maxlength => 20 %>
-  </div>
-  <div class="field">
-    <%= f.label :published_on_string, t("general.date") %><br/>
-    <%= f.text_field :published_on_string, {:class => "date_picker"} %>
-  </div>
-  <%= f.fields_for :source do |builder| %>
-        <div class="field">
-            <%= builder.label :name %><br />
-            <%= builder.text_field :name, :maxlength => 20 %>
-        </div>
-        <div class="field">
-            <%= builder.label :site %><br />
-            <%= builder.text_field :site, :maxlength => 20 %>
-        </div>
-        <div class="field">
-            <%= builder.label :url %><br/>
-            <%= builder.text_field :url%>
-        </div>
-  <% end %>
+    <%= render "info_items/basic_fields", :item => @article, :f => f %>
 
-  <div class="field">
-    <%= f.label :category, t("general.category") %><br/>
-    <%= f.select :category, options_for_select(["case", "knowledge"], @article.category) %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, :class => "mceEditor", :maxlength => 10000 %>
-  </div>
+    <p><label><%= t("articles.source") %></label></p>
+    <div class="fields_group">
+        <%= f.fields_for :source do |builder| %>
+            <div class="field">
+                <%= builder.label :name, t("articles.source_name") %><%= mark_required(builder.object, :name) %><%= mark_required_length(builder.object, :name) %><br/>
+                <%= builder.text_field :name, :maxlength => 20 %>
+            </div>
+            <div class="field">
+                <%= builder.label :site, t("articles.source_site") %><%= mark_required(builder.object, :site) %><%= mark_required_length(builder.object, :site) %><br/>
+                <%= builder.text_field :site, :maxlength => 20 %>
+            </div>
+            <div class="field">
+                <%= builder.label :url, t("articles.source_url") %><br/>
+                <%= builder.text_field :url%>
+            </div>
+        <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label t("foods.foods") %><br />
-    <%= f.text_field :food_tokens, 'data-pre' => (f.object.foods.map { |fo| { :id => fo.id, :name => fo.name }}).to_json %>
-  </div>
-  <div class="field">
-    <%= f.label t("address.city") %><br />
-    <%= f.text_field :city_tokens, 'data-pre' => (f.object.cities.map { |c| { :id => c.id, :name => c.name }}).to_json %>
-  </div>
+    <div class="field">
+        <%= f.label :category, t("general.category") %><br/>
+        <%= f.select :category, options_for_select(ArticleTypes.get_values, @article.category) %>
+     </div>
+    <div class="field">
+        <%= f.label t("address.city") %><br/>
+        <%= f.text_field :city_tokens, 'data-pre' => (f.object.cities.map { |c| { :id => c.id, :name => c.name }}).to_json %>
+    </div>
 
-  <div class="field">
-    <%= f.label t("vendors.vendor") %><br />
-    <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
-  </div>
+    <div class="actions">
+        <%= f.submit t("general.submit"), :class => "button" %>
+    </div>
 
-  <%= f.fields_for :images do |builder| %>
-    <%= render "image_fields", :f => builder %>
-  <% end %>
-
-  <%= link_to_add_fields  t("images.add_image"), f, :images %>
-
-  <div class="actions">
-    <%= f.submit t("articles.post") %>
-  </div>
 <% end %>
+
+<%= render "info_items/delay_load_stuff", :item => @article %>

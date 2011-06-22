@@ -49,7 +49,7 @@ class RecommendationsController < ApplicationController
 
     params[:images][0..4].each do |image_id|
       image = Image.find(image_id)
-      image.opinion_id = @review.id
+      image.info_item_id = @review.id
       image.save
     end
 
@@ -75,8 +75,8 @@ class RecommendationsController < ApplicationController
 
     params[:images][0..4].each do |image_id|
       image = Image.find(image_id)
-      if image.opinion_id.blank?
-        image.opinion_id = @review.id
+      if image.info_item_id.blank?
+        image.info_item_id = @review.id
         image.save
       end
     end

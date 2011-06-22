@@ -8,8 +8,5 @@ class Image
   attr_accessible :image, :remote_image_url, :description
 
   #relationships
-  belongs_to :article
-  belongs_to :opinion
-  belongs_to :tip
-
+  belongs_to :info_item
 end

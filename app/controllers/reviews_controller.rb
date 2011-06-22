@@ -56,11 +56,13 @@ class ReviewsController < ApplicationController
     @review = Review.new(params[:review])
     @review.author = current_user
 
-    params[:images][0..4].each do |image_id|
-      image = Image.find(image_id)
-      image.opinion_id = @review.id
-      image.save
-      #@review.image_ids << image_id
+    if params[:images]
+      params[:images][0..4].each do |image_id|
+        image = Image.find(image_id)
+        image.info_item_id = @review.id
+        image.save
+        #@review.image_ids << image_id
+      end
     end
 
     current_user.make_contribution(:created_reviews, 1)
@@ -86,11 +88,13 @@ class ReviewsController < ApplicationController
       image.delete unless params[:images][0..4].include? image.id.to_s
     end
 
-    params[:images][0..4].each do |image_id|
-      image = Image.find(image_id)
-      if image.opinion_id.blank?
-        image.opinion_id = @review.id
-        image.save
+    if params[:images]
+      params[:images][0..4].each do |image_id|
+        image = Image.find(image_id)
+        if image.info_item_id.blank?
+          image.info_item_id = @review.id
+          image.save
+        end
       end
     end
 

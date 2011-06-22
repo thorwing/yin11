@@ -19,4 +19,8 @@ class HashEnumeration
   def self.const_missing(key)
     @members[key]
   end
+
+  def self.get_values
+    @members.map{ |k,v| v }
+  end
 end

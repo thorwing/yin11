@@ -53,7 +53,7 @@ module ApplicationHelper
   end
 
   def get_severity_image(review, width = 24, height = 32)
-     image_tag("severity_#{review.severity}_small.png", :width => width, :height => height)
+     image_tag("severity_3_small.png", :width => width, :height => height)
   end
 
   def get_thumbnail(image, group = false)
@@ -173,7 +173,7 @@ module ApplicationHelper
     result
   end
 
-def image_uploadify(opinion)
+def image_uploadify(item)
     # Putting the uploadify trigger script in the helper gives us
     # full access to the view and native rails objects without having
     # to set javascript variables.
@@ -196,7 +196,7 @@ def image_uploadify(opinion)
     <script type='text/javascript' charset="utf-8">
       $(document).ready(function() {
         $('#image_upload').uploadify({
-          script          : '#{images_path(:opinion_id => opinion.id)}',
+          script          : '#{images_path(:item_id => item.id)}',
           fileDataName    : 'image[image]',
           uploader        : '/uploadify/uploadify.swf',
           cancelImg       : '/uploadify/cancel.png',

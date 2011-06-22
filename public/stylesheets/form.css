@@ -9,6 +9,7 @@ div.fields_group {
     border: 1px solid gray;
     margin: 5px 0 5px 0;
     overflow:hidden;
+    padding: 5px;
 }
 
 div.field {

@@ -95,6 +95,9 @@ $(document).ready(function(){
 $(document).ready(function() {
     $(".date_picker").datepicker({ maxDate: +0, minDate: -7 });
     $(".radio_group" ).buttonset();
+    $(".checkbox").button();
+    $(".checkbox_group").buttonset();
+
     //$(".button" ).button();
 });
 

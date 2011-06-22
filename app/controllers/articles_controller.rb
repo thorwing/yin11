@@ -28,7 +28,6 @@ class ArticlesController < ApplicationController
   # GET /articles/new.xml
   def new
     @article = Article.new
-    @article.images.build
     @article.build_source
 
     respond_to do |format|

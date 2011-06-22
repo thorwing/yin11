@@ -1,1 +1,11 @@
-<%= render "opinions/form", :opinion => @review %>
+<%= form_for @review, :html => { :multipart => true } do |f| %>
+    <%= render "shared/error_messages", :target => @review %>
+
+    <%= render "info_items/basic_fields", :item => @review, :f => f %>
+
+    <div class="actions">
+        <%= f.submit t("general.submit"), :class => "button" %>
+    </div>
+<% end %>
+
+<%= render "info_items/delay_load_stuff", :item => @review %>

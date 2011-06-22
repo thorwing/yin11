@@ -14,7 +14,7 @@ private
   def find_or_build_image
     #@image = params[:id] ? @review.images.find(params[:id]) : @review.images.build(params[:image])
     @image = Image.new(params[:image])
-    @image.opinion_id = params[:opinion_id]
+    @image.info_item_id = params[:item_id]
   end
 
 end
