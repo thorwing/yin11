@@ -2,17 +2,28 @@
   <%= render "shared/error_messages", :target => @article %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, t("general.title") %><br />
     <%= f.text_field :title, :maxlength => 20 %>
   </div>
   <div class="field">
-    <%= f.label :published_on, t("general.date") %><br/>
-    <%= f.text_field :published_on, {:class => "date_picker"} %>
+    <%= f.label :published_on_string, t("general.date") %><br/>
+    <%= f.text_field :published_on_string, {:class => "date_picker"} %>
   </div>
-  <div class="field">
-    <%= f.label :source %><br />
-    <%= f.text_field :source, :maxlength => 20 %>
-  </div>
+  <%= f.fields_for :source do |builder| %>
+        <div class="field">
+            <%= builder.label :name %><br />
+            <%= builder.text_field :name, :maxlength => 20 %>
+        </div>
+        <div class="field">
+            <%= builder.label :site %><br />
+            <%= builder.text_field :site, :maxlength => 20 %>
+        </div>
+        <div class="field">
+            <%= builder.label :url %><br/>
+            <%= builder.text_field :url%>
+        </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :category, t("general.category") %><br/>
     <%= f.select :category, options_for_select(["case", "knowledge"], @article.category) %>

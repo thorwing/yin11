@@ -4,8 +4,9 @@ class Review < Opinion
   embeds_many :checkpoints
 
   accepts_nested_attributes_for :checkpoints,  :reject_if => lambda { |c| c[:name].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :source, :reject_if => lambda { |s| s[:name].blank? && s[:site].blank? }, :allow_destroy => true
 
-  attr_accessible :severity, :checkpoints_attributes
+  attr_accessible :severity, :checkpoints_attributes, :source_attributes
   validates_presence_of :images
 
 end

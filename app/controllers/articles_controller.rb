@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @article.images.build
+    @article.build_source
 
     respond_to do |format|
       format.html # new.html.erb
