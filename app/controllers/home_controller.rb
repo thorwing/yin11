@@ -6,7 +6,7 @@ class HomeController < ApplicationController
       @watching_foods = Food.any_in(name: current_user.profile.watching_foods)
     end
 
-    @items = InfoItem.enabled.desc(:updated_at).page(1).per(2)
+    @items = InfoItem.enabled.desc(:updated_at).page(1).per(GlobalConstants::ITEMS_PER_PAGE)
     @hot_articles = Article.enabled.desc(:updated_at).limit(6)
 
     #TODO
@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   end
 
   def items
-    @items = InfoItem.enabled.desc(:updated_at).page(params[:page]).per(2)
+    @items = InfoItem.enabled.desc(:updated_at).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE)
     respond_to do |format|
       format.html {render :items, :layout => false}
     end

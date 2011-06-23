@@ -36,7 +36,7 @@
     <hr/>
 
     <% if the_author_himself(Article.name, @article.id, true) %>
-        <%= link_to t("general.edit"), edit_review_path(@article), :class => "button" %>
+        <%= link_to t("general.edit"), edit_article_path(@article), :class => "button" %>
         <%= link_to t("general.delete"), @article, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
     <% end %>
 
