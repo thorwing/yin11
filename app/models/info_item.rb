@@ -36,11 +36,11 @@ class InfoItem
   #Relationships
   embeds_many :comments
   has_and_belongs_to_many :foods
-  has_and_belongs_to_many :toxin
+  has_and_belongs_to_many :toxins
   has_many :images
   belongs_to :vendor
   belongs_to :author, :class_name => "User"
-  tokenize_many :foods
+  tokenize_many :foods, :toxins
   tokenize_one :vendor
 
   accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_image_url].blank? }, :allow_destroy => true

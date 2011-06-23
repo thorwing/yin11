@@ -1,11 +1,9 @@
 #encoding utf-8
 
 namespace :yin11 do
-  desc "db:drop then db:seed"
-  task :reset => :environment do
-    Rake::Task['db:drop'].invoke
-    Rake::Task['db:seed'].invoke
-    puts "The database has been reset."
+  desc "create some testing articles"
+  task :fetch_articles => :environment do
+    deal_foodmate
   end
 
   #deal foodmate site
@@ -44,10 +42,4 @@ namespace :yin11 do
       end
     end
   end
-
-  desc "create some testing articles"
-  task :fetch_articles => :environment do
-    deal_foodmate
-  end
-
 end

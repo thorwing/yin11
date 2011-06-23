@@ -132,6 +132,9 @@ zh-CN:
     why_add_to_watch_list: "把食物收藏到<我的菜单>，关于该食物的安全动向早知道。"
     add_to_watch_list: 收藏
 
+  toxins:
+    toxins: 毒物
+
   vendors:
     vendor: 商户
     vendors: 所有商户

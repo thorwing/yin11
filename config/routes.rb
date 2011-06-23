@@ -62,6 +62,8 @@ Yin11::Application.routes.draw do
     end
   end
 
+  resources :toxins
+
   resources :products
 
   resources :cities, :only => [:index]
