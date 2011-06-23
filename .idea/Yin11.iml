@@ -78,7 +78,7 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="mongoid" version="2.0" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
+        <dependency name="mongoid" version="2.0.2" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>

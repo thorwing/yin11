@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     end
 
     @reviews = Review.desc(:updated_at).page(1).per(2)
-    @hot_articles = Article.desc(:updated_at).limit(6)
+    @hot_articles = Article.enabled.desc(:updated_at).limit(6)
 
     #TODO
     @foods_buzz = Food.desc([:review_ids, :article_ids]).limit(5).group_by{ |f| f.categories[0] }
@@ -128,7 +128,7 @@ class HomeController < ApplicationController
         result |= food_info.sort{ |a, b| a.votes <=> b.votes}.reverse()[0..2]
       end
     else
-      result = Review.desc(:updated_at).page(page).per(per/2) + Article.desc(:updated_at).per(per/2)
+      result = Review.desc(:updated_at).page(page).per(per/2) + Article.enabled.desc(:updated_at).per(per/2)
       result = result.sort!{ |a, b| a.votes <=> b.votes}.reverse()[0..4]
     end
     result

@@ -1,6 +1,6 @@
 class Admin::ArticlesController < Admin::BaseController
   def index
-    @articles = Article.unscoped.all
+    @articles = Article.desc(:created_at).page(params[:page]).per(20)
   end
 
   def show

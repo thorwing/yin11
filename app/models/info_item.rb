@@ -1,5 +1,6 @@
 class InfoItem
   include Mongoid::Document
+  include Mongoid::Timestamps
   include AssociatedModels
   include Available
 
@@ -47,8 +48,8 @@ class InfoItem
   attr_accessible :title, :content, :reported_on_string, :faults, :images_attributes
 
   validates_presence_of :title, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.title") )
-  validates_length_of :title, :maximum => 20, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.title"),
-                                                          :max => 20)
+  validates_length_of :title, :maximum => 30, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.title"),
+                                                          :max => 30)
   #TODO
   #validates_presence_of :images
 

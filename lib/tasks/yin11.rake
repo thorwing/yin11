@@ -17,9 +17,6 @@ namespace :yin11 do
                 #"http://www.foodmate.net/foodsafe/case/", "http://www.foodmate.net/foodsafe/case/list_2.html", "http://www.foodmate.net/foodsafe/case/list_3.html"]
     url_list.each do |url|
       agent.get(url)
-      category = "case" #bydefault
-      category = "knowledge" if url.include?("knowledge")
-      category = "case" if url.include?("case")
 
       #number_of_articles = agent.page.search(".catlist_li a").size.to_s
       agent.page.search(".catlist_li").each do |item|
@@ -30,7 +27,12 @@ namespace :yin11 do
         content = agent.page.at("#article").content
         puts title + " -> " + DateTime.parse(time).strftime('%m/%d/%Y')
 
-        Article.find_or_create_by(:title => title, :content => content, :published_on => DateTime.parse(time), :category => category, :disabled => true)
+        Article.find_or_create_by(title: title) do |a|
+          a.content = content
+          a.reported_on_string = time
+          a.disabled = true
+        end
+
         count += 1
       end
     end
