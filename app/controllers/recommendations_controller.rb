@@ -47,15 +47,17 @@ class RecommendationsController < ApplicationController
   def create
     @recommendation = Recommendation.new(params[:recommendation])
 
-    params[:images][0..4].each do |image_id|
-      image = Image.find(image_id)
-      image.info_item_id = @review.id
-      image.save
+    if params[:images]
+      params[:images][0..4].each do |image_id|
+        image = Image.find(image_id)
+        image.info_item_id = @review.id
+        image.save
+      end
     end
 
     respond_to do |format|
       if @recommendation.save
-        format.html { redirect_to(@recommendation, :notice => 'Recommendation was successfully created.') }
+        format.html { redirect_to(@recommendation, :notice => t("recommendations.created_notice")) }
         format.xml  { render :xml => @recommendation, :status => :created, :location => @recommendation }
       else
         format.html { render :action => "new" }
@@ -73,17 +75,19 @@ class RecommendationsController < ApplicationController
       image.delete unless params[:images][0..4].include? image.id.to_s
     end
 
-    params[:images][0..4].each do |image_id|
-      image = Image.find(image_id)
-      if image.info_item_id.blank?
-        image.info_item_id = @review.id
-        image.save
+    if params[:images]
+      params[:images][0..4].each do |image_id|
+        image = Image.find(image_id)
+        if image.info_item_id.blank?
+          image.info_item_id = @review.id
+          image.save
+        end
       end
     end
 
     respond_to do |format|
       if @recommendation.update_attributes(params[:recommendation])
-        format.html { redirect_to(@recommendation, :notice => 'Recommendation was successfully updated.') }
+        format.html { redirect_to(@recommendation, :notice => t("recommendations.updated_notice")) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

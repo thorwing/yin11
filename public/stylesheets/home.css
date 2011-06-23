@@ -50,9 +50,9 @@ ul#actions_menu {
 }
 
 /*
-	Review-Item-Home-Styles
+	InfoItem-Home-Styles
 */
-#reviews_page {
+#pagination {
 	width:600px;
 	padding-right:10px;
     border-right:1px solid #dbdbdb;
@@ -67,33 +67,12 @@ ul#actions_menu {
     overflow:hidden;
 }
 
-.item.review .left_fields { float:left; margin-right:8px;}
-.item.review .vote_fields { margin-top:5px;}
-.item.review .left_fields img { float:left; margin-top:10px;}
-.item.review .central_fields { float:left; width:400px}
-.item.review .right_fields { float:right; overflow:hidden; width:100px;}
-.item.review .right_fields img  {display:block; clear:both;}
-
-/*
-	Info-Item-Home-Styles
-*/
-
-#info_items_page {
-	width:600px;
-	padding-right:10px;
-    border-right:1px solid #dbdbdb;
-}
-
-.item.info h3 {
-	color:#000000;
-}
-
-.item.info .interaction_fields { float:right; margin-left:15px; margin-right:5px;}
-.item.info .interaction_fields .thumbnail {display:block;}
-.item.info .interaction_fields a { margin-right: 5px;}
-
-.item.info .clues { margin-left: 40px;}
-.item.info .truncated_content { margin-left: 40px;}
+.item.info .left_fields { float:left; margin-right:8px;}
+.item.info .vote_fields { margin-top:5px;}
+.item.info .left_fields img { float:left; margin-top:10px;}
+.item.info .central_fields { float:left; width:400px}
+.item.info .right_fields { float:right; overflow:hidden; width:100px;}
+.item.info .right_fields img  {display:block; clear:both;}
 
 /*
 	Vote-Fields-Styles

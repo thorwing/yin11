@@ -1,0 +1,4 @@
+<h3><%= t("comments.comments") %></h3>
+<%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
+
+<%= render "shared/new_comment", :item => item if current_user %>

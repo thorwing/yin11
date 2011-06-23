@@ -52,8 +52,12 @@ module ApplicationHelper
     end
   end
 
-  def get_severity_image(review, width = 24, height = 32)
-     image_tag("severity_3_small.png", :width => width, :height => height)
+  def get_severity_image(item, width = 24, height = 32)
+    if item.is_a?(Review)
+      image_tag("severity_3_small.png", :width => width, :height => height)
+    elsif item.is_a?(Recommendation)
+      image_tag("severity_0_small.png", :width => width, :height => height)
+    end
   end
 
   def get_thumbnail(image, group = false)
@@ -92,7 +96,7 @@ module ApplicationHelper
 
   def nested_comments(item, comments)
     comments.map do |comment, sub_comments|
-      render("shared/comment", :item => item, :comment => comment) + content_tag(:div, nested_comments(item, sub_comments), :class => "nested_comments")
+      render("shared/single_comment", :item => item, :comment => comment) + content_tag(:div, nested_comments(item, sub_comments), :class => "nested_comments")
     end.join.html_safe
   end
 
@@ -163,7 +167,7 @@ module ApplicationHelper
 
     if item.is_a?(Article)
       result << link_to(t("info_items.#{item.class.name.downcase}"), item.class.name.downcase.pluralize )
-      (result << t("articles.source") + ": " + item.source) if item.source.present?
+      (result << t("articles.source") + ": " + item.source.name) if item.source
       (result << item.cities[0].name) if item.cities.size > 0
       item.foods.each do |food|
         result << link_to(food.name, foods_path(:foods => food.name))

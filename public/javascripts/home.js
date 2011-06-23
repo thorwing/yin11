@@ -4,8 +4,8 @@ $(document).ready(function(){
         timeOut: 4000
     });
 
-    $('#reviews_page').pageless({ totalPages: 3
-       , url: '/home/reviews'
+    $('#pagination').pageless({ totalPages: 3
+       , url: '/home/items'
        , loaderImage: "/images/pageless/load.gif"
     });
 });

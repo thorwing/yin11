@@ -22,24 +22,26 @@
     <p>
       <%= raw @article.content %>
     </p>
-    <p>
-      <b><%= t("images.images") %>(<%= @article.images.size%>):</b>
 
-      <% @article.images.each do |image| %>
-        <p><%= get_image(image) %></p>
-        <p><%= image.description %></p>
-      <% end %>
-    </p>
-
-    <small><%= t("comments.comments") %></small><br/>
-    <%= debug @article.comments.arrange %>
-    <%= nested_comments(@article, @article.comments.arrange(:order => :created_at)) %>
-    <% if current_user %>
-        <%= render "shared/new_comment", :item => @article %>
+    <% if @article.images.size > 0 %>
+        <div id="gallery" class="block">
+          <div class="block_inside">
+              <% @article.images.each do |image| %>
+                  <%= get_thumbnail(image, true) %>
+              <% end %>
+          </div>
+        </div>
     <% end %>
 
-    <% if has_permission?(:editor) %>
-        <%= link_to t("general.edit"), edit_article_path(@article), :class => "button" %> |
+    <hr/>
+
+    <% if the_author_himself(Article.name, @article.id, true) %>
+        <%= link_to t("general.edit"), edit_review_path(@article), :class => "button" %>
+        <%= link_to t("general.delete"), @article, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
     <% end %>
+
+    <hr/>
+
+    <%= render "shared/comments", :item => @article %>
 </div>
 

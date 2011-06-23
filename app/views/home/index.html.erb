@@ -43,11 +43,10 @@
     </ul>
 </div>
 
-
 <div class="two_columns_container" >
-    <div id="reviews_page" class="left_column">
-    <% @reviews.each_with_index do |review, index| %>
-        <%= render "shared/review_item", :review => review, :index => index %>
+    <div id="pagination" class="left_column">
+    <% @items.each_with_index do |item, index| %>
+        <%= render "shared/info_item", :item => item, :index => index %>
     <% end %>
     </div> <!--end of info_items -->
 

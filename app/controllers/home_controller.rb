@@ -6,17 +6,17 @@ class HomeController < ApplicationController
       @watching_foods = Food.any_in(name: current_user.profile.watching_foods)
     end
 
-    @reviews = Review.desc(:updated_at).page(1).per(2)
+    @items = InfoItem.enabled.desc(:updated_at).page(1).per(2)
     @hot_articles = Article.enabled.desc(:updated_at).limit(6)
 
     #TODO
-    @foods_buzz = Food.desc([:review_ids, :article_ids]).limit(5).group_by{ |f| f.categories[0] }
+    @foods_buzz = []#Food.desc([:review_ids, :article_ids]).limit(5).group_by{ |f| f.categories[0] }
   end
 
-  def reviews
-    @reviews = Review.desc(:updated_at).page(params[:page]).per(2)
+  def items
+    @items = InfoItem.enabled.desc(:updated_at).page(params[:page]).per(2)
     respond_to do |format|
-      format.html {render :reviews, :layout => false}
+      format.html {render :items, :layout => false}
     end
   end
 

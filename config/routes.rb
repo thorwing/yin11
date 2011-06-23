@@ -22,7 +22,7 @@ Yin11::Application.routes.draw do
   get "profile/edit_current_city"
   post "profile/update_current_city"
 
-  get "home/reviews"
+  get "home/items"
   post "home/watch_foods"
   put "home/vote"
   get "home/new_comment"
