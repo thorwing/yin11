@@ -20,7 +20,7 @@
     </small>
     <br/>
     <p>
-      <%= simple_format @article.content %>
+      <%= raw @article.content %>
     </p>
     <p>
       <b><%= t("images.images") %>(<%= @article.images.size%>):</b>
@@ -33,6 +33,9 @@
 
     <% if has_permission?(:editor) %>
         <%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button" %>
+    <% end %>
+     <% if has_permission?(:admin) %>
+         <%= render "admin/shared/toggle_disabled", :item => @article if has_permission?(:admin) %>
     <% end %>
 </div>
 

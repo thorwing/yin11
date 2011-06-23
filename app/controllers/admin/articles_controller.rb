@@ -1,4 +1,6 @@
 class Admin::ArticlesController < Admin::BaseController
+  uses_tiny_mce :only => [:edit], :options => get_tiny_mce_style
+
   def index
     @articles = Article.desc(:created_at).page(params[:page]).per(20)
   end
@@ -9,6 +11,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def edit
     @article = Article.unscoped.find(params[:id])
+    #@article.build_source unless @article.source
   end
 
   def update

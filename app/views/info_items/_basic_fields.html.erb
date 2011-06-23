@@ -9,9 +9,9 @@
     <%= f.text_field :food_tokens, 'data-pre' => (f.object.foods.map { |f| { :id => f.id, :name => f.name }}).to_json %>
   </div>
   <div id="field">
+    <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)<br/>
     <%= f.label :vendor_token, t("vendors.vendor") %>
     (<%= t("vendors.vendor_not_found") %> <%= link_to t("vendors.quick_create_vendor"), new_vendor_path(:popup => true), :rel => "facebox" %>)<br/>
-    <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)
     <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
   </div>
   <div class="field">

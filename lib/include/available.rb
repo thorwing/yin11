@@ -6,7 +6,7 @@ module Available
       field :disabled, :type => Boolean, :default => false
       field :recommended, :type => Boolean, :default => true
 
-      attr_accessible :disabled, :recommended
+      #attr_accessible :disabled, :recommended
     end
   end
 end

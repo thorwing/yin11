@@ -3,7 +3,7 @@
 
     <h3><%= @article.title %></h3>
     <p class="trivial"><%= @article.reported_on.strftime('%m/%d/%Y') if @article.reported_on %></p>
-    <small><%= t("articles.source") %>: <%= @article.source %></small>
+    <%= render "shared/source", :source => @article.source %>
     <br/>
     <small>
       <%= t("articles.involved_cities") %>:
@@ -20,7 +20,7 @@
     </small>
     <br/>
     <p>
-      <%= simple_format @article.content %>
+      <%= raw @article.content %>
     </p>
     <p>
       <b><%= t("images.images") %>(<%= @article.images.size%>):</b>

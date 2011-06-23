@@ -13,7 +13,7 @@
   </div>
   <div class="field">
     <%= f.label :category_ids, t("foods.categories") %><br />
-    <%= f.select :category_ids, options_for_select(Category.all.map{ |c| [c.name, c.id] }), :multiple => true %>
+    <%= f.select :category_ids, options_for_select(Category.all.map{ |c| [c.name, c.id] }), :multiple => true, :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit t("general.submit"), :class => "button" %>
