@@ -4,6 +4,11 @@
 
     <%= render "info_items/basic_fields", :item => @article, :f => f %>
 
+    <div class="field">
+        <%= f.label :city_tokens, t("articles.involved_cities") %>
+        <%= f.text_field :city_tokens, 'data-pre' => (f.object.cities.map { |f| { :id => f.id, :name => f.name }}).to_json %>
+    </div>
+
     <p><label><%= t("articles.source") %></label></p>
     <div class="fields_group">
         <%= f.fields_for :source do |builder| %>
@@ -26,10 +31,6 @@
         <%= f.label :category, t("general.category") %><br/>
         <%= f.select :category, options_for_select(ArticleTypes.get_values, @article.category) %>
      </div>
-    <div class="field">
-        <%= f.label t("address.city") %><br/>
-        <%= f.text_field :city_tokens, 'data-pre' => (f.object.cities.map { |c| { :id => c.id, :name => c.name }}).to_json %>
-    </div>
 
     <div class="actions">
         <%= f.submit t("general.submit"), :class => "button" %>

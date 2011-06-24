@@ -3,7 +3,7 @@
 
     <h3><%= @article.title %></h3>
     <p class="trivial"><%= @article.reported_on.strftime('%m/%d/%Y') if @article.reported_on %></p>
-    <small><%= t("articles.source") %>: <%= @article.source %></small>
+    <%= render "shared/source", :source => @article.source %>
     <br/>
     <small>
       <%= t("articles.involved_cities") %>:
@@ -22,19 +22,21 @@
     <p>
       <%= raw @article.content %>
     </p>
-    <p>
-      <b><%= t("images.images") %>(<%= @article.images.size%>):</b>
 
-      <% @article.images.each do |image| %>
-        <p><%= get_image(image) %></p>
-        <p><%= image.description %></p>
-      <% end %>
-    </p>
+    <% if @article.images.size > 0 %>
+        <div id="gallery" class="block">
+          <div class="block_inside">
+              <% @article.images.each do |image| %>
+                  <%= get_thumbnail(image, true) %>
+              <% end %>
+          </div>
+        </div>
+    <% end %>
 
     <% if has_permission?(:editor) %>
         <%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button" %>
     <% end %>
-     <% if has_permission?(:admin) %>
+    <% if has_permission?(:admin) %>
          <%= render "admin/shared/toggle_disabled", :item => @article if has_permission?(:admin) %>
     <% end %>
 </div>

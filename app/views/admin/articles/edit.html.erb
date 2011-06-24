@@ -2,4 +2,8 @@
     <h1><%= t("general.edit") %></h1>
 
     <%= render 'articles/form' %>
+
+    <% if has_permission?(:admin) %>
+        <%= render "admin/shared/toggle_disabled", :item => @article if has_permission?(:admin) %>
+    <% end %>
 </div>
