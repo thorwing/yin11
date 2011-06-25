@@ -190,10 +190,10 @@ class ApplicationController < ActionController::Base
   #TODO
   def get_related_reviews_of(food)
 
-    result = Review.in_days_of(7).about(food).desc(:updated_at).limit(FOOD_REVIEWS_LIMIT)
+    result = Review.in_days_of(7).about(food).desc(:reported_on).limit(FOOD_REVIEWS_LIMIT)
 
     if result.size < FOOD_REVIEWS_LIMIT
-      result = result | Review.in_days_of(14).about(food).desc(:updated_at)
+      result = result | Review.in_days_of(14).about(food).desc(:reported_on)
     end
 
     result.size > FOOD_REVIEWS_LIMIT ? result[0...FOOD_REVIEWS_LIMIT - 1] : result
@@ -204,7 +204,7 @@ class ApplicationController < ActionController::Base
     #result = Article.enabled.in_days_of(7).about(food).in_city(user.profile.address.city_id).desc(:created_at).limit(FOOD_ARTICLES_LIMIT) if user
 
     if result.size < FOOD_ARTICLES_LIMIT
-      result = result | Article.enabled.in_days_of(14).about(food).desc(:created_at)
+      result = result | Article.enabled.in_days_of(14).about(food).desc(:reported_on)
     end
 
     result.size > FOOD_ARTICLES_LIMIT ? result[0...FOOD_ARTICLES_LIMIT - 1] : result

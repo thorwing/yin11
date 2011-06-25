@@ -1,0 +1,3 @@
+<% @items.each_with_index do |item, index| %>
+    <%= render "info_items/info_item", :item => item, :index => index %>
+<% end %>

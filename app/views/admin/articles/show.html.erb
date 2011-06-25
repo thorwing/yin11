@@ -12,13 +12,6 @@
       <% end %>
     </small>
     <br/>
-    <small>
-      <%= t("articles.involved_foods") %>:
-      <% @article.foods.each_with_index do |food, index| %>
-        <%= food.name %><%= "|" if index < @article.foods.size - 1 %>
-      <% end %>
-    </small>
-    <br/>
     <p>
       <%= raw @article.content %>
     </p>

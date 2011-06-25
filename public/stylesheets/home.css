@@ -23,6 +23,7 @@
 	border:1px solid #b5b5b5;
 	background-color:#d2d2d2;
 	padding:5px;
+     margin-top: 10px;
 	float:left;
 }
 
@@ -32,7 +33,7 @@
 
 #articles_frame {
     float:left;
-    width:250px;
+    width:350px;
     height:250px;
     border-right:1px solid gray;
     line-height: 15px;
@@ -42,6 +43,7 @@
 	float:left;
 	width:250px;
 	margin-left:10px;
+     margin-top: 10px;
 }
 
 ul#actions_menu {
@@ -54,25 +56,35 @@ ul#actions_menu {
 */
 #pagination {
 	width:600px;
+    padding-left:10px;
 	padding-right:10px;
     border-right:1px solid #dbdbdb;
 }
+
 .item {
 	border-top:1px solid #dbdbdb;
 	margin-bottom:10px;
 	position:relative;
 	padding:2px 3px 1px 3px;
 	background:#FFFFFF;
-    width:600px;
     overflow:hidden;
 }
 
+.item.info { width:600px; }
 .item.info .left_fields { float:left; margin-right:8px;}
 .item.info .vote_fields { margin-top:5px;}
 .item.info .left_fields img { float:left; margin-top:10px;}
 .item.info .central_fields { float:left; width:400px}
 .item.info .right_fields { float:right; overflow:hidden; width:100px;}
 .item.info .right_fields img  {display:block; clear:both;}
+
+/*
+	Good-Bad-Items-Styles
+*/
+.item.info.short { width:450px; }
+.item.info.short .central_fields { float:left; width:300px}
+
+#bad_items h2, #bad_items h3 a {color: black;}
 
 /*
 	Vote-Fields-Styles
@@ -100,6 +112,7 @@ ul#actions_menu {
 	width:300px;
 	background:#FFFFFF;
 	padding-left:10px;
+    padding-right:20px;
 }
 
 #control_panel .sub_panel {

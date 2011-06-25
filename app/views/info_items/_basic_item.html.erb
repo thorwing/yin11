@@ -1,0 +1,31 @@
+<div class="left_fields">
+    <%= render "shared/vote_fields", :item => item %>
+</div>
+<div class="central_fields">
+    <h3><%= link_to item.title, item %> <%= get_severity_image(item, 12, 16) %></h3>
+    <div class="clues">
+        <% clues = get_clues_of_item(item); clues.each do |clue| %>
+            <%= content_tag(:small, clue) %> <%= "|" %>
+        <% end %>
+        <% item.tags.each do |tag| %>
+            <%= link_to(tag, {:action => "items", :tags => tag}, :class => "tag") %>
+        <% end %>
+    </div>
+    <p>
+      <%= truncate_content(item, 100) %>
+      <%= link_to(t("info_items.detail"), item)  %>
+      <span class="trivial">
+        <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
+        <%= content_tag(:span, t("info_items.posted_by") + item.author.login_name ) if item.author %>
+      </span>
+    </p>
+</div>
+
+<div class="right_fields">
+    <% if item.images.size > 0 %>
+        <%= link_to get_image(item.images[0], 100, 75), item %>
+    <% else %>
+        <%= image_tag "http://flickholdr.com/100/75/salat", :width => 100, :height => 75; %>
+    <% end %>
+    <%= link_to t("info_items.add_comment") + "(#{item.comments.size})", home_new_comment_path(:id => item.id, :type => item.class.name)%>
+</div>

@@ -4,13 +4,8 @@
     <%= f.text_field :title, :maxlength => 40 %>
   </div>
   <div class="field">
-    <%= f.label :toxin_tokens, t("toxins.toxins") %>
-    <%= f.text_field :toxin_tokens, 'data-pre' => (f.object.toxins.map { |f| { :id => f.id, :name => f.name }}).to_json %>
-  </div>
-  <div class="field">
-    <%= f.label :food_tokens, t("foods.foods") %>
-    (<%= t("foods.food_not_found") %> <%= link_to t("foods.quick_create_food"), new_food_path(:popup => true), :rel => "facebox" %>)<br/>
-    <%= f.text_field :food_tokens, 'data-pre' => (f.object.foods.map { |f| { :id => f.id, :name => f.name }}).to_json %>
+     <%= f.label :tags_string, t("info_items.tags") %><br/>
+     <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
   </div>
   <div id="field">
     <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)<br/>

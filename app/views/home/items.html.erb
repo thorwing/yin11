@@ -1,3 +1,27 @@
-<% @items.each_with_index do |item, index| %>
-    <%= render "shared/info_item", :item => item, :index => index %>
-<% end %>
+<div class="content_block_inside">
+    <div class="two_columns_container" >
+      <div id="bad_items" class="left_column">
+        <div class="block">
+            <div class="block_inside">
+                <h2 class="bad"><%= t("info_items.bad_items", :name => @tags.to_s) %></h2>
+                <%= paginate @bad_items %>
+                <% @bad_items.each do |item| %>
+                    <%= render "info_items/info_item_short", :item => item %>
+                <% end %>
+            </div>
+        </div>
+      </div>
+
+      <div id="good_items" class="right_column">
+        <div class="block">
+            <div class="block_inside">
+                <h2 class="good"><%= t("info_items.good_items", :name => @tags.to_s) %></h2>
+                <%= paginate @good_items %>
+                <% @good_items.each do |item| %>
+                    <%= render "info_items/info_item_short", :item => item %>
+                <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

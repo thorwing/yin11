@@ -1,6 +1,5 @@
 class Food
   include Mongoid::Document
-  include Taggable
 
   field :aliases, :type => Array, :default => []
 

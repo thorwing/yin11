@@ -5,7 +5,7 @@ $(document).ready(function(){
     });
 
     $('#pagination').pageless({ totalPages: 3
-       , url: '/home/items'
+       , url: '/home/more_items'
        , loaderImage: "/images/pageless/load.gif"
     });
 });

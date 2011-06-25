@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
-    @articles = Article.enabled
+    @articles = Article.enabled.desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_MANY)
 
     respond_to do |format|
       format.html # index.html.erb

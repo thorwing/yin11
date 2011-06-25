@@ -78,7 +78,7 @@ module ApplicationHelper
   end
 
   def get_severity_of_food(food)
-    reviews = Review.in_days_of(7).about(food).desc(:updated_at)
+    reviews = Review.in_days_of(7).about(food).desc(:reported_on)
 
     severity_score = (reviews.size > 0) ?  reviews.inject(0){ |sum, s| sum + s.severity } / reviews.size : 0
     if severity_score < 1
@@ -158,20 +158,10 @@ module ApplicationHelper
 
   def get_clues_of_item(item)
     result = []
-
-    if item.is_a?(Review)
-      item.foods.each do |food|
-        result << link_to(food.name, foods_path(:foods => food.name))
-      end
-    end
-
+    result << link_to(t("info_items.#{item.class.name.downcase}"), "\\" + item.class.name.downcase.pluralize)
     if item.is_a?(Article)
-      result << link_to(t("info_items.#{item.class.name.downcase}"), item.class.name.downcase.pluralize )
       (result << t("articles.source") + ": " + item.source.name) if item.source
       (result << item.cities[0].name) if item.cities.size > 0
-      item.foods.each do |food|
-        result << link_to(food.name, foods_path(:foods => food.name))
-      end
     end
 
     result
@@ -227,6 +217,21 @@ def image_uploadify(item)
     }.gsub(/[\n ]+/, ' ').strip.html_safe
   end
 
+  def tag_cloud( tags )
+    classes = %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6 cloud7)
+
+    max, min = 0, 0
+    tags.each { |t|
+      max = t[1].to_i if t[1].to_i > max
+      min = t[1].to_i if t[1].to_i < min
+    }
+
+    divisor = ((max - min) / classes.size) + 1
+
+    tags.each { |t|
+       yield t[0], classes[(t[1].to_i - min) / divisor]
+    }
+  end
 
 
 end

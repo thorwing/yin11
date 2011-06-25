@@ -8,8 +8,6 @@ Yin11::Application.routes.draw do
     resources :articles
   end
 
-  resources :recommendations
-
   match "log_out" => "sessions#destroy"
   match "log_in" => "sessions#new"
   match "sign_up" => "users#new"
@@ -22,11 +20,14 @@ Yin11::Application.routes.draw do
   get "profile/edit_current_city"
   post "profile/update_current_city"
 
+  get "home/more_items"
   get "home/items"
   post "home/watch_foods"
   put "home/vote"
   get "home/new_comment"
   post "home/add_comment"
+
+  resources :tags, :only => [:index]
 
   resources :articles do
     resources :comments

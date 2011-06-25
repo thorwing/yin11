@@ -11,9 +11,12 @@ namespace :yin11 do
     agent = Mechanize.new
     count = 0
     site = "Foodmate"
-    url_list = ["http://www.foodmate.net/foodsafe/knowledge/"]
-                #, "http://www.foodmate.net/foodsafe/knowledge/list_2.html", "http://www.foodmate.net/foodsafe/knowledge/list_3.html",
-                #"http://www.foodmate.net/foodsafe/case/", "http://www.foodmate.net/foodsafe/case/list_2.html", "http://www.foodmate.net/foodsafe/case/list_3.html"]
+    url_list = ["http://www.foodmate.net/foodsafe/knowledge/",
+                "http://www.foodmate.net/foodsafe/knowledge/list_2.html",
+                "http://www.foodmate.net/foodsafe/knowledge/list_3.html",
+                "http://www.foodmate.net/foodsafe/case/",
+                "http://www.foodmate.net/foodsafe/case/list_2.html",
+                "http://www.foodmate.net/foodsafe/case/list_3.html"]
     url_list.each do |url|
       agent.get(url)
 
@@ -31,7 +34,7 @@ namespace :yin11 do
         Article.find_or_create_by(title: title) do |a|
           a.content = content
           a.reported_on_string = time
-          a.disabled = true
+          #a.disabled = true
           a.build_source
           a.source.name = site
           a.source.site = site

@@ -6,18 +6,25 @@ class HomeController < ApplicationController
       @watching_foods = Food.any_in(name: current_user.profile.watching_foods)
     end
 
-    @items = InfoItem.enabled.desc(:updated_at).page(1).per(GlobalConstants::ITEMS_PER_PAGE)
-    @hot_articles = Article.enabled.desc(:updated_at).limit(6)
+    @items = InfoItem.enabled.desc(:reported_on, :updated_on).page(1).per(GlobalConstants::ITEMS_PER_PAGE_MANY)
+    @hot_articles = Article.enabled.desc(:reported_on, :updated_on).limit(6)
 
     #TODO
     @foods_buzz = []#Food.desc([:review_ids, :article_ids]).limit(5).group_by{ |f| f.categories[0] }
   end
 
-  def items
-    @items = InfoItem.enabled.desc(:updated_at).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE)
+  # get more items for pagination on home page
+  def more_items
+    @items = InfoItem.enabled.desc(:reported_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_MANY)
     respond_to do |format|
-      format.html {render :items, :layout => false}
+      format.html {render :more_items, :layout => false}
     end
+  end
+
+  def items
+    @tags = params[:tags]
+    @bad_items = InfoItem.bad.enabled.tagged_with(params[:tags]).desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
+    @good_items = InfoItem.good.enabled.tagged_with(params[:tags]).desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
   end
 
   def watch_foods
@@ -128,7 +135,7 @@ class HomeController < ApplicationController
         result |= food_info.sort{ |a, b| a.votes <=> b.votes}.reverse()[0..2]
       end
     else
-      result = Review.desc(:updated_at).page(page).per(per/2) + Article.enabled.desc(:updated_at).per(per/2)
+      result = Review.desc(:reported_on).page(page).per(per/2) + Article.enabled.desc(:reported_on).per(per/2)
       result = result.sort!{ |a, b| a.votes <=> b.votes}.reverse()[0..4]
     end
     result

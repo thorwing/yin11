@@ -61,6 +61,18 @@ a.button:hover, input.button:hover {
     cursor:pointer;
 }
 
+a.tag {
+    border: 1px solid #333333;
+    color: #444444;
+    background-color: #dddddd;
+}
+
+a.tag:hover {
+    color: white;
+    background-color: #386fb2;
+    cursor:pointer;
+}
+
 .trivial {
     color: #999999;
 }
@@ -87,7 +99,7 @@ a.button:hover, input.button:hover {
 	display:block;
 	border:1px solid #ffffff;
 	background: #ffffff url(/images/background_block_slice.jpg) repeat-x;
-	padding:20px;
+	padding:10px;
 	overflow:auto;
 }
 

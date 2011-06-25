@@ -10,7 +10,7 @@
                <ul id="s3sliderContent">
                  <% @hot_articles.each do |article| %>
                     <li class="s3sliderImage">
-                        <%= link_to (image_tag "http://flickholdr.com/400/250", :width => 400, :height => 250, :border => 0), article  %>
+                        <%= link_to (image_tag "http://flickholdr.com/320/180/steak", :width => 320, :height => 180, :border => 0), article  %>
                         <span><h3><%= article.title %></h3></span>
                   </li>
                  <% end %>
@@ -27,8 +27,8 @@
         <div id="search_frame">
             <h2><%= t("home.foods_buy_question") %></h2>
             <p><%= t("home.foods_buy_question_description") %></p>
-            <%= form_tag '/foods', :method => :get do %>
-                    <%= text_field_tag :foods %>
+            <%= form_tag 'home/items', :method => :get do %>
+                    <%= text_field_tag :tags %>
                     <%= submit_tag t("home.foods_search_button"), :class => "button" %><br/>
                     <p class="trivial"><%= t("home.multiple_foods_suggestion")  %></p>
             <% end %>
@@ -45,8 +45,8 @@
 
 <div class="two_columns_container" >
     <div id="pagination" class="left_column">
-    <% @items.each_with_index do |item, index| %>
-        <%= render "shared/info_item", :item => item, :index => index %>
+    <% @items.each do |item| %>
+        <%= render "info_items/info_item", :item => item %>
     <% end %>
     </div> <!--end of info_items -->
 
@@ -83,6 +83,14 @@
             </div>
         <% end %>
 
+        <div id="tag_cloud" class="sub_panel">
+            <h3><%= t("home.hot_tags") %></h3>
+            <% tag_cloud InfoItem.tags_with_weight[0..GlobalConstants::TAG_CLOUD_COUNT] do |name, css_class| %>
+                <%= link_to name, {:action => "items", :tags => name}, :class => css_class %>
+            <% end %>
+        </div> <!--end of tag_cloud -->
+
+       <% if false %>
         <div id="foods_buzz" class="sub_panel">
           <% if @foods_buzz %>
               <h3><%= t("home.foods_buzz") %></h3>
@@ -95,6 +103,7 @@
               <% end %>
           <% end %>
         </div> <!--end of foods_buzz -->
+        <% end %>
 
     </div> <!--end of control_panel -->
 </div><!--end of two_columns_block -->
