@@ -56,48 +56,49 @@ class HomeController < ApplicationController
   end
 
   def vote
-    object = get_item_based_on(params[:type], params[:id])
+    @item = get_item_based_on(params[:type], params[:id])
 
     delta = params[:delta].to_i
 
     first_vote = false
 
     if delta > 0
-      if object.fan_ids.include?(current_user.id)
+      if @item.fan_ids.include?(current_user.id)
         delta *= -1
-        object.fan_ids.delete(current_user.id)
-      elsif object.hater_ids.include?(current_user.id)
-        object.hater_ids.delete(current_user.id)
+        @item.fan_ids.delete(current_user.id)
+      elsif @item.hater_ids.include?(current_user.id)
+        @item.hater_ids.delete(current_user.id)
       else
-        object.fan_ids << current_user.id
+        @item.fan_ids << current_user.id
         first_vote = true
       end
     else
-      if object.hater_ids.include?(current_user.id)
+      if @item.hater_ids.include?(current_user.id)
         delta *= -1
-        object.hater_ids.delete(current_user.id)
-      elsif object.fan_ids.include?(current_user.id)
-        object.fan_ids.delete(current_user.id)
+        @item.hater_ids.delete(current_user.id)
+      elsif @item.fan_ids.include?(current_user.id)
+        @item.fan_ids.delete(current_user.id)
       else
-        object.hater_ids << current_user.id
+        @item.hater_ids << current_user.id
         first_vote = true
       end
     end
 
     weight = delta * get_vote_weight_of_current_user
-    object.votes += weight
+    @item.votes += weight
+    @votes = @item.votes
 
     current_user.make_contribution(:total_up_votes, 1) if first_vote && weight > 0
     current_user.make_contribution(:total_down_votes, 1) if first_vote && weight < 0
 
     respond_to do |format|
-      if object.save
+      if @item.save
         format.html {redirect_to :root }
         format.xml {head :ok}
         format.js {render :content_type => 'text/javascript'}
       else
-        format.html { redirect_to object }
-        format.xml  { render :xml => object.errors, :status => :unprocessable_entity }
+        format.html { redirect_to @item }
+        format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
         format.js { head :unprocessable_entity }
       end
     end
