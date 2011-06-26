@@ -5,10 +5,9 @@
     <%= render "shared/source", :source => @article.source %>
     <br/>
     <small>
-      <%= t("articles.involved_cities") %>:
-      <% @article.cities.each_with_index do |city, index| %>
-        <%= city.name %><%= "|" if index < @article.cities.size - 1 %>
-      <% end %>
+      <%= t("articles.involved_region") %>:
+      <%= t("articles.involved_region") %>:
+      <%= get_region(@article.region_id).name if @article.region_d %>
     </small>
     <br/>
     <p>

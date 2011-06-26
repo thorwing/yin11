@@ -55,7 +55,7 @@ module ApplicationHelper
   def get_severity_image(item, width = 24, height = 32)
     if item.is_a?(Review)
       image_tag("severity_3_small.png", :width => width, :height => height)
-    elsif item.is_a?(Recommendation)
+    else item.is_a?(Recommendation)
       image_tag("severity_0_small.png", :width => width, :height => height)
     end
   end
@@ -159,9 +159,17 @@ module ApplicationHelper
   def get_clues_of_item(item)
     result = []
     result << link_to(t("info_items.#{item.class.name.downcase}"), "\\" + item.class.name.downcase.pluralize)
+    if item.region_id.present?
+      city = City.first(conditions: {id: item.region_id})
+      if city
+        result << city.name
+      else
+        province = Province.first(conditions: {id: item.region_id})
+        result << province.name
+      end
+    end
     if item.is_a?(Article)
-      (result << t("articles.source") + ": " + item.source.name) if item.source
-      (result << item.cities[0].name) if item.cities.size > 0
+      result << t("articles.source") + ": " + item.source.name if item.source
     end
 
     result
@@ -232,6 +240,5 @@ def image_uploadify(item)
        yield t[0], classes[(t[1].to_i - min) / divisor]
     }
   end
-
 
 end

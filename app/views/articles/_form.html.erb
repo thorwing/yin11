@@ -5,8 +5,8 @@
     <%= render "info_items/basic_fields", :item => @article, :f => f %>
 
     <div class="field">
-        <%= f.label :city_tokens, t("articles.involved_cities") %>
-        <%= f.text_field :city_tokens, 'data-pre' => (f.object.cities.map { |f| { :id => f.id, :name => f.name }}).to_json %>
+        <%= f.label :region_id, t("articles.involved_region") %>
+        <%= f.text_field :region_id, 'data-pre' => (f.object.region_id ? [:id => get_region(f.object.region_id).id, :name => get_region(f.object.region_id).name] : []).to_json %>
     </div>
 
     <p><label><%= t("articles.source") %></label></p>

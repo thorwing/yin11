@@ -1,6 +1,11 @@
-<h1>Editing article</h1>
+<div class="content_block_inside">
+    <h2><%= t("general.edit") %></h2>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+    <hr/>
+    <%= link_to t("general.show"), @article %> |
+    <%= link_to t("general.back"), articles_path %>
+</div>
+
+

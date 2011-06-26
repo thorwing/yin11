@@ -40,6 +40,7 @@ zh-CN:
     edit_review: 编辑测评
 
   validations:
+    header_msg: 好像表单中有一些错误，要不您再仔细看看？
     general:
       presence_msg: %{field}不能为空
       uniqueness_msg: 相同的%{field}已存在
@@ -48,6 +49,8 @@ zh-CN:
       length_msg: %{field}长度须介于%{min}和%{max}个字符之间
     date:
       reported_on_invalid_msg: 报告日期的格式不正确
+    tags:
+      max_limit_msg: 最多可以设置%{max}个标签
 
   authentication:
     log_out: "登出"
@@ -194,7 +197,7 @@ zh-CN:
     new_article: 新文章
     post: 发表
     involved_foods: 涉及食物
-    involved_cities: 城市
+    involved_region: 地区
     source_name: 媒体名称
     source_site: 网站
     source_url: 链接
@@ -228,6 +231,10 @@ zh-CN:
   info_items:
     good_items: "请阅读以下关于\"%{name}\"的参考"
     bad_items: "警惕以下关于\"%{name}\"的负面信息"
+    report_header: "安全评估为"
+    report_summary: "关于\"%{name}\",我们共找到%{bad_count}条负面消息，%{good_count}条健康分享"
+    report_involved_regions: "负面消息分布以下地区:"
+    report_good_header: "我们一共找到%{count}条关于\"%{name}\"的健康分享，建议您阅读"
     detail: 详情>>
     ago: 以前
     tags: 标签

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale, :set_city
   helper_method :current_user , :has_permission?, :current_city
-  helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself
+  helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself, :get_region
   FOOD_ARTICLES_LIMIT = 5
   FOOD_REVIEWS_LIMIT = 5
 
@@ -229,5 +229,16 @@ class ApplicationController < ActionController::Base
        :theme_advanced_buttons3 => []
      }
    end
+
+  def get_region(region_id)
+      city = City.first(conditions: {id: region_id})
+      if city
+        return city
+      else
+        province = Province.first(conditions: {id: region_id})
+        return province if province
+      end
+      nil
+    end
 
 end

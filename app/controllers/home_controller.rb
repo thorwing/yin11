@@ -22,9 +22,28 @@ class HomeController < ApplicationController
   end
 
   def items
-    @tags = params[:tags]
-    @bad_items = InfoItem.bad.enabled.tagged_with(params[:tags]).desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
-    @good_items = InfoItem.good.enabled.tagged_with(params[:tags]).desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
+    @bad_items = InfoItem.bad.enabled
+    @good_items = InfoItem.good.enabled
+    (@tags = params[:tags].is_a?(Array) ?  params[:tags] : [params[:tags]]) if params[:tags].present?
+    if @tags && @tags.size > 0
+      @bad_items = @bad_items.tagged_with(@tags)
+      @good_items = @good_items.tagged_with(@tags)
+    end
+    @region_id = params[:region_id]
+    if @region_id.present?
+      @bad_items = @bad_items.of_region(@region_id)
+      @good_items = @good_items.tagged_with(@region_id)
+      @region = get_region(@region_id)
+    end
+    @bad_items = @bad_items.desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
+    @good_items = @good_items.desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
+
+    @bad_regions = @bad_items.map {|e| get_region(e.region_id) if e.region_id.present?}.uniq
+    targets = []
+    targets = @tags if @tags
+    targets << @region.name if @region
+
+    @target_names = targets.join(",")
   end
 
   def watch_foods

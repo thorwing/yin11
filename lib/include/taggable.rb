@@ -26,6 +26,7 @@ module Taggable
       base1.index :tags
 
       attr_accessible :tags_string
+      validates_length_of :tags, :maximum => GlobalConstants::MAX_TAGS, :message => I18n.translate("validations.tags.max_limit_msg", :max => GlobalConstants::MAX_TAGS)
 
       include InstanceMethods
       extend ClassMethods
@@ -34,7 +35,7 @@ module Taggable
 
   module InstanceMethods
     def tags_string=(tags)
-      self.tags = tags.split(",").collect{ |t| t.strip }.delete_if{ |t| t.blank? }
+      self.tags = tags.split(",").collect{ |t| t.strip }.delete_if{ |t| t.blank? }[0..(GlobalConstants::MAX_TAGS - 1)]
     end
 
     def tags_string
