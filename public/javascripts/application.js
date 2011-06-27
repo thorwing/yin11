@@ -53,8 +53,8 @@ $(function() {
         });
     }
 
+    tokenize_input("#article_region_ids", "/home/regions.json", 10);
     tokenize_input("#article_tags_string", "/tags.json", 10);
-    tokenize_input("#article_region_id", "/cities.json", 1);
     tokenize_input("#article_vendor_token", "/vendors.json", 1);
     tokenize_input("#review_tags_string", "/tags.json", 10);
     tokenize_input("#review_vendor_token", "/vendors.json", 1);

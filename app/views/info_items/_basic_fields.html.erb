@@ -5,9 +5,10 @@
   </div>
   <div class="field">
      <%= f.label :tags_string, t("info_items.tags") %><br/>
-     <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
+     <%= f.text_field :tags_string, 'data-pre' => (item.tags ? item.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
   </div>
   <div id="field">
+    <%= hidden_field_tag "#{item.class.name.downcase}[region_ids][]", current_city.id %>
     <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)<br/>
     <%= f.label :vendor_token, t("vendors.vendor") %>
     (<%= t("vendors.vendor_not_found") %> <%= link_to t("vendors.quick_create_vendor"), new_vendor_path(:popup => true), :rel => "facebox" %>)<br/>
@@ -17,7 +18,6 @@
     <%= f.label :reported_on_string, t("general.date") %><br/>
     <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
   </div>
-
 
   <% if false %>
       <div class="fields_group">
@@ -43,24 +43,7 @@
       </div>
   <% end %>
 
-  <%= f.label :images, t("images.images") %>
-  <%= mark_required(item, :images) %>
-  <%= content_tag(:span, t("reviews.upload_image_tip"), :class => "trivial" ) if item.is_a?(Review) %>
-
-  <%= hidden_field_tag "images_counter", item.images ?  item.images.size : 0, 'data-max' => 5 %>
-  <div class="fields_group">
-      <% item.images.each do |image| %>
-        <%= render "images/image", :image => image %>
-      <% end %>
-      <div class="images"></div>
-      <div id="image_upload_container">
-        <div id="image_upload"></div>
-      </div>
-  </div>
-
-  <noscript>
-    <p><%= t("general.javascript_please") %></p>
-  </noscript>
+  <%= render "info_items/images_fields", :f => f, :item => item %>
 
   <% if false %>
   <% tab_control do %>

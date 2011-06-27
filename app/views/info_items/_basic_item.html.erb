@@ -22,10 +22,6 @@
 </div>
 
 <div class="right_fields">
-    <% if item.images.size > 0 %>
-        <%= link_to get_image(item.images[0], 100, 75), item %>
-    <% else %>
-        <%= image_tag "http://flickholdr.com/100/75/salat", :width => 100, :height => 75; %>
-    <% end %>
+    <%= link_to get_image_of_item(item, 0, 100, 75), item %>
     <%= link_to t("info_items.add_comment") + "(#{item.comments.size})", home_new_comment_path(:id => item.id, :type => item.class.name)%>
 </div>

@@ -12,7 +12,7 @@ require "foods_generator"
 
   File.open(File.join(RAILS_ROOT, 'app/assets/provinces.txt')).each_line { |p|
     code, name, short_name, main_city_id, type = p.split(" ")
-    Factory(:province, :code => code, :name => name, :short_name => short_name, :main_city_id => main_city_id, :type => type)
+    Province.create( :code => code, :name => name, :short_name => short_name, :main_city_id => main_city_id, :type => type)
   }
 
   File.open(File.join(RAILS_ROOT, 'app/assets/cities.txt')).each_line { |c|

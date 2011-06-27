@@ -11,8 +11,8 @@ class Province
   has_many :cities
 
   #Validators
-  validates_presence_of :code, :name, :short_name, :type
-  validates_uniqueness_of :code, :name, :short_name
+  validates_presence_of :code, :name
+  validates_uniqueness_of :code, :name
   validates_associated :cities
 
 end

@@ -111,7 +111,7 @@ zh-CN:
     foods_buy_question: "您的餐桌安全吗？"
     foods_buy_question_description: 瘦肉精，三聚氰胺...食品安全问题层出不穷。为了您和您家人的健康，查查看您身边的食品是否安全。
     vendor_buy_question: "上哪去买呢？"
-    multiple_foods_suggestion: "可以同时搜索多个食物，并用空格分开。比如: 西瓜 牛奶"
+    multiple_foods_suggestion: "可以同时地点和食物（用空格分开）。比如: 北京 瘦肉精"
     foods_search_button: "搜索"
     vendor_search_button: "搜索"
     foods_buzz: 热门食物
@@ -197,7 +197,7 @@ zh-CN:
     new_article: 新文章
     post: 发表
     involved_foods: 涉及食物
-    involved_region: 地区
+    involved_regions: 涉及地区
     source_name: 媒体名称
     source_site: 网站
     source_url: 链接

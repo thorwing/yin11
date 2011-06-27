@@ -1,14 +1,22 @@
-
 <%= form_for @article, :html => { :multipart => true } do |f| %>
     <%= render "shared/error_messages", :target => @article %>
 
-    <%= render "info_items/basic_fields", :item => @article, :f => f %>
-
     <div class="field">
-        <%= f.label :region_id, t("articles.involved_region") %>
-        <%= f.text_field :region_id, 'data-pre' => (f.object.region_id ? [:id => get_region(f.object.region_id).id, :name => get_region(f.object.region_id).name] : []).to_json %>
+        <%= f.label :title, t("general.title") %><%= mark_required(@article, :title) %><%= mark_required_length(@article, :title) %><br/>
+        <%= f.text_field :title, :maxlength => 40 %>
     </div>
-
+    <div class="field">
+         <%= f.label :tags_string, t("info_items.tags") %><br/>
+         <%= f.text_field :tags_string, 'data-pre' => (@article.tags ? @article.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
+    </div>
+    <div class="field">
+        <%= f.label :reported_on_string, t("general.date") %><br/>
+        <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
+    </div>
+    <div class="field">
+        <%= f.label :region_ids, t("articles.involved_regions") %><br/>
+        <%= f.text_field :region_ids, 'data-pre' => (@article.region_ids ? @article.region_ids.map { |e| { :id => e, :name => get_region(e).name }} : []).to_json %>
+    </div>
     <p><label><%= t("articles.source") %></label></p>
     <div class="fields_group">
         <%= f.fields_for :source do |builder| %>
@@ -21,16 +29,23 @@
                 <%= builder.text_field :site, :maxlength => 20 %>
             </div>
             <div class="field">
-                <%= builder.label :url, t("articles.source_url") %><br/>
+                <%= builder.label :url, t("general.content") %><br/>
                 <%= builder.text_field :url%>
             </div>
         <% end %>
     </div>
 
-    <div class="field">
+     <div class="field">
         <%= f.label :category, t("general.category") %><br/>
         <%= f.select :category, options_for_select(ArticleTypes.get_values, @article.category) %>
-     </div>
+    </div>
+
+    <%= render "info_items/images_fields", :f => f, :item => @article %>
+
+    <div class="field">
+        <%= f.label :content, t("general.content") %><%= mark_required(@article, :content) %><%= mark_required_length(@article, :content) %><br/>
+        <%= f.text_area :content, :class => "mceEditor", :maxlength => 10000 %>
+    </div>
 
     <div class="actions">
         <%= f.submit t("general.submit"), :class => "button" %>

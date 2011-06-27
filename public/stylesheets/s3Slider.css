@@ -1,6 +1,6 @@
 #s3slider {
    width: 320px; /* important to be same as image width */
-   height: 180px; /* important to be same as image height */
+   height: 240px; /* important to be same as image height */
    position: relative; /* important */
    overflow: hidden; /* important */
 }

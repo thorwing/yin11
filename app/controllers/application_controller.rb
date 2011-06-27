@@ -231,6 +231,7 @@ class ApplicationController < ActionController::Base
    end
 
   def get_region(region_id)
+    if region_id.present?
       city = City.first(conditions: {id: region_id})
       if city
         return city
@@ -238,7 +239,9 @@ class ApplicationController < ActionController::Base
         province = Province.first(conditions: {id: region_id})
         return province if province
       end
-      nil
     end
+
+    nil
+  end
 
 end

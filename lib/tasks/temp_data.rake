@@ -29,7 +29,7 @@ namespace :yin11 do
       article = Article.find_or_initialize_by(title: title) do |a|
         a.reported_on = date
         #a.disabled = true
-        a.region_id = region.id if region
+        a.region_ids = [region.id] if region
         a.tags_string = tags
         a.build_source
         a.source.name = source_name || source_site || "Unknown Media"

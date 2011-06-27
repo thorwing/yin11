@@ -32,7 +32,7 @@ class ProfileController < ApplicationController
 
   def update_current_city
     self.current_city = City.find(params[:new_city]) if params[:new_city].present?
-    @current_city_name = self.current_city.name
+    @current_city = self.current_city
 
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}

@@ -44,11 +44,16 @@ module ApplicationHelper
     end
   end
 
-  def get_image(image, width = 100, height = 100)
-    logger = Logger.new(STDOUT)
-    logger.info image.image.url.to_s
-    if image.image?
-      image_tag(image.image.url, :width => width, :height => height, :border => 0)
+  def get_image_of_item(item, index = 0, width = 100, height = 100)
+    if item && item.images.size > 0
+      image = item.images[index]
+      Logger.new(STDOUT).info image.image.url.to_s
+      if image.image?
+        image_tag(image.image.url, :width => width, :height => height, :border => 0)
+       end
+    else
+      #TODO
+      image_tag("http://flickholdr.com/#{width}/#{height}/salat", :width => width, :height => height, :border => 0)
     end
   end
 
@@ -159,13 +164,15 @@ module ApplicationHelper
   def get_clues_of_item(item)
     result = []
     result << link_to(t("info_items.#{item.class.name.downcase}"), "\\" + item.class.name.downcase.pluralize)
-    if item.region_id.present?
-      city = City.first(conditions: {id: item.region_id})
-      if city
-        result << city.name
-      else
-        province = Province.first(conditions: {id: item.region_id})
-        result << province.name
+    if item.region_ids.present?
+      item.region_ids.each do |region_id|
+        city = City.first(conditions: {id: region_id})
+        if city
+          result << city.name
+        else
+          province = Province.first(conditions: {id: region_id})
+          result << province.name
+        end
       end
     end
     if item.is_a?(Article)

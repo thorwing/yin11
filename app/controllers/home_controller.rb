@@ -22,28 +22,53 @@ class HomeController < ApplicationController
   end
 
   def items
+    #prepare parameters
+    if params[:search].present?
+      @tags = params[:search].split(" ") || []
+      @tags.each do |q|
+        @region = City.first(conditions: {name: q})
+        @region = Province.first(conditions: {name: q}) unless @region
+        if @region
+          @region_id = @region.id
+          @tags.reject!{|e| e == q}
+          break
+        end
+      end
+    else
+      (@tags = params[:tags].is_a?(Array) ?  params[:tags] : [params[:tags]]) if params[:tags].present?
+      @region_id = params[:region_id]
+    end
+
     @bad_items = InfoItem.bad.enabled
     @good_items = InfoItem.good.enabled
-    (@tags = params[:tags].is_a?(Array) ?  params[:tags] : [params[:tags]]) if params[:tags].present?
     if @tags && @tags.size > 0
       @bad_items = @bad_items.tagged_with(@tags)
       @good_items = @good_items.tagged_with(@tags)
     end
-    @region_id = params[:region_id]
+
+    #search based on location
     if @region_id.present?
       @bad_items = @bad_items.of_region(@region_id)
-      @good_items = @good_items.tagged_with(@region_id)
-      @region = get_region(@region_id)
+      @good_items = @good_items.of_region(@region_id)
+      @region ||= get_region(@region_id)
     end
     @bad_items = @bad_items.desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
     @good_items = @good_items.desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
 
-    @bad_regions = @bad_items.map {|e| get_region(e.region_id) if e.region_id.present?}.uniq
+    @bad_regions = @bad_items.inject([]) {|memo, e| memo | (e.region_ids || []).map{|id| get_region(id)} }.uniq
     targets = []
     targets = @tags if @tags
     targets << @region.name if @region
 
     @target_names = targets.join(",")
+  end
+
+  def regions
+    @regions = Province.only(:id, :name).where(:name => /#{params[:q]}?/) + City.only(:id, :name).where(:name => /#{params[:q]}?/)
+    @regions.uniq! {|e| e.name}
+    respond_to do |format|
+      format.json { render :json => @regions.map { |e| {:id => e.id, :name => e.name } } }
+    end
   end
 
   def watch_foods
@@ -90,6 +115,9 @@ class HomeController < ApplicationController
 
     current_user.make_contribution(:total_up_votes, 1) if first_vote && weight > 0
     current_user.make_contribution(:total_down_votes, 1) if first_vote && weight < 0
+
+    @is_fan = @item.fan_ids.include?(current_user.id)
+    @is_hater = @item.hater_ids.include?(current_user.id)
 
     respond_to do |format|
       if @item.save

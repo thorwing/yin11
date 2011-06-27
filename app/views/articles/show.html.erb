@@ -6,8 +6,8 @@
     <br/>
     <small>
       <%= t("articles.involved_region") %>:
-      <%= t("articles.involved_region") %>:
-      <%= get_region(@article.region_id).name if @article.region_d %>
+      <% region = get_region(@article.region_id) %>
+      <%= region.name if region %>
     </small>
     <br/>
     <p>
