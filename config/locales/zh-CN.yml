@@ -35,6 +35,11 @@ zh-CN:
     are_you_sure_to_delete: 确定要删除吗？
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
 
+  flash:
+    notice: 通知
+    warning: 提醒
+    error: 出错啦
+
   sub_titles:
     new_review: 新测评
     edit_review: 编辑测评
@@ -183,7 +188,7 @@ zh-CN:
     recommendation_suggestion_1: "您刚刚吃了健康的一餐，食物安全，卫生，又有营养。现在将这健康一餐和大家一起分享吧！越多的用户喜爱您的分享，您将获得更多的积分。"
     recommendation_suggestion_2: "在何时何地，您吃了什么食物？您用了什么手段来确保这一餐是安全又卫生的？"
     created_notice: 已分享您的健康一餐
-    updated_notice: 以更新您的健康一餐
+    updated_notice: 已更新您的健康一餐
 
   comments:
     comments: "评论:"
