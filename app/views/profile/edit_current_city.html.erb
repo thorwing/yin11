@@ -3,8 +3,12 @@
 <%= form_tag profile_update_current_city_path, :remote => true do%>
 
   <div class="field">
+    <b><%= t("address.province") %></b><br/>
+    <%= select_tag "select_province", options_for_select(get_provinces_for_select, current_city.province.id)%>
+  </div>
+  <div class="field">
     <b><%= t("address.city") %></b><br/>
-    <%= select_tag "new_city", options_for_select(get_cities_for_select, current_city.id)%>
+    <%= select_tag "select_city", options_for_select(get_cities_of_provinces(current_city.province), current_city.id)%>
   </div>
   <div class="actions">
     <%= submit_tag t("general.submit"), :class => "button" %>

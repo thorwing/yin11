@@ -71,6 +71,16 @@ class HomeController < ApplicationController
     end
   end
 
+  def cities
+      province = Province.first(conditions: {id: params[:province_id]}) if params[:province_id]
+      @cities = province.cities if province
+      @cities ||= []
+
+      respond_to do |format|
+        format.json { render :json => @cities.map { |e| {:id => e.id, :name => e.name } } }
+    end
+  end
+
   def watch_foods
     current_user.profile.add_foods(params[:added_foods].split(","))
     current_user.save

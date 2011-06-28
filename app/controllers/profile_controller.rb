@@ -31,7 +31,7 @@ class ProfileController < ApplicationController
   end
 
   def update_current_city
-    self.current_city = City.find(params[:new_city]) if params[:new_city].present?
+    self.current_city = City.find(params[:select_city]) if params[:select_city].present?
     @current_city = self.current_city
 
     respond_to do |format|

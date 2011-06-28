@@ -56,21 +56,6 @@
             </div>
         <% end %>
         <%= local_tab_page( t("vendors.non_existed_vendor")) do %>
-            <div id="new_vendor">
-                <%= t("reviews.quick_create_vendor") %>
-                 <div class="field">
-                    <%= f.label :vendor_name, t("general.name") %><br />
-                    <%= f.text_field :vendor_name %>
-                </div>
-                <div class="field">
-                    <%= f.label :vendor_city, t("address.city") %><br />
-                    <%= f.select :vendor_city, options_for_select(get_cities_for_select, item.vendor_city)%>
-                </div>
-                <div class="field">
-                    <%= f.label :vendor_street, t("address.street") %><br />
-                    <%= f.text_field :vendor_street %>
-                </div>
-            </div>
         <% end %>
     </ul>
     </div>

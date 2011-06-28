@@ -23,6 +23,7 @@ Yin11::Application.routes.draw do
   get "home/more_items"
   get "home/items"
   get "home/regions"
+  get "home/cities"
   post "home/watch_foods"
   put "home/vote"
   get "home/new_comment"
