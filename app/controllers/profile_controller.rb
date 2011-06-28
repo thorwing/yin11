@@ -23,7 +23,7 @@ class ProfileController < ApplicationController
   def edit_current_city
     respond_to do |format|
       if params[:popup]
-        format.html {render "edit_current_city", :layout => "popup" }
+        format.html {render "edit_current_city", :layout => "dialog" }
       else
         format.html # new.html.erb
       end

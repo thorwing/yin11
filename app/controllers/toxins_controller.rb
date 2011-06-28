@@ -38,7 +38,7 @@ class ToxinsController < ApplicationController
 
     respond_to do |format|
       if params[:popup]
-        format.html {render "remote_new", :layout => "popup" }
+        format.html {render "remote_new", :layout => "dialog" }
       else
         format.html # new.html.erb
       end
