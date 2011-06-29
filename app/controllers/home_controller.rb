@@ -52,10 +52,14 @@ class HomeController < ApplicationController
       @good_items = @good_items.of_region(@region_id)
       @region ||= get_region(@region_id)
     end
+
+    @bad_count = @bad_items.size
+    @good_count = @good_items.size
+    @bad_regions = @bad_items.inject([]) {|memo, e| memo | (e.region_ids || []).map{|id| get_region(id)} }.uniq.delete_if{|e| e.code == "ALL"}
+
     @bad_items = @bad_items.desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
     @good_items = @good_items.desc(:reported_on, :updated_on).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_FEW)
 
-    @bad_regions = @bad_items.inject([]) {|memo, e| memo | (e.region_ids || []).map{|id| get_region(id)} }.uniq
     targets = []
     targets = @tags if @tags
     targets << @region.name if @region

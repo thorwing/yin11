@@ -2,7 +2,7 @@
     <div id="brief_report" class="block">
       <div class="block_inside">
         <h2><%= t("info_items.report_header")  %><%= get_severity_image("dummy") %></h2>
-        <h3><%= t("info_items.report_summary", :name => @target_names, :bad_count => @bad_items.size, :good_count => @good_items.size ) %></h3>
+        <h3><%= t("info_items.report_summary", :name => @target_names, :bad_count => @bad_count, :good_count => @good_count ) %></h3>
         <h4 class="bad">
           <%= t("info_items.report_involved_regions") %>
           <% @bad_regions.each do |region| %>

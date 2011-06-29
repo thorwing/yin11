@@ -26,7 +26,7 @@ function add_fields_with_map(link, association, content) {
         {
             var place = $(".map_place").val();
             var street = $(".map_street").val();
-            var city = $(".map_city :selected").text();
+            var city = $(".map_city").val();
 
             update_map(city, street, place, null);
         }
@@ -66,7 +66,7 @@ function add_fields_with_map(link, association, content) {
 
         var place = parent.find(".map_place").val();
         var street = parent.find(".map_street").val();
-        var city = parent.find(".map_city").find("option:selected").text();
+        var city = parent.find(".map_city").val();
 
         update_map(city, street, place, control);
     }
