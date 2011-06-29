@@ -22,10 +22,16 @@ require "foods_generator"
     city.save
   }
 
-  File.open(File.join(RAILS_ROOT, 'app/assets/city_ip.txt')).each_line { |c|
-    start_ip, end_ip, province_name, city_name = c.split(" ")
-    CityIp.create(:start_ip => start_ip, :end_ip => end_ip, :province_name => province_name, :city_name => city_name)
-  }
+  roots = YAML.load(File.open("#{Rails.root.to_s}/app/assets/districts.yml"))
+  roots.each do |city_name, districts|
+    city = City.first(conditions: {name: city_name})
+    districts.each {|d| city.districts.create(:name => d)} if city
+  end
+
+#  File.open(File.join(RAILS_ROOT, 'app/assets/city_ip.txt')).each_line { |c|
+#    start_ip, end_ip, province_name, city_name = c.split(" ")
+#    CityIp.create(:start_ip => start_ip, :end_ip => end_ip, :province_name => province_name, :city_name => city_name)
+#  }
 
 #watermelon = Food.first(conditions: {name: "西瓜"})
   #orange = Food.first(conditions: {name: "橙子"})

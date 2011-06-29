@@ -25,10 +25,10 @@ function add_fields_with_map(link, association, content) {
         else
         {
             var place = $(".map_place").val();
-            var street = $(".map_street").val();
+            var street = $(".map_detail").val();
             var city = $(".map_city").val();
 
-            update_map(city, street, place, null);
+            update_map(city, detail, place, null);
         }
 
         add_listeners();
@@ -48,7 +48,7 @@ function add_fields_with_map(link, association, content) {
             update_map_from_listener(this);
         });
 
-        $(".map_street").change(function(){
+        $(".map_detail").change(function(){
             update_map_from_listener(this);
         });
 
@@ -65,10 +65,10 @@ function add_fields_with_map(link, association, content) {
         indicator.addClass("checking");
 
         var place = parent.find(".map_place").val();
-        var street = parent.find(".map_street").val();
+        var street = parent.find(".map_detail").val();
         var city = parent.find(".map_city").val();
 
-        update_map(city, street, place, control);
+        update_map(city, detail, place, control);
     }
 
     function update_map_with_point(point)
@@ -77,12 +77,12 @@ function add_fields_with_map(link, association, content) {
         map.addOverlay(new BMap.Marker(point));
     }
 
-    function update_map(city, street, place, control) {
-        if (street != null || place != null)
+    function update_map(city, detail, place, control) {
+        if (detail != null || place != null)
         {
             var myGeo = new BMap.Geocoder(); // 创建地址解析器实例
             // 将地址解析结果显示在地图上,并调整地图视野
-            myGeo.getPoint( city +  " " + street + " " + place, function(point){
+            myGeo.getPoint(detail + " " + place, function(point){
                 if (point) {
                     update_map_with_point(point);
 

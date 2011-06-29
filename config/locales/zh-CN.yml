@@ -4,7 +4,7 @@ zh-CN:
     description: 关注 食品 食物 安全
 
   system:
-    default_city: 北京
+    default_city: 上海
 
   general:
     title: 标题
@@ -92,9 +92,9 @@ zh-CN:
     city: 城市
     change_city: 切换城市
     district: 区
-    street: 街道
     place: 地点
     detail: 详细地址
+    near: 靠近
     detail_hint: "地址格式: 南京东路1809号 第一食品商店"
     postcode: 邮政编码
     checking: 正在检查地址
@@ -150,12 +150,14 @@ zh-CN:
   vendors:
     vendor: 商户
     vendors: 所有商户
+    vendor_name: 商户名
     vendor_not_found: 没找到?
     quick_create_vendor: 点击这里，快速创建商户
     exact_vendor_not_found: 没有找到名为<%{name}>的商户
     please_create: "欢迎您创建:"
     normal_vendor: "商户: <%{name}>"
     new_vendor: 新商户
+    edit_vendor: 编辑商户
     create_vendor: 新建商户
 
   reviews:

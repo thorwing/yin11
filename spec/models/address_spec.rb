@@ -13,9 +13,9 @@ end
 describe "boundary" do
   it "street's max length is 20" do
     @user = Factory.create(:user, :email => "test@test.de", :login_name => "tester", :password => "123456")
-    @user.profile.address.street = "12345678901234567890"
+    @user.profile.address.detail = "12345678901234567890"
     @user.profile.address.valid?.should equal true
-    @user.profile.address.street = "123456789012345678901"
+    @user.profile.address.detail = "123456789012345678901"
     @user.profile.address.valid?.should equal false
   end
 
