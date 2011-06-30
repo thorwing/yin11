@@ -16,7 +16,7 @@ class User
   #Relationships
   embeds_one :profile
   embeds_one :contribution
-  has_many :reviews, :inverse_of => "author"
+  has_many :info_items, :inverse_of => "author"
   has_and_belongs_to_many :participated_tips, :class_name => "Tip"
   has_and_belongs_to_many :badges
 

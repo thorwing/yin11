@@ -14,8 +14,8 @@
         <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
     </div>
     <div class="field">
-        <%= f.label :region_ids, t("articles.involved_regions") %><br/>
-        <%= f.text_field :region_ids, 'data-pre' => (@article.region_ids ? @article.region_ids.map { |e| { :id => e, :name => get_region(e).name }} : []).to_json %>
+        <%= f.label :region_tokens, t("articles.involved_regions") %><br/>
+        <%= f.text_field :region_tokens, 'data-pre' => (@article.region_ids ? @article.region_ids.map { |e| { :id => e, :name => get_region(e).name }} : []).to_json %>
     </div>
     <p><label><%= t("articles.source") %></label></p>
     <div class="fields_group">

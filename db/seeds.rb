@@ -4,9 +4,9 @@ require "foods_generator"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-  Factory(:user, :email => "tester@yin11.com", :login_name => "David", :password => "iamtester", :role => 1 )
-  Factory(:user, :email => "editor@yin11.com", :login_name => "Castle", :password => "iameditor", :role => 2 )
-  Factory(:user, :email => "admin@yin11.com", :login_name => "Ray", :password => "superuser", :role => 9 )
+  User.create(:email => "tester@yin11.com", :login_name => "David", :password => "iamtester", :role => 1 )
+  User.create(:email => "editor@yin11.com", :login_name => "Castle", :password => "iameditor", :role => 2 )
+  User.create(:email => "admin@yin11.com", :login_name => "Ray", :password => "superuser", :role => 9 )
 
   FoodsGenerator::generate_foods
 

@@ -36,6 +36,11 @@ class InfoItem
     end
   end
 
+  attr_reader :region_tokens
+  def region_tokens=(tokens)
+    self.region_ids = tokens.split(',')
+  end
+
   #Relationships
   embeds_many :comments
   has_many :images
@@ -45,7 +50,7 @@ class InfoItem
 
   accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_image_url].blank? }, :allow_destroy => true
 
-  attr_accessible :title, :content, :reported_on_string, :faults, :images_attributes, :region_ids
+  attr_accessible :title, :content, :reported_on_string, :faults, :images_attributes, :region_tokens
 
   validates_presence_of :title, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.title") )
   validates_length_of :title, :maximum => 30, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.title"),

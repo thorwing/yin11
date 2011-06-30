@@ -5,7 +5,7 @@
 
     <hr/>
 
-    <% if the_author_himself(Recommendation.name, @recommendation.id, true) %>
+    <% if display_only_for_author(@recommendation.id, true) %>
         <%= link_to t("general.edit"), edit_recommendation_path(@recommendation), :class => "button" %>
         <%= link_to t("general.delete"), @recommendation, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
     <% end %>

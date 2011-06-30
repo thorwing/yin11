@@ -2,9 +2,7 @@ Feature: usage about permissions
   Different permission for registered user and guest
 
   Background:
-    Given There is a "David User"
-    And There is a "Castle Editor"
-    And There is a "Ray Admin"
+    Given There are minimal testing records
 
   Scenario: guest can't post any reviews and will be asked to sign up
     When I go to the reviews page

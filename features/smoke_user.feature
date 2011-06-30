@@ -7,9 +7,7 @@ Feature: smoke tests for User
   User can watch(focus) another people (integration with WeiBo)
 
   Background:
-      Given There is a "David User"
-      And There is a "Kate Tester"
-      And There are minimal testing records
+      Given There are minimal testing records
 
   Scenario: User can add foods to watching list, so they will be notified about the news of those foods
     When I log in as "David User"

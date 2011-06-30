@@ -7,10 +7,7 @@ Feature: smoke tests for Vendors
   Only Admin can delete a vendor
 
   Background:
-      Given There is a "David User"
-      And There is a "Kate Tester"
-      And There is a "Castle Editor"
-      And There are minimal testing records
+      Given There are minimal testing records
 
   Scenario: User can search for vendors
     Given the following vendor exists:

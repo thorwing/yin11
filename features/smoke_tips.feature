@@ -7,9 +7,7 @@ Feature: smoke tests for Tips
   Admin can merge two tips
 
   Background:
-    Given There is a "David User"
-    And There is a "Kate Tester"
-    And There are minimal testing records
+    Given There are minimal testing records
 
   Scenario: On the tips page, it shows all recent updated tips and hot tips
     When I log in as "David User"

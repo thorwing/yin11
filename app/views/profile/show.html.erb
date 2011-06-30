@@ -4,7 +4,6 @@
         <h3><%= current_user.login_name %></h3>
         <%= get_avatar(current_user) %>
     </div>
-
     <div class="fields_group">
         <h3><%= t("profile.interested_places") %></h3>
         <% current_user.profile.watching_addresses.each do |address| %>

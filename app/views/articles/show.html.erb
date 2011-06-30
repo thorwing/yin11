@@ -6,8 +6,9 @@
     <br/>
     <small>
       <%= t("articles.involved_region") %>:
-      <% region = get_region(@article.region_id) %>
-      <%= region.name if region %>
+      <% @article.region_ids.each do |region_id| %>
+        <%= get_region(region_id).name %>
+      <% end %>
     </small>
     <br/>
     <p>
@@ -26,7 +27,7 @@
 
     <hr/>
 
-    <% if the_author_himself(Article.name, @article.id, true) %>
+    <% if display_only_for_author(@article.id, true) %>
         <%= link_to t("general.edit"), edit_article_path(@article), :class => "button" %>
         <%= link_to t("general.delete"), @article, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
     <% end %>

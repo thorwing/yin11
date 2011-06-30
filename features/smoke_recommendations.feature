@@ -4,9 +4,7 @@ Feature: smoke tests for Recommendations
   Recommendation is food-oriented, location-oriente
 
 Background:
-    Given There is a "David User"
-    And There is a "Kate Tester"
-    And There are minimal testing records
+    Given There are minimal testing records
 
   @focus
   Scenario: User can post recommendation from homepage, and he create a new vendor ( it will be better if we can make a popup window here)

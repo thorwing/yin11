@@ -7,7 +7,7 @@
         <% clues = get_clues_of_item(item); clues.each do |clue| %>
             <%= content_tag(:small, clue) %> <%= "|" %>
         <% end %>
-        <% item.tags.each {|tag| link_to(tag, {:action => "items", :tags => tag}, :class => "tag") } if item.tags %>
+        <% item.tags.each {|tag| link_to(tag, {:controller => "home", :action => "items", :tags => tag}, :class => "tag") } if item.tags %>
     </div>
     <p>
       <%= truncate_content(item, 100) %>

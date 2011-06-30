@@ -273,4 +273,17 @@ def image_uploadify(item)
     end
   end
 
+  def display_only_for_author(id, or_admin = false)
+    return false unless current_user
+    has_permission = false
+    has_permission = true if or_admin && current_user.is_admin?
+    unless has_permission
+      object = InfoItem.find(id)
+      #TODO
+      has_permission = (object.author_id == current_user.id)
+    end
+
+    has_permission
+  end
+
 end

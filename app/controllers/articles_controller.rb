@@ -45,6 +45,7 @@ class ArticlesController < ApplicationController
   # POST /articles.xml
   def create
     @article = Article.new(params[:article])
+    @article.author_id = current_user.id
 
     begin
       respond_to do |format|

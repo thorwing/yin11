@@ -1,11 +1,18 @@
 # encoding: utf-8
 
 Given /^I log in as "(.+)"$/ do |name|
-  email, password, login_name, role = generate_user_info(name)
+  email, password = get_user_info(name)
 
   visit path_to("the log_in page")
   fill_in "email", :with => email
   fill_in "password", :with => password
+  click_button("登入")
+end
+
+Given /^I log in as user$/ do
+  visit path_to("the log_in page")
+  fill_in "email", :with => "user@yin11.com"
+  fill_in "password", :with => "iamtester"
   click_button("登入")
 end
 
@@ -36,10 +43,11 @@ end
 
 When /^I post a sample review$/ do
   When %(I go to the home page)
-  And %(I follow "我要写测评" within "#actions_menu")
-  And %(I fill in "review_food_tokens" with "西瓜")
-  And %(I choose "review_severity_1")
+  And %(I follow "发表食物测评" within "#actions_menu")
+  Then %(I should see "新测评")
   And %(I fill in "review_title" with "买到烂西瓜")
+  And %(I fill in "review_tags_string" with "西瓜")
+  And %(I check "review_faults_4")
   And %(I fill in "review_content" with "西瓜切开来后发现已经熟过头了。")
   And %(I press "完成")
 end
