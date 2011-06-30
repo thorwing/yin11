@@ -9,16 +9,13 @@ Feature: general usage
   Scenario: Guest can visit the entry page
     Given I go to the home page
     Then I should see "您的餐桌安全吗？"
-    And I should see "可以同时搜索多个食物，并用空格分开。比如: 西瓜 牛奶"
     And I should see "快速登录"
 
   Scenario: Guest can search for food
     When I search for "西瓜"
-    Then I should see "最近关于西瓜的食品安全新闻"
-    And I should see "食物安全风向标"
-    And I should see "最近对于西瓜的评论"
-    And I should see "西瓜的安全食用知识"
-    And I should not see "最近关于牛奶的食品安全新闻"
+    Then I should see "安全评估为"
+    And I should see "警惕以下关于“西瓜”的负面信息"
+    And I should see "请阅读以下关于“西瓜”的参考"
 
   Scenario: Registered user can post a examination about food and that examination will be rendered to others
     When I log in as "David User"

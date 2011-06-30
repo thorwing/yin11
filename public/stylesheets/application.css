@@ -137,14 +137,15 @@ a.tag:hover {
 	margin:0px;
 	display:block;
 	text-indent:-9999px;
+    line-height:0px;
 }
 
-#logo {
-	background-image:url(/images/yin11_logo.png);
-	background-repeat:no-repeat;
-	width:211px;
-	height:76px;
-}
+/*#logo {*/
+	/*background-image:url(/images/yin11_logo.png);*/
+	/*background-repeat:no-repeat;*/
+	/*width:211px;*/
+	/*height:76px;*/
+/*}*/
 
 /*
 	General-Menu-Styles

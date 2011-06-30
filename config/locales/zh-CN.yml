@@ -236,12 +236,12 @@ zh-CN:
     add_image: 上传图片
 
   info_items:
-    good_items: "请阅读以下关于\"%{name}\"的参考"
-    bad_items: "警惕以下关于\"%{name}\"的负面信息"
+    good_items: "请阅读以下关于“%{name}”的参考"
+    bad_items: "警惕以下关于“%{name}”的负面信息"
     report_header: "安全评估为"
-    report_summary: "关于\"%{name}\",我们共找到%{bad_count}条负面消息，%{good_count}条健康分享"
+    report_summary: "关于“%{name}”,我们共找到%{bad_count}条负面消息，%{good_count}条健康分享"
     report_involved_regions: "负面消息分布以下地区:"
-    report_good_header: "我们一共找到%{count}条关于\"%{name}\"的健康分享，建议您阅读"
+    report_good_header: "我们一共找到%{count}条关于“%{name}”的健康分享，建议您阅读"
     detail: 详情>>
     ago: 以前
     tags: 标签

@@ -19,7 +19,7 @@ end
 
 When /^I search for "(.+)"$/ do |foods|
   visit path_to("the home page")
-  fill_in "foods", :with => foods
+  fill_in "search", :with => foods
   click_button "搜索"
 end
 
