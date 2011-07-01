@@ -71,7 +71,7 @@ Feature: general usage
 
     When I go to the home page
     And I follow "徽章" within "#top_menu"
-    Then I should see "1 times"
+    Then I should see "×1"
 
 
 

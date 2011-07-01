@@ -92,7 +92,6 @@ zh-CN:
     city: 城市
     change_city: 切换城市
     district: 区
-    place: 地点
     detail: 详细地址
     near: 靠近
     detail_hint: "地址格式: 南京东路1809号 第一食品商店"
@@ -150,6 +149,8 @@ zh-CN:
   vendors:
     vendor: 商户
     vendors: 所有商户
+    enabled_vendors: 启用的商户
+    disabled_vendors: 禁用的商户
     vendor_name: 商户名
     vendor_not_found: 没找到?
     quick_create_vendor: 点击这里，快速创建商户

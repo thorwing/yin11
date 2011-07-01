@@ -1,6 +1,6 @@
 class VendorsController < ApplicationController
   before_filter(:only => [:new, :create]) { |c| c.require_permission :user }
-  before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
+  #before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Vendor.name, c.params[:id], true)}
   layout :resolve_layout
 
   # GET /vendors

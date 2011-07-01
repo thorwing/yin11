@@ -1,12 +1,12 @@
 <div class="content_block_inside">
     <h2><%= @vendor.name %></h2>
     <div class="field">
-        <% if @vendor.address %>
+        <% if @vendor.address && @vendor.address.city %>
           <%= t("address.detail") %>: <%= @vendor.address.city.name %> <%= @vendor.address.detail %>
         <% end %>
     </div>
 
-    <%= render "shared/display_map", :address => @vendor.address if @vendor.address %>
+    <%= render "shared/display_map", :address => @vendor.address if @vendor.address && @vendor.address.city %>
 
     <div class="fields_group">
         <h3><%= t("reviews.reviews") %>(<%= @vendor.reviews.size %>)</h3>
@@ -17,5 +17,5 @@
         </ul>
     </div>
 
-    <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %>
+    <%= link_to t("general.edit"), edit_admin_vendor_path(@vendor), :class => "button" %>
 </div>

@@ -1,6 +1,6 @@
 <div class="item">
     <h3><%= link_to vendor.name, vendor %>(<%= vendor.reviews.size %>)</h3>
-    <% if vendor.address %>
+    <% if vendor.address && vendor.address.city %>
         <%= vendor.address.city.name %>: <%= vendor.address.detail %>
     <% end %>
 </div>

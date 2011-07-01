@@ -24,7 +24,10 @@
     <% end %>
     <div>
       <%= get_severity_image(@review) %>
-      <%= t("reviews.severity_3")%>
+      <br/>
+      <% @review.faults.each do |fault| %>
+        <b><%= fault %></b>
+      <% end %>
     </div>
 
     <% if @review.vendor and @review.vendor.address %>

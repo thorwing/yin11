@@ -4,6 +4,7 @@ Feature: smoke tests for Recommendations
   Recommendation is food-oriented, location-oriente
 
 Background:
+    Given There is a "David User"
     Given There are minimal testing records
 
   @focus

@@ -3,7 +3,7 @@
 
     <%= paginate @reviews %>
     <% @reviews.each do |review| %>
-        <%= render "shared/review_item", :review => review %>
+        <%= render "info_items/info_item", :item => review %>
     <% end %>
 
     <%= link_to t("reviews.new_review"), new_review_path, :class => "button" %>

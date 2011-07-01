@@ -10,13 +10,16 @@ Feature: smoke tests for Reviews
   Repeat the above steps for tech-review
 
   Background:
-    Given There are minimal testing records
+    Given There is a "David User"
+    And There is a "Ray Admin"
+    And There is a "Kate Tester"
+    And There are minimal testing records
 
   Scenario: User can post normal review from homepage, and he create a new vendor ( it will be better if we can make a popup window here)
     When I log in as "David User"
     And I post a sample review
     And I should see "买到烂西瓜"
-    And I should see "severity:1"
+    And I should see "过期"
     And I should see "西瓜切开来后发现已经熟过头了。"
 
   Scenario: User can edit his own review
@@ -27,13 +30,12 @@ Feature: smoke tests for Reviews
     And I follow "买到烂西瓜"
     And I follow "编辑"
     #has to fill the food again because of the data-pre is skipped in testing
-    #And I choose "review_severity_3"
+    And I check "review_faults_0"
     And I fill in "review_content" with "而且这个西瓜是打了催熟剂的"
     And I press "完成"
-    Then I should see "Review was successfully updated."
     And I should see "买到烂西瓜"
     And I should see "而且这个西瓜是打了催熟剂的"
-    And I should see "severity:3"
+    And I should see "添加剂"
 
 #  # should be tested by using spec#routing
 #  Scenario: user can't delete his review
@@ -53,8 +55,8 @@ Feature: smoke tests for Reviews
 
     When I log in as "Kate Tester"
     Then I should see "买到烂西瓜"
-    When I follow "up" within ".info_item"
-    Then I should see "1" within ".info_item"
+    When I follow "up" within ".item.info"
+    Then I should see "1" within ".item.info"
 
   Scenario:  User can comment on a review, comments can be nested.
     When I log in as "David User"
@@ -76,25 +78,10 @@ Feature: smoke tests for Reviews
     And I go to the home page
     Then I should see "评论(2)"
 
-  Scenario:  Repeat the above steps for tech-review
-    Given the following tips exists:
-    | title          | content                          |
-    | 瘦肉精猪肉目测 | 看肉质是否松散，按一下看是否出水 |
-
-    When I log in as "David User"
-    And I follow "我要写测评"
-    And I follow "添加一个检查点"
-    And I fill in "check_point_tip" with "瘦肉精猪肉目测"
-    And I check "check_point_failed"
-    And I fill in "review_title" with "买到打了瘦肉精的猪肉"
-    And I fill in "review_content" with "根据测试项目，今天买到打了瘦肉精的猪肉。"
-    And I press "发表"
-
-  @focus
   Scenario:  User's city will be detected.
     When I log in as "David User"
-    And I follow "测评" within "#actions_menu"
-    Then I should see "北京"
+    And I follow "发表食物测评" within "#actions_menu"
+    Then I should see "上海"
     And I should see "切换城市"
 
 

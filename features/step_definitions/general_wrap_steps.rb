@@ -73,9 +73,8 @@ When /^I post a sample article$/ do
 end
 
 When /^I add "(.+)" to watching foods list$/ do |food|
-    When %(I search for "#{food}")
-    Then %(I should see "为什么要把食物收藏到<我的菜单>")
-    And %(I follow "把#{food}收藏到<我的菜单>")
+  When %(I fill in "added_foods" with "牛奶")
+  And %(I press "添加")
 end
 #
 #When /^I fill in "(.+?)" with "(.+?)" by Selenium$/ do |field, value|

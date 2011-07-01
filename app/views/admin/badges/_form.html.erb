@@ -6,30 +6,30 @@
         <%= f.text_field :name %>
     </div>
     <div class="field">
-    <%= f.label :description, t("general.description") %><br />
-    <%= f.text_field :description %>
+        <%= f.label :description, t("general.description") %><br />
+        <%= f.text_field :description %>
     </div>
     <div class="field">
-    <%= f.label :repeatable %><br />
-    <%= f.check_box :repeatable, {}, true, false %>
+        <%= f.label :repeatable %><br />
+        <%= f.check_box :repeatable, {}, true, false %>
     </div>
     <div class="field">
-    <%= f.label :contribution_field %><br />
-    <%= f.select :contribution_field, options_for_select(get_fields_of(Contribution), @badge.contribution_field) %>
+        <%= f.label :contribution_field %><br />
+        <%= f.select :contribution_field, options_for_select(get_fields_of(Contribution), @badge.contribution_field) %>
     </div>
     <div class="field">
-    <%= f.label :comparator %><br />
-    <%= f.select :comparator, options_for_select(get_comparators, @badge.comparator) %>
+        <%= f.label :comparator %><br />
+        <%= f.select :comparator, options_for_select(get_comparators, @badge.comparator) %>
     </div>
     <div class="field">
-    <%= f.label :compared_value %><br />
-    <%= f.text_field :compared_value %>
+        <%= f.label :compared_value %><br />
+        <%= f.text_field :compared_value %>
     </div>
     <div class="field">
-    <%= f.label :disabled, t("general.disable") %><br />
-    <%= f.check_box :disabled, {}, true, false %>
+        <%= f.label :disabled, t("general.disable") %><br />
+        <%= f.check_box :disabled, {}, true, false %>
     </div>
     <div class="actions">
-    <%= f.submit t("general.submit"), :class =>"button" %>
+        <%= f.submit t("general.submit"), :class =>"button" %>
     </div>
 <% end %>

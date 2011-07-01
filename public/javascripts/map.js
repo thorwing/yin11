@@ -24,7 +24,7 @@ function add_fields_with_map(link, association, content) {
         }
         else
         {
-            var place = $(".map_place").val();
+            var place = $(".map_detail").val();
             var street = $(".map_detail").val();
             var city = $(".map_city").val();
 
@@ -52,7 +52,7 @@ function add_fields_with_map(link, association, content) {
             update_map_from_listener(this);
         });
 
-        $(".map_place").change(function(){
+        $(".map_detail").change(function(){
             update_map_from_listener(this);
         });
     }
@@ -64,7 +64,7 @@ function add_fields_with_map(link, association, content) {
         indicator.removeClass("invalid");
         indicator.addClass("checking");
 
-        var place = parent.find(".map_place").val();
+        var place = parent.find(".map_detail").val();
         var street = parent.find(".map_detail").val();
         var city = parent.find(".map_city").val();
 

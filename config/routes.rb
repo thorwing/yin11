@@ -7,6 +7,7 @@ Yin11::Application.routes.draw do
 
     resources :articles
     resources :badges
+    resources :vendors
   end
 
   match "log_out" => "sessions#destroy"

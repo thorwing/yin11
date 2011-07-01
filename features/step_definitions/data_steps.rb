@@ -4,7 +4,9 @@
 def get_user_info(name)
   case name
     when "David User"
-      return "user@yin11.comm", "iamtester", "David", 1
+      return "user@yin11.comm", "iamuser", "David", 1
+    when "Kate Tester"
+      return "tester@yin11.comm", "iamtester", "Kate", 1
     when "Castle Editor"
       return "editor@yin11.com", "iameditor", "Castle", 2
     when "Ray Admin"

@@ -2,7 +2,6 @@
     <%= hidden_field_tag "hidden_point_lng", address.point_lng, {:class => "map_point_lng"} %>
     <%= hidden_field_tag "hidden_point_lng", address.point_lat, {:class => "map_point_lat"} %>
     <%= hidden_field_tag "hidden_city", address.city.name, {:class => "map_city"} %>
-    <%= hidden_field_tag "hidden_detail", address.street, {:class => "map_detail"} %>
-    <%= hidden_field_tag "hidden_place", address.place, {:class => "map_place"} %>
+    <%= hidden_field_tag "hidden_detail", address.detail, {:class => "map_detail"} %>
     <div id="map_container"></div>
 </div>
