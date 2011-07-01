@@ -36,7 +36,7 @@ Feature: general usage
     And I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。"
     And I fill in "article_source_attributes_name" with "神农食品报"
     And I fill in "article_tags_string" with "西瓜"
-    And I fill in "article_region_ids" with "021"
+    And I fill in "article_region_tokens" with "021"
     And I press "完成"
 
     When I log out

@@ -18,7 +18,7 @@ class Admin::BaseController < ApplicationController
     item.disabled = !item.disabled
     item.save
     respond_to do |format|
-        format.html {redirect_to item}
+        format.html {redirect_to :controller => "admin/#{item.class.name.downcase.pluralize}", :action => 'show', :id => item.id }
         format.xml {head :ok}
         format.js {render :content_type => 'text/javascript'}
     end

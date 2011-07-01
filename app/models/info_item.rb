@@ -6,7 +6,7 @@ class InfoItem
   include Available
 
   scope :in_days_of, ->(days_in_number) {where(:created_at.gt => days_in_number.days.ago )}
-  scope :about, ->(food) {any_in(food_ids: [food.is_a?(Food) ? food.id : food])}
+  scope :about, ->(tag) {any_in(tags: [tag])}
   scope :bad, any_in(_type: ["Review", "Article"])
   scope :good, where(_type: "Recommendation")
   scope :of_region, ->(region_id) {any_in(region_ids: [region_id])}

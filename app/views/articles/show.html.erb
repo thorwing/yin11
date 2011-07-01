@@ -6,8 +6,10 @@
     <br/>
     <small>
       <%= t("articles.involved_region") %>:
-      <% @article.region_ids.each do |region_id| %>
-        <%= get_region(region_id).name %>
+      <% if @article.region_ids %>
+          <% @article.region_ids.each do |region_id| %>
+            <%= get_region(region_id).name %>
+          <% end %>
       <% end %>
     </small>
     <br/>

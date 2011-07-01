@@ -92,9 +92,10 @@ module ApplicationHelper
   end
 
   def get_severity_of_food(food)
-    reviews = Review.in_days_of(7).about(food).desc(:reported_on)
+    items = InfoItem.enabled.bad.in_days_of(7).about(food).desc(:reported_on)
 
-    severity_score = (reviews.size > 0) ?  reviews.inject(0){ |sum, s| sum + s.severity } / reviews.size : 0
+    #TODO
+    severity_score = (items.size > 0) ?  items.inject(0){ |sum, s| sum + 1 } / items.size : 0
     if severity_score < 1
       severity_level = 0
     elsif severity_score < 5

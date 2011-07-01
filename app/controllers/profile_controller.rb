@@ -4,7 +4,7 @@ class ProfileController < ApplicationController
 
   def show
     #referesh
-    @my_recent_reviews = current_user.reviews.desc(:updated_at).limit(3)
+    @my_recent_reviews = current_user.info_items.where(:_type => "Review").desc(:updated_at).limit(3)
   end
 
   def edit

@@ -16,9 +16,9 @@ class Profile
 
   validates_associated :watching_addresses
 
-  def add_foods(foods = [])
-    for food in foods
-      self.watching_foods << food unless self.watching_foods.include?(food)
+  def add_foods(tags = [])
+    for tag in tags
+      self.watching_foods << tag unless self.watching_foods.include?(tag)
     end
   end
 

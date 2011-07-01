@@ -57,14 +57,11 @@
                 <%= get_avatar(current_user) %>
             </div>
             <div id="foods_watching_list" class="sub_panel">
-                <% if @watching_foods && @watching_foods.size > 0 %>
+                <% if current_user && current_user.profile.watching_foods %>
                     <h3><%= t("home.control_panel.watching_foods") %></h3>
-                    <% @watching_foods.each do |food| %>
-                        <p>
-                          <%= food.name %> <%= get_severity_of_food(food) %>
-                        </p>
+                    <% current_user.profile.watching_foods.each do |tag| %>
+                        <h4><%= link_to tag, {:action => "items", :tags => tag} %><%= get_severity_of_food(tag) %></h4>
                     <% end %>
-                    <%= link_to t("home.control_panel.more"), "#" %>
                 <% end %>
                 <%= form_tag :action => "watch_foods" do %>
                     <%= text_field_tag "added_foods" %>

@@ -2,17 +2,20 @@ Feature: usage about permissions
   Different permission for registered user and guest
 
   Background:
-    Given There are minimal testing records
+    Given There is a "David User"
+    And There is a "Castle Editor"
+    And There is a "Ray Admin"
+    And There are minimal testing records
 
   Scenario: guest can't post any reviews and will be asked to sign up
     When I go to the reviews page
-    And I follow "发表新测评"
+    And I follow "发表食物测评"
     Then I should be on the log_in page
 
   Scenario: registered user can post a review about food
     When I log in as "David User"
     And I go to the reviews page
-    And I follow "发表新测评"
+    And I follow "发表食物测评"
     Then I should see "新测评"
 
   Scenario: guest and normal user can't post any articles and will be asked to sign up

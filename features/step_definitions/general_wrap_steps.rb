@@ -66,11 +66,10 @@ When /^I post a sample article$/ do
     And %(I follow "发表新文章")
     And %(I fill in "article_title" with "土豆刷绿漆，冒充西瓜")
     And %(I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。")
-    And %(I fill in "article_source" with "神农食品报")
-    And %(I fill in "article_food_tokens" with "西瓜")
-    And %(I fill in "article_city_tokens" with "021")
-    And %(I fill vendor token field "article_vendor_token" with "乐购超市")
-    And %(I press "发表")
+    And %(I fill in "article_source_attributes_name" with "神农食品报")
+    And %(I fill in "article_tags_string" with "西瓜")
+    And %(I fill in "article_region_tokens" with "021")
+    And %(I press "完成")
 end
 
 When /^I add "(.+)" to watching foods list$/ do |food|

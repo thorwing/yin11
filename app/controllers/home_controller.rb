@@ -1,11 +1,6 @@
 class HomeController < ApplicationController
 
   def index
-    if current_user && current_user.profile.watching_foods.size > 0
-      #TODO
-      @watching_foods = Food.any_in(name: current_user.profile.watching_foods)
-    end
-
     @items = InfoItem.enabled.desc(:reported_on, :updated_on).page(1).per(GlobalConstants::ITEMS_PER_PAGE_MANY)
     @hot_articles = Article.enabled.desc(:reported_on, :updated_on).limit(6)
 
