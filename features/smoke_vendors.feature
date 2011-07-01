@@ -21,7 +21,6 @@ Feature: smoke tests for Vendors
     And I press "搜索"
     Then I should not see "没有找到名为<农工商超市>的商户"
 
-  @focus
   Scenario: User can create vendor if it didn't exist
     When I log in as "David User"
     And I go to the vendors page
@@ -35,7 +34,6 @@ Feature: smoke tests for Vendors
     And I press "搜索"
     Then I should not see "没有找到名为<农工商超市>的商户"
 
-  @focus
   Scenario: User can edit vendor if it is not locked
     Given the following vendor exists:
     | name       |

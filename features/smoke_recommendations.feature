@@ -7,7 +7,6 @@ Background:
     Given There is a "David User"
     Given There are minimal testing records
 
-  @focus
   Scenario: User can post recommendation from homepage, and he create a new vendor ( it will be better if we can make a popup window here)
     When I log in as "David User"
     And I go to the home page

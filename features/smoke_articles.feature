@@ -84,7 +84,6 @@ Feature: smoke tests for Articles
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 
-  @focus
   Scenario: User can comment on a article, comments can be nested.
     Given the following article exists:
       | title            | content                            | tags_string |

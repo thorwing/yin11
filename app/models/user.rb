@@ -12,13 +12,13 @@ class User
   field :role, :type => Integer, :default => 1
   field :remember_token
   field :remember_token_expires_at, :type => Time
+  field :badge_ids, :type => Array
 
   #Relationships
   embeds_one :profile
   embeds_one :contribution
   has_many :info_items, :inverse_of => "author"
   has_and_belongs_to_many :participated_tips, :class_name => "Tip"
-  has_and_belongs_to_many :badges
 
   attr_accessor :password
   attr_accessible :email, :login_name, :password, :password_confirmation

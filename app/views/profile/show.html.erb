@@ -21,12 +21,15 @@
         <%= link_to t("general.more"), "#" %>
     </div>
 
-    <div class="fields_group">
-        <h3><%= t("profile.my_badges") %></h3>
-        <% current_user.badges.each do |badge| %>
-            <p><%= link_to badge.name +  (current_user.badge_ids.count(badge.id) > 1 ? "× #{ current_user.badge_ids.count(badge.id)}" : ""), badge %></p>
-        <% end %>
-    </div>
+     <div class="fields_group">
+            <h3><%= t("profile.my_badges") %></h3>
+            <% if current_user.badge_ids %>
+                <% current_user.badge_ids.uniq.each do |badge_id| %>
+                  <% badge = Badge.find(badge_id) %>
+                    <p><%= link_to badge.name + (  current_user.badge_ids.count(badge_id) > 1 ? "×#{ current_user.badge_ids.count(badge_id)}" : ""), badge %></p>
+                <% end %>
+            <% end %>
+     </div>
 
     <%= link_to t("general.change"), profile_edit_path, :class => "button" %>
 </div>

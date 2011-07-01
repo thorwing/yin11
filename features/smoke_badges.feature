@@ -117,7 +117,7 @@ Feature: smoke tests for Badges
 
     And I post a sample review
     And I go to the profile page
-    Then I should see "×2"
+    Then I should see "新手上路×2"
 
   Scenario: User can get a badge for his review gets more than 100 votes.
     Given the following badge exists:

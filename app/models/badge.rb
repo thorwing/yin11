@@ -13,9 +13,6 @@ class Badge
   #cached values
   field :count_of_awarded, :type => Integer, :default => 0
 
-  #Relationship
-  has_and_belongs_to_many :users
-
   #validators
   validates_uniqueness_of :name
   validates_presence_of :name
@@ -54,9 +51,9 @@ class Badge
   def is_available_to?(user)
     if self.disabled
       false
-    elsif self.user_ids.include?(user.id) && (not self.repeatable)
+    elsif user.badge_ids && user.badge_ids.include?(self.id) && (not self.repeatable)
       false
-    else
+  else
       true
     end
   end
@@ -83,8 +80,6 @@ class Badge
   end
 
   def give_to_user!(user)
-    self.user_ids ||= []
-    self.user_ids << user.id
     self.count_of_awarded += 1
     self.save
 
