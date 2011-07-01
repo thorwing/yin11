@@ -14,8 +14,6 @@ module NavigationHelpers
       '/log_out'
     when /the profile page/
       '/profile/show'
-    when /the admin articles page/
-      '/admin/articles'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

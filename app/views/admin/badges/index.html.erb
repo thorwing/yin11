@@ -1,0 +1,44 @@
+<div class="content_block_inside">
+    <h2><%= t("badges.badges") %></h2>
+
+    <div id="enabled_badges">
+      <h3><%= t("badges.enabled_badges") %></h3>
+        <table>
+          <tr>
+            <th><%= t("general.name") %></th>
+            <th><%= t("general.description") %></th>
+            <th>Repeatable</th>
+            <th>CountOfAwarded</th>
+            <th></th>
+            <th></th>
+          </tr>
+
+        <% @badges.each do |badge| %>
+          <tr>
+            <td><%= link_to badge.name, [:admin, badge] %></td>
+            <td><%= badge.description %></td>
+            <td><%= badge.repeatable %></td>
+            <td><%= badge.count_of_awarded %> times</td>
+            <td><%= link_to 'Show', [:admin, badge] %></td>
+            <td><%= link_to 'Edit', edit_admin_badge_path(badge) %></td>
+            <td><%= link_to 'Destroy', [:admin, badge], :confirm => 'Are you sure?', :method => :delete %></td>
+          </tr>
+        <% end %>
+        </table>
+    </div>
+
+
+    <div id="disabled_badges">
+      <h3><%= t("badges.disabled_badges") %></h3>
+          <% @disabled_badges.each do |badge| %>
+            <%= link_to badge.name, [:admin, badge] %>
+          <% end %>
+    </div>
+
+
+    <br />
+
+    <% if has_permission?(:admin) %>
+        <%= link_to t("general.new"),new_admin_badge_path, :class => "button" %>
+    <% end %>
+</div>

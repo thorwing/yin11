@@ -225,6 +225,10 @@ zh-CN:
 
   badges:
     badges: 所有徽章
+    enabled_badges: 启用的徽章
+    disabled_badges: 禁用的徽章
+    new_badge: 新建徽章
+    edit_badge: 编辑徽章
 
   questions:
     new_question: 我有疑问

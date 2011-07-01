@@ -53,7 +53,7 @@ Feature: smoke tests for Articles
     Then I should see "西瓜被打了催熟剂" within "#bad_items"
 
     When I log in as "Ray Admin"
-    And I go to the admin articles page
+    And I go to the admin_articles page
     And I follow "西瓜被打了催熟剂"
     And I follow "编辑"
     And I follow "禁用"

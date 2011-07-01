@@ -18,11 +18,13 @@ Feature: smoke tests for Badges
   for create a tip that is collected by more than 100 users.
 
   Background:
+    Given There is a "David User"
+    And There is a "Ray Admin"
     Given There are minimal testing records
 
   Scenario: A admin can create a badge, and it can be given to a user
     When I log in as "Ray Admin"
-    And I go to the badges page
+    And I go to the admin_badges page
     And I follow "新建"
     And I fill in "badge_name" with "新手"
     And I fill in "badge_description" with "发表第一篇测评"
@@ -35,15 +37,15 @@ Feature: smoke tests for Badges
     And I post a sample review
 
     When I go to the home page
-    And I follow "徽章" within "#menu"
-    Then I should see "1 times"
+    And I follow "徽章" within "#top_menu"
+    Then I should see "×1"
 
   Scenario: Only Admin can create badges
     When I log in as "David User"
-    And I go to the badges page
+    And I go to the admin badges page
     Then I should not see "新建"
 
-    When I go to the new_badge page
+    When I go to the new_admin_badge page
     Then I should be on the log_in page
 
   Scenario: Only Admin can edit badges.
@@ -51,7 +53,7 @@ Feature: smoke tests for Badges
     | name     | description  | contribution_field | comparator | compared_value |
     | 新手上路 | 发表一篇测评 | created_reviews    | 8          | 1              |
     When I log in as "Ray Admin"
-    And I go to the badges page
+    And I go to the admin_badges page
     And I follow "新手上路"
     And I follow "修改"
     And I fill in "badge_compared_value" with "3"
@@ -63,20 +65,20 @@ Feature: smoke tests for Badges
     Then I should not see "修改"
 
     And I go to the home page
-    And I follow "徽章" within "#menu"
-    Then I should not see "1 times"
+    And I follow "徽章" within "#top_menu"
+    Then I should not see "×1"
 
     When I post a sample review
     And I go to the home page
-    And I follow "徽章" within "#menu"
-    Then I should not see "1 times"
+    And I follow "徽章" within "#top_menu"
+    Then I should not see "×1"
 
   Scenario: Only Admin can toggle "disable" of badges.
     Given the following badge exists:
     | name     | description  | contribution_field | comparator | compared_value |
     | 新手上路 | 发表一篇测评 | created_reviews    | 8          | 1              |
     When I log in as "Ray Admin"
-    And I go to the badges page
+    And I go to the admin badges page
     And I follow "新手上路"
     And I follow "修改"
     And I check "badge_disabled"
@@ -84,11 +86,12 @@ Feature: smoke tests for Badges
     When I go to the badges page
     Then I should not see "新手上路" within "#enabled_badges"
 
-    When I go to the badges page
+    When I go to the admin badges page
     And I follow "新手上路" within "#disabled_badges"
     And I follow "修改"
-    And I follow "启用"
-    When I go to the badges page
+    And I uncheck "badge_disabled"
+    And I press "完成"
+    When I go to the admin badges page
     Then I should see "新手上路" within "#enabled_badges"
 
   Scenario: User can get a badge for first review.
@@ -101,6 +104,7 @@ Feature: smoke tests for Badges
     And I go to the profile page
     Then I should see "新手上路"
 
+  @focus
   Scenario: User can get a repeatable badge.
     Given the following badge exists:
       | name     | description  | contribution_field   | comparator | compared_value | repeatable |
@@ -113,7 +117,7 @@ Feature: smoke tests for Badges
 
     And I post a sample review
     And I go to the profile page
-    Then I should see "新手上路 2"
+    Then I should see "×2"
 
   Scenario: User can get a badge for his review gets more than 100 votes.
     Given the following badge exists:
@@ -126,12 +130,12 @@ Feature: smoke tests for Badges
       | 批评家 | 投出第一票down | total_down_votes   | 8          | 1              |
 
     And the following article exists:
-      | title            | content                            | food_tokens |
+      | title            | content                            | tags_string |
       | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
 
     When I log in as "David User"
     Then I should see "西瓜被打了催熟剂"
-    When I follow "down" within ".info_item"
+    When I follow "down" within ".item.info"
 
     When I go to the profile page
     Then I should see "批评家"

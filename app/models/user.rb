@@ -122,7 +122,8 @@ class User
     begin
       eval %( self.contribution.#{field}+=#{delta})
       ask_for_badges
-    rescue
+    rescue Exception => exc
+      Rails.logger.info exc.message
     end
   end
 

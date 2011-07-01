@@ -6,6 +6,7 @@ Yin11::Application.routes.draw do
     root :to => "base#index"
 
     resources :articles
+    resources :badges
   end
 
   match "log_out" => "sessions#destroy"
@@ -51,7 +52,7 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :badges
+  resources :badges, :only => [:index, :show]
 
   resources :vendors do
     collection do

@@ -63,7 +63,6 @@ class Badge
 
   def can_be_awarded_to?(user)
     return false unless is_available_to?(user)
-
     case self.comparator
       when COMPARATOR_HASH[:COMPARISON_IS]
         temp_comparator = "=="
