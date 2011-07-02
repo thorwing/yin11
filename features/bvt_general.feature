@@ -18,7 +18,7 @@ Feature: general usage
     And I should see "警惕以下关于“西瓜”的负面信息"
     And I should see "请阅读以下关于“西瓜”的参考"
 
-  Scenario: Registered user can post a examination about food and that examination will be rendered to others
+  Scenario: Registered user can post a review about food and that review will be rendered to others
     When I log in as "David User"
     And I post a sample review
 
@@ -28,7 +28,7 @@ Feature: general usage
     And I press "搜索" within "#search_frame"
     Then I should see "买到烂西瓜" within "#bad_items"
 
-  Scenario: Editor can post a news and that news will be rendered to others
+  Scenario: Editor can post an article and that article will be rendered to others
     When I log in as "Castle Editor"
     And I go to the articles page
     And I follow "发表新文章"
