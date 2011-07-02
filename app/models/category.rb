@@ -3,7 +3,7 @@ class Category
   include Mongoid::Ancestry
   has_ancestry
 
-  field :name
+  field :name, :type => String
   #key :name
   field :ancestry
   index :ancestry

@@ -1,6 +1,6 @@
 class District
   include Mongoid::Document
-  field :name
+  field :name, :type => String
 
   #Relationships
   belongs_to :city

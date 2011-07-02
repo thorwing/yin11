@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def index
     @items = InfoItem.enabled.desc(:reported_on, :updated_on).page(1).per(GlobalConstants::ITEMS_PER_PAGE_MANY)
-    @hot_articles = Article.enabled.desc(:reported_on, :updated_on).limit(6)
+    @hot_articles = Article.enabled.desc(:reported_on, :updated_on).limit(GlobalConstants::HOT_ARTICLES_ON_HOME_PAGE)
 
     #TODO
     @foods_buzz = []#Food.desc([:review_ids, :article_ids]).limit(5).group_by{ |f| f.categories[0] }

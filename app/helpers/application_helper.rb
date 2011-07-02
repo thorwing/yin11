@@ -186,7 +186,7 @@ module ApplicationHelper
       end
     end
     if item.is_a?(Article)
-      result << t("articles.source") + ": " + item.source.name if item.source
+      (result << t("articles.source") + ": " + item.source.name) if item.source
     end
 
     result

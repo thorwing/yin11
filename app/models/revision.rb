@@ -2,7 +2,7 @@ class Revision
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :content
+  field :content, :type => String
 
   #Relationships
   embedded_in :tip

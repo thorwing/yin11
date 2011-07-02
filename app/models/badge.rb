@@ -2,8 +2,8 @@ class Badge
   include Mongoid::Document
   include Available
 
-  field :name
-  field :description
+  field :name, :type => String
+  field :description, :type => String
   field :repeatable, :type => Boolean, :default => false
 
   field :contribution_field

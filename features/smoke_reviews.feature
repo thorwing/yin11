@@ -10,10 +10,7 @@ Feature: smoke tests for Reviews
   Repeat the above steps for tech-review
 
   Background:
-    Given There is a "David User"
-    And There is a "Ray Admin"
-    And There is a "Kate Tester"
-    And There are minimal testing records
+    Given There are minimal testing records
 
   Scenario: User can post normal review from homepage, and he create a new vendor ( it will be better if we can make a popup window here)
     When I log in as "David User"

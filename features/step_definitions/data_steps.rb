@@ -1,30 +1,11 @@
 # encoding: utf-8
 
-#TODO
-def get_user_info(name)
-  case name
-    when "David User"
-      return "user@yin11.comm", "iamuser", "David", 1
-    when "Kate Tester"
-      return "tester@yin11.comm", "iamtester", "Kate", 1
-    when "Castle Editor"
-      return "editor@yin11.com", "iameditor", "Castle", 2
-    when "Ray Admin"
-      return "admin@yin11.com", "superuser", "Ray", 9
-      else
-        assert false
-  end
-end
-
-Given /^There is a "(.+)"$/ do |name|
-  email, password, login_name, role = get_user_info(name)
-
-  user = User.new(:email => email, :login_name => login_name, :password => password)
-  user.role = role
-  user.save
-end
-
 Given /^There are minimal testing records$/ do
+  @normal_user = Factory(:normal_user)
+  @tester = Factory(:tester)
+  @editor = Factory(:editor)
+  @admin = Factory(:admin)
+
   shanghai = City.create(:code => "021", :name => "上海", :postcode => "20000")
   beijing = City.create(:code => "010", :name => "北京", :postcode => "10000" )
   article_1 = Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。",  :region_ids => [shanghai.id], :tags_string= => ["牛奶"])

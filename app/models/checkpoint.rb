@@ -1,7 +1,7 @@
 class Checkpoint
   include Mongoid::Document
 
-  field :name
+  field :name, :type => String
   field :pass, :type => Boolean, :default => true
 
   #relationships

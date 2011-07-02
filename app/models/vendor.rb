@@ -1,7 +1,7 @@
 class Vendor
   include Mongoid::Document
   include Available
-  field :name
+  field :name, :type => String
   field :verified, :type => Boolean, :default => false
 
   #Relationships

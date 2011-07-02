@@ -3,14 +3,14 @@ class User
   include Mongoid::Timestamps
 
   #Fields
-  field :email
+  field :email, :type => String
   key :email
-  field :login_name
-  field :password_hash
-  field :password_salt
-  field :password_reset_token
+  field :login_name, :type => String
+  field :password_hash, :type => String
+  field :password_salt, :type => String
+  field :password_reset_token, :type => String
   field :role, :type => Integer, :default => 1
-  field :remember_token
+  field :remember_token, :type => String
   field :remember_token_expires_at, :type => Time
   field :badge_ids, :type => Array
 
@@ -32,10 +32,6 @@ class User
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 6, :on => :create, :message => I18n.t("views.validation_message.password_is_too_short")
   validates_associated :profile, :contribution
-
-  USER_ROLE = 1
-  EDITOR_ROLE = 2
-  ADMIN_ROLE = 9
 
   #Others
   after_initialize :build_records
@@ -128,11 +124,11 @@ class User
   end
 
   def is_editor?
-    self.role == EDITOR_ROLE
+    self.role == GlobalConstants::EDITOR_ROLE
   end
 
   def is_admin?
-    self.role == ADMIN_ROLE
+    self.role == GlobalConstants::ADMIN_ROLE
   end
 
   private

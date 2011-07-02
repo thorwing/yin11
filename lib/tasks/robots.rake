@@ -33,7 +33,7 @@ namespace :yin11 do
         #a.disabled = true
         a.tags = tags
         a.build_source
-        a.source.name = source_name.present? || "Unknown Media"
+        a.source.name = source_name.present? ? source_name : "Unknown Media"
         a.source.site = self.name
         a.source.url = url.to_s
       end

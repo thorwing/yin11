@@ -1,8 +1,8 @@
 class Image
   include Mongoid::Document
   include Mongoid::Timestamps::Updated
-  field :caption
-  field :description
+  field :caption, :type => String
+  field :description, :type => String
   mount_uploader :image, ImageUploader
 
   attr_accessible :image, :remote_image_url, :description

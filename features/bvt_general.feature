@@ -2,10 +2,7 @@ Feature: general usage
   User can do some basic stuff
 
   Background:
-    Given  There is a "David User"
-    And There is a "Ray Admin"
-    And There is a "Castle Editor"
-    And There are minimal testing records
+    Given There are minimal testing records
 
   Scenario: Guest can visit the entry page
     Given I go to the home page
@@ -17,6 +14,26 @@ Feature: general usage
     Then I should see "安全评估为"
     And I should see "警惕以下关于“西瓜”的负面信息"
     And I should see "请阅读以下关于“西瓜”的参考"
+
+  Scenario: I should see my collection on home page
+     When I log in as "David User"
+     And I post a sample review
+     And I go to the home page
+     And I fill in "added_foods" with "西瓜,牛奶" within "#control_panel"
+     And I press "添加" within "#control_panel"
+     Then I should see "西瓜" within "#control_panel"
+     And I should see "牛奶" within "#control_panel"
+     And I should see "注意" within "#control_panel"
+
+  Scenario: I should see tags cloud on home page
+     When I log in as "David User"
+     And I go to the home page
+     Then I should not see "西瓜" within "#tag_cloud"
+
+     When I post a sample review
+     And I go to the home page
+     Then I should see "西瓜" within "#tag_cloud"
+
 
   Scenario: Registered user can post a review about food and that review will be rendered to others
     When I log in as "David User"
@@ -43,24 +60,6 @@ Feature: general usage
     And I search for "西瓜"
     Then I should see "土豆刷绿漆，冒充西瓜" within "#bad_items"
 
-  Scenario: I should see my collection on home page
-    When I log in as "David User"
-    And I post a sample review
-    And I go to the home page
-    And I fill in "added_foods" with "西瓜,牛奶" within "#control_panel"
-    And I press "添加" within "#control_panel"
-    Then I should see "西瓜" within "#control_panel"
-    And I should see "牛奶" within "#control_panel"
-    And I should see "注意" within "#control_panel"
-
-  Scenario: I should see tags cloud on home page
-    When I log in as "David User"
-    And I go to the home page
-    Then I should not see "西瓜" within "#tag_cloud"
-
-    When I post a sample review
-    And I go to the home page
-    Then I should see "西瓜" within "#tag_cloud"
 
   Scenario: User will get rewards because of posting reviews.
     Given the following badge exists:

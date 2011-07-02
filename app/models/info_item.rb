@@ -11,8 +11,8 @@ class InfoItem
   scope :good, where(_type: "Recommendation")
   scope :of_region, ->(region_id) {any_in(region_ids: [region_id])}
 
-  field :title
-  field :content
+  field :title, :type => String
+  field :content, :type => String
   field :reported_on, :type => DateTime
   field :faults, :type => Array, :default => []
 

@@ -7,8 +7,6 @@ Feature: smoke tests for Vendors
   Only Admin can delete a vendor
 
   Background:
-      Given There is a "David User"
-      And There is a "Ray Admin"
       Given There are minimal testing records
 
   Scenario: User can search for vendors

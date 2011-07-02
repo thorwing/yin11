@@ -3,7 +3,7 @@ class CityIp
 
   field :start_ip, :type => Integer
   field :end_ip, :type => Integer
-  field :province_name
-  field :city_name
+  field :province_name, :type => String
+  field :city_name, :type => String
 
 end

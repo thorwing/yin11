@@ -1,11 +1,26 @@
 # encoding: utf-8
 
 Given /^I log in as "(.+)"$/ do |name|
-  email, password = get_user_info(name)
+  case name
+    when "David User"
+      email = @normal_user.email
+      pwd = @normal_user.password
+    when "Kate Tester"
+      email = @tester.email
+      pwd = @tester.password
+    when "Castle Editor"
+      email = @editor.email
+      pwd = @editor.password
+    when "Ray Admin"
+      email = @admin.email
+      pwd = @admin.password
+    else
+      assert false
+  end
 
   visit path_to("the log_in page")
   fill_in "email", :with => email
-  fill_in "password", :with => password
+  fill_in "password", :with => pwd
   click_button("登入")
 end
 

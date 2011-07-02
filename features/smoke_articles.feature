@@ -10,10 +10,7 @@ Feature: smoke tests for Articles
   User can comment on a article, comments can be nested.
 
   Background:
-    Given There is a "David User"
-    And There is a "Castle Editor"
-    And There is a "Ray Admin"
-    And There are minimal testing records
+    Given There are minimal testing records
 
   Scenario: Only Editor and Admin can create new articles.
     When I log in as "David User"

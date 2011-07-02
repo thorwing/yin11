@@ -4,7 +4,7 @@ class Comment
   include Mongoid::Ancestry
   has_ancestry
 
-  field :content
+  field :content, :type => String
 
   #Relationships
   embedded_in :review
