@@ -5,8 +5,4 @@
     <% @articles.each do |article| %>
         <%= render "info_items/info_item", :item => article %>
     <% end %>
-
-    <% if has_permission?(:editor) %>
-        <%= link_to t("articles.post_new_article"), new_article_path %>
-    <% end %>
 </div>

@@ -29,15 +29,12 @@
         </div>
     <% end %>
 
-    <hr/>
-
-    <% if display_only_for_author(@article.id, true) %>
-        <%= link_to t("general.edit"), edit_article_path(@article), :class => "button" %>
-        <%= link_to t("general.delete"), @article, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+    <% if current_user && current_user.has_permission?(:editor)%>
+        <hr/>
+        <%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button" %>
     <% end %>
 
     <hr/>
-
     <%= render "shared/comments", :item => @article %>
 </div>
 

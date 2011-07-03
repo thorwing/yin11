@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-  before_filter { |c| c.require_permission :user }
+  before_filter { |c| c.require_permission :normal_user }
   layout :resolve_layout
 
   def show

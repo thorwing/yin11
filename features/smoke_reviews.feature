@@ -12,7 +12,54 @@ Feature: smoke tests for Reviews
   Background:
     Given There are minimal testing records
 
-  Scenario: User can post normal review from homepage, and he create a new vendor ( it will be better if we can make a popup window here)
+  Scenario: User should get warning of review with no image will be disabled
+    When I log in as "David User"
+    And I go to the new_review page
+    Then I should see "请至少上传一张图片，否则测评将在24小时后被禁用"
+
+  Scenario: User has to choose before creating new review
+    When I log in as "David User"
+    And I follow "发表食物测评"
+    Then I should see "先找找针对的商户"
+    Then I should see "实在想不起在哪儿买的食物了"
+
+  Scenario: User can choose a vendor and create a new review against it
+    Given the following vendor exists:
+    | name     |
+    | 农工商超市 |
+    When I log in as "David User"
+    And I follow "发表食物测评"
+    And I follow "先找找针对的商户"
+    And I follow "农工商超市"
+    And I follow "发表测评"
+    Then I should see "新测评"
+    And I should see "农工商超市" within "#review_vendor_id"
+
+    When I fill a simple review
+    And I go to the vendors page
+    And I follow "农工商超市"
+    Then I should see "最近的测评"
+    And I should see "买到烂西瓜"
+
+  Scenario: User can skip choosing a vendor, and create a new review
+    When I log in as "David User"
+    And I follow "发表食物测评"
+    And I follow "实在想不起在哪儿买的食物了"
+    And I follow "发表测评"
+    Then I should see "新测评"
+    And I should see "上海"
+    And I should see "select" whose id is "review_location_district_id"
+
+    When I fill a simple review
+    And I go to the vendors page
+    And I follow "农工商超市"
+    Then I should see "最近的测评"
+    And I should not see "买到烂西瓜"
+
+    When I go to the home page
+    Then I should see "买到烂西瓜"
+
+  Scenario: User can follow the link from home page and create a review
     When I log in as "David User"
     And I post a sample review
     And I should see "买到烂西瓜"

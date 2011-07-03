@@ -4,11 +4,7 @@ class BadgesController < ApplicationController
   # GET /badges
   # GET /badges.xml
   def index
-    @badges = Badge.enabled || []
-
-    if current_user && current_user.is_admin?
-      @disabled_badges = Badge.disabled || []
-    end
+    @badges = Badge.enabled.all
 
     respond_to do |format|
       format.html # index.html.erb

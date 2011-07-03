@@ -28,11 +28,8 @@
         </div>
     <% end %>
 
-    <% if has_permission?(:editor) %>
-        <%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button" %>
-    <% end %>
-    <% if has_permission?(:admin) %>
-         <%= render "admin/shared/toggle_disabled", :item => @article if has_permission?(:admin) %>
-    <% end %>
+    <%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button"  %> |
+    <%= render "admin/shared/toggle_disabled", :confirm => t("general.are_you_sure_to_disable_enable"), :item => @article %> |
+    <%= link_to t("general.delete"), [:admin, @article], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
 </div>
 

@@ -1,5 +1,6 @@
 class VendorsController < ApplicationController
-  before_filter(:only => [:new, :create]) { |c| c.require_permission :user }
+  before_filter(:only => [:new, :create]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:edit, :update, :destroy]) { |c| c.require_permission :editor }
   #before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Vendor.name, c.params[:id], true)}
   layout :resolve_layout
 
@@ -47,10 +48,6 @@ class VendorsController < ApplicationController
   # GET /vendors/1/edit
   def edit
     @vendor = Vendor.find(params[:id])
-    if @vendor.disabled and not has_permission?(:editor)
-      redirect_to vendors_path
-      return
-    end
   end
 
   # POST /vendors

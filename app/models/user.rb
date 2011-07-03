@@ -123,12 +123,19 @@ class User
     end
   end
 
-  def is_editor?
-    self.role == GlobalConstants::EDITOR_ROLE
-  end
-
-  def is_admin?
-    self.role == GlobalConstants::ADMIN_ROLE
+  def has_permission?(permission)
+    case permission
+      when :normal_user
+        true
+      when :authorized_user
+        self.role >= GlobalConstants::AUTHORIZED_USER_ROLE
+      when :editor
+        self.role >= GlobalConstants::AUTHORIZED_USER_ROLE
+      when :admin
+        self.role == GlobalConstants::ADMIN_ROLE
+      else
+        raise "invalid permission"
+    end
   end
 
   private

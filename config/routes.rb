@@ -8,6 +8,7 @@ Yin11::Application.routes.draw do
     resources :articles
     resources :badges
     resources :vendors
+    resources :reviews, :only => [:index, :show, :destroy]
   end
 
   match "log_out" => "sessions#destroy"
@@ -33,15 +34,15 @@ Yin11::Application.routes.draw do
 
   resources :tags, :only => [:index]
 
-  resources :articles do
+  resources :articles, :only => [:index, :show] do
     resources :comments
   end
 
-  resources :recommendations do
+  resources :recommendations, :except => [:destroy] do
     resources :comments
   end
 
-  resources :reviews do
+  resources :reviews, :except => [:destroy] do
     resources :comments
   end
 

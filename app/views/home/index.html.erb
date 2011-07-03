@@ -55,30 +55,36 @@
             <div id="user_panel" class="sub_panel">
                 <h3><%= current_user.login_name %></h3>
                 <%= get_avatar(current_user) %>
+                <span><%= link_to t("home.control_panel.update_profile"), profile_edit_path %></span>
             </div>
-            <div id="foods_watching_list" class="sub_panel">
-                <% if current_user && current_user.profile.watching_foods %>
-                    <h3><%= t("home.control_panel.watching_foods") %></h3>
-                    <% current_user.profile.watching_foods.each do |tag| %>
-                        <h4><%= link_to tag, {:action => "items", :tags => tag} %><%= get_severity_of_food(tag) %></h4>
+            <hr/>
+            <h3><%= t("home.control_panel.watching") %></h3>
+            <dl class="tab">
+                <dt><span><%= t("home.control_panel.watching_foods") %></span></dt>
+                <dd id="foods_watching_list">
+                    <% if current_user && current_user.profile.watching_foods %>
+                        <% current_user.profile.watching_foods.each do |tag| %>
+                            <h4><%= link_to tag, {:action => "items", :tags => tag} %><%= get_severity_of_food(tag) %></h4>
+                        <% end %>
                     <% end %>
-                <% end %>
-                <%= form_tag :action => "watch_foods" do %>
-                    <%= text_field_tag "added_foods" %>
-                    <%= submit_tag t("general.add"), :class => "button" %>
-                    <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>
-                <% end %>
-            </div>
-            <div id="address_watching_list" class="sub_panel">
-                <%= link_to t("home.control_panel.update_profile"), profile_edit_path %>
-                <span class="trivial"><%= t("home.control_panel.add_address_suggestion") %></span>
-            </div>
+                    <%= form_tag :action => "watch_foods" do %>
+                        <%= text_field_tag "added_foods" %>
+                        <%= submit_tag t("general.add"), :class => "button" %>
+                        <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>
+                    <% end %>
+                </dd>
+                <dt><span><%= t("home.control_panel.watching_tips") %></span></dt>
+                    <dd id="tips_watching_list">
+                         Tab 2 的内容
+                    </dd>
+            </dl>
         <% else %>
             <div id="login_panel" class="sub_panel">
                 <h3><%= t("authentication.quick_login")  %></h3>
                 <%= render "shared/quick_login" %>
             </div>
         <% end %>
+        <hr/>
 
         <div id="tag_cloud" class="sub_panel">
             <h3><%= t("home.hot_tags") %></h3>

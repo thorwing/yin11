@@ -1,24 +1,10 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale, :set_city
-  helper_method :current_user , :has_permission?, :current_city
+  helper_method :current_user, :current_city
   helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself, :get_region
   FOOD_ARTICLES_LIMIT = 5
   FOOD_REVIEWS_LIMIT = 5
 
-  def has_permission?(permission)
-    has_permission = false
-    if current_user
-      case permission
-        when :user
-          has_permission = true
-        when :editor
-          has_permission = current_user.is_editor? || current_user.is_admin?
-        when :admin
-          has_permission = current_user.is_admin?
-      end
-    end
-    has_permission
-  end
 
   def current_user
       @current_user ||= (login_from_session || login_from_cookie) unless @current_user == false
@@ -128,7 +114,7 @@ class ApplicationController < ActionController::Base
 
 # redirect somewhere that will eventually return back to here
   def redirect_away(*params)
-    session[:original_uri] = request.request_uri
+    session[:original_uri] = request.fullpath
     redirect_to(*params)
   end
 
@@ -145,31 +131,31 @@ class ApplicationController < ActionController::Base
 
   #TODO
   def require_permission(permission)
-    if has_permission?(permission)
+    if current_user && current_user.has_permission?(permission)
       true
     else
-      redirect_away :log_in, :notice => "You need #{permission} permission"
+      current_user ? (redirect_away :root, :notice => t("notices.need_permission_logged", :permission => permission)) : (redirect_away :log_in, :notice => t("notices.need_permission_not_logged"))
       false
     end
   end
 
-  def the_author_himself(class_name, object_id, or_admin = false)
-    return false unless current_user
+  def the_author_himself(class_name, object_id, or_admin = false, is_redirect = true)
     has_permission = false
-    has_permission = true if or_admin && current_user.is_admin?
-    unless has_permission
-      class_name.capitalize!
-      object = eval "#{class_name}.find(\"#{object_id}\")"
-      #TODO
-      has_permission = (object.author_id == current_user.id)
+    if current_user
+      if (or_admin and current_user.has_permission?(:admin))
+        has_permission = true
+      else
+        object = eval "#{class_name.capitalize}.find(\"#{object_id}\")"
+        if object.respond_to?(:author_id)
+          has_permission = (object.author_id == current_user.id)
+        else
+          raise "The object of " + class_name + " doesn't implement author_id."
+        end
+      end
     end
 
-    if has_permission
-      true
-    else
-      redirect_to :root, :notice => t("reviews.only_author_self_notice")
-      false
-    end
+    (redirect_to :root, :notice => t("reviews.only_author_self_notice")) if (not has_permission and is_redirect)
+    has_permission
   end
 
   def get_vote_weight_of_current_user

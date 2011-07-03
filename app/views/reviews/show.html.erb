@@ -44,9 +44,8 @@
         </div>
     <% end %>
 
-     <% if display_only_for_author(@review.id, true) %>
+     <% if the_author_himself(Review.name, @review.id, true, false) %>
         <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>
-        <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
     <% end %>
 
     <hr/>

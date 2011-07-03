@@ -1,6 +1,6 @@
 <%= f.label :images, t("images.images") %>
 <%= mark_required(item, :images) %>
-<%= content_tag(:span, t("reviews.upload_image_tip"), :class => "trivial" ) if item.is_a?(Review) %>
+<%= content_tag(:span, t("reviews.upload_image_tip")) if item.is_a?(Review) %>
 
 <%= hidden_field_tag "images_counter", item.images ?  item.images.size : 0, 'data-max' => 5 %>
 <div class="fields_group">

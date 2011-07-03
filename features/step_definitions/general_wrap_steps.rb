@@ -56,12 +56,18 @@ When /^I fill vendor token field "(.+)" with "(.+)"$/ do |field, name|
   fill_in field, :with => vendor.id
 end
 
-When /^I post a sample review$/ do
+When /^I post a sample review without vendor $/ do
   When %(I go to the home page)
   And %(I follow "发表食物测评" within "#actions_menu")
+  And %(I follow "实在想不起在哪儿买的食物了")
   Then %(I should see "新测评")
-  And %(I fill in "review_title" with "买到烂西瓜")
+  And %(I fill a simple review)
+end
+
+When /^I fill a simple review$/ do
+  When %(I fill in "review_title" with "买到烂西瓜")
   And %(I fill in "review_tags_string" with "西瓜")
+  # 过期
   And %(I check "review_faults_4")
   And %(I fill in "review_content" with "西瓜切开来后发现已经熟过头了。")
   And %(I press "完成")

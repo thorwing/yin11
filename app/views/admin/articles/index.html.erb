@@ -1,15 +1,15 @@
 <div class="content_block_inside">
     <h2><%= t("articles.articles") %></h2>
 
-    <p>Total: <%= @articles.size %></p>
+    <p>Total: <%= @articles.size %> articles.</p>
     <%= paginate @articles %>
     <div>
         <table>
           <tr>
-            <th>Title</th>
-            <th>Disabled</th>
-            <th>Published On</th>
-            <th>Source</th>
+            <th><%= t("general.title") %></th>
+            <th><%= t("general.disable") %></th>
+            <th><%= t("general.reported_on") %></th>
+            <th><%= t("articles.source") %></th>
             <th></th>
             <th></th>
           </tr>
@@ -18,12 +18,14 @@
           <tr>
             <td><%= link_to article.title, admin_article_path(article) %></td>
             <td><%= article.disabled %></td>
-            <td><%= article.reported_on.strftime("%m/%d/%Y") if article.reported_on %></td>
-            <td><%= link_to 'Edit', edit_admin_article_path(article) %></td>
-            <td><%= link_to 'Destroy', admin_article_path(article), :confirm => 'Are you sure?', :method => :delete %></td>
+            <td><%= article.reported_on_string %></td>
+            <td><%= article.name_of_source %></td>
+            <td><%= link_to t("general.edit"), edit_admin_article_path(article) %></td>
+            <td><%= link_to t("general.delete"), admin_article_path(article), :confirm => t("general.are_you_sure_to_delete"), :method => :delete %></td>
           </tr>
         <% end %>
         </table>
     </div>
 
+    <%= link_to t("articles.post_new_article"), new_admin_article_path %>
 </div>

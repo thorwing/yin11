@@ -8,4 +8,8 @@ $(document).ready(function(){
        , url: '/home/more_items'
        , loaderImage: "/images/pageless/load.gif"
     });
+
+    $("dl.tab").KandyTabs({ action: "mouseover",
+        action: "slide"
+    });
 });

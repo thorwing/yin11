@@ -14,4 +14,11 @@ class Article < InfoItem
                                                                         :min => 10, :max => 10000)
   validates_inclusion_of :category, :in => ArticleTypes.get_values
 
+  def name_of_source
+    if self.source
+      self.source.name.present? ? self.source.name : self.source.site
+    else
+      ""
+    end
+  end
 end

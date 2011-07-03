@@ -7,7 +7,7 @@ Factory.define :normal_user, :class => User do |f|
   f.email "user@yin11.comm"
   f.password "Iam1user"
   f.login_name "David"
-  f.role GlobalConstants::UNAUTHORIZED_USER_ROLE
+  f.role GlobalConstants::NORMAL_USER_ROLE
 end
 
 Factory.define :tester, :class => User do |f|

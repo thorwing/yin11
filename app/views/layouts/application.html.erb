@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css", "token-input-facebook", "uniform.aristo", "facebox", "slimbox2", "application", "home", "tag_cloud", "comment", "tab_control", "form", "/uploadify/uploadify", "jquery.jgrowl" %>
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css", "token-input-facebook", "uniform.aristo", "facebox", "slimbox2", "application", "home", "tag_cloud", "comment", "kandytabs", "form", "/uploadify/uploadify", "jquery.jgrowl" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js", "jquery.rails.js",
-                             "application", "jquery.tokeninput", "jquery.uniform.min", "facebox", "slimbox2", "jquery.pageless.min", "jquery.jgrowl",
+                             "application", "jquery.tokeninput", "jquery.uniform.min", "facebox", "slimbox2", "jquery.pageless.min", "jquery.jgrowl", "kandytabs.pack",
                              "jquery.metadata"%>
   <%= yield :header_including if content_for?(:header_including) %>
   <%= include_tiny_mce_if_needed %>
@@ -20,8 +20,8 @@
         <div id="header">
             <ul class="menu" id="top_menu">
                 <li><%= link_to t("menu.home"), root_path %></li>
-                <% if current_user && current_user.is_admin? %>
-                    <li><%= link_to t("menu.admin"), admin_root_path %></li>
+                <% if current_user && current_user.has_permission?(:editor) %>
+                    <li><%= link_to t("menu.admin_control"), admin_root_path %></li>
                 <% end %>
                 <li><%= link_to t("menu.articles"), articles_path %></li>
                 <li><%= link_to t("menu.reviews"), reviews_path %></li>
