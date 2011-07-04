@@ -54,7 +54,6 @@ Feature: smoke tests for Articles
     When I log in as "Ray Admin"
     And I go to the admin_articles page
     And I follow "西瓜被打了催熟剂"
-    And I follow "编辑"
     And I follow "禁用"
     When I search for "西瓜"
     Then I should not see "西瓜被打了催熟剂" within "#bad_items"

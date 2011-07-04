@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   before_filter() { |c| c.require_permission :admin}
 
   def index
-    @users = User.all
+    @users = User.excludes(role: GlobalConstants::ADMIN_ROLE).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +25,7 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     @user = User.find(params[:id])
+    @user.role = params[:new_role] if params[:new_role].present?
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

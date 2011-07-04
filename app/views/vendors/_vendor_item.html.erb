@@ -6,7 +6,7 @@
     <p>
         <%= t("vendors.recent_reviews") %><br/>
         <% vendor.reviews.limit(GlobalConstants::VENDOR_RECENT_REVIEWS).each do |review| %>
-            <%= link_to review.name, review %><br/>
+            <%= link_to review.title, review %><br/>
         <% end %>
         <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id), :class => "button" %>
     </p>
