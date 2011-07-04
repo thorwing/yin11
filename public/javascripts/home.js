@@ -9,7 +9,10 @@ $(document).ready(function(){
        , loaderImage: "/images/pageless/load.gif"
     });
 
-    $("dl.tab").KandyTabs({ action: "mouseover",
-        action: "slide"
+    $("dl.tab").KandyTabs({
+        classes: "kandyFold",
+        type: "fold",
+        trigger:"mouseover",
+        action: "fade"
     });
 });

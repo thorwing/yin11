@@ -23,6 +23,7 @@ Feature: smoke tests for Reviews
     Then I should see "先找找针对的商户"
     Then I should see "实在想不起在哪儿买的食物了"
 
+  @focus
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:
     | name     |
@@ -31,21 +32,24 @@ Feature: smoke tests for Reviews
     And I follow "发表食物测评"
     And I follow "先找找针对的商户"
     And I follow "农工商超市"
-    And I follow "发表测评"
+    And I follow "添加测评"
     Then I should see "新测评"
-    And I should see "农工商超市" within "#review_vendor_id"
+    Then I should see "农工商超市"
 
     When I fill a simple review
     And I go to the vendors page
     And I follow "农工商超市"
-    Then I should see "最近的测评"
+    Then I should see "所有测评"
     And I should see "买到烂西瓜"
 
+  @focus
   Scenario: User can skip choosing a vendor, and create a new review
+    Given the following vendor exists:
+    | name     |
+    | 农工商超市 |
     When I log in as "David User"
     And I follow "发表食物测评"
     And I follow "实在想不起在哪儿买的食物了"
-    And I follow "发表测评"
     Then I should see "新测评"
     And I should see "上海"
     And I should see "select" whose id is "review_location_district_id"
@@ -53,7 +57,7 @@ Feature: smoke tests for Reviews
     When I fill a simple review
     And I go to the vendors page
     And I follow "农工商超市"
-    Then I should see "最近的测评"
+    Then I should see "所有测评"
     And I should not see "买到烂西瓜"
 
     When I go to the home page
@@ -61,14 +65,14 @@ Feature: smoke tests for Reviews
 
   Scenario: User can follow the link from home page and create a review
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
     And I should see "买到烂西瓜"
     And I should see "过期"
     And I should see "西瓜切开来后发现已经熟过头了。"
 
   Scenario: User can edit his own review
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
 
     When I go to the reviews page
     And I follow "买到烂西瓜"
@@ -95,7 +99,7 @@ Feature: smoke tests for Reviews
 
   Scenario: User can vote for a review.
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
 
     When I log in as "Kate Tester"
     Then I should see "买到烂西瓜"
@@ -104,7 +108,7 @@ Feature: smoke tests for Reviews
 
   Scenario:  User can comment on a review, comments can be nested.
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
 
     When I log in as "Kate Tester"
 
@@ -125,6 +129,7 @@ Feature: smoke tests for Reviews
   Scenario:  User's city will be detected.
     When I log in as "David User"
     And I follow "发表食物测评" within "#actions_menu"
+    And I follow "实在想不起在哪儿买的食物了"
     Then I should see "上海"
     And I should see "切换城市"
 

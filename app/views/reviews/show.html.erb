@@ -6,6 +6,9 @@
             <%= content_tag(:small, clue) %> <%= "|" if index < clues.size - 1 %>
         <% end %>
     </div>
+    <% if @review.vendor %>
+        <p><%= link_to @review.vendor.name, @review.vendor %></p>
+    <% end %>
     <p><%= raw @review.content %></p>
     <% if @review.checkpoints.size > 0 %>
       <%= t("reviews.checkpoints") %>

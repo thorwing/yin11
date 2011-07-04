@@ -38,7 +38,7 @@
 
 <div>
     <ul class="menu" id="actions_menu">
-        <li><%= link_to t("reviews.new_review"), new_review_path, :class => "button" %></li>
+        <li><%= link_to t("reviews.new_review"), choose_mode_reviews_path, :class => "button" %></li>
         <li><%= link_to t("recommendations.new_recommendation"), new_recommendation_path, :class => "button" %></li>
     </ul>
 </div>
@@ -61,18 +61,18 @@
             <h3><%= t("home.control_panel.watching") %></h3>
             <dl class="tab">
                 <dt><span><%= t("home.control_panel.watching_foods") %></span></dt>
-                <dd id="foods_watching_list">
-                    <% if current_user && current_user.profile.watching_foods %>
-                        <% current_user.profile.watching_foods.each do |tag| %>
-                            <h4><%= link_to tag, {:action => "items", :tags => tag} %><%= get_severity_of_food(tag) %></h4>
+                    <dd id="foods_watching_list">
+                        <% if current_user && current_user.profile.watching_foods %>
+                            <% current_user.profile.watching_foods.each do |tag| %>
+                                <h4><%= link_to tag, {:action => "items", :tags => tag} %><%= get_severity_of_food(tag) %></h4>
+                            <% end %>
                         <% end %>
-                    <% end %>
-                    <%= form_tag :action => "watch_foods" do %>
-                        <%= text_field_tag "added_foods" %>
-                        <%= submit_tag t("general.add"), :class => "button" %>
-                        <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>
-                    <% end %>
-                </dd>
+                        <%= form_tag :action => "watch_foods" do %>
+                            <%= text_field_tag "added_foods" %>
+                            <%= submit_tag t("general.add"), :class => "button" %>
+                            <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>
+                        <% end %>
+                    </dd>
                 <dt><span><%= t("home.control_panel.watching_tips") %></span></dt>
                     <dd id="tips_watching_list">
                          Tab 2 的内容

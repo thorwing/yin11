@@ -1,26 +1,28 @@
-<h1><%= t("authentication.sign_up") %></h1>
-  
-<%= form_for @user do |f| %>   
-  <%= render "shared/error_messages", :target => @user %>
-  <p>
-    <%= f.label t("authentication.email") %><%= mark_required(@user, :email) %><br />
-    <%= f.email_field :email %>   
-  </p>
-  <p>
-    <%= f.label t("authentication.login_name") %><%= mark_required(@user, :login_name) %><br />
-    <%= f.email_field :login_name %>
-  </p>
-  <p>   
-    <%= f.label t("authentication.password") %><%= mark_required(@user, :password) %><br />
-    <%= f.password_field :password %>   
-  </p>   
-  <p>   
-    <%= f.label t("authentication.password_confirmation") %> <br/>
-    <%= f.password_field :password_confirmation %>   
-  </p>
-  <p>
-    <%= label_tag t("authentication.invitation_code") %>*<br/>
-    <%= text_field_tag :invitation %>
-  </p>
-  <p class="button"><%= submit_tag t("authentication.sign_up")  %></p>
-<% end %>
+<div class="content_block_inside">
+    <h2><%= t("authentication.sign_up") %></h2>
+
+    <%= form_for @user do |f| %>
+      <%= render "shared/error_messages", :target => @user %>
+      <p>
+        <%= f.label t("authentication.email") %><%= mark_required(@user, :email) %><br />
+        <%= f.email_field :email %>
+      </p>
+      <p>
+        <%= f.label t("authentication.login_name") %><%= mark_required(@user, :login_name) %><br />
+        <%= f.email_field :login_name %>
+      </p>
+      <p>
+        <%= f.label t("authentication.password") %><%= mark_required(@user, :password) %><br />
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <%= f.label t("authentication.password_confirmation") %> <br/>
+        <%= f.password_field :password_confirmation %>
+      </p>
+      <p>
+        <%= label_tag t("authentication.invitation_code") %>*<br/>
+        <%= text_field_tag :invitation %>
+      </p>
+      <p class="button"><%= submit_tag t("authentication.sign_up")  %></p>
+    <% end %>
+</div>

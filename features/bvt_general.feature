@@ -15,12 +15,11 @@ Feature: general usage
     And I should see "警惕以下关于“西瓜”的负面信息"
     And I should see "请阅读以下关于“西瓜”的参考"
 
-  @focus
   Scenario: User can see the control panel on home page
     When I log in as "David User"
     Then I should see "div" whose id is "control_panel"
-    And I should see "锦囊" within "#control_panel"
-    And I should see "关心食物列表" within "#control_panel"
+    And I should see "锦囊" within "#control_panel .tab"
+    And I should see "食物" within "#control_panel .tab"
 
   Scenario: Normal user can post reviews
     When I go to the new_review page
@@ -29,7 +28,7 @@ Feature: general usage
     When I log in as "David User"
     Then I should be on the new_review page
 
-    When I post a sample review
+    When I post a simple review without vendor
     And I log out
     And I search for "西瓜"
     Then I should see "买到烂西瓜" within "#bad_items"
@@ -41,7 +40,7 @@ Feature: general usage
 #
 #    When I log in as "Kate Tester"
 #    Then I should see "新测评"
-#    Then I post a sample review
+#    Then I post a simple review without vendor
 #
 #    When I log out
 #    And I go to the home page
@@ -51,7 +50,7 @@ Feature: general usage
 
   Scenario: I should see my collection on home page
      When I log in as "David User"
-     And I post a sample review
+     And I post a simple review without vendor
      And I go to the home page
      And I fill in "added_foods" with "西瓜,牛奶" within "#control_panel"
      And I press "添加" within "#control_panel"
@@ -64,7 +63,7 @@ Feature: general usage
      Then I should not see "西瓜" within "#tag_cloud"
 
      When I log in as "David User"
-     When I post a sample review
+     When I post a simple review without vendor
      And I go to the home page
      Then I should see "西瓜" within "#tag_cloud"
 
@@ -89,7 +88,7 @@ Feature: general usage
     | name     | description  | contribution_field | comparator | compared_value |
     | 新手上路 | 发表一篇测评 | created_reviews    | 8          | 1              |
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
 
     When I go to the home page
     And I follow "徽章" within "#top_menu"
@@ -97,8 +96,8 @@ Feature: general usage
 
   Scenario Outline: Editor and Admin can go to the admin_control page
     When I log in as "<user>"
-    And I go to the admin page
-    Then I should be on the admin page
+    And I go to the admin_root page
+    Then I should be on the admin_root page
 
     Examples:
     | user          |

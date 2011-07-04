@@ -162,9 +162,9 @@ class ApplicationController < ActionController::Base
     weight = 0
 
     if current_user
-      if current_user.is_admin?
+      if current_user.has_permission?(:admin)
         weight = 5
-      elsif current_user.is_editor?
+      elsif current_user.has_permission?(:editor)
         weight = 3
       else
         weight = 1

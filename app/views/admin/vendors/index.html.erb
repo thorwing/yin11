@@ -16,9 +16,9 @@
         <% @vendors.each do |vendor| %>
           <tr>
             <td><%= link_to vendor.name, [:admin, vendor] %></td>
-            <td><%= link_to 'Show', [:admin, vendor] %></td>
-            <td><%= link_to 'Edit', edit_admin_vendor_path(vendor) %></td>
-            <td><%= link_to 'Destroy', [:admin, vendor], :confirm => 'Are you sure?', :method => :delete %></td>
+            <td><%= link_to t("general.show"), [:admin, vendor] %></td>
+            <td><%= link_to t("general.edit"), edit_admin_vendor_path(vendor) %></td>
+            <td><%= link_to t("general.delete"), [:admin, vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete %></td>
           </tr>
         <% end %>
         </table>

@@ -5,7 +5,7 @@ class Admin::BaseController < ApplicationController
 
   end
 
-  def get_item_based_on(type, id)
+  def get_object_based_on(type, id)
     begin
       eval("#{type}.unscoped.find(id)")
     rescue
@@ -14,11 +14,11 @@ class Admin::BaseController < ApplicationController
   end
 
   def toggle_disabled
-    item = get_item_based_on(params[:type], params[:id])
-    item.disabled = !item.disabled
-    item.save
+    obj = get_object_based_on(params[:type], params[:id])
+    obj.disabled = !obj.disabled
+    obj.save
     respond_to do |format|
-        format.html {redirect_to :controller => "admin/#{item.class.name.downcase.pluralize}", :action => 'show', :id => item.id }
+        format.html {redirect_to :controller => "admin/#{obj.class.name.downcase.pluralize}", :action => 'show', :id => obj.id }
         format.xml {head :ok}
         format.js {render :content_type => 'text/javascript'}
     end

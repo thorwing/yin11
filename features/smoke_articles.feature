@@ -16,18 +16,20 @@ Feature: smoke tests for Articles
     When I log in as "David User"
     And I go to the articles page
     Then I should not see "发表新文章"
+    And I go to the admin_articles page
+    Then I should not see "发表新文章"
 
     When I log in as "Castle Editor"
-    And I go to the articles page
+    And I go to the admin_articles page
     Then I should see "发表新文章"
 
     When I log in as "Ray Admin"
-    And I go to the articles page
+    And I go to the admin_articles page
     Then I should see "发表新文章"
 
   Scenario: Only Editor and Admin can edit articles.
     When I log in as "Castle Editor"
-    And I post a sample article
+    And I post a simple article
     And I go to the articles page
     And I follow "土豆刷绿漆，冒充西瓜"
     Then I should see "编辑"

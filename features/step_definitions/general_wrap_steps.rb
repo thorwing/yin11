@@ -56,7 +56,7 @@ When /^I fill vendor token field "(.+)" with "(.+)"$/ do |field, name|
   fill_in field, :with => vendor.id
 end
 
-When /^I post a sample review without vendor $/ do
+When /^I post a simple review without vendor$/ do
   When %(I go to the home page)
   And %(I follow "发表食物测评" within "#actions_menu")
   And %(I follow "实在想不起在哪儿买的食物了")
@@ -82,8 +82,8 @@ When /^I post a sample tip$/ do
     And %(I press "完成")
 end
 
-When /^I post a sample article$/ do
-    When %(I go to the articles page)
+When /^I post a simple article$/ do
+    When %(I go to the admin_articles page)
     And %(I follow "发表新文章")
     And %(I fill in "article_title" with "土豆刷绿漆，冒充西瓜")
     And %(I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。")

@@ -9,6 +9,7 @@ Yin11::Application.routes.draw do
     resources :badges
     resources :vendors
     resources :reviews, :only => [:index, :show, :destroy]
+    resources :users, :except => [:new, :create]
   end
 
   match "log_out" => "sessions#destroy"
@@ -43,6 +44,9 @@ Yin11::Application.routes.draw do
   end
 
   resources :reviews, :except => [:destroy] do
+    collection do
+      get "choose_mode"
+    end
     resources :comments
   end
 
@@ -56,7 +60,7 @@ Yin11::Application.routes.draw do
 
   resources :badges, :only => [:index, :show]
 
-  resources :vendors do
+  resources :vendors, :except => [:edit, :update, :destroy] do
     collection do
       post "search"
     end
@@ -74,7 +78,7 @@ Yin11::Application.routes.draw do
 
   resources :cities, :only => [:index]
 
-  resources :users
+  resources :users, :only => [:new, :create]
   resource :sessions, :only => [:new, :create, :destroy]
 
   # The priority is based upon order of creation:

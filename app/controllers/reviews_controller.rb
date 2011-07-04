@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
-  before_filter(:only=>[:new]) {|c| c.require_permission :normal_user}
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
   uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
   layout :resolve_layout
@@ -31,6 +30,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/new.xml
   def new
     @review = Review.new
+    if params[:vendor_id].present?
+      @vendor = Vendor.find(params[:vendor_id])
+    end
 
     @sub_title = t("sub_titles.new_review")
 
@@ -120,6 +122,10 @@ class ReviewsController < ApplicationController
       format.html { redirect_to(reviews_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def choose_mode
+
   end
 
   private

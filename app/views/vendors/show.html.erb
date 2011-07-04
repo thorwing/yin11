@@ -1,5 +1,6 @@
 <div class="content_block_inside">
     <h2><%= @vendor.name %></h2>
+
     <div class="field">
         <% if @vendor.address %>
           <%= t("address.detail") %>: <%= @vendor.address.city.name %> <%= @vendor.address.detail %>
@@ -8,14 +9,15 @@
 
     <%= render "shared/display_map", :address => @vendor.address if @vendor.address %>
 
-    <div class="fields_group">
-        <h3><%= t("reviews.reviews") %>(<%= @vendor.reviews.size %>)</h3>
+    <p>
+        <h3><%= t("vendors.all_reviews") %><span class="trivial">(<%= t("vendors.reviews_total") %><%= @vendor.reviews.size %>)</span></h3>
+        <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => @vendor.id), :class => "button" %><br/>
         <ul>
-        <% @vendor.reviews.each do |review| %>
-           <li><%= link_to review.title, review %></li>
-        <% end %>
+            <% @vendor.reviews.each do |review| %>
+               <li><%= link_to review.title, review %></li>
+            <% end %>
         </ul>
-    </div>
+    </p>
 
-    <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %>
+    <%= link_to t("vendors.vendors"), vendors_path, :class => "button" %>
 </div>

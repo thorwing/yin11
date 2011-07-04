@@ -17,10 +17,10 @@ class Vendor
 
   accepts_nested_attributes_for :address, :allow_destroy => true
 
-  before_save :update_address
-
-  def update_address
-    self.address.detail = self.name if self.address
+  def get_address
+    address = ""
+    address += [self.address.city.name, self.address.detail].join(" ") if self.address && self.address.city
+    address
   end
 
 end

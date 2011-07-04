@@ -39,7 +39,7 @@ zh-CN:
 
   flash:
     notice: 通知
-    warning: 提醒
+    alert: 提醒
     error: 出错啦
 
   sub_titles:
@@ -101,6 +101,7 @@ zh-CN:
     recommendations: 管理推荐
     vendors: 管理商户
     badges: 管理徽章
+    users: 用户
 
   address:
     province: 省份
@@ -145,6 +146,12 @@ zh-CN:
       add_foods_suggestion: 添加您感兴趣的食物，您身边的食物安全动向早知道。
       update_profile: 更新您的个人资料
 
+  users:
+    index: 所有用户
+    new: 新建用户
+    edit: 编辑用户
+    login_name: 登录名
+
   foods:
     foods: 食物
     create_food: 新建食物
@@ -176,12 +183,19 @@ zh-CN:
     new_vendor: 新商户
     edit_vendor: 编辑商户
     create_vendor: 新建商户
+    new_review: 添加测评
+    all_reviews: "所有测评："
+    recent_reviews: 最近的测评
+    reviews_total: "总共："
+
 
   reviews:
     reviews: 所有测评
     post_new_review: 发表新测评
     edit_review: 编辑 <%{title}>
     new_review: 发表食物测评
+    new_review_with_vnedor: 先找找针对的商户
+    new_review_without_vendor: 实在想不起在哪儿买的食物了
     see_more_reviews: 查看更多测评
     add_new_checkpoint: 添加检查点
     title_review: 报告

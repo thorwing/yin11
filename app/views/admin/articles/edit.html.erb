@@ -2,6 +2,7 @@
     <h2><%= t("general.edit") %></h2>
 
     <%= render 'form' %>
-    <%= render "admin/shared/toggle_disabled", :item => @article %>
 
+    <%= link_to t("general.show"), [:admin, @article], :class => "button" %> |
+    <%= link_to t("general.back"), admin_articles_path, :class => "button" %>
 </div>

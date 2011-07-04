@@ -1,13 +1,12 @@
 class VendorsController < ApplicationController
   before_filter(:only => [:new, :create]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:edit, :update, :destroy]) { |c| c.require_permission :editor }
   #before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Vendor.name, c.params[:id], true)}
   layout :resolve_layout
 
   # GET /vendors
   # GET /vendors.xml
   def index
-    @vendors = params[:q] ? Vendor.where(:name => /#{params[:q]}?/) : Vendor.all
+    @vendors = params[:q] ? Vendor.enabled.where(:name => /#{params[:q]}?/) : Vendor.enabled.all
 
     logger = Logger.new(STDOUT)
     logger.info ">>> parameters:" + params[:q] if params[:q]
@@ -22,7 +21,7 @@ class VendorsController < ApplicationController
   # GET /vendors/1
   # GET /vendors/1.xml
   def show
-    @vendor = Vendor.find(params[:id])
+    @vendor = Vendor.enabled.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,11 +44,6 @@ class VendorsController < ApplicationController
     end
   end
 
-  # GET /vendors/1/edit
-  def edit
-    @vendor = Vendor.find(params[:id])
-  end
-
   # POST /vendors
   # POST /vendors.xml
   def create
@@ -68,43 +62,15 @@ class VendorsController < ApplicationController
     end
   end
 
-  # PUT /vendors/1
-  # PUT /vendors/1.xml
-  def update
-    @vendor = Vendor.find(params[:id])
-
-    respond_to do |format|
-      if @vendor.update_attributes(params[:vendor])
-        format.html { redirect_to(@vendor, :notice => 'Vendor was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /vendors/1
-  # DELETE /vendors/1.xml
-  def destroy
-    @vendor = Vendor.find(params[:id])
-    @vendor.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(vendors_url) }
-      format.xml  { head :ok }
-    end
-  end
-
   def search
     @results = []
     query = params[:search].strip
     if query.present?
-      @exact_match = Vendor.first(conditions: {name: query})
+      @exact_match = Vendor.first(conditions: {name: query, disabled: false})
       tag_names = query.split
 
       if tag_names.size <= 1
-        @results = Vendor.where(:name => /#{query}?}/)
+        @results = Vendor.enabled.where(:name => /#{query}?}/)
       else
         exact_results = nil
         tag_names.each do |tag_name|
@@ -125,7 +91,7 @@ class VendorsController < ApplicationController
   private
   def resolve_layout
     case action_name
-      when 'new', 'edit', 'show'
+      when 'new', 'show'
         "map"
       else
         'application'

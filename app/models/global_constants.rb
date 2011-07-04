@@ -9,4 +9,5 @@ module GlobalConstants
   AUTHORIZED_USER_ROLE = 3.freeze
   EDITOR_ROLE = 7.freeze
   ADMIN_ROLE = 9.freeze
+  VENDOR_RECENT_REVIEWS = 3.freeze
 end

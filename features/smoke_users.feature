@@ -9,6 +9,29 @@ Feature: smoke tests for User
   Background:
     Given There are minimal testing records
 
+  Scenario: One can register as a new user
+    When I go to the new_user page
+    And I fill in "user_email" with "test_regiser@yin11.com"
+    And I fill in "user_password" with "simplepassword"
+    And I fill in "user_password_confirmation" with "simplepassword"
+    And I press "注册"
+    When I go to the log_in page
+    And I fill in "email" with "test_regiser@yin11.com"
+    And I fill in "password" with "simplepassword"
+    And I press "登入"
+    Then I should see "div" whose id is "control_panel"
+
+  @focus
+  Scenario: Admin can disable a user
+    When I log in as "Ray Admin"
+    And I go to the admin_users page
+    And I follow "David"
+    And I follow "禁用"
+    When I log out
+    And I log in as "David User"
+    When I go to the home page
+    Then I should not see "David"
+
   Scenario: User can add foods to watching list, so they will be notified about the news of those foods
     When I log in as "David User"
     And I add "牛奶" to watching foods list
@@ -47,7 +70,7 @@ Feature: smoke tests for User
 #    And I go to the home page
 #    Then I should not see "三聚氰胺再现上海"
 #
-#    When I post a sample review
+#    When I post a simple review without vendor
 #    And I go to the home page
 #    Then I should see "买到烂西瓜"
 #
@@ -60,7 +83,7 @@ Feature: smoke tests for User
 
   Scenario: User can see his reviews on his profile page
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
     And I go to the profile page
     Then I should see "买到烂西瓜"
 

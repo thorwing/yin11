@@ -259,7 +259,7 @@ def image_uploadify(item)
   end
 
   def display_flash
-    flash_types = [:error, :warning, :notice]
+    flash_types = [:error, :alert, :notice]
 
     messages = ((flash_types & flash.keys).collect() do |key|
       "$.jGrowl('#{flash[key]}', {header: '#{I18n.t("flash.#{key}", :default => key.to_s)}', theme: '#{key.to_s}'});"

@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Available
 
   #Fields
   field :email, :type => String
@@ -43,7 +44,7 @@ class User
   end
 
   def self.authenticate(email, password)
-    user = User.first(:conditions => {:email => email } )
+    user = User.first(conditions: {email: email, disabled: false } )
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else

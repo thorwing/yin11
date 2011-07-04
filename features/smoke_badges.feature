@@ -32,19 +32,19 @@ Feature: smoke tests for Badges
     And I press "完成"
 
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
 
     When I go to the home page
     And I follow "徽章" within "#top_menu"
     Then I should see "×1"
 
   Scenario: Only Admin can create badges
-    When I log in as "David User"
-    And I go to the admin badges page
-    Then I should not see "新建"
-
     When I go to the new_admin_badge page
     Then I should be on the log_in page
+    
+    When I log in as "David User"
+    And I go to the new_admin_badge page
+    Then I should be on the home page
 
   Scenario: Only Admin can edit badges.
     Given the following badge exists:
@@ -66,7 +66,7 @@ Feature: smoke tests for Badges
     And I follow "徽章" within "#top_menu"
     Then I should not see "×1"
 
-    When I post a sample review
+    When I post a simple review without vendor
     And I go to the home page
     And I follow "徽章" within "#top_menu"
     Then I should not see "×1"
@@ -98,22 +98,21 @@ Feature: smoke tests for Badges
       | 新手上路 | 发表第一篇测评 | created_reviews    | 3          | 1              |
 
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
     And I go to the profile page
     Then I should see "新手上路"
 
-  @focus
   Scenario: User can get a repeatable badge.
     Given the following badge exists:
       | name     | description  | contribution_field   | comparator | compared_value | repeatable |
       | 新手上路 | 发表第一篇测评 | created_reviews    | 8          | 1              | true       |
 
     When I log in as "David User"
-    And I post a sample review
+    And I post a simple review without vendor
     And I go to the profile page
     Then I should see "新手上路"
 
-    And I post a sample review
+    And I post a simple review without vendor
     And I go to the profile page
     Then I should see "新手上路×2"
 

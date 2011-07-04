@@ -1,6 +1,13 @@
 <div class="item">
-    <h3><%= link_to vendor.name, vendor %>(<%= vendor.reviews.size %>)</h3>
-    <% if vendor.address && vendor.address.city %>
-        <%= vendor.address.city.name %>: <%= vendor.address.detail %>
-    <% end %>
+    <p>
+        <%= link_to vendor.name, vendor %>
+        <span class="trivial"><%= vendor.get_address %></span>
+    </p>
+    <p>
+        <%= t("vendors.recent_reviews") %><br/>
+        <% vendor.reviews.limit(GlobalConstants::VENDOR_RECENT_REVIEWS).each do |review| %>
+            <%= link_to review.name, review %><br/>
+        <% end %>
+        <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id), :class => "button" %>
+    </p>
 </div>

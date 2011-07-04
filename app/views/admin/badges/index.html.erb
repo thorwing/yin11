@@ -35,10 +35,7 @@
           <% end %>
     </div>
 
-
     <br />
 
-    <% if has_permission?(:admin) %>
-        <%= link_to t("general.new"),new_admin_badge_path, :class => "button" %>
-    <% end %>
+    <%= link_to t("general.new"),new_admin_badge_path, :class => "button" %>
 </div>

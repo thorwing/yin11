@@ -1,0 +1,12 @@
+<%= form_for([:admin, @user]) do |f| %>
+  <%= render "shared/error_messages", :target => @user %>
+
+  <div class="field">
+    <b>Role</b>
+    <%= select_tag "new_role", options_for_select(get_roles_for_select, @user.role) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
