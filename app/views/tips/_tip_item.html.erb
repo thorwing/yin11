@@ -1,0 +1,25 @@
+<div class="left_fields">
+    <%= render "shared/vote_fields", :item => item %>
+</div>
+<div class="central_fields">
+    <h3><%= link_to item.title, item %></h3>
+    <div class="clues">
+        <%= render "shared/show_tags", :item => item %>
+    </div>
+    <p>
+      <%= truncate_content(item, 100) %>
+      <%= link_to(t("info_items.detail"), item)  %>
+      <span class="trivial">
+        <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
+        <%= content_tag(:span, t("info_items.posted_by") + item.author.login_name ) if item.author %>
+      </span>
+    </p>
+</div>
+
+<div class="right_fields">
+  <% if current_user and not (current_user.collected_tips && current_user.collected_tips.include?(item)) %>
+        <%= link_to t("tips.collect"), collect_tip_path(item), :method => :put, :class => "button" %>
+  <% end %>
+
+  <%= link_to t("info_items.add_comment") + "(#{item.comments.size})", home_new_comment_path(:id => item.id, :type => item.class.name)%>
+</div>

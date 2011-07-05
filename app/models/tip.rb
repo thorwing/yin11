@@ -1,22 +1,17 @@
-class Tip
+class Tip < InfoItem
   include Mongoid::Document
-
-  field :type, :type => Integer, :default => 0
 
   #relationships
   embeds_many :revisions
   #embeds_one :current_vision, :class_name => "Revision"
-  has_and_belongs_to_many :participators, :class_name => "User"
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :writers, :class_name => "User"
+  belongs_to :user, :inverse_of => "collected_tips"
 
+  #override the settings in Informative
   validates_uniqueness_of :title, :message => I18n.translate("validations.general.uniqueness_msg", :field => I18n.translate("general.name"))
   validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content") )
   validates_length_of :content, :minimum => 10, :maximum => 10000, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),
                                                                         :min => 10, :max => 10000)
-  #validates_inclusion_of :type, :in => 1..2
-
-  HANDLE_TIP = 1
-  EXAM_TIP =  2
 
   def revise(author)
     if author.present?
@@ -25,7 +20,7 @@ class Tip
 #        #'You have tried to save page "#{name}" without changing its content'
 #      end
 
-      self.participators << author unless self.participator_ids.include?(author.id)
+      self.writers << author unless self.writer_ids.include?(author.id)
 
       self.revisions << Revision.new(:content => self.content, :author => author)
       true

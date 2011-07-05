@@ -19,7 +19,8 @@ class User
   embeds_one :profile
   embeds_one :contribution
   has_many :info_items, :inverse_of => "author"
-  has_and_belongs_to_many :participated_tips, :class_name => "Tip"
+  has_and_belongs_to_many :wrote_tips, :class_name => "Tip"
+  has_many :collected_tips, :class_name => "Tip"
 
   attr_accessor :password
   attr_accessible :email, :login_name, :password, :password_confirmation

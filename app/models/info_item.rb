@@ -8,13 +8,12 @@ class InfoItem
   scope :in_days_of, ->(days_in_number) {where(:created_at.gt => days_in_number.days.ago )}
   scope :about, ->(tag) {any_in(tags: [tag])}
   scope :bad, any_in(_type: ["Review", "Article"])
-  scope :good, where(_type: "Recommendation")
+  scope :good, any_in(_type: ["Recommendation", "Tip"])
   scope :of_region, ->(region_id) {any_in(region_ids: [region_id])}
 
   field :title, :type => String
   field :content, :type => String
   field :reported_on, :type => DateTime
-  field :faults, :type => Array, :default => []
 
   #cached_values
   field :region_ids, :type => Array
@@ -45,12 +44,10 @@ class InfoItem
   embeds_many :comments
   has_many :images
   belongs_to :author, :class_name => "User"
-  belongs_to :vendor
-  tokenize_one :vendor
 
   accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_image_url].blank? }, :allow_destroy => true
 
-  attr_accessible :title, :content, :reported_on_string, :faults, :images_attributes, :region_tokens
+  attr_accessible :title, :content, :reported_on_string, :images_attributes, :region_tokens
 
   validates_presence_of :title, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.title") )
   validates_length_of :title, :maximum => 30, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.title"),

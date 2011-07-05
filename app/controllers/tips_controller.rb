@@ -1,13 +1,13 @@
 class TipsController < ApplicationController
-  before_filter(:except => [:index, :show, :search]) { |c| c.require_permission :user }
-  before_filter(:only => [:destroy]) {|c| c.require_permission :admin }
+  before_filter(:except => [:index, :show, :search]) { |c| c.require_permission :normal_user }
   TIPS_SEARCH_LIMIT = 5
 
   # GET /tips
   # GET /tips.xml
   def index
-    @tips_participated_by_me = current_user ? Tip.any_in(participator_ids: [current_user.id]) : []
+    @tips_participated_by_me = current_user ? Tip.any_in(writer_ids: [current_user.id]) : []
     @hot_tips = Tip.order_by([:votes, :desc]).limit(5)
+    @my_tips = current_user.collected_tips.all if current_user
     @recent_tips = Tip.order_by([:updated_at, :desc]).limit(5)
 
     respond_to do |format|
@@ -31,13 +31,11 @@ class TipsController < ApplicationController
   # GET /tips/new
   # GET /tips/new.xml
   def new
-    unless params[:type] && params[:title]
-      redirect_to :back, :notice => "Invalid parameters for Tip."
-      return
+    if params[:title].present?
+      @tip = Tip.new(:title => params[:title])
+    else
+      @tip = Tip.new
     end
-
-    @tip = Tip.new(:title => params[:title])
-    @tip.type = params[:type].to_i
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,7 +52,6 @@ class TipsController < ApplicationController
   # POST /tips.xml
   def create
     @tip = Tip.new(params[:tip])
-    @tip.type = params["tip"]["type"].to_i
     @tip.revise(current_user)
 
     respond_to do |format|
@@ -86,18 +83,6 @@ class TipsController < ApplicationController
     end
   end
 
-  # DELETE /tips/1
-  # DELETE /tips/1.xml
-  def destroy
-    @tip = Tip.find(params[:id])
-    @tip.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(tips_url) }
-      format.xml  { head :ok }
-    end
-  end
-
   def search
     @results = []
     query = params[:search].strip
@@ -122,6 +107,22 @@ class TipsController < ApplicationController
     else
       redirect_to :back, :notice => "please enter search string"
       return
+    end
+  end
+
+  def collect
+    @tip = Tip.find(params[:id])
+    if current_user.collected_tips && current_user.collected_tips.include?(@tip)
+      respond_to do |format|
+         format.html {redirect_to(@tip, :alert => I18n.t("alerts.tip_already_collected"))}
+      end
+    else
+      current_user.collected_tips ||= []
+      current_user.collected_tips << @tip
+      current_user.save
+      respond_to do |format|
+         format.html {redirect_to(@tip, :notice => I18n.t("notices.tip_collected"))}
+      end
     end
   end
 

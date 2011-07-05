@@ -16,9 +16,8 @@ Given /^There are minimal testing records$/ do
 end
 
 
-Given /^There is a sample tip$/ do
+Given /^There is a simple tip$/ do
   tip = Tip.new(:title => "西瓜判熟技巧")
-  tip.type = 2
   tip.content = "一看，二拍，三听，四，试吃"
   tip.revisions << Revision.new(:content => "一看，二拍，三听")
   #tip.tags << Tag.new(:title => "西瓜") << Tag.new(:title => "处理技巧")

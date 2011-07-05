@@ -10,21 +10,6 @@
         <p><%= link_to @review.vendor.name, @review.vendor %></p>
     <% end %>
     <p><%= raw @review.content %></p>
-    <% if @review.checkpoints.size > 0 %>
-      <%= t("reviews.checkpoints") %>
-      <table>
-          <tr>
-            <th><%= t("general.name") %></th>
-            <th><%= t("reviews.checkpoint_pass") %></th>
-          </tr>
-        <% @review.checkpoints.each do |checkpoint| %>
-            <tr>
-              <td><%= checkpoint.name %></td>
-              <td><%= image_tag checkpoint.pass ? "correct_icon.gif"  : "wrong_icon.gif" %></td>
-            </tr>
-        <% end %>
-      </table>
-    <% end %>
     <div>
       <%= get_severity_image(@review) %>
       <br/>

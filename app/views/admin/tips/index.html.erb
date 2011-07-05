@@ -1,0 +1,22 @@
+<div class="content_block_inside">
+    <h2><%= t("tips.all_tips") %></h2>
+
+    <p>Total: <%= @tips.size %> tips.</p>
+    <div>
+        <table>
+          <tr>
+            <th><%= t("general.title") %></th>
+            <th><%= t("general.disable") %></th>
+            <th></th>
+          </tr>
+
+        <% @tips.each do |tip| %>
+          <tr>
+            <td><%= link_to tip.title, [:admin, tip] %></td>
+            <td><%= tip.disabled %></td>
+            <td><%= link_to t("general.delete"), admin_tip_path(tip), :confirm => t("general.are_you_sure_to_delete"), :method => :delete %></td>
+          </tr>
+        <% end %>
+        </table>
+    </div>
+</div>

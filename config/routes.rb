@@ -10,6 +10,7 @@ Yin11::Application.routes.draw do
     resources :vendors
     resources :reviews, :only => [:index, :show, :destroy]
     resources :users, :except => [:new, :create]
+    resources :tips, :only => [:index, :show, :destroy]
   end
 
   match "log_out" => "sessions#destroy"
@@ -52,9 +53,12 @@ Yin11::Application.routes.draw do
 
   resources :images, :only => [:create]
 
-  resources :tips do
+  resources :tips, :except => [:destroy] do
     collection do
-      post "search"
+      post 'search'
+    end
+    member do
+      put 'collect'
     end
   end
 

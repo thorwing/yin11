@@ -86,6 +86,10 @@ zh-CN:
     need_permission_not_logged: "此操作需要%{permission}的权限， 请留意我们的公告来获知如何提升权限。"
     article_posted: 文章已发布
     article_updated: 文章已更新
+    tip_collected: 已收藏该锦囊
+
+  alerts:
+    tip_already_collected: 该锦囊已经在您收藏中
 
   menu:
     home: 主页
@@ -94,6 +98,8 @@ zh-CN:
     articles: 新闻
     reviews: 测评
     badges: 徽章
+    tips: 锦囊
+    vendors: 商户
 
   admin_control:
     articles: 管理文章
@@ -199,7 +205,7 @@ zh-CN:
     see_more_reviews: 查看更多测评
     add_new_checkpoint: 添加检查点
     title_review: 报告
-    referenced_tip: 依据贴士
+    referenced_tip: 依据锦囊
     upload_image_tip: "(请至少上传一张图片，否则测评将在24小时后被禁用)"
     checkpoint_pass: 通过
     checkpoints: 检查点
@@ -241,16 +247,19 @@ zh-CN:
     source_url: 链接
 
   tips:
-    recent_tips: 最近更新的贴士
-    hot_tips: 热门贴士
-    tips_participated_by_me: 我参与的贴士
-    tips_tagged_by_me: 我收藏的贴士
+    all_tips: 所有锦囊
+    recent_tips: 最近更新的锦囊
+    hot_tips: 热门锦囊
+    tips_participated_by_me: 我参与的锦囊
+    tips_collected_by_me: 我收藏的锦囊
     title_length_validate_msg: 标题要求最短%{min},最长%{max}个字符
     content_length_validate_msg: 内容要求不超过%{max}个字符
-    exact_tip_not_found: 没有找到标题为<%{title}>的贴士
-    please_create: "欢迎您创建:"
-    handle_tip: "食物处理贴士: <%{title}>"
-    exam_tip: "食物测评贴士: <%{title}>"
+    exact_tip_not_found: 没有找到标题为<%{title}>的锦囊
+    please_create: "欢迎您创建："
+    tip: 锦囊
+    new: 创建锦囊
+    edit: 编辑锦囊
+    collect: 收藏锦囊
 
   badges:
     badges: 所有徽章
@@ -281,7 +290,7 @@ zh-CN:
     article: 新闻
     review: 测评
     recommendation: 健康分享
-    tip: 贴士
+    tip: 锦囊
     posted_by: "发布者: "
     add_comment: +评论
 

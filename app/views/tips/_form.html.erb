@@ -1,18 +1,17 @@
 <%= form_for(@tip) do |f| %>
   <%= render "shared/error_messages", :target => @tip %>
 
-  <%= f.hidden_field :type  %>
   <%= f.hidden_field :title %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.label f.object.title, :maxlength => 20 %>
+    <%= f.label t("general.title") %><br />
+    <%= f.text_field :title, :maxlength => 20 %>
   </div>
   <div class="field">
-    <%= f.label "content" %><br />
+    <%= f.label t("general.content") %><br />
     <%= f.text_area :content, :maxlength => 10000, :rows => 8 %>
   </div>
   <div class="actions">
-    <%= f.submit t("general.submit") %>
+    <%= f.submit t("general.submit"), :class => "button" %>
   </div>
 <% end %>

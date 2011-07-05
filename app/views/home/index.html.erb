@@ -75,7 +75,11 @@
                     </dd>
                 <dt><span><%= t("home.control_panel.watching_tips") %></span></dt>
                     <dd id="tips_watching_list">
-                         Tab 2 的内容
+                      <% if @my_tips %>
+                        <% @my_tips.each do |tip| %>
+                            <%= link_to tip.title, tip %>
+                        <% end %>
+                      <% end %>
                     </dd>
             </dl>
         <% else %>

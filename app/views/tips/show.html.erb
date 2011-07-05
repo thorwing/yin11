@@ -1,15 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="content_block_inside">
+    <% if current_user and not (current_user.collected_tips && current_user.collected_tips.include?(@tip)) %>
+        <%= link_to t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %>
+    <% end %>
+    <p>
+      <b><%= t("general.title") %></b>
+      <%= @tip.title %>
+    </p>
 
-<p>
-  <b>Title:</b>
-  <%= @tip.title %>
-</p>
+    <p>
+      <b><%= t("general.content") %></b>
+      <%= @tip.content %>
+    </p>
 
-<p>
-  <b>Content:</b>
-  <%= @tip.content %>
-</p>
-
-
-<%= link_to t("general.edit"), edit_tip_path(@tip) %> |
-<%= link_to 'Back', tips_path %>
+    <%= link_to t("general.edit"), edit_tip_path(@tip) %> |
+    <%= link_to t("general.back"), tips_path %>
+</div>
