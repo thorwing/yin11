@@ -13,6 +13,7 @@ zh-CN:
     description: 描述
     date: 日期
     reported_on: 发布日期
+    created_at: 创建时间
     category: 类别
     delete: 删除
     show: 查看
@@ -29,6 +30,7 @@ zh-CN:
     lock: 锁定
     unlock: 解锁
     more: 更多
+    author: 作者
     severity_0: 无异常报告
     severity_1: 注意
     severity_2: 警惕
@@ -87,6 +89,9 @@ zh-CN:
     article_posted: 文章已发布
     article_updated: 文章已更新
     tip_collected: 已收藏该锦囊
+    tip_roll_backed: 已恢复至该版本
+    tip_created: 锦囊已创建
+    tip_updated: 锦囊已更新
 
   alerts:
     tip_already_collected: 该锦囊已经在您收藏中
@@ -260,6 +265,9 @@ zh-CN:
     new: 创建锦囊
     edit: 编辑锦囊
     collect: 收藏锦囊
+    show_revisions: 查看改动记录
+    roll_back_revision: 恢复到此版本
+    current_version: 当前版本
 
   badges:
     badges: 所有徽章

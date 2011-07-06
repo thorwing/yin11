@@ -59,6 +59,8 @@ Yin11::Application.routes.draw do
     end
     member do
       put 'collect'
+      get 'revisions'
+      put 'roll_back'
     end
   end
 

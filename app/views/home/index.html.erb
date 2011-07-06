@@ -77,7 +77,7 @@
                     <dd id="tips_watching_list">
                       <% if @my_tips %>
                         <% @my_tips.each do |tip| %>
-                            <%= link_to tip.title, tip %>
+                            <%= link_to tip.title, tip, 'data-content' => tip.content, :class => "tip" %>
                         <% end %>
                       <% end %>
                     </dd>

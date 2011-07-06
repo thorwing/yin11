@@ -15,4 +15,9 @@ $(document).ready(function(){
         trigger:"mouseover",
         action: "fade"
     });
+
+    $('.tip').each( function(intIndex) {
+        $(this).CreateBubblePopup({ innerHtml: $(this).data('content') });
+    });
+    //$('.tip')
 });

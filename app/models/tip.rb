@@ -1,9 +1,10 @@
 class Tip < InfoItem
   include Mongoid::Document
 
+  field :current_version_id, :type => String
+
   #relationships
   embeds_many :revisions
-  #embeds_one :current_vision, :class_name => "Revision"
   has_and_belongs_to_many :writers, :class_name => "User"
   belongs_to :user, :inverse_of => "collected_tips"
 
@@ -15,24 +16,29 @@ class Tip < InfoItem
 
   def revise(author)
     if author.present?
-#      revisions_size = self.new_record? ? 0 : self.revisions.size
-#      if (revisions_size > 0) and self.content == content
-#        #'You have tried to save page "#{name}" without changing its content'
-#      end
-
-      self.writers << author unless self.writer_ids.include?(author.id)
-
-      self.revisions << Revision.new(:content => self.content, :author => author)
-      true
+      revisions_size = self.new_record? ? 0 : self.revisions.size
+      current_version = self.revisions.find(self.current_version_id) if revisions_size > 0
+      if current_version and current_version.content == self.content and current_version.title == self.title
+        #You have tried to save without changing its content
+        false
+      else
+        self.writers << author unless self.writer_ids.include?(author.id)
+        new_version = Revision.new(:title => self.title, :content => self.content, :author_id => author.id)
+        self.revisions << new_version
+        self.current_version_id = new_version.id
+        true
+      end
     else
       false
     end
   end
 
-  private
-
-  def continuous_revision?(author)
-    self.current_vision && (self.current_vision.author.id == author.id) && ( self.current_vision.updated_at > 30.minutes.ago)
+  def roll_back!(revision_id)
+    old_version = self.revisions.find(revision_id)
+    self.title = old_version.title
+    self.content = old_version.content
+    self.current_version_id = old_version.id
+    self.save!
   end
 
 end

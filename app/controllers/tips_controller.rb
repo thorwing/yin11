@@ -56,7 +56,7 @@ class TipsController < ApplicationController
 
     respond_to do |format|
       if @tip.save
-        format.html { redirect_to(@tip, :notice => 'Tip was successfully created.') }
+        format.html { redirect_to(@tip, :notice => t("notices.tip_created")) }
         format.xml  { render :xml => @tip, :status => :created, :location => @tip }
       else
         format.html { render :action => "new" }
@@ -74,7 +74,7 @@ class TipsController < ApplicationController
 
     respond_to do |format|
       if @tip.save
-        format.html { redirect_to(@tip, :notice => 'Tip was successfully updated.') }
+        format.html { redirect_to(@tip, :notice => t("notices.tip_updated")) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -123,6 +123,20 @@ class TipsController < ApplicationController
       respond_to do |format|
          format.html {redirect_to(@tip, :notice => I18n.t("notices.tip_collected"))}
       end
+    end
+  end
+
+  def revisions
+    @tip = Tip.find(params[:id])
+    @revisions = @tip.revisions.desc(:created_at).all
+  end
+
+  def roll_back
+    @tip = Tip.find(params[:id])
+    @tip.roll_back!(params[:revision_id])
+
+    respond_to do |format|
+      format.html {redirect_to(@tip, :notice => I18n.t("notices.tip_roll_backed"))}
     end
   end
 

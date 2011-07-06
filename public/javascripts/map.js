@@ -6,7 +6,6 @@ function add_fields_with_map(link, association, content) {
   $("#map_container").show();
   add_listeners();
 }
-
     var map = null;
 
     $(document).ready(function(){

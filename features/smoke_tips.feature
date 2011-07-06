@@ -112,13 +112,12 @@ Feature: smoke tests for Tips
     And I go to the tips page
     And I follow "辨别西瓜是否含有催熟剂" within "#tips_written_by_me"
     Then I should see "随便改改,恶作剧，字数补丁。"
-    Then I follow "查看所有版本"
+    Then I follow "查看改动记录"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-    And I follow "恢复这个版本"
+    And I follow "恢复到此版本"
     And I go to the tips page
     And I follow "辨别西瓜是否含有催熟剂" within "#tips_written_by_me"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-
 
   @focus
   Scenario: Only Admin can delete tip
