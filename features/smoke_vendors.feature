@@ -16,7 +16,6 @@ Feature: smoke tests for Vendors
     When I go to the vendors page
     Then I should see "农工商超市"
 
-  @focus
   Scenario: User can search for vendors
     Given the following vendor exists:
     | name     |
@@ -36,7 +35,6 @@ Feature: smoke tests for Vendors
     And I press "搜索"
     And I should see "没有找到名为<家乐福超市>的商户"
 
-  @focus
   Scenario: User can create vendor if it didn't exist
     When I log in as "David User"
     And I go to the vendors page
@@ -54,7 +52,6 @@ Feature: smoke tests for Vendors
     When I go to the new_vendor page
     Then I should be on the log_in page
 
-  @focus
   Scenario: User can create a vendor from the index page
     When I log in as "David User"
     And I go to the vendors page
@@ -65,7 +62,6 @@ Feature: smoke tests for Vendors
     And I go to the vendors page
     Then I should see "肯德基"
 
-  @focus
   Scenario: Only admin can edit vendor if it is not locked
     Given the following vendor exists:
     | name       |
@@ -85,7 +81,6 @@ Feature: smoke tests for Vendors
     And I follow "编辑"
     Then I should see "编辑商户"
 
-  @focus
   Scenario: User can post error report for vendor's information
     Given the following vendor exists:
     | name       |
@@ -95,7 +90,7 @@ Feature: smoke tests for Vendors
     And I fill in "search" with "农工商超市"
     And I press "搜索"
     And I follow "农工商超市"
-    And I follow "信息有误/纠正"
+    And I follow "报错/纠正"
 
   Scenario: User can upload images for vendor
 

@@ -23,7 +23,6 @@ Feature: smoke tests for Reviews
     Then I should see "先找找针对的商户"
     Then I should see "实在想不起在哪儿买的食物了"
 
-  @focus
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:
     | name     |
@@ -42,7 +41,6 @@ Feature: smoke tests for Reviews
     Then I should see "所有测评"
     And I should see "买到烂西瓜"
 
-  @focus
   Scenario: User can skip choosing a vendor, and create a new review
     Given the following vendor exists:
     | name     |
@@ -97,11 +95,12 @@ Feature: smoke tests for Reviews
 #    Then I should be on the home page
 #    And I should see "只有作者才可以执行此操作"
 
+  @javascript
   Scenario: User can vote for a review.
-    When I log in as "David User"
+    When I log in as "Kate Tester"
     And I post a simple review without vendor
 
-    When I log in as "Kate Tester"
+    When I log in as "David User"
     Then I should see "买到烂西瓜"
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"

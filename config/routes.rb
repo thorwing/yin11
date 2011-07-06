@@ -78,6 +78,8 @@ Yin11::Application.routes.draw do
     end
   end
 
+  resources :reports, :only => [:new, :create]
+
   resources :toxins
 
   resources :products

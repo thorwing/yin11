@@ -18,6 +18,10 @@
             <% end %>
         </ul>
     </p>
-
-    <%= link_to t("vendors.vendors"), vendors_path, :class => "button" %>
+    <p>
+        <%= link_to t("vendors.vendors"), vendors_path, :class => "button" %>
+    </p>
+    <p>
+        <%= link_to t("general.report"), new_report_path(:vendor_id => @vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>
+    </p>
 </div>

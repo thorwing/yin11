@@ -134,7 +134,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.has_permission?(permission)
       true
     else
-      current_user ? (redirect_away :root, :notice => t("notices.need_permission_logged", :permission => permission)) : (redirect_away :log_in, :notice => t("notices.need_permission_not_logged"))
+      current_user ? (redirect_away :root, :notice => t("notices.need_permission_logged", :permission => permission)) : (redirect_away :log_in, :notice => t("notices.need_permission_not_logged", :permission => t("roles.normal_user") ))
       false
     end
   end

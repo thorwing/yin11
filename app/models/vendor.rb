@@ -7,7 +7,8 @@ class Vendor
   #Relationships
   embeds_one :address
   has_many :reviews
-  has_many :articles
+  has_many :recommendations
+  has_many :reports
 
   attr_accessible :name, :address_attributes
 

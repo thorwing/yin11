@@ -50,7 +50,6 @@ Feature: smoke tests for Administration
     When I log in as "Ray Admin"
     Then I should be on the admin_users page
 
-  @focus
   Scenario: Admin can change other user's role
     When I log in as "Ray Admin"
     And I go to the admin_users page
@@ -75,7 +74,6 @@ Feature: smoke tests for Administration
     And I go to the new_admin_article page
     Then I should be on the home page
 
-  @foucs
   Scenario: Admin can't edit himself's role
     When I log in as "Ray Admin"
     And I go to the admin_users page

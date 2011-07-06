@@ -21,7 +21,6 @@ Feature: smoke tests for User
     And I press "登入"
     Then I should see "div" whose id is "control_panel"
 
-  @focus
   Scenario: Admin can disable a user
     When I log in as "Ray Admin"
     And I go to the admin_users page

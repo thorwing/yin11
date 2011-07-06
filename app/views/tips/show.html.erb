@@ -7,7 +7,9 @@
       <b><%= t("general.title") %></b>
       <%= @tip.title %>
     </p>
-
+    <p>
+      <%= render "shared/show_tags", :item => @tip %>
+    </p>
     <p>
       <b><%= t("general.content") %></b>
       <%= @tip.content %>

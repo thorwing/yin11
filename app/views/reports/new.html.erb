@@ -1,0 +1,16 @@
+<h2><%= t("general.report") %></h2>
+
+<%= form_tag @report, :remote => true do%>
+
+  <div class="field">
+    <%= label_tag "report[contact_email]", t("general.email_address") %><%= mark_required(@report, :contact_email) %><%= mark_required_length(@report, :contact_email) %><br/>
+    <%= text_field_tag "report[contact_email]", @report.contact_email %>
+  </div>
+  <div class="field">
+    <%= label_tag "report[content]", t("general.content") %><%= mark_required(@report, :content) %><%= mark_required_length(@report, :content) %><br/>
+    <%= text_area_tag "report[content]", "", :maxlength => 500 %>
+  </div>
+  <div class="actions">
+    <%= submit_tag t("general.submit"), :class => "button" %>
+  </div>
+<% end %>
