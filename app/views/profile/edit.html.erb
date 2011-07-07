@@ -27,25 +27,7 @@
             <p><%= link_to_add_fields_with_map t("profile.add_place"), f, :watching_addresses %></p>
         </div>
 
-        <div class="fields_group">
-            <h3><%= t("profile.my_recent_reviews") %></h3>
-            <ul>
-            <% @my_recent_reviews.each do |review| %>
-               <li><%= link_to review.title, review %></li>
-            <% end %>
-            </ul>
-            <%= link_to t("general.more"), "#" %>
-        </div>
-
-        <div class="fields_group">
-            <h3><%= t("profile.my_badges") %></h3>
-            <% if current_user.badge_ids %>
-                <% current_user.badge_ids.uniq.each do |badge_id| %>
-                  <% badge = Badge.find(badge_id) %>
-                    <p><%= link_to badge.name + (  current_user.badge_ids.count(badge_id) > 1 ? "×#{ current_user.badge_ids.count(badge_id)}" : ""), badge %></p>
-                <% end %>
-            <% end %>
-        </div>
+        <%= render "show_case" %>
 
         <%= f.submit t("general.submit"), :class => "button" %>
     <% end %>

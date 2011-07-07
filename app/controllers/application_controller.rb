@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
       city_name ||= t("system.default_city")
       #session[:current_city] = city_name
       @current_city = City.first(conditions: {name: city_name})
-      session[:current_city] = @current_city.name
+      session[:current_city] = @current_city.name if @current_city
     end
   end
 

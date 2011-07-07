@@ -14,6 +14,7 @@ class User
   field :remember_token, :type => String
   field :remember_token_expires_at, :type => Time
   field :badge_ids, :type => Array
+  field :blocked_user_ids, :type => Array
 
   #Relationships
   embeds_one :profile
@@ -21,6 +22,7 @@ class User
   has_many :info_items, :inverse_of => "author"
   has_and_belongs_to_many :wrote_tips, :class_name => "Tip"
   has_many :collected_tips, :class_name => "Tip"
+  has_and_belongs_to_many :groups
 
   attr_accessor :password
   attr_accessible :email, :login_name, :password, :password_confirmation
@@ -137,6 +139,30 @@ class User
         self.role == GlobalConstants::ADMIN_ROLE
       else
         raise "invalid permission"
+    end
+  end
+
+  def join!(group)
+    if group && group.valid?
+      group.user_ids << self.id
+      group.members_count += 1
+
+      self.group_ids << group.id
+      self.save!
+    else
+      false
+    end
+  end
+
+  def quit!(group)
+    if group && group.valid?
+      group.user_ids.delete(self.id)
+      group.members_count -= 1
+
+      self.group_ids.delete(group.id)
+      self.save!
+    else
+      false
     end
   end
 

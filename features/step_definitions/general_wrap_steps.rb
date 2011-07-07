@@ -100,3 +100,9 @@ end
 #When /^I fill in "(.+?)" with "(.+?)" by Selenium$/ do |field, value|
 #    selenium.type field, value
 #end
+
+When /^I join the group "(.+)"$/ do |group|
+  And %(I go to the groups page)
+  And %(I follow "#{group}")
+  And %(I follow "加入")
+end

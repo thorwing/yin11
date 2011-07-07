@@ -10,6 +10,7 @@ class Comment
   embedded_in :review
   embedded_in :article
   embedded_in :tip
+  embedded_in :group
   belongs_to :user
 
   validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content"))

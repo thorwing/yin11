@@ -51,6 +51,15 @@ Yin11::Application.routes.draw do
     resources :comments
   end
 
+  resources :groups, :except => [:destroy] do
+    member do
+      put "join"
+      put "quit"
+      put "block"
+      put "unlock"
+    end
+  end
+
   resources :images, :only => [:create]
 
   resources :tips, :except => [:destroy] do

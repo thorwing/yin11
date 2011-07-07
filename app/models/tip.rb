@@ -11,8 +11,8 @@ class Tip < InfoItem
   #override the settings in Informative
   validates_uniqueness_of :title, :message => I18n.translate("validations.general.uniqueness_msg", :field => I18n.translate("general.name"))
   validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content") )
-  validates_length_of :content, :minimum => 10, :maximum => 10000, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),
-                                                                        :min => 10, :max => 10000)
+  validates_length_of :content, :minimum => 10, :maximum => 200, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),
+                                                                        :min => 10, :max => 200)
 
   def revise(author)
     if author.present?

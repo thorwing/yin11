@@ -75,11 +75,15 @@
                     </dd>
                 <dt><span><%= t("home.control_panel.watching_tips") %></span></dt>
                     <dd id="tips_watching_list">
-                      <% if @my_tips %>
                         <% @my_tips.each do |tip| %>
                             <%= link_to tip.title, tip, 'data-content' => tip.content, :class => "tip" %>
                         <% end %>
-                      <% end %>
+                    </dd>
+                <dt><span><%= t("home.control_panel.joined_groups") %></span></dt>
+                    <dd id="joined_groups_list">
+                        <% @my_groups.each do |group| %>
+                            <%= link_to group.name, group %>
+                        <% end %>
                     </dd>
             </dl>
         <% else %>

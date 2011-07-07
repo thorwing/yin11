@@ -4,7 +4,8 @@ class HomeController < ApplicationController
     @items = InfoItem.enabled.desc(:reported_on, :updated_on).page(1).per(GlobalConstants::ITEMS_PER_PAGE_MANY)
     @hot_articles = Article.enabled.desc(:reported_on, :updated_on).limit(GlobalConstants::HOT_ARTICLES_ON_HOME_PAGE)
 
-    @my_tips = current_user.collected_tips.all if current_user
+    @my_tips = current_user ? current_user.collected_tips.all : []
+    @my_groups = current_user ? current_user.groups.all : []
     #TODO
     @foods_buzz = []#Food.desc([:review_ids, :article_ids]).limit(5).group_by{ |f| f.categories[0] }
   end

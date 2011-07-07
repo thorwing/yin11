@@ -10,13 +10,12 @@ class Vendor
   has_many :recommendations
   has_many :reports
 
+  accepts_nested_attributes_for :address, :allow_destroy => true
   attr_accessible :name, :address_attributes
 
   #validators
   validates_presence_of :name, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.name"))
   validates_uniqueness_of :name, :message => I18n.translate("validations.general.uniqueness_msg", :field => I18n.translate("general.name"))
-
-  accepts_nested_attributes_for :address, :allow_destroy => true
 
   def get_address
     address = ""

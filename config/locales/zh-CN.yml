@@ -101,9 +101,18 @@ zh-CN:
     tip_roll_backed: 已恢复至该版本
     tip_created: 锦囊已创建
     tip_updated: 锦囊已更新
+    group_created: 饭桌已创建
+    group_updated: 饭桌已更新
+    group_joind: 已加入该饭桌
+    group_quited: 已退出该饭桌'
+    group_user_blocked: 已阻止该用户
+    group_user_unlocked: 已解除对该用户的阻止
 
   alerts:
     tip_already_collected: 该锦囊已经在您收藏中
+    group_not_joind: 未能成功加入该饭桌
+    group_not_quited: 未能成功退出该饭桌
+
 
   menu:
     home: 主页
@@ -113,6 +122,7 @@ zh-CN:
     reviews: 测评
     badges: 徽章
     tips: 锦囊
+    groups: 饭桌
     vendors: 商户
 
   admin_control:
@@ -145,6 +155,7 @@ zh-CN:
     receive_mails: 接受关于监察列表中食物安全动向的报告邮件
     my_recent_reviews: "最近发表的测评:"
     my_badges: "我的徽章:"
+    my_groups: "我加入的饭桌:"
     profile_updated_notice: 信息已更新
 
   home:
@@ -161,6 +172,7 @@ zh-CN:
       watching: "我的关注:"
       watching_foods: 食物
       watching_tips: 锦囊
+      joined_groups: 饭桌
       more: >更多
       add_foods_to_watch: 添加食物到关注列表
       add_foods_suggestion: 添加您感兴趣的食物，您身边的食物安全动向早知道。
@@ -171,6 +183,16 @@ zh-CN:
     new: 新建用户
     edit: 编辑用户
     login_name: 登录名
+
+  groups:
+    join: 加入
+    quit: 退出
+    block: 阻止
+    unblock: 解除阻止
+    all: 所有饭桌
+    member: 成员
+    new: 新建饭桌
+    edit: 编辑饭桌
 
   foods:
     foods: 食物

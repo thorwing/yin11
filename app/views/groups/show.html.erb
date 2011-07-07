@@ -1,0 +1,41 @@
+<div class="content_block_inside">
+    <h2><%= @group.name %></h2>
+    <p><span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(GlobalConstants::TIME_FORMAT) %></span></p>
+    <% unless current_user.nil? or @group.user_ids.include?(current_user.id) %>
+        <%= link_to t("groups.join"), join_group_path(@group), :method => :put, :class => "button" %>
+    <% end %>
+    <% if current_user and @group.user_ids.include?(current_user.id) %>
+        <%= link_to t("groups.quit"), quit_group_path(@group), :method => :put, :class => "button" %>
+    <% end %>
+    <p><%= raw @group.description %></p>
+
+    <% if @group.address %>
+        <%= render "shared/display_map", :address => @group.address %>
+    <% end %>
+
+     <% if @group.is_creator_by?(current_user) %>
+        <%= link_to t("general.edit"), edit_group_path(@group), :method => :put, :class => "button" %>
+    <% end %>
+
+    <hr/>
+    <b><%= t("groups.member") %></b>
+    <% @group.users.each do |user| %>
+        <p>
+            <%= user.login_name %>
+            <% if current_user.blocked_user_ids && current_user.blocked_user_ids.include?(user.id) %>
+                <%= link_to t("groups.unblock"), unlock_group_path(@group, :user_id => user.id), :class => "button" %>
+            <% else %>
+                <%= link_to t("groups.block"), block_group_path(@group, :user_id => user.id), :class => "button" %>
+            <% end %>
+        </p>
+    <% end %>
+    <hr/>
+
+    <h3><%= t("comments.comments") %></h3>
+    <%= nested_comments(@group, patch_ancestry(@group.comments.arrange(:order => :created_at))) %>
+
+    <%= render "shared/new_comment", :item => @group if current_user %>
+
+    <%= link_to t("general.back"), groups_path %>
+
+</div>
