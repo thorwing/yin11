@@ -39,6 +39,10 @@ Then /^I should see "(.+)" whose id is "(.+)"$/ do |element_type, id|
   page.has_xpath?("//#{element_type}[@id='#{id}']")
 end
 
+Then /^I should see "(.+)" whose "(.+)" is "(.+)"$/ do |element_type, attr, id|
+  page.has_xpath?("//#{element_type}[@#{attr}='#{id}']")
+end
+
 When /^I search for "(.+)"$/ do |foods|
   visit path_to("the home page")
   fill_in "search", :with => foods

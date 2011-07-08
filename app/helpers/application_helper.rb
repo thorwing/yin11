@@ -273,4 +273,5 @@ def image_uploadify(item)
       ""
     end
   end
+
 end

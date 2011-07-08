@@ -17,19 +17,19 @@ Feature: smoke tests for Search
     Then I should see "三聚氰胺家庭检测法"
 
   @focus
-  Scenario: Some hot items should be putted to top on the home page
+  Scenario: Hot items and recent item should have ribbons
     Given  There are some sample tips
 
     When I go to the home page
-    Then I should see "瘦肉精猪肉目测" within "#items .recent"
+    Then I should see "img" whose "alt" is "Ribbon_recent"
 
-    When I log in as "David User"
-    And I go to the tips page
-    And I follow "瘦肉精猪肉目测"
-    And I follow "up"
-
-    And I go to the home page
-    Then I should see "瘦肉精猪肉目测" within "#items .hot"
+#    When I log in as "David User"
+#    And I go to the tips page
+#    And I follow "瘦肉精猪肉目测"
+#    And I follow "up"
+#
+#    And I go to the home page
+#    Then I should see "瘦肉精猪肉目测" within "#items .hot"
 
   @focus
   Scenario: Item about recent popular topics will be display on the home page

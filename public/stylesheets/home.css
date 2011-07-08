@@ -78,6 +78,13 @@ ul#actions_menu {
 .item.info .right_fields { float:right; overflow:hidden; width:100px;}
 .item.info .right_fields img  {display:block; clear:both;}
 
+/* for ribbons */
+.item.info .ribbon {
+	position:absolute;
+	top:-3px;
+	right:-3px;
+}
+
 /*
 	Good-Bad-Items-Styles
 */

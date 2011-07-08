@@ -230,4 +230,13 @@ class ApplicationController < ActionController::Base
     nil
   end
 
+  def get_hot_tags
+    tags = Rails.cache.read('hot_tags')
+    if tags.blank?
+      tags = InfoItem.tags_with_weight[0..GlobalConstants::CACHED_HOT_TAGS].map{ |e| e[0] }
+      Rails.cache.write("hot_tags", tags)
+    end
+
+    tags
+  end
 end

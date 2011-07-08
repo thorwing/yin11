@@ -73,7 +73,7 @@ Feature: smoke tests for Groups
     Then I should see "买到烂西瓜"
 
   @focus
-  Scenario: User can block another group member
+  Scenario: User can block and unlock another group member
     Given the following group exists:
       | name       | tags_string |
       | 西瓜守望者 | 西瓜        |
@@ -92,5 +92,13 @@ Feature: smoke tests for Groups
     And I follow "阻止"
     And I go to the home page
     Then I should not see "买到烂西瓜"
+
+     And I go to the profile page
+    And I follow "西瓜守望者"
+    And I follow "解除阻止"
+    And I go to the home page
+    Then I should see "买到烂西瓜"
+
+
 
 

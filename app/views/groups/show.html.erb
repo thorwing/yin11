@@ -22,10 +22,10 @@
     <% @group.users.each do |user| %>
         <p>
             <%= user.login_name %>
-            <% if current_user.blocked_user_ids && current_user.blocked_user_ids.include?(user.id) %>
-                <%= link_to t("groups.unblock"), unlock_group_path(@group, :user_id => user.id), :class => "button" %>
-            <% else %>
-                <%= link_to t("groups.block"), block_group_path(@group, :user_id => user.id), :class => "button" %>
+            <% if user_can_be_blocked?(user) %>
+                <%= link_to t("groups.block"), block_group_path(@group, :user_id => user.id), :method => :put, :class => "button" %>
+            <% elsif user_can_be_unlocked?(user) %>
+                <%= link_to t("groups.unblock"), unlock_group_path(@group, :user_id => user.id), :method => :put, :class => "button" %>
             <% end %>
         </p>
     <% end %>
