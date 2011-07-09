@@ -5,7 +5,7 @@ class TipsController < ApplicationController
   # GET /tips
   # GET /tips.xml
   def index
-    @tips_participated_by_me = current_user ? Tip.any_in(writer_ids: [current_user.id]) : []
+    @tips_participated_by_me = current_user ? Tip.any_in(:writer_ids => [current_user.id]) : []
     @hot_tips = Tip.order_by([:votes, :desc]).limit(5)
     @my_tips = current_user.collected_tips.all if current_user
     @recent_tips = Tip.order_by([:updated_at, :desc]).limit(5)
@@ -87,7 +87,7 @@ class TipsController < ApplicationController
     @results = []
     query = params[:search].strip
     if query.present?
-      @exact_match = Tip.first(conditions: {title: query})
+      @exact_match = Tip.first(:conditions => {:title => query})
       tag_names = query.split
 
       if tag_names.size <= 1
@@ -95,13 +95,13 @@ class TipsController < ApplicationController
       else
         exact_results = nil
         tag_names.each do |tag_name|
-          exact_results = exact_results ? exact_results.any_in(tag_ids: [tag_name]) : Tip.any_in(tag_ids: [tag_name])
+          exact_results = exact_results ? exact_results.any_in(:tag_ids => [tag_name]) : Tip.any_in(:tag_ids => [tag_name])
         end
 
         @results = exact_results.order_by([:updated_at, :desc]) if exact_results
 
         if exact_results.size < TIPS_SEARCH_LIMIT
-          @results = @results | Tip.any_in(tag_ids: tag_names)
+          @results = @results | Tip.any_in(:tag_ids => tag_names)
         end
       end
     else

@@ -176,11 +176,11 @@ module ApplicationHelper
     result << link_to(t("info_items.#{item.class.name.downcase}"), "\\" + item.class.name.downcase.pluralize)
     if item.region_ids.present?
       item.region_ids.each do |region_id|
-        city = City.first(conditions: {id: region_id})
+        city = City.first(:conditions => {:id => region_id})
         if city
           result << city.name
         else
-          province = Province.first(conditions: {id: region_id})
+          province = Province.first(:conditions => {:id => region_id})
           result << province.name
         end
       end

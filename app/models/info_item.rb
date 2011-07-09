@@ -5,12 +5,12 @@ class InfoItem
   include AssociatedModels
   include Available
 
-  scope :in_days_of, ->(days_in_number) {where(:created_at.gt => days_in_number.days.ago )}
-  scope :about, ->(tag) {any_in(tags: [tag])}
-  scope :bad, any_in(_type: ["Review", "Article"])
-  scope :good, any_in(_type: ["Recommendation", "Tip"])
-  scope :of_region, ->(region_id) {any_in(region_ids: [region_id])}
-  scope :not_from_blocked_users, ->(blocked_user_ids) { not_in(author_id: blocked_user_ids)}
+  scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
+  scope :about, lambda{ |tag| any_in(:tags => [tag]) }
+  scope :bad, any_in(:_type => ["Review", "Article"])
+  scope :good, any_in(:_type => ["Recommendation", "Tip"])
+  scope :of_region, lambda { |region_id| any_in(:region_ids => [region_id])}
+  scope :not_from_blocked_users, lambda { |blocked_user_ids| not_in(:author_id => blocked_user_ids) }
 
   field :title, :type => String
   field :content, :type => String

@@ -25,8 +25,8 @@ class HomeController < ApplicationController
     if params[:search].present?
       @tags = params[:search].split(" ") || []
       @tags.each do |q|
-        @region = City.first(conditions: {name: q})
-        @region = Province.first(conditions: {name: q}) unless @region
+        @region = City.first(:conditions => {:name => q})
+        @region = Province.first(:conditions => {:name => q}) unless @region
         if @region
           @region_id = @region.id
           @tags.reject!{|e| e == q}
@@ -75,7 +75,7 @@ class HomeController < ApplicationController
   end
 
   def cities
-      province = Province.first(conditions: {id: params[:province_id]}) if params[:province_id]
+      province = Province.first(:conditions => {:id => params[:province_id]}) if params[:province_id]
       @cities = province.cities if province
       @cities ||= []
 
@@ -211,7 +211,7 @@ class HomeController < ApplicationController
     recent_items = basic_criteria.desc(:created_at, :reported_on).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_RECENT)
     if current_user
       user_ids = current_user.groups.inject([]) {|memo, group| memo | group.user_ids }
-      group_items = basic_criteria.any_in(author_id: user_ids).desc(:created_at, :reported_on).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_GROUP)
+      group_items = basic_criteria.any_in(:author_id => user_ids).desc(:created_at, :reported_on).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_GROUP)
     end
 
     items = popular_items | hot_items | recent_items

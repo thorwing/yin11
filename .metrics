@@ -1,0 +1,15 @@
+MetricFu::Configuration.run do |config|
+  #define which metrics you want to use
+  #ruby_parser doesn't work for ruby 1.9.2's new syntax: "color: red" => ":color => red"
+  #  config.metrics  = [:hotspots, :flog, :roodi, :reek, :stats, :flay]
+  #  config.graphs   = [:flog, :roodi, :reek, :stats, :flay]
+  #config.metrics += [:saikuro]
+  config.metrics -= [:rcov]
+  config.metrics -= [:churn]
+  #config.metrics -= [:rails_best_practices]
+  #config.graphs -= [:rails_best_practices]
+  config.flog = { :dirs_to_flog => ['app', 'lib'] }
+  config.reek = { :dirs_to_reek => ['app', 'lib'] }
+  config.roodi = { :dirs_to_roodi => ['app', 'lib'] }
+
+end

@@ -9,7 +9,7 @@ require "foods_generator"
   Factory(:editor)
   Factory(:admin)
 
-  FoodsGenerator::generate_foods
+#  FoodsGenerator::generate_foods
 
   File.open(File.join(RAILS_ROOT, 'app/assets/provinces.txt')).each_line { |p|
     code, name, short_name, main_city_id, type = p.split(" ")

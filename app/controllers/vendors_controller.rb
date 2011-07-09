@@ -66,7 +66,7 @@ class VendorsController < ApplicationController
     @results = []
     query = params[:search].strip
     if query.present?
-      @exact_match = Vendor.first(conditions: {name: query, disabled: false})
+      @exact_match = Vendor.first(:conditions => {:name => query, :disabled => false})
       tag_names = query.split
 
       if tag_names.size <= 1
@@ -74,12 +74,12 @@ class VendorsController < ApplicationController
       else
         exact_results = nil
         tag_names.each do |tag_name|
-          exact_results = exact_results ? exact_results.any_in(tag_ids: [tag_name]) : Vendor.any_in(tag_ids: [tag_name])
+          exact_results = exact_results ? exact_results.any_in(:tag_ids => [tag_name]) : Vendor.any_in(:tag_ids => [tag_name])
         end
 
         @results = exact_results.order_by([:updated_at, :desc]) if exact_results
 
-        @results = @results | Tip.any_in(tag_ids: tag_names)
+        @results = @results | Tip.any_in(:tag_ids => tag_names)
 
       end
     else

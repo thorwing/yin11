@@ -90,16 +90,16 @@ class ApplicationController < ActionController::Base
   def set_city
     if session[:current_city].blank?
       ip_number = request.remote_ip.split('.').each_with_index.inject(0) {|sum, (elm,i)| sum + elm.to_i * (256 ** (3-i)) }
-      city_name = CityIp.first(conditions: {:start_ip.lte => ip_number, :end_ip.gte => ip_number})
+      city_name = CityIp.first(:conditions => {:start_ip.lte => ip_number, :end_ip.gte => ip_number})
       city_name ||= t("system.default_city")
       #session[:current_city] = city_name
-      @current_city = City.first(conditions: {name: city_name})
+      @current_city = City.first(:conditions => {:name => city_name})
       session[:current_city] = @current_city.name if @current_city
     end
   end
 
   def current_city
-    @current_city ||= City.first(conditions: {name: session[:current_city]})
+    @current_city ||= City.first(:conditions => {:name => session[:current_city]})
   end
 
   def current_city=(new_city)
@@ -218,11 +218,11 @@ class ApplicationController < ActionController::Base
 
   def get_region(region_id)
     if region_id.present?
-      city = City.first(conditions: {id: region_id})
+      city = City.first(:conditions => {:id => region_id})
       if city
         return city
       else
-        province = Province.first(conditions: {id: region_id})
+        province = Province.first(:conditions => {:id => region_id})
         return province if province
       end
     end
