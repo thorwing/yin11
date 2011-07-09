@@ -325,6 +325,7 @@ zh-CN:
     report_good_header: "我们一共找到%{count}条关于“%{name}”的健康分享，建议您阅读"
     detail: 详情>>
     ago: 以前
+    from_groups: "相关饭桌："
     tags: 标签
     article: 新闻
     review: 测评

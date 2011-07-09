@@ -189,6 +189,12 @@ module ApplicationHelper
       (result << t("articles.source") + ": " + item.source.name) if item.source
     end
 
+    same_groups = get_groups_of_item(item)
+    if same_groups.size > 0
+      result << t("info_items.from_groups") + same_groups.map(&:name).join(" ")
+    end
+
+
     result
   end
 
@@ -272,6 +278,19 @@ def image_uploadify(item)
     else
       ""
     end
+  end
+
+  def get_groups_of_item(item)
+    result = []
+    if current_user && item.author
+      (item.author.group_ids & current_user.group_ids).each do |group_id|
+        group = Group.find(group_id)
+        if (group.tags & item.tags).size > 0
+          result << group
+        end
+      end
+    end
+    result
   end
 
 end

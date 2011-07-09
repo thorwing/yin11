@@ -14,5 +14,4 @@ module GroupsHelper
       false
     end
   end
-
 end

@@ -52,7 +52,7 @@ Feature: smoke tests for Groups
     Then I should not see "西瓜守望者"
 
   @focus
-  Scenario: post from another group member will get higher rank for me
+  Scenario: post from another group member will get marked for me
     Given the following group exists:
       | name       | tags_string |
       | 西瓜守望者 | 西瓜        |
@@ -67,10 +67,10 @@ Feature: smoke tests for Groups
 
     When I log out
     And I log in as "Kate Tester"
-    Then I should not see "买到烂西瓜"
+    Then I should not see "相关饭桌：西瓜守望者"
     When I join the group "西瓜守望者"
     And I go to the home page
-    Then I should see "买到烂西瓜"
+   Then I should see "相关饭桌：西瓜守望者"
 
   @focus
   Scenario: User can block and unlock another group member

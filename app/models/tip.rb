@@ -22,6 +22,7 @@ class Tip < InfoItem
         #You have tried to save without changing its content
         false
       else
+        self.author_id = author.id if self.author_id.blank?
         self.writers << author unless self.writer_ids.include?(author.id)
         new_version = Revision.new(:title => self.title, :content => self.content, :author_id => author.id)
         self.revisions << new_version
