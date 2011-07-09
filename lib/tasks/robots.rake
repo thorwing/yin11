@@ -97,7 +97,6 @@ namespace :yin11 do
     end
   end
 
-  #中国食品科技网
   def deal_techfood(go_next_page = false, go_pages = 999)
     deal_site(I18n.t("fetch_sites.techfood"), ["http://www.tech-food.com/news/rule/list.html"], go_next_page, go_pages) do |site, agent|
       site.log "See " + agent.page.search(".newsmore_title3").size.to_s + " articles."
@@ -119,7 +118,6 @@ namespace :yin11 do
     end
   end
 
-  #食品商务网
   def deal_21food(go_next_page = false, go_pages = 999)
     deal_site(I18n.t("fetch_sites.twentyone_food"), ["http://www.21food.cn/news/list_g26_chnl-%B3%E9%BC%EC%C6%D8%B9%E2.html",
                             "http://www.21food.cn/news/list_g26_chnl-%CF%FB%B7%D1%BE%AF%CA%BE.html"], go_next_page, go_pages) do |site, agent|
@@ -142,7 +140,6 @@ namespace :yin11 do
     end
   end
 
-  #南方网
   def deal_southcn(go_next_page = false, go_pages = 999)
     deal_site(I18n.t("fetch_sites.southcn"), ["http://food.southcn.com/c/node_143373.htm",
                         "http://food.southcn.com/c/node_143382.htm"], go_next_page, go_pages) do |site, agent|
@@ -165,7 +162,6 @@ namespace :yin11 do
     end
   end
 
-  #新华网
   #could be multiple pages
   def deal_xinhuanet(go_next_page = false, go_pages = 999)
     deal_site(I18n.t("fetch_sites.xinhuanet"), ["http://www.news.cn/food/baoguang.htm",
@@ -190,7 +186,6 @@ namespace :yin11 do
     end
   end
 
-  #deal foodmate site
   def deal_foodmate(go_next_page = false, go_pages = 999)
     deal_site(I18n.t("fetch_sites.foodmate"), ["http://www.foodmate.net/foodsafe/knowledge/",
                             "http://www.foodmate.net/foodsafe/case/",
