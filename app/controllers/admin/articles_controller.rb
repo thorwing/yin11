@@ -6,7 +6,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def show
-    @article = Article.unscoped.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def new
@@ -20,7 +20,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def edit
-    @article = Article.unscoped.find(params[:id])
+    @article = Article.find(params[:id])
     #@article.build_source unless @article.source
   end
 
@@ -68,7 +68,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def destroy
-    @article = Article.unscoped.find(params[:id])
+    @article = Article.find(params[:id])
     @article.destroy
 
     respond_to do |format|
