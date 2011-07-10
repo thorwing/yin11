@@ -38,7 +38,7 @@ namespace :yin11 do
         a.source.url = url.to_s
       end
       if article.valid?
-        article.save
+        article.save!
         self.count += 1
       else
         p "*** invalid" + article.errors.to_s
@@ -55,11 +55,11 @@ namespace :yin11 do
 
   desc "create some testing articles"
   task :fetch_articles => :environment do
-    deal_techfood(false, 10)
-    deal_21food(false, 10)
-    deal_southcn
-    deal_xinhuanet
-    deal_foodmate(false, 10)
+#    deal_techfood(false, 10)
+#    deal_21food(false, 10)
+#    deal_southcn
+#    deal_xinhuanet
+    deal_foodmate(false, 1)
   end
 
   def deal_site(name, url_list, go_next_page, go_pages)
@@ -187,11 +187,7 @@ namespace :yin11 do
   end
 
   def deal_foodmate(go_next_page = false, go_pages = 999)
-    deal_site(I18n.t("fetch_sites.foodmate"), ["http://www.foodmate.net/foodsafe/knowledge/",
-                            "http://www.foodmate.net/foodsafe/case/",
-                            "http://www.foodmate.net/news/guonei/",
-                            "http://www.foodmate.net/news/guoji/",
-                            "http://www.foodmate.net/news/yujing/"], go_next_page, go_pages) do |site, agent|
+    deal_site(I18n.t("fetch_sites.foodmate"), ["http://www.foodmate.net/foodsafe/knowledge/"], go_next_page, go_pages) do |site, agent|
       site.log "See " + agent.page.search(".catlist_li a").size.to_s + " articles."
       agent.page.search(".catlist_li").each do |item|
         href = item.at_css('a').attributes['href']
