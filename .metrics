@@ -5,7 +5,7 @@ MetricFu::Configuration.run do |config|
   #  config.graphs   = [:flog, :roodi, :reek, :stats, :flay]
   #config.metrics += [:saikuro]
   config.metrics -= [:rcov]
-  #config.metrics -= [:churn]
+  config.metrics -= [:churn]
   #config.metrics -= [:rails_best_practices]
   #config.graphs -= [:rails_best_practices]
   config.flog = { :dirs_to_flog => ['app', 'lib'] }

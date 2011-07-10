@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
+
   before_filter :set_locale, :set_city
   helper_method :current_user, :current_city
   helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself, :get_region
