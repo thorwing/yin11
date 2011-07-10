@@ -44,6 +44,7 @@ $(function() {
     function tokenize_input(element_selector, data_source, tokenLimit) {
         $(element_selector).tokenInput(data_source, {
             crossDomain: false,
+            preventDuplicates: true,
             prePopulate: $(element_selector).data("pre"),
             theme: "facebook",
             tokenLimit: tokenLimit,

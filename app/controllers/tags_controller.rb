@@ -1,10 +1,13 @@
 class TagsController < ApplicationController
   def index
-    if params[:q]
-      @tags = InfoItem.tagged_like_regex /#{params[:q]}?/
+    query = params[:q]
+    if query.present?
+      @tags = get_hot_tags.select {|t| t =~ /#{query}?/}
     else
-      @tags = InfoItem.tags
+      @tags = get_all_tags
     end
+
+    @tags.insert(0, query) unless @tags.include?(query)
 
     respond_to do |format|
       format.html
