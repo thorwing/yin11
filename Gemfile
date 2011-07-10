@@ -59,4 +59,7 @@ group :test do
     # gem "selenium-rails"
     # gem "selenium-webdriver"
     gem "spork", "~> 0.9.0.rc6"
+    gem "mocha"
 end
+
+gem "nifty-generators", :group => :development

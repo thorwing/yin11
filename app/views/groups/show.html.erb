@@ -30,11 +30,23 @@
         </p>
     <% end %>
     <hr/>
+    <div id="group_posts">
+        <h3><%= t("groups.posts") %></h3>
+        <table>
+          <tr>
+            <th><%= t("general.title") %></th>
+            <th><%= t("posts.comments") %></th>
+          </tr>
+        <% @group.posts.each do |post| %>
+            <tr>
+              <td><%= link_to post.title, post %></td>
+              <td><%= post.comments.size if post.comments.size > 0 %></td>
+            </tr>
+        <% end %>
+        </table>
 
-    <h3><%= t("comments.comments") %></h3>
-    <%= nested_comments(@group, patch_ancestry(@group.comments.arrange(:order => :created_at))) %>
-
-    <%= render "shared/new_comment", :item => @group if current_user %>
+        <%= link_to t("posts.new"), new_post_path(:group_id => @group.id) %>
+    </div>
 
     <%= link_to t("general.back"), groups_path %>
 

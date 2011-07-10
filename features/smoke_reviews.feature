@@ -95,7 +95,6 @@ Feature: smoke tests for Reviews
 #    Then I should be on the home page
 #    And I should see "只有作者才可以执行此操作"
 
-  @focus
   @javascript
   Scenario: User can vote for a review.
     When I log in as "Kate Tester"

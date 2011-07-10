@@ -13,7 +13,7 @@ class Group
   #relationships
   has_and_belongs_to_many :users
   embeds_one :address
-  embeds_many :comments
+  has_many :posts
 
   accepts_nested_attributes_for :address, :allow_destroy => true
   attr_accessible :name, :description, :address_attributes

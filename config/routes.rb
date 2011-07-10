@@ -90,6 +90,8 @@ Yin11::Application.routes.draw do
   resources :users, :only => [:new, :create]
   resource :sessions, :only => [:new, :create, :destroy]
 
+  resources :posts
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -99,6 +99,36 @@ Feature: smoke tests for Groups
     And I go to the home page
     Then I should see "买到烂西瓜"
 
+  @focus
+  Scenario: Group member can post for his group
+    Given the following group exists:
+      | name       | tags_string |
+      | 西瓜守望者 | 西瓜        |
 
+    When I log in as "David User"
+    And I join the group "西瓜守望者"
+    And I go to the groups page
+    And I follow "西瓜守望者"
+    When I follow "+新话题"
+    And I fill in "post_title" with "我发现了一个很好的卖西瓜的地方"
+    And I fill in "post_content" with "这个地方是在我家附近，很不错的地方"
+    And I press "发表"
+
+    When I go to the groups page
+    And I follow "西瓜守望者"
+    Then I should see "饭桌最近话题"
+    And I should see "我发现了一个很好的卖西瓜的地方"
+
+    When I log out
+    And I log in as "Kate Tester"
+    And I go to the groups page
+    And I follow "西瓜守望者"
+    And I follow "我发现了一个很好的卖西瓜的地方"
+    When I fill in "content" with "恩，不错。"
+    And I press "添加评论"
+    Then I should see "恩，不错。"
+    And I go to the groups page
+    And I follow "西瓜守望者"
+    Then I should see "1" within "#group_posts"
 
 

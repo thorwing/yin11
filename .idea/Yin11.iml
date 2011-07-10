@@ -78,6 +78,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="mocha" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="mongoid" version="2.0.2" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -85,6 +91,12 @@
     <requirement>
       <requirement>
         <dependency name="mongoid-ancestry" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="nifty-generators" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>
@@ -271,6 +283,9 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] json_pure (v1.5.1, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/json_pure-1.5.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-expectations (v2.6.0, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/rspec-expectations-2.6.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] xpath (v0.1.4, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/xpath-0.1.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] nifty-generators (v0.4.6, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/nifty-generators-0.4.6)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] json (v1.5.1, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/json-1.5.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] mocha (v0.9.12, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/mocha-0.9.12)" level="application" />
   </component>
 </module>
 

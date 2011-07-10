@@ -18,6 +18,7 @@ zh-CN:
     delete: 删除
     show: 查看
     submit: 完成
+    post: 发表
     change: 修改
     search: 搜索
     edit: 编辑
@@ -25,6 +26,7 @@ zh-CN:
     new: 新建
     update: 更新
     back: 返回
+    back_to_list: 返回列表
     enable: 启用
     disable: 禁用
     lock: 锁定
@@ -107,11 +109,13 @@ zh-CN:
     group_quited: 已退出该饭桌'
     group_user_blocked: 已阻止该用户
     group_user_unlocked: 已解除对该用户的阻止
+    post_created: 话题已发表
 
   alerts:
     tip_already_collected: 该锦囊已经在您收藏中
     group_not_joind: 未能成功加入该饭桌
     group_not_quited: 未能成功退出该饭桌
+    no_group_specified: 未指定饭桌
 
 
   menu:
@@ -190,9 +194,16 @@ zh-CN:
     block: 阻止
     unblock: 解除阻止
     all: 所有饭桌
+    posts: 饭桌最近话题
     member: 成员
     new: 新建饭桌
     edit: 编辑饭桌
+
+  posts:
+    new: +新话题
+    new_post: 新话题
+    edit_post: 编辑话题
+    comments: 回应
 
   foods:
     foods: 食物
