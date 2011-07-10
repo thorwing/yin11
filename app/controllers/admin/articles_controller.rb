@@ -2,7 +2,7 @@ class Admin::ArticlesController < Admin::BaseController
   uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
 
   def index
-    @articles = Article.desc(:created_at).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_MANY)
+    @articles = Article.desc(:created_at).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_MANY).all
   end
 
   def show

@@ -30,7 +30,7 @@ namespace :yin11 do
       article = Article.new(title: title) do |a|
         a.content = content.html_safe
         a.reported_on = time
-        a.disabled = true
+        #a.disabled = true
         a.tags = tags
         a.build_source
         a.source.name = source_name.present? ? source_name : "Unknown Media"
