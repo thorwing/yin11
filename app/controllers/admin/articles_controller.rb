@@ -2,7 +2,7 @@ class Admin::ArticlesController < Admin::BaseController
   uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
 
   def index
-    @articles = Article.desc(:created_at).page(params[:page]).per(GlobalConstants::ITEMS_PER_PAGE_MANY).all
+    @articles = Article.all
   end
 
   def show
@@ -47,7 +47,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def update
-    @article = Article.enabled.find(params[:id])
+    @article = Article.find(params[:id])
 
     begin
       respond_to do |format|
