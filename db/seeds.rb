@@ -16,7 +16,7 @@
   }
 
   File.open(File.join(RAILS_ROOT, 'app/assets/cities.txt')).each_line { |c|
-    code, province_code, name, postcode = c.split(" ")
+    code, province_code, name, postcode = c.split(" ").map {|e| e.strip}
     province = Province.first(:conditions => {:code => province_code } )
     city = province.cities.build(:code => code, :name => name, :postcode => postcode)
     city.save
@@ -27,6 +27,16 @@
     city = City.first(conditions: {name: city_name})
     districts.each {|d| city.districts.create(:name => d)} if city
   end
+
+  File.open(File.join(RAILS_ROOT, 'app/assets/cities_en.txt')).each_line { |c|
+    name, name_en = c.split(" ")
+    city = City.first(:conditions => {:name => name})
+    if city
+      city.name_en = name_en
+      city.save
+    end
+    p name + " " + name_en if city.nil?
+  }
 
 #  File.open(File.join(RAILS_ROOT, 'app/assets/city_ip.txt')).each_line { |c|
 #    start_ip, end_ip, province_name, city_name = c.split(" ")

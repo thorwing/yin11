@@ -90,27 +90,27 @@ class ApplicationController < ActionController::Base
         :expires => @current_user.remember_token_expires_at }
   end
 
-  def set_city
-    @current_city_name = request.location.city
-    if session[:current_city].blank?
-      @current_city = City.first(:conditions => {:name => @current_city_name})
-      @current_city ||= City.first(:conditions => {:name => t("system.default_city")})
-      session[:current_city] = @current_city.name if @current_city
-    end
-  end
-
   def current_city
-    @current_city ||= City.first(:conditions => {:name => session[:current_city]})
+    @current_city
   end
 
   def current_city=(new_city)
     @current_city = new_city
-    session[:current_city] = @current_city.name
   end
 
   protected
   def set_locale
     I18n.locale = "zh-CN"
+  end
+
+  def set_city
+    #should be set only once
+    unless @current_city
+      city_name = request.location.city
+      @current_city = City.first(:conditions => {:name_en => city_name.upcase})
+      #TODO
+      @current_city ||= City.first(:conditions => {:name => t("system.default_city")})
+    end
   end
 
 # redirect somewhere that will eventually return back to here

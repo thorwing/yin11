@@ -4,7 +4,6 @@ function update_map(control) {
     if(indicator) {
         indicator.removeClass("valid");
         indicator.removeClass("invalid");
-        indicator.addClass("checking");
     }
 
     var address = $(".map_address").val();
@@ -13,7 +12,6 @@ function update_map(control) {
 
         if(data && data.length ==2) {
             if(indicator) {
-                indicator.removeClass("checking");
                 indicator.addClass("valid");
             }
             Gmaps4Rails.replaceMarkers([{"longitude": data[1], "latitude": data[0] }]);
@@ -21,7 +19,6 @@ function update_map(control) {
         }
         else {
             if(indicator) {
-                indicator.removeClass("checking");
                 indicator.addClass("invalid");
             }
         }

@@ -4,6 +4,7 @@ class City
   key :code
   field :name
   field :postcode
+  field :name_en
 
   #Relationships
   belongs_to :province
