@@ -1,10 +1,8 @@
-<div class="content_block_inside">
-    <h2><%= t("reviews.reviews") %></h2>
+<%= title t("reviews.reviews") %>
 
-    <%= paginate @reviews %>
-    <% @reviews.each do |review| %>
-        <%= render "info_items/info_item", :item => review %>
-    <% end %>
+<%= paginate @reviews %>
+<% @reviews.each do |review| %>
+    <%= render "info_items/info_item", :item => review %>
+<% end %>
 
-    <%= link_to t("reviews.new_review"), new_review_path, :class => "button" %>
-</div>
+<%= link_to t("reviews.new_review"), new_review_path, :class => "button" %>

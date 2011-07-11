@@ -1,27 +1,26 @@
-<div class="content_block_inside">
-    <h2><%= @vendor.name %></h2>
+<%= title @vendor.name %>
 
-    <div class="field">
-        <% if @vendor.address %>
-          <%= t("address.detail") %>: <%= @vendor.address.city.name %> <%= @vendor.address.detail %>
-        <% end %>
-    </div>
-
-    <%= render "shared/display_map", :address => @vendor.address if @vendor.address %>
-
-    <p>
-        <h3><%= t("vendors.all_reviews") %><span class="trivial">(<%= t("vendors.reviews_total") %><%= @vendor.reviews.size %>)</span></h3>
-        <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => @vendor.id), :class => "button" %><br/>
-        <ul>
-            <% @vendor.reviews.each do |review| %>
-               <li><%= link_to review.title, review %></li>
-            <% end %>
-        </ul>
-    </p>
-    <p>
-        <%= link_to t("vendors.vendors"), vendors_path, :class => "button" %>
-    </p>
-    <p>
-        <%= link_to t("general.report"), new_report_path(:vendor_id => @vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>
-    </p>
+<div class="field">
+    <%= t("address.detail") %>: <%= @vendor.location.address %>
 </div>
+<%= @vendor.location.coordinates.to_s %>
+    <div class="block_inside">
+        <div id="image_frame">
+            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@vendor.location.latitude}%2C#{@vendor.location.longitude}" unless @vendor.location.not_geocoded? %>
+        </div>
+    </div>
+<p>
+    <h3><%= t("vendors.all_reviews") %><span class="trivial">(<%= t("vendors.reviews_total") %><%= @vendor.reviews.size %>)</span></h3>
+    <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => @vendor.id), :class => "button" %><br/>
+    <ul>
+        <% @vendor.reviews.each do |review| %>
+           <li><%= link_to review.title, review %></li>
+        <% end %>
+    </ul>
+</p>
+<p>
+    <%= link_to t("general.back_to_list"), vendors_path, :class => "button" %>
+</p>
+<p>
+    <%= link_to t("general.report"), new_report_path(:vendor_id => @vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>
+</p>

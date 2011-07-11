@@ -19,6 +19,8 @@ Yin11::Application.routes.draw do
 
   match "/images/uploads/*path" => "gridfs#serve"
 
+  get "locations/search"
+
   get "profile/show"
   get "profile/edit"
   post "profile/update"

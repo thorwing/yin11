@@ -1,16 +1,18 @@
-<div class="content_block_inside">
-    <h2><%= t("vendors.vendors") %></h2>
+<%= title t("vendors.vendors") %>
 
-    <div class="search_fields">
-      <%= form_tag :action => "search" do %>
-        <%= text_field_tag "search", "" %>
-        <%= submit_tag t("general.search"), :class => "button" %>
-      <% end %>
-    </div>
-
-    <% @vendors.each do |vendor| %>
-        <%= render "vendor_item", :vendor => vendor  %>
-    <% end %>
-    <br />
-    <%= link_to t("vendors.create_vendor"), new_vendor_path, :class => "button" %>
+<div class="search_fields">
+  <%= form_tag :action => "search" do %>
+    <%= text_field_tag "search", "" %>
+    <%= submit_tag t("general.search"), :class => "button" %>
+  <% end %>
 </div>
+
+<% @vendors.each do |vendor| %>
+    <%= render "vendor_item", :vendor => vendor  %>
+<% end %>
+<br/>
+
+<%= gmaps4rails(@json) %>
+
+<br />
+<%= link_to t("vendors.create_vendor"), new_vendor_path, :class => "button" %>

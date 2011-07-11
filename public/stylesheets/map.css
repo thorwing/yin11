@@ -1,18 +1,18 @@
 @charset "utf-8";
 /* CSS Document */
 
-#map_container {
-    width:200px;
-    height:200px;
-    border:1px solid gray;
-}
+/*#map_container {*/
+    /*width:200px;*/
+    /*height:200px;*/
+    /*border:1px solid gray;*/
+/*}*/
 
-.profile_address_map {
-    display:none;
-}
+/*.profile_address_map {*/
+    /*display:none;*/
+/*}*/
 
-.map_address .map_indicator { background-repeat:no-repeat; width:16px; height:16px;}
-.map_address .map_indicator span { display: none;}
-.map_address .map_indicator.checking { background-image:url("/images/slimbox/loading.gif"); }
-.map_address .map_indicator.valid { background-image:url("/images/correct_icon.gif"); }
-.map_address .map_indicator.invalid { background-image:url("/images/wrong_icon.gif"); }
+.map_indicator { background-repeat:no-repeat; width:16px; height:16px;}
+.map_indicator span { display: none;}
+.map_indicator.checking { background-image:url("/images/slimbox/loading.gif"); }
+.map_indicator.valid { background-image:url("/images/correct_icon.gif"); }
+.map_indicator.invalid { background-image:url("/images/wrong_icon.gif"); }

@@ -1,13 +1,11 @@
-<div class="content_block_inside">
-    <h2><%= t("badges.badges") %></h2>
+<%= title t("badges.badges") %>
 
-    <div id="enabled_badges">
-        <% @badges.each do |badge| %>
-            <div>
-                <%= image_tag "award.png" %><%= link_to badge.name, badge %>
-                <%= "×" + badge.count_of_awarded.to_s %>
-                <%= badge.description %>
-            </div>
-        <% end %>
-    </div>
+<div id="enabled_badges">
+    <% @badges.each do |badge| %>
+        <div>
+            <%= image_tag "award.png" %><%= link_to badge.name, badge %>
+            <%= "×" + badge.count_of_awarded.to_s %>
+            <%= badge.description %>
+        </div>
+    <% end %>
 </div>

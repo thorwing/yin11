@@ -60,6 +60,18 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="geocoder" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="gmaps4rails" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="kaminari" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -286,6 +298,9 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] nifty-generators (v0.4.6, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/nifty-generators-0.4.6)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] json (v1.5.1, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/json-1.5.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] mocha (v0.9.12, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/mocha-0.9.12)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] geocoder (v1.0.2, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/geocoder-1.0.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] gmaps4rails (v0.9.1, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/gmaps4rails-0.9.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] crack (v0.1.8, C:/ROR/RailsInstaller/Ruby192/lib/ruby/gems/1.9.1/gems/crack-0.1.8)" level="application" />
   </component>
 </module>
 

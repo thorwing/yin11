@@ -1,17 +1,15 @@
-<div class="content_block_inside">
-  <p>
+<p>
     <b><%= t("general.title") %></b><br/>
     <%= @post.title %>
-  </p>
-  <p>
+</p>
+<p>
     <b><%= t("general.content") %></b><br/>
     <%= @post.content %>
-  </p>
+</p>
 
-  <h3><%= t("comments.comments") %></h3>
-  <%= nested_comments(@post, patch_ancestry(@post.comments.arrange(:order => :created_at))) %>
+<h3><%= t("comments.comments") %></h3>
+<%= nested_comments(@post, patch_ancestry(@post.comments.arrange(:order => :created_at))) %>
 
-  <%= render "shared/new_comment", :item => @post if current_user %>
+<%= render "shared/new_comment", :item => @post if current_user %>
 
-  <%= link_to t("general.back"), @post.group %>
-</div>
+<%= link_to t("general.back"), @post.group %>

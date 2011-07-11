@@ -1,34 +1,32 @@
-<div class="content_block_inside">
-    <h2><%= t("profile.edit_profile") %></h2>
-    <%= form_for :profile, current_user.profile, :url => profile_update_path, :as => :post, :html => {:multipart => true} do |f| %>
-        <div class="field">
-            <h3><%= current_user.login_name %></h3>
-            <%= get_avatar(current_user) %>
-            <p>
-              <%= t("profile.change_avator") %><br/>
-              <%= f.file_field :avatar %> <br/>
-            </P>
-        </div>
-        <div class="field">
-            <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)
-        </div>
-        <div class="field">
-          <%= t("profile.receive_mails") %>
-          <%= f.check_box :receive_mails, {}, true, false %>
-        </div>
+<%= title t("profile.edit_profile") %>
+<%= form_for :profile, current_user.profile, :url => profile_update_path, :as => :post, :html => {:multipart => true} do |f| %>
+    <div class="field">
+        <h3><%= current_user.login_name %></h3>
+        <%= get_avatar(current_user) %>
+        <p>
+          <%= t("profile.change_avator") %><br/>
+          <%= f.file_field :avatar %> <br/>
+        </P>
+    </div>
+    <div class="field">
+        <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)
+    </div>
+    <div class="field">
+      <%= t("profile.receive_mails") %>
+      <%= f.check_box :receive_mails, {}, true, false %>
+    </div>
 
-        <div class="fields_group">
-            <h3><%= t("profile.interested_places") %></h3>
-            <span class="trivial"><%= f.label :detail, t("address.detail_hint") %></span>
-            <div id="map_container" class="profile_address_map"></div>
-            <%= f.fields_for :watching_addresses do |builder| %>
-                <%= render "watching_address_fields", :f => builder %>
-            <% end %>
-            <p><%= link_to_add_fields_with_map t("profile.add_place"), f, :watching_addresses %></p>
-        </div>
+    <div class="fields_group">
+        <h3><%= t("profile.interested_places") %></h3>
+        <span class="trivial"><%= f.label :detail, t("address.detail_hint") %></span>
+        <div id="map_container" class="profile_address_map"></div>
+        <%= f.fields_for :watching_addresses do |builder| %>
+            <%= render "watching_address_fields", :f => builder %>
+        <% end %>
+        <p><%= link_to_add_fields_with_map t("profile.add_place"), f, :watching_addresses %></p>
+    </div>
 
-        <%= render "show_case" %>
+    <%= render "show_case" %>
 
-        <%= f.submit t("general.submit"), :class => "button" %>
-    <% end %>
-</div>
+    <%= f.submit t("general.submit"), :class => "button" %>
+<% end %>

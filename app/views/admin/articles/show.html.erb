@@ -1,37 +1,35 @@
-<div class="content_block_inside">
-    <h3><%= @article.title %></h3>
-    <p class="trivial"><%= @article.reported_on.strftime('%m/%d/%Y') if @article.reported_on %></p>
-    <%= render "shared/source", :source => @article.source %>
-    <br/>
-    <%= render "shared/show_tags", :item => @article %>
-    <br/>
-    <small>
-      <% if @article.region_ids %>
-          <%= t("articles.involved_regions") %>:
-          <% @article.region_ids.each do |region_id| %>
-            <%= get_region(region_id).name %>
-          <% end %>
+<%= title @article.title %>
+<p class="trivial"><%= @article.reported_on.strftime('%m/%d/%Y') if @article.reported_on %></p>
+<%= render "shared/source", :source => @article.source %>
+<br/>
+<%= render "shared/show_tags", :item => @article %>
+<br/>
+<small>
+  <% if @article.region_ids %>
+      <%= t("articles.involved_regions") %>:
+      <% @article.region_ids.each do |region_id| %>
+        <%= get_region(region_id).name %>
       <% end %>
-    </small>
-    <br/>
-    <p>
-      <%= simple_format @article.content.html_safe %>
-    </p>
+  <% end %>
+</small>
+<br/>
+<p>
+  <%= simple_format @article.content.html_safe %>
+</p>
 
-    <% if @article.images.size > 0 %>
-        <div id="gallery" class="block">
-          <div class="block_inside">
-              <% @article.images.each do |image| %>
-                  <%= get_thumbnail(image, true) %>
-              <% end %>
-          </div>
-        </div>
-    <% end %>
+<% if @article.images.size > 0 %>
+    <div id="gallery" class="block">
+      <div class="block_inside">
+          <% @article.images.each do |image| %>
+              <%= get_thumbnail(image, true) %>
+          <% end %>
+      </div>
+    </div>
+<% end %>
 
-    <%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button"  %> |
-    <%= link_to t("general.delete"), [:admin, @article], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-    <%= render "admin/shared/toggle_disabled", :confirm => t("general.are_you_sure_to_disable_enable"), :obj => @article %>
-    <%= link_to t("general.back"), admin_articles_path, :class=> "button" %>
+<%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button"  %> |
+<%= link_to t("general.delete"), [:admin, @article], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+<%= render "admin/shared/toggle_disabled", :confirm => t("general.are_you_sure_to_disable_enable"), :obj => @article %>
+<%= link_to t("general.back_to_list"), admin_articles_path, :class=> "button" %>
 
-</div>
 

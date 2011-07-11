@@ -1,17 +1,12 @@
-<div class="content_block_inside">
-    <p id="notice"><%= notice %></p>
+<%= render "info_items/basic_show", :item => @recommendation %>
 
-    <%= render "info_items/basic_show", :item => @recommendation %>
+<hr/>
 
-    <hr/>
+<% if display_only_for_author(@recommendation.id, true) %>
+    <%= link_to t("general.edit"), edit_recommendation_path(@recommendation), :class => "button" %>
+    <%= link_to t("general.delete"), @recommendation, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+<% end %>
 
-    <% if display_only_for_author(@recommendation.id, true) %>
-        <%= link_to t("general.edit"), edit_recommendation_path(@recommendation), :class => "button" %>
-        <%= link_to t("general.delete"), @recommendation, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-    <% end %>
+<hr/>
 
-    <hr/>
-
-    <%= render "shared/comments", :item => @recommendation %>
-
-</div>
+<%= render "shared/comments", :item => @recommendation %>

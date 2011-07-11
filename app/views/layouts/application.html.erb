@@ -9,7 +9,7 @@
   <%= include_tiny_mce_if_needed %>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <%= csrf_meta_tag %>
-  <title><%= t("site.name") %><%= ": #{@sub_title}" if @sub_title.present? %></title>
+  <title><%= t("site.name") %><%= " " + @content_for_title if show_title? %></title>
 </head>
 <body>
 
@@ -43,11 +43,17 @@
                 <small><%= t("site.description") %></small>
             </div>
         </div> <!--end of header -->
-
-        <div id="content_block" class="block">
-            <%= yield %>
-        </div> <!--end of content -->
-
+        <div class="block">
+            <% if home_page? %>
+                <%= yield %>
+            <% else %>
+                <div class="content_block_inside">
+                    <%= content_tag(:h2, @content_for_title) if show_title?  %>
+                    <%= yield %>
+                </div>
+            <% end %>
+        </div>
+        <!--end of content -->
 	</div> <!--end of container -->
 </div> <!--end of main -->
 

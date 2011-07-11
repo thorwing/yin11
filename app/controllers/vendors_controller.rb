@@ -8,6 +8,8 @@ class VendorsController < ApplicationController
   def index
     @vendors = params[:q] ? Vendor.enabled.where(:name => /#{params[:q]}?/) : Vendor.enabled.all
 
+    @json = @vendors.map{|v| v.location}.reject{|l| l.not_geocoded?}.to_gmaps4rails
+
     logger = Logger.new(STDOUT)
     logger.info ">>> parameters:" + params[:q] if params[:q]
 
@@ -33,7 +35,8 @@ class VendorsController < ApplicationController
   # GET /vendors/new.xml
   def new
     @vendor = Vendor.new
-    @vendor.build_address
+    @vendor.build_location(:name => (params[:name].present? ? params[:name] : ""))
+
     respond_to do |format|
       if params[:popup]
         format.html {render "remote_new", :layout => "dialog" }
@@ -91,7 +94,7 @@ class VendorsController < ApplicationController
   private
   def resolve_layout
     case action_name
-      when 'new', 'show'
+      when 'new', 'show', 'index'
         "map"
       else
         'application'

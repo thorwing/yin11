@@ -1,10 +1,11 @@
 <% content_for :header_including do %>
-    <%= stylesheet_link_tag "form", "map" %>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <%= stylesheet_link_tag "map" %>
+    <%= yield :head %>
 <% end %>
 
 <% content_for :deferred_javascript do %>
-    <%= javascript_include_tag "http://api.map.baidu.com/api?v=1.2", "map" %>
+    <%= yield :scripts %>
+    <%= javascript_include_tag "map" %>
 <% end %>
 
 

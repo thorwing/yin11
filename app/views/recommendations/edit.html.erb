@@ -1,8 +1,6 @@
-<div class="content_block_inside">
-    <h2><%= t("general.edit") %></h2>
+<%= title t("general.edit") %>
 
-    <%= render 'form' %>
+<%= render 'form' %>
 
-    <%= link_to t("general.show"), @recommendation %> |
-    <%= link_to t("general.back"), recommendations_path %>
-</div>
+<%= link_to t("general.show"), @recommendation %> |
+<%= link_to t("general.back_to_list"), recommendations_path %>

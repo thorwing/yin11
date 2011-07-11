@@ -1,27 +1,25 @@
-<div class="content_block_inside">
-  <%= link_to t("general.show"), @tip %>
-  <% @revisions.each do |revision| %>
-    <div class="block">
-      <div class="block_inside">
-        <b><%= t("tips.current_version") if @tip.current_version_id == revision.id.to_s %></b>
-        <p>
-          <b><%= t("general.author") %></b>
-          <%= revision.author.login_name if revision.author %>
-        </p>
-        <p>
-          <b><%= t("general.created_at") %></b>
-          <%= revision.created_at %>
-        </p>
-        <p>
-          <b><%= t("general.title") %></b>
-          <%= revision.title %>
-        </p>
-        <p>
-          <b><%= t("general.content") %></b>
-          <%= revision.content %>
-        </p>
-        <%= link_to t("tips.roll_back_revision"), roll_back_tip_path(@tip, :revision_id => revision.id), :method => :put, :class => "button" unless @tip.current_version_id == revision.id.to_s %>
-      </div>
-    </div>
-  <% end %>
+<%= link_to t("general.show"), @tip %>
+<% @revisions.each do |revision| %>
+<div class="block">
+  <div class="block_inside">
+    <b><%= t("tips.current_version") if @tip.current_version_id == revision.id.to_s %></b>
+    <p>
+      <b><%= t("general.author") %></b>
+      <%= revision.author.login_name if revision.author %>
+    </p>
+    <p>
+      <b><%= t("general.created_at") %></b>
+      <%= revision.created_at %>
+    </p>
+    <p>
+      <b><%= t("general.title") %></b>
+      <%= revision.title %>
+    </p>
+    <p>
+      <b><%= t("general.content") %></b>
+      <%= revision.content %>
+    </p>
+    <%= link_to t("tips.roll_back_revision"), roll_back_tip_path(@tip, :revision_id => revision.id), :method => :put, :class => "button" unless @tip.current_version_id == revision.id.to_s %>
+  </div>
 </div>
+<% end %>

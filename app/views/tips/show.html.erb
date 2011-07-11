@@ -1,20 +1,18 @@
-<div class="content_block_inside">
-    <% if current_user and not (current_user.collected_tips && current_user.collected_tips.include?(@tip)) %>
-        <%= link_to t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %>
-    <% end %>
-    <%= link_to t("tips.show_revisions"), revisions_tip_path(@tip), :class => "button" %>
-    <p>
-      <b><%= t("general.title") %></b>
-      <%= @tip.title %>
-    </p>
-    <p>
-      <%= render "shared/show_tags", :item => @tip %>
-    </p>
-    <p>
-      <b><%= t("general.content") %></b>
-      <%= @tip.content %>
-    </p>
+<% if current_user and not (current_user.collected_tips && current_user.collected_tips.include?(@tip)) %>
+    <%= link_to t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %>
+<% end %>
+<%= link_to t("tips.show_revisions"), revisions_tip_path(@tip), :class => "button" %>
+<p>
+  <b><%= t("general.title") %></b>
+  <%= @tip.title %>
+</p>
+<p>
+  <%= render "shared/show_tags", :item => @tip %>
+</p>
+<p>
+  <b><%= t("general.content") %></b>
+  <%= @tip.content %>
+</p>
 
-    <%= link_to t("general.edit"), edit_tip_path(@tip), :class => "button" %> |
-    <%= link_to t("general.back"), tips_path, :class => "button" %>
-</div>
+<%= link_to t("general.edit"), edit_tip_path(@tip), :class => "button" %> |
+<%= link_to t("general.back_to_list"), tips_path, :class => "button" %>

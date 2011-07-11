@@ -100,7 +100,7 @@ a.tag:hover {
 	border:1px solid #ffffff;
 	background: #ffffff url(/images/background_block_slice.jpg) repeat-x;
 	padding:10px;
-	overflow:auto;
+	overflow:hidden;
 }
 
 /*

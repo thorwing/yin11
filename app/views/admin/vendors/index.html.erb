@@ -1,38 +1,36 @@
-<div class="content_block_inside">
-    <h2><%= t("vendors.vendors") %></h2>
+<%= title t("vendors.vendors") %>
 
-    <div id="enabled_vendors">
-      <h3><%= t("vendors.enabled_vendors") %></h3>
-        <table>
-          <tr>
-            <th><%= t("general.name") %></th>
-            <th><%= t("general.description") %></th>
-            <th>Repeatable</th>
-            <th>CountOfAwarded</th>
-            <th></th>
-            <th></th>
-          </tr>
+<div id="enabled_vendors">
+  <h3><%= t("vendors.enabled_vendors") %></h3>
+    <table>
+      <tr>
+        <th><%= t("general.name") %></th>
+        <th><%= t("general.description") %></th>
+        <th>Repeatable</th>
+        <th>CountOfAwarded</th>
+        <th></th>
+        <th></th>
+      </tr>
 
-        <% @vendors.each do |vendor| %>
-          <tr>
-            <td><%= link_to vendor.name, [:admin, vendor] %></td>
-            <td><%= link_to t("general.show"), [:admin, vendor] %></td>
-            <td><%= link_to t("general.edit"), edit_admin_vendor_path(vendor) %></td>
-            <td><%= link_to t("general.delete"), [:admin, vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete %></td>
-          </tr>
-        <% end %>
-        </table>
-    </div>
-
-
-    <div id="disabled_vendors">
-      <h3><%= t("vendors.disabled_vendors") %></h3>
-          <% @disabled_vendors.each do |vendor| %>
-            <%= link_to vendor.name, [:admin, vendor] %>
-          <% end %>
-    </div>
-
-    <br />
-
-    <%= link_to t("general.new"),new_admin_vendor_path, :class => "button" %>
+    <% @vendors.each do |vendor| %>
+      <tr>
+        <td><%= link_to vendor.name, [:admin, vendor] %></td>
+        <td><%= link_to t("general.show"), [:admin, vendor] %></td>
+        <td><%= link_to t("general.edit"), edit_admin_vendor_path(vendor) %></td>
+        <td><%= link_to t("general.delete"), [:admin, vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
 </div>
+
+
+<div id="disabled_vendors">
+  <h3><%= t("vendors.disabled_vendors") %></h3>
+      <% @disabled_vendors.each do |vendor| %>
+        <%= link_to vendor.name, [:admin, vendor] %>
+      <% end %>
+</div>
+
+<br />
+
+<%= link_to t("general.new"),new_admin_vendor_path, :class => "button" %>

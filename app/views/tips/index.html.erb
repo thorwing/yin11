@@ -1,49 +1,47 @@
-<div class="content_block_inside">
-    <h2><%= t("tips.all_tips") %></h2>
+<%= title t("tips.all_tips") %>
 
-    <div class="search_fields">
-      <%= form_tag :controller => "tips", :action => "search" do %>
-        <%= text_field_tag "search", "" %>
-        <%= submit_tag t("general.search") %>
-      <% end %>
-    </div>
-
-    <hr/>
-    <div id="recent_tips">
-      <h3><%= t("tips.recent_tips") %></h3>
-      <% @recent_tips.each do |tip| %>
-        <%= render "tip_item", :item => tip  %>
-      <% end %>
-    </div>
-
-    <hr/>
-    <div id="hot_tips">
-      <h3><%= t("tips.hot_tips") %></h3>
-      <% @hot_tips.each do |tip| %>
-        <%= render "tip_item", :item => tip  %>
-      <% end %>
-    </div>
-    <hr/>
-
-    <% if current_user %>
-        <div id="tips_written_by_me">
-          <h3><%= t("tips.tips_participated_by_me") %></h3>
-          <% @tips_participated_by_me.each do |tip| %>
-            <%= render "tip_item", :item => tip  %>
-          <% end %>
-        </div>
-         <hr/>
-    <% end %>
-
-    <% if @my_tips %>
-        <div id="tips_collected_by_me">
-          <h3><%= t("tips.tips_collected_by_me") %></h3>
-            <% @my_tips.each do |tip| %>
-                <%= render "tip_item", :item => tip  %>
-            <% end %>
-        </div>
-    <% end %>
-    <hr/>
-
-    <%= link_to t("tips.new"), new_tip_path, :class => "button" %>
+<div class="search_fields">
+  <%= form_tag :controller => "tips", :action => "search" do %>
+    <%= text_field_tag "search", "" %>
+    <%= submit_tag t("general.search") %>
+  <% end %>
 </div>
+
+<hr/>
+<div id="recent_tips">
+  <h3><%= t("tips.recent_tips") %></h3>
+  <% @recent_tips.each do |tip| %>
+    <%= render "tip_item", :item => tip  %>
+  <% end %>
+</div>
+
+<hr/>
+<div id="hot_tips">
+  <h3><%= t("tips.hot_tips") %></h3>
+  <% @hot_tips.each do |tip| %>
+    <%= render "tip_item", :item => tip  %>
+  <% end %>
+</div>
+<hr/>
+
+<% if current_user %>
+    <div id="tips_written_by_me">
+      <h3><%= t("tips.tips_participated_by_me") %></h3>
+      <% @tips_participated_by_me.each do |tip| %>
+        <%= render "tip_item", :item => tip  %>
+      <% end %>
+    </div>
+     <hr/>
+<% end %>
+
+<% if @my_tips %>
+    <div id="tips_collected_by_me">
+      <h3><%= t("tips.tips_collected_by_me") %></h3>
+        <% @my_tips.each do |tip| %>
+            <%= render "tip_item", :item => tip  %>
+        <% end %>
+    </div>
+<% end %>
+<hr/>
+
+<%= link_to t("tips.new"), new_tip_path, :class => "button" %>

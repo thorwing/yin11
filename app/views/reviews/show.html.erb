@@ -1,46 +1,43 @@
-<div class="content_block_inside">
-    <h2><%= @review.title %></h2>
-    <span class="trivial"><%= @review.reported_on_string %></span>
-    <div class="clues">
-        <% clues = get_clues_of_item(@review); clues.each_with_index do |clue, index| %>
-            <%= content_tag(:small, clue) %> <%= "|" if index < clues.size - 1 %>
-        <% end %>
-    </div>
-    <% if @review.vendor %>
-        <p><%= link_to @review.vendor.name, @review.vendor %></p>
+<%= title @review.title %>
+<span class="trivial"><%= @review.reported_on_string %></span>
+<div class="clues">
+    <% clues = get_clues_of_item(@review); clues.each_with_index do |clue, index| %>
+        <%= content_tag(:small, clue) %> <%= "|" if index < clues.size - 1 %>
     <% end %>
-    <p><%= raw @review.content %></p>
-    <div>
-      <%= get_severity_image(@review) %>
-      <br/>
-      <% @review.faults.each do |fault| %>
-        <b><%= fault %></b>
-      <% end %>
-    </div>
-
-    <% if @review.vendor and @review.vendor.address %>
-        <%= render "shared/display_map", :address =>  @review.vendor.address %>
-    <% end %>
-
-    <% if @review.images.size > 0 %>
-        <div id="gallery" class="block">
-          <div class="block_inside">
-              <% @review.images.each do |image| %>
-                  <%= get_thumbnail(image, true) %>
-              <% end %>
-          </div>
-        </div>
-    <% end %>
-
-     <% if the_author_himself(Review.name, @review.id, true, false) %>
-        <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>
-    <% end %>
-
-    <hr/>
-
-    <h3><%= t("comments.comments") %></h3>
-    <%= nested_comments(@review, patch_ancestry(@review.comments.arrange(:order => :created_at))) %>
-
-    <%= render "shared/new_comment", :item => @review if current_user %>
-
 </div>
+<% if @review.vendor %>
+    <p><%= link_to @review.vendor.name, @review.vendor %></p>
+<% end %>
+<p><%= raw @review.content %></p>
+<div>
+  <%= get_severity_image(@review) %>
+  <br/>
+  <% @review.faults.each do |fault| %>
+    <b><%= fault %></b>
+  <% end %>
+</div>
+
+<% if @review.vendor and @review.vendor.address %>
+    <%= render "shared/display_map", :address =>  @review.vendor.address %>
+<% end %>
+
+<% if @review.images.size > 0 %>
+    <div id="gallery" class="block">
+      <div class="block_inside">
+          <% @review.images.each do |image| %>
+              <%= get_thumbnail(image, true) %>
+          <% end %>
+      </div>
+    </div>
+<% end %>
+
+ <% if the_author_himself(Review.name, @review.id, true, false) %>
+    <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>
+<% end %>
+
+<hr/>
+
+<h3><%= t("comments.comments") %></h3>
+<%= nested_comments(@review, patch_ancestry(@review.comments.arrange(:order => :created_at))) %>
+
+<%= render "shared/new_comment", :item => @review if current_user %>

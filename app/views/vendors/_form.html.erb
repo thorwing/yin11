@@ -1,5 +1,21 @@
 <%= form_for(@vendor) do |f| %>
   <%= render "shared/error_messages", :target => @vendor %>
+  <div id="map_location">
+    <%= f.fields_for :location do |ff| %>
+        <div class="field">
+            <b><%= f.label :name, t("vendors.vendor_name") %></b><br/>
+            <%= f.text_field :name %>
+        </div>
+        <div class="field">
+            <b><%= t("address.detail") %></b><br/>
+            <%= ff.text_field :address, :class => "map_address" %>
+        </div>
+    <% end %>
+  </div>
+  <%= render "shared/map_indicator" %>
+  <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true}) %>
+
+  <% if false %>
   <div class="map_address">
     <div class="field">
         <%= hidden_field_tag "vendor[address_attributes][city_id]", current_city.id %>
@@ -23,10 +39,11 @@
             <b><%= t("address.near") %></b><br/>
             <%= builder.text_field :near %>
         </div>
-        <%= render "shared/map_indicator" %>
+
         <div id="map_container"></div>
     <% end %>
   </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit t("general.submit"), :class => "button" %>

@@ -1,7 +1,5 @@
-<div class="content_block_inside">
-    <h2><%= t("posts.new_post") %></h2>
+<%= title t("posts.new_post") %>
 
-    <%= render 'form' %>
+<%= render 'form' %>
 
-    <p><%= link_to t("general.back_to_list"), posts_path(:group_id => @group.id) %></p>
-</div>
+<p><%= link_to t("general.back_to_list"), posts_path(:group_id => @group.id) %></p>

@@ -1,17 +1,16 @@
-<div class="content_block_inside">
-    <h2><%= t("profile.profile") %></h2>
-    <div class="field">
-        <h3><%= current_user.login_name %></h3>
-        <%= get_avatar(current_user) %>
-    </div>
-    <div class="fields_group">
-        <h3><%= t("profile.interested_places") %></h3>
-        <% current_user.profile.watching_addresses.each do |address| %>
-            <%= address.city.name %>: <%= address.detail %>
-        <% end %>
-    </div>
-
-    <%= render "show_case" %>
-
-    <%= link_to t("general.change"), profile_edit_path, :class => "button" %>
+<%= title t("profile.profile") %>
+<div class="field">
+    <h3><%= current_user.login_name %></h3>
+    <%= get_avatar(current_user) %>
 </div>
+<div class="fields_group">
+    <h3><%= t("profile.interested_places") %></h3>
+    <% current_user.profile.watching_addresses.each do |address| %>
+        <%= address.city.name %>: <%= address.detail %>
+    <% end %>
+</div>
+
+<%= render "show_case" %>
+
+<%= link_to t("general.change"), profile_edit_path, :class => "button" %>
+

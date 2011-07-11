@@ -1,8 +1,7 @@
-<div class="content_block_inside">
-    <h2><%= t("general.edit") %></h2>
+<%= title t("general.edit") %>
 
-    <%= render 'form' %>
+<%= render 'form' %>
 
-    <%= link_to t("general.show"), [:admin, @article], :class => "button" %> |
-    <%= link_to t("general.back"), admin_articles_path, :class => "button" %>
-</div>
+<%= link_to t("general.show"), [:admin, @article], :class => "button" %> |
+<%= link_to t("general.back_to_list"), admin_articles_path, :class => "button" %>
+

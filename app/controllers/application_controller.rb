@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  helper :layout
   before_filter :set_locale, :set_city
   helper_method :current_user, :current_city
   helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself, :get_region
@@ -90,12 +91,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_city
+    @current_city_name = request.location.city
     if session[:current_city].blank?
-      ip_number = request.remote_ip.split('.').each_with_index.inject(0) {|sum, (elm,i)| sum + elm.to_i * (256 ** (3-i)) }
-      city_name = CityIp.first(:conditions => {:start_ip.lte => ip_number, :end_ip.gte => ip_number})
-      city_name ||= t("system.default_city")
-      #session[:current_city] = city_name
-      @current_city = City.first(:conditions => {:name => city_name})
+      @current_city = City.first(:conditions => {:name => @current_city_name})
+      @current_city ||= City.first(:conditions => {:name => t("system.default_city")})
       session[:current_city] = @current_city.name if @current_city
     end
   end
