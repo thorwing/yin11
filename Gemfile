@@ -42,7 +42,6 @@ gem 'kaminari'
 #factory_girl is also used for db seeds
 gem 'factory_girl_rails'
 
-#maybe need to run db.locations.ensureIndex({ coordinates: "2d" })
 gem "geocoder"
 gem "gmaps4rails"
 

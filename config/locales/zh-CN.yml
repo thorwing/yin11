@@ -164,6 +164,7 @@ zh-CN:
     interested_places: "感兴趣的地方:"
     add_place: +地点
     new_watched_location: 关注的地点
+    watched_distance: 关注的范围（公里）
     receive_mails: 接受关于监察列表中食物安全动向的报告邮件
     my_recent_reviews: "最近发表的测评:"
     my_badges: "我的徽章:"

@@ -13,8 +13,8 @@ class Profile
   embeds_many :watched_locations, :class_name => Location.name
 
   accepts_nested_attributes_for :watched_locations, :allow_destroy => true
-  attr_accessible :receive_mails, :watched_locations_attributes, :avatar
-
+  attr_accessible :receive_mails, :watched_locations_attributes, :watched_distance, :avatar
+  validates_inclusion_of :watched_distance, :in => GlobalConstants::PROFILE_MIN_WATCHED_DISTANCE..GlobalConstants::PROFILE_MAX_WATCHED_DISTANCE
   validates_associated :watched_locations
 
   def add_foods(tags = [])

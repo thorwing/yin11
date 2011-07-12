@@ -9,8 +9,6 @@ class VendorsController < ApplicationController
     criteria = Vendor.enabled.of_city(current_city.name)
     @vendors = params[:q] ? criteria.where(:name => /#{params[:q]}?/).all : criteria.all
 
-    @map_data = @vendors.map{|v| v.location}.reject{|l| l.not_geocoded?}.to_gmaps4rails
-
     logger = Logger.new(STDOUT)
     logger.info ">>> parameters:" + params[:q] if params[:q]
 
@@ -35,8 +33,7 @@ class VendorsController < ApplicationController
   # GET /vendors/new
   # GET /vendors/new.xml
   def new
-    @vendor = Vendor.new
-    @vendor.build_location(:name => (params[:name].present? ? params[:name] : ""), :city => current_city.name)
+    @vendor = Vendor.new(:name => (params[:name].present? ? params[:name] : ""), :city => current_city.name)
 
     respond_to do |format|
       if params[:popup]

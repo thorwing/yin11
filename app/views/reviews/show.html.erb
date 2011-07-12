@@ -17,7 +17,7 @@
   <% end %>
 </div>
 
-<%= render "shared/display_map", :location => @review.vendor.location if @review.vendor and @review.vendor.location %>
+<%= render "shared/display_map", :location => @review.vendor if @review.vendor %>
 
 <% if @review.images.size > 0 %>
     <div id="gallery" class="block">
