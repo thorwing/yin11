@@ -1,4 +1,4 @@
-<%= title t("groups.all") %>
+<% title t("groups.all") %>
 <% @groups.each do |group| %>
     <p><%= link_to group.name, group %>(<%= group.members_count.to_s %><%= t("groups.member") %>)</p>
 <% end %>

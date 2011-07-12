@@ -1,5 +1,6 @@
-<%= title t("vendors.vendors") %>
+<% title t("vendors.vendors") %>
 
+<%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true, :reload_vendors => true), :rel => "facebox" %>)
 <div class="search_fields">
   <%= form_tag :action => "search" do %>
     <%= text_field_tag "search", "" %>
@@ -7,12 +8,20 @@
   <% end %>
 </div>
 
-<% @vendors.each do |vendor| %>
-    <%= render "vendor_item", :vendor => vendor  %>
-<% end %>
-<br/>
+<div id="vendors_list">
+    <% @vendors.each do |vendor| %>
+        <%= render "vendor_item", :vendor => vendor  %>
+    <% end %>
+</div>
 
-<%= gmaps4rails(@json) %>
+<!--TODO-->
+<% if false %>
+<div class="block_inside">
+    <div class="image_frame">
+        <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true},"markers" => { "data" => @map_data }) %>
+    </div>
+</div>
+<% end %>
 
 <br />
 <%= link_to t("vendors.create_vendor"), new_vendor_path, :class => "button" %>

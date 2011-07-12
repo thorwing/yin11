@@ -1,6 +1,8 @@
 class Vendor
   include Mongoid::Document
   include Available
+  scope :of_city, lambda { |city_name| where("location.city" => city_name)}
+
   field :name, :type => String
   field :verified, :type => Boolean, :default => false
 

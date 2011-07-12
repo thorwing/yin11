@@ -1,4 +1,4 @@
-<%= title @review.title %>
+<% title @review.title %>
 <span class="trivial"><%= @review.reported_on_string %></span>
 <div class="clues">
     <% clues = get_clues_of_item(@review); clues.each_with_index do |clue, index| %>
@@ -17,9 +17,7 @@
   <% end %>
 </div>
 
-<% if @review.vendor and @review.vendor.address %>
-    <%= render "shared/display_map", :address =>  @review.vendor.address %>
-<% end %>
+<%= render "shared/display_map", :location => @review.vendor.location if @review.vendor and @review.vendor.location %>
 
 <% if @review.images.size > 0 %>
     <div id="gallery" class="block">

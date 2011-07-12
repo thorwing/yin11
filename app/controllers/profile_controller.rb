@@ -8,7 +8,7 @@ class ProfileController < ApplicationController
   end
 
   def edit
-    current_user.profile.watching_addresses || current_user.profile.watching_addresses.build
+
   end
 
   def update
@@ -19,23 +19,27 @@ class ProfileController < ApplicationController
     end
   end
 
-  def edit_current_city
+  def new_watched_location
     respond_to do |format|
       if params[:popup]
-        format.html {render "edit_current_city", :layout => "dialog" }
+        format.html {render "new_watched_location", :layout => "dialog" }
       else
-        format.html # new.html.erb
+        format.html
       end
     end
   end
 
-  def update_current_city
-    self.current_city = City.find(params[:select_city]) if params[:select_city].present?
-    @current_city = self.current_city
+  def create_watched_location
+    @location = current_user.profile.watched_locations.new(:city => params[:city], :detail => params[:detail])
+    @location.save
 
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}
     end
+  end
+
+  def delete_watched_location
+
   end
 
   private

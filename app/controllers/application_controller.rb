@@ -91,11 +91,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_city
-    @current_city
+    @current_city ||= City.find(session[:current_city])
   end
 
   def current_city=(new_city)
     @current_city = new_city
+    session[:current_city] = new_city.id
   end
 
   protected
@@ -105,11 +106,11 @@ class ApplicationController < ActionController::Base
 
   def set_city
     #should be set only once
-    unless @current_city
-      city_name = request.location.city
-      @current_city = City.first(:conditions => {:name_en => city_name.upcase})
+    unless session[:current_city]
+      city = City.first(:conditions => {:name_en => request.location.city.upcase})
       #TODO
-      @current_city ||= City.first(:conditions => {:name => t("system.default_city")})
+      city ||= City.first(:conditions => {:name => t("system.default_city")})
+      session[:current_city] = city.id
     end
   end
 

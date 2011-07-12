@@ -1,7 +1,1 @@
-<div id="map_address">
-    <%= hidden_field_tag "hidden_point_lng", address.point_lng, {:class => "map_point_lng"} %>
-    <%= hidden_field_tag "hidden_point_lng", address.point_lat, {:class => "map_point_lat"} %>
-    <%= hidden_field_tag "hidden_city", address.city.name, {:class => "map_city"} %>
-    <%= hidden_field_tag "hidden_detail", address.detail, {:class => "map_detail"} %>
-    <div id="map_container"></div>
-</div>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{location.latitude}%2C#{location.longitude}" unless location.not_geocoded? %>

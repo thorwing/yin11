@@ -2,23 +2,24 @@ class Profile
   include Mongoid::Document
   include Mongoid::Timestamps::Updated
   #food names
-  field :watching_foods, :type => Array, :default => []
+  field :watched_foods, :type => Array, :default => []
   field :receive_mails, :type => Boolean, :default => true
+  field :watched_distance, :type => Integer, :default => 2
 
   mount_uploader :avatar, AvatarUploader
 
   #relationships
   embedded_in :user
-  embeds_many :watching_addresses, :class_name => "Address"
+  embeds_many :watched_locations, :class_name => Location.name
 
-  accepts_nested_attributes_for :watching_addresses, :reject_if => lambda { |a| a[:point].blank? }, :allow_destroy => true
-  attr_accessible :receive_mails, :watching_addresses_attributes, :avatar
+  accepts_nested_attributes_for :watched_locations, :allow_destroy => true
+  attr_accessible :receive_mails, :watched_locations_attributes, :avatar
 
-  validates_associated :watching_addresses
+  validates_associated :watched_locations
 
   def add_foods(tags = [])
     for tag in tags
-      self.watching_foods << tag unless self.watching_foods.include?(tag)
+      self.watched_foods << tag unless self.watched_foods.include?(tag)
     end
   end
 

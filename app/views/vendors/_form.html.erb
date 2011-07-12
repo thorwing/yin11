@@ -1,51 +1,13 @@
 <%= form_for(@vendor) do |f| %>
-  <%= render "shared/error_messages", :target => @vendor %>
-  <div id="map_location">
-    <%= f.fields_for :location do |ff| %>
-        <div class="field">
-            <b><%= f.label :name, t("vendors.vendor_name") %></b><br/>
-            <%= f.text_field :name %>
-        </div>
-        <div class="field">
-            <b><%= t("address.detail") %></b><br/>
-            <%= ff.text_field :address, :class => "map_address" %>
-        </div>
-    <% end %>
-  </div>
-  <%= render "shared/map_indicator" %>
-  <%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_adjust" => true}) %>
-
-  <% if false %>
-  <div class="map_address">
+    <%= render "shared/error_messages", :target => @vendor %>
     <div class="field">
-        <%= hidden_field_tag "vendor[address_attributes][city_id]", current_city.id %>
-        <%= hidden_field_tag "vendor[address_attributes][city_name]", current_city.name, :class => "map_city" %>
-        <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)<br/>
+        <b><%= f.label :name, t("general.name") %></b><%= mark_required(@vendor, :name) %><%= mark_required_length(@vendor, :name) %><br/>
+        <%= f.text_field :name %>
     </div>
-    <%= f.fields_for :address do |builder| %>
-        <div class="field">
-            <%= builder.select :district_id, options_for_select(current_city.districts.map { |d| [d.name, d.id]}, @vendor.address.district_id) %>
-        </div>
-        <div class="field">
-            <b><%= f.label :name, t("vendors.vendor_name") %></b><br />
-            <%= text_field_tag "vendor[name]", @vendor.name.present? ? @vendor.name : params[:name], {:class => "map_place"} %>
-        </div>
-        <%= builder.hidden_field :point, {:class => "map_point"} %>
-        <div class="field">
-            <b><%= t("address.detail") %></b><br/>
-            <%= builder.text_field :detail, {:class => "map_detail"} %>
-        </div>
-        <div class="field">
-            <b><%= t("address.near") %></b><br/>
-            <%= builder.text_field :near %>
-        </div>
 
-        <div id="map_container"></div>
-    <% end %>
-  </div>
-  <% end %>
+    <%= render "locations/location_field", :association => :location, :f => f %>
 
-  <div class="actions">
-    <%= f.submit t("general.submit"), :class => "button" %>
-  </div>
+    <div class="actions">
+        <%= f.submit t("general.submit"), :class => "button" %>
+    </div>
 <% end %>

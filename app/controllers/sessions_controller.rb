@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
 
-      notice = "Welcome, #{user.login_name}"
+      notice = t("notices.welcome_back", :name => user.login_name)
       redirect_back(root_url, :notice => notice)
     else
       flash.now.alert = t("authentication.invalid_usr_pwd")

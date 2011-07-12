@@ -95,6 +95,7 @@ zh-CN:
 
 
   notices:
+    welcome_back: "欢迎回来, %{name}"
     need_permission_logged: "请登入，或注册一个帐号。"
     need_permission_not_logged: "此操作需要%{permission}的权限， 请留意我们的公告来获知如何提升权限。"
     article_posted: 文章已发布
@@ -110,6 +111,7 @@ zh-CN:
     group_user_blocked: 已阻止该用户
     group_user_unlocked: 已解除对该用户的阻止
     post_created: 话题已发表
+    vendor_created: 商户已创建
 
   alerts:
     tip_already_collected: 该锦囊已经在您收藏中
@@ -137,12 +139,17 @@ zh-CN:
     badges: 管理徽章
     users: 用户
 
+  location:
+    city: 城市
+    detail: 地址
+    address: 地址
+
   address:
     province: 省份
     city: 城市
     change_city: 切换城市
     district: 区
-    detail: 详细地址
+    detail: 详细
     near: 靠近
     detail_hint: "地址格式: 南京东路1809号 第一食品商店"
     postcode: 邮政编码
@@ -156,6 +163,7 @@ zh-CN:
     change_avator: 换一张头像
     interested_places: "感兴趣的地方:"
     add_place: +地点
+    new_watched_location: 关注的地点
     receive_mails: 接受关于监察列表中食物安全动向的报告邮件
     my_recent_reviews: "最近发表的测评:"
     my_badges: "我的徽章:"
@@ -235,12 +243,11 @@ zh-CN:
     normal_vendor: "商户: <%{name}>"
     new_vendor: 新商户
     edit_vendor: 编辑商户
-    create_vendor: 新建商户
-    new_review: 添加测评
+    create_vendor: 添加商户
+    new_review: +测评
     all_reviews: "所有测评："
     recent_reviews: 最近的测评
     reviews_total: "总共："
-
 
   reviews:
     reviews: 所有测评

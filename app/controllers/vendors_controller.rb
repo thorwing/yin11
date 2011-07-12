@@ -6,9 +6,10 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.xml
   def index
-    @vendors = params[:q] ? Vendor.enabled.where(:name => /#{params[:q]}?/) : Vendor.enabled.all
+    criteria = Vendor.enabled.of_city(current_city.name)
+    @vendors = params[:q] ? criteria.where(:name => /#{params[:q]}?/).all : criteria.all
 
-    @json = @vendors.map{|v| v.location}.reject{|l| l.not_geocoded?}.to_gmaps4rails
+    @map_data = @vendors.map{|v| v.location}.reject{|l| l.not_geocoded?}.to_gmaps4rails
 
     logger = Logger.new(STDOUT)
     logger.info ">>> parameters:" + params[:q] if params[:q]
@@ -35,7 +36,7 @@ class VendorsController < ApplicationController
   # GET /vendors/new.xml
   def new
     @vendor = Vendor.new
-    @vendor.build_location(:name => (params[:name].present? ? params[:name] : ""))
+    @vendor.build_location(:name => (params[:name].present? ? params[:name] : ""), :city => current_city.name)
 
     respond_to do |format|
       if params[:popup]
@@ -54,7 +55,7 @@ class VendorsController < ApplicationController
 
     respond_to do |format|
       if @vendor.save
-        format.html { redirect_to(@vendor, :notice => 'Vendor was successfully created.') }
+        format.html { redirect_to(@vendor, :notice => t("notices.vendor_created")) }
         format.xml  { render :xml => @vendor, :status => :created, :location => @vendor }
         format.js {render :content_type => 'text/javascript'}
       else
@@ -94,7 +95,7 @@ class VendorsController < ApplicationController
   private
   def resolve_layout
     case action_name
-      when 'new', 'show', 'index'
+      when 'new', 'show'
         "map"
       else
         'application'

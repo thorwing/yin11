@@ -4,7 +4,7 @@
     <div class="field">
         <%= hidden_field_tag "vendor[address_attributes][city_id]", current_city.id %>
         <%= hidden_field_tag "vendor[address_attributes][city_name]", current_city.name, :class => "map_city" %>
-        <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), profile_edit_current_city_path(:popup => true), :rel => "facebox" %>)<br/>
+        <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true), :rel => "facebox" %>)<br/>
     </div>
     <%= f.fields_for :address do |builder| %>
         <div class="field">

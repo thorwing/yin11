@@ -20,12 +20,14 @@ Yin11::Application.routes.draw do
   match "/images/uploads/*path" => "gridfs#serve"
 
   get "locations/search"
+  get "locations/edit_current_city"
+  post "locations/update_current_city"
 
+  get "profile/new_watched_location"
+  post "profile/create_watched_location"
   get "profile/show"
   get "profile/edit"
   post "profile/update"
-  get "profile/edit_current_city"
-  post "profile/update_current_city"
 
   get "home/more_items"
   get "home/items"

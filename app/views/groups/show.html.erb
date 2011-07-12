@@ -1,4 +1,4 @@
-<%= title @group.name %>
+<% title @group.name %>
 <p><span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(GlobalConstants::TIME_FORMAT) %></span></p>
 <% unless current_user.nil? or @group.user_ids.include?(current_user.id) %>
     <%= link_to t("groups.join"), join_group_path(@group), :method => :put, :class => "button" %>

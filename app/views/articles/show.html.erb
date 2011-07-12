@@ -1,4 +1,4 @@
-<%= title @article.title %>
+<% title @article.title %>
 <%= render "shared/vote_fields", :item => @article %>
 <p class="trivial"><%= @article.reported_on.strftime('%m/%d/%Y') if @article.reported_on %></p>
 <%= render "shared/source", :source => @article.source %>

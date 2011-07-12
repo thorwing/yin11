@@ -1,34 +1,53 @@
-function update_map(control) {
-    //display an indicator that the process is begun
-    var indicator = $(".map_indicator");
-    if(indicator) {
-        indicator.removeClass("valid");
-        indicator.removeClass("invalid");
+function update_map(is_complete) {
+    var city_input = $(".map_city");
+    var detail_input = $(".map_detail");
+    //process only if the city and detail input fields are there
+    if(city_input && detail_input) {
+        //display an indicator that the process is begun
+        var indicator = $(".map_indicator");
+        if(indicator) {
+            indicator.removeClass("valid");
+            indicator.removeClass("invalid");
+        }
+
+        var address = city_input.val() + " " + detail_input.val();
+        $("#map_address_span").text(address);
+        $.getJSON('/locations/search.json?address=' + encodeURI(address), function(data) {
+            if(data && data.length ==2) {
+                if(indicator && is_complete) {
+                    indicator.addClass("valid");
+                }
+                if(is_complete){
+                    Gmaps4Rails.replaceMarkers([{"longitude": data[1], "latitude": data[0] }]);
+                    Gmaps4Rails.map.setZoom(15);
+                }
+                else{
+                    Gmaps4Rails.map.setCenter(Gmaps4Rails.createLatLng(data[0], data[1]));
+                    Gmaps4Rails.map.setZoom(10);
+                }
+            }
+            else {
+                if(indicator && is_complete) {
+                    indicator.addClass("invalid");
+                }
+            }
+        });
     }
-
-    var address = $(".map_address").val();
-    $.getJSON('/locations/search.json?address=' + encodeURI(address), function(data) {
-        var indicator =  $(".map_indicator");
-
-        if(data && data.length ==2) {
-            if(indicator) {
-                indicator.addClass("valid");
-            }
-            Gmaps4Rails.replaceMarkers([{"longitude": data[1], "latitude": data[0] }]);
-            Gmaps4Rails.map.setZoom(15);
-        }
-        else {
-            if(indicator) {
-                indicator.addClass("invalid");
-            }
-        }
-    });
 }
 
+Gmaps4Rails.geolocationFailure= function(browser_support) {
+  if (browser_support === true)
+    { //User refused geolocation
+    }
+  else
+    { //Geolocation not supported by the user's browser
+    }
+    update_map(false);
+};
+
 Gmaps4Rails.callback = function() {
-    //whatever you want here
-    $(".map_address").change(function(){
-        update_map(this);
+    $(".map_detail").change(function() {
+        update_map(true);
     });
 };
 
