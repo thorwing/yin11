@@ -182,8 +182,9 @@ zh-CN:
     tag_cloud: 标签云
     control_panel:
       watching: "我的关注:"
-      watching_foods: 食物
-      watching_tips: 锦囊
+      watched_foods: 食物
+      watched_locations: 地点
+      watched_tips: 锦囊
       joined_groups: 饭桌
       more: >更多
       add_foods_to_watch: 添加食物到关注列表

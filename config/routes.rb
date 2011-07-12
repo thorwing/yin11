@@ -25,6 +25,7 @@ Yin11::Application.routes.draw do
 
   get "profile/new_watched_location"
   post "profile/create_watched_location"
+  put "profile/delete_watched_location"
   get "profile/show"
   get "profile/edit"
   post "profile/update"

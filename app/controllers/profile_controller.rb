@@ -1,6 +1,5 @@
 class ProfileController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
-  layout :resolve_layout
 
   def show
     #referesh
@@ -39,16 +38,12 @@ class ProfileController < ApplicationController
   end
 
   def delete_watched_location
+    @location = current_user.profile.watched_locations.find(params[:location_id])
+    @location.delete
+    #current_user.profile.save
 
-  end
-
-  private
-  def resolve_layout
-    case action_name
-      when 'edit'
-        "map"
-      else
-        "application"
+    respond_to do |format|
+      format.js {render :content_type => 'text/javascript'}
     end
   end
 

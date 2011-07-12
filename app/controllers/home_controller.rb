@@ -186,8 +186,8 @@ class HomeController < ApplicationController
 
   def get_info_items(page, per)
     result = []
-    if current_user && current_user.profile.watching_foods.size > 0
-      for id in current_user.profile.watching_foods do
+    if current_user && current_user.profile.watched_foods.size > 0
+      for id in current_user.profile.watched_foods do
         food = Food.find(id)
         food_info = []
         food_info = get_related_reviews_of(food).inject([]){ |info_array, review| info_array << review } if current_user.profile.display_reviews

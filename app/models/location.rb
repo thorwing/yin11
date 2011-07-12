@@ -14,7 +14,7 @@ class Location
 
   attr_accessible :city, :detail, :coordinates
 
-  after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.address_changed?}
+  after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.detail_changed? }
 
   #virtual attributes
   def address

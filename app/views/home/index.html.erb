@@ -62,10 +62,10 @@
             <hr/>
             <h3><%= t("home.control_panel.watching") %></h3>
             <dl class="tab">
-                <dt><span><%= t("home.control_panel.watching_foods") %></span></dt>
-                    <dd id="foods_watching_list">
-                        <% if current_user && current_user.profile.watching_foods %>
-                            <% current_user.profile.watching_foods.each do |tag| %>
+                <dt><span><%= t("home.control_panel.watched_foods") %></span></dt>
+                    <dd id="watched_foods_list">
+                        <% if current_user && current_user.profile.watched_foods %>
+                            <% current_user.profile.watched_foods.each do |tag| %>
                                 <h4><%= link_to tag, {:action => "items", :tags => tag} %><%= get_severity_of_food(tag) %></h4>
                             <% end %>
                         <% end %>
@@ -75,8 +75,19 @@
                             <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>
                         <% end %>
                     </dd>
-                <dt><span><%= t("home.control_panel.watching_tips") %></span></dt>
-                    <dd id="tips_watching_list">
+                <dt><span><%= t("home.control_panel.watched_locations") %></span></dt>
+                    <dd id="watched_locations_list">
+                        <% if current_user && current_user.profile.watched_locations %>
+                            <% current_user.profile.watched_locations.each do |location| %>
+                                <p id="<%= location.id.to_s %>">
+                                    <%= content_tag :span, location.address %>
+                                    <%= get_bad_items_near_by(location).size %>
+                                </p>
+                            <% end %>
+                      <% end %>
+                    </dd>
+                <dt><span><%= t("home.control_panel.watched_tips") %></span></dt>
+                    <dd id="watched_tips_list">
                         <% @my_tips.each do |tip| %>
                             <%= link_to tip.title, tip, 'data-content' => tip.content, :class => "tip" %>
                         <% end %>
