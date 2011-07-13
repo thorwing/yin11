@@ -92,7 +92,7 @@ class VendorsController < ApplicationController
   private
   def resolve_layout
     case action_name
-      when 'new', 'show'
+      when 'new'
         "map"
       else
         'application'

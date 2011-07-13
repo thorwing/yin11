@@ -5,8 +5,8 @@
     <%= current_city.name %>
     <%= hidden_field_tag :city, current_city.name, :class => "map_city" %>
     <br/>
-    <b><%= t("location.detail") %></b><br/>
-    <%= text_field_tag :detail, "", :class => "map_detail" %>
+    <b><%= t("location.street") %></b><br/>
+    <%= text_field_tag :street, "", :class => "map_street" %>
 
     <div class="actions">
         <%= submit_tag t("general.submit"), :class => "button" %>

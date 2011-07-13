@@ -57,7 +57,7 @@ Feature: smoke tests for Vendors
     And I go to the vendors page
     Then I follow "新建商户"
     When I fill in "vendor_name" with "肯德基"
-    And I fill in "vendor_address_attributes_detail" with "大华二路"
+    And I fill in "vendor_street" with "大华二路"
     And I press "完成"
     And I go to the vendors page
     Then I should see "肯德基"

@@ -7,15 +7,15 @@ module Locational
       include Gmaps4rails::ActsAsGmappable
 
       field :city
-      field :detail
+      field :street
       field :coordinates, :type => Array
       index [[ :coordinates, Mongo::GEO2D ]], :min => -180, :max => 180
       geocoded_by :address
       acts_as_gmappable :lat => 'latitude', :lng => 'longitude', :process_geocoding => false
 
-      attr_accessible :city, :detail, :coordinates
+      attr_accessible :city, :street, :coordinates
 
-      after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.detail_changed? }
+      after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.street_changed? }
 
       include InstanceMethods
     end
@@ -23,7 +23,7 @@ module Locational
 
   module InstanceMethods
     def address
-      [(self.city ? self.city : ""), (self.detail ? self.detail : "")].join(" ");
+      [(self.city ? self.city : ""), (self.street ? self.street : "")].join(" ");
     end
 
     def latitude

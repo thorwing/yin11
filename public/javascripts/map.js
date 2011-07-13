@@ -1,8 +1,8 @@
 function update_map(is_complete) {
     var city_input = $(".map_city");
-    var detail_input = $(".map_detail");
+    var street_input = $(".map_street");
     //process only if the city and detail input fields are there
-    if(city_input && detail_input) {
+    if(city_input && street_input) {
         //display an indicator that the process is begun
         var indicator = $(".map_indicator");
         if(indicator) {
@@ -10,7 +10,7 @@ function update_map(is_complete) {
             indicator.removeClass("invalid");
         }
 
-        var address = city_input.val() + " " + detail_input.val();
+        var address = city_input.val() + " " + street_input.val();
         $("#map_address_span").text(address);
         $.getJSON('/locations/search.json?address=' + encodeURI(address), function(data) {
             if(data && data.length ==2) {
@@ -46,10 +46,30 @@ Gmaps4Rails.geolocationFailure= function(browser_support) {
 };
 
 Gmaps4Rails.callback = function() {
-    $(".map_detail").change(function() {
+    $(".map_street").change(function() {
         update_map(true);
     });
 };
+
+Gmaps4Rails.infobox = function(boxText) {
+  return {
+     content: boxText
+    ,disableAutoPan: false
+    ,maxWidth: 0
+    ,pixelOffset: new google.maps.Size(-140, 0)
+    ,zIndex: null
+    ,boxStyle: {
+      background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.5/examples/tipbox.gif') no-repeat"
+      ,opacity: 0.75
+      ,width: "280px"
+       }
+    ,closeBoxMargin: "10px 2px 2px 2px"
+    ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+    ,infoBoxClearance: new google.maps.Size(1, 1)
+    ,isHidden: false
+    ,pane: "floatPane"
+    ,enableEventPropagation: false
+ }};
 
 
 //function add_fields_with_map(link, association, content) {

@@ -11,6 +11,8 @@
     /*display:none;*/
 /*}*/
 
+.yellow { border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px; }
+
 .map_indicator { background-repeat:no-repeat; width:16px; height:16px;}
 .map_indicator span { display: none;}
 .map_indicator.checking { background-image:url("/images/slimbox/loading.gif"); }

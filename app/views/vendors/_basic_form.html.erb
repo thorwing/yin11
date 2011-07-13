@@ -1,0 +1,7 @@
+<%= render "shared/error_messages", :target => @vendor %>
+<div class="field">
+    <b><%= f.label :name, t("general.name") %></b><%= mark_required(@vendor, :name) %><%= mark_required_length(@vendor, :name) %><br/>
+    <%= f.text_field :name %>
+</div>
+
+<%= render "locations/location_fields", :f => f %>

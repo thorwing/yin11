@@ -3,15 +3,13 @@
 <span class="trivial"><%= t("location.show_nearby_tip") %></span>
 
 <ul id="markers_list">
-  <% @markers_data.to_a.each do |marker| %>
-    <li><%= link_to marker["title"], review_path(:id => marker["id"]) %></li>
-  <% end %>
+
 </ul>
 <div class="block_inside">
   <div class="image_frame">
 
-    <%= gmaps("map_options" => { "auto_adjust" => true, "list_container" => "markers_list" },
-              "markers" => { "data" => @markers_data.to_json },
+    <%= gmaps("map_options" => { "auto_adjust" => true },
+              "markers" => { "data" => @markers_json, "options" => {"custom_infowindow_class" => "yellow", "list_container" => "markers_list" } },
               "circles" => { "data" => @circles_json}) %>
   </div>
 </div>

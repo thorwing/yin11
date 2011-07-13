@@ -4,6 +4,7 @@ class InfoItem
   include Taggable
   include AssociatedModels
   include Available
+  include Locational
 
   scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
   scope :about, lambda{ |tag| any_in(:tags => [tag]) }

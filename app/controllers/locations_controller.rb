@@ -41,10 +41,11 @@ class LocationsController < ApplicationController
     else
       @location = current_user.profile.watched_locations.find(params[:location_id])
       distance = current_user.profile.watched_distance
-      vendors = Vendor.near(@location.to_coordinates, distance)
+      #TODO
+      @items = Review.near(@location.to_coordinates, distance).all
       #"picture" => "#{Rails.root.to_s}/public/images/bad_thumb.png"
       #id is for listing, not for map
-      @markers_data = vendors.inject([]){|memo, v| memo | v.reviews.all.map {|r| {"latitude" => v.latitude, "longitude" => v.longitude, "title" => r.title, "id" => r.id}} }
+      @markers_json = @items.to_gmaps4rails #vendors.inject([]){|memo, v| memo | v.reviews.all.map {|r| {"latitude" => v.latitude, "longitude" => v.longitude, "title" => r.title, "id" => r.id}} }
       @circles_json = [{"latitude" => @location.latitude, "longitude" => @location.longitude, "radius" => distance * 1000}].to_json
     end
 

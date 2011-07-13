@@ -11,31 +11,18 @@
     <div id="field">
       <%= @vendor.name %>
       <%= hidden_field_tag "#{item.class.name.downcase}[vendor_token]", @vendor.id %>
-      <!--for testing-->
+      <%= hidden_field_tag "#{item.class.name.downcase}[city]", @vendor.city %>
+      <%= hidden_field_tag "#{item.class.name.downcase}[street]", @vendor.street %>
+      <!--for testing -->
       <%= hidden_field_tag "#{item.class.name.downcase}[vendor_name]", @vendor.name %>
     </div>
   <% else %>
-    <div id="field">
-      <%= hidden_field_tag "#{item.class.name.downcase}[region_ids][]", current_city.id %>
-      <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true), :rel => "facebox" %>)<br/>
-      <%= f.label :vendor_token, t("vendors.vendor") %>
-      (<%= t("vendors.vendor_not_found") %> <%= link_to t("vendors.quick_create_vendor"), new_vendor_path(:popup => true), :rel => "facebox" %>)<br/>
-      <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
-     </div>
+    <%= render "locations/location_fields", :f => f %>
   <% end %>
   <div class="field">
     <%= f.label :reported_on_string, t("general.date") %><br/>
     <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
   </div>
-
-  <% if false %>
-      <div class="fields_group">
-        <%= f.fields_for :checkpoints do |builder| %>
-            <%= render "checkpoint_fields", :f => builder %>
-        <% end %>
-        <p><%= link_to_add_fields  t("reviews.add_checkpoint"), f, :checkpoints %></p>
-      </div>
-  <% end %>
 
   <% if item.is_a?(Review) %>
       <div class="field">
@@ -53,25 +40,6 @@
   <% end %>
 
   <%= render "info_items/images_fields", :f => f, :item => item %>
-
-  <% if false %>
-  <% tab_control do %>
-    <div class="tab_header">
-    <ul>
-        <%= local_tab_page( t("vendors.vendor"), true) do %>
-            <div id="field">
-                <%= f.label :vendor_token, t("vendors.vendor") %>
-                <%= f.text_field :vendor_token, 'data-pre' => (f.object.vendor ? [{ :id => f.object.vendor.id, :name => f.object.vendor.name }] : []).to_json %>
-            </div>
-        <% end %>
-        <%= local_tab_page( t("vendors.non_existed_vendor")) do %>
-        <% end %>
-    </ul>
-    </div>
-    <% tab_content do %>
-    <% end %>
-  <% end %>
-  <% end %>
 
   <div class="field">
     <%= f.label :content, t("reviews.content") %><%= mark_required(item, :content) %><%= mark_required_length(item, :content) %><br/>

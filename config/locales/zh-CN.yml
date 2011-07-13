@@ -141,20 +141,20 @@ zh-CN:
 
   location:
     city: 城市
-    detail: 地址
-    address: 地址
+    street: 地址
+    address: 详细地址
     miles: 公里
     nearby: 发生在附近
     show_nearby_tip: 点击标志物，可以查看具体信息
+    address_hint: "地址格式: 南京东路1809号 第一食品商店"
 
   address:
     province: 省份
     city: 城市
     change_city: 切换城市
     district: 区
-    detail: 详细
+    street: 详细
     near: 靠近
-    detail_hint: "地址格式: 南京东路1809号 第一食品商店"
     postcode: 邮政编码
     checking: 正在检查地址
 

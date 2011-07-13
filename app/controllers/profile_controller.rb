@@ -29,7 +29,7 @@ class ProfileController < ApplicationController
   end
 
   def create_watched_location
-    @location = current_user.profile.watched_locations.new(:city => params[:city], :detail => params[:detail])
+    @location = current_user.profile.watched_locations.new(:city => params[:city], :street => params[:street])
     @location.save
 
     respond_to do |format|

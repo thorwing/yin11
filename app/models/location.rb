@@ -4,7 +4,7 @@ class Location
   include Gmaps4rails::ActsAsGmappable
 
   field :city
-  field :detail
+  field :street
   field :coordinates, :type => Array
   geocoded_by :address
   acts_as_gmappable :lat => 'latitude', :lng => 'longitude', :process_geocoding => false
@@ -12,13 +12,13 @@ class Location
   #relationships
   embedded_in :vendor
 
-  attr_accessible :city, :detail, :coordinates
+  attr_accessible :city, :street, :coordinates
 
-  after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.detail_changed? }
+  after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.street_changed? }
 
   #virtual attributes
   def address
-    [(self.city ? self.city : ""), (self.detail ? self.detail : "")].join(" ");
+    [(self.city ? self.city : ""), (self.street ? self.street : "")].join(" ");
   end
 
   def latitude
