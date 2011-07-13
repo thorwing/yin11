@@ -20,6 +20,7 @@ Feature: smoke tests for Badges
   Background:
     Given There are minimal testing records
 
+  @focus
   Scenario: A admin can create a badge, and it can be given to a user
     When I log in as "Ray Admin"
     And I go to the admin_badges page
@@ -92,6 +93,7 @@ Feature: smoke tests for Badges
     When I go to the admin badges page
     Then I should see "新手上路" within "#enabled_badges"
 
+  @focus
   Scenario: User can get a badge for first review.
     Given the following badge exists:
       | name     | description  | contribution_field   | comparator | compared_value |
@@ -102,6 +104,7 @@ Feature: smoke tests for Badges
     And I go to the profile page
     Then I should see "新手上路"
 
+  @focus
   Scenario: User can get a repeatable badge.
     Given the following badge exists:
       | name     | description  | contribution_field   | comparator | compared_value | repeatable |
@@ -121,6 +124,7 @@ Feature: smoke tests for Badges
       | name     | description                     | contribution_field   | comparator | compared_value | repeatable |
       | 热门写手 | 发表一篇测评获得100分以上的投票 | highest_review_votes | 8          | 100            | true       |
 
+  @focus
   Scenario: User can get a badge for first up/down vote
     Given the following badge exists:
       | name   | description    | contribution_field | comparator | compared_value |

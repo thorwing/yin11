@@ -8,9 +8,7 @@
 <% end %>
 <p><%= raw @group.description %></p>
 
-<% if @group.address %>
-    <%= render "shared/display_map", :address => @group.address %>
-<% end %>
+<%= render "shared/display_map", :location => @group %>
 
  <% if @group.is_creator_by?(current_user) %>
     <%= link_to t("general.edit"), edit_group_path(@group), :method => :put, :class => "button" %>

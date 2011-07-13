@@ -2,6 +2,7 @@ class Group
   include Mongoid::Document
   include Mongoid::Timestamps
   include Taggable
+  include Locational
 
   field :name
   field :description
@@ -12,11 +13,9 @@ class Group
 
   #relationships
   has_and_belongs_to_many :users
-  embeds_one :address
   has_many :posts
 
-  accepts_nested_attributes_for :address, :allow_destroy => true
-  attr_accessible :name, :description, :address_attributes
+  attr_accessible :name, :description
 
   #validators
   validates_presence_of :name

@@ -1,20 +1,30 @@
+require "securerandom"
+
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Available
 
+  #TODO for Rails 3.1
+  #has_secure_password
+
   #Fields
-  field :email, :type => String
+  field :email
   key :email
-  field :login_name, :type => String
-  field :password_hash, :type => String
-  field :password_salt, :type => String
-  field :password_reset_token, :type => String
+
+  field :login_name
+  field :password_hash
+  field :password_salt
   field :role, :type => Integer, :default => 1
-  field :remember_token, :type => String
-  field :remember_token_expires_at, :type => Time
+  field :auth_token
+  field :password_reset_token
+  field :password_reset_sent_at, :type => DateTime
+
   field :badge_ids, :type => Array
   field :blocked_user_ids, :type => Array
+
+  index :email
+  index :auth_token
 
   #Relationships
   embeds_one :profile
@@ -38,75 +48,23 @@ class User
   validates_associated :profile, :contribution
 
   #Others
-  after_initialize :build_records
+  after_initialize { self.profile ||= Profile.new; self.contribution ||= Contribution.new }
   before_save :encrypt_password
+  before_create { generate_token(:auth_token) }
 
-  def build_records
-    self.profile ||= Profile.new
-    self.contribution ||= Contribution.new
-  end
-
-  def self.authenticate(email, password)
-    user = User.first(:conditions => {:email => email, :disabled => false } )
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
+  def authenticate(password)
+    if password.present? && self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
+      true
     else
-      nil
+      false
     end
   end
 
-  def remember_token?
-    (!remember_token.blank?) &&
-        remember_token_expires_at && (Time.now.utc < remember_token_expires_at.utc)
-  end
-
-  # These create and unset the fields required for remembering users between browser closes
-  def remember_me
-    remember_me_for 2.weeks
-  end
-
-  def remember_me_for(time)
-    remember_me_until time.from_now.utc
-  end
-
-  def remember_me_until(time)
-    self.remember_token_expires_at = time
-    self.remember_token = self.class.make_token
-    save
-  end
-
-  # refresh token (keeping same expires_at) if it exists
-  def refresh_token
-    if remember_token?
-      self.remember_token = self.class.make_token
-      save
-    end
-  end
-
-  #
-  # Deletes the server-side record of the authentication token. The
-  # client-side (browser cookie) and server-side (this remember_token) must
-  # always be deleted together.
-  #
-  def forget_me
-    self.remember_token_expires_at = nil
-    self.remember_token = nil
-    save
-  end
-
-  #todo
-  def has_notifications?
-    unless self.notifications
-      self.notifications = []
-      self.save
-    end
-
-    self.notifications.size > 0
-  end
-
-  def clean_notifications
-    self.notifications = []
-    self.save
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
   end
 
   def ask_for_badges
@@ -175,13 +133,10 @@ class User
     end
   end
 
-
-  def self.secure_digest(*args)
-    Digest::SHA1.hexdigest(args.flatten.join('--'))
-  end
-
-  def self.make_token
-    secure_digest(Time.now, (1..10).map{ rand.to_s })
+  def generate_token(column)
+     begin
+       self[column] = SecureRandom.urlsafe_base64
+     end while User.exists?(:conditions => {column => self[column]})
   end
 
 end

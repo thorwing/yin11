@@ -84,7 +84,7 @@ Feature: general usage
     And I search for "西瓜"
     Then I should see "土豆刷绿漆，冒充西瓜" within "#bad_items"
 
-
+  @focus
   Scenario: User will get rewards because of posting reviews.
     Given the following badge exists:
     | name     | description  | contribution_field | comparator | compared_value |

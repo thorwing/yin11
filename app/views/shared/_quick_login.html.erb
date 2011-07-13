@@ -13,9 +13,14 @@
             <td><%= password_field_tag :password %></td>
         </tr>
         <tr>
-            <td><%= check_box_tag "remember_me", "1", true %><%= t("authentication.remember_me") %></td>
+            <td><%= check_box_tag "remember_me", 1, params[:remember_me] %><%= t("authentication.remember_me") %></td>
+        </tr>
+        <tr>
+            <td><%= submit_tag t("authentication.log_in"), :class => "button" %></td>
+        </tr>
+        <tr>
+            <td><%= link_to t("authentication.sign_up"), sign_up_path %> | <%= link_to t("authentication.forgot_password"), new_password_reset_path %></td>
         </tr>
     </table>
-    <%= submit_tag t("authentication.log_in"), :class => "button" %>
-    <%= link_to t("authentication.sign_up"), sign_up_path %>
+
 <% end %>

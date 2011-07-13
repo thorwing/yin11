@@ -23,15 +23,16 @@ Feature: smoke tests for Reviews
     Then I should see "先找找针对的商户"
     Then I should see "实在想不起在哪儿买的食物了"
 
+  @focus
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:
-    | name     |
-    | 农工商超市 |
+    | name       | city |
+    | 农工商超市 | 上海 |
     When I log in as "David User"
     And I follow "发表食物测评"
     And I follow "先找找针对的商户"
     And I follow "农工商超市"
-    And I follow "添加测评"
+    And I follow "+测评"
     Then I should see "新测评"
     Then I should see "农工商超市"
 
@@ -43,8 +44,8 @@ Feature: smoke tests for Reviews
 
   Scenario: User can skip choosing a vendor, and create a new review
     Given the following vendor exists:
-    | name     |
-    | 农工商超市 |
+    | name       | city |
+    | 农工商超市 | 上海 |
     When I log in as "David User"
     And I follow "发表食物测评"
     And I follow "实在想不起在哪儿买的食物了"

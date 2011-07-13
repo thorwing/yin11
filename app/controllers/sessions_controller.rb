@@ -4,16 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate(params[:email], params[:password])
-    if user
-      self.current_user = user
+    user = User.first(:conditions => {:email => params[:email], :disabled => false } )
+    if user && user.authenticate(params[:password])
+      if params[:remember_me]
+        cookies.permanent[:auth_token] = user.auth_token
+      else
+        cookies[:auth_token] = user.auth_token
+      end
 
-      # Remember me functionality
-      new_cookie_flag = (params[:remember_me] == "1")
-      handle_remember_cookie! new_cookie_flag
-
-      notice = t("notices.welcome_back", :name => user.login_name)
-      redirect_back(root_url, :notice => notice)
+      redirect_back root_url, :notice => t("notices.welcome_back", :name => user.login_name)
     else
       flash.now.alert = t("authentication.invalid_usr_pwd")
       render "new"
@@ -21,7 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout_killing_session!
+    cookies.delete :auth_token
     redirect_to root_url, :notice => t("authentication.logged_out")
   end
 

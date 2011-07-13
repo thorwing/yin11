@@ -11,18 +11,18 @@ Feature: smoke tests for Vendors
 
   Scenario: Guest can view vendros
     Given the following vendor exists:
-    | name     |
-    | 农工商超市 |
+      | name       | city |
+      | 农工商超市 | 上海 |
     When I go to the vendors page
     Then I should see "农工商超市"
 
   Scenario: User can search for vendors
     Given the following vendor exists:
-    | name     |
-    | 农工商超市 |
+      | name       | city |
+      | 农工商超市 | 上海 |
     Given the following vendor exists:
-    | name       | disabled |
-    | 家乐福超市 | true   |
+      | name       | city | disabled |
+      | 家乐福超市 | 上海 | true     |
     When I go to the vendors page
     Then I should see "农工商超市"
     And I fill in "search" with "农工商超市"
@@ -55,7 +55,7 @@ Feature: smoke tests for Vendors
   Scenario: User can create a vendor from the index page
     When I log in as "David User"
     And I go to the vendors page
-    Then I follow "新建商户"
+    Then I follow "添加商户"
     When I fill in "vendor_name" with "肯德基"
     And I fill in "vendor_street" with "大华二路"
     And I press "完成"
@@ -64,11 +64,11 @@ Feature: smoke tests for Vendors
 
   Scenario: Only admin can edit vendor if it is not locked
     Given the following vendor exists:
-    | name       |
-    | 农工商超市 |
-   Given the following vendor exists:
-    | name       | disabled |
-    | 家乐福超市 | true   |
+      | name       | city |
+      | 农工商超市 | 上海 |
+    Given the following vendor exists:
+      | name       | city | disabled |
+      | 家乐福超市 | 上海 | true     |
 
     When I log in as "Ray Admin"
     And I go to the admin_vendors page
@@ -83,9 +83,8 @@ Feature: smoke tests for Vendors
 
   Scenario: User can post error report for vendor's information
     Given the following vendor exists:
-    | name       |
-    | 农工商超市 |
-
+      | name       | city |
+      | 农工商超市 | 上海 |
     When I go to the vendors page
     And I fill in "search" with "农工商超市"
     And I press "搜索"
@@ -97,8 +96,8 @@ Feature: smoke tests for Vendors
 
   Scenario: Vendor can only be managed form the admin control panel
      Given the following vendor exists:
-        | name       |
-        | 农工商超市 |
+      | name       | city |
+      | 农工商超市 | 上海 |
      When I log in as "Ray Admin"
      And I go to the vendors page
      And I follow "农工商超市"

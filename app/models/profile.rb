@@ -1,7 +1,7 @@
 class Profile
   include Mongoid::Document
   include Mongoid::Timestamps::Updated
-  #food names
+
   field :watched_foods, :type => Array, :default => []
   field :receive_mails, :type => Boolean, :default => true
   field :watched_distance, :type => Integer, :default => 2

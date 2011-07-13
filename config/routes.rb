@@ -1,5 +1,4 @@
 Yin11::Application.routes.draw do
-
   put "admin/base/toggle_disabled"
 
   namespace :admin do
@@ -39,6 +38,8 @@ Yin11::Application.routes.draw do
   put "home/vote"
   get "home/new_comment"
   post "home/add_comment"
+
+  resources :password_resets
 
   resources :tags, :only => [:index]
 
