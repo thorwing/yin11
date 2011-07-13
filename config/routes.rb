@@ -22,6 +22,7 @@ Yin11::Application.routes.draw do
   get "locations/search"
   get "locations/edit_current_city"
   post "locations/update_current_city"
+  get "locations/show_nearby_items"
 
   get "profile/new_watched_location"
   post "profile/create_watched_location"

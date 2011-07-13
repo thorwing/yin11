@@ -81,7 +81,7 @@
                             <% current_user.profile.watched_locations.each do |location| %>
                                 <p id="<%= location.id.to_s %>">
                                     <%= content_tag :span, location.address %>
-                                    <%= get_bad_items_near_by(location).size %>
+                                    <%= link_to t("general.show"), locations_show_nearby_items_path(:location_id => location.id) %>
                                 </p>
                             <% end %>
                       <% end %>

@@ -29,6 +29,7 @@
     </div>
 <% end %>
 
+<br/>
  <% if the_author_himself(Review.name, @review.id, true, false) %>
     <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>
 <% end %>

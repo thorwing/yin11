@@ -51,6 +51,7 @@ Gmaps4Rails.callback = function() {
     });
 };
 
+
 //function add_fields_with_map(link, association, content) {
 //  var new_id = new Date().getTime();
 //  var regexp = new RegExp("new_" + association, "g");

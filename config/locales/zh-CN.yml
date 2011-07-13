@@ -143,6 +143,9 @@ zh-CN:
     city: 城市
     detail: 地址
     address: 地址
+    miles: 公里
+    nearby: 发生在附近
+    show_nearby_tip: 点击标志物，可以查看具体信息
 
   address:
     province: 省份
