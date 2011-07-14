@@ -1,15 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper :layout
+  helper :application, :layout
   before_filter :set_locale, :set_city
-  helper_method :current_user, :current_city
-  helper_method :get_related_reviews_of, :get_related_articles_of, :the_author_himself, :get_region
-  FOOD_ARTICLES_LIMIT = 5
-  FOOD_REVIEWS_LIMIT = 5
+  helper_method :current_user, :current_city, :the_author_himself
 
   def current_user
-    @current_user ||= User.first(:conditions => {:auth_token => cookies[:auth_token]}) if cookies[:auth_token]
+    @current_user ||= User.of_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
 
   def current_city
@@ -29,14 +26,14 @@ class ApplicationController < ActionController::Base
   def set_city
     #should be set only once
     unless session[:current_city]
-      city = City.first(:conditions => {:name_en => request.location.city.upcase})
+      city = City.of_eng_name(request.location.city.upcase)
       #TODO
-      city ||= City.first(:conditions => {:name => t("system.default_city")})
+      city ||= City.of_name(t("system.default_city"))
       session[:current_city] = city.id
     end
   end
 
-# redirect somewhere that will eventually return back to here
+  # redirect somewhere that will eventually return back to here
   def redirect_away(*params)
     session[:original_uri] = request.fullpath
     redirect_to(*params)
@@ -53,7 +50,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #TODO
   def require_permission(permission)
     if current_user && current_user.has_permission?(permission)
       true
@@ -82,51 +78,6 @@ class ApplicationController < ActionController::Base
     has_permission
   end
 
-  def get_vote_weight_of_current_user
-    weight = 0
-
-    if current_user
-      if current_user.has_permission?(:admin)
-        weight = 5
-      elsif current_user.has_permission?(:editor)
-        weight = 3
-      else
-        weight = 1
-      end
-    end
-    weight
-  end
-
-  #TODO
-  def get_related_reviews_of(food)
-
-    result = Review.in_days_of(7).about(food).desc(:reported_on).limit(FOOD_REVIEWS_LIMIT)
-
-    if result.size < FOOD_REVIEWS_LIMIT
-      result = result | Review.in_days_of(14).about(food).desc(:reported_on)
-    end
-
-    result.size > FOOD_REVIEWS_LIMIT ? result[0...FOOD_REVIEWS_LIMIT - 1] : result
-  end
-
-  def get_related_articles_of(food, user = nil)
-    result = []
-    #result = Article.enabled.in_days_of(7).about(food).in_city(user.profile.address.city_id).desc(:created_at).limit(FOOD_ARTICLES_LIMIT) if user
-
-    if result.size < FOOD_ARTICLES_LIMIT
-      result = result | Article.enabled.in_days_of(14).about(food).desc(:reported_on)
-    end
-
-    result.size > FOOD_ARTICLES_LIMIT ? result[0...FOOD_ARTICLES_LIMIT - 1] : result
-  end
-
-#  def get_conflicts_of(foods)
-#    result = []
-#    return result if foods.size < 2
-#    result
-#  end
-
-
   def self.get_tiny_mce_style
      {
        :theme => 'advanced',
@@ -140,20 +91,7 @@ class ApplicationController < ActionController::Base
      }
    end
 
-  def get_region(region_id)
-    if region_id.present?
-      city = City.first(:conditions => {:id => region_id})
-      if city
-        return city
-      else
-        province = Province.first(:conditions => {:id => region_id})
-        return province if province
-      end
-    end
-
-    nil
-  end
-
+  #TODO
   def get_hot_tags
     tags = Rails.cache.read('hot_tags')
     if tags.blank?

@@ -4,6 +4,7 @@ Feature: general usage
   Background:
     Given There are minimal testing records
 
+  @focus
   Scenario: Guest can visit the entry page
     When I go to the home page
     Then I should see "您的餐桌安全吗？"

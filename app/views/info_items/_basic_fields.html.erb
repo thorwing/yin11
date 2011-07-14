@@ -7,14 +7,14 @@
      <%= f.label :tags_string, t("info_items.tags") %><br/>
      <%= f.text_field :tags_string, 'data-pre' => (item.tags ? item.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
   </div>
-  <% if @vendor %>
+  <% if item.vendor %>
     <div id="field">
-      <%= @vendor.name %>
-      <%= hidden_field_tag "#{item.class.name.downcase}[vendor_token]", @vendor.id %>
-      <%= hidden_field_tag "#{item.class.name.downcase}[city]", @vendor.city %>
-      <%= hidden_field_tag "#{item.class.name.downcase}[street]", @vendor.street %>
+      <%= item.vendor.name %>
+      <%= hidden_field_tag "#{item.class.name.downcase}[vendor_token]", item.vendor.id %>
+      <%= hidden_field_tag "#{item.class.name.downcase}[city]", item.vendor.city %>
+      <%= hidden_field_tag "#{item.class.name.downcase}[street]", item.vendor.street %>
       <!--for testing -->
-      <%= hidden_field_tag "#{item.class.name.downcase}[vendor_name]", @vendor.name %>
+      <%= hidden_field_tag "#{item.class.name.downcase}[vendor_name]", item.vendor.name %>
     </div>
   <% else %>
     <%= render "locations/location_fields", :f => f %>

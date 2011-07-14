@@ -29,13 +29,13 @@
   end
 
   File.open(File.join(RAILS_ROOT, 'app/assets/cities_en.txt')).each_line { |c|
-    name, name_en = c.split(" ")
+    name, eng_name = c.split(" ")
     city = City.first(:conditions => {:name => name})
     if city
-      city.name_en = name_en
+      city.eng_name = eng_name
       city.save
     end
-    p name + " " + name_en if city.nil?
+    p name + " " + eng_name if city.nil?
   }
 
 #  File.open(File.join(RAILS_ROOT, 'app/assets/city_ip.txt')).each_line { |c|

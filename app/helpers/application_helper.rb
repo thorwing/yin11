@@ -284,4 +284,10 @@ def image_uploadify(item)
     result
   end
 
+  def get_region(region_id)
+    region = City.first(:conditions => {:id => region_id})
+    region = Province.first(:conditions => {:id => region_id}) unless region
+    region
+  end
+
 end

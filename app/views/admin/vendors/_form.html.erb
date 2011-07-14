@@ -1,5 +1,5 @@
 <%= form_for [:admin, @vendor] do |f| %>
-  <%= render "vendors/basic_form", :f => f %>
+  <%= render "vendors/basic_form", :vendor => @vendor, :f => f %>
 
   <div class="field">
     <%= f.label :disabled, t("general.disable") %><br />

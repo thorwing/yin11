@@ -1,15 +1,15 @@
-<% title @vendor.name %>
+<% title vendor.name %>
 
 <div class="two_columns_container" >
     <div class="left_column">
-        <p><%= t("location.address") %>: <%= @vendor.address %></p>
-        <h3><%= t("vendors.all_reviews") %><span class="trivial">(<%= t("vendors.reviews_total") %><%= @vendor.reviews.size %>)</span></h3>
+        <p><%= t("location.address") %>: <%= vendor.address %></p>
+        <h3><%= t("vendors.all_reviews") %><span class="trivial">(<%= t("vendors.reviews_total") %><%= vendor.reviews.size %>)</span></h3>
         <p>
-            <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => @vendor.id), :class => "button" %>
-            | <%= link_to t("general.report"), new_report_path(:vendor_id => @vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>
+            <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id), :class => "button" %>
+            | <%= link_to t("general.report"), new_report_path(:vendor_id => vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>
         </p>
         <ul>
-            <% @vendor.reviews.each do |review| %>
+            <% vendor.reviews.each do |review| %>
                 <li><%= link_to review.title, review %></li>
             <% end %>
         </ul>
@@ -20,7 +20,7 @@
     <div class="right_column">
         <div class="block_inside">
             <div class="image_frame">
-                <%= render "shared/display_map", :location => @vendor %>
+                <%= render "shared/display_map", :location => vendor %>
             </div>
         </div>
     </div>

@@ -23,5 +23,5 @@ Geocoder::Configuration.language = "zh-CN"
 
 # caching (see below for details)
 #TODO
-# Geocoder::Configuration.cache = Hash.new()
+Geocoder::Configuration.cache = Hash.new()
 # Geocoder::Configuration.cache_prefix = "..."

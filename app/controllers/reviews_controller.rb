@@ -29,12 +29,12 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.xml
   def new
-    @review = Review.new
-    if params[:vendor_id].present?
-      @vendor = Vendor.find(params[:vendor_id])
+    if params[:vendor_id]
+      vendor = Vendor.find(params[:vendor_id])
+      @review = vendor.reviews.build
+    else
+      @review = Review.new
     end
-
-    @sub_title = t("sub_titles.new_review")
 
 #    1.times do
 #      @review.checkpoints.build(:title => "sample")

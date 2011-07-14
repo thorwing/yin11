@@ -1,10 +1,26 @@
 class City
   include Mongoid::Document
+
   field :code
   key :code
   field :name
   field :postcode
-  field :name_en
+  field :eng_name
+
+  #indexes
+  index :name, :unique => true
+  index :eng_name
+
+  # strange error when trying to using scope, so using class method instead
+  class << self
+    def of_name(name)
+      first(:conditions => {:name => name})
+    end
+
+    def of_eng_name(eng)
+      first(:conditions => {:eng_name => eng})
+    end
+  end
 
   #Relationships
   belongs_to :province

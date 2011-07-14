@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  include ApplicationHelper
 
   def index
 
@@ -122,7 +123,7 @@ class HomeController < ApplicationController
       end
     end
 
-    weight = delta * get_vote_weight_of_current_user
+    weight = delta * current_user.vote_weight
     @item.votes += weight
     @votes = @item.votes
 
@@ -182,24 +183,6 @@ class HomeController < ApplicationController
     rescue
        raise "not supported type: " + type
     end
-  end
-
-  def get_info_items(page, per)
-    result = []
-    if current_user && current_user.profile.watched_foods.size > 0
-      for id in current_user.profile.watched_foods do
-        food = Food.find(id)
-        food_info = []
-        food_info = get_related_reviews_of(food).inject([]){ |info_array, review| info_array << review } if current_user.profile.display_reviews
-        #TODO
-        food_info += get_related_articles_of(food, current_user).inject([]){ |info_array, article| info_array << article } if current_user.profile.display_articles
-        result |= food_info.sort{ |a, b| a.votes <=> b.votes}.reverse()[0..2]
-      end
-    else
-      result = Review.desc(:reported_on).page(page).per(per/2) + Article.enabled.desc(:reported_on).per(per/2)
-      result = result.sort!{ |a, b| a.votes <=> b.votes}.reverse()[0..4]
-    end
-    result
   end
 
   def get_items(page_idx)

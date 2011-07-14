@@ -26,6 +26,13 @@ class User
   index :email
   index :auth_token
 
+  # strange error when trying to using scope, so using class method instead
+  class << self
+    def of_auth_token(token)
+      first(:conditions => {:auth_token => token})
+    end
+  end
+
   #Relationships
   embeds_one :profile
   embeds_one :contribution
@@ -82,6 +89,16 @@ class User
       ask_for_badges
     rescue Exception => exc
       Rails.logger.info exc.message
+    end
+  end
+
+  def vote_weight
+    if has_permission?(:admin)
+      GlobalConstants::ADMIN_VOTE_WEIGHT
+    elsif has_permission?(:editor)
+      GlobalConstants::EDITOR_VOTE_WEIGHT
+    else
+      GlobalConstants::NORMAL_USER_VOTE_WEIGHT
     end
   end
 
