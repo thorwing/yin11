@@ -2,6 +2,8 @@ class GroupsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
 
   def index
+    #TODO
+    #display join and quit links
     @groups = Group.all
 
     respond_to do |format|
@@ -12,8 +14,10 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @can_join = (current_user and (not @group.member_ids.include?(current_user.id)))
+    @can_quit = (current_user and @group.member_ids.include?(current_user.id))
 
-     respond_to do |format|
+    respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @group }
     end
@@ -34,19 +38,14 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(params[:group])
-    @group.created_by = current_user.id.to_s
+    @group.creator_id = current_user.id
+    @group.join!(current_user)
 
-    #current_user.make_contribution(:created_groups, 1)
-    #current_user.save
+    RewardManager.new(current_user).contribute(:created_groups)
 
     respond_to do |format|
-      if current_user.join!(@group) && @group.save
         format.html { redirect_to(@group, :notice => t("notices.group_created")) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
-      end
     end
   end
 
@@ -66,29 +65,19 @@ class GroupsController < ApplicationController
 
   def join
     @group = Group.find(params[:id])
-
+    @group.join!(current_user)
     respond_to do |format|
-      if current_user.join!(@group) && @group.save
-        format.html { redirect_to(@group, :notice => t("notices.group_joind"))}
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "show", :alert => t("alerts.group_not_joind")}
-        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
-      end
+      format.html { redirect_to(@group, :notice => t("notices.group_joind"))}
+      format.xml  { head :ok }
     end
   end
 
   def quit
     @group = Group.find(params[:id])
-
+    @group.quit!(current_user)
     respond_to do |format|
-      if current_user.quit!(@group) && @group.save
         format.html { redirect_to(@group, :notice => t("notices.group_quited"))}
         format.xml  { head :ok }
-      else
-        format.html { render :action => "show", :alert => t("alerts.group_not_quited")}
-        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
-      end
     end
   end
 

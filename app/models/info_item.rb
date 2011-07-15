@@ -8,6 +8,9 @@ class InfoItem
 
   scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
   scope :about, lambda{ |tag| any_in(:tags => [tag]) }
+  #any_in will perform an intersaction when chained
+  #TODO
+  scope :of_type, lambda { |types| any_in(:_type => types ) }
   scope :bad, any_in(:_type => ["Review", "Article"])
   scope :good, any_in(:_type => ["Recommendation", "Tip"])
   scope :of_region, lambda { |region_id| any_in(:region_ids => [region_id])}

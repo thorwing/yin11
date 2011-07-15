@@ -4,7 +4,7 @@
     <% @badges.each do |badge| %>
         <div>
             <%= image_tag "award.png" %><%= link_to badge.name, badge %>
-            <%= "×" + badge.count_of_awarded.to_s %>
+            <%= "×" + badge.user_ids.size.to_s %>
             <%= badge.description %>
         </div>
     <% end %>

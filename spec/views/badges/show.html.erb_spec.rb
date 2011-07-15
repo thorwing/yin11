@@ -4,8 +4,7 @@ describe "badges/show.html.erb" do
   before(:each) do
     @badge = assign(:badge, stub_model(Badge,
       :name => "Name",
-      :description => "Description",
-      :repeatable => false
+      :description => "Description"
     ))
   end
 

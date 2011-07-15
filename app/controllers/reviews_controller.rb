@@ -68,8 +68,7 @@ class ReviewsController < ApplicationController
       end
     end
 
-    current_user.make_contribution(:created_reviews, 1)
-    current_user.save
+    RewardManager.new(current_user).contribute(:posted_reviews)
 
     respond_to do |format|
       if @review.save

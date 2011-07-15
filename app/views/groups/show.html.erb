@@ -1,31 +1,18 @@
 <% title @group.name %>
 <p><span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(GlobalConstants::TIME_FORMAT) %></span></p>
-<% unless current_user.nil? or @group.user_ids.include?(current_user.id) %>
-    <%= link_to t("groups.join"), join_group_path(@group), :method => :put, :class => "button" %>
-<% end %>
-<% if current_user and @group.user_ids.include?(current_user.id) %>
-    <%= link_to t("groups.quit"), quit_group_path(@group), :method => :put, :class => "button" %>
-<% end %>
-<p><%= raw @group.description %></p>
+
+<%= link_to t("groups.join"), join_group_path(@group), :method => :put, :class => "button" if @can_join %>
+<%= link_to t("groups.quit"), quit_group_path(@group), :method => :put, :class => "button"  if @can_quit%>
+<p><%= @group.description %></p>
 
 <%= render "shared/display_map", :location => @group %>
 
- <% if @group.is_creator_by?(current_user) %>
-    <%= link_to t("general.edit"), edit_group_path(@group), :method => :put, :class => "button" %>
-<% end %>
+<%= link_to t("general.edit"), edit_group_path(@group), :method => :put, :class => "button" if @group.is_creator_by?(current_user) %>
 
 <hr/>
 <b><%= t("groups.member") %></b>
-<% @group.users.each do |user| %>
-    <p>
-        <%= user.login_name %>
-        <% if user_can_be_blocked?(user) %>
-            <%= link_to t("groups.block"), block_group_path(@group, :user_id => user.id), :method => :put, :class => "button" %>
-        <% elsif user_can_be_unlocked?(user) %>
-            <%= link_to t("groups.unblock"), unlock_group_path(@group, :user_id => user.id), :method => :put, :class => "button" %>
-        <% end %>
-    </p>
-<% end %>
+<%= render :partial => "member", :collection => @group.members %>
+
 <hr/>
 <div id="group_posts">
     <h3><%= t("groups.posts") %></h3>

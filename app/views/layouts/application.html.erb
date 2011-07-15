@@ -30,7 +30,7 @@
                 <li><%= link_to t("menu.vendors"), vendors_path %></li>
                 <li><%= link_to t("menu.badges"), badges_path %></li>
                 <% if current_user %>
-                    <li><%= link_to t("menu.prfile"), profile_edit_path %></li>
+                    <li><%= link_to t("menu.prfile"), profile_show_path %></li>
                     <li><%= link_to t("authentication.log_out"), log_out_path %></li>
                 <% else %>
                     <li><%= link_to t("authentication.log_in"), new_sessions_path %></li>

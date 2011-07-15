@@ -4,7 +4,6 @@ Feature: smoke tests for Badges
   Only Admin can edit badges.
   Only Admin can disable badges.
   User can get a badge for first review.
-  User can get a repeatable badge.
   for 10 reviews.
   for his review gets more than 100 votes.
   for first up/down vote
@@ -20,15 +19,15 @@ Feature: smoke tests for Badges
   Background:
     Given There are minimal testing records
 
-  @focus
+
   Scenario: A admin can create a badge, and it can be given to a user
     When I log in as "Ray Admin"
     And I go to the admin_badges page
     And I follow "新建"
-    And I fill in "badge_name" with "新手"
+    And I fill in "badge_name" with "新手上路"
     And I fill in "badge_description" with "发表第一篇测评"
-    And I select "created_reviews" from "badge_contribution_field"
-    And I select "COMPARISON_GREATER_THAN_OR_EQUAL" from "badge_comparator"
+    And I select "posted_reviews" from "badge_contribution_field"
+    And I select "greater_than_or_equals" from "badge_comparator"
     And I fill in "badge_compared_value" with "1"
     And I press "完成"
 
@@ -50,7 +49,7 @@ Feature: smoke tests for Badges
   Scenario: Only Admin can edit badges.
     Given the following badge exists:
     | name     | description  | contribution_field | comparator | compared_value |
-    | 新手上路 | 发表一篇测评 | created_reviews    | 8          | 1              |
+    | 新手上路 | 发表一篇测评 | posted_reviews     | ==          | 1              |
     When I log in as "Ray Admin"
     And I go to the admin_badges page
     And I follow "新手上路"
@@ -72,10 +71,11 @@ Feature: smoke tests for Badges
     And I follow "徽章" within "#top_menu"
     Then I should not see "×1"
 
+
   Scenario: Only Admin can toggle "disable" of badges.
     Given the following badge exists:
     | name     | description  | contribution_field | comparator | compared_value |
-    | 新手上路 | 发表一篇测评 | created_reviews    | 8          | 1              |
+    | 新手上路 | 发表一篇测评 | posted_reviews     | ==          | 1              |
     When I log in as "Ray Admin"
     And I go to the admin badges page
     And I follow "新手上路"
@@ -93,42 +93,27 @@ Feature: smoke tests for Badges
     When I go to the admin badges page
     Then I should see "新手上路" within "#enabled_badges"
 
-  @focus
+
   Scenario: User can get a badge for first review.
     Given the following badge exists:
-      | name     | description  | contribution_field   | comparator | compared_value |
-      | 新手上路 | 发表第一篇测评 | created_reviews    | 3          | 1              |
+      | name     | description  | contribution_field  | comparator | compared_value |
+      | 新手上路 | 发表第一篇测评 | posted_reviews    | ==          | 1              |
 
     When I log in as "David User"
     And I post a simple review without vendor
     And I go to the profile page
     Then I should see "新手上路"
-
-  @focus
-  Scenario: User can get a repeatable badge.
-    Given the following badge exists:
-      | name     | description  | contribution_field   | comparator | compared_value | repeatable |
-      | 新手上路 | 发表第一篇测评 | created_reviews    | 8          | 1              | true       |
-
-    When I log in as "David User"
-    And I post a simple review without vendor
-    And I go to the profile page
-    Then I should see "新手上路"
-
-    And I post a simple review without vendor
-    And I go to the profile page
-    Then I should see "新手上路×2"
 
   Scenario: User can get a badge for his review gets more than 100 votes.
     Given the following badge exists:
-      | name     | description                     | contribution_field   | comparator | compared_value | repeatable |
-      | 热门写手 | 发表一篇测评获得100分以上的投票 | highest_review_votes | 8          | 100            | true       |
+      | name     | description                     | contribution_field   | comparator | compared_value |
+      | 热门写手 | 发表一篇测评获得100分以上的投票 | highest_review_votes | >=          | 100            |
 
-  @focus
+
   Scenario: User can get a badge for first up/down vote
     Given the following badge exists:
       | name   | description    | contribution_field | comparator | compared_value |
-      | 批评家 | 投出第一票down | total_down_votes   | 8          | 1              |
+      | 批评家 | 投出第一票down | total_down_votes   | ==          | 1              |
 
     And the following article exists:
       | title            | content                            | tags_string |
@@ -144,14 +129,14 @@ Feature: smoke tests for Badges
   Scenario: User can get a badge for leaving 10 comments
     Given the following badge exists:
       | name   | description | contribution_field | comparator | compared_value |
-      | 评论者 | 写10条评论 | total_comments     | 8           | 10              |
+      | 评论者 | 写10条评论 | total_comments     | ==           | 10              |
 
   Scenario: User can get a badge for for creating first tip
     Given the following badge exists:
       | name   | description    | contribution_field | comparator | compared_value |
-      | 学徒   | 创建第一条贴士 | created_tips       | 8           | 1              |
+      | 学徒   | 创建第一条贴士 | posted_tips       | ==           | 1              |
 
   Scenario: User can get a badge for for first editing tip
     Given the following badge exists:
       | name   | description    | contribution_field | comparator | compared_value |
-      | 纠正者 | 编辑第一条贴士 | edited_tips       | 8           | 1              |
+      | 纠正者 | 编辑第一条贴士 | edited_tips       | ==           | 1              |

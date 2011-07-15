@@ -5,13 +5,11 @@ describe "badges/index.html.erb" do
     assign(:badges, [
       stub_model(Badge,
         :name => "Name",
-        :description => "Description",
-        :repeatable => false
+        :description => "Description"
       ),
       stub_model(Badge,
         :name => "Name",
-        :description => "Description",
-        :repeatable => false
+        :description => "Description"
       )
     ])
   end

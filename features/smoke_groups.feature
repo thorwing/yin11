@@ -3,13 +3,13 @@ Feature: smoke tests for Groups
   Background:
     Given There are minimal testing records
 
-  @focus
+
   Scenario: Guest can visit a group
     When I go to the groups page
     And I should see "所有饭桌"
     #And I should see "搜索"
 
-  @focus
+
   Scenario: Only user can create a group
     When I go to the new_group page
     Then I should be on the log_in page
@@ -26,7 +26,7 @@ Feature: smoke tests for Groups
     Then I should see "大华小龙虾搜查队"
     Then I should see "1成员"
 
-  @focus
+
   Scenario: User can join a group
     Given the following group exists:
     | name       | tags_string |
@@ -37,7 +37,7 @@ Feature: smoke tests for Groups
     And I go to the profile page
     Then I should see "西瓜守望者"
 
-  @focus
+
   Scenario: User can quit a group
     Given the following group exists:
     | name       | tags_string |
@@ -51,7 +51,7 @@ Feature: smoke tests for Groups
     And I go to the profile page
     Then I should not see "西瓜守望者"
 
-  @focus
+
   Scenario: post from another group member will get marked for me
     Given the following group exists:
       | name       | tags_string |
@@ -72,7 +72,7 @@ Feature: smoke tests for Groups
     And I go to the home page
    Then I should see "相关饭桌：西瓜守望者"
 
-  @focus
+
   Scenario: User can block and unlock another group member
     Given the following group exists:
       | name       | tags_string |
@@ -99,7 +99,7 @@ Feature: smoke tests for Groups
     And I go to the home page
     Then I should see "买到烂西瓜"
 
-  @focus
+
   Scenario: Group member can post for his group
     Given the following group exists:
       | name       | tags_string |

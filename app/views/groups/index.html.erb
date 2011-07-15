@@ -1,6 +1,8 @@
 <% title t("groups.all") %>
 <% @groups.each do |group| %>
-    <p><%= link_to group.name, group %>(<%= group.members_count.to_s %><%= t("groups.member") %>)</p>
+    <p>
+      <%= link_to group.name, group %>(<%= group.member_ids.size.to_s %><%= t("groups.member") %>)
+    </p>
 <% end %>
 <br/>
 <%= link_to t("groups.new"), new_group_path, :class => "button" %>

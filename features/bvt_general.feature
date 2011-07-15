@@ -4,7 +4,6 @@ Feature: general usage
   Background:
     Given There are minimal testing records
 
-  @focus
   Scenario: Guest can visit the entry page
     When I go to the home page
     Then I should see "您的餐桌安全吗？"
@@ -16,7 +15,6 @@ Feature: general usage
     And I should see "警惕以下关于“西瓜”的负面信息"
     And I should see "请阅读以下关于“西瓜”的参考"
 
-  @focus
   Scenario: User can see the control panel on home page
     When I log in as "David User"
     Then I should see "div" whose id is "control_panel"
@@ -85,11 +83,10 @@ Feature: general usage
     And I search for "西瓜"
     Then I should see "土豆刷绿漆，冒充西瓜" within "#bad_items"
 
-  @focus
   Scenario: User will get rewards because of posting reviews.
     Given the following badge exists:
     | name     | description  | contribution_field | comparator | compared_value |
-    | 新手上路 | 发表一篇测评 | created_reviews    | 8          | 1              |
+    | 新手上路 | 发表一篇测评 | posted_reviews    | >=         | 1              |
     When I log in as "David User"
     And I post a simple review without vendor
 

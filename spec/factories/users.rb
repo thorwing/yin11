@@ -4,14 +4,14 @@ Factory.define :user do |f|
 end
 
 Factory.define :normal_user, :class => User do |f|
-  f.email "user@yin11.comm"
+  f.email "user@yin11.com"
   f.password "Iam1user"
   f.login_name "David"
   f.role GlobalConstants::NORMAL_USER_ROLE
 end
 
 Factory.define :tester, :class => User do |f|
-  f.email "tester@yin11.comm"
+  f.email "tester@yin11.com"
   f.password "Iam1tester"
   f.login_name "Kate"
   f.role GlobalConstants::AUTHORIZED_USER_ROLE

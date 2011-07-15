@@ -10,10 +10,6 @@
         <%= f.text_field :description %>
     </div>
     <div class="field">
-        <%= f.label :repeatable %><br />
-        <%= f.check_box :repeatable, {}, true, false %>
-    </div>
-    <div class="field">
         <%= f.label :contribution_field %><br />
         <%= f.select :contribution_field, options_for_select(get_fields_of(Contribution), @badge.contribution_field) %>
     </div>

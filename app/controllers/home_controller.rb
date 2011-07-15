@@ -127,8 +127,13 @@ class HomeController < ApplicationController
     @item.votes += weight
     @votes = @item.votes
 
-    current_user.make_contribution(:total_up_votes, 1) if first_vote && weight > 0
-    current_user.make_contribution(:total_down_votes, 1) if first_vote && weight < 0
+    if first_vote
+      if weight > 0
+        RewardManager.new(current_user).contribute(:total_up_votes)
+      elsif weight < 0
+        RewardManager.new(current_user).contribute(:total_down_votes)
+      end
+    end
 
     @is_fan = @item.fan_ids.include?(current_user.id)
     @is_hater = @item.hater_ids.include?(current_user.id)
@@ -193,7 +198,7 @@ class HomeController < ApplicationController
     hot_items = basic_criteria.tagged_with_any(get_hot_tags).desc(:created_at, :reported_on).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_HOT)
     recent_items = basic_criteria.desc(:created_at, :reported_on).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_RECENT)
     if current_user
-      user_ids = current_user.groups.inject([]) {|memo, group| memo | group.user_ids }
+      user_ids = current_user.members_from_same_group
       group_items = basic_criteria.any_in(:author_id => user_ids).desc(:created_at, :reported_on).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_GROUP)
     end
 
@@ -220,9 +225,8 @@ class HomeController < ApplicationController
 
   #check whether the item is created by a member of my groups
   def is_from_my_groups?(item)
-    if current_user
-      user_ids = current_user.groups.inject([]) {|memo, group| memo | group.user_ids }
-      user_ids.include? item.author_id
+    if current_user && current_user.members_from_same_group.include?(item.author_id)
+      true
     else
       false
     end

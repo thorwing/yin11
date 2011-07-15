@@ -2,8 +2,7 @@ class ProfileController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
 
   def show
-    #referesh
-
+    @recent_items = current_user.info_items.of_type([Review.name, Recommendation.name]).desc(:updated_at).limit(GlobalConstants::PROFILE_RECENT_ITEMS).all
   end
 
   def edit

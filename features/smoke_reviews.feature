@@ -23,7 +23,7 @@ Feature: smoke tests for Reviews
     Then I should see "先找找针对的商户"
     Then I should see "实在想不起在哪儿买的食物了"
 
-  @focus
+
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:
     | name       | city |

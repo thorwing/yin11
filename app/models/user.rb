@@ -19,8 +19,6 @@ class User
   field :auth_token
   field :password_reset_token
   field :password_reset_sent_at, :type => DateTime
-
-  field :badge_ids, :type => Array
   field :blocked_user_ids, :type => Array
 
   index :email
@@ -37,9 +35,10 @@ class User
   embeds_one :profile
   embeds_one :contribution
   has_many :info_items, :inverse_of => "author"
-  has_and_belongs_to_many :wrote_tips, :class_name => "Tip"
-  has_many :collected_tips, :class_name => "Tip"
-  has_and_belongs_to_many :groups
+  has_and_belongs_to_many :wrote_tips, :class_name => Tip.name
+  has_many :collected_tips, :class_name => Tip.name
+  has_and_belongs_to_many :groups, :inverse_of => "members"
+  has_and_belongs_to_many :badges
 
   attr_accessor :password
   attr_accessible :email, :login_name, :password, :password_confirmation
@@ -74,24 +73,6 @@ class User
     UserMailer.password_reset(self).deliver
   end
 
-  def ask_for_badges
-    #TODO
-    Badge.all.each do |badge|
-      if badge.can_be_awarded_to?(self)
-        badge.give_to_user!(self)
-      end
-    end
-  end
-
-  def make_contribution(field, delta)
-    begin
-      eval %( self.contribution.#{field}+=#{delta})
-      ask_for_badges
-    rescue Exception => exc
-      Rails.logger.info exc.message
-    end
-  end
-
   def vote_weight
     if has_permission?(:admin)
       GlobalConstants::ADMIN_VOTE_WEIGHT
@@ -117,28 +98,8 @@ class User
     end
   end
 
-  def join!(group)
-    if group && group.valid?
-      group.user_ids << self.id
-      group.members_count += 1
-
-      self.group_ids << group.id
-      self.save!
-    else
-      false
-    end
-  end
-
-  def quit!(group)
-    if group && group.valid?
-      group.user_ids.delete(self.id)
-      group.members_count -= 1
-
-      self.group_ids.delete(group.id)
-      self.save!
-    else
-      false
-    end
+  def members_from_same_group
+    groups.inject([]) {|memo, group| memo | group.member_ids }
   end
 
   private

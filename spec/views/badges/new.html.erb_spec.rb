@@ -4,8 +4,7 @@ describe "badges/new.html.erb" do
   before(:each) do
     assign(:badge, stub_model(Badge,
       :name => "MyString",
-      :description => "MyString",
-      :repeatable => false
+      :description => "MyString"
     ).as_new_record)
   end
 
@@ -16,7 +15,6 @@ describe "badges/new.html.erb" do
     assert_select "form", :action => badges_path, :method => "post" do
       assert_select "input#badge_name", :name => "badge[name]"
       assert_select "input#badge_description", :name => "badge[description]"
-      assert_select "input#badge_repeatable", :name => "badge[repeatable]"
     end
   end
 end

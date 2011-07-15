@@ -5,12 +5,29 @@
 </div>
 <div class="fields_group">
     <h3><%= t("profile.interested_places") %></h3>
-    <% current_user.profile.watched_locations.each do |location| %>
-        <p><%= location.address %></p>
-    <% end %>
+    <%= render current_user.profile.watched_locations %>
 </div>
 
-<%= render "show_case" %>
+<div class="fields_group">
+    <h3><%= t("profile.my_recent_posted_items") %></h3>
+    <table>
+        <tr>
+            <th><%= t("general.title") %></th>
+            <th><%= t("comments.comments") %></th>
+        </tr>
+        <%= render :partial => "recent_item", :collection => @recent_items %>
+    </table>
+</div>
+
+<div class="fields_group">
+    <h3><%= t("profile.my_badges") %></h3>
+    <%= render :partial => "badge", :collection => current_user.badges %>
+</div>
+
+<div class="fields_group">
+    <h3><%= t("profile.my_groups") %></h3>
+    <%= render :partial => "group", :collection => current_user.groups %>
+</div>
 
 <%= link_to t("general.change"), profile_edit_path, :class => "button" %>
 

@@ -4,7 +4,7 @@ Feature: smoke tests for Search
   Background:
     Given There are minimal testing records
 
-  @focus
+
   Scenario: Item's score is considered according to popularity and tags
     Given  There are some sample tips
 
@@ -16,7 +16,7 @@ Feature: smoke tests for Search
     When I search for "三聚氰胺"
     Then I should see "三聚氰胺家庭检测法"
 
-  @focus
+
   Scenario: Hot items and recent item should have ribbons
     Given  There are some sample tips
 
@@ -31,13 +31,13 @@ Feature: smoke tests for Search
 #    And I go to the home page
 #    Then I should see "瘦肉精猪肉目测" within "#items .hot"
 
-  @focus
+
   Scenario: Item about recent popular topics will be display on the home page
     Given  There are some sample tips
     Given There are some sample articles
     Then I should see "瘦肉精猪肉目测"
 
-  @focus
+
   Scenario: User can search with tags and locations
     Given  There are some sample tips
     When I go to the home page
