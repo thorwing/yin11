@@ -66,7 +66,7 @@ ul#actions_menu {
     overflow:hidden;
 }
 
-.item.info { width:600px; }
+.item.info { width:600px; background-color: #e6e7e9; }
 .item.info .left_fields { float:left; margin-right:8px;}
 .item.info .vote_fields { margin-top:5px;}
 .item.info .left_fields img { float:left; margin-top:10px;}

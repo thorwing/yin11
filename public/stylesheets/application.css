@@ -6,7 +6,6 @@
 body {
 	margin:0px;
 	padding:0px;
-	background-color:#3B7B3B;
 	color: #333230;
 	font-size:12px;
 	line-height:19px;
@@ -107,21 +106,12 @@ a.tag:hover {
 	Layout-Styles
 */
 
-#main {
-	background:#c4c0be url(/images/background_light_slice.jpg) repeat-x;
-}
-#main .container {
-	background-image:url(/images/background_light.jpg);
-	background-repeat:no-repeat;
-	min-height:400px;
-    padding-bottom: 2px;
-}
 
-#footer {
-	color:white;
-}
 .container {
-	width:1000px;
+	/*background-image:url(/images/background_light.jpg);*/
+	/*background-repeat:no-repeat;*/
+    padding-bottom: 2px;
+    width:1000px;
 	margin:0 auto;
 	position:relative;
 }
@@ -130,10 +120,17 @@ a.tag:hover {
 	Header-Styles
 */
 
+
 #header {
-	padding-top:8px;
+    background:#c4c0be url(/images/background_light_slice.jpg) repeat-x;
+    /*background:#3B7B3B;*/
+    overflow:hidden;
 }
-#logo h1, #logo small {
+
+#header #logo { float:left;}
+#header #quick_auth {float:right; }
+
+#header #logo h1, #logo small {
 	margin:0px;
 	display:block;
 	text-indent:-9999px;
@@ -148,40 +145,52 @@ a.tag:hover {
 /*}*/
 
 /*
-	General-Menu-Styles
+    Menu_Styles
 */
 ul.menu {
-    margin:0px; padding:0px;
+    padding:0;
+    margin:0;
+    overflow: hidden;
+    list-style:none;
 }
+
 ul.menu li {
-	display:inline;
-	margin-left:12px;
+    float:left;
+    display: inline;
+    margin-right: 5px;
 }
 
 /*
 	Top-Menu-Styles
 */
-ul#top_menu {
-	position:absolute;
-	right: 0px;
+
+#top_menu {
+    margin-top: 10px;
 }
-ul#top_menu li a {
+
+#top_menu li a {
+    color:#666666;
+    padding: 10px 14px;
 	text-decoration:none;
-	color:#3B7B3B;
-	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:14px;
 	font-weight:bold;
-	text-transform:uppercase;
 }
-ul#top_menu li a.active, ul#menu li a:hover {
-	color:#211e1e;
+
+#top_menu li a:hover, #top_menu li a.selected{
+    color:white;
+    background:#3B7B3B;
 }
+
+#top_menu #city_switch {float: right;}
 
 /*
 	Footer-Styles
 */
 
 #footer {
+    overflow:hidden;
+    color:white;
+    background-color:#3B7B3B;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:10px;
 }

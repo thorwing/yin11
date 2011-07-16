@@ -49,8 +49,6 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
-
-    @sub_title = t("sub_titles.edit_review")
   end
 
   # POST /reviews

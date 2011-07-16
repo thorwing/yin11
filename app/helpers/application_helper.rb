@@ -1,5 +1,9 @@
 #encoding utf-8
 module ApplicationHelper
+  def render_menu(name, path)
+    link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) )
+  end
+
   def mark_required(object, attribute)
     "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end

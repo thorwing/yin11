@@ -27,6 +27,7 @@ Feature: smoke tests for Profile
 
   @javascript
   Scenario: User can add a location to watch
+    When I log in as "David User"
 
 
 
