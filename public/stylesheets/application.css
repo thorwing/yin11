@@ -1,6 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
 
+/*
+    Mature Style
+    Green: #346633
+    Gray: #CCCC98
+    Blue: #333365              386fb2
+    Text-Color: #333230
+*/
+
 /* Common stuff */
 
 body {
@@ -14,7 +22,6 @@ body {
 h2 {
 	margin:0px 0px 10px 0px;
 	font-size:24px;
-    color:#3B7B3B;
 }
 h3 {
 	margin:5px 0px 10px 0px;
@@ -37,14 +44,14 @@ small {
 }
 
 a {
-	color:#008000;
+	color:#346633;
 	text-decoration:none;
 }
 a:hover { text-decoration:underline; }
 p { margin: 0px 0px 15px 0px; }
 
 a.button, input.button {
-	background:#3B7B3B;
+	background:#386fb2;
 	padding:3px 6px 3px 6px;
 	color: #FFFFFF;
 	text-decoration: none;
@@ -56,19 +63,19 @@ a.button, input.button {
     margin-bottom:2px;
 }
 a.button:hover, input.button:hover {
-	background:#386fb2;
+	background:#346633;
     cursor:pointer;
 }
 
 a.tag {
     border: 1px solid #333333;
-    color: #444444;
-    background-color: #dddddd;
+    color: #386fb2;
+    background-color: #CCCC98;
 }
 
 a.tag:hover {
     color: white;
-    background-color: #386fb2;
+    background-color: #346633;
     cursor:pointer;
 }
 
@@ -178,7 +185,7 @@ ul.menu li {
 
 #top_menu li a:hover, #top_menu li a.selected{
     color:white;
-    background:#3B7B3B;
+    background:#386fb2;
 }
 
 #top_menu #city_switch {float: right;}
@@ -190,7 +197,7 @@ ul.menu li {
 #footer {
     overflow:hidden;
     color:white;
-    background-color:#3B7B3B;
+    background-color:#346633;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:10px;
 }

@@ -1,3 +1,34 @@
-<%= render "info_items/basic_item", :item => item %>
+<div class="item info">
+    <% if item.is_popular? %>
+        <%= image_tag "ribbon_hot.png", :class => "ribbon" %>
+    <% elsif item.is_recent? %>
+        <%= image_tag "ribbon_recent.png", :class => "ribbon" %>
+    <% end %>
+    <div class="left_fields">
+        <%= render "shared/vote_fields", :item => item %>
+    </div>
+    <div class="central_fields">
+        <h3><%= link_to item.title, item %> <%= get_severity_image(item, 12, 16) %></h3>
+        <div class="clues">
+            <% clues = get_clues_of_item(item); clues.each do |clue| %>
+                <%= content_tag(:small, clue) %> <%= "|" %>
+            <% end %>
+            <%= render "shared/show_tags", :item => item %>
+        </div>
+        <p>
+          <%= truncate_content(item, 100) %>
+          <%= link_to(t("info_items.detail"), item)  %>
+          <span class="trivial">
+            <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
+            <%= content_tag(:span, t("info_items.posted_by") + item.author.login_name ) if item.author %>
+          </span>
+        </p>
+    </div>
+
+    <div class="right_fields">
+        <%= link_to get_image_of_item(item, 0, 100, 75), item %>
+        <%= link_to t("info_items.add_comment") + "(#{item.comments.size})", home_new_comment_path(:id => item.id, :type => item.class.name)%>
+    </div>
+</div>
 
 

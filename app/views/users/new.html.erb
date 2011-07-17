@@ -1,4 +1,5 @@
 <% title t("authentication.sign_up") %>
+<% hide_top_menu %>
 
 <%= form_for @user do |f| %>
   <%= render "shared/error_messages", :target => @user %>

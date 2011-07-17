@@ -31,35 +31,19 @@
     </div> <!--end of header -->
 
     <div class="container">
-    <ul id="top_menu" class="menu">
-        <li><%= render_menu(t("menu.home"), root_path) %></li>
-        <% if current_user && current_user.has_permission?(:editor) %>
-            <li><%= link_to t("menu.admin_control"), admin_root_path, :class => selected?(admin_root_path) %></li>
+        <% unless hide_top_menu? %>
+            <%= render "shared/top_menu" %>
         <% end %>
-        <li><%= render_menu(t("menu.articles"), articles_path) %></li>
-        <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
-        <li><%= render_menu(t("menu.tips"), tips_path) %></li>
-        <li><%= render_menu(t("menu.groups"), groups_path) %></li>
-        <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
-        <li><%= render_menu(t("menu.badges"), badges_path) %></li>
-        <% if current_user %>
-            <li><%= render_menu(t("menu.prfile"), profile_show_path) %></li>
-            <li><%= link_to t("authentication.log_out"), log_out_path %></li>
-        <% end %>
-        <span id="city_switch">
-            <%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true), :rel => "facebox" %>)
-        </span>
-    </ul>
-    </div>
 
-    <div class="container">
         <% if home_page? %>
             <%= yield %>
         <% else %>
+          <div class="block">
             <div class="content_block_inside">
                 <%= content_tag(:h2, @content_for_title) if show_title?  %>
                 <%= yield %>
             </div>
+          </div>
         <% end %>
 	</div>
 
