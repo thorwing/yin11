@@ -4,17 +4,25 @@ module ApplicationHelper
     link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) )
   end
 
-  def mark_required(object, attribute)
-    "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
+  def get_length_validator(klass, attribute)
+    klass.validators_on(attribute).select{ |v| v.class == ActiveModel::Validations::LengthValidator }.first
   end
 
-  def mark_required_length(object, attribute)
-    validators = object.class.validators_on(attribute).select{ |v| v.class == ActiveModel::Validations::LengthValidator }
-    if validators.size > 0
-      content_tag(:span, "(" + validators[0].options[:message] + ")", :class => "trivial")
-    else
-      ""
-    end
+  def get_max_length(klass, attribute)
+    klass = klass.class unless klass.is_a?(Class)
+    validator = get_length_validator(klass, attribute)
+    (validator && validator.options[:maximum].present?) ? validator.options[:maximum].to_i : GlobalConstants::GLOBAL_INPUT_MAX_LENGTH
+  end
+
+  def mark_required(klass, attribute)
+    klass = klass.class unless klass.is_a?(Class)
+    "*" if klass.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
+  end
+
+  def mark_required_length(klass, attribute)
+    klass = klass.class unless klass.is_a?(Class)
+    validator = get_length_validator(klass, attribute)
+    validator ? content_tag(:span, "(" + validator.options[:message] + ")", :class => "trivial") : ""
   end
 
   def link_to_add_fields(name, f, association)

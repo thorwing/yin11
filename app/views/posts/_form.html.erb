@@ -3,11 +3,11 @@
   <%= f.hidden_field :group_id %>
   <p>
     <%= f.label t("general.title") %><%= mark_required(@post, :title) %><%= mark_required_length(@post, :title) %><br/>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :maxlength => get_max_length(@post, :title) %>
   </p>
   <p>
     <%= f.label t("general.content") %><%= mark_required(@post, :content) %><%= mark_required_length(@post, :content) %><br/>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :maxlength => get_max_length(@post, :content) %>
   </p>
   <p><%= f.submit t("general.post"), :class => "button" %></p>
 <% end %>

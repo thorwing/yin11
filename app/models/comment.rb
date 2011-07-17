@@ -14,7 +14,7 @@ class Comment
   belongs_to :user
 
   validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content"))
-  validates_length_of :content, :maximum => 140, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.content"),
-  :max => 140)
+  validates_length_of :content, :maximum => 1000, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.content"),
+  :max => 1000)
 
 end

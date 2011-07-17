@@ -115,8 +115,7 @@ zh-CN:
     password_reset_expired: 密码重置口令已过期
     tip_already_collected: 该锦囊已经在您收藏中
     no_group_specified: 未指定饭桌
-    posted_comment_too_ofen: "每次评论需间隔%{minute}分钟，请您谅解"
-
+    posted_comment_too_ofen: "为了减轻服务器的压力，每次评论请间隔%{minute}分钟，谢谢您的谅解。"
 
   menu:
     home: 主页

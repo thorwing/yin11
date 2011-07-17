@@ -1,8 +1,7 @@
-<% if @allowed %>
-    var child = '<%= escape_javascript(render("single_comment", :item => @item, :comment => @new_comment) + content_tag(:div, '', :class => "nested_comments") ) %>';
-    <% if @parent_comment %>
-        var parent = $('#<%= @parent_comment.id.to_s %>');
-        parent.nextAll('.nested_comments:first').append(child);
+<% if @comment %>
+    var child = '<%= escape_javascript(render("single_comment", :item => @item, :comment => @comment) + content_tag(:div, '', :class => "nested_comments") ) %>';
+    <% if @parent %>
+        $('#<%= @parent.id.to_s %>').nextAll('.nested_comments:first').append(child);
     <% else %>
          $("#comments").prepend(child);
     <% end %>
@@ -10,6 +9,6 @@
     //reset input
     $('textarea[name="content"]:visible').val('');
     $('.new_reply_comment:visible').hide();
-<% else %>
+<% elsif @over_limit %>
     alert('<%= t("alerts.posted_comment_too_ofen", :minute => GlobalConstants::COMMENTS_INTERVAL) %>');
 <% end %>

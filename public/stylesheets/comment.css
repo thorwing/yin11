@@ -7,6 +7,8 @@
     border-radius: 5px;
     border:1px solid #dbdbdb;
     margin-bottom: 5px;
+    width:500px;
+    word-wrap: break-word;
 }
 
 .nested_comments {
@@ -19,9 +21,8 @@
 
 blockquote {
     display:inline;
-	font-style: italic;
-	margin: 0 auto;
-    padding: 0 auto;}
+	margin: 0;
+    padding: 0;}
 blockquote span.quoted:before {
 	content: '"'; }
 blockquote span.quoted:after {

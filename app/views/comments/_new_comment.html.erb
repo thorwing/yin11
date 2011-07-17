@@ -2,10 +2,8 @@
     <%= form_tag url_for(:controller => "comments", :method => :post), :remote => true do %>
       <%= hidden_field_tag :item_id, item.id %>
       <%= hidden_field_tag :item_type, item.class.name %>
-      <%= hidden_field_tag :parent_comment_id, parent_comment.id if (defined? parent_comment) %>
-      <p>
-        <%= text_area_tag :content, "", :maxlength => 140, :rows => 8 %>
-      </p>
+      <%= hidden_field_tag :parent_id, parent.id if (defined? parent) %>
+      <p><%= text_area_tag :content, "", :maxlength => get_max_length(Comment, :content), :rows => 10 %></p>
       <p><%= submit_tag t("comments.post"), :class => "button" %></p>
     <% end %>
 </div>

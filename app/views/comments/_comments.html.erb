@@ -3,5 +3,7 @@
     <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
 </div>
 
-<p><b><%= t("comments.new") %></b></p>
-<%= render "comments/new_comment", :item => item if current_user %>
+<% if current_user %>
+    <b><%= t("comments.new") %></b><span class="trivial"><%= mark_required_length(Comment, :content) %></span><br/>
+    <%= render "comments/new_comment", :item => item%>
+<% end %>

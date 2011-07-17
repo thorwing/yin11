@@ -5,9 +5,9 @@
       <span class="trivial"><%= distance_of_time_in_words(comment.updated_at, Time.now) %><%= t("info_items.ago") %></span>
     </blockquote>
     <div>
-        <%= link_to t("comments.reply"), new_comment_path(:item_id => item.id, :item_type => item.class.name, :parent_comment_id => comment.id), :class => "reply_comment_link" %>
+        <%= link_to t("comments.reply"), new_comment_path(:item_id => item.id, :item_type => item.class.name, :parent_id => comment.id), :class => "reply_comment_link" %>
         <div class="new_reply_comment" style="display:none" >
-          <%= render "comments/new_comment", :item => item, :parent_comment => comment %>
+          <%= render "comments/new_comment", :item => item, :parent => comment %>
         </div>
     </div>
 </div>

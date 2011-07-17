@@ -2,8 +2,8 @@
     <%= render "shared/error_messages", :target => @article %>
 
     <div class="field">
-        <%= f.label :title, t("general.title") %><%= mark_required(@article, :title) %><%= mark_required_length(@article, :title) %><br/>
-        <%= f.text_field :title, :maxlength => 40 %>
+        <%= f.label :title, t("general.title") %><%= mark_required(Article, :title) %><%= mark_required_length(Article, :title) %><br/>
+        <%= f.text_field :title, :maxlength => get_max_length(Article, :title) %>
     </div>
     <div class="field">
          <%= f.label :tags_string, t("info_items.tags") %><br/>
@@ -22,11 +22,11 @@
         <%= f.fields_for :source do |builder| %>
             <div class="field">
                 <%= builder.label :name, t("articles.source_name") %><%= mark_required(builder.object, :name) %><%= mark_required_length(builder.object, :name) %><br/>
-                <%= builder.text_field :name, :maxlength => 20 %>
+                <%= builder.text_field :name, :maxlength => get_max_length(builder.object, :name) %>
             </div>
             <div class="field">
                 <%= builder.label :site, t("articles.source_site") %><%= mark_required(builder.object, :site) %><%= mark_required_length(builder.object, :site) %><br/>
-                <%= builder.text_field :site, :maxlength => 20 %>
+                <%= builder.text_field :site, :maxlength => get_max_length(builder.object, :site) %>
             </div>
             <div class="field">
                 <%= builder.label :url, t("general.content") %><br/>
@@ -44,7 +44,7 @@
 
     <div class="field">
         <%= f.label :content, t("general.content") %><%= mark_required(@article, :content) %><%= mark_required_length(@article, :content) %><br/>
-        <%= f.text_area :content, :class => "mceEditor", :maxlength => 10000 %>
+        <%= f.text_area :content, :class => "mceEditor", :maxlength => get_max_length(Article, :content) %>
     </div>
 
     <div class="actions">

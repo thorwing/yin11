@@ -1,7 +1,7 @@
 
   <div class="field">
     <%= f.label :title, t("general.title") %><%= mark_required(item, :title) %><%= mark_required_length(item, :title) %><br/>
-    <%= f.text_field :title, :maxlength => 40 %>
+    <%= f.text_field :title, :maxlength => get_max_length(item, :title) %>
   </div>
   <div class="field">
      <%= f.label :tags_string, t("info_items.tags") %><br/>
@@ -43,5 +43,5 @@
 
   <div class="field">
     <%= f.label :content, t("reviews.content") %><%= mark_required(item, :content) %><%= mark_required_length(item, :content) %><br/>
-    <%= f.text_area :content, :maxlength => 1000 %>
+    <%= f.text_area :content, :maxlength => get_max_length(item, :content) %>
   </div>
