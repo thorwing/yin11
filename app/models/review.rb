@@ -8,8 +8,8 @@ class Review < InfoItem
   attr_accessible :faults
 
   #override the settings in Informative
-  validates_length_of :content, :maximum => 10000, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.content"),
-                                                                           :max => 10000)
+  validates_length_of :content, :maximum => 3000, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.content"),
+                                                                           :max => 3000)
 
   #for gmaps4rails
   def gmaps4rails_infowindow

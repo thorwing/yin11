@@ -40,11 +40,11 @@
         <%= f.select :category, options_for_select(ArticleTypes.get_values, @article.category) %>
     </div>
 
-    <%= render "info_items/images_fields", :f => f, :item => @article %>
+    <%= render "images/images_fields", :f => f, :item => @article %>
 
     <div class="field">
         <%= f.label :content, t("general.content") %><%= mark_required(@article, :content) %><%= mark_required_length(@article, :content) %><br/>
-        <%= f.text_area :content, :class => "mceEditor", :maxlength => get_max_length(Article, :content) %>
+        <%= f.text_area :content, :class => "mceEditor", :maxlength => get_max_length(Article, :site) %>
     </div>
 
     <div class="actions">

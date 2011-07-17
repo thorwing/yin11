@@ -26,10 +26,7 @@
 
   <% if item.is_a?(Review) %>
       <div class="field">
-        <%= f.label :faults, t("reviews.severity") %><br/>
-            <div>
-                <label class="severity_image severity_3"></label>
-            </div>
+        <%= f.label :faults, t("reviews.faults") %><br/>
             <div class="checkbox_group">
                 <% FaultTypes.get_values.each_with_index do |type, i| %>
                     <%= check_box_tag "#{item.class.name.downcase}[faults][]", type, item.faults.include?(type), {:id => "#{item.class.name.downcase}_faults_#{i}", :class => "checkbox" } %>
@@ -39,9 +36,9 @@
       </div>
   <% end %>
 
-  <%= render "info_items/images_fields", :f => f, :item => item %>
+  <%= render "images/images_fields", :f => f, :item => item %>
 
   <div class="field">
     <%= f.label :content, t("reviews.content") %><%= mark_required(item, :content) %><%= mark_required_length(item, :content) %><br/>
-    <%= f.text_area :content, :maxlength => get_max_length(item, :content) %>
+    <%= f.text_area :content, :class => "mceEditor", :maxlength => get_max_length(item, :content) %>
   </div>

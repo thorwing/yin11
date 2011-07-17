@@ -40,7 +40,7 @@
         <% else %>
           <div class="block">
             <div class="content_block_inside">
-                <%= content_tag(:h2, @content_for_title) if show_title?  %>
+                <%= content_tag(:h1, @content_for_title) if show_title?  %>
                 <%= yield %>
             </div>
           </div>

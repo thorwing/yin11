@@ -4,9 +4,7 @@
 
 <%= hidden_field_tag "images_counter", item.images ?  item.images.size : 0, 'data-max' => 5 %>
 <div class="fields_group">
-  <% item.images.each do |image| %>
-    <%= render "images/image", :image => image %>
-  <% end %>
+  <%= render :partial => "images/image", :collection => item.images %>
   <div class="images"></div>
   <div id="image_upload_container">
     <div id="image_upload"></div>

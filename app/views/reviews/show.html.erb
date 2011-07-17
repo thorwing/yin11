@@ -1,23 +1,29 @@
-<% title @review.title %>
+<% title t("reviews.title") + @review.title %>
 <span class="trivial"><%= @review.reported_on_string %></span>
-<div class="clues">
-    <% clues = get_clues_of_item(@review); clues.each_with_index do |clue, index| %>
-        <%= content_tag(:small, clue) %> <%= "|" if index < clues.size - 1 %>
-    <% end %>
-</div>
-<% if @review.vendor %>
-    <p><%= link_to @review.vendor.name, @review.vendor %></p>
-<% end %>
-<p><%= raw @review.content %></p>
-<div>
-  <%= get_severity_image(@review) %>
-  <br/>
-  <% @review.faults.each do |fault| %>
-    <b><%= fault %></b>
-  <% end %>
-</div>
 
-<%= render "shared/display_map", :location => @review.vendor if @review.vendor %>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% if @review.vendor %>
+    <tr>
+        <td><b><%= t("vendors.vendor") %></b></td>
+        <td><%= link_to @review.vendor.name, @review.vendor %>    <span class="trivial"><%= @review.vendor.address %></span> </td>
+    </tr>
+<% end %>
+<tr>
+  <td><b><%= t("reviews.faults") %></b></td>
+  <td><%= @review.faults.join(" | ") %></td>
+</tr>
+<tr>
+    <td><b><%= t("reviews.content") %></b></td>
+</tr>
+</table>
+
+<%= @review.content.html_safe %>
+
 
 <% if @review.images.size > 0 %>
     <div id="gallery" class="block">
@@ -29,9 +35,8 @@
     </div>
 <% end %>
 
-<br/>
  <% if the_author_himself(Review.name, @review.id, true, false) %>
-    <%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %>
+    <p><%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %></p>
 <% end %>
 
 <hr/>
