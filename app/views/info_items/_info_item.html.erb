@@ -27,7 +27,7 @@
 
     <div class="right_fields">
         <%= link_to get_image_of_item(item, 0, 100, 75), item %>
-        <%= link_to t("info_items.add_comment") + "(#{item.comments.size})", home_new_comment_path(:id => item.id, :type => item.class.name)%>
+        <%= link_to t("info_items.add_comment") + "(#{item.comments.size})", new_comment_path(:id => item.id, :type => item.class.name)%>
     </div>
 </div>
 

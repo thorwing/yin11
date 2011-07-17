@@ -107,3 +107,10 @@ $(document).ready(function() {
 });
 
 
+$(function() {
+    $('.reply_comment_link').live('click', function() {
+        $(this).next().toggle();
+        return false;
+    });
+});
+

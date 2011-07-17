@@ -63,7 +63,7 @@ a.button, input.button {
     margin-bottom:2px;
 }
 a.button:hover, input.button:hover {
-	background:#346633;
+	background:#333365;
     cursor:pointer;
 }
 

@@ -36,7 +36,4 @@
 
 <hr/>
 
-<h3><%= t("comments.comments") %></h3>
-<%= nested_comments(@review, patch_ancestry(@review.comments.arrange(:order => :created_at))) %>
-
-<%= render "shared/new_comment", :item => @review if current_user %>
+<%= render "comments/comments", :item => @review %>

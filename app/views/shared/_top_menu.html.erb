@@ -1,7 +1,7 @@
 <ul id="top_menu" class="menu">
     <li><%= render_menu(t("menu.home"), root_path) %></li>
     <% if current_user && current_user.has_permission?(:editor) %>
-        <li><%= link_to t("menu.admin_control"), admin_root_path, :class => selected?(admin_root_path) %></li>
+        <li><%= render_menu(t("menu.admin_control"), admin_root_path) %></li>
     <% end %>
     <li><%= render_menu(t("menu.articles"), articles_path) %></li>
     <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>

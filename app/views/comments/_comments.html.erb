@@ -1,0 +1,7 @@
+<h3><%= t("comments.all") %></h3>
+<div id="comments">
+    <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
+</div>
+
+<p><b><%= t("comments.new") %></b></p>
+<%= render "comments/new_comment", :item => item if current_user %>

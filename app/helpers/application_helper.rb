@@ -106,7 +106,7 @@ module ApplicationHelper
 
   def nested_comments(item, comments)
     comments.map do |comment, sub_comments|
-      render("shared/single_comment", :item => item, :comment => comment) + content_tag(:div, nested_comments(item, sub_comments), :class => "nested_comments")
+      render("comments/single_comment", :item => item, :comment => comment) + content_tag(:div, nested_comments(item, sub_comments), :class => "nested_comments")
     end.join.html_safe
   end
 

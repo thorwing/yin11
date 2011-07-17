@@ -36,8 +36,8 @@ Yin11::Application.routes.draw do
   get "home/cities"
   post "home/watch_foods"
   put "home/vote"
-  get "home/new_comment"
-  post "home/add_comment"
+
+  resources :comments
 
   resources :password_resets
 

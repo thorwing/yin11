@@ -115,6 +115,7 @@ zh-CN:
     password_reset_expired: 密码重置口令已过期
     tip_already_collected: 该锦囊已经在您收藏中
     no_group_specified: 未指定饭桌
+    posted_comment_too_ofen: "每次评论需间隔%{minute}分钟，请您谅解"
 
 
   menu:
@@ -287,9 +288,9 @@ zh-CN:
     updated_notice: 已更新您的健康一餐
 
   comments:
-    comments: 评论
+    new: 新评论
     all: "所有评论:"
-    post: 添加评论
+    post: 发表评论
     reply: 回复
 
   articles:

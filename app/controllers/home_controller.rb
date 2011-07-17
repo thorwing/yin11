@@ -95,7 +95,7 @@ class HomeController < ApplicationController
   end
 
   def vote
-    @item = get_item_based_on(params[:type], params[:id])
+    @item = ItemFinder.get_item(params[:type], params[:id])
 
     delta = params[:delta].to_i
 
@@ -151,44 +151,7 @@ class HomeController < ApplicationController
     end
   end
 
-  def new_comment
-    @item = get_item_based_on(params[:type], params[:id])
-    if params[:parent_comment_id].present?
-      parent_comment = @item.comments.find(params[:parent_comment_id])
-      @comment = parent_comment.children.build(:content => params[:content])
-    else
-      @comment = Comment.new(:content => params[:content])
-    end
-  end
-
-  def add_comment
-    item = get_item_based_on(params[:type], params[:id])
-    if params[:parent_comment_id].present?
-      parent_comment = item.comments.find(params[:parent_comment_id])
-      new_comment = parent_comment.children.build(:content => params[:content], :user_id => current_user.id)
-      #parent_comment.children.create(:content => params[:content], :user_id => current_user.id)
-      item.comments << new_comment
-      #item.comments << Comment.create(:content => params[:content], :user_id => current_user.id, :parent_id => parent_comment.id)
-    else
-      item.comments ||= []
-      item.comments << Comment.new(:content => params[:content], :user_id => current_user.id)
-    end
-
-     respond_to do |format|
-        format.html {redirect_to item}
-        format.xml {head :ok}
-        format.js {render :content_type => 'text/javascript'}
-    end
-  end
-
   protected
-  def get_item_based_on(type, id)
-    begin
-      eval("#{type}.unscoped.find(id)")
-    rescue
-       raise "not supported type: " + type
-    end
-  end
 
   def get_items(page_idx)
     #fetch items, according to popularity, topics(tags) and recent
