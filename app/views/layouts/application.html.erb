@@ -14,9 +14,10 @@
 <body>
 
 <%= display_flash %>
-
+<div id="main">
+  <div id="container">
     <div id="header">
-        <div class="container">
+        <div class="skinny">
             <div id="logo">
                 <%= link_to image_tag("yin11_logo.png", :border => 0, :width => 211, :height => 76), root_path  %>
                 <h1><%= t("site.name") %></h1>
@@ -30,7 +31,7 @@
         </div>
     </div> <!--end of header -->
 
-    <div class="container">
+    <div class="skinny">
         <% unless hide_top_menu? %>
             <%= render "shared/top_menu" %>
         <% end %>
@@ -44,34 +45,36 @@
           </div>
         <% end %>
 	</div>
+  </div>
+</div>
 
-    <div id="footer">
-      <div class="container">
-        <div class="footer_column long">
-            <h3>银筷子</h3>
-            <p>需要进一步使用Photoshop来美化页面。</p>
-        </div>
-
-        <div class="footer_column">
-            <h3>More Links</h3>
-            <ul>
-                <li><a href="http://vectortuts.com">VECTORTUTS</a></li>
-                <li><a href="http://activeden.net">FlashDen</a></li>
-                <li><a href="http://audiojungle.net">AudioJungle</a></li>
-                <li><a href="http://freelanceswitch.com">FreelanceSwitch</a></li>
-                <li><a href="http://faveup.com">FaveUp</a></li>
-            </ul>
-        </div>
-
-        <div class="footer_column">
-            <h3>RSS</h3>
-            <ul>
-                <li><a href="">RSS Feed</a></li>
-                <li><a href="">What is RSS?</a></li>
-            </ul>
-        </div>
-      </div>
+<div id="footer">
+  <div class="skinny">
+    <div class="footer_column long">
+        <h3>银筷子</h3>
+        <p>需要进一步使用Photoshop来美化页面。</p>
     </div>
+
+    <div class="footer_column">
+        <h3>More Links</h3>
+        <ul>
+            <li><a href="http://vectortuts.com">VECTORTUTS</a></li>
+            <li><a href="http://activeden.net">FlashDen</a></li>
+            <li><a href="http://audiojungle.net">AudioJungle</a></li>
+            <li><a href="http://freelanceswitch.com">FreelanceSwitch</a></li>
+            <li><a href="http://faveup.com">FaveUp</a></li>
+        </ul>
+    </div>
+
+    <div class="footer_column">
+        <h3>RSS</h3>
+        <ul>
+            <li><a href="">RSS Feed</a></li>
+            <li><a href="">What is RSS?</a></li>
+        </ul>
+    </div>
+  </div>
+</div>
 
 <%= yield :deferred_javascript if content_for?(:deferred_javascript) %>
 </body>

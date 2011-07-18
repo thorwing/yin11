@@ -4,7 +4,7 @@
 /*
     Mature Style
     Green: #346633
-    Gray: #CCCC98
+    White: #CCCC98
     Blue: #333365   386fb2
     Text-Color: #333230
     Facebook-gray #EDEFF4
@@ -119,11 +119,9 @@ a.tag:hover {
 	Layout-Styles
 */
 
-
-.container {
+.skinny {
 	/*background-image:url(/images/background_light.jpg);*/
 	/*background-repeat:no-repeat;*/
-    padding-bottom: 2px;
     width:1000px;
 	margin:0 auto;
 	position:relative;
@@ -132,7 +130,6 @@ a.tag:hover {
 /*
 	Header-Styles
 */
-
 
 #header {
     background:#c4c0be url(/images/background_light_slice.jpg) repeat-x;
@@ -200,9 +197,22 @@ ul.menu li {
 	Footer-Styles
 */
 
+/*
+    for bottom-footer
+    the padding-bottom of container and margin, height of footer must be the same
+*/
+html, body, #main { height: 100%; }
+body #main { height: auto; min-height: 100%; }
+#container {padding-bottom: 15em;}
+
 #footer {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 15em;
+    margin-top: -15em;
     overflow:hidden;
-    color:white;
+    color:#FFFFFF;
     background-color:#346633;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:10px;
@@ -216,9 +226,8 @@ ul.menu li {
 	width:610px;
 }
 #footer h3 {
-	color:#e2dddc;
-	text-transform:uppercase;
-	font-size:10px;
+	color:#FFFFFF;
+	font-size:12px;
 }
 #footer a {
 	color:#FFFFFF;
@@ -226,10 +235,6 @@ ul.menu li {
 }
 .footer_column ul li, .footer_column ul {
 	list-style:none;
-	margin:0px;
-	padding:0px;
+	margin:0;
+	padding:0;
 }
-
-/*
-	Notice Border-Styles
-*/
