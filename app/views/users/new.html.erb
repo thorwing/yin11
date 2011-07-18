@@ -19,9 +19,5 @@
     <%= f.label t("authentication.password_confirmation") %> <br/>
     <%= f.password_field :password_confirmation %>
   </p>
-  <p>
-    <%= label_tag t("authentication.invitation_code") %>*<br/>
-    <%= text_field_tag :invitation %>
-  </p>
   <p class="button"><%= submit_tag t("authentication.sign_up")  %></p>
 <% end %>

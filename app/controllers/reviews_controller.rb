@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
   uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
-  layout :resolve_layout
 
   # GET /reviews
   # GET /reviews.xml
@@ -123,16 +122,6 @@ class ReviewsController < ApplicationController
 
   def choose_mode
 
-  end
-
-  private
-  def resolve_layout
-    case action_name
-      when 'show'
-        "map"
-      else
-        "application"
-    end
   end
 
 end

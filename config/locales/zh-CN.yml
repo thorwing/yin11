@@ -258,13 +258,14 @@ zh-CN:
     post_new_review: 发表新测评
     edit_review: 编辑 <%{title}>
     new_review: 发表食物测评
-    new_review_with_vnedor: 先找找针对的商户
+    make_choice_please: 请选择
+    new_review_with_vnedor: 先找到针对的商户
     new_review_without_vendor: 实在想不起在哪儿买的食物了
     see_more_reviews: 查看更多测评
     add_new_checkpoint: 添加检查点
     title_review: 报告
     referenced_tip: 依据锦囊
-    upload_image_tip: "(请至少上传一张图片，否则测评将在24小时后被禁用)"
+    upload_image_tip: "(请至少上传一张图片，否则测评将在24小时后被禁用。最多可上传5张。)"
     checkpoint_pass: 通过
     checkpoints: 检查点
     faults: 测评结论

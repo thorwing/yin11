@@ -155,7 +155,7 @@ module ApplicationHelper
 
   def get_clues_of_item(item)
     result = []
-    result << link_to(t("info_items.#{item.class.name.downcase}"), "\\" + item.class.name.downcase.pluralize)
+    result << link_to(t("info_items.#{item.class.name.downcase}"), "/" + item.class.name.downcase.pluralize)
     if item.region_ids.present?
       item.region_ids.each do |region_id|
         city = City.first(:conditions => {:id => region_id})
@@ -177,7 +177,7 @@ module ApplicationHelper
     end
 
 
-    result
+     result.map{|r| content_tag(:small, r)}.join("|").html_safe
   end
 
 def image_uploadify(item)
@@ -202,7 +202,7 @@ def image_uploadify(item)
 
     <script type='text/javascript' charset="utf-8">
       $(document).ready(function() {
-        $('#image_upload').uploadify({
+        $('#image_uploader').uploadify({
           script          : '#{images_path(:item_id => item.id)}',
           fileDataName    : 'image[image]',
           uploader        : '/uploadify/uploadify.swf',

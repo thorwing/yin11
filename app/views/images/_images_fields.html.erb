@@ -1,14 +1,11 @@
-<%= f.label :images, t("images.images") %>
+<b><%= f.label :images, t("images.images") %></b>
 <%= mark_required(item, :images) %>
 <%= content_tag(:span, t("reviews.upload_image_tip")) if item.is_a?(Review) %>
 
-<%= hidden_field_tag "images_counter", item.images ?  item.images.size : 0, 'data-max' => 5 %>
-<div class="fields_group">
-  <%= render :partial => "images/image", :collection => item.images %>
-  <div class="images"></div>
-  <div id="image_upload_container">
-    <div id="image_upload"></div>
-  </div>
+<br/>
+<div id="image_uploader"></div>
+<div class="images">
+    <%= render :partial => "images/image", :collection => item.images %>
 </div>
 
 <noscript><p><%= t("general.javascript_please") %></p></noscript>
