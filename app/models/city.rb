@@ -6,6 +6,8 @@ class City
   field :name
   field :postcode
   field :eng_name
+  field :latitude, :type => Float
+  field :longitude, :type => Float
 
   #indexes
   index :name, :unique => true
@@ -31,4 +33,5 @@ class City
   validates_presence_of :code, :name, :postcode
   validates_uniqueness_of :code, :name, :postcode
   validates_associated :districts
+
 end

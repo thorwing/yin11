@@ -18,7 +18,7 @@ class Location
 
   #virtual attributes
   def address
-    [(self.city ? self.city : ""), (self.street ? self.street : "")].join(" ");
+    [(self.city ? self.city : ""), (self.street ? self.street : "")].join(" ")
   end
 
   def latitude

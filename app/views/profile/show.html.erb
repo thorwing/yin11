@@ -5,7 +5,7 @@
 </div>
 <div class="fields_group">
     <h3><%= t("profile.interested_places") %></h3>
-    <%= render current_user.profile.watched_locations %>
+    <%= render :partial => "watched_location", :collection => current_user.profile.watched_locations %>
 </div>
 
 <div class="fields_group">

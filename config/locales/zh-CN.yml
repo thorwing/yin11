@@ -84,6 +84,10 @@ zh-CN:
     pwd_confirmation_not_match: "确认用的密码不符合您第一次输入的密码，请再试一次。"
     remember_me: "记住我"
 
+  footer:
+    general: "银筷子是一个专注于食物安全的网站。我们为您收集最新最全的食物安全新闻。通过网页间的互动，让您掌握身边发生的一切事物安全事件。"
+    links: 友情链接
+
   roles:
     normal_user: 注册用户
     authorized_user: 高级用户
@@ -255,7 +259,8 @@ zh-CN:
   reviews:
     title: "测评："
     new: 新测评
-    reviews: 所有测评
+    reviews: 测评
+    all: 所有测评
     post_new_review: 发表新测评
     edit_review: 编辑 %{title}
     new_review: 发表食物测评
