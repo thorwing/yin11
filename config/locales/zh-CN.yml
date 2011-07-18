@@ -27,6 +27,7 @@ zh-CN:
     update: 更新
     back: 返回
     back_to_list: 返回列表
+    none: 暂无
     enable: 启用
     disable: 禁用
     lock: 锁定
@@ -256,7 +257,7 @@ zh-CN:
     new: 新测评
     reviews: 所有测评
     post_new_review: 发表新测评
-    edit_review: 编辑 <%{title}>
+    edit_review: 编辑 %{title}
     new_review: 发表食物测评
     make_choice_please: 请选择
     new_review_with_vnedor: 先找到针对的商户

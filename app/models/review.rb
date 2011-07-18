@@ -20,4 +20,8 @@ class Review < InfoItem
     "<span>#{ERB::Util.html_escape self.title}</span>"
   end
 
+  def get_faults
+    self.faults.size > 0 ? self.faults.join("|") : I18n.t("general.none")
+  end
+
 end

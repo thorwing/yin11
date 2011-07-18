@@ -18,12 +18,9 @@
 </p>
 
 <% if @article.images.size > 0 %>
-    <div id="gallery" class="block">
-      <div class="block_inside">
-          <% @article.images.each do |image| %>
-              <%= get_thumbnail(image, true) %>
-          <% end %>
-      </div>
+    <b><%= t("images.images") %></b>
+    <div id="gallery" class="block round">
+        <%= render :partial => "images/image", :collection => @article.images %>
     </div>
 <% end %>
 

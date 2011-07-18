@@ -5,36 +5,34 @@
      <%= javascript_include_tag "home", "s3Slider" %>
 <% end %>
 
-<div id="news_block" class="block">
-    <div class="block_inside">
-        <div class="image_frame">
-            <div id="s3slider">
-               <ul id="s3sliderContent">
-                 <% @hot_articles.each do |article| %>
-                    <li class="s3sliderImage">
-                        <%= link_to(get_image_of_item(article, 0, 320, 240) , article)  %>
-                        <span><h3><%= article.title %></h3></span>
-                  </li>
-                 <% end %>
-               </ul>
-            </div>
+<div id="news_block" class="block round">
+    <div class="image_frame">
+        <div id="s3slider">
+           <ul id="s3sliderContent">
+             <% @hot_articles.each do |article| %>
+                <li class="s3sliderImage">
+                    <%= link_to(get_image_of_item(article, 0, 320, 240) , article)  %>
+                    <span><h3><%= article.title %></h3></span>
+              </li>
+             <% end %>
+           </ul>
         </div>
-        <div id="articles_frame">
-            <ul>
-                <% @hot_articles.each do |article| %>
-                    <li><h4><%= link_to article.title, article %></h4></li>
-                <% end %>
-            </ul>
-        </div>
-        <div id="search_frame">
-            <h2><%= t("home.foods_buy_question") %></h2>
-            <p><%= t("home.foods_buy_question_description") %></p>
-            <%= form_tag 'home/items', :method => :get do %>
-                    <%= text_field_tag :search %>
-                    <%= submit_tag t("home.foods_search_button"), :class => "button" %><br/>
-                    <p class="trivial"><%= t("home.multiple_foods_suggestion")  %></p>
+    </div>
+    <div id="articles_frame">
+        <ul>
+            <% @hot_articles.each do |article| %>
+                <li><h4><%= link_to article.title, article %></h4></li>
             <% end %>
-        </div>
+        </ul>
+    </div>
+    <div id="search_frame">
+        <h2><%= t("home.foods_buy_question") %></h2>
+        <p><%= t("home.foods_buy_question_description") %></p>
+        <%= form_tag 'home/items', :method => :get do %>
+                <%= text_field_tag :search %>
+                <%= submit_tag t("home.foods_search_button"), :class => "button" %><br/>
+                <p class="trivial"><%= t("home.multiple_foods_suggestion")  %></p>
+        <% end %>
     </div>
 </div>
 

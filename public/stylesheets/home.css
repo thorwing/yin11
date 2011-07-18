@@ -70,8 +70,8 @@ ul#actions_menu {
 .item.info .left_fields { float:left; margin-right:8px;}
 .item.info .vote_fields { margin-top:5px;}
 .item.info .left_fields img { float:left; margin-top:10px;}
-.item.info .central_fields { float:left; width:300px}
-.item.info .right_fields { float:right; overflow:hidden; width:200px;}
+.item.info .central_fields { float:left; width:350px}
+.item.info .right_fields { float:right; overflow:hidden; width:150px;}
 .item.info .right_fields span, .item.info .right_fields div, .item.info .right_fields p  {float:right;display:block; clear:both;}
 
 /* for ribbons */

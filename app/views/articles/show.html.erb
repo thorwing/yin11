@@ -1,38 +1,37 @@
 <% title @article.title %>
-<%= render "shared/vote_fields", :item => @article %>
-<p class="trivial"><%= @article.reported_on.strftime('%m/%d/%Y') if @article.reported_on %></p>
-<%= render "shared/source", :source => @article.source %>
-<br/>
-<%= render "shared/show_tags", :item => @article %>
-<br/>
-<small>
-  <% if @article.region_ids %>
-       <%= t("articles.involved_regions") %>:
-      <% @article.region_ids.each do |region_id| %>
-        <%= get_region(region_id).name %>
+<div class="block">
+    <%= render "shared/vote_fields", :item => @article %>
+    <%= content_tag(:span, @article.reported_on.strftime('%m/%d/%Y'), :class => "trivial") if @article.reported_on %>
+    <br/>
+    <%= render "shared/source", :source => @article.source %>
+    <br/>
+    <small>
+      <% if @article.region_ids %>
+           <%= t("articles.involved_regions") %>:
+          <% @article.region_ids.each do |region_id| %>
+            <%= get_region(region_id).name %>
+          <% end %>
       <% end %>
-  <% end %>
-</small>
-<br/>
-<p>
+    </small>
+    <br/>
+    <%= render "shared/show_tags", :item => @article %>
+</div>
+
+<div class="block round">
   <%= simple_format @article.content.html_safe %>
-</p>
+</div>
 
 <% if @article.images.size > 0 %>
-    <div id="gallery" class="block">
-      <div class="block_inside">
-          <% @article.images.each do |image| %>
-              <%= get_thumbnail(image, true) %>
-          <% end %>
-      </div>
+    <b><%= t("images.images") %></b>
+    <div id="gallery" class="block round">
+        <%= render :partial => "images/image", :collection => @article.images %>
     </div>
 <% end %>
 
 <% if current_user && current_user.has_permission?(:editor)%>
-    <hr/>
-    <%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button" %>
+    <p><%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button" %></p>
 <% end %>
 
 <hr/>
-<%= render "shared/comments", :item => @article %>
+<%= render "comments/comments", :item => @article %>
 

@@ -5,8 +5,9 @@
     Mature Style
     Green: #346633
     Gray: #CCCC98
-    Blue: #333365              386fb2
+    Blue: #333365   386fb2
     Text-Color: #333230
+    Facebook-gray #EDEFF4
 */
 
 /* Common stuff */
@@ -96,17 +97,22 @@ a.tag:hover {
 */
 
 .block {
-	border:1px solid #a3a09e;
-	background-color:#ffffff;
-	margin-bottom:10px;
-	position:relative;
+    position:relative;
+    display:block;
+    overflow:hidden;
+    padding:10px;
 }
-.block_inside {
-	display:block;
-	border:1px solid #ffffff;
-	background: #ffffff url(/images/background_block_slice.jpg) repeat-x;
-	padding:10px;
-	overflow:hidden;
+
+.block.square {
+    border:1px solid #a3a09e;
+}
+
+.block.round {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border:1px solid #dbdbdb;
+    background:#EDEFF4;
+    margin-bottom:10px;
 }
 
 /*

@@ -3,10 +3,6 @@
 */
 
 .comment {
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border:1px solid #dbdbdb;
-    margin-bottom: 5px;
     width:500px;
     word-wrap: break-word;
 }

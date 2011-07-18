@@ -3,7 +3,7 @@
         <%= render "shared/vote_fields", :item => item %>
     </div>
     <div class="central_fields">
-        <h3><%= link_to item.title, item %> <%= get_severity_image(item, 12, 16) %></h3>
+        <h3><%= link_to item.title, item %></h3>
         <p><%= render "shared/show_tags", :item => item %></p>
         <p>
           <%= truncate_content(item, 100) %>

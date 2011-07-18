@@ -7,7 +7,8 @@ class TagsController < ApplicationController
       @tags = get_all_tags
     end
 
-    @tags.insert(0, query) unless @tags.include?(query)
+    new_tag = query[0..(GlobalConstants::MAX_TAG_CHARS - 1)]
+    @tags.insert(0, new_tag) unless @tags.include?(new_tag)
 
     respond_to do |format|
       format.html

@@ -1,5 +1,5 @@
-$('.images').append("<%=escape_javascript(render("image", :image => @image)) %>");
-var image_count = $('.images .image').size();
+$('#images_container').append("<%=escape_javascript(render("image", :image => @image)) %>");
+var image_count = $('#images_container .image').size();
 if (image_count >= 5) {
     $('#image_uploader').hide();
 }

@@ -156,6 +156,9 @@ module ApplicationHelper
   def get_clues_of_item(item)
     result = []
     result << link_to(t("info_items.#{item.class.name.downcase}"), "/" + item.class.name.downcase.pluralize)
+    if item.is_a?(Article)
+      (result << item.source.name) if item.source
+    end
     if item.region_ids.present?
       item.region_ids.each do |region_id|
         city = City.first(:conditions => {:id => region_id})
@@ -167,9 +170,7 @@ module ApplicationHelper
         end
       end
     end
-    if item.is_a?(Article)
-      (result << t("articles.source") + ": " + item.source.name) if item.source
-    end
+
 
     same_groups = get_groups_of_item(item)
     if same_groups.size > 0

@@ -34,7 +34,7 @@ function show_tab_content(link, content) {
 
 function delete_image(link) {
     $(link).parent().remove();
-    var image_count = $('.images .image').size();
+    var image_count = $('#images_container .image').size();
     if (image_count < 5) {
         $('#image_uploader').show();
     }

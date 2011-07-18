@@ -2,9 +2,7 @@
     <div class="central_fields">
         <h3><%= link_to item.title, item %> <%= get_severity_image(item, 12, 16) %></h3>
         <div class="clues">
-            <% clues = get_clues_of_item(item); clues.each do |clue| %>
-                <%= content_tag(:small, clue) %> <%= "|" %>
-            <% end %>
+            <%= clues = get_clues_of_item(item) %>
             <%= render "shared/show_tags", :item => item %>
         </div>
         <p>

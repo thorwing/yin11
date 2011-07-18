@@ -1,4 +1,5 @@
 <div class="comment" id='<%= comment.id.to_s %>'>
+  <div class="block round">
     <%= comment.user.login_name %>:
     <blockquote>
       <span class="quoted"><%= comment.content %></span>
@@ -10,4 +11,5 @@
           <%= render "comments/new_comment", :item => item, :parent => comment %>
         </div>
     </div>
+  </div>
 </div>

@@ -1,44 +1,51 @@
 <% title t("reviews.title") + @review.title %>
-<span class="trivial"><%= @review.reported_on_string %></span>
+
+<div class="block">
+    <%= render "shared/vote_fields", :item => @review %>
+    <span class="trivial"><%= @review.reported_on_string %></span>
+    <br/>
+    <%= content_tag(:span, t("info_items.posted_by") + @review.author.login_name ) if @review.author %>
+    <br/>
+    <%= render "shared/show_tags", :item => @review %>
+    <br/>
+</div>
 
 <table>
-  <tr>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% if @review.vendor %>
     <tr>
-        <td><b><%= t("vendors.vendor") %></b></td>
-        <td><%= link_to @review.vendor.name, @review.vendor %>    <span class="trivial"><%= @review.vendor.address %></span> </td>
+        <th></th>
+        <th></th>
     </tr>
-<% end %>
-<tr>
-  <td><b><%= t("reviews.faults") %></b></td>
-  <td><%= @review.faults.join(" | ") %></td>
-</tr>
-<tr>
-    <td><b><%= t("reviews.content") %></b></td>
-</tr>
+    <% if @review.vendor %>
+        <tr>
+            <td><b><%= t("vendors.vendor") %></b></td>
+            <td><%= link_to @review.vendor.name, @review.vendor %>    <span class="trivial"><%= @review.vendor.address %></span> </td>
+        </tr>
+    <% end %>
+    <tr>
+      <td><b><%= t("reviews.faults") %></b></td>
+      <td><%= @review.get_faults %></td>
+    </tr>
+    <tr>
+        <td><b><%= t("reviews.content") %></b></td>
+        <td><%= t("general.none") if @review.content.blank? %></td>
+    </tr>
 </table>
 
-<%= @review.content.html_safe %>
-<br/>
+<%= content_tag(:div, @review.content.html_safe, :class => "block round" ) if @review.content.present? %>
 
-<b><%= t("images.images") %></b>
 <% if @review.images.size > 0 %>
-    <div id="gallery" class="block">
-      <div class="block_inside">
-          <% @review.images.each do |image| %>
-              <%= get_thumbnail(image, true) %>
-          <% end %>
-      </div>
+    <b><%= t("images.images") %></b>
+    <div id="gallery" class="block round">
+        <%= render :partial => "images/image", :collection => @review.images %>
     </div>
 <% end %>
 
- <% if the_author_himself(Review.name, @review.id, true, false) %>
+<% if the_author_himself(Review.name, @review.id, true, false) %>
     <p><%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %></p>
 <% end %>
+<p>
+    <%= link_to t("general.back_to_list"), review_path %>
+</p>
 
 <hr/>
 
