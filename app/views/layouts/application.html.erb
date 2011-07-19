@@ -24,7 +24,7 @@
                 <small><%= t("site.description") %></small>
             </div>
             <div id="quick_auth">
-              <% unless current_user %>
+              <% unless hide_quick_auth? %>
                 <%= render "shared/quick_login" %>
               <% end %>
             </div>

@@ -3,8 +3,8 @@
 
 en:
   authentication:
-    log_out: "Log out"
-    log_in: "Log in"
+    logout: "Log out"
+    login: "Log in"
     sign_up: "Sign Up"
     email: "Email"
     password: "Password"

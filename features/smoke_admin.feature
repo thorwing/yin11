@@ -35,7 +35,7 @@ Feature: smoke tests for Administration
 
   Scenario: Only Admin can manage users
     When I go to the admin_users page
-    Then I should be on the log_in page
+    Then I should be on the login page
 
     When I log in as "Kate Tester"
     Then I should be on the home page
@@ -49,6 +49,7 @@ Feature: smoke tests for Administration
 
     When I log in as "Ray Admin"
     Then I should be on the admin_users page
+
 
   Scenario: Admin can change other user's role
     When I log in as "Ray Admin"

@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       city = City.of_eng_name(request.location.city.upcase)
       #TODO
       city ||= City.of_name(t("system.default_city"))
-      cookies.permanent[:current_city] = city.id
+      cookies.permanent[:current_city] = city.id if city
     end
   end
 
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.has_permission?(permission)
       true
     else
-      current_user ? (redirect_away :root, :notice => t("notices.need_permission_not_logged", :permission => t("roles.normal_user") )) : (redirect_away :log_in, :notice => t("notices.need_permission_logged", :permission => permission))
+      current_user ? (redirect_away :root, :notice => t("notices.need_permission_not_logged", :permission => t("roles.normal_user") )) : (redirect_away :login, :notice => t("notices.need_permission_logged", :permission => permission))
       false
     end
   end

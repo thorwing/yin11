@@ -27,10 +27,13 @@ Feature: smoke tests for Articles
     And I go to the admin_articles page
     Then I should see "发表新文章"
 
+  @pending
+  @javascript
   Scenario: Only Editor and Admin can edit articles.
     When I log in as "Castle Editor"
     And I post a simple article
     And I go to the articles page
+    Then show me the page
     And I follow "土豆刷绿漆，冒充西瓜"
     Then I should see "编辑"
 
@@ -44,6 +47,9 @@ Feature: smoke tests for Articles
     And I follow "土豆刷绿漆，冒充西瓜"
     Then I should not see "编辑"
 
+
+
+  @javascript
   Scenario: Only Editor and Admin can disable articles.
     Given the following article exists:
       | title            | content                            | tags_string |
@@ -82,6 +88,8 @@ Feature: smoke tests for Articles
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 
+
+  @javascript
   Scenario: User can comment on a article, comments can be nested.
     Given the following article exists:
       | title            | content                            | tags_string |
@@ -91,13 +99,37 @@ Feature: smoke tests for Articles
     Then I should see "西瓜被打了催熟剂"
     When I follow "西瓜被打了催熟剂"
     And I fill in "content" with "很有用的评价" within ".new_comment"
-    And I press "添加"
+    And I press "发表评论"
     And I go to the home page
     Then I should see "+评论(1)"
 
-    When I log in as "David User"
+    When I log in as "Kate Tester"
     When I follow "西瓜被打了催熟剂"
-    And I fill in "content" with "谢谢"
-    And I press "添加"
+    And I fill in "content" with "谢谢" within ".new_comment"
+    And I press "发表评论"
     And I go to the home page
     Then I should see "+评论(2)"
+
+
+#TODO
+#  @pending
+#  @javascript
+#  Scenario: User can't comment very often
+#    Given the following article exists:
+#      | title            | content                            | tags_string |
+#      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
+#
+#    When I log in as "David User"
+#    Then I should see "西瓜被打了催熟剂"
+#    When I follow "西瓜被打了催熟剂"
+#    And I fill in "content" with "很有用的评价" within ".new_comment"
+#    And I press "发表评论"
+#    And I go to the home page
+#    Then I should see "+评论(1)"
+#
+#    When I log in as "David User"
+#    When I follow "西瓜被打了催熟剂"
+#    And I fill in "content" with "谢谢" within ".new_comment"
+#    And I press "发表评论"
+#    And I go to the home page
+#    Then I should not see "+评论(2)"

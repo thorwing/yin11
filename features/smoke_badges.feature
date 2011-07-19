@@ -40,7 +40,7 @@ Feature: smoke tests for Badges
 
   Scenario: Only Admin can create badges
     When I go to the new_admin_badge page
-    Then I should be on the log_in page
+    Then I should be on the login page
     
     When I log in as "David User"
     And I go to the new_admin_badge page

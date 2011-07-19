@@ -50,7 +50,7 @@ Feature: smoke tests for Vendors
 
   Scenario: Quest can not create a vendor
     When I go to the new_vendor page
-    Then I should be on the log_in page
+    Then I should be on the login page
 
   Scenario: User can create a vendor from the index page
     When I log in as "David User"

@@ -56,7 +56,7 @@
                 <h3><%= current_user.login_name %></h3>
                 <%= get_avatar(current_user) %>
                  <p><%= link_to t("home.control_panel.update_profile"), profile_edit_path %>
-                | <%= link_to t("authentication.log_out"), log_out_path %></p>
+                | <%= link_to t("authentication.logout"), logout_path %></p>
             </div>
             <hr/>
             <h3><%= t("home.control_panel.watching") %></h3>
@@ -100,7 +100,7 @@
             </dl>
         <% else %>
             <div id="login_panel" class="sub_panel">
-                <%= link_to t("authentication.log_in"), new_sessions_path %>
+                <%= link_to t("authentication.login"), new_sessions_path %>
                 | <%= link_to t("authentication.sign_up"), new_user_path %>
             </div>
         <% end %>

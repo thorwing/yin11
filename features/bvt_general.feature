@@ -4,13 +4,15 @@ Feature: general usage
   Background:
     Given There are minimal testing records
 
-  Scenario: Guest can visit the entry page
+  Scenario: Guest can Admin can change other user's rolevisit the entry page
     When I go to the home page
     Then I should see "您的餐桌安全吗？"
-    And I should see "快速登录"
+    And I should see "登入"
 
+  @javascript
   Scenario: Guest can search for food
     When I search for "西瓜"
+
     Then I should see "安全评估为"
     And I should see "警惕以下关于“西瓜”的负面信息"
     And I should see "请阅读以下关于“西瓜”的参考"
@@ -22,14 +24,17 @@ Feature: general usage
     And I should see "食物" within "#control_panel .tab"
     And I should see "饭桌" within "#control_panel .tab"
 
+  @pending
+  @javascript
   Scenario: Normal user can post reviews
     When I go to the new_review page
-    Then I should be on the log_in page
+    Then I should be on the login page
 
     When I log in as "David User"
     Then I should be on the new_review page
 
     When I post a simple review without vendor
+
     And I log out
     And I search for "西瓜"
     Then I should see "买到烂西瓜" within "#bad_items"
@@ -68,16 +73,11 @@ Feature: general usage
      And I go to the home page
      Then I should see "西瓜" within "#tag_cloud"
 
+  @pending
+  @javascript
   Scenario: Editor can post an article and that article will be rendered to others
     When I log in as "Castle Editor"
-    And I go to the admin_articles page
-    And I follow "发表新文章"
-    And I fill in "article_title" with "土豆刷绿漆，冒充西瓜"
-    And I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。"
-    And I fill in "article_source_attributes_name" with "神农食品报"
-    And I fill in "article_tags_string" with "西瓜"
-    And I fill in "article_region_tokens" with "021"
-    And I press "完成"
+    And I post a simple article
 
     When I log out
     And I search for "西瓜"

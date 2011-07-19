@@ -7,7 +7,7 @@ Feature: usage about permissions
   Scenario: guest can't post any reviews and will be asked to sign up
     When I go to the reviews page
     And I follow "发表食物测评"
-    Then I should be on the log_in page
+    Then I should be on the login page
 
   Scenario: registered user can post a review about food
     When I log in as "David User"
@@ -17,7 +17,7 @@ Feature: usage about permissions
 
   Scenario: guest and normal user can't post any articles and will be asked to sign up
     When I go to the new_admin_article page
-    Then I should be on the log_in page
+    Then I should be on the login page
 
     When I log in as "David User"
     And I go to the new_admin_article page
@@ -31,7 +31,7 @@ Feature: usage about permissions
 
   Scenario: unregistered user can't visit profile page. And normal user, editor and admin can
     When I go to the profile page
-    Then I should be on the log_in page
+    Then I should be on the login page
 
     When I log in as "David User"
     When I go to the profile page

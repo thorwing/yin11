@@ -16,3 +16,8 @@
 
 <%= link_to t("general.edit"), edit_tip_path(@tip), :class => "button" %> |
 <%= link_to t("general.back_to_list"), tips_path, :class => "button" %>
+
+<hr/>
+
+<%= render "comments/comments", :item => @tip %>
+

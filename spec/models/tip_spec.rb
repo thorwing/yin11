@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "bvt" do
+describe "Tip" do
   it "simpley create a tip" do
     tip = Factory.create(:tip, :title => "test", :content => "1234567890", :type => 1)
     tip.should_not be_new_record

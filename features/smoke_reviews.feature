@@ -17,10 +17,11 @@ Feature: smoke tests for Reviews
     And I go to the new_review page
     Then I should see "请至少上传一张图片，否则测评将在24小时后被禁用"
 
+
   Scenario: User has to choose before creating new review
     When I log in as "David User"
     And I follow "发表食物测评"
-    Then I should see "先找找针对的商户"
+    Then I should see "先找到针对的商户"
     Then I should see "实在想不起在哪儿买的食物了"
 
 
@@ -30,7 +31,7 @@ Feature: smoke tests for Reviews
     | 农工商超市 | 上海 |
     When I log in as "David User"
     And I follow "发表食物测评"
-    And I follow "先找找针对的商户"
+    And I follow "先找到针对的商户"
     And I follow "农工商超市"
     And I follow "+测评"
     Then I should see "新测评"
@@ -89,7 +90,7 @@ Feature: smoke tests for Reviews
 #    When I go to the reviews page
 #    Then I should not see "删除"
 #    When I go to the reviews/123/ page
-#    Then I should be on the log_in page
+#    Then I should be on the login page
 #
 #    When I log in as "Kate Tester"
 #    And I go to the reviews/123/edit page
@@ -110,6 +111,8 @@ Feature: smoke tests for Reviews
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 
+  @pending
+  @javascript
   Scenario:  User can comment on a review, comments can be nested.
     When I log in as "David User"
     And I post a simple review without vendor
@@ -119,14 +122,14 @@ Feature: smoke tests for Reviews
     Then I should see "买到烂西瓜"
     When I follow "买到烂西瓜"
     And I fill in "content" with "很有用的评价" within ".new_comment"
-    And I press "添加"
+    And I press "发表评论"
     And I go to the home page
     Then I should see "评论(1)"
 
     When I log in as "David User"
     When I follow "买到烂西瓜"
     And I fill in "content" with "谢谢" within ".new_comment"
-    And I press "添加"
+    And I press "发表评论"
     And I go to the home page
     Then I should see "评论(2)"
 

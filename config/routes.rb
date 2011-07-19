@@ -12,8 +12,8 @@ Yin11::Application.routes.draw do
     resources :tips, :only => [:index, :show, :destroy]
   end
 
-  match "log_out" => "sessions#destroy"
-  match "log_in" => "sessions#new"
+  match "logout" => "sessions#destroy"
+  match "login" => "sessions#new"
   match "sign_up" => "users#new"
 
   match "/images/uploads/*path" => "gridfs#serve"
@@ -43,19 +43,14 @@ Yin11::Application.routes.draw do
 
   resources :tags, :only => [:index]
 
-  resources :articles, :only => [:index, :show] do
-    resources :comments
-  end
+  resources :articles, :only => [:index, :show]
 
-  resources :recommendations, :except => [:destroy] do
-    resources :comments
-  end
+  resources :recommendations, :except => [:destroy]
 
   resources :reviews, :except => [:destroy] do
     collection do
       get "choose_mode"
     end
-    resources :comments
   end
 
   resources :groups, :except => [:destroy] do

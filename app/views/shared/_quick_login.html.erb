@@ -5,7 +5,7 @@
     <%= label_tag t("authentication.password") %>
     <%= password_field_tag :password %>
     <%= check_box_tag "remember_me", 1, true %><%= t("authentication.remember_me") %>
-    <%= submit_tag t("authentication.log_in"), :class => "button" %>
+    <%= submit_tag t("authentication.login"), :class => "button" %>
     <%= link_to t("authentication.forgot_password"), new_password_reset_path %>
      | <%= link_to t("authentication.sign_up"), sign_up_path %>
 <% end %>

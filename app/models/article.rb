@@ -10,7 +10,7 @@ class Article < InfoItem
   validates_associated :source
 
   validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content") )
-  validates_length_of :content, :minimum => 10, :maximum => 10000, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),
+  validates_length_of :content, :maximum => 10000, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),
                                                                         :min => 10, :max => 10000)
   validates_inclusion_of :category, :in => ArticleTypes.get_values
 

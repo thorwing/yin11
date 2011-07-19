@@ -7,9 +7,6 @@
     <%= @post.content %>
 </p>
 
-<h3><%= t("comments.comments") %></h3>
-<%= nested_comments(@post, patch_ancestry(@post.comments.arrange(:order => :created_at))) %>
+<hr/>
 
-<%= render "shared/new_comment", :item => @post if current_user %>
-
-<%= link_to t("general.back"), @post.group %>
+<%= render "comments/comments", :item => @post %>

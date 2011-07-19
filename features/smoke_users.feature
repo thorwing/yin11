@@ -9,13 +9,18 @@ Feature: smoke tests for User
   Background:
     Given There are minimal testing records
 
+
+  Scenario: User should not see quick_login on the login page
+    When I go to the login page
+    Then I should not see "quick_auth"
+
   Scenario: One can register as a new user
     When I go to the new_user page
     And I fill in "user_email" with "test_regiser@yin11.com"
     And I fill in "user_password" with "simplepassword"
     And I fill in "user_password_confirmation" with "simplepassword"
     And I press "注册"
-    When I go to the log_in page
+    When I go to the login page
     And I fill in "email" with "test_regiser@yin11.com"
     And I fill in "password" with "simplepassword"
     And I press "登入"

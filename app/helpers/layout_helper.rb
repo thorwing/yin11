@@ -20,6 +20,14 @@ module LayoutHelper
     @hide_top_menu
   end
 
+  def hide_quick_auth
+    @hide_quick_auth = true
+  end
+
+  def hide_quick_auth?
+    @hide_quick_auth || current_user
+  end
+
   def home_page
     @is_home_page = true
   end

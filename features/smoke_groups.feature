@@ -3,7 +3,6 @@ Feature: smoke tests for Groups
   Background:
     Given There are minimal testing records
 
-
   Scenario: Guest can visit a group
     When I go to the groups page
     And I should see "所有饭桌"
@@ -12,7 +11,7 @@ Feature: smoke tests for Groups
 
   Scenario: Only user can create a group
     When I go to the new_group page
-    Then I should be on the log_in page
+    Then I should be on the login page
 
     When I log in as "David User"
     And I go to the new_group page
@@ -100,6 +99,7 @@ Feature: smoke tests for Groups
     Then I should see "买到烂西瓜"
 
 
+  @javascript
   Scenario: Group member can post for his group
     Given the following group exists:
       | name       | tags_string |
@@ -124,8 +124,8 @@ Feature: smoke tests for Groups
     And I go to the groups page
     And I follow "西瓜守望者"
     And I follow "我发现了一个很好的卖西瓜的地方"
-    When I fill in "content" with "恩，不错。"
-    And I press "添加评论"
+    When I fill in "content" with "恩，不错。" within ".new_comment"
+    And I press "发表评论"
     Then I should see "恩，不错。"
     And I go to the groups page
     And I follow "西瓜守望者"
