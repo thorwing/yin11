@@ -3,9 +3,6 @@ zh-CN:
     name: 银筷子
     description: 关注 食品 食物 安全
 
-  system:
-    default_city: 上海
-
   general:
     title: 标题
     content: 内容
@@ -80,7 +77,6 @@ zh-CN:
     invalid_invitation: "邀请码无效。"
     logged_out: "您已经登出。"
     no_such_user: "不存在该用户。"
-    invalid_reset_pwd_token: "无效的密码恢复密钥"
     pwd_confirmation_not_match: "确认用的密码不符合您第一次输入的密码，请再试一次。"
     remember_me: "记住我"
 

@@ -1,6 +1,7 @@
 module GlobalConstants
   # also notice the call to 'freeze'
   #default
+  DEFAULT_CITY_CODE = "021" #Shaanghai
   ITEMS_PER_PAGE_FEW = 5
   ITEMS_PER_PAGE_MANY = 20
   ITEMS_PER_PAGE_POPULAR = 10

@@ -111,14 +111,13 @@ Feature: smoke tests for Reviews
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 
-  @pending
   @javascript
   Scenario:  User can comment on a review, comments can be nested.
-    When I log in as "David User"
-    And I post a simple review without vendor
+    Given the following review exists:
+    | title      | tags_string  | content |
+    | 买到烂西瓜 | 西瓜         | 西瓜切开来后发现已经熟过头了。 |
 
     When I log in as "Kate Tester"
-
     Then I should see "买到烂西瓜"
     When I follow "买到烂西瓜"
     And I fill in "content" with "很有用的评价" within ".new_comment"

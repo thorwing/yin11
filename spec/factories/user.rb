@@ -1,6 +1,9 @@
 #encoding utf-8
 require "global_constants"
 
+Factory.define :user do |f|
+end
+
 Factory.define :normal_user, :class => User do |f|
   f.email "user@yin11.com"
   f.password "Iam1user"

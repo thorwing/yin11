@@ -24,8 +24,6 @@ Feature: general usage
     And I should see "食物" within "#control_panel .tab"
     And I should see "饭桌" within "#control_panel .tab"
 
-  @pending
-  @javascript
   Scenario: Normal user can post reviews
     When I go to the new_review page
     Then I should be on the login page
@@ -36,7 +34,7 @@ Feature: general usage
     When I post a simple review without vendor
 
     And I log out
-    And I search for "西瓜"
+    And I query for "西瓜"
     Then I should see "买到烂西瓜" within "#bad_items"
 
 #  Scenario: Only authorized user can post reviews
@@ -73,15 +71,13 @@ Feature: general usage
      And I go to the home page
      Then I should see "西瓜" within "#tag_cloud"
 
-  @pending
-  @javascript
   Scenario: Editor can post an article and that article will be rendered to others
     When I log in as "Castle Editor"
     And I post a simple article
 
     When I log out
-    And I search for "西瓜"
-    Then I should see "土豆刷绿漆，冒充西瓜" within "#bad_items"
+    And I go to the home page
+    Then I should see "土豆刷绿漆，冒充西瓜"
 
   Scenario: User will get rewards because of posting reviews.
     Given the following badge exists:

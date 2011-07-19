@@ -43,10 +43,14 @@ Then /^I should see "(.+)" whose "(.+)" is "(.+)"$/ do |element_type, attr, id|
   page.has_xpath?("//#{element_type}[@#{attr}='#{id}']")
 end
 
-When /^I search for "(.+)"$/ do |foods|
+When /^I search for "(.+)"$/ do |query|
   visit path_to("the home page")
-  fill_in "search", :with => foods
+  fill_in "search", :with => query
   click_button "搜索"
+end
+
+When /^I query for "(.+)"$/ do |query|
+  visit("/home/items?search=#{URI.escape(query)}")
 end
 
 When /^I search tips for "(.+)"$/ do |item|
@@ -91,7 +95,8 @@ When /^I post a simple article$/ do
     And %(I follow "发表新文章")
     And %(I fill in "article_title" with "土豆刷绿漆，冒充西瓜")
     And %(I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。")
-    And %(I fill in "article_source_attributes_name" with "神农食品报")
+    #TODO
+    #And %(I fill in "article_source_attributes_name" with "神农食品报")
     And %(I fill in "article_tags_string" with "西瓜")
     And %(I fill in "article_region_tokens" with "021")
     And %(I press "完成")

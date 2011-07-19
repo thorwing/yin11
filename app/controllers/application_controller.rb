@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     unless cookies[:current_city]
       city = City.of_eng_name(request.location.city.upcase)
       #TODO
-      city ||= City.of_name(t("system.default_city"))
+      city ||= City.find(GlobalConstants::DEFAULT_CITY_CODE)
       cookies.permanent[:current_city] = city.id if city
     end
   end

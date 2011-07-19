@@ -20,7 +20,6 @@ en:
     recovery_mail_sent: "Recovery email is sent, please check it."
     invalid_reset_pwd_token: "Invalid Token."
     pwd_confirmation_not_match: "Your password confirmation doesn't match your new password, please enter again."
-    pwd_reset: "Your password has been reset."
     remember_me: "Remember me"
 
   home:
