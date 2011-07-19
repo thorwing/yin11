@@ -1,6 +1,6 @@
 <h2><%= t("address.change_city") %></h2>
 
-<%= form_tag locations_update_current_city_path, :remote => true do%>
+<%= form_tag locations_update_current_city_path do%>
 
   <div class="field">
     <b><%= t("address.province") %></b><br/>
@@ -10,7 +10,6 @@
     <b><%= t("address.city") %></b><br/>
     <%= select_tag "select_city", options_for_select(get_cities_of_provinces(current_city.province), current_city.id)%>
   </div>
-  <%= hidden_field_tag "reload_vendors", params[:reload_vendors] %>
   <div class="actions">
     <%= submit_tag t("general.submit"), :class => "button" %>
   </div>

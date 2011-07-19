@@ -23,15 +23,11 @@ class LocationsController < ApplicationController
       city = City.find(params[:select_city])
       if city
         self.current_city = city
-        # is it true?
-        if params[:reload_vendors].match(/(true|t|yes|y|1)$/i) != nil
-          @vendors = Vendor.enabled.of_city(self.current_city.name).all
-        end
       end
     end
 
     respond_to do |format|
-      format.js {render :content_type => 'text/javascript'}
+      format.html {redirect_to root_url, :notice => t("notices.current_city_updated")}
     end
   end
 

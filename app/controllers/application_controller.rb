@@ -10,12 +10,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_city
-    @current_city ||= City.find(session[:current_city])
+    @current_city ||= City.find(cookies[:current_city]) if cookies[:current_city]
   end
 
   def current_city=(new_city)
     @current_city = new_city
-    session[:current_city] = new_city.id
+    cookies.permanent[:current_city] = new_city.id
   end
 
   protected
@@ -25,11 +25,11 @@ class ApplicationController < ActionController::Base
 
   def set_city
     #should be set only once
-    unless session[:current_city]
+    unless cookies[:current_city]
       city = City.of_eng_name(request.location.city.upcase)
       #TODO
       city ||= City.of_name(t("system.default_city"))
-      session[:current_city] = city.id
+      cookies.permanent[:current_city] = city.id
     end
   end
 

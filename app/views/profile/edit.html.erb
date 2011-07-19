@@ -9,9 +9,6 @@
         </P>
     </div>
     <div class="field">
-        <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true), :rel => "facebox" %>)
-    </div>
-    <div class="field">
       <%= t("profile.receive_mails") %>
       <%= f.check_box :receive_mails, {}, true, false %>
     </div>

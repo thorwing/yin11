@@ -14,6 +14,6 @@
         <li><%= link_to t("authentication.log_out"), log_out_path %></li>
     <% end %>
     <span id="city_switch">
-        <%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true), :rel => "facebox" %>)
+        <h3><%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true), :rel => "facebox" %>)</h3>
     </span>
 </ul>

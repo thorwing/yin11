@@ -1,6 +1,6 @@
 <div class="map_input">
     <b><%= t("location.city") %></b><br/>
-    <%= content_tag(:span, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true), :rel => "facebox" %>)
+    <%= content_tag(:span, current_city.name, :id => "current_city_name") %>
     <%= f.hidden_field :city, :class => "map_city" %>
     <br/>
     <b><%= t("location.street") %></b><br/>

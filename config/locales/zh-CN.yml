@@ -115,6 +115,7 @@ zh-CN:
     group_user_unlocked: 已解除对该用户的阻止
     post_created: 话题已发表
     vendor_created: 商户已创建
+    current_city_updated: 当前城市已更新
 
   alerts:
     password_reset_expired: 密码重置口令已过期
