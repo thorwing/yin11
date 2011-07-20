@@ -13,8 +13,8 @@ class Comment
   embedded_in :post
   belongs_to :user
 
-  validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content"))
-  validates_length_of :content, :maximum => 1000, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.content"),
-  :max => 1000)
+  validates_presence_of :user
+  validates_presence_of :content
+  validates_length_of :content, :maximum => 1000
 
 end

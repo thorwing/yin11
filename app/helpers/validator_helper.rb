@@ -20,13 +20,13 @@ module ValidatorHelper
     if validator
       msg = ""
       if validator.options[:minimum].present? && validator.options[:maximum].present?
-        msg = I18n.translate("validations.general.length_msg", :field => I18n.translate("general.#{attribute.to_s}"),
+        msg = I18n.t("validations.general.length_msg", :field => I18n.t("general.#{attribute.to_s}"),
                              :min => validator.options[:minimum], :max => validator.options[:maximum])
       elsif validator.options[:minimum].present?
-        msg = I18n.translate("validations.general.min_length_msg", :field => I18n.translate("general.#{attribute.to_s}"),
+        msg = I18n.t("validations.general.min_length_msg", :field => I18n.t("general.#{attribute.to_s}"),
                              :min => validator.options[:minimum])
       elsif validator.options[:maximum].present?
-        msg = I18n.translate("validations.general.min_length_msg", :field => I18n.translate("general.#{attribute.to_s}"),
+        msg = I18n.t("validations.general.max_length_msg", :field => I18n.t("general.#{attribute.to_s}"),
                              :max => validator.options[:maximum])
       end
       ( msg = "(" + msg + ")" ) if msg.present?

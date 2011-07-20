@@ -2,12 +2,14 @@ class Badge
   include Mongoid::Document
   include Available
 
-  field :name, :type => String
-  field :description, :type => String
+  field :name
+  field :description
 
   field :contribution_field
-  field :comparator, :type => Integer, :default => 0
-  field :compared_value
+  field :comparator
+  field :compared_value, :type => Integer
+
+  attr_accessible :name, :description, :contribution_field, :comparator, :compared_value, :disabled
 
   scope :not_belong_to, lambda { |user| not_in(:_id => user.badge_ids) }
 
@@ -17,8 +19,6 @@ class Badge
   #validators
   validates_uniqueness_of :name
   validates_presence_of :name, :contribution_field, :comparator, :compared_value
-
-  attr_accessible :name, :description, :contribution_field, :comparator, :compared_value, :disabled
 
   COMPARATOR_HASH = {
     :equals => "==",

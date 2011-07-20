@@ -1,26 +1,32 @@
 require 'spec_helper'
 
 describe City do
-  describe "bvt" do
-    it "simply create a city" do
-      city = Factory.create(:city, :name => "Beijing", :code => "010", :postcode => "10000")
-      city.should_not be_new_record
-      city.should_not be_nil
-    end
-
-    it "name is required" do
-      city = Factory.build(:city, :code => "010", :postcode => "10000")
-      city.valid?.should equal false
-    end
-
-    it "code is required" do
-      city = Factory.build(:city, :name => "Beijing", :postcode => "10000" )
-      city.valid?.should equal false
-    end
-
-     it "postcode is required" do
-      city = Factory.build(:city, :name => "Beijing", :code => "010" )
-      city.valid?.should equal false
-    end
+  it "simply create a city" do
+    City.new(:name => "Beijing", :code => "010", :postcode => "10000").should be_valid
   end
+
+  it "name is mandatory" do
+    City.new(:code => "010", :postcode => "10000").should_not be_valid
+  end
+
+  it "code is mandatory" do
+    City.new(:name => "Beijing", :postcode => "10000").should_not be_valid
+  end
+
+  it "postcode is mandatory" do
+    City.new(:name => "Beijing", :code => "010").should_not be_valid
+  end
+
+  it "the of_name scope works" do
+    beijing = Factory(:beijing)
+    city = City.of_name("Beijing")
+    city.should == beijing
+  end
+
+  it "the of_eng_name scope works" do
+    beijing = Factory(:beijing)
+    city = City.of_eng_name("BEIJING")
+    city.should == beijing
+  end
+
 end

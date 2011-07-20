@@ -13,6 +13,7 @@ class City
   index :name, :unique => true
   index :eng_name
 
+  #scopes
   # strange error when trying to using scope, so using class method instead
   class << self
     def of_name(name)
