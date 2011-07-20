@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   def new
       vendor = Vendor.find(params[:vendor_id])
       @report = vendor.reports.build
-      @report.contact_email = current_user.email if current_user
+      @report.email = current_user.email if current_user
       respond_to do |format|
         if params[:popup]
           format.html {render "new", :layout => "dialog" }

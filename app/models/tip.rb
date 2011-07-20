@@ -1,7 +1,7 @@
 class Tip < InfoItem
   include Mongoid::Document
 
-  field :current_version_id, :type => String
+  field :current_version_id
 
   #relationships
   embeds_many :revisions
@@ -9,12 +9,10 @@ class Tip < InfoItem
   belongs_to :user, :inverse_of => "collected_tips"
 
   #override the settings in Informative
-  validates_uniqueness_of :title, :message => I18n.translate("validations.general.uniqueness_msg", :field => I18n.translate("general.name"))
-  validates_length_of :title, :maximum => 20, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.content"),
-                                                                        :max => 20)
-  validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content") )
-  validates_length_of :content, :minimum => 10, :maximum => 200, :message => I18n.translate("validations.general.length_msg", :field => I18n.translate("general.content"),
-                                                                        :min => 10, :max => 200)
+  validates_uniqueness_of :title
+  validates_length_of :title, :maximum => 20
+  validates_presence_of :content
+  validates_length_of :content, :minimum => 10, :maximum => 200
 
   def revise(author)
     if author.present?

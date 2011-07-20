@@ -24,6 +24,9 @@ class User
   index :email
   index :auth_token
 
+  attr_accessor :password
+  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at
+
   # strange error when trying to using scope, so using class method instead
   class << self
     def of_auth_token(token)
@@ -40,9 +43,6 @@ class User
   has_and_belongs_to_many :groups, :inverse_of => "members"
   has_and_belongs_to_many :badges
 
-  attr_accessor :password
-  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at
-
   #Validators
   validates :email,
               :presence => true,
@@ -50,7 +50,7 @@ class User
               :email_format => true
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
-  validates_length_of :password, :minimum => 6, :on => :create, :message => I18n.t("views.validation_message.password_is_too_short")
+  validates_length_of :password, :minimum => 6, :on => :create
   validates_associated :profile, :contribution
 
   #Others

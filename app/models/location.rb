@@ -9,10 +9,7 @@ class Location
   geocoded_by :address
   acts_as_gmappable :lat => 'latitude', :lng => 'longitude', :process_geocoding => false
 
-  #relationships
-  embedded_in :vendor
-
-  attr_accessible :city, :street, :coordinates
+  attr_accessible :city, :street
 
   after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.street_changed? }
 

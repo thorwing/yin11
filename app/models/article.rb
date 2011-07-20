@@ -2,10 +2,10 @@ class Article < InfoItem
   #fields
   field :type
 
-  #scopes
-
   #accessibles
   attr_accessible :type, :source_attributes
+
+  #scopes
 
   #Relationships
   has_one :source

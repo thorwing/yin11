@@ -13,6 +13,4 @@ class Contribution
   #relationships
   embedded_in :user
 
-  validates_presence_of :user
-
 end

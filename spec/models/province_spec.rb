@@ -22,5 +22,15 @@ describe Province do
       Province.new(:name => "test", :code => "021", :short_name => "t").should be_valid
     end
 
+    it "code is unique" do
+      Province.create(:name => "test", :code => "021", :short_name => "t", :type => "1")
+      Province.new(:name => "test2", :code => "021", :short_name => "t", :type => "1").should_not be_valid
+    end
+
+    it "name is unique" do
+      Province.create(:name => "test", :code => "021", :short_name => "t", :type => "1")
+      Province.new(:name => "test", :code => "020", :short_name => "t", :type => "1").should_not be_valid
+    end
+
   end
 end
