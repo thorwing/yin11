@@ -1,8 +1,8 @@
-<%= title t("authentication.reset_password") %>
+<% title t("authentication.reset_password") %>
 
 <%= form_tag password_resets_path, :method => :post do %>
     <div class="field">
-      <%= label_tag :email %>
+      <%= label_tag t("authentication.email") %>
       <%= text_field_tag :email, params[:email] %>
     </div>
     <div class="actions"><%= submit_tag t("authentication.reset_password"), :class => "button" %></div>

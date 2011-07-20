@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Source" do
+describe Source do
   it "works with normal parameters" do
     source = Source.new do |s|
       s.name = "yin11news"
@@ -20,20 +20,19 @@ describe "Source" do
   end
 
   it "name is mandatory" do
-    source = Source.new
-    source.valid?.should == false
+    Source.new.should_not be_valid
   end
 
   it "name's max length is 20" do
-    source = Source.new
-    source.name = "123456789012345678901"
-    source.valid?.should == false
+    Source.new(:name => "1" * 21).should_not be_valid
   end
 
   it "site's max length is 20" do
-    source = Source.new(:name => "Yin11News")
-    source.site = "123456789012345678901"
-    source.valid?.should == false
+    Source.new(:name => "Yin11News", :site => "1" * 21).should_not be_valid
+  end
+
+  it "empty url is ok" do
+    Source.new(:name => "Yin11News", :site => "somesite").should be_valid
   end
 
   it "false url won't be accepted'" do

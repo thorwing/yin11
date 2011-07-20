@@ -17,6 +17,22 @@ module ValidatorHelper
   def mark_required_length(klass, attribute)
     klass = klass.class unless klass.is_a?(Class)
     validator = get_length_validator(klass, attribute)
-    validator ? content_tag(:span, "(" + validator.options[:message] + ")", :class => "trivial") : ""
+    if validator
+      msg = ""
+      if validator.options[:minimum].present? && validator.options[:maximum].present?
+        msg = I18n.translate("validations.general.length_msg", :field => I18n.translate("general.#{attribute.to_s}"),
+                             :min => validator.options[:minimum], :max => validator.options[:maximum])
+      elsif validator.options[:minimum].present?
+        msg = I18n.translate("validations.general.min_length_msg", :field => I18n.translate("general.#{attribute.to_s}"),
+                             :min => validator.options[:minimum])
+      elsif validator.options[:maximum].present?
+        msg = I18n.translate("validations.general.min_length_msg", :field => I18n.translate("general.#{attribute.to_s}"),
+                             :max => validator.options[:maximum])
+      end
+      ( msg = "(" + msg + ")" ) if msg.present?
+      content_tag(:span, msg, :class => "trivial")
+    else
+      ""
+    end
   end
 end

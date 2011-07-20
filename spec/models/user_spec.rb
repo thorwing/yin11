@@ -4,6 +4,7 @@ VALID_PASSWORD = "123456"
 
 INVALID_EMAIL = "test%de"
 INVALID_PASSWORD = "123"
+
 describe User do
   describe "bvt" do
     it "can simply create a user" do
@@ -46,7 +47,7 @@ describe User do
   end
 
   describe "#send_password_reset" do
-    let(:user) { Factory(:user) }
+    let(:user) { Factory(:normal_user) }
 
     it "generates a unique password_reset_token each time" do
       user.send_password_reset

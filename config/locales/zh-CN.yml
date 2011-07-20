@@ -11,7 +11,7 @@ zh-CN:
     date: 日期
     reported_on: 发布日期
     created_at: 创建时间
-    category: 类别
+    type: 类别
     delete: 删除
     show: 查看
     submit: 完成
@@ -37,6 +37,7 @@ zh-CN:
     severity_1: 注意
     severity_2: 警惕
     severity_3: 严重
+    total: 总共
     are_you_sure_to_delete: 确定要删除吗？
     are_you_sure_to_disable_enable: "确定要禁用/启用吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用

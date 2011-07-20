@@ -1,24 +1,31 @@
 class Article < InfoItem
-  field :category, :default => ArticleTypes.get_values.first
+  #fields
+  field :type
+
+  #scopes
+
+  #accessibles
+  attr_accessible :type, :source_attributes
 
   #Relationships
-  embeds_one :source
+  has_one :source
 
   accepts_nested_attributes_for :source, :reject_if => lambda { |s| s[:name].blank? }, :allow_destroy => true
-  attr_accessible :category, :source_attributes
 
+  #validators
   validates_associated :source
 
-  validates_presence_of :content, :message => I18n.translate("validations.general.presence_msg", :field => I18n.translate("general.content") )
-  validates_length_of :content, :maximum => 10000, :message => I18n.translate("validations.general.max_length_msg", :field => I18n.translate("general.content"),
-                                                                              :max => 10000)
-  validates_inclusion_of :category, :in => ArticleTypes.get_values
+  validates_presence_of :content
+  validates_length_of :content, :maximum => 10000
 
+  validates_inclusion_of :type, :in => ArticleTypes.get_values
+
+  #callbacks
+  before_validation {self.type ||= ArticleTypes.get_values.first}
+
+  #methods
   def name_of_source
-    if self.source
-      self.source.name.present? ? self.source.name : self.source.site
-    else
-      ""
-    end
+    self.source.name if source
   end
+
 end

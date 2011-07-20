@@ -36,8 +36,8 @@
     </div>
 
      <div class="field">
-        <%= f.label :category, t("general.category") %><br/>
-        <%= f.select :category, options_for_select(ArticleTypes.get_values, @article.category) %>
+        <%= f.label :type, t("general.type") %><br/>
+        <%= f.select :type, options_for_select(ArticleTypes.get_values, @article.type) %>
     </div>
 
     <%= render "images/images_fields", :f => f, :item => @article %>

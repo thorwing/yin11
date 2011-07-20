@@ -1,6 +1,6 @@
 <% title t("articles.articles") %>
 
-<p>Total: <%= @articles.size %> articles.</p>
+<p><%= [t("general.total"), ":", @articles.size].join(" ") %> </p>
 <div>
     <table>
       <tr>
@@ -18,11 +18,11 @@
         <td><%= article.disabled %></td>
         <td><%= article.reported_on_string %></td>
         <td><%= article.name_of_source %></td>
-        <td><%= link_to t("general.edit"), edit_admin_article_path(article) %></td>
-        <td><%= link_to t("general.delete"), admin_article_path(article), :confirm => t("general.are_you_sure_to_delete"), :method => :delete %></td>
+        <td><%= link_to t("general.edit"), edit_admin_article_path(article), :class => "button" %></td>
+        <td><%= link_to t("general.delete"), admin_article_path(article), :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
       </tr>
     <% end %>
     </table>
 </div>
 
-<%= link_to t("articles.post_new_article"), new_admin_article_path %>
+<%= link_to t("articles.post_new_article"), new_admin_article_path, :class => "button" %>

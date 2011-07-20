@@ -1,30 +1,26 @@
 require 'spec_helper'
 
-describe "bvt" do
-  it "simply create a province" do
-    province = Factory.create(:province, :name => "test", :code => "021", :short_name => "t", :type => "1")
-    province.should_not be_new_record
-    province.should_not be_nil
-  end
+describe Province do
+  describe "bvt" do
+    it "simply create a province" do
+      Province.new(:name => "test", :code => "021", :short_name => "t", :type => "1").should be_valid
+    end
 
-  it "name is required" do
-    province = Factory.build(:province, :code => "021", :short_name => "t", :type => "1")
-    province.valid?.should equal false
-  end
+    it "name is mandatory" do
+      Province.new(:code => "021", :short_name => "t", :type => "1").should_not be_valid
+    end
 
-  it "code is required" do
-    province = Factory.build(:province, :name => "test", :short_name => "t", :type => "1")
-    province.valid?.should equal false
-  end
+    it "code is mandatory" do
+      Province.new(:name => "test", :short_name => "t", :type => "1").should_not be_valid
+    end
 
-  it "short_name is required" do
-    province = Factory.build(:province, :name => "test", :code => "021", :type => "1")
-    province.valid?.should equal false
-  end
+    it "short_name is not mandatory" do
+      Province.new(:name => "test", :code => "021", :type => "1").should be_valid
+    end
 
-  it "type is required" do
-    province = Factory.build(:province, :name => "test", :code => "021", :short_name => "t")
-    province.valid?.should equal false
-  end
+    it "type is not mandatory" do
+      Province.new(:name => "test", :code => "021", :short_name => "t").should be_valid
+    end
 
+  end
 end

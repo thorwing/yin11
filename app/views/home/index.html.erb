@@ -113,21 +113,6 @@
             <% end %>
         </div> <!--end of tag_cloud -->
 
-       <% if false %>
-        <div id="foods_buzz" class="sub_panel">
-          <% if @foods_buzz %>
-              <h3><%= t("home.foods_buzz") %></h3>
-              <% @foods_buzz.each do |category, foods| %>
-                <h4><%= category.name if category %></h4>
-                <% foods.each do |food| %>
-                    <h5><%= link_to food.name, foods_path(:foods => food.name) %></h5>
-                <% end %>
-                <br/>
-              <% end %>
-          <% end %>
-        </div> <!--end of foods_buzz -->
-        <% end %>
-
     </div> <!--end of control_panel -->
 </div><!--end of two_columns_block -->
 
