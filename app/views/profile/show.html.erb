@@ -3,12 +3,12 @@
     <h3><%= current_user.login_name %></h3>
     <%= get_avatar(current_user) %>
 </div>
-<div class="fields_group">
+<div class="block round">
     <h3><%= t("profile.interested_places") %></h3>
     <%= render :partial => "watched_location", :collection => current_user.profile.watched_locations %>
 </div>
 
-<div class="fields_group">
+<div class="block round">
     <h3><%= t("profile.my_recent_posted_items") %></h3>
     <table>
         <tr>
@@ -19,14 +19,21 @@
     </table>
 </div>
 
-<div class="fields_group">
+<div class="block round">
     <h3><%= t("profile.my_badges") %></h3>
     <%= render :partial => "badge", :collection => current_user.badges %>
 </div>
 
-<div class="fields_group">
+<div class="block round">
     <h3><%= t("profile.my_groups") %></h3>
     <%= render :partial => "group", :collection => current_user.groups %>
+</div>
+
+<div id="blocked_users_list" class="block round">
+  <%= t("users.blocked_users_list") %>
+  <% @blocked_users.each do |user| %>
+      <p><%= link_to user.login_name, user %></p>
+  <% end %>
 </div>
 
 <%= link_to t("general.change"), edit_profile_path(current_user), :class => "button" %>

@@ -80,6 +80,9 @@ describe InfoItem do
       item.save
 
       InfoItem.not_from_blocked_users([user.id]).should_not include(item)
+      lambda {
+         InfoItem.not_from_blocked_users([])
+      }.should raise_exception()
     end
   end
 

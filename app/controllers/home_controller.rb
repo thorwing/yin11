@@ -2,7 +2,6 @@ class HomeController < ApplicationController
   include ApplicationHelper
 
   def index
-
     @items = get_items(1)
 
     @hot_articles = Article.enabled.desc(:reported_on, :updated_on).limit(GlobalConstants::HOT_ARTICLES_ON_HOME_PAGE)
@@ -81,7 +80,7 @@ class HomeController < ApplicationController
   def get_items(page_idx)
     #fetch items, according to popularity, topics(tags) and recent
     basic_criteria = InfoItem.enabled.in_days_of(GlobalConstants::ITEMS_EFFECTIVE_DAYS)
-    basic_criteria = basic_criteria.not_from_blocked_users(current_user.blocked_user_ids) if (current_user and current_user.blocked_user_ids)
+    basic_criteria = basic_criteria.not_from_blocked_users(current_user.blocked_user_ids) if (current_user and current_user.blocked_user_ids and current_user.blocked_user_ids.size > 0)
     popular_items = basic_criteria.desc(:votes).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_POPULAR)
     hot_items = basic_criteria.tagged_with_any(get_hot_tags).desc(:created_at, :reported_on).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_HOT)
     recent_items = basic_criteria.desc(:created_at, :reported_on).page(page_idx).per(GlobalConstants::ITEMS_PER_PAGE_RECENT)

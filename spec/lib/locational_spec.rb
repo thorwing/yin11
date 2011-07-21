@@ -30,4 +30,5 @@ describe "Locational" do
     e.latitude.should > 0
     e.longitude.should > 0
   end
+
 end

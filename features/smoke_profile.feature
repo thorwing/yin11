@@ -1,10 +1,8 @@
-
 Feature: smoke tests for Profile
 
   Background:
     Given There are minimal testing records
 
-  @focus
   Scenario: Guest can't go to the profile page
     When I go to David's profile page
     Then I should be on the login page

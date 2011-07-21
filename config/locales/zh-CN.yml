@@ -202,7 +202,8 @@ zh-CN:
     edit: 编辑用户
     login_name: 登录名
     block: 阻止该用户
-    unblock: 解除对该用户的阻止
+    unlock: 解除对该用户的阻止
+    blocked_users_list: 阻止名单
 
   groups:
     join: 加入

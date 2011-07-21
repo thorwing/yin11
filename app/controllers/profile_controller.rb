@@ -4,6 +4,7 @@ class ProfileController < ApplicationController
 
   def show
     @recent_items = current_user.info_items.of_type([Review.name, Recommendation.name]).desc(:updated_at).limit(GlobalConstants::PROFILE_RECENT_ITEMS).all
+    @blocked_users = (current_user.blocked_user_ids || []).map{ |e| User.find(e) }
   end
 
   def edit
