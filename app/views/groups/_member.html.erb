@@ -1,8 +1,3 @@
 <p>
-    <%= member.login_name %>
-    <% if user_can_be_blocked?(member) %>
-        <%= link_to t("groups.block"), block_group_path(@group, :user_id => member.id), :method => :put, :class => "button" %>
-    <% elsif user_can_be_unlocked?(member) %>
-        <%= link_to t("groups.unblock"), unlock_group_path(@group, :user_id => member.id), :method => :put, :class => "button" %>
-    <% end %>
+  <%= link_to member.login_name, member %>
 </p>

@@ -4,7 +4,9 @@
     <%= render "shared/vote_fields", :item => @review %>
     <span class="trivial"><%= @review.reported_on_string %></span>
     <br/>
-    <%= content_tag(:span, t("info_items.posted_by") + @review.author.login_name ) if @review.author %>
+    <% if @review.author %>
+        <%= t("info_items.posted_by")  %> <%= link_to @review.author.login_name, @review.author %>
+    <% end %>
     <br/>
     <%= render "shared/show_tags", :item => @review %>
     <br/>

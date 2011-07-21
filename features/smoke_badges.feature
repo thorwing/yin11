@@ -101,7 +101,7 @@ Feature: smoke tests for Badges
 
     When I log in as "David User"
     And I post a simple review without vendor
-    And I go to the profile page
+    And I go to David's profile page
     Then I should see "新手上路"
 
   Scenario: User can get a badge for his review gets more than 100 votes.
@@ -123,7 +123,7 @@ Feature: smoke tests for Badges
     Then I should see "西瓜被打了催熟剂"
     When I follow "down" within ".item.info"
 
-    When I go to the profile page
+    When I go to David's profile page
     Then I should see "批评家"
 
   Scenario: User can get a badge for leaving 10 comments

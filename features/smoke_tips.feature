@@ -2,7 +2,6 @@ Feature: smoke tests for Tips
   On the tips page, it shows all recent updated tips and hot tips
   User can search for tip by using keywords
   User can create a tip
-  User can vote for a tip
   User can edit others tip, and the change will be stored in revision, it will not be used immediately
   Admin can merge two tips
 
@@ -59,19 +58,6 @@ Feature: smoke tests for Tips
     When I search tips for "辨别西瓜是否含有催熟剂"
     Then I should not see "没有找到标题为<辨别西瓜是否含有催熟剂>的锦囊"
     And I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-
-  @javascript
-  Scenario: User can vote for a tip
-    When I log in as "Kate Tester"
-    And I post a simple tip
-
-    When I log in as "David User"
-    And I search tips for "辨别西瓜是否含有催熟剂"
-    Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-    When I follow "up" within ".item.info"
-    And I go to the tips page
-    Then I should see "辨别西瓜是否含有催熟剂" within "#recent_tips"
-    And I should see "1" within "#recent_tips"
 
   Scenario: User can edit others tip, and the change will be stored in revision, it will not be used immediately
     When I log in as "David User"

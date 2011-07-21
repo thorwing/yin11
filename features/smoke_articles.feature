@@ -6,7 +6,6 @@ Feature: smoke tests for Articles
   Only Editor and Admin can disable articles.
   Editor can upload images for an article, and one of the images will be displayed as thumbnail.
   Editor can add descriptions on images.
-  User can vote fro a article.
   User can comment on a article, comments can be nested.
 
   Background:
@@ -71,17 +70,6 @@ Feature: smoke tests for Articles
 #    And I press "发表"
 #    Then I should see "图片(1):"
 #    And I should see "Rails标志"
-
-  @javascript
-  Scenario: User can vote for a article.
-    Given the following article exists:
-      | title            | content                            | tags_string |
-      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
-
-    When I log in as "David User"
-    Then I should see "西瓜被打了催熟剂"
-    When I follow "up" within ".item.info"
-    Then I should see "1" within ".item.info"
 
 
   @javascript

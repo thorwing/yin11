@@ -47,7 +47,7 @@ Feature: smoke tests for User
     When I log in as "David User"
     And I add "牛奶" to watching foods list
 
-    And I go to the profile page
+    And I go to David's profile page
     And I follow "修改"
     And I press "完成"
     And I go to the home page
@@ -67,7 +67,7 @@ Feature: smoke tests for User
 #    When I go to the home page
 #    Then I should see "三聚氰胺再现上海"
 #
-#    When I go to the profile page
+#    When I go to my profile page
 #    And I follow "修改"
 #    And I uncheck "profile_display_articles"
 #    And I press "完成"
@@ -78,7 +78,7 @@ Feature: smoke tests for User
 #    And I go to the home page
 #    Then I should see "买到烂西瓜"
 #
-#    When I go to the profile page
+#    When I go to my profile page
 #    And I follow "修改"
 #    And I uncheck "profile_display_reviews"
 #    And I press "完成"
@@ -88,11 +88,11 @@ Feature: smoke tests for User
   Scenario: User can see his reviews on his profile page
     When I log in as "David User"
     And I post a simple review without vendor
-    And I go to the profile page
+    And I go to David's profile page
     Then I should see "买到烂西瓜"
 
 #  Scenario: User can update his profile, and add some places that he is interested in
 #    When I log in as "David User"
-#    And I go to the profile page
+#    And I go to my profile page
 #    Then I should see "感兴趣的地方"
 

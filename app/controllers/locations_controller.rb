@@ -50,6 +50,24 @@ class LocationsController < ApplicationController
     end
   end
 
+  def regions
+    @regions = Province.only(:id, :name).where(:name => /#{params[:q]}?/) + City.only(:id, :name).where(:name => /#{params[:q]}?/)
+    @regions.uniq! {|e| e.name}
+    respond_to do |format|
+      format.json { render :json => @regions.map { |e| {:id => e.id, :name => e.name } } }
+    end
+  end
+
+  def cities
+      province = Province.first(:conditions => {:id => params[:province_id]}) if params[:province_id]
+      @cities = province.cities if province
+      @cities ||= []
+
+      respond_to do |format|
+        format.json { render :json => @cities.map { |e| {:id => e.id, :name => e.name } } }
+    end
+  end
+
   private
   def resolve_layout
     case action_name

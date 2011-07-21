@@ -10,10 +10,10 @@
     <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
     <li><%= render_menu(t("menu.badges"), badges_path) %></li>
     <% if current_user %>
-        <li><%= render_menu(t("menu.prfile"), profile_show_path) %></li>
+        <li><%= render_menu(t("menu.prfile"), profile_path(current_user)) %></li>
         <li><%= link_to t("authentication.logout"), logout_path %></li>
     <% end %>
     <span id="city_switch">
-        <h3><%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), locations_edit_current_city_path(:popup => true), :rel => "facebox" %>)</h3>
+        <h3><%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)</h3>
     </span>
 </ul>

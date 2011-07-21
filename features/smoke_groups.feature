@@ -27,35 +27,23 @@ Feature: smoke tests for Groups
 
 
   Scenario: User can join a group
-    Given the following group exists:
-    | name       | tags_string |
-    | 西瓜守望者 | 西瓜        |
-
     When I log in as "David User"
     And I join the group "西瓜守望者"
-    And I go to the profile page
+    And I go to David's profile page
     Then I should see "西瓜守望者"
 
 
   Scenario: User can quit a group
-    Given the following group exists:
-    | name       | tags_string |
-    | 西瓜守望者 | 西瓜        |
-
     When I log in as "David User"
     And I join the group "西瓜守望者"
-    And I go to the profile page
+    And I go to David's profile page
     And I follow "西瓜守望者"
     And I follow "退出"
-    And I go to the profile page
+    And I go to David's profile page
     Then I should not see "西瓜守望者"
 
 
   Scenario: post from another group member will get marked for me
-    Given the following group exists:
-      | name       | tags_string |
-      | 西瓜守望者 | 西瓜        |
-
     # generate some stuff, try to fill the home page
     Given There are some sample articles
     And There are some sample tips
@@ -72,39 +60,8 @@ Feature: smoke tests for Groups
    Then I should see "相关饭桌：西瓜守望者"
 
 
-  Scenario: User can block and unlock another group member
-    Given the following group exists:
-      | name       | tags_string |
-      | 西瓜守望者 | 西瓜        |
-
-    When I log in as "David User"
-    When I join the group "西瓜守望者"
-    And I post a simple review without vendor
-
-    When I log out
-    And I log in as "Kate Tester"
-    And I join the group "西瓜守望者"
-    When I go to the home page
-    Then I should see "买到烂西瓜"
-    And I go to the profile page
-    And I follow "西瓜守望者"
-    And I follow "阻止"
-    And I go to the home page
-    Then I should not see "买到烂西瓜"
-
-     And I go to the profile page
-    And I follow "西瓜守望者"
-    And I follow "解除阻止"
-    And I go to the home page
-    Then I should see "买到烂西瓜"
-
-
   @javascript
   Scenario: Group member can post for his group
-    Given the following group exists:
-      | name       | tags_string |
-      | 西瓜守望者 | 西瓜        |
-
     When I log in as "David User"
     And I join the group "西瓜守望者"
     And I go to the groups page

@@ -23,7 +23,7 @@ module Locational
 
   module InstanceMethods
     def address
-      [(self.city ? self.city : ""), (self.street ? self.street : "")].join(" ");
+      [(self.city ? self.city : ""), (self.street ? self.street : "")].join(" ")
     end
 
     def latitude

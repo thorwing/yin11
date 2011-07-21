@@ -1,0 +1,8 @@
+<p>
+    <%= @user.login_name %>
+    <% if user_can_be_blocked?(@user) %>
+        <%= link_to t("users.block"), block_user_path(@user), :method => :put, :class => "button" %>
+    <% elsif user_can_be_unlocked?(@user) %>
+        <%= link_to t("users.unblock"), unlock_user_path(@user), :method => :put, :class => "button" %>
+    <% end %>
+</p>

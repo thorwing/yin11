@@ -10,8 +10,10 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-    when /the profile page/
-      '/profile/show'
+    when /^(.*)'s profile page$/i
+      profile_path(User.first(:conditions => {:login_name => ($1)}))
+    when /^(.*)'s user page$/i
+      user_path(User.first(:conditions => {:login_name => ($1)}))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

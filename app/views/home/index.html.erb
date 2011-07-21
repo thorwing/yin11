@@ -55,7 +55,7 @@
             <div id="user_panel" class="sub_panel">
                 <h3><%= current_user.login_name %></h3>
                 <%= get_avatar(current_user) %>
-                 <p><%= link_to t("home.control_panel.update_profile"), profile_edit_path %>
+                 <p><%= link_to t("home.control_panel.update_profile"), edit_profile_path(current_user) %>
                 | <%= link_to t("authentication.logout"), logout_path %></p>
             </div>
             <hr/>

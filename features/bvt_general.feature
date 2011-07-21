@@ -17,6 +17,7 @@ Feature: general usage
     And I should see "警惕以下关于“西瓜”的负面信息"
     And I should see "请阅读以下关于“西瓜”的参考"
 
+
   Scenario: User can see the control panel on home page
     When I log in as "David User"
     Then I should see "div" whose id is "control_panel"

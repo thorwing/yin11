@@ -108,8 +108,8 @@ zh-CN:
     group_updated: 饭桌已更新
     group_joind: 已加入该饭桌
     group_quited: 已退出该饭桌'
-    group_user_blocked: 已阻止该用户
-    group_user_unlocked: 已解除对该用户的阻止
+    user_blocked: 已阻止该用户
+    user_unlocked: 已解除对该用户的阻止
     post_created: 话题已发表
     vendor_created: 商户已创建
     current_city_updated: 当前城市已更新
@@ -119,6 +119,7 @@ zh-CN:
     tip_already_collected: 该锦囊已经在您收藏中
     no_group_specified: 未指定饭桌
     posted_comment_too_ofen: "为了减轻服务器的压力，每次评论请间隔%{minute}分钟，谢谢您的谅解。"
+    no_such_profile_or_no_permission: 无此用户，或您的无权访问该页面
 
   menu:
     home: 主页
@@ -200,12 +201,12 @@ zh-CN:
     new: 新建用户
     edit: 编辑用户
     login_name: 登录名
+    block: 阻止该用户
+    unblock: 解除对该用户的阻止
 
   groups:
     join: 加入
     quit: 退出
-    block: 阻止
-    unblock: 解除阻止
     all: 所有饭桌
     posts: 饭桌最近话题
     member: 成员

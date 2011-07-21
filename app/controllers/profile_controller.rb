@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
+  before_filter { |c| c.user_self }
 
   def show
     @recent_items = current_user.info_items.of_type([Review.name, Recommendation.name]).desc(:updated_at).limit(GlobalConstants::PROFILE_RECENT_ITEMS).all
@@ -11,9 +12,9 @@ class ProfileController < ApplicationController
 
   def update
     if current_user.profile.update_attributes(params[:profile])
-      redirect_to profile_show_path, :notice => t("profile.profile_updated_notice")
+      redirect_to profile_path(current_user), :notice => t("profile.profile_updated_notice")
     else
-      redirect_to profile_show_path, :notice => "Error"
+      redirect_to profile_path(current_user), :notice => "Error"
     end
   end
 
@@ -43,6 +44,16 @@ class ProfileController < ApplicationController
 
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}
+    end
+  end
+
+  protected
+  def user_self
+    if params[:id] == current_user.id
+      true
+    else
+      redirect_to :root, :alert => t("alert.no_such_profile_or_no_permission")
+      false
     end
   end
 

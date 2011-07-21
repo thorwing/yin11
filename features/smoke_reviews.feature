@@ -4,7 +4,6 @@ Feature: smoke tests for Reviews
   Review is food-oriented, location-oriented
   Review is visible to everyone.
   User will get rewards because of posting reviews.
-  User can vote for a review.
   User can comment on a review, comments can be nested.
 
   Repeat the above steps for tech-review
@@ -97,19 +96,7 @@ Feature: smoke tests for Reviews
 #    Then I should be on the home page
 #    And I should see "只有作者才可以执行此操作"
 
-  @javascript
-  Scenario: User can vote for a review.
-    When I log in as "Kate Tester"
-    And I go to the home page
-    And I follow "发表食物测评" within "#actions_menu"
-    And I follow "实在想不起在哪儿买的食物了"
-    And I fill in "review_title" with "买到烂西瓜"
-    And I press "完成"
 
-    When I log out
-    And I log in as "David User"
-    When I follow "up" within ".item.info"
-    Then I should see "1" within ".item.info"
 
   @javascript
   Scenario:  User can comment on a review, comments can be nested.

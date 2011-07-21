@@ -29,5 +29,5 @@
     <%= render :partial => "group", :collection => current_user.groups %>
 </div>
 
-<%= link_to t("general.change"), profile_edit_path, :class => "button" %>
+<%= link_to t("general.change"), edit_profile_path(current_user), :class => "button" %>
 

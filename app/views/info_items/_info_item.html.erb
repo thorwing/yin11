@@ -14,7 +14,9 @@
     <div class="right_fields">
          <span class="trivial">
             <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
-            <%= content_tag(:span, t("info_items.posted_by") + item.author.login_name ) if item.author %>
+            <% if item.author %>
+               <%= t("info_items.posted_by")  %> <%= link_to item.author.login_name, item.author %>
+            <% end %>
         </span>
         <div class="clues">
           <%= get_clues_of_item(item) %>

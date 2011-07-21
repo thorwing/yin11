@@ -18,24 +18,9 @@ Yin11::Application.routes.draw do
 
   match "/images/uploads/*path" => "gridfs#serve"
 
-  get "locations/search"
-  get "locations/edit_current_city"
-  post "locations/update_current_city"
-  get "locations/show_nearby_items"
-
-  get "profile/new_watched_location"
-  post "profile/create_watched_location"
-  put "profile/delete_watched_location"
-  get "profile/show"
-  get "profile/edit"
-  post "profile/update"
-
   get "home/more_items"
   get "home/items"
-  get "home/regions"
-  get "home/cities"
   post "home/watch_foods"
-  put "home/vote"
 
   resources :comments
 
@@ -47,6 +32,25 @@ Yin11::Application.routes.draw do
 
   resources :recommendations, :except => [:destroy]
 
+  resources :locations do
+    collection do
+      get "search"
+      get "edit_current_city"
+      post "update_current_city"
+      get "show_nearby_items"
+      get "regions"
+      get "cities"
+    end
+  end
+
+  resources :profile do
+    collection do
+      get "new_watched_location"
+      post "create_watched_location"
+      put "delete_watched_location"
+    end
+  end
+
   resources :reviews, :except => [:destroy] do
     collection do
       get "choose_mode"
@@ -57,10 +61,10 @@ Yin11::Application.routes.draw do
     member do
       put "join"
       put "quit"
-      put "block"
-      put "unlock"
     end
   end
+
+  resources :votes, :only => [:create]
 
   resources :images, :only => [:create]
 
@@ -85,11 +89,15 @@ Yin11::Application.routes.draw do
 
   resources :reports, :only => [:new, :create]
 
-  resources :products
-
   resources :cities, :only => [:index]
 
-  resources :users, :only => [:new, :create]
+  resources :users, :only => [:show, :new, :create] do
+    member do
+      put "block"
+      put "unlock"
+    end
+  end
+
   resource :sessions, :only => [:new, :create, :destroy]
 
   resources :posts
@@ -141,8 +149,6 @@ Yin11::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
   root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"

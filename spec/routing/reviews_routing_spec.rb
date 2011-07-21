@@ -31,6 +31,5 @@ describe ReviewsController do
       { :get => "/reviews/choose_mode" }.should route_to(:controller => "reviews", :action => "choose_mode")
     end
 
-
   end
 end
