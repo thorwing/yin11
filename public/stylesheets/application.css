@@ -100,11 +100,11 @@ a.tag:hover {
     position:relative;
     display:block;
     overflow:hidden;
-    padding:10px;
 }
 
 .block.square {
     border:1px solid #a3a09e;
+    padding:10px;
 }
 
 .block.round {
@@ -113,6 +113,7 @@ a.tag:hover {
     border:1px solid #dbdbdb;
     background:#EDEFF4;
     margin-bottom:10px;
+    padding:10px;
 }
 
 /*
@@ -175,12 +176,12 @@ ul.menu li {
 */
 
 #top_menu {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 #top_menu li a {
     color:#666666;
-    padding: 10px 14px;
+    padding: 6px 12px;
 	text-decoration:none;
 	font-size:14px;
 	font-weight:bold;
