@@ -1,5 +1,14 @@
 #encoding utf-8
 module ApplicationHelper
+  def truncate_content(text, length)
+    text = strip_tags(text)
+    if text.size > length
+      text[0..length - 1]
+    else
+      text
+    end
+  end
+
   def render_menu(name, path)
     link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) )
   end
@@ -69,9 +78,7 @@ module ApplicationHelper
     City.all.collect {|c|[ c.name, c.id ]}
   end
 
-  def get_fields_of(class_name)
-    eval( %(#{class_name}.fields.collect{|k,v| [k, k]}.reject{|a| ["_type", "_id"].include? a[0] }) )
-  end
+
 
   def get_severity_of_food(food)
     items = InfoItem.enabled.bad.in_days_of(7).about(food).desc(:reported_on)
@@ -115,44 +122,6 @@ module ApplicationHelper
     tree
   end
 
-  def truncate_content(item, length)
-    text = strip_tags(item.content)
-    if length < text.size
-      content_tag(:span, text[0..length] + "...")
-    else
-      text
-    end
-  end
-
-  ### for tab control
-  def tab_control(&block)
-    content_tag(:div, :class => "tab_control", &block )
-  end
-
-  def tab_page (name, options= {})
-    link_to_unless_current(name, options, :class => "tab_header" ) do
-      content_tag(:span, name, :class => "tab_highlighted_header")
-    end
-  end
-
-  def remote_tab_page (name, options={})
-    link_to_unless_current(name, options, :class => "tab_header", :remote => true ) do
-      content_tag(:span, name, :class => "tab_highlighted_header")
-    end
-  end
-
-  def local_tab_page (name, active = false, &block)
-    content = content_tag(:div, name, :class => "tab_content" , &block)
-    @active_tab_content = content if active
-    content_tag(:li, link_to_function(name, "show_tab_content(this, \"#{escape_javascript(content)}\")"), :class => active ? "tab_item active" :"tab_item")
-  end
-
-  def tab_content(&block)
-    @active_tab_content ? @active_tab_content : content_tag(:div, :class => "tab_content", &block)
-  end
-
-  ### end for tab control
-
   def get_clues_of_item(item)
     result = []
     result << link_to(t("info_items.#{item.class.name.downcase}"), "/" + item.class.name.downcase.pluralize)
@@ -171,17 +140,53 @@ module ApplicationHelper
       end
     end
 
-
     same_groups = get_groups_of_item(item)
     if same_groups.size > 0
       result << t("info_items.from_groups") + same_groups.map(&:name).join(" ")
     end
 
-
      result.map{|r| content_tag(:small, r)}.join("|").html_safe
   end
 
-def image_uploadify(item)
+  def tag_cloud( tags )
+     classes = %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6 cloud7)
+
+     max, min = 0, 0
+     tags.each { |t|
+       max = t[1].to_i if t[1].to_i > max
+       min = t[1].to_i if t[1].to_i < min
+     }
+
+     divisor = ((max - min) / classes.size) + 1
+
+     tags.each { |t|
+        yield t[0], classes[(t[1].to_i - min) / divisor]
+     }
+   end
+
+
+  def get_groups_of_item(item)
+    result = []
+    if current_user && item.author
+      (item.author.group_ids & current_user.group_ids).each do |group_id|
+        group = Group.find(group_id)
+        if (group.tags & item.tags).size > 0
+          result << group
+        end
+      end
+    end
+    result
+  end
+
+  def get_region(region_id)
+    region = City.first(:conditions => {:id => region_id})
+    region = Province.first(:conditions => {:id => region_id}) unless region
+    region
+  end
+
+  #for plugins
+
+  def image_uploadify(item)
     # Putting the uploadify trigger script in the helper gives us
     # full access to the view and native rails objects without having
     # to set javascript variables.
@@ -231,22 +236,6 @@ def image_uploadify(item)
     }.gsub(/[\n ]+/, ' ').strip.html_safe
   end
 
-  def tag_cloud( tags )
-    classes = %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6 cloud7)
-
-    max, min = 0, 0
-    tags.each { |t|
-      max = t[1].to_i if t[1].to_i > max
-      min = t[1].to_i if t[1].to_i < min
-    }
-
-    divisor = ((max - min) / classes.size) + 1
-
-    tags.each { |t|
-       yield t[0], classes[(t[1].to_i - min) / divisor]
-    }
-  end
-
   def display_flash
     flash_types = [:error, :alert, :notice]
 
@@ -261,25 +250,6 @@ def image_uploadify(item)
     else
       ""
     end
-  end
-
-  def get_groups_of_item(item)
-    result = []
-    if current_user && item.author
-      (item.author.group_ids & current_user.group_ids).each do |group_id|
-        group = Group.find(group_id)
-        if (group.tags & item.tags).size > 0
-          result << group
-        end
-      end
-    end
-    result
-  end
-
-  def get_region(region_id)
-    region = City.first(:conditions => {:id => region_id})
-    region = Province.first(:conditions => {:id => region_id}) unless region
-    region
   end
 
 end

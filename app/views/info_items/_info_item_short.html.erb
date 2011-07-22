@@ -6,7 +6,7 @@
             <%= render "shared/show_tags", :item => item %>
         </div>
         <p>
-          <%= truncate_content(item, 100) %>
+          <%= truncate_content(item.content, 100) %>
           <%= link_to(t("info_items.detail"), item)  %>
           <span class="trivial">
             <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>

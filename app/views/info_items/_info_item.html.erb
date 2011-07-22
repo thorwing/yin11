@@ -6,7 +6,7 @@
         <h3><%= link_to item.title, item %></h3>
         <p><%= render "shared/show_tags", :item => item %></p>
         <p>
-          <%= truncate_content(item, 100) %>
+          <%= truncate_content(item.content, 100) %>
           <%= link_to(t("info_items.detail"), item)  %>
         </p>
     </div>

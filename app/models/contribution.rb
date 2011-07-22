@@ -13,4 +13,8 @@ class Contribution
   #relationships
   embedded_in :user
 
+  def self.get_fields
+    self.fields.map{|k,v| [k, k]}.reject{|a| ["_type", "_id"].include? a[0]}
+  end
+
 end
