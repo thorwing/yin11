@@ -5,7 +5,7 @@
 <br/>
 <div id="image_uploader"></div>
 <div id="images_container" class="block round">
-    <%= render :partial => "images/single_image_field", :collection => item.images %>
+    <%= render :partial => "images/single_image_field", :collection => item.images, :as => :image %>
 </div>
 
 <noscript><p><%= t("general.javascript_please") %></p></noscript>
