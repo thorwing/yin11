@@ -6,7 +6,7 @@ module ValidatorHelper
   def get_max_length(klass, attribute)
     klass = klass.class unless klass.is_a?(Class)
     validator = get_length_validator(klass, attribute)
-    (validator && validator.options[:maximum].present?) ? validator.options[:maximum].to_i : GlobalConstants::GLOBAL_INPUT_MAX_LENGTH
+    (validator && validator.options[:maximum].present?) ? validator.options[:maximum].to_i : GLOBAL_INPUT_MAX_LENGTH
   end
 
   def mark_required(klass, attribute)

@@ -1,5 +1,5 @@
 <% title @group.name %>
-<p><span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(GlobalConstants::TIME_FORMAT) %></span></p>
+<p><span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(TIME_FORMAT) %></span></p>
 
 <%= link_to t("groups.join"), join_group_path(@group), :method => :put, :class => "button" if @can_join %>
 <%= link_to t("groups.quit"), quit_group_path(@group), :method => :put, :class => "button"  if @can_quit%>

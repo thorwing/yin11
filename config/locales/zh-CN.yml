@@ -180,8 +180,6 @@ zh-CN:
     foods_buy_question_description: 瘦肉精，三聚氰胺...食品安全问题层出不穷。为了您和您家人的健康，查查看您身边的食品是否安全。
     vendor_buy_question: "上哪去买呢？"
     multiple_foods_suggestion: "可以同时地点和食物（用空格分开）。比如: 北京 瘦肉精"
-    foods_search_button: "搜索"
-    vendor_search_button: "搜索"
     foods_buzz: 热门食物
     hot_tags: 热门标签
     tag_cloud: 标签云

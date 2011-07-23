@@ -1,10 +1,10 @@
 <div id="brief_report" class="block round">
     <h2><%= t("info_items.report_header")  %><%= get_severity_image("dummy") %></h2>
-    <h3><%= t("info_items.report_summary", :name => @target_names, :bad_count => @bad_count, :good_count => @good_count ) %></h3>
+    <h3><%= t("info_items.report_summary", :name => params[:query], :bad_count => @bad_count, :good_count => @good_count ) %></h3>
     <h4 class="bad">
       <%= t("info_items.report_involved_regions") %>
       <% @bad_regions.each do |region| %>
-        <%= link_to(region.name, {:action => "items", :region_id => region.id}, :class => "tag") %>
+        <%= link_to(region.name, {:controller => "search", :action => "region", :region_id => region.id}, :class => "tag") %>
       <% end %>
     </h4>
   </div>
@@ -17,7 +17,7 @@
 <div class="two_columns_container" >
   <div id="bad_items" class="left_column">
     <div class="block round">
-        <h2 class="bad"><%= t("info_items.bad_items", :name =>@target_names) %></h2>
+        <h2 class="bad"><%= t("info_items.bad_items", :name => params[:query]) %></h2>
         <%= paginate @bad_items %>
         <% @bad_items.each do |item| %>
             <%= render "info_items/info_item_short", :item => item %>
@@ -27,7 +27,7 @@
 
   <div id="good_items" class="right_column">
     <div class="block round">
-        <h2 class="good"><%= t("info_items.good_items", :name => @target_names) %></h2>
+        <h2 class="good"><%= t("info_items.good_items", :name => params[:query]) %></h2>
         <%= paginate @good_items %>
         <% @good_items.each do |item| %>
             <%= render "info_items/info_item_short", :item => item %>

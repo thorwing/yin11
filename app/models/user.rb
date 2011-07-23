@@ -75,11 +75,11 @@ class User
 
   def vote_weight
     if has_permission?(:admin)
-      GlobalConstants::ADMIN_VOTE_WEIGHT
+      ADMIN_VOTE_WEIGHT
     elsif has_permission?(:editor)
-      GlobalConstants::EDITOR_VOTE_WEIGHT
+      EDITOR_VOTE_WEIGHT
     else
-      GlobalConstants::NORMAL_USER_VOTE_WEIGHT
+      NORMAL_USER_VOTE_WEIGHT
     end
   end
 
@@ -88,11 +88,11 @@ class User
       when :normal_user
         true
       when :authorized_user
-        self.role >= GlobalConstants::AUTHORIZED_USER_ROLE
+        self.role >= AUTHORIZED_USER_ROLE
       when :editor
-        self.role >= GlobalConstants::AUTHORIZED_USER_ROLE
+        self.role >= AUTHORIZED_USER_ROLE
       when :admin
-        self.role == GlobalConstants::ADMIN_ROLE
+        self.role == ADMIN_ROLE
       else
         raise "invalid permission"
     end

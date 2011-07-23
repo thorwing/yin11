@@ -45,7 +45,7 @@ end
 
 When /^I search for "(.+)"$/ do |query|
   visit path_to("the home page")
-  fill_in "search", :with => query
+  fill_in "query", :with => query
   click_button "搜索"
 end
 

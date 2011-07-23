@@ -10,5 +10,5 @@
     $('textarea[name="content"]:visible').val('');
     $('.new_reply_comment:visible').hide();
 <% elsif @over_limit %>
-    alert('<%= t("alerts.posted_comment_too_ofen", :minute => GlobalConstants::COMMENTS_INTERVAL) %>');
+    alert('<%= t("alerts.posted_comment_too_ofen", :minute => COMMENTS_INTERVAL) %>');
 <% end %>

@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper :application, :layout, :validator
+  include CacheHelper
+  include ApplicationHelper
   before_filter :set_locale, :set_city
   helper_method :current_user, :current_city, :the_author_himself
 
@@ -28,7 +30,7 @@ class ApplicationController < ActionController::Base
     unless cookies[:current_city]
       city = City.of_eng_name(request.location.city.upcase)
       #TODO
-      city ||= City.find(GlobalConstants::DEFAULT_CITY_CODE)
+      city ||= City.find(DEFAULT_CITY_CODE)
       cookies.permanent[:current_city] = city.id if city
     end
   end
@@ -91,22 +93,4 @@ class ApplicationController < ActionController::Base
      }
    end
 
-  #TODO
-  def get_hot_tags
-    tags = Rails.cache.read('hot_tags')
-    if tags.blank?
-      tags = InfoItem.tags_with_weight[0..GlobalConstants::CACHED_HOT_TAGS].map{ |e| e[0] }
-      Rails.cache.write("hot_tags", tags)
-    end
-    tags
-  end
-
-  def get_all_tags
-    tags = Rails.cache.read('all_tags')
-    if tags.blank?
-      tags = InfoItem.tags
-      Rails.cache.write("all_tags", tags)
-    end
-    tags
-  end
 end

@@ -7,7 +7,7 @@
     </p>
     <p>
         <%= t("vendors.recent_reviews") %>
-        <% vendor.reviews.limit(GlobalConstants::VENDOR_RECENT_REVIEWS).each do |review| %>
+        <% vendor.reviews.limit(VENDOR_RECENT_REVIEWS).each do |review| %>
             <%= link_to review.title, review %>
         <% end %>
     </p>

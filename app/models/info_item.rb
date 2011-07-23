@@ -17,6 +17,7 @@ class InfoItem
   field :fan_ids, :type => Array, :default => []
   field :hater_ids, :type => Array, :default => []
 
+  index :title
   index :reported_on
 
   attr_reader :region_tokens
@@ -73,11 +74,11 @@ class InfoItem
   end
 
   def is_recent?
-    self.created_at >= GlobalConstants::ITEM_MEASURE_RECENT_DAYS.days.ago ? true : false
+    self.created_at >= ITEM_MEASURE_RECENT_DAYS.days.ago ? true : false
   end
 
   def is_popular?
-    self.votes >= GlobalConstants::ITEM_MEASURE_POPULAR ? true : false
+    self.votes >= ITEM_MEASURE_POPULAR ? true : false
   end
 
 end

@@ -1,6 +1,7 @@
 #encoding utf-8
 module ApplicationHelper
   def truncate_content(text, length)
+    text ||= ""
     text = strip_tags(text)
     if text.size > length
       text[0..length - 1]

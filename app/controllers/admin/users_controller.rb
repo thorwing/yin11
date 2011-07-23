@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   before_filter() { |c| c.require_permission :admin}
 
   def index
-    @users = User.excludes(:role => GlobalConstants::ADMIN_ROLE).all
+    @users = User.excludes(:role => ADMIN_ROLE).all
 
     respond_to do |format|
       format.html # index.html.erb

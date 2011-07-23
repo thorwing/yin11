@@ -17,7 +17,7 @@
         <h3><%= t("profile.interested_places") %></h3>
         <span class="trivial"><%= f.label :watched_distance, t("location.address_hint") %></span>
         <p><b><%= f.label :watched_distance, t("profile.watched_distance") %></b></p>
-        <%= f.select :watched_distance, options_for_select((GlobalConstants::PROFILE_MIN_WATCHED_DISTANCE..GlobalConstants::PROFILE_MAX_WATCHED_DISTANCE).map{|e| [e, e]}, f.object.watched_distance) %>
+        <%= f.select :watched_distance, options_for_select((PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE).map{|e| [e, e]}, f.object.watched_distance) %>
         <div id="locations_list">
             <% f.object.watched_locations.each do |location| %>
                 <p id="<%= location.id.to_s %>">

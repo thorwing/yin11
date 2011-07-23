@@ -19,8 +19,14 @@ Yin11::Application.routes.draw do
   match "/images/uploads/*path" => "gridfs#serve"
 
   get "home/more_items"
-  get "home/items"
   post "home/watch_foods"
+
+  resources :search, :only => [:index] do
+    collection do
+      get "tag"
+      get "region"
+    end
+  end
 
   resources :comments
 

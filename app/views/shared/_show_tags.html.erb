@@ -1,5 +1,5 @@
 <% if item.tags %>
     <% item.tags.each do |tag| %>
-        <%= link_to(tag, {:controller => "/home", :action => "items", :tags => tag}, :class => "tag") %>
+        <%= link_to tag, {:controller => "/search", :action => "tag", :tags => tag}, :class => "tag" %>
     <% end %>
 <% end %>

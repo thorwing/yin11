@@ -28,9 +28,9 @@
     <div id="search_frame">
         <h2><%= t("home.foods_buy_question") %></h2>
         <p><%= t("home.foods_buy_question_description") %></p>
-        <%= form_tag 'home/items', :method => :get do %>
-                <%= text_field_tag :search %>
-                <%= submit_tag t("home.foods_search_button"), :class => "button" %><br/>
+        <%= form_tag '/search', :method => :get do %>
+                <%= text_field_tag :query %>
+                <%= submit_tag t("general.search"), :class => "button" %><br/>
                 <p class="trivial"><%= t("home.multiple_foods_suggestion")  %></p>
         <% end %>
     </div>
@@ -108,8 +108,8 @@
 
         <div id="tag_cloud" class="sub_panel">
             <h3><%= t("home.hot_tags") %></h3>
-            <% tag_cloud InfoItem.tags_with_weight[0..GlobalConstants::TAG_CLOUD_COUNT] do |name, css_class| %>
-                <%= link_to name, {:action => "items", :tags => name}, :class => css_class %>
+            <% tag_cloud InfoItem.tags_with_weight[0..TAG_CLOUD_COUNT] do |name, css_class| %>
+                <%= link_to name, {:controller => "search", :action => "index", :tags => name}, :class => css_class %>
             <% end %>
         </div> <!--end of tag_cloud -->
 

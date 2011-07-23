@@ -15,7 +15,7 @@ class Profile
   accepts_nested_attributes_for :watched_locations, :allow_destroy => true
 
   validates_associated :watched_locations
-  validates_inclusion_of :watched_distance, :in => GlobalConstants::PROFILE_MIN_WATCHED_DISTANCE..GlobalConstants::PROFILE_MAX_WATCHED_DISTANCE
+  validates_inclusion_of :watched_distance, :in => PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE
 
   def add_foods(tags = [])
     for tag in tags
