@@ -3,12 +3,12 @@ module GeneralSteps
     Factory(:shanghai)
   end
 
-  #def log_in_as(user)
-  #  visit login_path
-  #  fill_in "email", :with => user.email
-  #  fill_in "password", :with => user.password
-  #  click_button I18n.t("authentication.login")
-  #end
+  def login_as(user)
+    visit login_path
+    fill_in "email", :with => user.email
+    fill_in "password", :with => user.password
+    click_button I18n.t("authentication.login")
+  end
 
   def search_for(query)
     visit root_path

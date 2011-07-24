@@ -68,7 +68,7 @@
                                 <h4><%= link_to tag, {:action => "items", :tags => tag} %><%= get_severity_of_food(tag) %></h4>
                             <% end %>
                         <% end %>
-                        <%= form_tag :action => "watch_foods" do %>
+                        <%= form_tag :controller => "profile", :action => "watch_foods" do %>
                             <%= text_field_tag "added_foods" %>
                             <%= submit_tag t("general.add"), :class => "button" %>
                             <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Searches" do
+describe "Search" do
 
   before { @review = Review.create!(:title => "I bought some stink milk", :tags_string => "milk", :region_tokens => "021")}
 
@@ -32,6 +32,35 @@ describe "Searches" do
         page.should have_content(@review.title)
       end
     end
+  end
+
+  context "There is another review with same tag" do
+    before { @beijing = Factory(:beijing) }
+    before { @another_review = Review.create!(:title => "The beverage tastes funny", :tags_string => @review.tags_string, :region_tokens => @beijing.id)}
+
+    describe "track by tag" do
+      it "should contain" do
+        visit root_path
+        page.should have_content (@another_review.tags_string)
+        within(".item") do
+          click_link @another_review.tags_string
+        end
+        page.should have_content @another_review.title
+        page.should have_content @review.title
+      end
+    end
+
+    describe "track by location" do
+      it "should contain" do
+        visit root_path
+        search_for(@review.tags_string)
+        page.should have_content @beijing.name
+        click_link @beijing.name
+        page.should have_content @another_review.title
+        page.should_not have_content @review.title
+      end
+    end
+
   end
 
 end

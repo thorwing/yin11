@@ -11,8 +11,5 @@ describe HomeController do
       { :get => "/home/more_items" }.should route_to(:controller => "home", :action => "more_items")
     end
 
-     it "recognizes and generates #watch_foods" do
-      { :post => "/home/watch_foods" }.should route_to(:controller => "home", :action => "watch_foods")
-    end
   end
 end

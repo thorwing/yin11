@@ -38,6 +38,15 @@ class ProfileController < ApplicationController
     end
   end
 
+  def watch_foods
+    current_user.profile.add_foods(params[:added_foods].split(","))
+    current_user.save
+
+    respond_to do |format|
+      format.html {redirect_to :back}
+    end
+  end
+
   def delete_watched_location
     @location = current_user.profile.watched_locations.find(params[:location_id])
     @location.delete

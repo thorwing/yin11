@@ -19,7 +19,6 @@ Yin11::Application.routes.draw do
   match "/images/uploads/*path" => "gridfs#serve"
 
   get "home/more_items"
-  post "home/watch_foods"
 
   resources :search, :only => [:index] do
     collection do
@@ -54,6 +53,7 @@ Yin11::Application.routes.draw do
       get "new_watched_location"
       post "create_watched_location"
       put "delete_watched_location"
+      post "watch_foods"
     end
   end
 

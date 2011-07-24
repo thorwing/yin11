@@ -171,7 +171,7 @@ module ApplicationHelper
     if current_user && item.author
       (item.author.group_ids & current_user.group_ids).each do |group_id|
         group = Group.find(group_id)
-        if (group.tags & item.tags).size > 0
+        if group.tags && (group.tags & item.tags).size > 0
           result << group
         end
       end
