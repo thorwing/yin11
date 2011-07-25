@@ -1,26 +1,25 @@
 require 'spec_helper'
 
 describe Profile do
-  it "it works" do
-    Profile.new.should be_valid
-  end
+  let(:user) {Factory(:normal_user)}
 
   it "fields have default values" do
-    profile = Profile.new
-    profile.watched_foods.should == []
-    profile.receive_mails == true
-    profile.watched_distance == 2
+    user.profile.watched_tags.should == []
+    user.profile.collected_tip_ids.should == []
+    user.profile.receive_mails == true
+    user.profile.watched_distance == 2
   end
 
   it "watched_distance is limited" do
-    Profile.new(:watched_distance => 0).should_not be_valid
-    Profile.new(:watched_distance => 6).should_not be_valid
+    user.profile.watched_distance = 0
+    user.profile.should_not be_valid
+    user.profile.watched_distance = 6
+    user.profile.should_not be_valid
   end
 
-  it "add_foods works" do
-    profile = Profile.new
-    profile.add_foods(["milk", "pork", "milk"])
-    profile.watched_foods.should == ["milk", "pork"]
+  it "watch_tags works" do
+    user.profile.watch_tags!(["milk", "pork", "milk"])
+    user.profile.watched_tags.should == ["milk", "pork"]
   end
 
 end

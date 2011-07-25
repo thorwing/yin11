@@ -34,14 +34,4 @@
      <hr/>
 <% end %>
 
-<% if @my_tips %>
-    <div id="tips_collected_by_me">
-      <h3><%= t("tips.tips_collected_by_me") %></h3>
-        <% @my_tips.each do |tip| %>
-            <%= render "tip_item", :item => tip  %>
-        <% end %>
-    </div>
-<% end %>
-<hr/>
-
 <%= link_to t("tips.new"), new_tip_path, :class => "button" %>

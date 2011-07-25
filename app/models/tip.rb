@@ -6,7 +6,6 @@ class Tip < InfoItem
   #relationships
   embeds_many :revisions
   has_and_belongs_to_many :writers, :class_name => "User"
-  belongs_to :user, :inverse_of => "collected_tips"
 
   #override the settings in Informative
   validates_uniqueness_of :title

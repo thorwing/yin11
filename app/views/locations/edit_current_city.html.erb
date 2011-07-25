@@ -1,6 +1,6 @@
 <h2><%= t("address.change_city") %></h2>
 
-<%= form_tag locations_update_current_city_path do%>
+<%= form_tag :controller => "locations", :action => "update_current_city" do%>
 
   <div class="field">
     <b><%= t("address.province") %></b><br/>

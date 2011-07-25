@@ -33,6 +33,11 @@ Feature: smoke tests for Administration
     | Castle Editor |
     | Ray Admin     |
 
+  @focus
+  Scenario: Recommended articles will be displayed seperately
+    When I go to the admin_articles page
+    Then I should see "推荐文章"
+
   Scenario: Only Admin can manage users
     When I go to the admin_users page
     Then I should be on the login page

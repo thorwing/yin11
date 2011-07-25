@@ -25,8 +25,10 @@ zh-CN:
     back: 返回
     back_to_list: 返回列表
     none: 暂无
+    empty: 暂无
     enable: 启用
     disable: 禁用
+    recommended: 推荐
     lock: 锁定
     unlock: 解锁
     more: 更多
@@ -170,6 +172,7 @@ zh-CN:
     new_watched_location: 关注的地点
     watched_distance: 关注的范围（公里）
     receive_mails: 接受关于监察列表中食物安全动向的报告邮件
+    concern_days: 关心几天内的食物消息
     my_recent_posted_items: "我最近发表了:"
     my_badges: "我的徽章:"
     my_groups: "我加入的饭桌:"
@@ -183,16 +186,23 @@ zh-CN:
     foods_buzz: 热门食物
     hot_tags: 热门标签
     tag_cloud: 标签云
-    control_panel:
-      watching: "我的关注:"
-      watched_foods: 食物
-      watched_locations: 地点
-      watched_tips: 锦囊
-      joined_groups: 饭桌
-      more: >更多
-      add_foods_to_watch: 添加食物到关注列表
-      add_foods_suggestion: 添加您感兴趣的食物，您身边的食物安全动向早知道。
-      update_profile: 更新个人资料
+
+  control_panel:
+    watching: "我的关注:"
+    tags: 标签
+    locations: 地点
+    tips: 锦囊
+    groups: 饭桌
+    more: >更多
+    add_foods_to_watch: 添加标签到关注列表
+    add_foods_suggestion: 添加您感兴趣的食物，您身边的食物安全动向早知道。
+    update_profile: 更新个人资料
+
+  severity:
+    severity_0: 安全
+    severity_1: 注意
+    severity_2: 警惕
+    severity_3: 严重
 
   users:
     index: 所有用户
@@ -276,10 +286,6 @@ zh-CN:
     title_the: 的
     content: 补充
     add_checkpoint: +检查点
-    severity_0: 安全
-    severity_1: 注意
-    severity_2: 警惕
-    severity_3: 严重
     created_notice: 测评已发布
     updated_notice: 测评已更新
     only_author_self_notice: 只有作者才可以执行此操作

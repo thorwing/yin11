@@ -13,7 +13,8 @@ class SearchController < ApplicationController
       end
 
       #search by tags
-      all_tags = get_all_tags
+      #TODO
+      all_tags =  InfoItem.tags #get_all_tags
       query_tags = @query.split(' ')
       tags = all_tags & query_tags
       is_by_tags = tags.size > 0
@@ -23,7 +24,7 @@ class SearchController < ApplicationController
 
       #search by title
       unless (is_by_location || is_by_tags)
-        @query_criteria = @query_criteria.where(:title => /#{query}?}/)
+        @query_criteria = @query_criteria.where(:title => /#{@query}?}/)
       end
 
       process_items

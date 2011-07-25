@@ -1,4 +1,5 @@
 class TipsController < ApplicationController
+  include TipsHelper
   before_filter(:except => [:index, :show, :search]) { |c| c.require_permission :normal_user }
   TIPS_SEARCH_LIMIT = 5
 
@@ -7,7 +8,6 @@ class TipsController < ApplicationController
   def index
     @tips_participated_by_me = current_user ? Tip.any_in(:writer_ids => [current_user.id]) : []
     @hot_tips = Tip.order_by([:votes, :desc]).limit(5)
-    @my_tips = current_user.collected_tips.all if current_user
     @recent_tips = Tip.order_by([:updated_at, :desc]).limit(5)
 
     respond_to do |format|
@@ -112,14 +112,12 @@ class TipsController < ApplicationController
 
   def collect
     @tip = Tip.find(params[:id])
-    if current_user.collected_tips && current_user.collected_tips.include?(@tip)
+    if is_already_collected(@tip)
       respond_to do |format|
          format.html {redirect_to(@tip, :alert => I18n.t("alerts.tip_already_collected"))}
       end
     else
-      current_user.collected_tips ||= []
-      current_user.collected_tips << @tip
-      current_user.save
+      current_user.profile.collect_tip!(@tip)
       respond_to do |format|
          format.html {redirect_to(@tip, :notice => I18n.t("notices.tip_collected"))}
       end

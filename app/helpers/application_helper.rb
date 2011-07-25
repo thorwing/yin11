@@ -79,13 +79,10 @@ module ApplicationHelper
     City.all.collect {|c|[ c.name, c.id ]}
   end
 
-
-
-  def get_severity_of_food(food)
-    items = InfoItem.enabled.bad.in_days_of(7).about(food).desc(:reported_on)
-
-    #TODO
+  #TODO
+  def evaluate_items(items)
     severity_score = (items.size > 0) ?  items.inject(0){ |sum, s| sum + 1 } / items.size : 0
+
     if severity_score < 1
       severity_level = 0
     elsif severity_score < 5
@@ -96,7 +93,21 @@ module ApplicationHelper
       severity_level = 3
     end
 
-    I18n.translate("general.severity_#{severity_level}")
+     I18n.translate("general.severity_#{severity_level}")
+  end
+
+  def get_severity(score)
+
+  end
+
+  def get_severity_of(tag)
+    items = InfoItem.enabled.bad.in_days_of(current_user.profile.concern_days).about(tag).desc(:reported_on)
+    evaluate_items(items)
+  end
+
+  def get_severity_nearby(location, distance = current_user.profile.watched_distance)
+    items = Review.near(location.to_coordinates, distance).all
+    evaluate_items(items)
   end
 
   def nested_comments(item, comments)

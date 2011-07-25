@@ -36,12 +36,14 @@ Feature: smoke tests for User
     When I go to the home page
     Then I should not see "David"
 
+
   Scenario: User can add foods to watching list, so they will be notified about the news of those foods
     When I log in as "David User"
     And I add "牛奶" to watching foods list
 
     When I go to the home page
     Then I should see "三聚氰胺再现上海"
+
 
   Scenario Outline: User can fill in the detail of their address, so these info will affect infos on the home page
     When I log in as "David User"

@@ -53,12 +53,12 @@ Feature: general usage
 #    And I press "搜索" within "#search_frame"
 #    Then I should see "买到烂西瓜" within "#bad_items"
 
+
   Scenario: I should see my collection on home page
      When I log in as "David User"
      And I post a simple review without vendor
      And I go to the home page
-     And I fill in "added_foods" with "西瓜,牛奶" within "#control_panel"
-     And I press "添加" within "#control_panel"
+     And I add "西瓜,牛奶" to watching foods list
      Then I should see "西瓜" within "#control_panel"
      And I should see "牛奶" within "#control_panel"
      And I should see "注意" within "#control_panel"

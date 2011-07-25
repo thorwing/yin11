@@ -27,8 +27,8 @@ describe ProfileController do
       { :put => "/profile/delete_watched_location" }.should route_to(:controller => "profile", :action => "delete_watched_location")
     end
 
-    it "recognizes and generates #watch_foods" do
-      { :post => "/profile/watch_foods" }.should route_to(:controller => "profile", :action => "watch_foods")
+    it "recognizes and generates #watch_tags" do
+      { :post => "/profile/watch_tags" }.should route_to(:controller => "profile", :action => "watch_tags")
     end
   end
 end

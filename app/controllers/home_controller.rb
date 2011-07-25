@@ -3,12 +3,17 @@ class HomeController < ApplicationController
   before_filter :get_items
 
   def index
-    @hot_articles = Article.enabled.desc(:reported_on, :updated_on).limit(HOT_ARTICLES_ON_HOME_PAGE)
+    @articles = Article.enabled.recommended.desc(:reported_on, :updated_on).limit(HOT_ARTICLES_ON_HOME_PAGE)
 
-    @my_tips = current_user ? current_user.collected_tips.all : []
-    @my_groups = current_user ? current_user.groups.all : []
-    #TODO
-    @foods_buzz = []#Food.desc([:review_ids, :article_ids]).limit(5).group_by{ |f| f.categories[0] }
+    #data for control panel
+    if current_user
+      #TODO
+      #should be loaded on demand
+      @watched_tags = current_user.profile.watched_tags
+      @collected_tips = Tip.any_in(:_id => current_user.profile.collected_tip_ids).all
+      @my_groups = current_user.groups.all
+      @watched_locations = current_user.profile.watched_locations
+    end
   end
 
   # get more items for pagination on home page

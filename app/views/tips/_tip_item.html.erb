@@ -17,7 +17,7 @@
 </div>
 
 <div class="right_fields">
-  <% if current_user and not (current_user.collected_tips && current_user.collected_tips.include?(item)) %>
+  <% if current_user and not is_already_collected(item) %>
         <%= link_to t("tips.collect"), collect_tip_path(item), :method => :put, :class => "button" %>
   <% end %>
 </div>

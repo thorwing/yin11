@@ -1,6 +1,6 @@
 <h2><%= t("profile.new_watched_location") %></h2>
 
-<%= form_tag profile_create_watched_location_path, :remote => true do%>
+<%= form_tag url_for(:controller => "profile", :action => "create_watched_location"), :remote => true do%>
     <b><%= t("location.city") %></b><br/>
     <%= current_city.name %>
     <%= hidden_field_tag :city, current_city.name, :class => "map_city" %>

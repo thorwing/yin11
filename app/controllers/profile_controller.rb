@@ -1,6 +1,5 @@
 class ProfileController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
-  before_filter { |c| c.user_self }
 
   def show
     @recent_items = current_user.info_items.of_type([Review.name, Recommendation.name]).desc(:updated_at).limit(PROFILE_RECENT_ITEMS).all
@@ -31,16 +30,16 @@ class ProfileController < ApplicationController
 
   def create_watched_location
     @location = current_user.profile.watched_locations.new(:city => params[:city], :street => params[:street])
-    @location.save
+    @location.save!
+    current_user.profile.save!
 
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}
     end
   end
 
-  def watch_foods
-    current_user.profile.add_foods(params[:added_foods].split(","))
-    current_user.save
+  def watch_tags
+    current_user.profile.watch_tags!(params[:tags])
 
     respond_to do |format|
       format.html {redirect_to :back}
@@ -54,16 +53,6 @@ class ProfileController < ApplicationController
 
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}
-    end
-  end
-
-  protected
-  def user_self
-    if params[:id] == current_user.id
-      true
-    else
-      redirect_to :root, :alert => t("alert.no_such_profile_or_no_permission")
-      false
     end
   end
 

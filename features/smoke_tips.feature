@@ -14,7 +14,6 @@ Feature: smoke tests for Tips
     Then I should see "最近更新的锦囊"
     And I should see "热门锦囊"
     And I should see "我参与的锦囊"
-    And I should see "我收藏的锦囊"
     And I press "搜索"
 
   Scenario Outline: User can search for tip by using its title or keywords
@@ -37,10 +36,8 @@ Feature: smoke tests for Tips
     And I go to the tips page
     And I follow "瘦肉精猪肉目测"
     And I follow "收藏锦囊"
-    When I go to the tips page
-    Then I should see "瘦肉精猪肉目测" within "#tips_collected_by_me"
     When I go to the home page
-    Then I should see "瘦肉精猪肉目测"
+    Then I should see "瘦肉精猪肉目测" within "#control_panel"
 
   Scenario: User can create a tip only if it not exits
     When I log in as "David User"

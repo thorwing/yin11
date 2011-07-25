@@ -11,6 +11,9 @@ class Location
 
   attr_accessible :city, :street
 
+  #relationships
+  embedded_in :profile
+
   after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.street_changed? }
 
   #virtual attributes

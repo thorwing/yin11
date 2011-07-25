@@ -39,7 +39,6 @@ class User
   embeds_one :contribution
   has_many :info_items, :inverse_of => "author"
   has_and_belongs_to_many :wrote_tips, :class_name => Tip.name
-  has_many :collected_tips, :class_name => Tip.name
   has_and_belongs_to_many :groups, :inverse_of => "members"
   has_and_belongs_to_many :badges
 

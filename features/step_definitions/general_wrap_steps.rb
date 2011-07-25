@@ -50,7 +50,7 @@ When /^I search for "(.+)"$/ do |query|
 end
 
 When /^I query for "(.+)"$/ do |query|
-  visit("/home/items?search=#{URI.escape(query)}")
+  visit("/search/?query=#{URI.escape(query)}")
 end
 
 When /^I search tips for "(.+)"$/ do |item|
@@ -102,9 +102,9 @@ When /^I post a simple article$/ do
     And %(I press "完成")
 end
 
-When /^I add "(.+)" to watching foods list$/ do |food|
-  When %(I fill in "added_foods" with "牛奶")
-  And %(I press "添加")
+When /^I add "(.+)" to watching foods list$/ do |tag|
+  When %(I fill in "tags" with "#{tag}" within "#control_panel")
+  And %(I press "添加" within "#control_panel")
 end
 #
 #When /^I fill in "(.+?)" with "(.+?)" by Selenium$/ do |field, value|

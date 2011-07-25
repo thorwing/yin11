@@ -6,6 +6,7 @@ class Article < InfoItem
   attr_accessible :type, :source_attributes
 
   #scopes
+  scope :recommended, where(:recommended => true)
 
   #Relationships
   has_one :source

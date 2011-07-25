@@ -9,7 +9,7 @@
     <div class="image_frame">
         <div id="s3slider">
            <ul id="s3sliderContent">
-             <% @hot_articles.each do |article| %>
+             <% @articles.each do |article| %>
                 <li class="s3sliderImage">
                     <%= link_to(get_image_of_item(article, 0, 320, 240) , article)  %>
                     <span><h3><%= article.title %></h3></span>
@@ -20,7 +20,7 @@
     </div>
     <div id="articles_frame">
         <ul>
-            <% @hot_articles.each do |article| %>
+            <% @articles.each do |article| %>
                 <li><h4><%= link_to article.title, article %></h4></li>
             <% end %>
         </ul>
@@ -59,40 +59,39 @@
                 | <%= link_to t("authentication.logout"), logout_path %></p>
             </div>
             <hr/>
-            <h3><%= t("home.control_panel.watching") %></h3>
+            <h3><%= t("control_panel.watching") %></h3>
             <dl class="tab">
-                <dt><span><%= t("home.control_panel.watched_foods") %></span></dt>
-                    <dd id="watched_foods_list">
-                        <% if current_user && current_user.profile.watched_foods %>
-                            <% current_user.profile.watched_foods.each do |tag| %>
-                                <h4><%= link_to tag, {:action => "items", :tags => tag} %><%= get_severity_of_food(tag) %></h4>
-                            <% end %>
+                <dt><span><%= t("control_panel.tags") %></span></dt>
+                    <dd>
+                        <%= content_tag(:p, t("general.empty")) if @watched_tags.empty? %>
+                        <% @watched_tags.each do |tag| %>
+                            <h4><%= link_to tag, {:controller => "search", :action => "tag", :tags => tag} %><%= get_severity_of(tag) %></h4>
                         <% end %>
-                        <%= form_tag :controller => "profile", :action => "watch_foods" do %>
-                            <%= text_field_tag "added_foods" %>
+                        <%= form_tag :controller => "profile", :action => "watch_tags", :remote => true do %>
+                            <%= text_field_tag "tags" %>
                             <%= submit_tag t("general.add"), :class => "button" %>
-                            <p class="trivial"><%= t("home.control_panel.add_foods_suggestion") %></p>
+                            <p class="trivial"><%= t("control_panel.add_foods_suggestion") %></p>
                         <% end %>
                     </dd>
-                <dt><span><%= t("home.control_panel.watched_locations") %></span></dt>
-                    <dd id="watched_locations_list">
-                        <% if current_user && current_user.profile.watched_locations %>
-                            <% current_user.profile.watched_locations.each do |location| %>
-                                <p id="<%= location.id.to_s %>">
-                                    <%= content_tag :span, location.address %>
-                                    <%= link_to t("general.show"), locations_show_nearby_items_path(:location_id => location.id) %>
-                                </p>
-                            <% end %>
-                      <% end %>
+                <dt><span><%= t("control_panel.locations") %></span></dt>
+                    <dd>
+                        <%= content_tag(:p, t("general.empty")) if @watched_locations.empty? %>
+                        <% @watched_locations.each do |location| %>
+                            <p id="<%= location.id.to_s %>">
+                                <%= link_to location.address, show_nearby_items_locations_path(:location_id => location.id) %> <%= get_severity_nearby(location) %>
+                            </p>
+                        <% end %>
                     </dd>
-                <dt><span><%= t("home.control_panel.watched_tips") %></span></dt>
-                    <dd id="watched_tips_list">
-                        <% @my_tips.each do |tip| %>
+                <dt><span><%= t("control_panel.tips") %></span></dt>
+                    <dd>
+                        <%= content_tag(:p, t("general.empty")) if @collected_tips.empty? %>
+                        <% @collected_tips.each do |tip| %>
                             <%= link_to tip.title, tip, 'data-content' => tip.content, :class => "tip" %>
                         <% end %>
                     </dd>
-                <dt><span><%= t("home.control_panel.joined_groups") %></span></dt>
-                    <dd id="joined_groups_list">
+                <dt><span><%= t("control_panel.groups") %></span></dt>
+                    <dd>
+                        <%= content_tag(:p, t("general.empty")) if @my_groups.empty? %>
                         <% @my_groups.each do |group| %>
                             <%= link_to group.name, group %>
                         <% end %>

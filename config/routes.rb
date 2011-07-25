@@ -53,7 +53,7 @@ Yin11::Application.routes.draw do
       get "new_watched_location"
       post "create_watched_location"
       put "delete_watched_location"
-      post "watch_foods"
+      post "watch_tags"
     end
   end
 

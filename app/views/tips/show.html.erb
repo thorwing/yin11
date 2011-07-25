@@ -1,4 +1,4 @@
-<% if current_user and not (current_user.collected_tips && current_user.collected_tips.include?(@tip)) %>
+<% unless is_already_collected(@tip) %>
     <%= link_to t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %>
 <% end %>
 <%= link_to t("tips.show_revisions"), revisions_tip_path(@tip), :class => "button" %>
