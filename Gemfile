@@ -68,4 +68,5 @@ group :development, :test do
     gem "escape_utils"
 end
 
+gem 'simplecov', '>= 0.4.0', :require => false, :group => :test
 gem "nifty-generators", :group => :development

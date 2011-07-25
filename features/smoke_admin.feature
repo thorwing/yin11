@@ -35,7 +35,8 @@ Feature: smoke tests for Administration
 
   @focus
   Scenario: Recommended articles will be displayed seperately
-    When I go to the admin_articles page
+    When I log in as "Ray Admin"
+    And I go to the admin_articles page
     Then I should see "推荐文章"
 
   Scenario: Only Admin can manage users

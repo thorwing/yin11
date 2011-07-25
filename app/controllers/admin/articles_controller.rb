@@ -3,6 +3,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def index
     @articles = Article.all
+    @recommended_articles = Article.recommended.desc(:updated_at).all
   end
 
   def show

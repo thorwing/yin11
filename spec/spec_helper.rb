@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start 'rails'
+
 # figure out where we are being loaded from
 if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
   begin

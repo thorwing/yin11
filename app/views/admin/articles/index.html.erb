@@ -1,6 +1,14 @@
 <% title t("articles.articles") %>
 
 <p><%= [t("general.total"), ":", @articles.size].join(" ") %> </p>
+
+<div class="block square">
+    <b><%= t("articles.recommended_articles") %></b>
+    <% @recommended_articles.each do |article| %>
+        <p><%= link_to article.title, admin_article_path(article) %></p>
+    <% end  %>
+</div>
+
 <div>
     <table>
       <tr>
