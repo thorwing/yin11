@@ -13,6 +13,8 @@ module Locational
       geocoded_by :address
       acts_as_gmappable :lat => 'latitude', :lng => 'longitude', :process_geocoding => false
 
+      scope :from_cities, lambda { |city_names| any_in(:city => city_names) }
+
       attr_accessible :city, :street, :coordinates
 
       after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.street_changed? }

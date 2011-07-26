@@ -5,11 +5,13 @@ class SearchController < ApplicationController
     if @query.present?
 
       #search by location
-      region = City.first(:conditions => {:name => @query})
-      region = Province.first(:conditions => {:name => @query}) unless region
-      is_by_location = region.present?
+      city_names ||= []
+      city_names << @query if City.exists?(:conditions => {:name => @query})
+      province = Province.first(:conditions => {:name => @query})
+      city_names << province.cities.map(&:name) if province
+      is_by_location = !city_names.empty?
       if is_by_location
-        @query_criteria = @query_criteria.of_region(region.id)
+        @query_criteria = @query_criteria.from_cities(city_names)
       end
 
       #search by tags
@@ -45,7 +47,7 @@ class SearchController < ApplicationController
 
   def region
     if @query.present?
-      @query_criteria = @query_criteria.of_region(@query)
+      @query_criteria = @query_criteria.from_cities([@query])
 
       process_items
     end
@@ -59,11 +61,11 @@ class SearchController < ApplicationController
   def prepare
     @bad_items ||= []
     @good_items ||= []
-    @bad_regions ||= []
+    @bad_region_names ||= []
     @good_count = 0
     @bad_count = 0
 
-    @query = params[:query] || params[:tags] || params[:region_id]
+    @query = params[:query] || params[:tags] || params[:region_name]
     @query_criteria = InfoItem.enabled
   end
 
@@ -71,7 +73,7 @@ class SearchController < ApplicationController
     @bad_items = @query_criteria.bad.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
     @good_items = @query_criteria.good.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 
-    @bad_regions = @bad_items.inject([]) {|memo, e| memo | (e.region_ids || []).map{|id| get_region(id)} }.uniq.delete_if{|e| e.code == "ALL"}
+    @bad_region_names = @bad_items.inject([]) {|memo, e| memo << e.city }.compact.uniq
   end
 
 end

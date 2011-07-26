@@ -64,7 +64,7 @@ module ApplicationHelper
   end
 
   def get_provinces_for_select(drop_first = true)
-    provinces = Province.only(:name, :id).asc(:id).collect {|c|[ c.name, c.id ]}
+    provinces = Province.only(:name, :code).asc(:code).collect {|c|[ c.name, c.id ]}
     drop_first ? provinces.drop(1) : provinces
   end
 
@@ -136,15 +136,16 @@ module ApplicationHelper
     result << link_to(t("info_items.#{item.class.name.downcase}"), "/" + item.class.name.downcase.pluralize)
     if item.is_a?(Article)
       (result << item.source.name) if item.source
-    end
-    if item.region_ids.present?
-      item.region_ids.each do |region_id|
-        city = City.first(:conditions => {:id => region_id})
-        if city
-          result << city.name
-        else
-          province = Province.first(:conditions => {:id => region_id})
-          result << province.name
+
+      if item.region_ids.present?
+        item.region_ids.each do |region_id|
+          city = City.first(:conditions => {:id => region_id})
+          if city
+            result << city.name
+          else
+            province = Province.first(:conditions => {:id => region_id})
+            result << province.name
+          end
         end
       end
     end

@@ -11,26 +11,12 @@ Feature: smoke tests for Reviews
   Background:
     Given There are minimal testing records
 
-  Scenario: User should get warning of review with no image will be disabled
-    When I log in as "David User"
-    And I go to the new_review page
-    Then I should see "请至少上传一张图片，否则测评将在24小时后被禁用"
-
-
-  Scenario: User has to choose before creating new review
-    When I log in as "David User"
-    And I follow "发表食物测评"
-    Then I should see "先找到针对的商户"
-    Then I should see "实在想不起在哪儿买的食物了"
-
-
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:
     | name       | city |
     | 农工商超市 | 上海 |
     When I log in as "David User"
-    And I follow "发表食物测评"
-    And I follow "先找到针对的商户"
+    And I follow "寻找商户"
     And I follow "农工商超市"
     And I follow "+测评"
     Then I should see "新测评"
@@ -48,10 +34,8 @@ Feature: smoke tests for Reviews
     | 农工商超市 | 上海 |
     When I log in as "David User"
     And I follow "发表食物测评"
-    And I follow "实在想不起在哪儿买的食物了"
     Then I should see "新测评"
     And I should see "上海"
-    And I should see "select" whose id is "review_location_district_id"
 
     When I fill a simple review
     And I go to the vendors page
@@ -122,9 +106,7 @@ Feature: smoke tests for Reviews
   Scenario:  User's city will be detected.
     When I log in as "David User"
     And I follow "发表食物测评" within "#actions_menu"
-    And I follow "实在想不起在哪儿买的食物了"
-    Then I should see "上海"
-    And I should see "切换城市"
+    Then I should see "上海" within "#location_fields"
 
 
 

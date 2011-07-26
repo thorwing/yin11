@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Search" do
 
-  before { @review = Factory(:review, :tags_string => "milk", :faults => [FaultTypes.get_values.first])}
+  before { @review = Factory(:bad_review, :tags_string => "milk", :city => "Shanghai")}
 
   describe "search by tags" do
     before { Rails.cache.clear }
@@ -36,7 +36,7 @@ describe "Search" do
 
   context "There is another review with same tag" do
     before { @beijing = Factory(:beijing) }
-    before { @another_review = Review.create!(:title => "The beverage tastes funny", :tags_string => @review.tags_string, :region_tokens => @beijing.id)}
+    before { @another_review = Factory(:review, :title => "The beverage tastes funny", :tags_string => @review.tags_string, :city => @beijing.name)}
 
     describe "track by tag" do
       it "should contain" do
@@ -53,9 +53,7 @@ describe "Search" do
     describe "track by location" do
       it "should contain" do
         visit root_path
-        search_for(@review.tags_string)
-        page.should have_content @beijing.name
-        click_link @beijing.name
+        search_for(@beijing.name)
         page.should have_content @another_review.title
         page.should_not have_content @review.title
       end

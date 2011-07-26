@@ -44,6 +44,7 @@ Feature: smoke tests for Articles
     And I follow "土豆刷绿漆，冒充西瓜"
     Then I should not see "编辑"
 
+  @focus
   Scenario: Only Editor and Admin can disable articles.
     Given the following article exists:
       | title            | content                            | tags_string |

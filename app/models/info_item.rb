@@ -11,7 +11,7 @@ class InfoItem
   field :reported_on, :type => DateTime
 
   #cached_values
-  field :region_ids, :type => Array
+  field :positive, :type => Boolean, :default => true
 
   field :votes, :type => Integer, :default => 0
   field :fan_ids, :type => Array, :default => []
@@ -20,8 +20,7 @@ class InfoItem
   index :title
   index :reported_on
 
-  attr_reader :region_tokens
-  attr_accessible :title, :content, :reported_on_string, :images_attributes, :region_tokens
+  attr_accessible :title, :content, :reported_on_string, :images_attributes
 
   #scopes
   scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
@@ -29,10 +28,8 @@ class InfoItem
   #any_in will perform an intersaction when chained
   #TODO
   scope :of_type, lambda { |types| any_in(:_type => types ) }
-  scope :bad, where(:_type => "Review").excludes(:faults => [])
-  scope :good, where(:_type => "Tip")
-  scope :of_region, lambda { |region_id| any_in(:region_ids => [region_id])}
-  #scope :not_from_blocked_users, lambda { |blocked_user_ids| not_in(:author_id => blocked_user_ids) }
+  scope :bad, where(:positive => false)
+  scope :good, where(:positive => true)
 
   class << self
     def not_from_blocked_users(blocked_user_ids)
@@ -67,10 +64,6 @@ class InfoItem
     rescue
       @reported_on_invalid = true
     end
-  end
-
-  def region_tokens=(tokens)
-    self.region_ids = tokens.split(',')
   end
 
   def is_recent?

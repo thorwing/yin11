@@ -67,8 +67,6 @@ end
 When /^I post a simple review without vendor$/ do
   When %(I go to the home page)
   And %(I follow "发表食物测评")
-  Then %(I should see "实在想不起在哪儿买的食物了")
-  And %(I follow "实在想不起在哪儿买的食物了")
   Then %(I should see "新测评")
   And %(I fill a simple review)
 end

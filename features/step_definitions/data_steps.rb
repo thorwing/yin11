@@ -11,7 +11,7 @@ Given /^There are minimal testing records$/ do
   article_1 = Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。",  :region_tokens => shanghai.id, :tags_string => "牛奶, 三聚氰胺")
   article_2 = Article.create(:title => "北京禁止商贩往水里兑牛奶", :content => "北京市政府严令禁止向水里兑牛奶的行为。", :region_tokens => beijing.id, :tags_string => "牛奶")
   vendor = Vendor.create(:name => "乐购超市")
-
+  Factory(:bad_review)
   group = Group.new(:name => "西瓜守望者", :tags_string => "西瓜")
   group.creator_id = @editor.id
   group.save!

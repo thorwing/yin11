@@ -41,6 +41,25 @@ describe InfoItem do
     item.images.size.should == 0
   end
 
+  describe "positive" do
+    before { @negative_review = Factory(:review, :faults => [FaultTypes.get_values.first])
+             @positive_review = Factory(:review)
+             @raw_article = Factory(:article)
+             @tip_article = Factory(:article, :type => "tip")
+             @news_article = Factory(:article, :type => "news")
+             @exposure_article = Factory(:article, :type => "exposure")
+             @tip = Factory(:tip) }
+      it "should be correct" do
+        @positive_review.positive = true
+        @negative_review.positive = false
+        @raw_article.positive = false
+        @tip_article.positive = true
+        @news_article.positive = false
+        @exposure_article.positive = false
+        @tip.positive = true
+      end
+  end
+
   describe "Scopes" do
     it "in_days_of works" do
       item = InfoItem.create(:title => "test")
@@ -60,12 +79,6 @@ describe InfoItem do
     it "bad works" do
       item = Review.create(:title => "test", :faults => [FaultTypes.get_values.first])
       InfoItem.bad.should include(item)
-    end
-
-    it "of_region" do
-      beijing = Factory(:beijing)
-      item = Review.create(:title => "test", :region_tokens => beijing.id.to_s)
-      InfoItem.of_region(beijing.id).should include(item)
     end
 
     it "not_from_blocked_users works" do

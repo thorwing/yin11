@@ -1,5 +1,5 @@
 function reset_city(province_id) {
-    $.getJSON('/home/cities.json?province_id=' + province_id, function(data) {
+    $.getJSON('/locations/cities.json?province_id=' + province_id, function(data) {
         var select = $('#select_city');
         select.empty();
 

@@ -3,8 +3,8 @@
     <h3><%= t("info_items.report_summary", :name => params[:query], :bad_count => @bad_count, :good_count => @good_count ) %></h3>
     <h4 class="bad">
       <%= t("info_items.report_involved_regions") %>
-      <% @bad_regions.each do |region| %>
-        <%= link_to(region.name, {:controller => "search", :action => "region", :region_id => region.id}, :class => "tag") %>
+      <% @bad_region_names.each do |region_name| %>
+        <%= link_to(region_name, {:controller => "search", :action => "region", :region_name => region_name}, :class => "tag") %>
       <% end %>
     </h4>
   </div>

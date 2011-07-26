@@ -41,5 +41,10 @@ describe Article do
     article.name_of_source.should == "yin11 news"
   end
 
+  #it "of_region" do
+  #  beijing = Factory(:beijing)
+  #  item = Factory(:article, :region_tokens => beijing.id.to_s)
+  #  Article.of_region(beijing.id).should include(item)
+  #end
 
 end
