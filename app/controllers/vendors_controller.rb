@@ -89,6 +89,27 @@ class VendorsController < ApplicationController
     end
   end
 
+  def browse
+    criteria = Vendor.enabled.of_city(current_city.name)
+    @vendors = criteria.all
+
+    respond_to do |format|
+      if params[:popup]
+        format.html {render "browse", :layout => "dialog" }
+      else
+        format.html
+      end
+    end
+  end
+
+  def pick
+    @vendor = Vendor.find(params[:id])
+
+    respond_to do |format|
+        format.js {render :content_type => 'text/javascript'}
+    end
+  end
+
   private
   def resolve_layout
     case action_name

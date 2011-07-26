@@ -2,7 +2,6 @@ Feature: smoke tests for Administration
   Editor and Admin can do some administration works
   They can edit/disable/delete articles
   They can edit/disable/delete reviews
-  They can edit/disable/delete recommendations
   They can edit/disable/delete vendors
   They can edit/disable/delete badges
   Only Admin can manage users

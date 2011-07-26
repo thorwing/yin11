@@ -76,7 +76,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    (redirect_to :root, :notice => t("reviews.only_author_self_notice")) if (not has_permission and is_redirect)
+    (redirect_to :root, :alert => t("alerts.only_author_self")) if (not has_permission and is_redirect)
     has_permission
   end
 

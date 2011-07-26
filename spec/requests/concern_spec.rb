@@ -41,19 +41,21 @@ describe "Concern" do
     page.should have_content @tip.content
   end
 
-  it "watched_locations get displayed" do
-    location = user.profile.watched_locations.new(:city => "shanghai", :street => "nanjing road")
-    location.save!
-
-    login_as(user)
-    visit root_path
-    within "#control_panel" do
-      page.should have_content location.address
-      page.should have_content I18n.t("severity.severity_1")
-      click_link location.address
-    end
-    page.should have_content @review.title
-  end
+  #TODO
+  #2d index
+  #it "watched_locations get displayed" do
+  #  location = user.profile.watched_locations.new(:city => "shanghai", :street => "nanjing road")
+  #  location.save!
+  #
+  #  login_as(user)
+  #  visit root_path
+  #  within "#control_panel" do
+  #    page.should have_content location.address
+  #    page.should have_content I18n.t("severity.severity_1")
+  #    click_link location.address
+  #  end
+  #  page.should have_content @review.title
+  #end
 
 end
 

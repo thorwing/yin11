@@ -29,8 +29,8 @@ class InfoItem
   #any_in will perform an intersaction when chained
   #TODO
   scope :of_type, lambda { |types| any_in(:_type => types ) }
-  scope :bad, any_in(:_type => ["Review", "Article"])
-  scope :good, any_in(:_type => ["Recommendation", "Tip"])
+  scope :bad, where(:_type => "Review").excludes(:faults => [])
+  scope :good, where(:_type => "Tip")
   scope :of_region, lambda { |region_id| any_in(:region_ids => [region_id])}
   #scope :not_from_blocked_users, lambda { |blocked_user_ids| not_in(:author_id => blocked_user_ids) }
 

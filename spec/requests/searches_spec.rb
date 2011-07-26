@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Search" do
 
-  before { @review = Review.create!(:title => "I bought some stink milk", :tags_string => "milk", :region_tokens => "021")}
+  before { @review = Factory(:review, :tags_string => "milk", :faults => [FaultTypes.get_values.first])}
 
   describe "search by tags" do
     before { Rails.cache.clear }

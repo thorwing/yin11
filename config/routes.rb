@@ -35,8 +35,6 @@ Yin11::Application.routes.draw do
 
   resources :articles, :only => [:index, :show]
 
-  resources :recommendations, :except => [:destroy]
-
   resources :locations do
     collection do
       get "search"
@@ -89,7 +87,11 @@ Yin11::Application.routes.draw do
 
   resources :vendors, :except => [:edit, :update, :destroy] do
     collection do
-      post "search"
+      post 'search'
+      get 'browse'
+    end
+    member do
+      put 'pick'
     end
   end
 

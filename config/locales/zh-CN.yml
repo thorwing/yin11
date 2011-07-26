@@ -52,11 +52,11 @@ zh-CN:
   validations:
     header_msg: 好像表单中有一些错误，要不您再仔细看看？
     general:
-      presence_msg: %{field}不能为空
+      presence_msg: 不能为空
       uniqueness_msg: 相同的%{field}已存在
-      max_length_msg: %{field}不超过%{max}个字符
-      min_length_msg: %{field}不少于%{min}个字符
-      length_msg: %{field}长度须介于%{min}和%{max}个字符之间
+      max_length_msg: 不超过%{max}个字符
+      min_length_msg: 不少于%{min}个字符
+      length_msg: 长度须介于%{min}和%{max}个字符之间
     date:
       reported_on_invalid_msg: 报告日期的格式不正确
     tags:
@@ -122,6 +122,7 @@ zh-CN:
     no_group_specified: 未指定饭桌
     posted_comment_too_ofen: "为了减轻服务器的压力，每次评论请间隔%{minute}分钟，谢谢您的谅解。"
     no_such_profile_or_no_permission: 无此用户，或您的无权访问该页面
+    only_author_self: 只有作者才可以执行此操作
 
   menu:
     home: 主页
@@ -137,7 +138,6 @@ zh-CN:
   admin_control:
     articles: 管理文章
     reviews: 管理测评
-    recommendations: 管理推荐
     vendors: 管理商户
     badges: 管理徽章
     users: 用户
@@ -248,10 +248,11 @@ zh-CN:
   vendors:
     vendor: 商户
     vendors: 所有商户
+    browse: 寻找商户
     enabled_vendors: 启用的商户
     disabled_vendors: 禁用的商户
     vendor_name: 商户名
-    vendor_not_found: 没找到?
+    not_found: 没找到?
     quick_create_vendor: 点击这里，快速创建商户
     exact_vendor_not_found: 没有找到名为<%{name}>的商户
     please_create: "欢迎您创建:"
@@ -269,34 +270,27 @@ zh-CN:
     new: 新测评
     reviews: 测评
     all: 所有测评
+    what: 关于什么?
+    what_tip: （标签：食物，添加剂等等）
+    where: 在哪里?
+    when: 什么时候?
+    whats_wrong: 哪里不对劲?
     post_new_review: 发表新测评
     edit_review: 编辑 %{title}
     new_review: 发表食物测评
     make_choice_please: 请选择
+    choose_vendor: 选择商户
     new_review_with_vnedor: 先找到针对的商户
     new_review_without_vendor: 实在想不起在哪儿买的食物了
     see_more_reviews: 查看更多测评
-    add_new_checkpoint: 添加检查点
     title_review: 报告
     referenced_tip: 依据锦囊
-    upload_image_tip: "(请至少上传一张图片，否则测评将在24小时后被禁用。最多可上传5张。)"
-    checkpoint_pass: 通过
-    checkpoints: 检查点
+    upload_image_tip: "(上传图片可以更好地分享您的经历。最多可上传5张)"
     faults: 测评结论
     title_the: 的
     content: 补充
-    add_checkpoint: +检查点
-    created_notice: 测评已发布
-    updated_notice: 测评已更新
-    only_author_self_notice: 只有作者才可以执行此操作
-
-  recommendations:
-    recommendation: 健康一餐
-    new_recommendation: 分享我的健康一餐
-    recommendation_suggestion_1: "您刚刚吃了健康的一餐，食物安全，卫生，又有营养。现在将这健康一餐和大家一起分享吧！越多的用户喜爱您的分享，您将获得更多的积分。"
-    recommendation_suggestion_2: "在何时何地，您吃了什么食物？您用了什么手段来确保这一餐是安全又卫生的？"
-    created_notice: 已分享您的健康一餐
-    updated_notice: 已更新您的健康一餐
+    suggestion_1: "现在将这一餐和大家一起分享吧！越多的用户喜爱您的分享，您将获得更多的积分。"
+    suggestion_2: "在何时何地，您吃了什么食物？您用了什么手段来鉴定这一餐是否安全和卫生？"
 
   comments:
     new: 新评论
@@ -364,7 +358,6 @@ zh-CN:
     tags: 标签
     article: 新闻
     review: 测评
-    recommendation: 健康分享
     tip: 锦囊
     posted_by: "发布者: "
     add_comment: +评论

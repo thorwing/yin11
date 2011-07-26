@@ -1,6 +1,6 @@
 <b><%= f.label :images, t("images.images") %></b>
 <%= mark_required(item, :images) %>
-<%= content_tag(:span, t("reviews.upload_image_tip")) if item.is_a?(Review) %>
+<%= content_tag(:span, t("reviews.upload_image_tip"), :class => "trivial") %>
 
 <br/>
 <div id="image_uploader"></div>

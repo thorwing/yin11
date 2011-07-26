@@ -49,12 +49,9 @@ module ApplicationHelper
     end
   end
 
+  #TODO
   def get_severity_image(item, width = 24, height = 32)
-    if item.is_a?(Review)
-      image_tag("severity_3_small.png", :width => width, :height => height)
-    else item.is_a?(Recommendation)
-      image_tag("severity_0_small.png", :width => width, :height => height)
-    end
+    image_tag("severity_3_small.png", :width => width, :height => height)
   end
 
   def get_thumbnail(image, group = false)

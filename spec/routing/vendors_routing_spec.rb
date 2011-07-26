@@ -23,5 +23,13 @@ describe VendorsController do
       { :post => "/vendors/search" }.should route_to(:controller => "vendors", :action => "search")
     end
 
+    it "recognizes and generates #browse" do
+      { :get => "/vendors/browse" }.should route_to(:controller => "vendors", :action => "browse")
+    end
+
+    it "recognizes and generates #pick" do
+      { :put => "/vendors/1/pick" }.should route_to(:controller => "vendors", :action => "pick", :id => "1")
+    end
+
   end
 end

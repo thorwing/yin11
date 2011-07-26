@@ -59,8 +59,6 @@ $(function() {
     tokenize_input("#article_vendor_token", "/vendors.json", 1);
     tokenize_input("#review_tags_string", "/tags.json", 10);
     //tokenize_input("#review_vendor_token", "/vendors.json", 1);
-    tokenize_input("#recommendation_tags_string", "/tags.json", 10);
-    tokenize_input("#recommendation_vendor_token", "/vendors.json", 1);
      tokenize_input("#tip_tags_string", "/tags.json", 10);
     tokenize_input("#group_tags_string", "/tags.json", 10);
     tokenize_input("#added_foods", "/tags.json", 10);

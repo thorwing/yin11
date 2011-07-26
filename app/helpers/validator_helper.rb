@@ -20,14 +20,11 @@ module ValidatorHelper
     if validator
       msg = ""
       if validator.options[:minimum].present? && validator.options[:maximum].present?
-        msg = I18n.t("validations.general.length_msg", :field => I18n.t("general.#{attribute}", :default => attribute),
-                             :min => validator.options[:minimum], :max => validator.options[:maximum])
+        msg = I18n.t("validations.general.length_msg", :min => validator.options[:minimum], :max => validator.options[:maximum])
       elsif validator.options[:minimum].present?
-        msg = I18n.t("validations.general.min_length_msg", :field => I18n.t("general.#{attribute}", :default => attribute),
-                             :min => validator.options[:minimum])
+        msg = I18n.t("validations.general.min_length_msg", :min => validator.options[:minimum])
       elsif validator.options[:maximum].present?
-        msg = I18n.t("validations.general.max_length_msg", :field => I18n.t("general.#{attribute}", :default => attribute),
-                             :max => validator.options[:maximum])
+        msg = I18n.t("validations.general.max_length_msg", :max => validator.options[:maximum])
       end
       ( msg = "(" + msg + ")" ) if msg.present?
       content_tag(:span, msg, :class => "trivial")

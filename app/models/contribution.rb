@@ -1,7 +1,6 @@
 class Contribution
   include Mongoid::Document
 
-  field :posted_recommendation, :type => Integer, :default => 0
   field :posted_reviews, :type => Integer, :default => 0
   field :posted_articles, :type => Integer, :default => 0
   field :posted_tips, :type => Integer, :default => 0

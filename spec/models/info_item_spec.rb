@@ -58,13 +58,8 @@ describe InfoItem do
     end
 
     it "bad works" do
-      item = Review.create(:title => "test")
+      item = Review.create(:title => "test", :faults => [FaultTypes.get_values.first])
       InfoItem.bad.should include(item)
-    end
-
-    it "good works" do
-      item = Recommendation.create(:title => "test")
-      InfoItem.good.should include(item)
     end
 
     it "of_region" do

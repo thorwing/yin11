@@ -1,0 +1,9 @@
+<b><%= t("vendors.browse") %></b><br/>
+
+<% @vendors.each do |vendor| %>
+    <%= link_to vendor.name, pick_vendor_path(vendor), :method => :put, :remote => true %>
+<% end %>
+
+<br />
+<%= t("vendors.not_found") %>
+<%= link_to t("vendors.create_vendor"), new_vendor_path, :class => "button" %>

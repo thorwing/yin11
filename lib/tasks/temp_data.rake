@@ -28,11 +28,13 @@ namespace :yin11 do
 
       article = Article.find_or_initialize_by(title: title) do |a|
         a.reported_on = date
+        #TODO
+        a.type = "exposure"
         #a.disabled = true
         a.region_ids = [region.id] if region
-        #TODO
-        # for geocoding
-        # a.city = region.name if region
+
+        #for geocoding
+        a.city = region.name if region
         a.tags_string = tags
         a.build_source
         a.source.name = source_name || source_site || "Unknown Media"

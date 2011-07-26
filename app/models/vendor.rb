@@ -12,7 +12,6 @@ class Vendor
 
   #Relationships
   has_many :reviews
-  has_many :recommendations
   has_many :reports
 
   #validators
