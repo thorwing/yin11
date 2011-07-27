@@ -103,6 +103,7 @@ Yin11::Application.routes.draw do
     member do
       put "block"
       put "unlock"
+      get "activate"
     end
     collection do
       get 'check_email'

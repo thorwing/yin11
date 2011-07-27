@@ -3,6 +3,13 @@
 Factory.define :user do |f|
 end
 
+Factory.define :inactive_user, :class => User do |f|
+  f.email "lazy@yin11.com"
+  f.password "Iam1lazy"
+  f.login_name "Sloth"
+  f.role INACTIVE_USER_ROLE
+end
+
 Factory.define :normal_user, :class => User do |f|
   f.email "user@yin11.com"
   f.password "Iam1user"
@@ -14,7 +21,7 @@ Factory.define :tester, :class => User do |f|
   f.email "tester@yin11.com"
   f.password "Iam1tester"
   f.login_name "Kate"
-  f.role AUTHORIZED_USER_ROLE
+  f.role NORMAL_USER_ROLE
 end
 
 Factory.define :editor, :class => User do |f|

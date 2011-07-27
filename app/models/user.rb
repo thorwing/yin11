@@ -15,22 +15,27 @@ class User
   field :login_name
   field :password_hash
   field :password_salt
-  field :role, :type => Integer, :default => 1
+  field :role, :type => Integer, :default => INACTIVE_USER_ROLE
   field :auth_token
   field :password_reset_token
   field :password_reset_sent_at, :type => DateTime
+  field :activation_token
   field :blocked_user_ids, :type => Array
 
   index :email
   index :auth_token
 
   attr_accessor :password
-  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at
+  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :activation_token
 
   # strange error when trying to using scope, so using class method instead
   class << self
     def of_auth_token(token)
       first(:conditions => {:auth_token => token})
+    end
+
+    def of_email(email)
+      first(:conditions => {:email => email})
     end
   end
 
@@ -56,7 +61,8 @@ class User
   #Others
   after_initialize { self.profile ||= Profile.new; self.contribution ||= Contribution.new }
   before_save :encrypt_password
-  before_create { generate_token(:auth_token) }
+  before_create { generate_token(:auth_token)
+                  generate_token(:activation_token)}
 
   def authenticate(password)
     if password.present? && self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
@@ -73,8 +79,19 @@ class User
     UserMailer.password_reset(self).deliver
   end
 
-  def send_welcome
-    UserMailer.welcome(self).deliver
+  def send_activation
+    UserMailer.activation(self).deliver
+  end
+
+  def send_updates
+    items = get_updates
+    UserMailer.updates(self, items).deliver
+  end
+
+  def activate!
+    self.role = NORMAL_USER_ROLE
+    self.activation_token = nil
+    self.save!
   end
 
   def self.is_email_available?(email)
@@ -93,12 +110,12 @@ class User
 
   def has_permission?(permission)
     case permission
+      when :inactive_user
+        self.role >= INACTIVE_USER_ROLE
       when :normal_user
-        true
-      when :authorized_user
-        self.role >= AUTHORIZED_USER_ROLE
+        self.role >= NORMAL_USER_ROLE
       when :editor
-        self.role >= AUTHORIZED_USER_ROLE
+        self.role >= EDITOR_ROLE
       when :admin
         self.role == ADMIN_ROLE
       else
@@ -123,6 +140,35 @@ class User
      begin
        self[column] = SecureRandom.urlsafe_base64
      end while User.exists?(:conditions => {column => self[column]})
+  end
+
+  def get_raw_updates(days)
+    data = {}
+    InfoItem.enabled.in_days_of(days).tagged_with(current_user.profile.watched_tags).all.each do |item|
+      (current_user.profile.watched_tags & item.tags).each do |tag|
+        data[tag] ||=[]
+        data[tag] << item
+      end
+    end
+
+    current_user.profile.watched_locations.each do |location|
+      data[location] = Review.enabled.in_days_of(days).near(location.to_coordinates, distance).all
+    end
+
+    self.groups.each do |group|
+      data[group] = Review.enabled.in_days_of(days).any_in(:author_id => group.member_ids).all
+    end
+
+    data
+  end
+
+  def get_evaluation(days = self.profile.concern_days)
+    data = get_raw_updates(days)
+  end
+
+  def get_updates(days = self.profile.concern_days)
+    data = get_raw_updates(days)
+    data.inject([]){|memo, (k, v)| memo | v}.compact.uniq
   end
 
 end

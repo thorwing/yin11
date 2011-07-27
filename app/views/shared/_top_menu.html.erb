@@ -10,7 +10,7 @@
     <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
     <li><%= render_menu(t("menu.badges"), badges_path) %></li>
     <% if current_user %>
-        <li><%= render_menu(t("menu.prfile"), profile_path(current_user)) %></li>
+        <li><%= render_menu(t("menu.profile"), profile_path(current_user)) %></li>
         <li><%= render_menu(t("menu.logout"), logout_path) %></li>
     <% end %>
     <span id="city_switch">

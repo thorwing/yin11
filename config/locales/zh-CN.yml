@@ -41,7 +41,7 @@ zh-CN:
     severity_3: 严重
     total: 总共
     are_you_sure_to_delete: 确定要删除吗？
-    are_you_sure_to_disable_enable: "确定要禁用/启用吗？"
+    are_you_sure_to_disable_enable: "确定要禁用/启用邮件吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
 
   flash:
@@ -84,8 +84,9 @@ zh-CN:
     remember_me: "记住我"
 
   mailers:
-    welcome_subject: 欢迎
     reset_password_subject: 重置密码
+    activation_subject: 激活会员
+    updates_subject: 食物动向
 
 
   footer:
@@ -93,8 +94,8 @@ zh-CN:
     links: 友情链接
 
   roles:
-    normal_user: 注册用户
-    authorized_user: 高级用户
+    inactive_user: 未激活用户
+    normal_user: 普通用户
     editor: 编辑
     admin: 管理员
 
@@ -104,6 +105,8 @@ zh-CN:
     need_permission_logged: "请登入，或注册一个帐号。"
     need_permission_not_logged: "此操作需要%{permission}的权限， 请留意我们的公告来获知如何提升权限。"
     password_reset_email_sent: "密码恢复邮件已经发出，请查收。"
+    activation_email_sent: 会员激活邮件已发出，请查收。
+    user_activated: 用户已激活
     password_reset: 密码已更改
     article_posted: 文章已发布
     article_updated: 文章已更新
@@ -120,7 +123,7 @@ zh-CN:
     post_created: 话题已发表
     vendor_created: 商户已创建
     current_city_updated: 当前城市已更新
-    signed_up: 注册成功
+    activation_required: 请检查我们向您发出的邮件来激活您的会员资格。
 
   alerts:
     password_reset_expired: 密码重置口令已过期
@@ -133,7 +136,7 @@ zh-CN:
   menu:
     home: 主页
     admin_control: 管理面板
-    prfile: 个人资料
+    profile: 个人资料
     articles: 新闻
     reviews: 测评
     badges: 徽章
@@ -219,6 +222,7 @@ zh-CN:
     block: 阻止该用户
     unlock: 解除对该用户的阻止
     blocked_users_list: 阻止名单
+    thanks_for_sign_up: 感谢您的注册
 
   groups:
     join: 加入

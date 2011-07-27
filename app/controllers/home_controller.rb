@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
     #data for control panel
     if current_user
+      #@updates = get_updates
       #TODO
       #should be loaded on demand
       @watched_tags = current_user.profile.watched_tags
@@ -32,7 +33,7 @@ class HomeController < ApplicationController
     criteria =  criteria.not_from_blocked_users(current_user.blocked_user_ids) if hsa_block_list
 
     popular_items = criteria.desc(:votes).page(page_number).per(ITEMS_PER_PAGE_POPULAR)
-    topic_items = criteria.tagged_with_any(get_hot_tags).page(page_number).per(ITEMS_PER_PAGE_HOT)
+    topic_items = criteria.tagged_with(get_hot_tags).page(page_number).per(ITEMS_PER_PAGE_HOT)
     recent_items = criteria.desc(:created_at, :reported_on).page(page_number).per(ITEMS_PER_PAGE_RECENT)
 
     if current_user

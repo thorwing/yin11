@@ -21,17 +21,24 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     saved = @user.save
-    @user.send_welcome if saved
+    @user.send_activation if saved
 
     respond_to do |format|
       if saved
-        format.html { redirect_to(login_path, :notice => t("notices.signed_up", :name => @user.login_name)) }
+        format.html { render "activation_required"}
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def activate
+    @user = User.first(:conditions => {:activation_token => params[:id]})
+    @user.activate!
+
+    redirect_to login_url, :notice => t("notices.user_activated")
   end
 
   def block

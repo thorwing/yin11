@@ -1,26 +1,34 @@
 require 'spec_helper'
 
 describe "PasswordResets" do
-  it "emails user when requesting password reset" do
-    user = Factory(:normal_user)
-    visit login_path
-    click_link I18n.t("authentication.forgot_password")
-    fill_in "email", :with => user.email
-    click_button I18n.t("authentication.reset_password")
-    current_path.should eq(root_path)
-    page.should have_content(I18n.t("notices.password_reset_email_sent"))
-    #TODO
-    #last_email.to.should include(user.email)
-  end
+  describe "normal user" do
+    let(:user){ Factory(:normal_user) }
 
-  it "does not email invalid user when requesting password reset" do
-    visit login_path
-    click_link I18n.t("authentication.forgot_password")
-    fill_in "email", :with => "nobody@example.com"
-    click_button I18n.t("authentication.reset_password")
-    current_path.should eq(root_path)
-    page.should have_content(I18n.t("notices.password_reset_email_sent"))
-    last_email.should be_nil
+    it "emails user when requesting password reset" do
+      visit login_path
+      click_link I18n.t("authentication.forgot_password")
+      within "#password_reset_form" do
+        fill_in "email", :with => user.email
+        click_button I18n.t("authentication.reset_password")
+      end
+      current_path.should eq(root_path)
+      page.should have_content(I18n.t("notices.password_reset_email_sent"))
+
+      last_email.to.should include(user.email)
+    end
+
+    it "does not email invalid user when requesting password reset" do
+      visit login_path
+      click_link I18n.t("authentication.forgot_password")
+      within "#password_reset_form" do
+        fill_in "email", :with => "nobody@example.com"
+        click_button I18n.t("authentication.reset_password")
+      end
+      current_path.should eq(root_path)
+      #do not let bad guys guess...
+      page.should have_content(I18n.t("notices.password_reset_email_sent"))
+      last_email.should be_nil
+    end
   end
 
   it "updates the user password when confirmation matches" do

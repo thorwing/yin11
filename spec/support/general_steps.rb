@@ -3,6 +3,15 @@ module GeneralSteps
     Factory(:shanghai)
   end
 
+  def sign_up(user)
+    visit sign_up_path
+    fill_in "user_email", :with => user.email
+    fill_in "user_login_name", :with => user.login_name
+    fill_in "user_password", :with => user.password
+    fill_in "user_password_confirmation", :with => user.password
+    click_button I18n.t("authentication.sign_up")
+  end
+
   def login_as(user)
     visit login_path
     fill_in "email", :with => user.email

@@ -10,6 +10,7 @@ class Profile
   field :receive_mails, :type => Boolean, :default => true
   field :watched_distance, :type => Integer, :default => 2
   field :concern_days, :type => Integer, :default => 7
+  field :last_updates_send_at, :type => DateTime
   mount_uploader :avatar, AvatarUploader
 
   attr_accessible :receive_mails, :watched_distance, :concern_days, :watched_locations_attributes, :avatar

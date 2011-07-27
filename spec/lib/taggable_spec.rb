@@ -54,7 +54,7 @@ describe "Taggable" do
      it "tagged_with_any works" do
       e1 = TaggableSample.create(:tags_string => "milk, dog")
       e2 = TaggableSample.create(:tags_string => "happy")
-      result = TaggableSample.tagged_with_any(["dog", "tiger"])
+      result = TaggableSample.tagged_with(["dog", "tiger"])
       result.should include(e1)
       result.should_not include(e2)
      end

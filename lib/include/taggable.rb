@@ -68,11 +68,6 @@ module Taggable
 
     def tagged_with(_tags)
       _tags = [_tags] unless _tags.is_a? Array
-      criteria.in(:tags => _tags)
-    end
-
-    def tagged_with_any(_tags)
-      _tags = [_tags] unless _tags.is_a? Array
       criteria.any_in(:tags => _tags)
     end
   end

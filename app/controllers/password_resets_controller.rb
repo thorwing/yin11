@@ -3,7 +3,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    user = User.first(:conditions => {:email => params[:email]})
+    user = User.of_email(params[:email])
     user.send_password_reset if user
     redirect_to root_url, :notice => t("notices.password_reset_email_sent")
   end
