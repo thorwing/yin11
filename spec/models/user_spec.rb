@@ -13,8 +13,7 @@ describe User do
   end
 
   it "can't create user without anything" do
-    @user = Factory.build(:user)
-    assert !@user.valid?
+    Factory.build(:user).should_not be_valid
   end
 
   it "can't create user without email" do
@@ -22,9 +21,9 @@ describe User do
     assert !@user.valid?
   end
 
-  it "can create user without login name" do
+  it "can't' create user without login name" do
     @user = Factory.build(:user, :email => VALID_EMAIL, :password => VALID_PASSWORD)
-    assert @user.valid?
+    assert !@user.valid?
   end
 
   it "can't create user without password" do
@@ -40,6 +39,18 @@ describe User do
   it "can't create user with invalid password" do
     @user = Factory.build(:user, :email => VALID_EMAIL, :login_name => VALID_LOGIN_NAME, :password => INVALID_PASSWORD)
     assert !@user.valid?
+  end
+
+  describe "is_email_availabel" do
+    let(:user) {Factory(:normal_user)}
+
+    it "taken email should return false" do
+      User.is_email_available?(user.email).should == false
+    end
+
+    it "new email should return true" do
+      User.is_email_available?("brandnew@new.com").should ==  true
+    end
   end
 
   describe "#send_password_reset" do

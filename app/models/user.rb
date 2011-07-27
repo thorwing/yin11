@@ -47,6 +47,7 @@ class User
               :presence => true,
               :uniqueness => true,
               :email_format => true
+  validates_presence_of :login_name
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 6, :on => :create
@@ -70,6 +71,14 @@ class User
     self.password_reset_sent_at = Time.zone.now
     save!
     UserMailer.password_reset(self).deliver
+  end
+
+  def send_welcome
+    UserMailer.welcome(self).deliver
+  end
+
+  def self.is_email_available?(email)
+    User.first(:conditions => { :email => email}).nil?
   end
 
   def vote_weight

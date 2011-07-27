@@ -20,10 +20,12 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
+    saved = @user.save
+    @user.send_welcome if saved
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to([:admin, @user], :notice => 'User was successfully created.') }
+      if saved
+        format.html { redirect_to(login_path, :notice => t("notices.signed_up", :name => @user.login_name)) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -56,6 +58,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(:back, :notice => t("notices.user_unlocked"))}
       format.xml  { head :ok }
+    end
+  end
+
+  #for validation
+  def check_email
+    respond_to do |format|
+      format.json { render :json => User.is_email_available?(params[:user][:email]) }
     end
   end
 

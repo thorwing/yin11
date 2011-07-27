@@ -104,6 +104,9 @@ Yin11::Application.routes.draw do
       put "block"
       put "unlock"
     end
+    collection do
+      get 'check_email'
+    end
   end
 
   resource :sessions, :only => [:new, :create, :destroy]

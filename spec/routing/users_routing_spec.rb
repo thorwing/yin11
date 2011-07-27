@@ -27,5 +27,9 @@ describe UsersController do
       { :put => "/users/1/unlock" }.should route_to(:controller => "users", :action => "unlock", :id => "1")
     end
 
+    it "recognizes and generates #check_email" do
+      { :get => "/users/check_email" }.should route_to(:controller => "users", :action => "check_email")
+    end
+
   end
 end
