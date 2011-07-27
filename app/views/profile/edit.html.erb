@@ -18,15 +18,7 @@
         <span class="trivial"><%= f.label :watched_distance, t("location.address_hint") %></span>
         <p><b><%= f.label :watched_distance, t("profile.watched_distance") %></b></p>
         <%= f.select :watched_distance, options_for_select((PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE).map{|e| [e, e]}, f.object.watched_distance) %>
-        <div id="locations_list">
-            <% f.object.watched_locations.each do |location| %>
-                <p id="<%= location.id.to_s %>">
-                    <%= content_tag :span, location.address %>
-                    <%= link_to t("general.delete"), url_for(:controller =>  "profile", :action => "delete_watched_location", :location_id => location.id), :method => :put, :remote => true %>
-                </p>
-            <% end %>
-        </div>
-        <p><%= link_to  t("profile.add_place"), {:controller => "profile", :action => "new_watched_location", :popup => true}, :rel => "facebox", :class => "button" %></p>
+
     </div>
 
     <div>

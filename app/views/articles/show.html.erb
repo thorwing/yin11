@@ -6,7 +6,7 @@
     <%= render "shared/source", :source => @article.source %>
     <br/>
     <small>
-      <% if @article.region_ids %>
+      <% if @article.region_ids && (not @article.region_ids.empty?) %>
            <%= t("articles.involved_regions") %>:
           <% @article.region_ids.each do |region_id| %>
             <%= get_region(region_id).name %>

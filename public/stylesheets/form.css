@@ -12,6 +12,10 @@ div.field {
     overflow:hidden;
 }
 
+div.actions {
+    margin-top: 5px;
+}
+
 label.severity_image {
     width:48px;
     height:64px;

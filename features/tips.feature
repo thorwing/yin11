@@ -73,8 +73,24 @@ Feature: smoke tests for Tips
     Then I should see "随便改改,恶作剧，字数补丁。"
     And I should not see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
+  Scenario: Revision should also be valid
+    When I log in as "David User"
+    And I post a simple tip
+
+    When I go to the tips page
+    And I follow "辨别西瓜是否含有催熟剂"
+    And I follow "编辑"
+    And I fill in "tip_content" with "字数不足"
+    And I press "完成"
+     When I go to the tips page
+    And I follow "辨别西瓜是否含有催熟剂"
+    Then I follow "查看改动记录"
+    Then I should not see "字数不足"
+
+
+
   Scenario: The author can restore a version of tip
-     When I log in as "David User"
+    When I log in as "David User"
     And I post a simple tip
 
     When I log in as "Kate Tester"

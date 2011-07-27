@@ -12,7 +12,7 @@ $(document).ready(function(){
     $("dl.tab").KandyTabs({
         classes: "kandyFold",
         type: "fold",
-        trigger:"mouseover",
+        trigger:"click",
         action: "fade"
     });
 

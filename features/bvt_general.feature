@@ -22,7 +22,8 @@ Feature: general usage
     When I log in as "David User"
     Then I should see "div" whose id is "control_panel"
     And I should see "锦囊" within "#control_panel .tab"
-    And I should see "食物" within "#control_panel .tab"
+    And I should see "标签" within "#control_panel .tab"
+    And I should see "地点" within "#control_panel .tab"
     And I should see "饭桌" within "#control_panel .tab"
 
   Scenario: Normal user can post reviews

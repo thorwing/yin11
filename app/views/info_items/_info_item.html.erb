@@ -12,16 +12,16 @@
     </div>
 
     <div class="right_fields">
-         <span class="trivial">
-            <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
+       <div class="clues">
+          <%= get_clues_of_item(item) %>
+       </div>
+       <span class="trivial">
+            <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %> <br/>
             <% if item.author %>
                <%= t("info_items.posted_by")  %> <%= link_to item.author.login_name, item.author %>
             <% end %>
-        </span>
-        <div class="clues">
-          <%= get_clues_of_item(item) %>
-        </div>
-        <p><%= link_to t("info_items.add_comment") + "(#{item.comments.size})", new_comment_path(:id => item.id, :type => item.class.name)%></p>
+       </span>
+        <p><%= link_to t("info_items.add_comment") + "(#{item.comments.size})", item %></p>
     </div>
 </div>
 

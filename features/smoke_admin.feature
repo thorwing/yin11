@@ -32,7 +32,6 @@ Feature: smoke tests for Administration
     | Castle Editor |
     | Ray Admin     |
 
-  @focus
   Scenario: Recommended articles will be displayed seperately
     When I log in as "Ray Admin"
     And I go to the admin_articles page

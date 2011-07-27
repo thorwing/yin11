@@ -38,8 +38,6 @@ Feature: smoke tests for Search
     When I go to the home page
     Then I should see "瘦肉精猪肉目测"
 
-
-  @focus
   @javascript
   Scenario: User can search with tags and locations
     Given  There are some sample tips
@@ -47,7 +45,6 @@ Feature: smoke tests for Search
     And I search for "牛奶 上海"
     Then I should see "三聚氰胺再现上海"
 
-  @focus
   @javascript
   Scenario: User can search for a tag
     When I search for "milk"

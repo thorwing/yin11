@@ -70,7 +70,7 @@ class TipsController < ApplicationController
   def update
     @tip = Tip.find(params[:id])
     @tip.update_attributes(params[:tip])
-    @tip.revise(current_user)
+    @tip.revise(current_user) if @tip.valid?
 
     respond_to do |format|
       if @tip.save

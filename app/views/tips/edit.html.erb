@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to t("general.show"), @tip, :class => "button" %> |
-<%= link_to t("general.back_to_list"), tips_path, :class => "button" %>
+<div class="actions">
+    <%= link_to t("general.show"), @tip %> |
+    <%= link_to t("general.back_to_list"), tips_path %>
+</div>

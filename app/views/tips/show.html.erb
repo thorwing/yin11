@@ -1,7 +1,3 @@
-<% unless is_already_collected(@tip) %>
-    <%= link_to t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %>
-<% end %>
-<%= link_to t("tips.show_revisions"), revisions_tip_path(@tip), :class => "button" %>
 <p>
   <b><%= t("general.title") %></b>
   <%= @tip.title %>
@@ -14,8 +10,15 @@
   <%= @tip.content %>
 </p>
 
-<%= link_to t("general.edit"), edit_tip_path(@tip), :class => "button" %> |
-<%= link_to t("general.back_to_list"), tips_path, :class => "button" %>
+<% unless is_already_collected(@tip) %>
+    <%= link_to t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %> |
+<% end %>
+<%= link_to t("tips.show_revisions"), revisions_tip_path(@tip), :class => "button" %> |
+<%= link_to t("general.edit"), edit_tip_path(@tip), :class => "button" %>
+
+<div class="actions">
+    <%= link_to t("general.back_to_list"), tips_path %>
+</div>
 
 <hr/>
 
