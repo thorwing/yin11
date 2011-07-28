@@ -8,7 +8,7 @@ describe UserMailer do
     it "send user password reset url" do
       mail.subject.should eq(I18n.t("mailers.reset_password_subject"))
       mail.to.should eq([user.email])
-      mail.from.should eq(["from@example.com"])
+      mail.from.should eq(["staff@yin11.com"])
       mail.body.encoded.should match(edit_password_reset_path(user.password_reset_token))
     end
   end
@@ -20,7 +20,7 @@ describe UserMailer do
     it "send activation url" do
       mail.subject.should eq(I18n.t("mailers.activation_subject"))
       mail.to.should eq([user.email])
-      mail.from.should eq(["from@example.com"])
+      mail.from.should eq(["staff@yin11.com"])
       mail.body.encoded.should match(activate_user_path(user.activation_token))
     end
   end
@@ -35,7 +35,7 @@ describe UserMailer do
       user.profile.save!
       mail.subject.should eq(I18n.t("mailers.updates_subject"))
       mail.to.should eq([user.email])
-      mail.from.should eq(["from@example.com"])
+      mail.from.should eq(["staff@yin11.com"])
       @items.each do |item|
         mail.body.encoded.should match(url_for(item))
       end
