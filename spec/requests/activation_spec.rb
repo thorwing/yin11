@@ -8,6 +8,7 @@ describe "Activation" do
       sign_up(user)
       current_path.should eq(users_path)
       page.should have_content(I18n.t("notices.activation_required"))
+      last_email.to.should include(user.email)
 
       login_as(user)
 

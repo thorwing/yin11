@@ -26,11 +26,13 @@ describe UserMailer do
   end
 
   describe "updates" do
-    before { @items = [ Factory(:bad_review), Factory(:article)] }
+    before { @items = [ Factory(:bad_review, :tags_string => "milk")] }
     let(:user) { Factory(:normal_user) }
-    let(:mail) { UserMailer.updates(user, @items) }
+    let(:mail) { UserMailer.updates(user, user.get_updates) }
 
     it "send updates url" do
+      user.profile.watched_tags = ["milk"]
+      user.profile.save!
       mail.subject.should eq(I18n.t("mailers.updates_subject"))
       mail.to.should eq([user.email])
       mail.from.should eq(["from@example.com"])

@@ -1,5 +1,6 @@
 require 'simplecov'
 SimpleCov.start 'rails'
+SimpleCov.use_merging true
 
 require 'rubygems'
 require 'spork'

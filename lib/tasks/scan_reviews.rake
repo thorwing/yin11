@@ -1,6 +1,6 @@
 #encoding utf-8
 namespace :yin11 do
-  desc "db:drop then db:seed"
+  desc "disable reviews without images"
   #TODO
   #to schedule this task
   task :scan_reviews => :environment do

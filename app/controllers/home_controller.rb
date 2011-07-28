@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 
     #data for control panel
     if current_user
-      #@updates = get_updates
+      @evaluation = current_user.get_evaluation
       #TODO
       #should be loaded on demand
       @watched_tags = current_user.profile.watched_tags

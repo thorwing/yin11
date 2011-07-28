@@ -76,37 +76,6 @@ module ApplicationHelper
     City.all.collect {|c|[ c.name, c.id ]}
   end
 
-  #TODO
-  def evaluate_items(items)
-    severity_score = (items.size > 0) ?  items.inject(0){ |sum, s| sum + 1 } / items.size : 0
-
-    if severity_score < 1
-      severity_level = 0
-    elsif severity_score < 5
-      severity_level = 1
-    elsif severity_score < 10
-      severity_level = 2
-    else
-      severity_level = 3
-    end
-
-     I18n.translate("general.severity_#{severity_level}")
-  end
-
-  def get_severity(score)
-
-  end
-
-  def get_severity_of(tag)
-    items = InfoItem.enabled.bad.in_days_of(current_user.profile.concern_days).about(tag).desc(:reported_on)
-    evaluate_items(items)
-  end
-
-  def get_severity_nearby(location, distance = current_user.profile.watched_distance)
-    items = Review.near(location.to_coordinates, distance).all
-    evaluate_items(items)
-  end
-
   def nested_comments(item, comments)
     comments.map do |comment, sub_comments|
       render("comments/single_comment", :item => item, :comment => comment) + content_tag(:div, nested_comments(item, sub_comments), :class => "nested_comments")

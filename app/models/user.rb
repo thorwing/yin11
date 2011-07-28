@@ -29,6 +29,7 @@ class User
   attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :activation_token
 
   # strange error when trying to using scope, so using class method instead
+  scope :active_users, any_in(:role => [NORMAL_USER_ROLE, EDITOR_ROLE, ADMIN_ROLE])
   class << self
     def of_auth_token(token)
       first(:conditions => {:auth_token => token})
@@ -127,6 +128,20 @@ class User
     groups.inject([]) {|memo, group| memo | group.member_ids }
   end
 
+  def get_evaluation(days = self.profile.concern_days)
+    data = get_raw_updates(days)
+    result = {}
+    data.each do |k,v|
+      result[k] = EvaluationManager.evaluate_items(v)
+    end
+    result
+  end
+
+  def get_updates(days = self.profile.concern_days)
+    data = get_raw_updates(days)
+    data.inject([]){|memo, (k,v)| memo | v}.compact.uniq
+  end
+
   private
 
   def encrypt_password
@@ -144,15 +159,15 @@ class User
 
   def get_raw_updates(days)
     data = {}
-    InfoItem.enabled.in_days_of(days).tagged_with(current_user.profile.watched_tags).all.each do |item|
-      (current_user.profile.watched_tags & item.tags).each do |tag|
+    InfoItem.enabled.in_days_of(days).tagged_with(self.profile.watched_tags).all.each do |item|
+      (self.profile.watched_tags & item.tags).each do |tag|
         data[tag] ||=[]
         data[tag] << item
       end
     end
 
-    current_user.profile.watched_locations.each do |location|
-      data[location] = Review.enabled.in_days_of(days).near(location.to_coordinates, distance).all
+    self.profile.watched_locations.each do |location|
+      data[location.address] = Review.near(location.to_coordinates, self.profile.watched_distance).enabled.in_days_of(days).all
     end
 
     self.groups.each do |group|
@@ -160,15 +175,6 @@ class User
     end
 
     data
-  end
-
-  def get_evaluation(days = self.profile.concern_days)
-    data = get_raw_updates(days)
-  end
-
-  def get_updates(days = self.profile.concern_days)
-    data = get_raw_updates(days)
-    data.inject([]){|memo, (k, v)| memo | v}.compact.uniq
   end
 
 end

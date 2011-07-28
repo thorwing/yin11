@@ -1,0 +1,4 @@
+食物安全动向报告
+<% @items.each do |item| %>
+    <%= item.title %>: <%= url_for(:controller => "#{item.class.name.downcase.pluralize}", :action => "show", :id => item.id , :only_path => false) %>
+<% end %>
