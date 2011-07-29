@@ -1,3 +1,0 @@
-<div class="toggle_disabled">
-    <%= link_to obj.disabled ? t("general.enable") : t("general.disable"), admin_base_toggle_disabled_path(:id => obj.id, :type => obj.class.name), :method => :put, :class => "button" %>
-</div>

@@ -8,7 +8,9 @@
   <%= @badge.description %>
 </p>
 
-<%= link_to t("general.change"), edit_admin_badge_path(@badge) %> |
+<%= link_to t("general.change"), edit_admin_badge_path(@badge), :class => "button" %> |
 <%= link_to t("general.delete"), [:admin, @badge], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-<%= render "admin/shared/toggle_disabled", :confirm => t("general.are_you_sure_to_disable_enable"), :obj => @badge %>
-<%= link_to t("general.back_to_list"), admin_badges_path, :class=> "button" %>
+
+<div>
+    <%= link_to t("general.back_to_list"), admin_badges_path, :class=> "button" %>
+</div>

@@ -26,6 +26,7 @@ Feature: general usage
     And I should see "地点" within "#control_panel .tab"
     And I should see "饭桌" within "#control_panel .tab"
 
+
   Scenario: Normal user can post reviews
     When I go to the new_review page
     Then I should be on the login page

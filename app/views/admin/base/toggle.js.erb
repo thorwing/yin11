@@ -1,5 +1,5 @@
 var item_fields = $('#<%= @item.id.to_s %>');
-var toggle_fields = item_fields.find(".toggle");
+var toggle_fields = item_fields.find(".toggle.<%= @field %>");
 
 toggle_fields.removeClass("on");
 toggle_fields.removeClass("off");

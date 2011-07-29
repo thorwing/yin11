@@ -9,29 +9,6 @@ Feature: smoke tests for Administration
   Background:
     Given There are minimum seeds data
 
-  Scenario Outline: Editor and Admin can edit/disable/delete articles
-    Given the following article exists:
-      | title            | content                            | tags_string | enabled |
-      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜        | false    |
-
-    When I go to the home page
-    Then I should not see "西瓜被打了催熟剂"
-
-    When I log in as "<user>"
-    And I go to the admin_articles page
-    Then I should see "西瓜被打了催熟剂"
-    And I follow "西瓜被打了催熟剂"
-    And I follow "启用"
-
-    When I log out
-    And I go to the home page
-    Then I should see "西瓜被打了催熟剂"
-
-    Examples:
-    | user          |
-    | Castle Editor |
-    | Ray Admin     |
-
   Scenario: Recommended articles will be displayed seperately
     When I log in as "Ray Admin"
     And I go to the admin_articles page

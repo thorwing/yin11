@@ -2,6 +2,8 @@
 
 <%= render 'form' %>
 
-<%= link_to t("general.show"), [:admin, @article], :class => "button" %> |
-<%= link_to t("general.back_to_list"), admin_articles_path, :class => "button" %>
+<div>
+    <%= link_to t("general.show"), [:admin, @article] %> |
+    <%= link_to t("general.back_to_list"), admin_articles_path %>
+</div>
 

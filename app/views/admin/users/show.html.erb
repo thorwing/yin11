@@ -14,6 +14,7 @@
 </p>
 
 <%= link_to t("general.edit"), edit_admin_user_path(@user), :class => "button" %> |
-<%= link_to t("general.delete"), [:admin, @user], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %> |
-<%= render "admin/shared/toggle_disabled", :confirm => t("general.are_you_sure_to_disable_enable"), :obj => @user %>
-<%= link_to t("general.back_to_list"), admin_users_path, :class => "button" %>
+<%= link_to t("general.delete"), [:admin, @user], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+<div>
+    <%= link_to t("general.back_to_list"), admin_users_path %>
+</div>

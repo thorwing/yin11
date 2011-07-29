@@ -103,6 +103,7 @@ Feature: smoke tests for Vendors
      And I follow "农工商超市"
      Then I should not see "编辑"
 
+
   Scenario: Only Editor or Admin can lock a vendor
     Given the following vendor exists:
         | name       |
@@ -111,7 +112,7 @@ Feature: smoke tests for Vendors
         And I go to the admin_vendors page
         And I follow "农工商超市"
         And I follow "编辑"
-        And I check "vendor_disabled"
+        And I uncheck "vendor_enabled"
 
         And I press "完成"
 

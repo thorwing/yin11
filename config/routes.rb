@@ -11,7 +11,6 @@ Yin11::Application.routes.draw do
     resources :tips, :only => [:index, :show, :destroy]
   end
 
-  put "admin/base/toggle_disabled"
   put 'admin/base/toggle'
 
   match "logout" => "sessions#destroy"

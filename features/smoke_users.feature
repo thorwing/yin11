@@ -26,16 +26,6 @@ Feature: smoke tests for User
     And I press "登入"
     Then I should see "div" whose id is "control_panel"
 
-  Scenario: Admin can disable a user
-    When I log in as "Ray Admin"
-    And I go to the admin_users page
-    And I follow "David"
-    And I follow "禁用"
-    When I log out
-    And I log in as "David User"
-    When I go to the home page
-    Then I should not see "David"
-
   Scenario: User can see his reviews on his profile page
     When I log in as "David User"
     And I post a simple review without vendor

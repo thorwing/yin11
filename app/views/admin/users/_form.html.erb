@@ -6,6 +6,11 @@
     <%= select_tag "new_role", options_for_select(get_roles_for_select, @user.role) %>
   </div>
 
+  <div class="field">
+     <%= f.label :enabled, t("general.enable") %><br />
+     <%= f.check_box :enabled, {}, true, false %>
+  </div>
+
   <div class="actions">
     <%= f.submit t("general.submit"), :class => "button" %>
   </div>

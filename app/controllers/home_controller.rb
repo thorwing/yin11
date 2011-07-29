@@ -5,6 +5,11 @@ class HomeController < ApplicationController
   def index
     @articles = Article.enabled.recommended.desc(:reported_on, :updated_on).limit(HOT_ARTICLES_ON_HOME_PAGE)
 
+    @raw_hot_tags = CacheManager.raw_hot_tags
+    #for default search query
+
+    @default_query = @raw_hot_tags.map{|k,v| k}[0..1].join(" ")
+
     #data for control panel
     if current_user
       @evaluation = current_user.get_evaluation
@@ -33,7 +38,7 @@ class HomeController < ApplicationController
     criteria =  criteria.not_from_blocked_users(current_user.blocked_user_ids) if hsa_block_list
 
     popular_items = criteria.desc(:votes).page(page_number).per(ITEMS_PER_PAGE_POPULAR)
-    topic_items = criteria.tagged_with(get_hot_tags).page(page_number).per(ITEMS_PER_PAGE_HOT)
+    topic_items = criteria.tagged_with(CacheManager.hot_tags).page(page_number).per(ITEMS_PER_PAGE_HOT)
     recent_items = criteria.desc(:created_at, :reported_on).page(page_number).per(ITEMS_PER_PAGE_RECENT)
 
     if current_user
@@ -52,7 +57,7 @@ class HomeController < ApplicationController
   def get_score_of_item(item)
     score = 0
     score += item.votes * 10 #popularity
-    score += (get_hot_tags | item.tags).size * 100 if item.tags #topics
+    score += (CacheManager.hot_tags | item.tags).size * 100 if item.tags #topics
     score += 100 if item.is_recent? #recent
     score += 300 if is_from_my_groups?(item) #groups
     score

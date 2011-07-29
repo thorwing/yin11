@@ -2,9 +2,9 @@ class TagsController < ApplicationController
   def index
     query = params[:q]
     if query.present?
-      @tags = get_hot_tags.select {|t| t =~ /#{query}?/}
+      @tags = CacheManager.hot_tags.select {|t| t =~ /#{query}?/}
     else
-      @tags = get_all_tags
+      @tags = CacheManager.all_tags
     end
 
     new_tag = query[0..(MAX_TAG_CHARS - 1)]

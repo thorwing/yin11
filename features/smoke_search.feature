@@ -4,6 +4,7 @@ Feature: smoke tests for Search
   Background:
     Given There are minimum seeds data
 
+
   @javascript
   Scenario: Item's score is considered according to popularity and tags
     Given  There are some sample tips
@@ -38,6 +39,7 @@ Feature: smoke tests for Search
     When I go to the home page
     Then I should see "瘦肉精猪肉目测"
 
+
   @javascript
   Scenario: User can search with tags
     And There are some sample articles
@@ -52,6 +54,7 @@ Feature: smoke tests for Search
     When I search for "上海"
     Then I should see "三聚氰胺再现上海"
     And I should not see "北京禁止商贩往水里兑牛奶"
+
 
   @javascript
   Scenario: User can search for a tag

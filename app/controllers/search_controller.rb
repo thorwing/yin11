@@ -16,7 +16,8 @@ class SearchController < ApplicationController
 
       #search by tags
       #TODO
-      all_tags =  InfoItem.tags #get_all_tags
+
+      all_tags = CacheManager.all_tags #get_all_tags
       query_tags = @query.split(' ')
       tags = all_tags & query_tags
       is_by_tags = tags.size > 0

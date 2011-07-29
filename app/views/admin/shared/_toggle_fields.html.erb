@@ -1,3 +1,3 @@
-<span class='toggle <%= item[field] ? "on" : "off" %>'>
+<span class='toggle <%= field %> <%= item[field] ? "on" : "off" %>'>
     <%= link_to image_tag("toggle_transparent.png", :border => 0), admin_base_toggle_path(:id => item.id, :type => item.class.name, :field => field), :method => :put, :remote => true, :title => "toggle_link" %>
 </span>

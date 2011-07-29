@@ -3,7 +3,6 @@ Feature: smoke tests for Tips
   User can search for tip by using keywords
   User can create a tip
   User can edit others tip, and the change will be stored in revision, it will not be used immediately
-  Admin can merge two tips
 
   Background:
     Given There are minimum seeds data
@@ -111,14 +110,5 @@ Feature: smoke tests for Tips
     And I go to the tips page
     And I follow "辨别西瓜是否含有催熟剂" within "#tips_written_by_me"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-
-  Scenario: Only Admin can delete tip
-    Given the following tip exists:
-    |     title      | content                                                                                   |
-    | 瘦肉精猪肉目测 | 首先，看猪肉是否具有脂肪(猪油)，如猪肉在皮下就是瘦肉或仅有少量脂肪，则可能含有“瘦肉精”。|
-
-    When I log in as "Ray Admin"
-    And I go to the admin_tips page
-
 
 

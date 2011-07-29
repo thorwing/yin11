@@ -1,6 +1,5 @@
 <%= render "vendors/basic_show", :vendor => @vendor %>
 
-<%= render "admin/shared/toggle_disabled", :confirm => t("general.are_you_sure_to_disable_enable"), :obj => @vendor %>
 <%= link_to t("general.edit"), edit_admin_vendor_path(@vendor), :class => "button" %> |
 <%= link_to t("general.delete"), [:admin, @vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
 <br/>

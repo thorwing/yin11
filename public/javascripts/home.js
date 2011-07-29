@@ -20,4 +20,8 @@ $(document).ready(function(){
         $(this).CreateBubblePopup({ innerHtml: $(this).data('content') });
     });
     //$('.tip')
+
+    $('.cleardefault').click(function(){
+        $(this).val('');
+    });
 });
