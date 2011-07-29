@@ -1,7 +1,32 @@
-<ul id="top_menu" class="menu">
+<div id="logo">
+    <%= link_to image_tag("yin11_logo.png", :border => 0, :width => 211, :height => 76), root_path if false %>
+    <h1><%= t("site.name") %></h1>
+    <small><%= t("site.description") %></small>
+</div>
+
+<ul id="top_menu">
+    <li class="logo">
+      <%= image_tag "top_menu/menu_left.png" %>
+    </li>
     <li><%= render_menu(t("menu.home"), root_path) %></li>
     <% if current_user && current_user.has_permission?(:editor) %>
-        <li><%= render_menu(t("menu.admin_control"), admin_root_path) %></li>
+        <li><%= render_menu(t("menu.admin_control"), admin_root_path) %>
+            <ul id="admin_sub_menu">
+                <li>
+                    <%= image_tag "top_menu/corner_inset_left.png", :class => "corner_inset_left" %>
+                    <%= link_to t("admin_control.articles"), admin_articles_path %>
+                    <%= image_tag "top_menu/corner_inset_right.png", :class => "corner_inset_right" %>
+                </li>
+                <li><%= link_to t("admin_control.badges"), admin_badges_path %></li>
+                <li><%= link_to t("admin_control.vendors"), admin_vendors_path %></li>
+                <li><%= link_to t("admin_control.users"), admin_users_path %></li>
+                <li class="last">
+                    <%= image_tag "top_menu/corner_left.png", :class => "corner_left" %>
+                    <%= image_tag "top_menu/dot.gif", :class => "middle" %>
+                    <%= image_tag "top_menu/corner_right.png", :class => "corner_right" %>
+                </li>
+        </ul>
+        </li>
     <% end %>
     <li><%= render_menu(t("menu.articles"), articles_path) %></li>
     <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
@@ -13,7 +38,14 @@
         <li><%= render_menu(t("menu.profile"), profile_path(current_user)) %></li>
         <li><%= render_menu(t("menu.logout"), logout_path) %></li>
     <% end %>
-    <span id="city_switch">
-        <h3><%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)</h3>
-    </span>
+    <li>
+        <span id="city_switch">
+            <%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)
+        </span>
+    </li>
+   <% unless true || hide_quick_auth? %>
+     <li><%= render "shared/quick_login" %></li>
+  <% end %>
 </ul>
+
+<%= image_tag "top_menu/menu_right.png", :id => "top_menu_right" %>

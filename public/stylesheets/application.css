@@ -5,8 +5,9 @@
     Mature Style
     Green: #346633
     White: #CCCC98
-    Blue: #333365   386fb2
+    Blue: #333365
     Text-Color: #333230
+    Facebook-blue #386fb2
     Facebook-gray #EDEFF4
 */
 
@@ -100,6 +101,7 @@ a.tag:hover {
     position:relative;
     display:block;
     overflow:hidden;
+    clear: both;
 }
 
 .block.square {
@@ -132,21 +134,12 @@ a.tag:hover {
 	Header-Styles
 */
 
-#header {
-    background:#c4c0be url(/images/background_light_slice.jpg) repeat-x;
+/*#header {*/
+    /*background:#c4c0be url(/images/background_light_slice.jpg) repeat-x;*/
     /*background:#3B7B3B;*/
-    overflow:hidden;
-}
+    /*overflow:hidden;*/
+/*}*/
 
-#header #logo { float:left;}
-#header #quick_auth {float:right; }
-
-#header #logo h1, #logo small {
-	margin:0px;
-	display:block;
-	text-indent:-9999px;
-    line-height:0px;
-}
 
 /*#logo {*/
 	/*background-image:url(/images/yin11_logo.png);*/
@@ -170,29 +163,6 @@ ul.menu li {
     display: inline;
     margin-right: 5px;
 }
-
-/*
-	Top-Menu-Styles
-*/
-
-#top_menu {
-    margin-top: 5px;
-}
-
-#top_menu li a {
-    color:#666666;
-    padding: 6px 12px;
-	text-decoration:none;
-	font-size:14px;
-	font-weight:bold;
-}
-
-#top_menu li a:hover, #top_menu li a.selected{
-    color:white;
-    background:#386fb2;
-}
-
-#top_menu #city_switch {float: right;}
 
 /*
 	Footer-Styles

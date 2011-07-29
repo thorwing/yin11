@@ -12,14 +12,6 @@ module LayoutHelper
     @show_title
   end
 
-  def hide_top_menu
-    @hide_top_menu = true
-  end
-
-  def hide_top_menu?
-    @hide_top_menu
-  end
-
   def hide_quick_auth
     @hide_quick_auth = true
   end
