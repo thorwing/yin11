@@ -7,7 +7,7 @@ Feature: smoke tests for Vendors
   Only Admin can delete a vendor
 
   Background:
-      Given There are minimal testing records
+      Given There are minimum seeds data
 
   Scenario: Guest can view vendros
     Given the following vendor exists:
@@ -21,8 +21,8 @@ Feature: smoke tests for Vendors
       | name       | city |
       | 农工商超市 | 上海 |
     Given the following vendor exists:
-      | name       | city | disabled |
-      | 家乐福超市 | 上海 | true     |
+      | name       | city | enabled |
+      | 家乐福超市 | 上海 | false     |
     When I go to the vendors page
     Then I should see "农工商超市"
     And I fill in "search" with "农工商超市"
@@ -67,8 +67,8 @@ Feature: smoke tests for Vendors
       | name       | city |
       | 农工商超市 | 上海 |
     Given the following vendor exists:
-      | name       | city | disabled |
-      | 家乐福超市 | 上海 | true     |
+      | name       | city | enabled |
+      | 家乐福超市 | 上海 | false     |
 
     When I log in as "Ray Admin"
     And I go to the admin_vendors page

@@ -17,7 +17,7 @@ Feature: smoke tests for Badges
   for create a tip that is collected by more than 100 users.
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
 
   Scenario: A admin can create a badge, and it can be given to a user

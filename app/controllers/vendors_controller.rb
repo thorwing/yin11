@@ -67,7 +67,7 @@ class VendorsController < ApplicationController
     @results = []
     query = params[:search].strip
     if query.present?
-      @exact_match = Vendor.first(:conditions => {:name => query, :disabled => false})
+      @exact_match = Vendor.first(:conditions => {:name => query, :enabled => true})
       tag_names = query.split
 
       if tag_names.size <= 1

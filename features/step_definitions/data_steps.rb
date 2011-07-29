@@ -1,20 +1,27 @@
 # encoding: utf-8
 
-Given /^There are minimal testing records$/ do
+Given /^There are minimum seeds data$/ do
   @normal_user = Factory(:normal_user)
   @tester = Factory(:tester)
   @editor = Factory(:editor)
   @admin = Factory(:admin)
 
-  shanghai = City.create(:code => "021", :name => "上海", :postcode => "20000")
-  beijing = City.create(:code => "010", :name => "北京", :postcode => "10000" )
-  article_1 = Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。",  :region_tokens => shanghai.id, :tags_string => "牛奶, 三聚氰胺")
-  article_2 = Article.create(:title => "北京禁止商贩往水里兑牛奶", :content => "北京市政府严令禁止向水里兑牛奶的行为。", :region_tokens => beijing.id, :tags_string => "牛奶")
-  vendor = Vendor.create(:name => "乐购超市")
-  Factory(:bad_review)
+  Factory(:shanghai, :name => "上海", :postcode => "20000")
+end
+
+Given /^There are some sample articles$/ do
+  Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。", :region_tokens => "021", :tags_string => "牛奶, 三聚氰胺")
+  Article.create(:title => "北京禁止商贩往水里兑牛奶", :content => "北京市政府严令禁止向水里兑牛奶的行为。", :tags_string => "牛奶")
+end
+
+Given /^There are some sample groups$/ do
   group = Group.new(:name => "西瓜守望者", :tags_string => "西瓜")
   group.creator_id = @editor.id
   group.save!
+end
+
+Given /^There are some sample reviews$/ do
+  Factory(:bad_review, :title => "牛奶坏了", :tags_string => "牛奶")
 end
 
 
@@ -31,8 +38,4 @@ Given /^There are some sample tips$/ do
   roots.each do |tip|
     Tip.create!(:title => tip["title"], :content => tip["content"], :tags_string => tip["tags_string"])
   end
-end
-
-Given /^There are some sample articles$/ do
-
 end

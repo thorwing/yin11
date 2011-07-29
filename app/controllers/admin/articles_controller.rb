@@ -2,7 +2,7 @@ class Admin::ArticlesController < Admin::BaseController
   uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
 
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page]).per(ITEMS_PER_PAGE_MANY)
     @recommended_articles = Article.recommended.desc(:updated_at).all
   end
 

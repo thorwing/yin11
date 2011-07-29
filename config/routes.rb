@@ -1,5 +1,4 @@
 Yin11::Application.routes.draw do
-  put "admin/base/toggle_disabled"
 
   namespace :admin do
     root :to => "base#index"
@@ -11,6 +10,9 @@ Yin11::Application.routes.draw do
     resources :users, :except => [:new, :create]
     resources :tips, :only => [:index, :show, :destroy]
   end
+
+  put "admin/base/toggle_disabled"
+  put 'admin/base/toggle'
 
   match "logout" => "sessions#destroy"
   match "login" => "sessions#new"

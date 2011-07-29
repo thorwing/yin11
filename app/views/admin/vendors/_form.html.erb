@@ -2,8 +2,8 @@
   <%= render "vendors/basic_form", :vendor => @vendor, :f => f %>
 
   <div class="field">
-    <%= f.label :disabled, t("general.disable") %><br />
-    <%= f.check_box :disabled, {}, true, false %>
+    <%= f.label :enabled, t("general.enabled") %><br />
+    <%= f.check_box :enabled, {}, true, false %>
   </div>
 
   <div class="actions">

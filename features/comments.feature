@@ -3,9 +3,10 @@
 Feature: Comments
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
   Scenario: Guest can not comment
+    Given There are some sample articles
     When I go to the home page
     Then I should see "三聚氰胺再现上海"
     When I follow "+评论(0)"

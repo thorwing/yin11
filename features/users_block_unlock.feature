@@ -3,7 +3,7 @@ Feature:
   and user can block another user, so he will see anything created by that user. Later on, user can unlock the user, then everything back to before.
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
     And I log in as "David User"
     And I post a simple review without vendor
 
@@ -45,6 +45,7 @@ Feature:
     Then I should see "买到烂西瓜"
 
   Scenario: User can go to a group page and unlock another user
+    Given There are some sample groups
     When I log in as "David User"
     And I join the group "西瓜守望者"
     

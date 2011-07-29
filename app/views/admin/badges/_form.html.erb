@@ -22,8 +22,8 @@
         <%= f.text_field :compared_value %>
     </div>
     <div class="field">
-        <%= f.label :disabled, t("general.disable") %><br />
-        <%= f.check_box :disabled, {}, true, false %>
+        <%= f.label :enabled, t("general.enable") %><br />
+        <%= f.check_box :enabled, {}, true, false %>
     </div>
     <div class="actions">
         <%= f.submit t("general.submit"), :class =>"button" %>

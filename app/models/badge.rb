@@ -9,7 +9,7 @@ class Badge
   field :comparator
   field :compared_value, :type => Integer
 
-  attr_accessible :name, :description, :contribution_field, :comparator, :compared_value, :disabled
+  attr_accessible :name, :description, :contribution_field, :comparator, :compared_value, :enabled
 
   scope :not_belong_to, lambda { |user| not_in(:_id => user.badge_ids) }
 

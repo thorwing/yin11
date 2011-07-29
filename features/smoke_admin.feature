@@ -7,12 +7,12 @@ Feature: smoke tests for Administration
   Only Admin can manage users
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
   Scenario Outline: Editor and Admin can edit/disable/delete articles
     Given the following article exists:
-      | title            | content                            | tags_string | disabled |
-      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜        | true    |
+      | title            | content                            | tags_string | enabled |
+      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜        | false    |
 
     When I go to the home page
     Then I should not see "西瓜被打了催熟剂"

@@ -8,7 +8,7 @@ Feature: smoke tests for Reviews
   Repeat the above steps for tech-review
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:

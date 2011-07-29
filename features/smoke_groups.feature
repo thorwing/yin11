@@ -1,7 +1,8 @@
 Feature: smoke tests for Groups
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
+    And There are some sample groups
 
   Scenario: Guest can visit a group
     When I go to the groups page
@@ -25,13 +26,11 @@ Feature: smoke tests for Groups
     Then I should see "大华小龙虾搜查队"
     Then I should see "1成员"
 
-
   Scenario: User can join a group
     When I log in as "David User"
     And I join the group "西瓜守望者"
     And I go to David's profile page
     Then I should see "西瓜守望者"
-
 
   Scenario: User can quit a group
     When I log in as "David User"
@@ -58,7 +57,6 @@ Feature: smoke tests for Groups
     When I join the group "西瓜守望者"
     And I go to the home page
    Then I should see "相关饭桌：西瓜守望者"
-
 
   @javascript
   Scenario: Group member can post for his group

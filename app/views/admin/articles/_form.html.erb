@@ -15,7 +15,7 @@
     </div>
     <div class="field">
         <%= f.label :region_tokens, t("articles.involved_regions") %><br/>
-        <%= f.text_field :region_tokens, 'data-pre' => (@article.region_ids ? @article.region_ids.map { |e| { :id => e, :name => get_region(e).name }} : []).to_json %>
+        <%= f.text_field :region_tokens, 'data-pre' => (@article.region_ids ? @article.region_ids.map { |e| { :id => e, :name => ItemFinder.get_region(e).name }} : []).to_json %>
     </div>
     <p><label><%= t("articles.source") %></label></p>
     <div class="fields_group">
@@ -53,8 +53,8 @@
     </div>
 
     <div class="field">
-        <%= f.label :disabled, t("general.disable") %><br />
-        <%= f.check_box :disabled, {}, true, false %>
+        <%= f.label :enabled, t("general.enabled") %><br />
+        <%= f.check_box :enabled, {}, true, false %>
     </div>
 
     <div class="actions">

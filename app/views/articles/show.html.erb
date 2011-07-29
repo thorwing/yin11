@@ -9,7 +9,7 @@
       <% if @article.region_ids && (not @article.region_ids.empty?) %>
            <%= t("articles.involved_regions") %>:
           <% @article.region_ids.each do |region_id| %>
-            <%= get_region(region_id).name %>
+            <%= ItemFinder.get_region(region_id).name %>
           <% end %>
       <% end %>
     </small>

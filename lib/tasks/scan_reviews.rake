@@ -7,7 +7,7 @@ namespace :yin11 do
     reviews = Review.enabled.all
     reviews.each do |review|
       if (review.images.size == 0) and (review.created_at <= 24.hours.ago)
-        review.disabled = true
+        review.enabled = false
         review.save
       end
     end

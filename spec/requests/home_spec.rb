@@ -12,8 +12,8 @@ describe "Home" do
     before(:each) do
       Review.delete_all
       Article.delete_all
-      @reviews = (1..3).to_a.map { |i| Factory(:review, :title => "review_#{i.to_s}", :disabled => true) }
-      @articles = (1..3).to_a.map { |i| Factory(:article, :title => "article_#{i.to_s}", :content => "sample text", :disabled => true) }
+      @reviews = (1..3).to_a.map { |i| Factory(:review, :title => "review_#{i.to_s}", :enabled => false) }
+      @articles = (1..3).to_a.map { |i| Factory(:article, :title => "article_#{i.to_s}", :content => "sample text", :enabled => false) }
     end
 
     it "never get displayed" do

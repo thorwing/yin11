@@ -2,7 +2,7 @@ Feature: general usage
   User can do some basic stuff
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
   Scenario: Guest can Admin can change other user's rolevisit the entry page
     When I go to the home page

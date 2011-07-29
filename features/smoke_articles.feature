@@ -8,7 +8,7 @@ Feature: smoke tests for Articles
   Editor can add descriptions on images.
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
   Scenario: Only Editor and Admin can create new articles.
     When I log in as "David User"

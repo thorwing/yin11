@@ -2,7 +2,7 @@ Feature: smoke tests for Search
   The search result should be useful
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
   @javascript
   Scenario: Item's score is considered according to popularity and tags
@@ -39,16 +39,25 @@ Feature: smoke tests for Search
     Then I should see "瘦肉精猪肉目测"
 
   @javascript
-  Scenario: User can search with tags and locations
-    Given  There are some sample tips
-    When I go to the home page
-    And I search for "牛奶 上海"
+  Scenario: User can search with tags
+    And There are some sample articles
+
+    When I search for "牛奶"
     Then I should see "三聚氰胺再现上海"
 
   @javascript
+  Scenario: User can search with tags
+    And There are some sample articles
+
+    When I search for "上海"
+    Then I should see "三聚氰胺再现上海"
+    And I should not see "北京禁止商贩往水里兑牛奶"
+
+  @javascript
   Scenario: User can search for a tag
-    When I search for "milk"
-    Then I should see "milk tastes funny" within "#bad_items"
+    Given There are some sample reviews
+    When I search for "牛奶"
+    Then I should see "牛奶坏了" within "#bad_items"
 
 
 

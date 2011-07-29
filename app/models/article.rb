@@ -38,6 +38,9 @@ class Article < InfoItem
 
   def region_tokens=(tokens)
     self.region_ids = tokens.split(',')
+    #TODO
+    region = ItemFinder.get_region(self.region_ids.first)
+    self.city ||= region.name if region
   end
 
 end

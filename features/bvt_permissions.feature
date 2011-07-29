@@ -2,7 +2,7 @@ Feature: usage about permissions
   Different permission for registered user and guest
 
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
   Scenario: guest can't post any reviews and will be asked to sign up
     When I go to the reviews page

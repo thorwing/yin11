@@ -1,6 +1,6 @@
 Feature: User can vote for an item
   Background:
-    Given There are minimal testing records
+    Given There are minimum seeds data
 
   @javascript
   Scenario: User can vote for a article.

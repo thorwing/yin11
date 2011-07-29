@@ -13,17 +13,20 @@
     <table>
       <tr>
         <th><%= t("general.title") %></th>
-        <th><%= t("general.disable") %></th>
+        <th><%= t("general.enable") %></th>
+        <th><%= t("general.recommended") %></th>
         <th><%= t("general.reported_on") %></th>
         <th><%= t("articles.source") %></th>
         <th></th>
         <th></th>
       </tr>
 
+    <%= paginate @articles %>
     <% @articles.each do |article| %>
-      <tr>
+      <tr id='<%= article.id %>'>
         <td><%= link_to article.title, admin_article_path(article) %></td>
-        <td><%= article.disabled %></td>
+        <td><%= render "admin/shared/toggle_fields", :item => article, :field => :enabled %></td>
+        <td><%= render "admin/shared/toggle_fields", :item => article, :field => :recommended %></td>
         <td><%= article.reported_on_string %></td>
         <td><%= article.name_of_source %></td>
         <td><%= link_to t("general.edit"), edit_admin_article_path(article), :class => "button" %></td>

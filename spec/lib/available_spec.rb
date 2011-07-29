@@ -8,19 +8,19 @@ describe "Available" do
 
   it "it works" do
     e = AvailableSample.new
-    e.respond_to?(:disabled).should == true
+    e.respond_to?(:enabled).should == true
     e.respond_to?(:recommended).should == true
   end
 
-  it "disabled is false by default" do
+  it "enabled is true by default" do
     e = AvailableSample.new
-    e.disabled.should == false
+    e.enabled.should == true
   end
 
   describe "Scope" do
     it "enabled works" do
       e1 = AvailableSample.new
-      e1.disabled = true
+      e1.enabled = false
       e1.save!
       e2 = AvailableSample.create!
       result = AvailableSample.enabled.all
@@ -28,9 +28,9 @@ describe "Available" do
       result.should include(e2)
     end
 
-    it "disabled works" do
+    it "enabled works" do
       e1 = AvailableSample.new
-      e1.disabled = true
+      e1.enabled = false
       e1.save!
       e2 = AvailableSample.create!
       result = AvailableSample.disabled.all

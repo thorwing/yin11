@@ -43,3 +43,15 @@ div.token-input-dropdown-facebook
 {
     width:200px;
 }
+
+/*
+    Admin styles
+*/
+
+.toggle.on{
+    background: url("/images/correct_icon.gif") no-repeat;
+}
+
+.toggle.off{
+    background: url("/images/wrong_icon.gif") no-repeat;
+}
