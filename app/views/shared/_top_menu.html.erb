@@ -6,9 +6,18 @@
 
 <ul id="top_menu">
     <li class="logo">
-      <%= image_tag "top_menu/menu_left.png" %>
+      <%= link_to image_tag("top_menu/menu_left.png", :border => 0), root_path %>
     </li>
-    <li><%= render_menu(t("menu.home"), root_path) %></li>
+    <li><%= render_menu(t("menu.articles"), articles_path) %></li>
+    <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
+    <li><%= render_menu(t("menu.tips"), tips_path) %></li>
+    <li><%= render_menu(t("menu.groups"), groups_path) %></li>
+    <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
+    <li><%= render_menu(t("menu.badges"), badges_path) %></li>
+    <% if current_user %>
+        <li><%= render_menu(t("menu.profile"), profile_path(current_user)) %></li>
+        <li><%= render_menu(t("menu.logout"), logout_path) %></li>
+    <% end %>
     <% if current_user && current_user.has_permission?(:editor) %>
         <li><%= render_menu(t("menu.admin_control"), admin_root_path) %>
             <ul id="admin_sub_menu">
@@ -28,23 +37,15 @@
         </ul>
         </li>
     <% end %>
-    <li><%= render_menu(t("menu.articles"), articles_path) %></li>
-    <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
-    <li><%= render_menu(t("menu.tips"), tips_path) %></li>
-    <li><%= render_menu(t("menu.groups"), groups_path) %></li>
-    <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
-    <li><%= render_menu(t("menu.badges"), badges_path) %></li>
-    <% if current_user %>
-        <li><%= render_menu(t("menu.profile"), profile_path(current_user)) %></li>
-        <li><%= render_menu(t("menu.logout"), logout_path) %></li>
-    <% end %>
     <li>
         <span id="city_switch">
             <%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)
         </span>
     </li>
-   <% unless true || hide_quick_auth? %>
-     <li><%= render "shared/quick_login" %></li>
+   <% unless hide_quick_auth? %>
+     <li><%= link_to t("authentication.login"), login_path %>
+        <ul><li><%= render "shared/quick_login" %></li></ul>
+     </li>
   <% end %>
 </ul>
 
