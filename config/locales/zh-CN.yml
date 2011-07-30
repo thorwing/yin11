@@ -108,6 +108,8 @@ zh-CN:
     activation_email_sent: 会员激活邮件已发出，请查收。
     user_activated: 用户已激活
     password_reset: 密码已更改
+    review_posted: 测评已发布
+    review_updated: 测评已修改
     article_posted: 文章已发布
     article_updated: 文章已更新
     tip_collected: 已收藏该锦囊
@@ -136,6 +138,9 @@ zh-CN:
   menu:
     home: 主页
     admin_control: 管理面板
+    account: 用户
+    show_profile: 查看个人资料
+    edit_profile: 修改个人资料
     profile: 个人资料
     articles: 新闻
     reviews: 测评
@@ -206,6 +211,7 @@ zh-CN:
     more: >更多
     add_foods_to_watch: 添加标签到关注列表
     add_foods_suggestion: 添加感兴趣的标签，安全动向早知道。
+    show_profile: 个人资料
     update_profile: 更新个人资料
 
   severity:

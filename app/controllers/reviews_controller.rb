@@ -69,7 +69,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to(@review, :notice => t("reviews.created_notice")) }
+        format.html { redirect_to(@review, :notice => t("notices.review_posted")) }
         format.xml  { render :xml => @review, :status => :created, :location => @review }
       else
         format.html { render :action => "new" }
@@ -99,7 +99,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
-        format.html { redirect_to(@review, :notice => t("reviews.updated_notice")) }
+        format.html { redirect_to(@review, :notice => t("notices.review_updated")) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

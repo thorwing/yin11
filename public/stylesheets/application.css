@@ -85,6 +85,10 @@ a.tag:hover {
     color: #999999;
 }
 
+.asterisk {
+    color: red;
+}
+
 .avatar {
     width:64px;
     height:64px;

@@ -8,45 +8,36 @@
     <li class="logo">
       <%= link_to image_tag("top_menu/menu_left.png", :border => 0), root_path %>
     </li>
+    <% if current_user %>
+        <li><%= t("menu.account") %>
+            <ul>
+                <li><% first_sub_menu(render_menu(t("menu.show_profile"), profile_path(current_user))) %></li>
+                <li><%= render_menu(t("menu.edit_profile"), edit_profile_path(current_user)) %></li>
+                <li><%= render_menu(t("menu.logout"), logout_path) %></li>
+                <li class="last"><% last_sub_menu %></li>
+            </ul>
+        </li>
+    <% end %>
+    <% if current_user && current_user.has_permission?(:editor) %>
+        <li><%= render_menu(t("menu.admin_control"), admin_root_path) %>
+            <ul id="admin_sub_menu">
+                <li><% first_sub_menu(link_to t("admin_control.articles"), admin_articles_path) %></li>
+                <li><%= link_to t("admin_control.badges"), admin_badges_path %></li>
+                <li><%= link_to t("admin_control.vendors"), admin_vendors_path %></li>
+                <li><%= link_to t("admin_control.users"), admin_users_path %></li>
+                <li class="last"><% last_sub_menu %></li>
+        </ul>
+        </li>
+    <% end %>
     <li><%= render_menu(t("menu.articles"), articles_path) %></li>
     <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
     <li><%= render_menu(t("menu.tips"), tips_path) %></li>
     <li><%= render_menu(t("menu.groups"), groups_path) %></li>
     <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
     <li><%= render_menu(t("menu.badges"), badges_path) %></li>
-    <% if current_user %>
-        <li><%= render_menu(t("menu.profile"), profile_path(current_user)) %></li>
-        <li><%= render_menu(t("menu.logout"), logout_path) %></li>
+    <% unless hide_quick_auth? %>
+        <li><%= link_to t("authentication.login"), login_path %>
     <% end %>
-    <% if current_user && current_user.has_permission?(:editor) %>
-        <li><%= render_menu(t("menu.admin_control"), admin_root_path) %>
-            <ul id="admin_sub_menu">
-                <li>
-                    <%= image_tag "top_menu/corner_inset_left.png", :class => "corner_inset_left" %>
-                    <%= link_to t("admin_control.articles"), admin_articles_path %>
-                    <%= image_tag "top_menu/corner_inset_right.png", :class => "corner_inset_right" %>
-                </li>
-                <li><%= link_to t("admin_control.badges"), admin_badges_path %></li>
-                <li><%= link_to t("admin_control.vendors"), admin_vendors_path %></li>
-                <li><%= link_to t("admin_control.users"), admin_users_path %></li>
-                <li class="last">
-                    <%= image_tag "top_menu/corner_left.png", :class => "corner_left" %>
-                    <%= image_tag "top_menu/dot.gif", :class => "middle" %>
-                    <%= image_tag "top_menu/corner_right.png", :class => "corner_right" %>
-                </li>
-        </ul>
-        </li>
-    <% end %>
-    <li>
-        <span id="city_switch">
-            <%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)
-        </span>
-    </li>
-   <% unless hide_quick_auth? %>
-     <li><%= link_to t("authentication.login"), login_path %>
-        <ul><li><%= render "shared/quick_login" %></li></ul>
-     </li>
-  <% end %>
 </ul>
 
 <%= image_tag "top_menu/menu_right.png", :id => "top_menu_right" %>

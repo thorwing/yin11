@@ -1,28 +1,4 @@
 /*
-	Top-Menu-Styles
-*/
-
-/*#top_menu {*/
-    /*margin-top: 5px;*/
-/*}*/
-
-/*#top_menu li a {*/
-    /*color:#666666;*/
-    /*padding: 6px 12px;*/
-	/*text-decoration:none;*/
-	/*font-size:14px;*/
-	/*font-weight:bold;*/
-/*}*/
-
-/*#top_menu li a:hover, #top_menu li a.selected{*/
-    /*color:white;*/
-    /*background:#386fb2;*/
-/*}*/
-
-/*#top_menu #city_switch {float: right;}*/
-
-
-/*
     Logo
 */
 
@@ -36,17 +12,17 @@
 
 
 /*
-    Top Menu
+	Top-Menu-Styles
 */
 
 #top_menu_right {float: left;}
 
-#top_menu{ margin:0px; padding:0px; list-style:none; color:#fff; line-height:45px; display:inline-block;
-    float:left; z-index:1000;}
+#top_menu{ margin:0; padding:0; list-style:none; color:#fff; line-height:45px; display:inline-block;
+    float:left; }
 #top_menu a { color:#fff; text-decoration:none; }
 #top_menu > li {background:#172322 none repeat scroll 0 0; cursor:pointer; float:left; position:relative;
-    padding:0px 10px;}
-#top_menu > li a:hover {color:#B0D730;}
+    padding:0 10px;}
+#top_menu > li a:hover, #top_menu > li a.selected {color:#B0D730;}
 #top_menu .logo {background:transparent none repeat scroll 0% 0%; padding:0px;
     background-color:Transparent;}
 /* sub-menus*/
@@ -58,7 +34,7 @@
 #top_menu li ul li{ display:block; margin:5px 20px; padding: 5px 0px;  border-top: dotted 1px #606060;
     list-style-type:none; }
 #top_menu li ul li:first-child { border-top: none; }
-#top_menu li ul li a { display:block; color:#0395CC; }
+#top_menu li ul li a {  color:#0395CC; }
 #top_menu li ul li a:hover { color:#7FCDFE; }
 /* main submenu */
 #top_menu #logo_sub_menu { left:0px; top:-20px; padding-top:20px; background-color:#7cb7e3; color:#fff;

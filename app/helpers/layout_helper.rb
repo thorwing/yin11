@@ -28,6 +28,18 @@ module LayoutHelper
     @is_home_page
   end
 
+  def first_sub_menu(args)
+    concat(image_tag "top_menu/corner_inset_left.png", :class => "corner_inset_left")
+    concat(args)
+    concat(image_tag "top_menu/corner_inset_right.png", :class => "corner_inset_right")
+  end
+
+  def last_sub_menu
+    concat(image_tag "top_menu/corner_left.png", :class => "corner_left")
+    concat(image_tag "top_menu/dot.gif", :class => "middle")
+    concat(image_tag "top_menu/corner_right.png", :class => "corner_right")
+  end
+
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }
   end

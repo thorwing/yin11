@@ -1,11 +1,26 @@
 <%= form_tag sessions_path do %>
-    <%= label_tag t("authentication.email") %>
-    <%= email_field_tag :email, params[:email] %>
+    <table>
+        <tr>
+            <th/>
+            <th/>
+        </tr>
+        <tr>
+            <td><%= label_tag t("authentication.email") %></td>
+            <td><%= email_field_tag :email, params[:email] %></td>
+        </tr>
+        <tr>
+            <td><%= label_tag t("authentication.password") %></td>
+            <td><%= password_field_tag :password %></td>
+        </tr>
+        <tr>
+            <td><%= check_box_tag "remember_me", 1, true %><%= t("authentication.remember_me") %></td>
+        </tr>
+        <tr>
+            <td><%= submit_tag t("authentication.login"), :class => "button" %></td>
+        </tr>
+        <tr>
+            <td><%= link_to t("authentication.sign_up"), sign_up_path %> | <%= link_to t("authentication.forgot_password"), new_password_reset_path %></td>
+        </tr>
+    </table>
 
-    <%= label_tag t("authentication.password") %>
-    <%= password_field_tag :password %>
-    <%= check_box_tag "remember_me", 1, true %><%= t("authentication.remember_me") %>
-    <%= submit_tag t("authentication.login"), :class => "button" %>
-    <%= link_to t("authentication.forgot_password"), new_password_reset_path %>
-     | <%= link_to t("authentication.sign_up"), sign_up_path %>
 <% end %>

@@ -27,11 +27,10 @@
     </div>
     <div id="search_frame">
         <h2><%= t("home.foods_buy_question") %></h2>
-        <p><%= t("home.foods_buy_question_description") %></p>
+        <p class="trivial"><%= t("home.foods_buy_question_description") %></p>
         <%= form_tag '/search', :method => :get do %>
                 <%= text_field_tag :query, @default_query, :class => "cleardefault" %>
                 <%= submit_tag t("general.search"), :class => "button" %><br/>
-                <p class="trivial"><%= t("home.multiple_foods_suggestion")  %></p>
         <% end %>
     </div>
 </div>
@@ -40,6 +39,11 @@
     <ul class="menu" id="actions_menu">
         <li><%= link_to t("reviews.new_review"), new_review_path, :class => "button" %></li>
         <li><%= link_to t("vendors.browse"), vendors_path, :class => "button" %></li>
+        <li>
+            <span id="city_switch">
+                <%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("address.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)
+            </span>
+        </li>
     </ul>
 </div>
 
@@ -55,7 +59,7 @@
             <div id="user_panel" class="sub_panel">
                 <h3><%= current_user.login_name %></h3>
                 <%= get_avatar(current_user) %>
-                 <p><%= link_to t("control_panel.update_profile"), edit_profile_path(current_user) %>
+                 <p><%= link_to t("control_panel.show_profile"), profile_path(current_user) %>
                 | <%= link_to t("authentication.logout"), logout_path %></p>
             </div>
             <hr/>
@@ -101,8 +105,7 @@
             </dl>
         <% else %>
             <div id="login_panel" class="sub_panel">
-                <%= link_to t("authentication.login"), new_sessions_path %>
-                | <%= link_to t("authentication.sign_up"), new_user_path %>
+                <%= render "shared/quick_login" %>
             </div>
         <% end %>
         <hr/>

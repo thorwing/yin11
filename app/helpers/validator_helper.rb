@@ -11,7 +11,7 @@ module ValidatorHelper
 
   def mark_required(klass, attribute)
     klass = klass.class unless klass.is_a?(Class)
-    "*" if klass.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
+    raw('<span class="asterisk">*</span>') if klass.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
 
   def mark_required_length(klass, attribute)
