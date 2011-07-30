@@ -18,8 +18,8 @@ describe ValidatorHelper do
   I18n.locale = "zh-CN"
 
   it "mark the required fields with *" do
-    helper.mark_required(ValidatorSample, :primary).should == "*"
-    helper.mark_required(ValidatorSample.new, :primary).should == "*"
+    helper.mark_required(ValidatorSample, :primary).should == '<span class="asterisk">*</span>'
+    helper.mark_required(ValidatorSample.new, :primary).should == '<span class="asterisk">*</span>'
   end
 
   it "mark the required fields with *" do

@@ -11,10 +11,10 @@ describe "Concern" do
   it "control panel gets displayed" do
     login_as(user)
     visit root_path
-    page.should have_content I18n.t("control_panel.tags")
-    page.should have_content I18n.t("control_panel.locations")
-    page.should have_content I18n.t("control_panel.tips")
-    page.should have_content I18n.t("control_panel.groups")
+    page.should have_content I18n.t("control_panel.watching_tags")
+    page.should have_content I18n.t("control_panel.watching_locations")
+    page.should have_content I18n.t("control_panel.collected_tips")
+    page.should have_content I18n.t("control_panel.joined_groups")
   end
 
   it "watched tags got displayed" do

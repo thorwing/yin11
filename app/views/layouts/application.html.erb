@@ -23,7 +23,7 @@
         <% if home_page? %>
             <%= yield %>
         <% else %>
-          <div class="block square">
+          <div id="content_area" class="block square">
             <%= content_tag(:h1, @content_for_title) if show_title?  %>
             <%= yield %>
           </div>

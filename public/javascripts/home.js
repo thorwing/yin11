@@ -21,7 +21,11 @@ $(document).ready(function(){
     });
     //$('.tip')
 
-    $('.cleardefault').click(function(){
+    $('.clear_default').click(function(){
         $(this).val('');
+    });
+
+    $('.close_panel_link').click(function() {
+        $(this).parents('.panel').slideUp();
     });
 });

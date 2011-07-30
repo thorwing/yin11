@@ -39,6 +39,10 @@ Then /^I should see "(.+)" whose id is "(.+)"$/ do |element_type, id|
   page.has_xpath?("//#{element_type}[@id='#{id}']")
 end
 
+Then /^I should not see "(.+)" whose id is "(.+)"$/ do |element_type, id|
+  page.has_no_xpath?("//#{element_type}[@id='#{id}']")
+end
+
 Then /^I should see "(.+)" whose "(.+)" is "(.+)"$/ do |element_type, attr, id|
   page.has_xpath?("//#{element_type}[@#{attr}='#{id}']")
 end

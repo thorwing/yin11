@@ -56,4 +56,27 @@ class ProfileController < ApplicationController
     end
   end
 
+  def delete_watched_tag
+    @index = current_user.profile.watched_tags.index(params[:tag])
+    if @index >= 0
+      current_user.profile.watched_tags.slice!(@index)
+      current_user.profile.save!
+    end
+
+    respond_to do |format|
+      format.js {render :content_type => 'text/javascript'}
+    end
+  end
+
+  def toggle
+    @field = params[:field]
+    @new_value = !current_user.profile[@field]
+    current_user.profile[@field] = @new_value
+    current_user.profile.save!
+
+    respond_to do |format|
+      format.js {render :content_type => 'text/javascript'}
+    end
+  end
+
 end

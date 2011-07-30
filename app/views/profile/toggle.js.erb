@@ -1,0 +1,8 @@
+var toggle_fields = $(".toggle.<%= @field %>");
+
+toggle_fields.removeClass("on");
+toggle_fields.removeClass("off");
+
+var new_value = "<%= @new_value ? "on" : "off" %>";
+
+toggle_fields.addClass(new_value);

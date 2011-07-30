@@ -17,14 +17,14 @@ Feature: general usage
     And I should see "警惕以下关于“西瓜”的负面信息"
     And I should see "请阅读以下关于“西瓜”的参考"
 
-
+  @focus
   Scenario: User can see the control panel on home page
     When I log in as "David User"
     Then I should see "div" whose id is "control_panel"
-    And I should see "锦囊" within "#control_panel .tab"
-    And I should see "标签" within "#control_panel .tab"
-    And I should see "地点" within "#control_panel .tab"
-    And I should see "饭桌" within "#control_panel .tab"
+    And I should see "关注的标签" within "#control_panel"
+    And I should see "关注的地点" within "#control_panel"
+    And I should see "收藏的锦囊" within "#control_panel"
+    And I should see "加入的饭桌" within "#control_panel"
 
 
   Scenario: Normal user can post reviews

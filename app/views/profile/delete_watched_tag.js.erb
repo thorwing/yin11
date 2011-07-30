@@ -1,0 +1,4 @@
+var index = parseInt("<%= @index %>");
+if (index >= 0) {
+    $("#watched_tags_list .watched_tag").eq(index).remove();
+}

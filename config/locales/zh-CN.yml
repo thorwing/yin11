@@ -169,7 +169,6 @@ zh-CN:
   address:
     province: 省份
     city: 城市
-    change_city: 切换城市
     district: 区
     street: 详细
     near: 靠近
@@ -187,6 +186,10 @@ zh-CN:
     new_watched_location: 关注的地点
     watched_distance: 关注的范围（公里）
     receive_mails: 接受关于监察列表中食物安全动向的报告邮件
+    show_watching_tags_panel: 在主页上显示关注的标签
+    show_watching_locations_panel: 在主页上显示关注的地点
+    show_collected_tips_panel: 在主页上显示收藏的锦囊
+    show_joined_groups_panel: 在主页上显示加入的饭桌
     concern_days: 关心几天内的食物消息
     my_recent_posted_items: "我最近发表了:"
     my_badges: "我的徽章:"
@@ -201,18 +204,25 @@ zh-CN:
     foods_buzz: 热门食物
     hot_tags: 热门标签
     tag_cloud: 标签云
+    current_city: 当前城市：
+    change_city: 切换
 
   control_panel:
-    watching: "我的关注:"
-    tags: 标签
+    actions: 我要：
+    watching: 我关注：
+    watching_tags: 关注的标签：
+    watching_locations: 关注的地点：
+    collected_tips: 收藏的锦囊：
+    joined_groups: 加入的饭桌：
     locations: 地点
     tips: 锦囊
     groups: 饭桌
     more: >更多
-    add_foods_to_watch: 添加标签到关注列表
-    add_foods_suggestion: 添加感兴趣的标签，安全动向早知道。
+    add_tag_hint: 为您收集和标签相关的事件，食物安全早知道
+    add_location_hint: 关注地点附近的事件全部掌握
     show_profile: 个人资料
     update_profile: 更新个人资料
+    login: 登入
 
   severity:
     severity_0: 安全

@@ -159,9 +159,9 @@ class User
 
   def get_raw_updates(days)
     data = {}
+    self.profile.watched_tags.map{|t| data[t] = []}
     InfoItem.enabled.in_days_of(days).tagged_with(self.profile.watched_tags).all.each do |item|
       (self.profile.watched_tags & item.tags).each do |tag|
-        data[tag] ||=[]
         data[tag] << item
       end
     end

@@ -1,0 +1,16 @@
+<% if current_user && current_user.profile.show_watching_locations_panel %>
+    <div id="watching_locations_panel" class="panel">
+        <b><%= t("control_panel.watching_locations") %></b>
+        <%= link_to image_tag("close_x.png", :border => 0), toggle_profile_index_path(:field => :show_watching_locations_panel), :method => :put, :remote => true, :class => "close_panel_link", :title => "hide_link"  %>
+        <p class="trivial"><%= t("control_panel.add_location_hint") %></p>
+        <div id="locations_list">
+            <% @watched_locations.each do |location| %>
+                <p id="<%= location.id.to_s %>">
+                    <%= link_to location.address, show_nearby_items_locations_path(:location_id => location.id) %> <%= @evaluation[location.address] %>
+                    <%= link_to image_tag("delete.png", :border => 0), url_for(:controller =>  "profile", :action => "delete_watched_location", :location_id => location.id), :method => :put, :remote => true %>
+                </p>
+            <% end %>
+        </div>
+        <p><%= link_to  t("profile.add_place"), {:controller => "profile", :action => "new_watched_location", :popup => true}, :rel => "facebox", :class => "button" %></p>
+    </div>
+<% end %>

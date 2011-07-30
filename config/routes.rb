@@ -52,7 +52,9 @@ Yin11::Application.routes.draw do
       get "new_watched_location"
       post "create_watched_location"
       put "delete_watched_location"
+      put "delete_watched_tag"
       post "watch_tags"
+      put "toggle"
     end
   end
 

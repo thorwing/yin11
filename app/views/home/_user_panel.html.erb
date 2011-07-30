@@ -1,0 +1,7 @@
+<% if current_user %>
+    <div id="user_panel" class="panel">
+        <%= get_avatar(current_user) %>
+        <p><%= current_user.login_name %> <%= link_to t("control_panel.show_profile"), profile_path(current_user) %>
+        | <%= link_to t("authentication.logout"), logout_path %></p>
+    </div>
+<% end %>

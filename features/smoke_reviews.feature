@@ -82,7 +82,7 @@ Feature: smoke tests for Reviews
 
   Scenario:  User's city will be detected.
     When I log in as "David User"
-    And I follow "发表食物测评" within "#actions_menu"
+    And I follow "发表食物测评" within "#actions_panel"
     Then I should see "上海" within "#location_fields"
 
 

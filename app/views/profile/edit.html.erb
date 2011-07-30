@@ -13,6 +13,29 @@
       <%= f.check_box :receive_mails, {}, true, false %>
     </div>
 
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th><%= t("profile.show_watching_tags_panel") %></th>
+        <th><%= render "toggle_row", :field => :show_watching_tags_panel %></th>
+      </tr>
+      <tr>
+        <th><%= t("profile.show_watching_locations_panel") %></th>
+        <th><%= render "toggle_row", :field => :show_watching_locations_panel %></th>
+      </tr>
+      <tr>
+        <th><%= t("profile.show_collected_tips_panel") %></th>
+        <th><%= render "toggle_row", :field => :show_collected_tips_panel %></th>
+      </tr>
+      <tr>
+        <th><%= t("profile.show_joined_groups_panel") %></th>
+        <th><%= render "toggle_row", :field => :show_joined_groups_panel %></th>
+      </tr>
+    </table>
+
     <div class="fields_group">
         <h3><%= t("profile.interested_places") %></h3>
         <span class="trivial"><%= f.label :watched_distance, t("location.address_hint") %></span>

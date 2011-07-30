@@ -46,6 +46,7 @@ Feature: smoke tests for Badges
     And I go to the new_admin_badge page
     Then I should be on the home page
 
+  @focus
   Scenario: Only Admin can edit badges.
     Given the following badge exists:
     | name     | description  | contribution_field | comparator | compared_value |
@@ -60,7 +61,7 @@ Feature: smoke tests for Badges
     And I log in as "David User"
     And I go to the badges page
     And I follow "新手上路"
-    Then I should not see "修改"
+    Then I should not see "修改" within "#content_area"
 
     And I go to the home page
     And I follow "徽章" within "#top_menu"
