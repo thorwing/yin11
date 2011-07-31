@@ -95,6 +95,15 @@ ul#actions_menu {
 
 h2.bad, h3.bad, h3.bad a {color: black;}
 
+/* more button */
+
+#more_items_button {
+    width: 300px;
+    margin:0px auto;
+    text-align: center;
+    display: block;
+}
+
 /*
 	Vote-Fields-Styles
 */

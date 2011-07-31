@@ -1,5 +1,5 @@
 <% title t("profile.edit_profile") %>
-<%= form_for current_user.profile, :url => profile_path(current_user), :as => :put, :html => {:multipart => true} do |f| %>
+<%= form_for current_user.profile, :url => profile_path(current_user), :as => :profile, :html => {:multipart => true} do |f| %>
     <div class="field">
         <h3><%= current_user.login_name %></h3>
         <%= get_avatar(current_user) %>

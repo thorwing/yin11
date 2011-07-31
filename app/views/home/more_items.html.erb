@@ -1,3 +1,7 @@
-<% @items.each_with_index do |item, index| %>
-    <%= render "info_items/info_item", :item => item, :index => index %>
+<% unless @items.empty?  %>
+    <% @items.each_with_index do |item, index| %>
+        <%= render "info_items/info_item", :item => item, :index => index %>
+    <% end %>
+<% else %>
+    <%= link_to t("info_items.show_more"), reviews_path, :id => "more_items_button", :class => "button" %>
 <% end %>
