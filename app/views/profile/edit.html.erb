@@ -1,6 +1,6 @@
 <% title t("profile.edit_profile") %>
 <%= form_for current_user.profile, :url => profile_path(current_user), :as => :profile, :html => {:multipart => true} do |f| %>
-    <div class="field">
+    <div class="block round">
         <h3><%= current_user.login_name %></h3>
         <%= get_avatar(current_user) %>
         <p>
@@ -8,44 +8,40 @@
           <%= f.file_field :avatar %> <br/>
         </P>
     </div>
-    <div class="field">
-      <%= t("profile.receive_mails") %>
-      <%= f.check_box :receive_mails, {}, true, false %>
+    <div class="block round">
+        <table>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th><%= t("profile.receive_mails") %></th>
+            <th><%= render "toggle_row", :field => :receive_mails %></th>
+          </tr>
+          <tr>
+            <th><%= t("profile.show_watching_tags_panel") %></th>
+            <th><%= render "toggle_row", :field => :show_watching_tags_panel %></th>
+          </tr>
+          <tr>
+            <th><%= t("profile.show_watching_locations_panel") %></th>
+            <th><%= render "toggle_row", :field => :show_watching_locations_panel %></th>
+          </tr>
+          <tr>
+            <th><%= t("profile.show_collected_tips_panel") %></th>
+            <th><%= render "toggle_row", :field => :show_collected_tips_panel %></th>
+          </tr>
+          <tr>
+            <th><%= t("profile.show_joined_groups_panel") %></th>
+            <th><%= render "toggle_row", :field => :show_joined_groups_panel %></th>
+          </tr>
+        </table>
     </div>
 
-    <table>
-      <tr>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr>
-        <th><%= t("profile.show_watching_tags_panel") %></th>
-        <th><%= render "toggle_row", :field => :show_watching_tags_panel %></th>
-      </tr>
-      <tr>
-        <th><%= t("profile.show_watching_locations_panel") %></th>
-        <th><%= render "toggle_row", :field => :show_watching_locations_panel %></th>
-      </tr>
-      <tr>
-        <th><%= t("profile.show_collected_tips_panel") %></th>
-        <th><%= render "toggle_row", :field => :show_collected_tips_panel %></th>
-      </tr>
-      <tr>
-        <th><%= t("profile.show_joined_groups_panel") %></th>
-        <th><%= render "toggle_row", :field => :show_joined_groups_panel %></th>
-      </tr>
-    </table>
-
-    <div class="fields_group">
-        <h3><%= t("profile.interested_places") %></h3>
-        <span class="trivial"><%= f.label :watched_distance, t("location.address_hint") %></span>
+    <div class="block round">
         <p><b><%= f.label :watched_distance, t("profile.watched_distance") %></b></p>
         <%= f.select :watched_distance, options_for_select((PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE).map{|e| [e, e]}, f.object.watched_distance) %>
-
-    </div>
-
-    <div>
-        <%= t("profile.concern_days") %>
+        <%= t("profile.wathced_distance_unit") %>
+        <p><b><%= t("profile.concern_days") %></b></p>
         <%= f.select :concern_days, options_for_select((PROFILE_MIN_CONCERN_DAYS..PROFILE_MAX_CONCERN_DAYS).map{|e| [e, e]}, f.object.concern_days) %>
     </div>
 

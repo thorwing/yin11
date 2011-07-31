@@ -1,6 +1,11 @@
 <% title t("profile.profile") %>
-<div class="field">
+<p>
+    <%= link_to t("general.change"), edit_profile_path(current_user), :class => "button" %>
+</p>
+<br/>
+<div class="block round">
     <h3><%= current_user.login_name %></h3>
+    <%= current_user.email %><br/>
     <%= get_avatar(current_user) %>
 </div>
 <div class="block round">
@@ -30,11 +35,9 @@
 </div>
 
 <div id="blocked_users_list" class="block round">
-  <%= t("users.blocked_users_list") %>
+  <h3><%= t_with_colon("users.blocked_users_list") %></h3>
   <% @blocked_users.each do |user| %>
       <p><%= link_to user.login_name, user %></p>
   <% end %>
 </div>
-
-<%= link_to t("general.change"), edit_profile_path(current_user), :class => "button" %>
 

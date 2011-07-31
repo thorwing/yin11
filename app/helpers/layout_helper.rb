@@ -47,5 +47,12 @@ module LayoutHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
+
+  def t_with_colon(key)
+    str = t(key)
+    colon = t("symbols.colon")
+    str += colon unless str.include?(colon)
+    str
+  end
 end
 

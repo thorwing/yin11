@@ -1,13 +1,11 @@
 <div class="block round">
     <p>
         <%= link_to vendor.full_name, vendor %><br/>
-        <%= link_to "#{t("vendors.new_review")}(#{vendor.reviews.size.to_s})", new_review_path(:vendor_id => vendor.id) %>
-
     </p>
     <p>
-        <%= t("vendors.recent_reviews") %>
-        <% vendor.reviews.limit(VENDOR_RECENT_REVIEWS).each do |review| %>
-            <%= link_to review.title, review %>
-        <% end %>
+        <%= t("vendors.recent") %>
+        <%= "#{t("vendors.recent_good")}(#{vendor.good_reviews_in(30).size.to_s})"  %>
+        <%= "#{t("vendors.recent_bad")}(#{vendor.bad_reviews_in(30).size.to_s})"  %>
+        <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id) %>
     </p>
 </div>
