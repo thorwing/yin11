@@ -1,10 +1,9 @@
-<b><%= f.label :images, t("images.images") %></b>
-<%= mark_required(item, :images) %>
+<b><%= f.label :images, t("images.images") %><%= mark_required(item, :images) %></b>
 <%= content_tag(:span, t("reviews.upload_image_tip"), :class => "trivial") %>
 
 <br/>
 <div id="image_uploader"></div>
-<div id="images_container" class="block round">
+<div id="images_container" class="block">
     <%= render :partial => "images/single_image_field", :collection => item.images, :as => :image %>
 </div>
 

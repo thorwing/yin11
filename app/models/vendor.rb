@@ -16,7 +16,12 @@ class Vendor
 
   #validators
   validates_presence_of :name
-  validates_uniqueness_of :name
   validates_length_of :name, :maximum => 20
+  validates_presence_of :city
+  validates_presence_of :street
+  validates_uniqueness_of :full_name
 
+  def full_name
+    (name.nil? ? "" : name.strip) + " (" + address + ")"
+  end
 end

@@ -1,10 +1,9 @@
 <%= form_for @review, :html => { :multipart => true } do |f| %>
     <%= render "shared/error_messages", :target => @review %>
-    <div class="field">
+    <div class="block round">
         <b><%= f.label :title, t("general.title") %><%= mark_required(@review, :title) %><%= mark_required_length(@review, :title) %></b><br/>
         <%= f.text_field :title, :maxlength => get_max_length(@review, :title) %>
     </div>
-    <br/>
 
     <div class="block round">
         <b><%= f.label :tags_string, t("reviews.what") %></b><%= content_tag(:span, t("reviews.what_tip"), :class => "trivial") %><br/>
@@ -13,16 +12,15 @@
 
     <div class="block round">
         <b><%= t("reviews.where") %></b><br/>
-        <div id="location_fields">
-            <% if @review.vendor %>
-                <%= render "vendor_fields", :vendor => @review.vendor %>
-            <% else %>
-                  <%= current_city.name %><%= hidden_field_tag "review[city]", current_city.name %>
-                  <%= f.text_field :street %>
-                  <br/>
-                  <%= link_to t("reviews.choose_vendor"), browse_vendors_path(:popup => true), :rel => "facebox" %>
-            <% end %>
-        </div>
+        <% if @review.vendor %>
+            <div><%= render "vendor_fields", :vendor => @review.vendor %></div>
+        <% else %>
+        <div id="vendor_fields">
+            <%= f.text_field :vendor_token, 'data-pre' => (@review.vendor ? [{:id => @review.vendor.id, :name => @review.vendor.full_name }] : []).to_json %>
+            <%= content_tag(:span, t("vendors.not_found"), :class => "trivial") %><br/>
+            <%= link_to t("vendors.new"), new_vendor_path(:popup => true), :rel => "facebox", :class => "button" %>
+         </div>
+        <% end %>
      </div>
 
     <div class="block round">
@@ -35,8 +33,7 @@
         <b><%= f.label :faults, t("reviews.whats_wrong") %></b><br/>
         <div class="checkbox_group">
             <% FaultTypes.get_values.each_with_index do |type, i| %>
-                <%= check_box_tag "review[faults][]", type, @review.faults.include?(type), {:id => "review_faults_#{i}", :class => "checkbox" } %>
-                <%= label_tag "review_faults_#{i}", type %>
+                <% check_fault(type, i) %>
             <% end %>
         </div>
     </div>

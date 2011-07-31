@@ -114,8 +114,8 @@ a.tag:hover {
 }
 
 .block.round {
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
     border:1px solid #dbdbdb;
     background:#EDEFF4;
     margin-bottom:10px;

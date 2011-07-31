@@ -275,7 +275,8 @@ zh-CN:
   vendors:
     vendor: 商户
     vendors: 所有商户
-    browse: 寻找商户
+    browse: 找商户
+    new: +商户
     enabled_vendors: 启用的商户
     disabled_vendors: 禁用的商户
     vendor_name: 商户名
@@ -297,14 +298,14 @@ zh-CN:
     new: 新测评
     reviews: 测评
     all: 所有测评
-    what: 关于什么?
-    what_tip: （标签：食物，添加剂等等）
+    what: 关于?
+    what_tip: （标签：食物，添加剂等等。最多5个。）
     where: 在哪里?
     when: 什么时候?
     whats_wrong: 哪里不对劲?
     post_new_review: 发表新测评
     edit_review: 编辑 %{title}
-    new_review: 发表食物测评
+    new_review: +测评
     make_choice_please: 请选择
     choose_vendor: 选择商户
     new_review_with_vnedor: 先找到针对的商户
@@ -316,13 +317,13 @@ zh-CN:
     faults: 测评结论
     title_the: 的
     content: 补充
-    suggestion_1: "现在将这一餐和大家一起分享吧！越多的用户喜爱您的分享，您将获得更多的积分。"
-    suggestion_2: "在何时何地，您吃了什么食物？您用了什么手段来鉴定这一餐是否安全和卫生？"
+    suggestion_1: "不论是您遇到了食物安全问题，还是想推荐您的放心的一餐。您都可以与大家一起分享。"
 
   comments:
-    new: 新评论
-    all: "所有评论:"
-    post: 发表评论
+    new_comment: 新评论
+    all: 所有评论：
+    new: +评论
+    new_hint: 成为第一个评论的人
     reply: 回复
 
   articles:

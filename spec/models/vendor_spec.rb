@@ -3,17 +3,30 @@ require "spec_helper"
 describe Vendor do
   let(:beijing) {Factory(:beijing)}
 
-  it "it works" do
-    Vendor.new(:name => "test").should be_valid
+  it "it should be valid" do
+    Vendor.new(:name => "test", :city => "shanghai", :street => "dahua road").should be_valid
   end
 
   it "name is mandatory" do
-    Vendor.new.should_not be_valid
+    Vendor.new(:city => "shanghai", :street => "dahua road").should_not be_valid
   end
 
-  it "name is unique" do
-    Vendor.create(:name => "test")
-    Vendor.new(:name => "test").should_not be_valid
+  it "city is mandatory" do
+    Vendor.new(:name => "test", :street => "dahua road").should_not be_valid
+  end
+
+  it "street is mandatory" do
+    Vendor.new(:name => "test", :city => "shanghai").should_not be_valid
+  end
+
+  it "name is not unique" do
+    Vendor.create(:name => "test", :city => "shanghai", :street => "dahua road")
+    Vendor.new(:name => "test", :city => "beijing", :street => "changan road").should be_valid
+  end
+
+  it "full address is unique" do
+    Vendor.create(:name => "test", :city => "shanghai", :street => "dahua road")
+    Vendor.new(:name => "test", :city => "shanghai", :street => "dahua road").should_not be_valid
   end
 
   it "max length of name is 20" do

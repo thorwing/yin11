@@ -1,9 +1,8 @@
 <div class="block round">
     <p>
-        <%= link_to vendor.name, vendor %>
-        <span class="trivial"><%= vendor.address %></span>
-        (<%= vendor.reviews.size.to_s %> <%= t("reviews.reviews") %>)
-        <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id), :class => "button" %>
+        <%= link_to vendor.full_name, vendor %><br/>
+        <%= link_to "#{t("vendors.new_review")}(#{vendor.reviews.size.to_s})", new_review_path(:vendor_id => vendor.id) %>
+
     </p>
     <p>
         <%= t("vendors.recent_reviews") %>

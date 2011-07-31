@@ -10,8 +10,13 @@ class Review < InfoItem
   #override the settings in Informative
   validates_length_of :content, :maximum => 3000
 
-  before_validation { self.positive = false unless self.faults.empty?
-                      true
+  before_validation {
+    self.positive = false unless self.faults.empty?
+    if (self.vendor)
+      self.city = self.vendor.city
+      self.street = self.vendor.street
+    end
+    true
   }
 
   def get_faults

@@ -4,6 +4,6 @@
       <%= hidden_field_tag :item_type, item.class.name %>
       <%= hidden_field_tag :parent_id, parent.id if (defined? parent) %>
       <p><%= text_area_tag :content, "", :maxlength => get_max_length(Comment, :content), :rows => 10 %></p>
-      <p><%= submit_tag t("comments.post"), :class => "button" %></p>
+      <p><%= submit_tag t("comments.new"), :class => "button" %></p>
     <% end %>
 </div>

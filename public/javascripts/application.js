@@ -55,14 +55,14 @@ $(function() {
     }
 
     tokenize_input("#watch_tags", "/tags.json", 5);
-    tokenize_input("#article_region_tokens", "/home/regions.json", 10);
-    tokenize_input("#article_tags_string", "/tags.json", 10);
+    tokenize_input("#article_region_tokens", "/home/regions.json", 5);
+    tokenize_input("#article_tags_string", "/tags.json", 5);
     tokenize_input("#article_vendor_token", "/vendors.json", 1);
-    tokenize_input("#review_tags_string", "/tags.json", 10);
-    //tokenize_input("#review_vendor_token", "/vendors.json", 1);
-     tokenize_input("#tip_tags_string", "/tags.json", 10);
-    tokenize_input("#group_tags_string", "/tags.json", 10);
-    tokenize_input("#added_foods", "/tags.json", 10);
+    tokenize_input("#review_tags_string", "/tags.json", 5);
+    tokenize_input("#vendor_fields #review_vendor_token", "/vendors.json", 1);
+    tokenize_input("#tip_tags_string", "/tags.json", 5);
+    tokenize_input("#group_tags_string", "/tags.json", 5);
+    tokenize_input("#added_foods", "/tags.json", 5);
     tokenize_input("#profile_address_attributes_city_token", "/cities.json", 1);
     //tokenize_input(".one_token .one_tip", "/tips.json", 1);
 });

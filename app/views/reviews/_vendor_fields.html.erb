@@ -1,9 +1,4 @@
-<div id="vendor_fields">
-    <b><%= vendor.name %></b>
-    <%= vendor.address %>
-    <%= hidden_field_tag "review[vendor_token]", vendor.id %>
-    <%= hidden_field_tag "review[city]", vendor.city %>
-    <%= hidden_field_tag "review[street]", vendor.street %>
-    <!--for testing -->
-    <%= hidden_field_tag "review[vendor_name]", vendor.name %>
-</div>
+<%= vendor.full_name %>
+<%= hidden_field_tag "review[vendor_token]", vendor.id %>
+<!--for testing -->
+<%= hidden_field_tag "review[vendor_name]", vendor.name %>

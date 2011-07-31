@@ -32,8 +32,8 @@
     <li><%= render_menu(t("menu.articles"), articles_path) %></li>
     <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
     <li><%= render_menu(t("menu.tips"), tips_path) %></li>
-    <li><%= render_menu(t("menu.groups"), groups_path) %></li>
     <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
+    <li><%= render_menu(t("menu.groups"), groups_path) %></li>
     <li><%= render_menu(t("menu.badges"), badges_path) %></li>
     <% unless hide_quick_auth? %>
         <li><%= link_to t("authentication.login"), login_path %>

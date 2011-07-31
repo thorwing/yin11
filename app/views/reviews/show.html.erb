@@ -20,7 +20,7 @@
     <% if @review.vendor %>
         <tr>
             <td><b><%= t("vendors.vendor") %></b></td>
-            <td><%= link_to @review.vendor.name, @review.vendor %>    <span class="trivial"><%= @review.vendor.address %></span> </td>
+            <td><%= link_to @review.vendor.full_name, @review.vendor %></td>
         </tr>
     <% end %>
     <tr>
@@ -42,12 +42,13 @@
     </div>
 <% end %>
 
+<br/>
 <% if the_author_himself(Review.name, @review.id, true, false) %>
-    <p><%= link_to t("general.edit"), edit_review_path(@review), :class => "button" %></p>
+    <%= link_to t("general.edit"), edit_review_path(@review) %> |
 <% end %>
-<p>
-    <%= link_to t("general.back_to_list"), review_path %>
-</p>
+
+<%= link_to t("general.back_to_list"), review_path %>
+
 
 <hr/>
 
