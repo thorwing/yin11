@@ -27,7 +27,7 @@ class InfoItem
   scope :about, lambda{ |tag| any_in(:tags => [tag]) }
   #any_in will perform an intersaction when chained
   #TODO
-  scope :of_type, lambda { |types| any_in(:_type => types ) }
+  scope :of_types, lambda { |types| any_in(:_type => types ) }
   scope :bad, where(:positive => false)
   scope :good, where(:positive => true)
 

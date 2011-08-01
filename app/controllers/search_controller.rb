@@ -63,17 +63,20 @@ class SearchController < ApplicationController
     @bad_items ||= []
     @good_items ||= []
     @bad_region_names ||= []
-    @good_count = 0
-    @bad_count = 0
+    @tips = []
 
     @query = params[:query] || params[:tags] || params[:region_name]
     @query_criteria = InfoItem.enabled
   end
 
   def process_items
-    @bad_items = @query_criteria.bad.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-    @good_items = @query_criteria.good.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+    #TODO
+    @bad_count = @query_criteria.of_types([Review.name, Article.name]).bad.desc(:reported_on, :updated_on).size
+    @good_count = @query_criteria.of_types([Review.name, Article.name]).good.desc(:reported_on, :updated_on).size
 
+    @bad_items = @query_criteria.of_types([Review.name, Article.name]).bad.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+    @good_items = @query_criteria.of_types([Review.name, Article.name]).good.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+    @tips = @query_criteria.of_types([Tip.name]).desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
     @bad_region_names = @bad_items.inject([]) {|memo, e| memo << e.city }.compact.uniq
   end
 

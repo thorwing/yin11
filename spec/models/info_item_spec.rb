@@ -71,9 +71,9 @@ describe InfoItem do
       InfoItem.about("milk").should include(item)
     end
 
-    it "of_type works" do
+    it "of_types works" do
       item = Review.create(:title => "test")
-      InfoItem.of_type([Review.name]).should include(item)
+      InfoItem.of_types([Review.name]).should include(item)
     end
 
     it "bad works" do

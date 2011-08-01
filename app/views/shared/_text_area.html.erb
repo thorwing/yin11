@@ -1,0 +1,5 @@
+<div class="field">
+    <% length_msg = mark_required_length(f.object, field) %>
+    <b><%= f.label field, label  %><%= mark_required(f.object, field) %><%= length_msg %></b><br/>
+    <%= f.text_area field, :maxlength => get_max_length(f.object, field), :rows => (get_max_length(f.object, field) / 30) %>
+</div>

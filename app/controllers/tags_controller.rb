@@ -2,18 +2,22 @@ class TagsController < ApplicationController
   def index
     query = params[:q]
     if query.present?
-      @tags = CacheManager.hot_tags.select {|t| t =~ /#{query}?/}
+      @tags = CacheManager.all_tags_with_weight.select {|t| t[0] =~ /#{query}?/}
     else
-      @tags = CacheManager.all_tags
+      @tags = CacheManager.all_tags_with_weight
     end
 
+    #if it's a new tag'
     new_tag = query[0..(MAX_TAG_CHARS - 1)]
-    @tags.insert(0, new_tag) unless @tags.include?(new_tag)
+    is_new_tag = !(@tags.map{|t| t[0]}.include?(new_tag))
+
+    @tags =  @tags.map { |t| {:id => t[0], :name => "#{t[0]} (#{t[1]})"} }
+
+    #insert new tag
+    @tags.insert(0, {:id => new_tag, :name => "#{new_tag} (#{t("tags.new_tag")})" }) if is_new_tag
 
     respond_to do |format|
-      format.html
-      format.xml  { render :xml => @tags }
-      format.json { render :json => @tags.map { |t| {:id => t, :name => t } } }
+      format.json { render :json => @tags }
     end
   end
 

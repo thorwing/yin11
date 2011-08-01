@@ -16,6 +16,10 @@ div.actions {
     margin-top: 5px;
 }
 
+p.nav_links {
+    margin-top: 10px;
+}
+
 label.severity_image {
     width:48px;
     height:64px;

@@ -10,11 +10,6 @@ class TipsController < ApplicationController
     @hot_tips = Tip.order_by([:votes, :desc]).limit(5)
     @recent_tips = Tip.order_by([:updated_at, :desc]).limit(5)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @tips }
-      format.json { render :json => Tip.all.map { |t| {:id => t.id, :name => t.title} } }
-    end
   end
 
   # GET /tips/1

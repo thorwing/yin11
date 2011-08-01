@@ -88,12 +88,8 @@ ul#actions_menu {
 	Good-Bad-Items-Styles
 */
 
-#good_items {width:480px;}
-#bad_items {width:480px;}
-.item.info.short { width:450px; }
-.item.info.short .central_fields { float:left; width:300px}
-
-h2.bad, h3.bad, h3.bad a {color: black;}
+#items_list {width:600px;}
+#tips_list {width:360px;}
 
 /* more button */
 

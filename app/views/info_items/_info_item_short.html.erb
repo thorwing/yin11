@@ -1,18 +1,16 @@
 <div class="item info short">
-    <div class="central_fields">
-        <h3><%= link_to item.title, item %></h3>
-        <div class="clues">
-            <%= clues = get_clues_of_item(item) %>
-            <%= render "shared/show_tags", :item => item %>
-        </div>
-        <p>
-          <%= truncate_content(item.content, 100) %>
-          <%= link_to(t("info_items.detail"), item)  %>
-          <span class="trivial">
-            <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
-            <%= content_tag(:span, t("info_items.posted_by") + item.author.login_name ) if item.author %>
-          </span>
-        </p>
+    <h3><%= link_to item.title, item %></h3>
+    <div class="clues">
+        <%= clues = get_clues_of_item(item) %>
+        <%= render "shared/show_tags", :item => item %>
     </div>
+    <p>
+      <%= truncate_content(item.content, 100) %>
+      <%= link_to(t("info_items.detail"), item)  %>
+      <span class="trivial">
+        <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
+        <%= content_tag(:span, t("info_items.posted_by") + item.author.login_name ) if item.author %>
+      </span>
+    </p>
 </div>
 

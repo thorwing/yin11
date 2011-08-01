@@ -1,24 +1,22 @@
-<p>
-  <b><%= t("general.title") %></b>
-  <%= @tip.title %>
-</p>
+<% title @tip.title %>
 <p>
   <%= render "shared/show_tags", :item => @tip %>
 </p>
+
 <p>
   <b><%= t("general.content") %></b>
   <%= @tip.content %>
 </p>
 
-<% unless is_already_collected(@tip) %>
-    <%= link_to t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %> |
-<% end %>
-<%= link_to t("tips.show_revisions"), revisions_tip_path(@tip), :class => "button" %> |
-<%= link_to t("general.edit"), edit_tip_path(@tip), :class => "button" %>
-
 <div class="actions">
-    <%= link_to t("general.back_to_list"), tips_path %>
+  <%= link_to_unless is_already_collected(@tip),  t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %>
 </div>
+
+<p class="nav_links">
+    <%= link_to t("tips.show_revisions"), revisions_tip_path(@tip) %> |
+    <%= link_to t("general.edit"), edit_tip_path(@tip) %> |
+    <%= link_to t("general.back_to_list"), tips_path %>
+</p>
 
 <hr/>
 

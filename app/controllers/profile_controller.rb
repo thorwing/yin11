@@ -2,7 +2,7 @@ class ProfileController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
 
   def show
-    @recent_items = current_user.info_items.of_type([Review.name]).desc(:updated_at).limit(PROFILE_RECENT_ITEMS).all
+    @recent_items = current_user.info_items.of_types([Review.name]).desc(:updated_at).limit(PROFILE_RECENT_ITEMS).all
     @blocked_users = (current_user.blocked_user_ids || []).map{ |e| User.find(e) }
   end
 

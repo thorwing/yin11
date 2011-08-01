@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     @articles = Article.enabled.recommended.desc(:reported_on, :updated_on).limit(HOT_ARTICLES_ON_HOME_PAGE)
 
-    @raw_hot_tags = CacheManager.raw_hot_tags
+    @raw_hot_tags = CacheManager.hot_tags_with_weight
     #for default search query
 
     @default_query = (@raw_hot_tags.nil? || @raw_hot_tags.empty?) ? "" : @raw_hot_tags.first[0]

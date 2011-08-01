@@ -59,7 +59,7 @@ zh-CN:
       uniqueness_msg: 相同的%{field}已存在
       max_length_msg: 不超过%{max}个字符
       min_length_msg: 不少于%{min}个字符
-      length_msg: 长度须介于%{min}和%{max}个字符之间
+      length_msg: 长度介于%{min}和%{max}个字符
     date:
       reported_on_invalid_msg: 报告日期的格式不正确
     tags:
@@ -347,7 +347,7 @@ zh-CN:
 
   tips:
     all_tips: 所有锦囊
-    new_tip: +测评
+    new_tip: +锦囊
     recent_tips: 最近更新的锦囊
     hot_tips: 热门锦囊
     tips_participated_by_me: 我参与的锦囊
@@ -360,7 +360,7 @@ zh-CN:
     new: 创建锦囊
     edit: 编辑锦囊
     collect: 收藏锦囊
-    show_revisions: 查看改动记录
+    show_revisions: 改动历史
     roll_back_revision: 恢复到此版本
     current_version: 当前版本
 
@@ -381,8 +381,10 @@ zh-CN:
     add_image: 上传图片
 
   info_items:
-    good_items: "请阅读以下的参考"
-    bad_items: "警惕以下的负面信息"
+    itmes: 好评和差评
+    solutions: 对策
+    good_items: 好评
+    bad_items: 差评
     severity_header: 银筷子指数
     severity_base: "基于%{bad_count}条差评，%{good_count}条好评"
     severity_involved_regions: "差评分布在:"
@@ -397,6 +399,9 @@ zh-CN:
     posted_by: "发布者: "
     add_comment: +评论
     show_more: 显示更多
+
+  tags:
+    new_tag: 新标签
 
   views:
     pagination:

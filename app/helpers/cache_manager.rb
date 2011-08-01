@@ -1,5 +1,9 @@
 class CacheManager
-  def self.raw_hot_tags
+  def self.hot_tags
+    hot_tags_with_weight
+  end
+
+  def self.hot_tags_with_weight
     #TODO
     tags = nil # Rails.cache.read('hot_tags')
     if tags.blank?
@@ -9,15 +13,15 @@ class CacheManager
     tags
   end
 
-  def self.hot_tags
-    raw_hot_tags.map{ |e| e[0] }
+  def self.all_tags
+    all_tags_with_weight.map{|e| e[0]}
   end
 
-  def self.all_tags
-    #TODO
+  def self.all_tags_with_weight
+     #TODO
     tags = nil # Rails.cache.read('all_tags')
     if tags.blank?
-      tags = InfoItem.enabled.tags
+      tags = InfoItem.enabled.tags_with_weight
       Rails.cache.write("all_tags", tags)
     end
     tags

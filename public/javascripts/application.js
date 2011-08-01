@@ -83,17 +83,17 @@ $(document).ready(function(){
 }*/
 });
 
-$(document).ready(function(){
-    $(".severity_radio").change(function(){
-        $("label.severity_image").removeClass("severity_0");
-        $("label.severity_image").removeClass("severity_1");
-        $("label.severity_image").removeClass("severity_2");
-        $("label.severity_image").removeClass("severity_3");
-
-        var value = $(".severity_radio:checked").val();
-        $("label.severity_image").addClass("severity_" + value);
-    });
-});
+//$(document).ready(function(){
+//    $(".severity_radio").change(function(){
+//        $("label.severity_image").removeClass("severity_0");
+//        $("label.severity_image").removeClass("severity_1");
+//        $("label.severity_image").removeClass("severity_2");
+//        $("label.severity_image").removeClass("severity_3");
+//
+//        var value = $(".severity_radio:checked").val();
+//        $("label.severity_image").addClass("severity_" + value);
+//    });
+//});
 
 //JQuery UI
 $(document).ready(function() {
@@ -123,4 +123,14 @@ $(function () {
         }
     });
 });
+
+$(function() {
+    $("dl.tab").KandyTabs({
+        classes: "kandyFold",
+        type: "fold",
+        trigger:"click",
+        action: "fade"
+    });
+});
+
 

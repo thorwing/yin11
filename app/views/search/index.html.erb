@@ -10,20 +10,33 @@
     </p>
   </div>
 
+<hr/>
 <div class="two_columns_container" >
-  <div id="bad_items" class="left_column">
-    <h3 class="bad"><%= t("info_items.bad_items") %></h3>
-    <%= paginate @bad_items %>
-    <% @bad_items.each do |item| %>
-        <div class="round block"><%= render "info_items/info_item_short", :item => item %></div>
-    <% end %>
+  <div id="items_list" class="left_column">
+    <h3><%= t_with_colon("info_items.itmes") %></h3>
+    <dl class="tab">
+        <dt><span><%= t_with_colon("info_items.bad_items") %></span></dt>
+        <dd>
+           <%= paginate @bad_items %>
+            <% @bad_items.each do |item| %>
+                <%= render "info_items/info_item_short", :item => item %>
+            <% end %>
+        </dd>
+        <dt><span><%= t_with_colon("info_items.good_items") %></span></dt>
+        <dd>
+            <%= paginate @good_items %>
+            <% @good_items.each do |item| %>
+                <%= render "info_items/info_item_short", :item => item %>
+            <% end %>
+        </dd>
+    </dl>
   </div>
 
-  <div id="good_items" class="right_column">
-    <h3 class="good"><%= t("info_items.good_items") %></h3>
-    <%= paginate @good_items %>
-    <% @good_items.each do |item| %>
-        <div class="round block"><%= render "info_items/info_item_short", :item => item %></div>
+  <div id="tips_list" class="right_column">
+    <h3><%= t_with_colon("info_items.solutions") %></h3>
+    <%= paginate @tips %>
+    <% @tips.each do |tip| %>
+        <%= render "info_items/info_item_short", :item => tip %>
     <% end %>
   </div>
 </div>

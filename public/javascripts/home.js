@@ -9,13 +9,6 @@ $(document).ready(function(){
        , loaderImage: "/images/pageless/load.gif"
     });
 
-    $("dl.tab").KandyTabs({
-        classes: "kandyFold",
-        type: "fold",
-        trigger:"click",
-        action: "fade"
-    });
-
     $('.tip').each( function(intIndex) {
         $(this).CreateBubblePopup({ innerHtml: $(this).data('content') });
     });

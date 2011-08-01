@@ -1,16 +1,11 @@
 <%= form_for(@tip) do |f| %>
   <%= render "shared/error_messages", :target => @tip %>
 
+  <%= render "shared/text_field", :f => f, :label => t("general.title"), :field => :title %>
+  <%= render "shared/text_area", :f => f, :label => t("general.content"), :field => :content %>
+
   <div class="field">
-    <%= f.label t("general.title") %><%= mark_required(@tip, :title) %><%= mark_required_length(@tip, :title) %><br/>
-    <%= f.text_field :title, :maxlength => get_max_length(@tip, :title) %>
-  </div>
-  <div class="field">
-    <%= f.label t("general.content") %><%= mark_required(@tip, :content) %><%= mark_required_length(@tip, :content) %><br/>
-    <%= f.text_area :content, :maxlength => get_max_length(@tip, :content), :rows => 8 %>
-  </div>
-  <div class="field">
-     <%= f.label :tags_string, t("info_items.tags") %><br/>
+     <b><%= f.label :tags_string, t("info_items.tags") %></b><br/>
      <%= f.text_field :tags_string, 'data-pre' => (@tip.tags ? @tip.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
   </div>
   <div class="actions">
