@@ -116,7 +116,7 @@ ul#actions_menu {
 .vote_fields .vote_button.down { background: url(/images/vote_down_button.png) center no-repeat; text-indent:-9999px;}
 .vote_fields .vote_button.down_voted { background: url(/images/voted_down_button.png) center no-repeat; text-indent:-9999px;}
 .vote_fields .vote_button.down:hover { background: url(/images/voted_down_button.png) center no-repeat; text-indent:-9999px;}
-.vote_fields span.votes {font-size:18px; font-family:"Comic Sans MS", cursive;}
+.vote_fields span.votes {line-height: 12px; font-size:18px; font-family:"Comic Sans MS", cursive;vertical-align: middle;}
 
 /*
 	Control-Panel-Styles

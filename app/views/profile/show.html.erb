@@ -1,8 +1,5 @@
-<% title t("profile.profile") %>
-<p>
-    <%= link_to t("general.change"), edit_profile_path(current_user), :class => "button" %>
-</p>
-<br/>
+<% title t("profile.show_profile") %>
+
 <div class="block round">
     <h3><%= current_user.login_name %></h3>
     <%= current_user.email %><br/>

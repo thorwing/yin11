@@ -21,12 +21,13 @@ class User
   field :password_reset_sent_at, :type => DateTime
   field :activation_token
   field :blocked_user_ids, :type => Array
+  mount_uploader :avatar, AvatarUploader
 
   index :email
   index :auth_token
 
   attr_accessor :password
-  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :activation_token
+  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :activation_token, :avatar
 
   # strange error when trying to using scope, so using class method instead
   scope :active_users, any_in(:role => [NORMAL_USER_ROLE, EDITOR_ROLE, ADMIN_ROLE])
@@ -54,6 +55,7 @@ class User
               :uniqueness => true,
               :email_format => true
   validates_presence_of :login_name
+  validates_length_of :login_name, :maximum => 20
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 6, :on => :create

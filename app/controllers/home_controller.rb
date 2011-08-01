@@ -24,6 +24,9 @@ class HomeController < ApplicationController
 
   # get more items for pagination on home page
   def more_items
+    #TODO
+    #prvent "display more links" from being displayed multiple times
+
     respond_to do |format|
       format.html {render :more_items, :layout => false}
     end

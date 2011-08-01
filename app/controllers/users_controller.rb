@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter(:only => [:block, :unlock]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:edit, :update, :block, :unlock]) { |c| c.require_permission :normal_user }
 
   # GET /users/new
   # GET /users/new.xml
@@ -30,6 +30,22 @@ class UsersController < ApplicationController
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    respond_to do |format|
+      if current_user.update_attributes(params[:user])
+        format.html { redirect_to(root_path, :notice => t("notices.user_basic_info_updated")) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @current.errors, :status => :unprocessable_entity }
       end
     end
   end

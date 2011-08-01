@@ -1,0 +1,15 @@
+<% title t("user_basic.user_basic") %>
+<%= form_for current_user, :html => {:multipart => true} do |f| %>
+    <div class="block round">
+        <%= render "shared/text_field", :f => f, :field => :login_name, :label => t("user_basic.login_name") %>
+        <p>
+          <b><%= t("user_basic.avatar") %></b><br/>
+          <%= get_avatar(current_user) %><br/>
+          <%= t("user_basic.change_avator") %><br/>
+          <%= f.file_field :avatar %> <br/>
+        </P>
+    </div>
+    <div class="actions">
+        <%= f.submit t("general.submit"), :class => "button" %>
+    </div>
+<% end %>

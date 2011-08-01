@@ -27,10 +27,10 @@ module ApplicationHelper
   end
 
   def get_avatar(user)
-    if user.profile.avatar?
+    if user.avatar?
       logger = Logger.new(STDOUT)
-      logger.info user.profile.avatar.url.to_s
-      image_tag(user.profile.avatar.url, :class => "avatar")
+      logger.info user.avatar.url.to_s
+      image_tag(user.avatar.url, :class => "avatar")
     else
       image_tag("default_user.png", :class => "avatar")
     end

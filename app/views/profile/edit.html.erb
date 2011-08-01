@@ -1,22 +1,11 @@
 <% title t("profile.edit_profile") %>
-<%= form_for current_user.profile, :url => profile_path(current_user), :as => :profile, :html => {:multipart => true} do |f| %>
+<%= form_for current_user.profile, :url => profile_path(current_user), :as => :profile do |f| %>
     <div class="block round">
-        <h3><%= current_user.login_name %></h3>
-        <%= get_avatar(current_user) %>
-        <p>
-          <%= t("profile.change_avator") %><br/>
-          <%= f.file_field :avatar %> <br/>
-        </P>
-    </div>
-    <div class="block round">
+        <h3><%= t("profile.home_page") %></h3>
         <table>
           <tr>
             <th></th>
             <th></th>
-          </tr>
-          <tr>
-            <th><%= t("profile.receive_mails") %></th>
-            <th><%= render "toggle_row", :field => :receive_mails %></th>
           </tr>
           <tr>
             <th><%= t("profile.show_watching_tags_panel") %></th>
@@ -38,11 +27,23 @@
     </div>
 
     <div class="block round">
-        <p><b><%= f.label :watched_distance, t("profile.watched_distance") %></b></p>
+        <h3><%= t("profile.interested_places") %></h3>
+        <%= render :partial => "watched_location", :collection => current_user.profile.watched_locations %>
+        <p><b><%= f.label :watched_distance, t_with_colon("profile.watched_distance") %></b>
         <%= f.select :watched_distance, options_for_select((PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE).map{|e| [e, e]}, f.object.watched_distance) %>
-        <%= t("profile.wathced_distance_unit") %>
-        <p><b><%= t("profile.concern_days") %></b></p>
-        <%= f.select :concern_days, options_for_select((PROFILE_MIN_CONCERN_DAYS..PROFILE_MAX_CONCERN_DAYS).map{|e| [e, e]}, f.object.concern_days) %>
+        <%= t("profile.wathced_distance_unit") %></p>
+    </div>
+
+    <div class="block round">
+        <h3><%= t("profile.concern_settings") %></h3>
+        <p>
+            <%= t("profile.receive_mails") %>
+            <%= render "toggle_row", :field => :receive_mails %>
+        </p>
+        <p>
+            <b><%= t_with_colon("profile.concern_days") %></b>
+            <%= f.select :concern_days, options_for_select((PROFILE_MIN_CONCERN_DAYS..PROFILE_MAX_CONCERN_DAYS).map{|e| [e, e]}, f.object.concern_days) %>
+        </p>
     </div>
 
     <%= f.submit t("general.submit"), :class => "button" %>

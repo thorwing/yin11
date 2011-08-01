@@ -41,6 +41,10 @@ describe User do
     assert !@user.valid?
   end
 
+  it "max login_name is 20" do
+    User.new(:email => VALID_EMAIL, :login_name => "1" * 21, :password => VALID_PASSWOR).should_not be_valid
+  end
+
   describe "is_email_availabel" do
     let(:user) {Factory(:normal_user)}
 

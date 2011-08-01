@@ -129,6 +129,8 @@ zh-CN:
     vendor_created: 商户已创建
     current_city_updated: 当前城市已更新
     activation_required: 请检查我们向您发出的邮件来激活您的会员资格。
+    user_basic_info_updated: 基本信息已更新
+    profile_updated: 编好设定已更新
 
   alerts:
     password_reset_expired: 密码重置口令已过期
@@ -142,9 +144,9 @@ zh-CN:
     home: 主页
     admin_control: 管理面板
     account: 用户
-    show_profile: 查看个人资料
-    edit_profile: 修改个人资料
-    profile: 个人资料
+    user_basic: 基本信息
+    show_profile: 用户资料
+    update_profile: 偏好设定
     articles: 新闻
     reviews: 测评
     badges: 徽章
@@ -178,16 +180,21 @@ zh-CN:
     postcode: 邮政编码
     checking: 正在检查地址
 
-  profile:
-    profile: 个人资料
-    edit_profile: 编辑个人资料
+  user_basic:
+    user_basic: 基本信息
     login_name: 用户名
     avatar: 头像
     change_avator: 换一张头像
-    interested_places: "感兴趣的地方:"
+
+  profile:
+    show_profile: 个人资料
+    edit_profile: 编好设定
+    home_page: 主页订制
+    interested_places: 感兴趣的地方
+    concern_settings: 其它设定
     add_place: +地点
     new_watched_location: 关注的地点
-    watched_distance: 感兴趣地方的关注范围
+    watched_distance: 关注范围
     wathced_distance_unit: 公里
     receive_mails: 接受食物安全动向的邮件报告
     show_watching_tags_panel: 在主页上显示关注的标签
@@ -224,8 +231,9 @@ zh-CN:
     more: >更多
     add_tag_hint: 为您收集和标签相关的事件，食物安全早知道
     add_location_hint: 关注地点附近的事件全部掌握
+    user_basic: 基本信息
     show_profile: 个人资料
-    update_profile: 更新个人资料
+    update_profile: 编好设定
     login: 登入
 
   severity:

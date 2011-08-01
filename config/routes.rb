@@ -102,7 +102,7 @@ Yin11::Application.routes.draw do
 
   resources :cities, :only => [:index]
 
-  resources :users, :only => [:show, :new, :create] do
+  resources :users, :except => [:index, :destroy] do
     member do
       put "block"
       put "unlock"
