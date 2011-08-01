@@ -12,10 +12,10 @@ Feature: smoke tests for Reviews
 
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:
-    | name       | city |
-    | 农工商超市 | 上海 |
+    | name       | city | street |
+    | 农工商超市 | 上海 | 大华路 |
     When I log in as "David User"
-    And I follow "寻找商户"
+    And I follow "找商户"
     And I follow "农工商超市"
     And I follow "+测评"
     Then I should see "新测评"
@@ -29,12 +29,12 @@ Feature: smoke tests for Reviews
 
   Scenario: User can skip choosing a vendor, and create a new review
     Given the following vendor exists:
-    | name       | city |
-    | 农工商超市 | 上海 |
+    | name       | city | street |
+    | 农工商超市 | 上海 | 大华路 |
     When I log in as "David User"
-    And I follow "发表食物测评"
-    Then I should see "新测评"
-    And I should see "上海"
+    And I follow "+测评"
+    Then I should be on the new_review page
+    And I should see "新测评"
 
     When I fill a simple review
     And I go to the vendors page
@@ -82,9 +82,8 @@ Feature: smoke tests for Reviews
 
 
   Scenario:  User's city will be detected.
-    When I log in as "David User"
-    And I follow "发表食物测评" within "#actions_panel"
-    Then I should see "上海" within "#location_fields"
+    When I go to the home page
+    Then I should see "上海" within "#current_city_name"
 
 
 

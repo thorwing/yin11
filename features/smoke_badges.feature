@@ -46,7 +46,6 @@ Feature: smoke tests for Badges
     And I go to the new_admin_badge page
     Then I should be on the home page
 
-  @focus
   Scenario: Only Admin can edit badges.
     Given the following badge exists:
     | name     | description  | contribution_field | comparator | compared_value |

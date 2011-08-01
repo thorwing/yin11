@@ -55,6 +55,16 @@ Feature: smoke tests for Search
     Then I should see "三聚氰胺再现上海"
     And I should not see "北京禁止商贩往水里兑牛奶"
 
+  @focus
+  Scenario: A default search will be prepared based on hot tags
+    Given the following articles exists:
+      | title            | content                            | tags_string | enabled |
+      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜        | true    |
+    When I go to the home page
+    Then I should see "西瓜被打了催熟剂"
+    #TODO
+    When I press "搜索"
+    Then I should see "西瓜"
 
   @javascript
   Scenario: User can search for a tag

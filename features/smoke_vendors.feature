@@ -11,18 +11,18 @@ Feature: smoke tests for Vendors
 
   Scenario: Guest can view vendros
     Given the following vendor exists:
-      | name       | city |
-      | 农工商超市 | 上海 |
+      | name       | city | street |
+      | 农工商超市 | 上海 | 大华路 |
     When I go to the vendors page
     Then I should see "农工商超市"
 
   Scenario: User can search for vendors
     Given the following vendor exists:
-      | name       | city |
-      | 农工商超市 | 上海 |
+      | name       | city | street |
+      | 农工商超市 | 上海 | 大华路 |
     Given the following vendor exists:
-      | name       | city | enabled |
-      | 家乐福超市 | 上海 | false     |
+      | name       | city | street | enabled |
+      | 家乐福超市 | 上海 | 真华路 | false   |
     When I go to the vendors page
     Then I should see "农工商超市"
     And I fill in "search" with "农工商超市"
@@ -42,6 +42,7 @@ Feature: smoke tests for Vendors
     And I press "搜索"
     Then I should see "没有找到名为<农工商超市>的商户"
     When I follow "商户: <农工商超市>"
+    And I fill in "vendor_street" with "大华路"
     And I press "完成"
     And I go to the vendors page
     And I fill in "search" with "农工商超市"
@@ -55,7 +56,7 @@ Feature: smoke tests for Vendors
   Scenario: User can create a vendor from the index page
     When I log in as "David User"
     And I go to the vendors page
-    Then I follow "添加商户"
+    Then I follow "+商户"
     When I fill in "vendor_name" with "肯德基"
     And I fill in "vendor_street" with "大华二路"
     And I press "完成"
@@ -64,11 +65,11 @@ Feature: smoke tests for Vendors
 
   Scenario: Only admin can edit vendor if it is not locked
     Given the following vendor exists:
-      | name       | city |
-      | 农工商超市 | 上海 |
+      | name       | city | street |
+      | 农工商超市 | 上海 | 大华路 |
     Given the following vendor exists:
-      | name       | city | enabled |
-      | 家乐福超市 | 上海 | false     |
+      | name       | city | street | enabled |
+      | 家乐福超市 | 上海 | 真华路 | false   |
 
     When I log in as "Ray Admin"
     And I go to the admin_vendors page
@@ -83,8 +84,8 @@ Feature: smoke tests for Vendors
 
   Scenario: User can post error report for vendor's information
     Given the following vendor exists:
-      | name       | city |
-      | 农工商超市 | 上海 |
+      | name       | city | street |
+      | 农工商超市 | 上海 | 大华路 |
     When I go to the vendors page
     And I fill in "search" with "农工商超市"
     And I press "搜索"
@@ -95,9 +96,9 @@ Feature: smoke tests for Vendors
 
 
   Scenario: Vendor can only be managed form the admin control panel
-     Given the following vendor exists:
-      | name       | city |
-      | 农工商超市 | 上海 |
+    Given the following vendor exists:
+      | name       | city | street |
+      | 农工商超市 | 上海 | 大华路 |
      When I log in as "Ray Admin"
      And I go to the vendors page
      And I follow "农工商超市"
@@ -106,19 +107,19 @@ Feature: smoke tests for Vendors
 
   Scenario: Only Editor or Admin can lock a vendor
     Given the following vendor exists:
-        | name       |
-        | 农工商超市 |
-        When I log in as "Ray Admin"
-        And I go to the admin_vendors page
-        And I follow "农工商超市"
-        And I follow "编辑"
-        And I uncheck "vendor_enabled"
+      | name       | city | street |
+      | 农工商超市 | 上海 | 大华路 |
+    When I log in as "Ray Admin"
+    And I go to the admin_vendors page
+    And I follow "农工商超市"
+    And I follow "编辑"
+    And I uncheck "vendor_enabled"
 
-        And I press "完成"
+    And I press "完成"
 
-        When I log in as "David User"
-        And I go to the admin_vendors page
-        Then I should be on the home page
+    When I log in as "David User"
+    And I go to the admin_vendors page
+    Then I should be on the home page
 
 
 

@@ -35,8 +35,8 @@ describe Vendor do
 
   describe "Scopes" do
     it "of_city works" do
-      vendor = Vendor.create(:name => "test", :city => beijing.name)
-      Vendor.of_city(beijing.name).should include(vendor)
+      vendor = Vendor.create(:name => "test", :city => beijing.name, :street => "changan road")
+      Vendor.of_city(beijing.name).all.should include(vendor)
     end
   end
 

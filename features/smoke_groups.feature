@@ -80,7 +80,7 @@ Feature: smoke tests for Groups
     And I follow "西瓜守望者"
     And I follow "我发现了一个很好的卖西瓜的地方"
     When I fill in "content" with "恩，不错。" within ".new_comment"
-    And I press "发表评论"
+    And I press "+评论"
     Then I should see "恩，不错。"
     And I go to the groups page
     And I follow "西瓜守望者"

@@ -347,6 +347,7 @@ zh-CN:
 
   tips:
     all_tips: 所有锦囊
+    new_tip: +测评
     recent_tips: 最近更新的锦囊
     hot_tips: 热门锦囊
     tips_participated_by_me: 我参与的锦囊
@@ -380,11 +381,11 @@ zh-CN:
     add_image: 上传图片
 
   info_items:
-    good_items: "请阅读以下关于“%{name}”的参考"
-    bad_items: "警惕以下关于“%{name}”的负面信息"
-    report_header: "安全评估为"
-    report_summary: "关于“%{name}”,我们共找到%{bad_count}条负面消息，%{good_count}条健康分享"
-    report_involved_regions: "负面消息分布以下地区:"
+    good_items: "请阅读以下的参考"
+    bad_items: "警惕以下的负面信息"
+    severity_header: 银筷子指数
+    severity_base: "基于%{bad_count}条差评，%{good_count}条好评"
+    severity_involved_regions: "差评分布在:"
     report_good_header: "我们一共找到%{count}条关于“%{name}”的健康分享，建议您阅读"
     detail: 详情>>
     ago: 以前

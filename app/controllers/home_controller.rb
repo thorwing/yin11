@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     @raw_hot_tags = CacheManager.raw_hot_tags
     #for default search query
 
-    @default_query = @raw_hot_tags.map{|k,v| k}[0..1].join(" ")
+    @default_query = (@raw_hot_tags.nil? || @raw_hot_tags.empty?) ? "" : @raw_hot_tags.first[0]
 
     #data for control panel
     if current_user

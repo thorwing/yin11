@@ -70,7 +70,7 @@ end
 
 When /^I post a simple review without vendor$/ do
   When %(I go to the home page)
-  And %(I follow "发表食物测评")
+  And %(I follow "+测评")
   Then %(I should see "新测评")
   And %(I fill a simple review)
 end
