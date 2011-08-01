@@ -3,35 +3,18 @@
 <div class="search_fields">
   <%= form_tag :controller => "tips", :action => "search" do %>
     <%= text_field_tag "search", "" %>
-    <%= submit_tag t("general.search") %>
+    <%= submit_tag t("general.search"), :class => "button" %>
   <% end %>
 </div>
 
 <hr/>
-<div id="recent_tips">
-  <h3><%= t("tips.recent_tips") %></h3>
-  <% @recent_tips.each do |tip| %>
+<div>
+  <%= paginate @unsorted_tips %>
+  <% @tips.each do |tip| %>
     <%= render "tip_item", :item => tip  %>
   <% end %>
 </div>
 
-<hr/>
-<div id="hot_tips">
-  <h3><%= t("tips.hot_tips") %></h3>
-  <% @hot_tips.each do |tip| %>
-    <%= render "tip_item", :item => tip  %>
-  <% end %>
+<div class="actions">
+    <%= link_to t("tips.new"), new_tip_path, :class => "button" %>
 </div>
-<hr/>
-
-<% if current_user %>
-    <div id="tips_written_by_me">
-      <h3><%= t("tips.tips_participated_by_me") %></h3>
-      <% @tips_participated_by_me.each do |tip| %>
-        <%= render "tip_item", :item => tip  %>
-      <% end %>
-    </div>
-     <hr/>
-<% end %>
-
-<%= link_to t("tips.new"), new_tip_path, :class => "button" %>

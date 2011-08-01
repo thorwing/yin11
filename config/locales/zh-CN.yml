@@ -301,7 +301,7 @@ zh-CN:
 
   reviews:
     title: "测评："
-    new: 新测评
+    new: +测评
     reviews: 测评
     all: 所有测评
     what: 关于?
@@ -311,7 +311,7 @@ zh-CN:
     whats_wrong: 哪里不对劲?
     post_new_review: 发表新测评
     edit_review: 编辑 %{title}
-    new_review: +测评
+    new_review: 新测评
     make_choice_please: 请选择
     choose_vendor: 选择商户
     new_review_with_vnedor: 先找到针对的商户
@@ -347,7 +347,7 @@ zh-CN:
 
   tips:
     all_tips: 所有锦囊
-    new_tip: +锦囊
+    new_tip: 新锦囊
     recent_tips: 最近更新的锦囊
     hot_tips: 热门锦囊
     tips_participated_by_me: 我参与的锦囊
@@ -357,9 +357,9 @@ zh-CN:
     exact_tip_not_found: 没有找到标题为<%{title}>的锦囊
     please_create: "欢迎您创建："
     tip: 锦囊
-    new: 创建锦囊
+    new: +锦囊
     edit: 编辑锦囊
-    collect: 收藏锦囊
+    collect: 收藏
     show_revisions: 改动历史
     roll_back_revision: 恢复到此版本
     current_version: 当前版本

@@ -41,9 +41,9 @@
 
 <div class="two_columns_container" >
     <div id="pagination" class="left_column">
-    <% @items.each do |item| %>
-        <%= render "info_items/info_item", :item => item %>
-    <% end %>
+        <% @items.each do |item| %>
+            <%= render "info_items/info_item", :item => item %>
+        <% end %>
     </div> <!--end of info_items -->
 
      <div id="control_panel" class="right_column">

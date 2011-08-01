@@ -6,10 +6,11 @@ class TipsController < ApplicationController
   # GET /tips
   # GET /tips.xml
   def index
-    @tips_participated_by_me = current_user ? Tip.any_in(:writer_ids => [current_user.id]) : []
-    @hot_tips = Tip.order_by([:votes, :desc]).limit(5)
-    @recent_tips = Tip.order_by([:updated_at, :desc]).limit(5)
-
+    #TODO
+    #TODO
+    @unsorted_tips = Tip.page(params[:page]).per(ITEMS_PER_PAGE_MANY)
+    evaluator = EvaluationManager.new(current_user)
+    @tips = evaluator.sort_items_by_score(@unsorted_tips)
   end
 
   # GET /tips/1
