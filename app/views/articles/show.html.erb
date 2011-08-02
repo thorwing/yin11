@@ -17,7 +17,7 @@
     <%= render "shared/show_tags", :item => @article %>
 </div>
 
-<div class="block round">
+<div id="article_content" class="block round">
   <%= simple_format @article.content.html_safe %>
 </div>
 

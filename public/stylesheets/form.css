@@ -59,3 +59,8 @@ div.token-input-dropdown-facebook
 .toggle.off{
     background: url("/images/wrong_icon.gif") no-repeat;
 }
+
+/*
+    Article content
+*/
+#article_content {font-size: 13px; }

@@ -40,7 +40,7 @@ require "source"
   articles.each do |article|
     Article.create! do |a|
         a.title = article.title
-        a.enabled = false #article.enabled
+        a.enabled = article.enabled
         a.recommended = article.recommended
         a.reported_on = article.reported_on
         a.type = article.type

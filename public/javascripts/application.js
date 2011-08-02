@@ -126,10 +126,8 @@ $(function () {
 
 $(function() {
     $("dl.tab").KandyTabs({
-        classes: "kandyFold",
-        type: "fold",
-        trigger:"click",
-        action: "fade"
+        classes: "kandyTabs",
+        trigger:"click"
     });
 });
 

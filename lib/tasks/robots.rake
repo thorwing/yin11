@@ -16,7 +16,8 @@ namespace :yin11 do
       source_name.scan(/#{part}(.+)\s*/) do
         source_name = $1
       end
-      source_name = source_name.delete(":", I18n.t("fetch_sites.cn_colon")).strip
+      source_name.gsub!(/[:#{I18n.t("fetch_sites.cn_colon")}]/, '')
+      source_name = source_name.strip.split(" ").first
       puts title + " -> " + time.strftime('%m/%d/%Y') + " from " + source_name
 
       article = Article.first(conditions: {title: title})
@@ -30,7 +31,7 @@ namespace :yin11 do
       article = Article.new(title: title) do |a|
         a.content = content.html_safe
         a.reported_on = time
-        a.enabled = false
+        a.enabled = true
         a.tags = tags
         a.build_source
         a.source.name = source_name.present? ? source_name : "Unknown Media"
@@ -56,10 +57,10 @@ namespace :yin11 do
   desc "create some testing articles"
   task :fetch_articles => :environment do
     deal_techfood(false, 10)
-    deal_21food(false, 10)
-    deal_southcn
-    deal_xinhuanet
-    deal_foodmate(false, 10)
+    #deal_21food(true, 10)
+    #deal_southcn
+    #deal_xinhuanet
+    #deal_foodmate(true, 10)
   end
 
   def deal_site(name, url_list, go_next_page, go_pages)
