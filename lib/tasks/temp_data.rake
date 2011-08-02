@@ -39,20 +39,15 @@ namespace :yin11 do
         a.build_source
         a.source.name = source_name || source_site || "Unknown Media"
         a.source.site = source_site || "Unknown Site"
-        a.source.url = source_url || "#"
-        a.content = I18n.translate("articles.source") + "<a href=\"#{a.source.url}\">" + a.source.name + "(" + a.source.site + ")" + '</a>'
+        a.source.url = source_url
+        a.content = I18n.translate("articles.source") + a.source.name + "(" + a.source.site + ")"
       end
       if article.valid?
-        article.save
+        article.save!
         success += 1
       else
-        if title.size > 30
-          p "title is to long: " + title
-        else
-          p "invalid"
-          p row
-          p [region_name, food_name, toxin_names, fault, more_faults, source_name, source_site, date.strftime('%m/%d/%Y'), title, source_url].join(" ")
-        end
+        #p [region_name, food_name, toxin_names, fault, more_faults, source_name, source_site, date.strftime('%m/%d/%Y'), title, source_url].join(" ")
+        p [title, article.errors.to_s].join(" ")
       end
       rescue Exception => exc
         p exc.message

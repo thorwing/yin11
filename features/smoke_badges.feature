@@ -86,6 +86,7 @@ Feature: smoke tests for Badges
     Given the following badge exists:
       | name     | description                     | contribution_field   | comparator | compared_value |
       | 热门写手 | 发表一篇测评获得100分以上的投票 | highest_review_votes | >=          | 100            |
+    #TODO
 
 
   Scenario: User can get a badge for first up/down vote

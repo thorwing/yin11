@@ -12,7 +12,7 @@ class Article < InfoItem
   #scope :of_region, lambda { |region_id| any_in(:region_ids => [region_id])}
 
   #Relationships
-  has_one :source
+  embeds_one :source
 
   accepts_nested_attributes_for :source, :reject_if => lambda { |s| s[:name].blank? }, :allow_destroy => true
 

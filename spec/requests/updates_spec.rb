@@ -14,6 +14,21 @@ describe "Updates" do
         last_email.body.encoded.should match(url_for(:controller => "#{item.class.name.downcase.pluralize}", :action => "show", :id => item.id , :host => "localhost:3000", :only_path => false))
       end
     end
+
+    it "email_receivers will receive email" do
+      User.send_updates_to_users
+      last_email.to.should include(user.email)
+    end
+
+    it "non_email_receiver will not receive email" do
+      user.profile.receive_mails = false
+      user.profile.save!
+
+      User.send_updates_to_users
+      last_email.to.should_not include(user.email)
+    end
   end
+
+
 
 end

@@ -8,6 +8,7 @@ class Contribution
   field :created_groups, :type => Integer, :default => 0
   field :total_up_votes, :type => Integer, :default => 0
   field :total_down_votes, :type => Integer, :default => 0
+  field :highest_review_votes, :type => Integer, :default => 0
 
   #relationships
   embedded_in :user

@@ -1,4 +1,7 @@
 # encoding: utf-8
+#require the files for YMAL deserializing
+require "article"
+require "source"
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
@@ -26,4 +29,31 @@
   roots.each do |city_name, districts|
     city = City.first(conditions: {name: city_name})
     districts.each {|d| city.districts.create(:name => d)} if city
+  end
+
+  #badges
+  badges = YAML::load(File.open("app/assets/badges.yml"))
+  badges.each {|b| Badge.create!(b)}
+
+
+  articles = YAML::load(File.open("app/assets/articles.yml"))
+  articles.each do |article|
+    Article.create! do |a|
+        a.title = article.title
+        a.enabled = false #article.enabled
+        a.recommended = article.recommended
+        a.reported_on = article.reported_on
+        a.type = article.type
+        a.region_ids = article.region_ids
+        a.city = article.city
+        a.tags = article.tags
+        a.content = article.content
+        a.coordinates = article.coordinates
+        if article.source
+          a.build_source
+          a.source.name = article.source.name
+          a.source.site = article.source.site
+          a.source.url = article.source.url
+        end
+    end
   end

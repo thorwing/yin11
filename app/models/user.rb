@@ -31,6 +31,7 @@ class User
 
   # strange error when trying to using scope, so using class method instead
   scope :active_users, any_in(:role => [NORMAL_USER_ROLE, EDITOR_ROLE, ADMIN_ROLE])
+  scope :mail_receiver, where(".profile.receive_mails" => true)
   class << self
     def of_auth_token(token)
       first(:conditions => {:auth_token => token})
@@ -177,6 +178,12 @@ class User
     end
 
     data
+  end
+
+  def self.send_updates_to_users
+    self.enabled.active_users.mail_receiver.each do |user|
+      user.send_updates
+    end
   end
 
 end

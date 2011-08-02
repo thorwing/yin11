@@ -13,6 +13,6 @@ class Source
   validates_format_of :url, :with => URI::regexp(%w(http https)), :if => Proc.new { |model| !model.url.blank? }
 
   #Relationships
-  belongs_to :article
+  embedded_in :article
 
 end

@@ -1,0 +1,18 @@
+- name: 新手上路
+  description: 发布一篇测评就可以获得这个徽章！还等什么，快来领取吧！
+  contribution_field: posted_reviews
+  comparator: >=
+  compared_value: 1
+
+- name: 畅销作家
+  description: 发表的一篇测评的投票达到100分
+  contribution_field: highest_review_votes
+  comparator: >=
+  compared_value: 100
+
+- name: 批评家
+  description: 投出10次负票
+  contribution_field: total_down_votes
+  comparator: >=
+  compared_value: 10
+

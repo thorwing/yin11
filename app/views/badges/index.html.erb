@@ -1,11 +1,10 @@
-<% title t("badges.badges") %>
+<% title t("badges.all") %>
 
-<div id="enabled_badges">
-    <% @badges.each do |badge| %>
-        <div>
-            <%= image_tag "award.png" %><%= link_to badge.name, badge %>
-            <%= "×" + badge.user_ids.size.to_s %>
-            <%= badge.description %>
-        </div>
-    <% end %>
-</div>
+<% @badges.each do |badge| %>
+    <div>
+        <%= image_tag "award.png" %>
+        <%= link_to badge.name, badge %>
+        <%= "(" + badge.user_ids.size.to_s + ")" %>
+        <%= content_tag :span, badge.description, :class => "trivial" %>
+    </div>
+<% end %>
