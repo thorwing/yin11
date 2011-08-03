@@ -16,6 +16,7 @@ $(document).ready(function(){
 
     $('.clear_default').click(function(){
         $(this).val('');
+        $(this).removeClass('not_cleared');
     });
 
     $('.close_panel_link').click(function() {

@@ -45,7 +45,8 @@ module ApplicationHelper
        end
     else
       #TODO
-      image_tag("http://flickholdr.com/#{width}/#{height}/salat", :width => width, :height => height, :border => 0)
+      #image_tag("http://flickholdr.com/#{width}/#{height}/salat", :width => width, :height => height, :border => 0)
+      image_tag("default_article.jpg")
     end
   end
 

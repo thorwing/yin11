@@ -3,6 +3,8 @@ class HomeController < ApplicationController
   before_filter :get_items
 
   def index
+    #TODO
+    #the last item is not displayed in s3slider
     @articles = Article.enabled.recommended.desc(:reported_on, :updated_at).limit(HOT_ARTICLES_ON_HOME_PAGE).all
 
     @raw_hot_tags = CacheManager.hot_tags_with_weight

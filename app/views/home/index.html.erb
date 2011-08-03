@@ -29,7 +29,7 @@
         <h2><%= t("home.foods_buy_question") %></h2>
         <p class="trivial"><%= t("home.foods_buy_question_description") %></p>
         <%= form_tag '/search', :method => :get do %>
-                <%= text_field_tag :query, @default_query, :class => "clear_default" %>
+                <%= text_field_tag :query, @default_query, :class => "clear_default not_cleared" %>
                 <%= submit_tag t("general.search"), :class => "button" %><br/>
         <% end %>
     </div>

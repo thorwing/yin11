@@ -35,6 +35,9 @@ require "source"
   badges = YAML::load(File.open("app/assets/badges.yml"))
   badges.each {|b| Badge.create!(b)}
 
+  #tips
+  tips = YAML::load(File.open("app/assets/tips.yml"))
+  tips.each {|t| Tip.create!(t)}
 
   articles = YAML::load(File.open("app/assets/articles.yml"))
   articles.each do |article|

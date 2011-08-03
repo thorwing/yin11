@@ -162,3 +162,10 @@ ul#actions_menu {
 	display:inline-block;
 	padding-right: 1px;
 }
+
+/*
+    search style
+*/
+.clear_default.not_cleared {
+    color: #999999
+}
