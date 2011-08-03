@@ -27,10 +27,6 @@ describe TipsController do
       { :put => "/tips/1" }.should route_to(:controller => "tips", :action => "update", :id => "1")
     end
 
-    it "recognizes and generates #search" do
-      { :post => "/tips/search" }.should route_to(:controller => "tips", :action => "search")
-    end
-
     it "recognizes and generates #collect" do
       { :put => "/tips/1/collect" }.should route_to(:controller => "tips", :action => "collect", :id => "1")
     end

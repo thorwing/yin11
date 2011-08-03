@@ -10,17 +10,19 @@
           <%= link_to(t("info_items.detail"), item)  %>
         </p>
     </div>
-
     <div class="right_fields">
        <div class="clues">
-          <%= get_clues_of_item(item) %>
+           <%= get_clues_of_item(item) %>
+           <%= get_icon_of(item) %>
        </div>
-       <span class="trivial">
-            <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %> <br/>
-            <% if item.author %>
-               <%= t("info_items.posted_by")  %> <%= link_to item.author.login_name, item.author %>
-            <% end %>
-       </span>
+
+        <% if item.reported_on.present? %>
+            <p class="trivial"><%= distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") %></p>
+        <% end %>
+        <% if item.author %>
+           <p class="trivial"><%= t("info_items.posted_by")  %> <%= link_to item.author.login_name, item.author %></p>
+        <% end %>
+
         <p><%= link_to t("info_items.add_comment") + "(#{item.comments.size})", item %></p>
     </div>
 </div>

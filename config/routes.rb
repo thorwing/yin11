@@ -76,9 +76,6 @@ Yin11::Application.routes.draw do
   resources :images, :only => [:create]
 
   resources :tips, :except => [:destroy] do
-    collection do
-      post 'search'
-    end
     member do
       put 'collect'
       get 'revisions'

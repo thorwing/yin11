@@ -111,4 +111,20 @@ Feature: smoke tests for Tips
     And I follow "辨别西瓜是否含有催熟剂" within "#tips_written_by_me"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
+  Scenario: unsuccessful operation will not create revision
+    When I log in as "David User"
+    And I go to the new_tip page
+    And I fill in "tip_title" with "辨别西瓜是否含有催熟剂"
+    And I fill in "tip_content" with "123456789"
+    And I press "完成"
+    Then I should see "好像表单中有一些错误，要不您再仔细看看？"
+    When I fill in "tip_content" with "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
+    And I press "完成"
+    Then I should not see "好像表单中有一些错误，要不您再仔细看看？"
+
+    And I follow "查看改动记录"
+    Then I should not see "123456789"
+    And I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
+    And I should not see "恢复到此版本"
+
 

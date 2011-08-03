@@ -14,6 +14,8 @@ class Tip < InfoItem
   validates_length_of :content, :minimum => 10, :maximum => 200
 
   def revise(author)
+    return unless self.valid?
+
     if author.present?
       revisions_size = self.new_record? ? 0 : self.revisions.size
       current_version = self.revisions.find(self.current_version_id) if revisions_size > 0
@@ -23,7 +25,7 @@ class Tip < InfoItem
       else
         self.author_id = author.id if self.author_id.blank?
         self.writers << author unless self.writer_ids.include?(author.id)
-        new_version = Revision.new(:title => self.title, :content => self.content, :author_id => author.id)
+        new_version = Revision.new(:title => self.title, :content => self.content, :author_id => author.id, :time_stamp => Time.now)
         self.revisions << new_version
         self.current_version_id = new_version.id
         true

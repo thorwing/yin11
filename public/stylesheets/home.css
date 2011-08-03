@@ -74,8 +74,10 @@ ul#actions_menu {
 .item.info .vote_fields { margin-top:5px;}
 .item.info .left_fields img { float:left; margin-top:10px;}
 .item.info .central_fields { float:left; width:350px}
+.item.info .central_fields h3 {margin: 0 0 6px 0;}
+.item.info .central_fields p {margin: 0 0 4px 0;}
 .item.info .right_fields { float:right; overflow:hidden; width:150px;}
-.item.info .right_fields span, .item.info .right_fields div, .item.info .right_fields p  {float:right;display:block; clear:both;}
+.item.info .right_fields span, .item.info .right_fields div, .item.info .right_fields p  {margin: 0; float: right;display:block; clear:both;}
 
 /* for ribbons */
 .item.info .ribbon {
@@ -109,7 +111,7 @@ ul#actions_menu {
 	text-align:center;
 	min-width:30px;
 }
-.vote_fields .vote_button { display:block; }
+.vote_fields .vote_button { display:block; line-height: 12px; }
 .vote_fields .vote_button.up { background: url(/images/vote_up_button.png) center no-repeat; text-indent:-9999px;}
 .vote_fields .vote_button.up_voted { background: url(/images/voted_up_button.png) center no-repeat; text-indent:-9999px;}
 .vote_fields .vote_button.up:hover { background: url(/images/voted_up_button.png) center no-repeat; text-indent:-9999px;}

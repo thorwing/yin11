@@ -101,9 +101,14 @@ module ApplicationHelper
     tree
   end
 
+  def get_icon_of(item)
+    image_tag("#{item.class.name.downcase}_icon.png")
+  end
+
   def get_clues_of_item(item)
     result = []
     result << link_to(t("info_items.#{item.class.name.downcase}"), "/" + item.class.name.downcase.pluralize)
+
     if item.is_a?(Article)
       (result << item.source.name) if item.source
 
