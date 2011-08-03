@@ -17,8 +17,9 @@ body {
 	margin:0px;
 	padding:0px;
 	color: #333230;
-	font-size:12px;
-	line-height:19px;
+	font-size:13px;
+    font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+	line-height:22px;
 }
 
 h2 {
@@ -70,9 +71,13 @@ a.button:hover, input.button:hover {
 }
 
 a.tag {
+    text-decoration: none;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 2px;
     border: 1px solid #333333;
-    color: #386fb2;
-    background-color: #CCCC98;
+    font-size: 12px;
+    font-family: arial,sans-serif;
 }
 
 a.tag:hover {

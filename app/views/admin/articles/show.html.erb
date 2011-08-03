@@ -1,32 +1,6 @@
-<% title @article.title %>
-<p class="trivial"><%= @article.reported_on.strftime('%m/%d/%Y') if @article.reported_on %></p>
-<%= render "shared/source", :source => @article.source %>
-<br/>
-<%= render "shared/show_tags", :item => @article %>
-<br/>
-<small>
-  <% if @article.region_ids %>
-      <%= t("articles.involved_regions") %>:
-      <% @article.region_ids.each do |region_id| %>
-        <%= ItemFinder.get_region(region_id).name %>
-      <% end %>
-  <% end %>
-</small>
-<br/>
-<p>
-  <%= simple_format @article.content.html_safe %>
-</p>
+<%= render "articles/article", :article => @article %>
 
-<% if @article.images.size > 0 %>
-    <b><%= t("images.images") %></b>
-    <div id="gallery" class="block round">
-        <%= render :partial => "images/image", :collection => @article.images %>
-    </div>
-<% end %>
-
-<%= link_to t("general.edit"), edit_admin_article_path(@article), :class => "button"  %> |
-<%= link_to t("general.delete"), [:admin, @article], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-<div>
+<div class="nav_links">
     <%= link_to t("general.back_to_list"), admin_articles_path %>
 </div>
 

@@ -12,11 +12,11 @@ div.field {
     overflow:hidden;
 }
 
-div.actions {
+.actions {
     margin-top: 5px;
 }
 
-p.nav_links {
+.nav_links {
     margin-top: 10px;
 }
 
@@ -63,4 +63,4 @@ div.token-input-dropdown-facebook
 /*
     Article content
 */
-#article_content {font-size: 13px; }
+#article_content  {font-size: 14px; line-height: 30px; }

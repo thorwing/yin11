@@ -2,7 +2,11 @@ class Admin::ArticlesController < Admin::BaseController
   uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
 
   def index
-    @articles = Article.page(params[:page]).per(ITEMS_PER_PAGE_MANY)
+    is_search = params[:q].present?
+    criteria = is_search ? Article.where(:title => /#{params[:q]}?/) : Article.all
+    criteria = criteria.desc(:reported_on, :updated_at)
+    @count = criteria.size
+    @articles = is_search ? criteria.page(1).per(@count) : criteria.page(params[:page]).per(ITEMS_PER_PAGE_MANY)
     @recommended_articles = Article.recommended.desc(:updated_at).all
   end
 

@@ -1,6 +1,11 @@
 <% title t("articles.articles") %>
 
-<p><%= [t("general.total"), ":", @articles.size].join(" ") %> </p>
+<%= form_tag '/admin/articles', :method => :get do %>
+    <%= text_field_tag :q %>
+    <%= submit_tag t("general.search"), :class => "button" %><br/>
+<% end %>
+
+<p><%= "#{t("general.total")}:#{@count.to_s}" %> </p>
 
 <div class="block square">
     <b><%= t("articles.recommended_articles") %></b>
@@ -36,4 +41,6 @@
     </table>
 </div>
 
-<%= link_to t("articles.post_new_article"), new_admin_article_path, :class => "button" %>
+<div class="actions">
+    <%= link_to t("articles.new"), new_admin_article_path, :class => "button" %>
+</div>

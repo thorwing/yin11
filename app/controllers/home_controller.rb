@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_filter :get_items
 
   def index
-    @articles = Article.enabled.recommended.desc(:reported_on, :updated_on).limit(HOT_ARTICLES_ON_HOME_PAGE)
+    @articles = Article.enabled.recommended.desc(:reported_on, :updated_at).limit(HOT_ARTICLES_ON_HOME_PAGE).all
 
     @raw_hot_tags = CacheManager.hot_tags_with_weight
     #for default search query

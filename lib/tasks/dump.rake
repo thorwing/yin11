@@ -20,8 +20,8 @@ namespace :yin11 do
     #end
 
     File.open(File.join(RAILS_ROOT, 'app/assets/articles.yml'), 'w') do |file|
-      #only(:title, :reported_on, :enabled, :recommended, :type, :region_ids, :city, :tags, :content, :coordinates)
-      YAML::dump(Article.without(:_id, :votes, :fan_ids, :hater_ids, :updated_at, :created_at).to_a, file)
+      #YAML::dump(Article.only(:title, :reported_on, :enabled, :recommended, :type, :region_ids, :city, :tags, :content, :coordinates, "source.name", "source.site", "source.url").to_a, file)
+      YAML::dump(Article.without(:_id, :updated_at, :created_at, :positive, :_type, :votes, :fan_ids, :hater_ids, "source._id").to_a, file)
     end
 
     #File.open(File.join(RAILS_ROOT, 'app/assets/articles.yml'), 'w') do |file|
