@@ -1,12 +1,18 @@
 <p>
-  <b>Name:</b>
+  <b><%= t("general.name") %></b><br/>
   <%= @badge.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= t("general.description") %></b><br/>
   <%= @badge.description %>
 </p>
 
+<p>
+  <b><%= t("badges.receivers") %></b><br/>
+  <%= @badge.user_ids.size.to_s %>
+</p>
 
-<%= link_to t("general.back_to_list"), badges_path %>
+<div class="nav_links">
+    <%= link_to t("general.back_to_list"), badges_path %>
+</div>

@@ -377,8 +377,11 @@ zh-CN:
     current_version: 当前版本
 
   badges:
+    badges: 徽章
     new: +徽章
     all: 所有徽章
+    got: 已获得徽章
+    receivers: 已授予人数
     enabled_badges: 启用的徽章
     disabled_badges: 禁用的徽章
     new_badge: 新徽章

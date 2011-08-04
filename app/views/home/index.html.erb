@@ -7,16 +7,7 @@
 
 <div id="news_block" class="block round">
     <div class="image_frame">
-        <div id="s3slider">
-           <ul id="s3sliderContent">
-             <% @articles.each do |article| %>
-                <li class="s3sliderImage">
-                    <%= link_to(get_image_of_item(article, 0, 320, 240) , article)  %>
-                    <span><h3><%= article.title %></h3></span>
-                </li>
-             <% end %>
-           </ul>
-        </div>
+        <%= render "slide", :articles => @articles %>
     </div>
     <div id="articles_frame">
         <ul>

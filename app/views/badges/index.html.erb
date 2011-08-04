@@ -1,16 +1,29 @@
-<% title t("badges.all") %>
+<% title t("badges.badges") %>
 
-<% @badges.each do |badge| %>
-    <div>
-      <% if badge.user_ids.include?(current_user.id) %>
-        <%= image_tag "got_badge.png" %>
-      <% else %>
-        <%= image_tag "badge.png" %>
-      <% end %>
-
-    <%= link_to badge.name, badge %>
-    <%= "(" + badge.user_ids.size.to_s + ")" %>
-    <%= content_tag :span, badge.description, :class => "trivial" %>
-
+<% if current_user %>
+    <h2><%= t("badges.got") %></h2>
+    <div class="block round">
+        <ul class="thumb">
+            <% current_user.badges.each do |badge| %>
+                <li>
+                    <%= link_to image_tag("badge.png",:border => 0), badge %>
+                    <p class="caption"><%= link_to badge.name, badge %>
+                    <%= "(" + badge.user_ids.size.to_s + ")" %></p>
+                </li>
+            <% end %>
+        </ul>
     </div>
 <% end %>
+
+<hr/>
+
+<h2><%= t("badges.all") %></h2>
+<div class="block round">
+    <% @badges.each do |badge| %>
+        <p><%= link_to image_tag("badge.png",:border => 0), badge %>
+        <%= link_to badge.name, badge %>
+        <%= "(" + badge.user_ids.size.to_s + ")" %>
+        <%= content_tag :span, badge.description, :class => "trivial" %></p>
+<% end %>
+</div>
+
