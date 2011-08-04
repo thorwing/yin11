@@ -16,6 +16,7 @@ zh-CN:
     reported_on: 发布日期
     created_at: 创建时间
     type: 类别
+    image: 图像
     delete: 删除
     show: 查看
     submit: 完成

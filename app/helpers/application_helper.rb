@@ -26,16 +26,6 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
 
-  def get_avatar(user)
-    if user.avatar?
-      logger = Logger.new(STDOUT)
-      logger.info user.avatar.url.to_s
-      image_tag(user.avatar.url, :class => "avatar")
-    else
-      image_tag("default_user.png", :class => "avatar")
-    end
-  end
-
   def get_image_of_item(item, index = 0, width = 100, height = 100)
     if item && item.images.size > 0
       image = item.images[index]

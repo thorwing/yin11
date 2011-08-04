@@ -1,4 +1,4 @@
-<%= form_for [:admin, @badge] do |f| %>
+<%= form_for [:admin, @badge], :html => {:multipart => true}  do |f| %>
     <%= render "shared/error_messages", :target => @badge %>
 
     <div class="field">
@@ -20,6 +20,10 @@
     <div class="field">
         <%= f.label :compared_value %><br />
         <%= f.text_field :compared_value %>
+    </div>
+    <div>
+      <%= f.label :icon, t("general.image") %><br/>
+      <%= f.file_field :icon %> <br/>
     </div>
     <div class="field">
         <%= f.label :enabled, t("general.enable") %><br />

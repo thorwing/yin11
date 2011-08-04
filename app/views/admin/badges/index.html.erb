@@ -6,7 +6,7 @@
       <tr>
         <th><%= t("general.name") %></th>
         <th><%= t("general.description") %></th>
-        <th>Awarded Users</th>
+        <th><%= t("badges.receivers") %></th>
         <th></th>
         <th></th>
       </tr>
@@ -15,10 +15,9 @@
       <tr>
         <td><%= link_to badge.name, [:admin, badge] %></td>
         <td><%= badge.description %></td>
-        <td><%= badge.user_ids.size %> users</td>
-        <td><%= link_to 'Show', [:admin, badge] %></td>
-        <td><%= link_to 'Edit', edit_admin_badge_path(badge) %></td>
-        <td><%= link_to 'Destroy', [:admin, badge], :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= badge.user_ids.size %></td>
+        <td><%= link_to t("general.edit"), edit_admin_badge_path(badge), :class => "button" %></td>
+        <td><%= link_to t("general.delete"), [:admin, badge], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
       </tr>
     <% end %>
     </table>

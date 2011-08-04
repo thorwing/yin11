@@ -6,7 +6,7 @@
         <ul class="thumb">
             <% current_user.badges.each do |badge| %>
                 <li>
-                    <%= link_to image_tag("badge.png",:border => 0), badge %>
+                    <%= link_to image_tag(badge.get_icon ,:border => 0), badge %>
                     <p class="caption"><%= link_to badge.name, badge %>
                     <%= "(" + badge.user_ids.size.to_s + ")" %></p>
                 </li>
@@ -20,7 +20,7 @@
 <h2><%= t("badges.all") %></h2>
 <div class="block round">
     <% @badges.each do |badge| %>
-        <p><%= link_to image_tag("badge.png",:border => 0), badge %>
+        <p>
         <%= link_to badge.name, badge %>
         <%= "(" + badge.user_ids.size.to_s + ")" %>
         <%= content_tag :span, badge.description, :class => "trivial" %></p>

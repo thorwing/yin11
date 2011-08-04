@@ -102,6 +102,16 @@ class User
     User.first(:conditions => { :email => email}).nil?
   end
 
+  def get_avatar
+    if self.avatar?
+      logger = Logger.new(STDOUT)
+      logger.info self.avatar.url.to_s
+      self.avatar.url
+    else
+      "default_user.png"
+    end
+  end
+
   def vote_weight
     if has_permission?(:admin)
       ADMIN_VOTE_WEIGHT

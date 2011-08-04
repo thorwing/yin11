@@ -1,17 +1,6 @@
-<p>
-  <b><%= t("general.name") %></b><br/>
-  <%= @badge.name %>
-</p>
+<% title @badge.name %>
 
-<p>
-  <b><%= t("general.description") %></b><br/>
-  <%= @badge.description %>
-</p>
-
-<p>
-  <b><%= t("badges.receivers") %></b><br/>
-  <%= @badge.user_ids.size.to_s %>
-</p>
+<%= render "badge", :badge => @badge %>
 
 <div class="nav_links">
     <%= link_to t("general.back_to_list"), badges_path %>

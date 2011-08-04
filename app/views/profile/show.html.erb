@@ -3,7 +3,7 @@
 <div class="block round">
     <h3><%= current_user.login_name %></h3>
     <%= current_user.email %><br/>
-    <%= get_avatar(current_user) %>
+    <%= image_tag get_avatar(current_user), :class => "avatar" %>
 </div>
 <div class="block round">
     <h3><%= t("profile.interested_places") %></h3>

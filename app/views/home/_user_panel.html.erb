@@ -1,6 +1,6 @@
 <% if current_user %>
     <div id="user_panel" class="panel">
-        <%= get_avatar(current_user) %>
+        <%= image_tag get_avatar(current_user), :class => "avatar" %>
         <%= current_user.login_name %><br/>
         <p>
             <%= link_to t("control_panel.user_basic"), edit_user_path(current_user) %> |

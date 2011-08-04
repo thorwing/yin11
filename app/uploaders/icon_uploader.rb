@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class IconUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
@@ -8,13 +8,13 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  # storage :s3
+  # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-#  def store_dir
-#    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-#  end
+  #def store_dir
+  #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  #end
 
   def cache_dir
     "#{Rails.root}/tmp/uploads"
@@ -44,6 +44,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   # Override the filename of the uploaded files:
+  # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
      [ model.updated_at.to_i.to_s, original_filename ].join("_") if original_filename
   end
