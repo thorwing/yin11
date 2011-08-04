@@ -101,8 +101,8 @@ module ApplicationHelper
     tree
   end
 
-  def get_icon_of(item)
-    image_tag("#{item.class.name.downcase}_icon.png")
+  def get_icon_of(obj)
+    image_tag("#{obj.class.name.downcase}_icon.png")
   end
 
   def get_clues_of_item(item)

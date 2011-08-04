@@ -1,6 +1,7 @@
 zh-CN:
   site:
     name: 银筷子
+    saying: 汇聚众人的力量，还我们一个安全的餐桌！
     description: 关注 食品 食物 安全
 
   symbols:
@@ -254,15 +255,17 @@ zh-CN:
 
   groups:
     join: 加入
-    quit: 退出
+    quit: 离席
+    quit_confirm: 您确定要退出该饭桌吗?
     all: 所有饭桌
     posts: 饭桌最近话题
     member: 成员
-    new: 新建饭桌
+    new: +饭桌
+    new_group: 新饭桌
     edit: 编辑饭桌
 
   posts:
-    new: +新话题
+    new: +话题
     new_post: 新话题
     edit_post: 编辑话题
     comments: 回应

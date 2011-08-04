@@ -2,8 +2,8 @@
     Logo
 */
 
-#logo { float: left;}
-#logo h1, #logo small {
+#logo { float: right;}
+#logo h1, #logo h2 {
 	margin:0px;
 	display:block;
 	text-indent:-9999px;

@@ -132,30 +132,10 @@ a.tag:hover {
 */
 
 .skinny {
-	/*background-image:url(/images/background_light.jpg);*/
-	/*background-repeat:no-repeat;*/
     width:1000px;
 	margin:0 auto;
 	position:relative;
 }
-
-/*
-	Header-Styles
-*/
-
-/*#header {*/
-    /*background:#c4c0be url(/images/background_light_slice.jpg) repeat-x;*/
-    /*background:#3B7B3B;*/
-    /*overflow:hidden;*/
-/*}*/
-
-
-/*#logo {*/
-	/*background-image:url(/images/yin11_logo.png);*/
-	/*background-repeat:no-repeat;*/
-	/*width:211px;*/
-	/*height:76px;*/
-/*}*/
 
 /*
     Menu_Styles

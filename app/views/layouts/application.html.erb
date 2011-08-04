@@ -19,7 +19,6 @@
   <div id="container">
     <div class="skinny">
         <%= render "shared/top_menu" %>
-
         <% if home_page? %>
             <%= yield %>
         <% else %>
@@ -47,10 +46,10 @@
     </div>
 
     <div class="footer_column">
-        <h3>RSS</h3>
+        <h3><%= t("footer.links") %></h3>
         <ul>
-            <li><a href="">RSS Feed</a></li>
-            <li><a href="">What is RSS?</a></li>
+            <li><a href="">Your site</a></li>
+            <li><a href="">Your site</a></li>
         </ul>
     </div>
   </div>

@@ -2,9 +2,15 @@
 
 <% @badges.each do |badge| %>
     <div>
-        <%= image_tag "award.png" %>
-        <%= link_to badge.name, badge %>
-        <%= "(" + badge.user_ids.size.to_s + ")" %>
-        <%= content_tag :span, badge.description, :class => "trivial" %>
+      <% if badge.user_ids.include?(current_user.id) %>
+        <%= image_tag "got_badge.png" %>
+      <% else %>
+        <%= image_tag "badge.png" %>
+      <% end %>
+
+    <%= link_to badge.name, badge %>
+    <%= "(" + badge.user_ids.size.to_s + ")" %>
+    <%= content_tag :span, badge.description, :class => "trivial" %>
+
     </div>
 <% end %>

@@ -1,16 +1,10 @@
 <%= form_for @group do |f| %>
     <%= render "shared/error_messages", :target => @group %>
 
+    <%= render "shared/text_field", :f => f, :label => t("general.name"), :field => :name %>
+    <%= render "shared/text_area", :f => f, :label => t("general.description"), :field => :description %>
     <div class="field">
-        <%= f.label :name, t("general.name") %><%= mark_required(@group, :name) %><%= mark_required_length(@group, :name) %><br/>
-        <%= f.text_field :name, :maxlength => get_max_length(@group, :name) %>
-    </div>
-    <div class="field">
-        <%= f.label :description, t("general.description") %><%= mark_required(@group, :description) %><%= mark_required_length(@group, :description) %><br/>
-        <%= f.text_area :description, :maxlength => get_max_length(@group, :description) %>
-    </div>
-    <div class="field">
-         <%= f.label :tags_string, t("info_items.tags") %><br/>
+         <b><%= f.label :tags_string, t("info_items.tags") %></b><br/>
          <%= f.text_field :tags_string, 'data-pre' => (@group.tags ? @group.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
     </div>
     <%= render "locations/location_fields", :f => f %>

@@ -4,7 +4,7 @@
         <%= link_to image_tag("close_x.png", :border => 0), toggle_profile_index_path(:field => :show_collected_tips_panel), :method => :put, :remote => true, :class => "close_panel_link", :title => "hide_link"  %>
         <br/>
         <% @collected_tips.each do |tip| %>
-            <%= link_to tip.title, tip, 'data-content' => tip.content, :class => "tip" %><br/>
+             <%= get_icon_of(tip) %><%= link_to tip.title, tip, 'data-content' => tip.content, :class => "tip" %><br/>
         <% end %>
     </div>
 <% end %>

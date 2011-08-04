@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
+  layout :resolve_layout
 
   def index
     #TODO
@@ -109,5 +110,15 @@ class GroupsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+private
+def resolve_layout
+  case action_name
+    when 'new'
+      "map"
+    else
+      'application'
+  end
+end
 
 end
