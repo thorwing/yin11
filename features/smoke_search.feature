@@ -55,7 +55,7 @@ Feature: smoke tests for Search
     Then I should see "三聚氰胺再现上海"
     And I should not see "北京禁止商贩往水里兑牛奶"
 
-  @focus
+
   Scenario: A default search will be prepared based on hot tags
     Given the following articles exists:
       | title            | content                            | tags_string | enabled |
@@ -70,7 +70,7 @@ Feature: smoke tests for Search
   Scenario: User can search for a tag
     Given There are some sample reviews
     When I search for "牛奶"
-    Then I should see "牛奶坏了" within "#bad_items"
+    Then I should see "牛奶坏了" within "#items_list"
 
 
 

@@ -26,6 +26,7 @@ Feature: User can vote for an item
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 
+  @foucs
   @javascript
   Scenario: User can vote for a tip
     When I log in as "Kate Tester"
@@ -34,7 +35,7 @@ Feature: User can vote for an item
     When I log in as "David User"
     And I search tips for "辨别西瓜是否含有催熟剂"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-    When I follow "up" within ".item.info"
+    When I follow "up" within ".vote_fields"
     And I go to the tips page
-    Then I should see "辨别西瓜是否含有催熟剂" within "#recent_tips"
-    And I should see "1" within "#recent_tips"
+    Then I should see "辨别西瓜是否含有催熟剂" within "#tips_list"
+    And I should see "1" within "#tips_list"

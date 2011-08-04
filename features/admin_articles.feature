@@ -6,17 +6,17 @@ Feature: admin articles
   Scenario: Only Editor and Admin can create new articles.
     When I log in as "David User"
     And I go to the articles page
-    Then I should not see "发表新文章"
+    Then I should not see "+文章"
     And I go to the admin_articles page
-    Then I should not see "发表新文章"
+    Then I should not see "+文章"
 
     When I log in as "Castle Editor"
     And I go to the admin_articles page
-    Then I should see "发表新文章"
+    Then I should see "+文章"
 
     When I log in as "Ray Admin"
     And I go to the admin_articles page
-    Then I should see "发表新文章"
+    Then I should see "+文章"
 
   Scenario: Only Editor and Admin can edit articles.
     When I log in as "Castle Editor"

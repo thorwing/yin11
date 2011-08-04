@@ -15,7 +15,7 @@ Feature: admin badges
     And I uncheck "badge_enabled"
     And I press "完成"
     When I go to the badges page
-    Then I should not see "新手上路" within "#enabled_badges"
+    Then I should not see "新手上路"
 
     When I go to the admin badges page
     And I follow "新手上路" within "#disabled_badges"

@@ -9,7 +9,7 @@ describe "Search" do
 
     it "should contain" do
       search_for(@review.tags_string)
-      within("#bad_items") do
+      within("#items_list") do
         page.should have_content(@review.title)
       end
     end
@@ -19,7 +19,7 @@ describe "Search" do
     it "should contain" do
       #try to avoid searching by tags
       search_for(@review.title)
-      within("#bad_items") do
+      within("#items_list") do
         page.should have_content(@review.title)
       end
     end
@@ -28,7 +28,7 @@ describe "Search" do
   describe "search by location" do
     it "should contain" do
       search_for("Shanghai")
-      within("#bad_items") do
+      within("#items_list") do
         page.should have_content(@review.title)
       end
     end

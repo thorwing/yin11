@@ -59,7 +59,7 @@ end
 
 When /^I search tips for "(.+)"$/ do |item|
   visit path_to("the tips page")
-  fill_in "search", :with => item
+  fill_in "q", :with => item
   click_button "搜索"
 end
 
@@ -86,7 +86,7 @@ end
 
 When /^I post a simple tip$/ do
     When %(I go to the tips page)
-    And %(I follow "创建锦囊")
+    And %(I follow "+锦囊")
     And %(I fill in "tip_title" with "辨别西瓜是否含有催熟剂")
     And %(I fill in "tip_content" with "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。")
     And %(I press "完成")
@@ -94,7 +94,7 @@ end
 
 When /^I post a simple article$/ do
     When %(I go to the admin_articles page)
-    And %(I follow "发表新文章")
+    And %(I follow "+文章")
     And %(I fill in "article_title" with "土豆刷绿漆，冒充西瓜")
     And %(I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。")
     #TODO

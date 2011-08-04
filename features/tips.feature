@@ -10,21 +10,24 @@ Feature: smoke tests for Tips
   Scenario: On the tips page, it shows all recent updated tips and hot tips
     When I log in as "David User"
     And I go to the tips page
-    Then I should see "最近更新的锦囊"
-    And I should see "热门锦囊"
-    And I should see "我参与的锦囊"
+    Then I should see "所有锦囊"
     And I press "搜索"
 
+  @focus
   Scenario Outline: User can search for tip by using its title or keywords
     Given There is a simple tip
 
+    When I go to the tips page
+    Then I should see "西瓜判熟技巧"
+
     When I search tips for "<search>"
-    Then I should see "<search>" within "#search_results"
+    Then I should be on the tips page
+    Then I should see "<search>"
 
     Examples:
     | search        |
     | 西瓜判熟技巧  |
-    | 西瓜 处理技巧 |
+    | 西瓜 |
 
   Scenario: User can collect a tip
     Given the following tip exists:
@@ -34,26 +37,10 @@ Feature: smoke tests for Tips
     When I log in as "David User"
     And I go to the tips page
     And I follow "瘦肉精猪肉目测"
-    And I follow "收藏锦囊"
+    And I follow "收藏"
     When I go to the home page
     Then I should see "瘦肉精猪肉目测" within "#control_panel"
 
-  Scenario: User can create a tip only if it not exits
-    When I log in as "David User"
-
-    When I search tips for "辨别西瓜是否含有催熟剂"
-    Then I should see "没有找到标题为<辨别西瓜是否含有催熟剂>的锦囊"
-    When I follow "辨别西瓜是否含有催熟剂"
-    Then I should see "创建锦囊"
-    And I fill in "tip_content" with "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
-    And I press "完成"
-    Then I go to the tips page
-    And I should see "我参与的锦囊"
-    And I should see "辨别西瓜是否含有催熟剂" within "#tips_written_by_me"
-
-    When I search tips for "辨别西瓜是否含有催熟剂"
-    Then I should not see "没有找到标题为<辨别西瓜是否含有催熟剂>的锦囊"
-    And I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
   Scenario: User can edit others tip, and the change will be stored in revision, it will not be used immediately
     When I log in as "David User"
@@ -72,6 +59,7 @@ Feature: smoke tests for Tips
     Then I should see "随便改改,恶作剧，字数补丁。"
     And I should not see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
+
   Scenario: Revision should also be valid
     When I log in as "David User"
     And I post a simple tip
@@ -83,7 +71,7 @@ Feature: smoke tests for Tips
     And I press "完成"
      When I go to the tips page
     And I follow "辨别西瓜是否含有催熟剂"
-    Then I follow "查看改动记录"
+    Then I follow "改动历史"
     Then I should not see "字数不足"
 
 
@@ -102,13 +90,13 @@ Feature: smoke tests for Tips
     And I log out
     And I log in as "David User"
     And I go to the tips page
-    And I follow "辨别西瓜是否含有催熟剂" within "#tips_written_by_me"
+    And I follow "辨别西瓜是否含有催熟剂"
     Then I should see "随便改改,恶作剧，字数补丁。"
-    Then I follow "查看改动记录"
+    Then I follow "改动历史"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
     And I follow "恢复到此版本"
     And I go to the tips page
-    And I follow "辨别西瓜是否含有催熟剂" within "#tips_written_by_me"
+    And I follow "辨别西瓜是否含有催熟剂"
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
   Scenario: unsuccessful operation will not create revision
@@ -122,7 +110,7 @@ Feature: smoke tests for Tips
     And I press "完成"
     Then I should not see "好像表单中有一些错误，要不您再仔细看看？"
 
-    And I follow "查看改动记录"
+    And I follow "改动历史"
     Then I should not see "123456789"
     And I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
     And I should not see "恢复到此版本"

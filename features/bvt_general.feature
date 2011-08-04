@@ -9,14 +9,6 @@ Feature: general usage
     Then I should see "您的餐桌安全吗？"
     And I should see "登入"
 
-  @javascript
-  Scenario: Guest can search for food
-    When I search for "西瓜"
-
-    Then I should see "安全评估为"
-    And I should see "警惕以下关于“西瓜”的负面信息"
-    And I should see "请阅读以下关于“西瓜”的参考"
-
   Scenario: User can see the control panel on home page
     When I log in as "David User"
     Then I should see "div" whose id is "control_panel"
@@ -37,7 +29,7 @@ Feature: general usage
 
     And I log out
     And I query for "西瓜"
-    Then I should see "买到烂西瓜" within "#bad_items"
+    Then I should see "买到烂西瓜" within "#items_list"
 
 #  Scenario: Only authorized user can post reviews
 #    When I log in as "David User"
@@ -90,7 +82,7 @@ Feature: general usage
 
     When I go to the home page
     And I follow "徽章" within "#top_menu"
-    Then I should see "×1"
+    Then I should see "(1)"
 
   Scenario Outline: Editor and Admin can go to the admin_control page
     When I log in as "<user>"

@@ -36,7 +36,7 @@ Feature: smoke tests for Badges
 
     When I go to the home page
     And I follow "徽章" within "#top_menu"
-    Then I should see "×1"
+    Then I should see "(1)"
 
   Scenario: Only Admin can create badges
     When I go to the new_admin_badge page

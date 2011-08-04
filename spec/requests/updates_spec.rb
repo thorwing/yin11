@@ -4,10 +4,12 @@ describe "Updates" do
   let(:user) {Factory(:normal_user)}
 
   describe "there are some updates for the users" do
-    before { @items = [ Factory(:bad_review, :tags_string => "milk")] }
+    before { @items = [ Factory(:bad_review, :tags_string => "milk")]
+            user.profile.watched_tags = ["milk"]
+            user.profile.save!
+    }
+
     it "should have updates" do
-      user.profile.watched_tags = ["milk"]
-      user.profile.save!
       user.send_updates
       last_email.to.should include(user.email)
       @items.each do |item|
@@ -25,7 +27,7 @@ describe "Updates" do
       user.profile.save!
 
       User.send_updates_to_users
-      last_email.to.should_not include(user.email)
+      last_email.should be_nil
     end
   end
 

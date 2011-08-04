@@ -32,10 +32,10 @@ describe "Activation" do
       sign_up(user)
       login_as(user)
       within "#top_menu" do
-        page.should have_content(I18n.t("menu.profile"))
-        click_link I18n.t("menu.profile")
+        page.should have_content(I18n.t("menu.show_profile"))
+        click_link I18n.t("menu.show_profile")
       end
-      page.should have_content(I18n.t("profile.profile"))
+      page.should have_content(I18n.t("profile.show_profile"))
     end
   end
 

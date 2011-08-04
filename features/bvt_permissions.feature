@@ -26,7 +26,7 @@ Feature: usage about permissions
   Scenario: editor can post a article about food
     When I log in as "Castle Editor"
     And I go to the admin_articles page
-    And I follow "发表新文章"
+    And I follow "+文章"
     Then I should see "新文章"
 
 

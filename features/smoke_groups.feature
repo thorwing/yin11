@@ -17,7 +17,7 @@ Feature: smoke tests for Groups
     When I log in as "David User"
     And I go to the new_group page
     Then I should be on the new_group page
-    And I should see "新建饭桌"
+    And I should see "+饭桌"
     When I fill in "group_name" with "大华小龙虾搜查队"
     #And I fill in "group_location" with "大华地区"
     And I fill in "group_tags_string" with "小龙虾"
@@ -37,7 +37,7 @@ Feature: smoke tests for Groups
     And I join the group "西瓜守望者"
     And I go to David's profile page
     And I follow "西瓜守望者"
-    And I follow "退出"
+    And I follow "离席"
     And I go to David's profile page
     Then I should not see "西瓜守望者"
 
@@ -64,7 +64,7 @@ Feature: smoke tests for Groups
     And I join the group "西瓜守望者"
     And I go to the groups page
     And I follow "西瓜守望者"
-    When I follow "+新话题"
+    When I follow "+话题"
     And I fill in "post_title" with "我发现了一个很好的卖西瓜的地方"
     And I fill in "post_content" with "这个地方是在我家附近，很不错的地方"
     And I press "发表"
