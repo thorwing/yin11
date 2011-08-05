@@ -53,6 +53,7 @@
     </li>
     <li><%= render_menu(t("menu.badges"), badges_path) %></li>
     <% unless hide_quick_auth? %>
+        <li><%= link_to t("authentication.sign_up"), sign_up_path %>
         <li><%= link_to t("authentication.login"), login_path %>
     <% end %>
 </ul>

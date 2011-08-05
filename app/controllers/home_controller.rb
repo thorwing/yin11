@@ -55,9 +55,9 @@ class HomeController < ApplicationController
     items |= group_items if current_user
 
     evaluator = EvaluationManager.new(current_user)
-    scored_items = items.inject({}) {|memo, e| memo.merge({ e => evaluator.get_score_of_item(e)}) }
+    scored_items = items.inject([]) {|memo, e| memo << [evaluator.get_score_of_item(e), e]}
 
-    @items = scored_items.sort {|a,b| a[1]<=>b[1]}.inject([]){|memo, (k, v)| memo << k}
+    @items = scored_items.sort {|a,b| b[0]<=>a[0]}.inject([]){|memo, e| memo << e[1]}
   end
 
 end

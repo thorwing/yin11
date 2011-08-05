@@ -33,7 +33,8 @@ class EvaluationManager
 
   def get_score_of_item(item)
     score = 0
-    score += item.votes * 10 #popularity
+    #TODO
+    score += item.votes * 20 #popularity
     score += (CacheManager.hot_tags | item.tags).size * 100 if item.tags #topics
     score += 100 if item.is_recent? #recent
     score += 300 if is_from_my_groups?(item) #groups

@@ -55,7 +55,7 @@ $(function() {
     }
 
     tokenize_input("#watch_tags", "/tags.json", 5);
-    tokenize_input("#article_region_tokens", "/home/regions.json", 5);
+    tokenize_input("#article_region_tokens", "/locations/regions.json", 5);
     tokenize_input("#article_tags_string", "/tags.json", 5);
     tokenize_input("#article_vendor_token", "/vendors.json", 1);
     tokenize_input("#review_tags_string", "/tags.json", 5);
