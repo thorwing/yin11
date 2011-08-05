@@ -6,7 +6,7 @@
         <h3><%= link_to item.title, item %></h3>
         <p><%= render "shared/show_tags", :item => item %></p>
         <p>
-          <%= truncate_content(item.content, 100) %>
+          <%= truncate_content(item.content, 40) %>
           <%= link_to(t("info_items.detail"), item)  %>
         </p>
     </div>
@@ -16,7 +16,7 @@
        </div>
 
         <% if item.reported_on.present? %>
-            <p class="trivial"><%= distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") %></p>
+             <p class="trivial"><%= item.reported_on.strftime(TIME_FORMAT) %></p>
         <% end %>
         <% if item.author %>
            <p class="trivial"><%= t("info_items.posted_by")  %> <%= link_to item.author.login_name, item.author %></p>

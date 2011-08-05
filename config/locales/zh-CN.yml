@@ -407,7 +407,8 @@ zh-CN:
     severity_involved_regions: "差评分布在:"
     report_good_header: "我们一共找到%{count}条关于“%{name}”的健康分享，建议您阅读"
     detail: 详情>>
-    ago: 以前
+    happen: 发生在
+    ago: 前
     from_groups: "相关饭桌："
     tags: 标签
     article: 新闻

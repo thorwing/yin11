@@ -39,8 +39,8 @@ class HomeController < ApplicationController
   def get_items
     page_number = params[:page].present? ? params[:page] : 1
     criteria = InfoItem.enabled
-    hsa_block_list = (current_user && current_user.blocked_user_ids && current_user.blocked_user_ids.size > 0)
-    criteria =  criteria.not_from_blocked_users(current_user.blocked_user_ids) if hsa_block_list
+    has_block_list = (current_user && current_user.blocked_user_ids && current_user.blocked_user_ids.size > 0)
+    criteria =  criteria.not_from_blocked_users(current_user.blocked_user_ids) if has_block_list
 
     popular_items = criteria.desc(:votes).page(page_number).per(ITEMS_PER_PAGE_POPULAR)
     topic_items = criteria.tagged_with(CacheManager.hot_tags).page(page_number).per(ITEMS_PER_PAGE_HOT)

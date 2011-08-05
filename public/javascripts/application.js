@@ -63,7 +63,6 @@ $(function() {
     tokenize_input("#tip_tags_string", "/tags.json", 5);
     tokenize_input("#group_tags_string", "/tags.json", 5);
     tokenize_input("#added_foods", "/tags.json", 5);
-    tokenize_input("#profile_address_attributes_city_token", "/cities.json", 1);
     //tokenize_input(".one_token .one_tip", "/tips.json", 1);
 });
 

@@ -1,6 +1,6 @@
 class CacheManager
   def self.hot_tags
-    hot_tags_with_weight
+    hot_tags_with_weight.map{|e| e[0]}
   end
 
   def self.hot_tags_with_weight

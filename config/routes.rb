@@ -97,8 +97,6 @@ Yin11::Application.routes.draw do
 
   resources :reports, :only => [:new, :create]
 
-  resources :cities, :only => [:index]
-
   resources :users, :except => [:index, :destroy] do
     member do
       put "block"
