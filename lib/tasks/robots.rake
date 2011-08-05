@@ -56,11 +56,11 @@ namespace :yin11 do
 
   desc "create some testing articles"
   task :fetch_articles => :environment do
-    deal_techfood(true, 10)
-    deal_21food(true, 10)
+    deal_techfood(false, 10)
+    deal_21food(false, 10)
     deal_southcn
     deal_xinhuanet
-    deal_foodmate(true, 10)
+    deal_foodmate(false, 10)
   end
 
   def deal_site(name, url_list, go_next_page, go_pages)
