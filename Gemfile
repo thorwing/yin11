@@ -35,7 +35,8 @@ gem "mongoid-ancestry"
 
 gem "tiny_mce"
 
-gem 'carrierwave'
+#no such file to load -- carrierwave/storage/grid_fs issue
+gem 'carrierwave', '0.5.6'
 
 gem 'kaminari'
 
