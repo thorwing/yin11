@@ -1,0 +1,35 @@
+--- 
+- !ruby/object:Article 
+  accessed: {}
+
+  attributes: !map:BSON::OrderedHash 
+    enabled: false
+    recommended: false
+    title: "\xE4\xBC\x81\xE4\xB8\x9A\xE6\x8E\x92\xE6\xB1\xA1\xE8\x87\xB4\xE6\x95\xB4\xE4\xB8\xAA\xE6\xB0\xB4\xE5\xBA\x93\xE9\xB1\xBC\xE5\x9D\x87\xE5\xB8\xA6\xE7\x85\xA4\xE6\xB2\xB9\xE5\x91\xB3"
+    reported_on: 2009-12-09 23:00:00 Z
+    type: exposure
+    region_ids: 
+    - "023"
+    city: "\xE9\x87\x8D\xE5\xBA\x86"
+    tags: 
+    - "\xE9\xA3\x9F\xE7\x94\xA8\xE9\xB1\xBC"
+    - "\xE9\x85\x9A\xE7\xB1\xBB\xE7\x89\xA9\xE8\xB4\xA8"
+    - "\xE7\x9F\xB3\xE6\xB2\xB9\xE6\xB1\xA1\xE6\x9F\x93"
+    content: "\xE6\x9D\xA5\xE6\xBA\x90:Unknown Media(Unknown Site)"
+    coordinates: 
+    - 106.522621
+    - 29.544001
+    source: !map:BSON::OrderedHash 
+      name: Unknown Media
+      site: Unknown Site
+      url: http://news.oeeee.com/a/20091210/815412.html
+    positive: true
+    votes: 0
+    fan_ids: []
+
+    hater_ids: []
+
+  modifications: {}
+
+  previous_modifications: {}
+

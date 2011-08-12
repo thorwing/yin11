@@ -162,7 +162,8 @@ zh-CN:
     reviews: 管理测评
     vendors: 管理商户
     badges: 管理徽章
-    users: 用户
+    users: 管理用户
+    tags: 管理标签
 
   location:
     city: 城市
@@ -419,6 +420,7 @@ zh-CN:
     show_more: 显示更多
 
   tags:
+    all: 所有标签
     new_tag: 新标签
 
   views:

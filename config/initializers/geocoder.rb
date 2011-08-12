@@ -2,14 +2,14 @@
 
 # geocoding service (see below for supported options):
 #TODO
-#Geocoder::Configuration.lookup = :yahoo
+Geocoder::Configuration.lookup = :yahoo
 
 # to use an API key:
 # for http://yinkuaizi.com
 # Geocoder::Configuration.api_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRT2H37VFXvrvhgIRNtmutCmy1bfIRQF2i-4uacF69HsVG3ToxsI9xDRkQ"
 
 # geocoding service request timeout, in seconds (default 3):
-# Geocoder::Configuration.timeout = 5
+# Geocoder::Configuration.timeout = 10
 
 # use HTTPS for geocoding service connections:
 # Geocoder::Configuration.use_https = true

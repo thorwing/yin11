@@ -1,0 +1,163 @@
+--- 
+- !ruby/object:Article 
+  accessed: {}
+
+  attributes: !map:BSON::OrderedHash 
+    enabled: false
+    recommended: false
+    title: "\xE5\x85\x89\xE6\x98\x8E\xE5\x8F\x88\xE6\x9B\x9D\xE5\x87\xBA\xE2\x80\x9C\xE6\x97\xA9\xE4\xBA\xA7\xE5\xA5\xB6\xE2\x80\x9D9\xE6\x97\xA5\xE7\xAB\x9F\xE7\x94\x9F\xE4\xBA\xA7\xE5\x87\xBA12\xE6\x97\xA5\xE7\x9A\x84\xE7\x89\x9B\xE5\xA5\xB6"
+    reported_on: 2005-08-26 22:00:00 Z
+    type: exposure
+    region_ids: 
+    - zj
+    city: "\xE6\xB5\x99\xE6\xB1\x9F"
+    tags: 
+    - "\xE7\x89\x9B\xE5\xA5\xB6"
+    content: "\xE6\x9D\xA5\xE6\xBA\x90:\xE5\x8D\x97\xE5\x9B\xBD\xE9\x83\xBD\xE5\xB8\x82\xE6\x8A\xA5(\xE7\x99\xBE\xE5\xBA\xB7\xE7\xBD\x91)"
+    coordinates: 
+    - 120.582531
+    - 29.094085
+    source: !map:BSON::OrderedHash 
+      name: "\xE5\x8D\x97\xE5\x9B\xBD\xE9\x83\xBD\xE5\xB8\x82\xE6\x8A\xA5"
+      site: "\xE7\x99\xBE\xE5\xBA\xB7\xE7\xBD\x91"
+      url: http://news.100kang.com/2/12/594701.htm
+    positive: true
+    votes: 0
+    fan_ids: []
+
+    hater_ids: []
+
+  modifications: {}
+
+  previous_modifications: {}
+
+- !ruby/object:Article 
+  accessed: {}
+
+  attributes: !map:BSON::OrderedHash 
+    enabled: false
+    recommended: false
+    title: "\xE9\xA5\xAE\xE5\x93\x81\xE5\xAE\x89\xE5\x85\xA8\xE7\x88\x86\xE5\x86\xB7\xE9\x97\xA8\xE2\x80\x9C\xE7\xBB\x9F\xE4\xB8\x80\xE5\x86\xB0\xE7\xBB\xBF\xE8\x8C\xB6\xE2\x80\x9D\xE5\x96\x9D\xE5\x87\xBA\xE5\xBC\x82\xE5\x91\xB3"
+    reported_on: 2005-08-16 22:00:00 Z
+    type: exposure
+    region_ids: 
+    - js
+    city: "\xE6\xB1\x9F\xE8\x8B\x8F"
+    tags: 
+    - "\xE5\x86\xB0\xE7\xBB\xBF\xE8\x8C\xB6"
+    - "\xE5\x8F\x98\xE8\xB4\xA8"
+    content: "\xE6\x9D\xA5\xE6\xBA\x90:Unknown Media(Unknown Site)"
+    coordinates: 
+    - 119.118996
+    - 32.944441
+    source: !map:BSON::OrderedHash 
+      name: Unknown Media
+      site: Unknown Site
+      url: http://news.xinhuanet.com/health/2005-08/17/content_3366112.htm
+    positive: true
+    votes: 0
+    fan_ids: []
+
+    hater_ids: []
+
+  modifications: {}
+
+  previous_modifications: {}
+
+- !ruby/object:Article 
+  accessed: {}
+
+  attributes: !map:BSON::OrderedHash 
+    enabled: false
+    recommended: false
+    title: "\xE7\x99\xBE\xE5\x91\xB3\xE6\x9E\x97\xE4\xBA\x8C\xE6\xB0\xA7\xE5\x8C\x96\xE7\xA1\xAB\xE8\xB6\x85\xE6\xA0\x87\xE5\x8E\x82\xE5\xAE\xB6\xE5\x9C\xA8\xE5\x87\x86\xE5\xA4\x87\xE6\x81\xA2\xE5\xA4\x8D\xE9\x94\x80\xE5\x94\xAE"
+    reported_on: 2005-08-04 22:00:00 Z
+    type: exposure
+    region_ids: 
+    - sd
+    city: "\xE5\xB1\xB1\xE4\xB8\x9C"
+    tags: 
+    - "\xE7\xBA\xA2\xE5\xBF\x83\xE7\x8E\x89\xE8\x96\xAF"
+    - "\xE4\xBA\x8C\xE6\xB0\xA7\xE5\x8C\x96\xE7\xA1\xAB"
+    content: "\xE6\x9D\xA5\xE6\xBA\x90:Unknown Media(Unknown Site)"
+    coordinates: 
+    - 118.760906
+    - 36.39612
+    source: !map:BSON::OrderedHash 
+      name: Unknown Media
+      site: Unknown Site
+      url: http://www.med66.com/html/2005/8/hu11261918285850028778.html
+    positive: true
+    votes: 0
+    fan_ids: []
+
+    hater_ids: []
+
+  modifications: {}
+
+  previous_modifications: {}
+
+- !ruby/object:Article 
+  accessed: {}
+
+  attributes: !map:BSON::OrderedHash 
+    enabled: false
+    recommended: false
+    title: "\xE9\x97\xAE\xE9\xA2\x98\xE9\xA3\x9F\xE5\x93\x81\xE2\x80\x9C\xE9\xBB\x91\xE2\x80\x9D\xE5\x90\x8D\xE5\x8D\x95\xE5\x85\xA8\xE6\x9B\x9D\xE5\x85\x89"
+    reported_on: 2005-07-31 22:00:00 Z
+    type: exposure
+    region_ids: 
+    - all
+    city: "\xE5\xA4\x9A\xE5\x9C\xB0\xE5\x8C\xBA"
+    tags: 
+    - "\xE6\xB0\xB4\xE4\xBA\xA7\xE5\x93\x81"
+    - "\xE5\xAD\x94\xE9\x9B\x80\xE7\x9F\xB3\xE7\xBB\xBF"
+    content: "\xE6\x9D\xA5\xE6\xBA\x90:\xE5\xB9\xBF\xE5\xB7\x9E\xE6\x97\xA5\xE6\x8A\xA5(\xE4\xB8\xAD\xE5\x9B\xBD\xE5\x93\x81\xE7\x89\x8C\xE6\x80\xBB\xE7\xBD\x91 )"
+    coordinates: 
+    source: !map:BSON::OrderedHash 
+      name: "\xE5\xB9\xBF\xE5\xB7\x9E\xE6\x97\xA5\xE6\x8A\xA5"
+      site: "\xE4\xB8\xAD\xE5\x9B\xBD\xE5\x93\x81\xE7\x89\x8C\xE6\x80\xBB\xE7\xBD\x91 "
+      url: http://news.ppzw.com/article_show_15242.html
+    positive: true
+    votes: 0
+    fan_ids: []
+
+    hater_ids: []
+
+  modifications: {}
+
+  previous_modifications: {}
+
+- !ruby/object:Article 
+  accessed: {}
+
+  attributes: !map:BSON::OrderedHash 
+    enabled: false
+    recommended: false
+    title: "\xE8\x87\xB4\xE7\x99\x8C\xE9\x85\xB1\xE6\xB2\xB9\xE5\x8D\xB0\xE7\x9D\x80\xE2\x80\x9C\xE5\xAE\x89\xE5\x85\xA8\xE8\xAE\xA4\xE8\xAF\x81\xE2\x80\x9D\xE6\x9C\x80\xE5\xA4\x9A\xE4\xB8\x80\xE5\xA4\xA9\xE5\x8B\xBE\xE5\x85\x91\xE7\x99\xBE\xE4\xBD\x99\xE7\xAE\xB1"
+    reported_on: 2005-07-31 22:00:00 Z
+    type: exposure
+    region_ids: 
+    - "010"
+    city: "\xE5\x8C\x97\xE4\xBA\xAC"
+    tags: 
+    - "\xE9\x85\xB1\xE6\xB2\xB9"
+    - "\xE5\xB7\xA5\xE4\xB8\x9A\xE7\x9B\x90"
+    content: "\xE6\x9D\xA5\xE6\xBA\x90:Unknown Media(Unknown Site)"
+    coordinates: 
+    - 116.387909
+    - 39.90601
+    source: !map:BSON::OrderedHash 
+      name: Unknown Media
+      site: Unknown Site
+      url: http://news.xinhuanet.com/food/2005-08/01/content_3292831.htm
+    positive: true
+    votes: 0
+    fan_ids: []
+
+    hater_ids: []
+
+  modifications: {}
+
+  previous_modifications: {}
+

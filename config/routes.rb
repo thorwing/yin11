@@ -9,6 +9,7 @@ Yin11::Application.routes.draw do
     resources :reviews, :only => [:index, :show, :destroy]
     resources :users, :except => [:new, :create]
     resources :tips, :only => [:index, :show, :destroy]
+    resources :tags
   end
 
   put 'admin/base/toggle'
@@ -21,7 +22,7 @@ Yin11::Application.routes.draw do
 
   get "home/more_items"
 
-  resources :search, :only => [:index] do
+  resources :search do
     collection do
       get "tag"
       get "region"

@@ -39,24 +39,31 @@ require "source"
   tips = YAML::load(File.open("app/assets/tips.yml"))
   tips.each {|t| Tip.create!(t)}
 
-  articles = YAML::load(File.open("app/assets/articles.yml"))
-  articles.each do |article|
-    Article.create! do |a|
-        a.title = article.title
-        a.enabled = false # article.enabled
-        a.recommended = article.recommended
-        a.reported_on = article.reported_on
-        a.type = article.type
-        a.region_ids = article.region_ids
-        a.city = article.city
-        a.tags = article.tags
-        a.content = article.content
-        a.coordinates = article.coordinates
-        if article.source
-          a.build_source
-          a.source.name = article.source.name
-          a.source.site = article.source.site
-          a.source.url = article.source.url
+  Dir["app/assets/articles/*.yml"].each do |file|
+    articles = YAML::load(File.open(file))
+    articles.each do |article|
+      begin
+        Article.create! do |a|
+            a.title = article.title
+            a.enabled = false # article.enabled
+            a.recommended = article.recommended
+            a.reported_on = article.reported_on
+            a.type = article.type
+            a.region_ids = article.region_ids
+            a.city = article.city
+            a.tags = article.tags
+            a.content = article.content
+            a.coordinates = article.coordinates
+            if article.source
+              a.build_source
+              a.source.name = article.source.name
+              a.source.site = article.source.site
+              a.source.url = article.source.url
+            end
         end
+      rescue Exception => exc
+        p article.title
+        p exc.backtrace
+      end
     end
   end

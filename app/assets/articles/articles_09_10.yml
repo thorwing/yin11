@@ -1,0 +1,34 @@
+--- 
+- !ruby/object:Article 
+  accessed: {}
+
+  attributes: !map:BSON::OrderedHash 
+    enabled: false
+    recommended: false
+    title: "\xE7\x94\xB7\xE5\xAD\x90\xE7\x83\xA7\xE9\xA5\xBC\xE9\x87\x8C\xE5\x90\x83\xE5\x87\xBA\xE6\xB4\xBB\xE8\x9C\x88\xE8\x9A\xA3\xE8\xA2\xAB\xE5\x92\xAC\xE8\x82\xBF\xE5\x98\xB4"
+    reported_on: 2009-10-14 22:00:00 Z
+    type: exposure
+    region_ids: 
+    - js
+    city: "\xE6\xB1\x9F\xE8\x8B\x8F"
+    tags: 
+    - "\xE7\x83\xA7\xE9\xA5\xBC"
+    - "\xE8\x9C\x88\xE8\x9A\xA3"
+    content: "\xE6\x9D\xA5\xE6\xBA\x90:Unknown Media(Unknown Site)"
+    coordinates: 
+    - 119.118996
+    - 32.944441
+    source: !map:BSON::OrderedHash 
+      name: Unknown Media
+      site: Unknown Site
+      url: http://news.sina.com.cn/s/2009-10-15/022518830890.shtml
+    positive: true
+    votes: 0
+    fan_ids: []
+
+    hater_ids: []
+
+  modifications: {}
+
+  previous_modifications: {}
+
