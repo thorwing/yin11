@@ -1,7 +1,30 @@
 <%= render "shared/error_messages", :target => vendor %>
 <div class="field">
-    <b><%= f.label :name, t("general.name") %></b><%= mark_required(vendor, :name) %><%= mark_required_length(vendor, :name) %><br/>
+    <b><%= f.label :city, t("location.city") %></b><%= mark_required(vendor, :city) %>
+    <%= select_tag "select_province", options_for_select(get_provinces_for_select, current_city.province.id) %>
+    <%= select_tag "select_city", options_for_select(get_cities_of_provinces(current_city.province), current_city.id) %>
+    <%= f.hidden_field :city, :class => "map_city" %>
+    <br/>
+    <b><%= f.label :name, t("general.name") %></b><%= mark_required(vendor, :name) %><br/>
     <%= f.text_field :name, :maxlength => get_max_length(vendor, :name) %>
 </div>
 
-<%= render "locations/location_fields", :f => f %>
+<div class="field">
+    <b><%= f.label :type, t("general.type") %></b><br/>
+    <%= f.select :type, options_for_select(VendorTypes.get_values, vendor.type) %>
+</div>
+
+<div class="map_input">
+    <b><%= t("location.street") %></b><br/>
+    <%= f.text_field :street, :class => "map_street" %>
+    <%= content_tag(:span, t("location.address_hint"), :class => "trivial") %>
+    <p><span id="map_address_span"></span><%= render "locations/map_indicator" %></p>
+</div>
+
+<div class="block">
+    <div class="image_frame">
+        <%= gmaps("map_options" => { "center_latitude" => true, "center_on_user" => true, "auto_adjust" => true}) %>
+    </div>
+</div>
+
+<%= javascript_include_tag "select_city" %>

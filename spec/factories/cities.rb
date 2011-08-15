@@ -13,7 +13,7 @@ end
 
 Factory.define :beijing, :class => City do |f|
   f.code "010"
-  f.province_id "SH"
+  f.province_id "BJ"
   f.name "Beijing"
   f.eng_name "BEIJING"
   f.postcode "10000"

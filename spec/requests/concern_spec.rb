@@ -23,7 +23,7 @@ describe "Concern" do
     visit root_path
     within "#control_panel" do
       page.should have_content "milk"
-      page.should have_content I18n.t("severity.severity_1")
+      page.should have_content "1"
       click_link "milk"
     end
     page.should have_content @review.title

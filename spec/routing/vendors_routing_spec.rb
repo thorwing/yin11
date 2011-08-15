@@ -19,8 +19,8 @@ describe VendorsController do
       { :post => "/vendors" }.should route_to(:controller => "vendors", :action => "create")
     end
 
-    it "recognizes and generates #search" do
-      { :post => "/vendors/search" }.should route_to(:controller => "vendors", :action => "search")
+    it "recognizes and generates #mine" do
+      { :get => "/vendors/mine" }.should route_to(:controller => "vendors", :action => "mine")
     end
 
     it "recognizes and generates #browse" do

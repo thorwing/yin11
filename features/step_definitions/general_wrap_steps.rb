@@ -35,6 +35,12 @@ Given /^I log out$/ do
   visit path_to("the logout page")
 end
 
+Then /^"([^"]*)" should be selected for "([^"]*)"(?: within "([^\"]*)")?$/ do |value, field, selector|
+  with_scope(selector) do
+    field_labeled(field).find(:xpath, ".//option[@selected = 'selected'][text() = '#{value}']").should be_present
+  end
+end
+
 Then /^I should see "(.+)" whose id is "(.+)"$/ do |element_type, id|
   page.has_xpath?("//#{element_type}[@id='#{id}']")
 end
@@ -101,6 +107,13 @@ When /^I post a simple article$/ do
     #And %(I fill in "article_source_attributes_name" with "神农食品报")
     And %(I fill in "article_tags_string" with "西瓜")
     And %(I fill in "article_region_tokens" with "021")
+    And %(I press "完成")
+end
+
+When /^I create a simple vendor$/ do
+    When %(I go to the new_vendor page)
+    And %(I fill in "vendor_name" with "农工商超市")
+    And %(I fill in "vendor_street" with "大华二路")
     And %(I press "完成")
 end
 

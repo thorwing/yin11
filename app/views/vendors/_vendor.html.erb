@@ -2,6 +2,9 @@
     <p>
         <%= link_to vendor.full_name, vendor %><br/>
     </p>
+    <p class="clues">
+        <%= vendor.type %>
+    </p>
     <p>
         <%= t("vendors.recent") %>
         <%= "#{t("vendors.recent_good")}(#{vendor.good_reviews_in(30).size.to_s})"  %>

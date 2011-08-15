@@ -56,7 +56,7 @@ module ApplicationHelper
 
   def get_provinces_for_select(drop_first = true)
     provinces = Province.only(:name, :code).asc(:code).collect {|c|[ c.name, c.id ]}
-    drop_first ? provinces.drop(1) : provinces
+    drop_first ? provinces.reject{|p| p[1] == "ALL"} : provinces
   end
 
   def get_cities_of_provinces(province)

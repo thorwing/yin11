@@ -1,16 +1,13 @@
 class VendorsController < ApplicationController
-  before_filter(:only => [:new, :create]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:new, :create, :mine]) { |c| c.require_permission :normal_user }
   #before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Vendor.name, c.params[:id], true)}
   layout :resolve_layout
 
   # GET /vendors
   # GET /vendors.xml
   def index
-    criteria = Vendor.enabled.of_city(current_city.name)
+    criteria =  Vendor.enabled.of_city(current_city.name)
     @vendors = params[:q] ? criteria.where(:name => /#{params[:q]}?/).all : criteria.all
-
-    logger = Logger.new(STDOUT)
-    logger.info ">>> parameters:" + params[:q] if params[:q]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,7 +19,10 @@ class VendorsController < ApplicationController
   # GET /vendors/1
   # GET /vendors/1.xml
   def show
-    @vendor = Vendor.enabled.find(params[:id])
+    @vendor = Vendor.find(params[:id])
+    unless @vendor.enabled
+      @vendor = nil unless @vendor.creator.id == current_user.id
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,6 +49,8 @@ class VendorsController < ApplicationController
   # POST /vendors.xml
   def create
     @vendor = Vendor.new(params[:vendor])
+    @vendor.enabled = false
+    @vendor.creator = current_user
 
     respond_to do |format|
       if @vendor.save
@@ -63,31 +65,35 @@ class VendorsController < ApplicationController
     end
   end
 
-  def search
-    @results = []
-    query = params[:search].strip
-    if query.present?
-      @exact_match = Vendor.first(:conditions => {:name => query, :enabled => true})
-      tag_names = query.split
-
-      if tag_names.size <= 1
-        @results = Vendor.enabled.where(:name => /#{query}?}/)
-      else
-        exact_results = nil
-        tag_names.each do |tag_name|
-          exact_results = exact_results ? exact_results.any_in(:tag_ids => [tag_name]) : Vendor.any_in(:tag_ids => [tag_name])
-        end
-
-        @results = exact_results.order_by([:updated_at, :desc]) if exact_results
-
-        @results = @results | Tip.any_in(:tag_ids => tag_names)
-
-      end
-    else
-      redirect_to :back, :notice => "please enter search string"
-      return
-    end
+  def mine
+      @my_vendors = Vendor.where(:creator_id => current_user.id)
   end
+
+  #def search
+  #  @results = []
+  #  query = params[:search].strip
+  #  if query.present?
+  #    @exact_match = Vendor.first(:conditions => {:name => query, :enabled => true})
+  #    tag_names = query.split
+  #
+  #    if tag_names.size <= 1
+  #      @results = Vendor.enabled.where(:name => /#{query}?}/)
+  #    else
+  #      exact_results = nil
+  #      tag_names.each do |tag_name|
+  #        exact_results = exact_results ? exact_results.any_in(:tag_ids => [tag_name]) : Vendor.any_in(:tag_ids => [tag_name])
+  #      end
+  #
+  #      @results = exact_results.order_by([:updated_at, :desc]) if exact_results
+  #
+  #      @results = @results | Tip.any_in(:tag_ids => tag_names)
+  #
+  #    end
+  #  else
+  #    redirect_to :back, :notice => "please enter search string"
+  #    return
+  #  end
+  #end
 
   def browse
     criteria = Vendor.enabled.of_city(current_city.name)

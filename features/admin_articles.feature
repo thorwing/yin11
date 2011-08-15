@@ -1,4 +1,3 @@
-@focus
 Feature: admin articles
 
   Background:

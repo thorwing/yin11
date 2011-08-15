@@ -1,0 +1,39 @@
+.report_counter {
+    display: inline-block;
+    text-align: center;
+    width: 18px;
+    line-height: 18px;
+    font-family: arial,sans-serif;
+    font-size: 14px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:1px solid #dbdbdb;
+}
+
+.report_counter.fine {
+    background: green;
+    color: white;
+}
+
+.report_counter.caution {
+    background: orange;
+    color: black;
+}
+
+.report_counter.warning {
+    background: red;
+    color: white;
+}
+
+.report_counter.terrible {
+    background: black;
+    color: white;
+}
+
+.report_counter:hover {
+   text-decoration: none;
+   background: #386fb2;
+   color: white;
+}
+
+

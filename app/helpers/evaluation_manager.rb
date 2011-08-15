@@ -1,5 +1,4 @@
 class EvaluationManager
-
   #class methods
   def self.evaluate_items(items)
     severity_score = (items.size > 0) ?  items.inject(0){ |sum, s| sum + 1 } / items.size : 0

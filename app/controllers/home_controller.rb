@@ -22,6 +22,12 @@ class HomeController < ApplicationController
       @my_groups = current_user.groups.all
       @watched_locations = current_user.profile.watched_locations
     end
+
+    if !current_user || current_user.profile.watched_locations.empty?
+      @watched_locations = [Location.new(:city => current_city.name, :street => t("location.city_center"))]
+    end
+
+    @watched_locations = @watched_locations.group_by(&:city)
   end
 
   # get more items for pagination on home page

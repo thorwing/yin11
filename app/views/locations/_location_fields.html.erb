@@ -5,6 +5,7 @@
     <br/>
     <b><%= t("location.street") %></b><br/>
     <%= f.text_field :street, :class => "map_street" %>
+    <%= content_tag(:span, t("location.address_hint"), :class => "trivial") %>
     <p><span id="map_address_span"></span><%= render "locations/map_indicator" %></p>
 </div>
 

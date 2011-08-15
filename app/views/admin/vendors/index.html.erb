@@ -5,18 +5,17 @@
     <table>
       <tr>
         <th><%= t("general.name") %></th>
-        <th><%= t("general.description") %></th>
-        <th>CountOfAwarded</th>
+        <th><%= t("general.enable") %></th>
         <th></th>
         <th></th>
       </tr>
 
     <% @vendors.each do |vendor| %>
-      <tr>
+      <tr id='<%= vendor.id %>'>
         <td><%= link_to vendor.name, [:admin, vendor] %></td>
-        <td><%= link_to t("general.show"), [:admin, vendor] %></td>
-        <td><%= link_to t("general.edit"), edit_admin_vendor_path(vendor) %></td>
-        <td><%= link_to t("general.delete"), [:admin, vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete %></td>
+        <td><%= render "admin/shared/toggle_fields", :item => vendor, :field => :enabled %></td>
+        <td><%= link_to t("general.edit"), edit_admin_vendor_path(vendor), :class => "button" %></td>
+        <td><%= link_to t("general.delete"), [:admin, vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
       </tr>
     <% end %>
     </table>
@@ -25,9 +24,23 @@
 
 <div id="disabled_vendors">
   <h3><%= t("vendors.disabled_vendors") %></h3>
-      <% @disabled_vendors.each do |vendor| %>
-        <%= link_to vendor.name, [:admin, vendor] %>
-      <% end %>
+  <table>
+    <tr>
+        <th><%= t("general.name") %></th>
+        <th><%= t("general.enable") %></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <% @disabled_vendors.each do |vendor| %>
+      <tr id='<%= vendor.id %>'>
+        <td><%= link_to vendor.name, [:admin, vendor] %></td>
+        <td><%= render "admin/shared/toggle_fields", :item => vendor, :field => :enabled %></td>
+        <td><%= link_to t("general.edit"), edit_admin_vendor_path(vendor), :class => "button" %></td>
+        <td><%= link_to t("general.delete"), [:admin, vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 <br />

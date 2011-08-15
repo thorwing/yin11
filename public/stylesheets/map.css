@@ -15,6 +15,6 @@
 
 .map_indicator { background-repeat:no-repeat; width:16px; height:16px;}
 .map_indicator span { display: none;}
-.map_indicator.checking { background-image:url("/images/slimbox/loading.gif"); }
+.map_indicator.checking { background-image:url("/images/loading.gif"); }
 .map_indicator.valid { background-image:url("/images/correct_icon.gif"); }
 .map_indicator.invalid { background-image:url("/images/wrong_icon.gif"); }

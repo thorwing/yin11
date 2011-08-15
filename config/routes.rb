@@ -88,7 +88,7 @@ Yin11::Application.routes.draw do
 
   resources :vendors, :except => [:edit, :update, :destroy] do
     collection do
-      post 'search'
+      get "mine"
       get 'browse'
     end
     member do

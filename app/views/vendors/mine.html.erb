@@ -1,0 +1,8 @@
+<% title t("vendors.my_vendors") %>
+
+<div id="vendors_list">
+  <%= render :partial => "vendor", :collection => @my_vendors %>
+</div>
+
+<br />
+<%= link_to t("vendors.new"), new_vendor_path, :class => "button" %>

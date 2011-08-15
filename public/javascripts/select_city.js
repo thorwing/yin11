@@ -13,6 +13,11 @@ function reset_city(province_id) {
         $.each(data, function(key, val) {
             options[options.length] = new Option(val["name"], val["id"]);
         });
+
+        var hidden_city = $('.map_city');
+        if (hidden_city.length > 0) {
+            hidden_city.val(val["name"]);
+        }
     });
 }
 

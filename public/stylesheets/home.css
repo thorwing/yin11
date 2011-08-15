@@ -138,6 +138,10 @@ ul#actions_menu {
     padding:10px;
 }
 
+#control_panel p {
+    margin-bottom:10px;
+}
+
 #control_panel .close_panel_link {
     float: right;
 }

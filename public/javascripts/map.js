@@ -8,6 +8,7 @@ function update_map(is_complete) {
         if(indicator) {
             indicator.removeClass("valid");
             indicator.removeClass("invalid");
+            indicator.addClass("checking");
         }
 
         var address = city_input.val() + " " + street_input.val();

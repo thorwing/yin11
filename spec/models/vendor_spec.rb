@@ -24,6 +24,10 @@ describe Vendor do
     Vendor.new(:name => "test", :city => "beijing", :street => "changan road").should be_valid
   end
 
+  it "type must be of certain value" do
+    Vendor.create(:name => "test", :city => "shanghai", :street => "dahua road", :type => "test").should_not be_valid
+  end
+
   #TODO
   #it "full address is unique" do
   #  Vendor.create(:name => "test", :city => "shanghai", :street => "dahua road")

@@ -172,7 +172,8 @@ zh-CN:
     miles: 公里
     nearby: 发生在附近
     show_nearby_tip: 点击标志物，可以查看具体信息
-    address_hint: "地址格式: 南京东路1809号 第一食品商店"
+    address_hint: "如: 南京东路1809号"
+    city_center: "市中心"
 
   address:
     province: 省份
@@ -307,6 +308,7 @@ zh-CN:
     create_vendor: 添加商户
     new_review: +测评
     all_reviews: "所有测评："
+    my_vendors: "我创建的商户"
     recent: 最近一个月：
     recent_good: 好评
     recent_bad: 差评
@@ -319,7 +321,7 @@ zh-CN:
     all: 所有测评
     what: 关于?
     what_tip: （标签：食物，添加剂等等。最多5个。）
-    where: 在哪里?
+    where: 哪家商户?
     when: 什么时候?
     whats_wrong: 哪里不对劲?
     post_new_review: 发表新测评

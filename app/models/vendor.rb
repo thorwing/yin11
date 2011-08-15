@@ -5,14 +5,16 @@ class Vendor
 
   field :name
   field :verified, :type => Boolean, :default => false
+  field :type
 
-  attr_accessible :name
+  attr_accessible :name, :type
 
   scope :of_city, lambda { |city_name| where(:city => city_name)}
 
   #Relationships
   has_many :reviews
   has_many :reports
+  belongs_to :creator, :class_name => "User"
 
   #validators
   validates_presence_of :name
@@ -20,6 +22,7 @@ class Vendor
   validates_presence_of :city
   validates_presence_of :street
   validates_uniqueness_of :full_name
+  validates_inclusion_of :type, :in => VendorTypes.get_values, :allow_nil => true
 
   def full_name
     (name.nil? ? "" : name.strip) + " (" + address + ")"

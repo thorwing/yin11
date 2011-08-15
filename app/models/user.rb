@@ -49,6 +49,7 @@ class User
   has_and_belongs_to_many :wrote_tips, :class_name => Tip.name
   has_and_belongs_to_many :groups, :inverse_of => "members"
   has_and_belongs_to_many :badges
+  has_many :vendors
 
   #Validators
   validates :email,
@@ -145,7 +146,7 @@ class User
     data = get_raw_updates(days)
     result = {}
     data.each do |k,v|
-      result[k] = EvaluationManager.evaluate_items(v)
+      result[k] = v.size #EvaluationManager.evaluate_items(v)
     end
     result
   end

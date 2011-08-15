@@ -13,7 +13,6 @@ Feature: smoke tests for Tips
     Then I should see "所有锦囊"
     And I press "搜索"
 
-  @focus
   Scenario Outline: User can search for tip by using its title or keywords
     Given There is a simple tip
 

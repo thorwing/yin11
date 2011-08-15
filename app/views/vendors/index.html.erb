@@ -1,11 +1,13 @@
 <% title t("vendors.vendors") %>
 
 <div class="search_fields">
-  <%= form_tag :action => "search" do %>
-    <%= text_field_tag "search", "" %>
+  <%= form_tag "/vendors", :method => :get do %>
+    <%= text_field_tag :q %>
     <%= submit_tag t("general.search"), :class => "button" %>
   <% end %>
 </div>
+
+<p><%= link_to t("vendors.my_vendors"), mine_vendors_path %></p>
 
 <div id="vendors_list">
   <%= render :partial => "vendor", :collection => @vendors %>
