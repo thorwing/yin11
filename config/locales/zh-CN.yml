@@ -299,6 +299,7 @@ zh-CN:
     disabled_vendors: 禁用的商户
     vendor_name: 商户名
     not_found: 没找到?
+    not_found_new: 添加商户
     quick_create_vendor: 点击这里，快速创建商户
     exact_vendor_not_found: 没有找到名为<%{name}>的商户
     please_create: "欢迎您创建:"

@@ -103,6 +103,23 @@ a.tag:hover {
 }
 
 /*
+    Simple styles
+*/
+.two_columns_container {
+	margin-bottom:20px;
+    margin: 0 auto; /* 侧边的自动值与宽度结合使用，可以将布局居中对齐 */
+	overflow: hidden; /* 此声明可使 .container 了解其内部浮动列的结束位置以及包含列的位置 */
+}
+
+.left_column {
+	float:left;
+}
+
+.right_column {
+    float:right;
+}
+
+/*
 	Block-Styles
 */
 

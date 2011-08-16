@@ -3,7 +3,7 @@
         <%= render "shared/vote_fields", :item => item %>
     </div>
     <div class="central_fields">
-        <h3><%= link_to item.title, item %></h3>
+        <b><%= link_to item.title, item %></b>
         <p><%= render "shared/show_tags", :item => item %></p>
         <p>
           <%= truncate_content(item.content, 40) %>
@@ -22,7 +22,6 @@
            <p class="trivial"><%= t("info_items.posted_by")  %> <%= link_to item.author.login_name, item.author %></p>
         <% end %>
 
-        <p><%= link_to t("info_items.add_comment") + "(#{item.comments.size})", item %></p>
     </div>
 </div>
 
