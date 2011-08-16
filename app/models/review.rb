@@ -20,7 +20,7 @@ class Review < InfoItem
   }
 
   def get_faults
-    self.faults.empty? ? I18n.t("general.none") : self.faults.join("|")
+    self.faults.empty? ? I18n.t("general.none") : self.faults.join(" | ")
   end
 
   #for gmaps4rails

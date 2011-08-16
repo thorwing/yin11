@@ -31,6 +31,9 @@
 
     <div class="block round">
         <b><%= f.label :faults, t("reviews.whats_wrong") %></b><br/>
+        <div class="<%= "severity #{get_severity_of(@review)}" %>">
+            <span>abc</span>
+        </div>
         <div class="checkbox_group">
             <% FaultTypes.get_values.each_with_index do |type, i| %>
                 <% check_fault(type, i) %>

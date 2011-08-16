@@ -36,4 +36,11 @@
    color: white;
 }
 
+.severity {background-repeat: no-repeat;width:24px; height:32px;}
+.severity span {display: none;}
+.severity.zero{ background-image:url("/images/severity_0_small.png"); }
+.severity.one{ background-image:url("/images/severity_1_small.png"); }
+.severity.two{ background-image:url("/images/severity_2_small.png"); }
+.severity.three{ background-image:url("/images/severity_3_small.png"); }
+
 
