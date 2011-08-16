@@ -45,7 +45,8 @@
     <%= render "images/images_fields", :f => f, :item => @review %>
 
     <b><%= f.label :content, t("reviews.content") %><%= mark_required(@review, :content) %><%= mark_required_length(@review, :content) %></b><br/>
-    <%= f.text_area :content, :maxlength => get_max_length(@review, :content) %>
+    <%= f.text_area :content, :maxlength => get_max_length(@review, :content), :class => "char_aware" %><br/>
+    <%= content_tag :span, "", :class => "char_counter" %>
 
 
     <div class="actions">

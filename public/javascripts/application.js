@@ -189,3 +189,10 @@ $(function() {
     });
     //$('.tip')
 });
+
+$(function() {
+    $('.char_aware').keyup(function() {
+        var count = $(this).val().length;
+        $('span.char_counter').html('已输入' + count + '字符');
+    });
+});
