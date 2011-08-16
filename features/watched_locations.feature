@@ -3,7 +3,6 @@ Feature: smoke tests for Profile
   Background:
     Given There are minimum seeds data
 
-  @focus
   Scenario: User will get a watched location by default
     When I go to the new_user page
     And I fill in "user_login_name" with "tester"

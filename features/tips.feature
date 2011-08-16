@@ -40,8 +40,7 @@ Feature: smoke tests for Tips
     When I go to the home page
     Then I should see "瘦肉精猪肉目测" within "#control_panel"
 
-
-  Scenario: User can edit others tip, and the change will be stored in revision, it will not be used immediately
+  Scenario: User can edit others tip, and the change will be stored in revision
     When I log in as "David User"
     And I post a simple tip
 
@@ -55,6 +54,7 @@ Feature: smoke tests for Tips
     And I press "完成"
 
     When I search tips for "辨别西瓜是否含有催熟剂"
+    And I follow "辨别西瓜是否含有催熟剂"
     Then I should see "随便改改,恶作剧，字数补丁。"
     And I should not see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
