@@ -83,12 +83,12 @@ class TipsController < ApplicationController
     @tip = Tip.find(params[:id])
     if is_already_collected(@tip)
       respond_to do |format|
-         format.html {redirect_to(@tip, :alert => I18n.t("alerts.tip_already_collected"))}
+         format.html {redirect_to(:back, :alert => I18n.t("alerts.tip_already_collected"))}
       end
     else
       current_user.profile.collect_tip!(@tip)
       respond_to do |format|
-         format.html {redirect_to(@tip, :notice => I18n.t("notices.tip_collected"))}
+         format.html {redirect_to(:back, :notice => I18n.t("notices.tip_collected"))}
       end
     end
   end

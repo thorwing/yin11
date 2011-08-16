@@ -4,12 +4,11 @@
 </p>
 
 <p>
-  <b><%= t("general.content") %></b>
   <%= @tip.content %>
 </p>
 
 <div class="actions">
-  <%= link_to_unless is_already_collected(@tip),  t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" %>
+  <%= link_to t("tips.collect"), collect_tip_path(@tip), :method => :put, :class => "button" unless is_already_collected(@tip) %>
 </div>
 
 <p class="nav_links">

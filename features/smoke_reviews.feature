@@ -10,10 +10,11 @@ Feature: smoke tests for Reviews
   Background:
     Given There are minimum seeds data
 
+  @focus
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:
-    | name       | city | street |
-    | 农工商超市 | 上海 | 大华路 |
+    | name       | city | street | enabled |
+    | 农工商超市 | 上海 | 大华路 | true    |
     When I log in as "David User"
     And I follow "找商户"
     And I follow "农工商超市"

@@ -9,11 +9,6 @@ $(document).ready(function(){
        , loaderImage: "/images/pageless/load.gif"
     });
 
-    $('.tip').each( function(intIndex) {
-        $(this).CreateBubblePopup({ innerHtml: $(this).data('content') });
-    });
-    //$('.tip')
-
     $('.clear_default').click(function(){
         $(this).val('');
         $(this).removeClass('not_cleared');

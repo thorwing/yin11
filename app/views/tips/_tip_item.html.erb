@@ -1,20 +1,14 @@
 <div class="block round">
-    <div class="left_fields">
-        <%= render "shared/vote_fields", :item => item %>
+    <div>
+        <%= render "shared/vote_fields", :item => tip %>
     </div>
-    <div class="central_fields">
-        <b><%= link_to item.title, item %></b>
-        <%= link_to t("tips.collect"), collect_tip_path(item), :method => :put, :class => "button" if (current_user and not is_already_collected(item)) %>
+    <div >
+        <b><%= link_to tip.title, tip, 'data-content' => simple_format(word_wrap(tip.content, 40)), :class => "tip" %></b><br/>
         <div class="clues">
-            <%= render "shared/show_tags", :item => item %>
+            <%= render "shared/show_tags", :item => tip %>
         </div>
-        <p>
-          <%= truncate_content(item.content, 100) %>
-          <%= link_to(t("info_items.detail"), item)  %>
-          <span class="trivial">
-            <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
-            <%= content_tag(:span, t("info_items.posted_by") + item.author.login_name ) if item.author %>
-          </span>
-        </p>
+    </div>
+    <div class="right_fields">
+        <%= link_to t("tips.collect"), collect_tip_path(tip), :method => :put, :class => "button" if (current_user and not is_already_collected(tip)) %>
     </div>
 </div>

@@ -10,7 +10,7 @@
 <div id="tips_list">
   <%= paginate @unsorted_tips %>
   <% @tips.each do |tip| %>
-    <%= render "tip_item", :item => tip  %>
+    <%= render "tip_item", :tip => tip  %>
   <% end %>
 </div>
 

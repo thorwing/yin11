@@ -402,13 +402,14 @@ zh-CN:
 
   info_items:
     itmes: 好评和差评
-    solutions: 对策
+    solutions: 锦囊妙计
     good_items: 好评
     bad_items: 差评
     severity_header: 银筷子指数
-    severity_base: "基于%{bad_count}条差评，%{good_count}条好评"
+    severity_base: "%{bad_count}条差评"
     severity_involved_regions: "差评分布在:"
     report_good_header: "我们一共找到%{count}条关于“%{name}”的健康分享，建议您阅读"
+    show_goods: "另有%{count}条安全记录，查看"
     detail: 详情>>
     happen: 发生在
     ago: 前

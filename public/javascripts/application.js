@@ -178,3 +178,14 @@ $(function() {
         }
     });
 });
+
+$(function() {
+    $('.tip').each( function(intIndex) {
+        $(this).CreateBubblePopup({
+            position : 'top',
+            align	 : 'left',
+            themePath: 	'images/jquerybubblepopup-theme',
+            innerHtml: $(this).data('content') });
+    });
+    //$('.tip')
+});
