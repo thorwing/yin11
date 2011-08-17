@@ -7,6 +7,7 @@ class VendorsController < ApplicationController
   # GET /vendors.xml
   def index
     criteria =  Vendor.enabled.of_city(current_city.name)
+    criteria =  criteria.where(:type => params[:type]) if params[:type].present?
     @vendors = params[:q] ? criteria.where(:name => /#{params[:q]}?/).all : criteria.all
 
     respond_to do |format|

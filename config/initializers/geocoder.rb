@@ -2,7 +2,7 @@
 
 # geocoding service (see below for supported options):
 #TODO
-Geocoder::Configuration.lookup = :yahoo
+#Geocoder::Configuration.lookup = :yahoo
 
 # to use an API key:
 # for http://yinkuaizi.com

@@ -1,14 +1,11 @@
 <div class="block round">
-    <p>
-        <%= link_to vendor.full_name, vendor %><br/>
-    </p>
-    <p class="clues">
-        <%= vendor.type %>
-    </p>
-    <p>
-        <%= t("vendors.recent") %>
-        <%= "#{t("vendors.recent_good")}(#{vendor.good_reviews_in(30).size.to_s})"  %>
-        <%= "#{t("vendors.recent_bad")}(#{vendor.bad_reviews_in(30).size.to_s})"  %>
-        <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id) %>
-    </p>
+  <%= content_tag :small, vendor.type, :class => "right_column" %>
+  <div class="left_column">
+    <%= link_to vendor.full_name, vendor %><br/>
+    <%= t("vendors.recent") %>
+    <%= "#{t_with_colon("vendors.recent_bad")}#{vendor.bad_reviews_in(30).size.to_s}"  %><br/>
+    <div class="actions">
+        <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id), :class => "button" %>
+    </div>
+  </div>
 </div>
