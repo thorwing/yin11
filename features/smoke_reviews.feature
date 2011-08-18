@@ -18,7 +18,7 @@ Feature: smoke tests for Reviews
     When I log in as "David User"
     And I follow "找商户"
     And I follow "农工商超市"
-    And I follow "+测评"
+    And I follow "+测评" within ".actions"
     Then I should see "新测评"
     Then I should see "农工商超市"
 

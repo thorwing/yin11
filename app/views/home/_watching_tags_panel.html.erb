@@ -11,9 +11,10 @@
           </tr>
           <% @watched_tags.each do |tag| %>
             <tr class="watched_tag">
-              <th><%= link_to tag, {:controller => "search", :action => "tag", :tags => tag} %></th>
-              <th><%= @evaluation[tag] %></th>
               <th><%= link_to image_tag("delete.png", :border => 0), url_for(:controller =>  "profile", :action => "delete_watched_tag", :tag => tag), :method => :put, :remote => true %></th>
+              <th><%= link_to tag, {:controller => "search", :action => "tag", :tags => tag} %></th>
+              <% count = @panel_manager.get_items_tagged_with(tag).size %>
+              <th><%= link_to count.to_s, {:controller => "search", :action => "tag", :tags => tag}, :class => "report_counter #{counter(count)}" %></th>
             </tr>
           <% end %>
         </table>

@@ -9,8 +9,8 @@ Feature: Comments
     Given There are some sample articles
     When I go to the home page
     Then I should see "三聚氰胺再现上海"
-    When I follow "+评论(0)"
-    Then I should not see "+评论"
+    When I follow "三聚氰胺再现上海"
+    Then I should not see "发表"
 
   @javascript
   Scenario:  User can comment on a review, comments can be nested.
@@ -25,14 +25,17 @@ Feature: Comments
     And I press "+评论"
     Then I should see "很有用的评价" within "#comments"
     And I go to the home page
-    Then I should see "评论(1)"
+    And I follow "买到烂西瓜"
+    Then I should see "很有用的评价"
 
     When I log in as "David User"
     When I follow "买到烂西瓜"
     And I fill in "content" with "谢谢" within ".new_comment"
     And I press "+评论"
     And I go to the home page
-    Then I should see "评论(2)"
+    And I follow "买到烂西瓜"
+    Then I should see "很有用的评价"
+    Then I should see "谢谢"
 
   @javascript
   Scenario: Users can comment on a article
@@ -44,15 +47,13 @@ Feature: Comments
     When I follow "西瓜被打了催熟剂"
     And I fill in "content" with "很有用的评价" within ".new_comment"
     And I press "+评论"
-    And I go to the home page
-    Then I should see "+评论(1)"
+    Then I should see "很有用的评价"
 
     When I log in as "Kate Tester"
     When I follow "西瓜被打了催熟剂"
     And I fill in "content" with "谢谢" within ".new_comment"
     And I press "+评论"
-    And I go to the home page
-    Then I should see "+评论(2)"
+    Then I should see "谢谢"
 
   @javascript
   Scenario: User can reply others comment

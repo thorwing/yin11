@@ -36,7 +36,7 @@ describe "Search" do
 
   context "There is another review with same tag" do
     before { @beijing = Factory(:beijing) }
-    before { @another_review = Factory(:review, :title => "The beverage tastes funny", :tags_string => @review.tags_string, :city => @beijing.name)}
+    before { @another_review = Factory(:bad_review, :title => "The beverage tastes funny", :tags_string => @review.tags_string, :city => @beijing.name)}
 
     describe "track by tag" do
       it "should contain" do

@@ -14,7 +14,7 @@ class HomeController < ApplicationController
 
     #data for control panel
     if current_user
-      @evaluation = current_user.get_evaluation
+      #@evaluation = current_user.get_evaluation
       #TODO
       #should be loaded on demand
       @watched_tags = current_user.profile.watched_tags
@@ -24,10 +24,16 @@ class HomeController < ApplicationController
     end
 
     if !current_user || current_user.profile.watched_locations.empty?
-      @watched_locations = [Location.new(:city => current_city.name, :street => t("location.city_center"))]
+      city_center = Location.new(:city => current_city.name, :street => t("location.city_center")) do |l|
+        l.coordinates = [current_city.longitude, current_city.latitude]
+      end
+
+      @watched_locations = [city_center]
     end
 
     @watched_locations = @watched_locations.group_by(&:city)
+
+    @panel_manager = PanelManager.new(current_user)
   end
 
   # get more items for pagination on home page

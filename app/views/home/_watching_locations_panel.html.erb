@@ -10,7 +10,8 @@
                     <p id="<%= location.id.to_s %>">
                         <%= link_to image_tag("delete.png", :border => 0), url_for(:controller =>  "profile", :action => "delete_watched_location", :location_id => location.id), :method => :put, :remote => true %>
                         <%= link_to location.street, show_nearby_items_locations_path(:location_id => location.id) %>
-                        <%= link_to @evaluation[location.address], show_nearby_items_locations_path(:location_id => location.id), :class => "report_counter #{counter(@evaluation[location.address])}" %>
+                        <% count = @panel_manager.get_reviews_around(location).size %>
+                        <%= link_to count.to_s, show_nearby_items_locations_path(:location_id => location.id), :class => "report_counter #{counter(count)}" %>
                     </p>
                 <% end %>
             <% end %>

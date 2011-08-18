@@ -3,12 +3,15 @@
         <%= render "shared/vote_fields", :item => item %>
     </div>
     <div class="central_fields">
-        <b><%= link_to item.title, item %></b>
-        <p><%= render "shared/show_tags", :item => item %></p>
-        <p>
+        <b><%= link_to item.title, item %></b><br/>
+        <% if item.respond_to?(:vendor) && item.vendor.present? %>
+            <small class="trivial"><%= link_to item.vendor.name, item.vendor %> (<%= item.vendor.address %>)</small><br/>
+        <% end %>
+        <%= render "shared/show_tags", :item => item %><br/>
+        <% if item.content.present? %>
           <%= truncate_content(item.content, 40) %>
           <%= link_to(t("info_items.detail"), item)  %>
-        </p>
+        <% end %>
     </div>
     <div class="right_fields">
        <div class="clues">

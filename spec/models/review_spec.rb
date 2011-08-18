@@ -20,7 +20,7 @@ describe Review do
 
     context "get_faults works" do
       before {@review.faults = ["bad", "terrible"]}
-      specify {@review.get_faults.should == "bad|terrible"}
+      specify {@review.get_faults.should == "bad | terrible"}
     end
   end
 
