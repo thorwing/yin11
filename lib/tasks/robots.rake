@@ -56,11 +56,16 @@ namespace :yin11 do
 
   desc "create some testing articles"
   task :fetch_articles => :environment do
-    deal_techfood(true, 3)
-    deal_21food(true, 3)
-    deal_southcn
-    deal_xinhuanet
-    deal_foodmate(true, 3)
+    begin
+      deal_techfood(true, 3)
+      deal_21food(true, 3)
+      deal_southcn
+      deal_xinhuanet
+      deal_foodmate(true, 3)
+    rescue Exception => exc
+      site.log exc.message
+      p exc.backtrace
+    end
   end
 
   def deal_site(name, url_list, go_next_page, go_pages)
