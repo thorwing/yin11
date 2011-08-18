@@ -1,6 +1,14 @@
 #encoding utf-8
 
 namespace :yin11 do
+  desc "make all articles available"
+  task :show_all_articles => :environment do
+    Article.all.each do |article|
+      article.enabled = true
+      article.save
+    end
+  end
+
   desc "import some data"
   task :import_temp_data => :environment do
     p "importing data..."
