@@ -1,5 +1,6 @@
 <%= render "shared/error_messages", :target => vendor %>
 <div class="field">
+    <!--TODO Duplicate to locations\_location_fields-->
     <b><%= f.label :city, t("location.city") %></b><%= mark_required(vendor, :city) %>
     <%= select_tag "select_province", options_for_select(get_provinces_for_select, current_city.province.id) %>
     <%= select_tag "select_city", options_for_select(get_cities_of_provinces(current_city.province), current_city.id) %>

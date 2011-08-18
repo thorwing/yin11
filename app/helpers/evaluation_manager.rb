@@ -35,7 +35,12 @@ class EvaluationManager
     #TODO
     score += item.votes * 10 #popularity
     score += (CacheManager.hot_tags | item.tags).size * 50 if item.tags #topics
-    score += 300 if item.is_recent? #recent
+
+    if item.reported_on.present? && item.reported_on > 3.month.ago
+      score += (item.reported_on.to_i - 1.month.ago.to_i) / 60 / 60 / 24 * 200
+    end
+
+    score += 100 if item.is_recent? #recent
     score += 300 if is_from_my_groups?(item) #groups
     score
   end
