@@ -33,7 +33,7 @@ class HomeController < ApplicationController
       @watched_locations = [city_center]
     end
 
-    @watched_locations = @watched_locations.group_by(&:city)
+    @watched_locations = @watched_locations.group_by(&:city) if @watched_locations.present?
 
     @panel_manager = PanelManager.new(current_user)
   end
