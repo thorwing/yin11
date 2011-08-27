@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
   def set_city
     #should be set only once
     unless cookies[:current_city]
-      city = City.of_eng_name(request.location.city.upcase)
+      #TODO
+      city = City.of_eng_name(request.location.city.upcase) if request.location.city.present?
       #TODO
       city ||= City.find(DEFAULT_CITY_CODE)
       cookies.permanent[:current_city] = city.id if city
