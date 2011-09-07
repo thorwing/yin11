@@ -10,7 +10,6 @@ Feature: smoke tests for Reviews
   Background:
     Given There are minimum seeds data
 
-  @focus
   Scenario: User can choose a vendor and create a new review against it
     Given the following vendor exists:
     | name       | city | street | enabled |

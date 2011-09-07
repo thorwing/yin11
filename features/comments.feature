@@ -12,6 +12,7 @@ Feature: Comments
     When I follow "三聚氰胺再现上海"
     Then I should not see "发表"
 
+  @focus
   @javascript
   Scenario:  User can comment on a review, comments can be nested.
     Given the following review exists:
@@ -19,7 +20,6 @@ Feature: Comments
     | 买到烂西瓜 | 西瓜         | 西瓜切开来后发现已经熟过头了。 |
 
     When I log in as "Kate Tester"
-    Then I should see "买到烂西瓜"
     When I follow "买到烂西瓜"
     And I fill in "content" with "很有用的评价" within ".new_comment"
     And I press "+评论"
