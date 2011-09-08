@@ -6,11 +6,9 @@ gem 'rails', '3.1.0'
 # in production environments by default.
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
+  #gem 'coffee-rails', "~> 3.1.0"
+  #gem 'uglifier'
 end
-
-#gem 'execjs', :group => :production
 
 gem 'jquery-rails'
 
