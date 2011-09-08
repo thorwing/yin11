@@ -10,6 +10,8 @@ group :assets do
   gem 'uglifier'
 end
 
+#gem 'execjs', :group => :production
+
 gem 'jquery-rails'
 
 # Bundle edge Rails instead:
