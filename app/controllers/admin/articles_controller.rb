@@ -1,5 +1,5 @@
 class Admin::ArticlesController < Admin::BaseController
-  uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
+  #uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
 
   def index
     is_search = params[:q].present?

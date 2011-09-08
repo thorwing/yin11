@@ -58,7 +58,6 @@ Feature: smoke tests for Groups
     And I go to the home page
    Then I should see "相关饭桌：西瓜守望者"
 
-  @javascript
   Scenario: Group member can post for his group
     When I log in as "David User"
     And I join the group "西瓜守望者"

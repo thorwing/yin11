@@ -1,0 +1,163 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*
+	News-Block-Styles
+*/
+
+#news_block {clear: both;
+    z-index: 100;}
+
+.image_frame {
+	border:1px solid #b5b5b5;
+	background-color:#d2d2d2;
+	padding:5px;
+    margin-top: 10px;
+	float:left;
+}
+
+#articles_frame {
+    float:left;
+    width:350px;
+    height:250px;
+    border-right:1px solid gray;
+    line-height: 20px;
+}
+
+#search_frame {
+	float:left;
+	width:250px;
+	margin-left:10px;
+     margin-top: 10px;
+}
+
+ul#actions_menu {
+    margin-left:20px;
+    margin-bottom:5px;
+}
+
+/*
+	InfoItem-Home-Styles
+*/
+#pagination {
+	width:600px;
+    padding-left:10px;
+	padding-right:10px;
+    border-right:1px solid #dbdbdb;
+}
+
+.item {
+	border-top:1px solid #dbdbdb;
+	margin-bottom:10px;
+	position:relative;
+	padding:2px 3px 1px 3px;
+	background:#FFFFFF;
+    overflow:hidden;
+}
+
+.item.info { width:600px; }
+.item.info .left_fields { float:left; margin-right:8px;}
+.item.info .vote_fields { margin-top:5px;}
+.item.info .left_fields img { float:left; margin-top:10px;}
+.item.info .central_fields { float:left; width:350px}
+.item.info .central_fields h3 {margin: 0 0 6px 0;}
+.item.info .central_fields p {margin: 0 0 4px 0;}
+.item.info .right_fields { float:right; overflow:hidden; width:150px;}
+.item.info .right_fields span, .item.info .right_fields div, .item.info .right_fields p  {margin: 0; float: right;display:block; clear:both;}
+
+/* for ribbons */
+.item.info .ribbon {
+	position:absolute;
+	top:-3px;
+	right:-3px;
+}
+
+/*
+	Good-Bad-Items-Styles
+*/
+
+#items_list {width:600px;}
+#tips_list {width:360px;}
+
+/* more button */
+
+#more_items_button {
+    width: 300px;
+    margin:0px auto;
+    text-align: center;
+    display: block;
+}
+
+/*
+	Vote-Fields-Styles
+*/
+
+.vote_fields {
+	float:left;
+	text-align:center;
+	min-width:30px;
+}
+.vote_fields .vote_button { display:block; line-height: 12px; }
+.vote_fields .vote_button.up { background: image-url('vote_up_button.png') center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.up_voted { background: image-url('voted_up_button.png') center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.up:hover { background: image-url('voted_up_button.png') center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.down { background: image-url('vote_down_button.png') center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.down_voted { background: image-url('voted_down_button.png') center no-repeat; text-indent:-9999px;}
+.vote_fields .vote_button.down:hover { background: image-url('voted_down_button.png') center no-repeat; text-indent:-9999px;}
+.vote_fields span.votes {line-height: 12px; font-size:18px; font-family:"Comic Sans MS", cursive;vertical-align: middle;}
+
+/*
+	Control-Panel-Styles
+*/
+
+#control_panel {
+	width:300px;
+	background:#FFFFFF;
+}
+
+#control_panel .panel {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border:1px solid #dbdbdb;
+    background:#EDEFF4;
+    margin-bottom:10px;
+    padding:10px;
+}
+
+#control_panel p {
+    margin-bottom:10px;
+}
+
+#control_panel .close_panel_link {
+    float: right;
+}
+
+/*
+	Add-Foods-Watch-List
+*/
+#control_panel ul.token-input-list-facebook
+{
+    width:200px;
+}
+#control_panel div.token-input-dropdown-facebook
+{
+    width:200px;
+}
+
+#foods_buzz h4 {
+	display:inline-block;
+	padding-right: 5px;
+	color:#000000;
+}
+
+#foods_buzz h5 {
+	display:inline-block;
+	padding-right: 1px;
+}
+
+/*
+    search style
+*/
+.clear_default.not_cleared {
+    color: #999999
+}

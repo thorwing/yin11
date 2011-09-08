@@ -4,7 +4,6 @@ Feature: smoke tests for Search
   Background:
     Given There are minimum seeds data
 
-
   @javascript
   Scenario: Item's score is considered according to popularity and tags
     Given  There are some sample tips

@@ -26,8 +26,6 @@ Feature: User can vote for an item
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 
-  @foucs
-  @javascript
   Scenario: User can vote for a tip
     When I log in as "Kate Tester"
     And I post a simple tip

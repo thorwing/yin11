@@ -174,21 +174,20 @@ module ApplicationHelper
 
     session_key_name = Rails.application.config.session_options[:key]
     %Q{
-
     <script type='text/javascript' charset="utf-8">
       $(document).ready(function() {
         $('#image_uploader').uploadify({
           script          : '#{images_path(:item_id => item.id)}',
           fileDataName    : 'image[image]',
           uploader        : '/uploadify/uploadify.swf',
-          cancelImg       : '/images/cancel.png',
+          cancelImg       : '/uploadify/cancel.png',
           fileDesc        : 'Images',
           fileExt         : '*.png;*.jpg;*.gif',
           sizeLimit       : #{10.megabytes},
           queueSizeLimit  : 24,
           multi           : true,
           auto            : true,
-          buttonImg       : '/images/upload.gif',
+          buttonImg       : '/uploadify/upload.gif',
           width           : 48,
           height          : 48,
           buttonText      : "",

@@ -12,8 +12,6 @@ Feature: Comments
     When I follow "三聚氰胺再现上海"
     Then I should not see "发表"
 
-  @focus
-  @javascript
   Scenario:  User can comment on a review, comments can be nested.
     Given the following review exists:
     | title      | tags_string  | content |
@@ -37,7 +35,6 @@ Feature: Comments
     Then I should see "很有用的评价"
     Then I should see "谢谢"
 
-  @javascript
   Scenario: Users can comment on a article
     Given the following article exists:
       | title            | content                            | tags_string |
@@ -55,7 +52,6 @@ Feature: Comments
     And I press "+评论"
     Then I should see "谢谢"
 
-  @javascript
   Scenario: User can reply others comment
     Given the following review exists:
     | title    |

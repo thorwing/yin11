@@ -2,6 +2,16 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+
+gem 'jquery-rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -33,7 +43,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem "mongoid-ancestry"
 
-gem "tiny_mce"
+#gem "tiny_mce"
+gem 'ckeditor-rails'
 
 #no such file to load -- carrierwave/storage/grid_fs issue
 gem 'carrierwave', '0.5.6'

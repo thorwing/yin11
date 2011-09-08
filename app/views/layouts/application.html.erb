@@ -1,12 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css", "token-input-facebook", "facebox", "slimbox2", "application", "components", "home", "tag_cloud", "comment", "top_menu", "kandytabs", "form", "/uploadify/uploadify", "jquery.jgrowl", "jquery.bubblepopup.v2.3.1", "thumbnails" %>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js", "jquery.rails.js",
-                             "application", "jquery.tokeninput", "facebox", "slimbox2", "jquery.pageless.min", "jquery.jgrowl", "kandytabs.pack", "jquery.bubblepopup.v2.3.1.min", "jquery_validate/jquery.validate.min", "jquery_validate/localization/messages_cn",
-                             "jquery.metadata"%>
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css", "application"%>
+  <%= javascript_include_tag "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js" %>
   <%= yield :header_including if content_for?(:header_including) %>
-  <%= include_tiny_mce_if_needed %>
+
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <%= csrf_meta_tag %>
   <meta name="google-site-verification" content="GF_EoI9-lwWznbOBC3y1-joOBGeE7EBPEfui_-4vMZo" />
