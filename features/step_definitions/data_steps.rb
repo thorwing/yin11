@@ -34,7 +34,7 @@ Given /^There is a simple tip$/ do
 end
 
 Given /^There are some sample tips$/ do
-  roots = YAML.load(File.open("#{Rails.root.to_s}/app/assets/seeds/tips.yml"))
+  roots = YAML.load(File.open("#{Rails.root.to_s}/app/seeds/tips.yml"))
   roots.each do |tip|
     Tip.create!(:title => tip["title"], :content => tip["content"], :tags_string => tip["tags_string"])
   end

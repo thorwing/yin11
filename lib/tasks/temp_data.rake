@@ -16,7 +16,7 @@ namespace :yin11 do
     total = 0
 
     Spreadsheet.client_encoding = 'UTF-8'
-    book = Spreadsheet.open File.join(RAILS_ROOT, 'app/assets/seeds/temp_data.xls')
+    book = Spreadsheet.open File.join(RAILS_ROOT, 'app/seeds/temp_data.xls')
     sheet = book.worksheet 0
     sheet.each 1 do |row|
       total += 1

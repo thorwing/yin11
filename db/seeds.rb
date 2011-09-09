@@ -13,33 +13,33 @@ require "source"
 
 #  FoodsGenerator::generate_foods
 
-  File.open(File.join(RAILS_ROOT, 'app/assets/seeds/provinces.txt')).each_line { |p|
+  File.open(File.join(RAILS_ROOT, 'app/seeds/provinces.txt')).each_line { |p|
     code, name, short_name, main_city_id, type = p.split(" ")
     Province.create( :code => code, :name => name, :short_name => short_name, :main_city_id => main_city_id, :type => type)
   }
 
-  File.open(File.join(RAILS_ROOT, 'app/assets/seeds/cities.txt')).each_line { |c|
+  File.open(File.join(RAILS_ROOT, 'app/seeds/cities.txt')).each_line { |c|
     code, province_code, name, eng_name, postcode, lat, log = c.split(" ").map {|e| e.strip}
     province = Province.first(:conditions => {:code => province_code } )
     city = province.cities.build(:code => code, :name => name, :eng_name => eng_name, :postcode => postcode, :latitude => lat, :longitude => log)
     city.save
   }
 
-  roots = YAML.load(File.open("#{Rails.root.to_s}/app/assets/seeds/districts.yml"))
+  roots = YAML.load(File.open("#{Rails.root.to_s}/app/seeds/districts.yml"))
   roots.each do |city_name, districts|
     city = City.first(conditions: {name: city_name})
     districts.each {|d| city.districts.create(:name => d)} if city
   end
 
   #badges
-  badges = YAML::load(File.open("app/assets/seeds/badges.yml"))
+  badges = YAML::load(File.open("app/seeds/badges.yml"))
   badges.each {|b| Badge.create!(b)}
 
   #tips
-  tips = YAML::load(File.open("app/assets/seeds/tips.yml"))
+  tips = YAML::load(File.open("app/seeds/tips.yml"))
   tips.each {|t| Tip.create!(t)}
 
-  Dir["app/assets/seeds/articles/*.yml"].each do |file|
+  Dir["app/seeds/articles/*.yml"].each do |file|
     articles = YAML::load(File.open(file))
     articles.each do |article|
       begin
