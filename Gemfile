@@ -55,7 +55,7 @@ gem 'kaminari'
 gem 'factory_girl_rails'
 
 gem "geocoder"
-gem "gmaps4rails", '0.9.1'
+gem "gmaps4rails"
 
 gem "mechanize"
 gem "spreadsheet"

@@ -46,6 +46,12 @@ Gmaps4Rails.geolocationFailure= function(browser_support) {
     update_map(false);
 };
 
+$(function(){
+    $(".map_street").change(function() {
+        update_map(true);
+    });
+});
+
 Gmaps4Rails.callback = function() {
     $(".map_street").change(function() {
         update_map(true);

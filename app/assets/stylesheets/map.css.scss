@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+.map_container {
+  width: 400px;
+}
+
+.gmaps4rails_map {
+  width: 400px;
+  height: 300px;
+}
+
+.yellow { border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px; }
+
+.map_indicator { background-repeat:no-repeat; width:16px; height:16px;}
+.map_indicator span { display: none;}
+.map_indicator.checking { background-image: image-url("loading.gif"); }
+.map_indicator.valid { background-image: image-url("correct_icon.gif"); }
+.map_indicator.invalid { background-image: image-url("wrong_icon.gif"); }
