@@ -1,7 +1,7 @@
 /*
  * Metadata - jQuery plugin for parsing metadata from elements
  *
- * Copyright (c) 2006 John Resig, Yehuda Katz, J�örn Zaefferer, Paul McLanahan
+ * Copyright (c) 2006 John Resig, Yehuda Katz, J�?rn Zaefferer, Paul McLanahan
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -10,7 +10,6 @@
  * Revision: $Id: jquery.metadata.js 3640 2007-10-11 18:34:38Z pmclanahan $
  *
  */
-
 /**
  * Sets the type of metadata to use. Metadata is encoded in JSON, and each property
  * in the JSON will become a property of the element itself.
@@ -59,91 +58,4 @@
  * @type undefined
  * @see metadata()
  */
-
-
-(function($) {
-
-$.extend({
-  metadata : {
-    defaults : {
-      type: 'class',
-      name: 'metadata',
-      cre: /({.*})/,
-      single: 'metadata'
-    },
-    setType: function( type, name ){
-      this.defaults.type = type;
-      this.defaults.name = name;
-    },
-    get: function( elem, opts ){
-      var settings = $.extend({},this.defaults,opts);
-      // check for empty string in single property
-      if ( !settings.single.length ) settings.single = 'metadata';
-      
-      var data = $.data(elem, settings.single);
-      // returned cached data if it already exists
-      if ( data ) return data;
-      
-      data = "{}";
-      
-      var getData = function(data) {
-        if(typeof data != "string") return data;
-        
-        if( data.indexOf('{') < 0 ) {
-          data = eval("(" + data + ")");
-        }
-      }
-      
-      var getObject = function(data) {
-        if(typeof data != "string") return data;
-        
-        data = eval("(" + data + ")");
-        return data;
-      }
-      
-      if ( settings.type == "html5" ) {
-        var object = {};
-        $( elem.attributes ).each(function() {
-          var name = this.nodeName;
-          if(name.match(/^data-/)) name = name.replace(/^data-/, '');
-          else return true;
-          object[name] = getObject(this.nodeValue);
-        });
-      } else {
-        if ( settings.type == "class" ) {
-          var m = settings.cre.exec( elem.className );
-          if ( m )
-            data = m[1];
-        } else if ( settings.type == "elem" ) {
-          if( !elem.getElementsByTagName ) return;
-          var e = elem.getElementsByTagName(settings.name);
-          if ( e.length )
-            data = $.trim(e[0].innerHTML);
-        } else if ( elem.getAttribute != undefined ) {
-          var attr = elem.getAttribute( settings.name );
-          if ( attr )
-            data = attr;
-        }
-        object = getObject(data.indexOf("{") < 0 ? "{" + data + "}" : data);
-      }
-      
-      $.data( elem, settings.single, object );
-      return object;
-    }
-  }
-});
-
-/**
- * Returns the metadata object for the first member of the jQuery object.
- *
- * @name metadata
- * @descr Returns element's metadata object
- * @param Object opts An object contianing settings to override the defaults
- * @type jQuery
- * @cat Plugins/Metadata
- */
-$.fn.metadata = function( opts ){
-  return $.metadata.get( this[0], opts );
-};
-
-})(jQuery);
+(function($){$.extend({metadata:{defaults:{type:"class",name:"metadata",cre:/({.*})/,single:"metadata"},setType:function(a,b){this.defaults.type=a,this.defaults.name=b},get:function(elem,opts){var settings=$.extend({},this.defaults,opts);settings.single.length||(settings.single="metadata");var data=$.data(elem,settings.single);if(data)return data;data="{}";var getData=function(data){if(typeof data!="string")return data;data.indexOf("{")<0&&(data=eval("("+data+")"))},getObject=function(data){return typeof data!="string"?data:(data=eval("("+data+")"),data)};if(settings.type=="html5"){var object={};$(elem.attributes).each(function(){var a=this.nodeName;if(a.match(/^data-/))a=a.replace(/^data-/,"");else return!0;object[a]=getObject(this.nodeValue)})}else{if(settings.type=="class"){var m=settings.cre.exec(elem.className);m&&(data=m[1])}else if(settings.type=="elem"){if(!elem.getElementsByTagName)return;var e=elem.getElementsByTagName(settings.name);e.length&&(data=$.trim(e[0].innerHTML))}else if(elem.getAttribute!=undefined){var attr=elem.getAttribute(settings.name);attr&&(data=attr)}object=getObject(data.indexOf("{")<0?"{"+data+"}":data)}return $.data(elem,settings.single,object),object}}}),$.fn.metadata=function(a){return $.metadata.get(this[0],a)}})(jQuery)

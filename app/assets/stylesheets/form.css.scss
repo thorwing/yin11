@@ -27,16 +27,16 @@ label.severity_image {
 }
 
 label.severity_image.severity_0 {
-    background-image:url("/images/severity_0_small.png");
+    background-image: image-url('severity_0_small.png');
 }
 label.severity_image.severity_1 {
-    background-image:url("/images/severity_1_small.png");
+    background-image: image-url('severity_1_small.png');
 }
 label.severity_image.severity_2 {
-    background-image:url("/images/severity_2_small.png");
+    background-image: image-url('severity_2_small.png');
 }
 label.severity_image.severity_3 {
-    background-image:url("/images/severity_3_small.png");
+    background-image: image-url('severity_3_small.png');
 }
 
 ul.token-input-list-facebook
@@ -53,11 +53,11 @@ div.token-input-dropdown-facebook
 */
 
 .toggle.on{
-    background: url("/images/correct_icon.gif") no-repeat;
+    background: image-url('correct_icon.gif') no-repeat;
 }
 
 .toggle.off{
-    background: url("/images/wrong_icon.gif") no-repeat;
+    background: image-url('wrong_icon.gif') no-repeat;
 }
 
 /*
