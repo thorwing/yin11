@@ -81,4 +81,4 @@ gem "spreadsheet"
 #end
 
 gem 'simplecov', :group => :test
-gem "nifty-generators", :group => :development
+#gem "nifty-generators", :group => :development
