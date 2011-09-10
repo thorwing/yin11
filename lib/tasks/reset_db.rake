@@ -5,6 +5,7 @@ namespace :yin11 do
   task :reset => :environment do
     Rake::Task['db:drop'].invoke
     Rake::Task['db:seed'].invoke
+    Rake::Task['db:mongoid:create_indexes'].invoke
     puts "The database has been reset."
   end
 end
