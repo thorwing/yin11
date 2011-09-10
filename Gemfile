@@ -39,19 +39,19 @@ gem "rake", "~> 0.8.7"
 gem "mongoid", "~> 2.0.2"
 gem "bson_ext", "~> 1.3"
 
-#gem "bcrypt-ruby", :require => "bcrypt"
-#
-#gem "mongoid-ancestry"
-#
-##gem "tiny_mce"
-##gem 'ckeditor-rails'
-#
-##no such file to load -- carrierwave/storage/grid_fs issue
-#gem 'carrierwave', '0.5.6'
-#
-#gem 'kaminari'
-#
-##factory_girl is also used for db seeds
+gem "bcrypt-ruby", :require => "bcrypt"
+
+gem "mongoid-ancestry"
+
+#gem "tiny_mce"
+#gem 'ckeditor-rails'
+
+#no such file to load -- carrierwave/storage/grid_fs issue
+gem 'carrierwave', '0.5.6'
+
+gem 'kaminari'
+
+#factory_girl is also used for db seeds
 #gem 'factory_girl_rails'
 #
 #gem "geocoder"
