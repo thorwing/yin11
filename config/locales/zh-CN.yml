@@ -1,7 +1,7 @@
 zh-CN:
   site:
     name: 银筷子
-    saying: 盘古开天辟地 Alpha
+    saying: 盘古内测版
     description: 关注 食品 食物 安全
 
   symbols:
@@ -96,7 +96,7 @@ zh-CN:
 
 
   footer:
-    general: "银筷子是一个专注于食物安全的网站。我们为您收集最新最全的食物安全新闻。通过网页间的互动，让您掌握身边发生的一切事物安全事件。"
+    general: "专注食事"
     links: 友情链接
 
   roles:
@@ -351,6 +351,9 @@ zh-CN:
 
   articles:
     articles: 所有文章
+    more_news: >>更多新闻
+    hot_news: 热点新闻
+    topics: 专题
     new: +文章
     recommended_articles: 推荐文章
     source: 来源
@@ -362,6 +365,7 @@ zh-CN:
     source_name: 媒体名称
     source_site: 网站
     source_url: 链接
+    default_source_name: 银筷子原创
 
   tips:
     all_tips: 所有锦囊

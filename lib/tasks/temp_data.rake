@@ -37,7 +37,7 @@ namespace :yin11 do
       article = Article.find_or_initialize_by(title: title) do |a|
         a.reported_on = date
         #TODO
-        a.type = "exposure"
+        a.type = "news"
         a.enabled = false
         a.region_ids = [region.id] if region
 

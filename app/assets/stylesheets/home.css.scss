@@ -16,7 +16,7 @@
 	float:left;
 }
 
-#articles_frame {
+#news_frame {
     float:left;
     width:350px;
     height:250px;
@@ -24,11 +24,19 @@
     line-height: 20px;
 }
 
-#search_frame {
+#news_frame h3 {
+    text-align: center;
+}
+
+#topics_frame {
 	float:left;
 	width:250px;
 	margin-left:10px;
      margin-top: 10px;
+}
+
+#topics_frame h3 {
+    text-align: center;
 }
 
 ul#actions_menu {

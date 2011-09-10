@@ -1,6 +1,6 @@
-require 'simplecov'
-SimpleCov.start 'rails'
-SimpleCov.use_merging true
+#require 'simplecov'
+#SimpleCov.start 'rails'
+#SimpleCov.use_merging true
 
 # figure out where we are being loaded from
 if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?

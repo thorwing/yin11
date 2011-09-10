@@ -16,7 +16,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def new
     @article = Article.new
-    @article.build_source
+    @article.build_source(:name => t("articles.default_source_name"))
 
     respond_to do |format|
       format.html # new.html.erb

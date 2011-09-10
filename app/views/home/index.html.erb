@@ -2,24 +2,27 @@
 
 <div id="news_block" class="block round">
     <div class="image_frame">
-        <%= render "slide", :articles => @articles %>
+        <%= render "slide", :articles => @headlines %>
     </div>
-    <div id="articles_frame">
+    <div id="news_frame">
         <ul>
-            <% @articles.each do |article| %>
+            <% @headlines.each do |article| %>
                 <li><h4><%= link_to article.title, article %></h4></li>
             <% end %>
         </ul>
     </div>
-    <div id="search_frame">
-        <h2><%= t("home.foods_buy_question") %></h2>
-        <p class="trivial"><%= t("home.foods_buy_question_description") %></p>
-        <%= form_tag '/search', :method => :get do %>
-                <%= text_field_tag :query, @default_query, :class => "clear_default not_cleared" %>
-                <%= submit_tag t("general.search"), :class => "button" %><br/>
-        <% end %>
+    <div id="topics_frame">
+        <h3><%= t("articles.hot_news") %></h3>
+        <ul>
+            <% @hot_news.each do |article| %>
+                <li><h4><%= link_to article.title, article %></h4></li>
+            <% end %>
+        </ul>
+        <%= link_to t("articles.more_news"), articles_path %>
     </div>
 </div>
+
+ <div><small><%= t("site.saying") %></small></div>
 
 <div>
   <b class="trivial"><%= t("home.current_city") %></b><%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("home.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)

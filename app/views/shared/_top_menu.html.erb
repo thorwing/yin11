@@ -2,7 +2,12 @@
     <%= link_to image_tag("yin11_logo.png", :border => 0, :width => 211, :height => 76), root_path if false %>
     <h1><%= t("site.name") %></h1>
     <h2><%= t("site.description") %></h2>
-    <small><%= t("site.saying") %></small>
+    <div id="search_frame">
+        <%= form_tag '/search', :method => :get do %>
+            <%= text_field_tag :query, @default_query, :class => "clear_default not_cleared" %>
+            <%= submit_tag t("general.search"), :class => "button" %>
+        <% end %>
+    </div>
 </div>
 
 <ul id="top_menu">

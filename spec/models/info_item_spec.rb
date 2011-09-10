@@ -47,7 +47,6 @@ describe InfoItem do
              @raw_article = Factory(:article)
              @tip_article = Factory(:article, :type => "tip")
              @news_article = Factory(:article, :type => "news")
-             @exposure_article = Factory(:article, :type => "exposure")
              @tip = Factory(:tip) }
       it "should be correct" do
         @positive_review.positive = true
@@ -55,7 +54,6 @@ describe InfoItem do
         @raw_article.positive = false
         @tip_article.positive = true
         @news_article.positive = false
-        @exposure_article.positive = false
         @tip.positive = true
       end
   end

@@ -74,16 +74,16 @@ Feature: admin articles
 
   Scenario: Admin can recommend/unrecommend articles by single click
     Given the following articles exists:
-    | title      | content                |
-    | 很棒的文章 | 这是一篇很棒的文章     |
+    | title      | content                | type |
+    | 很棒的文章 | 这是一篇很棒的文章     | news |
     When I log in as "Ray Admin"
     And I go to the home page
     Then I should see "很棒的文章"
-    And I should not see "很棒的文章" within "#articles_frame"
+    And I should not see "很棒的文章" within "#news_frame"
     When I go to the admin_articles page
     And I follow "toggle_link" within ".toggle.off"
     And I go to the home page
-    Then I should see "很棒的文章" within "#articles_frame"
+    Then I should see "很棒的文章" within "#news_frame"
 
 
 #  Scenario: Editor can upload images for an article, and one of the images will be displayed as thumbnail.
