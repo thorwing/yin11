@@ -39,12 +39,15 @@ gem "rake", "~> 0.8.7"
 gem "mongoid", "~> 2.0.2"
 gem "bson_ext", "~> 1.3"
 
+#gem "bcrypt-ruby", :require => "bcrypt"
 gem "bcrypt-ruby"
+
+gem "nokogiri"
 
 gem "mongoid-ancestry"
 
 #gem "tiny_mce"
-gem 'ckeditor-rails'
+#gem 'ckeditor-rails'
 
 #no such file to load -- carrierwave/storage/grid_fs issue
 gem 'carrierwave', '0.5.6'
