@@ -19,12 +19,12 @@ function update_map(is_complete) {
                     indicator.addClass("valid");
                 }
                 if(is_complete){
-                    Gmaps4Rails.replaceMarkers([{"longitude": data[1], "latitude": data[0] }]);
-                    Gmaps4Rails.map.setZoom(15);
+                    Gmaps.map.replaceMarkers([{"longitude": data[1], "latitude": data[0] }]);
+                    Gmaps.map.map.setZoom(15);
                 }
                 else{
-                    Gmaps4Rails.map.setCenter(Gmaps4Rails.createLatLng(data[0], data[1]));
-                    Gmaps4Rails.map.setZoom(10);
+                    Gmaps.map.setCenter(Gmaps.map.createLatLng(data[0], data[1]));
+                    Gmaps.map.map.setZoom(10);
                 }
             }
             else {
@@ -36,7 +36,7 @@ function update_map(is_complete) {
     }
 }
 
-Gmaps4Rails.geolocationFailure= function(browser_support) {
+Gmaps4Rails.ZgeolocationFailure= function(browser_support) {
   if (browser_support === true)
     { //User refused geolocation
     }
@@ -52,11 +52,12 @@ $(function(){
     });
 });
 
-Gmaps4Rails.callback = function() {
-    $(".map_street").change(function() {
-        update_map(true);
-    });
-};
+//TODO seems not work anymore?
+//Gmaps4Rails.callback = function() {
+//    $(".map_street").change(function() {
+//        update_map(true);
+//    });
+//};
 
 Gmaps4Rails.infobox = function(boxText) {
   return {

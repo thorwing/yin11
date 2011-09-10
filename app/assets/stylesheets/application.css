@@ -8,7 +8,7 @@
 *= require form
 *= require token-input-facebook
 *= require facebox
-*= require slimbox2
+*= require slimbox
 *= require kandytabs
 *= require uploadify
 *= require jquery.jgrowl

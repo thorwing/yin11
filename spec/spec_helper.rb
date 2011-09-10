@@ -52,6 +52,10 @@ RSpec.configure do |config|
 
   config.before :each do
     Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
+    Location.create_indexes
+    Group.create_indexes
+    InfoItem.create_indexes
+    Vendor.create_indexes
     reset_email
     generate_testing_data
   end

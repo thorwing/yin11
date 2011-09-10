@@ -10,6 +10,8 @@ correct_icon.gif: correct_icon-05d1ebe849acd03306e1a9ceaf867401.gif
 default_article.jpg: default_article-dd8408d3c8c0792c43d7dac460d858b2.jpg
 default_user.png: default_user-5db0eb56fc7f6b53f429561680866f3e.png
 delete.png: delete-37cfb71ca8952af51473f7165e85916c.png
+facebox/closelabel.png: facebox/closelabel-37cfb71ca8952af51473f7165e85916c.png
+facebox/loading.gif: facebox/loading-1549094811b4e8ee23a577b019972d33.gif
 good_thumb.png: good_thumb-3ffb44cd5ec96eb9e2cc6c35c104246c.png
 group_icon.png: group_icon-df6bcfa3f7bc07ec54a13c16242a38d9.png
 jquerybubblepopup-theme/azure/bottom-left.png: jquerybubblepopup-theme/azure/bottom-left-df8a625febdf7cac459b0b5f3dcfd37f.png
@@ -38,7 +40,7 @@ jquerybubblepopup-theme/azure/top-middle.png: jquerybubblepopup-theme/azure/top-
 jquerybubblepopup-theme/azure/top-right.png: jquerybubblepopup-theme/azure/top-right-8b4a2c027a6364a54b72251d302fc80b.png
 loading.gif: loading-9231d8b2cb528d99831f64cc19a8f3c5.gif
 marker.png: marker-082e063698734bb2e004ac0db381ed28.png
-page_loading.gif: page_loading-85a0f0f244f18aede5157f456a22e72a.gif
+pageless/loading.gif: pageless/loading-85a0f0f244f18aede5157f456a22e72a.gif
 review_icon.png: review_icon-359c8cc42cff9067539b328b0c582423.png
 severity_0_small.png: severity_0_small-3f1125ba73020473d15e8ec71d837f3e.png
 severity_1_small.png: severity_1_small-aa03ebcff3dfa17aa36eb22926d52134.png
@@ -72,7 +74,6 @@ gmaps4rails/gmaps4rails.openlayers.js: gmaps4rails/gmaps4rails-0525194506f03f43c
 jquery.bubblepopup.v2.3.1.min.js: jquery-dca012830a57e144be760365bf94dd67.bubblepopup.v2.3.1.min.js
 jquery.jgrowl.js: jquery-165b9ba60f70c80e74ae0bc9b300e96d.jgrowl.js
 jquery.metadata.js: jquery-7889064893472eacdcbd0cbc55681ece.metadata.js
-jquery.pageless.js: jquery-8b9f2e68cab3e00acf43ca229d30c067.pageless.js
 jquery.pageless.min.js: jquery-3f563e016aaebcfa1e3087bcf82b9142.pageless.min.js
 jquery.tokeninput.js: jquery-bcaba0fc778a3bd024e9ce831f9aff77.tokeninput.js
 jquery_validate/jquery.validate.min.js: jquery_validate/jquery-c8887d689d7dad397a856a612241f369.validate.min.js
@@ -504,7 +505,7 @@ ckeditor/_source/skins/v2/images/noimage.png: ckeditor/_source/skins/v2/images/n
 ckeditor/_source/skins/v2/images/sprites.png: ckeditor/_source/skins/v2/images/sprites-833559cf1fa066efc71c86e91db1a703.png
 ckeditor/_source/skins/v2/images/sprites_ie6.png: ckeditor/_source/skins/v2/images/sprites_ie6-1ae61983823883db241061d99aeab793.png
 ckeditor/_source/skins/v2/images/toolbar_start.gif: ckeditor/_source/skins/v2/images/toolbar_start-ce1b89f4e0034e06caba6a3edb5cf156.gif
-jquery-ui.min.js: jquery-ui-2d636677553e53a3e7f6014c5eb3c7ab.min.js
-jquery.min.js: jquery-11f94fc8608cd07ab22e46d3cf753d46.min.js
-application.js: application-e1b97deab4a460a4efe4d148019ac756.js
-application.css: application-a642e70f67ea630dd7eceb38f926e583.css
+jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
+jquery.min.js: jquery-6e77b56fb21f9675304f6f6e8aedace5.min.js
+application.js: application-5fe332096a74e18df26aedb65c6e5c1d.js
+application.css: application-60ea1671cb0d56cb75016f5fad69464d.css

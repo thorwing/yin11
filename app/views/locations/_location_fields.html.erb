@@ -11,6 +11,8 @@
 
 <div class="block">
     <div class="image_frame">
-        <%= gmaps("map_options" => { "center_latitude" => true, "center_on_user" => true, "auto_adjust" => true}) %>
+        <% enable_css = false
+            enable_js  = true %>
+        <%= gmaps({"map_options" => { "center_latitude" => true, "center_on_user" => true, "auto_adjust" => true}}, enable_css, enable_js) %>
     </div>
 </div>

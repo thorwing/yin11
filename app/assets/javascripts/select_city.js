@@ -21,6 +21,8 @@ function reset_city(province_id) {
     });
 }
 
-$('#select_province').change(function() {
-    reset_city($(this).val());
+$(function(){
+    $('#select_province').change(function() {
+        reset_city($(this).val());
+    });
 });

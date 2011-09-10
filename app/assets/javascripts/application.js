@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
-//= require_tree .
 //= require ckeditor
 //= require swfobject
 //= require jquery.uploadify.v2.1.4.min
@@ -10,6 +9,7 @@
 //= require gmaps4rails/mapquest.js
 //= require gmaps4rails/openlayers.js
 //= require gmaps4rails/all_apis.js
+//= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
