@@ -80,5 +80,5 @@ gem "spreadsheet"
 #    gem "escape_utils"
 #end
 
-gem 'simplecov', '>= 0.4.0', :require => false, :group => :test
+gem 'simplecov', :group => :test
 gem "nifty-generators", :group => :development
