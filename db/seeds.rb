@@ -13,12 +13,12 @@ require "source"
 
 #  FoodsGenerator::generate_foods
 
-  File.open(File.join(RAILS_ROOT, 'app/seeds/provinces.txt')).each_line { |p|
+  File.open(File.join(Rails.root, 'app/seeds/provinces.txt')).each_line { |p|
     code, name, short_name, main_city_id, type = p.split(" ")
     Province.create( :code => code, :name => name, :short_name => short_name, :main_city_id => main_city_id, :type => type)
   }
 
-  File.open(File.join(RAILS_ROOT, 'app/seeds/cities.txt')).each_line { |c|
+  File.open(File.join(Rails.root, 'app/seeds/cities.txt')).each_line { |c|
     code, province_code, name, eng_name, postcode, lat, log = c.split(" ").map {|e| e.strip}
     province = Province.first(:conditions => {:code => province_code } )
     city = province.cities.build(:code => code, :name => name, :eng_name => eng_name, :postcode => postcode, :latitude => lat, :longitude => log)

@@ -17,7 +17,7 @@ module Locational
 
       attr_accessible :city, :street, :coordinates
 
-      after_validation :geocode, :if => Proc.new {|location| location.new_record? || location.city_changed? || location.street_changed? }
+      after_validation :geocode, :if => Proc.new {|location| (location.new_record? || location.city_changed? || location.street_changed?) && location.street.present? }
 
       include InstanceMethods
     end
