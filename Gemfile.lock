@@ -215,9 +215,6 @@ GEM
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
-PLATFORMS
-  x86-mingw32
-
 DEPENDENCIES
   bcrypt-ruby
   bson_ext (~> 1.3)
