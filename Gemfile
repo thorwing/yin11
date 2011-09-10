@@ -39,10 +39,10 @@ gem "rake", "~> 0.8.7"
 gem "mongoid", "~> 2.0.2"
 gem "bson_ext", "~> 1.3"
 
-gem "bcrypt-ruby", :require => "bcrypt"
-#gem "bcrypt-ruby"
+#gem "bcrypt-ruby", :require => "bcrypt"
+gem "bcrypt-ruby"
 
-#gem "nokogiri"
+gem "nokogiri"
 
 gem "mongoid-ancestry"
 
