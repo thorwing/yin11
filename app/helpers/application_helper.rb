@@ -1,5 +1,9 @@
 #encoding utf-8
 module ApplicationHelper
+  def is_user_self(user)
+    current_user && current_user.id == user.id
+  end
+
   def truncate_content(text, length)
     text ||= ""
     text = strip_tags(text)

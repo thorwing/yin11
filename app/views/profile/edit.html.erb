@@ -1,50 +1,21 @@
-<% title t("profile.edit_profile") %>
-<%= form_for current_user.profile, :url => profile_path(current_user), :as => :profile do |f| %>
-    <div class="block round">
-        <h3><%= t("profile.home_page") %></h3>
-        <table>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
-          <tr>
-            <th><%= t("profile.show_watching_tags_panel") %></th>
-            <th><%= render "toggle_row", :field => :show_watching_tags_panel %></th>
-          </tr>
-          <tr>
-            <th><%= t("profile.show_watching_locations_panel") %></th>
-            <th><%= render "toggle_row", :field => :show_watching_locations_panel %></th>
-          </tr>
-          <tr>
-            <th><%= t("profile.show_collected_tips_panel") %></th>
-            <th><%= render "toggle_row", :field => :show_collected_tips_panel %></th>
-          </tr>
-          <tr>
-            <th><%= t("profile.show_joined_groups_panel") %></th>
-            <th><%= render "toggle_row", :field => :show_joined_groups_panel %></th>
-          </tr>
-        </table>
-    </div>
-
-    <div class="block round">
-        <h3><%= t("profile.interested_places") %></h3>
-        <%= render :partial => "watched_location", :collection => current_user.profile.watched_locations %>
-        <p><b><%= f.label :watched_distance, t_with_colon("profile.watched_distance") %></b>
-        <%= f.select :watched_distance, options_for_select((PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE).map{|e| [e, e]}, f.object.watched_distance) %>
-        <%= t("profile.wathced_distance_unit") %></p>
-    </div>
-
-    <div class="block round">
-        <h3><%= t("profile.concern_settings") %></h3>
-        <p>
-            <%= t("profile.receive_mails") %>
-            <%= render "toggle_row", :field => :receive_mails %>
-        </p>
-        <p>
-            <b><%= t_with_colon("profile.concern_days") %></b>
-            <%= f.select :concern_days, options_for_select((PROFILE_MIN_CONCERN_DAYS..PROFILE_MAX_CONCERN_DAYS).map{|e| [e, e]}, f.object.concern_days) %>
-        </p>
-    </div>
-
-    <%= f.submit t("general.submit"), :class => "button" %>
-<% end %>
+<dl class="tab">
+    <dt><span><%= t("users.basic_info") %></span></dt>
+    <dd>
+        <div class="block round">
+            <%= form_for current_user, :html => {:multipart => true} do |f| %>
+                <div class="block round">
+                    <%= render "shared/text_field", :f => f, :field => :login_name, :label => t("user_basic.login_name") %>
+                    <p>
+                      <b><%= t("user_basic.avatar") %></b><br/>
+                      <%= image_tag current_user.get_avatar, :class => "avatar" %><br/>
+                      <%= t("user_basic.change_avator") %><br/>
+                      <%= f.file_field :avatar %> <br/>
+                    </P>
+                </div>
+                <div class="actions">
+                    <%= f.submit t("general.submit"), :class => "button" %>
+                </div>
+            <% end %>
+        </div>
+    </dd>
+</dl>

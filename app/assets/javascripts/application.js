@@ -148,12 +148,12 @@ $(function () {
     });
 });
 
-//$(function() {
-//    $("dl.tab").KandyTabs({
-//        classes: "kandyTabs",
-//        trigger:"click"
-//    });
-//});
+$(function() {
+    $("dl.tab").KandyTabs({
+        classes: "kandyTabs",
+        trigger:"click"
+    });
+});
 
 
 $(function() {

@@ -57,7 +57,7 @@ class User
               :uniqueness => true,
               :email_format => true
   validates_presence_of :login_name
-  validates_length_of :login_name, :maximum => 20
+  validates_length_of :login_name, :maximum => 15
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 6, :on => :create

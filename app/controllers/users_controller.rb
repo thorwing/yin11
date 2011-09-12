@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter(:only => [:edit, :update, :block, :unlock]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:update, :block, :unlock]) { |c| c.require_permission :normal_user }
 
   # GET /users/new
   # GET /users/new.xml
@@ -34,9 +34,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
 
-  end
 
   def update
     respond_to do |format|

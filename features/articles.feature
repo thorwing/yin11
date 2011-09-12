@@ -18,7 +18,7 @@ Feature: articles
     And I follow "+文章"
 #    Then "news" should be selected for "article_type"
     And I select "tip" from "article_type"
-    And I select "news" from "article_type"
+    And I select "topic" from "article_type"
 
   Scenario: The default source of an article is Yin11
     When I log in as "Castle Editor"
@@ -30,6 +30,7 @@ Feature: articles
     And I follow "+文章"
     And I fill in "article_title" with "食物相克不科学"
     And I fill in "article_content" with "这是不科学的说法"
+    And I select "topic" from "article_type"
     And I press "完成"
     When I go to the home page
     Then I should see "食物相克不科学"

@@ -10,7 +10,6 @@
     line-height:0px;
 }
 
-
 /*
 	Top-Menu-Styles
 */
@@ -27,7 +26,7 @@
     background-color:Transparent;}
 /* sub-menus*/
 #top_menu ul { padding:0px; margin:0px; display:block; display:inline;}
-#top_menu li ul { position:absolute; left:-10px; top:0px; margin-top:45px; width:150px; line-height:16px;
+#top_menu li ul { position:absolute; left:-10px; top:0px; margin-top:45px; width:100px; line-height:16px;
     z-index: 2000;
     background-color:#172322; color:#0395CC; /* for IE */ display:none; }
 #top_menu li:hover ul { display:block;}
@@ -46,10 +45,10 @@
 
 /* corners*/
 #top_menu .corner_inset_left { position:absolute; top:0px; left:-12px;}
-#top_menu .corner_inset_right { position:absolute; top:0px; left:150px;}
+#top_menu .corner_inset_right { position:absolute; top:0px; left:100px;}
 #top_menu .last { background:transparent none repeat scroll 0% 0%; margin:0px; padding:0px;
     border:none; position:relative; border:none; height:0px;}
 #top_menu .corner_left { position:absolute; left:0px; top:0px;}
-#top_menu .corner_right { position:absolute; left:132px; top:0px;}
-#top_menu .middle { position:absolute; left:18px; height: 20px; width: 115px; top:0px;}
+#top_menu .corner_right { position:absolute; left:82px; top:0px;}
+#top_menu .middle { position:absolute; left:18px; height: 20px; width: 65px; top:0px;}
 

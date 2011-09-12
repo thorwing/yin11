@@ -4,10 +4,24 @@ Feature:
 
   Background:
     Given There are minimum seeds data
-    And I log in as "David User"
+
+  @focus
+  Scenario: User can see his own personal page, when others view that page, it will display the brief info
+    When I log in as "David User"
+    And I follow "David" within "#user_panel"
+    Then I should be on David's user page
+    And I should see "基本信息"
+    And I should see "偏好设定"
     And I post a simple review without vendor
+    When I log out
+    And I log in as "Kate Tester"
+    And I follow "David"
+    Then I should be on David's user page
+    And I should not see "基本信息"
 
   Scenario: User's name will be displayed in the item, and others can click the link to view his profile
+    When I log in as "David User"
+    And I post a simple review without vendor
     When I log out
     And I log in as "Kate Tester"
     And I go to the home page
@@ -22,6 +36,8 @@ Feature:
     And I should not see "解除对该用户的阻止"
 
   Scenario: User can block and unlock another group member
+    When I log in as "David User"
+    And I post a simple review without vendor
     When I log out
     And I log in as "Kate Tester"
     And I go to the home page
