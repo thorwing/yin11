@@ -11,17 +11,17 @@ Feature: smoke tests for Tips
     When I log in as "David User"
     And I go to the tips page
     Then I should see "所有锦囊"
-    And I press "搜索"
+    And I press "搜索" within "#content_area"
 
+  @focus
   Scenario Outline: User can search for tip by using its title or keywords
     Given There is a simple tip
 
     When I go to the tips page
     Then I should see "西瓜判熟技巧"
 
-    When I search tips for "<search>"
-    Then I should be on the tips page
-    Then I should see "<search>"
+    When I search for "<search>"
+    Then I should see "<search>" within "div.two_columns_container"
 
     Examples:
     | search        |
@@ -40,6 +40,7 @@ Feature: smoke tests for Tips
     When I go to the home page
     Then I should see "瘦肉精猪肉目测" within "#control_panel"
 
+  @focus
   Scenario: User can edit others tip, and the change will be stored in revision
     When I log in as "David User"
     And I post a simple tip
@@ -53,7 +54,7 @@ Feature: smoke tests for Tips
     And I fill in "tip_content" with "随便改改,恶作剧，字数补丁。"
     And I press "完成"
 
-    When I search tips for "辨别西瓜是否含有催熟剂"
+    When I search for "辨别西瓜是否含有催熟剂"
     And I follow "辨别西瓜是否含有催熟剂"
     Then I should see "随便改改,恶作剧，字数补丁。"
     And I should not see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"

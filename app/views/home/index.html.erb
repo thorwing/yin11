@@ -1,33 +1,29 @@
 <% home_page %>
 
-<div id="news_block" class="block round">
-    <div class="image_frame">
-        <%= render "slide", :articles => @headlines %>
-    </div>
-    <div id="news_frame">
-        <ul>
-            <% @headlines.each do |article| %>
-                <li><h4><%= link_to article.title, article %></h4></li>
-            <% end %>
-        </ul>
-    </div>
-    <div id="topics_frame">
-        <h3><%= t("articles.hot_news") %></h3>
-        <ul>
-            <% @hot_news.each do |article| %>
-                <li><h4><%= link_to article.title, article %></h4></li>
-            <% end %>
-        </ul>
-        <%= link_to t("articles.more_news"), articles_path %>
-    </div>
-</div>
+<div class="clear"></div>
 
 <div>
   <b class="trivial"><%= t("home.current_city") %></b><%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("home.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)
 </div>
 
 <div class="two_columns_container" >
-    <div id="pagination" class="left_column">
+    <div id="info_panel" class="left_column">
+        <div id="news_block" class="block round">
+            <div class="image_frame">
+                <small><%= t("articles.headlines") %></small>
+                <%= render "slider", :articles => @headlines %>
+            </div>
+            <div id="news_frame">
+                <h3><%= t("articles.hot_news") %></h3>
+                <ul>
+                    <% @hot_news.each do |article| %>
+                       <li><h4><%= link_to article.title, article %></h4></li>
+                    <% end %>
+                </ul>
+                <%= link_to t("articles.more_news"), articles_path, :class => "more_news_link" %>
+            </div>
+        </div>
+
         <% @items.each do |item| %>
             <%= render "info_items/info_item", :item => item %>
         <% end %>

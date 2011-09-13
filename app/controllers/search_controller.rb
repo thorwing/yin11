@@ -77,6 +77,7 @@ class SearchController < ApplicationController
     @bad_items = @query_criteria.of_types([Review.name, Article.name]).bad.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
     @good_items = @query_criteria.of_types([Review.name, Article.name]).good.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
     @tips = @query_criteria.of_types([Tip.name]).desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+
     @bad_region_names = @bad_items.inject([]) {|memo, e| memo << e.city }.compact.uniq
   end
 

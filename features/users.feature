@@ -5,11 +5,10 @@ Feature:
   Background:
     Given There are minimum seeds data
 
-  @focus
   Scenario: User can see his own personal page, when others view that page, it will display the brief info
     When I log in as "David User"
     And I follow "David" within "#user_panel"
-    Then I should be on David's user page
+    Then I should be on David's profile page
     And I should see "基本信息"
     And I should see "偏好设定"
     And I post a simple review without vendor
@@ -48,8 +47,9 @@ Feature:
     And I go to the home page
     Then I should not see "买到烂西瓜"
 
-
   Scenario: User can go to profile page and unlock another user
+    When I log in as "David User"
+    And I post a simple review without vendor
     When I log in as "Kate Tester"
     And I follow "David"
     And I follow "阻止该用户"

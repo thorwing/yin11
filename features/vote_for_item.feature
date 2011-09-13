@@ -17,7 +17,7 @@ Feature: User can vote for an item
   Scenario: User can vote for a review.
     When I log in as "Kate Tester"
     And I go to the home page
-    And I follow "+测评" within "#actions_panel"
+    And I follow "+测评" within "#control_panel"
     And I fill in "review_title" with "买到烂西瓜"
     And I press "完成"
 

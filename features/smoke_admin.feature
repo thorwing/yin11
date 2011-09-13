@@ -59,4 +59,4 @@ Feature: smoke tests for Administration
   Scenario: Admin can't edit himself's role
     When I log in as "Ray Admin"
     And I go to the admin_users page
-    Then I should not see "Ray"
+    Then I should not see "Ray" within "#content_area"

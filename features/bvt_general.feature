@@ -4,10 +4,9 @@ Feature: general usage
   Background:
     Given There are minimum seeds data
 
-  Scenario: Guest can Admin can change other user's rolevisit the entry page
+  Scenario: Guest can visit the entry page
     When I go to the home page
-    Then I should see "您的餐桌安全吗？"
-    And I should see "登入"
+    And I should be on the home page
 
   Scenario: User can see the control panel on home page
     When I log in as "David User"

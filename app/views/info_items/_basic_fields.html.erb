@@ -42,5 +42,5 @@
 
   <div class="field">
     <b><%= f.label :content, t("reviews.content") %><%= mark_required(item, :content) %><%= mark_required_length(item, :content) %></b><br/>
-    <%= f.text_area :content, :class => "mceEditor", :maxlength => get_max_length(item, :content) %>
+    <%= f.text_area :content, :class => "rich_editor", :maxlength => get_max_length(item, :content) %>
   </div>

@@ -14,9 +14,9 @@
 *= require jquery.jgrowl
 *= require jquery.bubblepopup.v2.3.1
 *= require thumbnails
-*= require s3Slider
 *= require gmaps4rails
 *= require map
+*= require slider
 
 */
 
@@ -109,6 +109,10 @@ a.tag:hover {
     padding-top: 5px;
     padding-bottom: 5px;
     vertical-align:top;
+}
+
+.clear {
+    clear: both;
 }
 
 /*

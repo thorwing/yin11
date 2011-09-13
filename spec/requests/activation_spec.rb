@@ -27,7 +27,7 @@ describe "Activation" do
   end
 
   describe "inactive user" do
-    it "unactivated user can visit profile page" do
+    it "unactivated user can't' visit profile page" do
       user = User.new(:email => "mailing@yin11.com", :login_name => "mailman", :password => "123456")
       sign_up(user)
       login_as(user)
@@ -35,7 +35,7 @@ describe "Activation" do
         page.should have_content(I18n.t("menu.show_profile"))
         click_link I18n.t("menu.show_profile")
       end
-      page.should have_content(I18n.t("profile.show_profile"))
+      page.should_not have_content(I18n.t("profile.show_profile"))
     end
   end
 

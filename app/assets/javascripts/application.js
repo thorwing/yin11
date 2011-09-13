@@ -14,6 +14,52 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+var theInt = null;
+var $crosslink, $navthumb;
+var curclicked = 0;
+
+theInterval = function(cur){
+        clearInterval(theInt);
+
+        if( typeof cur != 'undefined' )
+                curclicked = cur;
+
+        $crosslink.removeClass("active-thumb");
+        $navthumb.eq(curclicked).parent().addClass("active-thumb");
+                $(".stripNav ul li a").eq(curclicked).trigger('click');
+
+        theInt = setInterval(function(){
+                $crosslink.removeClass("active-thumb");
+                $navthumb.eq(curclicked).parent().addClass("active-thumb");
+                $(".stripNav ul li a").eq(curclicked).trigger('click');
+                curclicked++;
+                if( 6 == curclicked )
+                        curclicked = 0;
+
+        }, 3000);
+};
+
+$(function(){
+
+        $("#main-photo-slider").codaSlider();
+
+        $navthumb = $(".nav-thumb");
+        $crosslink = $(".cross-link");
+
+        $navthumb
+        .click(function() {
+                var $this = $(this);
+                theInterval($this.parent().attr('href').slice(1) - 1);
+                return false;
+        });
+
+        theInterval();
+});
+
+//$(function(){
+//    $("#featured").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
+//});
+
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
@@ -84,7 +130,7 @@ $(function() {
 //        mode : "textareas"
 //    });
      if ($('textarea').length > 0) {
-       var data = $('textarea');
+       var data = $('.rich_editor');
        $.each(data, function(i) {
          CKEDITOR.replace(data[i].id);
        });

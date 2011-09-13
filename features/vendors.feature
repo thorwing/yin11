@@ -10,6 +10,7 @@ Feature: smoke tests for Vendors
     When I go to the vendors page
     Then I should see "农工商超市"
 
+  @focus
   Scenario: User can search for vendors
     Given the following vendors exists:
       | name       | city | street | enabled |
@@ -17,13 +18,13 @@ Feature: smoke tests for Vendors
       | 家乐福超市 | 上海 | 真华路 | false   |
     When I go to the vendors page
     Then I should see "农工商超市"
-    And I fill in "q" with "农工商超市"
+    And I fill in "query" with "农工商超市"
     And I press "搜索"
     Then I should see "农工商超市"
 
     When I go to the vendors page
     Then I should not see "家乐福超市"
-    And I fill in "q" with "家乐福超市"
+    And I fill in "query" with "家乐福超市"
     And I press "搜索"
     And I should not see "家乐福超市"
 
@@ -129,8 +130,8 @@ Feature: smoke tests for Vendors
       | name       | city | street |
       | 农工商超市 | 上海 | 大华路 |
     When I go to the vendors page
-    And I fill in "q" with "农工商超市"
-    And I press "搜索"
+    And I fill in "q" with "农工商超市" within "#content_area"
+    And I press "搜索" within "#content_area"
     And I follow "农工商超市"
     And I follow "报错/纠正"
 

@@ -8,7 +8,6 @@
 <% elsif current_user %>
     <!--for other users-->
     <div>
-        <%= @user.login_name %>
         <% if user_can_be_blocked?(@user) %>
             <%= link_to t("users.block"), block_user_path(@user), :method => :put, :class => "button" %>
         <% elsif user_can_be_unlocked?(@user) %>
