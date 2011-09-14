@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
-//= require ckeditor
+//= require tiny_mce
 //= require swfobject
 //= require jquery.uploadify.v2.1.4.min
 //= require gmaps4rails/bing.js
@@ -123,15 +123,17 @@ $(function() {
 });
 
 $(function() {
-//    tinyMCE.init({
-//        mode : "textareas"
-//    });
-     if ($('textarea').length > 0) {
-       var data = $('.rich_editor');
-       $.each(data, function(i) {
-         CKEDITOR.replace(data[i].id);
-       });
-     }
+    tinyMCE.init({
+        mode : "textareas",
+        theme : "advanced",
+        editor_selector : "rich_editor"
+    });
+//     if ($('textarea').length > 0) {
+//       var data = $('.rich_editor');
+//       $.each(data, function(i) {
+//         CKEDITOR.replace(data[i].id);
+//       });
+//     }
   });
 
 //When Dom is ready:
