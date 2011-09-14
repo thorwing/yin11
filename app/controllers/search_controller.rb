@@ -14,8 +14,8 @@ class SearchController < ApplicationController
         @query_criteria = @query_criteria.from_cities(city_names)
       end
 
-      #search by tags
       #TODO
+      #search by tags
 
       all_tags = CacheManager.all_tags #get_all_tags
       query_tags = @query.split(' ')
