@@ -41,7 +41,7 @@ class InfoItem
     end
   end
 
-  #Relationships
+  #relationships
   embeds_many :comments
   belongs_to :author, :class_name => "User"
   has_many :images
