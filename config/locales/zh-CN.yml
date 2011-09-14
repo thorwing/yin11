@@ -139,7 +139,7 @@ zh-CN:
     password_reset_expired: 密码重置口令已过期
     tip_already_collected: 该锦囊已经在您收藏中
     no_group_specified: 未指定饭桌
-    posted_comment_too_ofen: "为了减轻服务器的压力，每次评论请间隔%{minute}分钟，谢谢您的谅解。"
+    posted_comment_too_ofen: "每次评论请间隔%{seconds}秒，谢谢"
     no_such_profile_or_no_permission: 无此用户，或您的无权访问该页面
     only_author_self: 只有作者才可以执行此操作
 

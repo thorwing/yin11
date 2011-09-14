@@ -69,6 +69,17 @@ Feature: Comments
     And I press "+评论"
     Then I should see "谢谢"
 
+  @javascript
+  Scenario: User will get hint about how many characters left
+    Given the following review exists:
+    | title    |
+    | 西瓜烂了 |
+    When I log in as "David User"
+    When I go to the home page
+    When I follow "西瓜烂了"
+    When I fill in "content" with "很不错"
+    Then I should see "已输入3字符"
+
 # TODO
 #  @pending
 #  @javascript

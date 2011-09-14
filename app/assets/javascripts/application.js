@@ -56,9 +56,6 @@ $(function(){
         theInterval();
 });
 
-//$(function(){
-//    $("#featured").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-//});
 
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
@@ -262,7 +259,6 @@ $(function() {
 });
 
 $(function() {
-
     $('.char_aware').keyup(function() {
         var count = $(this).val().length;
         $('span.char_counter').html('已输入' + count + '字符');
