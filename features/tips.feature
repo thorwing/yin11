@@ -13,7 +13,7 @@ Feature: smoke tests for Tips
     Then I should see "所有锦囊"
     And I press "搜索" within "#content_area"
 
-  @focus
+
   Scenario Outline: User can search for tip by using its title or keywords
     Given There is a simple tip
 
@@ -40,7 +40,7 @@ Feature: smoke tests for Tips
     When I go to the home page
     Then I should see "瘦肉精猪肉目测" within "#control_panel"
 
-  @focus
+
   Scenario: User can edit others tip, and the change will be stored in revision
     When I log in as "David User"
     And I post a simple tip

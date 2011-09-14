@@ -23,3 +23,5 @@ blockquote span.quoted:before {
 	content: '"'; }
 blockquote span.quoted:after {
 	content: '"'; }
+blockquote span.quoted.blocked {
+	text-decoration: line-through; }

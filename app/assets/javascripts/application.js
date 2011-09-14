@@ -177,7 +177,7 @@ $(document).ready(function() {
 
 $(function() {
     $('.reply_comment_link').live('click', function() {
-        $(this).next().toggle();
+        $(this).nextAll('.new_reply_comment').toggle();
         return false;
     });
 });

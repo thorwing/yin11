@@ -35,6 +35,7 @@ Feature: Comments
     Then I should see "很有用的评价"
     Then I should see "谢谢"
 
+
   Scenario: Users can comment on a article
     Given the following article exists:
       | title            | content                            | tags_string |
@@ -51,6 +52,7 @@ Feature: Comments
     And I fill in "content" with "谢谢" within ".new_comment"
     And I press "+评论"
     Then I should see "谢谢"
+
 
   Scenario: User can reply others comment
     Given the following review exists:
@@ -79,6 +81,29 @@ Feature: Comments
     When I follow "西瓜烂了"
     When I fill in "content" with "很不错"
     Then I should see "已输入3字符"
+
+
+  Scenario: Editor can toggle comment's availability
+    Given the following review exists:
+    | title    |
+    | 西瓜烂了 |
+    When I log in as "David User"
+    And I follow "西瓜烂了"
+    When I fill in "content" with "TMD"
+    And I press "+评论"
+    Then I should see "TMD"
+
+    When I log in as "Castle Editor"
+    And I follow "西瓜烂了"
+    Then I should see "TMD"
+    And I follow "启用/禁用"
+
+    When I log in as "David User"
+    And I follow "西瓜烂了"
+    Then I should not see "TMD"
+    And I should not see "启用/禁用"
+
+
 
 # TODO
 #  @pending

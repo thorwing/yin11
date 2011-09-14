@@ -1,0 +1,6 @@
+var comment = $('#<%= @comment.id.to_s %> span.quoted');
+<% if @comment.enabled %>
+    comment.removeClass("blocked");
+<% else %>
+    comment.addClass("blocked");
+<% end %>

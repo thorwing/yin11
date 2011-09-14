@@ -33,6 +33,7 @@ zh-CN:
     empty: 暂无
     enable: 启用
     disable: 禁用
+    toggle: "启用/禁用"
     recommended: 推荐
     lock: 锁定
     unlock: 解锁
@@ -346,6 +347,7 @@ zh-CN:
     new: +评论
     new_hint: 成为第一个评论的人
     reply: 回复
+    deleted: 该内容已删除
 
   articles:
     articles: 所有文章

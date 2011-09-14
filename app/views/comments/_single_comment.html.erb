@@ -2,11 +2,22 @@
   <div class="block round">
     <%= comment.user.login_name %>:
     <blockquote>
-      <span class="quoted"><%= comment.content %></span>
+      <% if comment.enabled %>
+        <span class="quoted"><%= comment.content %></span>
+      <% else %>
+        <% if current_user && current_user.has_permission?(:editor) %>
+            <span class="quoted blocked"><%= comment.content %></span>
+        <% else %>
+            <%= t("comments.deleted") %>
+        <% end %>
+      <% end %>
       <span class="trivial"><%= distance_of_time_in_words(comment.updated_at, Time.now) %><%= t("info_items.ago") %></span>
     </blockquote>
     <div>
         <%= link_to t("comments.reply"), new_comment_path(:item_id => item.id, :item_type => item.class.name, :parent_id => comment.id), :class => "reply_comment_link" %>
+        <% if current_user && current_user.has_permission?(:editor) %>
+            <%= link_to t("general.toggle"), toggle_comment_path(:id => comment.id, :item_id => item.id, :item_type => item.class.name), :method => :put, :remote => true %>
+        <% end %>
         <div class="new_reply_comment" style="display:none" >
           <%= render "comments/new_comment", :item => item, :parent => comment %>
         </div>

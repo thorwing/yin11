@@ -29,7 +29,11 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :comments
+  resources :comments do
+    member do
+      put "toggle"
+    end
+  end
 
   resources :password_resets
 

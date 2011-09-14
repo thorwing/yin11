@@ -5,6 +5,7 @@ class Comment
   has_ancestry
 
   field :content, :type => String
+  field :enabled, :type => Boolean, :default => true
 
   #Relationships
   embedded_in :review

@@ -11,5 +11,9 @@ describe CommentsController do
       { :post => "/comments" }.should route_to(:controller => "comments", :action => "create")
     end
 
+    it "recognizes and generates #toggle" do
+      { :put => "/comments/1" }.should route_to(:controller => "comments", :action => "toggle", :id => "1")
+    end
+
   end
 end
