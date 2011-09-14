@@ -81,4 +81,4 @@ group :development, :test do
 end
 
 #gem 'simplecov', '>= 0.4.0', :require => false, :group => :test
-gem "nifty-generators", :group => :development
+#gem "nifty-generators", :group => :development
