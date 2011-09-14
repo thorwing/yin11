@@ -47,38 +47,38 @@ gem "mongoid-ancestry"
 #gem 'ckeditor-rails'
 
 #no such file to load -- carrierwave/storage/grid_fs issue
-gem 'carrierwave', '0.5.6'
-
-gem 'kaminari'
-
-#factory_girl is also used for db seeds
-gem 'factory_girl_rails'
-
-gem "geocoder"
-gem "gmaps4rails"
-
-gem "mechanize"
-gem "spreadsheet"
-
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-group :development, :test do
-    gem 'rspec-rails'
-    gem 'cucumber'
-    gem 'cucumber-rails'
-    gem 'capybara'
-    gem 'launchy'
-    gem 'spork', "~> 0.9.0.rc9"
-
-    gem 'guard-rspec'
-    gem 'guard-cucumber'
-    #for using guard on windows
-    gem 'rb-fchange'
-    gem 'rb-notifu'
-
-    gem "escape_utils"
-end
-
-#gem 'simplecov', '>= 0.4.0', :require => false, :group => :test
-gem "nifty-generators", :group => :development
+#gem 'carrierwave', '0.5.6'
+#
+#gem 'kaminari'
+#
+##factory_girl is also used for db seeds
+#gem 'factory_girl_rails'
+#
+#gem "geocoder"
+#gem "gmaps4rails"
+#
+#gem "mechanize"
+#gem "spreadsheet"
+#
+## Bundle gems for the local environment. Make sure to
+## put test-only gems in this group so their generators
+## and rake tasks are available in development mode:
+#group :development, :test do
+#    gem 'rspec-rails'
+#    gem 'cucumber'
+#    gem 'cucumber-rails'
+#    gem 'capybara'
+#    gem 'launchy'
+#    gem 'spork', "~> 0.9.0.rc9"
+#
+#    gem 'guard-rspec'
+#    gem 'guard-cucumber'
+#    #for using guard on windows
+#    gem 'rb-fchange'
+#    gem 'rb-notifu'
+#
+#    gem "escape_utils"
+#end
+#
+##gem 'simplecov', '>= 0.4.0', :require => false, :group => :test
+#gem "nifty-generators", :group => :development
