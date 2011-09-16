@@ -1,31 +1,15 @@
 <%= form_for @group do |f| %>
     <%= render "shared/error_messages", :target => @group %>
 
-    <b><%= f.label :city, t("location.city") %></b><%= mark_required(@group, :city) %>
-    <%= select_tag "select_province", options_for_select(get_provinces_for_select, current_city.province.id) %>
-    <%= select_tag "select_city", options_for_select(get_cities_of_provinces(current_city.province), current_city.id) %>
-    <%= f.hidden_field :city, :class => "map_city" %>
+    <b><%= f.label :city_id, t("location.city") %></b><%= mark_required(@group, :city_id) %>
+    <%= select_tag "select_province", options_for_select(get_provinces_for_select, current_city.province.id), :class => "select_province" %>
+    <%= select_tag "group[city_id]", options_for_select(get_cities_of_provinces(current_city.province), current_city.id), :class => "select_city" %>
 
     <%= render "shared/text_field", :f => f, :label => t("general.name"), :field => :name %>
     <%= render "shared/text_area", :f => f, :label => t("general.description"), :field => :description %>
     <div class="field">
          <b><%= f.label :tags_string, t("info_items.tags") %></b><br/>
          <%= f.text_field :tags_string, 'data-pre' => (@group.tags ? @group.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
-    </div>
-
-    <div class="map_input">
-        <b><%= t("location.street") %></b><br/>
-        <%= f.text_field :street, :class => "map_street" %>
-        <%= content_tag(:span, t("location.address_hint"), :class => "trivial") %>
-        <p><span id="map_address_span"></span><%= render "locations/map_indicator" %></p>
-    </div>
-
-    <div class="block">
-        <div class="image_frame">
-            <% enable_css = false
-                enable_js  = true %>
-            <%= gmaps({"map_options" => { "center_latitude" => true, "center_on_user" => true, "auto_adjust" => true}}, enable_css, enable_js) %>
-        </div>
     </div>
 
     <div class="actions">

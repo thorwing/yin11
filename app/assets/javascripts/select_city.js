@@ -1,6 +1,6 @@
 function reset_city(province_id) {
     $.getJSON('/locations/cities.json?province_id=' + province_id, function(data) {
-        var select = $('#select_city');
+        var select = $('.select_city');
         select.empty();
 
         if(select.prop) {
@@ -22,7 +22,7 @@ function reset_city(province_id) {
 }
 
 $(function(){
-    $('#select_province').change(function() {
+    $('.select_province').change(function() {
         reset_city($(this).val());
     });
 });

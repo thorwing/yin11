@@ -2,7 +2,6 @@ class Group
   include Mongoid::Document
   include Mongoid::Timestamps
   include Taggable
-  include Locational
 
   field :name
   field :description
@@ -10,11 +9,12 @@ class Group
   #cached_fields
   field :creator_id
 
-  attr_accessible :name, :description
+  attr_accessible :name, :description, :city_id
 
   #relationships
   has_and_belongs_to_many :members, :class_name => User.name
   has_many :posts
+  belongs_to :city
 
   #validators
   validates_presence_of :name, :creator_id

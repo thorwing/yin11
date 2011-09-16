@@ -30,17 +30,18 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
 
-  def get_image_of_item(item, index = 0, width = 100, height = 100)
+  def get_image_of_item(item, options)
+    options[:border] = 0
     if item && item.images.size > 0
-      image = item.images[index]
+      image = item.images.first
       Logger.new(STDOUT).info image.image.url.to_s
       if image.image?
-        image_tag(image.image.url, :width => width, :height => height, :border => 0)
+        image_tag(image.image.url, options)
        end
     else
       #TODO
       #image_tag("http://flickholdr.com/#{width}/#{height}/salat", :width => width, :height => height, :border => 0)
-      image_tag("default_article.jpg", :width => width, :height => height, :border => 0)
+      image_tag("default_article.jpg", options)
     end
   end
 

@@ -1,10 +1,9 @@
 <% title @group.name %>
-<p><span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(TIME_FORMAT) %></span></p>
+<span class="trivial"><%= @group.city.name %></span><br/>
+<span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(TIME_FORMAT) %></span><br/>
 
 
 <p><%= @group.description %></p>
-
-<%= render "shared/display_map", :location => @group %>
 
 <div class="actions">
     <%= link_to t("groups.join"), join_group_path(@group), :method => :put, :class => "button" if @can_join %>
