@@ -17,14 +17,10 @@
   <div id="container">
     <div class="skinny">
         <%= render "shared/top_menu" %>
-        <% if home_page? %>
-            <%= yield %>
-        <% else %>
-          <div id="content_area" class="block square">
-            <%= content_tag(:h1, @content_for_title) if show_title?  %>
-            <%= yield %>
-          </div>
-        <% end %>
+        <div id="content_area" class="block">
+            <%= content_tag(:h1, @content_for_title, :class => "title") if show_title?  %>
+            <%= content_for?(:content) ? yield(:content) : yield %>
+        </div>
 	</div>
   </div>
 </div>

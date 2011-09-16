@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include ApplicationHelper
+  layout "two_columns"
   before_filter :get_items
 
   def index

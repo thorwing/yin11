@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  layout "two_columns"
+
   # GET /articles
   # GET /articles.xml
   def index

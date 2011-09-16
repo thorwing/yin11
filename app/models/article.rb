@@ -1,11 +1,12 @@
 class Article < InfoItem
   #fields
   field :type
+  field :introduction
   field :region_ids, :type => Array
 
   #accessibles
   attr_reader :region_tokens
-  attr_accessible :type, :source_attributes, :region_tokens
+  attr_accessible :type, :source_attributes, :region_tokens, :introduction
 
   #scopes
   scope :recommended, where(:recommended => true)
@@ -24,6 +25,7 @@ class Article < InfoItem
 
   validates_presence_of :content
   validates_length_of :content, :maximum => 10000
+  validates_length_of :introduction, :maximum => 300
 
   validates_inclusion_of :type, :in => ArticleTypes.get_values
 

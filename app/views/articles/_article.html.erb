@@ -1,4 +1,9 @@
 <% title article.title %>
+
+<div class="block round">
+  <%= article.introduction %>
+</div>
+
 <div class="block">
     <%= render "shared/vote_fields", :item => article %>
     <%= content_tag(:span, article.reported_on.strftime('%m/%d/%Y'), :class => "trivial") if article.reported_on %>

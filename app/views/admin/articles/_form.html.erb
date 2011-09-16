@@ -43,8 +43,13 @@
     <%= render "images/images_fields", :f => f, :item => @article %>
 
     <div class="field">
+        <%= f.label :introduction, t("articles.introduction") %><%= mark_required(@article, :introduction) %><%= mark_required_length(@article, :introduction) %><br/>
+        <%= f.text_area :introduction, :class => "brief", :maxlength => get_max_length(Article, :introduction) %>
+    </div>
+
+    <div class="field">
         <%= f.label :content, t("general.content") %><%= mark_required(@article, :content) %><%= mark_required_length(@article, :content) %><br/>
-        <%= f.text_area :content, :class => "rich_editor", :maxlength => get_max_length(Article, :site) %>
+        <%= f.text_area :content, :class => "rich_editor", :maxlength => get_max_length(Article, :content) %>
     </div>
 
     <div class="field">

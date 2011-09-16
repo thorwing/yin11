@@ -9,7 +9,7 @@ module LayoutHelper
   end
 
   def show_title?
-    @show_title
+    @show_title and not @is_home_page
   end
 
   def hide_quick_auth

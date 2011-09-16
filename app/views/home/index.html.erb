@@ -6,8 +6,8 @@
   <b class="trivial"><%= t("home.current_city") %></b><%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("home.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)
 </div>
 
-<div class="two_columns_container" >
-    <div id="info_panel" class="left_column">
+<% content_for :left_column do %>
+    <div id="info_panel">
         <div id="news_block" class="block round">
             <div class="image_frame">
                 <small><%= t("articles.headlines") %></small>
@@ -28,8 +28,10 @@
             <%= render "info_items/info_item", :item => item %>
         <% end %>
     </div> <!--end of info_items -->
+<% end %>
 
-     <div id="control_panel" class="right_column">
+<% content_for :right_column do %>
+    <div id="control_panel">
         <%= render "user_panel" %>
         <%= render "watching_tags_panel" %>
         <%= render "watching_locations_panel" %>
@@ -37,10 +39,8 @@
         <%= render "joined_groups_panel"  %>
         <%= render "login_panel" %>
         <%= render "tags_cloud" %>
-
     </div> <!--end of control_panel -->
-</div><!--end of two_columns_block -->
-
+<% end %>
 
 
 

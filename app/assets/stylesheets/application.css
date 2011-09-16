@@ -115,6 +115,10 @@ a.tag:hover {
     clear: both;
 }
 
+h1.title {
+    text-align: center;
+}
+
 /*
     Simple styles
 */
