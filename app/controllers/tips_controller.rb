@@ -1,6 +1,6 @@
 class TipsController < ApplicationController
   include TipsHelper
-  before_filter(:except => [:index, :show, :search]) { |c| c.require_permission :normal_user }
+  before_filter(:except => [:index, :show, :search]) { |c| c.require_permission :editor }
   TIPS_SEARCH_LIMIT = 5
 
   # GET /tips
