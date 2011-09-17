@@ -42,7 +42,7 @@ class LocationsController < ApplicationController
       #"picture" => "#{Rails.root.to_s}/public/images/bad_thumb.png"
       #id is for listing, not for map
       @markers_json = @items.to_gmaps4rails #vendors.inject([]){|memo, v| memo | v.reviews.all.map {|r| {"latitude" => v.latitude, "longitude" => v.longitude, "title" => r.title, "id" => r.id}} }
-      @circles_json = [{"latitude" => @location.latitude, "longitude" => @location.longitude, "radius" => distance * 1000}].to_json
+      @circles_json = [{"lat" => @location.latitude, "lng" => @location.longitude, "radius" => distance * 1000}].to_json
     end
 
     respond_to do |format|
