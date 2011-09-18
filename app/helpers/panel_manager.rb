@@ -7,7 +7,13 @@ class PanelManager
   end
 
   def get_reviews_around(location)
-    Review.near(location.to_coordinates, @distance).enabled.in_days_of(@days).all
+    #Review.near(:latlng =>  [location.latitude,location.longitude, @distance]).all
+    reviews = Review.enabled.in_days_of(@days).near(location.location).limit(MAX_NEARBY_ITEMS)
+    #result of Geocoder is in miles
+    reviews.reject{|r| (r.latitude.blank? || r.longitude.blank? || location.latitude.blank? || location.longitude.blank?) || Geocoder::Calculations.distance_between([r.latitude, r.longitude], [location.latitude, location.longitude]) > (@distance.to_f * MILES_OF_KILOMETERS)}
+    #Review.where(:location => {"$near" => [location.latitude, location.longitude], "$maxDistance" => 100000.0})
+    #Review.where(:location.near => [location.latitude, location.longitude]).all
+    #Review.where(:location.within => { "$center" => [ [location.latitude, location.longitude], 10000 ] }).all
   end
 
   def get_items_tagged_with(tag)

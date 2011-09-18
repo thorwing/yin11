@@ -7,13 +7,20 @@ Feature: smoke tests for Tips
   Background:
     Given There are minimum seeds data
 
+
+  Scenario: User can't post tip
+    When I log in as "David User"
+    And I go to the new_tip page
+    Then I should be on the home page
+    And I should see "此操作需要编辑的权限， 请留意我们的公告来获知如何提升权限。"
+
   Scenario: On the tips page, it shows all recent updated tips and hot tips
     When I log in as "David User"
     And I go to the tips page
     Then I should see "所有锦囊"
     And I press "搜索" within "#content_area"
 
-
+  @focus
   Scenario Outline: User can search for tip by using its title or keywords
     Given There is a simple tip
 
@@ -28,6 +35,7 @@ Feature: smoke tests for Tips
     | 西瓜判熟技巧  |
     | 西瓜 |
 
+  @focus
   Scenario: User can collect a tip
     Given the following tip exists:
     |     title      | content                                                                                   |
@@ -40,12 +48,12 @@ Feature: smoke tests for Tips
     When I go to the home page
     Then I should see "瘦肉精猪肉目测" within "#control_panel"
 
-
+  @focus
   Scenario: User can edit others tip, and the change will be stored in revision
-    When I log in as "David User"
+    When I log in as "Castle Editor"
     And I post a simple tip
 
-    When I log in as "Kate Tester"
+    When I log in as "Ray Admin"
     When I go to the tips page
     And I should see "辨别西瓜是否含有催熟剂"
     And I follow "辨别西瓜是否含有催熟剂"
@@ -59,9 +67,8 @@ Feature: smoke tests for Tips
     Then I should see "随便改改,恶作剧，字数补丁。"
     And I should not see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
-
   Scenario: Revision should also be valid
-    When I log in as "David User"
+    When I log in as "Castle Editor"
     And I post a simple tip
 
     When I go to the tips page
@@ -77,10 +84,10 @@ Feature: smoke tests for Tips
 
 
   Scenario: The author can restore a version of tip
-    When I log in as "David User"
+    When I log in as "Castle Editor"
     And I post a simple tip
 
-    When I log in as "Kate Tester"
+    When I log in as "Ray Admin"
     When I go to the tips page
     And I follow "辨别西瓜是否含有催熟剂"
     And I follow "编辑"
@@ -88,7 +95,7 @@ Feature: smoke tests for Tips
     And I press "完成"
 
     And I log out
-    And I log in as "David User"
+    And I log in as "Castle Editor"
     And I go to the tips page
     And I follow "辨别西瓜是否含有催熟剂"
     Then I should see "随便改改,恶作剧，字数补丁。"
@@ -100,7 +107,7 @@ Feature: smoke tests for Tips
     Then I should see "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。"
 
   Scenario: unsuccessful operation will not create revision
-    When I log in as "David User"
+    When I log in as "Castle Editor"
     And I go to the new_tip page
     And I fill in "tip_title" with "辨别西瓜是否含有催熟剂"
     And I fill in "tip_content" with "123456789"

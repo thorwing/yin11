@@ -15,7 +15,7 @@
     - "\xE7\x83\xA7\xE9\xA5\xBC"
     - "\xE8\x9C\x88\xE8\x9A\xA3"
     content: "\xE6\x9D\xA5\xE6\xBA\x90:Unknown Media(Unknown Site)"
-    coordinates: 
+    location:
     - 119.118996
     - 32.944441
     source: !map:BSON::OrderedHash 

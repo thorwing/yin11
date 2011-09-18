@@ -53,7 +53,7 @@ require "source"
             a.city = article.city
             a.tags = article.tags
             a.content = article.content
-            a.coordinates = article.coordinates
+            #a.location = article.location
             if article.source
               a.build_source
               a.source.name = article.source.name

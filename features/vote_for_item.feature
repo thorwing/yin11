@@ -13,6 +13,7 @@ Feature: User can vote for an item
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 
+  @focus
   @javascript
   Scenario: User can vote for a review.
     When I log in as "Kate Tester"
@@ -23,6 +24,7 @@ Feature: User can vote for an item
 
     When I log out
     And I log in as "David User"
+    Then I should see "买到烂西瓜"
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 

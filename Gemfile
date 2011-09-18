@@ -36,8 +36,8 @@ gem 'jquery-rails'
 #temp workaround, rake 0.9.0(and 0.9.1?) caused a problem on Heroku
 gem "rake", "~> 0.8.7"
 
-gem "mongoid", "~> 2.0.2"
-gem "bson_ext", "~> 1.3"
+gem "mongoid"
+gem "bson_ext"
 
 gem "bcrypt-ruby", :require => "bcrypt"
 
@@ -63,22 +63,22 @@ gem "spreadsheet"
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-group :development, :test do
-    gem 'rspec-rails'
-    gem 'cucumber'
-    gem 'cucumber-rails'
-    gem 'capybara'
-    gem 'launchy'
-    gem 'spork', "~> 0.9.0.rc9"
-
-    gem 'guard-rspec'
-    gem 'guard-cucumber'
-    #for using guard on windows
-    gem 'rb-fchange'
-    gem 'rb-notifu'
-
-    gem "escape_utils"
-end
+#group :development, :test do
+#    gem 'rspec-rails'
+#    gem 'cucumber'
+#    gem 'cucumber-rails'
+#    gem 'capybara'
+#    gem 'launchy'
+#    gem 'spork', "~> 0.9.0.rc9"
+#
+#    gem 'guard-rspec'
+#    gem 'guard-cucumber'
+#    #for using guard on windows
+#    gem 'rb-fchange'
+#    gem 'rb-notifu'
+#
+#    gem "escape_utils"
+#end
 
 #gem 'simplecov', '>= 0.4.0', :require => false, :group => :test
 #gem "nifty-generators", :group => :development

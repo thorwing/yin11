@@ -68,10 +68,6 @@ module ApplicationHelper
     province.cities.collect {|c|[ c.name, c.id ]}
   end
 
-  def get_cities_for_select()
-    City.all.collect {|c|[ c.name, c.id ]}
-  end
-
   def nested_comments(item, comments)
     comments.map do |comment, sub_comments|
       render("comments/single_comment", :item => item, :comment => comment) + content_tag(:div, nested_comments(item, sub_comments), :class => "nested_comments")

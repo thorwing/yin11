@@ -10,19 +10,23 @@ function reset_city(province_id) {
             var options = select.attr('options');
         }
 
+        var index = 0;
         $.each(data, function(key, val) {
             options[options.length] = new Option(val["name"], val["id"]);
+            if (index == 0) {
+                $('.hidden_city').val(val["name"]);
+            }
+            index++;
         });
-
-        var hidden_city = $('.map_city');
-        if (hidden_city.length > 0) {
-            hidden_city.val(val["name"]);
-        }
     });
 }
 
 $(function(){
     $('.select_province').change(function() {
         reset_city($(this).val());
+    });
+
+    $('.select_city').change(function() {
+        $('.hidden_city').val($('select.select_city option:selected').text());
     });
 });

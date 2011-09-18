@@ -1,10 +1,9 @@
 <%= render "shared/error_messages", :target => vendor %>
 <div class="field">
-    <!--TODO Duplicate to locations\_location_fields-->
     <b><%= f.label :city, t("location.city") %></b><%= mark_required(vendor, :city) %>
     <%= select_tag "select_province", options_for_select(get_provinces_for_select, current_city.province.id), :class => "select_province"  %>
     <%= select_tag "select_city", options_for_select(get_cities_of_provinces(current_city.province), current_city.id), :class => "select_city"  %>
-    <%= f.hidden_field :city, :class => "map_city" %>
+    <%= f.hidden_field :city, :class => "hidden_city" %>
     <br/>
     <b><%= f.label :name, t("general.name") %></b><%= mark_required(vendor, :name) %><br/>
     <%= f.text_field :name, :maxlength => get_max_length(vendor, :name) %>
@@ -16,16 +15,8 @@
 </div>
 
 <div class="map_input">
-    <b><%= t("location.street") %></b><br/>
+    <b><%= t("location.street") %><%= mark_required(vendor, :city) %><%= mark_required_length(vendor, :title) %></b><br/>
     <%= f.text_field :street, :class => "map_street" %>
     <%= content_tag(:span, t("location.address_hint"), :class => "trivial") %>
     <p><span id="map_address_span"></span><%= render "locations/map_indicator" %></p>
-</div>
-
-<div class="block">
-    <div class="image_frame">
-      <% enable_css = false
-         enable_js  = true %>
-        <%= gmaps({"map_options" => { "center_latitude" => true, "center_on_user" => true, "auto_adjust" => true}}, enable_css, enable_js) %>
-    </div>
 </div>

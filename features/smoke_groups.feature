@@ -26,6 +26,7 @@ Feature: smoke tests for Groups
     Then I should see "大华小龙虾搜查队"
     Then I should see "1成员"
 
+  @focus
   Scenario: User can join a group
     When I log in as "David User"
     And I join the group "西瓜守望者"

@@ -19,7 +19,7 @@ Given /^There are some sample articles$/ do
 end
 
 Given /^There are some sample groups$/ do
-  group = Group.new(:name => "西瓜守望者", :tags_string => "西瓜")
+  group = Group.new(:name => "西瓜守望者", :tags_string => "西瓜", :city_id => "021")
   group.creator_id = @editor.id
   group.save!
 end

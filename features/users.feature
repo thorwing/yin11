@@ -47,6 +47,7 @@ Feature:
     And I go to the home page
     Then I should not see "买到烂西瓜"
 
+  @focus
   Scenario: User can go to profile page and unlock another user
     When I log in as "David User"
     And I post a simple review without vendor

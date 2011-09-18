@@ -28,7 +28,8 @@ class HomeController < ApplicationController
     #TODO
     if current_user && current_user.profile.watched_locations.empty?
       city_center = Location.new(:city => current_city.name, :street => t("location.city_center")) do |l|
-        l.coordinates = [current_city.longitude, current_city.latitude]
+        l.longitude = current_city.longitude
+        l.latitude = current_city.latitude
       end
       current_user.profile.watched_locations << city_center
       current_user.profile.save
