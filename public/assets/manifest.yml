@@ -129,7 +129,7 @@ plugins/preview/example.html: plugins/preview/example-dff6c27e6614ef999556b901f0
 plugins/preview/preview.html: plugins/preview/preview-910a29e1a23aff0031df9ad96785abb8.html
 plugins/searchreplace/searchreplace.htm: plugins/searchreplace/searchreplace-e1d642ef58a97b653017e3dd523011c4.htm
 plugins/spellchecker/img/wline.gif: plugins/spellchecker/img/wline-3a45a343ed5a1cae7f8a78d227bcd1bd.gif
-plugins/style/props.htm: plugins/style/props-35a6ddcb8b70fb9501f47d6ff71b42e6.htm
+plugins/style/props.htm: plugins/style/props-e09e711643b2eaa8fe7947b926ae5ead.htm
 plugins/table/cell.htm: plugins/table/cell-a3d912fc8841b16773c7c5906c32a961.htm
 plugins/table/merge_cells.htm: plugins/table/merge_cells-057a80042232024f64376f545625a90d.htm
 plugins/table/row.htm: plugins/table/row-a183c7ba3441502a2fc1f3f563cfc99e.htm
@@ -174,5 +174,5 @@ themes/simple/img/icons.gif: themes/simple/img/icons-9fb4240e61efb863c1ce7ec5241
 themes/simple/skins/o2k7/img/button_bg.png: themes/simple/skins/o2k7/img/button_bg-c5109b9826234195fcb6ec42bdb0ecc5.png
 jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
 jquery.min.js: jquery-6e77b56fb21f9675304f6f6e8aedace5.min.js
-application.js: application-499acc33597c6db159b543aebd99a1f3.js
-application.css: application-3ac27b200cc9f9e50205c70388a5ec85.css
+application.js: application-45f70f2f2a0917dc48754020fa2aa5a2.js
+application.css: application-091644b7d34d61bde2345b029223cedb.css
