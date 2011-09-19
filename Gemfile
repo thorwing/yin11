@@ -47,7 +47,7 @@ gem "mongoid-ancestry"
 #gem 'ckeditor-rails'
 
 #no such file to load -- carrierwave/storage/grid_fs issue
-gem 'carrierwave', '0.5.6'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 gem 'kaminari'
 
