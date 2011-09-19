@@ -68,6 +68,7 @@ namespace :yin11 do
     p "Successful: " + success.to_s
   end
 
+  #imports some vendors'' info
   desc "import vendors"
   task :import_vendors => :environment do
     p "importing vendors..."
