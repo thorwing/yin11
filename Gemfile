@@ -36,8 +36,8 @@ gem 'jquery-rails'
 #temp workaround, rake 0.9.0(and 0.9.1?) caused a problem on Heroku
 gem "rake", "~> 0.8.7"
 
-gem "mongoid", "~> 2.0.2"
-gem "bson_ext", "~> 1.3"
+gem "mongoid"
+gem "bson_ext"
 
 gem "bcrypt-ruby", :require => "bcrypt"
 
