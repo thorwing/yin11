@@ -35,10 +35,6 @@ class ReviewsController < ApplicationController
       @review = Review.new
     end
 
-#    1.times do
-#      @review.checkpoints.build(:title => "sample")
-#    end
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @review }

@@ -18,7 +18,7 @@
 
 #top_menu{ margin:0; padding:0; list-style:none; color:#fff; line-height:45px; display:inline-block;
     float:left; }
-#top_menu a { color:#fff; text-decoration:none; }
+#top_menu a { font-size: 14px; color:#fff; text-decoration:none; }
 #top_menu > li {background:#172322 none repeat scroll 0 0; cursor:pointer; float:left; position:relative;
     padding:0 10px;}
 #top_menu > li a:hover, #top_menu > li a.selected {color:#B0D730;}

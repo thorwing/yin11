@@ -5,9 +5,10 @@ class Vendor
 
   field :name
   field :verified, :type => Boolean, :default => false
-  field :type
+  field :category
+  field :sub_category
 
-  attr_accessible :name, :type
+  attr_accessible :name, :category, :sub_category
 
   scope :of_city, lambda { |city_name| where(:city => city_name)}
 
@@ -22,7 +23,7 @@ class Vendor
   validates_presence_of :city
   validates_presence_of :street
   validates_uniqueness_of :full_name
-  validates_inclusion_of :type, :in => VendorTypes.get_values, :allow_nil => true
+  validates_inclusion_of :category, :in => VendorCategories.get_values, :allow_nil => true
 
   def full_name
     (name.nil? ? "" : name.strip) + " (" + address + ")"

@@ -10,7 +10,7 @@
 <div class="nav_links">
     <%= link_to t("vendors.my_vendors"), mine_vendors_path, :class => "right_column" %>
     <%= link_to t("general.all"), vendors_path %>
-    <% VendorTypes.get_values.each do |t| %>
+    <% VendorCategories.get_values.each do |t| %>
         <%= link_to t, vendors_path(:type => t) %>
     <% end %>
 </div>

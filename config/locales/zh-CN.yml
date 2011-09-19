@@ -16,6 +16,7 @@ zh-CN:
     reported_on: 发布日期
     created_at: 创建时间
     type: 类别
+    category: 类别
     image: 图像
     delete: 删除
     show: 查看
@@ -167,6 +168,7 @@ zh-CN:
 
   location:
     default_country: 中国
+    default_city: 上海
     city: 城市
     street: 地址
     address: 详细地址
@@ -225,8 +227,8 @@ zh-CN:
   control_panel:
     actions: 我要：
     watching: 我关注：
-    watching_tags: 关注的标签：
-    watching_locations: 关注的地点：
+    watching_tags: 我吃：
+    watching_locations: 我在：
     collected_tips: 收藏的锦囊：
     joined_groups: 加入的饭桌：
     locations: 地点

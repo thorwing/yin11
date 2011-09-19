@@ -22,12 +22,7 @@
         </li>
     <% end %>
     <li><%= render_menu(t("menu.articles"), articles_path) %></li>
-    <li><%= render_menu(t("menu.reviews"), reviews_path) %>
-        <ul>
-            <li><% first_sub_menu(link_to t("reviews.new"), new_review_path) %></li>
-            <li class="last"><% last_sub_menu %></li>
-        </ul>
-    </li>
+    <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
     <li><%= render_menu(t("menu.vendors"), vendors_path) %>
         <ul>
             <li><% first_sub_menu(link_to t("vendors.new"), new_vendor_path) %></li>
