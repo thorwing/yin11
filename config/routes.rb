@@ -20,6 +20,9 @@ Yin11::Application.routes.draw do
 
   match "/images/uploads/*path" => "gridfs#serve"
 
+  match "syncs/:type/new" => "syncs#new", :as => :sync_new
+  match "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
+
   get "home/more_items"
 
   resources :search do

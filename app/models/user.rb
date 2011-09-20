@@ -10,8 +10,6 @@ class User
 
   #Fields
   field :email
-  key :email
-
   field :login_name
   field :password_hash
   field :password_salt
@@ -21,6 +19,10 @@ class User
   field :password_reset_sent_at, :type => DateTime
   field :activation_token
   field :blocked_user_ids, :type => Array
+  field :provider
+  field :uid
+  field :access_token
+  field :access_token_secret
   mount_uploader :avatar, AvatarUploader
 
   index :email
@@ -55,10 +57,11 @@ class User
   validates :email,
               :presence => true,
               :uniqueness => true,
-              :email_format => true
+              :email_format => true,
+              :if => :non_third_party_login
   validates_presence_of :login_name
   validates_length_of :login_name, :maximum => 15
-  validates_presence_of :password, :on => :create
+  validates_presence_of :password, :on => :create, :if => :non_third_party_login
   validates_confirmation_of :password
   validates_length_of :password, :minimum => 6, :on => :create
   validates_associated :profile, :contribution
@@ -195,6 +198,10 @@ class User
     self.enabled.active_users.mail_receiver.each do |user|
       user.send_updates
     end
+  end
+
+  def non_third_party_login
+    provider.blank?
   end
 
 end

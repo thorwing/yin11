@@ -52,7 +52,9 @@
     <%= f.text_area :content, :maxlength => get_max_length(@review, :content), :class => "char_aware" %><br/>
     <%= content_tag :span, "", :class => "char_counter" %>
 
-
+    <div>
+      <%= check_box_tag :sync_to_sina %><%= label_tag :sync_to_sina, t("syncs.sync_to_sina") %>
+    </div>
     <div class="actions">
         <%= f.submit t("general.submit"), :class => "button" %>
     </div>

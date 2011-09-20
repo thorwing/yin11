@@ -22,5 +22,8 @@
             <td><%= link_to t("authentication.sign_up"), sign_up_path %> | <%= link_to t("authentication.forgot_password"), new_password_reset_path %></td>
         </tr>
     </table>
+    <div>
+        <%= link_to image_tag("sina_weibo.png", :border => 0), "syncs/sina/new" %>
+    </div>
 
 <% end %>

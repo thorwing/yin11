@@ -63,6 +63,10 @@ class ReviewsController < ApplicationController
 
     RewardManager.new(current_user).contribute(:posted_reviews)
 
+    if params[:sync_to_sina]
+      SyncsManager.new(current_user).sync(@review)
+    end
+
     respond_to do |format|
       if @review.save
         format.html { redirect_to(@review, :notice => t("notices.review_posted")) }
@@ -116,8 +120,5 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def choose_mode
-
-  end
 
 end

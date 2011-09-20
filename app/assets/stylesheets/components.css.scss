@@ -39,9 +39,9 @@
 .checkbox_group {float: left;}
 
 .severity {float: left; background-repeat: no-repeat;width:24px; height:32px;}
-.severity.zero{ background-image:url("/images/severity_0_small.png"); }
-.severity.one{ background-image:url("/images/severity_1_small.png"); }
-.severity.two{ background-image:url("/images/severity_2_small.png"); }
-.severity.three{ background-image:url("/images/severity_3_small.png"); }
+.severity.zero{ background-image: image-url("severity_0_small.png"); }
+.severity.one{ background-image: image-url("severity_1_small.png"); }
+.severity.two{ background-image: image-url("severity_2_small.png"); }
+.severity.three{ background-image: image-url("severity_3_small.png"); }
 
 

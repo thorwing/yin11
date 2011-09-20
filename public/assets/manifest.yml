@@ -48,6 +48,7 @@ severity_0_small.png: severity_0_small-3f1125ba73020473d15e8ec71d837f3e.png
 severity_1_small.png: severity_1_small-aa03ebcff3dfa17aa36eb22926d52134.png
 severity_2_small.png: severity_2_small-7196703541645920e96da745a396c730.png
 severity_3_small.png: severity_3_small-7b3cebfbe054da01eebe4cea33a893b1.png
+sina_weibo.png: sina_weibo-a7408cdd74dfaf85ea828d9200e4c629.png
 slimbox/closelabel.gif: slimbox/closelabel-0009429a8a13b0860a7f2d63b02eaa4b.gif
 slimbox/loading.gif: slimbox/loading-ed5ae63e5d9230add185cf6a0773327c.gif
 slimbox/nextlabel.gif: slimbox/nextlabel-e5b6e4bf4af61e26b232532a9d95890d.gif
@@ -175,4 +176,4 @@ themes/simple/skins/o2k7/img/button_bg.png: themes/simple/skins/o2k7/img/button_
 jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
 jquery.min.js: jquery-6e77b56fb21f9675304f6f6e8aedace5.min.js
 application.js: application-45f70f2f2a0917dc48754020fa2aa5a2.js
-application.css: application-091644b7d34d61bde2345b029223cedb.css
+application.css: application-2bfec0ac515704c8a4c93e71113a0cb0.css

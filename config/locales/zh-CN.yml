@@ -7,6 +7,10 @@ zh-CN:
   symbols:
     colon: ：
 
+  syncs:
+    access_failed: 第三方授权失败，请再试一下
+    sync_to_sina: 同步到新浪微博
+
   general:
     title: 标题
     content: 内容
