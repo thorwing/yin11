@@ -62,8 +62,8 @@ class User
   validates_presence_of :login_name
   validates_length_of :login_name, :maximum => 15
   validates_presence_of :password, :on => :create, :if => :non_third_party_login
-  validates_confirmation_of :password
-  validates_length_of :password, :minimum => 6, :on => :create
+  validates_confirmation_of :password, :if => :non_third_party_login
+  validates_length_of :password, :minimum => 6, :on => :create, :if => :non_third_party_login
   validates_associated :profile, :contribution
 
   #Others
