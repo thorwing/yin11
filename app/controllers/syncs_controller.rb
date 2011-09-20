@@ -2,8 +2,7 @@
 require 'crack/xml'
 
 class SyncsController < ApplicationController
-
-    #before_filter :login_required
+    before_filter(:only => [:follow_yin11, ]) { |c| c.require_permission :normal_user }
 
     def new
       client = OauthChina::Sina.new
@@ -15,6 +14,7 @@ class SyncsController < ApplicationController
     def callback
       client = OauthChina::Sina.load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
       client.authorize(:oauth_verifier => params[:oauth_verifier])
+      Logger.new(STDOUT).info client.to_yaml
 
       user = sync_account(client)
       if user.present?
@@ -22,6 +22,14 @@ class SyncsController < ApplicationController
       else
         flash[:notice] = t("syncs.access_failed")
       end
+
+      redirect_to root_path
+    end
+
+    def follow_yin11
+      client = OauthChina::Sina.load(:access_token => current_user.access_token, :access_token_secret => current_user.access_token_secret)
+      xml = (client.access_token.post "/friendships/create/#{YIN11_SINA_WEIBO_ID}.xml").body
+      Logger.new(STDOUT).info xml.to_s
 
       redirect_to root_path
     end

@@ -7,5 +7,6 @@
         <%= link_to t("tips.new"), new_tip_path, :class => "button" if current_user && current_user.has_permission?(:editor) %>
         <%= link_to t("articles.new"), new_admin_article_path, :class => "button" if current_user && current_user.has_permission?(:editor) %>
         <%= link_to t("vendors.browse"), vendors_path, :class => "button" %>
+        <%= link_to t("syncs.follow_yin11_on_sina"), follow_yin11_path, :class => "button" %>
     </div>
 <% end %>
