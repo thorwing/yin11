@@ -292,8 +292,6 @@ zh-CN:
     safty_indicator: 食物安全风向标
     recent_exams: 最近对于%{name}的评论
     safty_tips: %{name}的安全食用知识
-    why_add_to_watch_list: "把食物收藏到<我的菜单>，关于该食物的安全动向早知道。"
-    add_to_watch_list: 收藏
 
   toxins:
     toxins: 毒物
@@ -406,6 +404,10 @@ zh-CN:
     disabled_badges: 禁用的徽章
     new_badge: 新徽章
     edit_badge: 编辑徽章
+
+  relationships:
+    new: +关注
+    cancel: -取消关注
 
   questions:
     new_question: 我有疑问

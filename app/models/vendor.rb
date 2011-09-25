@@ -2,6 +2,7 @@ class Vendor
   include Mongoid::Document
   include Available
   include Locational
+  include Followable
 
   field :name
   field :verified, :type => Boolean, :default => false
@@ -19,7 +20,7 @@ class Vendor
 
   #validators
   validates_presence_of :name
-  validates_length_of :name, :maximum => 20
+  validates_length_of :name, :maximum => 30
   validates_presence_of :city
   validates_presence_of :street
   validates_uniqueness_of :full_name

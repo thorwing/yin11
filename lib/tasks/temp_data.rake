@@ -83,31 +83,34 @@ namespace :yin11 do
       begin
       name, vendor_alias, street, extra_address, near_address, area, traffic, sub_category, specialty, phone, cost, notice = *row
 
-      vendor = Vendor.new do |v|
-        v.name = name
+      vendor = Vendor.find_or_initialize_by(:name => name, :street => street) do |v|
+        v.name = name.to_s
         #v.alias = vendor_alias
         v.city = I18n.t("location.default_city")
-        v.street = street
+        v.street = street.to_s
         #v.extra_address = extra_address
         #v.near_address = near_address
         #v.area = area
         #v.traffic = traffic
         v.category = VendorCategories.get_values.first
-        v.sub_category = sub_category
+        v.sub_category = sub_category.to_s
         #v.specialty = specialty
         #v.phone = phone
         #v.cost = cost
       end
 
-      if vendor.valid?
+      if vendor.valid? && vendor.new_record?
         vendor.save!
         success += 1
+        p  ["create:", name, street].join(" ")
+      elsif vendor.valid?
+        #p ["already have:", name, vendor.address].join(" ")
       else
-        p [name, v.address].join(" ")
+        p ["invalid:", name, vendor.address].join(" ")
       end
+
       rescue Exception => exc
-        p exc.message
-        p row
+        p exc.backtrace
       end
     end
 

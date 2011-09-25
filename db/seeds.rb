@@ -39,6 +39,7 @@ require "source"
   tips = YAML::load(File.open("app/seeds/tips.yml"))
   tips.each {|t| Tip.create!(t)}
 
+  #articles
   Dir["app/seeds/articles/*.yml"].each do |file|
     articles = YAML::load(File.open(file))
     articles.each do |article|
@@ -65,5 +66,25 @@ require "source"
         p article.title
         p exc.backtrace
       end
+    end
+  end
+
+  #vendors
+  vendors = YAML::load(File.open("app/seeds/vendors.yml"))
+  vendors.each do |v|
+    begin
+      vendor = Vendor.new do |vendor|
+        vendor.name = v.name
+        vendor.city = v.city
+        vendor.street = v.street
+        vendor.latitude = v.latitude
+        vendor.longitude = v.longitude
+      end
+      p [v.name, v.city, v.street, v.latitude.to_s, v.longitude.to_s].join(" ")
+      vendor.save!
+
+    rescue Exception => exc
+      p v.name
+      p exc.backtrace
     end
   end

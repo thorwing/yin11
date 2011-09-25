@@ -131,3 +131,17 @@ When /^I join the group "(.+)"$/ do |group|
   And %(I follow "#{group}")
   And %(I follow "加入")
 end
+
+When /^I follow a vendor "(.+)"$/ do |vendor|
+    And %(I go to the vendors page)
+    And %(I follow "#{vendor}")
+    When %(I follow "+关注")
+end
+
+When /^I post a review about vendor "(.+)"$/ do |vendor|
+    When %(I go to the home page)
+    And %(I follow "找商户")
+    And %(I follow "#{vendor}")
+    And %(I follow "+测评" within ".actions")
+    And %(I fill a simple review)
+end

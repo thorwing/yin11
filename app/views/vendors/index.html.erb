@@ -16,6 +16,7 @@
 </div>
 
 <div id="vendors_list">
+  <%= paginate @vendors %>
   <%= render :partial => "vendor", :collection => @vendors %>
 </div>
 

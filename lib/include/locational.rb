@@ -36,7 +36,8 @@ module Locational
     end
 
     def prevent_geocoding
-      street.blank?
+      #may create from seeds
+      (new_record? && latitude.present? && longitude.present?) || street.blank?
     end
     #
     #def latitude

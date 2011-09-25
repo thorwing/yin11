@@ -31,5 +31,5 @@ Feature: articles
     And I fill in "article_content" with "这是不科学的说法"
     And I select "topic" from "article_type"
     And I press "完成"
-    When I go to the home page
+    When I go to the articles page
     Then I should see "食物相克不科学"

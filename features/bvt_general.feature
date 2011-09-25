@@ -11,11 +11,10 @@ Feature: general usage
   Scenario: User can see the control panel on home page
     When I log in as "David User"
     Then I should see "div" whose id is "control_panel"
-    And I should see "关注的标签" within "#control_panel"
-    And I should see "关注的地点" within "#control_panel"
-    And I should see "收藏的锦囊" within "#control_panel"
-    And I should see "加入的饭桌" within "#control_panel"
-
+    And I should see "div" whose id is "watching_tags_panel"
+    And I should see "div" whose id is "watching_locations_panel"
+    And I should see "div" whose id is "collected_tips_panel"
+    And I should see "div" whose id is "joined_groups_panel"
 
   Scenario: Normal user can post reviews
     When I go to the new_review page

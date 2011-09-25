@@ -1,6 +1,6 @@
 class Admin::VendorsController < Admin::BaseController
   def index
-    @vendors = Vendor.enabled
+    @vendors = Vendor.enabled.page(params[:page]).per(ITEMS_PER_PAGE_MANY)
 
     @disabled_vendors = Vendor.disabled
 

@@ -1,0 +1,9 @@
+var div = $("div[id$=<%= @followable.id.to_s %>]");
+if (div.length > 0) {
+    $("div[id$=<%= @followable.id.to_s %>] .new_relationship").removeClass('hide');
+    $("div[id$=<%= @followable.id.to_s %>] .cancel_relationship").addClass('hide');
+}
+else {
+    $(".button.new_relationship").removeClass('hide');
+    $(".button.cancel_relationship").addClass('hide');
+}

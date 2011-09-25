@@ -1,4 +1,4 @@
-<div class="block round">
+<div id="<%= vendor.id.to_s %>" class="block round">
   <%= content_tag :small, vendor.category, :class => "right_column" %>
   <div class="left_column">
     <%= link_to vendor.full_name, vendor %><br/>
@@ -6,6 +6,7 @@
     <%= "#{t_with_colon("vendors.recent_bad")}#{vendor.bad_reviews_in(30).size.to_s}"  %><br/>
     <div class="actions">
         <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id), :class => "button" %>
+        <%= render "shared/follow_field", :target_type => Vendor.name, :target_id => vendor.id %>
     </div>
   </div>
 </div>

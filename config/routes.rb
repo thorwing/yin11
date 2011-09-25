@@ -45,6 +45,12 @@ Yin11::Application.routes.draw do
 
   resources :articles, :only => [:index, :show]
 
+  resources :relationships, :only => [:index, :show, :create] do
+    collection do
+      put "cancel"
+    end
+  end
+
   resources :locations do
     collection do
       get "search"

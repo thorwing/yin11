@@ -52,6 +52,8 @@ class User
   has_and_belongs_to_many :groups, :inverse_of => "members"
   has_and_belongs_to_many :badges
   has_many :vendors
+  embeds_many :relationships
+  embeds_many :feeds
 
   #Validators
   validates :email,
@@ -127,6 +129,7 @@ class User
   end
 
   def has_permission?(permission)
+    return false unless self.enabled
     case permission
       when :inactive_user
         self.role >= INACTIVE_USER_ROLE

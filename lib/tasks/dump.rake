@@ -19,4 +19,11 @@ namespace :yin11 do
       YAML::dump(Tip.only(:title, :tags, :content).to_a, file)
     end
   end
+
+  desc "dump vendors"
+  task :dump_vendors => :environment do
+    File.open(File.join(Rails.root, 'app/seeds/vendors.yml'), 'w') do |file|
+      YAML::dump(Vendor.only(:name, :city, :street, :latitude, :longitude, :category, :sub_category).to_a, file)
+    end
+  end
 end

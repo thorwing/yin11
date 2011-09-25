@@ -79,6 +79,18 @@ a.button:hover, input.button:hover {
     cursor:pointer;
 }
 
+a.button.new_relationship {
+    background: green;
+}
+
+a.button.cancel_relationship {
+    background: gray;
+}
+
+a.button.hide {
+    display: none;
+}
+
 a.tag {
     text-decoration: none;
     -moz-border-radius: 5px;

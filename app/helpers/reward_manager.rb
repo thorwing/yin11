@@ -4,6 +4,7 @@ class RewardManager
   end
 
   def contribute(field)
+    #TODO
     @user.contribution[field] += 1
     ask_for_badges
     #save user at last

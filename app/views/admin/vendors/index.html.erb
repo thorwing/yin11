@@ -2,6 +2,7 @@
 
 <div id="enabled_vendors">
   <h3><%= t("vendors.enabled_vendors") %></h3>
+  <%= @vendors.size.to_s %>
     <table>
       <tr>
         <th><%= t("general.name") %></th>
@@ -10,6 +11,7 @@
         <th></th>
       </tr>
 
+    <%= paginate @vendors %>
     <% @vendors.each do |vendor| %>
       <tr id='<%= vendor.id %>'>
         <td><%= link_to vendor.name, [:admin, vendor] %></td>

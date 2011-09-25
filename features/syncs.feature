@@ -5,3 +5,4 @@ Feature: syncs with weibo .etc
 
   Scenario: User can login via sina weibo
 
+  Scenario: Normal User can follow a vendor

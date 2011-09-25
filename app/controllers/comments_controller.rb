@@ -30,8 +30,6 @@ class CommentsController < ApplicationController
       end
     end
 
-
-
     respond_to do |format|
         format.html {redirect_to @item}
         format.xml {head :ok}
