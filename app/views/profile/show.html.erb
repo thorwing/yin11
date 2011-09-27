@@ -4,7 +4,7 @@
     <dt><span><%= t("users.basic_info") %></span></dt>
     <dd>
         <div class="block round">
-            <h3><%= current_user.login_name %></h3>
+            <h3><%= current_user.screen_name %></h3>
             <%= current_user.email %><br/>
             <%= image_tag current_user.get_avatar, :class => "avatar" %><br/>
             <%= link_to t("general.change"), edit_profile_path(current_user), :class => "button" %>
@@ -62,6 +62,28 @@
             <%= f.submit t("general.submit"), :class => "button" %>
         <% end %>
     </dd>
+    <dt><span><%= t("users.who_am_i") %></span></dt>
+    <dd>
+        <div id="joined_groups" class="block round">
+            <h3><%= t("profile.my_groups") %></h3>
+            <%= render :partial => "group", :collection => current_user.groups %>
+        </div>
+
+        <div id="all_groups" class="block round">
+            <h3><%= t("profile.all_groups") %></h3>
+            <%= render :partial => "group", :collection => Group.all %>
+        </div>
+
+        <div class="block round">
+            <h3><%= t("profile.my_badges") %></h3>
+            <%= render :partial => "badge", :collection => current_user.badges %>
+        </div>
+
+        <div id="blocked_users_list" class="block round">
+          <h3><%= t("profile.my_following_users") %></h3>
+
+        </div>
+    </dd>
     <dt><span><%= t("users.details") %></span></dt>
     <dd>
         <div class="block round">
@@ -73,23 +95,6 @@
                 </tr>
                 <%= render :partial => "recent_item", :collection => @recent_items %>
             </table>
-        </div>
-
-        <div class="block round">
-            <h3><%= t("profile.my_badges") %></h3>
-            <%= render :partial => "badge", :collection => current_user.badges %>
-        </div>
-
-        <div class="block round">
-            <h3><%= t("profile.my_groups") %></h3>
-            <%= render :partial => "group", :collection => current_user.groups %>
-        </div>
-
-        <div id="blocked_users_list" class="block round">
-          <h3><%= t_with_colon("users.blocked_users_list") %></h3>
-          <% @blocked_users.each do |user| %>
-              <p><%= link_to user.login_name, user %></p>
-          <% end %>
         </div>
     </dd>
 </dl>

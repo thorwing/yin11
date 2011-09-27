@@ -88,6 +88,7 @@ Feature: Comments
     | title    |
     | 西瓜烂了 |
     When I log in as "David User"
+    And I go to the reviews page
     And I follow "西瓜烂了"
     When I fill in "content" with "TMD"
     And I press "+评论"

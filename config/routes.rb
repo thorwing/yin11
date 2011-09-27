@@ -70,6 +70,7 @@ Yin11::Application.routes.draw do
       put "delete_watched_tag"
       post "watch_tags"
       put "toggle"
+      get "custom"
     end
   end
 

@@ -3,7 +3,7 @@
     <b><%= t("tips.current_version") if @tip.current_version_id == revision.id.to_s %></b>
     <p>
       <b><%= t("general.author") %></b>
-      <%= revision.author.login_name if revision.author %>
+      <%= revision.author.screen_name if revision.author %>
     </p>
     <p>
       <b><%= t("general.created_at") %></b>

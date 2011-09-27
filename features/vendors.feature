@@ -10,7 +10,6 @@ Feature: smoke tests for Vendors
     When I go to the vendors page
     Then I should see "农工商超市"
 
-  @focus
   Scenario: User can search for vendors
     Given the following vendors exists:
       | name       | city | street | enabled |

@@ -12,8 +12,7 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = user.auth_token
       end
 
-      msg = (user.role == INACTIVE_USER_ROLE) ? t("notices.activation_required") : t("notices.welcome_back", :name => user.login_name)
-      redirect_back root_url, :notice => msg
+      redirect_back root_url, :notice => t("notices.welcome_back", :name => user.screen_name)
     else
       flash.now.alert = t("authentication.invalid_usr_pwd")
       render "new"

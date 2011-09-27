@@ -5,7 +5,7 @@
     <span class="trivial"><%= @review.reported_on_string %></span>
     <br/>
     <% if @review.author %>
-        <%= t("info_items.posted_by")  %> <%= link_to @review.author.login_name, @review.author %>
+        <%= t("info_items.posted_by")  %> <%= link_to @review.author.screen_name, @review.author %>
     <% end %>
     <br/>
     <%= render "shared/show_tags", :item => @review %>

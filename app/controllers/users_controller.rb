@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter(:only => [:update, :block, :unlock]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:update]) { |c| c.require_permission :normal_user }
 
   # GET /users/new
   # GET /users/new.xml
@@ -20,12 +20,19 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    saved = @user.save
-    @user.send_activation if saved
+
+    if IncomingRequest.is_rapid_creation?(request.remote_ip.to_s)
+      redirect_to root_path, :notice => t("notices.rapid_user_creation")
+      return
+    end
 
     respond_to do |format|
-      if saved
-        format.html { render "activation_required"}
+      if @user.save
+        IncomingRequest.record_creation(request.remote_ip.to_s)
+        #TODO wrap in a method?
+        cookies[:auth_token] = @user.auth_token
+
+        format.html { redirect_to custom_profile_index_path }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -33,8 +40,6 @@ class UsersController < ApplicationController
       end
     end
   end
-
-
 
   def update
     respond_to do |format|
@@ -48,39 +53,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def activate
-    @user = User.first(:conditions => {:activation_token => params[:id]})
-    @user.activate!
+  def verify_email
+    @user = User.first(:conditions => {:email_verification_token => params[:id]})
+    @user.verify_email!
 
-    redirect_to login_url, :notice => t("notices.user_activated")
+    redirect_to root_path, :notice => t("notices.email_verified")
   end
 
-  def block
-    user_id = params[:id]
-    unless current_user.id == user_id || (current_user.blocked_user_ids && current_user.blocked_user_ids.include?(user_id))
-      current_user.blocked_user_ids ||= []
-      current_user.blocked_user_ids << user_id
-      current_user.save
-    end
-
-    respond_to do |format|
-      format.html { redirect_to(:back, :notice => t("notices.user_blocked"))}
-      format.xml  { head :ok }
-    end
-  end
-
-  def unlock
-    user_id = params[:id]
-    if current_user.blocked_user_ids && current_user.blocked_user_ids.include?(user_id)
-      current_user.blocked_user_ids.delete(user_id)
-      current_user.save
-    end
-
-    respond_to do |format|
-      format.html { redirect_to(:back, :notice => t("notices.user_unlocked"))}
-      format.xml  { head :ok }
-    end
-  end
 
   #for validation
   def check_email

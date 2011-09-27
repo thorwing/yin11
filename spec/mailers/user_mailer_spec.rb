@@ -13,15 +13,15 @@ describe UserMailer do
     end
   end
 
-  describe "activation" do
-    let(:user) { Factory(:normal_user, :activation_token => "anything") }
-    let(:mail) { UserMailer.activation(user) }
+  describe "email_verification" do
+    let(:user) { Factory(:normal_user, :email_verification_token => "anything") }
+    let(:mail) { UserMailer.email_verify(user) }
 
-    it "send activation url" do
-      mail.subject.should eq(I18n.t("mailers.activation_subject"))
+    it "send email_verify url" do
+      mail.subject.should eq(I18n.t("mailers.verify_email_subject"))
       mail.to.should eq([user.email])
       mail.from.should eq(["yin11.mailer@gmail.com"])
-      mail.body.encoded.should match(activate_user_path(user.activation_token))
+      mail.body.encoded.should match(verify_email_path(user.email_verification_token))
     end
   end
 

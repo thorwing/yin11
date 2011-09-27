@@ -1,0 +1,6 @@
+亲爱的<%= @user.screen_name %>，
+
+请点击以下链接来完成邮箱的验证
+<%= verify_email_user_url(@user.email_verification_token) %>
+
+银筷子是一个专注于食品安全的网站，关注我们，让我们一起致力帮您维持一个安全的餐桌。

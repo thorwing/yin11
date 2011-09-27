@@ -24,10 +24,10 @@ Given /^I log in as "(.+)"$/ do |name|
   click_button("登入")
 end
 
-Given /^I log in as user$/ do
+Given /^I log in with email "(.+)" and password "(.+)"$/ do |email, password|
   visit path_to("the login page")
-  fill_in "email", :with => "user@yin11.com"
-  fill_in "password", :with => "iamtester"
+  fill_in "email", :with => email
+  fill_in "password", :with => password
   click_button("登入")
 end
 
@@ -132,6 +132,16 @@ When /^I join the group "(.+)"$/ do |group|
   And %(I follow "加入")
 end
 
+Then /^Confirm that "(.+)" is in the group "(.+)"$/ do |user, group|
+  When %(I go to #{user}'s profile page)
+  Then %(I should see "#{group}" within "#joined_groups")
+end
+
+Then /^Confirm that "(.+)" is not in the group "(.+)"$/ do |user, group|
+  When %(I go to #{user}'s profile page)
+  Then %(I should not see "#{group}" within "#joined_groups")
+end
+
 When /^I follow a vendor "(.+)"$/ do |vendor|
     And %(I go to the vendors page)
     And %(I follow "#{vendor}")
@@ -144,4 +154,13 @@ When /^I post a review about vendor "(.+)"$/ do |vendor|
     And %(I follow "#{vendor}")
     And %(I follow "+测评" within ".actions")
     And %(I fill a simple review)
+end
+
+When /^I register as a new user "(.+)" with email "(.+)"$/ do |user, email|
+    When %(I go to the sign_up page)
+    And %(I fill in "user_email" with "#{email}")
+    And %(I fill in "user_login_name" with "#{user}")
+    And %(I fill in "user_password" with "test123")
+    And %(I fill in "user_password_confirmation" with "test123")
+    And %(I press "注册")
 end

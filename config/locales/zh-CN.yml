@@ -81,9 +81,9 @@ zh-CN:
     quick_login: "快速登录："
     sign_up: "注册"
     email: "邮箱地址"
+    login_name: 昵称
     password: "密码"
     password_confirmation: "确认密码"
-    login_name: "用户名"
     invitation_code: "邀请码"
     forgot_password: "忘记密码了?"
     reset_password: 重置密码
@@ -98,7 +98,7 @@ zh-CN:
 
   mailers:
     reset_password_subject: 重置密码
-    activation_subject: 激活会员
+    verify_email_subject: 验证邮箱
     updates_subject: 食物动向
 
 
@@ -118,8 +118,7 @@ zh-CN:
     need_permission_logged: "请登入，或注册一个帐号。"
     need_permission_not_logged: "此操作需要%{permission}的权限， 请留意我们的公告来获知如何提升权限。"
     password_reset_email_sent: "密码恢复邮件已经发出，请查收。"
-    activation_email_sent: 会员激活邮件已发出，请查收。
-    user_activated: 用户已激活
+    email_verified: 邮箱已验证
     password_reset: 密码已更改
     review_posted: 测评已发布
     review_updated: 测评已修改
@@ -133,14 +132,12 @@ zh-CN:
     group_updated: 饭桌已更新
     group_joind: 已加入该饭桌
     group_quited: 已退出该饭桌'
-    user_blocked: 已阻止该用户
-    user_unlocked: 已解除对该用户的阻止
     post_created: 话题已发表
     vendor_created: 商户已创建
     current_city_updated: 当前城市已更新
-    activation_required: 请检查我们向您发出的邮件来激活您的会员资格。
     user_basic_info_updated: 基本信息已更新
     profile_updated: 偏好设定已更新
+    rapid_user_creation: 你已经在最近注册了一个帐号啦
 
   alerts:
     password_reset_expired: 密码重置口令已过期
@@ -203,6 +200,7 @@ zh-CN:
     home_page: 主页订制
     interested_places: 感兴趣的地方
     concern_settings: 其它设定
+    custom: 我是...?
     add_place: +地点
     new_watched_location: 关注的地点
     watched_distance: 关注范围
@@ -213,9 +211,11 @@ zh-CN:
     show_collected_tips_panel: 在主页上显示收藏的锦囊
     show_joined_groups_panel: 在主页上显示加入的饭桌
     concern_days: 关心几天内的食物消息
-    my_recent_posted_items: "我最近发表了:"
-    my_badges: "我的徽章:"
-    my_groups: "我加入的饭桌:"
+    my_recent_posted_items: "我最近发表了："
+    my_badges: "我的徽章："
+    my_groups: "我加入的饭桌："
+    all_groups: 所有的饭桌：
+    my_following_users: "我关注的用户："
     profile_updated_notice: 信息已更新
 
   home:
@@ -254,14 +254,12 @@ zh-CN:
     index: 所有用户
     new: 新建用户
     edit: 编辑用户
-    login_name: 登录名
-    block: 阻止该用户
-    unlock: 解除对该用户的阻止
-    blocked_users_list: 阻止名单
+    screen_name: 登录名
     thanks_for_sign_up: 感谢您的注册
     basic_info: 基本信息
     personal_info: 个人资料
     preference: 偏好设定
+    who_am_i: 我是谁？
     details: 详细
 
   groups:
@@ -431,7 +429,6 @@ zh-CN:
     detail: 详情>>
     happen: 发生在
     ago: 前
-    from_groups: "相关饭桌："
     tags: 标签
     article: 新闻
     review: 测评

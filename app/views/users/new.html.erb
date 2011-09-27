@@ -7,16 +7,16 @@
     <%= f.email_field :email %>
   </p>
   <p>
-    <%= f.label t("authentication.login_name") %><%= mark_required(@user, :login_name) %><br />
-    <%= f.text_field :login_name %>
-  </p>
-  <p>
     <%= f.label t("authentication.password") %><%= mark_required(@user, :password) %><br />
     <%= f.password_field :password %>
   </p>
   <p>
     <%= f.label t("authentication.password_confirmation") %> <br/>
     <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.label t("authentication.login_name") %><%= mark_required(@user, :login_name) %><br />
+    <%= f.text_field :login_name %>
   </p>
   <p class="button"><%= submit_tag t("authentication.sign_up"), :class => "button" %></p>
 <% end %>

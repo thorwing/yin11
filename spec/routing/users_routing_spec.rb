@@ -39,8 +39,8 @@ describe UsersController do
       { :get => "/users/check_email" }.should route_to(:controller => "users", :action => "check_email")
     end
 
-    it "recognizes and generates #activate" do
-      { :get => "/users/1/activate" }.should route_to(:controller => "users", :action => "activate", :id => "1")
+    it "recognizes and generates #email_verify" do
+      { :get => "/users/1/email_verify" }.should route_to(:controller => "users", :action => "email_verify", :id => "1")
     end
 
   end

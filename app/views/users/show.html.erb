@@ -1,17 +1,4 @@
 <div>
-    <%= @user.login_name %>
+    <%= @user.screen_name %>
     <%= image_tag current_user.get_avatar, :class => "avatar" %>
 </div>
-
-<% if is_user_self(@user) %>
-
-<% elsif current_user %>
-    <!--for other users-->
-    <div>
-        <% if user_can_be_blocked?(@user) %>
-            <%= link_to t("users.block"), block_user_path(@user), :method => :put, :class => "button" %>
-        <% elsif user_can_be_unlocked?(@user) %>
-            <%= link_to t("users.unlock"), unlock_user_path(@user), :method => :put, :class => "button" %>
-        <% end %>
-    </div>
-<% end %>

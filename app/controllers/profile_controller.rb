@@ -3,7 +3,6 @@ class ProfileController < ApplicationController
 
   def show
     @recent_items = current_user.info_items.of_types([Review.name]).desc(:updated_at).limit(PROFILE_RECENT_ITEMS).all
-    @blocked_users = (current_user.blocked_user_ids || []).map{ |e| User.find(e) }
   end
 
   def edit
@@ -77,6 +76,10 @@ class ProfileController < ApplicationController
     respond_to do |format|
       format.js {render :content_type => 'text/javascript'}
     end
+  end
+
+  def custom
+    @groups = Group.all
   end
 
 end

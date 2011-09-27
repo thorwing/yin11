@@ -22,7 +22,7 @@
              <p class="trivial"><%= item.reported_on.strftime(TIME_FORMAT) %></p>
         <% end %>
         <% if item.author %>
-           <p class="trivial"><%= t("info_items.posted_by")  %> <%= link_to item.author.login_name, item.author %></p>
+           <p class="trivial"><%= t("info_items.posted_by")  %> <%= link_to item.author.screen_name, item.author %></p>
         <% end %>
 
     </div>

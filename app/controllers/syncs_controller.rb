@@ -18,7 +18,7 @@ class SyncsController < ApplicationController
 
       user = sync_account(client)
       if user.present?
-        flash[:notice] = t("notices.welcome_back", :name => user.login_name)
+        flash[:notice] = t("notices.welcome_back", :name => user.screen_name)
       else
         flash[:notice] = t("syncs.access_failed")
       end
@@ -54,7 +54,7 @@ class SyncsController < ApplicationController
           user.login_name = credentials["user"]["screen_name"]
           user.access_token = results[:access_token]
           user.access_token_secret = results[:access_token_secret]
-          user.activate!
+          user.save!
         end
 
         #TODO remember_me?

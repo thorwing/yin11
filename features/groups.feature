@@ -1,4 +1,4 @@
-Feature: smoke tests for Groups
+Feature: tests for Groups
 
   Background:
     Given There are minimum seeds data
@@ -7,31 +7,30 @@ Feature: smoke tests for Groups
   Scenario: Guest can visit a group
     When I go to the groups page
     And I should see "所有饭桌"
-    #And I should see "搜索"
+    And I should see "西瓜守望者"
 
-
-  Scenario: Only user can create a group
+  Scenario: Only Admin can create a group
     When I go to the new_group page
     Then I should be on the login page
 
     When I log in as "David User"
     And I go to the new_group page
+    Then I should be on the home page
+
+    When I log in as "Ray Admin"
+    And I go to the new_group page
     Then I should be on the new_group page
-    And I should see "+饭桌"
-    When I fill in "group_name" with "大华小龙虾搜查队"
-    #And I fill in "group_location" with "大华地区"
+    When I fill in "group_name" with "小龙虾搜查队"
     And I fill in "group_tags_string" with "小龙虾"
     And I press "完成"
     When I go to the groups page
-    Then I should see "大华小龙虾搜查队"
-    Then I should see "1成员"
+    Then I should see "小龙虾搜查队"
 
-  @focus
   Scenario: User can join a group
     When I log in as "David User"
     And I join the group "西瓜守望者"
-    And I go to David's profile page
-    Then I should see "西瓜守望者"
+    Then I should see "离席"
+    Then Confirm that "David" is in the group "西瓜守望者"
 
   Scenario: User can quit a group
     When I log in as "David User"
@@ -39,27 +38,9 @@ Feature: smoke tests for Groups
     And I go to David's profile page
     And I follow "西瓜守望者"
     And I follow "离席"
-    And I go to David's profile page
-    Then I should not see "西瓜守望者"
+    Then Confirm that "David" is not in the group "西瓜守望者"
 
-
-  Scenario: post from another group member will get marked for me
-    # generate some stuff, try to fill the home page
-    Given There are some sample articles
-    And There are some sample tips
-
-    When I log in as "David User"
-    And I join the group "西瓜守望者"
-    And I post a simple review without vendor
-
-    When I log out
-    And I log in as "Kate Tester"
-    Then I should not see "相关饭桌：西瓜守望者"
-    When I join the group "西瓜守望者"
-    And I go to the home page
-   Then I should see "相关饭桌：西瓜守望者"
-
-  Scenario: Group member can post for his group
+  Scenario: Group member can post a topic for his group
     When I log in as "David User"
     And I join the group "西瓜守望者"
     And I go to the groups page
@@ -85,5 +66,12 @@ Feature: smoke tests for Groups
     And I go to the groups page
     And I follow "西瓜守望者"
     Then I should see "1" within "#group_posts"
+
+  Scenario: User will be suggested to select some groups
+    When I log in as "David User"
+    And I go to David's profile page
+    Then I should see "西瓜守望者"
+    And I should see "海鲜爱好者"
+    And I should see "麻辣诱惑"
 
 

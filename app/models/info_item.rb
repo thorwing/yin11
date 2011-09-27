@@ -31,16 +31,6 @@ class InfoItem
   scope :bad, where(:positive => false)
   scope :good, where(:positive => true)
 
-  class << self
-    def not_from_blocked_users(blocked_user_ids)
-      if blocked_user_ids == [] || blocked_user_ids.nil?
-        raise "the blocked_user_ids is empty or nil"
-      else
-        not_in(:author_id => blocked_user_ids)
-      end
-    end
-  end
-
   #relationships
   embeds_many :comments
   belongs_to :author, :class_name => "User"

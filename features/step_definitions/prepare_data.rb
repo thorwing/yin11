@@ -19,9 +19,15 @@ Given /^There are some sample articles$/ do
 end
 
 Given /^There are some sample groups$/ do
-  group = Group.new(:name => "西瓜守望者", :tags_string => "西瓜", :city_id => "021")
-  group.creator_id = @editor.id
-  group.save!
+  groups = [{:name => "西瓜守望者", :tags_string => "西瓜", :city_id => "021"},
+  {:name => "海鲜爱好者", :tags_string => "海鲜,龙虾", :city_id => "021"},
+  {:name => "麻辣诱惑", :tags_string => "西瓜", :city_id => "021"}]
+
+  groups.each do |g|
+    Group.create!(:name => g[:name], :tags_string => g[:tags_string], :city_id => g[:city_id]) do |group|
+      group.creator_id = @editor.id
+    end
+  end
 end
 
 Given /^There are some sample reviews$/ do

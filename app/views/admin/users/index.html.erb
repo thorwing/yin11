@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th><%= t("users.login_name") %></th>
+    <th><%= t("users.screen_name") %></th>
     <th>Email</th>
     <th>Role</th>
     <th></th>
@@ -12,7 +12,7 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= link_to user.login_name, [:admin, user] %></td>
+    <td><%= link_to user.screen_name, [:admin, user] %></td>
     <td><%= user.email %></td>
     <td><%= user.role %></td>
     <td><%= link_to t("general.show"), [:admin, user] %></td>

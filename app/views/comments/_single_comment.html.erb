@@ -2,7 +2,7 @@
   <div class="block round">
     <div class="two_columns_container">
         <div class="left_column">
-            <%= link_to comment.user.login_name, comment.user %>:
+            <%= link_to comment.user.screen_name, comment.user %>:
             <blockquote>
               <% if comment.enabled %>
                 <span class="quoted"><%= comment.content %></span>

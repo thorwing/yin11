@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
-  before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:join, :quit]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:new, :update, :edit, :create]) { |c| c.require_permission :admin }
 
   def index
     #TODO
@@ -39,7 +40,8 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(params[:group])
     @group.creator_id = current_user.id
-    @group.join!(current_user)
+    #@group.join!(current_user)
+    @group.save!
 
     RewardManager.new(current_user).contribute(:created_groups)
 
@@ -78,35 +80,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
         format.html { redirect_to(@group, :notice => t("notices.group_quited"))}
         format.xml  { head :ok }
-    end
-  end
-
-  def block
-    @group = Group.find(params[:id])
-    user = User.find(params[:user_id])
-    current_user.blocked_user_ids ||= []
-    current_user.blocked_user_ids << user.id
-    current_user.save
-
-    respond_to do |format|
-      format.html { redirect_to(@group, :notice => t("notices.group_user_blocked"))}
-      format.xml  { head :ok }
-    end
-  end
-
-  def unlock
-    @group = Group.find(params[:id])
-    if current_user.blocked_user_ids
-       user = User.find(params[:user_id])
-      if current_user.blocked_user_ids.include?(user.id)
-        current_user.blocked_user_ids.delete(user.id)
-        current_user.save
-      end
-    end
-
-    respond_to do |format|
-      format.html { redirect_to(@group, :notice => t("notices.group_user_unlocked"))}
-      format.xml  { head :ok }
     end
   end
 

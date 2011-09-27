@@ -116,11 +116,6 @@ module ApplicationHelper
       end
     end
 
-    same_groups = get_groups_of_item(item)
-    if same_groups.size > 0
-      result << t("info_items.from_groups") + same_groups.map(&:name).join(" ")
-    end
-
      result.map{|r| content_tag(:small, r)}.join("|").html_safe
   end
 
@@ -139,20 +134,6 @@ module ApplicationHelper
         yield t[0], classes[(t[1].to_i - min) / divisor]
      }
    end
-
-
-  def get_groups_of_item(item)
-    result = []
-    if current_user && item.author
-      (item.author.group_ids & current_user.group_ids).each do |group_id|
-        group = Group.find(group_id)
-        if group.tags && (group.tags & item.tags).size > 0
-          result << group
-        end
-      end
-    end
-    result
-  end
 
   #for plugins
 

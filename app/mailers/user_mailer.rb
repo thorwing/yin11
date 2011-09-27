@@ -11,9 +11,9 @@ class UserMailer < ActionMailer::Base
     mail :to => user.email, :subject => I18n.t("mailers.reset_password_subject")
   end
 
-  def activation(user)
+  def email_verify(user)
     @user = user
-    mail :to => user.email, :subject => I18n.t("mailers.activation_subject")
+    mail :to => user.email, :subject => I18n.t("mailers.verify_email_subject")
   end
 
   def updates(user, items)

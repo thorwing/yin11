@@ -13,26 +13,27 @@ class User
   field :login_name
   field :password_hash
   field :password_salt
-  field :role, :type => Integer, :default => INACTIVE_USER_ROLE
+  field :role, :type => Integer, :default => NORMAL_USER_ROLE
   field :auth_token
   field :password_reset_token
   field :password_reset_sent_at, :type => DateTime
-  field :activation_token
-  field :blocked_user_ids, :type => Array
+  field :email_verified, :type => Boolean, :default => false
+  field :email_verification_token
   field :provider
   field :uid
   field :access_token
   field :access_token_secret
+  field :creator_ip
   mount_uploader :avatar, AvatarUploader
 
   index :email
   index :auth_token
 
   attr_accessor :password
-  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :activation_token, :avatar
+  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar
 
   # strange error when trying to using scope, so using class method instead
-  scope :active_users, any_in(:role => [NORMAL_USER_ROLE, EDITOR_ROLE, ADMIN_ROLE])
+  scope :valid_email_users, where(:email_verified => true)
   scope :mail_receiver, where("profile.receive_mails" => true)
   class << self
     def of_auth_token(token)
@@ -61,7 +62,7 @@ class User
               :uniqueness => true,
               :email_format => true,
               :if => :non_third_party_login
-  validates_presence_of :login_name
+  #validates_presence_of :login_name
   validates_length_of :login_name, :maximum => 15
   validates_presence_of :password, :on => :create, :if => :non_third_party_login
   validates_confirmation_of :password, :if => :non_third_party_login
@@ -72,7 +73,11 @@ class User
   after_initialize { self.profile ||= Profile.new; self.contribution ||= Contribution.new }
   before_save :encrypt_password
   before_create { generate_token(:auth_token)
-                  generate_token(:activation_token)}
+                  generate_token(:email_verification_token)}
+
+  def screen_name
+    login_name.present? ? login_name : email
+  end
 
   def authenticate(password)
     if password.present? && self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
@@ -89,8 +94,8 @@ class User
     UserMailer.password_reset(self).deliver
   end
 
-  def send_activation
-    UserMailer.activation(self).deliver
+  def send_email_verification
+    UserMailer.email_verify(self).deliver
   end
 
   def send_updates
@@ -98,9 +103,10 @@ class User
     UserMailer.updates(self, items).deliver
   end
 
-  def activate!
+  def verify_email!
     self.role = NORMAL_USER_ROLE
-    self.activation_token = nil
+    self.email_verification_token = nil
+    self.email_verified = true
     self.save!
   end
 
@@ -198,7 +204,7 @@ class User
   end
 
   def self.send_updates_to_users
-    self.enabled.active_users.mail_receiver.each do |user|
+    self.enabled.valid_email_users.mail_receiver.each do |user|
       user.send_updates
     end
   end
