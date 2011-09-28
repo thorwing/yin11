@@ -30,7 +30,7 @@ class User
   index :auth_token
 
   attr_accessor :password
-  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar
+  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar, :group_ids
 
   # strange error when trying to using scope, so using class method instead
   scope :valid_email_users, where(:email_verified => true)

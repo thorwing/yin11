@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         #TODO wrap in a method?
         cookies[:auth_token] = @user.auth_token
 
-        format.html { redirect_to custom_profile_index_path }
+        format.html { redirect_to edit_profile_path(current_user.profile) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }

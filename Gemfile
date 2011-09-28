@@ -34,7 +34,7 @@ gem 'jquery-rails'
 # gem 'aws-s3', :require => 'aws/s3'
 
 #temp workaround, rake 0.9.0(and 0.9.1?) caused a problem on Heroku
-gem "rake", "~> 0.8.7"
+gem "rake"
 
 gem "mongoid"
 gem "bson_ext"

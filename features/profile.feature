@@ -1,4 +1,5 @@
-Feature: smoke tests for Profile
+@foucs
+Feature: tests for Profile
 
   Background:
     Given There are minimum seeds data
@@ -11,13 +12,21 @@ Feature: smoke tests for Profile
     And I go to David's profile page
     Then I should be on David's profile page
 
-
   Scenario: User can access the profile show page
     When I log in as "David User"
     And I go to David's profile page
     Then I should be on David's profile page
-    And I should see "我的徽章"
-    And I should see "我最近发表"
+    And I should see "基本信息"
+
+  Scenario: User can edit the profile step by step
+    When I log in as "David User"
+    And I follow "设置" within "#top_menu"
+    Then I should see "我是..."
+    When I follow "下一步"
+    Then I should see "昵称"
+    Then I should see "换一张头像"
+    When I follow "下一步"
+    Then I should see "主页订制"
 
   Scenario: User can hide the watching tags panel and it will not shown again on the home page
     When I log in as "David User"

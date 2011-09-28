@@ -1,0 +1,7 @@
+<div class="block round">
+    <h3><%= t("profile.edit_groups") %></h3>
+    <% Group.all.each do |group| %>
+        <%= check_box_tag "user[group_ids][]", group.id, current_user.group_ids.include?(group.id), {:id => "group_#{group.id}", :class => "checkbox" } %>
+        <%= label_tag "group_#{group.id}", group.name %>
+    <% end %>
+</div>

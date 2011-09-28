@@ -40,6 +40,10 @@ module LayoutHelper
     concat(image_tag "top_menu/corner_right.png", :class => "corner_right")
   end
 
+  def sub_menu(args)
+    concat(args)
+  end
+
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }
   end

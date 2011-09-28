@@ -45,9 +45,9 @@
     </li>
     <li><%= render_menu(t("menu.badges"), badges_path) %></li>
     <% if current_user %>
-         <li><b><%= render_menu(current_user.screen_name, profile_path(current_user)) %></b>
+         <li><b><%= render_menu(current_user.screen_name, profile_path(current_user.profile)) %></b>
             <ul>
-                <li><% first_sub_menu(render_menu(t("menu.show_profile"), profile_path(current_user))) %></li>
+                <li><% first_sub_menu(render_menu(t("menu.edit_profile"), edit_profile_path(current_user.profile))) %></li>
                 <li><%= render_menu(t("menu.logout"), logout_path) %></li>
                 <li class="last"><% last_sub_menu %></li>
             </ul>

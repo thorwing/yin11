@@ -7,7 +7,7 @@ class Tag
   attr_accessible :name
 
   #relationships
-
+  belongs_to :groups
 
 
 end

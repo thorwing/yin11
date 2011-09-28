@@ -24,11 +24,10 @@ Feature:
 
   Scenario: After registration, user will be redirect to perfect his profile
     When I register as a new user "Geek" with email "unique@test.com"
-    Then I should be on the custom_profile_index page
-    And I should see "我是谁？"
+    Then I should be on Geek's profile editing page
     And I should see "西瓜守望者"
     When I press "下一步"
     Then I should see "昵称"
-    And I should see "上传照片"
+    And I should see "换一张头像"
     
 

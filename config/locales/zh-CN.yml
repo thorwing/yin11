@@ -151,6 +151,7 @@ zh-CN:
     home: 主页
     admin_control: 管理面板
     show_profile: 个人设置
+    edit_profile: 设置
     update_profile: 偏好设定
     articles: 新闻
     reviews: 测评
@@ -191,7 +192,7 @@ zh-CN:
 
   user_basic:
     user_basic: 基本信息
-    login_name: 用户名
+    login_name: 昵称
     avatar: 头像
     change_avator: 换一张头像
 
@@ -200,8 +201,12 @@ zh-CN:
     home_page: 主页订制
     interested_places: 感兴趣的地方
     concern_settings: 其它设定
-    custom: 我是...?
+    edit_leave: 先这样
+    edit_hint: 花个几十秒让银筷子能够更好地为您服务
+    edit_groups: 我是...
     add_place: +地点
+    previous: 前一步
+    next: 下一步
     new_watched_location: 关注的地点
     watched_distance: 关注范围
     wathced_distance_unit: 公里
@@ -212,10 +217,11 @@ zh-CN:
     show_joined_groups_panel: 在主页上显示加入的饭桌
     concern_days: 关心几天内的食物消息
     my_recent_posted_items: "我最近发表了："
-    my_badges: "我的徽章："
-    my_groups: "我加入的饭桌："
+    my_badges: 我的徽章
+    my_groups: 我的饭桌
     all_groups: 所有的饭桌：
-    my_following_users: "我关注的用户："
+    my_followings: 我的关注
+    my_following_users: 我关注的用户
     profile_updated_notice: 信息已更新
 
   home:
@@ -261,6 +267,7 @@ zh-CN:
     preference: 偏好设定
     who_am_i: 我是谁？
     details: 详细
+    recent_activities: 最近活动
 
   groups:
     join: 加入

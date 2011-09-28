@@ -9,7 +9,7 @@ require "source"
   Factory(:normal_user)
   Factory(:tester)
   Factory(:editor)
-  Factory(:admin)
+  @admin = Factory(:admin)
 
 #  FoodsGenerator::generate_foods
 
@@ -86,5 +86,14 @@ require "source"
     rescue Exception => exc
       p v.name
       p exc.backtrace
+    end
+  end
+
+  #groups
+  p "generating groups"
+  groups = YAML::load(File.open("app/seeds/groups.yml"))
+  groups.each do |t|
+    Group.create!(t) do |g|
+      g.creator_id = @admin.id
     end
   end

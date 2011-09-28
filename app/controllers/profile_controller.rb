@@ -6,14 +6,32 @@ class ProfileController < ApplicationController
   end
 
   def edit
-
+    current_user.profile.current_step = session[:profile_step]
   end
 
   def update
-    if current_user.profile.update_attributes(params[:profile])
-      redirect_to profile_path(current_user), :notice => t("profile.profile_updated_notice")
+    current_user.profile.current_step = session[:profile_step]
+
+    current_user.profile.update_attributes(params[:profile]) if params[:profile].present?
+    current_user.update_attributes(params[:user]) if params[:user].present?
+
+    editing = true
+    if params[:previous_button]
+      current_user.profile.previous_step
+    elsif current_user.profile.last_step?
+      editing = false
     else
-      redirect_to profile_path(current_user), :notice => "Error"
+      current_user.profile.next_step
+    end
+
+    session[:profile_step] = current_user.profile.current_step
+
+    if editing
+      #@current_user.profile.cached_params= old
+	    render :action => :edit
+    else
+	    session[:profile_step] = nil
+	    redirect_to root_path, :notice => t("profile.profile_updated_notice")
     end
   end
 
@@ -77,9 +95,4 @@ class ProfileController < ApplicationController
       format.js {render :content_type => 'text/javascript'}
     end
   end
-
-  def custom
-    @groups = Group.all
-  end
-
 end

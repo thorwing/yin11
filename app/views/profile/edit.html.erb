@@ -1,21 +1,12 @@
-<dl class="tab">
-    <dt><span><%= t("users.basic_info") %></span></dt>
-    <dd>
-        <div class="block round">
-            <%= form_for current_user, :html => {:multipart => true} do |f| %>
-                <div class="block round">
-                    <%= render "shared/text_field", :f => f, :field => :login_name, :label => t("user_basic.login_name") %>
-                    <p>
-                      <b><%= t("user_basic.avatar") %></b><br/>
-                      <%= image_tag current_user.get_avatar, :class => "avatar" %><br/>
-                      <%= t("user_basic.change_avator") %><br/>
-                      <%= f.file_field :avatar %> <br/>
-                    </P>
-                </div>
-                <div class="actions">
-                    <%= f.submit t("general.submit"), :class => "button" %>
-                </div>
-            <% end %>
-        </div>
-    </dd>
-</dl>
+<%= form_for current_user.profile do |f| %>
+    <h3 class="trivial"><%= t("profile.edit_hint") %></h3>
+
+    <%= render "#{current_user.profile.current_step}", :f => f %>
+
+    <div class="actions">
+        <%= submit_tag t("profile.previous"), :name => "previous_button", :class => "button"  unless current_user.profile.first_step? %>
+        <%= submit_tag current_user.profile.last_step? ? t("general.submit") : t("profile.next"), :class => "button" %>
+        <br/>
+    </div>
+<% end %>
+

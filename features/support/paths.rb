@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /^(.*)'s profile page$/i
       profile_path(User.first(:conditions => {:login_name => ($1)}))
+    when /^(.*)'s profile editing page$/i
+      edit_profile_path(User.first(:conditions => {:login_name => ($1)}).profile)
     when /^(.*)'s user page$/i
       user_path(User.first(:conditions => {:login_name => ($1)}))
 

@@ -3,98 +3,83 @@
 <dl class="tab">
     <dt><span><%= t("users.basic_info") %></span></dt>
     <dd>
-        <div class="block round">
-            <h3><%= current_user.screen_name %></h3>
-            <%= current_user.email %><br/>
-            <%= image_tag current_user.get_avatar, :class => "avatar" %><br/>
-            <%= link_to t("general.change"), edit_profile_path(current_user), :class => "button" %>
-        </div>
+        <b><%= t("user_basic.login_name") %></b><br/>
+        <%= current_user.screen_name %><br/>
+        <b><%= t("general.email_address") %></b><br/>
+        <%= current_user.email %><br/>
+        <b><%= t("user_basic.avatar") %></b><br/>
+        <%= image_tag current_user.get_avatar, :class => "avatar" %><br/>
     </dd>
     <dt><span><%= t("users.preference") %></span></dt>
     <dd>
-        <%= form_for current_user.profile, :url => profile_path(current_user), :as => :profile do |f| %>
-            <div class="block round">
-                <h3><%= t("profile.home_page") %></h3>
-                <table>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th><%= t("profile.show_watching_tags_panel") %></th>
-                        <th><%= render "toggle_row", :field => :show_watching_tags_panel %></th>
-                    </tr>
-                    <tr>
-                        <th><%= t("profile.show_watching_locations_panel") %></th>
-                        <th><%= render "toggle_row", :field => :show_watching_locations_panel %></th>
-                    </tr>
-                    <tr>
-                        <th><%= t("profile.show_collected_tips_panel") %></th>
-                        <th><%= render "toggle_row", :field => :show_collected_tips_panel %></th>
-                    </tr>
-                    <tr>
-                        <th><%= t("profile.show_joined_groups_panel") %></th>
-                        <th><%= render "toggle_row", :field => :show_joined_groups_panel %></th>
-                    </tr>
-                </table>
-            </div>
+        <h3><%= t("profile.home_page") %></h3>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th><%= t("profile.show_watching_tags_panel") %></th>
+                <th><%= render "toggle_row", :field => :show_watching_tags_panel %></th>
+            </tr>
+            <tr>
+                <th><%= t("profile.show_watching_locations_panel") %></th>
+                <th><%= render "toggle_row", :field => :show_watching_locations_panel %></th>
+            </tr>
+            <tr>
+                <th><%= t("profile.show_collected_tips_panel") %></th>
+                <th><%= render "toggle_row", :field => :show_collected_tips_panel %></th>
+            </tr>
+            <tr>
+                <th><%= t("profile.show_joined_groups_panel") %></th>
+                <th><%= render "toggle_row", :field => :show_joined_groups_panel %></th>
+            </tr>
+        </table>
 
-            <div class="block round">
-                <h3><%= t("profile.interested_places") %></h3>
-                <%= render :partial => "watched_location", :collection => current_user.profile.watched_locations %>
-                <p><b><%= f.label :watched_distance, t_with_colon("profile.watched_distance") %></b>
-                <%= f.select :watched_distance, options_for_select((PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE).map{|e| [e, e]}, f.object.watched_distance) %>
-                <%= t("profile.wathced_distance_unit") %></p>
-            </div>
+        <hr/>
 
-            <div class="block round">
-                <h3><%= t("profile.concern_settings") %></h3>
-                <p>
-                    <%= t("profile.receive_mails") %>
-                    <%= render "toggle_row", :field => :receive_mails %>
-                </p>
-                <p>
-                    <b><%= t_with_colon("profile.concern_days") %></b>
-                    <%= f.select :concern_days, options_for_select((PROFILE_MIN_CONCERN_DAYS..PROFILE_MAX_CONCERN_DAYS).map{|e| [e, e]}, f.object.concern_days) %>
-                </p>
-            </div>
+        <h3><%= t("profile.interested_places") %></h3>
+        <%= render :partial => "watched_location", :collection => current_user.profile.watched_locations %>
+        <p><b><%= t_with_colon("profile.watched_distance") %></b>
+        <%= current_user.profile.watched_distance.to_s %>
+        <%= t("profile.wathced_distance_unit") %></p>
 
-            <%= f.submit t("general.submit"), :class => "button" %>
-        <% end %>
+        <hr/>
+
+        <h3><%= t("profile.concern_settings") %></h3>
+        <p>
+            <%= t("profile.receive_mails") %>
+            <%= render "toggle_row", :field => :receive_mails %>
+        </p>
+        <p>
+            <b><%= t_with_colon("profile.concern_days") %></b>
+            <%= current_user.profile.concern_days %>
+        </p>
     </dd>
-    <dt><span><%= t("users.who_am_i") %></span></dt>
-    <dd>
-        <div id="joined_groups" class="block round">
-            <h3><%= t("profile.my_groups") %></h3>
-            <%= render :partial => "group", :collection => current_user.groups %>
-        </div>
-
-        <div id="all_groups" class="block round">
-            <h3><%= t("profile.all_groups") %></h3>
-            <%= render :partial => "group", :collection => Group.all %>
-        </div>
-
-        <div class="block round">
-            <h3><%= t("profile.my_badges") %></h3>
-            <%= render :partial => "badge", :collection => current_user.badges %>
-        </div>
-
-        <div id="blocked_users_list" class="block round">
-          <h3><%= t("profile.my_following_users") %></h3>
-
-        </div>
+    <dt><span><%= t("profile.my_groups") %></span></dt>
+    <dd id="joined_groups">
+       <%= render :partial => "group", :collection => current_user.groups %>
     </dd>
-    <dt><span><%= t("users.details") %></span></dt>
+    <dt><span><%= t("profile.my_badges") %></span></dt>
     <dd>
-        <div class="block round">
-            <h3><%= t("profile.my_recent_posted_items") %></h3>
-            <table>
-                <tr>
-                    <th><%= t("general.title") %></th>
-                    <th><%= t("comments.comments") %></th>
-                </tr>
-                <%= render :partial => "recent_item", :collection => @recent_items %>
-            </table>
-        </div>
+        <%= render :partial => "badge", :collection => current_user.badges %>
+    </dd>
+    <dt><span><%= t("profile.my_followings") %></span></dt>
+    <dd>
+    </dd>
+    <dt><span><%= t("users.recent_activities") %></span></dt>
+    <dd>
+        <h3><%= t("profile.my_recent_posted_items") %></h3>
+        <table>
+            <tr>
+                <th><%= t("general.title") %></th>
+                <th><%= t("comments.comments") %></th>
+            </tr>
+            <%= render :partial => "recent_item", :collection => @recent_items %>
+        </table>
     </dd>
 </dl>
+
+<div class="actions">
+  <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile), :class => "button" %>
+</div>
