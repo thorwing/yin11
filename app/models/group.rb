@@ -1,7 +1,6 @@
 class Group
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Taggable
 
   field :name
   field :description
@@ -15,6 +14,7 @@ class Group
   has_and_belongs_to_many :members, :class_name => User.name
   has_many :posts
   belongs_to :city
+  has_and_belongs_to_many :tags
 
   #validators
   validates_presence_of :name, :creator_id

@@ -7,10 +7,6 @@
 
     <%= render "shared/text_field", :f => f, :label => t("general.name"), :field => :name %>
     <%= render "shared/text_area", :f => f, :label => t("general.description"), :field => :description %>
-    <div class="field">
-         <b><%= f.label :tags_string, t("info_items.tags") %></b><br/>
-         <%= f.text_field :tags_string, 'data-pre' => (@group.tags ? @group.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
-    </div>
 
     <div class="actions">
         <%= f.submit t("general.submit"), :class => "button" %>

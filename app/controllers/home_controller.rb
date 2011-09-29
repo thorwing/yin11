@@ -19,7 +19,6 @@ class HomeController < ApplicationController
       #@evaluation = current_user.get_evaluation
       #TODO
       #should be loaded on demand
-      @watched_tags = current_user.profile.watched_tags
       @collected_tips = Tip.any_in(:_id => current_user.profile.collected_tip_ids).all
       @my_groups = current_user.groups.all
       @watched_locations = current_user.profile.watched_locations
@@ -57,9 +56,7 @@ class HomeController < ApplicationController
     page_number = params[:page].present? ? params[:page] : 1
     @items = []
     if current_user
-      current_user.feeds.each do |f|
-        @items << eval("#{f.target_type}.find(\"#{f.target_id}\")")
-      end
+      @items = FeedsManager.pull_feeds(current_user)
     else
       criteria = InfoItem.enabled
 

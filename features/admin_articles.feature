@@ -72,17 +72,16 @@ Feature: admin articles
     And I go to the articles page
     Then I should see "可疑的文章"
 
+  @focus
   Scenario: Admin can recommend/unrecommend articles by single click
     Given the following articles exists:
-    | title      | content                | type |
-    | 很棒的文章 | 这是一篇很棒的文章     | news |
+    | title      | content                | type | enabled |
+    | 很棒的文章 | 这是一篇很棒的文章     | news | true   |
     When I log in as "Ray Admin"
-    And I go to the articles page
-    Then I should see "很棒的文章"
-    And I should not see "很棒的文章" within "#news_frame"
+    And I should not see "很棒的文章"
     When I go to the admin_articles page
     And I follow "toggle_link" within ".toggle.off"
-    And I go to the articles page
+    And I go to the home page
     Then I should see "很棒的文章" within "#news_frame"
 
 

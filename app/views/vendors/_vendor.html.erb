@@ -6,7 +6,7 @@
     <%= "#{t_with_colon("vendors.recent_bad")}#{vendor.bad_reviews_in(30).size.to_s}"  %><br/>
     <div class="actions">
         <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => vendor.id), :class => "button" %>
-        <%= render "shared/follow_field", :target_type => Vendor.name, :target_id => vendor.id %>
+        <%= render "shared/follow_field", :target => vendor %>
     </div>
   </div>
 </div>

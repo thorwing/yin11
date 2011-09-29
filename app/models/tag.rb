@@ -7,7 +7,8 @@ class Tag
   attr_accessible :name
 
   #relationships
-  belongs_to :groups
+  has_and_belongs_to_many :groups
+  embeds_many :feeds
 
 
 end

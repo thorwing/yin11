@@ -67,10 +67,6 @@ class ReviewsController < ApplicationController
       SyncsManager.new(current_user).sync(@review)
     end
 
-    if @review.vendor.present?
-      FeedsManager.push_feeds(@review.vendor, @review)
-    end
-
     respond_to do |format|
       if @review.save
         format.html { redirect_to(@review, :notice => t("notices.review_posted")) }

@@ -21,7 +21,7 @@ Feature: tests for Groups
     And I go to the new_group page
     Then I should be on the new_group page
     When I fill in "group_name" with "小龙虾搜查队"
-    And I fill in "group_tags_string" with "小龙虾"
+#   And I fill in "group_tags_string" with "小龙虾"
     And I press "完成"
     When I go to the groups page
     Then I should see "小龙虾搜查队"
@@ -67,11 +67,10 @@ Feature: tests for Groups
     And I follow "西瓜守望者"
     Then I should see "1" within "#group_posts"
 
+  @focus
   Scenario: User will be suggested to select some groups
     When I log in as "David User"
-    And I go to David's profile page
-    Then I should see "西瓜守望者"
+    And I go to David's profile editing page
     And I should see "海鲜爱好者"
-    And I should see "麻辣诱惑"
 
 

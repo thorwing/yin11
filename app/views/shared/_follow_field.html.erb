@@ -1,5 +1,5 @@
 <% if current_user && current_user.has_permission?(:normal_user)  %>
-    <% established = !current_user.relationships.select{|r| r.target_type == target_type && r.target_id.to_s == target_id.to_s}.empty? %>
-    <%= link_to t("relationships.new"), relationships_path(:target_type => target_type, :target_id => target_id), :method => :post, :remote => true, :class => "button new_relationship#{" hide" if established}" %>
-    <%= link_to t("relationships.cancel"), cancel_relationships_path(:target_type => target_type, :target_id => target_id), :method => :put, :remote => true, :class => "button cancel_relationship#{" hide" unless established}" %>
+    <% established = !current_user.relationships.select{|r| r.target_type == target.class.name && r.target_id == target.id}.empty? %>
+    <%= link_to t("relationships.new"), relationships_path(:target_type => target.class.name, :target_id => target.id), :method => :post, :remote => true, :class => "button new_relationship#{" hide" if established}" %>
+    <%= link_to t("relationships.cancel"), cancel_relationships_path(:target_type => target.class.name, :target_id => target.id), :method => :put, :remote => true, :class => "button cancel_relationship#{" hide" unless established}" %>
 <% end %>

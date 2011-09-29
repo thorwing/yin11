@@ -9,6 +9,7 @@ Feature: User can vote for an item
       | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
 
     When I log in as "David User"
+    And I go to the articles page
     Then I should see "西瓜被打了催熟剂"
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
@@ -23,12 +24,13 @@ Feature: User can vote for an item
 
     When I log out
     And I log in as "David User"
+    And I go to the reviews page
     Then I should see "买到烂西瓜"
     When I follow "up" within ".item.info"
     Then I should see "1" within ".item.info"
 
   Scenario: User can vote for a tip
-    When I log in as "Kate Tester"
+    When I log in as "Ray Admin"
     And I post a simple tip
 
     When I log in as "David User"

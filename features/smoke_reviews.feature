@@ -42,7 +42,7 @@ Feature: smoke tests for Reviews
     Then I should see "所有测评"
     And I should not see "买到烂西瓜"
 
-    When I go to the home page
+    When I go to the reviews page
     Then I should see "买到烂西瓜"
 
   Scenario: User can follow the link from home page and create a review

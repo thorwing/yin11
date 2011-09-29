@@ -17,6 +17,7 @@ class Vendor
   has_many :reviews
   has_many :reports
   belongs_to :creator, :class_name => "User"
+  embeds_many :feeds
 
   #validators
   validates_presence_of :name
@@ -36,6 +37,14 @@ class Vendor
 
   def bad_reviews_in(days)
     self.reviews.in_days_of(days).excludes(:faults => []).all
+  end
+
+  def get_feeds
+    if self.respond_to?(:feeds)
+      self.feeds
+    else
+      nil
+    end
   end
 
 end

@@ -45,12 +45,13 @@ Feature: smoke tests for Vendors
     And I go to the mine_vendors page
     Then I should see "肯德基"
 
+  @focus
   @javascript
   Scenario: User can create vendor and set a type for it
     When I log in as "David User"
     When I go to the new_vendor page
 #    Then "餐饮" should be selected for "vendor_type"
-    When I select "餐饮" from "vendor_type"
+    When I select "餐饮" from "vendor_category"
     And I fill in "vendor_name" with "鸡公煲"
     And I fill in "vendor_street" with "大华二路"
     And I press "完成"

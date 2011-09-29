@@ -4,6 +4,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Available
+  include Followable
 
   #TODO for Rails 3.1
   #has_secure_password
@@ -77,6 +78,18 @@ class User
 
   def screen_name
     login_name.present? ? login_name : email
+  end
+
+  def tags
+    groups.collect{|g| g.tags}.flatten.compact.uniq
+  end
+
+  def get_feeds
+    if self.respond_to?(:feeds)
+      self.feeds
+    else
+      nil
+    end
   end
 
   def authenticate(password)
@@ -185,9 +198,9 @@ class User
 
   def get_raw_updates(days)
     data = {}
-    self.profile.watched_tags.map{|t| data[t] = []}
-    InfoItem.enabled.in_days_of(days).tagged_with(self.profile.watched_tags).all.each do |item|
-      (self.profile.watched_tags & item.tags).each do |tag|
+    self.tags.map{|t| data[t] = []}
+    InfoItem.enabled.in_days_of(days).tagged_with(self.tags).all.each do |item|
+      (self.tags & item.tags).each do |tag|
         data[tag] << item
       end
     end

@@ -3,7 +3,6 @@ class Profile
   include Mongoid::Timestamps::Updated
 
   #collections
-  field :watched_tags, :type => Array, :default => []
   field :collected_tip_ids, :type => Array, :default => []
 
   #settings
@@ -26,15 +25,6 @@ class Profile
   validates_associated :watched_locations
   validates_inclusion_of :watched_distance, :in => PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE
   validates_inclusion_of :concern_days, :in => PROFILE_MIN_CONCERN_DAYS..PROFILE_MAX_CONCERN_DAYS
-
-  def watch_tags!(tags)
-    if tags.present?
-      tags = tags.split(",") if tags.is_a?(String)
-      self.watched_tags ||= []
-      self.watched_tags |= tags
-      self.save!
-    end
-  end
 
   def collect_tip!(tip)
     if tip.present?

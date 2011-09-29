@@ -99,6 +99,7 @@ Feature: smoke tests for Badges
       | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
 
     When I log in as "David User"
+    And I go to the articles page
     Then I should see "西瓜被打了催熟剂"
     When I follow "down" within ".item.info"
 

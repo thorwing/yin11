@@ -13,16 +13,18 @@ Feature:
     And I post a simple review without vendor
     When I log out
     And I log in as "Kate Tester"
+    And I go to the reviews page
     And I follow "David"
     Then I should be on David's user page
     And I should not see "基本信息"
 
+  @focus
   Scenario: User's name will be displayed in the item, and others can click the link to view his profile
     When I log in as "David User"
     And I post a simple review without vendor
     When I log out
     And I log in as "Kate Tester"
-    And I go to the home page
+    And I go to the reviews page
     Then I should see "买到烂西瓜"
     And I should see "David"
     When I follow "买到烂西瓜"
@@ -30,5 +32,5 @@ Feature:
     When I follow "David"
     Then I should be on David's user page
     And I should see "David"
-    And I should see "+关注"
+    And I follow "+关注"
 

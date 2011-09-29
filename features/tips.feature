@@ -7,6 +7,17 @@ Feature: smoke tests for Tips
   Background:
     Given There are minimum seeds data
 
+  @focus
+  Scenario: Only Editor can create tip
+    When I log in as "David User"
+    Then I should not see "+锦囊"
+    When I go to the new_tip page
+    Then I should be on the home page
+
+    When I log in as "Castle Editor"
+    Then I should see "+锦囊"
+    When I go to the new_tip page
+    Then I should be on the new_tip page
 
   Scenario: User can't post tip
     When I log in as "David User"

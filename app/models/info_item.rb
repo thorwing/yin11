@@ -42,6 +42,7 @@ class InfoItem
   validates_length_of :title, :maximum => 30
 
   before_validation { errors.add(:reported_on, I18n.translate("validations.date.reported_on_invalid_msg")) if @reported_on_invalid }
+  after_create { FeedsManager.push_feeds(self) }
 
   def reported_on_string
     self.reported_on ||= DateTime.now

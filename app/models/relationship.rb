@@ -9,4 +9,8 @@ class Relationship
   #relationships
   embedded_in :user
 
+  def get_item
+    eval("#{target_type}.find(\"#{target_id}\")")
+  end
+
 end

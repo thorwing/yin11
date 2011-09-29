@@ -1,7 +1,9 @@
 <% title @group.name %>
+<% @group.tags.each do |tag| %>
+        <%= link_to tag.name, {:controller => "/search", :action => "tag", :tags => tag.name}, :class => "tag" %>
+<% end %><br/>
 <span class="trivial"><%= @group.city.name %></span><br/>
 <span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(TIME_FORMAT) %></span><br/>
-
 
 <p><%= @group.description %></p>
 
