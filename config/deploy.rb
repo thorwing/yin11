@@ -1,7 +1,7 @@
 load 'deploy/assets'
 set :application, "yinkuaizi.com"
 role :web, application                          # Your HTTP server, Apache/etc
-role :app, application}                          # This may be the same as your `Web` server
+role :app, application                          # This may be the same as your `Web` server
 role :db,  application, :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
