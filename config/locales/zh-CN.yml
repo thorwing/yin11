@@ -274,6 +274,8 @@ zh-CN:
     quit: 离席
     quit_confirm: 您确定要退出该饭桌吗?
     all: 所有饭桌
+    mine: 我的饭桌
+    edit_joined_gorup: 选择饭桌
     posts: 饭桌最近话题
     member: 成员
     new: +饭桌

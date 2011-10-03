@@ -7,8 +7,7 @@
             <% current_user.badges.each do |badge| %>
                 <li>
                     <%= link_to image_tag(badge.get_icon ,:border => 0), badge %>
-                    <p class="caption"><%= link_to badge.name, badge %>
-                    <%= "(" + badge.user_ids.size.to_s + ")" %></p>
+                    <p><%= link_to badge.name, badge %></p>
                 </li>
             <% end %>
         </ul>

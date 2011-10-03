@@ -1,8 +1,24 @@
-<% title t("groups.all") %>
-<% @groups.each do |group| %>
-    <p>
-      <%= link_to group.name, group %>(<%= group.member_ids.size.to_s %><%= t("groups.member") %>)
-    </p>
+<% title(t("groups.mine")) %>
+ <% Group.all.each do |group| %>
+    <p><%= link_to group.name, group %></p>
 <% end %>
-<br/>
-<%= link_to t("groups.new"), new_group_path, :class => "button" %>
+
+<% if current_user %>
+    <div class="nav_links">
+        <%= link_to t("groups.edit_joined_gorup"), edit_profile_path(current_user.profile)  %>
+    </div>
+<% end %>
+<dl class="tab">
+  <% @groups.each do |group| %>
+    <dt><span><%= group.name %></span></dt>
+    <dd>
+        <% group.tags.each do |tag| %>
+            <% tag.feeds.each do |feed| %>
+                <%= render "info_items/info_item", :item => feed.get_item %>
+            <% end %>
+        <% end %>
+    </dd>
+  <% end %>
+</dl>
+
+

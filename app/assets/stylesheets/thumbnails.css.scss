@@ -1,0 +1,32 @@
+ul.thumb {
+    list-style: none;
+}
+
+/*ul.thumb {*/
+	/*float: left;*/
+	/*list-style: none;*/
+	/*margin: 0; padding: 10px;*/
+	/*width: 360px;*/
+    /*clear:both;*/
+/*}*/
+/*ul.thumb li {*/
+	/*margin: 0; padding: 5px;*/
+	/*float: left;*/
+	/*position: relative;  *//* Set the absolute positioning base coordinate */
+	/*width: 110px;*/
+	/*height: 110px;*/
+/*}*/
+/*ul.thumb li img {*/
+	/*width: 100px; height: 100px; *//* Set the small thumbnail size */
+	/*-ms-interpolation-mode: bicubic; *//* IE Fix for Bicubic Scaling */
+	/*border: 1px solid #ddd;*/
+	/*padding: 5px;*/
+	/*background: #f0f0f0;*/
+	/*position: absolute;*/
+	/*left: 0; top: 0;*/
+/*}*/
+/*ul.thumb li img.hover {*/
+	/*background: #000000;*/
+	/*background: image-url("badge_background.jpg") no-repeat center center;  *//* Image used as background on hover effect*/
+	/*border: none; *//* Get rid of border on hover
+}*/

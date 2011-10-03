@@ -1,4 +1,5 @@
 <% title @group.name %>
+<span class="trivial">(<%= @group.member_ids.size.to_s %><%= t("groups.member") %>)</span>
 <% @group.tags.each do |tag| %>
         <%= link_to tag.name, {:controller => "/search", :action => "tag", :tags => tag.name}, :class => "tag" %>
 <% end %><br/>

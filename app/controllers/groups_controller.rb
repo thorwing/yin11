@@ -5,7 +5,11 @@ class GroupsController < ApplicationController
   def index
     #TODO
     #display join and quit links
-    @groups = Group.all
+    if current_user
+      @groups = current_user.groups
+    else
+      @groups = Group.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
