@@ -3,12 +3,19 @@
 //= require_self
 //= require tiny_mce
 //= require swfobject
+//= require slimbox2
+//= require kandytabs.pack
+//= require jquery-easing-compatibility.1.2.pack
+//= require jquery-easing-1.3.pack
+//= require jquery.tokeninput
+//= require jquery.pageless.min
+//= require jquery.metadata
+//= require jquery.jgrowl
+//= require jquery.bubblepopup.v2.3.1.min
+//= require facebox
+//= require coda-slider.1.1.1.pack
 //= require jquery.uploadify.v2.1.4.min
-//= require gmaps4rails/bing.js
-//= require gmaps4rails/googlemaps.js
-//= require gmaps4rails/mapquest.js
-//= require gmaps4rails/openlayers.js
-//= require gmaps4rails/all_apis.js
+//= require tiny_mce/jquery.tinymce
 //= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
@@ -123,11 +130,22 @@ $(function() {
 });
 
 $(function() {
-    tinyMCE.init({
-        mode : "textareas",
-        theme : "advanced",
-        editor_selector : "rich_editor"
+    $('.rich_editor').each(function(){
+        $(this).tinymce({
+            script_url : '/javascripts/tiny_mce/tiny_mce.js',
+            theme : "advanced",
+            theme_advanced_toolbar_location : "top",
+            theme_advanced_toolbar_align : "left",
+            theme_advanced_statusbar_location : "bottom",
+            theme_advanced_resizing : true
+        });
     });
+
+//    tinyMCE.init({
+//        mode : "textareas",
+//        theme : "advanced",
+//        editor_selector : "rich_editor"
+//    });
 //     if ($('textarea').length > 0) {
 //       var data = $('.rich_editor');
 //       $.each(data, function(i) {
