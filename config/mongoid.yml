@@ -24,8 +24,12 @@ test:
 
 # set these environment variables on your prod server
 production:
+  <<: *defaults
+  database: yin11_production
 #TODO
-  uri: 'mongodb://leishi:Youare1hero@staff.mongohq.com:10034/yin11'
+
+#  uri: 'mongodb://leishi:Youare1hero@staff.mongohq.com:10034/yin11'
+
 #  uri: <%= ENV['MONGOHQ_URL'] %>
 #  host: <%= ENV['MONGOID_HOST'] %>
 #  port: <%= ENV['MONGOID_PORT'] %>
