@@ -14,7 +14,7 @@
 //= require facebox
 //= require coda-slider.1.1.1.pack
 //= require jquery.uploadify.v2.1.4.min
-//= require jquery.tinymce
+//= require tinymce-jquery
 //= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
@@ -129,15 +129,12 @@ $(function() {
 });
 
 $(function() {
-    $('.rich_editor').each(function(){
-        $(this).tinymce({
-            script_url : '/javascripts/tiny_mce/tiny_mce.js',
-            theme : "advanced",
-            theme_advanced_toolbar_location : "top",
-            theme_advanced_toolbar_align : "left",
-            theme_advanced_statusbar_location : "bottom",
-            theme_advanced_resizing : true
-        });
+    $('.rich_editor').tinymce({
+        theme : "advanced",
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        theme_advanced_resizing : true
     });
 
 //    tinyMCE.init({

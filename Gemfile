@@ -43,6 +43,7 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem "mongoid-ancestry"
 
+gem 'tinymce-rails'
 #gem "tiny_mce"
 #gem 'ckeditor-rails'
 
