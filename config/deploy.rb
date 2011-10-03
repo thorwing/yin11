@@ -7,7 +7,7 @@ role :db,  application, :primary => true # This is where Rails migrations will r
 
 set :user, "root"
 set :deploy_to, "/var/www/yin11"
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, :git
