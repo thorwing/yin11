@@ -1,4 +1,3 @@
-load 'deploy/assets'
 set :application, "yinkuaizi.com"
 role :web, application                          # Your HTTP server, Apache/etc
 role :app, application                          # This may be the same as your `Web` server

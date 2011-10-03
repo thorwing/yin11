@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
-//= require tiny_mce
 //= require swfobject
 //= require slimbox2
 //= require kandytabs.pack
@@ -15,7 +14,7 @@
 //= require facebox
 //= require coda-slider.1.1.1.pack
 //= require jquery.uploadify.v2.1.4.min
-//= require tiny_mce/jquery.tinymce
+//= require jquery.tinymce
 //= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
