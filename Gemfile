@@ -67,7 +67,7 @@ gem 'crack'
 #gem 'barista'
 gem 'therubyracer', :require => nil
 
-# Bundle gems for the local environment. Make sure to
+# Bundle gems for thevi  local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
@@ -80,9 +80,9 @@ group :development, :test do
 
     gem 'guard-rspec'
     gem 'guard-cucumber'
-    #for using guard on windows
-    gem 'rb-fchange'
-    gem 'rb-notifu'
+    #For windows only!
+    #gem 'rb-fchange'
+    #gem 'rb-notifu'
 
     gem "escape_utils"
 end
