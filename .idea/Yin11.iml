@@ -160,7 +160,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.14.6, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="spruz (v0.2.13, ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rb-notifu (v0.0.4, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.0.3, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bson (v1.3.1, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.1.7, ruby-1.9.2-p180) [gem]" level="application" />
@@ -241,7 +240,6 @@
     <orderEntry type="library" scope="PROVIDED" name="net-http-digest_auth (v1.1.1, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mongoid-ancestry (v0.2.2, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kaminari (v0.12.4, ruby-1.9.2-p180) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rb-fchange (v0.0.5, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.5.4, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json_pure (v1.5.4, ruby-1.9.2-p180) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="launchy (v2.0.5, ruby-1.9.2-p180) [gem]" level="application" />
