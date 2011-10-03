@@ -5,19 +5,17 @@ role :app, application                          # This may be the same as your `
 role :db,  application, :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
+set :user, "root"
+set :deploy_to, "/var/www/yin11"
+set :deploy_via, :remote_cache
+set :use_sudo, false
+set :ssh_options, {:forward_agent => true}
+#set :scm_user, 'thorwing'
+#set :scm_passphrase, "XXX"  # The deploy user's password
+
 set :scm, :git
 set :repository,  "git@github.com:thorwing/yin11.git"
 set :branch, "master"
-
-set :user, "root"
-set :deploy_to, "/var/www/yin11"
-set :deploy_via, :copy
-#set :deploy_via, :remote_cache
-set :use_sudo, false
-set :ssh_options, {:forward_agent => true}
-set :scm_user, 'thorwing'
-set :scm_passphrase, "Youare1hero"  # The deploy user's password
-
 
 #set :mongodbname_prod, 'yin11_development'
 #set :mongodbname_dev, 'yin11_production'
