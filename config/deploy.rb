@@ -9,6 +9,7 @@ set :user, "root"
 set :deploy_to, "/var/www/yin11"
 #set :deploy_via, :remote_cache
 set :use_sudo, false
+set :ssh_options, {:forward_agent => true}
 
 set :scm, :git
 set :repository,  "git@github.com:thorwing/yin11.git"
