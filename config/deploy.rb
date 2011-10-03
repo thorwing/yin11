@@ -11,7 +11,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, :git
-set :repository,  "git://github.com/thorwing/yin11.git"
+set :repository,  "git@github.com:thorwing/yin11.git"
 set :branch, "master"
 
 #set :mongodbname_prod, 'yin11_development'
