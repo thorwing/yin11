@@ -1,5 +1,8 @@
 class FeedsManager
   def self.push_feeds(item)
+    if item.respond_to?(:enabled)
+      return unless item.enabled
+    end
 
     if item.respond_to?(:vendor) && item.vendor.present?
       item.vendor.feeds << Feed.new(:target_type => item.class.name, :target_id => item.id)
