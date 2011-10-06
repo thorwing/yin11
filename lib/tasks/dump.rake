@@ -2,6 +2,11 @@
 
 
 namespace :yin11 do
+  desc "dump sphinx"
+  task :dump_sphinx => :environment do
+    Article.sphinx_stream
+  end
+
   desc "dump articles"
   task :dump_articles => :environment do
     articles_group = Article.without(:_id, :updated_at, :created_at, :positive, :_type, :votes, :fan_ids, :hater_ids, "source._id").to_a.group_by{ |a| a.reported_on.strftime("%y_%m")}

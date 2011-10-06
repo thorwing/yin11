@@ -1,8 +1,13 @@
 class Article < InfoItem
+  include SilverSphinxModel
+
   #fields
   field :type
   field :introduction
   field :region_ids, :type => Array
+
+  search_index(:fields => [:title, :content],
+              :attributes => [:created_at])
 
   #accessibles
   attr_reader :region_tokens

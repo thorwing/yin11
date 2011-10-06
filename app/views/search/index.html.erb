@@ -1,30 +1,15 @@
 <div id="brief_report" class="block">
     <h2><%= params[:query] %></h2>
-    <h3><%= t_with_colon("info_items.severity_header") %><%= get_severity_image("dummy")%><span class="trivial"><%= "(" + t("info_items.severity_base", :name => params[:query], :bad_count => @bad_count) + ")" %></span></h3>
-    <p><%= t("info_items.show_goods", :count => @good_count) %></p>
-    <p class="bad">
-      <%= t("info_items.severity_involved_regions") %>
-      <% @bad_region_names.each do |region_name| %>
-        <%= link_to(region_name, {:controller => "search", :action => "region", :region_name => region_name}, :class => "tag") %>
-      <% end %>
-    </p>
   </div>
 
 <hr/>
 <div class="two_columns_container" >
   <div id="items_list" class="left_column">
-    <h3><%= t_with_colon("info_items.bad_items") %></h3>
-    <%= paginate @bad_items %>
-    <% @bad_items.each do |item| %>
+    <% @items.each do |item| %>
         <%= render "info_items/info_item_short", :item => item %>
     <% end %>
   </div>
 
   <div id="tips_list" class="right_column">
-    <h3><%= t_with_colon("info_items.solutions") %></h3>
-    <%= paginate @tips %>
-    <% @tips.each do |tip| %>
-        <%= render "tips/tip_short", :tip => tip %>
-    <% end %>
   </div>
 </div>

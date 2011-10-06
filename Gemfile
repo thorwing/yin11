@@ -39,6 +39,8 @@ gem "rake"
 gem "mongoid"
 gem "bson_ext"
 
+gem "riddle"
+
 gem "bcrypt-ruby", :require => "bcrypt"
 
 gem "mongoid-ancestry"
