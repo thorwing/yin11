@@ -2,7 +2,7 @@ development:
   address: localhost
   port: 3312
   mem_limit: 128M
-  charset_dictpath: C:/usr/local/coreseek/etc/
+  charset_dictpath: /usr/local/mmseg3/etc/     # C:/usr/local/coreseek/etc/
 
 staging:
   address: localhost
