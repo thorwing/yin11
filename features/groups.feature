@@ -6,7 +6,6 @@ Feature: tests for Groups
 
   Scenario: Guest can visit a group
     When I go to the groups page
-    And I should see "所有饭桌"
     And I should see "西瓜守望者"
 
   Scenario: Only Admin can create a group
@@ -67,7 +66,7 @@ Feature: tests for Groups
     And I follow "西瓜守望者"
     Then I should see "1" within "#group_posts"
 
-  @focus
+
   Scenario: User will be suggested to select some groups
     When I log in as "David User"
     And I go to David's profile editing page

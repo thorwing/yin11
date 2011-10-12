@@ -15,7 +15,7 @@ Feature: tests for relationships
     When I follow "+关注"
     Then I should see "-取消关注"
 
-  @focus
+
   Scenario: User can cancel a relationship with a vendor
     Given the following vendor exists:
       | name       | city | street |
@@ -33,7 +33,7 @@ Feature: tests for relationships
     And I follow "农工商超市"
     And I follow "+关注"
 
-  @focus
+
   Scenario: User can follow a vendor and get corresponding reviews
     Given the following vendor exists:
       | name       | city | street |

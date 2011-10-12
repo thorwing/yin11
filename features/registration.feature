@@ -1,4 +1,4 @@
-@focus
+
 Feature:
   User can view another user's basic information.
 

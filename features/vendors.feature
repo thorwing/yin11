@@ -10,22 +10,6 @@ Feature: smoke tests for Vendors
     When I go to the vendors page
     Then I should see "农工商超市"
 
-  Scenario: User can search for vendors
-    Given the following vendors exists:
-      | name       | city | street | enabled |
-      | 农工商超市 | 上海 | 大华路 | true    |
-      | 家乐福超市 | 上海 | 真华路 | false   |
-    When I go to the vendors page
-    Then I should see "农工商超市"
-    And I fill in "query" with "农工商超市"
-    And I press "搜索"
-    Then I should see "农工商超市"
-
-    When I go to the vendors page
-    Then I should not see "家乐福超市"
-    And I fill in "query" with "家乐福超市"
-    And I press "搜索"
-    And I should not see "家乐福超市"
 
   Scenario: User can create vendor via home page and vendors page
     When I log in as "David User"
@@ -45,7 +29,7 @@ Feature: smoke tests for Vendors
     And I go to the mine_vendors page
     Then I should see "肯德基"
 
-  @focus
+
   @javascript
   Scenario: User can create vendor and set a type for it
     When I log in as "David User"

@@ -5,8 +5,14 @@ describe "Updates" do
 
   describe "there are some updates for the users" do
     before { @items = [ Factory(:bad_review, :tags_string => "milk")]
-            user.profile.watched_tags = ["milk"]
-            user.profile.save!
+            Group.delete_all
+            @group = Group.new(:name => "milk team", :tags => "milk")
+            @group.member_ids = [user.id]
+            @group.creator_id = user.id
+            @group.save!
+
+            user.group_ids << @group.id
+            user.save!
     }
 
     it "should have updates" do

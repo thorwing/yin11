@@ -12,7 +12,7 @@ Feature: Comments
     When I follow "三聚氰胺再现上海"
     Then I should not see "发表"
 
-  @focus
+
   Scenario:  User can comment on a review, comments can be nested.
     Given the following review exists:
     | title      | tags_string  | content |
@@ -38,7 +38,7 @@ Feature: Comments
     Then I should see "很有用的评价"
     Then I should see "谢谢"
 
-  @focus
+
   Scenario: Users can comment on a article
     Given the following article exists:
       | title            | content                            | tags_string |
@@ -58,7 +58,7 @@ Feature: Comments
     And I press "+评论"
     Then I should see "谢谢"
 
-  @focus
+
   Scenario: User can reply others comment
     Given the following review exists:
     | title    |
@@ -88,7 +88,7 @@ Feature: Comments
     When I fill in "content" with "很不错"
     Then I should see "已输入3字符"
 
-  @focus
+
   Scenario: Editor can toggle comment's availability
     Given the following review exists:
     | title    |

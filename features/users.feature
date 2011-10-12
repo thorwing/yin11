@@ -18,7 +18,7 @@ Feature:
     Then I should be on David's user page
     And I should not see "基本信息"
 
-  @focus
+
   Scenario: User's name will be displayed in the item, and others can click the link to view his profile
     When I log in as "David User"
     And I post a simple review without vendor

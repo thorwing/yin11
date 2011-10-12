@@ -12,7 +12,7 @@ describe CommentsController do
     end
 
     it "recognizes and generates #toggle" do
-      { :put => "/comments/1" }.should route_to(:controller => "comments", :action => "toggle", :id => "1")
+      { :put => "/comments/1/toggle" }.should route_to(:controller => "comments", :action => "toggle", :id => "1")
     end
 
   end

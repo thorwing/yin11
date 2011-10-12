@@ -2,9 +2,6 @@ class Profile
   include Mongoid::Document
   include Mongoid::Timestamps::Updated
 
-  #collections
-  field :collected_tip_ids, :type => Array, :default => []
-
   #settings
   field :receive_mails, :type => Boolean, :default => true
   field :watched_distance, :type => Integer, :default => 2
@@ -25,14 +22,6 @@ class Profile
   validates_associated :watched_locations
   validates_inclusion_of :watched_distance, :in => PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE
   validates_inclusion_of :concern_days, :in => PROFILE_MIN_CONCERN_DAYS..PROFILE_MAX_CONCERN_DAYS
-
-  def collect_tip!(tip)
-    if tip.present?
-      self.collected_tip_ids ||= []
-      self.collected_tip_ids << tip.id unless self.collected_tip_ids.include?(tip.id)
-      self.save!
-    end
-  end
 
   #for multilstep form
   attr_writer :current_step

@@ -25,7 +25,7 @@ describe Vendor do
   end
 
   it "type must be of certain value" do
-    Vendor.create(:name => "test", :city => "shanghai", :street => "dahua road", :type => "test").should_not be_valid
+    Vendor.create(:name => "test", :city => "shanghai", :street => "dahua road", :category => "test").should_not be_valid
   end
 
   #TODO

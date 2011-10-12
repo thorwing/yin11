@@ -36,8 +36,8 @@ require "source"
   badges.each {|b| Badge.create!(b)}
 
   #tips
-  tips = YAML::load(File.open("app/seeds/tips.yml"))
-  tips.each {|t| Tip.create!(t)}
+  #tips = YAML::load(File.open("app/seeds/tips.yml"))
+  #tips.each {|t| Tip.create!(t)}
 
   #articles
   Dir["app/seeds/articles/*.yml"].each do |file|

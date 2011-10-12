@@ -11,35 +11,22 @@ describe "Concern" do
   it "control panel gets displayed" do
     login_as(user)
     visit root_path
-    page.should have_content I18n.t("control_panel.watching_tags")
     page.should have_content I18n.t("control_panel.watching_locations")
-    page.should have_content I18n.t("control_panel.collected_tips")
     page.should have_content I18n.t("control_panel.joined_groups")
   end
 
-  it "watched tags got displayed" do
-    user.profile.watch_tags!("milk")
-    login_as(user)
-    visit root_path
-    within "#control_panel" do
-      page.should have_content "milk"
-      page.should have_content "1"
-      click_link "milk"
-    end
-    page.should have_content @review.title
-  end
-
-  it "collected_tips get displayed" do
-    user.profile.collect_tip!(@tip)
-    user.profile.collected_tip_ids.should include(@tip.id)
-    login_as(user)
-    visit root_path
-    within "#control_panel" do
-      page.should have_content @tip.title
-      click_link @tip.title
-    end
-    page.should have_content @tip.content
-  end
+  #it "watched tags got displayed" do
+  #  user.profile.watch_tags!("milk")
+  #  login_as(user)
+  #  visit root_path
+  #  within "#control_panel" do
+  #    page.should have_content "milk"
+  #    page.should have_content "1"
+  #    click_link "milk"
+  #  end
+  #  page.should have_content @review.title
+  #end
+  #
 
   #TODO
   #2d index

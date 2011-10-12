@@ -93,9 +93,7 @@ describe "Home" do
 
       it "group stuff get displayed" do
         login_as(user)
-        @samples.each do |e|
-          page.should have_content e.title
-        end
+        page.should have_content @group.name
       end
     end
   end

@@ -21,9 +21,9 @@ describe User do
     assert !@user.valid?
   end
 
-  it "can't' create user without login name" do
+  it "can create user without login name" do
     @user = Factory.build(:user, :email => VALID_EMAIL, :password => VALID_PASSWORD)
-    assert !@user.valid?
+    assert @user.valid?
   end
 
   it "can't create user without password" do

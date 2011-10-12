@@ -36,7 +36,6 @@ Feature: admin articles
     And I follow "土豆刷绿漆，冒充西瓜"
     Then I should not see "编辑"
 
-
   Scenario Outline: Editor and Admin can edit articles
     Given the following articles exists:
       | title            | content                            | tags_string | enabled |
@@ -52,7 +51,7 @@ Feature: admin articles
       And I check "article_enabled"
       And I press "完成"
 
-      And I go to the home page
+      And I go to the articles page
       Then I should see "西瓜被打了催熟剂"
 
     Examples:
@@ -72,7 +71,7 @@ Feature: admin articles
     And I go to the articles page
     Then I should see "可疑的文章"
 
-  @focus
+
   Scenario: Admin can recommend/unrecommend articles by single click
     Given the following articles exists:
     | title      | content                | type | enabled |

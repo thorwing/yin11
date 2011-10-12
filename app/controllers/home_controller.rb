@@ -19,7 +19,6 @@ class HomeController < ApplicationController
       #@evaluation = current_user.get_evaluation
       #TODO
       #should be loaded on demand
-      @collected_tips = Tip.any_in(:_id => current_user.profile.collected_tip_ids).all
       @my_groups = current_user.groups.all
       @watched_locations = current_user.profile.watched_locations
     end

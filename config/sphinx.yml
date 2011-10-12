@@ -4,6 +4,12 @@ development:
   mem_limit: 128M
   charset_dictpath: /usr/local/mmseg3/etc/     # C:/usr/local/coreseek/etc/
 
+test:
+  address: localhost
+  port: 3312
+  mem_limit: 128M
+  charset_dictpath: /usr/local/mmseg3/etc/
+
 staging:
   address: localhost
   port: 3312

@@ -15,8 +15,8 @@ describe GroupsController do
       { :post => "/relationships" }.should route_to(:controller => "relationships", :action => "create")
     end
 
-    it "recognizes and generates #destroy" do
-      { :delete => "/relationships/1" }.should route_to(:controller => "relationships", :action => "destroy", :id => "1")
+    it "recognizes and generates #cancel" do
+      { :put => "/relationships/cancel" }.should route_to(:controller => "relationships", :action => "cancel")
     end
 
   end

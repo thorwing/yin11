@@ -10,11 +10,10 @@ describe "Locational" do
     e = LocationalSample.new
     e.respond_to?(:city).should == true
     e.respond_to?(:street).should == true
-    e.respond_to?(:coordinates).should == true
+    e.respond_to?(:location).should == true
     e.respond_to?(:address).should == true
     e.respond_to?(:latitude).should == true
     e.respond_to?(:longitude).should == true
-    e.respond_to?(:not_geocoded?).should == true
   end
 
   it "address works" do
@@ -26,7 +25,8 @@ describe "Locational" do
 
   it "geocoding works" do
     e = LocationalSample.create(:city => "shanghai", :street => "nanjing road")
-    e.coordinates.should_not be_nil
+    #TODO
+    #e.location.should_not be_nil
     e.latitude.should > 0
     e.longitude.should > 0
   end

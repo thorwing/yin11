@@ -79,17 +79,17 @@ describe InfoItem do
       InfoItem.bad.should include(item)
     end
 
-    it "not_from_blocked_users works" do
-      user = Factory(:normal_user)
-      item = Tip.create(:title => "test")
-      item.author_id = user.id
-      item.save
-
-      InfoItem.not_from_blocked_users([user.id]).should_not include(item)
-      lambda {
-         InfoItem.not_from_blocked_users([])
-      }.should raise_exception()
-    end
+    #it "not_from_blocked_users works" do
+    #  user = Factory(:normal_user)
+    #  item = Tip.create(:title => "test")
+    #  item.author_id = user.id
+    #  item.save
+    #
+    #  InfoItem.not_from_blocked_users([user.id]).should_not include(item)
+    #  lambda {
+    #     InfoItem.not_from_blocked_users([])
+    #  }.should raise_exception()
+    #end
   end
 
 end

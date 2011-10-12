@@ -26,8 +26,8 @@ Feature: general usage
     When I post a simple review without vendor
 
     And I log out
-    And I query for "西瓜"
-    Then I should see "买到烂西瓜" within "#items_list"
+    And I go to the reviews page
+    Then I should see "买到烂西瓜"
 
 #  Scenario: Only authorized user can post reviews
 #    When I log in as "David User"

@@ -1,4 +1,4 @@
-@focus
+
 Feature: tests for Feeds
 
   Background:
