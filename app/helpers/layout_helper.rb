@@ -8,6 +8,10 @@ module LayoutHelper
     @content_for_title = page_title.to_s
   end
 
+  def join_title(*titles)
+    titles.join(' - ')
+  end
+
   def show_title?
     @show_title and not @is_home_page
   end

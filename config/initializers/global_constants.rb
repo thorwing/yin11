@@ -1,5 +1,6 @@
 # also notice the call to 'freeze'
 #default
+SELF_PROVIDER = 'yin11'
 DEFAULT_CITY_CODE = "021" #Shaanghai
 ITEMS_PER_PAGE_FEW = 20
 ITEMS_PER_PAGE_MANY = 50

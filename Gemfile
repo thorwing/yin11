@@ -54,6 +54,8 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 gem 'kaminari'
 
+#gem 'mongoid_slug'
+
 #factory_girl is also used for db seeds
 gem 'factory_girl_rails'
 

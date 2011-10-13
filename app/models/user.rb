@@ -27,7 +27,8 @@ class User
   field :creator_ip
   mount_uploader :avatar, AvatarUploader
 
-  index :email
+  index :provider
+  index :uid
   index :auth_token
 
   attr_accessor :password
@@ -72,7 +73,7 @@ class User
 
   #Others
   after_initialize { self.profile ||= Profile.new; self.contribution ||= Contribution.new }
-  before_save :encrypt_password
+  before_save :encrypt_password, :handle_identity
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
 
@@ -188,6 +189,11 @@ class User
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def handle_identity
+    self.provider ||= SELF_PROVIDER
+    self.uid ||= self.email
   end
 
   def generate_token(column)
