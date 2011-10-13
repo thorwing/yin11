@@ -33,6 +33,8 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.new(params[:article])
     @article.author_id = current_user.id
 
+    ImagesHelper.process_uploaded_images(@article, params[:images])
+
     begin
       respond_to do |format|
         if @article.save && @article.images.each(&:save)

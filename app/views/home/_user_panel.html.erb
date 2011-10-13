@@ -6,12 +6,11 @@
         <p class="actions">
             <b><%= t("control_panel.actions") %></b><br/>
             <%= link_to t("reviews.new"), new_review_path, :class => "button" %>
-            <%= link_to t("tips.new"), new_tip_path, :class => "button" if current_user && current_user.has_permission?(:editor) %>
             <%= link_to t("articles.new"), new_admin_article_path, :class => "button" if current_user && current_user.has_permission?(:editor) %>
             <%= link_to t("vendors.browse"), vendors_path, :class => "button" %>
         </p>
         <p class="actions">
-            <%= link_to t("syncs.follow_yin11_on_sina"), follow_yin11_path, :class => "button" %>
+            <%= new_tab_link_to image_tag("sina_small.png") + t("syncs.follow_yin11_on_sina"), YIN11_SINA_WEIBO %>
         </p>
     </div>
 <% end %>

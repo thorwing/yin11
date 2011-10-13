@@ -10,7 +10,7 @@ zh-CN:
   syncs:
     access_failed: 第三方授权失败，请再试一下
     sync_to_sina: 同步到新浪微博
-    follow_yin11_on_sina: 在新浪微博上关注银筷子
+    follow_yin11_on_sina: 关注银筷子新浪微博
 
   general:
     title: 标题
@@ -445,6 +445,12 @@ zh-CN:
     posted_by: "发布者: "
     add_comment: +评论
     show_more: 显示更多
+
+
+  article_types:
+    news: 新闻
+    topic: 专题
+    tip: 锦囊
 
   tags:
     all: 所有标签

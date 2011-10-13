@@ -35,14 +35,6 @@
             <li class="last"><% last_sub_menu %></li>
         </ul>
     </li>
-    <li><%= render_menu(t("menu.tips"), tips_path) %>
-      <% if current_user && current_user.has_permission?(:editor) %>
-        <ul>
-            <li><% first_sub_menu(link_to t("tips.new"), new_tip_path) %></li>
-            <li class="last"><% last_sub_menu %></li>
-        </ul>
-      <% end %>
-    </li>
     <li><%= render_menu(t("menu.badges"), badges_path) %></li>
     <% if current_user %>
          <li><b><%= render_menu(current_user.screen_name, profile_path(current_user.profile)) %></b>

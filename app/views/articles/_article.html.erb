@@ -1,8 +1,6 @@
 <% title article.title %>
 
-<div class="block round">
-  <%= article.introduction %>
-</div>
+<%= content_tag(:div, article.introduction, :class => "block round" ) if article.introduction.present? %>
 
 <div class="block">
     <%= render "shared/vote_fields", :item => article %>

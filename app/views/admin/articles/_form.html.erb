@@ -2,6 +2,11 @@
     <%= render "shared/error_messages", :target => @article %>
 
     <div class="field">
+        <%= f.label :type, t("general.type") %><br/>
+        <%= f.select :type, options_for_select(ArticleTypes.get_values, @article.type) %>
+    </div>
+
+    <div class="field">
         <%= f.label :title, t("general.title") %><%= mark_required(Article, :title) %><%= mark_required_length(Article, :title) %><br/>
         <%= f.text_field :title, :maxlength => get_max_length(Article, :title) %>
     </div>
@@ -13,12 +18,8 @@
         <%= f.label :reported_on_string, t("general.date") %><br/>
         <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
     </div>
-    <div class="field">
-        <%= f.label :region_tokens, t("articles.involved_regions") %><br/>
-        <%= f.text_field :region_tokens, 'data-pre' => (@article.region_ids ? @article.region_ids.map { |e| { :id => e, :name => ItemFinder.get_region(e).name }} : []).to_json %>
-    </div>
     <p><label><%= t("articles.source") %></label></p>
-    <div class="fields_group">
+    <div id="article_source_fields" class="fields_group">
         <%= f.fields_for :source do |builder| %>
             <div class="field">
                 <%= builder.label :name, t("articles.source_name") %><%= mark_required(builder.object, :name) %><%= mark_required_length(builder.object, :name) %><br/>
@@ -33,11 +34,6 @@
                 <%= builder.text_field :url%>
             </div>
         <% end %>
-    </div>
-
-     <div class="field">
-        <%= f.label :type, t("general.type") %><br/>
-        <%= f.select :type, options_for_select(ArticleTypes.get_values, @article.type) %>
     </div>
 
     <%= render "images/images_fields", :f => f, :item => @article %>

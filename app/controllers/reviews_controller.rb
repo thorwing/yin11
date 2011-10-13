@@ -52,14 +52,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(params[:review])
     @review.author = current_user
 
-    if params[:images]
-      params[:images][0..4].each do |image_id|
-        image = Image.find(image_id)
-        image.info_item_id = @review.id
-        image.save
-        #@review.image_ids << image_id
-      end
-    end
+    ImagesHelper.process_uploaded_images(@review, params[:images])
 
     RewardManager.new(current_user).contribute(:posted_reviews)
 

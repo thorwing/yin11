@@ -26,13 +26,15 @@ class SyncsController < ApplicationController
       redirect_to root_path
     end
 
-    def follow_yin11
-      client = OauthChina::Sina.load(:access_token => current_user.access_token, :access_token_secret => current_user.access_token_secret)
-      xml = (client.access_token.post "/friendships/create/#{YIN11_SINA_WEIBO_ID}.xml").body
-      Logger.new(STDOUT).info xml.to_s
-
-      redirect_to root_path
-    end
+    #def follow_yin11
+    #  client = OauthChina::Sina.load(:access_token => current_user.access_token, :access_token_secret => current_user.access_token_secret)
+    #  if client && client.access_token
+    #    xml = (client.access_token.post "/friendships/create/#{YIN11_SINA_WEIBO_ID}.xml").body
+    #    #Logger.new(STDOUT).info xml.to_s
+    #  end
+    #
+    #  redirect_to root_path
+    #end
 
     private
     def build_oauth_token_key(name, oauth_token)
