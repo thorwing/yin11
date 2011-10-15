@@ -75,7 +75,7 @@ Feature: admin articles
   Scenario: Admin can recommend/unrecommend articles by single click
     Given the following articles exists:
     | title      | content                | type | enabled |
-    | 很棒的文章 | 这是一篇很棒的文章     | news | true   |
+    | 很棒的文章 | 这是一篇很棒的文章       | 新闻 | true   |
     When I log in as "Ray Admin"
     And I should not see "很棒的文章"
     When I go to the admin_articles page

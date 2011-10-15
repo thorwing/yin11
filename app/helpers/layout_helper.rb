@@ -32,6 +32,14 @@ module LayoutHelper
     @is_home_page
   end
 
+  def has_meta_tag?
+    @meta_tag.present?
+  end
+
+  def meta_tag(meta_tag)
+    @meta_tag = meta_tag
+  end
+
   def first_sub_menu(args)
     concat(image_tag "top_menu/corner_inset_left.png", :class => "corner_inset_left")
     concat(args)

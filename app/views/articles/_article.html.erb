@@ -1,4 +1,5 @@
 <% title article.title %>
+<%= meta_tag article.introduction if article.introduction.present? %>
 
 <%= content_tag(:div, article.introduction, :class => "block round" ) if article.introduction.present? %>
 

@@ -1,8 +1,10 @@
 zh-CN:
   site:
     name: 银筷子
+    description: "食品安全 食品质量 美食分享 饮食健康"
+    introduction: "银筷子，专注于食品安全，教您辨别有害的食品， 帮助您挑选卫生又美味的餐厅，搭建一个和好友分享好吃的，安全的食物的平台。"
     saying: 盘古内测版
-    description: 关注 食品 食物 安全
+
 
   symbols:
     colon: ：
