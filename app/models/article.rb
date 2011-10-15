@@ -15,9 +15,9 @@ class Article < InfoItem
 
   #scopes
   scope :recommended, where(:recommended => true)
-  scope :news, where(:type => "news")
-  scope :topics, where(:type => "topic")
-  scope :tips, where(:type => "tip")
+  scope :news, where(:type => t("article_types.news"))
+  scope :topics, where(:type => t("article_types.topic"))
+  scope :tips, where(:type => t("article_types.tip"))
   #scope :of_region, lambda { |region_id| any_in(:region_ids => [region_id])}
 
   #Relationships

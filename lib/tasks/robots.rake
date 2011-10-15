@@ -18,7 +18,10 @@ namespace :yin11 do
       end
       source_name.gsub!(/[:#{I18n.t("fetch_sites.cn_colon")}]/, '')
       source_name = source_name.strip.split(" ").first
-      puts title + " -> " + time.strftime('%m/%d/%Y') + " from " + source_name
+      hint = title
+      hint += " -> " + time.strftime('%m/%d/%Y') if time.present?
+      hint += " from " + source_name if source_name.present?
+      puts hint
 
       article = Article.first(conditions: {title: title})
       if article
@@ -33,6 +36,7 @@ namespace :yin11 do
         a.reported_on = time
         a.enabled = false
         a.tags = tags
+        a.type = I18n.t("article_types.news")
         a.build_source
         a.source.name = source_name.present? ? source_name : "Unknown Media"
         a.source.site = self.name
