@@ -16,6 +16,8 @@ set :scm, :git
 set :repository,  "git@github.com:thorwing/yin11.git"
 set :branch, "master"
 
+set :rvm_type, :user
+
 #set :mongodbname_prod, 'yin11_development'
 #set :mongodbname_dev, 'yin11_production'
 

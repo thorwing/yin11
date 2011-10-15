@@ -49,7 +49,8 @@ require "source"
             a.enabled = false # article.enabled
             a.recommended = article.recommended
             a.reported_on = article.reported_on
-            a.type = article.type
+            #a.type = article.type
+            a.type = I18n.t("article_types.news")
             a.region_ids = article.region_ids
             a.city = article.city
             a.tags = article.tags
