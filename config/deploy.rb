@@ -19,6 +19,19 @@ set :branch, "master"
 #set :mongodbname_prod, 'yin11_development'
 #set :mongodbname_dev, 'yin11_production'
 
+#Capistrano default behavior is to 'touch' all assets files.
+#(To make sure that any cache get the deployment date). Assets are images, stylesheets, etc.
+#To disable asset timestamps updates, simply add:
+set :normalize_asset_timestamps, false
+
+#after "deploy:update_code", "deploy:precompile_assets"
+#desc "Compile all the assets named in config.assets.precompile."
+#task :precompile_assets do
+#  raise "Rails environment not set" unless rails_env
+#  task = "assets:precompile"
+#  run "cd #{release_path} && bundle exec rake #{task} RAILS_ENV=#{rails_env}"
+#end
+
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
    task :start do
