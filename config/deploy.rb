@@ -16,7 +16,7 @@ set :scm, :git
 set :repository,  "git@github.com:thorwing/yin11.git"
 set :branch, "master"
 
-set :rvm_type, :user
+set :rvm_type, :system    #:user
 
 #set :mongodbname_prod, 'yin11_development'
 #set :mongodbname_dev, 'yin11_production'
@@ -26,16 +26,23 @@ set :rvm_type, :user
 #To disable asset timestamps updates, simply add:
 set :normalize_asset_timestamps, false
 
-#after "deploy:update_code", "deploy:precompile_assets"
-#desc "Compile all the assets named in config.assets.precompile."
-#task :precompile_assets do
-#  raise "Rails environment not set" unless rails_env
-#  task = "assets:precompile"
-#  run "cd #{release_path} && bundle exec rake #{task} RAILS_ENV=#{rails_env}"
-#end
-
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
+  #after "deploy:update_code", "deploy:precompile_assets"
+  #desc "Compile all the assets named in config.assets.precompile."
+  #task :precompile_assets do
+  #  raise "Rails environment not set" unless rails_env
+  #  task = "assets:precompile"
+  #  run "cd #{release_path} && bundle exec rake #{task} RAILS_ENV=#{rails_env}"
+  #end
+
+  desc "Fix file permissions"
+  task :fix_file_permissions, :roles => [ :app, :db, :web ] do
+    sudo "chmod -R g+rw #{current_path}/tmp"
+    sudo "chmod -R g+rw #{current_path}/log"
+    #sudo "chmod -R g+rw #{current_path}/public/system"
+  end
+
    task :start do
     run "/etc/init.d/nginx start"
    end
