@@ -2,6 +2,8 @@ class Profile
   include Mongoid::Document
   include Mongoid::Timestamps::Updated
 
+  field :biography
+
   #settings
   field :receive_mails, :type => Boolean, :default => true
   field :watched_distance, :type => Integer, :default => 2
@@ -13,12 +15,13 @@ class Profile
   field :show_collected_tips_panel, :type => Boolean, :default => true
   field :show_joined_groups_panel, :type => Boolean, :default => true
 
-  attr_accessible :receive_mails, :watched_distance, :concern_days, :watched_locations_attributes
+  attr_accessible :receive_mails, :watched_distance, :concern_days, :watched_locations_attributes, :biography
 
   #relationships
   embedded_in :user
   embeds_many :watched_locations, :class_name => Location.name
   accepts_nested_attributes_for :watched_locations, :allow_destroy => true
+  validates_length_of :biography, :maximum => 400
   validates_associated :watched_locations
   validates_inclusion_of :watched_distance, :in => PROFILE_MIN_WATCHED_DISTANCE..PROFILE_MAX_WATCHED_DISTANCE
   validates_inclusion_of :concern_days, :in => PROFILE_MIN_CONCERN_DAYS..PROFILE_MAX_CONCERN_DAYS

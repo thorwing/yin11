@@ -1,4 +1,3 @@
-@foucs
 Feature: tests for Profile
 
   Background:
@@ -53,7 +52,19 @@ Feature: tests for Profile
     When I go to the home page
     Then I should not see "div" whose id is "#joined_groups_panel"
 
+  @focus
+  Scenario: Editor can have a short introduction
+    When I log in as "Castle Editor"
+    And I follow "设置" within "#top_menu"
+    Then I should see "我是..."
+    When I press "下一步"
+    Then I should see "昵称"
+    Then I should see "个人简介"
+    And I fill in "profile_biography" with "I am a editor"
+    And I press "下一步"
 
-
+    When I log in as "David User"
+    And I go to Castle's user page
+    Then I should see "I am a editor"
 
 

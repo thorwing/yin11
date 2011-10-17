@@ -7,4 +7,8 @@
       <%= t("user_basic.change_avator") %><br/>
       <%= file_field_tag "user[avatar]" %> <br/>
     </p>
+    <p>
+      <b><%= t("user_basic.biography") %><%= mark_required_length(Profile, :biography) %></b><br/>
+      <%= f.text_area :biography %>
+    </p>
 </div>

@@ -3,6 +3,7 @@ Feature: tests for relationships
   Background:
     Given There are minimum seeds data
 
+
   @javascript
   Scenario: User can establish a relationship with a vendor
     Given the following vendor exists:

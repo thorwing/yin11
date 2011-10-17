@@ -4,6 +4,7 @@ Feature:
   Background:
     Given There are minimum seeds data
 
+
   Scenario: User can see his own personal page, when others view that page, it will display the brief info
     When I log in as "David User"
     And I follow "David" within "#user_panel"
@@ -33,4 +34,3 @@ Feature:
     Then I should be on David's user page
     And I should see "David"
     And I follow "+关注"
-

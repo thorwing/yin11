@@ -198,6 +198,7 @@ zh-CN:
     login_name: 昵称
     avatar: 头像
     change_avator: 换一张头像
+    biography: 个人简介
 
   profile:
     show_profile: 个人资料
