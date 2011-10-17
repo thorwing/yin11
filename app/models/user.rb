@@ -139,7 +139,7 @@ class User
   end
 
   def vote_weight
-    if has_permission?(:admin)
+    if has_permission?(:administrator)
       ADMIN_VOTE_WEIGHT
     elsif has_permission?(:editor)
       EDITOR_VOTE_WEIGHT
@@ -157,7 +157,7 @@ class User
         self.role >= NORMAL_USER_ROLE
       when :editor
         self.role >= EDITOR_ROLE
-      when :admin
+      when :administrator
         self.role == ADMIN_ROLE
       else
         raise "invalid permission"

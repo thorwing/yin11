@@ -7,15 +7,15 @@ Feature: admin articles
     When I log in as "David User"
     And I go to the articles page
     Then I should not see "+文章"
-    And I go to the admin_articles page
+    And I go to the administrator_articles page
     Then I should not see "+文章"
 
     When I log in as "Castle Editor"
-    And I go to the admin_articles page
+    And I go to the administrator_articles page
     Then I should see "+文章"
 
     When I log in as "Ray Admin"
-    And I go to the admin_articles page
+    And I go to the administrator_articles page
     Then I should see "+文章"
 
   Scenario: Only Editor and Admin can edit articles.
@@ -45,7 +45,7 @@ Feature: admin articles
       Then I should not see "西瓜被打了催熟剂"
 
       When I log in as "<user>"
-      And I go to the admin_articles page
+      And I go to the administrator_articles page
       Then I follow "西瓜被打了催熟剂"
       And I follow "编辑"
       And I check "article_enabled"
@@ -66,7 +66,7 @@ Feature: admin articles
     When I log in as "Ray Admin"
     When I go to the home page
     Then I should not see "可疑的文章"
-    When I go to the admin_articles page
+    When I go to the administrator_articles page
     And I follow "toggle_link" within ".toggle.off"
     And I go to the articles page
     Then I should see "可疑的文章"
@@ -78,7 +78,7 @@ Feature: admin articles
     | 很棒的文章 | 这是一篇很棒的文章       | 新闻 | true   |
     When I log in as "Ray Admin"
     And I should not see "很棒的文章"
-    When I go to the admin_articles page
+    When I go to the administrator_articles page
     And I follow "toggle_link" within ".toggle.off"
     And I go to the home page
     Then I should see "很棒的文章" within "#news_frame"

@@ -45,8 +45,8 @@ describe InfoItem do
     before { @negative_review = Factory(:review, :faults => [FaultTypes.get_values.first])
              @positive_review = Factory(:review)
              @raw_article = Factory(:article)
-             @tip_article = Factory(:article, :type => "tip")
-             @news_article = Factory(:article, :type => "news")
+             @tip_article = Factory(:article, :type => I18n.t("article_types.tip"))
+             @news_article = Factory(:article, :type => I18n.t("article_types.news"))
              @tip = Factory(:tip) }
       it "should be correct" do
         @positive_review.positive = true

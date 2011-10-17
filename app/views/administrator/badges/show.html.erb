@@ -1,0 +1,12 @@
+<% title @badge.name %>
+
+<%= render "badges/badge", :badge => @badge %>
+
+<div class="actions">
+    <%= link_to t("general.change"), edit_administrator_badge_path(@badge), :class => "button" %> |
+    <%= link_to t("general.delete"), [:administrator, @badge], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+</div>
+
+<div class="nav_links">
+    <%= link_to t("general.back_to_list"), administrator_badges_path, :class=> "button" %>
+</div>

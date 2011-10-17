@@ -1,0 +1,6 @@
+<% title t("users.new") %>
+
+<%= render 'form' %>
+
+<%= link_to t("general.show"), [:administrator, @user], :class => "button" %> |
+<%= link_to t("general.back_to_list"), administrator_users_path, :class => "button" %>

@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
   def the_author_himself(class_name, object_id, or_admin = false, is_redirect = true)
     has_permission = false
     if current_user
-      if (or_admin and current_user.has_permission?(:admin))
+      if (or_admin and current_user.has_permission?(:administrator))
         has_permission = true
       else
         object = eval "#{class_name.capitalize}.find(\"#{object_id}\")"

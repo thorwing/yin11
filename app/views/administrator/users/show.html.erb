@@ -1,0 +1,20 @@
+<p>
+  <b><%= t("users.screen_name") %></b>
+  <%= @user.screen_name %>
+</p>
+
+<p>
+  <b>Email</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Role</b>
+  <%= @user.role %>
+</p>
+
+<%= link_to t("general.edit"), edit_administrator_user_path(@user), :class => "button" %> |
+<%= link_to t("general.delete"), [:administrator, @user], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+<div>
+    <%= link_to t("general.back_to_list"), administrator_users_path %>
+</div>

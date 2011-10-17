@@ -1,0 +1,12 @@
+<%= form_for [:administrator, @vendor] do |f| %>
+  <%= render "vendors/basic_form", :vendor => @vendor, :f => f %>
+
+  <div class="field">
+    <%= f.label :enabled, t("general.enabled") %><br />
+    <%= f.check_box :enabled, {}, true, false %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t("general.submit"), :class => "button" %>
+  </div>
+<% end %>

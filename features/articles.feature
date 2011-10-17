@@ -7,7 +7,7 @@ Feature: articles
     When I log in as "Castle Editor"
     Then I should see "+文章"
     When I follow "+文章"
-    Then I should be on the new_admin_article page
+    Then I should be on the new_administrator_article page
 
     When I log in as "David User"
     Then I should not see "+文章"

@@ -1,0 +1,9 @@
+<% title t("general.edit") %>
+
+<%= render 'form' %>
+
+<div>
+    <%= link_to t("general.show"), [:administrator, @article] %> |
+    <%= link_to t("general.back_to_list"), administrator_articles_path %>
+</div>
+

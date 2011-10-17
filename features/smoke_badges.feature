@@ -22,7 +22,7 @@ Feature: smoke tests for Badges
 
   Scenario: A admin can create a badge, and it can be given to a user
     When I log in as "Ray Admin"
-    And I go to the admin_badges page
+    And I go to the administrator_badges page
     And I follow "新建"
     And I fill in "badge_name" with "新手上路"
     And I fill in "badge_description" with "发表第一篇测评"
@@ -39,11 +39,11 @@ Feature: smoke tests for Badges
     Then I should see "(1)"
 
   Scenario: Only Admin can create badges
-    When I go to the new_admin_badge page
+    When I go to the new_administrator_badge page
     Then I should be on the login page
     
     When I log in as "David User"
-    And I go to the new_admin_badge page
+    And I go to the new_administrator_badge page
     Then I should be on the home page
 
   Scenario: Only Admin can edit badges.
@@ -51,7 +51,7 @@ Feature: smoke tests for Badges
     | name     | description  | contribution_field | comparator | compared_value |
     | 新手上路 | 发表一篇测评 | posted_reviews     | ==          | 1              |
     When I log in as "Ray Admin"
-    And I go to the admin_badges page
+    And I go to the administrator_badges page
     And I follow "新手上路"
     And I follow "修改"
     And I fill in "badge_compared_value" with "3"

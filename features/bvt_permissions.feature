@@ -16,16 +16,16 @@ Feature: usage about permissions
     Then I should see "新测评"
 
   Scenario: guest and normal user can't post any articles and will be asked to sign up
-    When I go to the new_admin_article page
+    When I go to the new_administrator_article page
     Then I should be on the login page
 
     When I log in as "David User"
-    And I go to the new_admin_article page
+    And I go to the new_administrator_article page
     Then I should be on the home page
 
   Scenario: editor can post a article about food
     When I log in as "Castle Editor"
-    And I go to the admin_articles page
+    And I go to the administrator_articles page
     And I follow "+文章"
     Then I should see "新文章"
 

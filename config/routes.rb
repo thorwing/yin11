@@ -1,6 +1,6 @@
 Yin11::Application.routes.draw do
 
-  namespace :admin do
+  namespace :administrator do
     root :to => "base#index"
 
     resources :articles
@@ -12,7 +12,7 @@ Yin11::Application.routes.draw do
     resources :tags
   end
 
-  put 'admin/base/toggle'
+  put 'administrator/base/toggle'
 
   match "logout" => "sessions#destroy"
   match "login" => "sessions#new"
@@ -169,9 +169,9 @@ Yin11::Application.routes.draw do
   #   end
 
   # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
+  #   namespace :administrator do
+  #     # Directs /administrator/products/* to Administrator::ProductsController
+  #     # (app/controllers/administrator/products_controller.rb)
   #     resources :products
   #   end
 

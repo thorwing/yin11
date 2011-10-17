@@ -152,7 +152,7 @@ zh-CN:
 
   menu:
     home: 主页
-    admin_control: 管理面板
+    administrator_control: 管理面板
     show_profile: 个人设置
     edit_profile: 设置
     update_profile: 偏好设定
@@ -164,7 +164,7 @@ zh-CN:
     vendors: 商户
     logout: 登出
 
-  admin_control:
+  administrator_control:
     articles: 管理文章
     reviews: 管理测评
     vendors: 管理商户

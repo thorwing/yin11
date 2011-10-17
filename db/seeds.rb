@@ -9,7 +9,7 @@ require "source"
   Factory(:normal_user)
   Factory(:tester)
   Factory(:editor)
-  @admin = Factory(:admin)
+  @admin = Factory(:administrator)
 
 #  FoodsGenerator::generate_foods
 

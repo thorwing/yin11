@@ -1,18 +1,18 @@
 require "spec_helper"
 
-describe Admin::ReviewsController do
+describe Administrator::ReviewsController do
   describe "routing" do
 
     it "recognizes and generates #index" do
-      { :get => "/admin/reviews" }.should route_to(:controller => "admin/reviews", :action => "index")
+      { :get => "/administrator/reviews" }.should route_to(:controller => "administrator/reviews", :action => "index")
     end
 
     it "recognizes and generates #show" do
-      { :get => "/admin/reviews/1" }.should route_to(:controller => "admin/reviews", :action => "show", :id => "1")
+      { :get => "/administrator/reviews/1" }.should route_to(:controller => "administrator/reviews", :action => "show", :id => "1")
     end
 
     it "recognizes and generates #destroy" do
-      { :delete => "/admin/reviews/1" }.should route_to(:controller => "admin/reviews", :action => "destroy", :id => "1")
+      { :delete => "/administrator/reviews/1" }.should route_to(:controller => "administrator/reviews", :action => "destroy", :id => "1")
     end
 
   end

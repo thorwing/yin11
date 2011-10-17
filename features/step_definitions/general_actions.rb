@@ -99,7 +99,7 @@ When /^I post a simple tip$/ do
 end
 
 When /^I post a simple article$/ do
-    When %(I go to the admin_articles page)
+    When %(I go to the administrator_articles page)
     And %(I follow "+文章")
     And %(I fill in "article_title" with "土豆刷绿漆，冒充西瓜")
     And %(I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。")

@@ -1,0 +1,23 @@
+<% title t("users.index") %>
+
+<table>
+  <tr>
+    <th><%= t("users.screen_name") %></th>
+    <th>Email</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.screen_name, [:administrator, user] %></td>
+    <td><%= user.email %></td>
+    <td><%= user.role %></td>
+    <td><%= link_to t("general.show"), [:administrator, user] %></td>
+    <td><%= link_to t("general.edit"), edit_administrator_user_path(user) %></td>
+    <td><%= link_to t("general.delete"), [:administrator, user], :confirm => t("general.are_you_sure_to_delete"), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

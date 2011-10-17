@@ -80,7 +80,7 @@ Feature: smoke tests for Vendors
     And I create a simple vendor
 
     When I log in as "Castle Editor"
-    And I go to the admin_vendors page
+    And I go to the administrator_vendors page
     And I follow "农工商超市"
     And I follow "编辑"
     And I check "vendor_enabled"
@@ -99,12 +99,12 @@ Feature: smoke tests for Vendors
       | 家乐福超市 | 上海 | 真华路 | false   |
 
     When I log in as "Ray Admin"
-    And I go to the admin_vendors page
+    And I go to the administrator_vendors page
     And I follow "农工商超市"
     And I follow "编辑"
     Then I should see "编辑商户"
 
-    When I go to the admin_vendors page
+    When I go to the administrator_vendors page
     And I follow "家乐福超市"
     And I follow "编辑"
     Then I should see "编辑商户"
@@ -135,7 +135,7 @@ Feature: smoke tests for Vendors
       | name       | city | street |
       | 农工商超市 | 上海 | 大华路 |
     When I log in as "Ray Admin"
-    And I go to the admin_vendors page
+    And I go to the administrator_vendors page
     And I follow "农工商超市"
     And I follow "编辑"
     And I uncheck "vendor_enabled"
@@ -143,7 +143,7 @@ Feature: smoke tests for Vendors
     And I press "完成"
 
     When I log in as "David User"
-    And I go to the admin_vendors page
+    And I go to the administrator_vendors page
     Then I should be on the home page
 
 

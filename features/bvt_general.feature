@@ -72,10 +72,10 @@ Feature: general usage
     And I follow "徽章" within "#top_menu"
     Then I should see "(1)"
 
-  Scenario Outline: Editor and Admin can go to the admin_control page
+  Scenario Outline: Editor and Admin can go to the administrator_control page
     When I log in as "<user>"
-    And I go to the admin_root page
-    Then I should be on the admin_root page
+    And I go to the administrator_root page
+    Then I should be on the administrator_root page
 
     Examples:
     | user          |

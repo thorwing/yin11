@@ -1,0 +1,35 @@
+<%= form_for [:administrator, @badge], :html => {:multipart => true}  do |f| %>
+    <%= render "shared/error_messages", :target => @badge %>
+
+    <div class="field">
+        <%= f.label :name, t("general.name") %><br />
+        <%= f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :description, t("general.description") %><br />
+        <%= f.text_field :description %>
+    </div>
+    <div class="field">
+        <%= f.label :contribution_field %><br />
+        <%= f.select :contribution_field, options_for_select(Contribution.get_fields, @badge.contribution_field) %>
+    </div>
+    <div class="field">
+        <%= f.label :comparator %><br />
+        <%= f.select :comparator, options_for_select(get_comparators, @badge.comparator) %>
+    </div>
+    <div class="field">
+        <%= f.label :compared_value %><br />
+        <%= f.text_field :compared_value %>
+    </div>
+    <div>
+      <%= f.label :icon, t("general.image") %><br/>
+      <%= f.file_field :icon %> <br/>
+    </div>
+    <div class="field">
+        <%= f.label :enabled, t("general.enable") %><br />
+        <%= f.check_box :enabled, {}, true, false %>
+    </div>
+    <div class="actions">
+        <%= f.submit t("general.submit"), :class =>"button" %>
+    </div>
+<% end %>

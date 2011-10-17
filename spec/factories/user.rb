@@ -31,8 +31,8 @@ Factory.define :editor, :class => User do |f|
   f.role EDITOR_ROLE
 end
 
-Factory.define :admin, :class => User do |f|
-  f.email "admin@yin11.com"
+Factory.define :administrator, :class => User do |f|
+  f.email "administrator@yin11.com"
   f.password "You1Superuser!"
   f.login_name "Ray"
   f.role ADMIN_ROLE

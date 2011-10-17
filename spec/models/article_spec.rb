@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Article do
   it "simpley create a article" do
-    Article.new(:title => "test", :content => "sample text", :type => "news").should be_valid
+    Article.new(:title => "test", :content => "sample text", :type => I18n.t("article_types.news")).should be_valid
   end
 
   it "title is mandatory" do
@@ -23,7 +23,7 @@ describe Article do
 
   it "type will be automatically set if empty" do
     article = Article.create(:title => "test", :content => "sample text")
-    article.type.should == "news"
+    article.type.should == I18n.t("article_types.news")
   end
 
   it "type must be of certain value" do

@@ -34,7 +34,7 @@
 
 <% if current_user && current_user.has_permission?(:editor)%>
     <div class="actions">
-        <%= link_to t("general.edit"), edit_admin_article_path(article), :class => "button"  %>
-        <%= link_to t("general.delete"), [:admin, article], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+        <%= link_to t("general.edit"), edit_administrator_article_path(article), :class => "button"  %>
+        <%= link_to t("general.delete"), [:administrator, article], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
     </div>
 <% end %>

@@ -1,6 +1,0 @@
-<%= render "vendors/basic_show", :vendor => @vendor %>
-
-<%= link_to t("general.edit"), edit_admin_vendor_path(@vendor), :class => "button" %> |
-<%= link_to t("general.delete"), [:admin, @vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-<br/>
-<%= link_to t("general.back_to_list"), admin_vendors_path %>

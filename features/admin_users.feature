@@ -5,7 +5,7 @@ Feature: admin users
 
   Scenario: Admin can disable a user
     When I log in as "Ray Admin"
-    And I go to the admin_users page
+    And I go to the administrator_users page
     And I follow "David"
     And I follow "编辑"
     And I uncheck "user_enabled"

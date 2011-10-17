@@ -4,7 +4,7 @@ Given /^There are minimum seeds data$/ do
   @normal_user = Factory(:normal_user)
   @tester = Factory(:tester)
   @editor = Factory(:editor)
-  @admin = Factory(:admin)
+  @admin = Factory(:administrator)
 
   sh_province = Factory(:province, :name => "上海", :code => "SH")
   Factory(:shanghai, :name => "上海", :postcode => "20000", :province_id => sh_province.id)
