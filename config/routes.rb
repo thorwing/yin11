@@ -6,9 +6,7 @@ Yin11::Application.routes.draw do
     resources :articles
     resources :badges
     resources :vendors
-    resources :reviews, :only => [:index, :show, :destroy]
     resources :users, :except => [:new, :create]
-    resources :tips, :only => [:index, :show, :destroy]
     resources :tags
   end
 
@@ -43,7 +41,7 @@ Yin11::Application.routes.draw do
 
   resources :tags, :only => [:index]
 
-  resources :articles, :only => [:index, :show]
+  resources :articles
 
   resources :relationships, :only => [:index, :show, :create] do
     collection do
@@ -98,9 +96,9 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :badges, :only => [:index, :show]
+  resources :badges
 
-  resources :vendors, :except => [:edit, :update, :destroy] do
+  resources :vendors do
     collection do
       get "mine"
       get 'browse'

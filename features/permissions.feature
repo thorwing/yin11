@@ -16,11 +16,11 @@ Feature: usage about permissions
     Then I should see "新测评"
 
   Scenario: guest and normal user can't post any articles and will be asked to sign up
-    When I go to the new_administrator_article page
+    When I go to the new_article page
     Then I should be on the login page
 
     When I log in as "David User"
-    And I go to the new_administrator_article page
+    And I go to the new_article page
     Then I should be on the home page
 
   Scenario: editor can post a article about food
@@ -29,6 +29,15 @@ Feature: usage about permissions
     And I follow "+文章"
     Then I should see "新文章"
 
+  Scenario Outline: Editor and Admin can go to the administrator_control page
+    When I log in as "<user>"
+    And I go to the administrator_root page
+    Then I should be on the administrator_root page
+
+    Examples:
+    | user          |
+    | Castle Editor |
+    | Ray Admin     |
 
   Scenario: unregistered user can't visit profile page. And normal user, editor and admin can
     When I go to David's profile page

@@ -52,7 +52,6 @@ Feature: tests for Profile
     When I go to the home page
     Then I should not see "div" whose id is "#joined_groups_panel"
 
-  @focus
   Scenario: Editor can have a short introduction
     When I log in as "Castle Editor"
     And I follow "设置" within "#top_menu"

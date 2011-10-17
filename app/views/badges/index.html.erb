@@ -26,3 +26,7 @@
 <% end %>
 </div>
 
+<% if current_user_has_permission?(:administrator) %>
+    <%= link_to t("general.new"),new_badge_path, :class => "button" %>
+<% end %>
+

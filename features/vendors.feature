@@ -75,11 +75,11 @@ Feature: smoke tests for Vendors
     When I go to the new_vendor page
     Then I should be on the login page
 
-  Scenario: Admin and Editor can approve a vendor
+  Scenario: Admin can approve a vendor
     When I log in as "David User"
     And I create a simple vendor
 
-    When I log in as "Castle Editor"
+    When I log in as "Ray Admin"
     And I go to the administrator_vendors page
     And I follow "农工商超市"
     And I follow "编辑"
@@ -89,6 +89,7 @@ Feature: smoke tests for Vendors
     When I log in as "Kate Tester"
     When I go to the vendors page
     Then I should see "农工商超市"
+
 
   Scenario: Only admin can edit vendor if it is not locked
     Given the following vendor exists:
@@ -118,17 +119,6 @@ Feature: smoke tests for Vendors
     And I press "搜索" within "#content_area"
     And I follow "农工商超市"
     And I follow "报错/纠正"
-
-  Scenario: User can upload images for vendor
-
-  Scenario: Vendor can only be managed form the admin control panel
-    Given the following vendor exists:
-      | name       | city | street |
-      | 农工商超市 | 上海 | 大华路 |
-     When I log in as "Ray Admin"
-     And I go to the vendors page
-     And I follow "农工商超市"
-     Then I should not see "编辑"
 
   Scenario: Only Editor or Admin can lock a vendor
     Given the following vendor exists:

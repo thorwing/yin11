@@ -1,28 +1,22 @@
 Feature: smoke tests for Badges
-  A badge can be given to a user.
-  Only Admin can create badges.
-  Only Admin can edit badges.
-  Only Admin can disable badges.
-  User can get a badge for first review.
-  for 10 reviews.
-  for his review gets more than 100 votes.
-  for first up/down vote
-  for leaving 10 comments
-  for creating first tip
-  for creating 10 tips
-  for first editing tip
-  for create first tag
-  for create 5 tags
-  for first editing tag
-  for create a tip that is collected by more than 100 users.
 
   Background:
     Given There are minimum seeds data
 
+  Scenario: User will get rewards because of posting reviews.
+    Given the following badge exists:
+    | name     | description  | contribution_field | comparator | compared_value |
+    | 新手上路 | 发表一篇测评 | posted_reviews    | >=         | 1              |
+    When I log in as "David User"
+    And I post a simple review without vendor
+
+    When I go to the home page
+    And I follow "徽章" within "#top_menu"
+    Then I should see "(1)"
 
   Scenario: A admin can create a badge, and it can be given to a user
     When I log in as "Ray Admin"
-    And I go to the administrator_badges page
+    And I go to the badges page
     And I follow "新建"
     And I fill in "badge_name" with "新手上路"
     And I fill in "badge_description" with "发表第一篇测评"
@@ -39,17 +33,17 @@ Feature: smoke tests for Badges
     Then I should see "(1)"
 
   Scenario: Only Admin can create badges
-    When I go to the new_administrator_badge page
+    When I go to the new_badge page
     Then I should be on the login page
     
     When I log in as "David User"
-    And I go to the new_administrator_badge page
+    And I go to the new_badge page
     Then I should be on the home page
 
   Scenario: Only Admin can edit badges.
     Given the following badge exists:
     | name     | description  | contribution_field | comparator | compared_value |
-    | 新手上路 | 发表一篇测评 | posted_reviews     | ==          | 1              |
+    | 新手上路 | 发表一篇测评  | posted_reviews     | ==          | 1              |
     When I log in as "Ray Admin"
     And I go to the administrator_badges page
     And I follow "新手上路"
@@ -120,3 +114,24 @@ Feature: smoke tests for Badges
     Given the following badge exists:
       | name   | description    | contribution_field | comparator | compared_value |
       | 纠正者 | 编辑第一条贴士 | edited_tips       | ==           | 1              |
+
+  Scenario: Only Admin can toggle "disable" of badges.
+    Given the following badge exists:
+    | name     | description  | contribution_field | comparator | compared_value |
+    | 新手上路 | 发表一篇测评 | posted_reviews     | ==          | 1              |
+    When I log in as "Ray Admin"
+    And I go to the administrator_badges page
+    And I follow "新手上路"
+    And I follow "修改"
+    And I uncheck "badge_enabled"
+    And I press "完成"
+    When I go to the badges page
+    Then I should not see "新手上路"
+
+    When I go to the administrator_badges page
+    And I follow "新手上路" within "#disabled_badges"
+    And I follow "修改"
+    And I check "badge_enabled"
+    And I press "完成"
+    When I go to the badges page
+    Then I should see "新手上路"

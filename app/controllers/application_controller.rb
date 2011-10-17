@@ -106,7 +106,7 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::UnknownAction,      :with => :render_not_found
   end
   #TODO
-  rescue_errors unless Rails.env.development?
+  rescue_errors unless (Rails.env.development? || Rails.env.test?)
 
   def render_not_found(exception = nil)
      render :template => "errors/404", :status => 404 #, :layout => 'public'

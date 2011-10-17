@@ -14,10 +14,10 @@
     <%= paginate @vendors %>
     <% @vendors.each do |vendor| %>
       <tr id='<%= vendor.id %>'>
-        <td><%= link_to vendor.name, [:administrator, vendor] %></td>
+        <td><%= link_to vendor.name, vendor %></td>
         <td><%= render "administrator/shared/toggle_fields", :item => vendor, :field => :enabled %></td>
-        <td><%= link_to t("general.edit"), edit_administrator_vendor_path(vendor), :class => "button" %></td>
-        <td><%= link_to t("general.delete"), [:administrator, vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
+        <td><%= link_to t("general.edit"), edit_vendor_path(vendor), :class => "button" %></td>
+        <td><%= link_to t("general.delete"), vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
       </tr>
     <% end %>
     </table>
@@ -36,10 +36,10 @@
 
     <% @disabled_vendors.each do |vendor| %>
       <tr id='<%= vendor.id %>'>
-        <td><%= link_to vendor.name, [:administrator, vendor] %></td>
+        <td><%= link_to vendor.name, vendor %></td>
         <td><%= render "administrator/shared/toggle_fields", :item => vendor, :field => :enabled %></td>
-        <td><%= link_to t("general.edit"), edit_administrator_vendor_path(vendor), :class => "button" %></td>
-        <td><%= link_to t("general.delete"), [:administrator, vendor], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
+        <td><%= link_to t("general.edit"), edit_vendor_path(vendor), :class => "button" %></td>
+        <td><%= link_to t("general.delete"), vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
       </tr>
     <% end %>
   </table>
@@ -47,4 +47,4 @@
 
 <br />
 
-<%= link_to t("general.new"),new_administrator_vendor_path, :class => "button" %>
+<%= link_to t("general.new"),new_vendor_path, :class => "button" %>

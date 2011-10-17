@@ -4,6 +4,14 @@ module ApplicationHelper
     current_user && current_user.id == user.id
   end
 
+  def current_user_has_permission?(permission)
+    if current_user && current_user.has_permission?(permission)
+      true
+    else
+      false
+    end
+  end
+
   def truncate_content(text, length)
     text ||= ""
     text = strip_tags(text)

@@ -3,7 +3,6 @@ Feature: tests for relationships
   Background:
     Given There are minimum seeds data
 
-
   @javascript
   Scenario: User can establish a relationship with a vendor
     Given the following vendor exists:
@@ -15,7 +14,6 @@ Feature: tests for relationships
     Then I should see "+关注"
     When I follow "+关注"
     Then I should see "-取消关注"
-
 
   Scenario: User can cancel a relationship with a vendor
     Given the following vendor exists:

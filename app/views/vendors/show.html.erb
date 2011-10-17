@@ -1,1 +1,34 @@
-<%= render "basic_show", :vendor => @vendor %>
+<% title @vendor.name %>
+
+<div class="two_columns_container" >
+    <div class="left_column">
+        <p><%= t("location.address") %>: <%= @vendor.address %></p>
+        <h3><%= t("vendors.all_reviews") %><span class="trivial">(<%= t("vendors.reviews_total") %><%= @vendor.reviews.size %>)</span></h3>
+        <ul>
+            <% @vendor.reviews.each do |review| %>
+                <li><%= link_to review.title, review %></li>
+            <% end %>
+        </ul>
+        <div class="actions">
+            <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => @vendor.id), :class => "button" %>
+            <%= render "shared/follow_field", :target => @vendor %>
+            <%= link_to t("general.report"), new_report_path(:vendor_id => @vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>
+        </div>
+        <div class="nav_links">
+            <%= link_to t("general.back_to_list"), vendors_path %>
+        </div>
+    </div>
+    <div class="right_column">
+        <div class="block">
+            <div class="image_frame">
+                <%= render "shared/display_map", :location => @vendor %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if current_user_has_permission?(:administrator) %>
+    <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %> |
+    <%= link_to t("general.delete"), @vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+    <br/>
+<% end %>

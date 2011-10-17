@@ -1,5 +1,6 @@
 class VendorsController < ApplicationController
   before_filter(:only => [:new, :create, :mine]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:edit, :update, :destroy]) { |c| c.require_permission :administrator }
   #before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Vendor.name, c.params[:id], true)}
   layout :resolve_layout
 
@@ -21,9 +22,6 @@ class VendorsController < ApplicationController
   # GET /vendors/1.xml
   def show
     @vendor = Vendor.find(params[:id])
-    unless @vendor.enabled
-      @vendor = nil unless @vendor.creator.id == current_user.id
-    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,6 +42,10 @@ class VendorsController < ApplicationController
       end
       format.xml  { render :xml => @vendor }
     end
+  end
+
+  def edit
+    @vendor = Vendor.find(params[:id])
   end
 
   # POST /vendors
@@ -69,6 +71,31 @@ class VendorsController < ApplicationController
   def mine
       @my_vendors = Vendor.where(:creator_id => current_user.id)
   end
+
+  def update
+    @vendor = Vendor.find(params[:id])
+
+    respond_to do |format|
+      if @vendor.update_attributes(params[:vendor])
+        format.html { redirect_to( @vendor, :notice => 'Vendor was successfully created.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @vendor = Vendor.find(params[:id])
+    @vendor.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(vendors_url) }
+      format.xml  { head :ok }
+    end
+  end
+
 
   #def search
   #  @results = []

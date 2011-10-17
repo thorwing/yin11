@@ -1,5 +1,34 @@
 <%= form_for(@vendor) do |f| %>
-    <%= render "vendors/basic_form", :vendor => @vendor, :f => f %>
+    <%= render "shared/error_messages", :target => @vendor %>
+    <div class="field">
+        <b><%= f.label :city, t("location.city") %></b><%= mark_required(@vendor, :city) %>
+        <%= select_tag "select_province", options_for_select(get_provinces_for_select, current_city.province.id), :class => "select_province"  %>
+        <%= select_tag "select_city", options_for_select(get_cities_of_provinces(current_city.province), current_city.id), :class => "select_city"  %>
+        <%= f.hidden_field :city, :class => "hidden_city" %>
+        <br/>
+        <b><%= f.label :name, t("general.name") %></b><%= mark_required(@vendor, :name) %><br/>
+        <%= f.text_field :name, :maxlength => get_max_length(@vendor, :name) %>
+    </div>
+
+    <div class="field">
+        <b><%= f.label :category, t("general.category") %></b><br/>
+        <%= f.select :category, options_for_select(VendorCategories.get_values, @vendor.category) %>
+    </div>
+
+    <div class="map_input">
+        <b><%= t("location.street") %><%= mark_required(@vendor, :city) %><%= mark_required_length(@vendor, :title) %></b><br/>
+        <%= f.text_field :street, :class => "map_street" %>
+        <%= content_tag(:span, t("location.address_hint"), :class => "trivial") %>
+        <p><span id="map_address_span"></span><%= render "locations/map_indicator" %></p>
+    </div>
+
+
+    <% if current_user_has_permission?(:administrator) %>
+        <div class="field">
+            <%= f.label :enabled, "enabled" %><br />
+            <%= f.check_box :enabled, {}, true, false %>
+        </div>
+    <% end %>
 
     <div class="actions">
         <%= f.submit t("general.submit"), :class => "button" %>
