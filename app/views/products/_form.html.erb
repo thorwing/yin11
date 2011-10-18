@@ -4,19 +4,20 @@
 
   <div class="field">
     <% if @product.vendor %>
-        <div><%= render "vendors/vendor_fields", :vendor => @product.vendor %></div>
+        <div>
+          <%= @product.vendor.full_name %>
+          <%= hidden_field_tag "product[vendor_token]", @product.vendor.id %>
+        </div>
     <% else %>
-    <div id="vendor_fields">
-      <div class="left_column">
-        <%= f.text_field :vendor_token, 'data-pre' => (@product.vendor ? [{:id => @product.vendor.id, :name => @product.vendor.full_name }] : []).to_json %>
-      </div>
-
-      <%= content_tag(:span, t("vendors.not_found"), :class => "trivial") %>
-      <%= link_to t("vendors.not_found_new"), new_vendor_path(:popup => true), :rel => "facebox" %>
-     </div>
+        <div id="vendor_fields">
+          <div class="left_column">
+            <%= f.text_field :vendor_token, 'data-pre' => (@product.vendor ? [{:id => @product.vendor.id, :name => @product.vendor.full_name }] : []).to_json %>
+          </div>
+          <%= content_tag(:span, t("vendors.not_found"), :class => "trivial") %>
+          <%= link_to t("vendors.not_found_new"), new_vendor_path(:popup => true), :rel => "facebox" %>
+         </div>
     <% end %>
   </div>
-  <%= @product.vendor.name if @product.vendor.present? %>
 
   <div class="field">
     <%= f.label :name, t("general.name") %><br />

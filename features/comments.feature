@@ -8,7 +8,7 @@ Feature: Comments
     And There are some sample products
 
   Scenario Outline: Guest can't comment
-    When I go the "<index>" page
+    When I go to the "<index>" page
     And I follow "<item>"
     Then I should not see "div" whose id is "new_comment"
 
@@ -21,7 +21,7 @@ Feature: Comments
 
   Scenario Outline: User can comment, and comments can be nested
     When I log in as "<user>"
-    And I go the "<index>" page
+    And I go to the "<index>" page
     And I follow "<item>"
     Then I should see "div" whose id is "new_comment"
 

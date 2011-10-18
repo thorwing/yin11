@@ -9,12 +9,14 @@
                 <li><%= link_to review.title, review %></li>
             <% end %>
         </ul>
-        <div class="actions">
-            <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => @vendor.id), :class => "button" %>
-            <%= link_to t("vendors.new_product"), new_product_path(:vendor_id => @vendor.id), :class => "button" %>
-            <%= render "shared/follow_field", :target => @vendor %>
-            <%= link_to t("general.report"), new_report_path(:vendor_id => @vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>
-        </div>
+        <% if current_user_has_permission? :normal_user %>
+            <div class="actions">
+                <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => @vendor.id), :class => "button" %>
+                <%= link_to t("vendors.new_product"), new_product_path(:vendor_id => @vendor.id), :class => "button" %>
+                <%= render "shared/follow_field", :target => @vendor %>
+                <%= link_to t("general.report"), new_report_path(:vendor_id => @vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>
+            </div>
+        <% end %>
         <div class="nav_links">
             <%= link_to t("general.back_to_list"), vendors_path %>
         </div>

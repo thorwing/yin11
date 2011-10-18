@@ -23,8 +23,8 @@ class Vendor
   #validators
   validates_presence_of :name
   validates_length_of :name, :maximum => 30
-  #validates_presence_of :city
-  #validates_presence_of :street
+  validates_presence_of :city
+  validates_presence_of :street
   validates_uniqueness_of :full_name
   validates_inclusion_of :category, :in => VendorCategories.get_values, :allow_nil => true
 
@@ -39,13 +39,4 @@ class Vendor
   def bad_reviews_in(days)
     self.reviews.in_days_of(days).excludes(:faults => []).all
   end
-
-  def get_feeds
-    if self.respond_to?(:feeds)
-      self.feeds
-    else
-      nil
-    end
-  end
-
 end

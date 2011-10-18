@@ -85,14 +85,6 @@ class User
     groups.collect{|g| g.tags}.flatten.compact.uniq
   end
 
-  def get_feeds
-    if self.respond_to?(:feeds)
-      self.feeds
-    else
-      nil
-    end
-  end
-
   def authenticate(password)
     if password.present? && self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
       true

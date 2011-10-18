@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   def new
     if params[:vendor_id]
       vendor = Vendor.find(params[:vendor_id])
-      @product = vendor.reviews.build
+      @product = vendor.products.build
     else
       @product = Product.new
     end

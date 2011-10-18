@@ -24,6 +24,15 @@ module Followable
       self.followers.remove(user.id.to_s)
       self.save!
     end
+
+    def get_feeds
+       if self.respond_to?(:feeds)
+         self.feeds
+       else
+         nil
+       end
+    end
+
   end
 
 end
