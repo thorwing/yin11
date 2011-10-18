@@ -1,21 +1,11 @@
-<h1>Listing products</h1>
+<% title t("products.products_list") %>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @products.each do |product| %>
-  <tr>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= render @products %>
 
 <br />
 
-<%= link_to 'New product', new_product_path %>
+<% if current_user_has_permission?(:editor) %>
+    <div class="actions">
+        <%= link_to t("products.add"), new_product_path, :class => "button" %>
+    </div>
+<% end %>

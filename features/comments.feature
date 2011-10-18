@@ -1,81 +1,53 @@
 #encoding utf-8
-
 Feature: Comments
 
   Background:
     Given There are minimum seeds data
+    And There are some sample articles
+    And There are some sample reviews
+    And There are some sample products
 
-  Scenario: Guest can not comment
-    Given There are some sample articles
-    When I go to the home page
-    Then I should see "三聚氰胺再现上海"
-    When I follow "三聚氰胺再现上海"
-    Then I should not see "发表"
+  Scenario Outline: Guest can't comment
+    When I go the "<index>" page
+    And I follow "<item>"
+    Then I should not see "div" whose id is "new_comment"
+
+    Examples:
+    | index    | item             |
+    | articles | 三聚氰胺再现上海 |
+    | reviews  | 牛奶坏了         |
+    | products | 苏北草母鸡        |
 
 
-  Scenario:  User can comment on a review, comments can be nested.
-    Given the following review exists:
-    | title      | tags_string  | content |
-    | 买到烂西瓜 | 西瓜         | 西瓜切开来后发现已经熟过头了。 |
+  Scenario Outline: User can comment, and comments can be nested
+    When I log in as "<user>"
+    And I go the "<index>" page
+    And I follow "<item>"
+    Then I should see "div" whose id is "new_comment"
 
-    When I log in as "Kate Tester"
-    And I go to the reviews page
-    When I follow "买到烂西瓜"
     And I fill in "content" with "很有用的评价" within ".new_comment"
     And I press "+评论"
     Then I should see "很有用的评价" within "#comments"
-    And I go to the reviews page
-    And I follow "买到烂西瓜"
-    Then I should see "很有用的评价"
-
-    When I log in as "David User"
-    And I go to the reviews page
-    And I follow "买到烂西瓜"
-    And I fill in "content" with "谢谢" within ".new_comment"
-    And I press "+评论"
-    And I go to the reviews page
-    And I follow "买到烂西瓜"
-    Then I should see "很有用的评价"
-    Then I should see "谢谢"
-
-
-  Scenario: Users can comment on a article
-    Given the following article exists:
-      | title            | content                            | tags_string |
-      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
-
-    When I log in as "David User"
-    And I go to the articles page
-    When I follow "西瓜被打了催熟剂"
-    And I fill in "content" with "很有用的评价" within ".new_comment"
-    And I press "+评论"
+    And I go to the "<index>" page
+    And I follow "<item>"
     Then I should see "很有用的评价"
 
     When I log in as "Kate Tester"
-    And I go to the articles page
-    When I follow "西瓜被打了催熟剂"
+    And I go to the "<index>" page
+    And I follow "<item>"
     And I fill in "content" with "谢谢" within ".new_comment"
     And I press "+评论"
+    And I go to the "<index>" page
+    And I follow "<item>"
+    Then I should see "很有用的评价"
     Then I should see "谢谢"
 
+    Examples:
+    |user           | index    | item             |
+    |David User     | articles | 三聚氰胺再现上海 |
+    |Castle Editor  | reviews  | 牛奶坏了         |
+    |Ray Admin      | products | 苏北草母鸡        |
 
-  Scenario: User can reply others comment
-    Given the following review exists:
-    | title    |
-    | 西瓜烂了 |
-    When I log in as "David User"
-    And I go to the reviews page
-    When I follow "西瓜烂了"
-    When I fill in "content" with "很不错"
-    And I press "+评论"
-
-    When I log in as "Kate Tester"
-    And I go to the reviews page
-    And I follow "西瓜烂了"
-    And I follow "回复"
-    And I fill in "content" with "谢谢"
-    And I press "+评论"
-    Then I should see "谢谢"
 
   @javascript
   Scenario: User will get hint about how many characters left

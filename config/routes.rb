@@ -108,6 +108,8 @@ Yin11::Application.routes.draw do
     end
   end
 
+  resources :products
+
   resources :reports, :only => [:new, :create]
 
   resources :users, :except => [:index, :destroy] do

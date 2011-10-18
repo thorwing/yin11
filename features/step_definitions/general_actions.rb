@@ -2,16 +2,18 @@
 
 Given /^I log in as "(.+)"$/ do |name|
   case name
-    when "David User"
+    when "Guest"
+      visit root_path
+    when "David User" || "David"
       email = @normal_user.email
       pwd = @normal_user.password
-    when "Kate Tester"
+    when "Kate Tester" || "Kate"
       email = @tester.email
       pwd = @tester.password
-    when "Castle Editor"
+    when "Castle Editor" || "Castle"
       email = @editor.email
       pwd = @editor.password
-    when "Ray Admin"
+    when "Ray Admin" || "Ray"
       email = @admin.email
       pwd = @admin.password
     else

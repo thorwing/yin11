@@ -1,5 +1,27 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <b><%= t("general.name")  %></b>
+  <%= @product.name %>
+</p>
 
+<p>
+  <b>Url:</b>
+  <%= @product.url %>
+</p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if @product.vendor %>
+  <%= link_to @product.vendor.full_name, @product.vendor %><br/>
+<% end %>
+
+<div class="actions">
+  <%= render "shared/follow_field", :target => @product %>
+</div>
+
+<% if current_user_has_permission? :normal_user %>
+    <div class="actions">
+        <%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>
+    </div>
+<% end %>
+
+<div class="actions">
+   <%= link_to t("general.back"), products_path, :class => "button" %>
+</div>

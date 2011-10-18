@@ -1,4 +1,4 @@
-<% title(t("groups.mine")) %>
+<% title t("groups.mine") %>
  <% Group.all.each do |group| %>
     <p><%= link_to group.name, group %></p>
 <% end %>

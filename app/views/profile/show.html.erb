@@ -58,10 +58,15 @@
     </dd>
     <dt><span><%= t("profile.my_followings") %></span></dt>
     <dd>
+        <% current_user.relationships.each do |r| %>
+            <% item = r.get_item %>
+            <%= r.get_item.name if item.respond_to?(:name) %>
+        <% end %>
     </dd>
     <dt><span><%= t("users.recent_activities") %></span></dt>
+    <dd/>
+    <dt><span><%= t("profile.my_recent_posted_items") %></span> </dt>
     <dd>
-        <h3><%= t("profile.my_recent_posted_items") %></h3>
         <table>
             <tr>
                 <th><%= t("general.title") %></th>

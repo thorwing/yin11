@@ -158,6 +158,7 @@ zh-CN:
     update_profile: 偏好设定
     articles: 新闻
     reviews: 测评
+    products: 产品
     badges: 徽章
     tips: 锦囊
     groups: 饭桌
@@ -325,12 +326,18 @@ zh-CN:
     edit_vendor: 编辑商户
     create_vendor: 添加商户
     new_review: +测评
+    new_product: +产品
     all_reviews: "所有测评："
     my_vendors: "查看我创建的商户"
     recent: 最近一个月：
     recent_good: 好评
     recent_bad: 差评
     reviews_total: "总共："
+
+  products:
+    products_list: 产品列表
+    add: +产品
+    new_product: 新产品
 
   reviews:
     title: "测评："

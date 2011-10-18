@@ -16,14 +16,15 @@ class Vendor
   #Relationships
   has_many :reviews
   has_many :reports
+  has_many :products
   belongs_to :creator, :class_name => "User"
   embeds_many :feeds
 
   #validators
   validates_presence_of :name
   validates_length_of :name, :maximum => 30
-  validates_presence_of :city
-  validates_presence_of :street
+  #validates_presence_of :city
+  #validates_presence_of :street
   validates_uniqueness_of :full_name
   validates_inclusion_of :category, :in => VendorCategories.get_values, :allow_nil => true
 
