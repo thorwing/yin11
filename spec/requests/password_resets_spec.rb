@@ -35,6 +35,7 @@ describe "PasswordResets" do
     user = Factory(:normal_user, :password_reset_token => "something", :password_reset_sent_at => 1.hour.ago)
     visit edit_password_reset_path(user.password_reset_token)
     fill_in "user_password", :with => "foobar"
+    fill_in "user_password_confirmation", :with => "oops_wrong"
     click_button I18n.t("authentication.update_password")
     page.should have_content(I18n.t("errors.messages.confirmation"))
     fill_in "user_password", :with => "foobar"

@@ -21,11 +21,6 @@ describe Article do
     Article.new(:title => "test", :content => "1" * 10001).should_not be_valid
   end
 
-  it "type will be automatically set if empty" do
-    article = Article.create(:title => "test", :content => "sample text")
-    article.type.should == I18n.t("article_types.news")
-  end
-
   it "type must be of certain value" do
     Article.create(:title => "test", :content => "sample text", :type => "test").should_not be_valid
   end

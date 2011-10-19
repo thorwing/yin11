@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def current_user_has_permission?(permission)
-    if current_user && current_user.has_permission?(permission)
+    if current_user.present? && current_user.has_permission?(permission)
       true
     else
       false

@@ -21,7 +21,7 @@ describe UserMailer do
       mail.subject.should eq(I18n.t("mailers.verify_email_subject"))
       mail.to.should eq([user.email])
       mail.from.should eq(["yin11.mailer@gmail.com"])
-      mail.body.encoded.should match(verify_email_path(user.email_verification_token))
+      mail.body.encoded.should match(verify_email_user_path(user.email_verification_token))
     end
   end
 

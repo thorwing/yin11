@@ -1,6 +1,6 @@
 #encoding utf-8
 
-namespace :yin11 do
+namespace :silver_hornet do
   class Site
     attr_accessor :name, :url_list, :count
     def initialize(site_name, url_list)
