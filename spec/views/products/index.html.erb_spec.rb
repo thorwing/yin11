@@ -4,11 +4,11 @@ describe "products/index.html.erb" do
   before(:each) do
     assign(:products, [
       stub_model(Product,
-        :[name => "",
+        :name => "",
         :url => ""
       ),
       stub_model(Product,
-        :[name => "",
+        :name => "",
         :url => ""
       )
     ])

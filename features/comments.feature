@@ -8,7 +8,7 @@ Feature: Comments
     And There are some sample products
 
   Scenario Outline: Guest can't comment
-    When I go to the "<index>" page
+    When I go to the <index> page
     And I follow "<item>"
     Then I should not see "div" whose id is "new_comment"
 
@@ -18,26 +18,25 @@ Feature: Comments
     | reviews  | 牛奶坏了         |
     | products | 苏北草母鸡        |
 
-
   Scenario Outline: User can comment, and comments can be nested
     When I log in as "<user>"
-    And I go to the "<index>" page
+    And I go to the <index> page
     And I follow "<item>"
     Then I should see "div" whose id is "new_comment"
 
     And I fill in "content" with "很有用的评价" within ".new_comment"
     And I press "+评论"
     Then I should see "很有用的评价" within "#comments"
-    And I go to the "<index>" page
+    And I go to the <index> page
     And I follow "<item>"
     Then I should see "很有用的评价"
 
     When I log in as "Kate Tester"
-    And I go to the "<index>" page
+    And I go to the <index> page
     And I follow "<item>"
     And I fill in "content" with "谢谢" within ".new_comment"
     And I press "+评论"
-    And I go to the "<index>" page
+    And I go to the <index> page
     And I follow "<item>"
     Then I should see "很有用的评价"
     Then I should see "谢谢"

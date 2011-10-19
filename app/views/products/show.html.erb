@@ -25,3 +25,8 @@
 <div class="actions">
    <%= link_to t("general.back"), products_path, :class => "button" %>
 </div>
+
+
+<hr/>
+
+<%= render "comments/comments", :item => @product %>

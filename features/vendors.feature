@@ -115,8 +115,6 @@ Feature: smoke tests for Vendors
       | name       | city | street |
       | 农工商超市 | 上海 | 大华路 |
     When I go to the vendors page
-    And I fill in "q" with "农工商超市" within "#content_area"
-    And I press "搜索" within "#content_area"
     And I follow "农工商超市"
     And I follow "报错/纠正"
 

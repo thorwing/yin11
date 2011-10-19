@@ -1,4 +1,4 @@
-<%= vendor.full_name %>
-<%= hidden_field_tag "review[vendor_token]", vendor.id %>
+<%= target.vendor.full_name %>
+<%= hidden_field_tag "#{target.class.name.downcase}[vendor_token]", target.vendor.id %>
 <!--for testing -->
-<%= hidden_field_tag "review[vendor_name]", vendor.name %>
+<%= hidden_field_tag "#{target.class.name.downcase}[vendor_name]", target.vendor.name %>

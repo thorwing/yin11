@@ -16,7 +16,12 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    @article = Article.enabled.find(params[:id])
+    #TODO
+    if current_user_has_permission? :editor
+      @article = Article.find(params[:id])
+    else
+      @article = Article.enabled.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

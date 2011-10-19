@@ -17,7 +17,7 @@
     <div class="field">
         <b><%= t("reviews.where") %></b><br/>
         <% if @review.vendor %>
-            <div><%= render "vendor_fields", :vendor => @review.vendor %></div>
+            <div><%= render "vendors/vendor_fields", :target => @review %></div>
         <% else %>
         <div id="vendor_fields">
           <div class="left_column">

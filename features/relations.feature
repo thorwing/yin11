@@ -32,7 +32,6 @@ Feature: tests for relationships
     And I follow "农工商超市"
     And I follow "+关注"
 
-
   Scenario: User can follow a vendor and get corresponding reviews
     Given the following vendor exists:
       | name       | city | street |

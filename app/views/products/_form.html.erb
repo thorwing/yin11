@@ -4,10 +4,7 @@
 
   <div class="field">
     <% if @product.vendor %>
-        <div>
-          <%= @product.vendor.full_name %>
-          <%= hidden_field_tag "product[vendor_token]", @product.vendor.id %>
-        </div>
+        <div><%= render "vendors/vendor_fields", :target => @product %></div>
     <% else %>
         <div id="vendor_fields">
           <div class="left_column">
