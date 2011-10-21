@@ -1,0 +1,78 @@
+食品伙伴网:
+  skipped: true
+  recursive: true
+  recursive_pages: 2
+  entries:
+    ["http://www.foodmate.net/foodsafe/knowledge/",
+    "http://www.foodmate.net/foodsafe/case/",
+    "http://www.foodmate.net/news/guonei/",
+    "http://www.foodmate.net/news/guoji/",
+    "http://www.foodmate.net/news/yujing/"]
+  elements:
+    listed_article: '.catlist_li'
+    listed_article_time: '.f_gray'
+    article_title: '.title'
+    article_content: '#article'
+    article_source: '.info'
+    article_next_link: ''
+
+新华网:
+  skipped: true
+  recursive: false
+  entries:
+    ["http://www.news.cn/food/baoguang.htm",
+    "http://www.news.cn/food/yaowen.htm",
+    "http://www.news.cn/food/yinliao.htm",
+    "http://www.news.cn/food/nongfu.htm",
+    "http://www.news.cn/food/rupin.htm",
+    "http://www.news.cn/food/xiaofei.htm"]
+  elements:
+    listed_article: '.black14'
+    listed_article_time: '.sj'
+    article_title: '#Title'
+    article_content: '#Content'
+    article_source: '' #source is not  clearly specified
+    article_next_link: ''
+
+食品商务网:
+  skipped: true
+  recursive: true
+  recursive_pages: 2
+  entries:
+    ["http://www.21food.cn/news/list_g26_chnl-%B3%E9%BC%EC%C6%D8%B9%E2.html",
+    "http://www.21food.cn/news/list_g26_chnl-%CF%FB%B7%D1%BE%AF%CA%BE.html"]
+  elements:
+    listed_article: '.news-list-left .cate-ul li'
+    listed_article_time: 'span'
+    article_title: '.ndetail-nr-title'
+    article_content: '#newsContent'
+    article_source: '.p-nr p'
+    article_next_link: ''
+
+南方网:
+  skipped: true
+  recursive: false
+  entries:
+    ["http://food.southcn.com/c/node_143373.htm",
+    "http://food.southcn.com/c/node_143382.htm"]
+  elements:
+    listed_article: '.GsTitleList6 dt'
+    listed_article_time: '.time'
+    article_title: '#ScDetailTitle'
+    article_content: '#ScDetailContent'
+    article_source: 'span.source'
+    article_next_link: ''
+
+中国食品科技网:
+  skipped: false
+  recursive: true
+  recursive_pages: 2
+  entries:
+    ["http://www.tech-food.com/news/rule/list.html"]
+  elements:
+    listed_article: '.newsmore_title3'
+    listed_article_time: 'i'
+    article_title: '.biaoti1'
+    article_content: '#zoom'
+    article_source: 'div.dibu_sr'
+    article_next_link: ''
