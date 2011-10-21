@@ -9,4 +9,5 @@ class Image
 
   #relationships
   belongs_to :info_item
+  belongs_to :product
 end

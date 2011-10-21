@@ -5,7 +5,10 @@
 
 <p>
   <b>Url:</b>
-  <%= @product.url %>
+  <%= new_tab_link_to @product.provider, @product.url %>
+</p>
+<p>
+  <%= image_tag @product.image.image if @product.image%>
 </p>
 
 <% if @product.vendor %>

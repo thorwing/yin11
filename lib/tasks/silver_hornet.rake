@@ -3,13 +3,15 @@
 namespace :silver_hornet do
   desc "fetch news from internet"
   task :fetch_articles => :environment do
-    begin
-      config = SilverHornet::Configuration.instance
-      config.parse_articles_config
-      config.article_sites.each {|site| site.fetch_articles}
-    rescue Exception => exc
-      site.log exc.message
-      p exc.backtrace
-    end
+    config = SilverHornet::Configuration.new(SilverHornet::ArticlesSite.name, "#{Rails.root}/config/silver_hornet/articles.yml")
+    config.parse_config
+    config.sites.each {|site| site.fetch}
+  end
+
+  desc "fetch products from internet"
+  task :fetch_products => :environment do
+    config = SilverHornet::Configuration.new(SilverHornet::ProductsSite.name, "#{Rails.root}/config/silver_hornet/products.yml")
+    config.parse_config
+    config.sites.each {|site| site.fetch}
   end
 end
