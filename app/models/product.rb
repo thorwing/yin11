@@ -4,8 +4,13 @@ class Product
   include Taggable
   include Followable
   field :name
+  field :price
+  field :weight
+  field :producer
+  field :original_place
+  field :authenticated
+  field :description
   field :url
-  field :provider
 
   attr_accessible :name, :url, :vendor_id
 
@@ -18,6 +23,6 @@ class Product
   #validators
   validates_presence_of :name
   validates_length_of :name, :maximum => 100
-  #validates_presence_of :vendor
+  validates_presence_of :vendor
 
 end

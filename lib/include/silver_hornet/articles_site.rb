@@ -1,7 +1,7 @@
 class SilverHornet::ArticlesSite < SilverHornet::Site
   attr_accessor :recursive, :recursive_pages
 
-  def fetch_a
+  def fetch
     if skipped.present? && skipped == true
       log "#{name} is skipped"
       return
@@ -17,7 +17,11 @@ class SilverHornet::ArticlesSite < SilverHornet::Site
           pages_count += 1
           process_page(agent)
 
-          next_link = agent.page.link_with(:text => I18n.t("fetch_sites.normal_next_page"))
+          if elements["next_link_css_selector"].present?
+            next_link = agent.page.at(elements["next_link_css_selector"])
+          elsif elements["next_link_text"].present?
+            next_link = agent.page.link_with(:text => elements["next_link_text"])
+          end
 
           ##for foodmate
           #if next_link.nil? && self.name == I18n.t("fetch_sites.foodmate")

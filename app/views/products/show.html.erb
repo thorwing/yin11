@@ -5,10 +5,32 @@
 
 <p>
   <b>Url:</b>
-  <%= new_tab_link_to @product.provider, @product.url %>
+  <%= new_tab_link_to @product.vendor.name, @product.url %>
 </p>
+
 <p>
-  <%= image_tag @product.image.image if @product.image%>
+  <b><%= t("products.price")  %></b>
+  <%= @product.price %>
+</p>
+
+<p>
+  <b><%= t("products.weight")  %></b>
+  <%= @product.weight %>
+</p>
+
+<p>
+  <b><%= t("products.producer")  %></b>
+  <%= @product.producer %>
+</p>
+
+
+<p>
+  <b><%= t("products.original_place")  %></b>
+  <%= @product.original_place %>
+</p>
+
+<p>
+  <%= image_tag @product.image.image_url if @product.image && @product.image.image_url %>
 </p>
 
 <% if @product.vendor %>

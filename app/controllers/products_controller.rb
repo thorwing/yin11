@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(ITEMS_PER_PAGE_MANY)
 
     respond_to do |format|
       format.html # index.html.erb

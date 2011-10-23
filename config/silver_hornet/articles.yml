@@ -14,7 +14,8 @@
     article_title: '.title'
     article_content: '#article'
     article_source: '.info'
-    article_next_link: ''
+    next_link_css_selector: ''
+
 
 新华网:
   skipped: true
@@ -32,7 +33,6 @@
     article_title: '#Title'
     article_content: '#Content'
     article_source: '' #source is not  clearly specified
-    article_next_link: ''
 
 食品商务网:
   skipped: true
@@ -47,7 +47,6 @@
     article_title: '.ndetail-nr-title'
     article_content: '#newsContent'
     article_source: '.p-nr p'
-    article_next_link: ''
 
 南方网:
   skipped: true
@@ -61,7 +60,6 @@
     article_title: '#ScDetailTitle'
     article_content: '#ScDetailContent'
     article_source: 'span.source'
-    article_next_link: ''
 
 中国食品科技网:
   skipped: true
@@ -75,4 +73,3 @@
     article_title: '.biaoti1'
     article_content: '#zoom'
     article_source: 'div.dibu_sr'
-    article_next_link: ''

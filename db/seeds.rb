@@ -71,21 +71,31 @@ require "source"
   end
 
   #vendors
-  vendors = YAML::load(File.open("app/seeds/vendors.yml"))
-  vendors.each do |v|
-    begin
-      vendor = Vendor.new do |vendor|
-        vendor.name = v.name
-        vendor.city = v.city
-        vendor.street = v.street
-        vendor.latitude = v.latitude
-        vendor.longitude = v.longitude
-      end
-      p [v.name, v.city, v.street, v.latitude.to_s, v.longitude.to_s].join(" ")
-      vendor.save!
+  #vendors = YAML::load(File.open("app/seeds/vendors.yml"))
+  #vendors.each do |v|
+  #  begin
+  #    vendor = Vendor.new do |vendor|
+  #      vendor.name = v.name
+  #      vendor.city = v.city
+  #      vendor.street = v.street
+  #      vendor.latitude = v.latitude
+  #      vendor.longitude = v.longitude
+  #    end
+  #    p [v.name, v.city, v.street, v.latitude.to_s, v.longitude.to_s].join(" ")
+  #    vendor.save!
+  #
+  #  rescue Exception => exc
+  #    p v.name
+  #    p exc.backtrace
+  #  end
+  #end
 
+  conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
+  conf.each do |site_name, values|
+    begin
+      vendor = Vendor.create!(:name => site_name)
+      p vendor.name
     rescue Exception => exc
-      p v.name
       p exc.backtrace
     end
   end
