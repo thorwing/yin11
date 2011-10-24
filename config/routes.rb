@@ -96,7 +96,7 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :badges
+  #resources :badges
 
   resources :vendors do
     collection do

@@ -1,20 +1,20 @@
 <div class="block round">
   <div class="left_column">
       <% if product.image && product.image.image_url %>
-        <%= link_to image_tag( product.image.image_url, :border => 0, :width => 48, :height => 48), product%>
+        <%= link_to image_tag( product.image.image_url, :border => 0, :width => IMAGE_WIDTH, :height => IMAGE_HEIGHT), product%>
       <% else %>
-        <%= link_to image_tag( "default_article.jpg", :border => 0, :width => 48, :height => 48),  product%>
+        <%= link_to image_tag( "default_article.jpg", :border => 0, :width => IMAGE_WIDTH, :height => IMAGE_HEIGHT),  product%>
       <% end %>
   </div>
   <div class="left_column">
     <%= link_to product.name, product %> <br/>
     <% if product.price.present? %>
-        <%= t_with_colon("products.price") %> <%= product.price %><br/>
+        <%= t_with_colon("products.price") %> <%= t("money.yuan_mark") %><%= product.price %><br/>
     <% end %>
     <% if product.weight.present? %>
         <%= t_with_colon("products.weight") %> <%= product.weight %><br/>
     <% end %>
-    <% if product.price.present? %>
+    <% if product.producer.present? %>
         <%= t_with_colon("products.producer") %> <%= product.producer %><br/>
     <% end %>
     <% if product.original_place.present? %>

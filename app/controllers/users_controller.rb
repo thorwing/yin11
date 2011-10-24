@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  force_ssl
   before_filter(:only => [:update]) { |c| c.require_permission :normal_user }
 
   # GET /users/new

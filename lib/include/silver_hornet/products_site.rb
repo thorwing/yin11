@@ -18,8 +18,9 @@ class SilverHornet::ProductsSite < SilverHornet::Site
           agent.page.search(elements["listed_product"]).each do |item|
             link = item.at_css('a')
             #there must be a link
-            next unless link
+            next unless link.present?
             href = link.attributes['href']
+            next unless href.present?
             agent.get(href)
 
             process_product(agent)
@@ -48,8 +49,8 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     product = Product.find_or_initialize_by(name: product_name) #, provider: self.name)
     product.vendor = Vendor.first(conditions: {name: self.name})
     product.url = agent.page.uri.to_s
-    #
-    get_field(product, doc, :price, "product_price")
+
+    get_price(product, doc)
     get_field(product, doc, :weight, "product_weight")
     get_field(product, doc, :producer, "product_producer")
     get_field(product, doc, :original_place, "product_original_place")
@@ -81,11 +82,32 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     return unless selector.present?
 
     value = doc.at_css(selector).try(:content)
-    #if field_name == :price
-    #  value = value.gsub(I18n.t "products.price_mark",'')
-    #end
     product.send("#{field_name}=", value) if product.respond_to?("#{field_name}=")
   end
+
+  def get_price(product, doc)
+    selector = elements["product_price"]
+    return unless selector.present?
+
+    value = doc.at_css(selector).try(:content)
+    money_symbols = [I18n.t("money.yuan_mark"), I18n.t("money.yuan")].join
+    product.price = value.gsub(/[#{money_symbols}]/, '')
+  end
+
+  #def get_weight(product, doc)
+  #  selector = elements["product_weight"]
+  #  if selector.present?
+  #    value = doc.at_css(selector).try(:content)
+  #    product.weight = Float(value) if value.present?
+  #  else
+  #    weight_symbols = [I18n.t("weight.gram_mark"), I18n.t("weight.gram")].join
+  #    results = product.name.grep(/ (.+)[#{weight_symbols}]/)
+  #    if results.any?
+  #      product.weight = Float(results.last)
+  #      p product.weight.to_s + "G"
+  #    end
+  #  end
+  #end
 
   def get_image(product, doc)
     pic = nil
@@ -93,22 +115,21 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     if pic_selector.present?
       image_element = doc.at_css(elements["product_image"])
       pic_url = image_element[:src] if image_element.present?
-      pic = Image.new
-      pic.image = download_remote_photo(pic_url)
-      pic.product_id = product.id
-      #TODO
+      pic = product.build_image(:remote_image_url => pic_url)
+      pic.remote_image_url = pic_url
       pic.save!
+      #pic.image = download_remote_photo(pic_url)
     end
   end
 
-  def download_remote_photo(pic_url)
-    io = open(URI.parse(URI.escape(pic_url)))
-    def io.original_filename; base_uri.path.split('/').last; end
-      io.original_filename.blank? ? nil : io
-    rescue Exception => exc
-      log exc.message
-      log exc.backtrace
-      # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
-  end
+  #def download_remote_photo(pic_url)
+  #  io = open(URI.parse(URI.escape(pic_url)))
+  #  def io.original_filename; base_uri.path.split('/').last; end
+  #    io.original_filename.blank? ? nil : io
+  #  rescue Exception => exc
+  #    log exc.message
+  #    log exc.backtrace
+  #    # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
+  #end
 
 end

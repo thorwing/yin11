@@ -49,7 +49,7 @@ gem 'tinymce-rails'
 #gem "tiny_mce"
 #gem 'ckeditor-rails'
 
-#no such file to load -- carrierwave/storage/grid_fs issue
+gem 'mini_magick'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 gem 'kaminari'
@@ -72,7 +72,7 @@ gem 'crack'
 #gem 'barista'
 gem 'therubyracer', :require => nil
 
-# Bundle gems for thevi  local environment. Make sure to
+# Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
@@ -85,9 +85,6 @@ group :development, :test do
 
     gem 'guard-rspec'
     gem 'guard-cucumber'
-    #For windows only!
-    #gem 'rb-fchange'
-    #gem 'rb-notifu'
 
     gem "escape_utils"
 end

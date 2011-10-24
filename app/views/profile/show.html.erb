@@ -8,7 +8,7 @@
         <b><%= t("general.email_address") %></b><br/>
         <%= current_user.email %><br/>
         <b><%= t("user_basic.avatar") %></b><br/>
-        <%= image_tag current_user.get_avatar, :class => "avatar" %><br/>
+        <%= image_tag current_user.get_avatar, :width => AVATAR_WIDTH, :height => AVATAR_HEIGHT, :class => "avatar" %><br/>
     </dd>
     <dt><span><%= t("users.preference") %></span></dt>
     <dd>

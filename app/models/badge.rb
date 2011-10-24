@@ -9,7 +9,7 @@ class Badge
   field :contribution_field
   field :comparator
   field :compared_value, :type => Integer
-  mount_uploader :icon, IconUploader
+  #mount_uploader :icon, IconUploader
 
   attr_accessible :name, :description, :contribution_field, :comparator, :compared_value, :enabled, :icon
 

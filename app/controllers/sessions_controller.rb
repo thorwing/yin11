@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  force_ssl
 
   def new
   end

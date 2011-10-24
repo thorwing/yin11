@@ -113,3 +113,19 @@ require "source"
       end
     end
   end
+
+  def generate_categories(parent, children)
+    children.each do |child|
+      parent.children.create(:name => child)
+    end
+  end
+
+  #categories
+  p "generating categories"
+  categories = YAML::load(File.open("app/seeds/categories.yml"))
+  categories.each do |name, children|
+    parent = Category.create!(:name => name)
+    if children.present? && children.is_a?(Array)
+      generate_categories(parent, children)
+    end
+  end

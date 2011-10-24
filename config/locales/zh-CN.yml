@@ -342,7 +342,14 @@ zh-CN:
     weight: 重量
     producer: 厂商
     original_place: 原产地
-    price_mark: ￥
+
+  money:
+    yuan_mark: "￥"
+    yuan: "元"
+
+  weight:
+    gram_mark: G
+    gram: 克
 
   reviews:
     title: "测评："

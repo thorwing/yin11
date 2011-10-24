@@ -4,8 +4,8 @@ class Product
   include Taggable
   include Followable
   field :name
-  field :price
-  field :weight
+  field :price, :type => Float
+  field :weight, :type => Float
   field :producer
   field :original_place
   field :authenticated
@@ -19,6 +19,7 @@ class Product
   belongs_to :vendor
   tokenize_one :vendor
   has_one :image
+  belongs_to :category
 
   #validators
   validates_presence_of :name

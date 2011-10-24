@@ -34,8 +34,8 @@ module ImagesHelper
     logger = Logger.new(STDOUT)
     logger.info image.image.url.to_s
     if image.image?
-      link_to(image_tag(image.image.url, :border => 0, :width => 100, :height => 100, :alt => "image_thumbnail"),
-        image.image.url, :title => image.caption, :rel => group ? "lightbox-group" : "lightbox" , :class => "thumbnail" )
+      link_to(image_tag(image.image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :alt => "image_thumbnail"),
+        image.image_url, :title => image.caption, :rel => group ? "lightbox-group" : "lightbox" , :class => "thumbnail" )
     end
   end
 
