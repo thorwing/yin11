@@ -21,6 +21,11 @@
     product_price: '.productPriceSpan'
     product_weight: '#format'
     next_link_css_selector: '.latestnewnextpage a'
+  comment_selectors:
+    skip_comments: false
+    listed_comment: ".evalist"
+    comment_text: ".middleli div"
+    next_commnet_css_selector: ".latestnewnextpage a"
 
 五谷磨房:
   skipped: true

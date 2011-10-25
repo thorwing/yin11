@@ -20,6 +20,9 @@
     <% if product.original_place.present? %>
         <%= t_with_colon("products.original_place") %> <%= product.original_place %><br/>
     <% end %>
+    <% if product.comments && product.comments.size > 0%>
+        <%= product.comments.size.to_s %> <%= t("comments.comment") %><br/>
+    <% end %>
 
   </div>
 </div>

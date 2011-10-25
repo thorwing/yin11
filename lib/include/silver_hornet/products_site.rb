@@ -1,4 +1,5 @@
 class SilverHornet::ProductsSite < SilverHornet::Site
+  attr_accessor :comment_selectors
 
   def fetch
     if skipped.present? && skipped == true
@@ -6,12 +7,21 @@ class SilverHornet::ProductsSite < SilverHornet::Site
       return
     end
 
-    agent = Mechanize.new
-    begin
-      self.entries.each do |entry_url|
-        next_link = nil
+    timestamp = Time.now
+    log "Fetching products from #{self.name} at #{timestamp.to_s}"
+
+    self.entries.each do |entry_url|
+      next_link = nil
+      begin
         begin
-          next_link.nil? ? agent.get(entry_url) : agent.click(next_link)
+          if next_link.nil?
+            agent.get(entry_url)
+          elsif next_link.attributes['href'].to_s != agent.page.uri.to_s
+            agent.click(next_link)
+            next_link = nil
+          else
+            next
+          end
           start_url = agent.page.uri
 
           log "Now dealing with #{name}: #{agent.page.uri.to_s}, see #{agent.page.search("#{elements["listed_product"]} a").size.to_s} products."
@@ -23,7 +33,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
             next unless href.present?
             agent.get(href)
 
-            process_product(agent)
+            process_product
           end
 
           #go back to the entry page
@@ -35,15 +45,19 @@ class SilverHornet::ProductsSite < SilverHornet::Site
           end
 
           log "Got #{count.to_s} products on #{name}: #{agent.page.uri.to_s}"
-        end while next_link
-      end
-    rescue Exception => exc
-      log exc.message
-      log exc.backtrace
+        rescue Errno::ETIMEDOUT, Timeout::Error, Net::HTTPNotFound
+          log "Connection Error"
+        rescue Exception => exc
+          log exc.message
+          log exc.backtrace
+        end
+      end while next_link
     end
+
+    log "Finished at at #{Time.now.to_s}, duration #{(Time.now - timestamp)} seconds"
   end
 
-  def process_product(agent)
+  def process_product
     doc = Nokogiri::HTML(agent.page.body)
     product_name = doc.at_css(elements["product_name"]).try(:content)
     product = Product.find_or_initialize_by(name: product_name) #, provider: self.name)
@@ -57,6 +71,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     get_field(product, doc, :description, "product_description")
 
     get_image(product, doc)
+    get_comments(product)
 
     if product.new_record?
       if product.valid?
@@ -90,8 +105,28 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     return unless selector.present?
 
     value = doc.at_css(selector).try(:content)
-    money_symbols = [I18n.t("money.yuan_mark"), I18n.t("money.yuan")].join
-    product.price = value.gsub(/[#{money_symbols}]/, '')
+    if value.present?
+      money_symbols = [I18n.t("money.yuan_mark"), I18n.t("money.yuan")].join
+      product.price = value.gsub(/[#{money_symbols}]/, '')
+    end
+  end
+
+  def get_comments(product)
+    return unless comment_selectors.present? && (comment_selectors[:skip_comments].blank? || comment_selectors[:skip_comments] == false)
+    return unless comment_selectors["listed_comment"].present? && comment_selectors["comment_text"].present?
+
+    next_link = nil
+    begin
+      agent.click(next_link) if next_link
+
+      agent.page.search(comment_selectors["listed_comment"]).each do |comment|
+        content = comment.at_css(comment_selectors["comment_text"]).try(:content)
+        p content
+        product.comments << Comment.new(:content => content)
+      end
+
+      next_link = agent.page.at(comment_selectors["next_commnet_css_selector"]) if comment_selectors["next_commnet_css_selector"].present?
+    end while next_link
   end
 
   #def get_weight(product, doc)
@@ -115,10 +150,13 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     if pic_selector.present?
       image_element = doc.at_css(elements["product_image"])
       pic_url = image_element[:src] if image_element.present?
-      pic = product.build_image(:remote_image_url => pic_url)
-      pic.remote_image_url = pic_url
-      pic.save!
-      #pic.image = download_remote_photo(pic_url)
+
+      if product.image.blank? || product.image.remote_image_url != pic_url
+        pic = product.build_image(:remote_image_url => pic_url)
+        pic.remote_image_url = pic_url
+        #pic.image = download_remote_photo(pic_url)
+        pic.save!
+      end
     end
   end
 
