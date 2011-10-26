@@ -11,67 +11,65 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     log "Fetching products from #{self.name} at #{timestamp.to_s}"
 
     self.entries.each do |entry_url|
-      next_link = nil
-      begin
-        begin
-          if next_link.nil?
-            agent.get(entry_url)
-          elsif next_link.attributes['href'].to_s != agent.page.uri.to_s
-            agent.click(next_link)
-            next_link = nil
-          else
-            next
-          end
-          start_url = agent.page.uri
+      try do
+        process_entry(entry_url)
+      end
+    end
 
-          log "Now dealing with #{name}: #{agent.page.uri.to_s}, see #{agent.page.search("#{elements["listed_product"]} a").size.to_s} products."
-          agent.page.search(elements["listed_product"]).each do |item|
+    log "Finished at at #{Time.now.to_s}, duration #{(Time.now - timestamp)} seconds"
+  end
+
+  def process_entry(url)
+    next_link = nil
+    begin
+      try do
+        if next_link.nil?
+          agent.get(url)
+        else
+          agent.click(next_link)
+          next_link = nil
+        end
+        start_url = agent.page.uri
+
+        log "Now dealing with #{name}: #{agent.page.uri.to_s}, see #{agent.page.search("#{elements["listed_product"]} a").size.to_s} products."
+        agent.page.search(elements["listed_product"]).each do |item|
+          try do
             link = item.at_css('a')
             #there must be a link
-            next unless link.present?
+            next unless (link.present? && link.attributes.present?)
             href = link.attributes['href']
             next unless href.present?
             agent.get(href)
 
             process_product
           end
-
-          #go back to the entry page
-          agent.get(start_url)
-          if elements["next_link_css_selector"].present?
-            next_link = agent.page.at(elements["next_link_css_selector"])
-          elsif elements["next_link_text"].present?
-            next_link = agent.page.link_with(:text => elements["next_link_text"])
-          end
-
-          log "Got #{count.to_s} products on #{name}: #{agent.page.uri.to_s}"
-        rescue Errno::ETIMEDOUT, Timeout::Error, Net::HTTPNotFound
-          log "Connection Error"
-        rescue Exception => exc
-          log exc.message
-          log exc.backtrace
         end
-      end while next_link
-    end
 
-    log "Finished at at #{Time.now.to_s}, duration #{(Time.now - timestamp)} seconds"
+        #go back to the entry page
+        agent.get(start_url)
+        next_link = get_next_link
+
+        log "Got #{count.to_s} products on #{name}: #{agent.page.uri.to_s}"
+      end
+    end while next_link
   end
 
   def process_product
-    doc = Nokogiri::HTML(agent.page.body)
+    self.doc = Nokogiri::HTML(agent.page.body)
     product_name = doc.at_css(elements["product_name"]).try(:content)
     product = Product.find_or_initialize_by(name: product_name) #, provider: self.name)
     product.vendor = Vendor.first(conditions: {name: self.name})
     product.url = agent.page.uri.to_s
 
-    get_price(product, doc)
-    get_field(product, doc, :weight, "product_weight")
-    get_field(product, doc, :producer, "product_producer")
-    get_field(product, doc, :original_place, "product_original_place")
-    get_field(product, doc, :description, "product_description")
+    get_price(product)
+    get_field(product, :weight, "product_weight")
+    get_field(product, :producer, "product_producer")
+    get_field(product, :original_place, "product_original_place")
+    get_field(product, :description, "product_description")
 
-    get_image(product, doc)
+    get_image(product)
     get_comments(product)
+    assign_category(product)
 
     if product.new_record?
       if product.valid?
@@ -92,7 +90,17 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     #source_name = source_element ? source_element.content : ""
   end
 
-  def get_field(product, doc, field_name, element_name)
+  def get_next_link
+    if elements["next_link_css_selector"].present?
+      agent.page.at(elements["next_link_css_selector"])
+    elsif elements["next_link_text"].present?
+      agent.page.link_with(:text => elements["next_link_text"])
+    else
+      nil
+    end
+  end
+
+  def get_field(product, field_name, element_name)
     selector = elements[element_name]
     return unless selector.present?
 
@@ -100,7 +108,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     product.send("#{field_name}=", value) if product.respond_to?("#{field_name}=")
   end
 
-  def get_price(product, doc)
+  def get_price(product)
     selector = elements["product_price"]
     return unless selector.present?
 
@@ -129,6 +137,15 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     end while next_link
   end
 
+  def assign_category(product)
+    @categories ||= Category.all.to_a
+
+    @categories.each do |c|
+      product.category = c if product.name.include?(c.name)
+
+    end
+  end
+
   #def get_weight(product, doc)
   #  selector = elements["product_weight"]
   #  if selector.present?
@@ -144,18 +161,19 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   #  end
   #end
 
-  def get_image(product, doc)
+  def get_image(product)
     pic = nil
     pic_selector = elements["product_image"]
     if pic_selector.present?
       image_element = doc.at_css(elements["product_image"])
       pic_url = image_element[:src] if image_element.present?
 
+      if URI.parse(pic_url).host.blank?
+        pic_url = "http://#{agent.page.uri.host}/#{pic_url}"
+      end
+
       if product.image.blank? || product.image.remote_image_url != pic_url
-        pic = product.build_image(:remote_image_url => pic_url)
-        pic.remote_image_url = pic_url
-        #pic.image = download_remote_photo(pic_url)
-        pic.save!
+        pic = product.create_image(remote_image_url: pic_url)
       end
     end
   end

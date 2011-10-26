@@ -12,7 +12,7 @@ class Product
   field :description
   field :url
 
-  attr_accessible :name, :url, :vendor_id
+  attr_accessible :name, :url, :vendor_id, :category_id
 
   #relationships
   embeds_many :comments

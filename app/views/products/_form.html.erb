@@ -1,7 +1,6 @@
 <%= form_for(@product) do |f| %>
   <%= render "shared/error_messages", :target => @product %>
 
-
   <div class="field">
     <% if @product.vendor %>
         <div><%= render "vendors/vendor_fields", :target => @product %></div>
@@ -12,7 +11,7 @@
           </div>
           <%= content_tag(:span, t("vendors.not_found"), :class => "trivial") %>
           <%= link_to t("vendors.not_found_new"), new_vendor_path(:popup => true), :rel => "facebox" %>
-         </div>
+        </div>
     <% end %>
   </div>
 
@@ -23,6 +22,10 @@
   <div class="field">
     <%= f.label :url %><br />
     <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label "product[category_id]", t("categories.category") %><br />
+    <%= select_tag "product[category_id]", options_for_select(get_categories_for_select, @product.category_id) %>
   </div>
 
   <div class="actions">

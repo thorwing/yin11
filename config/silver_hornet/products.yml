@@ -1,16 +1,18 @@
 京东商城:
-  skipped: true
+#  skipped: true
   entries:
     ["http://search.360buy.com/Search?keyword=%D3%D0%BB%FA%CA%B3%C6%B7",
     "http://search.360buy.com/Search?keyword=%C2%CC%C9%AB%CA%B3%C6%B7"]
   elements:
     listed_product: '#plist li'
     product_name: '#name h1'
+    product_image: "#preview #spec-n1 img"
+#    product_price: '.price'
     next_link: 'a.next'
 
 
 1号店:
-  skipped: false
+#  skipped: true
   entries:
     ["http://search.yihaodian.com/s/c0-k%25E6%259C%2589%25E6%259C%25BA%25E9%25A3%259F%25E5%2593%2581",
     "http://search.yihaodian.com/s/c0-k%25E7%25BB%25BF%25E8%2589%25B2%25E9%25A3%259F%25E5%2593%2581"]
@@ -28,7 +30,7 @@
     next_commnet_css_selector: ".latestnewnextpage a"
 
 五谷磨房:
-  skipped: true
+#  skipped: true
   entries:
     ["http://www.iwugu.com/?gallery-57-grid.html",
     "http://www.iwugu.com/?gallery-64-grid.html",
@@ -44,7 +46,7 @@
     next_link_css_selector: 'a.next'
 
 和乐康:
-  skipped: true
+#  skipped: true
   entries:
     ["http://www.helekang.com/category-12-m-b-c-k-min-max-extcode-----ShuCai.html",
     "http://www.helekang.com/category-104-m-b-c-k-min-max-extcode-----ShuiGuoHOT!.html",
@@ -55,5 +57,6 @@
     listed_product: 'div.list_item'
     product_name: '#goods_info h1'
     product_image: '#img img.p_img'
+    product_price: '#info .price'
     next_link_text: '下一页'
 

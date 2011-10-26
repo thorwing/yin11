@@ -1,55 +1,58 @@
-<p>
-  <b><%= t("general.name")  %></b>
-  <%= @product.name %>
-</p>
+<div class="two_columns_container">
+ <div class="left_column">
+    <div class="image_frame">
+        <%= image_tag @product.image.image_url if @product.image && @product.image.image_url %>
+    </div>
+ </div>
+ <div class="right_column">
+   <div class="block square">
+    <p>
+      <b><%= t("general.name")  %></b>
+      <%= @product.name %>
+    </p>
+    <p>
+      <%= new_tab_link_to @product.vendor.name, @product.url %>
+    </p>
+    <p>
+      <b><%= t("categories.category")  %></b>
+      <%= @product.category.name if @product.category %>
+    </p>
+    <p>
+      <b><%= t("products.price")  %></b>
+      <%= [t("money.yuan_mark"), @product.price].join if @product.price %>
+    </p>
 
-<p>
-  <b>Url:</b>
-  <%= new_tab_link_to @product.vendor.name, @product.url %>
-</p>
+    <p>
+      <b><%= t("products.weight")  %></b>
+      <%= @product.weight %>
+    </p>
 
-<p>
-  <b><%= t("products.price")  %></b>
-  <%= t("money.yuan_mark") %><%= @product.price %>
-</p>
-
-<p>
-  <b><%= t("products.weight")  %></b>
-  <%= @product.weight %>
-</p>
-
-<p>
-  <b><%= t("products.producer")  %></b>
-  <%= @product.producer %>
-</p>
+    <p>
+      <b><%= t("products.producer")  %></b>
+      <%= @product.producer %>
+    </p>
 
 
-<p>
-  <b><%= t("products.original_place")  %></b>
-  <%= @product.original_place %>
-</p>
+    <p>
+      <b><%= t("products.original_place")  %></b>
+      <%= @product.original_place %>
+    </p>
+   </div>
+ </div>
+</div>
 
-<p>
-  <%= image_tag @product.image.image_url if @product.image && @product.image.image_url %>
-</p>
-
-<% if @product.vendor %>
-  <%= link_to @product.vendor.full_name, @product.vendor %><br/>
-<% end %>
 
 <div class="actions">
   <%= render "shared/follow_field", :target => @product %>
+  <% if current_user_has_permission? :editor %>
+    <%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>
+  <% end %>
 </div>
-
-<% if current_user_has_permission? :editor %>
-    <div class="actions">
-        <%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>
-    </div>
-<% end %>
 
 <div class="actions">
-   <%= link_to t("general.back"), products_path, :class => "button" %>
+  <%= link_to t("general.back_to_list"), products_path, :class => "button" %>
 </div>
+
 
 
 <hr/>

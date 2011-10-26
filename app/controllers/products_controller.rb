@@ -5,7 +5,16 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.page(params[:page]).per(ITEMS_PER_PAGE_MANY)
+    criteria = Product.all
+    if params[:category].present?
+      category = Category.first(conditions: {name: params[:category]})
+      categories = [category.id]
+      unless category.children.empty?
+        categories |= category.children.map{|c| c.id}
+      end
+      criteria = criteria.any_in(category_id: categories)
+    end
+    @products = criteria.page(params[:page]).per((ITEMS_PER_PAGE_MANY / 3).to_i * 3)
 
     respond_to do |format|
       format.html # index.html.erb

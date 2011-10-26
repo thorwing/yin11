@@ -1,3 +1,53 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#products_container {
+    background: #999999;
+    padding: 10px 0 20px 0;
+}
+
+#products_container .pagination
+{
+    text-align:right;
+}
+
+.waterfall {
+    text-align: center;
+    width: 200px;
+    overflow: hidden;
+    padding: 15px 10px 15px 10px;
+    margin-bottom: 10px;
+    background: white;
+    border-bottom:1px solid black;
+    border-right:1px solid black;
+}
+
+.product_image_frame {
+    margin-left: auto;
+    margin-right: auto;
+	/*border:1px solid #b5b5b5;*/
+	/*background-color:#d2d2d2;*/
+	/*padding:5px;*/
+}
+
+#products_slice {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+
+    -webkit-column-count: 5;
+    -webkit-column-gap: 10px;
+    /*-webkit-column-rule: 5px solid #333;*/
+    -webkit-column-width: 220px;
+
+    -moz-column-count: 5;
+    -moz-column-gap: 20px;
+    /*-moz-column-rule: 5px solid #333;*/
+    -moz-column-width: 220px;
+
+    column-count: 5;
+    column-gap: 10px;
+    /*column-rule: 5px solid #333;*/
+    column-width: 220px;
+}

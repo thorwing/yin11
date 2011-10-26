@@ -1,5 +1,5 @@
 class SilverHornet::Site
-  attr_accessor :agent
+  attr_accessor :agent, :doc
   attr_accessor :name, :entries, :skipped, :elements, :count
 
   def initialize(options={})
@@ -13,5 +13,16 @@ class SilverHornet::Site
   def log(msg)
     p msg
     Rails.logger.info msg
+  end
+
+  def try(&block)
+    begin
+      yield
+    rescue Errno::ETIMEDOUT, Timeout::Error, Net::HTTPNotFound
+      log "Connection Error"
+    rescue Exception => exc
+      log exc.message
+      log exc.backtrace
+    end
   end
 end

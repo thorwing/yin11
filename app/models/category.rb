@@ -5,4 +5,5 @@ class Category
 
   #relationships
   has_many :products
+
 end

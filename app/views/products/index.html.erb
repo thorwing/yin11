@@ -1,12 +1,29 @@
 <% title t("products.products_list") %>
 
-<%= paginate @products %>
-<%= render @products %>
-
-<br />
-
-<% if current_user_has_permission?(:editor) %>
-    <div class="actions">
-        <%= link_to t("products.add"), new_product_path, :class => "button" %>
+<% content_for :left_column do %>
+    <div class="block round">
+      <%= link_to t("general.all"), products_path %><br/>
+      <%= nested_categories Category.all.arrange %>
     </div>
 <% end %>
+
+<% content_for :right_column do %>
+    <div id="products_container">
+        <%= paginate @products %>
+        <% @products.each_slice(3) do |slice| %>
+            <div id="products_slice">
+                <%= render slice %>
+            </div>
+        <% end %>
+        <%= paginate @products %>
+    </div>
+
+    <br />
+
+    <% if current_user_has_permission?(:editor) %>
+        <div class="actions">
+            <%= link_to t("products.add"), new_product_path, :class => "button" %>
+        </div>
+    <% end %>
+<% end %>
+
