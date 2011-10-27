@@ -1,6 +1,6 @@
 <% title t("reviews.edit_review", :title => @review.title) %>
 
-<%= render 'form' %>
+<%= render 'review_fields' %>
 
 <p>
     <%= link_to t("general.show"), @review %> | <%= link_to t("general.back_to_list"), review_path %>

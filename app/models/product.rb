@@ -20,6 +20,7 @@ class Product
   tokenize_one :vendor
   has_one :image
   belongs_to :category
+  has_many :reviews
 
   #validators
   validates_presence_of :name

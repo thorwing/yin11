@@ -1,18 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
-  #uses_tiny_mce :only => [:new, :edit], :options => get_tiny_mce_style
-
-  # GET /reviews
-  # GET /reviews.xml
-  def index
-    @reviews = Review.desc(:reported_on, :votes).page(params[:page]).per(20)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @reviews }
-    end
-  end
 
   # GET /reviews/1
   # GET /reviews/1.xml
@@ -28,7 +16,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.xml
   def new
-    if params[:vendor_id]
+    if params[:product_i]
       vendor = Vendor.find(params[:vendor_id])
       @review = vendor.reviews.build
     else
@@ -50,6 +38,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.xml
   def create
     @review = Review.new(params[:review])
+    @review.product_id = params[:product_id]
     @review.author = current_user
 
     ImagesHelper.process_uploaded_images(@review, params[:images])

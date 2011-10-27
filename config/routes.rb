@@ -71,11 +71,7 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :reviews, :except => [:destroy] do
-    collection do
-      get "choose_mode"
-    end
-  end
+  resources :reviews
 
   resources :groups, :except => [:destroy] do
     member do

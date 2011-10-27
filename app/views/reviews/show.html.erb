@@ -17,16 +17,6 @@
         <th></th>
         <th></th>
     </tr>
-    <% if @review.vendor %>
-        <tr>
-            <td><b><%= t("vendors.vendor") %></b></td>
-            <td><%= link_to @review.vendor.full_name, @review.vendor %></td>
-        </tr>
-    <% end %>
-    <tr>
-      <td><b><%= t("reviews.faults") %></b></td>
-      <td><%= @review.get_faults %></td>
-    </tr>
     <tr>
         <td><b><%= t("reviews.content") %></b></td>
         <td><%= t("general.none") if @review.content.blank? %></td>

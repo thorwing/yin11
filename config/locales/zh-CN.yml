@@ -355,6 +355,7 @@ zh-CN:
     gram: 克
 
   reviews:
+    submit: 发表测评
     title: "测评："
     new: +测评
     reviews: 测评

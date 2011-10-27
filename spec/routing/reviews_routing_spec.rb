@@ -27,9 +27,5 @@ describe ReviewsController do
       { :put => "/reviews/1" }.should route_to(:controller => "reviews", :action => "update", :id => "1")
     end
 
-    it "recognizes and generates #choose_mode" do
-      { :get => "/reviews/choose_mode" }.should route_to(:controller => "reviews", :action => "choose_mode")
-    end
-
   end
 end

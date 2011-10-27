@@ -18,7 +18,7 @@
 
 
 新华网:
-  skipped: true
+#  skipped: true
   recursive: false
   entries:
     ["http://www.news.cn/food/baoguang.htm",
@@ -35,7 +35,7 @@
     article_source: '' #source is not  clearly specified
 
 食品商务网:
-  skipped: true
+#  skipped: true
   recursive: true
   recursive_pages: 2
   entries:
@@ -49,7 +49,7 @@
     article_source: '.p-nr p'
 
 南方网:
-  skipped: true
+#  skipped: true
   recursive: false
   entries:
     ["http://food.southcn.com/c/node_143373.htm",
@@ -62,7 +62,7 @@
     article_source: 'span.source'
 
 中国食品科技网:
-  skipped: true
+#  skipped: true
   recursive: true
   recursive_pages: 2
   entries:

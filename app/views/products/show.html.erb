@@ -53,8 +53,7 @@
   <%= link_to t("general.back_to_list"), products_path, :class => "button" %>
 </div>
 
-
-
 <hr/>
 
-<%= render "comments/comments", :item => @product %>
+<%= render :partial => "review", :collection => @product.reviews, :as => :review %>
+<%= render "review_fields", :review => @product.reviews.new, :product => @product %>
