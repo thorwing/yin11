@@ -1,4 +1,4 @@
-<%= form_for review, :html => { :multipart => true } do |f| %>
+<%= form_for review, :html => { :multipart => true }, :remote => true do |f| %>
     <h2><%= t("reviews.new_review") %></h2>
 
     <%= render "shared/error_messages", :target => review %>

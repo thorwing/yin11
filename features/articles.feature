@@ -49,3 +49,17 @@ Feature: articles
     When I log in as "Ray Admin"
     And I go to the administrator_articles page
     Then I should see "推荐文章"
+
+  @javascript
+  Scenario: User can vote for a article.
+    Given the following article exists:
+      | title            | content                            | tags_string |
+      | 西瓜被打了催熟剂 | 本报讯，今日很多西瓜都被打了催熟剂 | 西瓜      |
+
+    When I log in as "David User"
+    And I go to the articles page
+    Then I should see "西瓜被打了催熟剂"
+    When I follow "up" within ".vote_fields"
+    Then I should see "1" within ".vote_fields"
+
+

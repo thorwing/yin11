@@ -383,6 +383,8 @@ zh-CN:
 
   comments:
     comment: 评论
+    add_comment: 添加评论
+    n_comments: %{count}条评论
     new_comment: 新评论
     all: 所有评论：
     new: +评论

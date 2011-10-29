@@ -1,0 +1,7 @@
+<% if @review %>
+    var child = '<%= escape_javascript(render("products/review", :review => @review)) %>';
+
+    $("#reviews_block").prepend(child);
+
+    $('#new_review_block:visible').hide();
+<% end %>

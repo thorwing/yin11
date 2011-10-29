@@ -43,18 +43,6 @@ Then /^"([^"]*)" should be selected for "([^"]*)"(?: within "([^\"]*)")?$/ do |v
   end
 end
 
-Then /^I should see "(.+)" whose id is "(.+)"$/ do |element_type, id|
-  page.has_xpath?("//#{element_type}[@id='#{id}']")
-end
-
-Then /^I should not see "(.+)" whose id is "(.+)"$/ do |element_type, id|
-  page.has_no_xpath?("//#{element_type}[@id='#{id}']")
-end
-
-Then /^I should see "(.+)" whose "(.+)" is "(.+)"$/ do |element_type, attr, id|
-  page.has_xpath?("//#{element_type}[@#{attr}='#{id}']")
-end
-
 When /^I search for "(.+)"$/ do |query|
   visit path_to("the home page")
   fill_in "query", :with => query
@@ -76,20 +64,12 @@ When /^I fill vendor token field "(.+)" with "(.+)"$/ do |field, name|
   fill_in field, :with => vendor.id
 end
 
-When /^I post a simple review without vendor$/ do
-  When %(I go to the home page)
-  And %(I follow "+测评")
-  Then %(I should see "新测评")
-  And %(I fill a simple review)
-end
+When /^I post a simple review for "(.+)" with "(.+)"$/ do |product_name, review_title|
+  And %(I go to the products page)
+  And %(I follow "#{product_name}")
 
-When /^I fill a simple review$/ do
-  When %(I fill in "review_title" with "买到烂西瓜")
-  And %(I fill in "review_tags_string" with "西瓜")
-  # 过期
-  And %(I check "review_faults_4")
-  And %(I fill in "review_content" with "西瓜切开来后发现已经熟过头了。")
-  And %(I press "完成")
+  When %(I fill in "review_title" with "#{review_title}")
+  And %(I press "发表测评")
 end
 
 When /^I post a simple tip$/ do

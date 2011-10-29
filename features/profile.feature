@@ -66,4 +66,12 @@ Feature: tests for Profile
     And I go to Castle's user page
     Then I should see "I am a editor"
 
-
+  Scenario: User can change a avatar
+    When I log in as "David User"
+    Then I should see "img" whose "alt" is "Default_user"
+    And I follow "设置" within "#top_menu"
+    When I press "下一步"
+    And I upload a file "test.png" to "user_avatar"
+    And I press "下一步"
+    When I go to the home page
+    Then I should not see "img" whose "alt" is "Default_user"

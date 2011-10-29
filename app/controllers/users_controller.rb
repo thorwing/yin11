@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  force_ssl
+  force_ssl unless Rails.env.test?
   before_filter(:only => [:update]) { |c| c.require_permission :normal_user }
 
   # GET /users/new

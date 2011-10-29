@@ -128,3 +128,14 @@ Feature: tests for products
     | Castle Editor |
     | Ray Admin     |
 
+
+  Scenario: Related articles will be displayed
+    Given the following articles exists:
+      | title         | content                     | tags_string |
+      | 鸡汤不如鸡肉   | 鸡汤的营养成分其实不如鸡肉多  | 鸡,鸡汤      |
+    When I log in as "David User"
+    And I go to the products page
+    And I follow "苏北草母鸡"
+    Then I should see "鸡汤不如鸡肉"
+
+

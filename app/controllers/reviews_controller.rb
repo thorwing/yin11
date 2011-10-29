@@ -53,9 +53,11 @@ class ReviewsController < ApplicationController
       if @review.save
         format.html { redirect_to(@review, :notice => t("notices.review_posted")) }
         format.xml  { render :xml => @review, :status => :created, :location => @review }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @review.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
