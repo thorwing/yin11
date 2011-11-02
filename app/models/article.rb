@@ -32,12 +32,16 @@ class Article < InfoItem
   validates_length_of :content, :maximum => 10000
   validates_length_of :introduction, :maximum => 300
 
-  validates_inclusion_of :type, :in => ArticleTypes.get_values
+  def self.types
+    [I18n.t("article_types.topic"), I18n.t("article_types.news"), I18n.t("article_types.tip")]
+  end
+
+  validates_inclusion_of :type, :in => Article.types
 
   #callbacks
   before_validation {
-    self.type ||= ArticleTypes.get_values.first
-    self.positive = (self.type == ArticleTypes.get_values.last)
+    self.type ||= Article.types.first
+    self.positive = (self.type == Article.types.last)
     true
   }
 

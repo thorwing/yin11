@@ -4,7 +4,7 @@ Feature: admin users
     Given There are minimum seeds data
 
   Scenario: Admin can disable a user
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the administrator_users page
     And I follow "David"
     And I follow "编辑"
@@ -29,11 +29,11 @@ Feature: admin users
     And I go to the administrator_users page
     Then I should be on the home page
 
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     Then I should be on the administrator_users page
 
   Scenario: Admin can change other user's role
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the administrator_users page
     And I follow "David"
     And I follow "编辑"
@@ -57,6 +57,6 @@ Feature: admin users
     Then I should be on the home page
 
   Scenario: Admin can't edit himself's role
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the administrator_users page
     Then I should not see "Ray" within "#content_area"

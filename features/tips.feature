@@ -61,7 +61,7 @@
 #    When I log in as "Castle Editor"
 #    And I post a simple tip
 #
-#    When I log in as "Ray Admin"
+#    When I log in as "Mighty Admin"
 #    When I go to the tips page
 #    And I should see "辨别西瓜是否含有催熟剂"
 #    And I follow "辨别西瓜是否含有催熟剂"
@@ -95,7 +95,7 @@
 #    When I log in as "Castle Editor"
 #    And I post a simple tip
 #
-#    When I log in as "Ray Admin"
+#    When I log in as "Mighty Admin"
 #    When I go to the tips page
 #    And I follow "辨别西瓜是否含有催熟剂"
 #    And I follow "编辑"

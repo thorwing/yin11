@@ -82,6 +82,7 @@ group :development, :test do
     gem 'capybara'
     gem 'launchy'
     gem 'spork', "~> 0.9.0.rc9"
+    gem 'shoulda'
 
     gem 'guard-rspec'
     gem 'guard-cucumber'

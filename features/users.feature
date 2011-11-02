@@ -67,7 +67,7 @@ Feature:
     And I go to the administrator_articles page
     Then I should see "+文章"
 
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the administrator_articles page
     Then I should see "+文章"
 
@@ -79,7 +79,7 @@ Feature:
     And I follow "土豆刷绿漆，冒充西瓜"
     Then I should see "编辑"
 
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the articles page
     And I follow "土豆刷绿漆，冒充西瓜"
     Then I should see "编辑"
@@ -110,13 +110,13 @@ Feature:
     Examples:
     | user          |
     | Castle Editor |
-    | Ray Admin     |
+    | Mighty Admin     |
 
   Scenario: Admin can disable/enable articles by single click
     Given the following articles exists:
     | title      | content                | enabled |
     | 可疑的文章 | 这是一篇很可疑的文章   | false   |
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     When I go to the home page
     Then I should not see "可疑的文章"
     When I go to the administrator_articles page
@@ -129,7 +129,7 @@ Feature:
     Given the following articles exists:
     | title      | content                | type | enabled |
     | 很棒的文章 | 这是一篇很棒的文章       | 新闻 | true   |
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I should not see "很棒的文章"
     When I go to the administrator_articles page
     And I follow "toggle_link" within ".toggle.off"

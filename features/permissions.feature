@@ -37,7 +37,7 @@ Feature: usage about permissions
     Examples:
     | user          |
     | Castle Editor |
-    | Ray Admin     |
+    | Mighty Admin     |
 
   Scenario: unregistered user can't visit profile page. And normal user, editor and admin can
     When I go to David's profile page
@@ -51,6 +51,6 @@ Feature: usage about permissions
     When I go to Castle's profile page
     Then I should be on Castle's profile page
 
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     When I go to Ray's profile page
     Then I should be on Ray's profile page

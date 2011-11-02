@@ -185,6 +185,7 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
+    shoulda (2.11.3)
     spork (0.9.0.rc9)
     spreadsheet (0.6.5.9)
       ruby-ole (>= 1.0)
@@ -244,6 +245,7 @@ DEPENDENCIES
   riddle
   rspec-rails
   sass-rails (~> 3.1.0)
+  shoulda
   spork (~> 0.9.0.rc9)
   spreadsheet
   therubyracer

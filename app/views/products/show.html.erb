@@ -35,7 +35,7 @@
 
     <p>
       <b><%= t("products.original_place")  %></b>
-      <%= @product.original_place %>
+      <%= @product.area %>
     </p>
    </div>
  </div>
@@ -53,6 +53,14 @@
   <%= link_to t("general.back_to_list"), products_path, :class => "button" %>
 </div>
 
+<hr/>
+
+<% unless @rel_tips.blank? || @rel_tips.empty? %>
+Related articles:
+    <% @rel_tips.each do |tip| %>
+        <%= render "info_items/info_item", :item => tip %>
+    <% end %>
+<% end %>
 <hr/>
 
 <div id="reviews_block">

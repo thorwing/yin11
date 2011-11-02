@@ -3,14 +3,18 @@ class Product
   include AssociatedModels
   include Taggable
   include Followable
+  include Votable
+
   field :name
   field :price, :type => Float
   field :weight, :type => Float
   field :producer
-  field :original_place
+  field :area
   field :authenticated
   field :description
   field :url
+
+  field :original_name
 
   attr_accessible :name, :url, :vendor_id, :category_id
 

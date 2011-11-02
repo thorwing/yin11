@@ -104,7 +104,7 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :products
+  resources :products, :except => [:new, :create]
 
   resources :reports, :only => [:new, :create]
 

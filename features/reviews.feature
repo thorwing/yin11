@@ -1,4 +1,3 @@
-@focus
 Feature: tests for reviews
 
   Background:
@@ -69,7 +68,30 @@ Feature: tests for reviews
     When I follow "up" within ".vote_fields"
     Then I should see "1" within ".vote_fields"
 
+  @focus
+  Scenario: User can mark "worthy" or "unworthy" in the review
+    When I log in as "David User"
+    And I go to the products page
+    And I follow "苏北草母鸡"
+    Then I should see "radio" whose id is "worthy"
+    And I should see "radio" whose id is "unworthy"
+    When I fill in "review_title" with "用来炖鸡汤不错"
+    And I press "发表测评"
+    Then I should see "用来炖鸡汤不错"
+    And I should see "值" within "review"
+    And I should not see "不值" within "review"
 
-
-
+  @focus
+  Scenario: User can filter "worthy" and "unworthy" reviews of a products
+    When I log in as "David User"
+    And I go to the products page
+    And I follow "梅山猪"
+    Then I should see "肉质鲜美，值了"
+    And I should see "太贵了，性价比不高"
+    When I follow "值"
+    Then I should see "肉质鲜美，值了"
+    And I should not see "太贵了，性价比不高"
+    When I follow "不值"
+    Then I should not see "肉质鲜美，值了"
+    And I should see "太贵了，性价比不高"
 

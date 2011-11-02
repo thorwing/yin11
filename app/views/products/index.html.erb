@@ -11,19 +11,17 @@
     <div id="products_container">
         <%= paginate @products %>
         <% @products.each_slice(3) do |slice| %>
-            <div id="products_slice">
-                <%= render slice %>
+            <div class="products_slice">
+              <% slice.each do |product| %>
+                <div class="waterfall">
+                    <%= render "large_product", :product => product %>
+                </div>
+              <% end %>
             </div>
         <% end %>
         <%= paginate @products %>
     </div>
 
     <br />
-
-    <% if current_user_has_permission?(:editor) %>
-        <div class="actions">
-            <%= link_to t("products.add"), new_product_path, :class => "button" %>
-        </div>
-    <% end %>
 <% end %>
 

@@ -45,7 +45,7 @@ Feature: Comments
     |user           | index    | item             |
     |David User     | articles | 三聚氰胺再现上海 |
     |Castle Editor  | reviews  | 牛奶坏了         |
-    |Ray Admin      | products | 苏北草母鸡        |
+    |Mighty Admin      | products | 苏北草母鸡        |
 
 
   @javascript

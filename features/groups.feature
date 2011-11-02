@@ -16,7 +16,7 @@ Feature: tests for Groups
     And I go to the new_group page
     Then I should be on the home page
 
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the new_group page
     Then I should be on the new_group page
     When I fill in "group_name" with "小龙虾搜查队"

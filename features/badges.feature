@@ -15,7 +15,7 @@
 #    Then I should see "(1)"
 #
 #  Scenario: A admin can create a badge, and it can be given to a user
-#    When I log in as "Ray Admin"
+#    When I log in as "Mighty Admin"
 #    And I go to the badges page
 #    And I follow "新建"
 #    And I fill in "badge_name" with "新手上路"
@@ -44,7 +44,7 @@
 #    Given the following badge exists:
 #    | name     | description  | contribution_field | comparator | compared_value |
 #    | 新手上路 | 发表一篇测评  | posted_reviews     | ==          | 1              |
-#    When I log in as "Ray Admin"
+#    When I log in as "Mighty Admin"
 #    And I go to the administrator_badges page
 #    And I follow "新手上路"
 #    And I follow "修改"
@@ -119,7 +119,7 @@
 #    Given the following badge exists:
 #    | name     | description  | contribution_field | comparator | compared_value |
 #    | 新手上路 | 发表一篇测评 | posted_reviews     | ==          | 1              |
-#    When I log in as "Ray Admin"
+#    When I log in as "Mighty Admin"
 #    And I go to the administrator_badges page
 #    And I follow "新手上路"
 #    And I follow "修改"

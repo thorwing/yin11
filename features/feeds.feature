@@ -20,7 +20,7 @@ Feature: tests for Feeds
     When I log in as "David User"
     Then I should see "买到烂西瓜"
 
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     Then I should not see "买到烂西瓜"
 
 

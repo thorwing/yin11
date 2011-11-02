@@ -27,48 +27,50 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
+    @rel_tips = Article.tips.tagged_with(@product.tags)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
     end
   end
 
-  # GET /products/new
-  # GET /products/new.json
-  def new
-    if params[:vendor_id]
-      vendor = Vendor.find(params[:vendor_id])
-      @product = vendor.products.build
-    else
-      @product = Product.new
-    end
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
-    end
-  end
+  ## GET /products/new
+  ## GET /products/new.json
+  #def new
+  #  if params[:vendor_id]
+  #    vendor = Vendor.find(params[:vendor_id])
+  #    @product = vendor.products.build
+  #  else
+  #    @product = Product.new
+  #  end
+  #
+  #  respond_to do |format|
+  #    format.html # new.html.erb
+  #    format.json { render json: @product }
+  #  end
+  #end
 
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
   end
 
-  # POST /products
-  # POST /products.json
-  def create
-    @product = Product.new(params[:product])
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  ## POST /products
+  ## POST /products.json
+  #def create
+  #  @product = Product.new(params[:product])
+  #
+  #  respond_to do |format|
+  #    if @product.save
+  #      format.html { redirect_to @product, notice: 'Product was successfully created.' }
+  #      format.json { render json: @product, status: :created, location: @product }
+  #    else
+  #      format.html { render action: "new" }
+  #      format.json { render json: @product.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
 
   # PUT /products/1
   # PUT /products/1.json

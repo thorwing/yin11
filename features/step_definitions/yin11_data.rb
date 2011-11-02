@@ -13,10 +13,7 @@ Given /^There are minimum seeds data$/ do
 
 end
 
-Given /^There are some sample articles$/ do
-  Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。", :region_tokens => "021", :tags_string => "牛奶, 三聚氰胺")
-  Article.create(:title => "北京禁止商贩往水里兑牛奶", :content => "北京市政府严令禁止向水里兑牛奶的行为。", :tags_string => "牛奶")
-end
+
 
 Given /^There are some sample groups$/ do
   groups = [{:name => "西瓜守望者", :tags => ["西瓜"], :city_id => "021"},
@@ -49,10 +46,5 @@ Given /^There are some sample tips$/ do
   end
 end
 
-Given /^There are some sample products$/ do
-  vendor_1 = Factory(:vendor, :name => "南京养鸡场", :city => "南京", :street => "unknown")
-  vendor_2 = Factory(:vendor, :name => "银筷子牧场", :city => "上海", :street => "unknown")
-  Factory(:product, :name => "苏北草母鸡", :tags_string => "禽类，肉类，鸡", :url => "#", :vendor_id => vendor_1.id)
-  Factory(:product, :name => "梅山猪", :tags_string => "肉类，畜类", :url => "#", :vendor_id => vendor_2.id)
-end
+
 

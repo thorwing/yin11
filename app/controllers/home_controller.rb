@@ -14,6 +14,10 @@ class HomeController < ApplicationController
 
     @default_query = (@raw_hot_tags.nil? || @raw_hot_tags.empty?) ? "" : @raw_hot_tags.first[0]
 
+    @recommended_products = Product.limit(3)
+
+    @product_stories = []
+
     #data for control panel
     if current_user
       #@evaluation = current_user.get_evaluation

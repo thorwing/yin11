@@ -3,7 +3,7 @@
 
     <div class="field">
         <%= f.label :type, t("general.type") %><br/>
-        <%= f.select :type, options_for_select(ArticleTypes.get_values, @article.type) %>
+        <%= f.select :type, options_for_select(Article.types, @article.type) %>
     </div>
 
     <div class="field">

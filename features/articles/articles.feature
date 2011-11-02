@@ -3,14 +3,6 @@ Feature: articles
   Background:
     Given There are minimum seeds data
 
-  Scenario: Editor can enter new_article page via home page
-    When I log in as "Castle Editor"
-    Then I should see "+文章"
-    When I follow "+文章"
-    Then I should be on the new_article page
-
-    When I log in as "David User"
-    Then I should not see "+文章"
 
 
   Scenario: Editor can choose a type for the article
@@ -46,7 +38,7 @@ Feature: articles
 
 
   Scenario: Recommended articles will be displayed seperately
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the administrator_articles page
     Then I should see "推荐文章"
 

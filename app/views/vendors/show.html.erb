@@ -12,7 +12,6 @@
         <div class="actions">
             <% if current_user_has_permission? :normal_user %>
                 <%= link_to t("vendors.new_review"), new_review_path(:vendor_id => @vendor.id), :class => "button" %>
-                <%= link_to t("vendors.new_product"), new_product_path(:vendor_id => @vendor.id), :class => "button" %>
                 <%= render "shared/follow_field", :target => @vendor %>
             <% end %>
             <%= link_to t("general.report"), new_report_path(:vendor_id => @vendor.id, :popup => true ), :rel => "facebox", :class => "button" %>

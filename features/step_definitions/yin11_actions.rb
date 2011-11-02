@@ -13,7 +13,7 @@ Given /^I log in as "(.+)"$/ do |name|
     when "Castle Editor" || "Castle"
       email = @editor.email
       pwd = @editor.password
-    when "Ray Admin" || "Ray"
+    when "Mighty Admin" || "Superuser"
       email = @admin.email
       pwd = @admin.password
     else
@@ -77,18 +77,6 @@ When /^I post a simple tip$/ do
     And %(I follow "+锦囊")
     And %(I fill in "tip_title" with "辨别西瓜是否含有催熟剂")
     And %(I fill in "tip_content" with "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。")
-    And %(I press "完成")
-end
-
-When /^I post a simple article$/ do
-    When %(I go to the administrator_articles page)
-    And %(I follow "+文章")
-    And %(I fill in "article_title" with "土豆刷绿漆，冒充西瓜")
-    And %(I fill in "article_content" with "今日，A城警方在B超市，查获了一批疑似用土豆刷上油漆冒充的西瓜。")
-    #TODO
-    #And %(I fill in "article_source_attributes_name" with "神农食品报")
-    And %(I fill in "article_tags_string" with "西瓜")
-    #And %(I fill in "article_region_tokens" with "021")
     And %(I press "完成")
 end
 

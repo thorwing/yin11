@@ -79,7 +79,7 @@ Feature: smoke tests for Vendors
     When I log in as "David User"
     And I create a simple vendor
 
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the administrator_vendors page
     And I follow "农工商超市"
     And I follow "编辑"
@@ -99,7 +99,7 @@ Feature: smoke tests for Vendors
       | name       | city | street | enabled |
       | 家乐福超市 | 上海 | 真华路 | false   |
 
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the administrator_vendors page
     And I follow "农工商超市"
     And I follow "编辑"
@@ -122,7 +122,7 @@ Feature: smoke tests for Vendors
     Given the following vendor exists:
       | name       | city | street |
       | 农工商超市 | 上海 | 大华路 |
-    When I log in as "Ray Admin"
+    When I log in as "Mighty Admin"
     And I go to the administrator_vendors page
     And I follow "农工商超市"
     And I follow "编辑"

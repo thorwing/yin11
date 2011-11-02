@@ -24,6 +24,12 @@ Then /^(?:|I )should not be on (.+)$/ do |page_name|
   end
 end
 
+Then /^I should see the following elements:$/ do |table|
+  table.raw.each do |row|
+    page.should have_css(row.first)
+  end
+end
+
 When /^I upload a file "(.+)" to "(.+)"$/ do |file_name, field|
   attach_file(field, File.join(Rails.root, "features", file_name))
 end

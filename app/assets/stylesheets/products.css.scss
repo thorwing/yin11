@@ -23,6 +23,17 @@
     border-right:1px solid black;
 }
 
+.small_product {
+    float: left;
+    width: 100px;
+    padding: 15px 10px 15px 10px;
+    text-align: center;
+    overflow: hidden;
+    background: white;
+    border-bottom:1px solid black;
+    border-right:1px solid black;
+}
+
 .product_image_frame {
     margin-left: auto;
     margin-right: auto;
@@ -31,7 +42,7 @@
 	/*padding:5px;*/
 }
 
-#products_slice {
+.products_slice {
     margin-left: auto;
     margin-right: auto;
     width: 80%;

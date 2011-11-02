@@ -4,6 +4,7 @@ class InfoItem
   include Taggable
   include AssociatedModels
   include Available
+  include Votable
   include Locational
 
   field :title
@@ -12,10 +13,6 @@ class InfoItem
 
   #cached_values
   field :positive, :type => Boolean, :default => true
-
-  field :votes, :type => Integer, :default => 0
-  field :fan_ids, :type => Array, :default => []
-  field :hater_ids, :type => Array, :default => []
 
   index :title
   index :reported_on

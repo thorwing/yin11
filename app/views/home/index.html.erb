@@ -7,25 +7,17 @@
     </div>
 
     <div id="info_panel">
-        <div id="news_block" class="block round">
-            <div class="image_frame">
-                <small><%= t("articles.headlines") %></small>
-                <%= render "slider", :articles => @headlines %>
-            </div>
-            <div id="news_frame">
-                <h3><%= t("articles.hot_news") %></h3>
-                <ul>
-                    <% @hot_news.each do |article| %>
-                       <li><h4><%= link_to article.title, article %></h4></li>
-                    <% end %>
-                </ul>
-                <%= link_to t("articles.more_news"), articles_path, :class => "more_news_link" %>
-            </div>
+        <div id="recommended_products" class="block round">
+            <h2><%= t("home.recommended_products") %></h2>
+            <% @recommended_products.each do |product| %>
+                <div class="small_product">
+                    <%= render "products/small_product", :product => product %>
+                </div>
+            <% end %>
         </div>
 
-        <div id="pagination">
-            <% @items.each do |item| %>
-                <%= render "info_items/info_item", :item => item %>
+        <div id="product_stories">
+            <% @product_stories.each do |story| %>
             <% end %>
         </div>
     </div> <!--end of info_items -->

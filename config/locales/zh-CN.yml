@@ -239,6 +239,7 @@ zh-CN:
     tag_cloud: 标签云
     current_city: 当前城市：
     change_city: 切换
+    recommended_products: 推荐商品
 
   control_panel:
     actions: 我要：

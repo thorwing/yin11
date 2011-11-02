@@ -6,7 +6,7 @@ jQuery ->
   $('.close_panel_link').click ->
     $(this).parents('.panel').slideUp()
 
-  if $('#pagination').length > 0
-    $('#pagination').pageless(totalPages: 3, url: '/home/more_items', loaderImage: '../assets/pageless/loading.gif')
+#  if $('#pagination').length > 0
+#    $('#pagination').pageless(totalPages: 3, url: '/home/more_items', loaderImage: '../assets/pageless/loading.gif')
 
 #  $("#featured").tabs( fx: opacity: "toggle").tabs("rotate", 5000, true)
