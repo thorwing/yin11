@@ -1,5 +1,4 @@
 #incoding utf-8
-@focus
 Feature: Index articles
 
 Background:
