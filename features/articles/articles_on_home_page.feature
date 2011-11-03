@@ -9,4 +9,4 @@ Feature: articles listed on home page
     And There are some sample articles
 
   Scenario: 访客可以在主页上看到一些新闻
-    When I go to the
+    When I go to the home page

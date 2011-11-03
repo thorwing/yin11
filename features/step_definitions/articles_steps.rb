@@ -15,3 +15,8 @@ When /^I post a article with:$/ do |table|
     And %(I press "完成")
   end
 end
+
+When /^I view an article with named "(.+)"$/ do |name|
+    When %(I go to articles page page)
+    And %(I follow "#{name}")
+end

@@ -3,6 +3,8 @@ Feature: create article
   编辑和管理员可以新建文章
   主页上有新建文章的链接
   游客和用户不可以新建文章
+  新建文章默认的启用状态是启用的
+  新建文章默认的来源是银筷子网站
 
   Background:
     Given There are minimum seeds data
@@ -41,3 +43,16 @@ Feature: create article
       | user        |
       | Guest       |
       | David User  |
+
+  Scenario: 新建文章默认的来源是银筷子网站
+    When I log in as "Castle Editor"
+    And I follow "+文章"
+    Then the "article_source_attributes_name" field should contain "银筷子原创"
+
+  Scenario: 新建文章默认的启用状态是启用的
+    When I log in as "Castle Editor"
+    And I post a simple article
+
+    When I log out
+    And I go to the home page
+    Then I should see "土豆刷绿漆，冒充西瓜"
