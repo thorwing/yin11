@@ -4,8 +4,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   # GET /articles.xml
+
   def index
     @articles = Article.enabled.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_MANY)
+    @recommended_list = Article.topics.recommended.enabled
+    @news_list = Article.news.recommended.enabled
 
     respond_to do |format|
       format.html # index.html.erb

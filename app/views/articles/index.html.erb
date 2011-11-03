@@ -1,4 +1,16 @@
-<% title t("articles.articles") %>
+<%= t("articles.hot_news") %>
+       <div id="news_list" >
+            <% @news_list.each do |article| %>
+                <%= link_to article.title, article %> <br/>
+            <% end %>
+       </div>
+
+<%= t("articles.headlines") %>
+       <div id="recommended_list" >
+            <% @recommended_list.each do |article| %>
+                <%= link_to article.title, article %> <br/>
+            <% end %>
+       </div>
 
 <%= paginate @articles %>
 <% @articles.each do |article| %>

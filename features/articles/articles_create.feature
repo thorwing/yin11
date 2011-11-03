@@ -1,3 +1,4 @@
+
 Feature: create article
   编辑和管理员可以新建文章
   主页上有新建文章的链接
@@ -50,7 +51,9 @@ Feature: create article
 
   Scenario: 新建文章默认的启用状态是启用的
     When I log in as "Castle Editor"
-    And I post a simple article
+    And I post a article with:
+    | title | content | tags |
+    | simple article  | content | tag |
 
     When I log out
     And I go to the home page
