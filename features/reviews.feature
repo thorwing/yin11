@@ -68,7 +68,6 @@ Feature: tests for reviews
     When I follow "up" within ".vote_fields"
     Then I should see "1" within ".vote_fields"
 
-  @focus
   Scenario: User can mark "worthy" or "unworthy" in the review
     When I log in as "David User"
     And I go to the products page
@@ -81,7 +80,6 @@ Feature: tests for reviews
     And I should see "值" within "review"
     And I should not see "不值" within "review"
 
-  @focus
   Scenario: User can filter "worthy" and "unworthy" reviews of a products
     When I log in as "David User"
     And I go to the products page

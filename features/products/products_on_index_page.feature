@@ -1,4 +1,3 @@
-@focus
 Feature: products listed on index page
   访客可以访问商品检索页，看到商品列表(默认按照热门程度，新上架，降价幅度等,展示所有商品。)
   访客可以按照商品的种类，过滤商品。
@@ -13,7 +12,6 @@ Feature: products listed on index page
     Given There are minimum seeds data
     And There are some sample products
 
-  @focus
   Scenario: 访客可以访问商品检索页，看到商品列表
     When I go to the products page
     Then I should be on the products page

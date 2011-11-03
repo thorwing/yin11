@@ -1,4 +1,3 @@
-@focus
 Feature: create article
   编辑和管理员可以新建文章
   主页上有新建文章的链接

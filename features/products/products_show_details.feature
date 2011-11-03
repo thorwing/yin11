@@ -1,4 +1,3 @@
-@focus
 Feature: show details of a product
   显示商品的商户的信息
   显示其它用户的分享
@@ -22,7 +21,6 @@ Feature: show details of a product
     And I follow "南京养鸡场"
     Then I should not see "+关注"
 
-  @focus
   Scenario: 显示其它用户的分享
     Given the following articles exists:
       | title         | content                     | tags_string | type |
@@ -32,7 +30,6 @@ Feature: show details of a product
     And I follow "苏北草母鸡"
     Then I should see "鸡汤不如鸡肉"
 
-  @focus
   Scenario: 分享经过排序，过滤
 
   Scenario: 注册用户可以在商品详细信息页中对商品打分（赞，贬）
