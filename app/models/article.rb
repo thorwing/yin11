@@ -11,7 +11,7 @@ class Article < InfoItem
 
   #accessibles
   attr_reader :region_tokens
-  attr_accessible :type, :source_attributes, :region_tokens, :introduction
+  attr_accessible :type, :source_attributes, :region_tokens, :introduction, :author_id
 
   #scopes
   scope :recommended, where(:recommended => true)
@@ -31,6 +31,7 @@ class Article < InfoItem
   validates_presence_of :content
   validates_length_of :content, :maximum => 10000
   validates_length_of :introduction, :maximum => 300
+  validates_presence_of :author
 
   def self.types
     [I18n.t("article_types.topic"), I18n.t("article_types.news"), I18n.t("article_types.tip")]

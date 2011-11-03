@@ -1,3 +1,4 @@
+@focus
 Feature: modify article
   编辑和管理员可以修改文章
   访客和用户不可以修改文章
@@ -10,8 +11,8 @@ Feature: modify article
   Scenario Outline: 编辑和管理员可以修改文章
     Given There are some sample articles
     When I log in as "<user>"
-    And I view an article with named "三聚氰胺再现上海"
-    And I follow "修改"
+    And I view an article named "三聚氰胺再现上海"
+    And I follow "编辑"
     And I fill in "article_title" with "三聚氰胺问题很严重"
     And I press "完成"
     When I go to the articles page
@@ -26,8 +27,8 @@ Feature: modify article
   Scenario Outline: 访客和用户不可以修改文章
     Given There are some sample articles
     When I log in as "<user>"
-    And I view an article with named "三聚氰胺再现上海"
-    Then I should not see "修改"
+    And I view an article named "三聚氰胺再现上海"
+    Then I should not see "编辑"
 
     Examples:
       | user |
@@ -35,6 +36,7 @@ Feature: modify article
       | David User |
 
   Scenario Outline: 编辑和管理员可以撰写一个专题，并将之推选到主页上
+    #
     When I log in as "<user>"
     And I follow "+文章"
     And I fill in "article_title" with "食物相克不科学"

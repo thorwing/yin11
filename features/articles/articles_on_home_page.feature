@@ -1,3 +1,4 @@
+@focus
 Feature: articles listed on home page
   访客可以在主页上看到一些新闻
   访客可以在主页上看到一些专题

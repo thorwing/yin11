@@ -2,7 +2,7 @@
     <% title @article.title %>
     <%= meta_tag @article.introduction if @article.introduction.present? %>
 
-    <%= content_tag(:div, article.introduction, :class => "block round" ) if @article.introduction.present? %>
+    <%= content_tag(:div, @article.introduction, :class => "block round" ) if @article.introduction.present? %>
 
     <div class="block">
         <%= render "shared/vote_fields", :item => @article %>
@@ -23,12 +23,22 @@
     </div>
 
     <div id="article_content" >
+      <%= "content is:" %>
       <%= simple_format @article.content.html_safe %>
+    </div>
+
+    <div id="article_author">
+      <%= "authored by:" %>
+      <%= @article.author.screen_name %>
+    </div>
+
+    <div id="article_source">
+      <%= @article.source %>
     </div>
 
     <% if @article.images.size > 0 %>
         <b><%= t("images.images") %></b>
-        <div id="gallery" class="block round">
+        <div id="article_images" class="block round">
             <%= render :partial => "images/image", :collection => @article.images %>
         </div>
     <% end %>
