@@ -1,5 +1,4 @@
 #encoding utf-8
-@focus
 Feature: edit comments
   编辑，管理员可以控制评论的可见性
   访客，注册用户不可以控制评论的可见性

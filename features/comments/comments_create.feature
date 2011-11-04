@@ -1,5 +1,4 @@
 #encoding utf-8
-@focus
 Feature: create comment
   注册用户，编辑，管理员额可以对文章，测评，产品添加评论
   访客不可以对文章，测评，产品添加评论

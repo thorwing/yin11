@@ -1,7 +1,6 @@
 module Followable
   def self.included(base)
     base.class_eval do
-
       field :followers, :type => Array, :default => []
 
       attr_accessible :followers

@@ -2,7 +2,6 @@ Feature: products listed on index page
   用户可以访问商品检索页，看到商品列表(默认按照热门程度，新上架，降价幅度等,展示所有商品。)
   用户可以看到商品的分类
   用户可以按照商品的种类，过滤商品。
-  用户可以按照商城的送货范围来过滤商品
   用户可以在检索页中搜索商品
   用户可以看到商品的详细信息，包括：名称，来源，价格，规格，原产地，认证信息，介绍，用户评论，以及来源网上商城的配送方式和促销信息
   用户可以在商品展示页看到用户针对商品的分享体验
@@ -33,12 +32,6 @@ Feature: products listed on index page
     Then I should not see "苏北草母鸡"
     And I should see "梅山猪"
 
-  Scenario: 用户可以按照商城的送货范围来过滤商品
-    When I go to the products page
-    And I follow "上海"
-    Then I should see "苏北草母鸡"
-    And I should not see "梅山猪"
-
   Scenario: 用户可以在检索页中搜索商品
     When I go to the products page
     And I search for "猪"
@@ -55,8 +48,8 @@ Feature: products listed on index page
     Then I should see "label" whose id is "product_comments"
 
     Then I should see "苏北草母鸡"
-    And I should see "18元"
-    And I should see "12元一斤"
+    And I should see "￥18.00"
+    And I should see "一斤"
 
   Scenario: 用户可以在商品展示页看到用户针对商品的分享体验
     When I log in as "David User"

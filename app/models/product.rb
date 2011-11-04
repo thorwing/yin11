@@ -16,7 +16,7 @@ class Product
 
   field :original_name
 
-  attr_accessible :name, :url, :vendor_id, :category_id
+  attr_accessible :name, :url, :price, :weight, :vendor_id, :category_id
 
   #relationships
   embeds_many :comments
@@ -30,5 +30,9 @@ class Product
   validates_presence_of :name
   validates_length_of :name, :maximum => 100
   validates_presence_of :vendor
+
+  def price_as_money_string
+    format('%.2f', price)
+  end
 
 end
