@@ -1,8 +1,9 @@
+#encoding utf-8
 Feature: modify article
   编辑和管理员可以修改文章
   访客和用户不可以修改文章
   编辑和管理员可以撰写一个专题，并将之推选到主页上
-
+  管理员 编辑可以启用/禁用 article
 
   Background:
     Given There are minimum seeds data
@@ -35,7 +36,6 @@ Feature: modify article
       | David User |
 
   Scenario Outline: 编辑和管理员可以撰写一个专题，并将之推选到主页上
-    #
     When I log in as "<user>"
     And I follow "+文章"
     And I fill in "article_title" with "食物相克不科学"
@@ -51,3 +51,14 @@ Feature: modify article
     | Castle Editor |
     | Mighty Admin  |
 
+  Scenario Outline: 管理员 编辑可以启用/禁用 article的enable 属性
+    Given There are some sample articles
+    When I log in as "<user>"
+    Then I disabled a article named "三聚氰胺再现上海"
+    And I go to the articles page
+    Then I should not see "三聚氰胺再现上海"
+
+    Examples:
+    | user |
+    | Castle Editor |
+    | Mighty Admin  |

@@ -1,5 +1,10 @@
 #encoding utf-8
+@focus
 Feature: Comments
+  Guest can't comment
+  User can comment, and comments can be nested
+  User will get hint about how many characters left
+  Editor can toggle comment's availability
 
   Background:
     Given There are minimum seeds data

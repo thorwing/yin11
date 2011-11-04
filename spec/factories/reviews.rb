@@ -6,6 +6,4 @@ end
 
 Factory.define :bad_review, :class => Review  do |f|
   f.sequence(:title) {|n| "milk tastes funny" }
-  f.faults [FaultTypes.get_values.first]
-  #f.association :author, :factory => :normal_user
 end

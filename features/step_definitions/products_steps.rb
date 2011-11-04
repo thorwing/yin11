@@ -25,7 +25,7 @@ When /^I view the details of product "(.+)"$/ do |product_name|
 end
 
 When /^I disabled a product named "(.+)"$/ do |product_name|
-  And %(I view the details of product "苏北草母鸡")
+  And %(I view the details of product "#{product_name}")
   And %(I follow "修改")
   And %(I uncheck "product_enabled")
   And %(I press "完成")
