@@ -243,25 +243,25 @@ $(function() {
 //    });
 //});
 
-$(function() {
-    $(':checkbox[id^="review_faults"]').change(function(){
-        var n = $(".checkbox_group input:checked").length;
-        var severity = $(".severity");
-        severity.removeClass("zero one two three");
-        if (n == 0) {
-            severity.addClass("zero");
-        }
-        else if(n == 1) {
-            severity.addClass("one");
-        }
-        else if(n == 2) {
-            severity.addClass("two");
-        }
-        else{
-            severity.addClass("three");
-        }
-    });
-});
+//$(function() {
+//    $(':checkbox[id^="review_faults"]').change(function(){
+//        var n = $(".checkbox_group input:checked").length;
+//        var severity = $(".severity");
+//        severity.removeClass("zero one two three");
+//        if (n == 0) {
+//            severity.addClass("zero");
+//        }
+//        else if(n == 1) {
+//            severity.addClass("one");
+//        }
+//        else if(n == 2) {
+//            severity.addClass("two");
+//        }
+//        else{
+//            severity.addClass("three");
+//        }
+//    });
+//});
 
 $(function() {
     $('.tip').each( function(intIndex) {

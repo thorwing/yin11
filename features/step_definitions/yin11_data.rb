@@ -31,7 +31,7 @@ Given /^There are some sample groups$/ do
 end
 
 Given /^There are some sample reviews$/ do
-  Factory(:bad_review, :title => "牛奶坏了", :tags_string => "牛奶")
+  Factory(:review, :title => "牛奶坏了", :tags_string => "牛奶")
 end
 
 
