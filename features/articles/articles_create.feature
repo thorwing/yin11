@@ -1,3 +1,5 @@
+#incoding utf-8
+
 Feature: create article
   编辑和管理员可以新建文章
   主页上有新建文章的链接
@@ -48,12 +50,13 @@ Feature: create article
     And I follow "+文章"
     Then the "article_source_attributes_name" field should contain "银筷子原创"
 
+
   Scenario: 新建文章默认的启用状态是启用的
     When I log in as "Castle Editor"
     And I post a article with:
-    | title | content | tags |
-    | simple article  | content | tag |
+    | title | content | tags | type |
+    | simple article  | content | tag | 专题 |
 
     When I log out
-    And I go to the home page
-    Then I should see "土豆刷绿漆，冒充西瓜"
+    And I go to the articles page
+    Then I should see "simple article"

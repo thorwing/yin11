@@ -2,6 +2,17 @@ class ReviewsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
 
+  # GET /reviews
+  # GET /reviews.xml
+  def index
+    @reviews = Review.desc(:reported_on, :votes).page(params[:page]).per(20)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @reviews }
+    end
+  end
+
   # GET /reviews/1
   # GET /reviews/1.xml
   def show

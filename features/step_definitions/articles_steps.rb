@@ -7,10 +7,6 @@ Given /^There are some sample articles$/ do
   Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。", :region_tokens => "021", :tags_string => "牛奶, 三聚氰胺", :author_id=> @normal_user.id, :type => "新闻") do |a|
       a.recommended = true
   end
-
-  Article.create(:title => "北京禁止商贩往水里兑牛奶", :content => "北京市政府严令禁止向水里兑牛奶的行为。", :tags_string => "牛奶", :author_id=> @normal_user.id) do |a|
-    a.enabled = false
-  end
 end
 
 When /^I post a article with:$/ do |table|
@@ -18,7 +14,8 @@ When /^I post a article with:$/ do |table|
     When %(I go to the new_article page)
     And %(I fill in "article_title" with "#{hash["title"]}")
     And %(I fill in "article_content" with "#{hash["content"]}")
-    And %(I fill in "article_tags_string" with "#{hash["tags"]}")
+    #And %(I fill in "article_tags_string" with "#{hash["tags"]}")
+    And %(I select "#{hash["type"]}" from "article_type")
     And %(I press "完成")
   end
 end

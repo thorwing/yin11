@@ -243,25 +243,25 @@ $(function() {
 //    });
 //});
 
-$(function() {
-    $(':checkbox[id^="review_faults"]').change(function(){
-        var n = $(".checkbox_group input:checked").length;
-        var severity = $(".severity");
-        severity.removeClass("zero one two three");
-        if (n == 0) {
-            severity.addClass("zero");
-        }
-        else if(n == 1) {
-            severity.addClass("one");
-        }
-        else if(n == 2) {
-            severity.addClass("two");
-        }
-        else{
-            severity.addClass("three");
-        }
-    });
-});
+//$(function() {
+//    $(':checkbox[id^="review_faults"]').change(function(){
+//        var n = $(".checkbox_group input:checked").length;
+//        var severity = $(".severity");
+//        severity.removeClass("zero one two three");
+//        if (n == 0) {
+//            severity.addClass("zero");
+//        }
+//        else if(n == 1) {
+//            severity.addClass("one");
+//        }
+//        else if(n == 2) {
+//            severity.addClass("two");
+//        }
+//        else{
+//            severity.addClass("three");
+//        }
+//    });
+//});
 
 $(function() {
     $('.tip').each( function(intIndex) {
@@ -275,9 +275,34 @@ $(function() {
 });
 
 $(function() {
-    $('.char_aware').keyup(function() {
-        var count = $(this).val().length;
-        $('span.char_counter').html('已输入' + count + '字符');
+//    $('.char_aware').input(function() {
+//        var max = parseInt ($(this).data('comment_max_len'));
+//        var count = $(this).val().length;
+//        var remaining = max  - count;
+//        var mystring = $(this).val();
+//        var chineseRegex = /[^\x00-\xff]/g;
+//        var strLength = mystring.replace(chineseRegex,"**").length;
+//        $('span.char_counter').html('还可输入' + remaining + '字符'+ mystring+ ':'+ strLength);
+//    });
+
+    if (navigator.userAgent.indexOf("MSIE") != -1)
+    {
+        bind_name = 'propertychange';
+    }
+    else
+    {
+        bind_name = 'input';
+    }
+
+    $('.char_aware').bind(bind_name, function()
+    {
+        var max = parseInt ($(this).data('comment_max_len'));
+        var mystring = $(this).val();
+        var chineseRegex = /[^\x00-\xff]/g;
+        var strLength = mystring.replace(chineseRegex,"**").length;
+        var remaining = max - strLength;
+        $('span.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
+//            + max + '-' + strLength );
     });
 });
 

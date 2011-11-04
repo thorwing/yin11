@@ -6,6 +6,6 @@
 <%= content_tag(:p, t("comments.new_hint"), :class => "trivial") %>
 
 <% if current_user %>
-    <b><%= t("comments.new_comment") %></b><span class="trivial"><%= mark_required_length(Comment, :content) %></span><br/>
+    <b><%= t("comments.new_comment") %></b><span class="trivial"></span><br/>
     <%= render "comments/new_comment", :item => item%>
 <% end %>

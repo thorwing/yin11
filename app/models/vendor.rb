@@ -32,11 +32,4 @@ class Vendor
     (name.nil? ? "" : name.strip) + " (" + address + ")"
   end
 
-  def good_reviews_in(days)
-    self.reviews.in_days_of(days).where(:faults => []).all
-  end
-
-  def bad_reviews_in(days)
-    self.reviews.in_days_of(days).excludes(:faults => []).all
-  end
 end

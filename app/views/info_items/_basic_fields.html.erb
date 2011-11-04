@@ -26,18 +26,6 @@
     <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
   </div>
 
-  <% if item.is_a?(Review) %>
-      <div class="field">
-        <b><%= f.label :faults, t("reviews.faults") %></b><br/>
-            <div class="checkbox_group">
-                <% FaultTypes.get_values.each_with_index do |type, i| %>
-                    <%= check_box_tag "#{item.class.name.downcase}[faults][]", type, item.faults.include?(type), {:id => "#{item.class.name.downcase}_faults_#{i}", :class => "checkbox" } %>
-                    <%= label_tag "#{item.class.name.downcase}_faults_#{i}", type %>
-                <% end %>
-            </div>
-      </div>
-  <% end %>
-
   <%= render "images/images_fields", :f => f, :item => item %>
 
   <div class="field">
