@@ -21,12 +21,21 @@
   </div>
   <div class="field">
     <%= f.label :url %><br />
-    <%= f.text_field :url %>
+    <%= new_tab_link_to f.object.url, f.object.url %>
   </div>
   <div class="field">
     <%= f.label "product[category_id]", t("categories.category") %><br />
     <%= select_tag "product[category_id]", options_for_select(get_categories_for_select, @product.category_id) %>
   </div>
+
+  <% if current_user_has_permission? :administrator %>
+    <div class="admin_fields">
+        <div class="field">
+            <%= f.label :enabled, t("general.toggle")%><br />
+            <%= f.check_box :enabled %>
+        </div>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit t("general.submit") %>

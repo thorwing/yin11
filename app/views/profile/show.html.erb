@@ -52,10 +52,6 @@
     <dd id="joined_groups">
        <%= render :partial => "group", :collection => current_user.groups %>
     </dd>
-    <dt><span><%= t("profile.my_badges") %></span></dt>
-    <dd>
-        <%= render :partial => "badge", :collection => current_user.badges %>
-    </dd>
     <dt><span><%= t("profile.my_followings") %></span></dt>
     <dd>
         <% current_user.relationships.each do |r| %>

@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    criteria = Product.all
+    criteria = Product.enabled
     if params[:category].present?
       category = Category.first(conditions: {name: params[:category]})
       categories = [category.id]

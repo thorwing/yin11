@@ -1,42 +1,5 @@
 # encoding: utf-8
 
-Given /^I log in as "(.+)"$/ do |name|
-  case name
-    when "Guest"
-      visit root_path
-    when "David User" || "David"
-      email = @normal_user.email
-      pwd = @normal_user.password
-    when "Kate Tester" || "Kate"
-      email = @tester.email
-      pwd = @tester.password
-    when "Castle Editor" || "Castle"
-      email = @editor.email
-      pwd = @editor.password
-    when "Mighty Admin" || "Superuser"
-      email = @admin.email
-      pwd = @admin.password
-    else
-      assert false
-  end
-
-  visit path_to("the login page")
-  fill_in "email", :with => email
-  fill_in "password", :with => pwd
-  click_button("登入")
-end
-
-Given /^I log in with email "(.+)" and password "(.+)"$/ do |email, password|
-  visit path_to("the login page")
-  fill_in "email", :with => email
-  fill_in "password", :with => password
-  click_button("登入")
-end
-
-Given /^I log out$/ do
-  visit path_to("the logout page")
-end
-
 Then /^"([^"]*)" should be selected for "([^"]*)"(?: within "([^\"]*)")?$/ do |value, field, selector|
   with_scope(selector) do
     field_labeled(field).find(:xpath, ".//option[@selected = 'selected'][text() = '#{value}']").should be_present
@@ -118,19 +81,3 @@ When /^I follow a vendor "(.+)"$/ do |vendor|
     When %(I follow "+关注")
 end
 
-When /^I post a review about vendor "(.+)"$/ do |vendor|
-    When %(I go to the home page)
-    And %(I follow "找商户")
-    And %(I follow "#{vendor}")
-    And %(I follow "+测评" within ".actions")
-    And %(I fill a simple review)
-end
-
-When /^I register as a new user "(.+)" with email "(.+)"$/ do |user, email|
-    When %(I go to the sign_up page)
-    And %(I fill in "user_email" with "#{email}")
-    And %(I fill in "user_login_name" with "#{user}")
-    And %(I fill in "user_password" with "test123")
-    And %(I fill in "user_password_confirmation" with "test123")
-    And %(I press "注册")
-end

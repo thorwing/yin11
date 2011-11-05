@@ -5,13 +5,15 @@
     </div>
  </div>
  <div class="right_column">
+   <%= render "shared/vote_fields", :item => @product %>
    <div class="block square">
     <p>
       <b><%= t("general.name")  %></b>
       <%= @product.name %>
     </p>
     <p>
-      <%= new_tab_link_to @product.vendor.name, @product.url %>
+      <b><%= t("vendors.vendor") %></b>
+      <%= link_to  @product.vendor.name, @product.vendor %>
     </p>
     <p>
       <b><%= t("categories.category")  %></b>
@@ -19,7 +21,7 @@
     </p>
     <p>
       <b><%= t("products.price")  %></b>
-      <%= [t("money.yuan_mark"), @product.price].join if @product.price %>
+      <%= [t("money.yuan_mark"), @product.price_as_money_string].join if @product.price %>
     </p>
 
     <p>
@@ -32,11 +34,13 @@
       <%= @product.producer %>
     </p>
 
-
     <p>
       <b><%= t("products.original_place")  %></b>
       <%= @product.area %>
     </p>
+    <div class="actions">
+        <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
+    </div>
    </div>
  </div>
 </div>

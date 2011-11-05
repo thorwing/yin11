@@ -5,10 +5,14 @@ class SyncsController < ApplicationController
     before_filter(:only => [:follow_yin11, ]) { |c| c.require_permission :normal_user }
 
     def new
-      client = OauthChina::Sina.new
-      authorize_url = client.authorize_url
-      Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
-      redirect_to authorize_url
+      switch :type
+      when
+        client = OauthChina::Sina.new
+        authorize_url = client.authorize_url
+        Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
+        redirect_to authorize_url
+      when
+
     end
 
     def callback
