@@ -169,7 +169,7 @@ zh-CN:
     articles: 管理文章
     reviews: 管理测评
     vendors: 管理商户
-    badges: 管理徽章
+    products: 管理产品
     users: 管理用户
     tags: 管理标签
 
@@ -339,6 +339,9 @@ zh-CN:
     category: 分类
 
   products:
+    products: 所有产品
+    enabled_products: 启用的产品
+    disalbed_products: 禁用的产品
     products_list: 产品列表
     add: +产品
     new_product: 新产品

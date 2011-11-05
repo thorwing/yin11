@@ -29,16 +29,17 @@ Feature: modify a product
     And I disabled a product named "苏北草母鸡"
     When I go to the products page
     Then I should not see "苏北草母鸡"
-    When I go to the admin_products page
+    When I go to the administrator_products page
     Then I should see "苏北草母鸡"
     When I follow "苏北草母鸡"
     And I follow "修改"
     And I check "product_enabled"
-    And I follow "完成"
+    And I press "完成"
     When I log out
     And I go to the products page
     Then I should see "苏北草母鸡"
 
+  @focus
   Scenario Outline: 访客, 编辑, 注册用户不可以看到未启用的商品
     When I log in as "<user>"
     And I disabled a product named "苏北草母鸡"

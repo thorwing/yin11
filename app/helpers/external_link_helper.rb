@@ -7,6 +7,7 @@ module ExternalLinkHelper
       if options.is_a? String
         if is_external_link? request.host, options
           html_options[:target] = '_BLANK'
+          html_options[:rel] = 'nofollow'
         end
       end
 
@@ -14,11 +15,12 @@ module ExternalLinkHelper
     else
       name = args.first
       options = args[1] || {}
-      html_options = args[2] || {}
+      html_options = args[2] || {rel: 'nofollow'}
 
       if options.is_a? String
         if is_external_link? request.host, options
           html_options[:target] = '_BLANK'
+          html_options[:rel] = 'nofollow'
         end
       end
 

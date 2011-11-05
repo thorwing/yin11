@@ -4,6 +4,7 @@ class Product
   include Taggable
   include Followable
   include Votable
+  include Available
 
   field :name
   field :price, :type => Float

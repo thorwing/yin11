@@ -8,6 +8,7 @@ Yin11::Application.routes.draw do
     resources :vendors
     resources :users, :except => [:new, :create]
     resources :tags
+    resources :products
   end
 
   put 'administrator/base/toggle'
