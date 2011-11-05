@@ -275,9 +275,35 @@ $(function() {
 });
 
 $(function() {
-    $('.char_aware').keyup(function() {
-        var count = $(this).val().length;
-        $('span.char_counter').html('已输入' + count + '字符');
+//    $('.char_aware').input(function() {
+//        var max = parseInt ($(this).data('comment_max_len'));
+//        var count = $(this).val().length;
+//        var remaining = max  - count;
+//        var mystring = $(this).val();
+//        var chineseRegex = /[^\x00-\xff]/g;
+//        var strLength = mystring.replace(chineseRegex,"**").length;
+//        $('span.char_counter').html('还可输入' + remaining + '字符'+ mystring+ ':'+ strLength);
+//    });
+    var bind_name = '';
+
+    if (navigator.userAgent.indexOf("MSIE") != -1)
+    {
+        bind_name = 'propertychange';
+    }
+    else
+    {
+        bind_name = 'input';
+    }
+
+    $('.char_aware').bind(bind_name, function()
+    {
+        var max = parseInt ($(this).data('comment_max_len'));
+        var mystring = $(this).val();
+        var chineseRegex = /[^\x00-\xff]/g;
+        var strLength = mystring.replace(chineseRegex,"**").length;
+        var remaining = max - strLength;
+        $('span.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
+//            + max + '-' + strLength );
     });
 });
 

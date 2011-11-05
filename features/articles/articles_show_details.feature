@@ -1,3 +1,4 @@
+
 Feature: show details of an article
   文章的详细信息包括标题，内容，作者，来源，图片等等
   注册用户，编辑，管理员可以对一篇文章投票（赞，贬）

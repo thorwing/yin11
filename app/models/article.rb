@@ -31,31 +31,22 @@ class Article < InfoItem
   validates_presence_of :content
   validates_length_of :content, :maximum => 10000
   validates_length_of :introduction, :maximum => 300
-  validates_presence_of :author
+  validates_presence_of :type
 
   def self.types
     [I18n.t("article_types.topic"), I18n.t("article_types.news"), I18n.t("article_types.tip")]
   end
-
   validates_inclusion_of :type, :in => Article.types
-
-  #callbacks
-  before_validation {
-    self.type ||= Article.types.first
-    self.positive = (self.type == Article.types.last)
-    true
-  }
 
   #methods
   def name_of_source
     self.source.name if source
   end
 
-  def region_tokens=(tokens)
-    self.region_ids = tokens.split(',')
-    #TODO
-    region = ItemFinder.get_region(self.region_ids.first)
-    self.city ||= region.name if region
-  end
+  #def region_tokens=(tokens)
+  #  self.region_ids = tokens.split(',')
+  #  region = ItemFinder.get_region(self.region_ids.first)
+  #  self.city ||= region.name if region
+  #end
 
 end

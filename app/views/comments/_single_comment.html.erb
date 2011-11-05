@@ -7,7 +7,7 @@
               <% if comment.enabled %>
                 <span class="quoted"><%= comment.content %></span>
               <% else %>
-                <% if current_user && current_user.has_permission?(:editor) %>
+                <% if current_user_has_permission?(:editor) %>
                     <span class="quoted blocked"><%= comment.content %></span>
                 <% else %>
                     <%= t("comments.deleted") %>
@@ -17,12 +17,12 @@
             </blockquote>
         </div>
         <div class="right_column">
-            <%= image_tag current_user.get_avatar, :width => 24, :height => 24 %><br/>
+            <%= image_tag comment.user.get_avatar, :width => 24, :height => 24 %><br/>
         </div>
       </div>
       <div>
         <%= link_to t("comments.reply"), new_comment_path(:item_id => item.id, :item_type => item.class.name, :parent_id => comment.id), :class => "reply_comment_link" %>
-        <% if current_user && current_user.has_permission?(:editor) %>
+        <% if current_user_has_permission?(:editor) %>
             <%= link_to t("general.toggle"), toggle_comment_path(:id => comment.id, :item_id => item.id, :item_type => item.class.name), :method => :put, :remote => true %>
         <% end %>
         <div class="new_reply_comment" style="display:none" >

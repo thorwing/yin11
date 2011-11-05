@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
   # GET /articles.xml
 
   def index
+    # based on the different user type, some articles should or should not be seen
+    #current_user
     @articles = Article.enabled.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_MANY)
     @recommended_list = Article.topics.recommended.enabled
     @news_list = Article.news.recommended.enabled
