@@ -1,5 +1,5 @@
 #encoding utf-8
-    @focus
+
 Feature: edit comments
   编辑，管理员可以控制评论的可见性
   访客，注册用户不可以控制评论的可见性
@@ -35,7 +35,25 @@ Feature: edit comments
     |Mighty Admin   | reviews  | 牛奶坏了         |
 
 
+    Scenario Outline: 访客，注册用户不可以控制评论的可见性
+    When I log in as "Mighty Admin"
+    And I go to the articles page
+    And I follow "三聚氰胺再现上海"
+    When I fill in "content" with "TMD"
+    And I press "+评论"
+    Then I should see "TMD"
+    And I log out
 
+    And I log in as "<user>"
+    And I go to the articles page
+    And I follow "三聚氰胺再现上海"
+    And I should not see "启用/禁用" within ".comment"
+
+
+       Examples:
+    |user    |
+    |Guest  |
+    |David User  |
 
 
 

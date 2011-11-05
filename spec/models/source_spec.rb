@@ -40,18 +40,6 @@ describe Source do
     source.url.should == "http://yin11.com"
   end
 
-  #it "name is mandatory" do
-  #  Source.new.should_not be_valid
-  #end
-
-  #it "name's max length is 20" do
-  #  Source.new(:name => "1" * 21).should_not be_valid
-  #end
-
-  #it "site's max length is 20" do
-  #  Source.new(:name => "Yin11News", :site => "1" * 21).should_not be_valid
-  #end
-
   it "empty url is ok" do
     Source.new(:name => "Yin11News", :site => "somesite").should be_valid
   end

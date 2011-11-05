@@ -284,6 +284,7 @@ $(function() {
 //        var strLength = mystring.replace(chineseRegex,"**").length;
 //        $('span.char_counter').html('还可输入' + remaining + '字符'+ mystring+ ':'+ strLength);
 //    });
+    var bind_name = '';
 
     if (navigator.userAgent.indexOf("MSIE") != -1)
     {
