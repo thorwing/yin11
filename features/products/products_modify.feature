@@ -39,7 +39,6 @@ Feature: modify a product
     And I go to the products page
     Then I should see "苏北草母鸡"
 
-  @focus
   Scenario Outline: 访客, 编辑, 注册用户不可以看到未启用的商品
     When I log in as "<user>"
     And I disabled a product named "苏北草母鸡"

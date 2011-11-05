@@ -50,8 +50,6 @@ Feature: create comment
       | articles | 三聚氰胺再现上海 |
       | reviews  | 牛奶坏了         |
 
-
-
   @javascript
   Scenario: 用户会得到还可以输入多少字的提示
     Given the following review exists:
@@ -60,11 +58,11 @@ Feature: create comment
     When I log in as "David User"
     When I go to the reviews page
     When I follow "西瓜烂了"
-    When I fill in "content" with "很不错"
-    Then I should see "您还可输入497字"
+    When I fill in "content" with "很不错XD"
+    Then I should see "您还可输入496字"
 
 
-      @javascript
+  @javascript
   Scenario: 评论可以是嵌套的
     When I log in as "David User"
     When I go to the articles page

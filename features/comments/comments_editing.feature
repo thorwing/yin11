@@ -49,7 +49,7 @@ Feature: edit comments
     And I should not see "启用/禁用" within ".comment"
 
 
-       Examples:
+    Examples:
     |user    |
     |Guest  |
     |David User  |

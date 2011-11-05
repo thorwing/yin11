@@ -55,8 +55,8 @@ Feature: create article
     When I log in as "Castle Editor"
     And I post a article with:
     | title | content | tags | type |
-    | simple article  | content | tag | 专题 |
+    | 土豆冒充西瓜  | 土豆刷绿漆，冒充西瓜 | tag | 专题 |
 
     When I log out
     And I go to the articles page
-    Then I should see "simple article"
+    Then I should see "土豆冒充西瓜"
