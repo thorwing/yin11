@@ -28,14 +28,15 @@
     <%= select_tag "product[category_id]", options_for_select(get_categories_for_select, @product.category_id) %>
   </div>
 
-  <% if current_user_has_permission? :administrator %>
-    <div class="admin_fields">
-        <div class="field">
-            <%= f.label :enabled, t("general.toggle")%><br />
-            <%= f.check_box :enabled %>
-        </div>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= f.label :recommended_score, t("products.recommended_score")%><br />
+    <%= f.text_field :recommended_score %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enabled, t("general.toggle")%><br />
+    <%= f.check_box :enabled %>
+  </div>
 
   <div class="actions">
     <%= f.submit t("general.submit") %>

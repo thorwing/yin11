@@ -18,10 +18,10 @@ Feature: modify a product
     And I follow "修改"
     Then I should see "input" whose "id" is "product_name"
     And I should not see "input" whose "id" is "product_original_name"
-    When I fill in "product_name" with "新上市草母鸡"
+    When I fill in "product_name" with "母鸡变鸭"
     And I press "完成"
     When I go to the products page
-    Then I should see "新上市草母鸡"
+    Then I should see "母鸡变鸭"
     And I should not see "苏北草母鸡"
 
   Scenario: 管理员可以看到未启用的商品
@@ -40,13 +40,14 @@ Feature: modify a product
     Then I should see "苏北草母鸡"
 
   Scenario Outline: 访客, 编辑, 注册用户不可以看到未启用的商品
-    When I log in as "<user>"
+    When I log in as "Mighty Admin"
     And I disabled a product named "苏北草母鸡"
-    When I log out
+    And I log out
+    When I log in as "<user>"
     And I go to the products page
     Then I should not see "苏北草母鸡"
-    When I go to the admin_products page
-    Then I should not be on the admin_products page
+    When I go to the administrator_products page
+    Then I should not be on the administrator_products page
 
     Examples:
     | user |
@@ -87,7 +88,7 @@ Feature: modify a product
   Scenario: 管理员可以删除商品
     When I log in as "Mighty Admin"
     And I view the details of product "苏北草母鸡"
-    And I press "删除"
+    And I follow "删除"
     And I go to the products page
     Then I should not see "苏北草母鸡"
 
@@ -118,29 +119,3 @@ Feature: modify a product
     | David User  |
     | Castle Editor |
     | Mighty Admin  |
-
-  Scenario Outline: Guest and User can't update product
-    Given There are some sample products
-    When I log in as "<user>"
-    And I view the details of product "苏北草母鸡"
-    Then I should not see "修改"
-
-    Examples:
-    | user        |
-    | Guest       |
-    | David User  |
-
-  Scenario Outline: Editor and Admin can update product
-    When I log in as "<user>"
-    And I view the details of product "苏北草母鸡"
-    And I follow "修改"
-    And I fill in "product_name" with "母鸡变鸭"
-    And I press "完成"
-    And I go to the products page
-    Then I should not see "苏北草母鸡"
-    And I should see "母鸡变鸭"
-
-    Examples:
-    | user          |
-    | Castle Editor |
-    | Mighty Admin     |

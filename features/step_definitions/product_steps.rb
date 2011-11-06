@@ -3,14 +3,14 @@
 Given /^There are some sample products$/ do
   @vendor_1 = Factory(:vendor, :name => "天下养鸡网")
   @vendor_2 = Factory(:vendor, :name => "银筷子牧场网")
-  @chicken = Product.create(:name => "苏北草母鸡", :price => 18, :weight => "一斤", :tags_string => "禽类，肉类，鸡",  :url => "#", :vendor_id => @vendor_1.id)
-  @pig = Product.create(:name => "梅山猪", :price => 25, :weight => "一斤", :tags_string => "肉类，畜类", :url => "#", :vendor_id => @vendor_2.id)
+  @chicken = Product.create!(:name => "苏北草母鸡", :price => 18, :weight => "一斤", :tags_string => "禽类，肉类，鸡",  :url => "#", :vendor_id => @vendor_1.id, :recommended_score => 20)
+  @pig = Product.create!(:name => "梅山猪", :price => 25, :weight => "一斤", :tags_string => "肉类，畜类", :url => "#", :vendor_id => @vendor_2.id, :recommended_score => 20)
 end
 
 Given /^There are more sample products$/ do
   RECOMENDED_PRODUCTS = 3
-  Product.create(:name => "东北清香大米", :tags_string => "大米", :url => "#", :vendor_id => @vendor_2.id)
-  Product.create(:name => "山西陈醋", :tags_string => "醋", :url => "#", :vendor_id => @vendor_2.id)
+  Product.create!(:name => "东北清香大米", :tags_string => "大米", :url => "#", :vendor_id => @vendor_2.id, :recommended_score => 10)
+  Product.create!(:name => "山西陈醋", :tags_string => "醋", :url => "#", :vendor_id => @vendor_2.id)
 end
 
 Given /^There are some sample categories$/ do

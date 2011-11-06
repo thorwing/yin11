@@ -48,8 +48,9 @@
 
 <div class="actions">
   <%= render "shared/follow_field", :target => @product %>
-  <% if current_user_has_permission? :editor %>
+  <% if current_user_has_permission? :administrator %>
     <%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>
+    <%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
   <% end %>
 </div>
 
