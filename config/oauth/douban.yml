@@ -1,0 +1,10 @@
+development:
+   key:    "0bca72af10b2fdce235f580d3218f96a"
+   secret: "65f9b1085209abd7"
+   url:    "http://localhost:3000"
+   callback: "http://localhost:3000/syncs/douban/callback"
+production:
+   key:    "0bca72af10b2fdce235f580d3218f96a"
+   secret: "65f9b1085209abd7"
+   url:    "http://www.yin11.com"
+   callback: "http://www.yin11.com/syncs/douban/callback"
