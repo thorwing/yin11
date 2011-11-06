@@ -347,7 +347,7 @@ zh-CN:
     new_product: 新产品
     go_to_buy: 去购买
     price: 价格
-    recommended_score: 推荐指数
+    editor_score: 编辑推荐指数
     weight: 重量
     producer: 厂商
     original_place: 原产地
@@ -359,6 +359,10 @@ zh-CN:
   weight:
     gram_mark: G
     gram: 克
+
+  topics:
+    topics: 所有专题
+    new: +专题
 
   reviews:
     submit: 发表测评
@@ -489,6 +493,7 @@ zh-CN:
     tip: 锦囊
 
   tags:
+    tags: 标签
     all: 所有标签
     new_tag: 新标签
 

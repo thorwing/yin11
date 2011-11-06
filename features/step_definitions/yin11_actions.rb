@@ -76,8 +76,22 @@ Then /^Confirm that "(.+)" is not in the group "(.+)"$/ do |user, group|
 end
 
 When /^I follow a vendor "(.+)"$/ do |vendor|
-    And %(I go to the vendors page)
-    And %(I follow "#{vendor}")
-    When %(I follow "+关注")
+  And %(I go to the vendors page)
+  And %(I follow "#{vendor}")
+  When %(I follow "+关注")
 end
 
+When /^I follow "(.+)" of kind "(.+)"$/ do |name, index|
+  When %(I go to the #{index} page)
+  And %(I follow "#{name}")
+end
+
+When /^I "(.+)" the "(.+)" of kind "(.+)"$/ do |do_what, name, index|
+  When %(I follow "#{name}" of kind "#{index}")
+  And %(I follow "#{do_what}")
+end
+
+Then /^I can't "(.+)" "(.+)" of kind "(.+)"$/ do |do_what, name, index|
+  When %(I follow "#{name}" of kind "#{index}")
+  Then %(I should not see "#{do_what}")
+end

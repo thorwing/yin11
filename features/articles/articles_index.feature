@@ -1,5 +1,3 @@
-#incoding utf-8
-
 Feature: Index articles
     用户可以看到新闻和专题列表
     注册用户/访客不能看到 未启用的 article

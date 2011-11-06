@@ -1,5 +1,3 @@
-#encoding utf-8
-
 Feature: modify article
   编辑和管理员可以修改文章
   访客和用户不可以修改文章

@@ -68,7 +68,7 @@ Feature: modify a product
     When I log in as "Mighty Admin"
     And I view the details of product "山西陈醋"
     And I follow "修改"
-    And I fill in "product_recommended_score" with "100"
+    And I fill in "product_editor_score" with "100"
     And I press "完成"
     When I log out
     And I go to the home page

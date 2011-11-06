@@ -6,7 +6,8 @@
         <p class="actions">
             <b><%= t("control_panel.actions") %></b><br/>
             <%= link_to t("reviews.new"), new_review_path, :class => "button" %>
-            <%= link_to t("articles.new"), new_article_path, :class => "button" if current_user && current_user.has_permission?(:editor) %>
+            <%= link_to t("topics.new"), new_topic_path, :class => "button" if current_user_has_permission?(:editor) %>
+            <%= link_to t("articles.new"), new_article_path, :class => "button" if current_user_has_permission?(:editor) %>
             <%= link_to t("vendors.browse"), vendors_path, :class => "button" %>
         </p>
         <p class="actions">

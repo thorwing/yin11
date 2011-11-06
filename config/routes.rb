@@ -1,5 +1,7 @@
 Yin11::Application.routes.draw do
 
+  resources :topics
+
   namespace :administrator do
     root :to => "base#index"
 
