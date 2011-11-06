@@ -14,7 +14,7 @@ class HomeController < ApplicationController
 
     @default_query = (@raw_hot_tags.nil? || @raw_hot_tags.empty?) ? "" : @raw_hot_tags.first[0]
 
-    @recommended_products = Product.limit(3)
+    @recommended_products = Product.order_by([:recommended_score, :desc]).limit(3)
 
     @product_stories = []
 
