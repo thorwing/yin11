@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
     @recommended_products = Product.order_by([:editor_score, :desc]).limit(3)
 
-    @product_stories = []
+    @hot_topics = Topic.desc(:recommendation).limit(HOT_TOPICS_ON_HOME_PAGE)
 
     #data for control panel
     if current_user

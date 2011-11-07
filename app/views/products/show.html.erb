@@ -17,7 +17,7 @@
     </p>
     <p>
       <b><%= t("categories.category")  %></b>
-      <%= @product.category.name if @product.category %>
+      <%= @product.tags.first {|t| t.is_category == true} if @product.tags %>
     </p>
     <p>
       <b><%= t("products.price")  %></b>

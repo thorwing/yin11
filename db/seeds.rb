@@ -124,7 +124,7 @@ require "source"
   p "generating categories"
   categories = YAML::load(File.open("app/seeds/categories.yml"))
   categories.each do |name, children|
-    parent = Category.create!(:name => name)
+    parent = Tag.create!(:name => name, :is_category => true)
     if children.present? && children.is_a?(Array)
       generate_categories(parent, children)
     end

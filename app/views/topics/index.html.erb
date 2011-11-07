@@ -1,0 +1,13 @@
+<% title t("topics.topics") %>
+
+<% @topics.each do |topic| %>
+  <%= render "large_topic", :topic => topic %>
+<% end %>
+
+<br />
+
+<% if current_user_has_permission? :editor %>
+    <div class="actions">
+        <%= link_to t("topics.new"), new_topic_path, :class => "button" %>
+    </div>
+<% end %>

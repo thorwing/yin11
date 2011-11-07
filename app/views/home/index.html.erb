@@ -16,8 +16,9 @@
             <% end %>
         </div>
 
-        <div id="product_stories">
-            <% @product_stories.each do |story| %>
+        <div id="hot_topics">
+            <% @hot_topics.each do |topic| %>
+                <%= render "topics/large_topic", :topic => topic %>
             <% end %>
         </div>
     </div> <!--end of info_items -->

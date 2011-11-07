@@ -7,12 +7,11 @@ class ProductsController < ApplicationController
   def index
     criteria = Product.enabled
     if params[:category].present?
-      category = Category.first(conditions: {name: params[:category]})
-      categories = [category.id]
-      unless category.children.empty?
-        categories |= category.children.map{|c| c.id}
-      end
-      criteria = criteria.any_in(category_id: categories)
+      category = Tag.first(conditions: {name: params[:category], is_category: true})
+      categories = [category.name]
+      categories |= category.children.map{|c| c.name} unless category.children.empty?
+
+      criteria = criteria.tagged_with(categories)
     end
     @products = criteria.page(params[:page]).per((ITEMS_PER_PAGE_MANY / 3).to_i * 3)
 
