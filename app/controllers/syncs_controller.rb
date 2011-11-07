@@ -2,7 +2,7 @@
 require 'crack/xml'
 
 class SyncsController < ApplicationController
-    before_filter(:only => [:follow_yin11, ]) { |c| c.require_permission :normal_user }
+    #before_filter(:only => [:follow_yin11, ]) { |c| c.require_permission :normal_user }
 
     def new
         case params[:type]
@@ -10,14 +10,21 @@ class SyncsController < ApplicationController
              client = OauthChina::Sina.new
           when "douban"
              client = OauthChina::Douban.new
+          when "qq"
+             client = OauthChina::Qq.new
+          when "sohu"
+             client = OauthChina::Sohu.new
+          when "netease"
+             client = OauthChina::Netease.new
         end
+
         authorize_url = client.authorize_url
         Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
         redirect_to authorize_url
     end
 
     def callback
-      site_name_mapping = {"sina" => "Sina", "douban" => "Douban"}
+      site_name_mapping = {"sina" => "Sina", "douban" => "Douban", "qq" => "Qq", "sohu" => "Sohu", "netease" => "Netease" }
 
       site_name = site_name_mapping[params[:type]]
       client = eval("OauthChina::#{site_name}").load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
@@ -26,15 +33,18 @@ class SyncsController < ApplicationController
 
       case params[:type]
         when "sina"
-          xml = (client.access_token.get "/account/verify_credentials.xml").body
+          response = (client.access_token.get "/account/verify_credentials.xml").body
         when "douban"
-          #url = "http://api.douban.com/people/%40me"
-          #xml = client.access_token.request(:get, url).body
-
-          xml = (client.access_token.get "http://api.douban.com/people/%40me").body
+          response = (client.access_token.get "http://api.douban.com/people/%40me").body
+        when "qq"
+          response = (client.access_token.get "http://open.t.qq.com/api/user/info?format=xml").body
+        when "sohu"
+          response = (client.access_token.get "http://api.t.sohu.com/users/show.xml").body
+        when "netease"
+          response = (client.access_token.get "http://api.t.163.com/users/show.json").body
       end
 
-      user = sync_account(xml, client)
+      user = sync_account(response, client)
 
       if user.present?
         flash[:notice] = t("notices.welcome_back", :name => user.screen_name)
@@ -61,40 +71,49 @@ class SyncsController < ApplicationController
     end
 
     def extract_user_info(credentials, results)
-
-       case params[:type]
+      case params[:type]
         when "sina"
           user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user"]["id"])
-          if user.new_record?
-            user.provider = params[:type]
-            user.uid = credentials["user"]["id"]
-            user.login_name = credentials["user"]["screen_name"]
-            user.access_token = results[:access_token]
-            user.access_token_secret = results[:access_token_secret]
-            user.save!
-          end
+          user.uid = credentials["user"]["id"]
+          user.login_name = credentials["user"]["screen_name"]
 
         when "douban"
-           user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["entry"]["db:uid"])
-           if user.new_record?
-            user.provider = params[:type]
-            user.uid = credentials["entry"]["db:uid"]
-            user.login_name = credentials["entry"]["title"]
-            user.access_token = results[:access_token]
-            user.access_token_secret = results[:access_token_secret]
-            user.save!
-           end
+          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["entry"]["db:uid"])
+          user.uid = credentials["entry"]["db:uid"]
+          user.login_name = credentials["entry"]["title"]
+
+
+        when "qq"
+          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["root"]["data"]["name"])
+          user.uid = credentials["root"]["data"]["name"]
+          user.login_name = credentials["root"]["data"]["nick"]
+
+        when "sohu"
+          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user"]["id"])
+          user.uid = credentials["user"]["id"]
+          user.login_name = credentials["user"]["screen_name"]
+
+        when "netease"
+          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["id"])
+          user.uid = credentials["id"]
+          user.login_name = credentials["name"]
 
        end
+       user.provider = params[:type]
+       user.access_token = results[:access_token]
+       user.access_token_secret = results[:access_token_secret]
+       user.save! if user.new_record? || user.changed?
 
-
-
-      user
+       user
     end
 
-    def sync_account(xml, client)
+    def sync_account(response, client)
       results =  client.dump
-      credentials = Crack::XML.parse(xml)
+      credentials = Crack::XML.parse(response)
+      credentials = Crack::JSON.parse(response) if credentials.blank? # blanck = nil or " "
+      p "Credentials is a " + credentials.class.name
+      p credentials.to_yaml
+
       if results[:access_token] && results[:access_token_secret]
         user = extract_user_info(credentials, results)
 
