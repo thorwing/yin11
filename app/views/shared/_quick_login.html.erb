@@ -23,8 +23,11 @@
         </tr>
     </table>
     <div>
-        <%= link_to image_tag("third party/sina_weibo.png", :border => 0), "syncs/sina/new" %>
-        <%= link_to image_tag("third party/douban.png", :border => 0), "syncs/douban/new" %>
+        <%= link_to image_tag("third party/sina_weibo.png", :border => 0, :alt => t("syncs.sites.sina_blog")), "syncs/sina/new", :id => "login_via_sinablog" %>
+        <%= link_to image_tag("third party/douban.png", :border => 0, :alt => t("syncs.sites.douban")), "syncs/douban/new", :id => "login_via_douban" %>
+        <%= link_to image_tag("third party/qq_weibo.png", :border => 0, :alt => t("syncs.sites.qq_blog")), "syncs/qq/new", :id => "login_via_qqblog" %>
+        <%= link_to image_tag("third party/sohu_weibo.png", :border => 0, :alt => t("syncs.sites.sohu_blog")), "syncs/sohu/new", :id => "login_via_sohublog" %>
+        <%= link_to image_tag("third party/netease_weibo.png", :border => 0, :alt => t("syncs.sites.netease_blog")), "syncs/netease/new", :id => "login_via_neteaseblog" %>
     </div>
 
 <% end %>

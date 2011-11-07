@@ -1,0 +1,10 @@
+development:
+   key:    "801061810"
+   secret: "ea1115ff4903f26c91ae2617ef924944"
+   url:    "http://localhost:3000"
+   callback: "http://localhost:3000/syncs/qq/callback"
+production:
+   key:    "801061810"
+   secret: "ea1115ff4903f26c91ae2617ef924944"
+   url:    "http://www.yinkuaizi.com"
+   callback: "http://www.yinkuaizi.com/syncs/qq/callback"
