@@ -84,6 +84,11 @@ module SilverOauth
       self.access_token ||= ::OAuth::AccessToken.new(consumer, token)
     end
 
+    def authorize_renren(token)
+      return unless self.access_token.nil?
+      self.access_token ||= ::OAuth::AccessToken.new(consumer, token)
+    end
+
   end
 
 
@@ -93,4 +98,5 @@ module SilverOauth
   autoload :Sohu,           'silver_oauth/strategies/sohu'
   autoload :Netease,        'silver_oauth/strategies/netease'
   autoload :Taobao,         'silver_oauth/strategies/taobao'
+  autoload :Renren,         'silver_oauth/strategies/renren'
 end

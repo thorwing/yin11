@@ -17,7 +17,8 @@ class SyncsController < ApplicationController
            client = SilverOauth::Netease.new
         when "taobao"
            client = SilverOauth::Taobao.new
-
+        when "renren"
+           client = SilverOauth::Renren.new
         else
           raise "Not support such third-party login method"
       end
@@ -28,12 +29,13 @@ class SyncsController < ApplicationController
     end
 
     def callback
-      site_name_mapping = {"sina" => "Sina", "douban" => "Douban", "qq" => "Qq", "sohu" => "Sohu", "netease" => "Netease", "taobao" => "Taobao" }
+      site_name_mapping = {"sina" => "Sina", "douban" => "Douban", "qq" => "Qq", "sohu" => "Sohu", "netease" => "Netease", "taobao" => "Taobao", "renren" => "Renren" }
 
       site_name = site_name_mapping[params[:type]]
       client = eval("SilverOauth::#{site_name}").load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
 
-      if params[:type] == "taobao"
+      case params[:type]
+      when "taobao"
           p = {
             'grant_type' => 'authorization_code',
             'code' => params[:code],
@@ -59,6 +61,43 @@ class SyncsController < ApplicationController
           end
 
           client.authorize_taobao(@taobao_access_token)
+      when "renren"
+          p = {
+            'grant_type' => 'authorization_code',
+            'code' => params[:code],
+            'redirect_uri' => client.callback,
+            'client_id' => client.key,
+            'client_secret' => client.secret
+          }
+
+          #p   "@code:" + params[:code]
+
+            #use the returned "code" to retrieve the access_token
+          uri = URI.parse("https://graph.renren.com")
+          http = Net::HTTP.new(uri.host, uri.port)
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+          #request = Net::HTTP::Get.new(uri.request_uri)
+          response, data  = http.post('/oauth/token', convert_to_http_params(p))
+
+          @renren_access_token = Crack::JSON.parse(response.body)["access_token"]
+          client.authorize_renren(@renren_access_token)
+
+          #get session key
+          p = {
+            'oauth_token' => @renren_access_token
+             }
+
+          response, data  = http.post("https://graph.renren.com/renren_api/session_key" , convert_to_http_params(p))
+
+          p "session_key_content"
+          p  response.body.to_yaml
+
+          @renren_session_key = Crack::JSON.parse(response.body)["renren_token"]["session_key"]
+
+          p "@session_key"  + @session_key.to_yaml
+
       else
         client.authorize(:oauth_verifier => params[:oauth_verifier])
       end
@@ -80,7 +119,7 @@ class SyncsController < ApplicationController
           time = Time.now
           p = {
             :timestamp => time.strftime("%Y-%m-%d %H:%M:%S"),
-            :app_key => "12415656",
+            :app_key => client.key,
             :method => "taobao.user.get",
             :partner_id => "top-apitools",
             :format => "xml",
@@ -96,8 +135,36 @@ class SyncsController < ApplicationController
 
           uri = URI.parse("http://gw.api.taobao.com/router/rest?#{convert_to_http_params(p)}")
           response = (client.access_token.get uri.to_s).body
+
+        when "renren"
+            p = {
+            :v => "=1.0",
+            :api_key => "=" + client.key,
+            :method => "=users.getInfo",
+            :call_id => "=" + Time.now.tv_usec.to_s,
+            :session_key =>  "=" + @renren_session_key
+             }
+          @to_be_md5 = p.sort.flatten.join + client.secret
+          p "@to_be_md5"  + @to_be_md5
+          p[:sig] = "=" + ::Digest::MD5.hexdigest(@to_be_md5)#.upcase
+          p "p[:sig]:" + p[:sig]
+
+          #p[:sig] = ::Digest::MD5.hexdigest("api_key=ec9e57913c5b42b282ab7b743559e1b0call_id=1232095295656method=users.getLoggedInUsersession_key=L6Xe8dXVGISZ17LJy7GzZaeYGpeGfeNdqEPLNUtCJfxPCxCRLWT83x+s/Ur94PqP-700001044v=1.07fbf9791036749cb82e74efd62e9eb38")
+          #p "TRUE p[:sig]:" + p[:sig]
+
+          #response, data  = http.get("http://api.renren.com/restserver.do?" , convert_to_http_params(p))
+
+          uri = URI.parse("http://api.renren.com/restserver.do?#{p.inject([]){|memo, (key,value)| memo << "#{key.to_s}#{value.to_s}" }.join('&')}")
+          p "uri.to_s: "  + uri.to_s
+          response = (client.access_token.post uri.to_s).body
+
+         p "response:" + response.to_yaml
+
+
         else
           raise "Not support such third-party login method"
+
+
       end
 
       user = sync_account(response, client)
@@ -161,6 +228,14 @@ class SyncsController < ApplicationController
           user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user_get_response"]["user"]["uid"])
           user.uid = credentials["user_get_response"]["user"]["uid"]
           user.login_name = credentials["user_get_response"]["user"]["nick"]
+
+        when "renren"
+          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["users_getInfo_response"]["user"]["uid"])
+          user.uid = credentials["users_getInfo_response"]["user"]["uid"]
+          user.login_name = credentials["users_getInfo_response"]["user"]["name"]
+          p ":uid "+ credentials["users_getInfo_response"]["user"]["uid"]
+          p "login_name" + credentials["users_getInfo_response"]["user"]["name"]
+
         else
           raise "Not support such third-party login method"
       end
