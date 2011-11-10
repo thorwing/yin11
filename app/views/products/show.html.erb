@@ -72,6 +72,8 @@ Related articles:
     <%= render :partial => "review", :collection => @product.reviews, :as => :review %>
 </div>
 
-<div id="new_review_block">
-    <%= render "review_fields", :review => @product.reviews.new, :product => @product %>
-</div>
+<% if current_user_has_permission? :normal_user %>
+    <div id="new_review_block">
+        <%= render "review_fields", :review => @product.reviews.new, :product => @product %>
+    </div>
+<% end %>
