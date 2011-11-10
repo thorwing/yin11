@@ -17,6 +17,7 @@ zh-CN:
       douban: 豆瓣
       sohu_blog: 搜狐微博
       netease_blog: 网易微博
+      taobao: 淘宝
     access_failed: 第三方授权失败，请再试一下
     sync_to_sina: 同步到新浪微博
     follow_yin11_on_sina: 关注银筷子新浪微博
