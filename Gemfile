@@ -66,7 +66,6 @@ gem "mechanize"
 gem "spreadsheet"
 
 gem 'oauth'
-gem 'oauth_china'
 gem 'crack'
 
 #gem 'barista'

@@ -10,3 +10,11 @@ Feature: user can log in via 3rd party website
 
   Background:
     Given There are minimum seeds data
+
+  @javascript
+  Scenario: I login via douban
+    When I go to the home page
+    And I follow "login_via_douban"
+    Then show me the page
+    And I press "同意"
+
