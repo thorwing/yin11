@@ -75,11 +75,20 @@ module SilverOauth
     #QQ和新浪OAuth需要verifier参数，豆瓣不需要
     def authorize(options = {})
       return unless self.access_token.nil?
-      token = self.request_token.get_access_token(options)
-      self.access_token ||= ::OAuth::AccessToken.new(consumer, token.token, token.secret)
+      begin
+        token = self.request_token.get_access_token(options)
+        self.access_token ||= ::OAuth::AccessToken.new(consumer, token.token, token.secret)
+      rescue
+        return
+      end
     end
 
     def authorize_taobao(token)
+      return unless self.access_token.nil?
+      self.access_token ||= ::OAuth::AccessToken.new(consumer, token)
+    end
+
+    def authorize_renren(token)
       return unless self.access_token.nil?
       self.access_token ||= ::OAuth::AccessToken.new(consumer, token)
     end
@@ -93,4 +102,5 @@ module SilverOauth
   autoload :Sohu,           'silver_oauth/strategies/sohu'
   autoload :Netease,        'silver_oauth/strategies/netease'
   autoload :Taobao,         'silver_oauth/strategies/taobao'
+  autoload :Renren,         'silver_oauth/strategies/renren'
 end

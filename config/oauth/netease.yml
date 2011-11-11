@@ -1,6 +1,4 @@
 development:
-#   key:    "4e3d6e28f7038ac1412ee7da48096b6f"        access key
-#   secret: "a8972cb7883ae4e89da1a9476076fc1a"
    key:    "QWOIhesNvCa3nSbW"        #consumer key
    secret: "MFc6IVXnIXgV6Wh0ebdSsqGhyRJkNSKf"
    url:    "http://localhost:3000"
