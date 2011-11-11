@@ -70,8 +70,6 @@ class SyncsController < ApplicationController
             'client_secret' => client.secret
           }
 
-          #p   "@code:" + params[:code]
-
             #use the returned "code" to retrieve the access_token
           uri = URI.parse("https://graph.renren.com")
           http = Net::HTTP.new(uri.host, uri.port)
@@ -91,15 +89,12 @@ class SyncsController < ApplicationController
 
           response, data  = http.post("https://graph.renren.com/renren_api/session_key" , convert_to_http_params(p))
 
-          p "session_key_content"
-          p  response.body.to_yaml
-
           @renren_session_key = Crack::JSON.parse(response.body)["renren_token"]["session_key"]
 
-          p "@session_key"  + @session_key.to_yaml
+        else
 
-      else
-        client.authorize(:oauth_verifier => params[:oauth_verifier])
+          client.authorize(:oauth_verifier => params[:oauth_verifier])
+
       end
 
       Logger.new(STDOUT).info client.to_yaml
@@ -108,13 +103,21 @@ class SyncsController < ApplicationController
         when "sina"
           response = (client.access_token.get "/account/verify_credentials.xml").body
         when "douban"
-          response = (client.access_token.get "http://api.douban.com/people/%40me").body
+          if  client.access_token.nil?
+            p "user reject authorization"
+            redirect_to root_url
+            return
+          else
+            response = (client.access_token.get "http://api.douban.com/people/%40me").body
+          end
         when "qq"
           response = (client.access_token.get "http://open.t.qq.com/api/user/info?format=xml").body
         when "sohu"
           response = (client.access_token.get "http://api.t.sohu.com/users/show.xml").body
         when "netease"
-          response = Net::HTTP::Get.new("http://api.t.163.com/users/show.json").body
+          response = (client.access_token.get "http://api.t.163.com/users/show.json").body
+          p "netease_response: " + response.to_yaml
+
         when "taobao"
           time = Time.now
           p = {
@@ -145,21 +148,14 @@ class SyncsController < ApplicationController
             :session_key =>  "=" + @renren_session_key
              }
           @to_be_md5 = p.sort.flatten.join + client.secret
-          p "@to_be_md5"  + @to_be_md5
-          p[:sig] = "=" + ::Digest::MD5.hexdigest(@to_be_md5)#.upcase
-          p "p[:sig]:" + p[:sig]
+          #p "@to_be_md5"  + @to_be_md5
+          p[:sig] = "=" + ::Digest::MD5.hexdigest(@to_be_md5)
+          #p "p[:sig]:" + p[:sig]
 
-          #p[:sig] = ::Digest::MD5.hexdigest("api_key=ec9e57913c5b42b282ab7b743559e1b0call_id=1232095295656method=users.getLoggedInUsersession_key=L6Xe8dXVGISZ17LJy7GzZaeYGpeGfeNdqEPLNUtCJfxPCxCRLWT83x+s/Ur94PqP-700001044v=1.07fbf9791036749cb82e74efd62e9eb38")
-          #p "TRUE p[:sig]:" + p[:sig]
-
-          #response, data  = http.get("http://api.renren.com/restserver.do?" , convert_to_http_params(p))
 
           uri = URI.parse("http://api.renren.com/restserver.do?#{p.inject([]){|memo, (key,value)| memo << "#{key.to_s}#{value.to_s}" }.join('&')}")
-          p "uri.to_s: "  + uri.to_s
+          #p "uri.to_s: "  + uri.to_s
           response = (client.access_token.post uri.to_s).body
-
-         p "response:" + response.to_yaml
-
 
         else
           raise "Not support such third-party login method"
@@ -198,62 +194,66 @@ class SyncsController < ApplicationController
     end
 
     def extract_user_info(credentials, results)
-      case params[:type]
-        when "sina"
-          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user"]["id"])
-          user.uid = credentials["user"]["id"]
-          user.login_name = credentials["user"]["screen_name"]
+        case params[:type]
+          when "sina"
+            user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user"]["id"])
+            user.uid = credentials["user"]["id"]
+            user.login_name = credentials["user"]["screen_name"]
 
-        when "douban"
-          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["entry"]["db:uid"])
-          user.uid = credentials["entry"]["db:uid"]
-          user.login_name = credentials["entry"]["title"]
+          when "douban"
+            user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["entry"]["db:uid"])
+            user.uid = credentials["entry"]["db:uid"]
+            user.login_name = credentials["entry"]["title"]
 
-        when "qq"
-          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["root"]["data"]["name"])
-          user.uid = credentials["root"]["data"]["name"]
-          user.login_name = credentials["root"]["data"]["nick"]
+          when "qq"
+            user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["root"]["data"]["name"])
+            user.uid = credentials["root"]["data"]["name"]
+            user.login_name = credentials["root"]["data"]["nick"]
 
-        when "sohu"
-          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user"]["id"])
-          user.uid = credentials["user"]["id"]
-          user.login_name = credentials["user"]["screen_name"]
+          when "sohu"
+            user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user"]["id"])
+            user.uid = credentials["user"]["id"]
+            user.login_name = credentials["user"]["screen_name"]
 
-        when "netease"
-          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["id"])
-          user.uid = credentials["id"]
-          user.login_name = credentials["user_get_response"]["user"]["nick"]
+          when "netease"
+            user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["id"])
+            user.uid = credentials["id"]
+            user.login_name = credentials["name"]
 
-        when "taobao"
-          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user_get_response"]["user"]["uid"])
-          user.uid = credentials["user_get_response"]["user"]["uid"]
-          user.login_name = credentials["user_get_response"]["user"]["nick"]
+          when "taobao"
+            user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user_get_response"]["user"]["uid"])
+            user.uid = credentials["user_get_response"]["user"]["uid"]
+            user.login_name = credentials["user_get_response"]["user"]["nick"]
 
-        when "renren"
-          user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["users_getInfo_response"]["user"]["uid"])
-          user.uid = credentials["users_getInfo_response"]["user"]["uid"]
-          user.login_name = credentials["users_getInfo_response"]["user"]["name"]
-          p ":uid "+ credentials["users_getInfo_response"]["user"]["uid"]
-          p "login_name" + credentials["users_getInfo_response"]["user"]["name"]
+          when "renren"
+            user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["users_getInfo_response"]["user"]["uid"])
+            user.uid = credentials["users_getInfo_response"]["user"]["uid"]
+            user.login_name = credentials["users_getInfo_response"]["user"]["name"]
+            p "uid" + user.uid
+            p "login_name" + user.login_name
+          else
+            raise "Not support such third-party login method"
+        end
 
-        else
-          raise "Not support such third-party login method"
-      end
+         user.provider = params[:type]
+         user.access_token = results[:access_token]
+         user.access_token_secret = results[:access_token_secret]
 
-       user.provider = params[:type]
-       user.access_token = results[:access_token]
-       user.access_token_secret = results[:access_token_secret]
-       user.save! if user.new_record? || user.changed?
 
-       user
+         user.save! if user.new_record? || user.changed?
+
+
+
+         user
     end
 
     def sync_account(response, client)
+      #p "response: " + response.to_yaml
       results =  client.dump
       credentials = Crack::XML.parse(response)
       credentials = Crack::JSON.parse(response) if credentials.blank? # blanck = nil or " "
-      p "********************"
-      p credentials.to_yaml
+      #p "********************"
+      #p credentials.to_yaml
 
       if results[:access_token] && results[:access_token_secret]
         user = extract_user_info(credentials, results)
