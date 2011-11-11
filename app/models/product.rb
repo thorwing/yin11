@@ -8,6 +8,7 @@ class Product
 
   field :name
   field :price, :type => Float
+  #field :price
   field :weight, :type => Float
   field :producer
   field :area
@@ -30,10 +31,10 @@ class Product
   has_many :reviews
 
   #validators
-  validates_presence_of :name
-  validates_length_of :name, :maximum => 100
-  validates_presence_of :vendor
-  validates_numericality_of :editor_score, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100
+  #validates_presence_of :name
+  #validates_length_of :name, :maximum => 100
+  #validates_presence_of :vendor
+  #validates_numericality_of :editor_score, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100
 
   def price_as_money_string
     format('%.2f', price)

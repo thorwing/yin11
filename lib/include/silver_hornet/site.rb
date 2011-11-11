@@ -12,7 +12,7 @@ class SilverHornet::Site
     end
     self.count = 0
     #initiazlie the agent instance, it will be used through this site
-    self.agent = Mechanize.new
+    #self.agent = Mechanize.new
   end
 
   def log(msg)

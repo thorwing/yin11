@@ -1,62 +1,380 @@
-京东商城:
-#  skipped: true
-  entries:
-    ["http://search.360buy.com/Search?keyword=%D3%D0%BB%FA%CA%B3%C6%B7",
-    "http://search.360buy.com/Search?keyword=%C2%CC%C9%AB%CA%B3%C6%B7"]
-  elements:
-    listed_product: '#plist li'
-    product_name: '#name h1'
-    product_image: "#preview #spec-n1 img"
-#    product_price: '.price'
-    next_link: 'a.next'
-
-
 1号店:
-#  skipped: true
+  #skipped: true
   entries:
-    ["http://search.yihaodian.com/s/c0-k%25E6%259C%2589%25E6%259C%25BA%25E9%25A3%259F%25E5%2593%2581",
-    "http://search.yihaodian.com/s/c0-k%25E7%25BB%25BF%25E8%2589%25B2%25E9%25A3%259F%25E5%2593%2581"]
+    ["http://www.yihaodian.com/channel/channelPage.do?channelId=5135&merchant=1"]
   elements:
+    listed_first_catalog: '#sidebarleft h2'
+    listed_second_catalog: '#sidebarleft h2'
     listed_product: '#productcontent .producteg.fl'
     product_name: '#productMainName'
     product_image: "#productImg"
     product_price: '.productPriceSpan'
     product_weight: '#format'
-    next_link_css_selector: '.latestnewnextpage a'
+    #next_link_css_selector: '.latestnewnextpage a'
+    next_link_text: '下一页'
   comment_selectors:
     skip_comments: false
     listed_comment: ".evalist"
     comment_text: ".middleli div"
     next_commnet_css_selector: ".latestnewnextpage a"
 
-五谷磨房:
-#  skipped: true
-  entries:
-    ["http://www.iwugu.com/?gallery-57-grid.html",
-    "http://www.iwugu.com/?gallery-64-grid.html",
-    "http://www.iwugu.com/?gallery-80-grid.html",
-    "http://www.iwugu.com/?gallery-71-grid.html",
-    "http://www.iwugu.com/?gallery-117-grid.html"]
-  elements:
-    listed_product: 'div.items-gallery'
-    product_name: 'h1.goodsname'
-    product_image: "div.goods-detail-pic img"
-    product_price: '.goods-price .price1'
-    product_weight: '#goodsWeight'
-    next_link_css_selector: 'a.next'
-
 和乐康:
-#  skipped: true
+  #skipped: true
   entries:
-    ["http://www.helekang.com/category-12-m-b-c-k-min-max-extcode-----ShuCai.html",
-    "http://www.helekang.com/category-104-m-b-c-k-min-max-extcode-----ShuiGuoHOT!.html",
-    "http://www.helekang.com/category-26-m-b-c-k-min-max-extcode-----RouQinDanNaiDouZhiPin.html",
-    "http://www.helekang.com/category-77-m-b-c-k-min-max-extcode-----JinKouShiPin.html",
-    "http://www.helekang.com/category-226-m-b-c-k-min-max-extcode-----ShuiChanHaiXian.html"]
+    ["http://www.helekang.com/"]
   elements:
+    listed_first_catalog: '#cat_product h1'
+    listed_second_catalog: '.on li'
     listed_product: 'div.list_item'
     product_name: '#goods_info h1'
     product_image: '#img img.p_img'
     product_price: '#info .price'
     next_link_text: '下一页'
 
+中粮我买网(“组合产品”的页面比较特殊，该类商品暂时无法获取信息):
+  #skipped: true
+  entries:
+    ["http://www.womai.com/"]
+  elements:
+    listed_first_catalog: '#pro_list_menu dt'
+    listed_second_catalog: '.left_pro li'
+    listed_product: '.list_r2div'
+    product_name: '.detail_r1_title h1'
+    product_image: '.detail_r1limg img'
+    product_price: '.detail_r1p1 span'
+    #next_link_css_selector: 'a.downPage'
+    next_link_text: '下一页'
+
+e家人:
+  #skipped: true
+  entries:
+    ["http://www.ejr.cc/index.php?app=store&id=4084&act=search&cate_id=1224&cat=1&mbm=b"]
+  elements:
+    listed_first_catalog: '.cplb_x li'
+    listed_second_catalog: '.cplb_x li'
+    listed_product: '.yykc_t'
+    product_name: '.cp_name'
+    product_image: '.cp_nrlf img'
+    product_price: '.cp_nrrt span'
+    next_link_text: '下一页'
+
+有机坊:
+  #skipped: true
+  entries:
+    ["http://www.youjifang.com/"]
+  elements:
+    complex_list: true
+    listed_first_catalog: '#idSlideView3 div'
+    listed_product: '.GoodsBoxBig'
+    product_name: 'h1.f_l'
+    product_image: '.goodImg img'
+    product_price: '#ECS_SHOPPRICE'
+    next_link_text: '下一页'
+
+拉夫尔:
+  #skipped: true
+  entries:
+    ["http://lofir.com/"]
+  elements:
+    complex_list: true
+    listed_first_catalog: '.small'
+    listed_product: '.pro_tot'
+    product_name: '#ECS_FORMBUY p'
+    product_image: '#show_pic img'
+    product_price: '#ECS_SHOPPRICE'
+    next_link_text: '下一页'
+
+五谷磨房:
+  #skipped: true
+  entries:
+    ["http://www.iwugu.com/?gallery-57-grid.html"]
+  elements:
+#    listed_first_catalog: '.depth-1'
+#    listed_second_catalog: '.c-cat-depth-2 td'
+    complex_list: true
+    listed_first_catalog: '.c-cat-depth-2 td'
+    listed_product: 'div.items-gallery'
+    product_name: 'h1.goodsname'
+    product_image: "div.goods-detail-pic img"
+    product_price: '.goods-price .price1'
+    product_weight: '#goodsWeight'
+    next_link_text: '下一页'
+
+鑫鹏有机:
+  #skipped: true
+  entries:
+    ["http://www.36360302.com/category-6-b0.html"]
+  elements:
+    listed_first_catalog: '.catlist dd'
+    listed_product: '.list dt'
+    product_name: '#ECS_FORMBUY div'
+    product_image: ".imgInfo img"
+    product_price: '#ECS_RANKPRICE_1'
+    #product_weight: '#goodsWeight'
+    #next_link_css_selector: 'a.next'
+    next_link_text: '下一页'
+
+千腾网:
+  #skipped: true
+  entries:
+    ["http://www.specl.com/public/assort.shtml"]
+  elements:
+    listed_first_catalog: 'h4'
+    listed_second_catalog: '.cate-item ul li'
+    listed_product: '.goodsList li'
+    product_name: 'h1.name'
+    product_image: "#showPic img"
+    product_price: '.priceb b'
+    #product_weight: '#goodsWeight'
+    #next_link_css_selector: 'a.nextPage'
+    next_link_text: '下一页'
+
+利群网:
+  #skipped: true
+  entries:
+    ["http://www.liqunshop.com/special/foodSpecial.html"]
+  elements:
+    listed_first_catalog: '#left_menu_1 dt'
+    listed_second_catalog: '.size dd'
+    listed_product: '.link_1.name'
+    product_name: '.proinfo h1'
+    product_image: ".proimg img"
+    product_price: '#liqunprice'
+    #product_weight: '#goodsWeight'
+    next_link_text: '下一页'
+
+祐乐网:
+  #skipped: true
+  entries:
+    ["http://www.96188.com/"]
+  elements:
+    listed_first_catalog: '#CategoryList li'
+    listed_product: '.slist li'
+    product_name: '.p h2'
+    product_image: '.jqzoom img'
+    product_price: '#SPrice'
+    #product_weight: '#goodsWeight'
+    #next_link_css_selector: 'a.nextp'
+    next_link_text: '下一页'
+
+依谷网:
+  #skipped: true
+  entries:
+    ["http://www.egu365.com/index.jsp"]
+  elements:
+    listed_first_catalog: '.navlist dd'
+    listed_product: '.Plist_t1'
+    product_name: '.Pro_show_txt h1'
+    product_image: '.Pro_bigimg img'
+    product_price: '.Pro_show_dl b'
+    #product_weight: '#goodsWeight'
+    next_link_text: '下一页'
+    next_page_number_link: '.Pro_page'
+    fuck_page_number: 'true'
+
+12点零食网:
+  #skipped: true
+  entries:
+    ["http://www.12dian.com/"]
+  elements:
+    listed_first_catalog: '#navmenu li'
+    listed_product: '.productlist .gname'
+    product_name: 'h1.goodstitle'
+    product_image: '.goods-detail-pic img'
+    product_price: '.price1'
+    #product_weight: '#goodsWeight'
+    next_page_number_link: '.productlist .note'
+
+万千进口食品批发网:
+  #skipped: true
+  entries:
+    ["http://www.wwq.cc/index.php"]
+  elements:
+    listed_first_catalog: '.cagegoryCon dt'
+    listed_product: '.goodsbox'
+    product_name: 'h4.goodName'
+    product_image: '.goodsimgbox img'
+    product_price: '#ECS_SHOPPRICE'
+    #product_weight: '#goodsWeight'
+    #next_link_css_selector: 'a.next'
+    next_link_text: '下一页'
+
+大上海食品网:
+  #skipped: true
+  entries:
+    ["http://www.dshfood.com/index.asp"]
+  elements:
+    listed_first_catalog: '.tmain .imghui'
+    listed_second_catalog: '#gnfl h1'
+    listed_product: '.prod .prodtitle'
+    product_name: '#Label_ProductName'
+    product_image: '#zoom1 img'
+    product_price: '#Label_Price_Sale'
+    #product_weight: '#goodsWeight'
+    next_link_text: '下一页'
+
+思麦网:
+  #skipped: true
+  entries:
+    ["http://45mai.com/index.php"]
+  elements:
+    listed_first_catalog: '.my_left_category h2'
+    listed_product: '.goodsItem'
+    product_name: '#ECS_FORMBUY p'
+    product_image: '.imgInfo img'
+    product_price: '#ECS_SHOPPRICE'
+    #product_weight: '#goodsWeight'
+    #next_link_css_selector: 'a.next'
+    next_link_text: '下一页'
+
+洋酒网:
+  #skipped: true
+  entries:
+    ["http://www.yangjiuw.com/"]
+  elements:
+    listed_first_catalog: '.subnav li'
+    listed_product: '.right_center_top  li'
+    product_name: 'h5.right_list_title'
+    product_image: '#ifocus_piclist img'
+    product_price: '.pro_right_content strong'
+    next_link_text: '下一页'
+
+食品起义网:
+  #skipped: true
+  entries:
+    ["http://shenghuoqiyi.com/category.php?id=16"]
+  elements:
+    listed_first_catalog: '.cagegoryCon p'
+    listed_product: '.goodsbox .imgbox'
+    product_name: 'h4.goodName'
+    product_image: '#focuscont1 img'
+    product_price: '#ECS_SHOPPRICE'
+    next_link_text: '下一页'
+
+滴答猫网:
+  #skipped: true
+  entries:
+    ["http://www.didamall.com/"]
+  elements:
+    listed_first_catalog: '.item_list dt'
+    listed_second_catalog: '.mc h3'
+    listed_product: '.Prolist01'
+    product_name: '#Product_Name'
+    product_image: '#Product_BigImage img'
+    product_price: '#pagegoodsprice'
+    next_link_text: '下一页'
+
+山族365:
+  #skipped: true
+  entries:
+    ["http://www.shanzu365.com/"]
+  elements:
+    listed_first_catalog: '.nosub'
+    listed_product: '.items-gallery'
+    product_name: '.goodsname'
+    product_image: '.goods-detail-pic img'
+    product_price: '.price1'
+    next_link_text: '下一页'
+
+绿美客:
+  #skipped: true
+  entries:
+    ["http://www.gmark.cc/"]
+  elements:
+    listed_first_catalog: '#sidebar li'
+    listed_product: '.goods_list li'
+    product_name: 'h1.goods_name'
+    product_image: '.goods_img img'
+    product_price: '#ECS_RANKPRICE_1'
+    next_link_text: '下一页'
+
+京东商城(价格是图片，暂时无法获取):
+  #skipped: true
+  entries:
+    #["http://www.360buy.com/food.html"]
+    ["http://www.360buy.com/products/1320-5019-000.html",
+    "http://www.360buy.com/products/1320-1583-000.html",
+    "http://www.360buy.com/products/1320-1581-000.html",
+    "http://www.360buy.com/products/1320-1584-000.html",
+    "http://www.360buy.com/products/1320-1585-000.html",
+    "http://www.360buy.com/products/1320-1586-000.html",
+    "http://www.360buy.com/products/1320-1587-000.html",
+    "http://www.360buy.com/products/1320-1588-000.html"
+    ]
+  elements:
+    #listed_first_catalog: '#sortlist h3'
+    #listed_second_catalog: '#sortlist li'
+    listed_first_catalog: '#sortlist li'
+    listed_product: '#plist li'
+    product_name: '#name h1'
+    #product_price: '.price'
+    product_image: "#preview #spec-n1 img"
+    product_description: '#i-detail li'
+    #next_link_css_selector: 'a.next'
+    next_link_text: '下一页'
+
+
+联华网上超市(价格是图片，暂时无法获取):
+  #skipped: true
+  entries:
+    ["http://services.blemall.com/sch/at-00005202------------.html"]
+  #ban_words:
+  elements:
+    listed_first_catalog: '.sch_list li'
+    listed_product: '.sch_right_s'
+    product_name: '.title h1'
+    product_image: '#smallbox img'
+    #product_price: '.cp_nrrt span'
+    next_link_text: '下一页'
+
+Big problem(下一页点击有问题)中国零食网:
+  skipped: true
+  entries:
+    ["http://www.lingshi.com/ditu.htm"]
+  elements:
+    listed_first_catalog: '.main h2'
+    listed_product: '.b_pro .prod'
+    product_name: '#detail_bb h3'
+    product_image: '#zoom img'
+    product_price: '#shopprice'
+    #next_link_text: '下一页'
+
+Big problem（下一页点击有问题）来一份官网:
+  skipped: true
+  entries:
+    ["http://www.laiyifen.com/"]
+  elements:
+    listed_first_catalog: '.item h3'
+    listed_product: '#pdlsbox ul'
+    product_name: '#detrt h1'
+    product_image: '#detlt img'
+    product_price: '.oratext h3'
+    #next_link_text: '下一页'
+
+Big problem（无法点击下一页） 沃尔玛网上超市:
+  skipped: true
+  entries:
+    ["http://www.samsclub.cn/sams/shop/category.jsp?categoryId=1&navAction=jump"]
+  #ban_words:
+  #  ["¥25 以下","¥26 到 ¥50","¥26 到 ¥50","¥51 到 ¥100","¥101 到 ¥200","¥401 到 ¥500","¥501 到 ¥1000",]
+  elements:
+    listed_first_catalog: '.content li'
+    listed_second_catalog: '.content li'
+    listed_product: '.productNameInIndexPage'
+    product_name: 'h2.lgDarkBlueHeader'
+    product_image: '#plImageHolder img'
+    #product_price: '.cp_nrrt span'
+    next_link_css_selector: 'a.blueArrowNext'
+
+Big Problem(‘非食品类也被搜索’,'商品列表无法获取','地域配送问题')QQ网购:
+  skipped: true
+  entries:
+    ["http://buy.qq.com/chaoshi/"]
+  elements:
+    listed_first_catalog: '.cate_nav_bd dd'
+    listed_product: '#pdList li'
+    product_name: '.good_prop_part h1'
+    product_image: '.bigimg_wrap img'
+    product_price: '.price.price_now'
+    #product_weight: '#goodsWeight'
+    next_link_css_selector: 'a.page-next'
