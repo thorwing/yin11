@@ -25,6 +25,7 @@
 <div id="main">
   <div id="container">
     <div class="skinny">
+        <%= render "shared/quick_login"  %>
         <%= render "shared/top_menu" %>
         <div id="content_area" class="block">
             <%= content_tag(:h1, @content_for_title, :class => "title") if show_title?  %>

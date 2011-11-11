@@ -3,38 +3,36 @@ class ApplicationController < ActionController::Base
 
   helper :application, :layout, :validator, :external_link, :images
   include ApplicationHelper
-  before_filter :set_locale, :set_city
+  #before_filter :set_locale, :set_city
   helper_method :current_user, :current_city, :the_author_himself
 
   def current_user
     @current_user ||= User.of_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
 
-  def current_city
-    @current_city ||= City.find(cookies[:current_city]) if cookies[:current_city]
-  end
-
-  def current_city=(new_city)
-    @current_city = new_city
-    cookies.permanent[:current_city] = new_city.id
-  end
+  #def current_city
+  #  @current_city ||= City.find(cookies[:current_city]) if cookies[:current_city]
+  #end
+  #
+  #def current_city=(new_city)
+  #  @current_city = new_city
+  #  cookies.permanent[:current_city] = new_city.id
+  #end
 
   protected
-  def set_locale
-    I18n.locale = "zh-CN"
-    #I18n.locale = "en"
-  end
+  #def set_locale
+  #  I18n.locale = "zh-CN"
+  #  #I18n.locale = "en"
+  #end
 
-  def set_city
-    #should be set only once
-    unless cookies[:current_city]
-      #TODO
-      city = City.of_eng_name(request.location.city.upcase) if request.location.present?
-      #TODO
-      city ||= City.find(DEFAULT_CITY_CODE)
-      cookies.permanent[:current_city] = city.id if city
-    end
-  end
+  #def set_city
+  #  #should be set only once
+  #  unless cookies[:current_city]
+  #    city = City.of_eng_name(request.location.city.upcase) if request.location.present?
+  #    city ||= City.find(DEFAULT_CITY_CODE)
+  #    cookies.permanent[:current_city] = city.id if city
+  #  end
+  #end
 
   # redirect somewhere that will eventually return back to here
   def redirect_away(*params)

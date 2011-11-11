@@ -1,9 +1,14 @@
 <div class="block round">
-  <%= link_to topic.title, topic %>
+  <h2><%= link_to topic.title, topic %></h2>
   <hr/>
   <% get_recommended_products(topic).each do |product| %>
-    <div>
+    <div class="fl">
       <%= link_to product.name, product %><br/>
+      <% if product.image && product.image.image_url %>
+        <%= link_to image_tag( product.image.image_url, :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), product%>
+      <% else %>
+        <%= link_to image_tag( "default_article.jpg", :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT),  product%>
+      <% end %>
     </div>
   <% end %>
 </div>

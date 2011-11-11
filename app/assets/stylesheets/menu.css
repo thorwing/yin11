@@ -1,0 +1,13 @@
+.nav_menu {cursor:pointer; float:left; position:relative;
+    padding:0px;}
+.nav_menu a:hover, a.selected {color:#B0D730;}
+
+/* sub-menus*/
+.nav_menu ul { position:absolute; left:0px; top:0px; width:100px; line-height:16px;
+    z-index: 2000; /* for IE */ display:none; }
+.nav_menu:hover ul { display:block;}
+.nav_menu ul li{ display:block; margin:5px 0px; padding: 5px 0px;  border-top: dotted 1px #606060;
+    list-style-type:none; }
+.nav_menu ul li:first-child { border-top: none; }
+.nav_menu ul li a {  color:#0395CC; }
+.nav_menu ul li a:hover { color:#7FCDFE; }

@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
   include ApplicationHelper
-  layout "two_columns"
-  before_filter :get_items
 
   def index
     #TODO
@@ -53,34 +51,34 @@ class HomeController < ApplicationController
     end
   end
 
-  protected
-
-  def get_items
-    page_number = params[:page].present? ? params[:page] : 1
-    @items = []
-    if current_user
-      @items = FeedsManager.pull_feeds(current_user)
-    else
-      criteria = InfoItem.enabled
-
-      popular_items = criteria.desc(:votes).page(page_number).per(ITEMS_PER_PAGE_POPULAR)
-      topic_items = criteria.tagged_with(CacheManager.hot_tags).page(page_number).per(ITEMS_PER_PAGE_HOT)
-      recent_items = criteria.desc(:created_at, :reported_on).page(page_number).per(ITEMS_PER_PAGE_RECENT)
-
-      if current_user
-        user_ids = current_user.members_from_same_group
-        group_items = criteria.any_in(:author_id => user_ids).page(page_number).per(ITEMS_PER_PAGE_GROUP)
-      end
-
-      items = popular_items | topic_items | recent_items
-      items |= group_items if current_user
-
-      evaluator = EvaluationManager.new(current_user)
-      scored_items = items.inject([]) {|memo, e| memo << [evaluator.get_score_of_item(e), e]}
-
-      @items = scored_items.sort {|a,b| b[0]<=>a[0]}.inject([]){|memo, e| memo << e[1]}
-    end
-
-  end
+  #protected
+  #
+  #def get_items
+  #  page_number = params[:page].present? ? params[:page] : 1
+  #  @items = []
+  #  if current_user
+  #    @items = FeedsManager.pull_feeds(current_user)
+  #  else
+  #    criteria = InfoItem.enabled
+  #
+  #    popular_items = criteria.desc(:votes).page(page_number).per(ITEMS_PER_PAGE_POPULAR)
+  #    topic_items = criteria.tagged_with(CacheManager.hot_tags).page(page_number).per(ITEMS_PER_PAGE_HOT)
+  #    recent_items = criteria.desc(:created_at, :reported_on).page(page_number).per(ITEMS_PER_PAGE_RECENT)
+  #
+  #    if current_user
+  #      user_ids = current_user.members_from_same_group
+  #      group_items = criteria.any_in(:author_id => user_ids).page(page_number).per(ITEMS_PER_PAGE_GROUP)
+  #    end
+  #
+  #    items = popular_items | topic_items | recent_items
+  #    items |= group_items if current_user
+  #
+  #    evaluator = EvaluationManager.new(current_user)
+  #    scored_items = items.inject([]) {|memo, e| memo << [evaluator.get_score_of_item(e), e]}
+  #
+  #    @items = scored_items.sort {|a,b| b[0]<=>a[0]}.inject([]){|memo, e| memo << e[1]}
+  #  end
+  #
+  #end
 
 end
