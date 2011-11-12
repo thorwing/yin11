@@ -3,17 +3,24 @@ require 'crack/xml'
 
 class SilverHornet::TaobaoSpider
 
-  @@key ||= "12415656"
-  @@secret ||= "0ff2c329679310486b4b1b563f427cb8"
   @@product_count ||=0
-  #休闲小食，调味料，新鲜水果，大米，莲子 ,肉， 海鲜
-  @@parent_cid||=["50002766","50009821","50010566","50009837","50016820","50016810","50016771"]
+
+  def config
+    @config ||= lambda do
+      filename = "#{Rails.root}/config/silver_hornet/taobao_config.yml"
+      file = File.open(filename)
+      yaml = YAML.load(file)
+      return yaml
+    end.call
+    @config
+  end
 
   def fetch
+    config
     #initialize a hash
     catalog={}
     #get the all subcatalogs on taobao from parent_cid, and make them into the hash pairs
-    @@parent_cid.each { |parent_cid| catalog.merge!(fetch_catalog(parent_cid)) }
+    @config["parent_cid"].each { |parent_cid| catalog.merge!(fetch_catalog(parent_cid)) }
     #for each catalog, get the response xml file by posing a restful WS url, and then process the product on it
     catalog.each { |(key, value)| get_xml(1, 40, key, value) }
     #count the total product amount
@@ -27,7 +34,7 @@ class SilverHornet::TaobaoSpider
     #parameters of http request
     parameters = {
         :timestamp => time.strftime("%Y-%m-%d %H:%M:%S"),
-        :app_key => @@key,
+        :app_key => @config["key"],
         :method => "taobao.itemcats.get",
         :partner_id => "top-apitools",
         :format => "xml",
@@ -36,7 +43,7 @@ class SilverHornet::TaobaoSpider
         :v => "2.0",
         :parent_cid => parent_cid
     }
-    parameters[:sign] = ::Digest::MD5.hexdigest(@@secret + parameters.sort.flatten.join + @@secret).upcase
+    parameters[:sign] = ::Digest::MD5.hexdigest(@config["secret"] + parameters.sort.flatten.join + @config["secret"]).upcase
     #to replace the blank ' '
     parameters[:timestamp] = time.strftime("%Y-%m-%d+%H:%M:%S")
     #return the restful WS address
@@ -79,7 +86,7 @@ class SilverHornet::TaobaoSpider
     time = Time.now
     parameters = {
         :timestamp => time.strftime("%Y-%m-%d %H:%M:%S"),
-        :app_key => @@key,
+        :app_key => @config["key"],
         :method => "taobao.items.get",
         :partner_id => "top-apitools",
         :format => "xml",
@@ -92,7 +99,7 @@ class SilverHornet::TaobaoSpider
         :page_size => "#{p_size.to_s}",
         :page_no => "#{p_no.to_s}"
     }
-    parameters[:sign] = ::Digest::MD5.hexdigest(@@secret + parameters.sort.flatten.join + @@secret).upcase
+    parameters[:sign] = ::Digest::MD5.hexdigest(@config["secret"] + parameters.sort.flatten.join + @config["secret"]).upcase
     #to replace the blank ' '
     parameters[:timestamp] = time.strftime("%Y-%m-%d+%H:%M:%S")
     #return the restful WS address
@@ -122,14 +129,17 @@ class SilverHornet::TaobaoSpider
       end
 
       #get the price
-      product_price = prod["price"]
+      product.price = prod["price"]
+
+      #get the vendor name
+      product.vendor = Vendor.find_or_initialize_by(name: prod["nick"])
 
       #get the image
       pic_url = prod["pic_url"]
-      #if product.image.blank? || product.image.remote_image_url != pic_url
-      #  #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
-      #  pic = product.create_image(remote_image_url: pic_url)
-      #end
+      if product.image.blank? || product.image.remote_image_url != pic_url
+        #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
+        pic = product.create_image(remote_image_url: pic_url)
+      end
 
       #get the tag
       product.tags =[cat_name]
@@ -143,8 +153,8 @@ class SilverHornet::TaobaoSpider
           @@product_count+=1
           p "Insert #{product.name} of #{product.tags}"
         else
-          #somethings goes wrong
-          p "Invalid #{product.errors.join} of #{product.url}"
+          p "somethings goes wrong"
+          #p "Invalid #{product.errors.join} of #{product.url}"
         end
       else
         if product.changed?

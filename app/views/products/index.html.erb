@@ -3,7 +3,7 @@
 <% content_for :left_column do %>
     <div id="categories_list" class="block round">
       <%= link_to t("general.all"), products_path %><br/>
-      <%= nested_categories Category.all.arrange %>
+      <%= nested_categories Tag.categories.arrange %>
     </div>
 <% end %>
 

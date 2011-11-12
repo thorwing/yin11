@@ -10,6 +10,7 @@ Feature: modify topics
   Background:
     Given There are minimum seeds data
     And There are some sample topics
+    And There are some sample products
 
   Scenario Outline: 编辑，管理员可以添加专题
     When I log in as "<user>"

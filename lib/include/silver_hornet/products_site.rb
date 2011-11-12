@@ -156,11 +156,11 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   end
 
   def assign_category(product)
-    @categories ||= Category.all.to_a
+    @categories ||= Tag.categories
 
     #according to the product's name, try assigning a category for the product
     @categories.each do |c|
-      product.category = c if product.name.include?(c.name)
+      product.tags << c.name if product.name.include?(c.name)
     end
   end
 

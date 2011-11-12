@@ -1,37 +1,22 @@
 <% home_page %>
 <% meta_tag t("site.introduction") %>
 
-<% content_for :left_column do %>
-    <div>
-        <b class="trivial"><%= t("home.current_city") %></b><%= content_tag(:b, current_city.name, :id => "current_city_name") %>(<%= link_to t("home.change_city"), edit_current_city_locations_path(:popup => true), :rel => "facebox" %>)
-    </div>
-
-    <div id="info_panel">
-        <div id="recommended_products" class="block round">
-            <h2><%= t("home.recommended_products") %></h2>
-            <% @recommended_products.each do |product| %>
-                <div class="small_product">
-                    <%= render "products/small_product", :product => product %>
-                </div>
-            <% end %>
+<div id="recommended_products" class="block round">
+    <h2><%= t("home.recommended_products") %></h2>
+    <% @recommended_products.each do |product| %>
+        <div class="small_product">
+            <%= render "products/small_product", :product => product %>
         </div>
+    <% end %>
+</div>
 
-        <div id="product_stories">
-            <% @product_stories.each do |story| %>
-            <% end %>
-        </div>
-    </div> <!--end of info_items -->
-<% end %>
+<div id="hot_topics">
+    <% @hot_topics.each do |topic| %>
+        <%= render "topics/large_topic", :topic => topic %>
+    <% end %>
+</div>
 
-<% content_for :right_column do %>
-    <div id="control_panel">
-        <%= render "user_panel" %>
-        <%= render "watching_locations_panel" %>
-        <%= render "joined_groups_panel"  %>
-        <%= render "login_panel" %>
-        <%= render "tags_cloud" %>
-    </div> <!--end of control_panel -->
-<% end %>
+
 
 
 

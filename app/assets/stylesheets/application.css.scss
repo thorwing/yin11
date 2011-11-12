@@ -5,6 +5,7 @@
 *= require tag_cloud
 *= require comment
 *= require top_menu
+*= require menu
 *= require form
 *= require products
 *= require token-input-facebook
@@ -177,7 +178,7 @@ h1.title {
 */
 
 .skinny {
-    width:1000px;
+    width:90%;
 	margin:0 auto;
 	position:relative;
 }
@@ -243,3 +244,18 @@ body #main { height: auto; min-height: 100%; }
 	margin:0;
 	padding:0;
 }
+
+.clearfix:after {
+visibility: hidden;
+display: block;
+font-size: 0;
+content: " ";
+clear: both;
+height: 0;
+}
+.clearfix{*zoom:1;}
+
+.fl {float: left;}
+.fr {float: right;}
+
+.hor_stretch {width:100%; overflow:hidden;}

@@ -90,7 +90,7 @@ require "source"
   #  end
   #end
 
-  conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
+  conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/product_sites.yml")).result)
   conf.each do |site_name, values|
     begin
       vendor = Vendor.create!(:name => site_name)
@@ -124,7 +124,7 @@ require "source"
   p "generating categories"
   categories = YAML::load(File.open("app/seeds/categories.yml"))
   categories.each do |name, children|
-    parent = Category.create!(:name => name)
+    parent = Tag.create!(:name => name, :is_category => true)
     if children.present? && children.is_a?(Array)
       generate_categories(parent, children)
     end

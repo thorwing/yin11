@@ -2,7 +2,6 @@
     <%= link_to image_tag("yin11_logo.png", :border => 0, :width => 211, :height => 76), root_path if false %>
     <h1><%= t("site.name") %></h1>
     <h2><%= t("site.description") %></h2>
-    <small><%= t("site.saying") %></small>
 </div>
 
 <ul id="top_menu">
@@ -22,41 +21,19 @@
         </li>
     <% end %>
     <li><%= render_menu(t("menu.articles"), articles_path) %></li>
+    <li><%= render_menu(t("menu.topics"), topics_path) %></li>
     <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
     <li><%= render_menu(t("menu.products"), products_path) %></li>
-    <li><%= render_menu(t("menu.vendors"), vendors_path) %>
-        <ul>
-            <li><% first_sub_menu(link_to t("vendors.new"), new_vendor_path) %></li>
-            <li class="last"><% last_sub_menu %></li>
-        </ul>
-    </li>
-    <li><%= render_menu(t("menu.groups"), groups_path) %>
-        <ul>
-            <li><% first_sub_menu(link_to t("groups.new"), new_group_path) %></li>
-            <li class="last"><% last_sub_menu %></li>
-        </ul>
-    </li>
-    <% if current_user %>
-         <li><b><%= render_menu(current_user.screen_name, profile_path(current_user.profile)) %></b>
-            <ul>
-                <li><% first_sub_menu(render_menu(t("menu.edit_profile"), edit_profile_path(current_user.profile))) %></li>
-                <li><%= render_menu(t("menu.logout"), logout_path) %></li>
-                <li class="last"><% last_sub_menu %></li>
-            </ul>
-        </li>
-    <% elsif hide_quick_auth? %>
-        <li><%= link_to t("authentication.sign_up"), sign_up_path %>
-        <li><%= link_to t("authentication.login"), login_path %>
-    <% end %>
+    <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
+    <li><%= render_menu(t("menu.groups"), groups_path) %></li>
     <li>
-      <div id="search_frame">
+      <div id="search_frame" >
         <%= form_tag '/search', :method => :get do %>
             <%= text_field_tag :query, @default_query, :class => "clear_default not_cleared" %>
             <%= submit_tag t("general.search") %>
         <% end %>
       </div>
     </li>
+    <%= image_tag "top_menu/menu_right.png"%>
 </ul>
-
-<%= image_tag "top_menu/menu_right.png", :id => "top_menu_right" %>
 

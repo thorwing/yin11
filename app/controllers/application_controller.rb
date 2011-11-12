@@ -3,38 +3,36 @@ class ApplicationController < ActionController::Base
 
   helper :application, :layout, :validator, :external_link, :images
   include ApplicationHelper
-  before_filter :set_locale, :set_city
+  #before_filter :set_locale, :set_city
   helper_method :current_user, :current_city, :the_author_himself
 
   def current_user
     @current_user ||= User.of_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
 
-  def current_city
-    @current_city ||= City.find(cookies[:current_city]) if cookies[:current_city]
-  end
-
-  def current_city=(new_city)
-    @current_city = new_city
-    cookies.permanent[:current_city] = new_city.id
-  end
+  #def current_city
+  #  @current_city ||= City.find(cookies[:current_city]) if cookies[:current_city]
+  #end
+  #
+  #def current_city=(new_city)
+  #  @current_city = new_city
+  #  cookies.permanent[:current_city] = new_city.id
+  #end
 
   protected
-  def set_locale
-    I18n.locale = "zh-CN"
-    #I18n.locale = "en"
-  end
+  #def set_locale
+  #  I18n.locale = "zh-CN"
+  #  #I18n.locale = "en"
+  #end
 
-  def set_city
-    #should be set only once
-    unless cookies[:current_city]
-      #TODO
-      city = City.of_eng_name(request.location.city.upcase) if request.location.present?
-      #TODO
-      city ||= City.find(DEFAULT_CITY_CODE)
-      cookies.permanent[:current_city] = city.id if city
-    end
-  end
+  #def set_city
+  #  #should be set only once
+  #  unless cookies[:current_city]
+  #    city = City.of_eng_name(request.location.city.upcase) if request.location.present?
+  #    city ||= City.find(DEFAULT_CITY_CODE)
+  #    cookies.permanent[:current_city] = city.id if city
+  #  end
+  #end
 
   # redirect somewhere that will eventually return back to here
   def redirect_away(*params)
@@ -98,23 +96,23 @@ class ApplicationController < ActionController::Base
   #   }
   # end
 
-  def self.rescue_errors
-    rescue_from Exception,                            :with => :render_error
-    rescue_from RuntimeError,                         :with => :render_error
-    rescue_from Mongoid::Errors::DocumentNotFound,    :with => :render_not_found
-    rescue_from ActionController::RoutingError,       :with => :render_not_found
-    rescue_from ActionController::UnknownController,  :with => :render_not_found
-    rescue_from ActionController::UnknownAction,      :with => :render_not_found
-  end
-  #TODO
-  rescue_errors unless (Rails.env.development? || Rails.env.test?)
-
-  def render_not_found(exception = nil)
-     render :template => "errors/404", :status => 404 #, :layout => 'public'
-  end
-
-  def render_error(exception = nil)
-    render :template => "errors/500", :status => 500 #, :layout => 'public'
-  end
+  #def self.rescue_errors
+  #  rescue_from Exception,                            :with => :render_error
+  #  rescue_from RuntimeError,                         :with => :render_error
+  #  rescue_from Mongoid::Errors::DocumentNotFound,    :with => :render_not_found
+  #  rescue_from ActionController::RoutingError,       :with => :render_not_found
+  #  rescue_from ActionController::UnknownController,  :with => :render_not_found
+  #  rescue_from ActionController::UnknownAction,      :with => :render_not_found
+  #end
+  ##TODO
+  #rescue_errors unless (Rails.env.development? || Rails.env.test?)
+  #
+  #def render_not_found(exception = nil)
+  #   render :template => "errors/404", :status => 404 #, :layout => 'public'
+  #end
+  #
+  #def render_error(exception = nil)
+  #  render :template => "errors/500", :status => 500 #, :layout => 'public'
+  #end
 
 end

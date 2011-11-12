@@ -1,36 +1,25 @@
-<%= form_tag sessions_path do %>
-    <table>
-        <tr>
-            <th/>
-            <th/>
-        </tr>
-        <tr>
-            <td><%= label_tag t("authentication.email") %></td>
-            <td><%= email_field_tag :email, params[:email] %></td>
-        </tr>
-        <tr>
-            <td><%= label_tag t("authentication.password") %></td>
-            <td><%= password_field_tag :password %></td>
-        </tr>
-        <tr>
-            <td><%= check_box_tag "remember_me", 1, true %><%= t("authentication.remember_me") %></td>
-        </tr>
-        <tr>
-            <td><%= submit_tag t("authentication.login"), :class => "button" %></td>
-        </tr>
-        <tr>
-            <td><%= link_to t("authentication.sign_up"), sign_up_path %> | <%= link_to t("authentication.forgot_password"), new_password_reset_path %></td>
-        </tr>
-    </table>
-    <div>
-        <%= link_to image_tag("third party/sina_weibo.png", :border => 0, :alt => t("syncs.sites.sina_blog")), "syncs/sina/new", :id => "login_via_sinablog" %>
-        <%= link_to image_tag("third party/douban.png", :border => 0, :alt => t("syncs.sites.douban")), "syncs/douban/new", :id => "login_via_douban" %>
-        <%= link_to image_tag("third party/qq_weibo.png", :border => 0, :alt => t("syncs.sites.qq_blog")), "syncs/qq/new", :id => "login_via_qqblog" %>
-        <%= link_to image_tag("third party/sohu_weibo.png", :border => 0, :alt => t("syncs.sites.sohu_blog")), "syncs/sohu/new", :id => "login_via_sohublog" %>
-        <%= link_to image_tag("third party/renren.png",:border => 0, :alt => t("syncs.sites.renren")), "syncs/renren/new", :id => "login_via_renren" %>
-        <%= link_to "netease" ,"syncs/netease/new", :id => "login_via_neteaseblog" %>
-        <%= link_to "taobao", "syncs/taobao/new", :id => "login_via_taobao" %>
+<div class="clearfix">
+  <div class="fr">
+      <% if current_user %>
+        <div class="nav_menu">
+            <%= link_to(current_user.screen_name, profile_path(current_user.profile), :class => "menu") %>
+            <ul class="sub_menu">
+                <li><%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %></li>
+                <li><%= link_to t("menu.logout"), logout_path %></li>
+            </ul>
+        </div>
+      <% else %>
+        <%= link_to image_tag("third_party/sina_weibo.png", :border => 0, :alt => t("syncs.sites.sina_blog")), "syncs/sina/new", :id => "login_via_sinablog" %>
+        <%= link_to image_tag("third_party/qq_weibo.png", :border => 0, :alt => t("syncs.sites.qq_blog")), "syncs/qq/new", :id => "login_via_qqblog" %>
+        <%= link_to image_tag("third_party/douban.png", :border => 0, :alt => t("syncs.sites.douban")), "syncs/douban/new", :id => "login_via_douban" %>
+        <%= link_to t("syncs.sites.sohu_blog"), "syncs/sohu/new", :id => "login_via_sohublog" %>
+        <%= link_to t("syncs.sites.netease_blog"), "syncs/netease/new", :id => "login_via_neteaseblog" %>
+        <%= link_to t("syncs.sites.taobao"), "syncs/taobao/new", :id => "login_via_taobao" %>
+      <% end %>
 
-    </div>
-
-<% end %>
+      <% unless hide_quick_auth? %>
+        <%= link_to t("authentication.sign_up"), sign_up_path %>
+        <%= link_to t("authentication.login"), login_path %>
+      <% end %>
+  </div>
+</div>

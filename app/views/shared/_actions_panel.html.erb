@@ -1,0 +1,18 @@
+<% if current_user %>
+    <div id="actions_panel" class="panel">
+
+        <b><%= link_to current_user.screen_name, profile_path(current_user) %></b><br/>
+        <%= link_to image_tag(current_user.get_avatar, :border => 0, :class => "avatar"), profile_path(current_user) %><br/>
+
+        <p class="actions">
+            <b><%= t("control_panel.actions") %></b><br/>
+            <%= link_to t("reviews.new"), new_review_path, :class => "button" %>
+            <%= link_to t("topics.new"), new_topic_path, :class => "button" if current_user_has_permission?(:editor) %>
+            <%= link_to t("articles.new"), new_article_path, :class => "button" if current_user_has_permission?(:editor) %>
+            <%= link_to t("vendors.browse"), vendors_path, :class => "button" %>
+        </p>
+        <p class="actions">
+            <%= new_tab_link_to image_tag("sina_small.png") + t("syncs.follow_yin11_on_sina"), YIN11_SINA_WEIBO %>
+        </p>
+    </div>
+<% end %>

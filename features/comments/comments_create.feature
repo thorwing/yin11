@@ -12,7 +12,7 @@ Feature: create comment
     And There are some sample articles
     And There are some sample reviews
 
-  Scenario Outline: 注册用户，编辑，管理员额可以对文章，测评，产品添加评论
+  Scenario Outline: 注册用户，编辑，管理员额可以对文章，测评添加评论
     When I log in as "<user>"
     And I go to the <index> page
     And I follow "<item>"

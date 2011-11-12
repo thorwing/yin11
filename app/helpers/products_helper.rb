@@ -14,9 +14,9 @@ module ProductsHelper
   end
 
   def get_categories_for_select
-    Category.all.map do |c|
+    Tag.categories.map do |c|
       category_name = c.parent ? "--" + c.name : c.name
-      [category_name, c.id]
+      [category_name, c.name]
     end
   end
 end

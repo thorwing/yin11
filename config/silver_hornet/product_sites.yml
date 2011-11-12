@@ -3,8 +3,8 @@
   entries:
     ["http://www.yihaodian.com/channel/channelPage.do?channelId=5135&merchant=1"]
   elements:
-    listed_first_catalog: '#sidebarleft h2'
-    listed_second_catalog: '#sidebarleft h2'
+    listed_first_catalog: '#sidebarleft h2 a'
+    listed_second_catalog: '#sidebarleft h2 a'
     listed_product: '#productcontent .producteg.fl'
     product_name: '#productMainName'
     product_image: "#productImg"
@@ -23,8 +23,8 @@
   entries:
     ["http://www.helekang.com/"]
   elements:
-    listed_first_catalog: '#cat_product h1'
-    listed_second_catalog: '.on li'
+    listed_first_catalog: '#cat_product h1 a'
+    listed_second_catalog: '.on li a'
     listed_product: 'div.list_item'
     product_name: '#goods_info h1'
     product_image: '#img img.p_img'
@@ -36,8 +36,8 @@
   entries:
     ["http://www.womai.com/"]
   elements:
-    listed_first_catalog: '#pro_list_menu dt'
-    listed_second_catalog: '.left_pro li'
+    listed_first_catalog: '#pro_list_menu dt a'
+    listed_second_catalog: '.left_pro li a'
     listed_product: '.list_r2div'
     product_name: '.detail_r1_title h1'
     product_image: '.detail_r1limg img'
@@ -50,8 +50,8 @@ e家人:
   entries:
     ["http://www.ejr.cc/index.php?app=store&id=4084&act=search&cate_id=1224&cat=1&mbm=b"]
   elements:
-    listed_first_catalog: '.cplb_x li'
-    listed_second_catalog: '.cplb_x li'
+    listed_first_catalog: '.cplb_x li a'
+    listed_second_catalog: '.cplb_x li a'
     listed_product: '.yykc_t'
     product_name: '.cp_name'
     product_image: '.cp_nrlf img'
@@ -63,8 +63,8 @@ e家人:
   entries:
     ["http://www.youjifang.com/"]
   elements:
-    complex_list: true
-    listed_first_catalog: '#idSlideView3 div'
+    #complex_list: true
+    listed_first_catalog: '#idSlideView3 div a'
     listed_product: '.GoodsBoxBig'
     product_name: 'h1.f_l'
     product_image: '.goodImg img'
@@ -76,8 +76,8 @@ e家人:
   entries:
     ["http://lofir.com/"]
   elements:
-    complex_list: true
-    listed_first_catalog: '.small'
+    #complex_list: true
+    listed_first_catalog: '#HotClassTree .small a'
     listed_product: '.pro_tot'
     product_name: '#ECS_FORMBUY p'
     product_image: '#show_pic img'
@@ -91,8 +91,8 @@ e家人:
   elements:
 #    listed_first_catalog: '.depth-1'
 #    listed_second_catalog: '.c-cat-depth-2 td'
-    complex_list: true
-    listed_first_catalog: '.c-cat-depth-2 td'
+    #complex_list: true
+    listed_first_catalog: '.c-cat-depth-2 td a'
     listed_product: 'div.items-gallery'
     product_name: 'h1.goodsname'
     product_image: "div.goods-detail-pic img"
@@ -105,7 +105,7 @@ e家人:
   entries:
     ["http://www.36360302.com/category-6-b0.html"]
   elements:
-    listed_first_catalog: '.catlist dd'
+    listed_first_catalog: '.catlist dd a'
     listed_product: '.list dt'
     product_name: '#ECS_FORMBUY div'
     product_image: ".imgInfo img"
@@ -119,8 +119,8 @@ e家人:
   entries:
     ["http://www.specl.com/public/assort.shtml"]
   elements:
-    listed_first_catalog: 'h4'
-    listed_second_catalog: '.cate-item ul li'
+    listed_first_catalog: 'h4 a'
+    listed_second_catalog: '.cate-item ul li a'
     listed_product: '.goodsList li'
     product_name: 'h1.name'
     product_image: "#showPic img"
@@ -134,8 +134,8 @@ e家人:
   entries:
     ["http://www.liqunshop.com/special/foodSpecial.html"]
   elements:
-    listed_first_catalog: '#left_menu_1 dt'
-    listed_second_catalog: '.size dd'
+    listed_first_catalog: '#left_menu_1 dt a'
+    listed_second_catalog: '.size dd a'
     listed_product: '.link_1.name'
     product_name: '.proinfo h1'
     product_image: ".proimg img"
@@ -148,7 +148,7 @@ e家人:
   entries:
     ["http://www.96188.com/"]
   elements:
-    listed_first_catalog: '#CategoryList li'
+    listed_first_catalog: '#CategoryList li a'
     listed_product: '.slist li'
     product_name: '.p h2'
     product_image: '.jqzoom img'
@@ -162,7 +162,7 @@ e家人:
   entries:
     ["http://www.egu365.com/index.jsp"]
   elements:
-    listed_first_catalog: '.navlist dd'
+    listed_first_catalog: '.navlist dd a'
     listed_product: '.Plist_t1'
     product_name: '.Pro_show_txt h1'
     product_image: '.Pro_bigimg img'
@@ -177,7 +177,7 @@ e家人:
   entries:
     ["http://www.12dian.com/"]
   elements:
-    listed_first_catalog: '#navmenu li'
+    listed_first_catalog: '#navmenu li a'
     listed_product: '.productlist .gname'
     product_name: 'h1.goodstitle'
     product_image: '.goods-detail-pic img'
@@ -190,7 +190,7 @@ e家人:
   entries:
     ["http://www.wwq.cc/index.php"]
   elements:
-    listed_first_catalog: '.cagegoryCon dt'
+    listed_first_catalog: '.cagegoryCon dt a'
     listed_product: '.goodsbox'
     product_name: 'h4.goodName'
     product_image: '.goodsimgbox img'
@@ -204,8 +204,8 @@ e家人:
   entries:
     ["http://www.dshfood.com/index.asp"]
   elements:
-    listed_first_catalog: '.tmain .imghui'
-    listed_second_catalog: '#gnfl h1'
+    listed_first_catalog: '.tmain .imghui a'
+    listed_second_catalog: '#gnfl h1 a'
     listed_product: '.prod .prodtitle'
     product_name: '#Label_ProductName'
     product_image: '#zoom1 img'
@@ -218,7 +218,7 @@ e家人:
   entries:
     ["http://45mai.com/index.php"]
   elements:
-    listed_first_catalog: '.my_left_category h2'
+    listed_first_catalog: '.my_left_category h2 a'
     listed_product: '.goodsItem'
     product_name: '#ECS_FORMBUY p'
     product_image: '.imgInfo img'
@@ -232,7 +232,7 @@ e家人:
   entries:
     ["http://www.yangjiuw.com/"]
   elements:
-    listed_first_catalog: '.subnav li'
+    listed_first_catalog: '.subnav li a'
     listed_product: '.right_center_top  li'
     product_name: 'h5.right_list_title'
     product_image: '#ifocus_piclist img'
@@ -244,7 +244,7 @@ e家人:
   entries:
     ["http://shenghuoqiyi.com/category.php?id=16"]
   elements:
-    listed_first_catalog: '.cagegoryCon p'
+    listed_first_catalog: '.cagegoryCon p a'
     listed_product: '.goodsbox .imgbox'
     product_name: 'h4.goodName'
     product_image: '#focuscont1 img'
@@ -256,8 +256,8 @@ e家人:
   entries:
     ["http://www.didamall.com/"]
   elements:
-    listed_first_catalog: '.item_list dt'
-    listed_second_catalog: '.mc h3'
+    listed_first_catalog: '.item_list dt a'
+    listed_second_catalog: '.mc h3 a'
     listed_product: '.Prolist01'
     product_name: '#Product_Name'
     product_image: '#Product_BigImage img'
@@ -269,7 +269,7 @@ e家人:
   entries:
     ["http://www.shanzu365.com/"]
   elements:
-    listed_first_catalog: '.nosub'
+    listed_first_catalog: '.nosub a'
     listed_product: '.items-gallery'
     product_name: '.goodsname'
     product_image: '.goods-detail-pic img'
@@ -281,7 +281,7 @@ e家人:
   entries:
     ["http://www.gmark.cc/"]
   elements:
-    listed_first_catalog: '#sidebar li'
+    listed_first_catalog: '#sidebar li a'
     listed_product: '.goods_list li'
     product_name: 'h1.goods_name'
     product_image: '.goods_img img'
@@ -289,7 +289,7 @@ e家人:
     next_link_text: '下一页'
 
 京东商城(价格是图片，暂时无法获取):
-  #skipped: true
+  skipped: true
   entries:
     #["http://www.360buy.com/food.html"]
     ["http://www.360buy.com/products/1320-5019-000.html",
@@ -304,7 +304,7 @@ e家人:
   elements:
     #listed_first_catalog: '#sortlist h3'
     #listed_second_catalog: '#sortlist li'
-    listed_first_catalog: '#sortlist li'
+    listed_first_catalog: '#sortlist li a'
     listed_product: '#plist li'
     product_name: '#name h1'
     #product_price: '.price'
@@ -315,12 +315,12 @@ e家人:
 
 
 联华网上超市(价格是图片，暂时无法获取):
-  #skipped: true
+  skipped: true
   entries:
     ["http://services.blemall.com/sch/at-00005202------------.html"]
   #ban_words:
   elements:
-    listed_first_catalog: '.sch_list li'
+    listed_first_catalog: '.sch_list li a'
     listed_product: '.sch_right_s'
     product_name: '.title h1'
     product_image: '#smallbox img'

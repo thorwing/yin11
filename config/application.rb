@@ -48,7 +48,6 @@ module Yin11
     #config.i18n.default_locale = "zh-CN"
     config.i18n.default_locale = "en"
 
-
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 

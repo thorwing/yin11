@@ -14,10 +14,8 @@
 	Top-Menu-Styles
 */
 
-#top_menu_right {float: left;}
-
 #top_menu{ margin:0; padding:0; list-style:none; color:#fff; line-height:45px; display:inline-block;
-    float:left; }
+    float:left; overflow: hidden;}
 #top_menu a { font-size: 14px; color:#fff; text-decoration:none; }
 #top_menu > li {background:#172322 none repeat scroll 0 0; cursor:pointer; float:left; position:relative;
     padding:0 10px;}
