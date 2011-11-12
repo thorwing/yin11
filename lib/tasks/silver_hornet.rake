@@ -22,4 +22,9 @@ namespace :silver_hornet do
     config.sites.each {|site| site.fetch}
   end
 
+  desc "fetch products from taobao mall"
+  task :fetch_taobao => :environment do
+    SilverHornet::TaobaoSpider.new.fetch
+  end
+
 end

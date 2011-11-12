@@ -1,0 +1,9 @@
+development:
+   key:    "QWOIhesNvCa3nSbW"        #consumer key
+   secret: "MFc6IVXnIXgV6Wh0ebdSsqGhyRJkNSKf"
+   url:    "http://localhost:3000"
+   callback: "http://localhost:3000/syncs/netease/callback"
+production:
+
+   url:    "http://www.yinkuaizi.com"
+   callback: "http://www.yinkuaizi.com/syncs/netease/callback"

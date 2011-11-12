@@ -4,7 +4,7 @@ class SyncsManager
   end
 
   def sync(review)
-    client = OauthChina::Sina.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
+    client = SilverOauth::Sina.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
     #client.add_status("同步到新浪微薄..")
     url = "http://api.t.sina.com.cn/statuses/update.xml"
     message = [review.title, review.content].join(": ")
@@ -13,7 +13,7 @@ class SyncsManager
   end
 
   def following_yin11?
-    client = OauthChina::Sina.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
+    client = SilverOauth::Sina.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
     xml = (client.access_token.get "/friendships/show.xml?target_id=#{YIN11_SINA_WEIBO_ID}").body
     results = Crack::XML.parse(xml)
     #Logger.new(STDOUT).info results.to_yaml

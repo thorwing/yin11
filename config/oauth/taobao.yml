@@ -1,0 +1,10 @@
+development:
+   key:    "12415656"
+   secret: "0ff2c329679310486b4b1b563f427cb8"
+   url:    "http://www.yinkuaizi.com:"
+   callback: "http://www.yinkuaizi.com:/syncs/taobao/callback"
+production:
+   key:    "12415656"
+   secret: "0ff2c329679310486b4b1b563f427cb8"
+   url:    "http://www.yinkuaizi.com"
+   callback: "http://www.yinkuaizi.com/syncs/taobao/callback"

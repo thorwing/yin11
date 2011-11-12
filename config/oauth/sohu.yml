@@ -1,0 +1,10 @@
+development:
+   key:    "DqpKsPjS4BLWXXVmAYVf"              #consumer_key
+   secret: "vKbwV$t=KdOfZ2NEU^TQe5vd9-jB!wFPl2y4tOY*"      #consumer_key_secret
+   url:    "http://localhost:3000"
+   callback: "http://localhost:3000/syncs/sohu/callback"
+production:
+   key:    "DqpKsPjS4BLWXXVmAYVf"              #consumer_key
+   secret: "vKbwV$t=KdOfZ2NEU^TQe5vd9-jB!wFPl2y4tOY*"      #consumer_key_secret
+   url:    "http://www.yinkuaizi.com"
+   callback: "http://www.yinkuaizi.com/syncs/sohu/callback"

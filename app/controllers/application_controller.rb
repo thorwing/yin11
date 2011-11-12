@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   protected
   def set_locale
     I18n.locale = "zh-CN"
+    #I18n.locale = "en"
   end
 
   def set_city
