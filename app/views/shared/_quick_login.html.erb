@@ -31,8 +31,10 @@
       <% end %>
 
       <% unless hide_quick_auth? %>
-        <%= link_to t("authentication.sign_up"), sign_up_path %>
-        <%= link_to t("authentication.login"), login_path %>
+        <span class ="login_logout">
+            <%= link_to t("authentication.sign_up"), sign_up_path %>
+            <%= link_to t("authentication.login"), login_path %>
+        </span>
       <% end %>
   </div>
 </div>
