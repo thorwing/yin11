@@ -40,6 +40,12 @@ class Product
     format('%.2f', price)
   end
 
-  protected
+  def get_image()
+    if self.image && self.image.image_url
+      self.image.image_url
+    else
+      "default_article.jpg"
+    end
+  end
 
 end
