@@ -57,56 +57,38 @@ class SilverHornet::Buy < SilverHornet::Site
     #initialize a new agent instance each time
     self.agent = Mechanize.new
     agent.get(url)
-    #initialize the tag
-    tag_name=[]
-    # the catalog is complex. e.g the tag <div> has many tag <a>
     agent.page.search(elements["listed_first_catalog"]).each do |link|
+      #get the child tag
       try do
-        #get the child tag
-          try do
-            #get sub catalog's name
-            first_catalog_name = string_filter(child.try(:content))
-            #initialize is_banned_catalog to filter unwanted catalog
-            is_banned_catalog = false
-            #loop ban_words to filter unwanted catalog
-            @@ban_words.each do |word|
-              try do
-                if first_catalog_name.include? word
-                  #the first-level catalog is not about food
-                  is_banned_catalog = true
-                  log "get banned: #{first_catalog_name}"
-                  break
-                end
-              end
-            end
-            # the first-level catalog is about food
-            unless is_banned_catalog
-              #add the first-level catalog to tag
-              tag_name=[]
-              tag_name.push(first_catalog_name)
-              #get the href attribute from the page node
-              first_catalog_href = child.attributes['href']
-              #some sites may use relative path, we need full path.
-              if URI.parse(first_catalog_href).host.blank?
-                first_catalog_href = "http://#{agent.page.uri.host}/#{first_catalog_href.to_s.gsub("../", "")}"
-              end
+        #get sub catalog's name
+        first_catalog_name = string_filter(child.try(:content))
+        #initialize is_banned_catalog to filter unwanted catalog
+        is_banned_catalog = ban_words.exists?{|word| first_catalog_name.include? word }
+        next if is_banned_catalog
+        # the first-level catalog is about food
+        #add the first-level catalog to tag
+        tag_name=[first_catalog_name]
+        #get the href attribute from the page node
+        first_catalog_href = child.attributes['href']
+        #some sites may use relative path, we need full path.
+        if URI.parse(first_catalog_href).host.blank?
+          first_catalog_href = "http://#{agent.page.uri.host}/#{first_catalog_href.to_s.gsub("../", "")}"
+        end
 
-              next unless first_catalog_href.present?
-              #navigate to the detail page of the catalog and process
-              log "Start process #{first_catalog_name}"
-              if
-                #for the website which has two-level catalog of foods
-              elements["listed_second_catalog"].present?
-                process_first_catalog(first_catalog_href, tag_name) unless (first_catalog_href=="./" || first_catalog_href=="index.php")
-              else
-                #for the website which only has one-level catalog of foods. we get the product info directly.
-                process_second_catalog(first_catalog_href, tag_name)
-              end
-              log "Finished process #{first_catalog_name}"
-              #c = Cetegory.new(:name => catalog_name)
-              #c.save
-            end
-          end
+        next unless first_catalog_href.present?
+          #navigate to the detail page of the catalog and process
+          log "Start process #{first_catalog_name}"
+        if
+          #for the website which has two-level catalog of foods
+        elements["listed_second_catalog"].present?
+          process_first_catalog(first_catalog_href, tag_name) unless (first_catalog_href=="./" || first_catalog_href=="index.php")
+        else
+          #for the website which only has one-level catalog of foods. we get the product info directly.
+          process_second_catalog(first_catalog_href, tag_name)
+        end
+        log "Finished process #{first_catalog_name}"
+        #c = Cetegory.new(:name => catalog_name)
+        #c.save
         end
       end
     end
@@ -119,69 +101,33 @@ class SilverHornet::Buy < SilverHornet::Site
     #go on the site searched
     agent.get(first_url)
     #check if exist second-level catalog
-    if agent.page.search("#{elements["listed_second_catalog"]}").size>0
+    second_catalogs = agent.page.search("#{elements["listed_second_catalog"]}")
+    if second_catalogs.size>0
       # there exist second-level catalog,but the catalog is complex. e.g the tag <div> has many tag <a>
-      if (elements["complex_list"].present? && elements["complex_list"]==true)
-        agent.page.search(elements["listed_second_catalog"]).each do |item|
-          try do
-            item.search('a').each do |child|
-              #get sub catalog's name
-              second_catalog_name = string_filter(child.try(:content))
-              #add second-level catalog to the tag
-              start_tag = []
-              start_tag.push(first_catalog_tag)
-              tag_name = start_tag
-              log "tag name in first process: #{tag_name}"
-              tag_name.push(second_catalog_name)
-              #get the href attr from the page node
-              second_catalog_href = second_catalog_link.attributes['href']
-              #some sites may use relative path, we need full path.
-              if URI.parse(second_catalog_href).host.blank?
-                second_catalog_href = "http://#{agent.page.uri.host}/#{second_catalog_href.to_s.gsub("../", "")}"
-              end
-              next unless second_catalog_href.present?
-              #navigate to the detail page of the catalog and process
-              #agent.get(href)
-              log "Start process #{second_catalog_name}"
-              #go to the second-level catalog page and process the product info on it
-              process_second_catalog(second_catalog_href, tag_name)
-              log "Finished process #{second_catalog_name}"
-              #c = Cetegory.new(:name => catalog_name)
-              #c.save
-            end
+      second_catalogs.each do |item|
+        try do
+          #get sub catalog's name
+          second_catalog_name = string_filter(item.try(:content))
+          #add second-level catalog to the tag
+          start_tag = [first_catalog_tag]
+          tag_name = start_tag
+          log "tag name in first process: #{tag_name}"
+          tag_name.push(second_catalog_name)
+          #get the href attr from the page node
+          second_catalog_href = second_catalog_link.attributes['href']
+          #some sites may use relative path, we need full path.
+          if URI.parse(second_catalog_href).host.blank?
+            second_catalog_href = "http://#{agent.page.uri.host}/#{second_catalog_href.to_s.gsub("../", "")}"
           end
-        end
-      else
-        #the catalog is normal
-        agent.page.search(elements["listed_second_catalog"]).each do |item|
-          try do
-            #get sub catalog's name
-            second_catalog_name = string_filter(item.at_css('a').try(:content))
-            #add second-level catalog to the tag
-            start_tag = []
-            start_tag.push(first_catalog_tag)
-            tag_name = start_tag
-            log "tag name in first process: #{tag_name}"
-            tag_name.push(second_catalog_name)
-            #get sub catalog's link'
-            second_catalog_link= item.at_css('a')
-            #there must be a link
-            next unless (second_catalog_link.present? && second_catalog_link.attributes.present?)
-            second_catalog_href = second_catalog_link.attributes['href']
-            #some sites may use relative path, we need full path.
-            if URI.parse(second_catalog_href).host.blank?
-              second_catalog_href = "http://#{agent.page.uri.host}/#{second_catalog_href.to_s.gsub("../", "")}"
-            end
-            next unless second_catalog_href.present?
-            #navigate to the detail page of the catalog and process
-            #agent.get(href)
-            log "Start process #{second_catalog_name}"
-            #go to the second-level catalog page and process the product info on it
-            process_second_catalog(second_catalog_href, tag_name)
-            log "Finished process #{second_catalog_name}"
-            #c = Cetegory.new(:name => catalog_name)
-            #c.save
-          end
+          next unless second_catalog_href.present?
+          #navigate to the detail page of the catalog and process
+          #agent.get(href)
+          log "Start process #{second_catalog_name}"
+          #go to the second-level catalog page and process the product info on it
+          process_second_catalog(second_catalog_href, tag_name)
+          log "Finished process #{second_catalog_name}"
+          #c = Cetegory.new(:name => catalog_name)
+          #c.save
         end
       end
       #the second-level catalog not exist and to get the product info directly
