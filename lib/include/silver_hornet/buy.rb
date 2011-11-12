@@ -61,7 +61,7 @@ class SilverHornet::Buy < SilverHornet::Site
       #get the child tag
       try do
         #get sub catalog's name
-        first_catalog_name = string_filter(child.try(:content))
+        first_catalog_name = catalog_name_filter(child.try(:content))
         #initialize is_banned_catalog to filter unwanted catalog
         is_banned_catalog = ban_words.exists?{|word| first_catalog_name.include? word }
         next if is_banned_catalog
@@ -107,7 +107,7 @@ class SilverHornet::Buy < SilverHornet::Site
       second_catalogs.each do |item|
         try do
           #get sub catalog's name
-          second_catalog_name = string_filter(item.try(:content))
+          second_catalog_name = catalog_name_filter(item.try(:content))
           #add second-level catalog to the tag
           start_tag = [first_catalog_tag]
           tag_name = start_tag
@@ -203,7 +203,7 @@ class SilverHornet::Buy < SilverHornet::Site
 #process the detailed product info
   def process_product(catalog_tag)
     #get the product name
-    product_name = string_filter(agent.page.at(elements["product_name"]).try(:content))
+    product_name = catalog_name_filter(agent.page.at(elements["product_name"]).try(:content))
     #initialize another tags for precise tagging the product by word segmenting its name
     #tags=tag
     #segmenting the product name in order to get its tags
@@ -277,7 +277,7 @@ class SilverHornet::Buy < SilverHornet::Site
   end
 
 
-  def string_filter(name)
+  def catalog_name_filter(name)
     return name.to_s.strip.gsub(/[\r\n\t(商品名称：)]/, "")
   end
 
