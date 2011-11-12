@@ -19,7 +19,8 @@
                 <div id="image_uploader"></div>
             </div>
             <div class="fr">
-              <%= check_box_tag :sync_to_sina %><%= label_tag :sync_to_sina, t("syncs.sync_to_sina") %>
+              <!-- current_user is logined from -->
+              <%= check_box_tag :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %>
             </div>
             <div id="images_container" class="block">
                 <%= render :partial => "images/single_image_field", :collection => review.images, :as => :image %>

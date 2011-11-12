@@ -21,6 +21,7 @@ zh-CN:
       taobao: 淘宝登录
     access_failed: 第三方授权失败，请再试一下
     sync_to_sina: 同步到新浪微博
+    sync_to: 同步到
     follow_yin11_on_sina: 关注银筷子新浪微博
     more: 更多
 
