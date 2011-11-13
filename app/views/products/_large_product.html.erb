@@ -8,7 +8,7 @@
 <div>
 <%= link_to product.name, product %> <br/>
 <% if product.price.present? %>
-    <%= t_with_colon("products.price") %> <%= t("money.yuan_mark") %><%= product.price %><br/>
+    <%= t_with_colon("products.price") %> <%= t("money.yuan_mark2") %><%= product.price %><br/>
 <% end %>
 <% if product.weight.present? %>
     <%= t_with_colon("products.weight") %> <%= product.weight %><br/>

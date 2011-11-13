@@ -1,13 +1,13 @@
 #encoding utf-8
 require 'crack/xml'
 
-class SilverHornet::TaobaoSpider
+class SilverHornet::TaobaoHornet
 
   @@product_count ||=0
 
   def config
     @config ||= lambda do
-      filename = "#{Rails.root}/config/silver_hornet/taobao_config.yml"
+      filename = "#{Rails.root}/config/silver_hornet/taobao.yml"
       file = File.open(filename)
       yaml = YAML.load(file)
       return yaml
@@ -131,8 +131,15 @@ class SilverHornet::TaobaoSpider
       #get the price
       product.price = prod["price"]
 
-      #get the vendor name
-      product.vendor = Vendor.find_or_initialize_by(name: prod["nick"])
+      #find or new a vendor
+      vendor = Vendor.find_or_initialize_by(name: prod["nick"])
+      if vendor.new_record?
+        #it's a vendor from Taobao Mall
+        vendor.is_tmall = true
+        vendor.save!
+      end
+      #set the vendor
+      product.vendor = vendor
 
       #get the image
       pic_url = prod["pic_url"]

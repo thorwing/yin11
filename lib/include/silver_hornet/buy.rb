@@ -14,7 +14,7 @@ class SilverHornet::Buy < SilverHornet::Site
   def initialize
     unless @@dic_loaded
       #initialize the Dictionary for word segmentation
-      RMMSeg::Dictionary.add_dictionary("#{Rails.root}//lib//include//silver_dictionaries//yin11.dic", :words)
+      RMMSeg::Dictionary.add_dictionary("#{Rails.root}//lib//include//silver_dictionaries//silver.dic", :words)
       RMMSeg::Dictionary.load_dictionaries
       @@dic_loaded = true
     end
@@ -24,7 +24,7 @@ class SilverHornet::Buy < SilverHornet::Site
 
   def ban_words
     @@ban_words ||= lambda do
-      filename = "#{Rails.root}/config/silver_hornet/product_global.yml"
+      filename = "#{Rails.root}/config/silver_hornet/base.yml"
       file = File.open(filename)
       yaml = YAML.load(file)
       return yaml["ban_words"]
@@ -348,7 +348,7 @@ class SilverHornet::Buy < SilverHornet::Site
 
     value = doc.at_css(selector).try(:content)
     if value.present?
-      money_symbols = [I18n.t("money.yuan_mark"), I18n.t("money.yuan")].join
+      money_symbols = [I18n.t("money.yuan_mark1"), I18n.t("money.yuan_mark2"), I18n.t("money.yuan")].join
       product.price = value.gsub(/[#{money_symbols}]/, '').strip
     end
     product.price

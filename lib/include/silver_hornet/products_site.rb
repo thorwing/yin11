@@ -132,7 +132,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
 
     value = doc.at_css(selector).try(:content)
     if value.present?
-      money_symbols = [I18n.t("money.yuan_mark"), I18n.t("money.yuan")].join
+      money_symbols = [I18n.t("money.yuan_mark1"), I18n.t("money.yuan_mark2"), I18n.t("money.yuan")].join
       product.price = value.gsub(/[#{money_symbols}]/, '')
     end
   end
