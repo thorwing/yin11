@@ -157,6 +157,7 @@ GEM
     rdoc (3.10)
       json (~> 1.4)
     riddle (1.4.0)
+    rmmseg-cpp (0.2.9)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -241,6 +242,7 @@ DEPENDENCIES
   rails (~> 3.1.0)
   rake
   riddle
+  rmmseg-cpp
   rspec-rails
   sass-rails (~> 3.1.0)
   shoulda

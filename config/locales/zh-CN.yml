@@ -364,7 +364,8 @@ zh-CN:
     original_place: 原产地
 
   money:
-    yuan_mark: "￥"
+    yuan_mark1: "￥"
+    yuan_mark2: "¥"
     yuan: "元"
 
   weight:
