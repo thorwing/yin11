@@ -1,7 +1,15 @@
 <% if @review %>
-    var child = '<%= escape_javascript(render("products/review", :review => @review)) %>';
+    var reviews = $("#reviews");
+    if (reviews.length > 0) {
+        var child = '<%= escape_javascript(render @review) %>';
+        reviews.prepend(child);
+    }
+<% end %>
 
-    $("#reviews_block").prepend(child);
-
-    $('#new_review_block:visible').hide();
+<% if @feed %>
+    var feeds = $("#feeds");
+    if (feeds.length > 0) {
+        var child = '<%= escape_javascript(render @feed) %>';
+        feeds.prepend(child);
+    }
 <% end %>

@@ -67,8 +67,8 @@ Feature: show details of a product
 
     When I log in as "<user>"
     And I view the details of product "苏北草母鸡"
-    And I follow "up" within "#reviews_block .vote_fields"
-    Then I should see "<voting_weight>" within "#reviews_block .vote_fields"
+    And I follow "up" within "#reviews .vote_fields"
+    Then I should see "<voting_weight>" within "#reviews .vote_fields"
 
     Examples:
     | user | voting_weight |
@@ -82,7 +82,7 @@ Feature: show details of a product
 
     When I log out
     And I view the details of product "苏北草母鸡"
-    Then I should not see "up" within "#reviews_block .vote_fields"
+    Then I should not see "up" within "#reviews .vote_fields"
 
   Scenario Outline: 注册用户可以关注商品
     When I log in as "<user_full_name>"

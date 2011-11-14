@@ -15,6 +15,8 @@ Yin11::Application.routes.draw do
 
   put 'administrator/base/toggle'
 
+  match "me" => "personal#me"
+
   match "logout" => "sessions#destroy"
   match "login" => "sessions#new"
   match "sign_up" => "users#new"

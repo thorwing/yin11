@@ -1,24 +1,27 @@
 class FeedsManager
   def self.push_feeds(item)
     if item.respond_to?(:enabled)
-      return unless item.enabled
+      return nil unless item.enabled
     end
 
+    feed = Feed.new(:target_type => item.class.name, :target_id => item.id)
     if item.respond_to?(:vendor) && item.vendor.present?
-      item.vendor.feeds << Feed.new(:target_type => item.class.name, :target_id => item.id)
+      item.vendor.feeds << feed
     end
 
      if item.respond_to?(:author) && item.author.present?
-      item.author.feeds << Feed.new(:target_type => item.class.name, :target_id => item.id)
+      item.author.feeds << feed
     end
 
     if item.respond_to?(:tags)  && item.tags.present?
       item.tags.each do |t|
         tag = Tag.find_or_initialize_by(:name => t)
-        tag.feeds << Feed.new(:target_type => item.class.name, :target_id => item.id)
+        tag.feeds << feed
         tag.save!
       end
     end
+
+    feed
   end
 
   def self.pull_feeds(user)

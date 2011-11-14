@@ -1,7 +1,6 @@
 <div class="block round">
   <%= render "shared/vote_fields", :item => review %>
   <%= review.author.screen_name %>:
-  <%= review.title %><br/>
   <%= review.content %><br/>
   <% if current_user_has_permission? :normal_user %>
     <%= link_to review.comments.empty? ? t("comments.add_comment") : t("comments.n_comments", :count => review.comments.size.to_s), new_comment_path(:item_id => review.id, :item_type => review.class.name), :class => "add_comment_link" %>

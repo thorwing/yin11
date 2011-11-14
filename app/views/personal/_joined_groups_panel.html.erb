@@ -1,0 +1,11 @@
+<% if current_user && current_user.profile.show_joined_groups_panel %>
+    <div id="joined_groups_panel" class="panel">
+        <b><%= t("control_panel.joined_groups") %></b>
+        <%= link_to image_tag("close_x.png", :border => 0), toggle_profile_index_path(:field => :show_joined_groups_panel), :method => :put, :remote => true, :class => "close_panel_link", :title => "hide_link" %>
+        <br/>
+        <% @my_groups.each do |group| %>
+            <%= get_icon_of(group) %>
+            <%= link_to group.name, group %><br/>
+        <% end %>
+    </div>
+<% end %>

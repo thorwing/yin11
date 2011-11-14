@@ -166,6 +166,7 @@ zh-CN:
     show_profile: 个人设置
     edit_profile: 设置
     update_profile: 偏好设定
+    me: 我的首页
     articles: 新闻
     reviews: 测评
     products: 产品
@@ -379,7 +380,7 @@ zh-CN:
 
   reviews:
     submit: 发表测评
-    title: "测评："
+    title: "测评"
     new: +测评
     reviews: 测评
     all: 所有测评

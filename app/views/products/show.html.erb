@@ -68,12 +68,12 @@ Related articles:
 <% end %>
 <hr/>
 
-<div id="reviews_block">
+<div id="reviews">
     <%= render :partial => "review", :collection => @product.reviews, :as => :review %>
 </div>
 
 <% if current_user_has_permission? :normal_user %>
     <div id="new_review_block">
-        <%= render "review_fields", :review => @product.reviews.new, :product => @product %>
+        <%= render "shared/review_fields", :review => @product.reviews.new %>
     </div>
 <% end %>

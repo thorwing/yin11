@@ -56,6 +56,8 @@ class ReviewsController < ApplicationController
 
     RewardManager.new(current_user).contribute(:posted_reviews)
 
+    @feed = FeedsManager.push_feeds(@review)
+
     if params[:sync_to]
       SyncsManager.new(current_user).sync(@review)
     end

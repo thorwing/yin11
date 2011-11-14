@@ -1,8 +1,7 @@
-<% title t("reviews.title") + @review.title %>
+<% title t("reviews.title")%>
 
 <div class="block">
     <%= render "shared/vote_fields", :item => @review %>
-    <span class="trivial"><%= @review.reported_on_string %></span>
     <br/>
     <% if @review.author %>
         <%= t("info_items.posted_by")  %> <%= link_to @review.author.screen_name, @review.author %>
