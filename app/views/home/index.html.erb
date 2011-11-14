@@ -10,6 +10,11 @@
     <% end %>
 </div>
 
+<div id="catalogs" class="block round">
+    <%= link_to t("general.all"), products_path %><br/>
+    <%= nested_catalogs Catalog.all.arrange %>
+</div>
+
 <div id="hot_topics">
     <% @hot_topics.each do |topic| %>
         <%= render "topics/large_topic", :topic => topic %>

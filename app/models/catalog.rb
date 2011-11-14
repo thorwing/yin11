@@ -1,15 +1,15 @@
-class Tag
+class Catalog
   include Mongoid::Document
+  include Mongoid::Ancestry
+  has_ancestry
 
   field :name
   key :name
-  field :product_ids, :type => Array, :default => []
 
   attr_accessible :name
 
   #relationships
-  has_and_belongs_to_many :groups
-  embeds_many :feeds
+  has_and_belongs_to_many :products
 
   #validations
   validates_length_of :name, :maximum => 20

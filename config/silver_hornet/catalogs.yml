@@ -1,0 +1,28 @@
+- 
+  name: 休闲零食
+  show: true
+  sub: 
+    - 
+      name: 饼干
+      show: true
+      sub:
+        -
+          name: 咸味饼干
+          show: false
+        -
+          name: 甜味饼干
+          show: false
+        - 
+          name: 糕点
+      	  show: true
+
+-
+  name: 饮料
+  show: true
+  sub:
+    -
+      name: 碳酸饮料
+      show: true
+    -
+      name: 运动/功能饮料
+      show: true

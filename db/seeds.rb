@@ -114,18 +114,24 @@ require "source"
     end
   end
 
-  def generate_categories(parent, children)
-    children.each do |child|
-      parent.children.create(:name => child)
+  def generate_catalog(parent, node)
+    if parent
+      catalog = Catalog.new(name: node["name"])
+      parent.children << catalog
+      catalog.save!
+      parent.save!
+    else
+      catalog = Catalog.create!(name: node["name"])
+    end
+
+    if node["sub"]
+      node["sub"].each {|child| generate_catalog(catalog, child)}
     end
   end
 
   #categories
-  p "generating categories"
-  categories = YAML::load(File.open("app/seeds/categories.yml"))
-  categories.each do |name, children|
-    parent = Tag.create!(:name => name, :is_category => true)
-    if children.present? && children.is_a?(Array)
-      generate_categories(parent, children)
-    end
+  p "generating catalogs"
+  catalogs = YAML::load(File.open("config/silver_hornet/catalogs.yml"))
+  catalogs.each do |catalog|
+    generate_catalog(nil, catalog)
   end
