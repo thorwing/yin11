@@ -34,24 +34,30 @@ class SilverHornet::Buy < SilverHornet::Site
 
   #get all products in a site
   def fetch
-    if skipped.present? && skipped == true
-      log "#{name} is skipped"
+    begin
+      if skipped.present? && skipped == true
+        log "#{name} is skipped"
+        return
+      end
+
+      timestamp = Time.now
+      log "Fetching catalogs from #{self.name} at #{timestamp.to_s}"
+
+      #loop through each entry_url
+      self.entries.each do |entry_url|
+        try do
+          process_main_catalog(entry_url)
+        end
+      end
+
+      log "We have got #{@@product_count} Products in #{name}!"
+
+      log "Finished at at #{Time.now.to_s}, duration #{(Time.now - timestamp)} seconds"
+    rescue
+      log "Something goes wrong with this website!"
       return
     end
 
-    timestamp = Time.now
-    log "Fetching catalogs from #{self.name} at #{timestamp.to_s}"
-
-    #loop through each entry_url
-    self.entries.each do |entry_url|
-      try do
-        process_main_catalog(entry_url)
-      end
-    end
-
-    log "We have got #{@@product_count} Products in #{name}!"
-
-    #log "Finished at at #{Time.now.to_s}, duration #{(Time.now - timestamp)} seconds"
   end
 
   # process the entry page of the website and get the first-level catalog
@@ -65,7 +71,7 @@ class SilverHornet::Buy < SilverHornet::Site
         #get sub catalog's name
         first_catalog_name = catalog_name_filter(link.try(:content))
         #initialize is_banned_catalog to filter unwanted catalog
-        is_banned_catalog = !ban_words.select{ |word| first_catalog_name.include? word }.empty?
+        is_banned_catalog = !ban_words.select { |word| first_catalog_name.include? word }.empty?
         next if is_banned_catalog
         # the first-level catalog is about food
         #add the first-level catalog to tag
@@ -238,7 +244,7 @@ class SilverHornet::Buy < SilverHornet::Site
         end
       end
       #get the product's image
-      get_image(product)
+      #get_image(product)
 
       #get_field(product, :weight, "product_weight")
       #get_field(product, :producer, "product_producer")

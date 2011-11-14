@@ -120,49 +120,55 @@ class SilverHornet::TaobaoSpider
     #if there is only one product
     items = [items] unless items.is_a?(Array)
     items.each do |prod|
-      #get the name
-      product_name = prod["title"]
+      begin
+        #get the name
+        product_name = prod["title"]
 
-      unless product_name.blank?
-        #according to the name, either find the product from database or initialize a new one
-        product = Product.find_or_initialize_by(name: product_name)
-      end
+        unless product_name.blank?
+          #according to the name, either find the product from database or initialize a new one
+          product = Product.find_or_initialize_by(name: product_name)
+        end
 
-      #get the price
-      product.price = prod["price"]
+        #get the price
+        product.price = prod["price"]
 
-      #get the vendor name
-      product.vendor = Vendor.find_or_initialize_by(name: prod["nick"])
+        #get the vendor name
+        product.vendor = Vendor.find_or_initialize_by(name: prod["nick"])
 
-      #get the image
-      pic_url = prod["pic_url"]
-      if product.image.blank? || product.image.remote_image_url != pic_url
-        #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
-        pic = product.create_image(remote_image_url: pic_url)
-      end
+        #get the image
+        pic_url = prod["pic_url"]
+        if product.image.blank? || product.image.remote_image_url != pic_url
+          #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
+          pic = product.create_image(remote_image_url: pic_url)
+        end
 
-      #get the tag
-      product.tags =[cat_name]
+        #get the tag
+        product.tags =[cat_name]
 
-      #record the product
-      if product.new_record?
-        if product.valid?
-          #everything is ok, save the new object to DB
-          product.save!
-          #calculate the product amount
-          @@product_count+=1
-          p "Insert #{product.name} of #{product.tags}"
+        #record the product
+        if product.new_record?
+          if product.valid?
+            #everything is ok, save the new object to DB
+            product.save!
+            #calculate the product amount
+            @@product_count+=1
+            p "Insert #{product.name} of #{product.tags}"
+          else
+            p "somethings goes wrong"
+            #p "Invalid #{product.errors.join} of #{product.url}"
+          end
         else
-          p "somethings goes wrong"
-          #p "Invalid #{product.errors.join} of #{product.url}"
+          if product.changed?
+            #update the change
+            product.save!
+            p "Update: #{product.name} of #{product.tags}"
+          end
         end
-      else
-        if product.changed?
-          #update the change
-          product.save!
-          p "Update: #{product.name} of #{product.tags}"
-        end
+      rescue
+        p "something goes wrong here!"
+        break
       end
+
     end
 
   end
