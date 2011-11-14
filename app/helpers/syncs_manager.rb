@@ -8,8 +8,15 @@ class SyncsManager
     case review.author.provider
       when "sina"  #ok
         client = SilverOauth::Sina.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        response = client.access_token.request(:post, client.add_blog_url, :status => @message)
-        if Crack::XML.parse(response.body)["status"]["text"] == @message
+        p "path " + review.images.first.image.path.to_s
+        #carrierwave
+        path = review.images.first.image.path.to_s
+        binary_content = review.images.first.image.read
+        fake_file = SilverOauth::FakeFile.new(path, binary_content)
+        #response = client.silver_upload_image(@message, {:filename => "test.jpg", :content => review.images.first.image.read})
+        response = client.upload_binary_image(@message, fake_file)
+        #p "sina_response2 " + response.to_yaml
+        if response.code == "200"
           p "correctly send review to the sina_blog"
         else
           p "may not correctly send review to the sina_blog"
@@ -103,6 +110,9 @@ class SyncsManager
   end
 
   private
+  def convert_to_http_params(hash = {})
+    hash.inject([]){|memo, (key,value)| memo << "#{key.to_s}=#{value.to_s}" }.join('&')
+  end
 
   #todo make it public to all(in kernel)
   def boolean(string)

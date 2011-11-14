@@ -35,7 +35,10 @@ module SilverOauth
       upload("http://api.t.sina.com.cn/statuses/upload.json", options)
     end
 
-    
+    def upload_binary_image(text, fakefile, options = {})
+      options = options.merge!(:status => text, :pic => fakefile ).to_options
+      upload("http://api.t.sina.com.cn/statuses/upload.json", options)
+    end
 
   end
 end
