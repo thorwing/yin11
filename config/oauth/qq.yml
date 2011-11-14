@@ -3,6 +3,8 @@ development:
    secret: "ea1115ff4903f26c91ae2617ef924944"
    url:    "http://localhost:3000"
    callback: "http://localhost:3000/syncs/qq/callback"
+   add_blog_url: "http://open.t.qq.com/api/t/add"
+
 production:
    key:    "801061810"
    secret: "ea1115ff4903f26c91ae2617ef924944"

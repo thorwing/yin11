@@ -3,6 +3,8 @@ development:
    secret: "MFc6IVXnIXgV6Wh0ebdSsqGhyRJkNSKf"
    url:    "http://localhost:3000"
    callback: "http://localhost:3000/syncs/netease/callback"
+   add_blog_url: "http://api.t.163.com/statuses/update.json"
+
 production:
 
    url:    "http://www.yinkuaizi.com"

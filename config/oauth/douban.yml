@@ -3,6 +3,8 @@ development:
    secret: "65f9b1085209abd7"
    url:    "http://localhost:3000"
    callback: "http://localhost:3000/syncs/douban/callback"
+   add_blog_url: "http://api.douban.com/miniblog/saying" #Ìí¼Ó¹ã²¥
+
 production:
    key:    "0bca72af10b2fdce235f580d3218f96a"
    secret: "65f9b1085209abd7"
