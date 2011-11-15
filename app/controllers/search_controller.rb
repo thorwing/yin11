@@ -10,9 +10,12 @@ class SearchController < ApplicationController
   def index
     #prepare parameters
     if @query.present?
+      @items = []
 
-      result = Article.search(@query)
-      @items = result.documents
+      config = SilverSphinx::Configuration.instance
+      config.indexed_models.each do |model|
+        @items |= model.search(@query).documents
+      end
 
       #client = Riddle::Client.new("localhost", 3312)
       #client.match_mode = :extended

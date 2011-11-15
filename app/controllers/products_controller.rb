@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :editor }
-  layout "two_columns"
 
   # GET /products
   # GET /products.json
@@ -13,6 +12,7 @@ class ProductsController < ApplicationController
 
       criteria = criteria.tagged_with(categories)
     end
+    @catalogs = Catalog.all
     @products = criteria.page(params[:page]).per((ITEMS_PER_PAGE_MANY / 3).to_i * 3)
 
     respond_to do |format|

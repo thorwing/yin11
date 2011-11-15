@@ -1,14 +1,19 @@
 class Vendor
   include Mongoid::Document
+  include Mongoid::Timestamps
   include Available
   include Locational
   include Followable
+  include SilverSphinxModel
 
   field :name
   field :verified, :type => Boolean, :default => false
   field :category
   field :sub_category
   field :is_tmall, :type => Boolean
+
+  search_index(:fields => [:name,],
+              :attributes => [:updated_at, :created_at])
 
   attr_accessible :name, :category, :sub_category
 

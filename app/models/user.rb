@@ -5,6 +5,7 @@ class User
   include Mongoid::Timestamps
   include Available
   include Followable
+  include SilverSphinxModel
 
   #TODO for Rails 3.1
   #has_secure_password
@@ -26,6 +27,9 @@ class User
   field :access_token_secret
   field :creator_ip
   mount_uploader :avatar, AvatarUploader
+
+  search_index(:fields => [:login_name,],
+              :attributes => [:updated_at, :created_at])
 
   index :provider
   index :uid

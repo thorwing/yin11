@@ -1,27 +1,19 @@
 <% title t("products.products_list") %>
 
-<% content_for :left_column do %>
-    <div id="categories_list" class="block round">
-      <%= link_to t("general.all"), products_path %><br/>
-      <%= nested_categories Tag.categories.arrange %>
-    </div>
-<% end %>
+<%= render "shared/catalogs", :catalogs => @catalogs %>
 
-<% content_for :right_column do %>
-    <div id="products_list">
-        <%= paginate @products %>
-        <% @products.each_slice(3) do |slice| %>
-            <div class="products_slice">
-              <% slice.each do |product| %>
-                <div class="waterfall">
-                    <%= render "large_product", :product => product %>
-                </div>
-              <% end %>
+<div id="products_list">
+    <%= paginate @products %>
+    <% @products.each_slice(3) do |slice| %>
+        <div class="products_slice">
+          <% slice.each do |product| %>
+            <div class="waterfall">
+                <%= render "large_product", :product => product %>
             </div>
-        <% end %>
-        <%= paginate @products %>
-    </div>
+          <% end %>
+        </div>
+    <% end %>
+    <%= paginate @products %>
+</div>
 
-    <br />
-<% end %>
 
