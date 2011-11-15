@@ -34,6 +34,12 @@ module SilverOauth
       options = options.merge!(:status => content, :pic => File.open(image_path, "rb")).to_options
       upload("http://api.t.sohu.com/statuses/upload.json", options)
     end
+
+    def upload_binary_image(text, fakefile, options = {})
+      options = options.merge!(:status => text, :pic => fakefile ).to_options
+      upload("http://api.t.sohu.com/statuses/upload.json", options)
+      #upload(self.add_blog_url, options)
+    end
     
   end
 end

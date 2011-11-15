@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
 
     ImagesHelper.process_uploaded_images(@review, params[:images])
 
-    RewardManager.new(current_user).contribute(:posted_reviews)
+    #RewardManager.new(current_user).contribute(:posted_reviews)
 
     if params[:sync_to]
       SyncsManager.new(current_user).sync(@review)

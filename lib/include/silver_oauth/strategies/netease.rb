@@ -41,13 +41,25 @@ module SilverOauth
       add_status("#{image_url} #{content}", options)
     end
 
-    private
+    def upload_binary_image(content, fakefile, options = {})
+      options = options.merge!(:pic => fakefile).to_options
+      image_url = parse_image_url(just_upload_binary_image(fakefile))
+      add_status("#{image_url} #{content}", options)
+    end
+
+    #private
 
     def just_upload_image(image_path)
       upload("http://api.t.163.com/statuses/upload.json", :pic => File.open(image_path, "rb"))
     end
 
+    def just_upload_binary_image(fakefile)
+      upload("http://api.t.163.com/statuses/upload.json", :pic => fakefile)
+      #upload(self.add_blog_url, :pic => fakefile)
+    end
+
     def parse_image_url(resp)
+      p "resp " + resp.body.to_yaml
       hash_body = JSON.parse(resp.body)
       if hash_body["error"]
         raise hash_body["error"]

@@ -6,16 +6,15 @@ class SyncsManager
   def sync(review)
     @message = [review.title, review.content].join(": ")
     case review.author.provider
-      when "sina"  #ok
+      when "sina"  #with pic ok
         client = SilverOauth::Sina.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        p "path " + review.images.first.image.path.to_s
         #carrierwave
         path = review.images.first.image.path.to_s
         binary_content = review.images.first.image.read
+        #p "binary_content" + binary_content
         fake_file = SilverOauth::FakeFile.new(path, binary_content)
-        #response = client.silver_upload_image(@message, {:filename => "test.jpg", :content => review.images.first.image.read})
         response = client.upload_binary_image(@message, fake_file)
-        #p "sina_response2 " + response.to_yaml
+        p "sina_response" + response.to_yaml
         if response.code == "200"
           p "correctly send review to the sina_blog"
         else
@@ -43,16 +42,27 @@ class SyncsManager
 
       when "netease"  #ok
         client = SilverOauth::Netease.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        response = client.access_token.request(:post, client.add_blog_url, :status => @message)
+        #response = client.access_token.request(:post, client.add_blog_url, :status => @message)
+        path = review.images.first.image.path.to_s
+        binary_content = review.images.first.image.read
+        fake_file = SilverOauth::FakeFile.new(path, binary_content)
+        #response = client.just_upload_binary_image(fake_file)
+        response = client.upload_binary_image(@message, fake_file)
+        #p "netease response" + response.to_yaml
         if response.code == "200"
           p "correctly send review to the netease_blog"
         else
           p "may not correctly send review to the netease_blog"
         end
 
-      when "sohu" #ok
+      when "sohu" #with pic yet
         client = SilverOauth::Sohu.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        response = client.access_token.request(:post, client.add_blog_url, :status => @message )
+        #response = client.access_token.request(:post, client.add_blog_url, :status => @message )
+        path = review.images.first.image.path.to_s
+        binary_content = review.images.first.image.read
+        fake_file = SilverOauth::FakeFile.new(path, binary_content)
+        response = client.upload_binary_image(@message, fake_file)
+        p "sohu_response" + response.to_yaml
         if Crack::JSON.parse(response.body)["text"] == @message
           p "correctly send review to the sohu_blog"
         else

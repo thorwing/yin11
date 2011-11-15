@@ -38,8 +38,13 @@ module SilverOauth
     end
 
     #TODO
-    def upload_image(content, image_path, options = {})
+    def upload_image(content, image_path, options = {}) # do not implement pic upload
       add_status(content, options)
+    end
+
+    def upload_binary_image(text, fakefile, options = {})
+      options = options.merge!(:status => text, :pic => fakefile ).to_options
+      upload("http://open.t.qq.com/api/t/add_pic.json", options)
     end
 
     #    def upload_image(content, image_path, options = {})
