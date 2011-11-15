@@ -16,6 +16,8 @@ class HomeController < ApplicationController
 
     @hot_topics = Topic.desc(:recommendation).limit(HOT_TOPICS_ON_HOME_PAGE)
 
+    @catalogs = Catalog.all
+
     ##data for control panel
     #if current_user
     #  #@evaluation = current_user.get_evaluation

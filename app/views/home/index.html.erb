@@ -1,6 +1,18 @@
 <% home_page %>
 <% meta_tag t("site.introduction") %>
 
+<div id="catalogs">
+    <span class="cat first block round"><%= link_to t("catalogs.all"), products_path %></span>
+    <% first_catalogs(@catalogs).each do |first_catalog| %>
+        <span class="nav_menu">
+            <span class="cat first block round"><%= link_to first_catalog.name, products_path(:action => "index", :catalog => first_catalog.name) %></span>
+            <ul>
+                <%= nested_catalogs first_catalog.children.arrange %>
+            </ul>
+        </span>
+    <% end %>
+</div>
+
 <div id="recommended_products" class="block round">
     <h2><%= t("home.recommended_products") %></h2>
     <% @recommended_products.each do |product| %>
@@ -10,10 +22,6 @@
     <% end %>
 </div>
 
-<div id="catalogs" class="block round">
-    <%= link_to t("general.all"), products_path %><br/>
-    <%= nested_catalogs Catalog.all.arrange %>
-</div>
 
 <div id="hot_topics">
     <% @hot_topics.each do |topic| %>

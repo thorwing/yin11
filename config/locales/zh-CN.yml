@@ -347,8 +347,9 @@ zh-CN:
     recent_bad: 差评
     reviews_total: "总共："
 
-  categories:
-    category: 分类
+  catalogs:
+    all: 所有分类
+    catalog: 分类
 
   products:
     products: 所有产品

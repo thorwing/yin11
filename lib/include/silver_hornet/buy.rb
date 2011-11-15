@@ -373,7 +373,7 @@ class SilverHornet::Buy < SilverHornet::Site
   end
 
   def assign_category(product)
-    @categories ||= Category.all.to_a
+    @categories ||= Catalog.all.to_a
 
     #according to the product's name, try assigning a category for the product
     @categories.each do |c|

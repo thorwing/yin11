@@ -10,6 +10,7 @@
 *= require products
 *= require topics
 *= require reviews
+*= require catalogs
 *= require token-input-facebook
 *= require facebox
 *= require slimbox
@@ -210,8 +211,9 @@ ul.menu li {
     the padding-bottom of container and margin, height of footer must be the same
 */
 html, body, #main { height: 100%; }
-body #main { height: auto; min-height: 100%; }
-#container {padding-bottom: 15em;}
+body #main { height: auto;}
+#container { padding-bottom: 15em;}
+#content_area { min-height: 600px;  }
 
 #footer {
     clear: both;

@@ -116,12 +116,11 @@ require "source"
 
   def generate_catalog(parent, node)
     if parent
-      catalog = Catalog.new(name: node["name"])
-      parent.children << catalog
-      catalog.save!
-      parent.save!
+      catalog = Catalog.create!(name: node["name"], show: node["show"]) do |c|
+        c.parent = parent
+      end
     else
-      catalog = Catalog.create!(name: node["name"])
+      catalog = Catalog.create!(name: node["name"], show: node["show"])
     end
 
     if node["sub"]

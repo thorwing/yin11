@@ -16,7 +16,7 @@
       <%= link_to  @product.vendor.name, @product.vendor %>
     </p>
     <p>
-      <b><%= t("categories.category")  %></b>
+      <b><%= t("catalogs.catalog")  %></b>
       <%= @product.tags.first {|t| t.is_category == true} if @product.tags %>
     </p>
     <p>
