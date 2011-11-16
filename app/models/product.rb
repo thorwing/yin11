@@ -6,7 +6,7 @@ class Product
   include Followable
   include Votable
   include Available
-  #include SilverSphinxModel
+  include SilverSphinxModel
 
   field :name
   field :price, :type => Float
@@ -22,8 +22,8 @@ class Product
 
   field :original_name
 
-  #search_index(:fields => [:name, :description, :details],
-  #            :attributes => [:updated_at, :created_at])
+  search_index(:fields => [:name, :description, :details],
+              :attributes => [:updated_at, :created_at])
 
   attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score
 
