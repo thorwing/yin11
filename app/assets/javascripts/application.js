@@ -15,6 +15,7 @@
 //= require coda-slider.1.1.1.pack
 //= require jquery.uploadify.v2.1.4.min
 //= require tinymce-jquery
+//= require jquery.highlight-3
 //= require_tree .
 
 // Place your application-specific JavaScript functions and classes here

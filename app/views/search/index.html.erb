@@ -1,12 +1,16 @@
-<div id="brief_report" class="block">
-    <h2><%= params[:query] %></h2>
-  </div>
+<div>
+    <span id="keywords"><%= params[:query] %></span>
+</div>
 
 <hr/>
 <div class="two_columns_container" >
-  <div id="items_list" class="left_column">
+  <div id="search_results" class="left_column">
     <% @items.each do |item| %>
-        <%= render "info_items/info_item_short", :item => item %>
+        <% if item.is_a?(Article) %>
+            <%= render "info_items/info_item_short", :item => item %>
+        <% else %>
+            <%= render item %>
+        <% end %>
     <% end %>
   </div>
 

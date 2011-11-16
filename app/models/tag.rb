@@ -3,7 +3,6 @@ class Tag
 
   field :name
   key :name
-  field :product_ids, :type => Array, :default => []
 
   attr_accessible :name
 

@@ -12,11 +12,12 @@ class SearchController < ApplicationController
     if @query.present?
       @items = []
 
-      config = SilverSphinx::Configuration.instance
-      config.indexed_models.each do |model|
-        @items |= model.search(@query).documents
-      end
+      #config = SilverSphinx::Configuration.instance
+      #config.indexed_models.each do |model|
+      #  @items |= model.search(@query).documents
+      #end
 
+      @items = Article.search(@query).documents
       #client = Riddle::Client.new("localhost", 3312)
       #client.match_mode = :extended
       #raw_result = client.query "#{@query}"

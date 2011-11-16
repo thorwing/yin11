@@ -4,7 +4,7 @@ class Vendor
   include Available
   include Locational
   include Followable
-  include SilverSphinxModel
+  #include SilverSphinxModel
 
   field :name
   field :verified, :type => Boolean, :default => false
@@ -12,8 +12,8 @@ class Vendor
   field :sub_category
   field :is_tmall, :type => Boolean
 
-  search_index(:fields => [:name,],
-              :attributes => [:updated_at, :created_at])
+  #search_index(:fields => [:name,],
+  #            :attributes => [:updated_at, :created_at])
 
   attr_accessible :name, :category, :sub_category
 

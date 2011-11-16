@@ -29,7 +29,7 @@
 
     <div id="article_author">
       <%= "authored by:" %>
-      <%= @article.author.screen_name %>
+      <%= @article.author.screen_name if @article.author %>
     </div>
 
     <div id="article_source">

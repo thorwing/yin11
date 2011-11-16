@@ -21,6 +21,9 @@ Feature: display topics to users
     And I should see "梅山猪"
 
   Scenario: 在专题项中，相关产品将以分数来排序
+    When I go to the topics page
+    And I follow "冬令进补"
+    Then I should see "梅山猪"
 
   Scenario: 在专题的详细页面，和专题相关（通过标签）的所有产品将会被显示
     When I go to the topics page

@@ -1,12 +1,10 @@
-<div class="two_columns_container">
- <div class="left_column">
-    <div class="image_frame">
+<div class="clearfix">
+    <%= render "shared/vote_fields", :item => @product %>
+    <div class="image_frame fl">
         <%= image_tag @product.image.image_url if @product.image && @product.image.image_url %>
     </div>
- </div>
- <div class="right_column">
-   <%= render "shared/vote_fields", :item => @product %>
-   <div class="block square">
+
+   <div class="block square fl">
     <p>
       <b><%= t("general.name")  %></b>
       <%= @product.name %>
@@ -42,7 +40,6 @@
         <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
     </div>
    </div>
- </div>
 </div>
 
 
@@ -69,7 +66,7 @@ Related articles:
 <hr/>
 
 <div id="reviews">
-    <%= render :partial => "review", :collection => @product.reviews, :as => :review %>
+    <%= render :partial => "reviews/review", :collection => @product.reviews, :as => :review %>
 </div>
 
 <% if current_user_has_permission? :normal_user %>
