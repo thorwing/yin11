@@ -54,7 +54,8 @@ class User
   #Relationships
   embeds_one :profile
   embeds_one :contribution
-  has_many :info_items, :inverse_of => "author"
+  has_many :articles, :inverse_of => "author"
+  has_many :reviews, :inverse_of => "author"
   has_and_belongs_to_many :groups, :inverse_of => "members"
   has_and_belongs_to_many :badges
   has_many :vendors
@@ -197,31 +198,31 @@ class User
      end while User.exists?(:conditions => {column => self[column]})
   end
 
-  def get_raw_updates(days)
-    data = {}
-    self.tags.map{|t| data[t] = []}
-    InfoItem.enabled.in_days_of(days).tagged_with(self.tags).all.each do |item|
-      (self.tags & item.tags).each do |tag|
-        data[tag] << item
-      end
-    end
-
-    self.profile.watched_locations.each do |location|
-      data[location.address] = Review.near(location.to_coordinates, self.profile.watched_distance).enabled.in_days_of(days).all
-    end
-
-    self.groups.each do |group|
-      data[group] = Review.enabled.in_days_of(days).any_in(:author_id => group.member_ids).all
-    end
-
-    data
-  end
-
-  def self.send_updates_to_users
-    self.enabled.valid_email_users.mail_receiver.each do |user|
-      user.send_updates
-    end
-  end
+  #def get_raw_updates(days)
+  #  data = {}
+  #  self.tags.map{|t| data[t] = []}
+  #  InfoItem.enabled.in_days_of(days).tagged_with(self.tags).all.each do |item|
+  #    (self.tags & item.tags).each do |tag|
+  #      data[tag] << item
+  #    end
+  #  end
+  #
+  #  self.profile.watched_locations.each do |location|
+  #    data[location.address] = Review.near(location.to_coordinates, self.profile.watched_distance).enabled.in_days_of(days).all
+  #  end
+  #
+  #  self.groups.each do |group|
+  #    data[group] = Review.enabled.in_days_of(days).any_in(:author_id => group.member_ids).all
+  #  end
+  #
+  #  data
+  #end
+  #
+  #def self.send_updates_to_users
+  #  self.enabled.valid_email_users.mail_receiver.each do |user|
+  #    user.send_updates
+  #  end
+  #end
 
   def non_third_party_login
     provider.blank?

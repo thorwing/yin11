@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 #require the files for YMAL deserializing
 require "article"
 require "source"
@@ -149,9 +150,20 @@ require "source"
   recipes = YAML::load(File.open("app/seeds/recipes.yml"))
   recipes.each do |r|
     begin
-      recipe = Recipe.create!(r)
+      Article.create! do |recipe|
+        recipe.id = r.id
+        recipe.title = r.title
+        recipe.type = r.type
+        recipe.tags = r.tags
+        recipe.reported_on = r.reported_on
+        recipe.introduction = r.introduction
+        recipe.content = r.content
+        recipe.recommended = r.recommended
+        recipe.enabled = r.enabled
+      end
     rescue Exception => exc
-      p r.name
+      p r.title
+      p exc.message
       p exc.backtrace
     end
   end
@@ -161,10 +173,14 @@ require "source"
   images.each do |i|
     begin
       image = Image.create! do |image|
-
+        image.image = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
+        image.product_id = i[:product_id]
+        image.article_id = i[:article_id]
       end
 
     rescue Exception => exc
+      p i[:file_name]
+      p exc.message
       p exc.backtrace
     end
   end

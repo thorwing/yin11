@@ -16,7 +16,6 @@ class Article
   field :region_ids, :type => Array
 
   index :title
-  index :reported_on
 
   search_index(:fields => [:title, :content],
               :attributes => [:created_at, :updated_at])
