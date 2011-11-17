@@ -14,12 +14,12 @@
          <%= f.label :tags_string, t("info_items.tags") %><br/>
          <%= f.text_field :tags_string, 'data-pre' => (@article.tags ? @article.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
     </div>
-    <div class="field">
-        <%= f.label :reported_on_string, t("general.date") %><br/>
-        <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
-    </div>
     <p><label><%= t("articles.source") %></label></p>
-    <div id="article_source_fields" class="fields_group">
+    <div id="news_fields" class="fields_group">
+        <div class="field">
+            <%= f.label :reported_on_string, t("general.date") %><br/>
+            <%= f.text_field :reported_on_string, {:class => "date_picker"} %>
+        </div>
         <%= f.fields_for :source do |builder| %>
             <div class="field">
                 <%= builder.label :name, t("articles.source_name") %><%= mark_required(builder.object, :name) %><%= mark_required_length(builder.object, :name) %><br/>

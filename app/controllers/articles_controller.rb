@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.enabled.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_MANY)
-    @recommended_list = Article.topics.recommended.enabled
+    @recommended_list = Article.themes.recommended.enabled
     @news_list = Article.news.recommended.enabled
 
     respond_to do |format|

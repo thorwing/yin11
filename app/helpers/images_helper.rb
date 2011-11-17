@@ -18,7 +18,7 @@ module ImagesHelper
     if image_params.present?
       image_params[0..4].each do |image_id|
         image = Image.find(image_id)
-        image.info_item_id = item.id
+        image.send("#{item.class.name.downcase}_id=", item.id)
         image.save
         #@review.image_ids << image_id
       end

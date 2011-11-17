@@ -5,7 +5,8 @@
   <%= javascript_include_tag "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js" %>
   <%= yield :header_including if content_for?(:header_including) %>
 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
   <meta name="google-site-verification" content="GF_EoI9-lwWznbOBC3y1-joOBGeE7EBPEfui_-4vMZo" />
   <% if has_meta_tag? %>
       <meta name="description" content="<%= @meta_tag %>" />

@@ -504,9 +504,10 @@ zh-CN:
 
 
   article_types:
+    theme: 主题
     news: 新闻
-    topic: 专题
     tip: 锦囊
+    recipe: 食谱
 
   tags:
     tags: 标签

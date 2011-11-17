@@ -9,7 +9,7 @@
         <% if item.is_a?(Article) %>
             <%= render "info_items/info_item_short", :item => item %>
         <% else %>
-            <%= render item %>
+            <%= render "search/result_item", :item => item %>
         <% end %>
     <% end %>
   </div>

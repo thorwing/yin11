@@ -23,5 +23,5 @@ set :output, "/home/ray/Development/Sites/yin11/log/cron_log.log"
 
 every 2.hours do
   command "cd /home/ray/Development/Sites/yin11"
-  command "/usr/local/coreseek/bin/indexer -c config/development.sphinx.conf --all --rotate"
+  command "/usr/local/coreseek/bin/indexer -c /home/ray/Development/Sites/yin11/config/development.sphinx.conf --all --rotate"
 end

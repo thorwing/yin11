@@ -144,3 +144,27 @@ require "source"
     end
     topic.save!
   end
+
+  p "generating recipes"
+  recipes = YAML::load(File.open("app/seeds/recipes.yml"))
+  recipes.each do |r|
+    begin
+      recipe = Recipe.create!(r)
+    rescue Exception => exc
+      p r.name
+      p exc.backtrace
+    end
+  end
+
+  p "generating images"
+  images = YAML::load(File.open("app/seeds/images.yml"))
+  images.each do |i|
+    begin
+      image = Image.create! do |image|
+
+      end
+
+    rescue Exception => exc
+      p exc.backtrace
+    end
+  end

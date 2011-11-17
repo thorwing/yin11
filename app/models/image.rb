@@ -8,6 +8,6 @@ class Image
   attr_accessible :image, :remote_image_url, :caption, :description
 
   #relationships
-  belongs_to :info_item
+  belongs_to :article
   belongs_to :product
 end

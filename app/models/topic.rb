@@ -8,6 +8,9 @@ class Topic
 
   attr_accessible :title, :description, :priority
 
+  #relationships
+  has_many :articles
+
   #validators
   validates_presence_of :title
   validates_length_of :title, :maximum => 20
