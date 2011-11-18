@@ -6,6 +6,7 @@ class Product
   include Followable
   include Votable
   include Available
+  include Imageable
   include SilverSphinxModel
 
   field :name
@@ -44,14 +45,6 @@ class Product
 
   def price_as_money_string
     format('%.2f', price)
-  end
-
-  def get_image()
-    if self.image && self.image.picture_url
-      self.image.picture_url
-    else
-      "default_article.jpg"
-    end
   end
 
 end

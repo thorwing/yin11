@@ -5,6 +5,7 @@ class Article
   include AssociatedModels
   include Available
   include Votable
+  include Imageable
   include SilverSphinxModel
 
   #fields
