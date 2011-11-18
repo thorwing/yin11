@@ -36,7 +36,7 @@ class SyncsManager
 
       when "qq" #without pic ok
         client = SilverOauth::Qq.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        #client.add_status("Í¬²½µ½qqÎ¢±¡..")
+        #client.add_status("Í¬ï¿½ï¿½ï¿½ï¿½qqÎ¢ï¿½ï¿½..")
         url = "http://open.t.qq.com/api/t/add"
         message = [review.title, review.content].join(": ")
         response = client.access_token.request(:post, url, :content => message, :format => "xml")

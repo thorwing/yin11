@@ -1,6 +1,10 @@
-<h1>Editing topic</h1>
+<% title [t("general.edit"), @topic.title].join(" - ") %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+
+<div class="actions">
+    <%= link_to t("general.show"), @topic %> |
+    <%= link_to t("general.back_to_list"), topics_path %>
+</div>
+

@@ -15,13 +15,14 @@ Given /^There are more sample products$/ do
   Product.create!(:name => "山西陈醋", :tags_string => "醋", :url => "#", :vendor_id => @vendor_2.id)
 end
 
-Given /^There are some sample categories$/ do
-  cat = Tag.create!(:name => "肉类", :is_category => true)
-  pork = Tag.new(:name => "猪肉", :is_category => true)
-  cat.children << pork
-  pork.save
-  @pig.tags << pork.name
-  @pig.save
+Given /^There are some sample catalogs$/ do
+  meat = Catalog.create!(:name => "肉类", show: true)
+  pork = Catalog.create!(:name => "猪肉", show: true) do |c|
+    c.parent = meat
+    c.products << @pig
+  end
+  @pig.catalogs << pork
+  @pig.save!
 end
 
 When /^I view the details of product "(.+)"$/ do |product_name|

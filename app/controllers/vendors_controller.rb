@@ -97,32 +97,6 @@ class VendorsController < ApplicationController
   end
 
 
-  #def search
-  #  @results = []
-  #  query = params[:search].strip
-  #  if query.present?
-  #    @exact_match = Vendor.first(:conditions => {:name => query, :enabled => true})
-  #    tag_names = query.split
-  #
-  #    if tag_names.size <= 1
-  #      @results = Vendor.enabled.where(:name => /#{query}?}/)
-  #    else
-  #      exact_results = nil
-  #      tag_names.each do |tag_name|
-  #        exact_results = exact_results ? exact_results.any_in(:tag_ids => [tag_name]) : Vendor.any_in(:tag_ids => [tag_name])
-  #      end
-  #
-  #      @results = exact_results.order_by([:updated_at, :desc]) if exact_results
-  #
-  #      @results = @results | Tip.any_in(:tag_ids => tag_names)
-  #
-  #    end
-  #  else
-  #    redirect_to :back, :notice => "please enter search string"
-  #    return
-  #  end
-  #end
-
   def browse
     criteria = Vendor.enabled.of_city(current_city.name)
     @vendors = criteria.all

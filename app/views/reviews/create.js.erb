@@ -1,22 +1,33 @@
-    var remote_status = "<%= @remote_status %>";
-    var local_status = "<%= @local_status %>";
-
-//     jQuery.facebox(user_message);
-
-    if(local_status == "true" && remote_status == "true")
-    {
-        jQuery.facebox( '<img border="0" src="/assets/correct_icon.gif" alt="correct"><span><%= @user_message %></span>');
+<% if @review %>
+    var reviews = $("#reviews");
+    if (reviews.length > 0) {
+        var child = '<%= escape_javascript(render @review) %>';
+        reviews.prepend(child);
     }
-    else if (local_status == "true" && remote_status == "false")
-    {
-        jQuery.facebox( '<span><%= @user_message %></span>');
-    }
-    else
-    {
-        jQuery.facebox( '<img border="0" src="/assets/wrong_icon.gif" alt="wrong"><span><%= @user_message %></span>');
-    }
+<% end %>
 
+<% if @feed %>
+    var feeds = $("#feeds");
+    if (feeds.length > 0) {
+        var child = '<%= escape_javascript(render @feed) %>';
+        feeds.prepend(child);
+    }
+<% end %>
 
-    $("#reviews_block").prepend(child);
+var remote_status = "<%= @remote_status %>";
+var local_status = "<%= @local_status %>";
+
+if(local_status == "true" && remote_status == "true")
+{
+    jQuery.facebox( '<img border="0" src="/assets/correct_icon.gif" alt="correct"><span><%= @user_message %></span>');
+}
+else if (local_status == "true" && remote_status == "false")
+{
+    jQuery.facebox( '<span><%= @user_message %></span>');
+}
+else
+{
+    jQuery.facebox( '<img border="0" src="/assets/wrong_icon.gif" alt="wrong"><span><%= @user_message %></span>');
+}
 
 //    $('#new_review_block:visible').hide();

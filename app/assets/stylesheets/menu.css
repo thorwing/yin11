@@ -1,22 +1,25 @@
-.nav_menu {cursor:pointer;  position:relative;  text-align:right; overflow: hidden; }
+.nav_menu {cursor:pointer;  position:relative;  overflow: hidden; }
 .nav_menu a:hover, a.selected {color:#346633;}
-.nav_menu .menu_title {  text-align:right; color:black;}
+.nav_menu .menu_title {  color:black;}
 .nav_menu a { margin-right: 8px; }
 /* sub-menus*/
-.nav_menu ul{ position:absolute; right:0px; top:0px;  line-height:16px; text-align:right; margin-top: 16px; padding: 5px 0px;
+.nav_menu ul{ position:absolute; right:0px; top:0px;  line-height:16px; margin-top: 16px; padding: 5px 0px;
     border:1px solid #346633;
-    z-index: 2000; /* for IE */ display:none;  }
+    z-index: 2000; /* for IE */ display:none;
+    background: white;}
 .nav_menu:hover ul { display:block;  }
-.nav_menu ul li {display:block;  padding: 0 0 2px 4px; list-style-type:none; text-align:center; }
+.nav_menu ul li {display:block;  padding: 0 0 2px 4px; list-style-type:none; }
 .nav_menu ul li:first-child { border-top: none; }
 .nav_menu ul li a {  color: black; }
 .nav_menu ul li a:hover { color:#346633; }
 
 #quick_login {margin: 5px 0 2px 0}
 
-#third_party_submenu { width:80px; background: white; }
+#third_party_submenu { width:80px;}
 #top_third_party a {margin-right:  10px; color: black;}
 #top_third_party a:hover { color: #346633; }
 
 #login_logout a {text-decoration:underline; margin-right:  10px;}
 /*#third_party_submenu li {margin:0px 10px; padding: 0px,10px; }*/
+
+

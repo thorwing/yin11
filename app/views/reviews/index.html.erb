@@ -2,7 +2,7 @@
 
 <%= paginate @reviews %>
 <% @reviews.each do |review| %>
-    <%= render "info_items/info_item", :item => review %>
+    <%= render review %>
 <% end %>
 
 <% if current_user_has_permission? :normal_user %>

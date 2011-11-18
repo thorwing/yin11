@@ -141,10 +141,6 @@ zh-CN:
     review_updated: 测评已修改
     article_posted: 文章已发布
     article_updated: 文章已更新
-    tip_collected: 已收藏该锦囊
-    tip_roll_backed: 已恢复至该版本
-    tip_created: 锦囊已创建
-    tip_updated: 锦囊已更新
     group_created: 饭桌已创建
     group_updated: 饭桌已更新
     group_joind: 已加入该饭桌
@@ -158,7 +154,6 @@ zh-CN:
 
   alerts:
     password_reset_expired: 密码重置口令已过期
-    tip_already_collected: 该锦囊已经在您收藏中
     no_group_specified: 未指定饭桌
     posted_comment_too_ofen: "每次评论请间隔%{seconds}秒，谢谢"
     no_such_profile_or_no_permission: 无此用户，或您的无权访问该页面
@@ -170,6 +165,7 @@ zh-CN:
     show_profile: 个人设置
     edit_profile: 设置
     update_profile: 偏好设定
+    me: 我的首页
     articles: 新闻
     reviews: 测评
     products: 产品
@@ -233,7 +229,6 @@ zh-CN:
     receive_mails: 接受食物安全动向的邮件报告
     show_watching_tags_panel: 在主页上显示关注的标签
     show_watching_locations_panel: 在主页上显示关注的地点
-    show_collected_tips_panel: 在主页上显示收藏的锦囊
     show_joined_groups_panel: 在主页上显示加入的饭桌
     concern_days: 关心几天内的食物消息
     my_recent_posted_items: "我最近发表了："
@@ -261,10 +256,8 @@ zh-CN:
     watching: 我关注：
     watching_tags: 我吃：
     watching_locations: 我在：
-    collected_tips: 收藏的锦囊：
     joined_groups: 加入的饭桌：
     locations: 地点
-    tips: 锦囊
     groups: 饭桌
     more: >更多
     add_tag_hint: 为您收集和标签相关的事件，食物安全早知道
@@ -350,8 +343,9 @@ zh-CN:
     recent_bad: 差评
     reviews_total: "总共："
 
-  categories:
-    category: 分类
+  catalogs:
+    all: 所有分类
+    catalog: 分类
 
   products:
     products: 所有产品
@@ -380,10 +374,11 @@ zh-CN:
     topics: 所有专题
     new: +专题
     more: 更多>>
+    priority: 优先级
 
   reviews:
     submit: 发表测评
-    title: "测评："
+    title: "测评"
     new: +测评
     reviews: 测评
     all: 所有测评
@@ -439,24 +434,6 @@ zh-CN:
     source_url: 链接
     default_source_name: 银筷子原创
 
-  tips:
-    all_tips: 所有锦囊
-    new_tip: 新锦囊
-    recent_tips: 最近更新的锦囊
-    hot_tips: 热门锦囊
-    tips_participated_by_me: 我参与的锦囊
-    tips_collected_by_me: 我收藏的锦囊
-    title_length_validate_msg: 标题要求最短%{min},最长%{max}个字符
-    content_length_validate_msg: 内容要求不超过%{max}个字符
-    exact_tip_not_found: 没有找到标题为<%{title}>的锦囊
-    please_create: "欢迎您创建："
-    tip: 锦囊
-    new: +锦囊
-    edit: 编辑锦囊
-    collect: 收藏
-    show_revisions: 改动历史
-    roll_back_revision: 恢复到此版本
-    current_version: 当前版本
 
   badges:
     badges: 徽章
@@ -482,32 +459,11 @@ zh-CN:
     remote_link: 图片链接
     add_image: 上传图片
 
-  info_items:
-    itmes: 好评和差评
-    solutions: 锦囊妙计
-    good_items: 好评
-    bad_items: 差评
-    severity_header: 银筷子指数
-    severity_base: "%{bad_count}条差评"
-    severity_involved_regions: "差评分布在:"
-    report_good_header: "我们一共找到%{count}条关于“%{name}”的健康分享，建议您阅读"
-    show_goods: "另有%{count}条安全记录，查看"
-    detail: 详情>>
-    happen: 发生在
-    ago: 前
-    tags: 标签
-    article: 新闻
-    review: 测评
-    tip: 锦囊
-    posted_by: "发布者: "
-    add_comment: +评论
-    show_more: 显示更多
-
-
   article_types:
+    theme: 主题
     news: 新闻
-    topic: 专题
     tip: 锦囊
+    recipe: 食谱
 
   tags:
     tags: 标签

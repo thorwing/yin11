@@ -21,12 +21,13 @@
 
 module Taggable
   def self.included(base)
-    base.class_eval do |base1|
-      base1.field :tags, :type => Array
-      base1.index :tags
+    base.class_eval do
+      field :tags, :type => Array, :default => []
+      index :tags
 
       attr_accessible :tags_string
       validates_length_of :tags, :maximum => MAX_TAGS, :message => I18n.translate("validations.tags.max_limit_msg", :max => MAX_TAGS)
+      after_save :sync_tags
 
       include InstanceMethods
       extend ClassMethods
@@ -40,6 +41,17 @@ module Taggable
 
     def tags_string
       self.tags.join(", ") if tags
+    end
+
+    #TODO
+    def sync_tags
+      all_tag_names = Tag.only(:name).map(&:name)
+      if self.tags.present? && self.tags.size > 0
+        new_tags = self.tags.reject{|n| all_tag_names.include?(n)}
+        new_tags.each do |t|
+          Tag.create(:name => t)
+        end
+      end
     end
   end
 

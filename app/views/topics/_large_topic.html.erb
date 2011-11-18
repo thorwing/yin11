@@ -5,8 +5,8 @@
   <div class="products">
     <div class="prod first">
       <% products = get_recommended_products(topic) %>
-      <%= link_to image_tag( products.first.get_image, :border => 0, :width => 200, :height => 160), products.first %>
-      <h3><span><%= products.first.name %></span></h3>
+      <%= link_to image_tag( products.first.get_image, :border => 0, :width => 200, :height => 160), products.first unless products.empty? %>
+      <h3><span><%= products.first.name unless products.empty? %></span></h3>
     </div>
     <% products = products.drop(1) %>
     <div class="slice">

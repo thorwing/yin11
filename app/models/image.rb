@@ -3,11 +3,11 @@ class Image
   include Mongoid::Timestamps::Updated
   field :caption
   field :description
-  mount_uploader :image, ImageUploader
+  mount_uploader :picture, PictureUploader
 
-  attr_accessible :image, :remote_image_url, :caption, :description
+  attr_accessible :picture, :remote_picture_url, :caption, :description
 
   #relationships
-  belongs_to :info_item
+  belongs_to :article
   belongs_to :product
 end

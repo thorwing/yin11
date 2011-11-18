@@ -1,25 +1,29 @@
 class Product
   include Mongoid::Document
+  include Mongoid::Timestamps
   include AssociatedModels
   include Taggable
   include Followable
   include Votable
   include Available
+  include SilverSphinxModel
 
   field :name
   field :price, :type => Float
-  #field :price
   field :weight, :type => Float
   field :producer
   field :area
   field :authenticated
   field :description
+  field :details
   field :url
 
   field :editor_score, :type => Integer, :default => 0
-  field :recommendation, :type => Integer, :default => 0
 
   field :original_name
+
+  search_index(:fields => [:name, :description, :details],
+              :attributes => [:updated_at, :created_at])
 
   attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score
 
@@ -29,6 +33,7 @@ class Product
   tokenize_one :vendor
   has_one :image
   has_many :reviews
+  has_and_belongs_to_many :catalogs
 
   #validators
   validates_presence_of :name
@@ -42,8 +47,8 @@ class Product
   end
 
   def get_image()
-    if self.image && self.image.image_url
-      self.image.image_url
+    if self.image && self.image.picture_url
+      self.image.picture_url
     else
       "default_article.jpg"
     end

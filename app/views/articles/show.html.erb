@@ -1,6 +1,6 @@
 <% content_for :left_column do %>
     <% title @article.title %>
-    <%= meta_tag @article.introduction if @article.introduction.present? %>
+    <% meta_tag @article.introduction if @article.introduction.present? %>
 
     <%= content_tag(:div, @article.introduction, :class => "block round" ) if @article.introduction.present? %>
 
@@ -23,18 +23,9 @@
     </div>
 
     <div id="article_content" >
-      <%= "content is:" %>
       <%= simple_format @article.content.html_safe %>
     </div>
 
-    <div id="article_author">
-      <%= "authored by:" %>
-      <%= @article.author.screen_name %>
-    </div>
-
-    <div id="article_source">
-      <%= @article.source %>
-    </div>
 
     <% if @article.images.size > 0 %>
         <b><%= t("images.images") %></b>
@@ -50,7 +41,7 @@
         </div>
     <% end %>
 
-    <div class="nav_links">
+    <div class="actions">
         <%= link_to t("general.back_to_list"), articles_path %>
     </div>
 

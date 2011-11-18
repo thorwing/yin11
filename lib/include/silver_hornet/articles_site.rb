@@ -78,7 +78,7 @@ class SilverHornet::ArticlesSite < SilverHornet::Site
       article.content = content.try(:html_safe)
       article.reported_on = time
       article.enabled = false
-      article.tags = InfoItem.tags.inject([]){|memo, e| title.include?(e) ? (memo << e) : memo }
+      article.tags = Article.tags.inject([]){|memo, e| title.include?(e) ? (memo << e) : memo }
       article.type = I18n.t("article_types.news")
       article.build_source
       article.source.name = source_name.present? ? source_name : "Unknown Media"
