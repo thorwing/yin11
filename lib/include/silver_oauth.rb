@@ -57,6 +57,10 @@ module SilverOauth
     def secret; config['secret']; end
     def url; config['url']; end
     def callback; config["callback"]; end
+    def add_blog_url; config["add_blog_url"]; end
+    def add_blog_url2; config["add_blog_url2"]; end
+    def user_info_url; config["user_info_url"]; end
+    def upload_pic_url; config["upload_pic_url"]; end
 
     def config
       CONFIG[self.name] ||= lambda do

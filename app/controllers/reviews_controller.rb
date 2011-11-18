@@ -54,20 +54,26 @@ class ReviewsController < ApplicationController
 
     ImagesHelper.process_uploaded_images(@review, params[:images])
 
-    RewardManager.new(current_user).contribute(:posted_reviews)
+    #RewardManager.new(current_user).contribute(:posted_reviews)
 
     @feed = FeedsManager.push_feeds(@review)
 
+    @remote_status = false
+
     if params[:sync_to]
-      SyncsManager.new(current_user).sync(@review)
+      @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
     end
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to(@review, :notice => t("notices.review_posted")) }
+        @local_status = true
+        @user_message = t("notices.review_posted") + @user_message
+        format.html { redirect_to(@review, :notice => @user_message) }
         format.xml  { render :xml => @review, :status => :created, :location => @review }
         format.js
       else
+        @local_status = false
+        @user_message = t("notices.review_post_failure") + @user_message
         format.html { render :action => "new" }
         format.xml  { render :xml => @review.errors, :status => :unprocessable_entity }
         format.js

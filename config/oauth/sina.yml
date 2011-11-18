@@ -3,6 +3,10 @@ development:
    secret: "3ad4cff41b46346409de66e5e5c37741"
    url:    "http://localhost:3000"
    callback: "http://localhost:3000/syncs/sina/callback"
+   user_info_url: ""
+   add_blog_url: "http://api.t.sina.com.cn/statuses/upload.json"
+
+
 production:
    key:    "3376020978"
    secret: "3ad4cff41b46346409de66e5e5c37741"

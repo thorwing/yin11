@@ -13,17 +13,20 @@ zh-CN:
   syncs:
     sites:
       renren: 人人登录
-      sina_blog: 新浪微博
-      qq_blog: 腾讯微博
+      sina: 新浪微博
+      qq: 腾讯微博
       douban: 豆瓣登录
-      sohu_blog: 搜狐微博
-      netease_blog: 网易微博
+      sohu: 搜狐微博
+      netease: 网易微博
       taobao: 淘宝登录
     access_failed: 第三方授权失败，请再试一下
     sync_to_sina: 同步到新浪微博
     sync_to: 同步到
     follow_yin11_on_sina: 关注银筷子新浪微博
     more: 更多
+    success_message: ，并成功同步到
+    failure_message: ，但未能同步到
+
 
   general:
     title: 标题
@@ -134,6 +137,7 @@ zh-CN:
     email_verified: 邮箱已验证
     password_reset: 密码已更改
     review_posted: 测评已发布
+    review_post_failure: 测评发布失败
     review_updated: 测评已修改
     article_posted: 文章已发布
     article_updated: 文章已更新
