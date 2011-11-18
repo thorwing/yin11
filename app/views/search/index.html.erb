@@ -3,8 +3,8 @@
 </div>
 
 <hr/>
-<div class="two_columns_container" >
-  <div id="search_results" class="left_column">
+
+<div id="search_results" class="left_column">
     <% @items.each do |item| %>
         <% if item.is_a?(Article) %>
             <%= render "info_items/info_item_short", :item => item %>
@@ -12,8 +12,5 @@
             <%= render "search/result_item", :item => item %>
         <% end %>
     <% end %>
-  </div>
-
-  <div id="tips_list" class="right_column">
-  </div>
 </div>
+

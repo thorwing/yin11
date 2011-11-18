@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
     @hot_topics = Topic.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
 
-    @catalogs = Catalog.all
+    @catalogs = Catalog.all.to_a
 
     ##data for control panel
     #if current_user

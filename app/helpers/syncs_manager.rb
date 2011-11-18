@@ -30,7 +30,7 @@ class SyncsManager
       #  #client.add_status("同步到qq微薄..")
       #  url = "http://open.t.qq.com/api/t/add_pic"
       #  message = [review.title, review.content].join(": ")
-      #  response = client.access_token.request(:post, url, :content => message, :format => "xml", :enctype=> "multipart/form-data", :pic => review.images.first.remote_image_url, :type => "file")
+      #  response = client.access_token.request(:post, url, :content => message, :format => "xml", :enctype=> "multipart/form-data", :pic => review.images.first.remote_picture_url, :type => "file")
       #  p "qq_response: " + response.to_yaml
 
       else

@@ -6,9 +6,10 @@ class ArticlesController < ApplicationController
   # GET /articles.xml
 
   def index
+    @headlines = Article.enabled.recommended.themes.desc(:reported_on, :updated_at).limit(HEADLINES_ONE_HOME_PAGE).all
+    @hot_news = Article.enabled.recommended.news.desc(:reported_on, :updated_at).limit(HOT_ARTICLES_ON_HOME_PAGE).all
+
     @articles = Article.enabled.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_MANY)
-    @recommended_list = Article.themes.recommended.enabled
-    @news_list = Article.news.recommended.enabled
 
     respond_to do |format|
       format.html # index.html.erb

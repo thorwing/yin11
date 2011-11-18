@@ -89,14 +89,6 @@ Yin11::Application.routes.draw do
 
   resources :images, :only => [:create]
 
-  resources :tips, :except => [:destroy] do
-    member do
-      put 'collect'
-      get 'revisions'
-      put 'roll_back'
-    end
-  end
-
   #resources :badges
 
   resources :vendors do

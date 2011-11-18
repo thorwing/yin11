@@ -40,7 +40,7 @@ class Article
   embeds_one :source
   belongs_to :topic
 
-  accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_image_url].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_picture_url].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :source, :reject_if => lambda { |s| s[:name].blank? }, :allow_destroy => true
 
   #validators
@@ -53,14 +53,14 @@ class Article
   validates_length_of :introduction, :maximum => 300
   validates_presence_of :type
 
-  before_validation { errors.add(:reported_on, I18n.translate("validations.date.reported_on_invalid_msg")) if @reported_on_invalid }
-  after_create { FeedsManager.push_feeds(self) }
-
   def self.types
     ['theme', 'news', 'tip', "recipe"]
   end
 
   validates_inclusion_of :type, :in => Article.types
+
+  before_validation { errors.add(:reported_on, I18n.translate("validations.date.reported_on_invalid_msg")) if @reported_on_invalid }
+  after_create { FeedsManager.push_feeds(self) }
 
   #methods
   def name_of_source

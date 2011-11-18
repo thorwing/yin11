@@ -1,18 +1,21 @@
-<%= t("articles.hot_news") %>
-       <div id="news_list" >
-            <% @news_list.each do |article| %>
-                <%= link_to article.title, article %> <br/>
-            <% end %>
-       </div>
+<div id="info_panel">
+    <div id="news_block" class="block round">
+        <div class="image_frame">
+            <small><%= t("articles.headlines") %></small>
+            <%= render "slider", :articles => @headlines %>
+        </div>
+        <div id="news_frame">
+            <h3><%= t("articles.hot_news") %></h3>
+            <ul>
+                <% @hot_news.each do |article| %>
+                   <li><h4><%= link_to article.title, article %></h4></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
 
-<%= t("articles.headlines") %>
-       <div id="recommended_list" >
-            <% @recommended_list.each do |article| %>
-                <%= link_to article.title, article %> <br/>
-            <% end %>
-       </div>
-
-<%= paginate @articles %>
-<% @articles.each do |article| %>
-    <%= render "info_items/info_item", :item => article %>
-<% end %>
+  <%= paginate @articles %>
+  <% @articles.each do |article| %>
+      <%= render "info_items/info_item", :item => article %>
+  <% end %>
+</div> <!--end of info_items -->

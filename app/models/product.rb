@@ -47,8 +47,8 @@ class Product
   end
 
   def get_image()
-    if self.image && self.image.image_url
-      self.image.image_url
+    if self.image && self.image.picture_url
+      self.image.picture_url
     else
       "default_article.jpg"
     end

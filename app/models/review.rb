@@ -24,7 +24,7 @@ class Review
   #override the settings in Informative
   validates_length_of :content, :maximum => 140
 
-  accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_image_url].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_picture_url].blank? }, :allow_destroy => true
 
   def is_recent?
     self.created_at >= ITEM_MEASURE_RECENT_DAYS.days.ago ? true : false

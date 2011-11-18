@@ -1,7 +1,7 @@
 <div class="clearfix">
     <%= render "shared/vote_fields", :item => @product %>
     <div class="image_frame fl">
-        <%= image_tag @product.image.image_url if @product.image && @product.image.image_url %>
+        <%= image_tag @product.image.pictire_url if @product.image && @product.image.pictire_url %>
     </div>
 
    <div class="block square fl">
@@ -55,14 +55,6 @@
   <%= link_to t("general.back_to_list"), products_path, :class => "button" %>
 </div>
 
-<hr/>
-
-<% unless @rel_tips.blank? || @rel_tips.empty? %>
-Related articles:
-    <% @rel_tips.each do |tip| %>
-        <%= render "info_items/info_item", :item => tip %>
-    <% end %>
-<% end %>
 <hr/>
 
 <div id="reviews">

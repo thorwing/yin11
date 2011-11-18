@@ -14,6 +14,7 @@ Feature: modify topics
 
   Scenario Outline: 编辑，管理员可以添加专题
     When I log in as "<user>"
+    And I go to the me page
     And I follow "+专题"
     Then I should be on the new_topic page
     When I fill in "topic_title" with "茁壮成长"
@@ -29,7 +30,7 @@ Feature: modify topics
 
   Scenario Outline: 访客，普通用户不可以添加专题
     When I log in as "<user>"
-    And I go to the home page
+    And I go to the me page
     Then I should not see "+专题"
     When I go to the new_topic page
     Then I should not be on the new_topic page

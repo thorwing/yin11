@@ -22,7 +22,7 @@
 module Taggable
   def self.included(base)
     base.class_eval do
-      field :tags, :type => Array
+      field :tags, :type => Array, :default => []
       index :tags
 
       attr_accessible :tags_string
@@ -46,9 +46,11 @@ module Taggable
     #TODO
     def sync_tags
       all_tag_names = Tag.only(:name).map(&:name)
-      new_tags = self.tags.reject{|n| all_tag_names.include?(n)}
-      new_tags.each do |t|
-        Tag.create(:name => t)
+      if self.tags.present? && self.tags.size > 0
+        new_tags = self.tags.reject{|n| all_tag_names.include?(n)}
+        new_tags.each do |t|
+          Tag.create(:name => t)
+        end
       end
     end
   end

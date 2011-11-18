@@ -11,9 +11,11 @@ Feature: products listed on home page
     And There are some sample products
 
   Scenario: 主页上将显示产品的分类
+    Given There are some sample catalogs
     When I go to the home page
-    Then I should see "div" whose "id" is "category_list"
-    And I should see "山楂" within "#category_list"
+    Then I should see "div" whose "id" is "catalogs"
+    And I should see "肉类" within "#catalogs"
+    And I should see "猪肉" within "#catalogs"
 
   Scenario: 主页上将会按主题来展示商品
 

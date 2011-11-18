@@ -10,7 +10,6 @@
 //= require jquery.pageless.min
 //= require jquery.metadata
 //= require jquery.jgrowl
-//= require jquery.bubblepopup.v2.3.1.min
 //= require facebox
 //= require coda-slider.1.1.1.pack
 //= require jquery.uploadify.v2.1.4.min
@@ -126,10 +125,8 @@ $(function() {
     tokenize_input("#review_tags_string", "/tags.json", 5);
     tokenize_input("#vendor_fields #review_vendor_token", "/vendors.json", 1);
     tokenize_input("#vendor_fields #product_vendor_token", "/vendors.json", 1);
-    tokenize_input("#tip_tags_string", "/tags.json", 5);
     tokenize_input("#group_tags_string", "/tags.json", 5);
     tokenize_input("#added_foods", "/tags.json", 5);
-    //tokenize_input(".one_token .one_tip", "/tips.json", 1);
 });
 
 $(function() {
@@ -266,16 +263,6 @@ $(function() {
 //    });
 //});
 
-$(function() {
-    $('.tip').each( function(intIndex) {
-        $(this).CreateBubblePopup({
-            position : 'top',
-            align	 : 'left',
-            themePath: 	'images/jquerybubblepopup-theme',
-            innerHtml: $(this).data('content') });
-    });
-    //$('.tip')
-});
 
 $(function() {
 //    $('.char_aware').input(function() {

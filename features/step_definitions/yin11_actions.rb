@@ -27,11 +27,11 @@ When /^I fill vendor token field "(.+)" with "(.+)"$/ do |field, name|
   fill_in field, :with => vendor.id
 end
 
-When /^I post a simple review for "(.+)" with "(.+)"$/ do |product_name, review_title|
+When /^I post a simple review for "(.+)" with "(.+)"$/ do |product_name, content|
   And %(I go to the products page)
   And %(I follow "#{product_name}")
 
-  When %(I fill in "review_title" with "#{review_title}")
+  When %(I fill in "review_content" with "#{content}")
   And %(I press "发表测评")
 end
 

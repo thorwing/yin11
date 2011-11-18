@@ -10,7 +10,6 @@ class Comment
   #Relationships
   embedded_in :review
   embedded_in :article
-  embedded_in :tip
   embedded_in :post
   belongs_to :user
 

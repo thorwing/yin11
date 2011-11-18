@@ -12,7 +12,6 @@ class Profile
 
   field :show_watching_tags_panel, :type => Boolean, :default => true
   field :show_watching_locations_panel, :type => Boolean, :default => true
-  field :show_collected_tips_panel, :type => Boolean, :default => true
   field :show_joined_groups_panel, :type => Boolean, :default => true
 
   attr_accessible :receive_mails, :watched_distance, :concern_days, :watched_locations_attributes, :biography
