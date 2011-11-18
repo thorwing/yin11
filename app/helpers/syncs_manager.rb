@@ -4,75 +4,51 @@ class SyncsManager
   end
 
   def sync(review)
+    @status = false
+    @user_message = I18n.t("syncs.failure_message") + I18n.t("syncs.sites.#{review.author.provider}")
     @message = [review.title, review.content].join(": ")
     case review.author.provider
-      when "sina"  #with pic ok
-        client = SilverOauth::Sina.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        #carrierwave
-        path = review.images.first.image.path.to_s
-        binary_content = review.images.first.image.read
-        #p "binary_content" + binary_content
-        fake_file = SilverOauth::FakeFile.new(path, binary_content)
-        response = client.upload_binary_image(@message, fake_file)
-        p "sina_response" + response.to_yaml
-        if response.code == "200"
-          p "correctly send review to the sina_blog"
-        else
-          p "may not correctly send review to the sina_blog"
-        end
-
       when "douban"  #ok
         client = SilverOauth::Douban.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
         @message = %Q{<?xml version='1.0' encoding='UTF-8'?><entry xmlns:ns0="http://www.w3.org/2005/Atom" xmlns:db="http://www.douban.com/xmlns/"><content>#{@message.to_s}</content></entry>}
         response = client.access_token.post(client.add_blog_url, @message,{"Content-Type"=>"application/atom+xml"})
         if response.code == "201"
-          p "correctly send review to the qq_blog"
-        else
-          p "may not correctly send review to the qq_blog"
+          @user_message = I18n.t("syncs.success_message") + I18n.t("syncs.sites.#{review.author.provider}")
+          @status = true
         end
 
-      when "qq"  #without pic    ok
+      #when "qq"  #with pic    not yet
+      #  client = SilverOauth::Qq.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
+      #  #response = client.access_token.request(:post, client.add_blog_url, :content => @message, :format => "xml")
+      #  path = review.images.first.image.path.to_s
+      #  binary_content = review.images.first.image.read
+      #  #p "binary_content" + binary_content
+      #  fake_file = SilverOauth::FakeFile.new(path, binary_content)
+      #  #response = client.add_status("my message" + path)
+      #  #p "qq_response1" + response.to_yaml
+      #  response = client.upload_binary_image("my message2" + path, binary_content)
+      #  p "qq_response2" + response.to_yaml
+      #  if Crack::XML.parse(response.body)["root"]["msg"] == "ok"
+      #    p "correctly send review to the qq_blog"
+      #  else
+      #    p "may not correctly send review to the qq_blog"
+      #  end
+
+      when "qq" #without pic ok
         client = SilverOauth::Qq.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        response = client.access_token.request(:post, client.add_blog_url, :content => @message, :format => "xml")
-        if Crack::XML.parse(response.body)["root"]["msg"] == "ok"
-          p "correctly send review to the qq_blog"
-        else
-          p "may not correctly send review to the qq_blog"
-        end
-
-      when "netease"  #ok
-        client = SilverOauth::Netease.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        #response = client.access_token.request(:post, client.add_blog_url, :status => @message)
-        path = review.images.first.image.path.to_s
-        binary_content = review.images.first.image.read
-        fake_file = SilverOauth::FakeFile.new(path, binary_content)
-        #response = client.just_upload_binary_image(fake_file)
-        response = client.upload_binary_image(@message, fake_file)
-        #p "netease response" + response.to_yaml
-        if response.code == "200"
-          p "correctly send review to the netease_blog"
-        else
-          p "may not correctly send review to the netease_blog"
-        end
-
-      when "sohu" #with pic yet
-        client = SilverOauth::Sohu.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-        #response = client.access_token.request(:post, client.add_blog_url, :status => @message )
-        path = review.images.first.image.path.to_s
-        binary_content = review.images.first.image.read
-        fake_file = SilverOauth::FakeFile.new(path, binary_content)
-        response = client.upload_binary_image(@message, fake_file)
-        p "sohu_response" + response.to_yaml
-        if Crack::JSON.parse(response.body)["text"] == @message
-          p "correctly send review to the sohu_blog"
-        else
-          p "may not correctly send review to the sohu_blog"
-        end
+        #client.add_status("Í¬²½µ½qqÎ¢±¡..")
+        url = "http://open.t.qq.com/api/t/add"
+        message = [review.title, review.content].join(": ")
+        response = client.access_token.request(:post, url, :content => message, :format => "xml")
+        p "qq_response: " + response.to_yaml
+      if Crack::XML.parse(response.body)["root"]["msg"] == "ok"
+        @user_message = I18n.t("syncs.success_message") + I18n.t("syncs.sites.#{review.author.provider}")
+        @status = true
+      end
 
       when "taobao" #not yet
 
-
-      when "renren" #not yet
+      when "renren" #implemented but not test
           p = {
             :v => "=1.0",
             :api_key => "=" + client.key,
@@ -84,24 +60,41 @@ class SyncsManager
              }
           @to_be_md5 = p.sort.flatten.join + client.secret
           p[:sig] = "=" + ::Digest::MD5.hexdigest(@to_be_md5)
-
           uri = URI.parse("http://api.renren.com/restserver.do?#{p.inject([]){|memo, (key,value)| memo << "#{key.to_s}#{value.to_s}" }.join('&')}")
           #p "uri.to_s: "  + uri.to_s
           response = (client.access_token.post uri.to_s).body
           Logger.new(STDOUT).info response.to_yaml
           p "renren_response " + response.to_yaml
 
-      #when "qq" #with pic
-      #  client = SilverOauth::Qq.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
-      #  #client.add_status("åŒæ­¥åˆ°qqå¾®è–„..")
-      #  url = "http://open.t.qq.com/api/t/add_pic"
-      #  message = [review.title, review.content].join(": ")
-      #  response = client.access_token.request(:post, url, :content => message, :format => "xml", :enctype=> "multipart/form-data", :pic => review.images.first.remote_image_url, :type => "file")
-      #  p "qq_response: " + response.to_yaml
-
       else
+        site_name_mapping = {"sina" => "Sina", "sohu" => "Sohu", "netease" => "Netease" }
+        site_name = site_name_mapping[review.author.provider]
+        client = eval("SilverOauth::#{site_name}").load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
+        #carrierwave
+        unless review.images.first.nil?  #with pic
+          path = review.images.first.image.path.to_s
+          binary_content = review.images.first.image.read
+          #p "binary_content" + binary_content
+          fake_file = SilverOauth::FakeFile.new(path, binary_content)
+          response = client.upload_binary_image(@message, fake_file)
+        else #without pic
+          response = client.add_status(@message)
+        end
 
-    end
+        if response.code == "200"
+          #p "syncs.sites."+ review.author.provider
+          @user_message = I18n.t("syncs.success_message") + I18n.t("syncs.sites.#{review.author.provider}")
+          @status = true
+          p "correctly send review to the sohu_blog"
+        end
+        #if Crack::JSON.parse(response.body)["text"] == @message
+        #  p "correctly send review to the sohu_blog"
+        #else
+        #  p "may not correctly send review to the sohu_blog"
+        #end
+
+    end # end of case
+    return @user_message, @status
 
   end
 

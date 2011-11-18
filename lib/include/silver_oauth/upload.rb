@@ -8,9 +8,12 @@ module SilverOauth
       http = Net::HTTP.new(url.host, url.port)
 
       req  = Net::HTTP::Post.new(url.request_uri)
+
+      p "options " + options.to_yaml
       req  = sign_without_pic_field(req, self.access_token, options)
       req  = set_multipart_field(req, options)
 
+      p "final req "+ req.to_yaml
       http.request(req)
     end
 
@@ -28,7 +31,8 @@ module SilverOauth
     end
 
     def params_without_pic_field(options)
-      options.except(:pic)
+      options.except(:pic) #qq need to add pic into sig
+      #options
     end
       
   end

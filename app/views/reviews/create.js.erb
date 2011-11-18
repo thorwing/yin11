@@ -1,7 +1,25 @@
 <% if @review %>
     var child = '<%= escape_javascript(render("products/review", :review => @review)) %>';
+    var remote_status = "<%= @remote_status %>";
+    var local_status = "<%= @local_status %>";
+
+//     jQuery.facebox(user_message);
+
+    if(local_status == "true" && remote_status == "true")
+    {
+        jQuery.facebox( '<img border="0" src="/assets/correct_icon.gif" alt="Menu_left"><span><%= @user_message %></span>');
+    }
+    else if (local_status == "true" && remote_status == "false")
+    {
+        jQuery.facebox( '<span><%= @user_message %></span>');
+    }
+    else
+    {
+        jQuery.facebox( '<img border="0" src="/assets/wrong_icon.gif" alt="Menu_left"><span><%= @user_message %></span>');
+    }
+
 
     $("#reviews_block").prepend(child);
 
-    $('#new_review_block:visible').hide();
+//    $('#new_review_block:visible').hide();
 <% end %>

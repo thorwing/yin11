@@ -42,9 +42,9 @@ module SilverOauth
       add_status(content, options)
     end
 
-    def upload_binary_image(text, fakefile, options = {})
-      options = options.merge!(:status => text, :pic => fakefile ).to_options
-      upload("http://open.t.qq.com/api/t/add_pic.json", options)
+    def upload_binary_image(text, binary_content, options = {})
+      options = options.merge!(:content => text, :pic => binary_content, :format => "json" , :jing => "", :wei => "", :clientip => "127.0.0.1", :Filename => "button16.png").to_options
+      upload("http://open.t.qq.com/api/t/add_pic", options)
     end
 
     #    def upload_image(content, image_path, options = {})

@@ -56,16 +56,25 @@ class ReviewsController < ApplicationController
 
     #RewardManager.new(current_user).contribute(:posted_reviews)
 
+    @remote_status = false
     if params[:sync_to]
-      SyncsManager.new(current_user).sync(@review)
+      @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
     end
+      #p "my @user_message is " + @user_message
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to(@review, :notice => t("notices.review_posted")) }
+        @local_status = true
+        @user_message = t("notices.review_posted") + @user_message
+        p "@local_status " + @local_status.to_s
+        p "@remote_status " + @remote_status.to_s
+        #format.html { redirect_to(@review, :notice => t("notices.review_posted")) }
+        format.html { redirect_to(@review, :notice => @user_message) }
         format.xml  { render :xml => @review, :status => :created, :location => @review }
         format.js
       else
+        @local_status = false
+        @user_message = t("notices.review_post_failure") + @user_message
         format.html { render :action => "new" }
         format.xml  { render :xml => @review.errors, :status => :unprocessable_entity }
         format.js

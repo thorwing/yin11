@@ -14,7 +14,8 @@ module SilverOauth
      end
 
      def path
-        @path
+        #@path
+       "button16.png"
      end
   end
 end
