@@ -1,5 +1,3 @@
-<% if @review %>
-    var child = '<%= escape_javascript(render("products/review", :review => @review)) %>';
     var remote_status = "<%= @remote_status %>";
     var local_status = "<%= @local_status %>";
 
@@ -7,7 +5,7 @@
 
     if(local_status == "true" && remote_status == "true")
     {
-        jQuery.facebox( '<img border="0" src="/assets/correct_icon.gif" alt="Menu_left"><span><%= @user_message %></span>');
+        jQuery.facebox( '<img border="0" src="/assets/correct_icon.gif" alt="correct"><span><%= @user_message %></span>');
     }
     else if (local_status == "true" && remote_status == "false")
     {
@@ -15,11 +13,10 @@
     }
     else
     {
-        jQuery.facebox( '<img border="0" src="/assets/wrong_icon.gif" alt="Menu_left"><span><%= @user_message %></span>');
+        jQuery.facebox( '<img border="0" src="/assets/wrong_icon.gif" alt="wrong"><span><%= @user_message %></span>');
     }
 
 
     $("#reviews_block").prepend(child);
 
 //    $('#new_review_block:visible').hide();
-<% end %>
