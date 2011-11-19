@@ -434,6 +434,8 @@ zh-CN:
     source_url: 链接
     default_source_name: 银筷子原创
 
+  feeds:
+    all: 用户动态
 
   badges:
     badges: 徽章

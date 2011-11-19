@@ -4,7 +4,8 @@
     <div>
         <%= render "shared/review_fields", :review => Review.new %>
     </div>
-    <div id="feeds">
+    <h2><%= t("feeds.all") %></h2>
+    <div id="feeds" class="block round">
         <%= render @feeds %>
     </div> <!--end of feeds -->
 <% end %>
@@ -12,6 +13,5 @@
 <% content_for :right_column do %>
     <div id="control_panel">
         <%= render "user_panel" %>
-        <%= render "actions_panel" %>
     </div> <!--end of control_panel -->
 <% end %>
