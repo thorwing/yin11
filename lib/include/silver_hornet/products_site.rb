@@ -177,9 +177,9 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         pic_url = "http://#{agent.page.uri.host}/#{pic_url}"
       end
 
-      if product.image.blank? || product.image.remote_pictire_url != pic_url
-        #we are using Carrierwave, so just set the remote_pictire_url, it will download the image for us
-        pic = product.create_image(remote_pictire_url: pic_url)
+      if product.image.blank? || product.image.remote_picture_url != pic_url
+        #we are using Carrierwave, so just set the remote_picture_url, it will download the image for us
+        pic = product.create_image(remote_picture_url: pic_url)
       end
     end
   end

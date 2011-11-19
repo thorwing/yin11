@@ -144,7 +144,7 @@ module ApplicationHelper
           cancelImg       : '/uploadify/cancel.png',
           fileDesc        : 'Images',
           fileExt         : '*.png;*.jpg;*.gif',
-          sizeLimit       : #{10.megabytes},
+          sizeLimit       : #{2.megabytes},
           queueSizeLimit  : 24,
           multi           : true,
           auto            : true,

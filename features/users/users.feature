@@ -149,8 +149,8 @@ Feature:
   #    And I fill in "article_title" with "西瓜被打了催熟剂"
   #    And I fill in "article_content" with "本报讯，今日很多西瓜都被打了催熟剂"
   #    #And I follow "添加图片"
-  #    #And I fill in "article_images_attributes_0_remote_pictire_url" with "http://rubyonrails.org/images/rails.png" by Selenium
-  #    And I fill in "article_images_attributes_0_remote_pictire_url" with "http://rubyonrails.org/images/rails.png"
+  #    #And I fill in "article_images_attributes_0_remote_picture_url" with "http://rubyonrails.org/images/rails.png" by Selenium
+  #    And I fill in "article_images_attributes_0_remote_picture_url" with "http://rubyonrails.org/images/rails.png"
   #    And I fill in "article_images_attributes_0_description" with "Rails标志"
   #    And I press "发表"
   #    Then I should see "图片(1):"
