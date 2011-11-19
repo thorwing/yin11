@@ -15,6 +15,7 @@ end
 Given /^There are some sample groups$/ do
   groups = [{:name => "西瓜守望者", :tags => ["西瓜"], :city_id => "021"},
   {:name => "海鲜爱好者", :tags => ["海鲜", "龙虾"], :city_id => "021"},
+  {:name => "肉食爱好者", :tags => ["肉类", "猪肉"], :city_id => "021"},
   {:name => "麻辣诱惑", :tags => ["川菜", "湘菜"], :city_id => "021"}]
 
   groups.each do |g|

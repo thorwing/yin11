@@ -13,21 +13,22 @@ Feature: tests for Feeds
     And I should see "用户动态"
 
   Scenario: 用户可以看到所加入餐桌的其它用户的动态
-    Given the following vendor exists:
-      | name       | city | street |
-      | 农工商超市 | 上海 | 大华路 |
+    Given There are some sample products
     When I log in as "David User"
-    And I join the group "西瓜守望者"
+    And I join the group "肉食爱好者"
 
     When I log in as "Kate Tester"
-    And I post a review about vendor "农工商超市"
+    And I join the group "肉食爱好者"
+    And I post a simple review for "梅山猪" with "买到烂猪肉"
     When I go to the reviews page
-    Then I should see "买到烂西瓜"
+    Then I should see "买到烂猪肉"
 
     When I log in as "David User"
-    Then I should see "买到烂西瓜"
+    And I go to the me page
+    Then I should see "买到烂猪肉"
 
-    When I log in as "Mighty Admin"
-    Then I should not see "买到烂西瓜"
+    When I log in as "Castle Editor"
+    And I go to the me page
+    Then I should not see "买到烂猪肉"
 
 

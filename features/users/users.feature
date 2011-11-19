@@ -1,33 +1,23 @@
-Feature:
-  User can view another user's basic information.
+Feature: tests for general User module
+  可以注册为新用户
+  用户可以看到其他用户的基本信息
 
   Background:
     Given There are minimum seeds data
 
-  Scenario: User can see the control panel on home page
-      When I log in as "David User"
-      Then I should see "div" whose id is "control_panel"
-      And I should see "div" whose id is "watching_tags_panel"
-      And I should see "div" whose id is "watching_locations_panel"
-      And I should see "div" whose id is "collected_tips_panel"
-      And I should see "div" whose id is "joined_groups_panel"
+  Scenario: 可以注册为新用户
+    When I go to the new_user page
+    And I fill in "user_email" with "test_regiser@yin11.com"
+    And I fill in "user_password" with "simplepassword"
+    And I fill in "user_password_confirmation" with "simplepassword"
+    And I press "注册"
+    When I go to the login page
+    And I fill in "email" with "test_regiser@yin11.com"
+    And I fill in "password" with "simplepassword"
+    And I press "登入"
+    Then I should see "div" whose id is "control_panel"
 
-  Scenario: Normal user can post reviews
-    Given There are some sample products
-    When I go to the new_review page
-    Then I should be on the login page
-
-    When I log in as "David User"
-    Then I should be on the new_review page
-
-    When I post a simple review for "梅山猪" with "买到烂猪肉"
-
-    And I log out
-    And I go to the reviews page
-    Then I should see "买到烂猪肉"
-
-
-  Scenario: User can see his own personal page, when others view that page, it will display the brief info
+  Scenario: 用户可以看到其他用户的基本信息
     Given There are some sample products
     When I log in as "David User"
     #later Kate will visit David via this review
@@ -43,6 +33,7 @@ Feature:
     And I follow "David"
     Then I should be on David's user page
     And I should not see "基本信息"
+
 
 
   Scenario: User's name will be displayed in the item, and others can click the link to view his profile
@@ -174,3 +165,4 @@ Feature:
     When I post a simple review for "梅山猪" with "买到烂猪肉"
     And I go to David's profile page
     Then I should see "买到烂猪肉"
+

@@ -59,7 +59,9 @@ class ReviewsController < ApplicationController
     @feed = FeedsManager.push_feeds(@review)
 
     @remote_status = false
-    @user_message = ""
+
+    @user_message = ''
+
     if params[:sync_to]
       @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
     end
@@ -74,7 +76,7 @@ class ReviewsController < ApplicationController
       else
         @local_status = false
         @user_message = t("notices.review_post_failure") + @user_message
-        format.html { render :action => "new" }
+        format.html { render :action => "new", :notice => @user_message }
         format.xml  { render :xml => @review.errors, :status => :unprocessable_entity }
         format.js
       end
