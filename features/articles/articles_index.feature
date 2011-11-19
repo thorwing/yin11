@@ -4,7 +4,7 @@ Feature: Index articles
 
 Background:
     Given There are minimum seeds data
-    And There are some sample articles
+    And There are some articles
 
 Scenario Outline: 用户可以看到新闻和专题列表
     When I go to the articles page

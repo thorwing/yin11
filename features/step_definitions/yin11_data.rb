@@ -12,7 +12,7 @@ Given /^There are minimum seeds data$/ do
   Factory(:beijing, :name => "北京", :postcode => "10000", :province_id => bj_province.id)
 end
 
-Given /^There are some sample groups$/ do
+Given /^There are some groups$/ do
   groups = [{:name => "西瓜守望者", :tags => ["西瓜"], :city_id => "021"},
   {:name => "海鲜爱好者", :tags => ["海鲜", "龙虾"], :city_id => "021"},
   {:name => "肉食爱好者", :tags => ["肉类", "猪肉"], :city_id => "021"},
@@ -28,7 +28,7 @@ Given /^There are some sample groups$/ do
   end
 end
 
-Given /^There are some sample reviews$/ do
+Given /^There are some reviews$/ do
   Factory(:review, :title => "牛奶坏了", :tags_string => "牛奶")
 end
 

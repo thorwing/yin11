@@ -8,7 +8,7 @@ Feature: modify article
     Given There are minimum seeds data
 
   Scenario Outline: 编辑和管理员可以修改文章
-    Given There are some sample articles
+    Given There are some articles
     When I log in as "<user>"
     And I view an article named "三聚氰胺再现上海"
     And I follow "编辑"
@@ -24,7 +24,7 @@ Feature: modify article
       | Mighty Admin  |
 
   Scenario Outline: 访客和用户不可以修改文章
-    Given There are some sample articles
+    Given There are some articles
     When I log in as "<user>"
     And I view an article named "三聚氰胺再现上海"
     Then I should not see "编辑"
@@ -52,7 +52,7 @@ Feature: modify article
     | Mighty Admin  |
 
   Scenario Outline: 管理员 编辑可以启用/禁用 article的enable 属性
-    Given There are some sample articles
+    Given There are some articles
     When I log in as "<user>"
     Then I disabled a article named "三聚氰胺再现上海"
     And I go to the articles page

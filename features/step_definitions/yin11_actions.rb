@@ -35,14 +35,6 @@ When /^I post a simple review for "(.+)" with "(.+)"$/ do |product_name, content
   And %(I press "发表测评")
 end
 
-When /^I post a simple tip$/ do
-    When %(I go to the tips page)
-    And %(I follow "+锦囊")
-    And %(I fill in "tip_title" with "辨别西瓜是否含有催熟剂")
-    And %(I fill in "tip_content" with "切开西瓜，如果色泽不均匀，而且靠近根部的地方更红，则有可能是使用了催熟剂。")
-    And %(I press "完成")
-end
-
 When /^I create a simple vendor$/ do
     When %(I go to the new_vendor page)
     And %(I fill in "vendor_name" with "农工商超市")
@@ -73,12 +65,6 @@ end
 Then /^Confirm that "(.+)" is not in the group "(.+)"$/ do |user, group|
   When %(I go to #{user}'s profile page)
   Then %(I should not see "#{group}" within "#joined_groups")
-end
-
-When /^I follow a vendor "(.+)"$/ do |vendor|
-  And %(I go to the vendors page)
-  And %(I follow "#{vendor}")
-  When %(I follow "+关注")
 end
 
 When /^I follow "(.+)" of kind "(.+)"$/ do |name, index|

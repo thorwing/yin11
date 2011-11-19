@@ -2,7 +2,7 @@ Feature: tests for Groups
 
   Background:
     Given There are minimum seeds data
-    And There are some sample groups
+    And There are some groups
 
   Scenario: Guest can visit a group
     When I go to the groups page

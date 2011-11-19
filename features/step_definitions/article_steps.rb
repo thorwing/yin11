@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Given /^There are some sample articles$/ do
+Given /^There are some articles$/ do
   Article.create(:title => "关爱心脏：5种减少盐摄入量的方法", :content => "盐的摄入量过高会导致高血压......", :tags_string => "心脏", :author_id=> @normal_user.id, :type => "theme"  )  do |a|
       a.recommended = true
   end

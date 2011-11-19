@@ -12,7 +12,7 @@ Feature: show details of a product
 
   Background:
     Given There are minimum seeds data
-    And There are some sample products
+    And There are some products
 
   Scenario: 显示商品的商户的信息
     When I view the details of product "苏北草母鸡"
