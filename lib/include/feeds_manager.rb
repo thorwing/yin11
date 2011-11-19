@@ -1,18 +1,24 @@
 class FeedsManager
-  def initialize_feed(item)
+
+  def self.initialize_feed(item)
     Feed.new(:target_type => item.class.name, :target_id => item.id)
   end
 
   def self.push_feeds(item)
-    if item.respond_to?(:enabled)
-      return nil unless item.enabled
-    end
+    #if item.respond_to?(:enabled)
+    #  return nil unless item.enabled
+    #end
 
     feed = initialize_feed(item)
     #push feed to it's vendor'
     if item.respond_to?(:vendor) && item.vendor.present?
       item.vendor.feeds << feed
       item.vendor.save!
+    end
+
+    if item.respond_to?(:product) && item.product.present?
+      item.product.feeds << feed
+      item.product.save!
     end
 
     #push feed to it's author
@@ -29,8 +35,6 @@ class FeedsManager
         tag.save!
       end
     end
-
-    feed
   end
 
   def self.pull_feeds(user)
@@ -41,8 +45,8 @@ class FeedsManager
 
     user.relationships.each do |r|
       followable = r.get_item
-      feeds = followable.get_feeds
-      feeds.each {|f| items << f.get_item} if feeds.present?
+      feeds = followable.feeds
+      feeds.each {|f| items << f.get_item}
     end
 
     items.compact.uniq

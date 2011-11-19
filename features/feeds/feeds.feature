@@ -1,17 +1,15 @@
 Feature: tests for Feeds
   用户可以在“我的首页”看到动态信息
 
-  注册用户可以关注一个商品，并得到相关的动态; 注册用户可以取消关注一个商品，并不再接收相关的动态
-  访客不可以关注一个商品
+  注册用户可以关注一个商品，并得到相关的动态; 取消关注则不再接收相关的动态
 
-  注册用户可以关注一个商家，并得到相关的动态; 注册用户可以取消关注一个商家，并不再接收相关的动态
-  访客不可以关注一个商家
+  注册用户可以关注一个商家，并得到相关的动态; 取消关注则不再接收相关的动态
 
-  注册用户可以关注一个用户，并得到相关的动态; 注册用户可以取消关注一个用户，并不再接收相关的动态
-  访客不可以关注一个用户
+  注册用户可以关注一个用户，并得到相关的动态; 取消关注则不再接收相关的动态
 
-  注册用户可以关注一个饭桌，并得到相关的动态; 注册用户可以取消关注一个饭桌，并不再接收相关的动态
-  访客不可以关注一个饭桌
+  注册用户可以关注一个饭桌，并得到相关的动态; 取消关注则不再接收相关的动态
+
+  访客不可以关注一个商品, 商家, 用户, 饭桌, 标签
 
   Background:
     Given There are minimum seeds data
@@ -22,9 +20,8 @@ Feature: tests for Feeds
     Then I should see "div" whose "id" is "feeds"
     And I should see "用户动态"
 
-  @focus
   @javascript
-  Scenario Outline: 注册用户可以关注一个商品，并得到相关的动态; 注册用户可以取消关注一个商品，并不再接收相关的动态
+  Scenario Outline: 注册用户可以关注一个商品，并得到相关的动态; 取消关注则不再接收相关的动态
     Given There are some products
     When I log in as "Kate Tester"
     And I post a simple review for "苏北草母鸡" with "非常滋补"
@@ -54,8 +51,9 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
+
   @javascript
-  Scenario Outline: 注册用户可以关注一个商家，并得到相关的动态; 注册用户可以取消关注一个商家，并不再接收相关的动态
+  Scenario Outline: 注册用户可以关注一个商家，并得到相关的动态; 取消关注则不再接收相关的动态
     Given There are some products
     When I log in as "Kate Tester"
     And I post a simple review for "苏北草母鸡" with "非常滋补"
@@ -85,14 +83,17 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
-  Scenario: 访客不可以关注一个商家
-    Given There are some products
-    When I go to the vendors page
-    And I follow "天下养鸡网"
-    Then I should not see "+关注"
+  Scenario Outline: 注册用户可以关注一个用户，并得到相关的动态; 取消关注则不再接收相关的动态
 
 
-  Scenario Outline: 注册用户可以关注一个饭桌，并得到相关的动态; 注册用户可以取消关注一个饭桌，并不再接收相关的动态态
+    Examples:
+    | user |
+    | David User |
+    | Castle Editor |
+    | Mighty Admin  |
+
+
+  Scenario Outline: 注册用户可以关注一个饭桌，并得到相关的动态; 取消关注则不再接收相关的动态
     Given There are some products
     And There are some groups
 
@@ -120,9 +121,16 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
-  Scenario: 访客不可以关注一个饭桌
+  Scenario Outline: 访客不可以关注一个商品, 商家, 用户, 饭桌
     Given There are some products
-    When I go to the vendors page
-    And I follow "天下养鸡网"
+    And There are some groups
+    When I follow "<subject>" of kind "<path>"
+    Given There are some products
     Then I should not see "+关注"
 
+    Examples:
+    | subject | path |
+    | 梅山猪     | products |
+    | 天下养鸡网 | vendors |
+    | Kate   | users |
+    | 肉食爱好者 | groups |

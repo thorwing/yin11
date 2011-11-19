@@ -56,8 +56,6 @@ class ReviewsController < ApplicationController
 
     #RewardManager.new(current_user).contribute(:posted_reviews)
 
-    #@feed = FeedsManager.initialize_feed(@review)
-
     @remote_status = false
     @user_message = ''
 

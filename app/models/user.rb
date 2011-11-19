@@ -60,7 +60,6 @@ class User
   has_and_belongs_to_many :badges
   has_many :vendors
   embeds_many :relationships
-  embeds_many :feeds
 
   #Validators
   validates :email,

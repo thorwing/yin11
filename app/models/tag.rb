@@ -8,7 +8,6 @@ class Tag
 
   #relationships
   has_and_belongs_to_many :groups
-  embeds_many :feeds
 
   #validations
   validates_length_of :name, :maximum => 20
