@@ -3,26 +3,31 @@
   <%= render "shared/show_tags", :item => topic %>
   <span class="fr"><%= link_to t("topics.more") %></span>
   <div class="products">
-    <div class="prod first">
-      <% products = get_recommended_products(topic) %>
-      <%= link_to image_tag( products.first.get_image, :border => 0, :width => 200, :height => 160), products.first unless products.empty? %>
-      <h3><span><%= products.first.name unless products.empty? %></span></h3>
-    </div>
-    <% products = products.drop(1) %>
+    <% products = get_recommended_products(topic) %>
+    <% first_recipe = get_recipes(topic).first %>
+
+    <% if first_recipe %>
+        <div class="recipe">
+          <%= link_to image_tag( first_recipe.get_first_image, :border => 0, :width => 200, :height => 160), first_recipe unless first_recipe.nil? %>
+          <h3><span><%= first_recipe.title unless first_recipe.nil? %></span></h3>
+        </div>
+    <% else %>
+        <% first_product = products.first %>
+        <% products = products.drop(1) %>
+         <div class="product first">
+            <%= link_to image_tag( first_product.get_image, :border => 0, :width => 200, :height => 160), first_product unless first_product.nil? %>
+            <h3><span><%= first_product.name unless first_product.nil? %></span></h3>
+        </div>
+    <% end %>
+
     <div class="slice">
-        <% products.values_at(* products.each_index.select{|i| i.odd?}).each do |prod| %>
-          <div class="prod">
-            <%= link_to image_tag(prod.get_image, :border => 0, :width => 128, :height => 80), prod %>
-            <h3><span><%= prod.name %></span></h3>
-          </div>
+        <% products.values_at(* products.each_index.select{|i| i.odd?}).each do |product| %>
+          <%= render "recommended_product", :product => product %>
         <% end %>
     </div>
     <div class="slice">
         <% products.values_at(* products.each_index.select{|i| i.even?}).each do |prod| %>
-          <div class="prod">
-            <%= link_to image_tag( prod.get_image, :border => 0, :width => 128, :height => 80), prod %>
-            <h3><span><%= prod.name %></span></h3>
-          </div>
+          <%= render "recommended_product", :product => product %>
         <% end %>
     </div>
   </div>

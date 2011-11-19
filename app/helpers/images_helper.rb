@@ -31,9 +31,7 @@ module ImagesHelper
   #end
 
   def get_thumbnail(image, group = false)
-    logger = Logger.new(STDOUT)
-    logger.info image.image.url.to_s
-    if image.image?
+    if image.picture?
       link_to(image_tag(image.picture_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :alt => "image_thumbnail"),
         image.picture_url, :title => image.caption, :rel => group ? "lightbox-group" : "lightbox" , :class => "thumbnail" )
     end

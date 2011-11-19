@@ -173,7 +173,7 @@ require "source"
   images.each do |i|
     begin
       image = Image.create! do |image|
-        image.image = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
+        image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
         image.product_id = i[:product_id]
         image.article_id = i[:article_id]
       end
