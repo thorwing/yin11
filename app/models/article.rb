@@ -6,6 +6,7 @@ class Article
   include Available
   include Votable
   include Imageable
+  include Feedable
   include SilverSphinxModel
 
   #fields
@@ -61,7 +62,6 @@ class Article
   validates_inclusion_of :type, :in => Article.types
 
   before_validation { errors.add(:reported_on, I18n.translate("validations.date.reported_on_invalid_msg")) if @reported_on_invalid }
-  after_create { FeedsManager.push_feeds(self) }
 
   #methods
   def name_of_source

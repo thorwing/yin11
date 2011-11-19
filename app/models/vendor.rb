@@ -20,8 +20,6 @@ class Vendor
   scope :of_city, lambda { |city_name| where(:city => city_name)}
 
   #Relationships
-  has_many :reviews
-  has_many :reports
   has_many :products
   belongs_to :creator, :class_name => "User"
   embeds_many :feeds

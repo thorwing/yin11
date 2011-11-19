@@ -85,7 +85,6 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
-
   Scenario: 访客不可以关注一个商家
     Given There are some products
     When I go to the vendors page

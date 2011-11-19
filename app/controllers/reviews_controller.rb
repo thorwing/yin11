@@ -27,9 +27,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.xml
   def new
-    if params[:product_i]
-      vendor = Vendor.find(params[:vendor_id])
-      @review = vendor.reviews.build
+    if params[:product_id]
+      product = Product.find(params[:product_id])
+      @review = product.reviews.build
     else
       @review = Review.new
     end
@@ -56,7 +56,7 @@ class ReviewsController < ApplicationController
 
     #RewardManager.new(current_user).contribute(:posted_reviews)
 
-    @feed = FeedsManager.push_feeds(@review)
+    #@feed = FeedsManager.initialize_feed(@review)
 
     @remote_status = false
     @user_message = ''
