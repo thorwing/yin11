@@ -27,9 +27,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.xml
   def new
-    if params[:product_i]
-      vendor = Vendor.find(params[:vendor_id])
-      @review = vendor.reviews.build
+    if params[:product_id]
+      product = Product.find(params[:product_id])
+      @review = product.reviews.build
     else
       @review = Review.new
     end
@@ -54,19 +54,29 @@ class ReviewsController < ApplicationController
 
     ImagesHelper.process_uploaded_images(@review, params[:images])
 
-    RewardManager.new(current_user).contribute(:posted_reviews)
+    #RewardManager.new(current_user).contribute(:posted_reviews)
 
+    #@feed = FeedsManager.initialize_feed(@review)
+
+    @remote_status = false
+    @user_message = ''
+
+    #syncs the review to 3rd party site, e.g. SIna Weibo, Renren...
     if params[:sync_to]
-      SyncsManager.new(current_user).sync(@review)
+      @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
     end
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to(@review, :notice => t("notices.review_posted")) }
+        @local_status = true
+        @user_message = t("notices.review_posted") + @user_message
+        format.html { redirect_to(@review, :notice => @user_message) }
         format.xml  { render :xml => @review, :status => :created, :location => @review }
         format.js
       else
-        format.html { render :action => "new" }
+        @local_status = false
+        @user_message = t("notices.review_post_failure") + @user_message
+        format.html { render :action => "new", :notice => @user_message }
         format.xml  { render :xml => @review.errors, :status => :unprocessable_entity }
         format.js
       end

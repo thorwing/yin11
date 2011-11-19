@@ -15,10 +15,10 @@ class PanelManager
     #Review.where(:location.near => [location.latitude, location.longitude]).all
     #Review.where(:location.within => { "$center" => [ [location.latitude, location.longitude], 10000 ] }).all
   end
-
-  def get_items_tagged_with(tag)
-    InfoItem.enabled.in_days_of(@days).tagged_with([tag]).all
-  end
+  #
+  #def get_items_tagged_with(tag)
+  #  InfoItem.enabled.in_days_of(@days).tagged_with([tag]).all
+  #end
 
   def get_items_from(group)
     Review.enabled.in_days_of(@days).any_in(:author_id => group.member_ids).all

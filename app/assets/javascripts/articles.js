@@ -10,10 +10,10 @@ $(function(){
 });
 
 function toggle_source_fields(select) {
-     if(select.val() != '新闻') {
-        $('#article_source_fields').hide();
+     if(select.val() != 'news') {
+        $('#news_fields').hide();
     }
     else{
-        $('#article_source_fields').show();
+        $('#news_fields').show();
     }
 }

@@ -1,19 +1,18 @@
 class ProductsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :editor }
-  layout "two_columns"
 
   # GET /products
   # GET /products.json
   def index
     criteria = Product.enabled
-    if params[:category].present?
-      category = Tag.first(conditions: {name: params[:category], is_category: true})
-      categories = [category.name]
-      categories |= category.children.map{|c| c.name} unless category.children.empty?
-
-      criteria = criteria.tagged_with(categories)
+    if params[:catalog].present?
+      catalog = Catalog.first(conditions: {name: params[:catalog]})
+      catalog_ids = [catalog.id] | catalog.descendant_ids
+      criteria = criteria.any_in(catalog_ids: catalog_ids)
     end
+
     @products = criteria.page(params[:page]).per((ITEMS_PER_PAGE_MANY / 3).to_i * 3)
+    @catalogs = Catalog.all.to_a
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,8 +24,6 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-
-    @rel_tips = Article.tips.tagged_with(@product.tags)
 
     respond_to do |format|
       format.html # show.html.erb

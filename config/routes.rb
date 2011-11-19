@@ -15,6 +15,8 @@ Yin11::Application.routes.draw do
 
   put 'administrator/base/toggle'
 
+  match "me" => "personal#me"
+
   match "logout" => "sessions#destroy"
   match "login" => "sessions#new"
   match "sign_up" => "users#new"
@@ -86,14 +88,6 @@ Yin11::Application.routes.draw do
   resources :votes, :only => [:create]
 
   resources :images, :only => [:create]
-
-  resources :tips, :except => [:destroy] do
-    member do
-      put 'collect'
-      get 'revisions'
-      put 'roll_back'
-    end
-  end
 
   #resources :badges
 

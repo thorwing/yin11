@@ -5,7 +5,7 @@ Feature: articles listed on home page
 
   Background:
     Given There are minimum seeds data
-    And There are some sample articles
+    And There are some articles
 
   Scenario: 访客可以在主页上看到一些新闻
     When I go to the home page

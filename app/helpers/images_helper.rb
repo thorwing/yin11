@@ -18,7 +18,7 @@ module ImagesHelper
     if image_params.present?
       image_params[0..4].each do |image_id|
         image = Image.find(image_id)
-        image.info_item_id = item.id
+        image.send("#{item.class.name.downcase}_id=", item.id)
         image.save
         #@review.image_ids << image_id
       end
@@ -31,11 +31,9 @@ module ImagesHelper
   #end
 
   def get_thumbnail(image, group = false)
-    logger = Logger.new(STDOUT)
-    logger.info image.image.url.to_s
-    if image.image?
-      link_to(image_tag(image.image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :alt => "image_thumbnail"),
-        image.image_url, :title => image.caption, :rel => group ? "lightbox-group" : "lightbox" , :class => "thumbnail" )
+    if image.picture?
+      link_to(image_tag(image.picture_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :alt => "image_thumbnail"),
+        image.picture_url, :title => image.caption, :rel => group ? "lightbox-group" : "lightbox" , :class => "thumbnail" )
     end
   end
 

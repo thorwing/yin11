@@ -441,7 +441,7 @@ class SilverHornet::Buy < SilverHornet::Site
   end
 
   def assign_category(product)
-    @categories ||= Category.all.to_a
+    @categories ||= Catalog.all.to_a
 
     #according to the product's name, try assigning a category for the product
     @categories.each do |c|
@@ -464,9 +464,9 @@ class SilverHornet::Buy < SilverHornet::Site
 
       #log "the image's url is: #{pic_url}"
 
-      if product.image.blank? || product.image.remote_image_url != pic_url
-        #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
-        pic = product.create_image(remote_image_url: pic_url)
+      if product.image.blank? || product.image.remote_picture_url != pic_url
+        #we are using Carrierwave, so just set the remote_picture_url, it will download the image for us
+        pic = product.create_image(remote_picture_url: pic_url)
       end
     end
   end

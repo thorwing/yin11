@@ -9,8 +9,8 @@ Feature: create comment
 
   Background:
     Given There are minimum seeds data
-    And There are some sample articles
-    And There are some sample reviews
+    And There are some articles
+    And There are some reviews
 
   Scenario Outline: 注册用户，编辑，管理员额可以对文章，测评添加评论
     When I log in as "<user>"

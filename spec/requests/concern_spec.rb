@@ -5,7 +5,6 @@ describe "Concern" do
   before {
     @vendor = Factory(:vendor, :name => "big supermarket", :city => "shanghai", :street => "nanjing road" )
     @review = Factory(:bad_review, :vendor_id => @vendor.id, :tags_string => "milk")
-    @tip = Factory(:tip)
   }
 
   it "control panel gets displayed" do

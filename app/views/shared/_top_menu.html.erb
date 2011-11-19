@@ -20,6 +20,7 @@
             </ul>
         </li>
     <% end %>
+    <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me") %></li><% end %>
     <li><%= render_menu(t("menu.articles"), articles_path) %></li>
     <li><%= render_menu(t("menu.topics"), topics_path) %></li>
     <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>

@@ -5,7 +5,8 @@
   <%= javascript_include_tag "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js" %>
   <%= yield :header_including if content_for?(:header_including) %>
 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
   <meta name="google-site-verification" content="GF_EoI9-lwWznbOBC3y1-joOBGeE7EBPEfui_-4vMZo" />
   <% if has_meta_tag? %>
       <meta name="description" content="<%= @meta_tag %>" />
@@ -23,15 +24,13 @@
 
 <%= display_flash %>
 <div id="main">
-  <div id="container">
-    <div class="skinny">
-        <%= render "shared/quick_login"  %>
-        <%= render "shared/top_menu" %>
-        <div id="content_area" class="block">
-            <%= content_tag(:h1, @content_for_title, :class => "title") if show_title?  %>
-            <%= content_for?(:content) ? yield(:content) : yield %>
-        </div>
-	</div>
+  <div id="container" class="skinny">
+    <%= render "shared/quick_login"  %>
+    <%= render "shared/top_menu" %>
+    <div id="content_area" class="block">
+        <%= content_tag(:h1, @content_for_title, :class => "title") if show_title?  %>
+        <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
   </div>
 </div>
 

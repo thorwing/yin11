@@ -9,25 +9,48 @@
 
 .large_topic .slice {overflow:hidden;}
 
-.large_topic .prod {
-	width: 128px;
-	height :80px;
-   	position: relative;
+.large_topic .recipe {
+    width:200px; height:160px;
+    position: relative;
 	float:left;
 	margin: 5px;
 }
-.large_topic .prod h3 {
+
+.large_topic .recipe h3 {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	text-align:right;
 }
-.large_topic .prod h3 span {
+.large_topic .recipe h3 span {
    color: white;
    font: bold 12px/22px 'Helvetica Neue',Helvetica,Arial,Sans-serif;
    letter-spacing: -1px;
    background-color: transparent;
    padding: 10px;
 }
+
+.large_topic .product {
+	width: 128px;
+	height :80px;
+   	position: relative;
+	float:left;
+	margin: 5px;
+}
+.large_topic .product h3 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align:right;
+}
+.large_topic .product h3 span {
+   color: white;
+   font: bold 12px/22px 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+   letter-spacing: -1px;
+   background-color: transparent;
+   padding: 10px;
+}
+
 .large_topic .prod.first {width:200px; height:160px;}

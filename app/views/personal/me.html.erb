@@ -1,0 +1,17 @@
+<% meta_tag t("site.introduction") %>
+
+<div class="fl">
+    <div>
+        <%= render "shared/review_fields", :review => Review.new %>
+    </div>
+    <h2><%= t("feeds.all") %></h2>
+    <div id="feeds" class="block square">
+        <%= render @feeds %>
+    </div> <!--end of feeds -->
+</div>
+
+<div class="fr">
+    <div id="control_panel">
+        <%= render "user_panel" %>
+    </div> <!--end of control_panel -->
+</div>

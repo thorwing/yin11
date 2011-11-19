@@ -1,12 +1,10 @@
-<div class="two_columns_container">
- <div class="left_column">
-    <div class="image_frame">
-        <%= image_tag @product.image.image_url if @product.image && @product.image.image_url %>
+<div class="clearfix">
+    <%= render "shared/vote_fields", :item => @product %>
+    <div class="image_frame fl">
+        <%= image_tag @product.image.picture_url if @product.image && @product.image.picture_url %>
     </div>
- </div>
- <div class="right_column">
-   <%= render "shared/vote_fields", :item => @product %>
-   <div class="block square">
+
+   <div class="block square fl">
     <p>
       <b><%= t("general.name")  %></b>
       <%= @product.name %>
@@ -16,7 +14,7 @@
       <%= link_to  @product.vendor.name, @product.vendor %>
     </p>
     <p>
-      <b><%= t("categories.category")  %></b>
+      <b><%= t("catalogs.catalog")  %></b>
       <%= @product.tags.first {|t| t.is_category == true} if @product.tags %>
     </p>
     <p>
@@ -48,7 +46,6 @@
         <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
     </div>
    </div>
- </div>
 </div>
 
 
@@ -66,20 +63,12 @@
 
 <hr/>
 
-<% unless @rel_tips.blank? || @rel_tips.empty? %>
-Related articles:
-    <% @rel_tips.each do |tip| %>
-        <%= render "info_items/info_item", :item => tip %>
-    <% end %>
-<% end %>
-<hr/>
-
-<div id="reviews_block">
-    <%= render :partial => "review", :collection => @product.reviews, :as => :review %>
+<div id="reviews">
+    <%= render :partial => "reviews/review", :collection => @product.reviews, :as => :review %>
 </div>
 
 <% if current_user_has_permission? :normal_user %>
     <div id="new_review_block">
-        <%= render "review_fields", :review => @product.reviews.new, :product => @product %>
+        <%= render "shared/review_fields", :review => @product.reviews.new %>
     </div>
 <% end %>

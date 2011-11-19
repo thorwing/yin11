@@ -4,12 +4,15 @@
 *= require home
 *= require tag_cloud
 *= require comment
+*= require items
 *= require top_menu
 *= require menu
 *= require form
 *= require products
 *= require topics
 *= require reviews
+*= require catalogs
+*= require search
 *= require token-input-facebook
 *= require facebox
 *= require slimbox
@@ -210,8 +213,9 @@ ul.menu li {
     the padding-bottom of container and margin, height of footer must be the same
 */
 html, body, #main { height: 100%; }
-body #main { height: auto; min-height: 100%; }
-#container {padding-bottom: 15em;}
+body #main { height: auto;}
+#container { padding-bottom: 15em;}
+#content_area { min-height: 600px;  }
 
 #footer {
     clear: both;
@@ -248,12 +252,12 @@ body #main { height: auto; min-height: 100%; }
 }
 
 .clearfix:after {
-visibility: hidden;
-display: block;
-font-size: 0;
-content: " ";
-clear: both;
-height: 0;
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
 }
 .clearfix{*zoom:1;}
 

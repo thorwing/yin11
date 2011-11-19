@@ -35,28 +35,6 @@
     float: right;
 }
 
-/*
-	InfoItem-Home-Styles
-*/
-
-.item {
-	border-top:1px solid #dbdbdb;
-	margin-bottom:10px;
-	position:relative;
-	padding:2px 3px 1px 3px;
-	background:#FFFFFF;
-    overflow:hidden;
-}
-
-.item.info { width:650px; }
-.item.info .left_fields { float:left; margin-right:8px;}
-.item.info .vote_fields { margin-top:5px;}
-.item.info .left_fields img { float:left; margin-top:10px;}
-.item.info .central_fields { float:left; width:400px}
-.item.info .central_fields h3 {margin: 0 0 6px 0;}
-.item.info .central_fields p {margin: 0 0 4px 0;}
-.item.info .right_fields { float:right; overflow:hidden; width:150px;}
-.item.info .right_fields span, .item.info .right_fields div, .item.info .right_fields p  {margin: 0; float: right;display:block; clear:both;}
 
 /* for ribbons */
 .item.info .ribbon {
@@ -64,13 +42,6 @@
 	top:-3px;
 	right:-3px;
 }
-
-/*
-	Good-Bad-Items-Styles
-*/
-
-#items_list {width:600px;}
-#tips_list {width:360px;}
 
 /* more button */
 

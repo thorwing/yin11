@@ -8,7 +8,7 @@ Feature: products listed on index page
 
   Background:
     Given There are minimum seeds data
-    And There are some sample products
+    And There are some products
 
   Scenario: 用户可以访问商品检索页，看到商品列表
     When I go to the products page
@@ -17,14 +17,14 @@ Feature: products listed on index page
     And I should see "苏北草母鸡" within "#products_list"
 
   Scenario: 用户可以看到商品的分类
-    Given There are some sample categories
+    Given There are some catalogs
     When I go to the products page
-    Then I should see "div" whose "id" is "categories_list"
-    Then I should see "肉类" within "#categories_list"
-    Then I should see "猪肉" within "#categories_list"
+    Then I should see "div" whose "id" is "catalogs"
+    Then I should see "肉类" within "#catalogs"
+    Then I should see "猪肉" within "#catalogs"
 
   Scenario: 用户可以按照商品的种类，过滤商品
-    Given There are some sample categories
+    Given There are some catalogs
     When I go to the products page
     Then I should see "苏北草母鸡"
     And I should see "梅山猪"
@@ -48,7 +48,7 @@ Feature: products listed on index page
     Then I should see "label" whose id is "product_comments"
 
     Then I should see "苏北草母鸡"
-    And I should see "￥18.00"
+    And I should see "¥18.00"
     And I should see "一斤"
 
   Scenario: 用户可以在商品展示页看到用户针对商品的分享体验

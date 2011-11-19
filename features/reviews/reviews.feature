@@ -8,19 +8,17 @@ Feature: tests for reviews
 
   Background:
     Given There are minimum seeds data
-    And There are some sample products
+    And There are some products
 
   @javascript
   Scenario Outline: 注册用户，编辑，管理员可以添加分享
     When I log in as "<user>"
     And I view the details of product "苏北草母鸡"
-    Then I should see "input" whose id is "review_title"
     And I should see "input" whose id is "review_content"
 
-    When I fill in "review_title" with "用来炖鸡汤不错"
+    When I fill in "review_content" with "用来炖鸡汤不错"
     And I press "发表测评"
     Then I should see "用来炖鸡汤不错"
-    And I should not see "input" whose id is "review_title"
     And I should not see "input" whose id is "review_content"
 
     When I view the details of product "苏北草母鸡"
@@ -34,7 +32,6 @@ Feature: tests for reviews
 
   Scenario: 访客不能添加分享
     When I view the details of product "苏北草母鸡"
-    Then I should not see "input" whose id is "review_title"
     And I should not see "input" whose id is "review_content"
     And I should not see "发表测评"
 

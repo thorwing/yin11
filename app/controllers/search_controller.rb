@@ -1,18 +1,21 @@
 class SearchController < ApplicationController
-  before_filter :prepare
+  #before_filter :prepare
 
-  def test_xs(str, escape=true)
-      str.unpack('U*').map {|n| n.xchr(escape)}.join # ASCII, UTF-8
-    rescue
-      str.unpack('C*').map {|n| n.xchr}.join # ISO-8859-1, WIN-1252
-  end
+  #def test_xs(str, escape=true)
+  #    str.unpack('U*').map {|n| n.xchr(escape)}.join # ASCII, UTF-8
+  #  rescue
+  #    str.unpack('C*').map {|n| n.xchr}.join # ISO-8859-1, WIN-1252
+  #end
 
   def index
-    #prepare parameters
-    if @query.present?
+    @items = []
 
-      result = Article.search(@query)
-      @items = result.documents
+    if params[:query].present?
+      SilverSphinx.context.indexed_models.each do |model|
+        model = model.constantize
+        @items |= model.search(params[:query]).documents
+      end
+    end
 
       #client = Riddle::Client.new("localhost", 3312)
       #client.match_mode = :extended
@@ -48,54 +51,6 @@ class SearchController < ApplicationController
       #end
       #
       #process_items
-    end
-  end
-
-  def tag
-    if @query.present?
-      @query_criteria = @query_criteria.tagged_with(@query)
-
-      process_items
-    end
-
-    respond_to do |format|
-      format.html {render :index}
-    end
-  end
-
-  def region
-    if @query.present?
-      @query_criteria = @query_criteria.from_cities([@query])
-
-      process_items
-    end
-    respond_to do |format|
-      format.html {render :index}
-    end
-  end
-
-  protected
-
-  def prepare
-    @bad_items ||= []
-    @good_items ||= []
-    @bad_region_names ||= []
-    @tips = []
-
-    @query = params[:query] || params[:tags] || params[:region_name]
-    @query_criteria = InfoItem.enabled
-  end
-
-  def process_items
-    #TODO
-    @bad_count = @query_criteria.of_types([Review.name, Article.name]).bad.desc(:reported_on, :updated_on).size
-    @good_count = @query_criteria.of_types([Review.name, Article.name]).good.desc(:reported_on, :updated_on).size
-
-    @bad_items = @query_criteria.of_types([Review.name, Article.name]).bad.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-    @good_items = @query_criteria.of_types([Review.name, Article.name]).good.desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-    @tips = @query_criteria.of_types([Tip.name]).desc(:reported_on, :updated_on).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-
-    @bad_region_names = @bad_items.inject([]) {|memo, e| memo << e.city }.compact.uniq
   end
 
 end

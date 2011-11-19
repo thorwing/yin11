@@ -5,8 +5,8 @@ Feature: edit comments
 
   Background:
     Given There are minimum seeds data
-    And There are some sample articles
-    And There are some sample reviews
+    And There are some articles
+    And There are some reviews
 
   Scenario Outline: 编辑，管理员可以控制评论的可见性
     When I log in as "David User"

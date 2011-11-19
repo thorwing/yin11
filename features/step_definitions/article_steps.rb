@@ -1,15 +1,15 @@
 # encoding: utf-8
 
-Given /^There are some sample articles$/ do
-  Article.create(:title => "关爱心脏：5种减少盐摄入量的方法", :content => "盐的摄入量过高会导致高血压......", :tags_string => "心脏", :author_id=> @normal_user.id, :type => "专题"  )  do |a|
+Given /^There are some articles$/ do
+  Article.create(:title => "关爱心脏：5种减少盐摄入量的方法", :content => "盐的摄入量过高会导致高血压......", :tags_string => "心脏", :author_id=> @normal_user.id, :type => "theme"  )  do |a|
       a.recommended = true
   end
-  Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。", :region_tokens => "021", :tags_string => "牛奶, 三聚氰胺", :author_id=> @normal_user.id, :type => "新闻") do |a|
+  Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。", :region_tokens => "021", :tags_string => "牛奶, 三聚氰胺", :author_id=> @normal_user.id, :type => "news") do |a|
       a.recommended = true
   end
 end
 
-When /^I post a article with:$/ do |table|
+When /^I post an article with:$/ do |table|
   table.hashes.each do |hash|
     When %(I go to the new_article page)
     And %(I fill in "article_title" with "#{hash["title"]}")
