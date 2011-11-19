@@ -20,8 +20,11 @@ class SilverHornet::ProductsSite < SilverHornet::Site
       #initialize the Dictionary for word segmentation
       RMMSeg::Dictionary.load_dictionaries
 
+      #load the words related to food
       load_food_word
 
+      #load the catalogs
+      load_catalogs
 
       @@is_initialized = true
     end
@@ -37,11 +40,25 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     file.close
   end
 
+  #load catalogs and record them in DB
   def load_catalogs
     file = File.open("#{Rails.root}/config/silver_hornet/catalogs.yml")
     yaml = YAML.load(file)
     yaml.each do |item|
       read(item)
+    end
+  end
+
+  def read(item)
+    catalog = Catalog.find_or_initialize_by(name: item["name"])
+    catalog.save!
+    if item["sub"]
+      item["sub"].each do |sub|
+        child = Catalog.find_or_initialize_by(name: sub["name"])
+        child.parent = catalog
+        child.save!
+        read(sub)
+      end
     end
   end
 
@@ -57,9 +74,6 @@ class SilverHornet::ProductsSite < SilverHornet::Site
 
   #get all products in a site
   def fetch
-
-    #process_segmentation
-
     begin
       if skipped.present? && skipped == true
         log "#{name} is skipped"
@@ -114,21 +128,19 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         log "Start process of first catalog: #{first_catalog_name}"
         #for the website which has two-level catalog of foods
         if elements["listed_second_catalog"].present?
-          process_first_catalog(first_catalog_href, tag_name) unless (first_catalog_href=="./" || first_catalog_href=="index.php")
+          process_first_catalog(first_catalog_href) unless (first_catalog_href=="./" || first_catalog_href=="index.php")
         else
           #for the website which only has one-level catalog of foods. we get the product info directly.
-          process_second_catalog(first_catalog_href, tag_name)
+          process_second_catalog(first_catalog_href)
         end
         log "Finished process of first catalog: #{first_catalog_name}"
-        #c = Cetegory.new(:name => catalog_name)
-        #c.save
-      end
+        end
     end
   end
 
 
   #process the first-level catalog page and get the second-level catalog if existed or to get the product info directly
-  def process_first_catalog(first_url, first_catalog_tag)
+  def process_first_catalog(first_url)
     #initialize a new agent instance each time
     self.agent = Mechanize.new
     #go on the site searched
@@ -141,11 +153,6 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         try do
           #get sub catalog's name
           second_catalog_name = catalog_name_filter(item.try(:content))
-          #add second-level catalog to the tag
-          start_tag = [first_catalog_tag]
-          tag_name = start_tag
-          log "tag name in first process: #{tag_name}"
-          tag_name.push(second_catalog_name)
           #get the href attr from the page node
           second_catalog_href = item.attributes['href']
           #some sites may use relative path, we need full path.
@@ -156,25 +163,20 @@ class SilverHornet::ProductsSite < SilverHornet::Site
           #navigate to the detail page of the catalog and process
           log "Start process of second catalog: #{second_catalog_name}"
           #go to the second-level catalog page and process the product info on it
-          process_second_catalog(second_catalog_href, tag_name)
+          process_second_catalog(second_catalog_href)
           log "Finished process of second catalog: #{second_catalog_name}"
-          #c = Cetegory.new(:name => catalog_name)
-          #c.save
-          #end
         end
       end
       #the second-level catalog not exist and to get the product info directly
     else
-      process_second_catalog(first_url, first_catalog_tag)
+      process_second_catalog(first_url)
     end
   end
 
   #process the product list on the catalog page and navigate to the detailed page of each product to get product info
-  def process_second_catalog(second_url, second_catalog_tag)
+  def process_second_catalog(second_url)
     #initialize a new agent instance each time
     self.agent = Mechanize.new
-    #initialize the tag
-    tag_name=second_catalog_tag
     #the "Next" link which leads to another page of products
     next_link = nil
     #cache the last-page url to avoid processing the same page again
@@ -221,7 +223,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
             #navigate to thedetail page of the product
             agent.get(href)
             #process the product info
-            process_product(tag_name)
+            process_product
           end
         end
         #go back to the entry page we cached before
@@ -233,7 +235,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   end
 
 #process the detailed product info
-  def process_product(catalog_tags)
+  def process_product
     try do
       #get the product name
       product_name = catalog_name_filter(agent.page.at(elements["product_name"]).try(:content))

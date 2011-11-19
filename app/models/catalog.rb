@@ -7,6 +7,7 @@ class Catalog
   #key :name
   field :show, :type => Boolean
 
+
   attr_accessible :name, :show
 
   #relationships
