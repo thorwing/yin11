@@ -59,7 +59,7 @@ class ReviewsController < ApplicationController
     @feed = FeedsManager.push_feeds(@review)
 
     @remote_status = false
-
+    @user_message = ""
     if params[:sync_to]
       @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
     end

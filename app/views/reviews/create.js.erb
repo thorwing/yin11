@@ -30,12 +30,13 @@ else
     jQuery.facebox( '<img border="0" src="/assets/wrong_icon.gif" alt="wrong"><span><%= @user_message %></span>');
 }
 
-setTimeout("r2()",2000);
+setTimeout("after_delay()", parseInt("<%= REVIEW_DIALOG_DELAY %>"));
+//  setTimeout("after_delay()",2000);
 
-
-function r2()
+function after_delay()
 {
-    alert("OK");
+    jQuery(document).trigger('close.facebox');
+//    alert("OK");
 }
 
 //    $('#new_review_block:visible').hide();

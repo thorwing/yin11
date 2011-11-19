@@ -11,7 +11,10 @@ class Feed
   embedded_in :user
 
   def get_item
+    p "target_type" + target_type.to_yaml
+    p "target_id" + target_id.to_yaml
     eval("#{target_type}.find(\"#{target_id}\")")
+
   end
 
 end
