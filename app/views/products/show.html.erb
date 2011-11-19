@@ -21,7 +21,7 @@
     </p>
     <p>
       <b><%= t("products.price")  %></b>
-      <%= [t("money.yuan_mark"), @product.price_as_money_string].join if @product.price %>
+      <%= [t("money.yuan_mark2"), @product.price_as_money_string].join if @product.price %>
     </p>
 
     <p>
@@ -38,6 +38,12 @@
       <b><%= t("products.original_place")  %></b>
       <%= @product.area %>
     </p>
+
+    <p>
+      <b><%= t("products.description")  %></b>
+      <%= raw @product.description %>
+    </p>
+
     <div class="actions">
         <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
     </div>

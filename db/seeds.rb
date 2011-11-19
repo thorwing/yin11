@@ -90,7 +90,7 @@ require "source"
   #  end
   #end
 
-  conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/product_sites.yml")).result)
+  conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
   conf.each do |site_name, values|
     begin
       vendor = Vendor.create!(:name => site_name)

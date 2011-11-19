@@ -7,24 +7,32 @@ class SilverHornet::Buy < SilverHornet::Site
   #the css selectors for the comments of a product
   attr_accessor :comment_selectors
   @@product_count ||=0
-  @@page_number ||=0
-  @@visited_first_page ||=false
+  @page_number ||=0
+  @visited_first_page ||=false
   @@dic_loaded ||= false
+  @@brand_list ||=[]
+  @@result||=[]
+  @@dic_words||=[]
+  @@flag ||=false
 
   def initialize
     unless @@dic_loaded
       #initialize the Dictionary for word segmentation
-      RMMSeg::Dictionary.add_dictionary("#{Rails.root}//lib//include//silver_dictionaries//yin11.dic", :words)
+      RMMSeg::Dictionary.add_dictionary("#{Rails.root}//lib//include//silver_dictionaries//silver.dic", :words)
       RMMSeg::Dictionary.load_dictionaries
       @@dic_loaded = true
-    end
 
-    #super(*args)
+    file = File.open("#{Rails.root}/lib/include/silver_hornet/dictionaries/silver.dic","r")
+    file.each_line do |line|
+      @@dic_words.push(line.strip) unless @@dic_words.include?(line.strip)
+    end
+    file.close
+    end
   end
 
   def ban_words
     @@ban_words ||= lambda do
-      filename = "#{Rails.root}/config/silver_hornet/product_global.yml"
+      filename = "#{Rails.root}/config/silver_hornet/base.yml"
       file = File.open(filename)
       yaml = YAML.load(file)
       return yaml["ban_words"]
@@ -34,6 +42,9 @@ class SilverHornet::Buy < SilverHornet::Site
 
   #get all products in a site
   def fetch
+
+    #process_segmentation
+
     begin
       if skipped.present? && skipped == true
         log "#{name} is skipped"
@@ -41,7 +52,7 @@ class SilverHornet::Buy < SilverHornet::Site
       end
 
       timestamp = Time.now
-      log "Fetching catalogs from #{self.name} at #{timestamp.to_s}"
+     log "Fetching catalogs from #{self.name} at #{timestamp.to_s}"
 
       #loop through each entry_url
       self.entries.each do |entry_url|
@@ -51,6 +62,13 @@ class SilverHornet::Buy < SilverHornet::Site
       end
 
       log "We have got #{@@product_count} Products in #{name}!"
+
+      #@@result.sort!
+      #@@result.each{|prod| p prod}
+
+      #file = File.open("#{Rails.root}/lib/include/silver_hornet/dictionaries/brand.dic")
+      #@@brand_list.each{|brand| file.puts("#{brand.length}"+" "+brand)}
+      #file.close
 
       log "Finished at at #{Time.now.to_s}, duration #{(Time.now - timestamp)} seconds"
     rescue
@@ -85,16 +103,20 @@ class SilverHornet::Buy < SilverHornet::Site
 
         next unless first_catalog_href.present?
         #navigate to the detail page of the catalog and process
-        log "Start process #{first_catalog_name}"
-        if
+        log "Start process of first catalog: #{first_catalog_name}"
+
+        #if first_catalog_name.include?("罐装")
+        #  process_first_catalog(first_catalog_href, tag_name)
+        #end
+        #if
           #for the website which has two-level catalog of foods
-        elements["listed_second_catalog"].present?
+        if elements["listed_second_catalog"].present?
           process_first_catalog(first_catalog_href, tag_name) unless (first_catalog_href=="./" || first_catalog_href=="index.php")
         else
           #for the website which only has one-level catalog of foods. we get the product info directly.
           process_second_catalog(first_catalog_href, tag_name)
         end
-        log "Finished process #{first_catalog_name}"
+        log "Finished process of first catalog: #{first_catalog_name}"
         #c = Cetegory.new(:name => catalog_name)
         #c.save
       end
@@ -130,12 +152,14 @@ class SilverHornet::Buy < SilverHornet::Site
           next unless second_catalog_href.present?
           #navigate to the detail page of the catalog and process
           #agent.get(href)
-          log "Start process #{second_catalog_name}"
+          log "Start process of second catalog: #{second_catalog_name}"
+          #if second_catalog_name.include?("调料")
           #go to the second-level catalog page and process the product info on it
           process_second_catalog(second_catalog_href, tag_name)
-          log "Finished process #{second_catalog_name}"
+          log "Finished process of second catalog: #{second_catalog_name}"
           #c = Cetegory.new(:name => catalog_name)
           #c.save
+          #end
         end
       end
       #the second-level catalog not exist and to get the product info directly
@@ -155,7 +179,14 @@ class SilverHornet::Buy < SilverHornet::Site
     #cache the last-page url to avoid processing the same page again
     last_visited_url = nil
 
-    @@visited_first_page=false
+    @visited_first_page=false
+
+    #agent.get(second_url)
+    #      last_visited_url = agent.page.uri.to_s
+    #      #process the brand
+    #      if elements["brand"]==true
+    #          process_brand
+    #      end
 
     begin
       try do
@@ -163,6 +194,12 @@ class SilverHornet::Buy < SilverHornet::Site
         if next_link.nil?
           agent.get(second_url)
           last_visited_url = agent.page.uri.to_s
+
+          #process the brand
+          #if elements["brand"]==true
+          #    process_brand
+          #end
+
         else
           last_visited_url = agent.page.uri.to_s
           #click the next page
@@ -178,7 +215,6 @@ class SilverHornet::Buy < SilverHornet::Site
         start_url = agent.page.uri
 
         log "Now dealing with #{name}: #{agent.page.uri.to_s}, see #{agent.page.search("#{elements["listed_product"]}").size.to_s} products."
-        #@@product_count+=agent.page.search("#{elements["listed_product"]}").size
 
         #loop through each item listed in the page
         agent.page.search(elements["listed_product"]).each do |item|
@@ -188,12 +224,13 @@ class SilverHornet::Buy < SilverHornet::Site
             #there must be a link
             next unless (link.present? && link.attributes.present?)
             href = link.attributes['href']
+            next if href.value=="http://www.yihaodian.com/product/1079998"
             #some sites may use relative path, we need full path.
             if URI.parse(href).host.blank?
               href = "http://#{agent.page.uri.host}/#{href.to_s.gsub("../", "")}"
             end
             next unless href.present?
-            #navigate to the detail page of the product
+            #navigate to thedetail page of the product
             agent.get(href)
             #process the product info
             process_product(tag_name)
@@ -207,11 +244,19 @@ class SilverHornet::Buy < SilverHornet::Site
     end while next_link
   end
 
-
 #process the detailed product info
   def process_product(catalog_tag)
+    begin
     #get the product name
     product_name = catalog_name_filter(agent.page.at(elements["product_name"]).try(:content))
+
+    #p "#{product_name} from #{agent.page.uri.to_s}"
+
+    #unless product_name.blank?
+    #   @@result.push(product_name) unless @@result.include?(product_name)
+    #end
+
+
     #initialize another tags for precise tagging the product by word segmenting its name
     #tags=tag
     #segmenting the product name in order to get its tags
@@ -282,9 +327,26 @@ class SilverHornet::Buy < SilverHornet::Site
     else
       log "Cannot get the product name at: #{agent.page.uri.to_s}"
     end
+
+    rescue
+      log "Something with processing product!"
+      return
+      end
   end
 
+  #process the brand
+  def process_brand
+    agent.page.search("#{elements["brand_list"]}").each do |brand|
+      brand_name = brand.try(:content).split("(")
+      name = brand_name[0].to_s
+      @@brand_list.push(name) unless @@brand_list.include?(name)
+    end
+      file = File.open("#{Rails.root}/lib/include/silver_hornet/dictionaries/brand.dic","w")
+      @@brand_list.each{|brand| file.puts("#{brand.length}"+" "+brand)}
+      file.close
+  end
 
+  #Filtering the unwanted symbols
   def catalog_name_filter(name)
     return name.to_s.strip.gsub(/[\r\n\t(商品名称：)]/, "")
   end
@@ -293,8 +355,8 @@ class SilverHornet::Buy < SilverHornet::Site
   def get_next_link
     #for the page link is extremely ugly,e.g first page has no "next link",but next page has!!
     if elements["fuck_page_number"].present?
-      if @@visited_first_page==false
-        @@visited_first_page=true
+      if @visited_first_page==false
+        @visited_first_page=true
         agent.page.at(elements["next_page_number_link"]).search('a')[@@page_number+1]
       else
         #if there is a CSS selector
@@ -323,12 +385,12 @@ class SilverHornet::Buy < SilverHornet::Site
         #for the page has no "Next"  button
       elsif elements["next_page_number_link"].present?
         #check if is the last page
-        if @@page_number != agent.page.at(elements["next_page_number_link"]).search('a').size
-          @@page_number +=1
+        if @page_number != agent.page.at(elements["next_page_number_link"]).search('a').size
+          @page_number +=1
           #p @@page_number
           agent.page.at(elements["next_page_number_link"]).search('a')[@@page_number]
         else
-          @@page_number = 0
+          @page_number = 0
         end
       else
         nil
@@ -354,7 +416,7 @@ class SilverHornet::Buy < SilverHornet::Site
 
     value = doc.at_css(selector).try(:content)
     if value.present?
-      money_symbols = [I18n.t("money.yuan_mark"), I18n.t("money.yuan")].join
+      money_symbols = [I18n.t("money.yuan_mark1"), I18n.t("money.yuan_mark2"), I18n.t("money.yuan")].join
       product.price = value.gsub(/[#{money_symbols}]/, '').strip
     end
     product.price
@@ -406,6 +468,26 @@ class SilverHornet::Buy < SilverHornet::Site
         #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
         pic = product.create_image(remote_image_url: pic_url)
       end
+    end
+  end
+
+  def process_segmentation
+
+    if @@flag ==false
+      file = File.open("#{Rails.root}/lib/include/silver_hornet/dictionaries/silver.dic","r")
+    file.each_line do |line|
+      @@result.push(line.strip) unless @@result.include?(line.strip)
+    end
+    file.close
+
+    @@result.sort!
+    #@@result.each{|res| p res}
+    i_file = File.open("#{Rails.root}/lib/include/silver_hornet/dictionaries/silver.dic","w")
+    @@result.each{|result| i_file.puts("#{result.length}"+" "+result)}
+    #@@result.each{|result| i_file.puts(result)}
+    i_file.close
+
+      @@flag = true
     end
   end
 

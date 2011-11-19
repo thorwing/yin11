@@ -56,7 +56,7 @@ class ReviewsController < ApplicationController
 
     RewardManager.new(current_user).contribute(:posted_reviews)
 
-    if params[:sync_to_sina]
+    if params[:sync_to]
       SyncsManager.new(current_user).sync(@review)
     end
 

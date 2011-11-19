@@ -1,0 +1,831 @@
+-
+  name: 休闲零食
+  show: true
+  sub:
+    -
+      name: 饼干
+      show: true
+      sub:
+        -
+          name: 苏打/梳打
+          show: false
+        -
+          name: 夹心
+          show: false
+        -
+          name: 威化/华夫
+          show: false
+        -
+          name: 曲奇
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 糕点
+      show: true
+      sub:
+        -
+          name: 沙琪玛
+          show: false
+        -
+          name: 蛋糕
+          show: false
+        -
+          name: 蛋卷
+          show: false
+        -
+          name: 派
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 膨化食品
+      show: true
+      sub:
+        -
+          name: 薯片/薯条
+          show: false
+        -
+          name: 爆米花
+          show: false
+        -
+          name: 干脆面
+          show: false
+        -
+          name: 锅巴/米饼
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 肉类小食
+      show: true
+      sub:
+        -
+          name: 肫
+          show: false
+        -
+          name: 颈
+          show: false
+        -
+          name: 翅/爪
+          show: false
+        -
+          name: 肉干/肉脯
+          show: false
+        -
+          name: 肉松
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 蜜饯果脯
+      show: true
+      sub:
+        -
+          name: 水果类
+          show: false
+        -
+          name: 橄榄类
+          show: false
+        -
+          name: 梅类
+          show: false
+        -
+          name: 山楂类
+          show: false
+        -
+          name: 枣类
+          show: false
+        -
+          name: 葡萄类
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 坚果/炒货
+      show: true
+      sub:
+        -
+          name: 核桃
+          show: false
+        -
+          name: 花生
+          show: false
+        -
+          name: 瓜子
+          show: false
+        -
+          name: 开心果
+          show: false
+        -
+          name: 腰果
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 糖果/巧克力
+      show: true
+      sub:
+        -
+          name: 软糖
+          show: false
+        -
+          name: 口香糖
+          show: false
+        -
+          name: 太妃糖
+          show: false
+        -
+          name: 礼盒装巧克力
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 果冻/布丁
+      show: true
+      sub:
+        -
+          name: 果冻
+          show: false
+        -
+          name: 布丁
+          show: false
+        -
+          name: 龟苓膏
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 海味小食
+      show: true
+      sub:
+        -
+          name: 鱼干
+          show: false
+        -
+          name: 鱿鱼/墨鱼类
+          show: false
+        -
+          name: 海苔类
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 其它
+      show: true
+-
+  name: 饮料
+  show: true
+  sub:
+    -
+      name: 碳酸饮料
+      show: true
+    -
+      name: 运动/功能饮料
+      show: true
+    -
+      name: 茶饮料
+      show: true
+    -
+      name: 果蔬汁
+      show: true
+    -
+      name: 水
+      show: true
+    -
+      name: 乳饮品
+      show: true
+    -
+      name: 咖啡饮料
+      show: true
+    -
+      name: 其它
+      show: true
+-
+  name: 冲饮
+  show: true
+  sub:
+    -
+      name: 奶粉/豆奶粉
+      show: true
+    -
+      name: 蜂蜜
+      show: true
+    -
+      name: 麦片/核桃粉
+      show: true
+    -
+      name: 奶茶
+      show: true
+    -
+      name: 冲饮果汁
+      show: true
+    -
+      name: 藕粉/芝麻糊
+      show: true
+    -
+      name: 粉粉食品
+      show: true
+    -
+      name: 咖啡
+      show: true
+      sub:
+        -
+          name: 速溶咖啡
+          show: false
+        -
+          name: 咖啡豆/咖啡粉
+          show: false
+        -
+          name: 咖啡辅料（伴侣/奶精/方糖）
+          show: false
+        -
+          name: 咖啡礼盒
+          show: false
+    -
+      name: 其它
+      show: true
+-
+  name: 奶制品
+  show: true
+  sub:
+    -
+      name: 牛奶
+      show: true
+    -
+      name: 酸奶
+      show: true
+    -
+      name: 口味奶
+      show: true
+    -
+      name: 豆奶
+      show: true
+    -
+      name: 儿童奶
+      show: true
+    -
+      name: 奶酪
+      show: true
+    -
+      name: 其它
+      show: true
+-
+  name: 茶
+  show: true
+  sub:
+    -
+      name: 绿茶
+      show: true
+      sub:
+        -
+          name: 龙井
+          show: false
+        -
+          name: 碧螺春
+          show: false
+        -
+          name: 黄山毛峰
+          show: false
+        -
+          name: 庐山云雾
+          show: false
+        -
+          name: 信阳毛尖
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 红茶
+      show: true
+      sub:
+        -
+          name: 祁门红茶
+          show: false
+        -
+          name: 荔枝红茶
+          show: false
+        -
+          name: 大吉岭红茶
+          show: false
+        -
+          name: 锡兰高地茶
+          show: false
+        -
+          name: 滇红工夫
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 黄茶
+      show: true
+      sub:
+        -
+          name: 蒙顶黄芽
+          show: false
+        -
+          name: 黄山毛尖
+          show: false
+        -
+          name: 霍山黄芽
+          show: false
+        -
+          name: 君山银针
+          show: false
+        -
+          name: 北港毛尖
+          show: false
+        -
+          name: 温州黄汤
+          show: false
+        -
+          name: 鹿苑毛尖
+          show: false
+        -
+          name: 海马宫茶
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 青茶
+      show: true
+      sub:
+        -
+          name: 铁观音
+          show: false
+        -
+          name: 冻顶乌龙茶
+          show: false
+        -
+          name: 大红袍
+          show: false
+        -
+          name: 武夷岩茶
+          show: false
+        -
+          name: 闽北水仙
+          show: false
+        -
+          name: 白毛猴
+          show: false
+        -
+          name: 凤凰水仙
+          show: false
+        -
+          name: 武夷肉桂
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 白茶
+      show: true
+      sub:
+        -
+          name: 银针白毫
+          show: false
+        -
+          name: 白牡丹
+          show: false
+        -
+          name: 安吉白茶
+          show: false
+        -
+          name: 南山寿眉
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 黑茶
+      show: true
+      sub:
+        -
+          name: 普洱茶
+          show: false
+        -
+          name: 湖南黑茶
+          show: false
+        -
+          name: 湘尖
+          show: false
+        -
+          name: 四川边茶
+          show: false
+        -
+          name: 黑砖茶
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 花草茶
+      show: true
+      sub:
+        -
+          name: 茉莉花茶
+          show: false
+        -
+          name: 花果茶
+          show: false
+        -
+          name: 菊花茶
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 加工茶
+      show: true
+      sub:
+        -
+          name: 砖茶
+          show: false
+        -
+          name: 紧压茶
+          show: false
+        -
+          name: 萃取茶
+          show: false
+        -
+          name: 果味茶
+          show: false
+        -
+          name: 保健茶
+          show: false
+        -
+          name: 速溶茶
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 其它
+      show: true
+-
+  name: 酒
+  show: true
+  sub:
+    -
+      name: 啤酒
+      show: true
+    -
+      name: 葡萄酒
+      show: true
+    -
+      name: 白酒
+      show: true
+    -
+      name: 黄酒
+      show: true
+    -
+      name: 洋酒
+      show: true
+      sub:
+        -
+          name: 白兰地
+          show: false
+        -
+          name: 威士忌
+          show: false
+        -
+          name: 伏特加
+          show: false
+        -
+          name: 朗姆
+          show: false
+        -
+          name: 金酒
+          show: false
+        -
+          name: 龙舌兰
+          show: false
+        -
+          name: 威末
+          show: false
+        -
+          name: 波特
+          show: false
+        -
+          name: 利口
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 滋补酒
+      show: true
+    -
+      name: 清酒
+      show: true
+    -
+      name: 预调酒
+      show: true
+    -
+      name: 其它
+      show: true
+-
+  name: 粮油
+  show: true
+  sub:
+    -
+      name: 米
+      show: true
+    -
+      name: 挂面/方便面
+      show: true
+    -
+      name: 面粉/生粉
+      show: true
+    -
+      name: 油
+      show: true
+      sub:
+        -
+          name: 葵花籽油
+          show: false
+        -
+          name: 调和油
+          show: false
+        -
+          name: 橄榄油
+          show: false
+        -
+          name: 大豆油
+          show: false
+        -
+          name: 玉米油
+          show: false
+        -
+          name: 菜籽油/油菜籽油
+          show: false
+        -
+          name: 花生油
+          show: false
+        -
+          name: 芝麻油
+          show: false
+        -
+          name: 色拉油
+          show: false
+        -
+          name: 山茶油
+          show: false
+        -
+          name: 香油
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 杂粮
+      show: true
+      sub:
+        -
+          name: 黄豆
+          show: false
+        -
+          name: 绿豆
+          show: false
+        -
+          name: 红豆/赤豆
+          show: false
+        -
+          name: 黑米
+          show: false
+        -
+          name: 糯米
+          show: false
+        -
+          name: 薏米仁
+          show: false
+        -
+          name: 糙米
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 其它
+      show: true
+-
+  name: 厨房调味
+  show: true
+  sub:
+    -
+      name: 盐
+      show: true
+    -
+      name: 糖
+      show: true
+    -
+      name: 鸡精/味精
+      show: true
+    -
+      name: 醋
+      show: true
+    -
+      name: 酱油
+      show: true
+    -
+      name: 腌制品
+      show: true
+    -
+      name: 汤料
+      show: true
+    -
+      name: 调味酱
+      show: true
+      sub:
+        -
+          name: 色拉酱
+          show: false
+        -
+          name: 花生酱
+          show: false
+        -
+          name: 芝麻酱
+          show: false
+        -
+          name: 番茄酱
+          show: false
+        -
+          name: 辣酱
+          show: false
+        -
+          name: 豆豉酱/豆瓣酱
+          show: false
+        -
+          name: 肉酱
+          show: false
+        -
+          name: 海鲜酱/虾酱
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 火锅调料
+      show: true
+    -
+      name: 其它
+      show: true
+-
+  name: 干货
+  show: true
+  sub:
+    -
+      name: 银耳/白木耳
+      show: true
+    -
+      name: 黑木耳
+      show: true
+    -
+      name: 百合
+      show: true
+    -
+      name: 莲子
+      show: true
+    -
+      name: 食用菌菇
+      show: true
+    -
+      name: 桂圆干/龙眼
+      show: true
+    -
+      name: 其它
+      show: true
+-
+  name: 新鲜蔬菜水果
+  show: true
+  sub:
+    -
+      name: 新鲜蔬菜
+      show: true
+      sub:
+        -
+          name: 叶菜类
+          show: false
+        -
+          name: 根茎类
+          show: false
+        -
+          name: 茄/瓜/豆类
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 新鲜水果
+      show: true
+      sub:
+        -
+          name: 苹果
+          show: false
+        -
+          name: 梨
+          show: false
+        -
+          name: 橘子/桔子
+          show: false
+        -
+          name: 橙子
+          show: false
+        -
+          name: 香蕉
+          show: false
+        -
+          name: 葡萄
+          show: false
+        -
+          name: 桃
+          show: false
+        -
+          name: 瓜
+          show: false
+        -
+          name: 奇异果
+          show: false
+        -
+          name: 芒果
+          show: false
+        -
+          name: 其它
+          show: false
+    -
+      name: 脱水蔬菜
+      show: true
+    -
+      name: 腌制/泡菜
+      show: true
+    -
+      name: 其它
+      show: true
+-
+  name: 肉禽/蛋制品/豆制品
+  show: true
+  sub:
+    -
+      name: 猪肉
+      show: true
+    -
+      name: 牛肉
+      show: true
+    -
+      name: 羊肉
+      show: true
+    -
+      name: 鸡肉
+      show: true
+    -
+      name: 鸭肉
+      show: true
+    -
+      name: 鸡蛋
+      show: true
+    -
+      name: 豆腐
+      show: true
+    -
+      name: 其它
+      show: true
+-
+  name: 海鲜/水产品
+  show: true
+  sub:
+    -
+      name: 鱼类
+      show: true
+    -
+      name: 虾类
+      show: true
+    -
+      name: 蟹类
+      show: true
+    -
+      name: 贝类
+      show: true
+    -
+      name: 海参
+      show: true
+    -
+      name: 鱿鱼/墨鱼
+      show: true
+    -
+      name: 藻类
+      show: true
+    -
+      name: 其它
+      show: true

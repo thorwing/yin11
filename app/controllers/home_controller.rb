@@ -4,10 +4,10 @@ class HomeController < ApplicationController
   def index
     #TODO
     #the last item is not displayed in s3slider
-    @headlines = Article.enabled.recommended.topics.desc(:reported_on, :updated_at).limit(HEADLINES_ONE_HOME_PAGE).all
-    @hot_news = Article.enabled.recommended.news.desc(:reported_on, :updated_at).limit(HOT_ARTICLES_ON_HOME_PAGE).all
+    #@headlines = Article.enabled.recommended.topics.desc(:reported_on, :updated_at).limit(HEADLINES_ONE_HOME_PAGE).all
+    #@hot_news = Article.enabled.recommended.news.desc(:reported_on, :updated_at).limit(HOT_ARTICLES_ON_HOME_PAGE).all
 
-    @raw_hot_tags = CacheManager.hot_tags_with_weight
+    #@raw_hot_tags = CacheManager.hot_tags_with_weight
     #for default search query
 
     @default_query = (@raw_hot_tags.nil? || @raw_hot_tags.empty?) ? "" : @raw_hot_tags.first[0]
@@ -16,27 +16,26 @@ class HomeController < ApplicationController
 
     @hot_topics = Topic.desc(:recommendation).limit(HOT_TOPICS_ON_HOME_PAGE)
 
-    #data for control panel
-    if current_user
-      #@evaluation = current_user.get_evaluation
-      #TODO
-      #should be loaded on demand
-      @my_groups = current_user.groups.all
-      @watched_locations = current_user.profile.watched_locations
-    end
+    ##data for control panel
+    #if current_user
+    #  #@evaluation = current_user.get_evaluation
+    #  #TODO
+    #  #should be loaded on demand
+    #  @my_groups = current_user.groups.all
+    #  @watched_locations = current_user.profile.watched_locations
+    #end
 
-    #TODO
-    if current_user && current_user.profile.watched_locations.empty?
-      city_center = Location.new(:city => current_city.name, :street => t("location.city_center")) do |l|
-        l.longitude = current_city.longitude
-        l.latitude = current_city.latitude
-      end
-      current_user.profile.watched_locations << city_center
-      current_user.profile.save
-      @watched_locations = [city_center]
-    end
+    #if current_user && current_user.profile.watched_locations.empty?
+    #  city_center = Location.new(:city => current_city.name, :street => t("location.city_center")) do |l|
+    #    l.longitude = current_city.longitude
+    #    l.latitude = current_city.latitude
+    #  end
+    #  current_user.profile.watched_locations << city_center
+    #  current_user.profile.save
+    #  @watched_locations = [city_center]
+    #end
 
-    @watched_locations = @watched_locations.group_by(&:city) if @watched_locations.present?
+    #@watched_locations = @watched_locations.group_by(&:city) if @watched_locations.present?
 
     @panel_manager = PanelManager.new(current_user)
   end

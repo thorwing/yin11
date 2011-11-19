@@ -1,14 +1,29 @@
-<div class="block round">
-  <h2><%= link_to topic.title, topic %></h2>
-  <hr/>
-  <% get_recommended_products(topic).each do |product| %>
-    <div class="fl">
-      <%= link_to product.name, product %><br/>
-      <% if product.image && product.image.image_url %>
-        <%= link_to image_tag( product.image.image_url, :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), product%>
-      <% else %>
-        <%= link_to image_tag( "default_article.jpg", :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT),  product%>
-      <% end %>
+<div class="large_topic block round">
+  <span class="topic_title"><%= link_to topic.title, topic %></span>
+  <%= render "shared/show_tags", :item => topic %>
+  <span class="fr"><%= link_to t("topics.more") %></span>
+  <div class="products">
+    <div class="prod first">
+      <% products = get_recommended_products(topic) %>
+      <%= link_to image_tag( products.first.get_image, :border => 0, :width => 200, :height => 160), products.first %>
+      <h3><span><%= products.first.name %></span></h3>
     </div>
-  <% end %>
+    <% products = products.drop(1) %>
+    <div class="slice">
+        <% products.values_at(* products.each_index.select{|i| i.odd?}).each do |prod| %>
+          <div class="prod">
+            <%= link_to image_tag(prod.get_image, :border => 0, :width => 128, :height => 80), prod %>
+            <h3><span><%= prod.name %></span></h3>
+          </div>
+        <% end %>
+    </div>
+    <div class="slice">
+        <% products.values_at(* products.each_index.select{|i| i.even?}).each do |prod| %>
+          <div class="prod">
+            <%= link_to image_tag( prod.get_image, :border => 0, :width => 128, :height => 80), prod %>
+            <h3><span><%= prod.name %></span></h3>
+          </div>
+        <% end %>
+    </div>
+  </div>
 </div>

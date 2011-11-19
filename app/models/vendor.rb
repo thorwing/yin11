@@ -8,6 +8,7 @@ class Vendor
   field :verified, :type => Boolean, :default => false
   field :category
   field :sub_category
+  field :is_tmall, :type => Boolean
 
   attr_accessible :name, :category, :sub_category
 
