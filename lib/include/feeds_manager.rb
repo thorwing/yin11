@@ -17,11 +17,18 @@ class FeedsManager
       #push feed to it's vendor'
       item.product.vendor.feeds << initialize_feed(item)
       item.product.vendor.save!
+
+      item.product.tags.each do |t|
+        tag = Tag.find_or_initialize_by(:name => t)
+        tag.feeds << initialize_feed(item)
+        tag.save!
+      end
     end
 
     #push feed to it's author
     if item.respond_to?(:author) && item.author.present?
-      item.author.feeds << initialize_feed(item)
+      new_feed = initialize_feed(item)
+      item.author.feeds << new_feed
       item.author.save!
     end
 

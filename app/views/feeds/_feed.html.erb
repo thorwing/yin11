@@ -1,4 +1,5 @@
 <div>
-    <%= render feed.get_item %>
+    <% item = feed.get_item %>
+    <%= render item if item %>
 </div>
 <hr/>

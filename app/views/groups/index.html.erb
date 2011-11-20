@@ -14,7 +14,7 @@
     <dd>
         <% group.tags.each do |tag| %>
             <% tag.feeds.each do |feed| %>
-                <%= render "info_items/info_item", :item => feed.get_item %>
+                <%= render feed.get_item %>
             <% end %>
         <% end %>
     </dd>

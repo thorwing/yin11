@@ -83,7 +83,6 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
-  @focus
   @javascript
   Scenario Outline: 注册用户可以关注一个用户，并得到相关的动态; 取消关注则不再接收相关的动态
     Given There are some products
@@ -115,7 +114,7 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
-
+  @javascript
   Scenario Outline: 注册用户可以关注一个饭桌，并得到相关的动态; 取消关注则不再接收相关的动态
     Given There are some products
     And There are some groups
@@ -133,7 +132,7 @@ Feature: tests for Feeds
     And I go to the me page
     Then I should see "发现了上好的猪肉"
 
-    When I follow "肉食爱好者" of kind "Group"
+    When I follow "肉食爱好者" of kind "groups"
     And I follow "离席"
     And I go to the me page
     Then I should not see "发现了上好的猪肉"

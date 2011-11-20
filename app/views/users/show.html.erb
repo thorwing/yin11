@@ -1,6 +1,6 @@
 <div>
     <%= @user.screen_name %><br/>
-    <%= image_tag current_user.get_avatar, :class => "avatar" %><br/>
+    <%= image_tag @user.get_avatar, :class => "avatar" %><br/>
     <%= @user.profile.biography %><br/>
-    <%= render "shared/follow_field", :target => current_user %>
+    <%= render "shared/follow_field", :target => @user %>
 </div>

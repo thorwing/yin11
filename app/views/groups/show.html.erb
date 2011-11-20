@@ -10,7 +10,7 @@
 
 <div class="actions">
     <%= link_to t("groups.join"), join_group_path(@group), :method => :put, :class => "button" if @can_join %>
-    <%= link_to t("groups.quit"), quit_group_path(@group), :method => :put, :confirm => t("groups.quit_confirm"), :class => "button"  if @can_quit%>
+    <%= link_to t("groups.quit"), quit_group_path(@group), :method => :put, :class => "button"  if @can_quit%>
     <%= link_to t("general.edit"), edit_group_path(@group), :method => :put, :class => "button" if @group.is_creator_by?(current_user) %>
 </div>
 

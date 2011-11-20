@@ -13,7 +13,11 @@ class Feed
   embedded_in :group
 
   def get_item
-    eval("#{target_type}.find(\"#{target_id}\")")
+    begin
+      eval("#{target_type}.find(\"#{target_id}\")")
+    rescue
+      nil
+    end
   end
 
 end
