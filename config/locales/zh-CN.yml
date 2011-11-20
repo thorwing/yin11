@@ -360,6 +360,7 @@ zh-CN:
     weight: 重量
     producer: 厂商
     original_place: 原产地
+    description: 产品描述
 
   money:
     yuan_mark1: "￥"
