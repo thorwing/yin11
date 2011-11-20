@@ -23,7 +23,7 @@ class Review
   has_many :images
 
   #override the settings in Informative
-  validates_length_of :content, :maximum => 140
+  validates_length_of :content, :maximum => 280
 
   accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_picture_url].blank? }, :allow_destroy => true
 
