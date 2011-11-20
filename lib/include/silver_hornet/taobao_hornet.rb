@@ -158,6 +158,8 @@ class SilverHornet::TaobaoHornet
         #get the price
         product.price = prod["price"]
 
+        product.description = xml_doc["item_get_response"]["item"]["desc"]
+
         #find or new a vendor
         vendor = Vendor.find_or_initialize_by(name: prod["nick"])
         if vendor.new_record?
@@ -168,13 +170,11 @@ class SilverHornet::TaobaoHornet
         #set the vendor
         product.vendor = vendor
 
-        product.description = xml_doc["item_get_response"]["item"]["desc"]
-
         #get the image
         pic_url = prod["pic_url"]
-        if product.image.blank? || product.image.remote_image_url != pic_url
-          #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
-          pic = product.create_image(remote_image_url: pic_url)
+        if product.image.blank? || product.image.remote_picture_url != pic_url
+          #we are using Carrierwave, so just set the remote_picture_url, it will download the image for us
+          pic = product.create_image(remote_picture_url: pic_url)
         end
 
         #get the tag

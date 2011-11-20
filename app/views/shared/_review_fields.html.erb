@@ -1,26 +1,30 @@
 <%= form_for review, :html => { :multipart => true }, :remote => true do |f| %>
-    <div class="block round clearfix">
+    <div class="block round clearfix" id = "review_dialog" >
         <h2><%= t("reviews.new_review") %></h2>
 
         <%= render "shared/error_messages", :target => review %>
         <%= hidden_field_tag "product_id", review.product_id %>
 
         <%= f.text_area :content, :maxlength => get_max_length(review, :content), :class => "char_aware" %>
-        <%= f.submit t("reviews.submit"), :class => "button" %>
+
         <div><%= content_tag :span, "", :class => "char_counter" %></div>
-        <div class="review_ext">
-            <div class="fl">
+        <span class="review_ext">
+            <span class="fl">
                 <%= f.label :images, t("images.images") %>
                 <div id="image_uploader"></div>
-            </div>
-            <div class="fr">
-              <!-- current_user is logined from -->
-              <%= check_box_tag :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %>
-            </div>
-            <div id="images_container" class="block">
+            </span>
+            <span id="images_container" class="block">
                 <%= render :partial => "images/single_image_field", :collection => review.images, :as => :image %>
-            </div>
-        </div>
+            </span>
+            <span >
+                  <!-- current_user is logined from -->
+                  <%= check_box_tag :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %>
+            </span>
+        </span>
+
+
+
+        <%= f.submit t("reviews.submit"), :class => "button" %>
     </div>
 <% end %>
 

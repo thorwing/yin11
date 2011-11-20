@@ -57,9 +57,9 @@ class ReviewsController < ApplicationController
     #RewardManager.new(current_user).contribute(:posted_reviews)
 
     @remote_status = false
+
     @user_message = ''
 
-    #syncs the review to 3rd party site, e.g. SIna Weibo, Renren...
     if params[:sync_to]
       @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
     end
