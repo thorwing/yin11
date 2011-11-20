@@ -4,14 +4,17 @@
     <div>
         <%= render "shared/review_fields", :review => Review.new %>
     </div>
-    <h2><%= t("feeds.all") %></h2>
-    <div id="all_feeds" class="block square">
-        <%= render @all_feeds %>
-    </div> <!--end of feeds -->
-    <h2><%= t("feeds.my") %></h2>
-    <div id="my_feeds" class="block square">
-        <%= render @my_feeds %>
-    </div> <!--end of feeds -->
+
+    <dl class="tab">
+        <dt><h2><%= t("feeds.all") %></h2></dt>
+        <dd id="all_feeds">
+            <%= render :partial => "feeds/feed", :collection => @all_feeds, :as => :feed %>
+        </dd>
+        <dt><h2><%= t("feeds.my") %></h2></dt>
+        <dd id="my_feeds">
+            <%= render :partial => "feeds/feed", :collection => @my_feeds, :as => :feed %>
+        </dd>
+    </dl>
 </div>
 
 <div class="fr">

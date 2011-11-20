@@ -1,7 +1,12 @@
 class FeedsManager
 
   def self.initialize_feed(item)
-    Feed.new(:target_type => item.class.name, :target_id => item.id)
+    if item.new_record?
+      operation = "create"
+    elsif
+      operation = "update"
+    end
+    Feed.new(:target_type => item.class.name, :target_id => item.id, :target_operation => operation)
   end
 
   def self.push_feeds(item)
@@ -43,17 +48,13 @@ class FeedsManager
   end
 
   def self.pull_feeds(user)
-    items = []
-    user.tags.each do |tag|
-      tag.feeds.each {|f| items << f.get_item}
-    end
+    feeds = user.tags.inject([]){ |memo, tag| memo | tag.feeds }
 
     user.relationships.each do |r|
       followable = r.get_item
-      feeds = followable.feeds
-      feeds.each {|f| items << f.get_item}
+      feeds |= followable.feeds
     end
 
-    items.compact.uniq
+    feeds.compact.uniq
   end
 end

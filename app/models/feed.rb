@@ -4,6 +4,7 @@ class Feed
 
   field :target_type
   field :target_id
+  field :target_operation
 
   #relationships
   embedded_in :tag
@@ -11,6 +12,13 @@ class Feed
   embedded_in :user
   embedded_in :product
   embedded_in :group
+
+  #validations
+  def self.operations
+    ["create", "update"]
+  end
+
+  validates_inclusion_of :target_operation, :in => Feed.operations
 
   def get_item
     begin
