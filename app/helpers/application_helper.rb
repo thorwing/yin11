@@ -139,7 +139,7 @@ module ApplicationHelper
       $(document).ready(function() {
         $('#image_uploader').uploadify({
           script          : '#{images_path(:item_id => item.id)}',
-          fileDataName    : 'image[image]',
+          fileDataName    : 'image[picture]',
           uploader        : '/uploadify/uploadify.swf',
           cancelImg       : '/uploadify/cancel.png',
           fileDesc        : 'Images',
