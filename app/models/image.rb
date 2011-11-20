@@ -10,4 +10,5 @@ class Image
   #relationships
   belongs_to :article
   belongs_to :product
+  belongs_to :review
 end

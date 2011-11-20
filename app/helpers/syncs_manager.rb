@@ -72,8 +72,8 @@ class SyncsManager
         client = eval("SilverOauth::#{site_name}").load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
         #carrierwave
         unless review.images.first.nil?  #with pic
-          path = review.images.first.image.path.to_s
-          binary_content = review.images.first.image.read
+          path = review.images.first.picture.path.to_s
+          binary_content = review.images.first.picture.read
           #p "binary_content" + binary_content
           fake_file = SilverOauth::FakeFile.new(path, binary_content)
           response = client.upload_binary_image(@message, fake_file)

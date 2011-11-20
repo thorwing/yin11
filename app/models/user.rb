@@ -98,6 +98,7 @@ class User
   end
 
   def send_password_reset
+    p self.email
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
     save!

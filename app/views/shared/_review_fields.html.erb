@@ -5,27 +5,30 @@
         <%= render "shared/error_messages", :target => review %>
         <%= hidden_field_tag "product_id", review.product_id %>
 
-        <%= f.text_area :content, :maxlength => get_max_length(review, :content), :class => "char_aware" %>
+        <%= f.text_area :content, :maxlength => get_max_length(review, :content), 'data-comment_max_len' => get_max_length(review, :content), :class => "char_aware" %>
 
         <div><%= content_tag :span, "", :class => "char_counter" %></div>
-        <span class="review_ext">
-            <span class="fl">
+        <div class="review_ext fl p5 m5">
+            <div class="fr ">
                 <%= f.label :images, t("images.images") %>
-                <div id="image_uploader"></div>
-            </span>
-            <span id="images_container" class="block">
-                <%= render :partial => "images/single_image_field", :collection => review.images, :as => :image %>
-            </span>
-            <span >
-                  <!-- current_user is logined from -->
-                  <%= check_box_tag :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %>
-            </span>
-        </span>
+            </div >
+            <div id="image_uploader" class="fl " width = "50px"></div>
+        </div>
 
-
-
-        <%= f.submit t("reviews.submit"), :class => "button" %>
+       <div class="fr m5 p5">
+            <div class= "fl m5"><%= check_box_tag  :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %></div>
+            <div class= "fl m5">
+              <% unless current_user.provider == "yin11" %>
+                  <%= link_to image_tag("third_party/#{current_user.provider}.png", :border => 0, :alt => t("syncs.sites.#{current_user.provider}"))%>
+               <%end%>
+            </div>
+            <div class= "fl m5"><%= f.submit t("reviews.submit"), :class => "button" %> </div>
+       </div>
     </div>
+
+    <span id="images_container" class="block">
+                <%= render :partial => "images/single_image_field", :collection => review.images, :as => :image %>
+    </span>
 <% end %>
 
 <%= render "info_items/delay_load_stuff", :item => review %>
