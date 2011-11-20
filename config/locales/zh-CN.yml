@@ -177,6 +177,7 @@ zh-CN:
     tips: 锦囊
     groups: 饭桌
     vendors: 商户
+    users: 用户
     logout: 登出
 
   administrator_control:
@@ -363,6 +364,7 @@ zh-CN:
     weight: 重量
     producer: 厂商
     original_place: 原产地
+    description: 产品描述
 
   money:
     yuan_mark1: "￥"
@@ -439,6 +441,7 @@ zh-CN:
 
   feeds:
     all: 用户动态
+    my: 我的动态
 
   badges:
     badges: 徽章

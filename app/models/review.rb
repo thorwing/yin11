@@ -5,6 +5,7 @@ class Review
   include Taggable
   include Available
   include Votable
+  include Feedable
 
   field :content
 

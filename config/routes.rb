@@ -105,7 +105,7 @@ Yin11::Application.routes.draw do
 
   resources :reports, :only => [:new, :create]
 
-  resources :users, :except => [:index, :destroy] do
+  resources :users, :except => [:destroy] do
     member do
       put "block"
       put "unlock"

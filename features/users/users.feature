@@ -18,10 +18,10 @@ Feature: tests for general User module
     Then I should see "div" whose id is "control_panel"
 
   Scenario: 用户可以看到其他用户的基本信息
-    Given There are some sample products
+    Given There are some products
     When I log in as "David User"
     #later Kate will visit David via this review
-    And I post a simple review for "梅山猪" with "买到烂猪肉"
+    And I post a simple review for "梅山猪" with "发现了上好的猪肉"
     And I go to the me page
     And I follow "David" within "#user_panel"
     Then I should be on David's profile page

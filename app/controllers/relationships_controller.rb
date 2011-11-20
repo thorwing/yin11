@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
 
   def create
     current_user.relationships << Relationship.new(:target_type => params[:target_type], :target_id => params[:target_id])
+    current_user.save!
     @followable.add_follower!(current_user)
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class RelationshipsController < ApplicationController
 
   def cancel
     current_user.relationships.destroy_all(:conditions => {:target_type => params[:target_type], :target_id => params[:target_id]})
+    current_user.save!
     @followable.add_follower!(current_user)
 
     respond_to do |format|

@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Given /^There are some sample products$/ do
+Given /^There are some products$/ do
   Tag.create!(:name => "鸡", :is_category => true)
   Tag.create!(:name => "猪", :is_category => true)
   @vendor_1 = Factory(:vendor, :name => "天下养鸡网")
@@ -9,13 +9,13 @@ Given /^There are some sample products$/ do
   @pig = Product.create!(:name => "梅山猪", :price => 25, :weight => "一斤", :tags_string => "猪肉,肉类,畜类", :url => "#", :vendor_id => @vendor_2.id, :editor_score => 20)
 end
 
-Given /^There are more sample products$/ do
+Given /^There are more products$/ do
   RECOMENDED_PRODUCTS = 3
   Product.create!(:name => "东北清香大米", :tags_string => "大米", :url => "#", :vendor_id => @vendor_2.id, :editor_score => 10)
   Product.create!(:name => "山西陈醋", :tags_string => "醋", :url => "#", :vendor_id => @vendor_2.id)
 end
 
-Given /^There are some sample catalogs$/ do
+Given /^There are some catalogs$/ do
   meat = Catalog.create!(:name => "肉类", show: true)
   pork = Catalog.create!(:name => "猪肉", show: true) do |c|
     c.parent = meat

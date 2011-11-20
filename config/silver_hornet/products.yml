@@ -5,7 +5,7 @@
   elements:
     listed_first_catalog: '#sidebarleft h2 a'
     listed_second_catalog: '#sidebarleft h2 a'
-    listed_product: '#productcontent .producteg.fl'
+    listed_product: '#productcontent .producteg .color_gary'
     product_name: '#productMainName'
     product_image: "#productImg"
     product_price: '.productPriceSpan'
@@ -19,7 +19,7 @@
     next_commnet_css_selector: ".latestnewnextpage a"
 
 和乐康:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.helekang.com/"]
   elements:
@@ -32,7 +32,7 @@
     next_link_text: '下一页'
 
 中粮我买网(“组合产品”的页面比较特殊，该类商品暂时无法获取信息):
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.womai.com/"]
   elements:
@@ -44,9 +44,11 @@
     product_price: '.detail_r1p1 span'
     #next_link_css_selector: 'a.downPage'
     next_link_text: '下一页'
+    brand: true
+    brand_list: '#brands_list_div_all li a'
 
 e家人:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.ejr.cc/index.php?app=store&id=4084&act=search&cate_id=1224&cat=1&mbm=b"]
   elements:
@@ -59,7 +61,7 @@ e家人:
     next_link_text: '下一页'
 
 有机坊:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.youjifang.com/"]
   elements:
@@ -72,7 +74,7 @@ e家人:
     next_link_text: '下一页'
 
 拉夫尔:
-  #skipped: true
+  skipped: true
   entries:
     ["http://lofir.com/"]
   elements:
@@ -85,7 +87,7 @@ e家人:
     next_link_text: '下一页'
 
 五谷磨房:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.iwugu.com/?gallery-57-grid.html"]
   elements:
@@ -101,7 +103,7 @@ e家人:
     next_link_text: '下一页'
 
 鑫鹏有机:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.36360302.com/category-6-b0.html"]
   elements:
@@ -115,7 +117,7 @@ e家人:
     next_link_text: '下一页'
 
 千腾网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.specl.com/public/assort.shtml"]
   elements:
@@ -130,7 +132,7 @@ e家人:
     next_link_text: '下一页'
 
 利群网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.liqunshop.com/special/foodSpecial.html"]
   elements:
@@ -142,9 +144,11 @@ e家人:
     product_price: '#liqunprice'
     #product_weight: '#goodsWeight'
     next_link_text: '下一页'
+    brand: true
+    brand_list: '.display_class a'
 
 祐乐网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.96188.com/"]
   elements:
@@ -158,7 +162,7 @@ e家人:
     next_link_text: '下一页'
 
 依谷网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.egu365.com/index.jsp"]
   elements:
@@ -173,7 +177,7 @@ e家人:
     fuck_page_number: 'true'
 
 12点零食网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.12dian.com/"]
   elements:
@@ -184,9 +188,11 @@ e家人:
     product_price: '.price1'
     #product_weight: '#goodsWeight'
     next_page_number_link: '.productlist .note'
+    brand: true
+    brand_list: '.list_brand li a'
 
 万千进口食品批发网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.wwq.cc/index.php"]
   elements:
@@ -200,7 +206,7 @@ e家人:
     next_link_text: '下一页'
 
 大上海食品网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.dshfood.com/index.asp"]
   elements:
@@ -214,7 +220,7 @@ e家人:
     next_link_text: '下一页'
 
 思麦网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://45mai.com/index.php"]
   elements:
@@ -228,7 +234,7 @@ e家人:
     next_link_text: '下一页'
 
 洋酒网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.yangjiuw.com/"]
   elements:
@@ -240,7 +246,7 @@ e家人:
     next_link_text: '下一页'
 
 食品起义网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://shenghuoqiyi.com/category.php?id=16"]
   elements:
@@ -250,9 +256,11 @@ e家人:
     product_image: '#focuscont1 img'
     product_price: '#ECS_SHOPPRICE'
     next_link_text: '下一页'
+    brand: true
+    brand_list: '.screeBox a'
 
 滴答猫网:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.didamall.com/"]
   elements:
@@ -265,7 +273,7 @@ e家人:
     next_link_text: '下一页'
 
 山族365:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.shanzu365.com/"]
   elements:
@@ -277,7 +285,7 @@ e家人:
     next_link_text: '下一页'
 
 绿美客:
-  #skipped: true
+  skipped: true
   entries:
     ["http://www.gmark.cc/"]
   elements:
@@ -312,6 +320,8 @@ e家人:
     product_description: '#i-detail li'
     #next_link_css_selector: 'a.next'
     next_link_text: '下一页'
+    brand: true
+    brand_list: '#select-brand .content a'
 
 
 联华网上超市(价格是图片，暂时无法获取):

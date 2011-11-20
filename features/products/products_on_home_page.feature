@@ -8,10 +8,10 @@ Feature: products listed on home page
 
   Background:
     Given There are minimum seeds data
-    And There are some sample products
+    And There are some products
 
   Scenario: 主页上将显示产品的分类
-    Given There are some sample catalogs
+    Given There are some catalogs
     When I go to the home page
     Then I should see "div" whose "id" is "catalogs"
     And I should see "肉类" within "#catalogs"

@@ -10,7 +10,7 @@ Feature: modify a product
 
   Background:
     Given There are minimum seeds data
-    And There are some sample products
+    And There are some products
 
   Scenario: 管理员可以修改商品的展示名, 但不可以修改商品的原始名
     When I log in as "Mighty Admin"
@@ -62,7 +62,7 @@ Feature: modify a product
     Then I should not see "苏北草母鸡"
 
   Scenario: 管理员可以设置商品的推荐指数，该指数将影响商品在列表（主页，检索页）上的排名
-    Given There are more sample products
+    Given There are more products
     When I go to the home page
     Then I should not see "山西陈醋"
     When I log in as "Mighty Admin"
@@ -75,7 +75,7 @@ Feature: modify a product
     Then I should see "山西陈醋"
 
   Scenario Outline: 访客, 编辑, 注册用户不可以修改商品
-    Given There are more sample products
+    Given There are more products
     When I view the details of product "苏北草母鸡"
     And I should not see "修改"
 

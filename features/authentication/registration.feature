@@ -6,7 +6,7 @@ Feature: user can register
 
   Background:
     Given There are minimum seeds data
-    And There are some sample groups
+    And There are some groups
 
   Scenario: 访客可以注册为用户，注册后可以登录
     When I register as a new user "Geek" with email "unique@test.com"

@@ -7,8 +7,8 @@ Feature: display topics to users
 
   Background:
     Given There are minimum seeds data
-    And There are some sample topics
-    And There are some sample products
+    And There are some topics
+    And There are some products
 
   Scenario: 推荐的专题会被列在主页上
     When I go to the home page

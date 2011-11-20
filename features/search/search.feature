@@ -7,7 +7,7 @@ Feature: smoke tests for Search
 
 #  @javascript
 #  Scenario: Item's score is considered according to popularity and tags
-#    Given  There are some sample tips
+#    Given  There are some tips
 #
 #    When I log in as "David User"
 #    And I go to the tips page
@@ -19,7 +19,7 @@ Feature: smoke tests for Search
 
 
   Scenario: Hot items and recent item should have ribbons
-    Given  There are some sample tips
+    Given  There are some tips
 
     When I go to the home page
     Then I should see "img" whose "alt" is "Ribbon_recent"
@@ -34,15 +34,15 @@ Feature: smoke tests for Search
 
 
   Scenario: Item about recent popular topics will be display on the home page
-    Given  There are some sample tips
-    Given There are some sample articles
+    Given  There are some tips
+    Given There are some articles
     When I go to the home page
     Then I should see "瘦肉精猪肉目测"
 
 
   @javascript
   Scenario: User can search with tags
-    And There are some sample articles
+    And There are some articles
 
     When I search for "牛奶"
     Then I should see "三聚氰胺再现上海"
@@ -50,7 +50,7 @@ Feature: smoke tests for Search
 
   @javascript
   Scenario: User can search with tags
-    And There are some sample articles
+    And There are some articles
 
     When I search for "上海"
     Then I should see "三聚氰胺再现上海"
@@ -70,7 +70,7 @@ Feature: smoke tests for Search
 
   @javascript
   Scenario: User can search for a tag
-    Given There are some sample reviews
+    Given There are some reviews
     When I search for "牛奶"
     Then I should see "牛奶坏了" within "#items_list"
 

@@ -3,7 +3,8 @@ require 'crack/xml'
 
 class SilverHornet::TaobaoHornet
 
-  @@product_count ||=0
+  @product_count ||=0
+  @catalog||={}
 
   def config
     @config ||= lambda do
@@ -18,18 +19,18 @@ class SilverHornet::TaobaoHornet
   def fetch
     config
     #initialize a hash
-    catalog={}
+    @catalog = {}
     #get the all subcatalogs on taobao from parent_cid, and make them into the hash pairs
-    @config["parent_cid"].each { |parent_cid| catalog.merge!(fetch_catalog(parent_cid)) }
+    @config["root_cid"].each { |key,value| @catalog.merge!(fetch_catalog(key,value)) }
     #for each catalog, get the response xml file by posing a restful WS url, and then process the product on it
-    catalog.each { |(key, value)| get_xml(1, 40, key, value) }
+    #@catalog.each { |(key, value)| get_xml(1, 40, key, value) }
     #count the total product amount
-    p "We've got #{@@product_count}' product!"
+    p @catalog
+    p "We've got #{@product_count}' product!"
   end
 
   #get the all subcatalogs on taobao from parent_cid
-  def fetch_catalog(parent_cid)
-    catalog={}
+  def fetch_catalog(parent_cid,parent_name)
     time = Time.now
     #parameters of http request
     parameters = {
@@ -38,7 +39,7 @@ class SilverHornet::TaobaoHornet
         :method => "taobao.itemcats.get",
         :partner_id => "top-apitools",
         :format => "xml",
-        :fields => "cid,name",
+        :fields => "cid,name,parent_cid",
         :sign_method => "md5",
         :v => "2.0",
         :parent_cid => parent_cid
@@ -52,11 +53,14 @@ class SilverHornet::TaobaoHornet
     response = Net::HTTP.get(uri)
     #make xml file into a hash
     xml_doc = Crack::XML.parse(response)
-    if xml_doc.present?
+    if xml_doc.present? && xml_doc["itemcats_get_response"].present?
       #for each subcatalog to process the products related to
-      xml_doc["itemcats_get_response"]["item_cats"]["item_cat"].each { |cat| catalog[cat["cid"]]=cat["name"] }
+      xml_doc["itemcats_get_response"]["item_cats"]["item_cat"].each do |cat|
+        @catalog[cat["cid"]]=cat["name"]+":"+parent_name
+        fetch_catalog(cat["cid"],cat["name"])
+      end
     end
-    return catalog
+    return @catalog
   end
 
   #get the response xml file by posing a restful WS url
@@ -120,56 +124,86 @@ class SilverHornet::TaobaoHornet
     #if there is only one product
     items = [items] unless items.is_a?(Array)
     items.each do |prod|
-      #get the name
-      product_name = prod["title"]
+      begin
 
-      unless product_name.blank?
-        #according to the name, either find the product from database or initialize a new one
-        product = Product.find_or_initialize_by(name: product_name)
-      end
+        #parameters of http request
+        time = Time.now
+        parameters = {
+            :timestamp => time.strftime("%Y-%m-%d %H:%M:%S"),
+            :app_key => @config["key"],
+            :method => "taobao.item.get",
+            :partner_id => "top-apitools",
+            :format => "xml",
+            :fields => "desc",
+            :sign_method => "md5",
+            :v => "2.0",
+            :num_iid => prod["num_iid"]
+        }
+        parameters[:sign] = ::Digest::MD5.hexdigest(@config["secret"] + parameters.sort.flatten.join + @config["secret"]).upcase
+        #to replace the blank ' '
+        parameters[:timestamp] = time.strftime("%Y-%m-%d+%H:%M:%S")
+        #return the restful WS address
+        uri = URI.parse("http://gw.api.taobao.com/router/rest?#{convert_to_http_params(parameters)}")
+        response = Net::HTTP.get(uri)
+        xml_doc = Crack::XML.parse(response)
 
-      #get the price
-      product.price = prod["price"]
+        #get the name
+        product_name = prod["title"]
 
-      #find or new a vendor
-      vendor = Vendor.find_or_initialize_by(name: prod["nick"])
-      if vendor.new_record?
-        #it's a vendor from Taobao Mall
-        vendor.is_tmall = true
-        vendor.save!
-      end
-      #set the vendor
-      product.vendor = vendor
+        unless product_name.blank?
+          #according to the name, either find the product from database or initialize a new one
+          product = Product.find_or_initialize_by(name: product_name)
+        end
 
-      #get the image
-      pic_url = prod["pic_url"]
-      if product.image.blank? || product.image.remote_picture_url != pic_url
-        #we are using Carrierwave, so just set the remote_picture_url, it will download the image for us
-        pic = product.create_image(remote_picture_url: pic_url)
-      end
+        #get the price
+        product.price = prod["price"]
 
-      #get the tag
-      product.tags =[cat_name]
+        product.description = xml_doc["item_get_response"]["item"]["desc"]
 
-      #record the product
-      if product.new_record?
-        if product.valid?
-          #everything is ok, save the new object to DB
-          product.save!
-          #calculate the product amount
-          @@product_count+=1
-          p "Insert #{product.name} of #{product.tags}"
+        #find or new a vendor
+        vendor = Vendor.find_or_initialize_by(name: prod["nick"])
+        if vendor.new_record?
+          #it's a vendor from Taobao Mall
+          vendor.is_tmall = true
+          vendor.save!
+        end
+        #set the vendor
+        product.vendor = vendor
+
+        #get the image
+        pic_url = prod["pic_url"]
+        if product.image.blank? || product.image.remote_picture_url != pic_url
+          #we are using Carrierwave, so just set the remote_picture_url, it will download the image for us
+          pic = product.create_image(remote_picture_url: pic_url)
+        end
+
+        #get the tag
+        product.tags =[cat_name]
+
+        #record the product
+        if product.new_record?
+          if product.valid?
+            #everything is ok, save the new object to DB
+            product.save!
+            #calculate the product amount
+            @product_count+=1
+            p "Insert #{product.name} of #{product.tags} from Taobao Mall"
+          else
+            p "Somethings goes wrong when save the product"
+            #p "Invalid #{product.errors.join} of #{product.url}"
+          end
         else
-          p "somethings goes wrong"
-          #p "Invalid #{product.errors.join} of #{product.url}"
+          if product.changed?
+            #update the change
+            product.save!
+            p "Update: #{product.name} of #{product.tags} from Taobao Mall"
+          end
         end
-      else
-        if product.changed?
-          #update the change
-          product.save!
-          p "Update: #{product.name} of #{product.tags}"
-        end
+      rescue
+        p "something goes wrong here!"
+        break
       end
+
     end
 
   end

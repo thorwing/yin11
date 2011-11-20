@@ -7,7 +7,7 @@
 <% end %>
 
 <% if @feed %>
-    var feeds = $("#feeds");
+    var feeds = $("#all_feeds");
     if (feeds.length > 0) {
         var child = '<%= escape_javascript(render @feed) %>';
         feeds.prepend(child);

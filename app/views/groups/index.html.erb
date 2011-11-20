@@ -8,17 +8,4 @@
         <%= link_to t("groups.edit_joined_gorup"), edit_profile_path(current_user.profile)  %>
     </div>
 <% end %>
-<dl class="tab">
-  <% @groups.each do |group| %>
-    <dt><span><%= group.name %></span></dt>
-    <dd>
-        <% group.tags.each do |tag| %>
-            <% tag.feeds.each do |feed| %>
-                <%= render "info_items/info_item", :item => feed.get_item %>
-            <% end %>
-        <% end %>
-    </dd>
-  <% end %>
-</dl>
-
 

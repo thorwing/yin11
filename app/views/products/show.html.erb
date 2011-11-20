@@ -11,7 +11,7 @@
     </p>
     <p>
       <b><%= t("vendors.vendor") %></b>
-      <%= link_to  @product.vendor.name, @product.vendor %>
+      <%= new_tab_link_to  @product.vendor.name, @product.vendor %>
     </p>
     <p>
       <b><%= t("catalogs.catalog")  %></b>
@@ -36,6 +36,12 @@
       <b><%= t("products.original_place")  %></b>
       <%= @product.area %>
     </p>
+
+    <p>
+      <b><%= t("products.description")  %></b>
+      <%= raw @product.description %>
+    </p>
+
     <div class="actions">
         <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
     </div>
