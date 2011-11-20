@@ -1,4 +1,3 @@
-@focus
 Feature: tests for Feeds
   用户可以在“我的首页”看到动态信息
 

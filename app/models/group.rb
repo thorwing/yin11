@@ -9,12 +9,11 @@ class Group
   #cached_fields
   field :creator_id
 
-  attr_accessible :name, :description, :city_id
+  attr_accessible :name, :description
 
   #relationships
   has_and_belongs_to_many :members, :class_name => User.name
   has_many :posts
-  belongs_to :city
   has_and_belongs_to_many :tags
   embeds_many :feeds
 
