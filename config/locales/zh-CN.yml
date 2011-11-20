@@ -437,6 +437,7 @@ zh-CN:
 
   feeds:
     all: 用户动态
+    my: 我的动态
 
   badges:
     badges: 徽章

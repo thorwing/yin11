@@ -5,8 +5,12 @@
         <%= render "shared/review_fields", :review => Review.new %>
     </div>
     <h2><%= t("feeds.all") %></h2>
-    <div id="feeds" class="block square">
-        <%= render @feeds %>
+    <div id="all_feeds" class="block square">
+        <%= render @all_feeds %>
+    </div> <!--end of feeds -->
+    <h2><%= t("feeds.my") %></h2>
+    <div id="my_feeds" class="block square">
+        <%= render @all_feeds %>
     </div> <!--end of feeds -->
 </div>
 

@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+    <div class="block round">
+      <%= link_to image_tag(user.get_avatar, :border => 0), user %>
+      <%= link_to user.screen_name, user %>
+    </div>
+<% end %>

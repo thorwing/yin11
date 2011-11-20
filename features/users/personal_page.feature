@@ -32,7 +32,7 @@ Feature: tests user's personal page
     And I follow "我的首页"
     Then I fill in "review_content" with "今天吃到了好吃的"
     And I press "发表测评"
-    Then I should see "今天吃到了好吃的" within "#feeds"
+    Then I should see "今天吃到了好吃的" within "#all_feeds
 
     Examples:
     | user |

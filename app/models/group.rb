@@ -16,6 +16,7 @@ class Group
   has_many :posts
   belongs_to :city
   has_and_belongs_to_many :tags
+  embeds_many :feeds
 
   #validators
   validates_presence_of :name, :creator_id

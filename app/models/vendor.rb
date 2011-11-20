@@ -21,6 +21,7 @@ class Vendor
   #Relationships
   has_many :products
   belongs_to :creator, :class_name => "User"
+  embeds_many :feeds
 
   #validators
   validates_presence_of :name

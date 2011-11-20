@@ -63,7 +63,7 @@ Feature: tests for Feeds
     And I go to the me page
     Then I should not see "非常滋补"
 
-    When I follow "天下养鸡网" of kind "vendors
+    When I follow "天下养鸡网" of kind "vendors"
     Then I should see "+关注"
     When I follow "+关注"
     Then I should see "-取消关注"
@@ -71,7 +71,7 @@ Feature: tests for Feeds
     When I go to the me page
     Then I should see "非常滋补"
 
-    When I follow "天下养鸡网" of kind "vendors
+    When I follow "天下养鸡网" of kind "vendors"
     And I follow "-取消关注"
 
     When I go to the me page
@@ -83,8 +83,31 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
+  @focus
+  @javascript
   Scenario Outline: 注册用户可以关注一个用户，并得到相关的动态; 取消关注则不再接收相关的动态
+    Given There are some products
+    When I log in as "Kate Tester"
+    And I post a simple review for "苏北草母鸡" with "非常滋补"
+    And I log out
 
+    When I log in as "<user>"
+    And I go to the me page
+    Then I should not see "非常滋补"
+
+    When I follow "Kate" of kind "users"
+    Then I should see "+关注"
+    When I follow "+关注"
+    Then I should see "-取消关注"
+
+    When I go to the me page
+    Then I should see "非常滋补"
+
+    When I follow "Kate" of kind "users"
+    And I follow "-取消关注"
+
+    When I go to the me page
+    Then I should not see "非常滋补"
 
     Examples:
     | user |

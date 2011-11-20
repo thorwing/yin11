@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   force_ssl unless Rails.env.test?
   before_filter(:only => [:update]) { |c| c.require_permission :normal_user }
 
+  def index
+    @users = User.enabled
+    @users = @users.reject{|u| u.id == current_user.id} if current_user
+  end
+
   # GET /users/new
   # GET /users/new.xml
   def new

@@ -9,21 +9,19 @@ class FeedsManager
     #  return nil unless item.enabled
     #end
 
-    feed = initialize_feed(item)
-    #push feed to it's vendor'
-    if item.respond_to?(:vendor) && item.vendor.present?
-      item.vendor.feeds << feed
-      item.vendor.save!
-    end
-
+    #feed is an embedded model
     if item.respond_to?(:product) && item.product.present?
-      item.product.feeds << feed
+      item.product.feeds << initialize_feed(item)
       item.product.save!
+
+      #push feed to it's vendor'
+      item.product.vendor.feeds << initialize_feed(item)
+      item.product.vendor.save!
     end
 
     #push feed to it's author
     if item.respond_to?(:author) && item.author.present?
-      item.author.feeds << feed
+      item.author.feeds << initialize_feed(item)
       item.author.save!
     end
 
@@ -31,7 +29,7 @@ class FeedsManager
     if item.respond_to?(:tags)  && item.tags.present?
       item.tags.each do |t|
         tag = Tag.find_or_initialize_by(:name => t)
-        tag.feeds << feed
+        tag.feeds << initialize_feed(item)
         tag.save!
       end
     end

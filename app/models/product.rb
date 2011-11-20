@@ -35,6 +35,7 @@ class Product
   has_one :image
   has_many :reviews
   has_and_belongs_to_many :catalogs
+  embeds_many :feeds
 
   #validators
   validates_presence_of :name

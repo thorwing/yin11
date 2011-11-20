@@ -5,8 +5,6 @@ module Followable
 
       attr_accessible :followers
 
-      embeds_many :feeds
-
       include InstanceMethods
     end
   end
