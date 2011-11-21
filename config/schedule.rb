@@ -19,9 +19,20 @@
 
 # Learn more: http://github.com/javan/whenever
 
+#***Development***
+
 set :output, "/home/ray/Development/Sites/yin11/log/cron_log.log"
 
 every 2.hours do
   command "cd /home/ray/Development/Sites/yin11"
   command "/usr/local/coreseek/bin/indexer -c /home/ray/Development/Sites/yin11/config/development.sphinx.conf --all --rotate"
 end
+
+
+#***Production***
+
+#set :output, "/var/www/yin11/current/log/cron_log.log"
+
+#every 2.hours do
+#  command "/usr/local/coreseek/bin/indexer -c /var/www/yin11/current/config/production.sphinx.conf --all --rotate"
+#end
