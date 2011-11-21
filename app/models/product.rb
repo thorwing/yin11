@@ -18,12 +18,14 @@ class Product
   field :description
   field :details
   field :url
+  #for indexing of search
+  field :vendor_name
 
   field :editor_score, :type => Integer, :default => 0
 
   field :original_name
 
-  search_index(:fields => [:name, :description, :details],
+  search_index(:fields => [:name, :vendor_name],
               :attributes => [:updated_at, :created_at])
 
   attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score
@@ -43,6 +45,11 @@ class Product
   validates_presence_of :vendor
   validates_numericality_of :editor_score, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100
 
+  before_save :sync_vendor
+
+  def sync_vendor
+    self.vendor_name ||= self.vendor.name if self.vendor_id
+  end
 
   def price_as_money_string
     format('%.2f', price)

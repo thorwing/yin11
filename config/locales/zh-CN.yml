@@ -486,6 +486,15 @@ zh-CN:
       last: "最后一页"
       truncate: "..."
 
+  search:
+    kinds:
+      product: 商品
+      article: 文章
+      review: 分享
+      user: 用户
+    not_found: 抱歉，没有搜索到符合条件的内容
+    result_of: 为您找到关于 %{text} 的结果：
+
   fetch_sites:
     xinhuanet: 新华网
     southcn: 南方网

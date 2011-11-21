@@ -29,7 +29,7 @@ class User
   mount_uploader :avatar, AvatarUploader
 
   search_index(:fields => [:login_name],
-              :attributes => [:updated_at, :created_at])
+              :attributes => [:created_at])
 
   index :provider
   index :uid

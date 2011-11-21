@@ -1,4 +1,4 @@
-<% if item.tags %>
+<% if item.respond_to?(:tags) && item.tags %>
     <% item.tags.each do |tag| %>
         <%= link_to tag, {:controller => "/search", :action => "tag", :tags => tag}, :class => "tag" %>
     <% end %>
