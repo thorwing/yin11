@@ -102,6 +102,7 @@ function delete_image(link) {
     }
 }
 
+
 $(function() {
     function tokenize_input(element_selector, data_source, tokenLimit) {
         $(element_selector).tokenInput(data_source, {

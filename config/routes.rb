@@ -16,10 +16,13 @@ Yin11::Application.routes.draw do
   put 'administrator/base/toggle'
 
   match "me" => "personal#me"
+  match "personal/my_feeds" => "personal#my_feeds"
+  match "personal/all_feeds" => "personal#all_feeds"
 
   match "logout" => "sessions#destroy"
   match "login" => "sessions#new"
   match "sign_up" => "users#new"
+
 
   match "/images/uploads/*path" => "gridfs#serve"
 

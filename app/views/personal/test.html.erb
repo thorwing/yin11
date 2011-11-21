@@ -1,0 +1,6 @@
+<div>
+  <%for feed in @feeds do %>
+      <% item = feed.get_item %>
+      <%= render item if item %>
+  <%end%>
+</div>

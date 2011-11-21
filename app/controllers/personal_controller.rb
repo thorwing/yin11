@@ -6,4 +6,18 @@ class PersonalController < ApplicationController
     @my_feeds = current_user.feeds
   end
 
+  def my_feeds
+      @feeds = current_user.feeds
+      respond_to do |format|
+        format.html  {render "test", :layout => "dialog"}
+      end
+  end
+
+  def all_feeds
+      @feeds = FeedsManager.pull_feeds(current_user)
+      respond_to do |format|
+        format.html  {render "test", :layout => "dialog"}
+      end
+  end
+
 end

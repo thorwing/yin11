@@ -5,17 +5,45 @@
         <%= render "shared/review_fields", :review => Review.new %>
     </div>
 
-    <dl class="tab">
-        <dt><h2><%= t("feeds.all") %></h2></dt>
-        <dd id="all_feeds">
-            <%= render :partial => "feeds/feed", :collection => @all_feeds, :as => :feed %>
-        </dd>
-        <dt><h2><%= t("feeds.my") %></h2></dt>
-        <dd id="my_feeds">
-            <%= render :partial => "feeds/feed", :collection => @my_feeds, :as => :feed %>
-        </dd>
-    </dl>
-</div>
+    <div class = "mytab">
+        <div>
+        <ul class="tabContainer ">
+            <a class="tab blue fl m5" href="#" data-page = '/personal/all_feeds' >
+                <%= t("feeds.all") %>
+                <span class="left"></span>
+                <span class="right"></span>
+            </a>
+
+            <a class="tab blue fl m5" href="#"  data-page = '/personal/my_feeds' >
+               <%= t("feeds.my") %>
+                <span class="left"></span>
+                <span class="right"></span>
+            </a>
+	    </ul>
+        </div>
+
+        <div id="tabContent">
+            <div id="contentHolder">
+                <!-- The AJAX fetched content goes here -->
+            </div>
+        </div>
+    </div>
+
+	<div class="clear"></div>
+
+    <!--<dl class="tab">-->
+        <!--<dt><h2><%= t("feeds.all") %></h2></dt>-->
+        <!--<dd id="all_feeds">-->
+
+        <!--</dd>-->
+        <!--<dt><h2><%= t("feeds.my") %></h2></dt>-->
+        <!--<dd id="my_feeds">-->
+
+        <!--</dd>-->
+    <!--</dl>-->
+
+
+    </div>
 
 <div class="fr">
     <div id="control_panel">
