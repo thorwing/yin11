@@ -9,16 +9,7 @@
       <%= link_to image_tag("top_menu/menu_left.png", :border => 0), root_path %>
     </li>
     <% if current_user && current_user.has_permission?(:editor) %>
-        <li><%= render_menu(t("menu.administrator_control"), administrator_root_path) %>
-            <ul id="administrator_sub_menu">
-                <li><% first_sub_menu(link_to t("administrator_control.articles"), administrator_articles_path) %></li>
-                <li><%= link_to t("administrator_control.products"), administrator_products_path %></li>
-                <li><%= link_to t("administrator_control.vendors"), administrator_vendors_path %></li>
-                <li><%= link_to t("administrator_control.users"), administrator_users_path %></li>
-                <li><%= link_to t("administrator_control.tags"), administrator_tags_path %></li>
-                <li class="last"><% last_sub_menu %></li>
-            </ul>
-        </li>
+        <li><%= render_menu(t("menu.administrator_control"), administrator_root_path) %></li>
     <% end %>
     <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me") %></li><% end %>
     <li><%= render_menu(t("menu.articles"), articles_path) %></li>
