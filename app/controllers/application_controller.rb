@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper :application, :layout, :validator, :external_link, :images
+  helper :application, :layout, :validator, :external_link, :images, :search
   include ApplicationHelper
   #before_filter :set_locale, :set_city
   helper_method :current_user, :current_city, :the_author_himself

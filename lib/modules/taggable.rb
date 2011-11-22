@@ -1,24 +1,3 @@
-# Basic tagging system for mongoid documents.
-#
-# class User
-#   include Mongoid::Document
-#   include Taggable
-#  end
-#
-#  @user = User.new(:name => "Bobby")
-#  @user.tag_list = "awesome, slick, hefty"
-#  @user.tags     # => ["awesome","slick","hefty"]
-#  @user.save
-#
-#  User.tagged_with("awesome") # => @user
-#  User.tagged_with(["slick", "hefty"]) # => @user
-#
-#  @user2 = User.new(:name => "Bubba")
-#  @user2.tag_list = "slick"
-#  @user2.save
-#
-#  User.tagged_with("slick") # => [@user, @user2]
-
 module Taggable
   def self.included(base)
     base.class_eval do
@@ -43,14 +22,12 @@ module Taggable
       self.tags.join(", ") if tags
     end
 
-    #TODO
     def sync_tags
-      all_tag_names = Tag.only(:name).map(&:name)
-      if self.tags.present? && self.tags.size > 0
-        new_tags = self.tags.reject{|n| all_tag_names.include?(n)}
-        new_tags.each do |t|
-          Tag.create(:name => t)
-        end
+      existed_tags = Tag.any_in(name: tags)
+      new_tags = tags - existed_tags
+
+      new_tags.each do |t|
+        Tag.create(:name => t)
       end
     end
   end
@@ -80,6 +57,7 @@ module Taggable
 
     def tagged_with(_tags)
       _tags = [_tags] unless _tags.is_a? Array
+      #any_in will perform an intersaction when chained
       criteria.any_in(:tags => _tags)
     end
   end

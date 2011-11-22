@@ -1,5 +1,5 @@
 <div>
-    <span id="keywords"><%= t("search.result_of", :text => params[:query]) %></span>
+    <span id="keywords"><%= t("search.result_of", :text => @query ) %></span>
 </div>
 
 <hr/>
@@ -19,7 +19,7 @@
         <% unless @products.empty? %>
             <h3><%= t("search.kinds.product") %></h3>
             <% @products.each do |product| %>
-                <%= render "search/result_item", :item => product %>
+                <%= render "products/small_product", :product => product %>
             <% end %>
         <% end %>
 

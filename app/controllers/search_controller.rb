@@ -12,65 +12,36 @@ class SearchController < ApplicationController
     @articles = []
     @products = []
     @empty = true
+    @query = ""
 
-    query = params[:query]
-
-    if query
+    if params[:query]
       #SilverSphinx.context.indexed_models.each do |model|
       #  model = model.constantize
       #  @items |= model.search(params[:query]).documents
       #end
+      @query = params[:query]
       case params[:scope]
         when "users"
-          @users = User.search(params[:query]).documents
+          @users = User.search(@query).documents
           @empty = @user.empty?
         when "articles"
-          @articles = Article.search(params[:query]).documents
+          @articles = Article.search(@query).documents
           @empty = @articles.empty?
         when "products"
-          @products = Product.search(params[:query]).documents
+          @products = Product.search(@query).documents
           @empty = @products.empty?
         else
-          @users = User.search(params[:query]).documents
-          @products = Product.search(params[:query]).documents
+          @users = User.search(@query).documents
+          @products = Product.search(@query).documents
           @empty = @products.empty? && @users.empty?
       end
+    elsif params[:tags]
+      @query = params[:tags]
+      query_tags = params[:tags].split(' ')
+      @products = Product.tagged_with(query_tags)
+      @articles = Article.tagged_with(query_tags)
+      @empty = @products.empty? && @articles.empty?
     end
-
-      #client = Riddle::Client.new("localhost", 3312)
-      #client.match_mode = :extended
-      #raw_result = client.query "#{@query}"
-
-      #result = SilverSphinx::Search.new(client, Article, raw_result)
-      #raise result.documents.to_yaml
-
-      ##search by location
-      #city_names ||= []
-      #city_names << @query if City.exists?(:conditions => {:name => @query})
-      #province = Province.first(:conditions => {:name => @query})
-      #city_names << province.cities.map(&:name) if province
-      #is_by_location = !city_names.empty?
-      #if is_by_location
-      #  @query_criteria = @query_criteria.from_cities(city_names)
-      #end
-      #
-      ##TODO
-      ##search by tags
-      #
-      #all_tags = CacheManager.all_tags #get_all_tags
-      #query_tags = @query.split(' ')
-      #tags = all_tags & query_tags
-      #is_by_tags = tags.size > 0
-      #if is_by_tags
-      #  @query_criteria = @query_criteria.tagged_with(tags)
-      #end
-      #
-      ##search by title
-      #unless (is_by_location || is_by_tags)
-      #  @query_criteria = @query_criteria.where(:title => /#{@query}?}/)
-      #end
-      #
-      #process_items
   end
 
 end

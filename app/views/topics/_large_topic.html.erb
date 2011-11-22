@@ -22,12 +22,12 @@
 
     <div class="slice">
         <% products.values_at(* products.each_index.select{|i| i.odd?}).each do |product| %>
-          <%= render "recommended_product", :product => product %>
+          <%= render "topics/small_item", :item => product %>
         <% end %>
     </div>
     <div class="slice">
-        <% products.values_at(* products.each_index.select{|i| i.even?}).each do |prod| %>
-          <%= render "recommended_product", :product => product %>
+        <% products.values_at(* products.each_index.select{|i| i.even?}).each do |product| %>
+          <%= render "topics/small_item", :item => product %>
         <% end %>
     </div>
   </div>

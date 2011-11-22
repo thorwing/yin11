@@ -4,9 +4,7 @@
 <div id="recommended_products" class="block round">
     <h2><%= t("home.recommended_products") %></h2>
     <% @recommended_products.each do |product| %>
-        <div class="small_product">
-            <%= render "products/small_product", :product => product %>
-        </div>
+        <%= render "products/small_product", :product => product %>
     <% end %>
 </div>
 

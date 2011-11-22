@@ -2,10 +2,10 @@ class Review
   include Mongoid::Document
   include Mongoid::Timestamps
   include AssociatedModels
-  include Taggable
   include Available
   include Votable
   include Feedable
+  include Imageable
 
   field :content
 
@@ -13,8 +13,6 @@ class Review
 
   #scopes
   scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
-  scope :about, lambda{ |tag| any_in(:tags => [tag]) }
-  #any_in will perform an intersaction when chained
 
   #relationships
   belongs_to :product
