@@ -1,90 +1,29 @@
-
-
-/*.tabContainer{*/
-	     /*The UL*/
-	    /*float:left;*/
-	    /*padding-right:13px;*/
-        /*border:2px solid #333;*/
-	/*}*/
-    /*#contentHolder a{*/
-        /*color: black;*/
-        /*background-color:#FFFFFF;*/
-
-    /*}*/
-
-    .mytab {
-        border-left: 10px solid #EDEFF4;
-        border-right:10px solid #EDEFF4;
-        /*border: 10px solid #000000;*/
+    .tabContainer{
+       height:30px;
     }
 
-	#contentHolder{
-	    /*background-color:#EEEEEE;*/
-	    /*border:10px solid #EDEFF4;*/
-	    /*height:300px;*/
-	    /*margin:20px;*/
-        border-top:10px solid #EDEFF4;
-	    /*color:#444444;*/
-	    /*padding:15px;*/
-	}
+    .tabContainer .tab{
+        font-size: 16px;
+    }
+    .tabContainer div{
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        padding-top: 10px;
 
+    }
 
-	/*#tabContent{*/
-	    /*background-color:#333;*/
-	    /*border:1px solid #444;*/
-	    /*margin-top:-15px;*/
-	    /*width:100%;*/
-	/*}*/
+    .tabContainer .unselected{
+        background-image: url("tab.png");
+        background-repeat: no-repeat;
+    }
+    .tabContainer .selected{
+        background-color: #EDEFF4;
+        background-image: url("tab_clicked.png");
+        background-repeat: no-repeat;
+    }
 
-	/*.tabContainer li{*/
-	    /* This will arrange the LI-s next to each other */
-	    /*display:inline;*/
-	/*}*/
-
-    /*.tabContainer li a{*/
-        /*color: black;*/
-    /*}*/
-	     /*Styling the hyperlinks of the tabs as colorful buttons*/
-
-	    /*float:left;*/
-	    /*font-size:18px;*/
-
-	     /*display:block;*/
-         /*allows for additinal CSS rules to take effect, such as paddings    display:block;*/
-
-	    /*padding:7px 16px 1px;*/
-	    /*margin:4px 5px;*/
-	    /*height:29px;*/
-
-	     /*Giving positionings*/
-	    /*position:relative;*/
-
-	     /*CSS3 text-shadow*/
-	    /*text-shadow:1px 1px 1px #CCCCCC;*/
-
-
-
-    /*ul .left{*/
-	    /* The left span in the hyperlink */
-
-	    /*height:37px;*/
-	    /*left:0;*/
-	    /*position:absolute;*/
-	    /*top:0;*/
-	    /*width:10px;*/
-	/*}*/
-
-	/*ul .right{*/
-	    /* The right span in the hyperlink */
-
-	    /*height:37px;*/
-	    /*right:0;*/
-	    /*position:absolute;*/
-	    /*top:0;*/
-	    /*width:10px;*/
-	/*}*/
-
-	.preloader{
+	#contentHolder .preloader{
 	    display:block;
 	    margin:120px auto;
 
