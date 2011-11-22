@@ -16,7 +16,7 @@
         </div>
 
        <div class="fr m5 p5">
-         <% unless SELF_PROVIDER == "yin11" %>
+         <% unless current_user.provider == SELF_PROVIDER %>
             <div class= "fl m5"><%= check_box_tag  :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %></div>
             <div class= "fl m5">
                   <%= link_to image_tag("third_party/#{current_user.provider}.png", :border => 0, :alt => t("syncs.sites.#{current_user.provider}"))%>
