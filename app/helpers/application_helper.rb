@@ -139,18 +139,18 @@ module ApplicationHelper
       $(document).ready(function() {
         $('#image_uploader').uploadify({
           script          : '#{images_path(:item_id => item.id)}',
-          fileDataName    : 'image[image]',
+          fileDataName    : 'image[picture]',
           uploader        : '/uploadify/uploadify.swf',
           cancelImg       : '/uploadify/cancel.png',
           fileDesc        : 'Images',
           fileExt         : '*.png;*.jpg;*.gif',
-          sizeLimit       : #{10.megabytes},
+          sizeLimit       : #{2.megabytes},
           queueSizeLimit  : 24,
           multi           : true,
           auto            : true,
-          buttonImg       : '/uploadify/upload.gif',
-          width           : 48,
-          height          : 48,
+          buttonImg       : '/uploadify/upload2.gif',
+          width           : 12,
+          height          : 12,
           buttonText      : "",
           scriptData      : {
             '_http_accept': 'application/javascript',

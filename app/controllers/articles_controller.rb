@@ -54,6 +54,8 @@ class ArticlesController < ApplicationController
 
     ImagesHelper.process_uploaded_images(@article, params[:images])
 
+    #@feed = FeedsManager.push_feeds(@article)
+
     begin
       respond_to do |format|
         if @article.save && @article.images.each(&:save)

@@ -1,27 +1,34 @@
 <%= form_for review, :html => { :multipart => true }, :remote => true do |f| %>
-    <div class="block round clearfix">
+    <div class="block round clearfix" id = "review_dialog" >
         <h2><%= t("reviews.new_review") %></h2>
 
         <%= render "shared/error_messages", :target => review %>
         <%= hidden_field_tag "product_id", review.product_id %>
 
-        <%= f.text_area :content, :maxlength => get_max_length(review, :content), :class => "char_aware" %>
-        <%= f.submit t("reviews.submit"), :class => "button" %>
+        <%= f.text_area :content, :maxlength => get_max_length(review, :content), 'data-comment_max_len' => get_max_length(review, :content), :class => "char_aware" %>
+
         <div><%= content_tag :span, "", :class => "char_counter" %></div>
-        <div class="review_ext">
-            <div class="fl">
+        <div class="review_ext fl p5 m5">
+            <div class="fr ">
                 <%= f.label :images, t("images.images") %>
-                <div id="image_uploader"></div>
-            </div>
-            <div class="fr">
-              <!-- current_user is logined from -->
-              <%= check_box_tag :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %>
-            </div>
-            <div id="images_container" class="block">
-                <%= render :partial => "images/single_image_field", :collection => review.images, :as => :image %>
-            </div>
+            </div >
+            <div id="image_uploader" class="fl " width = "50px"></div>
         </div>
+
+       <div class="fr m5 p5">
+            <div class= "fl m5"><%= check_box_tag  :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %></div>
+            <div class= "fl m5">
+              <% unless current_user.provider == "yin11" %>
+                  <%= link_to image_tag("third_party/#{current_user.provider}.png", :border => 0, :alt => t("syncs.sites.#{current_user.provider}"))%>
+               <%end%>
+            </div>
+            <div class= "fl m5"><%= f.submit t("reviews.submit"), :class => "button" %> </div>
+       </div>
     </div>
+
+    <span id="images_container" class="block">
+                <%= render :partial => "images/single_image_field", :collection => review.images, :as => :image %>
+    </span>
 <% end %>
 
 <%= render "info_items/delay_load_stuff", :item => review %>

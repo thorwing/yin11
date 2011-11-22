@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = Group.new(:city => current_city.name)
+    @group = Group.new
 
     respond_to do |format|
       format.html # new.html.erb

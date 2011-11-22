@@ -6,7 +6,7 @@ class SyncsManager
   def sync(review)
     @status = false
     @user_message = I18n.t("syncs.failure_message") + I18n.t("syncs.sites.#{review.author.provider}")
-    @message = [review.title, review.content].join(": ")
+    @message = review.content
     case review.author.provider
       when "douban"  #ok
         client = SilverOauth::Douban.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
@@ -72,8 +72,8 @@ class SyncsManager
         client = eval("SilverOauth::#{site_name}").load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
         #carrierwave
         unless review.images.first.nil?  #with pic
-          path = review.images.first.image.path.to_s
-          binary_content = review.images.first.image.read
+          path = review.images.first.picture.path.to_s
+          binary_content = review.images.first.picture.read
           #p "binary_content" + binary_content
           fake_file = SilverOauth::FakeFile.new(path, binary_content)
           response = client.upload_binary_image(@message, fake_file)

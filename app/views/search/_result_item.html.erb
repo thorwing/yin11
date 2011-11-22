@@ -1,8 +1,8 @@
-<div class="item info">
+<div class="block round">
+    <div><%= get_kind(item) %></div>
     <b><%= link_to get_subject(item), item %></b><br/>
     <%= render "shared/show_tags", :item => item %><br/>
     <%= truncate_content(get_content(item), 40) %>
-    <%= link_to(t("info_items.detail"), item)  %>
 </div>
 
 

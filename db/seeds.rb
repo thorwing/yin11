@@ -108,7 +108,6 @@ require "source"
     Group.create! do |g|
       g.name = seed["name"]
       g.creator_id = @admin.id
-      g.city_id = "021"
       seed["tags"].each do |tag|
         g.tags << Tag.new(:name => tag)
       end

@@ -1,8 +1,6 @@
 <% home_page %>
 <% meta_tag t("site.introduction") %>
 
-<%= render "shared/catalogs", :catalogs => @catalogs %>
-
 <div id="recommended_products" class="block round">
     <h2><%= t("home.recommended_products") %></h2>
     <% @recommended_products.each do |product| %>

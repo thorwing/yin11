@@ -29,7 +29,7 @@ class User
   mount_uploader :avatar, AvatarUploader
 
   search_index(:fields => [:login_name],
-              :attributes => [:updated_at, :created_at])
+              :attributes => [:created_at])
 
   index :provider
   index :uid
@@ -98,6 +98,7 @@ class User
   end
 
   def send_password_reset
+    p self.email
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
     save!

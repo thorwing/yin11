@@ -1,16 +1,35 @@
 <div>
-    <span id="keywords"><%= params[:query] %></span>
+    <span id="keywords"><%= t("search.result_of", :text => params[:query]) %></span>
 </div>
 
 <hr/>
 
-<div id="search_results" class="left_column">
-    <% @items.each do |item| %>
-        <% if item.is_a?(Article) %>
-            <%= render "info_items/info_item_short", :item => item %>
-        <% else %>
-            <%= render "search/result_item", :item => item %>
+<div id="search_results">
+    <% if @empty %>
+        <span class="red"><%= t("search.not_found") %></span>
+    <% else %>
+        <% unless @users.empty? %>
+            <h3><%= t("search.kinds.user") %></h3>
+            <% @users.each do |user| %>
+                <%= render user %>
+            <% end %>
+          <hr/>
         <% end %>
+
+        <% unless @products.empty? %>
+            <h3><%= t("search.kinds.product") %></h3>
+            <% @products.each do |product| %>
+                <%= render "search/result_item", :item => product %>
+            <% end %>
+        <% end %>
+
+        <% unless @articles.empty? %>
+            <h3><%= t("search.kinds.article") %></h3>
+            <% @articles.each do |article| %>
+                <%= render "info_items/info_item_short", :item => article %>
+            <% end %>
+        <% end %>
+
     <% end %>
 </div>
 

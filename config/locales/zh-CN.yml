@@ -111,6 +111,9 @@ zh-CN:
     no_such_user: "不存在该用户。"
     pwd_confirmation_not_match: "确认用的密码不符合您第一次输入的密码，请再试一次。"
     remember_me: "记住我"
+    other_logins: "您还可以用站外账号登录:"
+    to_reset_your_password: "请点击下方的链接重置密码"
+    ignore_password_reset: "如果您没有申请重置密码，请忽略次邮件，您的密码还是当前密码"
 
   mailers:
     reset_password_subject: 重置密码
@@ -174,6 +177,7 @@ zh-CN:
     tips: 锦囊
     groups: 饭桌
     vendors: 商户
+    users: 用户
     logout: 登出
 
   administrator_control:
@@ -437,6 +441,7 @@ zh-CN:
 
   feeds:
     all: 用户动态
+    my: 我的动态
 
   badges:
     badges: 徽章
@@ -480,6 +485,15 @@ zh-CN:
       first: "第一页"
       last: "最后一页"
       truncate: "..."
+
+  search:
+    kinds:
+      product: 商品
+      article: 文章
+      review: 分享
+      user: 用户
+    not_found: 抱歉，没有搜索到符合条件的内容
+    result_of: 为您找到关于 %{text} 的结果：
 
   fetch_sites:
     xinhuanet: 新华网

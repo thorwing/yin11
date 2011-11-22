@@ -1,10 +1,6 @@
 <%= form_for @group do |f| %>
     <%= render "shared/error_messages", :target => @group %>
 
-    <b><%= f.label :city_id, t("location.city") %></b><%= mark_required(@group, :city_id) %>
-    <%= select_tag "select_province", options_for_select(get_provinces_for_select, current_city.province.id), :class => "select_province" %>
-    <%= select_tag "group[city_id]", options_for_select(get_cities_of_provinces(current_city.province), current_city.id), :class => "select_city" %>
-
     <%= render "shared/text_field", :f => f, :label => t("general.name"), :field => :name %>
     <%= render "shared/text_area", :f => f, :label => t("general.description"), :field => :description %>
 

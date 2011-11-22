@@ -8,12 +8,32 @@ class SearchController < ApplicationController
   #end
 
   def index
-    @items = []
+    @users = []
+    @articles = []
+    @products = []
+    @empty = true
 
-    if params[:query].present?
-      SilverSphinx.context.indexed_models.each do |model|
-        model = model.constantize
-        @items |= model.search(params[:query]).documents
+    query = params[:query]
+
+    if query
+      #SilverSphinx.context.indexed_models.each do |model|
+      #  model = model.constantize
+      #  @items |= model.search(params[:query]).documents
+      #end
+      case params[:scope]
+        when "users"
+          @users = User.search(params[:query]).documents
+          @empty = @user.empty?
+        when "articles"
+          @articles = Article.search(params[:query]).documents
+          @empty = @articles.empty?
+        when "products"
+          @products = Product.search(params[:query]).documents
+          @empty = @products.empty?
+        else
+          @users = User.search(params[:query]).documents
+          @products = Product.search(params[:query]).documents
+          @empty = @products.empty? && @users.empty?
       end
     end
 

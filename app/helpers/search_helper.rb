@@ -11,6 +11,10 @@ module SearchHelper
     subject
   end
 
+  def get_kind(item)
+    t("search.kinds.#{item.class.name.downcase}")
+  end
+
   def get_content(item)
     if item.respond_to?(:content)
       subject = item.content

@@ -7,7 +7,7 @@
 <% end %>
 
 <% if @feed %>
-    var feeds = $("#feeds");
+    var feeds = $("#all_feeds");
     if (feeds.length > 0) {
         var child = '<%= escape_javascript(render @feed) %>';
         feeds.prepend(child);
@@ -28,6 +28,15 @@ else if (local_status == "true" && remote_status == "false")
 else
 {
     jQuery.facebox( '<img border="0" src="/assets/wrong_icon.gif" alt="wrong"><span><%= @user_message %></span>');
+}
+
+setTimeout("after_delay()", parseInt("<%= REVIEW_DIALOG_DELAY %>"));
+//  setTimeout("after_delay()",2000);
+
+function after_delay()
+{
+    jQuery(document).trigger('close.facebox');
+//    alert("OK");
 }
 
 //    $('#new_review_block:visible').hide();

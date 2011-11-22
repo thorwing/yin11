@@ -3,9 +3,7 @@ development:
    secret: "76de6c368df54c94ab1776f0fa7a9c2c"
    url:    "http://www.silver_example.com:3000"
    callback: "http://www.silver_example.com:3000/syncs/renren/callback"
-#   callback: "http://localhost:3000/syncs/renren/callback"
-#   callback: "http://graph.renren.com/oauth/login_success.html"
-#            <meta property="qc:admins" content="26577636026314652" />
+
 production:
    key:    ""
    secret: ""
