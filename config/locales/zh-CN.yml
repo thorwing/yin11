@@ -113,7 +113,6 @@ zh-CN:
     remember_me: "记住我"
     other_logins: "您还可以用站外账号登录:"
     to_reset_your_password: "请点击下方的链接重置密码"
-    ignore_password_reset: "如果您没有申请重置密码，请忽略次邮件，您的密码还是当前密码"
 
   mailers:
     reset_password_subject: 重置密码
