@@ -16,17 +16,22 @@
   </div>
 
   <div class="field">
-    <%= f.label :name, t("general.name") %><br />
+    <b><%= f.label :name, t("general.name") %></b><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :url %><br />
+    <b><%= f.label :url %></b><br/>
     <%= new_tab_link_to f.object.url, f.object.url %>
   </div>
 
   <div class="field">
-    <%= f.label :editor_score, t("products.editor_score")%><br />
-    <%= f.text_field :editor_score %>
+    <b><%= f.label :price, t("products.price") %></b><br />
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <b><%= f.label :weight, t("products.weight") %></b><br />
+    <%= f.text_field :weight %>
   </div>
 
   <div class="field">
@@ -35,11 +40,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :enabled, t("general.toggle")%><br />
+     <b><%= f.label :editor_score, t("products.editor_score")%></b><br />
+     <%= f.text_field :editor_score %>
+  </div>
+
+  <div class="field">
+    <b><%= f.label :enabled, t("general.toggle")%></b><br />
     <%= f.check_box :enabled %>
   </div>
 
   <div class="actions">
-    <%= f.submit t("general.submit") %>
+    <%= f.submit t("general.submit"), :class => "button" %>
   </div>
 <% end %>

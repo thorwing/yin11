@@ -15,7 +15,11 @@
     </p>
     <p>
       <b><%= t("catalogs.catalog")  %></b>
-      <%= @product.tags.first {|t| t.is_category == true} if @product.tags %>
+      <%= @product.catalogs.map(&:name).join(" ") %>
+    </p>
+    <p>
+      <b><%= t("tags.tags")  %></b>
+      <%= render "shared/show_tags", :item => @product %>
     </p>
     <p>
       <b><%= t("products.price")  %></b>

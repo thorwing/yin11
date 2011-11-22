@@ -1,12 +1,9 @@
 Yin11::Application.routes.draw do
 
-  resources :topics
-
   namespace :administrator do
     root :to => "base#index"
 
     resources :articles
-    resources :badges
     resources :vendors
     resources :users, :except => [:new, :create]
     resources :tags
@@ -28,6 +25,8 @@ Yin11::Application.routes.draw do
   #match "follow_yin11" => "syncs#follow_yin11"
 
   get "home/more_items"
+
+  resources :topics
 
   resources :search do
     collection do

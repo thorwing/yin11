@@ -289,7 +289,7 @@ class SilverHornet::Buy < SilverHornet::Site
         end
       end
       #get the product's image
-      #get_image(product)
+      get_image(product)
 
       #get_field(product, :weight, "product_weight")
       #get_field(product, :producer, "product_producer")
@@ -450,7 +450,6 @@ class SilverHornet::Buy < SilverHornet::Site
   end
 
   def get_image(product)
-    pic = nil
     pic_selector = elements["product_image"]
     if pic_selector.present?
       image_element = agent.page.at(elements["product_image"])
@@ -466,7 +465,7 @@ class SilverHornet::Buy < SilverHornet::Site
 
       if product.image.blank? || product.image.remote_picture_url != pic_url
         #we are using Carrierwave, so just set the remote_picture_url, it will download the image for us
-        pic = product.create_image(remote_picture_url: pic_url)
+        product.create_image(remote_picture_url: pic_url)
       end
     end
   end

@@ -1,6 +1,8 @@
-<h1>Editing product</h1>
+<% title t("products.edit") %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<div class="actions">
+    <%= link_to t("general.show"), @product %> |
+    <%= link_to t("general.back_to_list"), products_path %>
+</div>
