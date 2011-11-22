@@ -1,10 +1,5 @@
 <% title t("articles.articles") %>
 
-<%= form_tag '/articles', :method => :get do %>
-    <%= text_field_tag :q %>
-    <%= submit_tag t("general.search"), :class => "button" %><br/>
-<% end %>
-
 <p><%= "#{t("general.total")}:#{@count.to_s}" %> </p>
 
 <div class="block square">

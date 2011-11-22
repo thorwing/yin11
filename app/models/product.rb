@@ -30,6 +30,9 @@ class Product
 
   attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score
 
+  #scopes
+  scope :via_editor, order_by([:editor_score, :desc])
+
   #relationships
   embeds_many :comments
   belongs_to :vendor

@@ -46,7 +46,7 @@ Yin11::Application.routes.draw do
 
   resources :password_resets
 
-  resources :tags, :only => [:index]
+  resources :tags
 
   resources :articles
 

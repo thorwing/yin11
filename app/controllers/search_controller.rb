@@ -38,7 +38,7 @@ class SearchController < ApplicationController
     elsif params[:tags]
       @query = params[:tags]
       query_tags = params[:tags].split(' ')
-      @products = Product.tagged_with(query_tags)
+      @products = Product.tagged_with(query_tags).via_editor
       @articles = Article.tagged_with(query_tags)
       @empty = @products.empty? && @articles.empty?
     end

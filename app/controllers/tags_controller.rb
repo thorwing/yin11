@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  before_filter(:except => [:index]) { |c| c.require_permission :editor }
+
   def index
     query_str = params[:q]
     if query_str.present?
@@ -19,6 +21,25 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.json { render :json => @tags }
+    end
+  end
+
+  def destroy
+    if params[:id].present?
+      @tag = Tag.find(params[:id])
+      @tag.destroy
+      tag = params[:id]
+      #TODO
+      #InfoItem.all.each do |item|
+      #  if item.tags.include? tag
+      #    item.tags.reject!{|t| t == tag}
+      #    item.save!
+      #  end
+      #end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to(administrator_tags_url) }
     end
   end
 
