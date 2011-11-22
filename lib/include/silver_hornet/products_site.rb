@@ -51,11 +51,14 @@ class SilverHornet::ProductsSite < SilverHornet::Site
 
   def read(item)
     catalog = Catalog.find_or_initialize_by(name: item["name"])
+    catalog.alias_name = item["alias_name"] if item["alias_name"].present?
     catalog.save!
     if item["sub"]
       item["sub"].each do |sub|
         child = Catalog.find_or_initialize_by(name: sub["name"])
         child.parent = catalog
+        child.alias_name = sub["alias_name"] if sub["alias_name"].present?
+        catalog.save!
         child.save!
         read(sub)
       end
@@ -128,19 +131,19 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         log "Start process of first catalog: #{first_catalog_name}"
         #for the website which has two-level catalog of foods
         if elements["listed_second_catalog"].present?
-          process_first_catalog(first_catalog_href) unless (first_catalog_href=="./" || first_catalog_href=="index.php")
+          process_first_catalog(first_catalog_href, first_catalog_name) unless (first_catalog_href=="./" || first_catalog_href=="index.php")
         else
           #for the website which only has one-level catalog of foods. we get the product info directly.
-          process_second_catalog(first_catalog_href)
+          process_second_catalog(first_catalog_href, first_catalog_name)
         end
         log "Finished process of first catalog: #{first_catalog_name}"
-        end
+      end
     end
   end
 
 
   #process the first-level catalog page and get the second-level catalog if existed or to get the product info directly
-  def process_first_catalog(first_url)
+  def process_first_catalog(first_url, catalog_name)
     #initialize a new agent instance each time
     self.agent = Mechanize.new
     #go on the site searched
@@ -163,18 +166,19 @@ class SilverHornet::ProductsSite < SilverHornet::Site
           #navigate to the detail page of the catalog and process
           log "Start process of second catalog: #{second_catalog_name}"
           #go to the second-level catalog page and process the product info on it
-          process_second_catalog(second_catalog_href)
+          process_second_catalog(second_catalog_href, second_catalog_name)
           log "Finished process of second catalog: #{second_catalog_name}"
         end
       end
       #the second-level catalog not exist and to get the product info directly
     else
-      process_second_catalog(first_url)
+      process_second_catalog(first_url, catalog_name)
     end
   end
 
   #process the product list on the catalog page and navigate to the detailed page of each product to get product info
-  def process_second_catalog(second_url)
+  def process_second_catalog(second_url, catalog_name)
+    #if  catalog_name == "进口冲饮"
     #initialize a new agent instance each time
     self.agent = Mechanize.new
     #the "Next" link which leads to another page of products
@@ -223,7 +227,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
             #navigate to thedetail page of the product
             agent.get(href)
             #process the product info
-            process_product
+            process_product(catalog_name)
           end
         end
         #go back to the entry page we cached before
@@ -232,10 +236,11 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         next_link = get_next_link
       end
     end while next_link
+    #end
   end
 
 #process the detailed product info
-  def process_product
+  def process_product(catalog_name)
     try do
       #get the product name
       product_name = catalog_name_filter(agent.page.at(elements["product_name"]).try(:content))
@@ -263,18 +268,14 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         #get the product's image
         get_image(product)
 
+        #initialize the tags of product
         product.tags=[]
-        #segmenting the product name in order to get its tags
-        algor = RMMSeg::Algorithm.new(product_name)
-        loop do
-          tok = algor.next_token
-          break if tok.nil?
-          if product.tags.present?
-            product.tags.push(tok.text.force_encoding("UTF-8")) if @@dic_words.include?(tok.text.force_encoding("UTF-8")) && !product.tags.include?(tok.text.force_encoding("UTF-8"))
-          else
-            product.tags.push(tok.text.force_encoding("UTF-8")) if @@dic_words.include?(tok.text.force_encoding("UTF-8"))
-          end
-        end
+        #get the tag
+        product.tags = seg_word(product_name)
+
+        product.catalogs = []
+        #set the product catalog
+        get_product_catalog(catalog_name, product)
 
         #record the product
         if product.new_record?
@@ -283,7 +284,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
             product.save!
             #calculate the product amount
             @@product_count+=1
-            log "Insert #{product.name} of #{product.tags} from #{product.url}"
+            log "Insert #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.each { |cat| p cat.name }} from #{product.url}"
           else
             #somethings goes wrong
             log "Invalid #{product.errors.join} of #{product.url}"
@@ -292,7 +293,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
           if product.changed?
             #update the change
             product.save!
-            log "Update: #{product.name} of #{product.tags} from #{product.url}"
+            log "Update: #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.each { |cat| p cat.name }} from #{product.url}"
           end
         end
       else
@@ -300,6 +301,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
       end
 
     end
+
   end
 
   #Filtering the unwanted symbols
@@ -343,7 +345,6 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         #check if is the last page
         if @page_number != agent.page.at(elements["next_page_number_link"]).search('a').size
           @page_number +=1
-          #p @@page_number
           agent.page.at(elements["next_page_number_link"]).search('a')[@@page_number]
         else
           @page_number = 0
@@ -423,6 +424,100 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         pic = product.create_image(remote_picture_url: pic_url)
       end
     end
+  end
+
+  def seg_word(word)
+    words =[]
+    algor = RMMSeg::Algorithm.new(word)
+    loop do
+      tok = algor.next_token
+      break if tok.nil?
+      unless words.empty?
+        words.push(tok.text.force_encoding("UTF-8")) if @@dic_words.include?(tok.text.force_encoding("UTF-8")) && !words.include?(tok.text.force_encoding("UTF-8"))
+      else
+        words.push(tok.text.force_encoding("UTF-8")) if @@dic_words.include?(tok.text.force_encoding("UTF-8"))
+      end
+    end
+    return words
+  end
+
+  def get_product_catalog(cat_name, product)
+    #if cat_name == "进口冲饮"
+    try do
+      cat_tags = seg_word(cat_name)
+      Catalog.all.each do |cat|
+        cat_words=[]
+        if cat.alias_name.present?
+          cat_words=cat.alias_name | seg_word(cat.name)
+        else
+          cat_words = seg_word(cat.name)
+        end
+        cat_words.each do |cat_word|
+          if cat_tags.include?(cat_word)
+            product.catalogs << cat unless product.catalogs.include?(cat)
+            if cat.children.present?
+              cat.children.all.each do |child|
+                unless product.catalogs.include?(child)
+                  if seg_word(product.name).include?(child.name)
+                    product.catalogs << child
+                    break
+                  else
+                    if child.alias_name.present?
+                      child.alias_name.each do |alias_name|
+                        if seg_word(product.name).include?(alias_name)
+                          product.catalogs << child
+                          break
+                        end
+                      end
+                    end
+                  end
+                else
+                  break
+                end
+              end
+            end
+          end
+        end
+      end
+      if product.catalogs.size > 1
+        word = seg_word(product.name)
+        catalogs ={}
+        product.catalogs.each do |catalog|
+          if catalogs[catalog.ancestry].present?
+            catalogs[catalog.ancestry] = catalogs[catalog.ancestry].to_s + "," + catalog.id.to_s
+          else
+            catalogs[catalog.ancestry] = catalog.id.to_s
+          end
+        end
+        catalogs.each do |(key, value)|
+          cat_id = value.split(",")
+          if cat_id.size > 1
+            cat_id.each do |id|
+              is_related = false
+              if Catalog.find(id).alias_name.present?
+                words = Catalog.find(id).alias_name | seg_word(Catalog.find(id).name)
+                words.each do |w|
+                  if word.include?(w)
+                    is_related = true
+                  end
+                end
+              else
+                words = seg_word(Catalog.find(id).name)
+                words.each do |w|
+                  if word.include?(w)
+                    is_related = true
+                  end
+                end
+              end
+              unless is_related
+                product.catalogs.delete(Catalog.find(id))
+              end
+            end
+          end
+        end
+      end
+    end
+    #end
   end
 
 end

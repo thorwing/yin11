@@ -7,8 +7,10 @@ class Catalog
   #key :name
   field :show, :type => Boolean
 
+  field :alias_name, :type => Array
 
-  attr_accessible :name, :show
+
+  attr_accessible :name, :show , :alias_name
 
   #relationships
   has_and_belongs_to_many :products
