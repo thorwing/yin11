@@ -1,0 +1,30 @@
+    .tabContainer{
+       height:30px;
+    }
+
+    .tabContainer .tab{
+        font-size: 16px;
+    }
+    .tabContainer div{
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        padding-top: 10px;
+
+    }
+
+    .tabContainer .unselected{
+        background-image: url("tab.png");
+        background-repeat: no-repeat;
+    }
+    .tabContainer .selected{
+        background-color: #EDEFF4;
+        background-image: url("tab_clicked.png");
+        background-repeat: no-repeat;
+    }
+
+	#contentHolder .preloader{
+	    display:block;
+	    margin:120px auto;
+
+    }
