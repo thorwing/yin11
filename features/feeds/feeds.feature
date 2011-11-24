@@ -169,7 +169,7 @@ Feature: tests for Feeds
       When I log in as "David User"
       And I go to the me page
       When I fill in "review_content" with "hahaha"
-      And I press "发表测评"
+      And I press "发表分享"
      And I go to the me page
      And I follow "我的动态"
      Then I should see "hahaha" within ".mytab"

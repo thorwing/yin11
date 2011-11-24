@@ -1,7 +1,7 @@
 #encoding utf-8
 Feature: create comment
-  注册用户，编辑，管理员额可以对文章，测评，产品添加评论
-  访客不可以对文章，测评添加评论
+  注册用户，编辑，管理员额可以对文章，分享，产品添加评论
+  访客不可以对文章，分享添加评论
   用户会得到还可以输入多少字的提示
   评论可以是嵌套的
   用户不可以太频繁地添加评论
@@ -12,7 +12,7 @@ Feature: create comment
     And There are some articles
     And There are some reviews
 
-  Scenario Outline: 注册用户，编辑，管理员额可以对文章，测评添加评论
+  Scenario Outline: 注册用户，编辑，管理员额可以对文章，分享添加评论
     When I log in as "<user>"
     And I go to the <index> page
     And I follow "<item>"
@@ -40,7 +40,7 @@ Feature: create comment
     |David User     | articles | 三聚氰胺再现上海 |
     |Castle Editor  | reviews  | 牛奶坏了         |
 
-  Scenario Outline: 访客不可以对文章，测评添加评论
+  Scenario Outline: 访客不可以对文章，分享添加评论
       When I go to the <index> page
       And I follow "<item>"
       Then I should not see "div" whose id is "new_comment"

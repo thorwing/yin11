@@ -138,9 +138,9 @@ zh-CN:
     password_reset_email_sent: "密码恢复邮件已经发出，请查收。"
     email_verified: 邮箱已验证
     password_reset: 密码已更改
-    review_posted: 测评已发布
-    review_post_failure: 测评发布失败
-    review_updated: 测评已修改
+    review_posted: 分享已发布
+    review_post_failure: 分享发布失败
+    review_updated: 分享已修改
     article_posted: 文章已发布
     article_updated: 文章已更新
     group_created: 饭桌已创建
@@ -169,7 +169,7 @@ zh-CN:
     update_profile: 偏好设定
     me: 我的首页
     articles: 文章
-    reviews: 测评
+    reviews: 分享
     products: 商品
     topics: 专题
     badges: 徽章
@@ -181,7 +181,7 @@ zh-CN:
 
   administrator_control:
     articles: 管理文章
-    reviews: 管理测评
+    reviews: 管理分享
     vendors: 管理商户
     products: 管理产品
     users: 管理用户
@@ -340,9 +340,9 @@ zh-CN:
     new_vendor: 新商户
     edit_vendor: 编辑商户
     create_vendor: 添加商户
-    new_review: +测评
+    new_review: +分享
     new_product: +产品
-    all_reviews: "所有测评："
+    all_reviews: "所有分享："
     my_vendors: "查看我创建的商户"
     recent: 最近一个月：
     recent_good: 好评
@@ -385,24 +385,24 @@ zh-CN:
     priority: 优先级
 
   reviews:
-    submit: 发表测评
-    title: "测评"
-    new: +测评
-    reviews: 测评
-    all: 所有测评
+    submit: 发表分享
+    title: "分享"
+    new: +分享
+    reviews: 分享
+    all: 所有分享
     what: 关于?
     what_tip: （标签：食物，添加剂等等。最多5个。）
     where: 哪家商户?
     when: 什么时候?
     whats_wrong: 哪里不对劲?
-    post_new_review: 发表新测评
+    post_new_review: 发表新分享
     edit_review: 编辑 %{title}
-    new_review: 新测评
+    new_review: 新分享
     make_choice_please: 请选择
     choose_vendor: 选择商户
     new_review_with_vnedor: 先找到针对的商户
     new_review_without_vendor: 实在想不起在哪儿买的食物了
-    see_more_reviews: 查看更多测评
+    see_more_reviews: 查看更多分享
     title_review: 报告
     referenced_tip: 依据锦囊
     upload_image_tip: "(上传图片可以更好地分享您的经历。最多可上传5张)"

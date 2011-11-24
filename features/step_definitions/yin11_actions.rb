@@ -32,7 +32,7 @@ When /^I post a simple review for "(.+)" with "(.+)"$/ do |product_name, content
   And %(I follow "#{product_name}")
 
   When %(I fill in "review_content" with "#{content}")
-  And %(I press "发表测评")
+  And %(I press "发表分享")
 end
 
 When /^I create a simple vendor$/ do

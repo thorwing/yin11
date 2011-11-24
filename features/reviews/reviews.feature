@@ -17,7 +17,7 @@ Feature: tests for reviews
     And I should see "input" whose id is "review_content"
 
     When I fill in "review_content" with "用来炖鸡汤不错"
-    And I press "发表测评"
+    And I press "发表分享"
     Then I should see "用来炖鸡汤不错"
     And I should not see "input" whose id is "review_content"
 
@@ -33,7 +33,7 @@ Feature: tests for reviews
   Scenario: 访客不能添加分享
     When I view the details of product "苏北草母鸡"
     And I should not see "input" whose id is "review_content"
-    And I should not see "发表测评"
+    And I should not see "发表分享"
 
   Scenario Outline: 注册用户，编辑，管理员可以发表待图片的分享
     When I log in as "<user>"
@@ -69,7 +69,7 @@ Feature: tests for reviews
 #    Then I should see "radio" whose id is "worthy"
 #    And I should see "radio" whose id is "unworthy"
 #    When I fill in "review_title" with "用来炖鸡汤不错"
-#    And I press "发表测评"
+#    And I press "发表分享"
 #    Then I should see "用来炖鸡汤不错"
 #    And I should see "值" within "review"
 #    And I should not see "不值" within "review"

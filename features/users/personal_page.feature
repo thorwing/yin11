@@ -32,7 +32,7 @@ Feature: tests user's personal page
     When I log in as "<user>"
     And I follow "我的首页"
     Then I fill in "review_content" with "今天吃到了好吃的"
-    And I press "发表测评"
+    And I press "发表分享"
     And I follow "我的动态"
     Then I should see "今天吃到了好吃的" within ".mytab"
 

@@ -6,7 +6,7 @@
 #  Scenario: User will get rewards because of posting reviews.
 #    Given the following badge exists:
 #    | name     | description  | contribution_field | comparator | compared_value |
-#    | 新手上路 | 发表一篇测评 | posted_reviews    | >=         | 1              |
+#    | 新手上路 | 发表一篇分享 | posted_reviews    | >=         | 1              |
 #    When I log in as "David User"
 #    And I post a simple review without vendor
 #
@@ -19,7 +19,7 @@
 #    And I go to the badges page
 #    And I follow "新建"
 #    And I fill in "badge_name" with "新手上路"
-#    And I fill in "badge_description" with "发表第一篇测评"
+#    And I fill in "badge_description" with "发表第一篇分享"
 #    And I select "posted_reviews" from "badge_contribution_field"
 #    And I select "greater_than_or_equals" from "badge_comparator"
 #    And I fill in "badge_compared_value" with "1"
@@ -43,7 +43,7 @@
 #  Scenario: Only Admin can edit badges.
 #    Given the following badge exists:
 #    | name     | description  | contribution_field | comparator | compared_value |
-#    | 新手上路 | 发表一篇测评  | posted_reviews     | ==          | 1              |
+#    | 新手上路 | 发表一篇分享  | posted_reviews     | ==          | 1              |
 #    When I log in as "Mighty Admin"
 #    And I go to the administrator_badges page
 #    And I follow "新手上路"
@@ -69,7 +69,7 @@
 #  Scenario: User can get a badge for first review.
 #    Given the following badge exists:
 #      | name     | description  | contribution_field  | comparator | compared_value |
-#      | 新手上路 | 发表第一篇测评 | posted_reviews    | ==          | 1              |
+#      | 新手上路 | 发表第一篇分享 | posted_reviews    | ==          | 1              |
 #
 #    When I log in as "David User"
 #    And I post a simple review without vendor
@@ -79,7 +79,7 @@
 #  Scenario: User can get a badge for his review gets more than 100 votes.
 #    Given the following badge exists:
 #      | name     | description                     | contribution_field   | comparator | compared_value |
-#      | 热门写手 | 发表一篇测评获得100分以上的投票 | highest_review_votes | >=          | 100            |
+#      | 热门写手 | 发表一篇分享获得100分以上的投票 | highest_review_votes | >=          | 100            |
 #    #TODO
 #
 #
@@ -118,7 +118,7 @@
 #  Scenario: Only Admin can toggle "disable" of badges.
 #    Given the following badge exists:
 #    | name     | description  | contribution_field | comparator | compared_value |
-#    | 新手上路 | 发表一篇测评 | posted_reviews     | ==          | 1              |
+#    | 新手上路 | 发表一篇分享 | posted_reviews     | ==          | 1              |
 #    When I log in as "Mighty Admin"
 #    And I go to the administrator_badges page
 #    And I follow "新手上路"
