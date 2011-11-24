@@ -1,32 +1,24 @@
 <div id="logo">
-    <%= link_to image_tag("yin11_logo.png", :border => 0, :width => 211, :height => 76), root_path if false %>
+    <%= link_to image_tag("top_menu/menu_left.png", :border => 0), root_path %>
     <h1><%= t("site.name") %></h1>
     <h2><%= t("site.description") %></h2>
 </div>
-
 <ul id="top_menu">
-    <li class="logo">
-      <%= link_to image_tag("top_menu/menu_left.png", :border => 0), root_path %>
-    </li>
+    <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me") %></li><% end %>
+    <li><%= render_menu(t("menu.products"), products_path) %></li>
+    <li><%= render_menu(t("menu.topics"), topics_path) %></li>
+    <li><%= render_menu(t("menu.articles"), articles_path) %></li>
+    <li><%= render_menu(t("menu.groups"), groups_path) %></li>
     <% if current_user && current_user.has_permission?(:editor) %>
         <li><%= render_menu(t("menu.administrator_control"), administrator_root_path) %></li>
     <% end %>
-    <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me") %></li><% end %>
-    <li><%= render_menu(t("menu.articles"), articles_path) %></li>
-    <li><%= render_menu(t("menu.topics"), topics_path) %></li>
-    <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
-    <li><%= render_menu(t("menu.products"), products_path) %></li>
-    <li><%= render_menu(t("menu.vendors"), vendors_path) %></li>
-    <li><%= render_menu(t("menu.groups"), groups_path) %></li>
-    <li><%= render_menu(t("menu.users"), users_path) %></li>
-    <li>
-      <div id="search_frame" >
+    <div id="search_frame" class="fr" >
         <%= form_tag '/search', :method => :get do %>
             <%= text_field_tag :query, @default_query, :class => "clear_default not_cleared" %>
             <%= submit_tag t("general.search") %>
         <% end %>
-      </div>
-    </li>
-    <%= image_tag "top_menu/menu_right.png"%>
+    </div>
 </ul>
+<span class="fr"><%= image_tag "top_menu/menu_right.png"%></span>
+
 

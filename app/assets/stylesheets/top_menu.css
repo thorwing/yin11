@@ -1,8 +1,5 @@
-/*
-    Logo
-*/
-
-#logo { float: right;}
+/*     Logo */
+#logo { float: left;}
 #logo h1, #logo h2 {
 	margin:0px;
 	display:block;
@@ -14,39 +11,12 @@
 	Top-Menu-Styles
 */
 
-#top_menu{ margin:0; padding:0; list-style:none; color:#fff; line-height:45px; display:inline-block;
-    float:left; overflow: hidden;}
-#top_menu a { font-size: 14px; color:#fff; text-decoration:none; }
-#top_menu > li {background:#172322 none repeat scroll 0 0; cursor:pointer; float:left; position:relative;
-    padding:0 10px;}
-#top_menu > li a:hover, #top_menu > li a.selected {color:#B0D730;}
-#top_menu .logo {background:transparent none repeat scroll 0% 0%; padding:0px;
-    background-color:Transparent;}
-/* sub-menus*/
-#top_menu ul { padding:0px; margin:0px; display:block; display:inline;}
-#top_menu li ul { position:absolute; left:-10px; top:0px; margin-top:45px; width:100px; line-height:16px;
-    z-index: 2000;
-    background-color:#172322; color:#0395CC; /* for IE */ display:none; }
-#top_menu li:hover ul { display:block;}
-#top_menu li ul li{ display:block; margin:5px 20px; padding: 5px 0px;  border-top: dotted 1px #606060;
-    list-style-type:none; }
-#top_menu li ul li:first-child { border-top: none; }
-#top_menu li ul li a {  color:#0395CC; }
-#top_menu li ul li a:hover { color:#7FCDFE; }
-/* main submenu */
-#top_menu #logo_sub_menu { left:0px; top:-20px; padding-top:20px; background-color:#7cb7e3; color:#fff;
-    z-index:999;}
-/* search */
-.searchContainer div { background-color:#fff; display:inline; padding:5px;}
-.searchContainer input[type="text"] {border:none;}
-.searchContainer img { vertical-align:middle;}
+#top_menu { margin:0; padding:0; list-style:none; color:#fff; line-height:40px; display:inline-block; height: 45px;
+    float:left; overflow: hidden; background:#172322 none repeat scroll 0 0; position: absolute; left: 150px; right: 18px;}
+#top_menu a { font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif; font-size: 20px; color:#fff; text-decoration:none; }
+#top_menu li {float:left;
+    padding:0 20px;}
+#top_menu li a:hover, #top_menu > li a.selected {color:#B0D730;}
 
-/* corners*/
-#top_menu .corner_inset_left { position:absolute; top:0px; left:-12px;}
-#top_menu .corner_inset_right { position:absolute; top:0px; left:100px;}
-#top_menu .last { background:transparent none repeat scroll 0% 0%; margin:0px; padding:0px;
-    border:none; position:relative; border:none; height:0px;}
-#top_menu .corner_left { position:absolute; left:0px; top:0px;}
-#top_menu .corner_right { position:absolute; left:82px; top:0px;}
-#top_menu .middle { position:absolute; left:18px; height: 20px; width: 65px; top:0px;}
+
 
