@@ -1,11 +1,13 @@
 # encoding: utf-8
 
 Given /^There are some articles$/ do
+  mysource = Source.new(:name => "银筷子原创", :site => "www.sina.com", :url => "http://www.sina.com")
   Article.create(:title => "关爱心脏：5种减少盐摄入量的方法", :content => "盐的摄入量过高会导致高血压......", :tags_string => "心脏", :author_id=> @normal_user.id, :type => "theme"  )  do |a|
       a.recommended = true
   end
   Article.create(:title => "三聚氰胺再现上海", :content => "三聚氰胺又再次出现在了上海，市民们很担心。", :region_tokens => "021", :tags_string => "牛奶, 三聚氰胺", :author_id=> @normal_user.id, :type => "news") do |a|
       a.recommended = true
+    a.source = mysource
   end
 end
 
@@ -14,7 +16,7 @@ When /^I post an article with:$/ do |table|
     When %(I go to the new_article page)
     And %(I fill in "article_title" with "#{hash["title"]}")
     And %(I fill in "article_content" with "#{hash["content"]}")
-    #And %(I fill in "article_tags_string" with "#{hash["tags"]}")
+    And %(I fill in "article_tags_string" with "#{hash["tags"]}")
     And %(I select "#{hash["type"]}" from "article_type")
     And %(I press "完成")
   end
@@ -32,4 +34,12 @@ When /^I disabled a article named "(.+)"$/ do |product_name|
   And %(I uncheck "article_enabled")
   And %(I press "完成")
 end
+
+When /^I recommand an article named "(.+)"$/ do |article_name|
+  And %(I view an article named "#{article_name}")
+  And %(I follow "编辑")
+  And %(I check "article_recommended")
+  And %(I press "完成")
+end
+
 

@@ -3,6 +3,21 @@
         <b><%= link_to current_user.screen_name, profile_path(current_user) %></b><br/>
         <%= link_to image_tag(current_user.get_avatar, :border => 0, :class => "avatar"), profile_path(current_user) %><br/>
 
+        <div class="block">
+            <div class ="fl m5">
+                <%= t("user_basic.shares") %><br/>
+                <%= current_user.reviews.count %>
+            </div>
+            <div class ="fl m5">
+                <%= t("user_basic.fans") %><br/>
+                <%= current_user.followers.count %>
+            </div>
+            <div class ="fl m5">
+                <%= t("user_basic.follows") %><br/>
+                <%= current_user.relationships.count %>
+            </div>
+        </div>
+
         <p class="actions">
             <b><%= t("control_panel.actions") %></b><br/>
             <%= link_to t("reviews.new"), new_review_path, :class => "button" %>

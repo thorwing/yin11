@@ -19,7 +19,8 @@ describe Article do
   it "simpley create a article" do
     @editor = Factory(:editor)
     @editor.should be_valid
-    Article.new(:title => "test", :content => "sample text", :type => I18n.t("article_types.news"), :author_id=> @editor.id).should be_valid
+    #Article.new(:title => "test", :content => "sample text", :type => I18n.t("article_types.news"), :author_id=> @editor.id).should be_valid
+    Article.new(:title => "test", :content => "sample text", :type => "news", :author_id=> @editor.id).should be_valid
   end
 
 

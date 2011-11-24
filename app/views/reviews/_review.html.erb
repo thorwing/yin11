@@ -5,10 +5,12 @@
   <!--pic display-->
    <!--unless review.images.first.picture.path.blank?-->
   <% unless review.images.first.blank? %>
-      <a class="thumbnail" rel="lightbox-group" href ="<%=review.images.first.picture_url%>">
-        <img border="0" src="<%=review.images.first.picture_url%>" alt="image">
-        <!--this pic should be limited, and display as a small one-->
-      </a><br/>
+      <% for image in review.images do%>
+          <a class="thumbnail" rel="lightbox-group" href ="<%=image.picture_url%>">
+            <img border="0" src="<%=image.picture_url%>" alt="image">
+            <!--this pic should be limited, and display as a small one-->
+          </a><br/>
+      <% end %>
      <!--render :partial => "images/image", :collection => review.images-->
   <%end%>
 

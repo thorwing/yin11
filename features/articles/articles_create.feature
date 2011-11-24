@@ -1,9 +1,11 @@
+@focus
 Feature: create article
   编辑和管理员可以新建文章
   个人主页上有新建文章的链接
   游客和用户不可以新建文章
-  新建文章默认的启用状态是启用的
   新建文章默认的来源是银筷子网站
+  新建文章默认的启用状态是启用的
+  推送文章到主页
 
   Background:
     Given There are minimum seeds data
@@ -41,7 +43,7 @@ Feature: create article
     Then I should not be on the new_article page
 
   Examples:
-      | user        |
+      | user         |
       | Guest       |
       | David User  |
 
@@ -60,4 +62,17 @@ Feature: create article
 
     When I log out
     And I go to the articles page
-    Then I should see "土豆冒充西瓜"
+    Then I should see "土豆冒充西瓜" within "#news_list"
+
+   Scenario: 推送文章到主页
+    When I log in as "Castle Editor"
+    And I post an article with:
+    | title | content | tags | type |
+    | 土豆冒充西瓜  | 土豆刷绿漆，冒充西瓜 | tag | theme |
+    And I go to the articles page
+    Then I should see "土豆冒充西瓜" within "#news_list"
+    And I should not see "土豆冒充西瓜" within "#news_block"
+    And I recommand an article named "土豆冒充西瓜"
+    When I log out
+    And I go to the articles page
+    Then I should see "土豆冒充西瓜" within "#news_block"
