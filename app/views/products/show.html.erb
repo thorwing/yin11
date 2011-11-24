@@ -1,78 +1,89 @@
 <div class="clearfix">
-    <%= render "shared/vote_fields", :item => @product %>
-    <div class="image_frame fl">
+  <%= render "shared/vote_fields", :item => @product %>
+  <!--<div class="image_frame fl">-->
+  <div id="product_view">
+    <div class="sideleft fl">
+      <div class="block square fl">
         <%= image_tag @product.image.picture_url if @product.image && @product.image.picture_url %>
+      </div>
     </div>
 
-   <div class="block square fl">
-    <p>
-      <b><%= t("general.name")  %></b>
-      <%= @product.name %>
-    </p>
-    <p>
-      <b><%= t("vendors.vendor") %></b>
-      <%= new_tab_link_to  @product.vendor.name, @product.vendor %>
-    </p>
-    <p>
-      <b><%= t("catalogs.catalog")  %></b>
-      <%= @product.catalogs.map(&:name).join(" ") %>
-    </p>
-    <p>
-      <b><%= t("tags.tags")  %></b>
-      <%= render "shared/show_tags", :item => @product %>
-    </p>
-    <p>
-      <b><%= t("products.price")  %></b>
-      <%= [t("money.yuan_mark2"), @product.price_as_money_string].join if @product.price %>
-    </p>
+    <div class="sideright fr">
+      <div class="block square fl">
+        <p>
+          <b><%= t("general.name") %></b>
+          <%= @product.name %>
+        </p>
 
-    <p>
-      <b><%= t("products.weight")  %></b>
-      <%= @product.weight %>
-    </p>
+        <p>
+          <b><%= t("vendors.vendor") %></b>
+          <%= new_tab_link_to @product.vendor.name, @product.vendor %>
+        </p>
 
-    <p>
-      <b><%= t("products.producer")  %></b>
-      <%= @product.producer %>
-    </p>
+        <p>
+          <b><%= t("catalogs.catalog") %></b>
+          <%= @product.catalogs.map(&:name).join(" ") %>
+        </p>
 
-    <p>
-      <b><%= t("products.original_place")  %></b>
-      <%= @product.area %>
-    </p>
+        <p>
+          <b><%= t("tags.tags") %></b>
+          <%= render "shared/show_tags", :item => @product %>
+        </p>
 
-    <p>
-      <b><%= t("products.description")  %></b>
-      <%= raw @product.description %>
-    </p>
+        <p>
+          <b><%= t("products.price") %></b>
+          <%= [t("money.yuan_mark2"), @product.price_as_money_string].join if @product.price %>
+        </p>
 
-    <div class="actions">
-        <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
+        <p>
+          <b><%= t("products.weight") %></b>
+          <%= @product.weight %>
+        </p>
+
+        <p>
+          <b><%= t("products.producer") %></b>
+          <%= @product.producer %>
+        </p>
+
+        <p>
+          <b><%= t("products.original_place") %></b>
+          <%= @product.area %>
+        </p>
+
+        <p>
+          <b><%= t("products.description") %></b>
+          <%= raw @product.description %>
+        </p>
+
+        <div class="actions">
+          <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
+        </div>
+      </div>
     </div>
-   </div>
+  </div>
+
+
+  <!--<div class="actions">-->
+    <!--<%= render "shared/follow_field", :target => @product %>-->
+    <!--<% if current_user_has_permission? :administrator %>-->
+        <!--<%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>-->
+        <!--<%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>-->
+    <!--<% end %>-->
+  <!--</div>-->
+
+  <!--<div class="actions">-->
+    <!--<%= link_to t("general.back_to_list"), products_path, :class => "button" %>-->
+  <!--</div>-->
+
+  <!--<hr/>-->
+
+  <!--<div id="reviews">-->
+    <!--<%= render :partial => "reviews/review", :collection => @product.reviews, :as => :review %>-->
+  <!--</div>-->
+
+  <!--<% if current_user_has_permission? :normal_user %>-->
+      <!--<div id="new_review_block">-->
+        <!--<%= render "shared/review_fields", :review => @product.reviews.new %>-->
+      <!--</div>-->
+  <!--<% end %>-->
 </div>
-
-
-<div class="actions">
-  <%= render "shared/follow_field", :target => @product %>
-  <% if current_user_has_permission? :administrator %>
-    <%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>
-    <%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-  <% end %>
-</div>
-
-<div class="actions">
-  <%= link_to t("general.back_to_list"), products_path, :class => "button" %>
-</div>
-
-<hr/>
-
-<div id="reviews">
-    <%= render :partial => "reviews/review", :collection => @product.reviews, :as => :review %>
-</div>
-
-<% if current_user_has_permission? :normal_user %>
-    <div id="new_review_block">
-        <%= render "shared/review_fields", :review => @product.reviews.new %>
-    </div>
-<% end %>

@@ -15,12 +15,12 @@ namespace :silver_hornet do
     config.sites.each {|site| site.fetch}
   end
 
-  desc "fetch catalogs from internet"
-  task :fetch_catalogs => :environment do
-    config = SilverHornet::Configuration.new(SilverHornet::Buy.name, "#{Rails.root}/config/silver_hornet/products.yml")
-    config.parse_config
-    config.sites.each {|site| site.fetch}
-  end
+  #desc "fetch catalogs from internet"
+  #task :fetch_catalogs => :environment do
+  #  config = SilverHornet::Configuration.new(SilverHornet::Buy.name, "#{Rails.root}/config/silver_hornet/products.yml")
+  #  config.parse_config
+  #  config.sites.each {|site| site.fetch}
+  #end
 
   desc "fetch products from taobao mall"
   task :fetch_taobao => :environment do
