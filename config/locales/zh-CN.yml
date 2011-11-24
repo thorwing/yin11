@@ -215,6 +215,9 @@ zh-CN:
     avatar: 头像
     change_avator: 换一张头像
     biography: 个人简介
+    shares: 分享
+    fans: 粉丝
+    follows: 关注
 
   profile:
     show_profile: 个人资料

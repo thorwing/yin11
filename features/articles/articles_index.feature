@@ -14,8 +14,8 @@ Scenario Outline: 用户可以看到新闻和专题列表
 
     Examples:
       | link_name       |  check_content |  div_name |
-      | 三聚氰胺再现上海 |       三聚氰胺又再次出现在了上海，市民们很担心 | #news_list |
-      | 关爱心脏：5种减少盐摄入量的方法  |     盐的摄入量过高会导致高血压 | #recommended_list |
+      | 三聚氰胺再现上海 |       三聚氰胺又再次出现在了上海，市民们很担心 | #news_frame |
+      | 关爱心脏：5种减少盐摄入量的方法  |     盐的摄入量过高会导致高血压 | .item_info |
 
 Scenario Outline: 注册用户/访客不能看到 未启用的 article
     When I log in as "<user>"

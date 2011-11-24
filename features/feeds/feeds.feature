@@ -1,4 +1,4 @@
-@focus
+
 Feature: tests for Feeds
   用户可以在“我的首页”看到动态信息
 
@@ -12,6 +12,8 @@ Feature: tests for Feeds
 
   访客不可以关注一个商品, 商家, 用户, 饭桌, 标签
 
+  动态信息显示
+
   Background:
     Given There are minimum seeds data
 
@@ -20,6 +22,7 @@ Feature: tests for Feeds
     And I go to the me page
     Then I should see "div" whose "id" is "feeds"
     And I should see "用户动态"
+
 
   @javascript
   Scenario Outline: 注册用户可以关注一个商品，并得到相关的动态; 取消关注则不再接收相关的动态
@@ -84,6 +87,7 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
+
   @javascript
   Scenario Outline: 注册用户可以关注一个用户，并得到相关的动态; 取消关注则不再接收相关的动态
     Given There are some products
@@ -115,6 +119,7 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
+
   @javascript
   Scenario Outline: 注册用户可以关注一个饭桌，并得到相关的动态; 取消关注则不再接收相关的动态
     Given There are some products
@@ -144,6 +149,7 @@ Feature: tests for Feeds
     | Castle Editor |
     | Mighty Admin  |
 
+
   Scenario Outline: 访客不可以关注一个商品, 商家, 用户, 饭桌
     Given There are some products
     And There are some groups
@@ -157,3 +163,15 @@ Feature: tests for Feeds
     | 天下养鸡网 | vendors |
     | Kate   | users |
     | 肉食爱好者 | groups |
+
+
+     @javascript
+    Scenario: 动态信息显示
+      When I log in as "David User"
+      And I go to the me page
+      When I fill in "review_content" with "hahaha"
+      And I press "发表测评"
+     And I go to the me page
+     And I follow "我的动态"
+     Then I should see "hahaha" within ".mytab"
+#      Then I should see "hahaha" within "#tabContent"

@@ -37,7 +37,7 @@ Feature: tests for general User module
 
 
   Scenario: User's name will be displayed in the item, and others can click the link to view his profile
-    Given There are some sample products
+    Given There are some products
     When I log in as "David User"
     And I post a simple review for "梅山猪" with "买到烂猪肉"
     When I log out
@@ -159,10 +159,4 @@ Feature: tests for general User module
     And I press "登入"
     Then I should see "div" whose id is "control_panel"
 
-  Scenario: User can see his reviews on his profile page
-    Given There are some sample products
-    When I log in as "David User"
-    When I post a simple review for "梅山猪" with "买到烂猪肉"
-    And I go to David's profile page
-    Then I should see "买到烂猪肉"
 
