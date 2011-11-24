@@ -63,27 +63,27 @@
   </div>
 
 
-  <!--<div class="actions">-->
-    <!--<%= render "shared/follow_field", :target => @product %>-->
-    <!--<% if current_user_has_permission? :administrator %>-->
-        <!--<%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>-->
-        <!--<%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>-->
-    <!--<% end %>-->
-  <!--</div>-->
+  <div class="actions">
+    <%= render "shared/follow_field", :target => @product %>
+    <% if current_user_has_permission? :administrator %>
+        <%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>
+        <%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+    <% end %>
+  </div>
 
-  <!--<div class="actions">-->
-    <!--<%= link_to t("general.back_to_list"), products_path, :class => "button" %>-->
-  <!--</div>-->
+  <div class="actions">
+    <%= link_to t("general.back_to_list"), products_path, :class => "button" %>
+  </div>
 
-  <!--<hr/>-->
+  <hr/>
 
-  <!--<div id="reviews">-->
-    <!--<%= render :partial => "reviews/review", :collection => @product.reviews, :as => :review %>-->
-  <!--</div>-->
+  <div id="reviews">
+    <%= render :partial => "reviews/review", :collection => @product.reviews, :as => :review %>
+  </div>
 
-  <!--<% if current_user_has_permission? :normal_user %>-->
-      <!--<div id="new_review_block">-->
-        <!--<%= render "shared/review_fields", :review => @product.reviews.new %>-->
-      <!--</div>-->
-  <!--<% end %>-->
+  <% if current_user_has_permission? :normal_user %>
+      <div id="new_review_block">
+        <%= render "shared/review_fields", :review => @product.reviews.new %>
+      </div>
+  <% end %>
 </div>
