@@ -18,6 +18,8 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     unless @@is_initialized
 
       #initialize the Dictionary for word segmentation
+      #log "#{Rails.root}//lib//include//silver_hornet//dictionaries//silver.dic"
+      RMMSeg::Dictionary.add_dictionary("#{Rails.root}/lib/include/silver_hornet/dictionaries/silver.dic", :words)
       RMMSeg::Dictionary.load_dictionaries
 
       #load the words related to food
@@ -178,7 +180,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
 
   #process the product list on the catalog page and navigate to the detailed page of each product to get product info
   def process_second_catalog(second_url, catalog_name)
-    #if  catalog_name == "进口冲饮"
+    #if  catalog_name == "进口饼干糕点"
     #initialize a new agent instance each time
     self.agent = Mechanize.new
     #the "Next" link which leads to another page of products
@@ -287,7 +289,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
             log "Insert #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.each { |cat| p cat.name }} from #{product.url}"
           else
             #somethings goes wrong
-            log "Invalid #{product.errors.join} of #{product.url}"
+            log "Invalid #{product.errors.to_s} of #{product.url}"
           end
         else
           if product.changed?
@@ -442,7 +444,6 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   end
 
   def get_product_catalog(cat_name, product)
-    #if cat_name == "进口冲饮"
     try do
       cat_tags = seg_word(cat_name)
       Catalog.all.each do |cat|
@@ -490,7 +491,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
           end
         end
         catalogs.each do |(key, value)|
-          cat_id = value.split(",")
+          cat_id = value.split(",").uniq
           if cat_id.size > 1
             cat_id.each do |id|
               is_related = false
@@ -514,10 +515,12 @@ class SilverHornet::ProductsSite < SilverHornet::Site
               end
             end
           end
+          if product.catalogs.size < 1
+            product.catalogs <<  Catalog.find(cat_id[0]) unless product.catalogs.include?(Catalog.find(cat_id[0]))
+          end
         end
       end
     end
-    #end
   end
 
 end
