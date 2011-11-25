@@ -296,7 +296,8 @@ e家人:
     product_price: '#ECS_RANKPRICE_1'
     next_link_text: '下一页'
 
-京东商城(价格是图片，暂时无法获取):
+#(价格是图片，暂时无法获取)
+京东商城:
   skipped: true
   entries:
     #["http://www.360buy.com/food.html"]
@@ -323,8 +324,8 @@ e家人:
     brand: true
     brand_list: '#select-brand .content a'
 
-
-联华网上超市(价格是图片，暂时无法获取):
+#(价格是图片，暂时无法获取)
+联华网上超市:
   skipped: true
   entries:
     ["http://services.blemall.com/sch/at-00005202------------.html"]
@@ -337,7 +338,8 @@ e家人:
     #product_price: '.cp_nrrt span'
     next_link_text: '下一页'
 
-Big problem(下一页点击有问题)中国零食网:
+#Big problem(下一页点击有问题)
+中国零食网:
   skipped: true
   entries:
     ["http://www.lingshi.com/ditu.htm"]
@@ -349,7 +351,8 @@ Big problem(下一页点击有问题)中国零食网:
     product_price: '#shopprice'
     #next_link_text: '下一页'
 
-Big problem（下一页点击有问题）来一份官网:
+#Big problem（下一页点击有问题）
+来一份官网:
   skipped: true
   entries:
     ["http://www.laiyifen.com/"]
@@ -361,7 +364,8 @@ Big problem（下一页点击有问题）来一份官网:
     product_price: '.oratext h3'
     #next_link_text: '下一页'
 
-Big problem（无法点击下一页） 沃尔玛网上超市:
+#Big problem（无法点击下一页）
+沃尔玛网上超市:
   skipped: true
   entries:
     ["http://www.samsclub.cn/sams/shop/category.jsp?categoryId=1&navAction=jump"]
@@ -376,7 +380,8 @@ Big problem（无法点击下一页） 沃尔玛网上超市:
     #product_price: '.cp_nrrt span'
     next_link_css_selector: 'a.blueArrowNext'
 
-Big Problem(‘非食品类也被搜索’,'商品列表无法获取','地域配送问题')QQ网购:
+#Big Problem(‘非食品类也被搜索’,'商品列表无法获取','地域配送问题')
+QQ网购:
   skipped: true
   entries:
     ["http://buy.qq.com/chaoshi/"]
