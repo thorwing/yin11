@@ -38,11 +38,15 @@ Feature: show details of an article
     When I view an article named "三聚氰胺再现上海"
     Then I should not see "div" whose "class" is "vote_fields"
 
+    @focus
+    @javascript
   Scenario: 推送文章的动态到关心的用户
     Given There are some groups
     When I log in as "David User"
      And I follow "饭桌"
+
      And I follow "西瓜守望者"
+     Then show me the page
      And I follow "加入"
      And I log out
 

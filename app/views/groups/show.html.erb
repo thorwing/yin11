@@ -1,8 +1,8 @@
 <% title @group.name %>
 <span class="trivial">(<%= @group.member_ids.size.to_s %><%= t("groups.member") %>)</span>
-<% @group.tags.each do |tag| %>
-        <%= link_to tag.name, {:controller => "/search", :action => "tag", :tags => tag.name}, :class => "tag" %>
-<% end %><br/>
+<%= t("tags.tags")%>
+<%= @group.tags.count %>
+<%= render "shared/show_tags", :item => @group %>
 <span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(TIME_FORMAT) %></span><br/>
 
 <p><%= @group.description %></p>
@@ -10,7 +10,7 @@
 <div class="actions">
     <%= link_to t("groups.join"), join_group_path(@group), :method => :put, :class => "button" if @can_join %>
     <%= link_to t("groups.quit"), quit_group_path(@group), :method => :put, :class => "button"  if @can_quit%>
-    <%= link_to t("general.edit"), edit_group_path(@group), :method => :put, :class => "button" if @group.is_creator_by?(current_user) %>
+    <%= link_to t("general.edit"), edit_group_path(@group), :method => :get, :class => "button" if @group.is_creator_by?(current_user) %>
 </div>
 
 <hr/>

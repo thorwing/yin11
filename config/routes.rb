@@ -69,9 +69,9 @@ Yin11::Application.routes.draw do
 
   resources :profile do
     collection do
-      get "new_watched_location"
-      post "create_watched_location"
-      put "delete_watched_location"
+      #get "new_watched_location"
+      #post "create_watched_location"
+      #put "delete_watched_location"
       put "delete_watched_tag"
       post "watch_tags"
       put "toggle"
