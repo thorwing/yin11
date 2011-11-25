@@ -10,11 +10,12 @@
             </div>
             <div class ="fl m5">
                 <%= t("user_basic.fans") %><br/>
-                <%= current_user.followers.count %>
+                <%= link_to current_user.followers.count, profile_path(current_user) %>
+
             </div>
             <div class ="fl m5">
                 <%= t("user_basic.follows") %><br/>
-                <%= current_user.relationships.count %>
+                <%= link_to current_user.relationships.count, profile_path(current_user) %>
             </div>
         </div>
 

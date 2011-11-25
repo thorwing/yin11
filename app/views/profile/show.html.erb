@@ -17,6 +17,12 @@
                 <%= t("profile.my_followings") %>
                 </a>
             </div>
+
+            <div class = "fl unselected">
+                <a class="tab  " href=""  data-page = '.my_fans' >
+                <%= t("profile.my_fans") %>
+                </a>
+            </div>
         </div>
 
         <div class="tabContent block round">
@@ -34,12 +40,11 @@
                      <br/>
                      <dd id="joined_groups">
                         <%= render :partial => "group", :collection => current_user.groups %>
-                       <%= debug current_user.tags %>
+
                      </dd>
                 </div>
                 <div class = "my_followings display_none">
                   <br/>
-                  <!--test content-->
                     <dd>
                         <% current_user.relationships.each do |r| %>
                             <% item = r.get_item %>
@@ -47,6 +52,10 @@
                         <% end %>
                     </dd>
                 </div>
+
+
+
+
             </div>
         </div>
     </div>
