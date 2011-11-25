@@ -77,6 +77,8 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
 
+    ImagesHelper.process_uploaded_images(@article, params[:images])
+
     begin
       respond_to do |format|
         if @article.update_attributes(params[:article])

@@ -5,7 +5,7 @@ namespace :yin11 do
   desc "dump all"
   task :dump_all => :environment do
     #Rake::Task['yin11:dump_articles'].invoke
-    Rake::Task['yin11:dump_recipes'].invoke
+    Rake::Task['yin11:dump_topics'].invoke
     Rake::Task['yin11:dump_images'].invoke
     #Rake::Task['yin11:dump_vendors'].invoke
   end
@@ -28,17 +28,28 @@ namespace :yin11 do
     end
   end
 
+  desc "dump topics"
+  task :dump_topics => :environment do
+    topics = Topic.all.to_a
+    File.open(File.join(Rails.root, "app/seeds/topics.yml"), 'w') do |file|
+      YAML::dump(topics, file)
+    end
+  end
+
   desc "dump images"
   task :dump_images => :environment do
     array = []
     images = Image.without(:_id).to_a
+    #Only allow topics'' images here
+    images = images.reject{|i| i.topic_id.blank?}
     File.open(File.join(Rails.root, "app/seeds/images.yml"), 'w') do |file|
       images.each do |image|
         hash = {}
-        hash[:file_name] = image.image.to_s
-        hash[:binary_data] = image.image.read
-        hash[:product_id] = image.product_id
-        hash[:article_id] = image.article_id
+        hash[:file_name] = image.picture.to_s
+        hash[:binary_data] = image.picture.read
+        #hash[:product_id] = image.product_id
+        #hash[:article_id] = image.article_id
+        hash[:topic_id] = image.topic_id
         array << hash
       end
       YAML::dump(array, file)

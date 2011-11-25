@@ -2,12 +2,21 @@
 
 <%= render "shared/show_tags", :item => @topic %>
 
+<div>
+    <%= image_tag (@topic.get_first_image), :alt => @topic.title %>
+</div>
+
 <% get_recommended_products(@topic).each do |product| %>
     <div>
       <%= link_to product.name, product %><br/>
     </div>
-  <% end %>
+<% end %>
 
+<% get_recipes(@topic).each do |recipe| %>
+    <div>
+      <%= link_to recipe.title, recipe %><br/>
+    </div>
+<% end %>
 
 <div class="actions">
   <% if current_user_has_permission? :editor %>
