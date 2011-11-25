@@ -2,25 +2,9 @@
 // They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#products_list {
-    background: #999999;
-    padding: 10px 0 20px 0;
-}
-
 #products_list .pagination
 {
     text-align:right;
-}
-
-.waterfall {
-    text-align: center;
-    width: 200px;
-    overflow: hidden;
-    padding: 15px 10px 15px 10px;
-    margin-bottom: 10px;
-    background: white;
-    border-bottom:1px solid black;
-    border-right:1px solid black;
 }
 
 .small_product {
@@ -31,26 +15,11 @@
     overflow: hidden;
 }
 
-.product_image_frame {
-    text-align: left;
-    border:1px solid #dbdbdb;
-    border-radius: 10px;
-    background:#EDEFF4;
-    height: 400px;
-    margin: auto;
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-	/*border:1px solid #b5b5b5;*/
-	/*background-color:#d2d2d2;*/
-	/*padding:5px;*/
-}
-
 .products_slice {
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
 
-    -webkit-column-count: 5;
+    -webkit-column-count: 4;
     -webkit-column-gap: 10px;
     /*-webkit-column-rule: 5px solid #333;*/
     -webkit-column-width: 220px;

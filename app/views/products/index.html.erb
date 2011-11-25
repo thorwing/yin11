@@ -4,7 +4,7 @@
 
 <div id="products_list">
     <%= paginate @products %>
-    <% @products.each_slice(3) do |slice| %>
+    <% @products.each_slice(4) do |slice| %>
         <div class="products_slice">
           <% slice.each do |product| %>
             <div class="waterfall">

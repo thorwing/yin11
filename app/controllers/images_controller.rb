@@ -3,6 +3,11 @@ class ImagesController < ApplicationController
 
   def create
     if @image.save
+      tempfile = params[:image][:picture].tempfile.path
+      if File::exists?(tempfile)
+        File::delete(tempfile)
+      end
+
       respond_to do |format|
         format.html { redirect_to :back, :notice => 'Image successfully created' }
         format.js
@@ -12,9 +17,7 @@ class ImagesController < ApplicationController
 
 private
   def find_or_build_image
-    #@image = params[:id] ? @review.images.find(params[:id]) : @review.images.build(params[:image])
     @image = Image.new(params[:image])
-    @image.article_id = params[:item_id]
   end
 
 end

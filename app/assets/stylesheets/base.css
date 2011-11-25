@@ -1,5 +1,17 @@
 /*TODO*/
 /*merge to application.css*/
+
+.waterfall {
+    text-align: center;
+    width: auto;
+    overflow: hidden;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    background: white;
+    border-bottom:0.5px solid gray;
+    border-right:0.5px solid gray;
+}
+
 .m5 {margin: 5px;}
 .p5 {padding: 5px;}
 
