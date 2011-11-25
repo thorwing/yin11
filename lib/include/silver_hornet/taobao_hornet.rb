@@ -255,16 +255,18 @@ class SilverHornet::TaobaoHornet
               product.save!
               #calculate the product amount
               @product_count+=1
-              p "Insert #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
+              #p "Insert #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
+              p "Insert #{product.name} from Taobao Mall"
             else
               #p "Somethings goes wrong when save the product"
-              p "Invalid #{product.errors.join} of #{product.url}"
+              p "Invalid #{product.errors.to_s} of #{product.url}"
             end
           else
             if product.changed?
               #update the change
               product.save!
-              p "Update: #{product.name} of #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
+              #p "Update: #{product.name} of #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
+              p "Update: #{product.name} from Taobao Mall"
             end
           end
         end
@@ -361,6 +363,9 @@ class SilverHornet::TaobaoHornet
                 product.catalogs.delete(Catalog.find(id))
               end
             end
+          end
+          if product.catalogs.size < 1
+            product.catalogs <<  Catalog.find(cat_id[0]) unless product.catalogs.include?(Catalog.find(cat_id[0]))
           end
         end
       end

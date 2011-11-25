@@ -1,23 +1,49 @@
-<div class="clearfix">
-  <%= render "shared/vote_fields", :item => @product %>
-  <!--<div class="image_frame fl">-->
-  <div id="product_view">
-    <div class="sideleft fl">
-      <div class="block square fl">
-        <%= image_tag @product.image.picture_url if @product.image && @product.image.picture_url %>
-      </div>
-    </div>
+<div id="product_content">
+  <div class="banner">
+    <%= link_to image_tag("Food Collage.png", :width => "100%", :height => "100%") %>
+    <!--<img src="/assets/images/2.png" alt="吃货万岁" />-->
+    <div class="banner-title">
+      <p class="maintitle"><span class="bigfs">我爱吃！</span></p>
 
-    <div class="sideright fr">
-      <div class="block square fl">
+      <p></p>
+
+      <p class="subtitle"><span class="bigfs">如果连美食都能放弃</span></p>
+
+      <p class="subtitle"><span class="bigfs">人生还有何乐趣～！</span></p>
+    </div>
+    <div class="tags-base"></div>
+    <div class="tags">
+      <a href="#">饼干</a>
+      <a href="#">巧克力</a>
+      <a href="#">糖果</a>
+      <a href="#">薯片</a>
+      <a href="#">美食菜谱分享</a>
+
+      <span class="fr">关键词：</span>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <div class="detail_nav h2">
+      <ul>
+        <h2>这里放置导航条</h2>
+      </ul>
+      <hr align="left" width="100%"/>
+    </div>
+    <div class="product_block fl">
+      <div class="sideleft fl">
+        <%= link_to image_tag(@product.image.picture_url, :class=>"product_img_box") if @product.image && @product.image.picture_url %>
+      </div>
+      <%= %>
+      <div class="product_detail_box fl">
         <p>
           <b><%= t("general.name") %></b>
           <%= @product.name %>
         </p>
 
         <p>
-          <b><%= t("vendors.vendor") %></b>
-          <%= new_tab_link_to @product.vendor.name, @product.vendor %>
+          <b><%= t("products.price") %></b>
+          <%= [t("money.yuan_mark2"), @product.price_as_money_string].join if @product.price %>
         </p>
 
         <p>
@@ -31,59 +57,115 @@
         </p>
 
         <p>
-          <b><%= t("products.price") %></b>
-          <%= [t("money.yuan_mark2"), @product.price_as_money_string].join if @product.price %>
+          <b><%= t("vendors.vendor") %></b>
+          <%= new_tab_link_to @product.vendor.name, @product.vendor %>
         </p>
 
-        <p>
-          <b><%= t("products.weight") %></b>
-          <%= @product.weight %>
-        </p>
+        <!--<p>-->
+        <!--<b><%= t("products.weight") %></b>-->
+        <!--<%= @product.weight %>-->
+        <!--</p>-->
+        <!--<p>-->
+        <!--<b><%= t("products.producer") %></b>-->
+        <!--<%= @product.producer %>-->
+        <!--</p>-->
 
-        <p>
-          <b><%= t("products.producer") %></b>
-          <%= @product.producer %>
-        </p>
+        <!--<p>-->
+        <!--<b><%= t("products.original_place") %></b>-->
+        <!--<%= @product.area %>-->
+        <!--</p>-->
 
-        <p>
-          <b><%= t("products.original_place") %></b>
-          <%= @product.area %>
-        </p>
-
-        <p>
-          <b><%= t("products.description") %></b>
-          <%= raw @product.description %>
-        </p>
+        <!--<p>-->
+          <!--<b><%= t("products.description") %></b>-->
+          <!--<%= raw @product.description %>-->
+        <!--</p>-->
 
         <div class="actions">
           <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
         </div>
+
+        <div class="actions">
+          <%= render "shared/follow_field", :target => @product %>
+          <% if current_user_has_permission? :administrator %>
+              <%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>
+              <%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+
+      <div class="product_desc_box">
+        <h2><b><%= t("products.description") %></b></h2>
+          <%= raw @product.description %>
+       <!--</p>-->
+      </div>
+      <hr size=2 color=#fe726b >
+      <div id="reviews">
+        <%= render :partial => "reviews/review", :collection => @product.reviews, :as => :review %>
+      </div>
+
+      <% if current_user_has_permission? :normal_user %>
+          <div id="new_review_block">
+            <%= render "shared/review_fields", :review => @product.reviews.new %>
+          </div>
+      <% end %>
+
+    </div>
+
+    <div class="product_block fr">
+      <p class="maintitle"><span class="bigfs">你还爱吃？</span></p>
+
+      <div class="related_product_block">
+        <%
+           products = Product.limit(6)
+        %>
+        <li>
+          <%= link_to image_tag(products[0].image.picture_url, :class=>"product_small_img_box") if products[0].image && products[0].image.picture_url %>
+          <span>
+            <%= products[0].name %>
+          </span>
+        </li>
+
+        <li>
+          <%= link_to image_tag(products[1].image.picture_url, :class=>"product_small_img_box") if products[1].image && products[1].image.picture_url %>
+          <span>
+          <%= products[1].name %>
+          </span>
+        </li>
+
+        <li>
+          <%= link_to image_tag(products[2].image.picture_url, :class=>"product_small_img_box") if products[2].image && products[2].image.picture_url %>
+          <span>
+          <%= products[2].name %>
+        </span>
+        </li>
+
+        <li>
+          <%= link_to image_tag(products[3].image.picture_url, :class=>"product_small_img_box") if products[3].image && products[3].image.picture_url %>
+          <span>
+          <%= products[3].name %>
+        </span>
+        </li>
+
+        <li>
+          <%= link_to image_tag(products[4].image.picture_url, :class=>"product_small_img_box") if products[4].image && products[4].image.picture_url %>
+          <span>
+          <%= products[4].name %>
+        </span>
+        </li>
+
+        <li>
+          <%= link_to image_tag(products[5].image.picture_url, :class=>"product_small_img_box") if products[5].image && products[5].image.picture_url %>
+          <span>
+          <%= products[5].name %>
+        </span>
+        </li>
+
       </div>
     </div>
   </div>
 
-
-  <div class="actions">
-    <%= render "shared/follow_field", :target => @product %>
-    <% if current_user_has_permission? :administrator %>
-        <%= link_to t("general.change"), edit_product_path(@product), :class => "button" %>
-        <%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= link_to t("general.back_to_list"), products_path, :class => "button" %>
-  </div>
-
   <hr/>
 
-  <div id="reviews">
-    <%= render :partial => "reviews/review", :collection => @product.reviews, :as => :review %>
-  </div>
 
-  <% if current_user_has_permission? :normal_user %>
-      <div id="new_review_block">
-        <%= render "shared/review_fields", :review => @product.reviews.new %>
-      </div>
-  <% end %>
 </div>
