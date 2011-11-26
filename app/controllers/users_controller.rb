@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  force_ssl unless Rails.env.test?
+  #TODO
+  #force_ssl unless Rails.env.test?
   before_filter(:only => [:edit, :update, :show]) { |c| c.require_permission :normal_user }
 
   def index

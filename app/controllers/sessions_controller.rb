@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  force_ssl unless Rails.env.test?
+  #TODO
+  #force_ssl unless Rails.env.test?
 
   def new
   end
