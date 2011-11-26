@@ -2,7 +2,6 @@ class VendorsController < ApplicationController
   before_filter(:only => [:new, :create, :mine]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update, :destroy]) { |c| c.require_permission :administrator }
   #before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Vendor.name, c.params[:id], true)}
-  layout :resolve_layout
 
   # GET /vendors
   # GET /vendors.xml
@@ -115,16 +114,6 @@ class VendorsController < ApplicationController
 
     respond_to do |format|
         format.js {render :content_type => 'text/javascript'}
-    end
-  end
-
-  private
-  def resolve_layout
-    case action_name
-      when 'new'
-        "map"
-      else
-        'application'
     end
   end
 

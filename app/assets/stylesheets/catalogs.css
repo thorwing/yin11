@@ -1,26 +1,22 @@
 #catalogs .cat {
     display: inline-block;
-    line-height: 26px;
+    line-height: 20px;
 }
 
 #catalogs .cat.first {
-    font-size: 19px;
     font-weight: bolder;
     padding-right: 5px;
 }
 
 #catalogs .cat.second {
-    font-size: 17px;
     font-weight: bold;
     padding: 2px 5px 2px 2px;
 }
 
 #catalogs .cat.third {
-    font-size: 14px;
     padding-right: 5px;
 }
 
 #catalogs ul {
     left:0px; top:0px;
-    width: 600px;
-    height: auto;}
+    min-width: 200px;}

@@ -32,7 +32,8 @@
 
 /* General Settings
 Font-Family:
-font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+    Noraml:  'Helvetica Neue',Helvetica,Arial,Sans-serif;
+    Product: :'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
 
 Font-Size:
 Top-Menu: 16px;
@@ -224,17 +225,3 @@ body #main { height: auto;}
 	padding:0;
 }
 
-.clearfix:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
-}
-.clearfix{*zoom:1;}
-
-.fl {float: left;}
-.fr {float: right;}
-
-.hor_stretch {width:100%; overflow:hidden;}

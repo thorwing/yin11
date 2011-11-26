@@ -170,7 +170,7 @@ zh-CN:
     me: 我的首页
     articles: 文章
     reviews: 分享
-    products: 商品
+    products: 美食
     topics: 专题
     badges: 徽章
     tips: 锦囊
@@ -355,7 +355,7 @@ zh-CN:
     catalog: 分类
 
   products:
-    products: 所有产品
+    products: 产品
     enabled_products: 启用的产品
     disalbed_products: 禁用的产品
     products_list: 产品列表

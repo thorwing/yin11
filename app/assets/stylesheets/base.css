@@ -2,13 +2,13 @@
 /*merge to application.css*/
 
 /*
-	Block-St les
+	Block Styles
 */
 
 .block {
     position:relative;
     display:block;
-    overflow:hidden;
+    /*overflow:hidden;*/
     clear: both;
 }
 
@@ -76,5 +76,24 @@ ul.menu li {
 .red {color: red;}
 
 .center {text-align: center;}
+
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix{*zoom:1;}
+
+.fl {float: left;}
+.fr {float: right;}
+
+.al {text-align: left;}
+.ar {text-align: right;}
+
+.hor_stretch {width:100%; overflow:hidden;}
 
 
