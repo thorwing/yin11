@@ -18,7 +18,7 @@
         background-repeat: no-repeat;
     }
     .tabContainer .selected{
-        background-color: #EDEFF4;
+        background-color: #386fb2;
         background-image: url("tab_clicked.png");
         background-repeat: no-repeat;
     }

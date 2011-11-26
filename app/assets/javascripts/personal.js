@@ -11,7 +11,7 @@ $(function(){
         {
 
             /* If no cache is present, show the gif preloader and run an AJAX request: */
-            $('#contentHolder').html('<img src="assets/loading.gif" width="64" height="64" class="preloader" />');
+            $('#contentHolder').html('<img src="assets/loading_big.gif" width="64" height="64" class="preloader" />');
             $.get(element.data('page'),function(msg){
                 $('#contentHolder').html(msg);
                 /* After page was received, add it to the cache for the current hyperlink: */
