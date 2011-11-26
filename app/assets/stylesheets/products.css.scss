@@ -44,6 +44,7 @@
 }
 
 .product_block {
+    /*position:absolute;*/
     background:#EDEFF4;
     border:1px solid #ddd;
     box-shadow:0 1px 3px rgba(34, 25, 25, 0.2);
@@ -53,6 +54,13 @@
     -webkit-border-radius:10px;
     overflow:hidden;
     height:auto;
+    /*padding:5px;*/
+}
+
+.product_block p{
+ font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
+ font-size:18px;
+ text-align:center;
 }
 
 .related_product_block li{
@@ -72,7 +80,8 @@
 .product_img_box{
    border:1px solid #a3a09e;
    border-color:transparent;
-   padding:10px;
+   padding:13px;
+   /*margin:10px 10px 10px 10px;*/
    width:300px;
    height:300px;
 }
@@ -97,17 +106,34 @@
 }
 
 .product_desc_box{
-   height:500px;
+   height:auto;
+   max-height:500px;
    width: 780px;
    border:1px solid #a3a09e;
+   /*border-radius:10px;*/
+   /*-moz-border-radius:10px;*/
+   /*-webkit-border-radius:10px;*/
    border-color: transparent;
    padding:10px;
    overflow-y:scroll;
+   margin:0px 0px 15px 0px;
 }
 
 .related_product_block{
         width:290px;
         float:left;
+}
+
+.product_detail_box p{
+ font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
+ font-size:18px;
+ text-align:left;
+}
+
+.product_detail_box b{
+ font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
+ font-size:20px;
+ text-align:left;
 }
 
 .sideleft {
@@ -124,10 +150,11 @@
    clear:both;
 }
 
-.detail_nav .h2{
+.detail_nav {
     clear:both;
-    margin:0px 0px 10px 0px;
-	font-size:36px;
+    margin:5px 0px 5px 0px;
+	font-size:16px;
+    vertical-align:center;
 }
 
 .banner { position:relative;height:270px;background:#1a1a1a;overflow:hidden; }
