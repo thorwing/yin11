@@ -1,47 +1,46 @@
-.report_counter {
-    display: inline-block;
-    text-align: center;
-    width: 18px;
-    line-height: 18px;
-    font-family: arial,sans-serif;
-    font-size: 14px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    border:1px solid #dbdbdb;
-}
+/*.report_counter {*/
+    /*display: inline-block;*/
+    /*text-align: center;*/
+    /*width: 18px;*/
+    /*line-height: 18px;*/
+    /*font-size: 14px;*/
+    /*-moz-border-radius: 10px;*/
+    /*border-radius: 10px;*/
+    /*border:1px solid #dbdbdb;*/
+/*}*/
 
-.report_counter.fine {
-    background: green;
-    color: white;
-}
+/*.report_counter.fine {*/
+    /*background: green;*/
+    /*color: white;*/
+/*}*/
 
-.report_counter.caution {
-    background: orange;
-    color: black;
-}
+/*.report_counter.caution {*/
+    /*background: orange;*/
+    /*color: black;*/
+/*}*/
 
-.report_counter.warning {
-    background: red;
-    color: white;
-}
+/*.report_counter.warning {*/
+    /*background: red;*/
+    /*color: white;*/
+/*}*/
 
-.report_counter.terrible {
-    background: black;
-    color: white;
-}
+/*.report_counter.terrible {*/
+    /*background: black;*/
+    /*color: white;*/
+/*}*/
 
-.report_counter:hover {
-   text-decoration: none;
-   background: #386fb2;
-   color: white;
-}
+/*.report_counter:hover {*/
+   /*text-decoration: none;*/
+   /*background: #386fb2;*/
+   /*color: white;*/
+/*}*/
 
-.checkbox_group {float: left;}
+/*.checkbox_group {float: left;}*/
 
-.severity {float: left; background-repeat: no-repeat;width:24px; height:32px;}
-.severity.zero{ background-image: image-url("severity_0_small.png"); }
-.severity.one{ background-image: image-url("severity_1_small.png"); }
-.severity.two{ background-image: image-url("severity_2_small.png"); }
-.severity.three{ background-image: image-url("severity_3_small.png"); }
+/*.severity {float: left; background-repeat: no-repeat;width:24px; height:32px;}*/
+/*.severity.zero{ background-image: image-url("severity_0_small.png"); }*/
+/*.severity.one{ background-image: image-url("severity_1_small.png"); }*/
+/*.severity.two{ background-image: image-url("severity_2_small.png"); }*/
+/*.severity.three{ background-image: image-url("severity_3_small.png"); }*/
 
 

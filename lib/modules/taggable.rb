@@ -23,11 +23,34 @@ module Taggable
     end
 
     def sync_tags
-      existed_tags = Tag.any_in(name: tags)
-      new_tags = tags - existed_tags
+      old_tags = tags_was
 
+      item_str = "#{self.class.name} #{self.id.to_s}"
+
+      #record the item in the existed tags
+      existed_tags = Tag.any_in(name: tags)
+      new_tags = tags - existed_tags.map(&:name)
+      existed_tags.each do |tag|
+        unless tag.items.include?(item_str)
+          tag.items << item_str
+          tag.save
+        end
+      end
+
+      #remove the item from the removed tag
+      removed_tags = Tag.any_in(name: old_tags - tags)
+      removed_tags.each do |tag|
+        if tag.items.include?(item_str)
+          tag.items.remove(item_str)
+          tag.save
+        end
+      end
+
+      #create new tag
       new_tags.each do |t|
-        Tag.create(:name => t)
+        Tag.create(:name => t) do |tag|
+          tag.items = [item_str]
+        end
       end
     end
   end

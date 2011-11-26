@@ -1,30 +1,114 @@
--
-  title: 冬令进补
-  tags: [冬令进补, 羊肉, 当归]
-  description: 冬天要吃热的
-  priority: 1
-
--
-  title: 美食也疯狂
-  tags: [美食也疯狂]
-  description: 没见的好吃的
-  priority: 2
-
--
-  title: 中国红
-  tags: [中国红, 麻辣, 香辣]
-  description: 不辣不痛快
-  priority: 3
-
--
-  title: 月子餐
-  tags: [月子餐, 产后调养]
-  description: 产后调养,恢复。呵护新晋妈妈。
-  priority: 4
-
--
-  title: 有机绿色
-  tags: [有机绿色, 无公害, 无农药]
-  description: 有机绿色食品
-  priority: 5
-
+--- 
+- !ruby/object:Topic 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 207
+      - 94
+      - 208
+      - 29
+      - 65
+      - 200
+      - 69
+      - 185
+      - 0
+      - 1
+      - 14
+    title: "\xE5\x86\xAC\xE4\xBB\xA4\xE8\xBF\x9B\xE8\xA1\xA5"
+    tags: 
+    - "\xE5\x86\xAC\xE4\xBB\xA4\xE8\xBF\x9B\xE8\xA1\xA5"
+    - "\xE7\xBE\x8A\xE8\x82\x89"
+    - "\xE5\xBD\x93\xE5\xBD\x92"
+    description: "\xE5\x86\xAC\xE5\xA4\xA9\xE8\xA6\x81\xE5\x90\x83\xE7\x83\xAD\xE7\x9A\x84"
+    priority: 1
+- !ruby/object:Topic 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 207
+      - 94
+      - 208
+      - 29
+      - 65
+      - 200
+      - 69
+      - 185
+      - 0
+      - 1
+      - 15
+    title: "\xE6\xAF\x8D\xE5\xA9\xB4\xE4\xBF\x9D\xE8\x82\xB2"
+    tags: 
+    - "\xE5\xA5\xB6\xE7\xB2\x89"
+    - "\xE6\x9C\x88\xE5\xAD\x90\xE9\xA4\x90"
+    - "\xE4\xBA\xA7\xE5\x90\x8E\xE8\xB0\x83\xE5\x85\xBB"
+    description: "\xE4\xBA\xA7\xE5\x90\x8E\xE8\xB0\x83\xE5\x85\xBB,\xE6\x81\xA2\xE5\xA4\x8D\xE3\x80\x82\xE5\x91\xB5\xE6\x8A\xA4\xE6\x96\xB0\xE6\x99\x8B\xE5\xA6\x88\xE5\xA6\x88\xE3\x80\x82"
+    priority: 2
+- !ruby/object:Topic 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 207
+      - 94
+      - 208
+      - 29
+      - 65
+      - 200
+      - 69
+      - 185
+      - 0
+      - 1
+      - 16
+    title: "\xE4\xB8\xAD\xE5\x9B\xBD\xE7\xBA\xA2"
+    tags: 
+    - "\xE4\xB8\xAD\xE5\x9B\xBD\xE7\xBA\xA2"
+    - "\xE9\xBA\xBB\xE8\xBE\xA3"
+    - "\xE9\xA6\x99\xE8\xBE\xA3"
+    description: "\xE4\xB8\x8D\xE8\xBE\xA3\xE4\xB8\x8D\xE7\x97\x9B\xE5\xBF\xAB"
+    priority: 3
+- !ruby/object:Topic 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 207
+      - 94
+      - 208
+      - 29
+      - 65
+      - 200
+      - 69
+      - 185
+      - 0
+      - 1
+      - 17
+    title: "\xE6\x9C\x89\xE6\x9C\xBA\xE7\xBB\xBF\xE8\x89\xB2"
+    tags: 
+    - "\xE6\x9C\x89\xE6\x9C\xBA\xE7\xBB\xBF\xE8\x89\xB2"
+    - "\xE6\x97\xA0\xE5\x85\xAC\xE5\xAE\xB3"
+    - "\xE6\x97\xA0\xE5\x86\x9C\xE8\x8D\xAF"
+    description: "\xE6\x9C\x89\xE6\x9C\xBA\xE7\xBB\xBF\xE8\x89\xB2\xE9\xA3\x9F\xE5\x93\x81"
+    priority: 4
+- !ruby/object:Topic 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 207
+      - 94
+      - 208
+      - 29
+      - 65
+      - 200
+      - 69
+      - 185
+      - 0
+      - 1
+      - 18
+    title: "\xE7\xBE\x8E\xE9\xA3\x9F\xE4\xB9\x9F\xE7\x96\xAF\xE7\x8B\x82"
+    tags: 
+    - "\xE7\xBE\x8E\xE9\xA3\x9F\xE4\xB9\x9F\xE7\x96\xAF\xE7\x8B\x82"
+    description: "\xE6\xB2\xA1\xE8\xA7\x81\xE7\x9A\x84\xE5\xA5\xBD\xE5\x90\x83\xE7\x9A\x84"
+    priority: 5

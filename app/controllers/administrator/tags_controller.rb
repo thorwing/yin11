@@ -1,6 +1,6 @@
 class Administrator::TagsController < Administrator::BaseController
   def index
-    @tags = Tag.all
+    @tags = Tag.desc(:items)
   end
 
 

@@ -1,6 +1,6 @@
 /*
 *= require_self
-*= require components
+*= require base
 *= require home
 *= require tag_cloud
 *= require comment
@@ -13,6 +13,8 @@
 *= require reviews
 *= require catalogs
 *= require search
+*= require personal
+*= require profile
 *= require token-input-facebook
 *= require facebox
 *= require slimbox
@@ -24,22 +26,28 @@
 *= require gmaps4rails
 *= require map
 *= require slider
-*= require base
- *= require personal
-  *= require profile
 */
 
 
 
 /* General Settings
-normal font:
+Font-Family:
 font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+
+Font-Size:
+Top-Menu: 16px;
 
 Green: (footer)
 #346633
 
 Blue: (button)
 #386fb2
+
+Azure
+#EDEFF4
+
+Gray (body)
+ #333230
  */
 
 
@@ -52,6 +60,7 @@ body {
 	font-size:13px;
     font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
 	line-height:22px;
+    background-color: #F2F0F0;
 }
 
 h2 {
@@ -121,7 +130,7 @@ a.tag {
     padding: 2px;
     border: 1px solid #333333;
     font-size: 12px;
-    font-family: arial,sans-serif;
+    background-color: #EDEFF4;
 }
 
 a.tag:hover {
@@ -170,57 +179,6 @@ h1.title {
 }
 
 /*
-	Block-Styles
-*/
-
-.block {
-    position:relative;
-    display:block;
-    overflow:hidden;
-    clear: both;
-}
-
-.block.square {
-    border:1px solid #a3a09e;
-    padding:10px;
-}
-
-.block.round {
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    border:1px solid #dbdbdb;
-    background:#EDEFF4;
-    margin-bottom:10px;
-    padding:10px;
-}
-
-/*
-	Layout-Styles
-*/
-
-.skinny {
-    width:90%;
-	margin:0 auto;
-	position:relative;
-}
-
-/*
-    Menu_Styles
-*/
-ul.menu {
-    padding:0;
-    margin:0;
-    overflow: hidden;
-    list-style:none;
-}
-
-ul.menu li {
-    float:left;
-    display: inline;
-    margin-right: 5px;
-}
-
-/*
 	Footer-Styles
 */
 
@@ -242,7 +200,6 @@ body #main { height: auto;}
     overflow:hidden;
     color:#FFFFFF;
     background-color:#346633;
-	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:11px;
 }
 .footer_column {

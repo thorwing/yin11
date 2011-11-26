@@ -6,17 +6,17 @@
     <div>
       <%= link_to product.name, product %><br/>
     </div>
-  <% end %>
+<% end %>
 
+<% get_recipes(@topic).each do |recipe| %>
+    <div>
+      <%= link_to recipe.title, recipe %><br/>
+    </div>
+<% end %>
 
 <div class="actions">
   <% if current_user_has_permission? :editor %>
     <%= link_to t("general.change"), edit_topic_path(@topic), :class => "button" %>
     <%= link_to t("general.delete"), @topic, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
   <% end %>
-</div>
-
-
-<div class="actions">
-  <%= link_to t("general.back_to_list"), topics_path, :class => "button" %>
 </div>

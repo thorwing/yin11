@@ -1,14 +1,6 @@
 <% home_page %>
 <% meta_tag t("site.introduction") %>
 
-<div id="recommended_products" class="block round">
-    <h2><%= t("home.recommended_products") %></h2>
-    <% @recommended_products.each do |product| %>
-        <%= render "products/small_product", :product => product %>
-    <% end %>
-</div>
-
-
 <div id="hot_topics">
     <% @hot_topics.each do |topic| %>
         <%= render "topics/large_topic", :topic => topic %>

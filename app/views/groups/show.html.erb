@@ -1,7 +1,5 @@
 <% title @group.name %>
 <span class="trivial">(<%= @group.member_ids.size.to_s %><%= t("groups.member") %>)</span>
-<%= t("tags.tags")%>
-<%= @group.tags.count %>
 <%= render "shared/show_tags", :item => @group %>
 <span class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(TIME_FORMAT) %></span><br/>
 

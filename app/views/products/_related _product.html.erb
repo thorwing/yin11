@@ -1,0 +1,9 @@
+<% if product.image && product.image.picture_url %>
+    <%= link_to image_tag( product.image.picture_url, :border => 0, :class=>"product_small_img_box"), product%>
+<% else %>
+    <%= link_to image_tag( "default_article.jpg", :border => 0, :class=>"product_small_img_box"),  product%>
+<% end %>
+
+<div>
+    <%= link_to product.name, product %>
+</div>

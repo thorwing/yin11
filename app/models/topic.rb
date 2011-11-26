@@ -1,6 +1,7 @@
 class Topic
   include Mongoid::Document
   include Taggable
+  include Imageable
 
   field :title
   field :description
@@ -10,6 +11,7 @@ class Topic
 
   #relationships
   has_many :articles
+  has_many :images
 
   #validators
   validates_presence_of :title

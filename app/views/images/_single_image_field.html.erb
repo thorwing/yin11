@@ -1,5 +1,5 @@
 <span class="image">
     <%= hidden_field_tag "images[]", image.id %>
     <%= get_thumbnail(image, true) %>
-    <%= link_to_function image_tag("cancel.png", :border => 0), "delete_image(this)" %>
+    <%= link_to_function image_tag("cancel.png", :border => 0), "delete_image(this, #{IMAGES_LIMIT})" %>
 </span>

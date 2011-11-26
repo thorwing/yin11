@@ -13,7 +13,7 @@
 
 #top_menu { margin:0; padding:0; list-style:none; color:#fff; line-height:40px; display:inline-block; height: 45px;
     float:left; overflow: hidden; background:#172322 none repeat scroll 0 0; position: absolute; left: 150px; right: 18px;}
-#top_menu a { font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif; font-size: 20px; color:#fff; text-decoration:none; }
+#top_menu a { font-size: 16px; font-weight: bold; color:#fff; text-decoration:none; }
 #top_menu li {float:left;
     padding:0 20px;}
 #top_menu li a:hover, #top_menu > li a.selected {color:#B0D730;}

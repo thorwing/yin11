@@ -3,6 +3,7 @@
 #require the files for YMAL deserializing
 require "article"
 require "source"
+require "topic"
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
@@ -136,11 +137,17 @@ require "source"
   p "generating topics"
   topics = YAML::load(File.open("app/seeds/topics.yml"))
   topics.each do |t|
-    topic = Topic.new
-    t.each do |field_name, v|
-      topic.send("#{field_name}=", v) if topic.respond_to?("#{field_name}=")
+    Topic.create! do |topic|
+      topic.id = t.id
+      topic.title = t.title
+      topic.tags = t.tags
+      topic.description = t.description
+      topic.priority = t.priority
     end
-    topic.save!
+    #t.each do |field_name, v|
+    #  topic.send("#{field_name}=", v) if topic.respond_to?("#{field_name}=")
+    #end
+    #topic.save!
   end
 
   p "generating recipes"
@@ -167,17 +174,21 @@ require "source"
 
   p "generating images"
   images = YAML::load(File.open("app/seeds/images.yml"))
-  images.each do |i|
-    begin
-      image = Image.create! do |image|
-        image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
-        image.product_id = i[:product_id]
-        image.article_id = i[:article_id]
-      end
+  if images.present? && images.size > 0
+    images.each do |i|
+      begin
+        image = Image.create! do |image|
+          image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
+          #Only allow topics'' images here
+          #image.product_id = i[:product_id]
+          #image.article_id = i[:article_id]
+          image.topic_id = i[:topic_id]
+        end
 
-    rescue Exception => exc
-      p i[:file_name]
-      p exc.message
-      p exc.backtrace
+      rescue Exception => exc
+        p i[:file_name]
+        p exc.message
+        p exc.backtrace
+      end
     end
   end

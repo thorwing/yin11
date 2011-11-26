@@ -1,6 +1,6 @@
 $('#images_container').append("<%=escape_javascript(render("single_image_field", :image => @image)) %>");
 var image_count = $('#images_container .image').size();
-if (image_count >= 5) {
+if (image_count >= @limit) {
     $('#image_uploaderUploader').hide();
 }
 

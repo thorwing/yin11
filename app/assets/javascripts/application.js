@@ -94,10 +94,10 @@ function show_tab_content(link, content) {
   $(link).parents(".tab_control").children("div.tab_content").replaceWith(content);
 }
 
-function delete_image(link) {
+function delete_image(link, limit) {
     $(link).parent().remove();
     var image_count = $('#images_container .image').size();
-    if (image_count < 5) {
+    if (image_count < limit) {
         $('#image_uploader').show();
     }
 }

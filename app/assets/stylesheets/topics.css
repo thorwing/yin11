@@ -1,0 +1,55 @@
+.large_topic {height:280px;}
+
+.large_topic .slice {overflow:hidden;}
+
+.large_topic img {
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
+
+
+.large_topic .cube {
+    overflow: hidden;
+    position: relative;
+	float:left;
+}
+
+.large_topic .cube p {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    opacity: 0.7;
+    padding: 0 0 0 10px;
+}
+
+.large_topic .cube span {
+    color: white;
+    letter-spacing: -1px;
+}
+
+.large_topic .cube span.title {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.large_topic .cube.small {
+    width: 150px;
+    height: 140px;
+    margin: 1px 5px;
+    border: 1px solid #000000;
+}
+
+.large_topic .cube.small p {
+    display: none;
+}
+
+.large_topic .share_left {
+    width: 240px;
+    height: 280px;
+}
+
+
+
+

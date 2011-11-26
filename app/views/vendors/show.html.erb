@@ -5,7 +5,7 @@
 
       <%= @vendor.products.count %>
 
-    <% @vendor.products.each_slice(3) do |slice| %>
+    <% @vendor.products.each_slice(PRODUCTS_SLICE) do |slice| %>
         <div class="products_slice">
           <% slice.each do |product| %>
             <div class="waterfall">

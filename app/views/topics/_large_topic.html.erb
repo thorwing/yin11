@@ -1,24 +1,13 @@
 <div class="large_topic block round">
-  <span class="topic_title"><%= link_to topic.title, topic %></span>
-  <%= render "shared/show_tags", :item => topic %>
-  <span class="fr"><%= link_to t("topics.more") %></span>
-  <div class="products">
-    <% products = get_recommended_products(topic) %>
-    <% first_recipe = get_recipes(topic).first %>
+    <div class="cube share_left">
+        <%= link_to image_tag( topic.get_first_image, :border => 0, :alt => topic.title), topic %>
+          <p>
+            <span class="title"><%= topic.title %></span><br/>
+            <span class="desc"><%= topic.description %></span>
+          </p>
+    </div>
 
-    <% if first_recipe %>
-        <div class="recipe">
-          <%= link_to image_tag( first_recipe.get_first_image, :border => 0, :width => 200, :height => 160), first_recipe unless first_recipe.nil? %>
-          <h3><span><%= first_recipe.title unless first_recipe.nil? %></span></h3>
-        </div>
-    <% else %>
-        <% first_product = products.first %>
-        <% products = products.drop(1) %>
-         <div class="product first">
-            <%= link_to image_tag( first_product.get_image, :border => 0, :width => 200, :height => 160), first_product unless first_product.nil? %>
-            <h3><span><%= first_product.name unless first_product.nil? %></span></h3>
-        </div>
-    <% end %>
+    <% products = get_recommended_products(topic) %>
 
     <div class="slice">
         <% products.values_at(* products.each_index.select{|i| i.odd?}).each do |product| %>
@@ -30,5 +19,4 @@
           <%= render "topics/small_item", :item => product %>
         <% end %>
     </div>
-  </div>
 </div>

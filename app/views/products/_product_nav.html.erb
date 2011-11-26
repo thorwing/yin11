@@ -1,0 +1,30 @@
+<div class="detail_nav">
+  <% root_catalog=nil %>
+  <% middle_catalog=nil %>
+  <% leaf_catalog=nil %>
+  <% symbol = " > "%>
+  <% product.catalogs.each do |catalog| %>
+      <% if !catalog.ancestry.present? %>
+          <% root_catalog = catalog %>
+      <% else %>
+          <% ancestry=catalog.ancestry.to_s.split("/") %>
+          <% if ancestry.size > 1 %>
+              <% root_catalog = Catalog.find(ancestry[0]) %>
+              <% middle_catalog = Catalog.find(ancestry[1]) %>
+              <% leaf_catalog = catalog %>
+          <% else %>
+              <% root_catalog = Catalog.find(catalog.ancestry.to_s) %>
+              <% middle_catalog = catalog %>
+          <% end %>
+      <% end %>
+  <% end %>
+
+  <%= link_to root_catalog.name, products_path(:action => "index", :catalog => root_catalog.name) if root_catalog.present?%>
+  <%= symbol if root_catalog.present? %>
+  <%= link_to middle_catalog.name, products_path(:action => "index", :catalog => middle_catalog.name) if middle_catalog.present?%>
+   <%= symbol if middle_catalog.present? %>
+  <%= link_to leaf_catalog.name, products_path(:action => "index", :catalog => leaf_catalog.name) if leaf_catalog.present?%>
+   <%= symbol if leaf_catalog.present? %>
+  <%= product.name %>
+
+</div>
