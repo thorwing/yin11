@@ -63,6 +63,7 @@ zh-CN:
     author: 作者
     report: "报错/纠正"
     email_address: 邮件地址
+    ago: 以前
     severity_0: 无异常报告
     severity_1: 注意
     severity_2: 警惕
@@ -297,11 +298,12 @@ zh-CN:
     all: 所有饭桌
     mine: 我的饭桌
     edit_joined_gorup: 选择饭桌
-    posts: 饭桌最近话题
+    posts: 最近话题
     member: 成员
     new: +饭桌
     new_group: 新饭桌
     edit: 编辑饭桌
+    browse: 找饭桌
 
   posts:
     new: +话题
