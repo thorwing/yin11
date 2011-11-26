@@ -1,4 +1,6 @@
-<div class="item">
-    <%= link_to image_tag(item.get_image, :border => 0, :width => 128, :height => 80), item %>
-    <h3><span><%= get_subject(item) %></span></h3>
+<div class="cube small">
+    <%= link_to image_tag(item.get_image, :border => 0), item %>
+    <p>
+        <span><%= get_subject(item) %></span><br/>
+    </p>
 </div>

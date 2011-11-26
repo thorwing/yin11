@@ -116,7 +116,7 @@ module ApplicationHelper
 
   #for plugins
 
-  def image_uploadify(item)
+  def image_uploadify
     # Putting the uploadify trigger script in the helper gives us
     # full access to the view and native rails objects without having
     # to set javascript variables.
@@ -138,7 +138,7 @@ module ApplicationHelper
     <script type='text/javascript' charset="utf-8">
       $(document).ready(function() {
         $('#image_uploader').uploadify({
-          script          : '#{images_path(:item_id => item.id)}',
+          script          : '#{images_path}',
           fileDataName    : 'image[picture]',
           uploader        : '/uploadify/uploadify.swf',
           cancelImg       : '/uploadify/cancel.png',

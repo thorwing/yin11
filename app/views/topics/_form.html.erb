@@ -17,7 +17,11 @@
     <%= f.label :priority, t("topics.priority") %><br />
     <%= f.text_field :priority %>
   </div>
+  <%= render "images/images_fields", :f => f, :item => @topic %>
+
   <div class="actions">
     <%= f.submit t("general.submit"), :class => "button" %>
   </div>
 <% end %>
+
+<%= render "info_items/delay_load_stuff" %>

@@ -11,4 +11,5 @@ class Image
   belongs_to :article
   belongs_to :product
   belongs_to :review
+  belongs_to :topic
 end
