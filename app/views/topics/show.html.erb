@@ -1,4 +1,5 @@
 <% title @topic.title %>
+<p><%= @topic.description %></p>
 
 <% if current_user_has_permission? :editor %>
     <%= render "shared/show_tags", :item => @topic %>
