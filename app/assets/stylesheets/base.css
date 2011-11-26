@@ -8,8 +8,11 @@
 .block {
     position:relative;
     display:block;
-    /*overflow:hidden;*/
     clear: both;
+}
+
+.block.fix {
+    overflow:hidden;
 }
 
 .block.square {
@@ -60,6 +63,8 @@ ul.menu li {
 .m5 {margin: 5px;}
 .p5 {padding: 5px;}
 
+.mr20 {margin-right: 20px;}
+
 .grid100 {width: 100px;}
 .grid682 {width: 682px;}
 .grid760 {width: 760px;}
@@ -93,6 +98,7 @@ ul.menu li {
 
 .al {text-align: left;}
 .ar {text-align: right;}
+.ac {text-align: center;}
 
 .hor_stretch {width:100%; overflow:hidden;}
 

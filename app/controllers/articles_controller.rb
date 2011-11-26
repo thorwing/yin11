@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :editor }
-  layout "two_columns"
 
   # GET /articles
   # GET /articles.xml

@@ -1,8 +1,18 @@
 <% title t("topics.topics") %>
 
-<% @topics.each do |topic| %>
-  <%= render "large_topic", :topic => topic %>
-<% end %>
+<table>
+    <tr>
+        <th><%= t("general.title") %></th>
+        <th><%= t("articles.articles") %></th>
+    </tr>
+
+    <% @topics.each do |topic| %>
+        <tr id='<%= topic.id %>'>
+            <td><%= link_to topic.title, topic %></td>
+            <td><%= topic.articles.size.to_s %></td>
+        </tr>
+    <% end %>
+</table>
 
 <br />
 

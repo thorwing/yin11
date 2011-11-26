@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = user.auth_token
       end
 
-      redirect_back root_url, :notice => t("notices.welcome_back", :name => user.screen_name)
+      redirect_back root_url
     else
       flash.now.alert = t("authentication.invalid_usr_pwd")
       render "new"
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete :auth_token
-    redirect_to root_url, :notice => t("authentication.logged_out")
+    redirect_to root_url
   end
 
 end

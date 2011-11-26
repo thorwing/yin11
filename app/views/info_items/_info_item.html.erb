@@ -1,5 +1,5 @@
-<div class="item_info">
-    <div class="left_fields">
+<div class="block round fix">
+    <div class="fl">
         <%= render "shared/vote_fields", :item => item %>
     </div>
     <div class="central_fields">
@@ -10,10 +10,9 @@
         <%= render "shared/show_tags", :item => item %><br/>
         <% if item.content.present? %>
           <%= truncate_content(item.content, 40) %>
-          <%= link_to(t("info_items.detail"), item)  %>
         <% end %>
     </div>
-    <div class="right_fields">
+    <div class="fr">
        <div class="clues">
            <%= get_clues_of_item(item) %>
        </div>

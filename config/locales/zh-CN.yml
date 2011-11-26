@@ -22,7 +22,7 @@ zh-CN:
     access_failed: 第三方授权失败，请再试一下
     sync_to_sina: 同步到新浪微博
     sync_to: 同步到
-    follow_yin11_on_sina: 关注银筷子新浪微博
+    follow_yin11_on_sina: 关注我们的微博
     more: 更多
     success_message: ，并成功同步到
     failure_message: ，但未能同步到
@@ -107,7 +107,6 @@ zh-CN:
     please_login: "请登入。"
     invalid_usr_pwd: "邮件地址或密码无效，请再试一次。"
     invalid_invitation: "邀请码无效。"
-    logged_out: "您已经登出。"
     no_such_user: "不存在该用户。"
     pwd_confirmation_not_match: "确认用的密码不符合您第一次输入的密码，请再试一次。"
     remember_me: "记住我"
@@ -132,9 +131,10 @@ zh-CN:
 
 
   notices:
-    welcome_back: "欢迎回来, %{name}"
+    welcome_back: "欢迎, %{name}"
+    logged_out: "您已经登出。"
     need_permission_logged: "请登入，或注册一个帐号。"
-    need_permission_not_logged: "此操作需要%{permission}的权限， 请留意我们的公告来获知如何提升权限。"
+    need_permission_not_logged: "此操作需要%{permission}的权限。"
     password_reset_email_sent: "密码恢复邮件已经发出，请查收。"
     email_verified: 邮箱已验证
     password_reset: 密码已更改
@@ -355,20 +355,20 @@ zh-CN:
     catalog: 分类
 
   products:
-    products: 产品
-    enabled_products: 启用的产品
-    disalbed_products: 禁用的产品
-    products_list: 产品列表
-    add: +产品
-    edit: 编辑产品
-    new_product: 新产品
+    products: 商品
+    enabled_products: 启用的商品
+    disalbed_products: 禁用的商品
+    products_list: 美食列表
+    add: +商品
+    edit: 编辑商品
+    new_product: 新商品
     go_to_buy: 去购买
     price: 价格
     editor_score: 编辑推荐指数
     weight: 重量
     producer: 厂商
     original_place: 原产地
-    description: 产品描述
+    description: 商品描述
 
   money:
     yuan_mark1: "￥"
@@ -424,7 +424,7 @@ zh-CN:
     deleted: 该内容已删除
 
   articles:
-    articles: 所有文章
+    articles: 文章
     more_news: >>更多新闻
     headlines: 银筷子专题
     hot_news: 食事新闻
