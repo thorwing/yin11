@@ -31,8 +31,11 @@
 
 
 /* General Settings
-normal font:
+Font-Family:
 font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+
+Font-Size:
+Top-Menu: 16px;
 
 Green: (footer)
 #346633
@@ -58,7 +61,6 @@ body {
     font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
 	line-height:22px;
     background-color: #F2F0F0;
-    width:1600px;
 }
 
 h2 {
@@ -174,58 +176,6 @@ h1.title {
 
 .right_column {
     float:right;
-}
-
-/*
-	Block-Styles
-*/
-
-.block {
-    position:relative;
-    display:block;
-    overflow:hidden;
-    clear: both;
-}
-
-.block.square {
-    border:1px solid #a3a09e;
-    padding:10px;
-}
-
-.block.round {
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    border:1px solid #dbdbdb;
-    background: white;
-    margin-left:10px;
-    margin-bottom:10px;
-    padding:10px;
-}
-
-/*
-	Layout-Styles
-*/
-
-.skinny {
-    width:70%;
-	margin:0 auto;
-	position:relative;
-}
-
-/*
-    Menu_Styles
-*/
-ul.menu {
-    padding:0;
-    margin:0;
-    overflow: hidden;
-    list-style:none;
-}
-
-ul.menu li {
-    float:left;
-    display: inline;
-    margin-right: 5px;
 }
 
 /*

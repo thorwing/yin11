@@ -1,12 +1,12 @@
-.large_topic {height:288px;}
+.large_topic {height:268px;}
 
 .large_topic .slice {overflow:hidden;}
 
-/*.large_topic img {*/
-    /*vertical-align: middle;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-/*}*/
+.large_topic img {
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
 
 
 .large_topic .cube {
@@ -26,14 +26,17 @@
 
 .large_topic .cube span {
     color: white;
-    font-size: 15px;
-    font-weight: bold;
     letter-spacing: -1px;
 }
 
+.large_topic .cube span.title {
+    font-size: 15px;
+    font-weight: bold;
+}
+
 .large_topic .cube.small {
-    width: 180px;
-    height: 140px;
+    width: 150px;
+    height: 130px;
     margin: 1px 5px;
     border: 1px solid #000000;
 }
@@ -43,8 +46,8 @@
 }
 
 .large_topic .share_left {
-    width: 238px;
-    height: 288px;
+    width: 218px;
+    height: 268px;
 }
 
 

@@ -1,6 +1,51 @@
 /*TODO*/
 /*merge to application.css*/
 
+/*
+	Block-St les
+*/
+
+.block {
+    position:relative;
+    display:block;
+    overflow:hidden;
+    clear: both;
+}
+
+.block.square {
+    border:1px solid #a3a09e;
+    padding:10px;
+}
+
+.block.round {
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:1px solid #dbdbdb;
+    background: white;
+    margin-bottom:10px;
+    padding:10px;
+}
+
+/*
+    Menu Styles
+*/
+ul.menu {
+    padding:0;
+    margin:0;
+    overflow: hidden;
+    list-style:none;
+}
+
+ul.menu li {
+    float:left;
+    display: inline;
+    margin-right: 5px;
+}
+
+/*
+    Waterfall Styles
+*/
+
 .waterfall {
     text-align: center;
     width: auto;
@@ -18,6 +63,15 @@
 .grid100 {width: 100px;}
 .grid682 {width: 682px;}
 .grid760 {width: 760px;}
+
+
+.grid960 {min-width: 960px;}
+
+.skinny864 {
+    width: 864px;
+	margin:0 auto;
+	position:relative;
+}
 
 .red {color: red;}
 
