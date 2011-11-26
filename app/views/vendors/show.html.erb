@@ -2,6 +2,19 @@
 
 <div class="two_columns_container" >
     <div class="left_column">
+
+      <%= @vendor.products.count %>
+
+    <% @vendor.products.each_slice(3) do |slice| %>
+        <div class="products_slice">
+          <% slice.each do |product| %>
+            <div class="waterfall">
+                <%= render "products/large_product", :product => product %>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+
         <div class="actions">
             <% if current_user_has_permission? :normal_user %>
                 <%= render "shared/follow_field", :target => @vendor %>

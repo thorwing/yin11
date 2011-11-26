@@ -3,7 +3,7 @@ class PanelManager
     @current_user = user
     #@current_city = city
     @days = @current_user ? @current_user.profile.concern_days : (PROFILE_MIN_CONCERN_DAYS + PROFILE_MAX_CONCERN_DAYS) / 2
-    @distance = @current_user ? @current_user.profile.watched_distance : (PROFILE_MIN_WATCHED_DISTANCE + PROFILE_MAX_WATCHED_DISTANCE) / 2
+    #@distance = @current_user ? @current_user.profile.watched_distance : (PROFILE_MIN_WATCHED_DISTANCE + PROFILE_MAX_WATCHED_DISTANCE) / 2
   end
 
   def get_reviews_around(location)

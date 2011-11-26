@@ -1,4 +1,4 @@
-
+#encoding utf-8
 Feature: products listed on home page
   主页上将显示产品的分类
   主页上将会按主题来展示商品（冬令进补，母婴滋补，白领强健）

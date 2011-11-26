@@ -1,3 +1,4 @@
+#encoding utf-8
 Feature: show details of a product
   显示商品的商户的信息
   显示其它用户的分享

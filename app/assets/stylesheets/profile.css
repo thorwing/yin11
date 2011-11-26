@@ -1,0 +1,11 @@
+.display_none {
+    visibility: hidden;
+     display: none;
+    float:none;
+}
+
+.display {
+     display: inline;
+    visibility: visible;
+}
+

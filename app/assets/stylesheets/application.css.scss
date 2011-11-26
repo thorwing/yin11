@@ -1,5 +1,6 @@
 /*
 *= require_self
+*= require base
 *= require home
 *= require tag_cloud
 *= require comment
@@ -12,6 +13,8 @@
 *= require reviews
 *= require catalogs
 *= require search
+*= require personal
+*= require profile
 *= require token-input-facebook
 *= require facebox
 *= require slimbox
@@ -23,8 +26,6 @@
 *= require gmaps4rails
 *= require map
 *= require slider
-*= require base
- *= require personal
 */
 
 
