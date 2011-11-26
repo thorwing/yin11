@@ -23,8 +23,6 @@ module Taggable
     end
 
     def sync_tags
-
-
       item_str = "#{self.class.name} #{self.id.to_s}"
 
       #record the item in the existed tags
@@ -39,6 +37,7 @@ module Taggable
 
       #remove the item from the removed tag
        old_tags = tags_was.present? ?  tags_was: []
+
       removed_tags = Tag.any_in(name: old_tags - tags)
       removed_tags.each do |tag|
         if tag.items.include?(item_str)

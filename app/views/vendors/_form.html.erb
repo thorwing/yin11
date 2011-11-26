@@ -9,12 +9,7 @@
         <b><%= f.label :category, t("general.category") %></b><br/>
     </div>
 
-    <div class="map_input">
-        <b><%= t("location.street") %><%= mark_required(@vendor, :city) %><%= mark_required_length(@vendor, :title) %></b><br/>
-        <%= f.text_field :street, :class => "map_street" %>
-        <%= content_tag(:span, t("location.address_hint"), :class => "trivial") %>
-        <p><span id="map_address_span"></span><%= render "locations/map_indicator" %></p>
-    </div>
+
 
 
     <% if current_user_has_permission?(:administrator) %>

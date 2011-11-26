@@ -4,6 +4,7 @@
 
     .tabContainer .tab{
         font-size: 16px;
+
     }
     .tabContainer div{
         width: 100px;
@@ -16,11 +17,30 @@
     .tabContainer .unselected{
         background-image: url("tab.png");
         background-repeat: no-repeat;
+
     }
+
+    .tabContainer .unselected a {
+        color:  #386fb2;
+    }
+
     .tabContainer .selected{
-        background-color: #EDEFF4;
+        background-color: #386fb2;
         background-image: url("tab_clicked.png");
         background-repeat: no-repeat;
+
+    }
+
+    .tabContainer .selected a {
+        color:  #ffffff;
+    }
+
+    .font_color_selected{
+        color:  #ffffff;
+    }
+
+    .font_color_unselected{
+        color:  #386fb2;
     }
 
 	#contentHolder .preloader{

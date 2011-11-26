@@ -6,12 +6,22 @@ $(function(){
 
         /* "this" points to the clicked tab hyperlink: */
         var element = $(this);
+//       the_tabs.
+//       $(this).removeClass("font_color_unselected")
+//       $(this).addClass("font_color_selected")
+//
+////        $(".tabContainer .selected").addClass("unselected");
+////       $(".tabContainer .selected").removeClass("selected");
+//
+//       $('.mytab .tabContainer .tab').("font_color_selected").addClass("font_color_unselected");
+//       $('.mytab .tabContainer .tab').("font_color_selected").removeClass("font_color_selected");
+
 //        alert(element.data('page'));
         if(!element.data('cache'))
         {
 
             /* If no cache is present, show the gif preloader and run an AJAX request: */
-            $('#contentHolder').html('<img src="assets/loading.gif" width="64" height="64" class="preloader" />');
+            $('#contentHolder').html('<img src="assets/loading_big.gif" width="64" height="64" class="preloader" />');
             $.get(element.data('page'),function(msg){
                 $('#contentHolder').html(msg);
                 /* After page was received, add it to the cache for the current hyperlink: */
@@ -40,6 +50,7 @@ $(function(){     //change the background of the tabs when
 
           $(this).removeClass("unselected");
           $(this).addClass("selected");
+//          $(this).addClass("color: #ffffff;")
      })
 })
 
