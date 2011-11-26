@@ -1,5 +1,5 @@
 #review_dialog { height:170px }
 /*#review_dialog {; height:300px }*/
-#review_dialog .char_aware { width:670px; height: 74px; }
+#review_dialog .char_aware { width:740px; height: 80px; }
 #review_dialog .button {float: right; width:116px; height: 32px; background-position: 0 0; font-size: 20px;  }
 /*#review_dialog .review_ext {width: 300px; }*/
