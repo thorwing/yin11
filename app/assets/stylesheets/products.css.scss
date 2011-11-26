@@ -50,6 +50,7 @@
     overflow:hidden;
     height:auto;
     margin-bottom:10px;
+    padding:10px;
     /*padding:5px;*/
 }
 
@@ -59,14 +60,20 @@
  text-align:center;
 }
 
+
+.related_product_block{
+    margin-left:10px;
+        width:255px;
+        float:left;
+}
+
 .related_product_block li{
-    width:130px;
-    height:220px;
-    margin-right:1px;
+    width:120px;
+    height:160px;
     float:left;
     display:block;
     text-align:center;
-    padding:5px;
+    font-size:10px;
 }
 
 .related_product_block span{
@@ -76,23 +83,24 @@
 .product_img_box{
    border:1px solid #a3a09e;
    border-color:transparent;
-   padding:13px;
+   /*padding:13px;*/
+   /*margin:10px;*/
    /*margin:10px 10px 10px 10px;*/
-   width:300px;
-   height:300px;
+   width:270px;
+   height:270px;
 }
 
 .product_small_img_box{
    border:1px solid #a3a09e;
    border-color:transparent;
-   padding:10px;
-   width:120px;
-   height:120px;
+   /*padding:10px;*/
+   width:100px;
+   height:100px;
    /*align:center*/
 }
 
 .product_detail_box{
-   width: 465px;
+   width: 345px;
    height:300px;
    border:1px solid #a3a09e;
    border-color: transparent;
@@ -104,7 +112,7 @@
 .product_desc_box{
    height:auto;
    max-height:500px;
-   width: 780px;
+   width: 620px;
    border:1px solid #a3a09e;
    /*border-radius:10px;*/
    /*-moz-border-radius:10px;*/
@@ -115,41 +123,33 @@
    margin:0px 0px 15px 0px;
 }
 
-.related_product_block{
-        width:290px;
-        float:left;
-}
-
 .product_detail_box p{
  font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
- font-size:18px;
+ font-size:16px;
  text-align:left;
 }
 
 .product_detail_box b{
  font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
- font-size:20px;
+ font-size:16px;
  text-align:left;
 }
 
 .sideleft {
-   width: 320px;
+   width: 270px;
    height: auto;
+   margin-right:5px;
 }
 
-.sideright {
-   width: 300px;
-   height:auto;
-}
-
-.detail_nav{
-   clear:both;
-}
+/*.sideright {*/
+   /*width: 300px;*/
+   /*height:auto;*/
+/*}*/
 
 .detail_nav {
     clear:both;
     margin:5px 0px 5px 0px;
-	font-size:16px;
+	font-size:14px;
     vertical-align:center;
 }
 

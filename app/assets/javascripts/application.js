@@ -117,16 +117,16 @@ $(function() {
         });
     }
 
-    tokenize_input("#watch_tags", "/tags.json", 5);
+    tokenize_input("#watch_tags", "/tags.json", 10);
     tokenize_input("#article_region_tokens", "/locations/regions.json", 5);
-    tokenize_input("#article_tags_string", "/tags.json", 5);
+    tokenize_input("#article_tags_string", "/tags.json", 10);
     tokenize_input("#article_vendor_token", "/vendors.json", 1);
-    tokenize_input("#topic_tags_string", "/tags.json", 5);
-    tokenize_input("#product_tags_string", "/tags.json", 5);
-    tokenize_input("#review_tags_string", "/tags.json", 5);
+    tokenize_input("#topic_tags_string", "/tags.json", 10);
+    tokenize_input("#product_tags_string", "/tags.json", 10);
+    tokenize_input("#review_tags_string", "/tags.json", 10);
     tokenize_input("#vendor_fields #review_vendor_token", "/vendors.json", 1);
     tokenize_input("#vendor_fields #product_vendor_token", "/vendors.json", 1);
-    tokenize_input("#group_tags_string", "/tags.json", 5);
+    tokenize_input("#group_tags_string", "/tags.json", 10);
     tokenize_input("#added_foods", "/tags.json", 5);
 });
 

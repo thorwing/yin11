@@ -6,6 +6,9 @@ require 'rmmseg'
 
 class SilverHornet::TaobaoHornet
 
+  @@cat_words ||={}
+  @@catalogs||=[]
+
   def initialize
 
     @product_count=0
@@ -14,6 +17,7 @@ class SilverHornet::TaobaoHornet
     config
 
     #initialize the Dictionary for word segmentation
+    RMMSeg::Dictionary.add_dictionary("#{Rails.root}/lib/include/silver_hornet/dictionaries/silver.dic", :words)
     RMMSeg::Dictionary.load_dictionaries
 
     #load the words related to food
@@ -52,6 +56,18 @@ class SilverHornet::TaobaoHornet
     yaml.each do |item|
       read(item)
     end
+    #@@cat_words ={}
+    #Catalog.all.each do |cat|
+    #  if cat.alias_name.present?
+    #    @@cat_words[cat] = cat.alias_name | seg_word(cat.name)
+    #  else
+    #    @@cat_words[cat] = seg_word(cat.name)
+    #  end
+    #end
+    @@catalogs = []
+    Catalog.all.each do |cat|
+      @@catalogs << cat
+    end
   end
 
   def read(item)
@@ -71,7 +87,6 @@ class SilverHornet::TaobaoHornet
   end
 
   def fetch
-    initialize
     #initialize a hash
     @catalog = {}
     #get the all subcatalogs on taobao from parent_cid, and make them into the hash pairs
@@ -178,6 +193,7 @@ class SilverHornet::TaobaoHornet
 
   #process the product
   def process_product(xml_doc, cat_name)
+    p "begin process product!"
     #check if there exist product
     return unless xml_doc["items_get_response"]["items"].present?
     #guarantee there are more than 1 product on the page
@@ -255,8 +271,8 @@ class SilverHornet::TaobaoHornet
               product.save!
               #calculate the product amount
               @product_count+=1
-              #p "Insert #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
-              p "Insert #{product.name} from Taobao Mall"
+              p "Insert #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
+              #p "Insert #{product.name} from Taobao Mall"
             else
               #p "Somethings goes wrong when save the product"
               p "Invalid #{product.errors.to_s} of #{product.url}"
@@ -265,8 +281,8 @@ class SilverHornet::TaobaoHornet
             if product.changed?
               #update the change
               product.save!
-              #p "Update: #{product.name} of #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
-              p "Update: #{product.name} from Taobao Mall"
+              p "Update: #{product.name} of #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
+              #p "Update: #{product.name} from Taobao Mall"
             end
           end
         end
@@ -292,10 +308,70 @@ class SilverHornet::TaobaoHornet
     return words
   end
 
-  def get_product_catalog(cat_name, product)
+  #def get_product_catalog(cat_name, product)
+  #  try do
+  #    # cat_tags is the set of segmented words of the catalog name from the site we spider
+  #    cat_tags = seg_word(cat_name.split(":")[0])
+  #    word = seg_word(product.name)
+  #    @@cat_words.each do |(cat, cat_words)|
+  #      cat_words.each do |cat_word|
+  #        # foreach word in cat_words, check if it is related to the catalog from the site we spider
+  #        # if it is related, set the product to corresponding catalog under our site
+  #        if cat_tags.include?(cat_word)
+  #          product.catalogs << cat unless product.catalogs.include?(cat)
+  #        end
+  #        # check if it is related to the segmented product tags from the site we spider
+  #        # if it is related, set the product to corresponding catalog under our site
+  #        if word.include?(cat_word)
+  #          product.catalogs << cat unless product.catalogs.include?(cat)
+  #        end
+  #      end
+  #    end
+  #    if product.catalogs.size > 1
+  #      catalogs ={}
+  #      product.catalogs.each do |catalog|
+  #        if catalogs[catalog.ancestry].present?
+  #          catalogs[catalog.ancestry] = catalogs[catalog.ancestry].to_s + "," + catalog.id.to_s
+  #        else
+  #          catalogs[catalog.ancestry] = catalog.id.to_s
+  #        end
+  #      end
+  #      catalogs.each do |(key, value)|
+  #        cat_id = value.split(",")
+  #        if cat_id.size > 1
+  #          cat_id.each do |id|
+  #            is_related = false
+  #            if Catalog.find(id).alias_name.present?
+  #              words = Catalog.find(id).alias_name | seg_word(Catalog.find(id).name)
+  #              words.each do |w|
+  #                if word.include?(w)
+  #                  is_related = true
+  #                end
+  #              end
+  #            else
+  #              words = seg_word(Catalog.find(id).name)
+  #              words.each do |w|
+  #                if word.include?(w)
+  #                  is_related = true
+  #                end
+  #              end
+  #            end
+  #            unless is_related
+  #              product.catalogs.delete(Catalog.find(id))
+  #            end
+  #          end
+  #        end
+  #        if product.catalogs.size < 1
+  #          product.catalogs << Catalog.find(cat_id[0]) unless product.catalogs.include?(Catalog.find(cat_id[0]))
+  #        end
+  #      end
+  #    end
+  #  end
+  #end
+    def get_product_catalog(cat_name, product)
     try do
-      cat_tags = seg_word(cat_name.split(":")[0])
-      Catalog.all.each do |cat|
+      cat_tags = seg_word(cat_name)
+      @@catalogs.each do |cat|
         cat_words=[]
         if cat.alias_name.present?
           cat_words=cat.alias_name | seg_word(cat.name)
@@ -334,13 +410,13 @@ class SilverHornet::TaobaoHornet
         catalogs ={}
         product.catalogs.each do |catalog|
           if catalogs[catalog.ancestry].present?
-          catalogs[catalog.ancestry] = catalogs[catalog.ancestry].to_s + "," + catalog.id.to_s
+            catalogs[catalog.ancestry] = catalogs[catalog.ancestry].to_s + "," + catalog.id.to_s
           else
-          catalogs[catalog.ancestry] = catalog.id.to_s
+            catalogs[catalog.ancestry] = catalog.id.to_s
           end
         end
         catalogs.each do |(key, value)|
-          cat_id = value.split(",")
+          cat_id = value.split(",").uniq
           if cat_id.size > 1
             cat_id.each do |id|
               is_related = false

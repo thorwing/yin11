@@ -9,19 +9,19 @@
       sub:
         -
           name: 苏打/梳打
-          show: false
+          show: true
           alias_name: ['梳打', '苏打', '疏打', '苏打饼干', '梳打饼干']
         -
           name: 夹心
-          show: false
+          show: true
           alias_name: ['夹心卷', '夹心球', '夹心饼干']
         - 
           name: 威化/华夫
-          show: false
+          show: true
           alias_name: ['威化', '华夫']
         -
           name: 曲奇
-          show: false
+          show: true
     -
       name: 糕点
       show: true
@@ -29,40 +29,40 @@
       sub:
         -
           name: 沙琪玛
-          show: false
+          show: true
         -
           name: 蛋糕
-          show: false
+          show: true
         - 
           name: 蛋卷
-          show: false
+          show: true
         -
           name: 派
-          show: false
+          show: true
         -
           name: 饼
-          show: false
+          show: true
           alias_name: ['餅', '煎饼', '煎餅', '薄饼', '薄餅']
         -
           name: 酥
-          show: false
+          show: true
     - 
       name: 膨化食品
       show: true
       sub:
         -
           name: 薯片/薯条
-          show: false
+          show: true
           alias_name: ['薯片', '薯条']
         -
           name: 爆米花
-          show: false
+          show: true
         - 
           name: 干脆面
-          show: false
+          show: true
         -
           name: 锅巴/米饼
-          show: false
+          show: true
           alias_name: ['锅巴', '米饼']
     - 
       name: 肉类小食
@@ -71,23 +71,23 @@
       sub:
         -
           name: 肫
-          show: false
+          show: true
           alias_name: ['鸡肫', '鸭肫', '鸭肫肝']
         -
           name: 颈
-          show: false
+          show: true
           alias_name: ['鸭颈', '鸭脖', '鸭脖子']
         - 
           name: 翅/爪
-          show: false
+          show: true
           alias_name: ['鸡翅', '翅中', '凤爪', '鸡爪', '鸭爪', '翅膀']
         -
           name: 肉干/肉脯
-          show: false
+          show: true
           alias_name: ['肉干', '肉脯', '猪肉脯']
         -
           name: 肉松
-          show: false
+          show: true
     -
       name: 蜜饯果脯
       show: true
@@ -95,23 +95,23 @@
       sub:
         -
           name: 水果类
-          show: false
+          show: true
           alias_name: ['菠萝蜜', '菠萝', '车厘子', '陈皮', '凤梨', '榴莲干', '苹果干', '香蕉干', '香蕉片', '芒果干', '葡萄干']
         -
           name: 橄榄类
-          show: false
+          show: true
           alias_name: ['橄榄']
         - 
           name: 梅类
-          show: false
+          show: true
           alias_name: ['梅', '话梅', '珍珠梅', '红梅', '茶梅', '陈皮梅', '酸梅', '雪梅', '青口梅']
         -
           name: 山楂类
-          show: false
+          show: true
           alias_name: ['山楂', '山楂片']
         - 
           name: 枣类
-          show: false
+          show: true
           alias_name: ['枣', '酸枣', '红枣', '玉枣', '椰枣', '大枣', '和田枣', '冬枣', '六膳枣', '阿胶枣', '肉枣']
     -
       name: 坚果/炒货
@@ -120,24 +120,24 @@
       sub:
         -
           name: 核桃
-          show: false
+          show: true
           alias_name: ['小核桃', '山核桃']
         -
           name: 花生
-          show: false
+          show: true
         - 
           name: 瓜子
-          show: false
+          show: true
           alias_name: ['话梅瓜子', '西瓜子', '香瓜子', '茶瓜子', '白瓜子', '煮瓜子', '南瓜子']
         -
           name: 开心果
-          show: false
+          show: true
         - 
           name: 腰果
-          show: false
+          show: true
         -
           name: 杏仁
-          show: false
+          show: true
     - 
       name: 糖果/巧克力
       show: true
@@ -145,16 +145,16 @@
       sub:
         -
           name: 软糖
-          show: false
+          show: true
         -
           name: 口香糖
-          show: false
+          show: true
         - 
           name: 太妃糖
-          show: false
+          show: true
         -
           name: 巧克力
-          show: false
+          show: true
     -
       name: 果冻/布丁
       show: true
@@ -162,13 +162,13 @@
       sub:
         -
           name: 果冻
-          show: false
+          show: true
         -
           name: 布丁
-          show: false
+          show: true
         - 
           name: 龟苓膏
-          show: false
+          show: true
     -
       name: 海味小食
       show: true
@@ -176,19 +176,20 @@
       sub:
         -
           name: 鱼干
-          show: false
+          show: true
           alias_name: ['烤鱼', '烤鱼丝', '烤鱼片', '烤鲅鱼', '墨鱼仔', '烤鳐鱼', '鳕柳丝']
         -
           name: 鱿鱼/墨鱼类
-          show: false
+          show: true
           alias_name: ['鱿鱼仔', '鱿鱼片', '鱿鱼须', '墨鱼', '墨鱼仔', '鱿鱼丝', '烤鱿鱼', '烤鱿鱼丝']
         - 
           name: 海苔类
-          show: false
+          show: true
           alais_name: ['海苔', '海苔卷']
 -
-  name: 饮料
+  name: 饮料冲饮
   show: true
+  alias_name: ['饮料', '冲饮']
   sub:
     -
       name: 碳酸饮料
@@ -201,7 +202,7 @@
     -
       name: 茶饮料
       show: true
-      alias_name: ['冰红茶', '冰绿茶', '冰爽茶', '凉茶', '午后红茶', '大麦茶', '奶茶', '柚子茶', '柠檬茶', '红枣茶', '红茶', '绿茶', '茉莉', '东方树叶', '黑乌龙茶', '乌龙茶', '茉莉清茶', '普洱茶', '普洱', '铁观音']
+      alias_name: ['冰红茶', '冰绿茶', '冰爽茶', '凉茶', '午后红茶', '大麦茶', '奶茶', '柚子茶', '柠檬茶', '红枣茶', '红茶', '绿茶', '东方树叶', '黑乌龙茶', '乌龙茶', '茉莉清茶', '茉莉花茶', '普洱茶', '铁观音']
     -
       name: 果蔬
       show: true
@@ -218,10 +219,6 @@
       name: 咖啡饮料
       show: true
       alias_name: ['拿铁', '利趣', '摩卡', '鸳鸯']
--
-  name: 冲饮
-  show: true
-  sub:
     -
       name: 奶粉/豆奶粉
       show: true
@@ -253,22 +250,21 @@
       sub:
         -
           name: 速溶咖啡
-          show: false
+          show: true
           alias_name: ['速溶', '1加2', '三合一', '3合1', '二合一']
         -
           name: 咖啡豆/咖啡粉
-          show: false
+          show: true
           alias_name: ['咖啡豆', '咖啡粉']
-        - 
+        -
           name: 咖啡辅料（伴侣/奶精/方糖）
-          show: false
+          show: true
           alias_name: ['伴侣', '奶精', '方糖', '咖啡伴侣']
         -
           name: 咖啡礼盒
-          show: false
-          alias_name: ['礼盒']
+          show: true
 -
-  name: 奶制品
+  name: 奶类制品
   show: true
   sub:
     -
@@ -290,160 +286,9 @@
       name: 奶酪
       show: true
 -
-  name: 茶
+  name: 酒类茶类
   show: true
-  alias_name: ['茶叶']
-  sub:
-    -
-      name: 绿茶
-      show: true
-      sub:
-        -
-          name: 龙井
-          show: false
-        -
-          name: 碧螺春
-          show: false
-        - 
-          name: 黄山毛峰
-          show: false
-        -
-          name: 庐山云雾
-          show: false 
-        -
-          name: 信阳毛尖
-          show: false
-    -
-      name: 红茶
-      show: true
-      sub:
-        -
-          name: 祁门红茶
-          show: false
-          alias_name: ['祁门']
-        - 
-          name: 大吉岭红茶
-          show: false
-          alias_name: ['大吉岭']
-        -
-          name: 锡兰高地茶
-          show: false
-          alias_name: ['锡兰']
-        -
-          name: 滇红工夫
-          show: false
-          alias_name: ['功夫', '工夫', '功夫茶']
-    -
-      name: 黄茶
-      show: true
-      sub:
-        -
-          name: 黄芽
-          show: false
-        - 
-          name: 银针
-          show: false
-        -
-          name: 毛尖
-          show: false 
-        -
-          name: 黄汤
-          show: false
-        -
-          name: 宫茶
-          show: false
-    -
-      name: 青茶
-      show: true
-      sub:
-        -
-          name: 铁观音       
-          show: false    
-        -
-          name: 乌龙茶
-          show: false    
-        -
-          name: 大红袍
-          show: false
-        - 
-          name: 岩茶
-          show: false
-        -
-          name: 水仙
-          show: false 
-        -
-          name: 白毛猴                                
-          show: false
-        -
-          name: 肉桂
-          show: false
-    -
-      name: 白茶
-      show: true
-      sub:
-        -
-          name: 白毫
-          show: false
-        -
-          name: 白牡丹
-          show: false
-        -
-          name: 寿眉
-          show: false
-    -
-      name: 黑茶
-      show: true
-      sub:
-        -
-          name: 普洱茶   
-          show: false
-        -
-          name: 湘尖
-          show: false
-        - 
-          name: 边茶
-          show: false
-        -
-          name: 黑砖茶 
-          show: false 
-    -
-      name: 花草茶
-      show: true
-      sub:
-        -
-          name: 茉莉花茶   
-          show: false
-        -
-          name: 花果茶
-          show: false    
-        -
-          name: 菊花茶
-          show: false
-    -
-      name: 加工茶
-      show: true
-      sub:
-        -
-          name: 砖茶
-          show: false 
-        -
-          name: 紧压茶
-          show: false    
-        -
-          name: 萃取茶
-          show: false    
-        -
-          name: 果味茶
-          show: false
-        - 
-          name: 保健茶
-          show: false
-        -
-          name: 速溶茶 
-          show: false 
--
-  name: 酒
-  show: true
+  alias_name: ['茶', '茶叶', '酒']
   sub:
     -
       name: 啤酒
@@ -463,31 +308,31 @@
       sub:
         -
           name: 白兰地
-          show: false
+          show: true
         -
           name: 威士忌
-          show: false
-        - 
+          show: true
+        -
           name: 伏特加
-          show: false
+          show: true
         -
           name: 朗姆
-          show: false 
+          show: true
         -
           name: 金酒
-          show: false
+          show: true
         -
           name: 龙舌兰
-          show: false
-        - 
+          show: true
+        -
           name: 威末
-          show: false
+          show: true
         -
           name: 波特
-          show: false
+          show: true
         -
           name: 利口
-          show: false
+          show: true
     -
       name: 滋补酒
       show: true
@@ -497,9 +342,157 @@
     -
       name: 预调酒
       show: true
+    -
+      name: 绿茶
+      show: true
+      sub:
+        -
+          name: 龙井
+          show: true
+        -
+          name: 碧螺春
+          show: true
+        - 
+          name: 黄山毛峰
+          show: true
+        -
+          name: 庐山云雾
+          show: true 
+        -
+          name: 信阳毛尖
+          show: true
+    -
+      name: 红茶
+      show: true
+      sub:
+        -
+          name: 祁门红茶
+          show: true
+          alias_name: ['祁门']
+        - 
+          name: 大吉岭红茶
+          show: true
+          alias_name: ['大吉岭']
+        -
+          name: 锡兰高地茶
+          show: true
+          alias_name: ['锡兰']
+        -
+          name: 滇红工夫
+          show: true
+          alias_name: ['功夫', '工夫', '功夫茶']
+    -
+      name: 黄茶
+      show: true
+      sub:
+        -
+          name: 黄芽
+          show: true
+        - 
+          name: 银针
+          show: true
+        -
+          name: 毛尖
+          show: true 
+        -
+          name: 黄汤
+          show: true
+        -
+          name: 宫茶
+          show: true
+    -
+      name: 青茶
+      show: true
+      sub:
+        -
+          name: 铁观音       
+          show: true    
+        -
+          name: 乌龙茶
+          show: true    
+        -
+          name: 大红袍
+          show: true
+        - 
+          name: 岩茶
+          show: true
+        -
+          name: 水仙
+          show: true 
+        -
+          name: 白毛猴                                
+          show: true
+        -
+          name: 肉桂
+          show: true
+    -
+      name: 白茶
+      show: true
+      sub:
+        -
+          name: 白毫
+          show: true
+        -
+          name: 白牡丹
+          show: true
+        -
+          name: 寿眉
+          show: true
+    -
+      name: 黑茶
+      show: true
+      sub:
+        -
+          name: 普洱茶   
+          show: true
+        -
+          name: 湘尖
+          show: true
+        - 
+          name: 边茶
+          show: true
+        -
+          name: 黑砖茶 
+          show: true 
+    -
+      name: 花草茶
+      show: true
+      sub:
+        -
+          name: 茉莉花茶   
+          show: true
+        -
+          name: 花果茶
+          show: true    
+        -
+          name: 菊花茶
+          show: true
+    -
+      name: 加工茶
+      show: true
+      sub:
+        -
+          name: 砖茶
+          show: true 
+        -
+          name: 紧压茶
+          show: true    
+        -
+          name: 萃取茶
+          show: true    
+        -
+          name: 果味茶
+          show: true
+        - 
+          name: 保健茶
+          show: true
+        -
+          name: 速溶茶 
+          show: true
 -
-  name: 粮油
+  name: 粮油干货
   show: true
+  alias_name: ['粮油', '干货']
   sub:
     -
       name: 米
@@ -519,38 +512,38 @@
       sub:
         -
           name: 葵花籽油
-          show: false
+          show: true
         -
           name: 调和油
-          show: false
+          show: true
         - 
           name: 橄榄油
-          show: false
+          show: true
         -
           name: 大豆油
-          show: false
+          show: true
         -
           name: 玉米油
-          show: false 
+          show: true 
         -
           name: 菜籽油/油菜籽油
-          show: false
+          show: true
           alias_name: ['菜籽油', '油菜籽油']
         -
           name: 花生油
-          show: false
+          show: true
         - 
           name: 芝麻油
-          show: false
+          show: true
         -
           name: 色拉油
-          show: false
+          show: true
         -
           name: 山茶油
-          show: false
+          show: true
         -
           name: 香油
-          show: false
+          show: true
     -
       name: 杂粮
       show: true
@@ -558,26 +551,47 @@
       sub:
         -
           name: 黄豆
-          show: false
+          show: true
         -
           name: 绿豆
-          show: false
+          show: true
         - 
           name: 红豆/赤豆
-          show: false
+          show: true
           alias_name: ['红豆', '赤豆']
         -
           name: 黑米
-          show: false
+          show: true
         -
           name: 糯米
-          show: false
+          show: true
         -
           name: 薏米仁
-          show: false
+          show: true
         -
           name: 糙米
-          show: false
+          show: true
+    -
+      name: 银耳/白木耳
+      show: true
+      alias_name: ['银耳', '白木耳']
+    -
+      name: 黑木耳
+      show: true
+    -
+      name: 百合
+      show: true
+    -
+      name: 莲子
+      show: true
+    -
+      name: 菌菇
+      show: true
+      alias_name: ['食用菌菇']
+    -
+      name: 桂圆干/龙眼
+      show: true
+      alias_name: ['龙眼', '桂圆干']
 -
   name: 厨房调味
   show: true
@@ -611,61 +625,36 @@
       sub:
         -
           name: 色拉酱
-          show: false
+          show: true
         -
           name: 花生酱
-          show: false
+          show: true
         -
           name: 芝麻酱
-          show: false
+          show: true
         - 
           name: 番茄酱
-          show: false
+          show: true
         -
           name: 辣酱
-          show: false
+          show: true
         -
           name: 豆豉酱/豆瓣酱
-          show: false
+          show: true
           alias_name: ['豆豉酱', '豆瓣酱', '豆瓣', '豆豉']
         -
           name: 肉酱
-          show: false
+          show: true
         -
           name: 海鲜酱/虾酱
-          show: false
+          show: true
           alias_name: ['海鲜酱', '虾酱']
     -
       name: 火锅调料
       show: true
       alias_name: ['火锅底料', '火锅']
 -
-  name: 干货
-  show: true
-  sub:
-    -
-      name: 银耳/白木耳
-      show: true
-      alias_name: ['银耳', '白木耳']
-    -
-      name: 黑木耳
-      show: true
-    -
-      name: 百合
-      show: true
-    -
-      name: 莲子
-      show: true
-    -
-      name: 菌菇
-      show: true
-      alias_name: ['食用菌菇']
-    -
-      name: 桂圆干/龙眼
-      show: true
-      alias_name: ['龙眼', '桂圆干']
--
-  name: 新鲜蔬菜水果
+  name: 蔬菜水果
   show: true
   alias_name: ['水果', '蔬菜']
   sub:
@@ -676,13 +665,13 @@
       sub:
         -
           name: 叶菜类
-          show: false
+          show: true
         -
           name: 根茎类
-          show: false
+          show: true
         -
           name: 茄/瓜/豆类
-          show: false
+          show: true
     -
       name: 新鲜水果
       show: true
@@ -690,36 +679,36 @@
       sub:
         -
           name: 苹果
-          show: false
+          show: true
         -
           name: 梨
-          show: false
+          show: true
         -
           name: 橘子/桔子
-          show: false
+          show: true
           alias_name: ['橘子', '桔子', '柑橘']
         - 
           name: 橙子
-          show: false
+          show: true
           alias_name: ['甜橙']
         -
           name: 香蕉
-          show: false
+          show: true
         -
           name: 葡萄
-          show: false
+          show: true
         -
           name: 桃
-          show: false
+          show: true
         -
           name: 瓜
-          show: false
+          show: true
         -
           name: 奇异果
-          show: false
+          show: true
         -
           name: 芒果
-          show: false
+          show: true
     -
       name: 脱水蔬菜
       show: true
@@ -728,7 +717,7 @@
       show: true
       alias_name: ['腌制', '泡菜', '酱菜']
 -
-  name: 肉禽/蛋制品/豆制品
+  name: 肉禽蛋类
   show: true
   alias_name: ['肉禽', '蛋制品', '豆制品']
   sub:
@@ -754,9 +743,9 @@
       name: 豆腐
       show: true
 -
-  name: 海鲜/水产品
+  name: 水产海鲜
   show: true
-  alias_name: ['海鲜', '水产品']
+  alias_name: ['海鲜', '水产品', '水产']
   sub:
     -
       name: 鱼类
