@@ -1,78 +1,64 @@
 <% title t("profile.show_profile") %>
 
-<dl class="tab">
-    <dt><span><%= t("users.basic_info") %></span></dt>
-    <dd>
-        <b><%= t("user_basic.login_name") %></b><br/>
-        <%= current_user.screen_name %><br/>
-        <b><%= t("general.email_address") %></b><br/>
-        <%= current_user.email %><br/>
-        <b><%= t("user_basic.avatar") %></b><br/>
-        <%= image_tag current_user.get_avatar, :width => AVATAR_WIDTH, :height => AVATAR_HEIGHT, :class => "avatar" %><br/>
-    </dd>
-    <dt><span><%= t("users.preference") %></span></dt>
-    <dd>
-        <h3><%= t("profile.home_page") %></h3>
-        <table>
-            <tr>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th><%= t("profile.show_watching_locations_panel") %></th>
-                <th><%= render "toggle_row", :field => :show_watching_locations_panel %></th>
-            </tr>
-            <tr>
-                <th><%= t("profile.show_joined_groups_panel") %></th>
-                <th><%= render "toggle_row", :field => :show_joined_groups_panel %></th>
-            </tr>
-        </table>
+<div class = "profile_mytab " >
+        <div class="tabContainer ">
+            <div class = "fl selected">
+                <a id= "basic_info" class="tab " href="" data-page = '.basic_info' >
+                <%= t("users.basic_info") %>
+                </a>
+            </div>
+            <div class = "fl unselected">
+                <a class="tab  " href=""  data-page = '.my_groups' >
+                <%= t("profile.my_groups") %>
+                </a>
+            </div>
+            <div class = "fl unselected">
+                <a id= "my_followings"  class="tab  " href=""  data-page = '.my_followings' >
+                <%= t("profile.my_followings") %>
+                </a>
+            </div>
 
-        <hr/>
+            <div class = "fl unselected">
+                <a class="tab  " href=""  data-page = '.my_fans' >
+                <%= t("profile.my_fans") %>
+                </a>
+            </div>
+        </div>
 
-        <h3><%= t("profile.interested_places") %></h3>
-        <%= render :partial => "watched_location", :collection => current_user.profile.watched_locations %>
-        <p><b><%= t_with_colon("profile.watched_distance") %></b>
-        <%= current_user.profile.watched_distance.to_s %>
-        <%= t("profile.wathced_distance_unit") %></p>
+        <div class="tabContent block round">
+                <div class = "basic_info display">
+                     <br/>
+                     <b><%= t("user_basic.login_name") %></b><br/>
+                     <%= current_user.screen_name %><br/>
+                     <b><%= t("general.email_address") %></b><br/>
+                     <%= current_user.email %><br/>
+                     <b><%= t("user_basic.avatar") %></b><br/>
+                     <%= image_tag current_user.get_avatar, :width => AVATAR_WIDTH, :height => AVATAR_HEIGHT, :class => "avatar" %><br/>
+                </div>
 
-        <hr/>
+                <div class = "my_groups display_none" >
+                     <br/>
+                     <dd id="joined_groups">
+                        <%= render :partial => "group", :collection => current_user.groups %>
 
-        <h3><%= t("profile.concern_settings") %></h3>
-        <p>
-            <%= t("profile.receive_mails") %>
-            <%= render "toggle_row", :field => :receive_mails %>
-        </p>
-        <p>
-            <b><%= t_with_colon("profile.concern_days") %></b>
-            <%= current_user.profile.concern_days %>
-        </p>
-    </dd>
-    <dt><span><%= t("profile.my_groups") %></span></dt>
-    <dd id="joined_groups">
-       <%= render :partial => "group", :collection => current_user.groups %>
-    </dd>
-    <dt><span><%= t("profile.my_followings") %></span></dt>
-    <dd>
-        <% current_user.relationships.each do |r| %>
-            <% item = r.get_item %>
-            <%= r.get_item.name if item.respond_to?(:name) %>
-        <% end %>
-    </dd>
-    <dt><span><%= t("users.recent_activities") %></span></dt>
-    <dd/>
-    <dt><span><%= t("profile.my_recent_posted_items") %></span> </dt>
-    <dd>
-        <table>
-            <tr>
-                <th><%= t("general.title") %></th>
-                <th><%= t("comments.comments") %></th>
-            </tr>
+                     </dd>
+                </div>
+                <div class = "my_followings display_none">
+                  <br/>
+                    <dd>
+                        <% current_user.relationships.each do |r| %>
+                            <% item = r.get_item %>
+                            <%= render item %>
+                        <% end %>
+                    </dd>
+                </div>
 
-        </table>
-    </dd>
-</dl>
 
+
+
+            </div>
+        </div>
+    </div>
 <div class="actions">
   <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile), :class => "button" %>
 </div>

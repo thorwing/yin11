@@ -5,13 +5,14 @@
     <table>
       <tr>
         <th><%= t("general.name") %></th>
+        <th>Counts</th>
         <th></th>
       </tr>
 
     <% @tags.each do |tag| %>
       <tr>
         <td><%= link_to tag.name, search_index_path(:tags => [tag]) %></td>
-
+        <td><%= tag.items.size.to_s %></td>
         <td><%= link_to t("general.delete"), tag_path(tag), :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
       </tr>
     <% end %>

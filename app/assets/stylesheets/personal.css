@@ -1,5 +1,5 @@
     .tabContainer{
-       height:30px;
+       height:40px;
     }
 
     .tabContainer .tab{
@@ -7,7 +7,7 @@
     }
     .tabContainer div{
         width: 100px;
-        height: 30px;
+        height: 25px;
         text-align: center;
         padding-top: 10px;
 

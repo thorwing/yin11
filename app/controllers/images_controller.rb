@@ -15,9 +15,10 @@ class ImagesController < ApplicationController
     end
   end
 
-private
+  private
   def find_or_build_image
     @image = Image.new(params[:image])
+    @limit = IMAGES_LIMIT
   end
 
 end

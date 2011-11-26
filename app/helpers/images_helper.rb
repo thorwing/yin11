@@ -15,12 +15,15 @@ module ImagesHelper
   end
 
   def self.process_uploaded_images(item, image_params)
+    item.images.reject{|i| image_params.present? && image_params.include?(i.id.to_s)}.each do |image|
+      image.delete
+    end
+
     if image_params.present?
-      image_params[0..4].each do |image_id|
+      image_params[0..(IMAGES_LIMIT - 1)].each do |image_id|
         image = Image.find(image_id)
         image.send("#{item.class.name.downcase}_id=", item.id)
         image.save
-        #@review.image_ids << image_id
       end
     end
   end

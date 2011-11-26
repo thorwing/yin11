@@ -48,7 +48,10 @@ class FeedsManager
   end
 
   def self.pull_feeds(user)
-    feeds = user.tags.inject([]){ |memo, tag| memo | tag.feeds }
+    feeds = user.tags.inject([]) do  |memo, t|
+      tag = Tag.find(t)
+      memo | tag.feeds
+    end
 
     user.relationships.each do |r|
       followable = r.get_item

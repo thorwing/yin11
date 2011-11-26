@@ -92,7 +92,7 @@ namespace :yin11 do
         #v.near_address = near_address
         #v.area = area
         #v.traffic = traffic
-        v.category = VendorCategories.get_values.first
+        #v.category = VendorCategories.get_values.first
         v.sub_category = sub_category.to_s
         #v.specialty = specialty
         #v.phone = phone

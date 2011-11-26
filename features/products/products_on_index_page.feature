@@ -1,3 +1,4 @@
+#encoding utf-8
 Feature: products listed on index page
   用户可以访问商品检索页，看到商品列表(默认按照热门程度，新上架，降价幅度等,展示所有商品。)
   用户可以看到商品的分类

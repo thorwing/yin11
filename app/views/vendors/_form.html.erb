@@ -7,7 +7,6 @@
 
     <div class="field">
         <b><%= f.label :category, t("general.category") %></b><br/>
-        <%= f.select :category, options_for_select(VendorCategories.get_values, @vendor.category) %>
     </div>
 
     <div class="map_input">

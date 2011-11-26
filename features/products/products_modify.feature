@@ -1,3 +1,4 @@
+#encoding utf-8
 Feature: modify a product
   管理员可以修改商品的展示名, 但不可以修改商品的原始名
   管理员可以看到未启用的商品
