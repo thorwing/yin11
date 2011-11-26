@@ -3,7 +3,9 @@ class Tag
 
   field :name
   key :name
+  #item: "<type> <id>"
   field :items, :type => Array, :default => []
+
 
   #relationships
   embeds_many :feeds

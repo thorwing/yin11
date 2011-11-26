@@ -1,4 +1,4 @@
-.large_topic {height:268px;}
+.large_topic {height:280px;}
 
 .large_topic .slice {overflow:hidden;}
 
@@ -36,7 +36,7 @@
 
 .large_topic .cube.small {
     width: 150px;
-    height: 130px;
+    height: 140px;
     margin: 1px 5px;
     border: 1px solid #000000;
 }
@@ -46,8 +46,8 @@
 }
 
 .large_topic .share_left {
-    width: 218px;
-    height: 268px;
+    width: 240px;
+    height: 280px;
 }
 
 

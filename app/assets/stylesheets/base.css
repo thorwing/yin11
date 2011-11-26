@@ -65,10 +65,10 @@ ul.menu li {
 .grid760 {width: 760px;}
 
 
-.grid960 {min-width: 960px;}
+.f {min-width: 960px;}
 
-.skinny864 {
-    width: 864px;
+.skinny {
+    width: 960px;
 	margin:0 auto;
 	position:relative;
 }
