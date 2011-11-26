@@ -1,15 +1,8 @@
+#encoding utf-8
 Feature: smoke tests for Vendors
 
   Background:
       Given There are minimum seeds data
-
-  Scenario: Guest can see all vendros
-    Given the following vendor exists:
-      | name       | city | street |
-      | 农工商超市 | 上海 | 大华路 |
-    When I go to the vendors page
-    Then I should see "农工商超市"
-
 
   Scenario: User can create vendor via home page and vendors page
     When I log in as "David User"
