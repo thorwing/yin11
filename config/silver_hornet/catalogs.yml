@@ -187,8 +187,9 @@
           show: false
           alais_name: ['海苔', '海苔卷']
 -
-  name: 饮料
+  name: 饮料冲饮
   show: true
+  alias_name: ['饮料', '冲饮']
   sub:
     -
       name: 碳酸饮料
@@ -218,10 +219,6 @@
       name: 咖啡饮料
       show: true
       alias_name: ['拿铁', '利趣', '摩卡', '鸳鸯']
--
-  name: 冲饮
-  show: true
-  sub:
     -
       name: 奶粉/豆奶粉
       show: true
@@ -259,16 +256,15 @@
           name: 咖啡豆/咖啡粉
           show: false
           alias_name: ['咖啡豆', '咖啡粉']
-        - 
+        -
           name: 咖啡辅料（伴侣/奶精/方糖）
           show: false
           alias_name: ['伴侣', '奶精', '方糖', '咖啡伴侣']
         -
           name: 咖啡礼盒
           show: false
-          alias_name: ['礼盒']
 -
-  name: 奶制品
+  name: 奶类制品
   show: true
   sub:
     -
@@ -290,10 +286,62 @@
       name: 奶酪
       show: true
 -
-  name: 茶
+  name: 酒类茶类
   show: true
-  alias_name: ['茶叶']
+  alias_name: ['茶', '茶叶', '酒']
   sub:
+    -
+      name: 啤酒
+      show: true
+    -
+      name: 葡萄酒
+      show: true
+    -
+      name: 白酒
+      show: true
+    -
+      name: 黄酒
+      show: true
+    -
+      name: 洋酒
+      show: true
+      sub:
+        -
+          name: 白兰地
+          show: false
+        -
+          name: 威士忌
+          show: false
+        -
+          name: 伏特加
+          show: false
+        -
+          name: 朗姆
+          show: false
+        -
+          name: 金酒
+          show: false
+        -
+          name: 龙舌兰
+          show: false
+        -
+          name: 威末
+          show: false
+        -
+          name: 波特
+          show: false
+        -
+          name: 利口
+          show: false
+    -
+      name: 滋补酒
+      show: true
+    -
+      name: 清酒
+      show: true
+    -
+      name: 预调酒
+      show: true
     -
       name: 绿茶
       show: true
@@ -440,66 +488,11 @@
           show: false
         -
           name: 速溶茶 
-          show: false 
+          show: false
 -
-  name: 酒
+  name: 粮油干货
   show: true
-  sub:
-    -
-      name: 啤酒
-      show: true
-    -
-      name: 葡萄酒
-      show: true
-    -
-      name: 白酒
-      show: true
-    -
-      name: 黄酒
-      show: true
-    -
-      name: 洋酒
-      show: true
-      sub:
-        -
-          name: 白兰地
-          show: false
-        -
-          name: 威士忌
-          show: false
-        - 
-          name: 伏特加
-          show: false
-        -
-          name: 朗姆
-          show: false 
-        -
-          name: 金酒
-          show: false
-        -
-          name: 龙舌兰
-          show: false
-        - 
-          name: 威末
-          show: false
-        -
-          name: 波特
-          show: false
-        -
-          name: 利口
-          show: false
-    -
-      name: 滋补酒
-      show: true
-    -
-      name: 清酒
-      show: true
-    -
-      name: 预调酒
-      show: true
--
-  name: 粮油
-  show: true
+  alias_name: ['粮油', '干货']
   sub:
     -
       name: 米
@@ -578,6 +571,27 @@
         -
           name: 糙米
           show: false
+    -
+      name: 银耳/白木耳
+      show: true
+      alias_name: ['银耳', '白木耳']
+    -
+      name: 黑木耳
+      show: true
+    -
+      name: 百合
+      show: true
+    -
+      name: 莲子
+      show: true
+    -
+      name: 菌菇
+      show: true
+      alias_name: ['食用菌菇']
+    -
+      name: 桂圆干/龙眼
+      show: true
+      alias_name: ['龙眼', '桂圆干']
 -
   name: 厨房调味
   show: true
@@ -640,32 +654,7 @@
       show: true
       alias_name: ['火锅底料', '火锅']
 -
-  name: 干货
-  show: true
-  sub:
-    -
-      name: 银耳/白木耳
-      show: true
-      alias_name: ['银耳', '白木耳']
-    -
-      name: 黑木耳
-      show: true
-    -
-      name: 百合
-      show: true
-    -
-      name: 莲子
-      show: true
-    -
-      name: 菌菇
-      show: true
-      alias_name: ['食用菌菇']
-    -
-      name: 桂圆干/龙眼
-      show: true
-      alias_name: ['龙眼', '桂圆干']
--
-  name: 新鲜蔬菜水果
+  name: 蔬菜水果
   show: true
   alias_name: ['水果', '蔬菜']
   sub:
@@ -728,7 +717,7 @@
       show: true
       alias_name: ['腌制', '泡菜', '酱菜']
 -
-  name: 肉禽/蛋制品/豆制品
+  name: 肉禽蛋类
   show: true
   alias_name: ['肉禽', '蛋制品', '豆制品']
   sub:
@@ -754,9 +743,9 @@
       name: 豆腐
       show: true
 -
-  name: 海鲜/水产品
+  name: 水产海鲜
   show: true
-  alias_name: ['海鲜', '水产品']
+  alias_name: ['海鲜', '水产品', '水产']
   sub:
     -
       name: 鱼类
