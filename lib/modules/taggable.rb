@@ -36,7 +36,8 @@ module Taggable
       end
 
       #remove the item from the removed tag
-      old_tags = tags_was.present? ? tags_was : []
+       old_tags = tags_was.present? ?  tags_was: []
+
       removed_tags = Tag.any_in(name: old_tags - tags)
       removed_tags.each do |tag|
         if tag.items.include?(item_str)

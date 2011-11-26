@@ -68,13 +68,15 @@
       </div>
 
       <div class="clearfix">
+       <% if @product.description.present? %>
 
-      <h2><b><%= t("products.description") %></b></h2>
-      </div>
+      <h2 align="center"><b><%= t("products.description") %></b></h2>
+
       <div class="product_desc_box">
         <%= raw @product.description %>
       </div>
-
+       <%end%>
+       </div>
       <!--<hr size=2 color=#fe726b>-->
 
       <div id="reviews">

@@ -40,6 +40,7 @@ $(function(){     //change the background of the tabs when
 
           $(this).removeClass("unselected");
           $(this).addClass("selected");
+          $(this).addClass("color: #ffffff;")
      })
 })
 

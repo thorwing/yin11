@@ -4,6 +4,7 @@
 
     .tabContainer .tab{
         font-size: 16px;
+
     }
     .tabContainer div{
         width: 100px;
@@ -14,13 +15,15 @@
     }
 
     .tabContainer .unselected{
-        background-image: url("tab.png");
+        /*background-image: url("tab.png");*/
         background-repeat: no-repeat;
     }
     .tabContainer .selected{
         background-color: #386fb2;
-        background-image: url("tab_clicked.png");
+        /*background-image: url("tab_clicked.png");*/
         background-repeat: no-repeat;
+
+
     }
 
 	#contentHolder .preloader{
