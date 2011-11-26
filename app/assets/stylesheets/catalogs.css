@@ -1,11 +1,15 @@
 #catalogs .cat {
     display: inline-block;
-    line-height: 20px;
+    line-height: 18px;
 }
 
 #catalogs .cat.first {
     font-weight: bolder;
-    padding-right: 5px;
+    padding: 5px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:1px solid #dbdbdb;
+    background: white;
 }
 
 #catalogs .cat.second {
@@ -18,5 +22,5 @@
 }
 
 #catalogs ul {
-    left:0px; top:0px;
+    left:0px; top:5px;
     min-width: 200px;}

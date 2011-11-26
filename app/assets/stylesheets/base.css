@@ -8,11 +8,8 @@
 .block {
     position:relative;
     display:block;
-    clear: both;
-}
-
-.block.fix {
     overflow:hidden;
+    clear: both;
 }
 
 .block.square {
