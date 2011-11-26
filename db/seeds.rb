@@ -172,23 +172,23 @@ require "topic"
     end
   end
 
-  #p "generating images"
-  #images = YAML::load(File.open("app/seeds/images.yml"))
-  #if images.present? && images.size > 0
-  #  images.each do |i|
-  #    begin
-  #      image = Image.create! do |image|
-  #        image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
-  #        #Only allow topics'' images here
-  #        #image.product_id = i[:product_id]
-  #        #image.article_id = i[:article_id]
-  #        image.topic_id = i[:topic_id]
-  #      end
-  #
-  #    rescue Exception => exc
-  #      p i[:file_name]
-  #      p exc.message
-  #      p exc.backtrace
-  #    end
-  #  end
-  #end
+  p "generating images"
+  images = YAML::load(File.open("app/seeds/images.yml"))
+  if images.present? && images.size > 0
+    images.each do |i|
+      begin
+        image = Image.create! do |image|
+          image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
+          #Only allow topics'' images here
+          #image.product_id = i[:product_id]
+          #image.article_id = i[:article_id]
+          image.topic_id = i[:topic_id]
+        end
+
+      rescue Exception => exc
+        p i[:file_name]
+        p exc.message
+        p exc.backtrace
+      end
+    end
+  end
