@@ -9,8 +9,8 @@
         <div>
             <div class = "fl">
                 <div class="fr "><%= f.label :images, t("images.images") %></div >
-                <div id="image_uploader" class="fl " width = "50px"></div>
-                <div id="images_container" class="block fl">
+                <div id="image_uploader" class="fl m5" width = "50px"></div>
+                <div id="images_container" class="block fl m5">
                     <%= render :partial => "images/single_image_field",  :collection => review.images, :as => :image %>
                 </div>
             </div>
@@ -18,13 +18,13 @@
             <div class = "fr">
                 <% unless current_user.provider == SELF_PROVIDER %>
                     <div class="fl">
-                        <div class= "fl"><%= check_box_tag  :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %></div>
-                        <div class= "fl">
-                            <%= link_to image_tag("third_party/#{current_user.provider}.png", :border => 0, :alt => t("syncs.sites.#{current_user.provider}"))%>
+                        <div class= "fl m5"><%= check_box_tag  :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %></div>
+                        <div class= "fl m5">
+                            <%= link_to image_tag("third_party/#{current_user.provider}_24.png", :border => 0, :alt => t("syncs.sites.#{current_user.provider}"))%>
                         </div>
                     </div>
                 <%end%>
-                <div class= "fr"><%= f.submit t("reviews.submit"), :class => "button" %> </div>
+                <div class= "fr m5"><%= f.submit t("reviews.submit"), :class => "button" %> </div>
             </div>
        </div>
     </div>
