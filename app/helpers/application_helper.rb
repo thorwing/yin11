@@ -148,9 +148,9 @@ module ApplicationHelper
           queueSizeLimit  : 24,
           multi           : true,
           auto            : true,
-          buttonImg       : '/uploadify/upload2.gif',
-          width           : 12,
-          height          : 12,
+          buttonImg       : '/uploadify/upload.gif',
+          width           : 32,
+          height          : 32,
           buttonText      : "",
           scriptData      : {
             '_http_accept': 'application/javascript',

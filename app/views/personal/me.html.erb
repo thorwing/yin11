@@ -1,5 +1,9 @@
 <% meta_tag t("site.introduction") %>
-
+<div class="fr">
+    <div id="control_panel">
+        <%= render "user_panel" %>
+    </div> <!--end of control_panel -->
+</div>
 <div class="fl">
     <div>
         <%= render "shared/review_fields", :review => Review.new %>
@@ -27,10 +31,5 @@
     </div>
 
 	<div class="clear"></div>
-    </div>
-
-<div class="fr">
-    <div id="control_panel">
-        <%= render "user_panel" %>
-    </div> <!--end of control_panel -->
 </div>
+
