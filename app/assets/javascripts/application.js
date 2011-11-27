@@ -168,18 +168,6 @@ $(document).ready(function(){
 }*/
 });
 
-//$(document).ready(function(){
-//    $(".severity_radio").change(function(){
-//        $("label.severity_image").removeClass("severity_0");
-//        $("label.severity_image").removeClass("severity_1");
-//        $("label.severity_image").removeClass("severity_2");
-//        $("label.severity_image").removeClass("severity_3");
-//
-//        var value = $(".severity_radio:checked").val();
-//        $("label.severity_image").addClass("severity_" + value);
-//    });
-//});
-
 //JQuery UI
 $(document).ready(function() {
     $(".date_picker").datepicker({ maxDate: +0, minDate: -7 });
@@ -216,65 +204,7 @@ $(function() {
 });
 
 
-//$(function() {
-//    $("ul.thumb li").hover(function() {
-//        $(this).css({'z-index' : '10'}); /*Add a higher z-index value so this image stays on top*/
-//        $(this).find('img').addClass("hover").stop() /* Add class of "hover", then stop animation queue buildup*/
-//            .animate({
-//                marginTop: '-110px', /* The next 4 lines will vertically align this image */
-//                marginLeft: '-110px',
-//                top: '50%',
-//                left: '50%',
-//                width: '174px', /* Set new width */
-//                height: '174px', /* Set new height */
-//                padding: '20px'
-//            }, 200); /* this value of "200" is the speed of how fast/slow this hover animates */
-//        } , function() {
-//        $(this).css({'z-index' : '0'}); /* Set z-index back to 0 */
-//        $(this).find('img').removeClass("hover").stop()  /* Remove the "hover" class , then stop animation queue buildup*/
-//            .animate({
-//                marginTop: '0', /* Set alignment back to default */
-//                marginLeft: '0',
-//                top: '0',
-//                left: '0',
-//                width: '100px', /* Set width back to default */
-//                height: '100px', /* Set height back to default */
-//                padding: '5px'
-//            }, 400);
-//    });
-//});
-
-//$(function() {
-//    $(':checkbox[id^="review_faults"]').change(function(){
-//        var n = $(".checkbox_group input:checked").length;
-//        var severity = $(".severity");
-//        severity.removeClass("zero one two three");
-//        if (n == 0) {
-//            severity.addClass("zero");
-//        }
-//        else if(n == 1) {
-//            severity.addClass("one");
-//        }
-//        else if(n == 2) {
-//            severity.addClass("two");
-//        }
-//        else{
-//            severity.addClass("three");
-//        }
-//    });
-//});
-
-
 $(function() {
-//    $('.char_aware').input(function() {
-//        var max = parseInt ($(this).data('comment_max_len'));
-//        var count = $(this).val().length;
-//        var remaining = max  - count;
-//        var mystring = $(this).val();
-//        var chineseRegex = /[^\x00-\xff]/g;
-//        var strLength = mystring.replace(chineseRegex,"**").length;
-//        $('span.char_counter').html('还可输入' + remaining + '字符'+ mystring+ ':'+ strLength);
-//    });
     var bind_name = '';
 
     if (navigator.userAgent.indexOf("MSIE") != -1)

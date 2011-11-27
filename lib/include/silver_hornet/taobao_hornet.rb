@@ -271,8 +271,8 @@ class SilverHornet::TaobaoHornet
               product.save!
               #calculate the product amount
               @product_count+=1
-              p "Insert #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
-              #p "Insert #{product.name} from Taobao Mall"
+              #p "Insert #{product.name} of tag: #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
+              p "Insert #{product.name} from Taobao Mall"
             else
               #p "Somethings goes wrong when save the product"
               p "Invalid #{product.errors.to_s} of #{product.url}"
@@ -281,8 +281,8 @@ class SilverHornet::TaobaoHornet
             if product.changed?
               #update the change
               product.save!
-              p "Update: #{product.name} of #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
-              #p "Update: #{product.name} from Taobao Mall"
+              #p "Update: #{product.name} of #{product.tags} of Catalogs: #{product.catalogs.all.to_a} from Taobao Mall"
+              p "Update: #{product.name} from Taobao Mall"
             end
           end
         end
