@@ -6,7 +6,7 @@
    <!--unless review.images.first.picture.path.blank?-->
   <% unless review.images.first.blank? %>
       <% for image in review.images do%>
-          <a class="thumbnail" rel="lightbox-group" href ="<%=image.picture_url%>">
+          <a class="thumbnail" rel="facebox" href ="<%=image.picture_url%>">
             <%= image_tag image.picture_url, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :alt=> "review_image"%>
           </a><br/>
       <% end %>

@@ -2,10 +2,6 @@
 //= require jquery_ujs
 //= require_self
 //= require swfobject
-//= require slimbox2
-//= require kandytabs.pack
-//= require jquery-easing-compatibility.1.2.pack
-//= require jquery-easing-1.3.pack
 //= require jquery.tokeninput
 //= require jquery.pageless.min
 //= require jquery.metadata
@@ -20,6 +16,8 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+
+// for Silder
 var theInt = null;
 var $crosslink, $navthumb;
 var curclicked = 0;
@@ -88,12 +86,6 @@ function remove_fields(link) {
   $(link).parent().hide();
 }
 
-function show_tab_content(link, content) {
-  $(link).parents(".tab_header").find(".active").removeClass("active");
-  $(link).parent().addClass("active");
-  $(link).parents(".tab_control").children("div.tab_content").replaceWith(content);
-}
-
 function delete_image(link, limit) {
     $(link).parent().remove();
     var image_count = $('#images_container .image').size();
@@ -117,17 +109,11 @@ $(function() {
         });
     }
 
-    tokenize_input("#watch_tags", "/tags.json", 10);
-    tokenize_input("#article_region_tokens", "/locations/regions.json", 5);
     tokenize_input("#article_tags_string", "/tags.json", 10);
-    tokenize_input("#article_vendor_token", "/vendors.json", 1);
     tokenize_input("#topic_tags_string", "/tags.json", 10);
     tokenize_input("#product_tags_string", "/tags.json", 10);
-    tokenize_input("#review_tags_string", "/tags.json", 10);
-    tokenize_input("#vendor_fields #review_vendor_token", "/vendors.json", 1);
-    tokenize_input("#vendor_fields #product_vendor_token", "/vendors.json", 1);
     tokenize_input("#group_tags_string", "/tags.json", 10);
-    tokenize_input("#added_foods", "/tags.json", 5);
+    tokenize_input("#vendor_fields #product_vendor_token", "/vendors.json", 1);
 });
 
 $(function() {
@@ -138,34 +124,13 @@ $(function() {
         theme_advanced_statusbar_location : "bottom",
         theme_advanced_resizing : true
     });
-
-//    tinyMCE.init({
-//        mode : "textareas",
-//        theme : "advanced",
-//        editor_selector : "rich_editor"
-//    });
-//     if ($('textarea').length > 0) {
-//       var data = $('.rich_editor');
-//       $.each(data, function(i) {
-//         CKEDITOR.replace(data[i].id);
-//       });
-//     }
-  });
+});
 
 //When Dom is ready:
 $(document).ready(function(){
-//    $.facebox.settings.closeImage = url('/images/facebox/closelabel.png');
-//    $.facebox.settings.loadingImage = url('/images/facebox/loading.gif');
+    //    $.facebox.settings.closeImage = url('/images/facebox/closelabel.png');
+    //    $.facebox.settings.loadingImage = url('/images/facebox/loading.gif');
     $('a[rel*=facebox]').facebox();
-    $('a[rel*=lightbox]').slimbox();
-
-    /*if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
-	jQuery(function($) {
-		$("a[rel^='lightbox']").slimbox({*//* Put custom options here *//*}, null, function(el) {
-			return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));
-		});
-	});
-}*/
 });
 
 //JQuery UI
@@ -195,14 +160,6 @@ $(function () {
         }
     });
 });
-
-$(function() {
-    $("dl.tab").KandyTabs({
-        classes: "kandyTabs",
-        trigger:"click"
-    });
-});
-
 
 $(function() {
     var bind_name = '';
