@@ -26,7 +26,6 @@ Feature: tests for general User module
     And I follow "<user_name>" within "#user_panel"
     Then I should be on <user_name>'s profile page
     And I should see "基本信息"
-    And I should see "偏好设定"
     When I log out
     And I log in as "Kate Tester"
     And I go to the reviews page

@@ -1,6 +1,6 @@
 class VendorsController < ApplicationController
-  before_filter(:only => [:new, :create, :mine]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:edit, :update, :destroy]) { |c| c.require_permission :administrator }
+  #before_filter(:only => [:new, :create, :mine]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:new, :edit, :update, :destroy]) { |c| c.require_permission :editor }
   #before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Vendor.name, c.params[:id], true)}
   layout :resolve_layout
 
@@ -32,7 +32,7 @@ class VendorsController < ApplicationController
   # GET /vendors/new
   # GET /vendors/new.xml
   def new
-    @vendor = Vendor.new(:name => (params[:name].present? ? params[:name] : ""), :city => current_city.name)
+    @vendor = Vendor.new(:name => (params[:name].present? ? params[:name] : ""))
 
     respond_to do |format|
       if params[:popup]
@@ -52,7 +52,6 @@ class VendorsController < ApplicationController
   # POST /vendors.xml
   def create
     @vendor = Vendor.new(params[:vendor])
-    @vendor.enabled = false
     @vendor.creator = current_user
 
     respond_to do |format|

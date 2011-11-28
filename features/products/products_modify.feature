@@ -76,6 +76,7 @@ Feature: modify a product
     Then I should see "山西陈醋"
 
   Scenario Outline: 访客, 编辑, 注册用户不可以修改商品
+     When I log in as "<user>"
     Given There are more products
     When I view the details of product "苏北草母鸡"
     And I should not see "修改"

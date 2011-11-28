@@ -10,3 +10,4 @@ production:
    secret: "vKbwV$t=KdOfZ2NEU^TQe5vd9-jB!wFPl2y4tOY*"      #consumer_key_secret
    url:    "http://www.yinkuaizi.com"
    callback: "http://www.yinkuaizi.com/syncs/sohu/callback"
+   add_blog_url: "http://api.t.sohu.com/statuses/update.json"
