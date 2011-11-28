@@ -27,7 +27,8 @@ Given /^There are some groups$/ do
 end
 
 Given /^There are some reviews$/ do
-  Factory(:review, :title => "牛奶坏了", :tags_string => "牛奶")
+
+  Factory(:review, :content => "牛奶牛奶牛奶!", :author => @normal_user)
 end
 
 

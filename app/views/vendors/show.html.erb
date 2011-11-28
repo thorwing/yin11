@@ -5,12 +5,7 @@
             <%= render "shared/follow_field", :target => @vendor %>
         <% end %>
 
-        <% if current_user_has_permission?(:administrator) %>
-          <div class="actions">
-            <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %>
-            <%= link_to t("general.delete"), @vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-          </div>
-        <% end %>
+
     </div>
 
     <% @vendor.products.each_slice(PRODUCTS_SLICE) do |slice| %>
@@ -27,7 +22,8 @@
 
 <% if current_user_has_permission?(:editor) %>
     <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %> |
-    <%= link_to t("general.delete"), @vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+    <%= link_to t("general.delete"), @vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %><br/>
+    <%= link_to t("vendors.new_product"), new_product_path(@product), :class => "button" %>
     <br/>
 <% end %>
 

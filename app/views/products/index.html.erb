@@ -16,4 +16,7 @@
     <div class="ar"><%= paginate @products %></div>
 </div>
 
+<% if current_user_has_permission? :editor %>
+      <%= link_to t("vendors.new_product"), new_product_path(@product), :class => "button" %>
+<% end %>
 
