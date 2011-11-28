@@ -3,6 +3,7 @@ Feature: display topics to users
   在专题的索引页面，专题会被列显示
   在专题项中，相关产品将以分数来排序
 
+  在专题的详细页面，相关的菜谱和分享会被显示
   在专题的详细页面，和专题相关（通过标签）的所有产品将会被显示
 
   Background:
@@ -32,3 +33,5 @@ Feature: display topics to users
     Then I should see "鸭"
     Then I should see "鱼"
     Then I should see "猪肉"
+
+  Scenario: 在专题的详细页面，相关的菜谱和分享会被显示

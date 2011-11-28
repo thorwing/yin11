@@ -18,11 +18,11 @@
     <% end %>
     <%= t("site.name") %><%= " " + @content_for_title if show_title? %></title>
 </head>
-<body class="f960">
+<body>
 
 <%= display_flash %>
 <div id="main">
-  <div id="container" class="skinny">
+  <div id="container">
     <%= render "shared/quick_login"  %>
     <%= render "shared/top_menu" %>
     <div id="content_area" class="block">

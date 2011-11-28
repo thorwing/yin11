@@ -1,15 +1,10 @@
 <% meta_tag t("site.introduction") %>
-<div class="fr">
-    <div id="control_panel">
-        <%= render "user_panel" %>
-    </div> <!--end of control_panel -->
-</div>
-<div class="fl">
+<div class="grid_9 fl">
     <div>
         <%= render "shared/review_fields", :review => Review.new %>
     </div>
 
-    <div class = "mytab grid642">
+    <div class = "mytab">
         <div class="tabContainer ">
             <div class = "fl selected ">
                 <a class="tab font_color_selected" href="/personal/all_feeds" data-page = '/personal/all_feeds' >
@@ -31,5 +26,11 @@
     </div>
 
 	<div class="clear"></div>
+</div>
+
+<div class="grid_3 fl ">
+    <div id="control_panel">
+        <%= render "user_panel" %>
+    </div> <!--end of control_panel -->
 </div>
 

@@ -28,11 +28,6 @@
     letter-spacing: -1px;
 }
 
-.large_topic .cube span.title {
-    font-size: 15px;
-    font-weight: bold;
-}
-
 .large_topic .cube.small {
     width: 120px;
     height: 120px;

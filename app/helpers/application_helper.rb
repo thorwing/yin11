@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def render_menu(name, path)
-    link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) )
+    link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) + " f16" )
   end
 
   def link_to_add_fields(name, f, association)
