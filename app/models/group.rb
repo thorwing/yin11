@@ -27,6 +27,10 @@ class Group
     (user and user.id == self.creator_id) ? true : false
   end
 
+  def is_member_of?(user)
+    (user and self.members.include?(user)) ? true : false
+  end
+
   def join!(user)
     self.member_ids << user.id
     self.save!

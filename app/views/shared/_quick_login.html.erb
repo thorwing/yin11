@@ -1,8 +1,10 @@
 <div id="quick_login" class="clearfix">
   <div class="fr">
+      <span class="mr20"><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_yin11_on_sina"), YIN11_SINA_WEIBO %></span>
+
       <% if current_user %>
         <span class="nav_menu">
-            <%= link_to(current_user.screen_name, profile_path(current_user.profile), :class => "menu_title") %>
+            <%= link_to(image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow") + current_user.screen_name, profile_path(current_user.profile), :class => "menu_title") %>
             <ul>
                 <li><%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %></li>
                 <li><%= link_to t("menu.logout"), logout_path %></li>

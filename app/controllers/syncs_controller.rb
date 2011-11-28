@@ -165,9 +165,7 @@ class SyncsController < ApplicationController
 
       user = sync_account(response, client)
 
-      if user.present?
-        flash[:notice] = t("notices.welcome_back", :name => user.screen_name)
-      else
+      unless user.present?
         flash[:notice] = t("syncs.access_failed")
       end
 

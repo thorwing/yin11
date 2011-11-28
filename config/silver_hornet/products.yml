@@ -31,7 +31,8 @@
     product_price: '#info .price'
     next_link_text: '下一页'
 
-中粮我买网(“组合产品”的页面比较特殊，该类商品暂时无法获取信息):
+#(“组合产品”的页面比较特殊，该类商品暂时无法获取信息):
+中粮我买网:
   skipped: true
   entries:
     ["http://www.womai.com/"]

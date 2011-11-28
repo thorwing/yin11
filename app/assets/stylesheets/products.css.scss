@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#products_list .pagination
-{
-    text-align:right;
-}
-
 .small_product {
     float: left;
     width: 100px;
@@ -24,12 +19,12 @@
     /*-webkit-column-rule: 5px solid #333;*/
     -webkit-column-width: 220px;
 
-    -moz-column-count: 5;
+    -moz-column-count: 4;
     -moz-column-gap: 20px;
     /*-moz-column-rule: 5px solid #333;*/
     -moz-column-width: 220px;
 
-    column-count: 5;
+    column-count: 4;
     column-gap: 10px;
     /*column-rule: 5px solid #333;*/
     column-width: 220px;

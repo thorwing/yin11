@@ -1,9 +1,17 @@
 <% title @vendor.name %>
+    <div>
+        <%= "#{@vendor.products.count} #{t("products.products")}" %>
+        <% if current_user_has_permission? :normal_user %>
+            <%= render "shared/follow_field", :target => @vendor %>
+        <% end %>
 
-<div class="two_columns_container" >
-    <div class="left_column">
-
-      <%= @vendor.products.count %>
+        <% if current_user_has_permission?(:administrator) %>
+          <div class="actions">
+            <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %>
+            <%= link_to t("general.delete"), @vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+          </div>
+        <% end %>
+    </div>
 
     <% @vendor.products.each_slice(PRODUCTS_SLICE) do |slice| %>
         <div class="products_slice">
@@ -13,21 +21,13 @@
             </div>
           <% end %>
         </div>
-    <% end %>
-
-        <div class="actions">
-            <% if current_user_has_permission? :normal_user %>
-                <%= render "shared/follow_field", :target => @vendor %>
-            <% end %>
-        </div>
-        <div class="nav_links">
-            <%= link_to t("general.back_to_list"), vendors_path %>
-        </div>
     </div>
-</div>
+
+<%end%>
 
 <% if current_user_has_permission?(:editor) %>
     <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %> |
     <%= link_to t("general.delete"), @vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
     <br/>
 <% end %>
+

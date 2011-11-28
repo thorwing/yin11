@@ -41,7 +41,7 @@ module Taggable
       removed_tags = Tag.any_in(name: old_tags - tags)
       removed_tags.each do |tag|
         if tag.items.include?(item_str)
-          tag.items.remove(item_str)
+          tag.items.delete!(item_str)
           tag.save
         end
       end

@@ -1,6 +1,5 @@
 class TopicsController < ApplicationController
   before_filter(:except => [:index, :show]) { |c| c.require_permission :editor }
-  layout "two_columns"
 
   # GET /topics
   # GET /topics.json

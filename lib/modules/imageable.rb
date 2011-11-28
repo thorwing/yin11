@@ -17,15 +17,15 @@ module Imageable
     def get_first_image()
       if self.respond_to?(:image)
         if self.image && self.image.picture_url
-          self.image.picture_url
+          return self.image.picture_url
         end
       elsif self.respond_to?(:images)
         if self.images && self.images.size > 0
-          self.images.first.picture_url
+          return self.images.first.picture_url
         end
-      else
-        "default_article.jpg"
       end
+
+      "default_article.jpg"
     end
   end
 

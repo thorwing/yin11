@@ -26,15 +26,14 @@ $(function(){
                 $('#contentHolder').html(msg);
                 /* After page was received, add it to the cache for the current hyperlink: */
                 element.data('cache',msg);
-//                $('a[rel*=lightbox]').slimbox();   must be in the callback function, because
-                $('a[rel*=lightbox]').slimbox();
+                //must be in the callback function, because the content is newly loaded
+                $('a[rel*=facebox]').facebox();
             });
-//            $('a[rel*=lightbox]').slimbox();  this is wrong, because it is outside the call back function, and may be executed  before the call back function
         }
         else
         {
             $('#contentHolder').html(element.data('cache'));
-            $('a[rel*=lightbox]').slimbox();
+            $('a[rel*=facebox]').facebox();
 
         }
         e.preventDefault();

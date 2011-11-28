@@ -13,6 +13,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   @@brand_list ||=[]
   @@dic_words||=[]
   @@cat_words ||={}
+  @@catalogs||=[]
 
   def initialize
     #load the segmentation dictionaries
@@ -49,14 +50,18 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     yaml.each do |item|
       read(item)
     end
-    @@cat_words ={}
+    @@catalogs = []
     Catalog.all.each do |cat|
-        if cat.alias_name.present?
-          @@cat_words[cat]=cat.alias_name | seg_word(cat.name)
-        else
-          @@cat_words[cat] = seg_word(cat.name)
-        end
+      @@catalogs << cat
     end
+    #@@cat_words ={}
+    #Catalog.all.each do |cat|
+    #    if cat.alias_name.present?
+    #      @@cat_words[cat]=cat.alias_name | seg_word(cat.name)
+    #    else
+    #      @@cat_words[cat] = seg_word(cat.name)
+    #    end
+    #end
   end
 
   def read(item)
@@ -451,106 +456,45 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     return words
   end
 
-  #def get_product_catalog(cat_name, product)
-  #  try do
-  #    cat_tags = seg_word(cat_name)
-  #    @@catalogs.each do |cat|
-  #      cat_words=[]
-  #      if cat.alias_name.present?
-  #        cat_words=cat.alias_name | seg_word(cat.name)
-  #      else
-  #        cat_words = seg_word(cat.name)
-  #      end
-  #      cat_words.each do |cat_word|
-  #        if cat_tags.include?(cat_word)
-  #          product.catalogs << cat unless product.catalogs.include?(cat)
-  #          if cat.children.present?
-  #            cat.children.all.each do |child|
-  #              unless product.catalogs.include?(child)
-  #                if seg_word(product.name).include?(child.name)
-  #                  product.catalogs << child
-  #                  break
-  #                else
-  #                  if child.alias_name.present?
-  #                    child.alias_name.each do |alias_name|
-  #                      if seg_word(product.name).include?(alias_name)
-  #                        product.catalogs << child
-  #                        break
-  #                      end
-  #                    end
-  #                  end
-  #                end
-  #              else
-  #                break
-  #              end
-  #            end
-  #          end
-  #        end
-  #      end
-  #    end
-  #    if product.catalogs.size > 1
-  #      word = seg_word(product.name)
-  #      catalogs ={}
-  #      product.catalogs.each do |catalog|
-  #        if catalogs[catalog.ancestry].present?
-  #          catalogs[catalog.ancestry] = catalogs[catalog.ancestry].to_s + "," + catalog.id.to_s
-  #        else
-  #          catalogs[catalog.ancestry] = catalog.id.to_s
-  #        end
-  #      end
-  #      catalogs.each do |(key, value)|
-  #        cat_id = value.split(",").uniq
-  #        if cat_id.size > 1
-  #          cat_id.each do |id|
-  #            is_related = false
-  #            if Catalog.find(id).alias_name.present?
-  #              words = Catalog.find(id).alias_name | seg_word(Catalog.find(id).name)
-  #              words.each do |w|
-  #                if word.include?(w)
-  #                  is_related = true
-  #                end
-  #              end
-  #            else
-  #              words = seg_word(Catalog.find(id).name)
-  #              words.each do |w|
-  #                if word.include?(w)
-  #                  is_related = true
-  #                end
-  #              end
-  #            end
-  #            unless is_related
-  #              product.catalogs.delete(Catalog.find(id))
-  #            end
-  #          end
-  #        end
-  #        if product.catalogs.size < 1
-  #          product.catalogs <<  Catalog.find(cat_id[0]) unless product.catalogs.include?(Catalog.find(cat_id[0]))
-  #        end
-  #      end
-  #    end
-  #  end
-  #end
-
-    def get_product_catalog(cat_name, product)
+  def get_product_catalog(cat_name, product)
     try do
-      # cat_tags is the set of segmented words of the catalog name from the site we spider
-      cat_tags = seg_word(cat_name.split(":")[0])
-      word = seg_word(product.name)
-      @@cat_words.each do |(cat,cat_words)|
+      cat_tags = seg_word(cat_name)
+      @@catalogs.each do |cat|
+        cat_words=[]
+        if cat.alias_name.present?
+          cat_words=cat.alias_name | seg_word(cat.name)
+        else
+          cat_words = seg_word(cat.name)
+        end
         cat_words.each do |cat_word|
-          # foreach word in cat_words, check if it is related to the catalog from the site we spider
-          # if it is related, set the product to corresponding catalog under our site
           if cat_tags.include?(cat_word)
             product.catalogs << cat unless product.catalogs.include?(cat)
-          end
-          # check if it is related to the segmented product tags from the site we spider
-          # if it is related, set the product to corresponding catalog under our site
-          if word.include?(cat_word)
-            product.catalogs << cat unless product.catalogs.include?(cat)
+            if cat.children.present?
+              cat.children.all.each do |child|
+                unless product.catalogs.include?(child)
+                  if seg_word(product.name).include?(child.name)
+                    product.catalogs << child
+                    break
+                  else
+                    if child.alias_name.present?
+                      child.alias_name.each do |alias_name|
+                        if seg_word(product.name).include?(alias_name)
+                          product.catalogs << child
+                          break
+                        end
+                      end
+                    end
+                  end
+                else
+                  break
+                end
+              end
+            end
           end
         end
       end
       if product.catalogs.size > 1
+        word = seg_word(product.name)
         catalogs ={}
         product.catalogs.each do |catalog|
           if catalogs[catalog.ancestry].present?
@@ -560,7 +504,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
           end
         end
         catalogs.each do |(key, value)|
-          cat_id = value.split(",")
+          cat_id = value.split(",").uniq
           if cat_id.size > 1
             cat_id.each do |id|
               is_related = false
@@ -585,11 +529,72 @@ class SilverHornet::ProductsSite < SilverHornet::Site
             end
           end
           if product.catalogs.size < 1
-            product.catalogs << Catalog.find(cat_id[0]) unless product.catalogs.include?(Catalog.find(cat_id[0]))
+            product.catalogs <<  Catalog.find(cat_id[0]) unless product.catalogs.include?(Catalog.find(cat_id[0]))
           end
         end
       end
     end
   end
+
+  #  def get_product_catalog(cat_name, product)
+  #  try do
+  #    # cat_tags is the set of segmented words of the catalog name from the site we spider
+  #    cat_tags = seg_word(cat_name.split(":")[0])
+  #    word = seg_word(product.name)
+  #    @@cat_words.each do |(cat,cat_words)|
+  #      cat_words.each do |cat_word|
+  #        # foreach word in cat_words, check if it is related to the catalog from the site we spider
+  #        # if it is related, set the product to corresponding catalog under our site
+  #        if cat_tags.include?(cat_word)
+  #          product.catalogs << cat unless product.catalogs.include?(cat)
+  #        end
+  #        # check if it is related to the segmented product tags from the site we spider
+  #        # if it is related, set the product to corresponding catalog under our site
+  #        if word.include?(cat_word)
+  #          product.catalogs << cat unless product.catalogs.include?(cat)
+  #        end
+  #      end
+  #    end
+  #    if product.catalogs.size > 1
+  #      catalogs ={}
+  #      product.catalogs.each do |catalog|
+  #        if catalogs[catalog.ancestry].present?
+  #          catalogs[catalog.ancestry] = catalogs[catalog.ancestry].to_s + "," + catalog.id.to_s
+  #        else
+  #          catalogs[catalog.ancestry] = catalog.id.to_s
+  #        end
+  #      end
+  #      catalogs.each do |(key, value)|
+  #        cat_id = value.split(",")
+  #        if cat_id.size > 1
+  #          cat_id.each do |id|
+  #            is_related = false
+  #            if Catalog.find(id).alias_name.present?
+  #              words = Catalog.find(id).alias_name | seg_word(Catalog.find(id).name)
+  #              words.each do |w|
+  #                if word.include?(w)
+  #                  is_related = true
+  #                end
+  #              end
+  #            else
+  #              words = seg_word(Catalog.find(id).name)
+  #              words.each do |w|
+  #                if word.include?(w)
+  #                  is_related = true
+  #                end
+  #              end
+  #            end
+  #            unless is_related
+  #              product.catalogs.delete(Catalog.find(id))
+  #            end
+  #          end
+  #        end
+  #        if product.catalogs.size < 1
+  #          product.catalogs << Catalog.find(cat_id[0]) unless product.catalogs.include?(Catalog.find(cat_id[0]))
+  #        end
+  #      end
+  #    end
+  #  end
+  #end
 
 end

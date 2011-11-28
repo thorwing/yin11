@@ -2,7 +2,7 @@
 /*merge to application.css*/
 
 /*
-	Block-St les
+	Block Styles
 */
 
 .block {
@@ -60,6 +60,8 @@ ul.menu li {
 .m5 {margin: 5px;}
 .p5 {padding: 5px;}
 
+.mr20 {margin-right: 20px;}
+
 .grid100 {width: 100px;}
 .grid682 {width: 682px;}
 
@@ -80,5 +82,25 @@ ul.menu li {
 .red {color: red;}
 
 .center {text-align: center;}
+
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix{*zoom:1;}
+
+.fl {float: left;}
+.fr {float: right;}
+
+.al {text-align: left;}
+.ar {text-align: right;}
+.ac {text-align: center;}
+
+.hor_stretch {width:100%; overflow:hidden;}
 
 
