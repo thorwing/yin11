@@ -12,7 +12,7 @@
 
 
 
-    <% if current_user_has_permission?(:administrator) %>
+    <% if current_user_has_permission?(:editor) %>
         <div class="field">
             <%= f.label :enabled, "enabled" %><br />
             <%= f.check_box :enabled, {}, true, false %>

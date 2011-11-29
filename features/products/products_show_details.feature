@@ -85,11 +85,13 @@ Feature: show details of a product
     And I view the details of product "苏北草母鸡"
     Then I should not see "up" within "#reviews .vote_fields"
 
+  @javascript
   Scenario Outline: 注册用户可以关注商品
     When I log in as "<user_full_name>"
     And I view the details of product "苏北草母鸡"
     And I follow "+关注"
     And I go to <user_short_name>'s profile page
+    And I follow "关注商品"
     Then I should see "苏北草母鸡"
 
     Examples:

@@ -38,5 +38,5 @@ Feature: modify a vendor
       Examples:
       | user |
       | Castle Editor |
-      |Mighty Admin|
+      | Mighty Admin  |
 

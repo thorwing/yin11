@@ -6,6 +6,8 @@ development:
    add_blog_url: "http://api.t.163.com/statuses/update.json"
 
 production:
-
+   key:    "QWOIhesNvCa3nSbW"        #consumer key
+   secret: "MFc6IVXnIXgV6Wh0ebdSsqGhyRJkNSKf"
    url:    "http://www.yinkuaizi.com"
    callback: "http://www.yinkuaizi.com/syncs/netease/callback"
+   add_blog_url: "http://api.t.163.com/statuses/update.json"

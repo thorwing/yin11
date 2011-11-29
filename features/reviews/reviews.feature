@@ -1,3 +1,4 @@
+
 Feature: tests for reviews
   访客不能添加分享
   注册用户，编辑，管理员可以添加分享
@@ -10,7 +11,6 @@ Feature: tests for reviews
     Given There are minimum seeds data
     And There are some products
 
-  @javascript
   Scenario Outline: 注册用户，编辑，管理员可以添加分享
     When I log in as "<user>"
     And I view the details of product "苏北草母鸡"
@@ -46,6 +46,7 @@ Feature: tests for reviews
     | Castle Editor|
     | Mighty Admin |
 
+  @javascript
   Scenario Outline: 注册用户，编辑，管理员可以为分享打分
     When I log in as "<user>"
     And I post a simple review for "苏北草母鸡" with "用来炖鸡汤不错"

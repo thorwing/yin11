@@ -12,7 +12,7 @@ end
 Given /^There are more products$/ do
   RECOMENDED_PRODUCTS = 3
   Product.create!(:name => "东北清香大米", :tags_string => "大米", :url => "#", :vendor_id => @vendor_2.id, :editor_score => 10)
-  Product.create!(:name => "山西陈醋", :tags_string => "醋", :url => "#", :vendor_id => @vendor_2.id)
+  Product.create!(:name => "山西陈醋", :tags_string => "醋,鸡", :url => "#", :vendor_id => @vendor_2.id)
 end
 
 Given /^There are some catalogs$/ do

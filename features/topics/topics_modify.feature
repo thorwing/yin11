@@ -63,9 +63,11 @@ Feature: modify topics
     | Guest |
     | David User |
 
+
   Scenario Outline: 编辑，管理员可以为专题制定相关的标签（相关的产品将会被显示在主页上）
     When I log in as "<user>"
     And I "修改" the "冬令进补" of kind "topics"
+#    And I should be on the edit_topic page
     And I fill in "topic_tags_string" with "鸡"
     And I press "完成"
     And I follow "冬令进补" of kind "topics"
@@ -73,8 +75,8 @@ Feature: modify topics
 
     Examples:
     | user |
-    | Castle Editor |
     | Mighty Admin  |
+    | Castle Editor |
 
 
   Scenario Outline: 编辑，管理员可以删除专题

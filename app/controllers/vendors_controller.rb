@@ -1,7 +1,5 @@
 class VendorsController < ApplicationController
-  before_filter(:only => [:new, :create, :mine]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:edit, :update, :destroy]) { |c| c.require_permission :administrator }
-  #before_filter(:only => [:edit, :update, :destroy]) {|c| c.the_author_himself(Vendor.name, c.params[:id], true)}
+  before_filter(:only => [:new, :edit, :create, :update, :destroy]) { |c| c.require_permission :editor }
 
   # GET /vendors
   # GET /vendors.xml
@@ -31,7 +29,7 @@ class VendorsController < ApplicationController
   # GET /vendors/new
   # GET /vendors/new.xml
   def new
-    @vendor = Vendor.new(:name => (params[:name].present? ? params[:name] : ""), :city => current_city.name)
+    @vendor = Vendor.new(:name => (params[:name].present? ? params[:name] : ""))
 
     respond_to do |format|
       if params[:popup]
@@ -39,7 +37,6 @@ class VendorsController < ApplicationController
       else
         format.html # new.html.erb
       end
-      format.xml  { render :xml => @vendor }
     end
   end
 
@@ -51,17 +48,14 @@ class VendorsController < ApplicationController
   # POST /vendors.xml
   def create
     @vendor = Vendor.new(params[:vendor])
-    @vendor.enabled = false
     @vendor.creator = current_user
 
     respond_to do |format|
       if @vendor.save
         format.html { redirect_to(@vendor, :notice => t("notices.vendor_created")) }
-        format.xml  { render :xml => @vendor, :status => :created, :location => @vendor }
         format.js {render :content_type => 'text/javascript'}
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
         format.js {render :content_type => 'text/javascript'}
       end
     end
