@@ -5,11 +5,13 @@
     <%= render "shared/show_tags", :item => @topic %>
 <% end %>
 
-<% get_recipes(@topic).each do |recipe| %>
-    <div>
-      <%= link_to recipe.title, recipe %><br/>
-    </div>
-<% end %>
+<div id="topic_articles" class="block round">
+    <% get_recipes(@topic).each do |recipe| %>
+        <div>
+          <%= link_to recipe.title, recipe %><br/>
+        </div>
+    <% end %>
+</div>
 
 <% get_recommended_products(@topic).each do |product| %>
     <div>
