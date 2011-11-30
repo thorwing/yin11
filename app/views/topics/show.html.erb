@@ -1,14 +1,22 @@
 <% title @topic.title %>
 <p><%= @topic.description %></p>
 
-<% if current_user_has_permission? :editor %>
-    <%= render "shared/show_tags", :item => @topic %>
-<% end %>
+<div>
+  <%= render "shared/review_fields", :review => Review.new %>
+</div>
 
 <div id="topic_articles" class="block round">
     <% get_recipes(@topic).each do |recipe| %>
         <div>
           <%= link_to recipe.title, recipe %><br/>
+        </div>
+    <% end %>
+</div>
+
+<div id="topic_reviews" class="block round">
+    <% get_reviews(@topic).each do |review| %>
+        <div>
+          <%= render review %><br/>
         </div>
     <% end %>
 </div>

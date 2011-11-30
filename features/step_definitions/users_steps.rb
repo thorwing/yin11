@@ -7,6 +7,9 @@ Given /^I log in as "(.+)"$/ do |name|
     when "David User" || "David"
       email = @normal_user.email
       pwd = @normal_user.password
+    when "Blade Master" || "Blade"
+      email = @master.email
+      pwd = @master.password
     when "Kate Tester" || "Kate"
       email = @tester.email
       pwd = @tester.password

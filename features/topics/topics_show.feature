@@ -2,9 +2,11 @@ Feature: display topics to users
   推荐的专题会被列在主页上（专题中最受推荐的产品也会一起显示）
   在专题的索引页面，专题会被列显示
   在专题项中，相关产品将以分数来排序
+  编辑,在专题的详细页面，和专题相关（通过标签）的所有产品将会被显示
+  访客，普通用户,在专题的详细页面,不会看到标签
 
-  在专题的详细页面，相关的菜谱和分享会被显示
-  在专题的详细页面，和专题相关（通过标签）的所有产品将会被显示
+  在专题页面，显示相关的食谱，和用户的分享
+  在专题页面，和专题相关（通过标签）的推荐商品将会被显示
 
   Background:
     Given There are minimum seeds data
@@ -37,7 +39,6 @@ Feature: display topics to users
     And I should see "a" whose "text" is "鱼"
     And I should see "a" whose "text" is "猪肉"
 
-
   Scenario Outline: 访客，普通用户,在专题的详细页面,不会看到标签
     When I log in as "<user>"
     And I go to the topics page
@@ -51,3 +52,8 @@ Feature: display topics to users
     | user |
     | Castle Editor |
     | Mighty Admin  |
+
+  Scenario: 在专题页面，显示相关的食谱，和用户的分享
+
+
+  Scenario: 在专题页面，和专题相关（通过标签）的推荐商品将会被显示

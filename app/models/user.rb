@@ -25,7 +25,8 @@ class User
   field :uid
   field :access_token
   field :access_token_secret
-  field :creator_ip
+  field :is_master, :type => Boolean, :default => false
+
   mount_uploader :avatar, AvatarUploader
 
   search_index(:fields => [:login_name],
@@ -39,6 +40,8 @@ class User
   attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar, :group_ids
 
   # strange error when trying to using scope, so using class method instead
+  scope :masters, where(:is_master => true)
+  scope :rookies, where(:is_master => false)
   scope :valid_email_users, where(:email_verified => true)
   scope :mail_receiver, where("profile.receive_mails" => true)
   class << self

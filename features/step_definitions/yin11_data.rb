@@ -2,6 +2,7 @@
 
 Given /^There are minimum seeds data$/ do
   @normal_user = Factory(:normal_user)
+  @master = Factory(:master)
   @tester = Factory(:tester)
   @editor = Factory(:editor)
   @admin = Factory(:administrator)

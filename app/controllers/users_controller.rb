@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   before_filter(:only => [:edit, :update, :show]) { |c| c.require_permission :normal_user }
 
   def index
-    @users = User.enabled
-    @users = @users.reject{|u| u.id == current_user.id} if current_user
+    @masters = User.enabled.masters
+    @users = User.enabled.rookies
   end
 
   # GET /users/new

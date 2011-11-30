@@ -38,4 +38,14 @@ module TopicsHelper
       []
     end
   end
+
+  def get_reviews(topic)
+    unless topic.tags.blank? || topic.tags.empty?
+      products = Product.tagged_with(topic.tags)
+      reviews = products.inject([]){|memo, p| memo << p.reviews}.uniq
+      reviews
+    else
+      []
+    end
+  end
 end

@@ -43,9 +43,21 @@ Feature: tests user's personal page
     | Mighty Admin  |
 
   Scenario Outline: 注册用户，编辑，管理员可以看到个人的基本信息
+    Given There are some products
     When I log in as "<user>"
-    And I follow "我的首页"
-    Then I should see "div" whose "id" is "user_panel"
+    #later Kate will visit the user via this review
+    And I post a simple review for "梅山猪" with "发现了上好的猪肉"
+    And I I follow "我的首页"
+    And I follow "<user_name>" within "#user_panel"
+    Then I should be on <user_name>'s profile page
+    And I should see "基本信息"
+    And I should see "div" whose "id" is "user_panel"
+    When I log out
+    And I log in as "Kate Tester"
+    And I go to the reviews page
+    And I follow "<user_name>"
+    Then I should be on <user_name>'s user page
+    And I should not see "基本信息"
 
     Examples:
     | user |
