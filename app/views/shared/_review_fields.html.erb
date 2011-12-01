@@ -1,5 +1,5 @@
 <%= form_for review, :html => { :multipart => true }, :remote => true do |f| %>
-    <div class="block round clearfix grid620" id = "review_dialog" >
+    <div class="block round clearfix" id = "review_dialog" >
         <h2><%= t("reviews.new_review") %></h2>
         <%= render "shared/error_messages", :target => review %>
         <%= hidden_field_tag "product_id", review.product_id %>
