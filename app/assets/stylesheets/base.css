@@ -69,36 +69,46 @@ ul.menu li {
 */
 
 
-.slice {
-    margin-left: auto;
-    margin-right: auto;
+/*.slice {*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
 
-    -webkit-column-count: 4;
-    -webkit-column-gap: 10px;
+    /*-webkit-column-count: 4;*/
+    /*-webkit-column-gap: 10px;*/
     /*-webkit-column-rule: 5px solid #333;*/
-    -webkit-column-width: 220px;
+    /*-webkit-column-width: 220px;*/
 
-    -moz-column-count: 4;
-    -moz-column-gap: 20px;
+    /*-moz-column-count: 4;*/
+    /*-moz-column-gap: 20px;*/
     /*-moz-column-rule: 5px solid #333;*/
-    -moz-column-width: 220px;
+    /*-moz-column-width: 220px;*/
 
-    column-count: 4;
-    column-gap: 10px;
+    /*column-count: 4;*/
+    /*column-gap: 10px;*/
     /*column-rule: 5px solid #333;*/
-    column-width: 220px;
+    /*column-width: 220px;*/
+/*}*/
+
+.pin {
+    background: white;
+    padding: 10px;
+    max-width: 228px;
 }
 
-.waterfall {
-    text-align: center;
-    width: auto;
-    overflow: hidden;
-    padding: 15px 10px;
-    margin-bottom: 10px;
-    background: white;
-    border-bottom:0.5px solid gray;
-    border-right:0.5px solid gray;
+.ks-waterfall {
+    display: inline-block;
 }
+
+/*.waterfall {*/
+    /*text-align: center;*/
+    /*width: auto;*/
+    /*overflow: hidden;*/
+    /*padding: 15px 10px;*/
+    /*margin-bottom: 10px;*/
+    /*background: white;*/
+    /*border-bottom:0.5px solid gray;*/
+    /*border-right:0.5px solid gray;*/
+/*}*/
 
 .m5 {margin: 5px;}
 .p5 {padding: 5px;}
