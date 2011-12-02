@@ -11,6 +11,7 @@ require "topic"
   Factory(:normal_user)
   Factory(:tester)
   Factory(:editor)
+  Factory(:master)
   @admin = Factory(:administrator)
 
 #  FoodsGenerator::generate_foods

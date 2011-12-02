@@ -4,8 +4,8 @@
 
 <div id="products_list">
     <div class="ar"><%= paginate @products %></div>
-    <% @products.each_slice(PRODUCTS_SLICE) do |slice| %>
-        <div class="products_slice">
+    <% @products.each_slice(EACH_SLICE) do |slice| %>
+        <div class="slice">
           <% slice.each do |product| %>
             <div class="waterfall">
                 <%= render "large_product", :product => product %>

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def index
     @masters = User.enabled.masters
-    @users = User.enabled.rookies
   end
 
   # GET /users/new

@@ -40,6 +40,10 @@
     </div>
 <% end %>
 
+<% if current_user_has_permission? :normal_user %>
+    <%= render "shared/review_fields", :review => @article.reviews.new %>
+<% end %>
+
 <div class="actions">
     <%= link_to t("general.back_to_list"), articles_path %>
 </div>

@@ -49,7 +49,6 @@ class ReviewsController < ApplicationController
   # POST /reviews.xml
   def create
     @review = Review.new(params[:review])
-    @review.product_id = params[:product_id]
     @review.author = current_user
 
     ImagesHelper.process_uploaded_images(@review, params[:images])

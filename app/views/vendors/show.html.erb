@@ -8,8 +8,8 @@
 
     </div>
 
-    <% @vendor.products.each_slice(PRODUCTS_SLICE) do |slice| %>
-        <div class="products_slice">
+    <% @vendor.products.each_slice(EACH_SLICE) do |slice| %>
+        <div class="slice">
           <% slice.each do |product| %>
             <div class="waterfall">
                 <%= render "products/large_product", :product => product %>

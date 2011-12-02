@@ -1,10 +1,6 @@
 <% title @topic.title %>
 <p><%= @topic.description %></p>
 
-<div>
-  <%= render "shared/review_fields", :review => Review.new %>
-</div>
-
 <div id="topic_articles" class="block round">
     <% get_recipes(@topic).each do |recipe| %>
         <div>
@@ -14,7 +10,7 @@
 </div>
 
 <div id="topic_reviews" class="block round">
-    <% get_reviews(@topic).each do |review| %>
+    <% @topic.reviews.each do |review| %>
         <div>
           <%= render review %><br/>
         </div>
@@ -33,3 +29,7 @@
     <%= link_to t("general.delete"), @topic, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
   <% end %>
 </div>
+
+<% if current_user_has_permission? :normal_user %>
+    <%= render "shared/review_fields", :review => @topic.reviews.new %>
+<% end %>

@@ -1,10 +1,12 @@
 <% title t("reviews.reviews") %>
 
-<%= paginate @reviews %>
-<% @reviews.each do |review| %>
-    <%= render review %>
-<% end %>
-
-<% if current_user_has_permission? :normal_user %>
-    <%= link_to t("reviews.new"), new_review_path, :class => "button" %>
+<div class="ar"><%= paginate @reviews %></div>
+<% @reviews.each_slice(EACH_SLICE) do |slice| %>
+    <div class="slice">
+      <% slice.each do |review| %>
+        <div class="waterfall">
+            <%= render review %>
+        </div>
+      <% end %>
+    </div>
 <% end %>

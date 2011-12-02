@@ -12,6 +12,7 @@ class Topic
   #relationships
   has_many :articles
   has_many :images
+  has_many :reviews
 
   #validators
   validates_presence_of :title

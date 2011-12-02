@@ -21,6 +21,7 @@ Factory.define :master, :class => User do |f|
   f.email "master@yin11.com"
   f.password "Iam1master"
   f.login_name "Blade"
+  f.is_master true
   f.role NORMAL_USER_ROLE
 end
 
