@@ -13,7 +13,8 @@ Feature: products listed on index page
     When I go to the vendors page
     Then I should see "农工商"
 
-  @javascript
+
+    @javascript
   Scenario: Guest can see all vendros
     Given the following vendor exists:
       | name   |
@@ -23,5 +24,6 @@ Feature: products listed on index page
     Then I should see "农工商"
     And I follow "+关注"
     And I go to David's profile page
-    And I follow "我的关注"
+    And I follow "关注商户"
+#    And show me the page
     And I should see "农工商"

@@ -28,6 +28,11 @@
                 <%= t("profile.my_following_products") %>
                 </a>
             </div>
+            <div class = "fl unselected">
+                <a class="tab  " href=""  data-page = '.my_following_vendors'>
+                <%= t("profile.my_following_vendors") %>
+                </a>
+            </div>
         </div>
 
         <div class="tabContent block round">
@@ -78,6 +83,18 @@
                         <% end %>
                     </dd>
                 </div>
+                <div class = "my_following_vendors display_none">
+                  <br/>
+                    <dd>
+                        <% current_user.relationships.each do |r| %>
+                            <% item = r.get_item %>
+                            <% if item.class.name == "Vendor"  %>
+                                <%= render item %>
+                            <% end  %>
+                        <% end %>
+                    </dd>
+                </div>
+
             </div>
         </div>
     </div>
