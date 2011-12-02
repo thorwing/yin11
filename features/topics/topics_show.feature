@@ -29,16 +29,6 @@ Feature: display topics to users
     And I follow "冬令进补"
     Then I should see "梅山猪"
 
-
-  Scenario: 编辑,在专题的详细页面，和专题相关（通过标签）的所有产品将会被显示
-    When I log in as "Castle Editor"
-    And I go to the topics page
-    And I follow "冬令进补"
-    Then I should see "a" whose "text" is "鸡"
-    And I should see "a" whose "text" is "鸭"
-    And I should see "a" whose "text" is "鱼"
-    And I should see "a" whose "text" is "猪肉"
-
   Scenario Outline: 访客，普通用户,在专题的详细页面,不会看到标签
     When I log in as "<user>"
     And I go to the topics page

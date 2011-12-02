@@ -1,5 +1,11 @@
 Yin11::Application.routes.draw do
 
+  resources :ingredients
+
+  resources :steps
+
+  resources :recipes
+
   namespace :administrator do
     root :to => "base#index"
 

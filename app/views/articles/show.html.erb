@@ -44,10 +44,6 @@
     <%= render "shared/review_fields", :review => @article.reviews.new %>
 <% end %>
 
-<div class="actions">
-    <%= link_to t("general.back_to_list"), articles_path %>
-</div>
-
 <hr/>
 <%= render "comments/comments", :item => @article %>
 

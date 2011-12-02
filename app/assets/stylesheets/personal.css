@@ -1,34 +1,31 @@
     .tabContainer{
-       height:40px;
+       /*height:25px;*/
     }
 
     .tabContainer .tab{
-        font-size: 16px;
+        font-size: 12px;
 
     }
     .tabContainer div{
         width: 100px;
-        height: 25px;
+        height: 20px;
         text-align: center;
-        padding-top: 10px;
-
+        padding-top: 5px;
     }
 
     .tabContainer .unselected{
         background-image: url("tab.png");
         background-repeat: no-repeat;
-
-    }
-
-    .tabContainer .unselected a {
-        color:  #386fb2;
     }
 
     .tabContainer .selected{
         background-color: #386fb2;
         background-image: url("tab_clicked.png");
         background-repeat: no-repeat;
+    }
 
+    .tabContainer .unselected a {
+        color:  #386fb2;
     }
 
     .tabContainer .selected a {
@@ -36,7 +33,7 @@
     }
 
     .font_color_selected{
-        color:  #ffffff;
+        /*color:  #ffffff;*/
     }
 
     .font_color_unselected{
