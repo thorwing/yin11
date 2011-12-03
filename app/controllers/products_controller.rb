@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
       criteria = criteria.any_in(catalog_ids: catalog_ids)
     end
 
-    @products = criteria.via_editor.page(params[:page]).per((ITEMS_PER_PAGE_MANY / 3).to_i * 3)
+    @products = criteria.via_editor.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
     @catalogs = Catalog.all.to_a
 
     respond_to do |format|

@@ -4,9 +4,9 @@ function waterfall(url) {
         var tpl = S.Template($('#tpl').html()),
             nextpage = 1,
             waterfall = new Waterfall.Loader({
-            container:"#ColumnContainer",
+            container:"#waterfall_container",
             load:function(success, end) {
-                $('#loadingPins').show();
+                $('#loading_pins').show();
                 S.ajax({
                     data:{
                         'method': 'flickr.photos.search',
@@ -36,12 +36,12 @@ function waterfall(url) {
                         success(items);
                     },
                     complete: function() {
-                        $('#loadingPins').hide();
+                        $('#loading_pins').hide();
                     }
                 });
             },
             minColCount:4,
-            colWidth:200
+            colWidth:240
         });
 
         // scrollTo
