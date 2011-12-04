@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
+//= require upload
 //= require swfobject
 //= require jquery.tokeninput
 //= require jquery.pageless.min
