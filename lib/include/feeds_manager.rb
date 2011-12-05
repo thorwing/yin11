@@ -3,7 +3,7 @@ class FeedsManager
   def self.initialize_feed(item)
     if item.new_record?
       operation = "create"
-    elsif
+    else
       operation = "update"
     end
     Feed.new(:target_type => item.class.name, :target_id => item.id, :target_operation => operation)
