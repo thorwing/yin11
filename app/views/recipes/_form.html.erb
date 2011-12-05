@@ -1,25 +1,42 @@
 <%= form_for(@recipe) do |f| %>
-  <% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+    <% if @recipe.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+        <ul>
+            <% @recipe.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+   <% end %>
 
-      <ul>
-      <% @recipe.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+   <div class="field">
+        <%= f.label :title, t("recipes.recipe_name") %><br/>
+        <%= f.text_field :title, :maxlength => get_max_length(Recipe, :title) %>
+   </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
+   <div class ="ingredients">
+       <%= f.label :title, t("recipes.ingredients") %><br/>
+       <%= link_to_add_fields( t("recipes.add"), f, :ingredients ) %>
+       <div class="field">
+           <%= f.fields_for :ingredients  do |builder| %>
+                <% render "ingredient_fields", :f => builder %>
+           <% end  %>
+       </div>
+   </div>
+
+   <div class ="steps">
+       <%= f.label :title, t("recipes.steps") %><br/>
+       <%= link_to_add_fields( t("recipes.add"), f, :steps ) %>
+       <div class="field">
+            <%= f.fields_for :steps  do |builder| %>
+               <% render "step_fields", :f => builder %>
+            <%end%>
+       </div>
+   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

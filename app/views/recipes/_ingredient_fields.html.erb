@@ -1,0 +1,6 @@
+<div class="field">
+        <%= f.label :name, t("recipes.ingredient_name") %><br/>
+        <%= f.text_field :name, :maxlength => get_max_length(Ingredient, :name) %><br/>
+        <%= f.label :amount, t("recipes.ingredient_amount") %><br/>
+        <%= f.text_field :amount, :maxlength => get_max_length(Ingredient, :amount) %>
+</div>

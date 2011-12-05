@@ -2,53 +2,53 @@ class IngredientsController < ApplicationController
   # GET /materials
   # GET /materials.json
   def index
-    @materials = Ingredient.all
+    @ingredient = Ingredient.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @materials }
+      format.json { render json: @ingredient }
     end
   end
 
   # GET /materials/1
   # GET /materials/1.json
   def show
-    @material = Ingredient.find(params[:id])
+    @ingredient = Ingredient.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @material }
+      format.json { render json: @ingredient }
     end
   end
 
   # GET /materials/new
   # GET /materials/new.json
   def new
-    @material = Ingredient.new
+    @ingredient = Ingredient.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @material }
+      format.json { render json: @ingredient }
     end
   end
 
   # GET /materials/1/edit
   def edit
-    @material = Ingredient.find(params[:id])
+    @ingredient = Ingredient.find(params[:id])
   end
 
   # POST /materials
   # POST /materials.json
   def create
-    @material = Ingredient.new(params[:material])
+    @ingredient = Ingredient.new(params[:ingredient])
 
     respond_to do |format|
-      if @material.save
-        format.html { redirect_to @material, notice: 'Material was successfully created.' }
-        format.json { render json: @material, status: :created, location: @material }
+      if @ingredient.save
+        format.html { redirect_to @ingredient, notice: 'ingredient was successfully created.' }
+        format.json { render json: @ingredient, status: :created, location: @ingredient }
       else
         format.html { render action: "new" }
-        format.json { render json: @material.errors, status: :unprocessable_entity }
+        format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,15 +56,15 @@ class IngredientsController < ApplicationController
   # PUT /materials/1
   # PUT /materials/1.json
   def update
-    @material = Ingredient.find(params[:id])
+    @ingredient = Ingredient.find(params[:id])
 
     respond_to do |format|
-      if @material.update_attributes(params[:material])
-        format.html { redirect_to @material, notice: 'Material was successfully updated.' }
+      if @ingredient.update_attributes(params[:ingredient])
+        format.html { redirect_to @ingredient, notice: 'Material was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @material.errors, status: :unprocessable_entity }
+        format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,8 +72,8 @@ class IngredientsController < ApplicationController
   # DELETE /materials/1
   # DELETE /materials/1.json
   def destroy
-    @material = Ingredient.find(params[:id])
-    @material.destroy
+    @ingredient = Ingredient.find(params[:id])
+    @ingredient.destroy
 
     respond_to do |format|
       format.html { redirect_to materials_url }
