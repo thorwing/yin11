@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
+//= require upload
 //= require swfobject
 //= require jquery.tokeninput
 //= require jquery.pageless.min
@@ -12,6 +13,9 @@
 //= require tinymce-jquery
 //= require jquery.highlight-3
 //= require_tree .
+//= require kissy/kissy
+//= require waterfall
+
 
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults

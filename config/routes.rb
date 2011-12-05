@@ -95,7 +95,11 @@ Yin11::Application.routes.draw do
 
   resources :votes, :only => [:create]
 
-  resources :images, :only => [:create]
+  resources :images do
+    collection do
+      post 'upload'
+    end
+  end
 
   #resources :badges
 

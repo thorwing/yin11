@@ -4,18 +4,19 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    criteria = Product.enabled
+    criteria = Product.enabled.without(:description)
     if params[:catalog].present?
       catalog = Catalog.first(conditions: {name: params[:catalog]})
       catalog_ids = [catalog.id] | catalog.descendant_ids
       criteria = criteria.any_in(catalog_ids: catalog_ids)
     end
 
-    @products = criteria.via_editor.page(params[:page]).per((ITEMS_PER_PAGE_MANY / 3).to_i * 3)
+    @products = criteria.via_editor.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
     @catalogs = Catalog.all.to_a
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render :json => {:products => @products.inject([]){|memo, p| memo << {:name => p.name, :picture_url => p.get_first_image, :id => p.id}}, :page => params[:page], :pages => (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
     end
   end
 

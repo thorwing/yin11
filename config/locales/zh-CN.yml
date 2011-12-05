@@ -59,6 +59,7 @@ zh-CN:
     recommended: 推荐
     lock: 锁定
     unlock: 解锁
+    upload: 上传
     more: 更多
     author: 作者
     report: "报错/纠正"
@@ -169,6 +170,7 @@ zh-CN:
     edit_profile: 设置
     update_profile: 偏好设定
     me: 我的首页
+    recipes: 菜谱
     articles: 文章
     reviews: 美食秀
     masters: 达人

@@ -2,21 +2,29 @@
 
 <%= render "shared/catalogs", :catalogs => @catalogs %>
 
-<div id="products_list">
-    <div class="ar"><%= paginate @products %></div>
-    <% @products.each_slice(EACH_SLICE) do |slice| %>
-        <div class="slice">
-          <% slice.each do |product| %>
-            <div class="waterfall">
-                <%= render "large_product", :product => product %>
-            </div>
-          <% end %>
-        </div>
-    <% end %>
-    <div class="ar"><%= paginate @products %></div>
+<script type="tpl" id="tpl">
+    <div class="pin ks-waterfall" data-id="{{id}}">
+     <a href="#" class="image">
+        <img height="{{height}}" width = "<%= IMAGE_THUMB_WIDTH %>" alt="{{name}}" src="{{picture_url}}" />
+     </a>
+
+     <p class="description">{{name}}</p>
+    </div>
+</script>
+
+<div id="waterfall_container" class="mt20">
+
 </div>
+
+<div id="loading_pins" style="display:none" class="grid_12">
+    <%= image_tag("loading_big.gif", :class => "center") %>
+</div>
+
+
 
 <% if current_user_has_permission? :editor %>
       <%= link_to t("vendors.new_product"), new_product_path(@product), :class => "button" %>
 <% end %>
 
+
+<%= javascript_tag "waterfall('#{products_path}')" %>
