@@ -40,10 +40,6 @@
     </div>
 <% end %>
 
-<% if current_user_has_permission? :normal_user %>
-    <%= render "shared/review_fields", :review => @article.reviews.new %>
-<% end %>
-
 <hr/>
 <%= render "comments/comments", :item => @article %>
 

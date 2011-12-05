@@ -11,6 +11,7 @@
 //= require tinymce-jquery
 //= require jquery.highlight-3
 //= require kissy/kissy
+//= require fileuploader
 //= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
@@ -204,4 +205,6 @@ $(function() {
 //            + max + '-' + strLength );
     });
 });
+
+
 
