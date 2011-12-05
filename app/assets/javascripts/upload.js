@@ -5,15 +5,17 @@ $(function () {
     // If browser support form-data, then the submit button will trigger the "browse"
 	if (window.FormData) {
 		formdata = new FormData();
-
-        document.getElementById("upload_btn").addEventListener("click", function(e){
-            e.preventDefault();
-            input.click();
-        });
+        var upload_button = document.getElementById("upload_btn");
+        if(upload_button) {
+            upload_button.addEventListener("click", function(e){
+                e.preventDefault();
+                input.click();
+            });
+        }
     }
 
     //If a file is selected
-    if (input.addEventListener) {
+    if (input) {
         input.addEventListener("change", function (evt) {
             var i = 0, len = this.files.length, img, reader, file;
 
