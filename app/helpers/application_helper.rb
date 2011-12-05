@@ -26,12 +26,15 @@ module ApplicationHelper
     link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) + " f16" )
   end
 
+  #<%= link_to_add_fields( t("recipes.add"), f, :ingredients ) %>
   def link_to_add_fields(name, f, association)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
-    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => "button")
+
+    #p "here " +
+    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => "button fr")
   end
 
   def link_to_remove_fields(name, f)

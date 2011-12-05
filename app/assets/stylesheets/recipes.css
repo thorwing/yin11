@@ -1,0 +1,21 @@
+.steps .field {
+    margin-left: 0px;
+    margin-right: 0px;
+    overflow: hidden;
+}
+
+#default_step_image .img {
+     display:block;
+    /*margin:10px 10px 10px 10px;*/
+     margin:auto;
+}
+
+.step_content{
+    width: 200px;
+    height: 100px;
+}
+
+.a
+{
+ width:auto ;
+}

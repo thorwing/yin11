@@ -1,7 +1,12 @@
 class Step
   include Mongoid::Document
-  belongs_to :recipe
+
   field :num, :type => Integer
   field :content, :type => String
   has_one :images
+
+  embedded_in :recipe
+
+  validates_presence_of :content
+  validates_length_of :content, :maximum => 100
 end

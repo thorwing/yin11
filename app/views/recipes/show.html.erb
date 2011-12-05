@@ -6,10 +6,20 @@
 </p>
 
 <p>
-  <b>Content:</b>
-  <%= @recipe.content %>
+  <b>Ingredients:</b>
+  <% @recipe.ingredients.each do |f|%>
+      <%= f.name %>
+      <%= f.amount %>  <br/>
+  <% end %>
 </p>
 
+<p>
+  <b>Steps:</b>
+  <% @recipe.steps.each do |f|%>
+      <%= f.content %> <br/>
+      <!--<= f. %>-->
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
