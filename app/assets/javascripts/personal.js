@@ -1,6 +1,6 @@
 //function auto_load()
 $(function(){
-   var the_tabs = $('.mytab .tabContainer .tab'); // the current selected tab
+   var the_tabs = $('.dynamictab .tabContainer .tab'); // the current selected tab
    the_tabs.click(function(event)
    {
         /* "this" points to the clicked tab hyperlink: */
@@ -30,7 +30,7 @@ $(function(){
 });
 
 $(function(){     //change the background of the tabs when
-     $(".mytab .tabContainer > div").click(function(e){
+     $(".dynamictab .tabContainer > div").click(function(e){
           $(".tabContainer .selected").addClass("unselected");
           $(".tabContainer .selected").removeClass("selected");
 
