@@ -1,6 +1,6 @@
 /*
+*= require reset
 *= require_self
-*= require base
 *= require fonts
 *= require waterfall
 *= require comment
@@ -24,28 +24,112 @@
 *= require fileuploader
 */
 
-/* General Settings
+@import "base";
 
 
-/* Font-Family:
-    Noraml:  'Helvetica Neue',Helvetica,Arial,Sans-serif;
-    Product: :'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12 {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
-Font-Size:
-Top-Menu: 16px;
+.grid_1 { width: $grid_1_width;}
+.grid_2 { width: $grid_2_width;}
+.grid_3 { width: $grid_3_width;}
+.grid_4 { width: $grid_4_width;}
+.grid_5 { width: $grid_5_width;}
+.grid_6 { width: $grid_6_width;}
+.grid_7 { width: $grid_7_width;}
+.grid_8 { width: $grid_8_width;}
+.grid_9 { width: $grid_9_width;}
+.grid_10 { width: $grid_10_width;}
+.grid_11 { width: $grid_11_width;}
+.grid_12 { width: $grid_12_width;}
 
-Green: (footer)
-#346633
+/*
+	Block Styles
+*/
 
-Blue: (button)
-#386fb2
+.block {
+    position:relative;
+    display:block;
+    overflow:hidden;
+    clear: both;
+}
 
-Azure
-#EDEFF4
+.block.square {
+    border:1px solid #a3a09e;
+    padding:10px;
+}
 
-Gray (body)
- #333230
- */
+.block.round {
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:1px solid #dbdbdb;
+    background: white;
+    margin-bottom:10px;
+    padding:10px;
+}
+
+/*
+    Menu Styles
+*/
+ul.menu {
+    padding:0;
+    margin:0;
+    overflow: hidden;
+    list-style:none;
+}
+
+ul.menu li {
+    float:left;
+    display: inline;
+    margin-right: 5px;
+}
+
+.m5 {margin: 5px;}
+.p5 {padding: 5px;}
+
+.mr20 {margin-right: 20px;}
+.mt20 {margin-top:20px;}
+.mb20 {margin-bottom:20px;}
+
+.w50 {width: 50px;}
+
+.red {color: red;}
+
+.center {margin: 0 auto; display: block;}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix{*zoom:1;}
+
+.fl {float: left;}
+.fr {float: right;}
+
+.al {text-align: left;}
+.ar {text-align: right;}
+.ac {text-align: center;}
+
+.hor_stretch {width:100%; overflow:hidden;}
+
+.display_none {
+    visibility: hidden;
+    display: none;
+    float:none;
+}
+
+.display {
+     display: inline;
+    visibility: visible;
+}
 
 
 /* Common stuff */
@@ -54,10 +138,10 @@ body {
 	margin:0px;
 	padding:0px;
 	line-height:22px;
-    background-color: #F2F0F0;
-    color: #333230;
+    background-color: $background_gray;
+    color: $font_black;
     font-size:13px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+    font-family: $general_font;
 }
 
 h2 { font-size:24px; }
@@ -76,7 +160,7 @@ small {
 }
 
 a {
-	color:#346633;
+	color: $green;
 	text-decoration:none;
 }
 a:hover { text-decoration:underline; }
@@ -84,7 +168,7 @@ a:hover { text-decoration:underline; }
 p { margin: 0 0 15px 0; }
 
 a.button, input.button {
-	background:#386fb2;
+	background: $blue;
 	padding:3px 6px 3px 6px;
 	color: #FFFFFF;
 	text-decoration: none;
@@ -94,7 +178,7 @@ a.button, input.button {
     margin: 2px 0;
 }
 a.button:hover, input.button:hover {
-	background:#333365;
+	background: darken($blue, 9%);;
     cursor:pointer;
 }
 
@@ -116,12 +200,12 @@ a.tag {
     border-radius: 5px;
     padding: 2px;
     border: 1px solid #333333;
-    background-color: #EDEFF4;
+    background-color: $azure;
 }
 
 a.tag:hover {
     color: white;
-    background-color: #346633;
+    background-color: $green;
     cursor:pointer;
 }
 
@@ -174,7 +258,7 @@ body #main { height: auto;}
     margin-top: -15em;
     overflow:hidden;
     color:#FFFFFF;
-    background-color:#346633;
+    background-color: $green;
 }
 .footer_column {
 	float:left;
