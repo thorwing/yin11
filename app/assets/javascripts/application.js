@@ -68,8 +68,11 @@ $(function(){
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
-    $(link).before(content.replace(regexp, new_id));
+//    $('.steps').append(content.replace(regexp, new_id));
+//    $(link).before(content.replace(regexp, new_id));
 //  $(link).after(content.replace(regexp, new_id));
+
+
   var counter = $(link).prev("input[id$='counter']");
   if(counter) {
     var count = parseInt(counter.val()) + 1;
@@ -84,6 +87,18 @@ function add_fields(link, association, content) {
           }
       }
   }
+
+//    alert("here");
+    if(e&&e.preventDefault())
+    {
+          e.e.preventDefault();
+    }
+    else
+    {
+          window.event.returnValue=false;
+    }
+
+
 }
 
 function remove_fields(link) {

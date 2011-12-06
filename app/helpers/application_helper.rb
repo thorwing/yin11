@@ -34,7 +34,7 @@ module ApplicationHelper
     end
 
     #p "here " +
-    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => "button fr")
+    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => "button")
   end
 
   def link_to_remove_fields(name, f)

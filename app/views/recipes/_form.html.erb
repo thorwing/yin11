@@ -24,7 +24,7 @@
                         <%= render "ingredient_fields", :f => builder %>
                    <% end  %>
                </div>
-               <%= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients ) %>
+               <!--<= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients ) %>-->
            </div>
        </div>
 
@@ -35,8 +35,9 @@
                    <%= render "step_fields", :f => builder %>
                 <% end %>
            </div>
-           <%= link_to_add_fields( t("recipes.add_step"), f, :steps ) %>
+
        </div>
+       <%= link_to_add_fields( t("recipes.add_step"), f, :steps) %>
 
       <div class="actions">
         <%= f.submit %>
