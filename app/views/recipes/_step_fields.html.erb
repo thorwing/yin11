@@ -1,7 +1,7 @@
-<div class="field grid_3 " position="relative">
+<div class="field grid_3 addedclass" position="relative">
         <%= link_to image_tag("default_step.jpeg", :border => 0, :class => "center")%>
         <br/>
-        <!--%= file_field_tag "step[a]"  %><br/>-->
+        <!--<div id="uploader" class="fl m5 w50"></div>-->
         <%= f.label :content, t("recipes.descriptions") %><br/>
         <%= f.text_area :content, :maxlength => get_max_length(Step, :content), 'data-comment_max_len' => get_max_length(Step, :content), :class => "char_aware step_content center" %>
         <%= content_tag :span, "", :class => "char_counter" %>

@@ -61,39 +61,21 @@ $(function(){
 
 //Add fields to DOM
 function add_fields(link, association, content, divname) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g");
-//    divname
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
     $(divname).append(content.replace(regexp, new_id));
-//    $('.steps').append(content.replace(regexp, new_id));
-//    $(link).before(content.replace(regexp, new_id));
-//  $(link).after(content.replace(regexp, new_id));
+    char_aware();
 
-  var counter = $(link).prev("input[id$='counter']");
-  if(counter) {
-    var count = parseInt(counter.val()) + 1;
-    counter.val(count);
-    //TODO
-      $.metadata.setType("html5");
-      var data = counter.metadata();
-      if (data.max) {
-          var max = parseInt(data.max);
+    var count= $(divname).find(".addedclass").length;
+//    alert(count);
+    max = parseInt ($(link).data('max_len'));
+//    alert($(link).data('ingredients_max_len'));
+    if (max) {
+//              var max = parseInt(data.max);
           if(count >= max) {
             $(link).hide();
           }
       }
-  }
-
-    if(e&&e.preventDefault())
-    {
-          e.e.preventDefault();
-    }
-    else
-    {
-          window.event.returnValue=false;
-    }
-
-
 
 
 }
@@ -101,7 +83,15 @@ function add_fields(link, association, content, divname) {
 //Remove fields from DOM
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
-  $(link).parent().hide();
+
+//    show the add link when the existing items < max
+    var button = $(link).parent().parent().next();
+    if (button.hasClass("button"))
+    {
+        button.show();
+    }
+
+    $(link).parent().remove();
 }
 
 //Delete image
@@ -204,8 +194,13 @@ $(function () {
 
 //Provide hints for how many chars left
 $(function() {
-    var bind_name = '';
+//     char_aware();
+});
 
+
+function char_aware()
+{
+    var bind_name = '';
     if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
     else { bind_name = 'input'; }
 
@@ -218,7 +213,8 @@ $(function() {
         var remaining = max - strLength;
        $(this).next('.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
     });
-});
+}
+
 
 
 
