@@ -1,12 +1,10 @@
 /*
 *= require_self
 *= require base
-*= require waterfall
 *= require fonts
-*= require home
+*= require waterfall
 *= require comment
 *= require items
-*= require top_menu
 *= require menu
 *= require form
 *= require products
@@ -15,15 +13,15 @@
 *= require catalogs
 *= require search
 *= require personal
-*= require profile
+*= require upload
+*= require tab_control
 *= require token-input-facebook
 *= require facebox
-*= require uploadify
 *= require jquery.jgrowl
-*= require thumbnails
 *= require slider
 *= require upload
 *= require recipes
+*= require fileuploader
 */
 
 /* General Settings

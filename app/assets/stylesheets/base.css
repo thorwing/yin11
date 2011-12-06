@@ -71,6 +71,8 @@ ul.menu li {
 .mt20 {margin-top:20px;}
 .mb20 {margin-bottom:20px;}
 
+.w50 {width: 50px;}
+
 .red {color: red;}
 
 .center {margin: 0 auto; display: block;}
@@ -93,3 +95,14 @@ ul.menu li {
 .ac {text-align: center;}
 
 .hor_stretch {width:100%; overflow:hidden;}
+
+.display_none {
+    visibility: hidden;
+    display: none;
+    float:none;
+}
+
+.display {
+     display: inline;
+    visibility: visible;
+}

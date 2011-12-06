@@ -1,3 +1,5 @@
+/*TODO*/
+
 .large_topic {height:240px;}
 
 .large_topic .slice {overflow:hidden;}
@@ -38,8 +40,6 @@
 .large_topic .cube.small p {
     display: none;
 }
-
-
 
 .large_topic .share_left {
     width: 220px;
