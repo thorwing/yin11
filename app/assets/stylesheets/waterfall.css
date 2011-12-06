@@ -2,27 +2,6 @@
     Waterfall Styles
 */
 
-
-/*.slice {*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-
-    /*-webkit-column-count: 4;*/
-    /*-webkit-column-gap: 10px;*/
-    /*-webkit-column-rule: 5px solid #333;*/
-    /*-webkit-column-width: 220px;*/
-
-    /*-moz-column-count: 4;*/
-    /*-moz-column-gap: 20px;*/
-    /*-moz-column-rule: 5px solid #333;*/
-    /*-moz-column-width: 220px;*/
-
-    /*column-count: 4;*/
-    /*column-gap: 10px;*/
-    /*column-rule: 5px solid #333;*/
-    /*column-width: 220px;*/
-/*}*/
-
 #waterfall_container {
     position: relative;
     overflow: hidden;
@@ -46,14 +25,3 @@
 .ks-waterfall {
     display: inline-block;
 }
-
-/*.waterfall {*/
-    /*text-align: center;*/
-    /*width: auto;*/
-    /*overflow: hidden;*/
-    /*padding: 15px 10px;*/
-    /*margin-bottom: 10px;*/
-    /*background: white;*/
-    /*border-bottom:0.5px solid gray;*/
-    /*border-right:0.5px solid gray;*/
-/*}*/

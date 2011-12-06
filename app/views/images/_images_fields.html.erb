@@ -3,11 +3,8 @@
 
 <input id="tokentag" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
 
-<div id="file-uploader">
-    <noscript>
-        <p>Please enable JavaScript to use file uploader.</p>
-        <!-- or put a simple form for upload here -->
-    </noscript>
+<div id="uploader">
+    <noscript><p><%= t("general.javascript_please") %></p></noscript>
 </div>
 
 <div id="images_container" class="block">

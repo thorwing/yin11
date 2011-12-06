@@ -1,13 +1,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
-//= require swfobject
 //= require jquery.tokeninput
 //= require jquery.metadata
 //= require jquery.jgrowl
 //= require facebox
 //= require coda-slider.1.1.1.pack
-//= require jquery.uploadify.v2.1.4.min
 //= require tinymce-jquery
 //= require jquery.highlight-3
 //= require kissy/kissy
@@ -16,7 +14,6 @@
 
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
-
 
 // for Silder
 var theInt = null;
