@@ -1,6 +1,9 @@
 // Use Valums Ajax Upload
+//TODO make a template for uploaded image
+
 $(function() {
     var tokentag = $('#tokentag').val();
+
     var images_limit = 5;
     if($('#uploader').length > 0) {
         var uploader = new qq.FileUploader({
@@ -32,7 +35,7 @@ $(function() {
             onComplete: function(id, fileName, responseJSON){
               if (responseJSON.success) {
                 var new_image = '<div class="image fl"><input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>'
-                    + '<a onclick="delete_image(this, 5); return false;" href="#"><img border="0" src="/assets/cancel.png" alt="delete_image"></a><br>'
+                    + '<a onclick="delete_image(this, 5); return false;" href="#" data-image_id="' + responseJSON.image_id +'"><img border="0" src="/assets/cancel.png" alt="delete_image"></a><br>'
                     + '<a class="thumbnail" rel="facebox" href="' + responseJSON.picture_url + '">'
                     + '<img width="200" height="200" border="0" src="' + responseJSON.picture_url + '" alt="image_thumbnail"></a><br>'
                     + responseJSON.picture_url
@@ -49,62 +52,21 @@ $(function() {
     }
 });
 
-//$(function () {
-//	var input = document.getElementById("input_file"),
-//	formdata = false;
-//
-//    // If browser support form-data, then the submit button will trigger the "browse"
-//	if (window.FormData) {
-//		formdata = new FormData();
-//        var upload_button = document.getElementById("upload_btn");
-//        if(upload_button) {
-//            upload_button.addEventListener("click", function(e){
-//                e.preventDefault();
-//                input.click();
-//            });
-//        }
-//    }
-//
-//    //If a file is selected
-//    if (input) {
-//        input.addEventListener("change", function (evt) {
-//            var i = 0, len = this.files.length, img, reader, file;
-//
-//            //show some loading effects
-//            $("#uploader #loading").show();
-//
-//            //Do something here...
-//            for ( ; i < len; i++ ) {
-//                file = this.files[i];
-//
-//                if (!!file.type.match(/image.*/)) {
-//
-//                }
-//            }
-//
-//            if ( window.FileReader ) {
-//                reader = new FileReader();
-//                //reader.onloadend = function (e) {};
-//                reader.readAsDataURL(file);
-//            }
-//            if (formdata) {
-//                formdata.append("images[]", file);
-//            }
-//
-//            //send the ajax request
-//            if (formdata) {
-//                $.ajax({
-//                    url: "/images/upload",
-//                    type: "POST",
-//                    data: formdata,
-//                    processData: false,
-//                    contentType: false,
-//                    success: function (res) {
-////                        $("#uploader #loading").hide();
-//                    }
-//                });
-//            }
-//
-//        }, false);
-//    }
-//});
+//Delete image
+function delete_image(link, limit) {
+    var image_id = $(link).data('image_id');
+
+    $.ajax({
+        url: "/images/" + image_id,
+        type: "DELETE",
+        processData: false,
+        contentType: false,
+        success: function (res) {
+            $(link).parent().remove();
+            var image_count = $('#images_container .image').size();
+            if (image_count < limit) {
+                $('#image_uploader').show();
+            }
+        }
+    });
+}

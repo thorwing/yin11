@@ -86,15 +86,6 @@ function remove_fields(link) {
   $(link).parent().hide();
 }
 
-//Delete image
-function delete_image(link, limit) {
-    $(link).parent().remove();
-    var image_count = $('#images_container .image').size();
-    if (image_count < limit) {
-        $('#image_uploader').show();
-    }
-}
-
 //Autocomplete input
 $(function() {
     function tokenize_input(element_selector, data_source, tokenLimit) {
