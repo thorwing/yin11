@@ -1,6 +1,4 @@
-// Place all the styles related to the Products controller here.
-// They will automatically be included in application.css.scss.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "base";
 
 /*TODO
    clear up...
@@ -24,7 +22,7 @@
 
 .product_block {
     /*position:absolute;*/
-    background:#EDEFF4;
+    background: $azure;
     border:1px solid #ddd;
     box-shadow:0 1px 3px rgba(34, 25, 25, 0.2);
     -webkit-box-shadow:rgba(34, 25, 25, 0.2) 0px 1px 3px;
@@ -39,7 +37,7 @@
 }
 
 .product_block p{
- font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
+ font-family: $product_font;
  font-size:18px;
  text-align:center;
 }
@@ -108,13 +106,13 @@
 }
 
 .product_detail_box p{
- font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
+ font-family: $product_font;
  font-size:16px;
  text-align:left;
 }
 
 .product_detail_box b{
- font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
+ font-family: $product_font;
  font-size:16px;
  text-align:left;
 }
@@ -152,6 +150,6 @@
 .banner .tags a { float:right;height:24px;line-height:24px;padding:0 8px;margin:13px 15px 0 0;color:#ccc;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;background:#666;overflow:hidden; }
 .banner .tags a:hover { text-decoration:none; }
 
-.bigfs{font-family:'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;}
+.bigfs{font-family: $product_font;}
 .rc{color:#f32a6b;}.bc{color:#6eb6e8;}.yc{color:#fa6525;}.gc{color:#999;}.gc6{color:#666;}
 

@@ -1,5 +1,7 @@
+@import "base";
+
 .nav_menu {cursor:pointer;  position:relative;  overflow: hidden; }
-.nav_menu a:hover, a.selected {color:#346633;}
+.nav_menu a:hover, a.selected {color: $green;}
 .nav_menu .menu_title {  color:black;}
 .nav_menu a { margin-right: 8px; }
 /* sub-menus*/
