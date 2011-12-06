@@ -17,16 +17,14 @@
        </div>
 
        <div class ="ingredients block">
-           <div class = "fl">
                <%= f.label :title, t("recipes.ingredients") , :class => "f16" %><br/>
                <div class="field">
                    <%= f.fields_for :ingredients  do |builder| %>
                         <%= render "ingredient_fields", :f => builder %>
                    <% end  %>
                </div>
-               <!--<= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients ) %>-->
-           </div>
        </div>
+       <%= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients, ".ingredients" ) %>
 
        <div class ="steps block">
            <%= f.label :title, t("recipes.steps"), :class => "f16" %><br/>
@@ -35,9 +33,8 @@
                    <%= render "step_fields", :f => builder %>
                 <% end %>
            </div>
-
        </div>
-       <%= link_to_add_fields( t("recipes.add_step"), f, :steps) %>
+       <%= link_to_add_fields( t("recipes.add_step"), f, :steps, ".steps") %>
 
       <div class="actions">
         <%= f.submit %>

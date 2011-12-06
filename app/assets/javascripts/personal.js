@@ -36,7 +36,16 @@ $(function(){
             $('a[rel*=facebox]').facebox();
 
         }
-        e.preventDefault();
+
+       if(e&&e.preventDefault())
+       {
+             e.e.preventDefault();
+       }
+       else
+       {
+             window.event.returnValue=false;
+       }
+
    });
 
    the_tabs.eq(0).click();

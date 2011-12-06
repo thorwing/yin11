@@ -60,13 +60,14 @@ $(function(){
 
 
 //Add fields to DOM
-function add_fields(link, association, content) {
+function add_fields(link, association, content, divname) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
+//    divname
+    $(divname).append(content.replace(regexp, new_id));
 //    $('.steps').append(content.replace(regexp, new_id));
 //    $(link).before(content.replace(regexp, new_id));
 //  $(link).after(content.replace(regexp, new_id));
-
 
   var counter = $(link).prev("input[id$='counter']");
   if(counter) {
@@ -83,7 +84,6 @@ function add_fields(link, association, content) {
       }
   }
 
-//    alert("here");
     if(e&&e.preventDefault())
     {
           e.e.preventDefault();
@@ -92,6 +92,8 @@ function add_fields(link, association, content) {
     {
           window.event.returnValue=false;
     }
+
+
 
 
 }
@@ -214,8 +216,7 @@ $(function() {
         var chineseRegex = /[^\x00-\xff]/g;
         var strLength = mystring.replace(chineseRegex,"**").length;
         var remaining = max - strLength;
-        $('span.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
-//            + max + '-' + strLength );
+       $(this).next('.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
     });
 });
 

@@ -4,6 +4,6 @@
         <!--%= file_field_tag "step[a]"  %><br/>-->
         <%= f.label :content, t("recipes.descriptions") %><br/>
         <%= f.text_area :content, :maxlength => get_max_length(Step, :content), 'data-comment_max_len' => get_max_length(Step, :content), :class => "char_aware step_content center" %>
-        <div><%= content_tag :span, "", :class => "char_counter" %></div>
+        <%= content_tag :span, "", :class => "char_counter" %>
         <%= link_to_remove_fields( t("recipes.remove"), f ) %>
 </div>
