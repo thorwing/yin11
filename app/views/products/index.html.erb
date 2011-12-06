@@ -2,29 +2,11 @@
 
 <%= render "shared/catalogs", :catalogs => @catalogs %>
 
-<script type="tpl" id="tpl">
-    <div class="pin ks-waterfall" data-id="{{id}}">
-     <a href="#" class="image">
-        <img height="{{height}}" width = "<%= IMAGE_THUMB_WIDTH %>" alt="{{name}}" src="{{picture_url}}" />
-     </a>
-
-     <p class="description">{{name}}</p>
-    </div>
-</script>
-
-<div id="waterfall_container" class="mt20">
-
-</div>
-
-<div id="loading_pins" style="display:none" class="grid_12">
-    <%= image_tag("loading_big.gif", :class => "center") %>
-</div>
-
-
-
 <% if current_user_has_permission? :editor %>
+    <div class="actions">
       <%= link_to t("vendors.new_product"), new_product_path(@product), :class => "button" %>
+    </div>
 <% end %>
 
 
-<%= javascript_tag "waterfall('#{products_path}')" %>
+<%= render "shared/waterfall", :path => products_path %>

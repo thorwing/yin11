@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => {:products => @products.inject([]){|memo, p| memo << {:name => p.name, :picture_url => p.get_first_image, :id => p.id}}, :page => params[:page], :pages => (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
+      format.json { render :json => {:items => @products.inject([]){|memo, p| memo << {:name => p.name, :picture_url => p.get_first_image, :id => p.id}}, :page => params[:page], :pages => (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
     end
   end
 

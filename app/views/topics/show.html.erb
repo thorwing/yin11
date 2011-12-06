@@ -31,5 +31,5 @@
 </div>
 
 <% if current_user_has_permission? :normal_user %>
-    <%= render "shared/review_fields", :review => @topic.reviews.new %>
+    <%= render "reviews/review_fields", :review => @topic.reviews.new %>
 <% end %>

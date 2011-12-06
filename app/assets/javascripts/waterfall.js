@@ -2,24 +2,24 @@ function waterfall(url) {
     KISSY.use("waterfall,ajax,template,node,button", function(S, Waterfall, io, Template, Node, Button) {
         var $ = Node.all;
         var tpl = S.Template($('#tpl').html()),
-            nextpage = 1,
+            nextpage = 0,
             waterfall = new Waterfall.Loader({
             container:"#waterfall_container",
             load:function(success, end) {
                 $('#loading_pins').show();
                 S.ajax({
-                    data:{
-                        'method': 'flickr.photos.search',
-                        'api_key': '5d93c2e473e39e9307e86d4a01381266',
-                        'tags': 'rose',
-                        'page': nextpage,
-                        'per_page': 20,
-                        'format': 'json'
-                    },
+                    data:{ 'page': nextpage },
                     url: url, //'http://api.flickr.com/services/rest/',
                     dataType: "json",
                     json: "jsoncallback",
                     success: function(d) {
+                        // 拼装每页数据
+                        var items = [];
+                        S.each(d.items, function(item) {
+                            item.height = Math.round(Math.random()*(300 - 180) + 180); // fake height
+                            items.push(new S.Node(tpl.render(item)));
+                        });
+
                         // 如果到最后一页了, 也结束加载
                         nextpage = parseInt(d.page) + 1;
                         if (nextpage > parseInt(d.pages)) {
@@ -27,12 +27,6 @@ function waterfall(url) {
                             return;
                         }
 
-                        // 拼装每页数据
-                        var items = [];
-                        S.each(d.products, function(item) {
-                            item.height = Math.round(Math.random()*(300 - 180) + 180); // fake height
-                            items.push(new S.Node(tpl.render(item)));
-                        });
                         success(items);
                     },
                     complete: function() {

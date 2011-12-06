@@ -1,12 +1,3 @@
 <% title t("reviews.reviews") %>
 
-<div class="ar"><%= paginate @reviews %></div>
-<% @reviews.each_slice(EACH_SLICE) do |slice| %>
-    <div class="slice">
-      <% slice.each do |review| %>
-        <div class="waterfall">
-            <%= render review %>
-        </div>
-      <% end %>
-    </div>
-<% end %>
+<%= render "shared/waterfall", :path => reviews_path %>
