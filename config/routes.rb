@@ -1,5 +1,8 @@
 Yin11::Application.routes.draw do
 
+  match '/editor(/*requested_uri)' => 'mercury_auth#edit', :as => :mercury_editor
+  Mercury::Engine.routes
+
   resources :ingredients
 
   resources :steps
@@ -133,6 +136,10 @@ Yin11::Application.routes.draw do
   resource :sessions, :only => [:new, :create, :destroy]
 
   resources :posts
+
+  resources :pages do
+    member { post :mercury_update }
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

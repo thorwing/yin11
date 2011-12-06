@@ -316,6 +316,9 @@ zh-CN:
     edit_post: 编辑话题
     comments: 回应
 
+  pages:
+    mercury_edit: “所见即所得”编辑
+
   foods:
     foods: 食物
     create_food: 新建食物
