@@ -65,6 +65,8 @@ function add_fields(link, association, content, divname) {
     var regexp = new RegExp("new_" + association, "g");
     $(divname).append(content.replace(regexp, new_id));
     char_aware();
+//    alert($(link).html());
+    step_uploader();
 
     var count= $(divname).find(".addedclass").length;
 //    alert(count);
@@ -205,6 +207,12 @@ function char_aware()
        $(this).next('.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
     });
 }
+
+//create a step
+$(function() {
+//    alert("here");
+    $('#new_recipe .steps').next().click();
+});
 
 
 

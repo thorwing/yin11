@@ -16,8 +16,11 @@
 <p>
   <b>Steps:</b>
   <% @recipe.steps.each do |f|%>
+      <div id="images_container" class="block fl m5">
+            <!--<= render :partial => "images/single_image_field",  :collection => f.images, :as => :image %>-->
+        </div>
+      <%= f.img_id %> <br/>
       <%= f.content %> <br/>
-      <!--<= f. %>-->
   <% end %>
 </p>
 

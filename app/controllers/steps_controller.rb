@@ -41,7 +41,6 @@ class StepsController < ApplicationController
   # POST /steps.json
   def create
     @step = Step.new(params[:step])
-
     respond_to do |format|
       if @step.save
         format.html { redirect_to @step, notice: 'Step was successfully created.' }
