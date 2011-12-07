@@ -1,11 +1,10 @@
 /*
+*= require reset
 *= require_self
-*= require base
-*= require home
-*= require tag_cloud
+*= require fonts
+*= require waterfall
 *= require comment
 *= require items
-*= require top_menu
 *= require menu
 *= require form
 *= require products
@@ -14,37 +13,123 @@
 *= require catalogs
 *= require search
 *= require personal
-*= require profile
+*= require upload
+*= require tab_control
 *= require token-input-facebook
 *= require facebox
-*= require uploadify
 *= require jquery.jgrowl
-*= require thumbnails
 *= require slider
+*= require upload
+*= require recipes
+*= require fileuploader
 */
 
+@import "base";
 
 
-/* General Settings
-Font-Family:
-    Noraml:  'Helvetica Neue',Helvetica,Arial,Sans-serif;
-    Product: :'微软雅黑','YaHei','黑体','Hei',Tahoma,Helvetica,arial,sans-serif;
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12 {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
-Font-Size:
-Top-Menu: 16px;
+.grid_1 { width: $grid_1_width;}
+.grid_2 { width: $grid_2_width;}
+.grid_3 { width: $grid_3_width;}
+.grid_4 { width: $grid_4_width;}
+.grid_5 { width: $grid_5_width;}
+.grid_6 { width: $grid_6_width;}
+.grid_7 { width: $grid_7_width;}
+.grid_8 { width: $grid_8_width;}
+.grid_9 { width: $grid_9_width;}
+.grid_10 { width: $grid_10_width;}
+.grid_11 { width: $grid_11_width;}
+.grid_12 { width: $grid_12_width;}
 
-Green: (footer)
-#346633
+/*
+	Block Styles
+*/
 
-Blue: (button)
-#386fb2
+.block {
+    position:relative;
+    display:block;
+    overflow:hidden;
+    clear: both;
+}
 
-Azure
-#EDEFF4
+.block.square {
+    border:1px solid #a3a09e;
+    padding:10px;
+}
 
-Gray (body)
- #333230
- */
+.block.round {
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border:1px solid #dbdbdb;
+    background: white;
+    margin-bottom:10px;
+    padding:10px;
+}
+
+/*
+    Menu Styles
+*/
+ul.menu {
+    padding:0;
+    margin:0;
+    overflow: hidden;
+    list-style:none;
+}
+
+ul.menu li {
+    float:left;
+    display: inline;
+    margin-right: 5px;
+}
+
+.m5 {margin: 5px;}
+.p5 {padding: 5px;}
+
+.mr20 {margin-right: 20px;}
+.mt20 {margin-top:20px;}
+.mb20 {margin-bottom:20px;}
+
+.w50 {width: 50px;}
+
+.red {color: red;}
+
+.center {margin: 0 auto; display: block;}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix{*zoom:1;}
+
+.fl {float: left;}
+.fr {float: right;}
+
+.al {text-align: left;}
+.ar {text-align: right;}
+.ac {text-align: center;}
+
+.hor_stretch {width:100%; overflow:hidden;}
+
+.display_none {
+    visibility: hidden;
+    display: none;
+    float:none;
+}
+
+.display {
+     display: inline;
+    visibility: visible;
+}
 
 
 /* Common stuff */
@@ -52,29 +137,20 @@ Gray (body)
 body {
 	margin:0px;
 	padding:0px;
-	color: #333230;
-	font-size:13px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
 	line-height:22px;
-    background-color: #F2F0F0;
+    background-color: $background_gray;
+    color: $font_black;
+    font-size:13px;
+    font-family: $general_font;
 }
 
-h2 {
-	margin:0px 0px 10px 0px;
-	font-size:24px;
-}
-h3 {
-	margin:5px 0px 10px 0px;
-	font-size:14px;
-}
-h4 {
-	margin:0px 0px 10px 0px;
-	font-size:13px;
-}
-h5 {
-	margin:0px 0px 10px 0px;
-	font-size:12px;
-}
+h2 { font-size:24px; }
+h3 { font-size:14px; }
+h4 { font-size:13px; }
+h5 { font-size:12px; }
+
+h2, h3, h4, h5 {margin: 0 5px;}
+
 small {
 	color:#595856;
 	font-weight:bold;
@@ -84,26 +160,25 @@ small {
 }
 
 a {
-	color:#346633;
+	color: $green;
 	text-decoration:none;
 }
 a:hover { text-decoration:underline; }
-p { margin: 0px 0px 15px 0px; }
+
+p { margin: 0 0 15px 0; }
 
 a.button, input.button {
-	background:#386fb2;
+	background: $blue;
 	padding:3px 6px 3px 6px;
 	color: #FFFFFF;
 	text-decoration: none;
 	border:1px solid #32312f;
 	text-transform:uppercase;
-	font-size:12px;
     height: 24px;
-    margin-top: 2px;
-    margin-bottom:2px;
+    margin: 2px 0;
 }
 a.button:hover, input.button:hover {
-	background:#333365;
+	background: darken($blue, 9%);;
     cursor:pointer;
 }
 
@@ -125,13 +200,12 @@ a.tag {
     border-radius: 5px;
     padding: 2px;
     border: 1px solid #333333;
-    font-size: 12px;
-    background-color: #EDEFF4;
+    background-color: $azure;
 }
 
 a.tag:hover {
     color: white;
-    background-color: #346633;
+    background-color: $green;
     cursor:pointer;
 }
 
@@ -158,23 +232,6 @@ h1.title {
 }
 
 /*
-    Simple styles
-*/
-.two_columns_container {
-	margin-bottom:20px;
-    margin: 0 auto; /* 侧边的自动值与宽度结合使用，可以将布局居中对齐 */
-	overflow: hidden; /* 此声明可使 .container 了解其内部浮动列的结束位置以及包含列的位置 */
-}
-
-.left_column {
-	float:left;
-}
-
-.right_column {
-    float:right;
-}
-
-/*
 	Footer-Styles
 */
 
@@ -184,7 +241,13 @@ h1.title {
 */
 html, body, #main { height: 100%; }
 body #main { height: auto;}
-#container { padding-bottom: 15em;}
+#container {
+    width:960px;
+    margin: 0 auto;
+	overflow: hidden;
+	position:relative;
+	padding-bottom: 15em;}
+
 #content_area { min-height: 600px;  }
 
 #footer {
@@ -195,8 +258,7 @@ body #main { height: auto;}
     margin-top: -15em;
     overflow:hidden;
     color:#FFFFFF;
-    background-color:#346633;
-	font-size:11px;
+    background-color: $green;
 }
 .footer_column {
 	float:left;

@@ -1,49 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-div.fields_group {
-    border: 1px solid gray;
-    margin: 5px 0 5px 0;
-    overflow:hidden;
-    padding: 5px;
-}
-
-div.field {
-    overflow:hidden;
-}
-
-
-div.field textarea.brief {
-    height: 200px;
-}
-
-.actions {
-    margin: 5px 0;
-}
-
-.nav_links {
-    margin-top: 10px;
-}
-
-label.severity_image {
-    width:48px;
-    height:64px;
-    display:block;
-}
-
-label.severity_image.severity_0 {
-    background-image: image-url('severity_0_small.png');
-}
-label.severity_image.severity_1 {
-    background-image: image-url('severity_1_small.png');
-}
-label.severity_image.severity_2 {
-    background-image: image-url('severity_2_small.png');
-}
-label.severity_image.severity_3 {
-    background-image: image-url('severity_3_small.png');
-}
-
 ul.token-input-list-facebook
 {
     width:200px;
@@ -65,12 +22,3 @@ div.token-input-dropdown-facebook
     background: image-url('wrong_icon.gif') no-repeat;
 }
 
-/*
-    Article content
-*/
-#article_content  {font-size: 14px; line-height: 30px; }
-
-/*
-    List Items Style
-*/
-.right_fields { float: right;}

@@ -2,18 +2,11 @@
 
 <%= render "shared/catalogs", :catalogs => @catalogs %>
 
-<div id="products_list">
-    <div class="ar"><%= paginate @products %></div>
-    <% @products.each_slice(PRODUCTS_SLICE) do |slice| %>
-        <div class="products_slice">
-          <% slice.each do |product| %>
-            <div class="waterfall">
-                <%= render "large_product", :product => product %>
-            </div>
-          <% end %>
-        </div>
-    <% end %>
-    <div class="ar"><%= paginate @products %></div>
-</div>
+<% if current_user_has_permission? :editor %>
+    <div class="actions">
+      <%= link_to t("vendors.new_product"), new_product_path(@product), :class => "button" %>
+    </div>
+<% end %>
 
 
+<%= render "shared/waterfall", :path => products_path %>

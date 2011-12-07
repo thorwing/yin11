@@ -10,3 +10,4 @@ production:
    secret: "ea1115ff4903f26c91ae2617ef924944"
    url:    "http://www.yinkuaizi.com"
    callback: "http://www.yinkuaizi.com/syncs/qq/callback"
+   add_blog_url: "http://open.t.qq.com/api/t/add"

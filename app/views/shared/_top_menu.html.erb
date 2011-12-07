@@ -5,10 +5,10 @@
 </div>
 <ul id="top_menu">
     <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me") %></li><% end %>
-    <li><%= render_menu(t("menu.products"), products_path) %></li>
+    <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
+    <li><%= render_menu(t("menu.masters"), users_path) %></li>
     <li><%= render_menu(t("menu.topics"), topics_path) %></li>
-    <li><%= render_menu(t("menu.articles"), articles_path) %></li>
-    <li><%= render_menu(t("menu.groups"), groups_path) %></li>
+    <li><%= render_menu(t("menu.recipes"), recipes_path) %></li>
     <% if current_user && current_user.has_permission?(:editor) %>
         <li><%= render_menu(t("menu.administrator_control"), administrator_root_path) %></li>
     <% end %>

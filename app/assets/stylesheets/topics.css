@@ -1,3 +1,5 @@
+/*TODO*/
+
 .large_topic {height:240px;}
 
 .large_topic .slice {overflow:hidden;}
@@ -28,11 +30,6 @@
     letter-spacing: -1px;
 }
 
-.large_topic .cube span.title {
-    font-size: 15px;
-    font-weight: bold;
-}
-
 .large_topic .cube.small {
     width: 120px;
     height: 120px;
@@ -43,8 +40,6 @@
 .large_topic .cube.small p {
     display: none;
 }
-
-
 
 .large_topic .share_left {
     width: 220px;

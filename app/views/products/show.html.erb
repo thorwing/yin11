@@ -84,9 +84,7 @@
       </div>
 
       <% if current_user_has_permission? :normal_user %>
-          <div id="new_review_block">
-            <%= render "shared/review_fields", :review => @product.reviews.new %>
-          </div>
+        <%= render "reviews/review_fields", :review => @product.reviews.new %>
       <% end %>
 
     </div>

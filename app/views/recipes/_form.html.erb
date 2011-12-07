@@ -1,0 +1,45 @@
+<%= form_for(@recipe) do |f| %>
+    <% if @recipe.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+        <ul>
+            <% @recipe.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+   <% end %>
+
+   <div class = "grid_9">
+       <div class="field block round">
+            <%= f.label :title, t("recipes.recipe_name") , :class => "f14" %>
+            <%= f.text_field :name, :maxlength => get_max_length(Recipe, :name) %>
+       </div>
+
+        <div class ="ingredients block round">
+           <%= f.label :title, t("recipes.ingredients") , :class => "f16" %><br/>
+           <%= f.fields_for :ingredients  do |builder| %>
+                <%= render "ingredient_fields", :f => builder %>
+           <% end  %>
+        </div>
+        <%= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients, ".ingredients" , get_max_length(Recipe, :ingredients))  %>
+
+        <div class ="steps block round">
+            <%= f.label :title, t("recipes.steps"), :class => "f16" %><br/>
+            <%= f.fields_for :steps  do |builder| %>
+            <%= render "step_fields", :f => builder %>
+            <% end %>
+        </div>
+        <%= link_to_add_fields( t("recipes.add_step"), f, :steps, ".steps", get_max_length(Recipe, :steps) ) %>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  </div>
+
+  <div class = "grid_3">
+    <%= t("recipes.tips") %><br/>
+    <%= link_to t("recipes.how_to") %>
+  </div>
+
+<% end %>

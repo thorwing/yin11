@@ -19,4 +19,6 @@
 </div>
 
 <br />
-<%= link_to t("vendors.new"), new_vendor_path, :class => "button" %>
+<% if current_user_has_permission?(:editor) %>
+    <%= link_to t("vendors.new"), new_vendor_path, :class => "button" %>
+<% end %>

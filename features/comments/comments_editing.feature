@@ -31,7 +31,7 @@ Feature: edit comments
     Examples:
     |user           | index    | item             |
     |Castle Editor  | articles | 三聚氰胺再现上海 |
-    |Mighty Admin   | reviews  | 牛奶坏了         |
+
 
 
     Scenario Outline: 访客，注册用户不可以控制评论的可见性

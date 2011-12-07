@@ -1,0 +1,38 @@
+@import "base";
+
+/*TODO*/
+
+.tabContainer .tab{
+    font-size: 12px;
+
+}
+.tabContainer div{
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.tabContainer .unselected{
+    background-image: url("tab.png");
+    background-repeat: no-repeat;
+}
+
+.tabContainer .unselected a {
+    color:  $blue;
+}
+
+.tabContainer .selected{
+    background-color: $blue;
+    background-image: url("tab_clicked.png");
+    background-repeat: no-repeat;
+}
+
+.tabContainer .selected a {
+    color:  #ffffff;
+}
+
+#contentHolder .preloader{
+    display:block;
+    margin:120px auto;
+}

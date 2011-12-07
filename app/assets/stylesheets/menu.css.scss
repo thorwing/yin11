@@ -1,0 +1,47 @@
+@import "base";
+
+.nav_menu {cursor:pointer;  position:relative;  overflow: hidden; }
+.nav_menu a:hover, a.selected {color: $green;}
+.nav_menu .menu_title {  color:black;}
+.nav_menu a { margin-right: 8px; }
+/* sub-menus*/
+.nav_menu ul{ position:absolute; right:0px; top:0px;  line-height:16px; margin-top: 16px; padding: 5px 0px;
+    border:1px solid #346633;
+    z-index: 2000; /* for IE */ display:none;
+    background: white;}
+.nav_menu:hover ul { display:block;  }
+.nav_menu ul li {display:block;  padding: 0 0 2px 4px; list-style-type:none; }
+.nav_menu ul li:first-child { border-top: none; }
+.nav_menu ul li a {  color: black; }
+.nav_menu ul li a:hover { color:#346633; }
+
+#quick_login {margin: 5px 0 2px 0}
+
+#third_party_submenu { width:80px;}
+#top_third_party a {margin-right:  10px; color: black;}
+#top_third_party a:hover { color: #346633; }
+
+#login_logout a {text-decoration:underline; margin-right:  10px;}
+/*#third_party_submenu li {margin:0px 10px; padding: 0px,10px; }*/
+
+/*     Logo */
+#logo { float: left;}
+#logo h1, #logo h2 {
+	margin:0px;
+	display:block;
+	text-indent:-9999px;
+    line-height:0px;
+}
+
+/*
+	Top-Menu-Styles
+*/
+#top_menu { margin:0; padding:0; list-style:none; color:#fff; line-height:40px; display:inline-block; height: 45px;
+    float:left; overflow: hidden; background:#172322 none repeat scroll 0 0; position: absolute; left: 150px; right: 18px;}
+#top_menu a { color:#fff; text-decoration:none; }
+#top_menu li {float:left;
+    padding:0 15px;}
+#top_menu li a:hover, #top_menu > li a.selected {color:#B0D730;}
+
+
+

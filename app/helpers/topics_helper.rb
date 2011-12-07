@@ -38,4 +38,5 @@ module TopicsHelper
       []
     end
   end
+
 end

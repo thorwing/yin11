@@ -1,7 +1,7 @@
-<div class="comment" id='<%= comment.id.to_s %>'>
+<div class="comment grid_7" id='<%= comment.id.to_s %>'>
   <div class="block round">
-    <div class="two_columns_container">
-        <div class="left_column">
+    <div class="center mb_20">
+        <div class="fl">
             <%= link_to comment.user.screen_name, comment.user %>:
             <blockquote>
               <% if comment.enabled %>
@@ -16,7 +16,7 @@
               <span class="trivial"><%= distance_of_time_in_words(comment.updated_at, Time.now) %><%= t("general.ago") %></span>
             </blockquote>
         </div>
-        <div class="right_column">
+        <div class="fr">
             <%= image_tag comment.user.get_avatar, :width => 24, :height => 24 %><br/>
         </div>
       </div>

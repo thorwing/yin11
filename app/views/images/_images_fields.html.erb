@@ -1,8 +1,12 @@
 <b><%= f.label :images, t("images.images") %><%= mark_required(item, :images) %></b>
 <br/>
-<div id="image_uploader">
+
+<input id="tokentag" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+<div id="uploader">
     <noscript><p><%= t("general.javascript_please") %></p></noscript>
 </div>
+
 <div id="images_container" class="block">
     <%= render :partial => "images/single_image_field", :collection => item.images, :as => :image %>
 </div>

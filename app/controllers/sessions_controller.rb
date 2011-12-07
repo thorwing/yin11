@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   #TODO
+  # Self-signed key will generate warnings
   #force_ssl unless Rails.env.test?
 
   def new

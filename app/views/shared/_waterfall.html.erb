@@ -1,0 +1,20 @@
+
+<script type="tpl" id="tpl">
+    <div class="pin ks-waterfall" data-id="{{id}}">
+     <a href="#" class="image">
+        <img height="{{height}}" width = "<%= IMAGE_THUMB_WIDTH %>" alt="{{name}}" src="{{picture_url}}" />
+     </a>
+
+     <p class="description">{{name}}</p>
+    </div>
+</script>
+
+<div id="waterfall_container" class="mt20">
+
+</div>
+
+<div id="loading_pins" class="grid_12">
+    <%= image_tag("loading_big.gif", :class => "center") %>
+</div>
+
+<%= javascript_tag "waterfall('#{path}')" %>

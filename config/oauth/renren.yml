@@ -5,7 +5,7 @@ development:
    callback: "http://www.silver_example.com:3000/syncs/renren/callback"
 
 production:
-   key:    ""
-   secret: ""
+   key:    "5199d6986326461eadcd067a9fe571e0"
+   secret: "76de6c368df54c94ab1776f0fa7a9c2c"
    url:    "http://www.yinkuaizi.com"
    callback: "http://www.yinkuaizi.com/syncs/renren/callback"

@@ -1,0 +1,27 @@
+/*
+    Waterfall Styles
+*/
+
+#waterfall_container {
+    position: relative;
+    overflow: hidden;
+}
+
+#loading_pins {
+    position: absolute;
+    bottom: 0px;
+    z-index:4;
+}
+
+.pin {
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 14px;
+    position: absolute;
+    width: 193px;
+}
+
+.ks-waterfall {
+    display: inline-block;
+}

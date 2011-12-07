@@ -1,19 +1,25 @@
 <% title @topic.title %>
 <p><%= @topic.description %></p>
 
-<% if current_user_has_permission? :editor %>
-    <%= render "shared/show_tags", :item => @topic %>
-<% end %>
+<div id="topic_articles" class="block round">
+    <% get_recipes(@topic).each do |recipe| %>
+        <div>
+          <%= link_to recipe.title, recipe %><br/>
+        </div>
+    <% end %>
+</div>
+
+<div id="topic_reviews" class="block round">
+    <% @topic.reviews.each do |review| %>
+        <div>
+          <%= render review %><br/>
+        </div>
+    <% end %>
+</div>
 
 <% get_recommended_products(@topic).each do |product| %>
     <div>
         <%= link_to product.name, product %><br/>
-    </div>
-<% end %>
-
-<% get_recipes(@topic).each do |recipe| %>
-    <div>
-      <%= link_to recipe.title, recipe %><br/>
     </div>
 <% end %>
 
@@ -23,3 +29,7 @@
     <%= link_to t("general.delete"), @topic, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
   <% end %>
 </div>
+
+<% if current_user_has_permission? :normal_user %>
+    <%= render "reviews/review_fields", :review => @topic.reviews.new %>
+<% end %>

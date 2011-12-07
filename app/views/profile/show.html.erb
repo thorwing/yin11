@@ -1,6 +1,6 @@
 <% title t("profile.show_profile") %>
 
-<div class = "profile_mytab " >
+<div class = "statictab" >
         <div class="tabContainer ">
             <div class = "fl selected">
                 <a id= "basic_info" class="tab " href="" data-page = '.basic_info' >
@@ -23,6 +23,16 @@
                 <%= t("profile.my_fans") %>
                 </a>
             </div>
+            <div class = "fl unselected">
+                <a class="tab  " href=""  data-page = '.my_following_products'>
+                <%= t("profile.my_following_products") %>
+                </a>
+            </div>
+            <div class = "fl unselected">
+                <a class="tab  " href=""  data-page = '.my_following_vendors'>
+                <%= t("profile.my_following_vendors") %>
+                </a>
+            </div>
         </div>
 
         <div class="tabContent block round">
@@ -40,7 +50,6 @@
                      <br/>
                      <dd id="joined_groups">
                         <%= render :partial => "group", :collection => current_user.groups %>
-
                      </dd>
                 </div>
                 <div class = "my_followings display_none">
@@ -48,13 +57,43 @@
                     <dd>
                         <% current_user.relationships.each do |r| %>
                             <% item = r.get_item %>
+                            <% if item.class.name == "User"  %>
+                                <%= render item %>
+                            <% end  %>
+                        <% end %>
+                    </dd>
+                </div>
+                <div class = "my_fans display_none">
+                  <br/>
+                    <dd>
+                        <% current_user.followers.each do |r| %>
+                            <% item = r.get_item %>
                             <%= render item %>
                         <% end %>
                     </dd>
                 </div>
-
-
-
+                <div class = "my_following_products display_none">
+                  <br/>
+                    <dd>
+                        <% current_user.relationships.each do |r| %>
+                            <% item = r.get_item %>
+                            <% if item.class.name == "Product"  %>
+                                <%= render item %>
+                            <% end  %>
+                        <% end %>
+                    </dd>
+                </div>
+                <div class = "my_following_vendors display_none">
+                  <br/>
+                    <dd>
+                        <% current_user.relationships.each do |r| %>
+                            <% item = r.get_item %>
+                            <% if item.class.name == "Vendor"  %>
+                                <%= render item %>
+                            <% end  %>
+                        <% end %>
+                    </dd>
+                </div>
 
             </div>
         </div>

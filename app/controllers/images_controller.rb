@@ -1,24 +1,29 @@
 class ImagesController < ApplicationController
-  before_filter :find_or_build_image
-
   def create
-    if @image.save
-      tempfile = params[:image][:picture].tempfile.path
-      if File::exists?(tempfile)
-        File::delete(tempfile)
-      end
+    @image = Image.new
+    if params[:qqfile].is_a?(ActionDispatch::Http::UploadedFile)
+      uploaded_file = params[:qqfile]
+      @image.picture = AppSpecificStringIO.new(uploaded_file.original_filename, uploaded_file.read)
+      File::delete(uploaded_file.tempfile.path) if File::exists?(uploaded_file.tempfile.path)
+    else
+      @image.picture = AppSpecificStringIO.new(params[:qqfile], request.body.read)
+    end
+    @limit = IMAGES_LIMIT
 
+    if @image.save!
+      data = { :success => true, :picture_url => @image.picture_url, :image_id => @image.id}
       respond_to do |format|
-        format.html { redirect_to :back, :notice => 'Image successfully created' }
-        format.js
+        format.html { render :json => data }
+        format.json { render :json => data }
       end
     end
   end
 
-  private
-  def find_or_build_image
-    @image = Image.new(params[:image])
-    @limit = IMAGES_LIMIT
+  def destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+
+    render :text => ""
   end
 
 end

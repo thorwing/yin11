@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   #TODO
+  # Self-signed key will generate warnings
   #force_ssl unless Rails.env.test?
   before_filter(:only => [:edit, :update, :show]) { |c| c.require_permission :normal_user }
 
   def index
-    @users = User.enabled
-    @users = @users.reject{|u| u.id == current_user.id} if current_user
+    @masters = User.enabled.masters
   end
 
   # GET /users/new

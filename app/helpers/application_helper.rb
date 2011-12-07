@@ -23,15 +23,17 @@ module ApplicationHelper
   end
 
   def render_menu(name, path)
-    link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) )
+    link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) + " f16" )
   end
 
-  def link_to_add_fields(name, f, association)
+  #<%= link_to_add_fields( t("recipes.add"), f, :ingredients, ".steps" ) %>
+  def link_to_add_fields(name, f, association, divname, max_len)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
-    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", :class => "button")
+    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{divname}\")", :class => "button add_fields", 'data-max_len'=> max_len)
+
   end
 
   def link_to_remove_fields(name, f)
@@ -116,54 +118,54 @@ module ApplicationHelper
 
   #for plugins
 
-  def image_uploadify
-    # Putting the uploadify trigger script in the helper gives us
-    # full access to the view and native rails objects without having
-    # to set javascript variables.
-    #
-    # Uploadify is only a queue manager to hand carrierwave the files
-    # one at a time. Carrierwave handles capturing, resizing and saving
-    # all uploads. All limits set here (file types, size limit) are to
-    # help the user pick the right files. Carrierwave is responsible
-    # for enforcing the limits (white list file name, setting maximum file sizes)
-    #
-    # ScriptData:
-    #   Sets the http headers to accept javascript plus adds
-    #   the session key and authenticity token for XSS protection.
-    #   The "FlashSessionCookieMiddleware" rack module deconstructs these
-    #   parameters into something Rails will actually use.
-
-    session_key_name = Rails.application.config.session_options[:key]
-    %Q{
-    <script type='text/javascript' charset="utf-8">
-      $(document).ready(function() {
-        $('#image_uploader').uploadify({
-          script          : '#{images_path}',
-          fileDataName    : 'image[picture]',
-          uploader        : '/uploadify/uploadify.swf',
-          cancelImg       : '/uploadify/cancel.png',
-          fileDesc        : 'Images',
-          fileExt         : '*.png;*.jpg;*.gif',
-          sizeLimit       : #{2.megabytes},
-          queueSizeLimit  : 24,
-          multi           : true,
-          auto            : true,
-          buttonImg       : '/uploadify/upload.gif',
-          width           : 32,
-          height          : 32,
-          buttonText      : "",
-          scriptData      : {
-            '_http_accept': 'application/javascript',
-            '#{session_key_name}' : encodeURIComponent('#{u(cookies[session_key_name])}'),
-            'authenticity_token'  : encodeURIComponent('#{u(form_authenticity_token)}')
-          },
-          onComplete      : function(a, b, c, response){ eval(response) }
-        });
-      });
-    </script>
-
-    }.gsub(/[\n ]+/, ' ').strip.html_safe
-  end
+  #def image_uploadify
+  #  # Putting the uploadify trigger script in the helper gives us
+  #  # full access to the view and native rails objects without having
+  #  # to set javascript variables.
+  #  #
+  #  # Uploadify is only a queue manager to hand carrierwave the files
+  #  # one at a time. Carrierwave handles capturing, resizing and saving
+  #  # all uploads. All limits set here (file types, size limit) are to
+  #  # help the user pick the right files. Carrierwave is responsible
+  #  # for enforcing the limits (white list file name, setting maximum file sizes)
+  #  #
+  #  # ScriptData:
+  #  #   Sets the http headers to accept javascript plus adds
+  #  #   the session key and authenticity token for XSS protection.
+  #  #   The "FlashSessionCookieMiddleware" rack module deconstructs these
+  #  #   parameters into something Rails will actually use.
+  #
+  #  session_key_name = Rails.application.config.session_options[:key]
+  #  %Q{
+  #  <script type='text/javascript' charset="utf-8">
+  #    $(document).ready(function() {
+  #      $('#image_uploader').uploadify({
+  #        script          : '#{images_path}',
+  #        fileDataName    : 'image[picture]',
+  #        uploader        : '/uploadify/uploadify.swf',
+  #        cancelImg       : '/uploadify/cancel.png',
+  #        fileDesc        : 'Images',
+  #        fileExt         : '*.png;*.jpg;*.gif',
+  #        sizeLimit       : #{2.megabytes},
+  #        queueSizeLimit  : 24,
+  #        multi           : true,
+  #        auto            : true,
+  #        buttonImg       : '/uploadify/upload.gif',
+  #        width           : 32,
+  #        height          : 32,
+  #        buttonText      : "",
+  #        scriptData      : {
+  #          '_http_accept': 'application/javascript',
+  #          '#{session_key_name}' : encodeURIComponent('#{u(cookies[session_key_name])}'),
+  #          'authenticity_token'  : encodeURIComponent('#{u(form_authenticity_token)}')
+  #        },
+  #        onComplete      : function(a, b, c, response){ eval(response) }
+  #      });
+  #    });
+  #  </script>
+  #
+  #  }.gsub(/[\n ]+/, ' ').strip.html_safe
+  #end
 
   def display_flash
     flash_types = [:error, :alert, :notice]

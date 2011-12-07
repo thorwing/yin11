@@ -1,1 +1,7 @@
-<%= render @users %>
+<div>
+  <% @masters.each do |master| %>
+    <div class="master">
+        <%= render "users/user", :user => master %>
+    </div>
+  <% end %>
+</div>

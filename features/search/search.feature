@@ -1,3 +1,4 @@
+@not
 Feature: smoke tests for Search
   The search result should be useful
 

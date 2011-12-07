@@ -1,5 +1,14 @@
 Yin11::Application.routes.draw do
 
+  match '/editor(/*requested_uri)' => 'mercury_auth#edit', :as => :mercury_editor
+  Mercury::Engine.routes
+
+  resources :ingredients
+
+  resources :steps
+
+  resources :recipes
+
   namespace :administrator do
     root :to => "base#index"
 
@@ -89,9 +98,7 @@ Yin11::Application.routes.draw do
 
   resources :votes, :only => [:create]
 
-  resources :images, :only => [:create]
-
-  #resources :badges
+  resources :images
 
   resources :vendors do
     collection do
@@ -103,7 +110,8 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :products, :except => [:new, :create]
+  #resources :products, :except => [:new, :create]
+  resources :products
 
   resources :reports, :only => [:new, :create]
 
@@ -122,6 +130,10 @@ Yin11::Application.routes.draw do
   resource :sessions, :only => [:new, :create, :destroy]
 
   resources :posts
+
+  resources :pages do
+    member { post :mercury_update }
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

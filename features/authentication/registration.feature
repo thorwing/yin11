@@ -13,6 +13,7 @@ Feature: user can register
     When I log out
     And I log in with email "unique@test.com" and password "test123"
     Then I should be on the home page
+    And I should see "div" whose id is "control_panel"
 
   Scenario: 如果填写的信息有误，用户将不可以注册
 

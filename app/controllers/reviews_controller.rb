@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @reviews }
+      format.json { render :json => {:items => @reviews.inject([]){|memo, r| memo << {:name => r.content, :picture_url => r.get_first_image, :id => r.id}}, :page => params[:page], :pages => (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
     end
   end
 
@@ -49,7 +49,6 @@ class ReviewsController < ApplicationController
   # POST /reviews.xml
   def create
     @review = Review.new(params[:review])
-    @review.product_id = params[:product_id]
     @review.author = current_user
 
     ImagesHelper.process_uploaded_images(@review, params[:images])
