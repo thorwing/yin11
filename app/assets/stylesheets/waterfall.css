@@ -25,3 +25,13 @@
 .ks-waterfall {
     display: inline-block;
 }
+
+#back_to_top {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+}
+
+#back_to_top:hover {
+    opacity: 0.7;
+}

@@ -1,19 +1,4 @@
 module ImagesHelper
-  def get_image_of_item(item, options)
-    options[:border] = 0
-    if item && item.images.size > 0
-      image = item.images.first
-      Logger.new(STDOUT).info image.image.url.to_s
-      if image.image?
-        image_tag(image.image.url, options)
-       end
-    else
-      #TODO
-      #image_tag("http://flickholdr.com/#{width}/#{height}/salat", :width => width, :height => height, :border => 0)
-      image_tag("default_article.jpg", options)
-    end
-  end
-
   def self.process_uploaded_images(item, image_params)
     #item.images.reject{|i| image_params.present? && image_params.include?(i.id.to_s)}.each do |image|
     #  image.delete

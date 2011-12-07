@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => {:items => @reviews.inject([]){|memo, r| memo << {:name => r.content, :picture_url => r.get_first_image, :id => r.id}}, :page => params[:page], :pages => (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
+      format.json { render :json => {:items => @reviews.inject([]){|memo, r| memo << {:name => r.content, :picture_url => r.get_image_url(true), :id => r.id}}, :page => params[:page], :pages => (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
     end
   end
 

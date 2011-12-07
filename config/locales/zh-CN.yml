@@ -71,6 +71,7 @@ zh-CN:
     severity_3: 严重
     total: 总共
     all: 全部
+    back_to_top: 回到顶部
     are_you_sure_to_delete: 确定要删除吗？
     are_you_sure_to_disable_enable: "确定要禁用/启用邮件吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用

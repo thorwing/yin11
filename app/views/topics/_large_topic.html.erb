@@ -1,6 +1,6 @@
 <div class="large_topic block round">
     <div class="cube share_left">
-        <%= link_to image_tag( topic.get_first_image, :border => 0, :alt => topic.title), topic %>
+        <%= link_to image_tag( topic.get_image_url, :border => 0, :alt => topic.title), topic %>
           <p>
             <span class="title f15"><%= topic.title %></span><br/>
             <span class="desc"><%= topic.description %></span>

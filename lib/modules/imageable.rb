@@ -6,26 +6,19 @@ module Imageable
   end
 
   module InstanceMethods
-    def get_image()
-      if self.image && self.image.picture_url
-        self.image.picture_url
-      else
-        "default_article.jpg"
-      end
-    end
-
-    def get_first_image()
-      if self.respond_to?(:image)
-        if self.image && self.image.picture_url
-          return self.image.picture_url
-        end
+    def get_image_url(thumb = false, index = 0)
+      image = nil
+      if self.respond_to?(:image) && index == 0
+        image = self.image
       elsif self.respond_to?(:images)
-        if self.images && self.images.size > 0
-          return self.images.first.picture_url
-        end
+        image = self.images.first if index < self.images.size
       end
 
-      "default_article.jpg"
+      if image
+        thumb ? image.picture_url(:thumb) : image.picture_url
+      else
+        "not_found.png"
+      end
     end
   end
 
