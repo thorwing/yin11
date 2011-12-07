@@ -20,6 +20,16 @@ module Imageable
         "not_found.png"
       end
     end
+
+    def has_image?
+      if self.respond_to?(:image)
+        return true if self.image
+      elsif self.respond_to?(:images)
+        return true unless self.images.empty?
+      end
+
+      false
+    end
   end
 
 end

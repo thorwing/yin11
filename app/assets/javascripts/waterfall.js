@@ -12,7 +12,7 @@ function waterfall(url) {
                 $('#loading_pins').show();
                 S.ajax({
                     data:{ 'page': nextpage },
-                    url: url, //'http://api.flickr.com/services/rest/',
+                    url: url,
                     dataType: "json",
                     json: "jsoncallback",
                     success: function(d) {
@@ -53,7 +53,7 @@ function waterfall(url) {
             $(window).animate({
                 scrollTop:0
             },1,"easeOut");
-             $(this).hide();
+            $(this).hide();
         });
 
 //        var b1 = new Button({

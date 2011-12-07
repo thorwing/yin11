@@ -5,11 +5,11 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @reviews = Review.desc(:reported_on, :votes).page(params[:page]).per(20)
+    @reviews = Review.desc(:created_at, :votes).page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => {:items => @reviews.inject([]){|memo, r| memo << {:name => r.content, :picture_url => r.get_image_url(true), :id => r.id}}, :page => params[:page], :pages => (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
+      format.json { render :json => {:items => @reviews.inject([]){|memo, r| memo << {:name => r.content, :avatar_url => r.author.get_avatar, :picture_url => r.get_image_url(true), :id => r.id}}, :page => params[:page], :pages => (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
     end
   end
 
