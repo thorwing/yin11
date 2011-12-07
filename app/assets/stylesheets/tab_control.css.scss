@@ -2,10 +2,6 @@
 
 /*TODO*/
 
-.tabContainer{
-   /*height:25px;*/
-}
-
 .tabContainer .tab{
     font-size: 12px;
 
@@ -22,30 +18,21 @@
     background-repeat: no-repeat;
 }
 
+.tabContainer .unselected a {
+    color:  $blue;
+}
+
 .tabContainer .selected{
     background-color: $blue;
     background-image: url("tab_clicked.png");
     background-repeat: no-repeat;
 }
 
-.tabContainer .unselected a {
-    color:  $blue;
-}
-
 .tabContainer .selected a {
     color:  #ffffff;
-}
-
-.font_color_selected{
-    /*color:  #ffffff;*/
-}
-
-.font_color_unselected{
-    color:  $blue;
 }
 
 #contentHolder .preloader{
     display:block;
     margin:120px auto;
-
 }

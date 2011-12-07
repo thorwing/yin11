@@ -53,7 +53,7 @@ class Article
   validates_presence_of :content
   validates_length_of :content, :maximum => 10000
   validates_length_of :introduction, :maximum => 300
-  validates_presence_of :type
+  #validates_presence_of :type
 
   def self.types
     ['theme', 'news', 'tip', "recipe"]

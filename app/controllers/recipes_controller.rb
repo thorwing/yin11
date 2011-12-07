@@ -25,6 +25,8 @@ class RecipesController < ApplicationController
   # GET /recipes/new.json
   def new
     @recipe = Recipe.new
+    ingredient = @recipe.ingredients.build
+    step = @recipe.steps.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +45,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(params[:recipe])
 
     respond_to do |format|
-      if @recipe.save
+      if @recipe.save!
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render json: @recipe, status: :created, location: @recipe }
       else

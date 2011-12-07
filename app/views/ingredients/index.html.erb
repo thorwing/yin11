@@ -1,4 +1,4 @@
-<h1>Listing materials</h1>
+<h1>Listing ingredient</h1>
 
 <table>
   <tr>
@@ -9,17 +9,17 @@
     <th></th>
   </tr>
 
-<% @materials.each do |material| %>
+<% @ingredient.each do |ingredient| %>
   <tr>
-    <td><%= material.name %></td>
-    <td><%= material.amount %></td>
-    <td><%= link_to 'Show', material %></td>
-    <td><%= link_to 'Edit', edit_material_path(material) %></td>
-    <td><%= link_to 'Destroy', material, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= ingredient.name %></td>
+    <td><%= ingredient.amount %></td>
+    <td><%= link_to 'Show', ingredient %></td>
+    <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
+    <td><%= link_to 'Destroy', ingredient, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Material', new_material_path %>
+<%= link_to 'New ingredient', new_ingredient_path %>

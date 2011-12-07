@@ -517,3 +517,19 @@ zh-CN:
     twentyone_food: 食品商务网
     normal_source_prefix: "来源"
     cn_colon: "："
+
+  recipes:
+     recipe_name: 菜谱名
+     ingredients: 食材明细
+     ingredient_name: 名称
+     ingredient_amount: 用量
+     steps: 菜谱步骤
+     tips: 小贴士
+     new: 新菜谱
+     add_ingredient: +增加一种
+     add_step: +增加步骤
+     remove: -删除
+     descriptions: 说明
+     tips: 温馨提示
+     how_to: 如何上传菜谱？
+
