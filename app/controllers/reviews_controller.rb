@@ -7,9 +7,23 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.desc(:created_at, :votes).page(params[:page]).per(20)
 
+    data = {
+      items: @reviews.inject([]){|memo, r| memo <<  {
+        content: r.content,
+        user_id: r.author.id,
+        user_name: r.author.screen_name,
+        user_avatar: r.author.get_avatar(true),
+        user_reviews_cnt: r.author.reviews.count,
+        time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+        picture_url: r.get_image_url(true), id: r.id}
+      },
+      page: params[:page],
+      pages: (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+    }
+
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => {:items => @reviews.inject([]){|memo, r| memo << {:name => r.content, :avatar_url => r.author.get_avatar, :picture_url => r.get_image_url(true), :id => r.id}}, :page => params[:page], :pages => (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
+      format.json { render :json => data}
     end
   end
 

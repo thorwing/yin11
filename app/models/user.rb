@@ -128,13 +128,11 @@ class User
     User.first(:conditions => { :email => email}).nil?
   end
 
-  def get_avatar
+  def get_avatar(thumb = false)
     if self.avatar?
-      logger = Logger.new(STDOUT)
-      logger.info self.avatar.url.to_s
-      self.avatar.url
+      thumb ? self.avatar_url(:thumb) : self.avatar_url
     else
-      "default_user.png"
+      path_to_image "default_user.png"
     end
   end
 

@@ -1,14 +1,4 @@
-<script type="tpl" id="tpl">
-    <div class="waterfall grid_3" data-id="{{id}}">
-     <a href="<%= path + "/{{id}}" %>" class="image">
-        <img height="{{height}}" width = "<%= IMAGE_THUMB_WIDTH %>" alt="{{name}}" src="{{picture_url}}" />
-     </a>
-     <div>
-        <img height="<%= IMAGE_THUMB_HEIGHT %>" width = "<%= IMAGE_THUMB_WIDTH %>" alt="avatar" src="{{avatar_url}}" class="fl" />
-        <p class="description">{{name}}</p>
-     </div>
-    </div>
-</script>
+<%= render waterfall_partial, :path => path %>
 
 <%= hidden_field_tag "columns_count", columns_count, :id => "wf_col_count" %>
 <%= hidden_field_tag "columns_width", columns_width, :id => "wf_col_width" %>

@@ -1,3 +1,3 @@
 <% title t("reviews.reviews") %>
 
-<%= render "shared/waterfall", :path => reviews_path, :columns_count => 4, :columns_width => 240 %>
+<%= render "shared/waterfall", :path => reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 4, :columns_width => 240 %>

@@ -17,7 +17,7 @@ module Imageable
       if image
         thumb ? image.picture_url(:thumb) : image.picture_url
       else
-        "not_found.png"
+        "assets/images/not_found.png"
       end
     end
 

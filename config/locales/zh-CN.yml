@@ -412,6 +412,7 @@ zh-CN:
     new_review: 新分享
     make_choice_please: 请选择
     choose_vendor: 选择商户
+    by_user: 发表了%{count}条美食分享
     new_review_with_vnedor: 先找到针对的商户
     new_review_without_vendor: 实在想不起在哪儿买的食物了
     see_more_reviews: 查看更多分享

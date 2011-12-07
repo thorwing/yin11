@@ -14,9 +14,19 @@ class ProductsController < ApplicationController
     @products = criteria.via_editor.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
     @catalogs = Catalog.all.to_a
 
+    data = {
+      items: @products.inject([]){|memo, p| memo << {
+        name: p.name,
+        picture_url: p.get_image_url(true),
+        id: p.id}
+      },
+      page: params[:page],
+      pages: (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+    }
+
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => {:items => @products.inject([]){|memo, p| memo << {:name => p.name, :picture_url => p.get_image_url(true), :id => p.id}}, :page => params[:page], :pages => (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
+      format.json { render :json => data}
     end
   end
 
