@@ -3,12 +3,13 @@ class Ingredient
 
   field :name, :type => String
   field :amount, :type => String
+  field :is_major_ingredient, :type => Boolean
 
   embedded_in :recipe
 
   validates_presence_of :name
-  validates_length_of :name, :maximum => 30
+  validates_length_of :name, :maximum => 20
 
   validates_presence_of :amount
-  validates_length_of :amount, :maximum => 30
+  validates_length_of :amount, :maximum => 10
 end

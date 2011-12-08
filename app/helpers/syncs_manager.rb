@@ -85,7 +85,7 @@ class SyncsManager
           #p "syncs.sites."+ review.author.provider
           @user_message = I18n.t("syncs.success_message") + I18n.t("syncs.sites.#{review.author.provider}")
           @status = true
-          p "correctly send review to the sohu_blog"
+          p "correctly send review to the " + site_name
         end
         #if Crack::JSON.parse(response.body)["text"] == @message
         #  p "correctly send review to the sohu_blog"

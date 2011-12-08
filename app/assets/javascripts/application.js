@@ -83,17 +83,21 @@ function add_fields(link, association, content, divname) {
 }
 
 //Remove fields from DOM
-function remove_fields(link) {
+function remove_fields(link, removefield, showfield) {
   $(link).prev("input[type=hidden]").val("1");
+    alert(showfield);
+    alert(removefield);
 
 //    show the add link when the existing items < max
-    var button = $(link).parent().parent().next();
-    if (button.hasClass("button"))
+    var button = $(link).parents(showfield).next();
+//    alert(button.html());
+//    change
+    if (button.hasClass("add_fields"))
     {
         button.show();
     }
 
-    $(link).parent().remove();
+    $(link).parents(removefield).remove();
 }
 
 //Autocomplete input
@@ -208,11 +212,6 @@ function char_aware()
     });
 }
 
-//create a step
-$(function() {
-//    alert("here");
-    $('#new_recipe .steps').next().click();
-});
 
 
 

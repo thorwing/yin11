@@ -1,12 +1,7 @@
 <div class="field grid_3 addedclass" position="relative">
-        <!--<= link_to image_tag("default_step.jpeg", :border => 0, :class => "center")%>-->
-        <div class="step_uploader fl m5 w50">
-
-        </div> <%= f.text_field :img_id, :maxlength => "10", :class => "img_id" %>
-        <!--<div id="images_container" class="block fl m5">-->
-            <!--<= render :partial => "images/single_image_field",  :collection => f.object.images, :as => :image %>-->
-        <!--</div>-->
+        <div class="step_uploader fl m5 w50"></div>
+        <%= f.text_field :img_id, :maxlength => "10", :class => "img_id", :style => "display:none"  %>
         <%= f.text_area :content, :maxlength => get_max_length(Step, :content), 'data-comment_max_len' => get_max_length(Step, :content), :class => "char_aware step_content center" %>
         <%= content_tag :span, "", :class => "char_counter" %>
-        <%= link_to_remove_fields( t("recipes.remove"), f ) %>
+        <%= link_to_remove_fields( t("recipes.remove"), f, ".addedclass", ".steps" ) %>
 </div>

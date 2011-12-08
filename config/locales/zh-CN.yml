@@ -525,6 +525,7 @@ zh-CN:
      ingredients: 食材明细
      ingredient_name: 名称
      ingredient_amount: 用量
+     is_major_ingredient: 是否主料
      steps: 菜谱步骤
      tips: 小贴士
      new: 新菜谱

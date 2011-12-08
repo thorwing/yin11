@@ -10,6 +10,7 @@
   <% @recipe.ingredients.each do |f|%>
       <%= f.name %>
       <%= f.amount %>  <br/>
+      <%= f.is_major_ingredient %>  <br/>
   <% end %>
 </p>
 

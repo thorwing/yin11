@@ -62,6 +62,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.xml
   def create
+    p "params[:review]" + params[:review].to_yaml
     @review = Review.new(params[:review])
     @review.author = current_user
 
