@@ -85,8 +85,8 @@ function add_fields(link, association, content, divname) {
 //Remove fields from DOM
 function remove_fields(link, removefield, showfield) {
   $(link).prev("input[type=hidden]").val("1");
-    alert(showfield);
-    alert(removefield);
+//    alert(showfield);
+//    alert(removefield);
 
 //    show the add link when the existing items < max
     var button = $(link).parents(showfield).next();

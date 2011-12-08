@@ -4,7 +4,7 @@
   <b>Name:</b>
   <%= @recipe.name %>
 </p>
-
+  <%= @recipe.author.screen_name %>
 <p>
   <b>Ingredients:</b>
   <% @recipe.ingredients.each do |f|%>

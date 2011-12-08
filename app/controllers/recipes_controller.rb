@@ -42,11 +42,11 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    p "params[:recipe]" + params[:recipe].to_yaml
-    p "params[:step_num]" + params[:step_num].to_yaml
+    #p "params[:recipe]" + params[:recipe].to_yaml
     @recipe = Recipe.new(params[:recipe])
-    p "params[:images]" + params[:images].to_yaml
-    #ImagesHelper.process_uploaded_images(@recipe.steps.first.images.first, params[:images])
+    #p "screen_name: " + current_user.screen_name
+    @recipe.author_id = current_user.id
+    #p "@recipe: " + @recipe.to_yaml
 
     respond_to do |format|
       if @recipe.save!

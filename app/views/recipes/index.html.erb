@@ -1,24 +1,54 @@
-<h1>Listing recipes</h1>
+<h1 class = "center"><%= t("recipes.recipe_collection") %></h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<!--<table>-->
+  <!--<tr>-->
+    <!--<th class ="grid_2"><= t("recipes.recipe_name") %></th>-->
+    <!--<th class ="grid_1"><= t("recipes.ingredients_count") %></th>-->
+    <!--<th class ="grid_1"><= t("recipes.steps_count") %></th>-->
+    <!--<th class ="grid_1"><= t("recipes.uploaded_by") %></th>-->
 
-<% @recipes.each do |recipe| %>
-  <tr>
-    <td><%= recipe.name %></td>
-    <td><%= link_to 'Show', recipe %></td>
-    <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-    <td><%= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+    <!--<th></th>-->
+    <!--<th></th>-->
+    <!--<th></th>-->
+  <!--</tr>-->
 
-<br />
+<!--< @recipes.each do |recipe| %>-->
+  <!--<tr>-->
+    <!--<td class ="grid_2"><= recipe.name %></td>-->
+    <!--<td class ="grid_1"><= recipe.ingredients.count %></td>-->
+    <!--<td class ="grid_1"><= recipe.steps.count %></td>-->
+    <!--<td class ="grid_1"><= recipe.author.screen_name %></td>-->
 
-<%= link_to 'New Recipe', new_recipe_path %>
+    <!--<td ><= link_to 'Show', recipe %></td>-->
+    <!--<td><= link_to 'Edit', edit_recipe_path(recipe) %></td>-->
+    <!--<td><= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %></td>-->
+  <!--</tr>-->
+<!--< end %>-->
+<!--</table>-->
+<div class="block">
+    <div class="block" >
+      <%= link_to image_tag("recipe_search.png", :border => 0, :alt => t("recipes.search"))%>
+
+    </div>
+
+    <div class="fl">
+      <%= link_to image_tag("recipe_show.png", :border => 0, :alt => t("recipes.show"))%>
+    </div>
+
+    <div class="fl">
+        <% @recipes.each do |recipe| %>
+            <%= recipe.author.screen_name %>
+            <%= t("recipes.uploaded") %>
+            <%= recipe.name %>
+            <%= t("recipes.use") %>
+            <%= recipe.ingredients.count %>
+            <%= t("recipes.kind") %>
+            <%= t("recipes.including") %>
+            <%= recipe.steps.count %>
+            <%= t("recipes.step") %>
+            <%= link_to t("recipes.detail"), recipe %>
+            <br/>
+        <% end %>
+    </div>
+</div>
+<%= link_to t("recipes.new"), new_recipe_path %>
