@@ -1,3 +1,7 @@
-<% title t("reviews.reviews") %>
+<% title t("reviews.reviews"), false %>
 
-<%= render "shared/waterfall", :path => reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 4, :columns_width => 240 %>
+<%= render "shared/waterfall", :path => reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 3, :columns_width => 240 %>
+
+<div class="grid_3 box_shadow fl">
+    <%= render  %>
+</div>
