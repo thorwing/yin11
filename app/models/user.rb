@@ -132,7 +132,7 @@ class User
     if self.avatar?
       thumb ? self.avatar_url(:thumb) : self.avatar_url
     else
-      path_to_image "default_user.png"
+      "assets/images/default_user.png"
     end
   end
 
