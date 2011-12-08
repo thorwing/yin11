@@ -4,11 +4,20 @@
     overflow: hidden;
 }
 
-#default_step_image .img {
-     display:block;
-    /*margin:10px 10px 10px 10px;*/
-     margin:auto;
+.step_uploader .qq-upload-button {
+    display:block; /* or inline-block */
+    height:106px; width: 200px; padding: 7px 0; text-align:center;
+    background-position: center;
+    background-image: url("default_step.jpeg");
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    border-bottom:1px solid #ddd;color:#fff;
 }
+
+/*#step_uploader .qq-upload {*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+/*}*/
 
 .step_content{
     width: 200px;
