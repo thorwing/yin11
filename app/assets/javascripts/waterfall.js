@@ -22,6 +22,7 @@ function waterfall(url) {
                             item.height = Math.round(Math.random()*(300 - 180) + 180); // fake height
                             items.push(new S.Node(tpl.render(item)));
                         });
+
                         if (nextpage > 0)
                         {
                             $('#back_to_top').show();

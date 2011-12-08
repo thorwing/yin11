@@ -87,7 +87,9 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :reviews
+  resources :reviews do
+    collection {get :more}
+  end
 
   resources :groups, :except => [:destroy] do
     member do
@@ -111,7 +113,9 @@ Yin11::Application.routes.draw do
   end
 
   #resources :products, :except => [:new, :create]
-  resources :products
+  resources :products do
+    collection {get :more}
+  end
 
   resources :reports, :only => [:new, :create]
 

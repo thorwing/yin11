@@ -10,6 +10,10 @@ class CommentsController < ApplicationController
     else
       @comment = Comment.new(:content => params[:content])
     end
+
+    respond_to do |format|
+        format.html  {render "new", :layout => "dialog"}
+      end
   end
 
   def create

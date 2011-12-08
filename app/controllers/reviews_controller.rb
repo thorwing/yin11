@@ -5,6 +5,15 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
+    @masters = User.masters
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  def more
+    #  used for waterfall displaying
     @reviews = Review.desc(:created_at, :votes).page(params[:page]).per(20)
 
     data = {
@@ -12,8 +21,9 @@ class ReviewsController < ApplicationController
         content: r.content,
         user_id: r.author.id,
         user_name: r.author.screen_name,
-        user_avatar: r.author.get_avatar(true),
+        user_avatar: r.author.get_avatar(true, false),
         user_reviews_cnt: r.author.reviews.count,
+        user_established: r.author.relationships.select{|rel| rel.target_type == "User" && r.target_id == r.author.id.to_s}.size > 0,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
         picture_url: r.get_image_url(true), id: r.id}
       },
@@ -22,7 +32,6 @@ class ReviewsController < ApplicationController
     }
 
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render :json => data}
     end
   end

@@ -128,11 +128,12 @@ class User
     User.first(:conditions => { :email => email}).nil?
   end
 
-  def get_avatar(thumb = false)
+  def get_avatar(thumb = false, origin = true)
     if self.avatar?
       thumb ? self.avatar_url(:thumb) : self.avatar_url
     else
-      "assets/images/default_user.png"
+      #origin url is used for image_tag, the other one is used for waterfall displaying
+      origin ? "default_user.png" : "assets/images/default_user.png"
     end
   end
 
