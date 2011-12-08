@@ -29,3 +29,30 @@
 {
  width:auto ;
 }
+
+.final_img
+{
+    float: left;
+    width: 280px;
+    /*height: 420px;*/
+}
+
+.ingredients_show
+{
+    font-size: 16px;
+    float: left;
+    width: 320px;
+    /*height: 420px;*/
+}
+
+.step_container
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    overflow: hidden;
+}
+
+.step_container .step_content
+{
+    height: 80px;
+}

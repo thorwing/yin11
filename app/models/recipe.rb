@@ -13,7 +13,7 @@ class Recipe
     validates_presence_of :name
     validates_length_of :name, :maximum => 20
     validates_associated :ingredients
-    validates_length_of :ingredients, :maximum => 3
-    validates_length_of :steps, :maximum => 5
+    validates_length_of :ingredients, :maximum => 5
+    validates_length_of :steps, :maximum => 10
     validates_presence_of :author
 end
