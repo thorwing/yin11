@@ -3,7 +3,7 @@ class Ingredient
 
   field :name, :type => String
   field :amount, :type => String
-  field :is_major_ingredient, :type => Boolean
+  field :is_major_ingredient, :type => Boolean ,:default => true
 
   attr_accessible  :name, :amount, :is_major_ingredient
   embedded_in :recipe

@@ -1,4 +1,5 @@
 class Recipe
+
     include Mongoid::Document
     include Taggable
     field :recipe_name
@@ -17,4 +18,9 @@ class Recipe
     validates_length_of :ingredients, :maximum => 10
     validates_length_of :steps, :maximum => 30
     validates_presence_of :author
+
+    before_save :sync_tag
+    def sync_tag
+        self.tags |= self.ingredients.map(&:name)
+    end
 end
