@@ -4,6 +4,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @catalogs = Catalog.all.to_a
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  def more
+    #  used for waterfall displaying
     criteria = Product.enabled.without(:description)
     if params[:catalog].present?
       catalog = Catalog.first(conditions: {name: params[:catalog]})
@@ -12,12 +21,11 @@ class ProductsController < ApplicationController
     end
 
     @products = criteria.via_editor.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-    @catalogs = Catalog.all.to_a
 
     data = {
       items: @products.inject([]){|memo, p| memo << {
         name: p.name,
-        picture_url: p.get_image_url(true),
+        picture_url: p.get_image_url(true, 0 , false),
         id: p.id}
       },
       page: params[:page],
@@ -25,7 +33,6 @@ class ProductsController < ApplicationController
     }
 
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render :json => data}
     end
   end

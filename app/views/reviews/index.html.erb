@@ -1,3 +1,17 @@
-<% title t("reviews.reviews") %>
+<% title t("reviews.reviews"), false %>
 
-<%= render "shared/waterfall", :path => reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 4, :columns_width => 240 %>
+<div class="grid_12 box_shadow mb20">
+    <%= image_tag "http://flickholdr.com/920/180/sea,sun/1", :class => "mt10 ml10 mb10 mr10" %>
+</div>
+<div class="clearfix"></div>
+
+<div class="grid_9">
+    <%= render "shared/waterfall", :path => more_reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 3, :columns_width => 230 %>
+</div>
+
+<div class="grid_3 box_shadow">
+    <h2><%= t("reviews.recommended_masters") %></h2>
+    <% @masters.each do |master| %>
+        <%= render master %>
+    <% end %>
+</div>

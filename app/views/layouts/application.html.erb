@@ -21,10 +21,10 @@
 <body>
 
 <%= display_flash %>
-<div id="main">
+<div id="main" class="container_12">
   <div id="container">
-    <%= render "shared/quick_login"  %>
-    <%= render "shared/top_menu" %>
+    <div class="grid_12"><%= render "shared/quick_login"  %></div>
+    <div class="grid_12"><%= render "shared/top_menu" %></div>
     <div id="content_area" class="block">
         <%= content_tag(:h1, @content_for_title, :class => "title") if show_title?  %>
         <%= content_for?(:content) ? yield(:content) : yield %>

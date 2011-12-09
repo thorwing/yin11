@@ -6,7 +6,7 @@ module Imageable
   end
 
   module InstanceMethods
-    def get_image_url(thumb = false, index = 0)
+    def get_image_url(thumb = false, index = 0, origin = true)
       image = nil
       if self.respond_to?(:image) && index == 0
         image = self.image
@@ -17,7 +17,8 @@ module Imageable
       if image
         thumb ? image.picture_url(:thumb) : image.picture_url
       else
-        "assets/images/not_found.png"
+        #origin url is used for image_tag, the other one is used for waterfall displaying
+        origin ? "not_found.png" : "assets/images/not_found.png"
       end
     end
 

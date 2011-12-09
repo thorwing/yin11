@@ -24,6 +24,7 @@
 *= require fileuploader
 */
 
+@charset "utf-8";
 @import "base";
 
 
@@ -34,19 +35,26 @@
     margin-right: 10px;
 }
 
-.grid_1 { width: $grid_1_width;}
-.grid_2 { width: $grid_2_width;}
-.grid_3 { width: $grid_3_width;}
-.grid_4 { width: $grid_4_width;}
-.grid_5 { width: $grid_5_width;}
-.grid_6 { width: $grid_6_width;}
-.grid_7 { width: $grid_7_width;}
-.grid_8 { width: $grid_8_width;}
-.grid_9 { width: $grid_9_width;}
-.grid_10 { width: $grid_10_width;}
-.grid_11 { width: $grid_11_width;}
-.grid_12 { width: $grid_12_width;}
+.grid_1 { width: 60px;}
+.grid_2 { width: 140px;}
+.grid_3 { width: 220px;}
+.grid_4 { width: 300px;}
+.grid_5 { width: 380px;}
+.grid_6 { width: 460px;}
+.grid_7 { width: 540px;}
+.grid_8 { width: 620px;}
+.grid_9 { width: 700px;}
+.grid_10 { width: 780px;}
+.grid_11 { width: 860px;}
+.grid_12 { width: 940px;}
 
+.container_12 {
+    margin: 0 auto;
+	overflow: hidden;
+	position:relative;
+}
+
+.container_12 { width: 960px;}
 /*
 	Block Styles
 */
@@ -72,6 +80,12 @@
     padding:10px;
 }
 
+.box_shadow {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
+}
+
 /*
     Menu Styles
 */
@@ -90,6 +104,11 @@ ul.menu li {
 
 .m5 {margin: 5px;}
 .p5 {padding: 5px;}
+
+.mt5 {margin-top: 5px;}
+.ml5 {margin-left: 5px;}
+.mb5 {margin-bottom: 5px;}
+.mr5 {margin-right: 5px;}
 
 .mt10 {margin-top: 10px;}
 .ml10 {margin-left: 10px;}
@@ -139,17 +158,6 @@ ul.menu li {
 
 
 /* Common stuff */
-
-body {
-	margin:0px;
-	padding:0px;
-	line-height:22px;
-    background-color: $background_gray;
-    color: $font_black;
-    font-size:13px;
-    font-family: $general_font;
-}
-
 h2 { font-size:24px; }
 h3 { font-size:14px; }
 h4 { font-size:13px; }
@@ -237,6 +245,22 @@ h1.title {
     text-align: center;
 }
 
+
+body {
+	margin:0px;
+	padding:0px;
+	line-height:22px;
+    background-color: $background_gray;
+    color: $font_black;
+    font-size:13px;
+    font-family: $general_font;
+}
+
+html, body, #main { height: 100%; }
+body #main { height: auto; padding-bottom: 15em;}
+
+#content_area { min-height: 600px;  }
+
 /*
 	Footer-Styles
 */
@@ -245,16 +269,6 @@ h1.title {
     for bottom-footer
     the padding-bottom of container and margin, height of footer must be the same
 */
-html, body, #main { height: 100%; }
-body #main { height: auto;}
-#container {
-    width:960px;
-    margin: 0 auto;
-	overflow: hidden;
-	position:relative;
-	padding-bottom: 15em;}
-
-#content_area { min-height: 600px;  }
 
 #footer {
     clear: both;

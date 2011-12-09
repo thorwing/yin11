@@ -1,10 +1,14 @@
 <script type="tpl" id="tpl">
-    <div class="waterfall grid_3" data-id="{{id}}">
-     <a href="<%= path + "/{{id}}" %>" >
+    <div class="waterfall grid_3 box_shadow" data-id="{{id}}">
+     <a href="<%= "reviews/{{id}}" %>" >
         <img height="{{height}}" width = "<%= IMAGE_THUMB_WIDTH %>" alt="{{name}}" src="{{picture_url}}" />
      </a>
-
-     <%= link_to t("comments.reply"), new_comment_path(:item_id => "{{id}}", :item_type => "Review"), :class => "reply_comment_link fr mr10" %>
+     <div class="fl ml10 mt5">
+        <a href="/relationships?target_id={{user_id}}&amp;target_type=User" class="button new_relationship" data-method="post" data-remote="true" rel="nofollow"><%= t("relationships.new") %></a>
+        <a href="/relationships/cancel?target_id={{user_id}}&amp;target_type=User" class="button cancel_relationship hide" data-method="put" data-remote="true" rel="nofollow"><%= t("relationships.cancel") %></a>
+     </div>
+     <!--<a href="/comments/new?item_id={{id}}&amp;item_type=Review" class="fr mr10 mt5" rel="facebox"><%= t("comments.reply") %></a>-->
+     <a href="/comments/new?item_id={{id}}&amp;item_type=Review" class="reply_comment_link fr mr10 mt5"><%= t("comments.reply") %></a>
      <div class="clearfix"/>
      <div class="new_reply_comment" style="display:none">
         <%= form_tag url_for(:controller => "comments", :method => :post), :remote => true do %>
