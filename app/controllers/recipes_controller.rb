@@ -2,11 +2,25 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @recipes }
+    end
+  end
+
+  def more
+    @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+    data = {
+      items: @recipes.inject([]){|memo, p| memo << {
+        name: p.recipe_name,
+        picture_url: p.steps.last == nil ? 'no-pic' : Image.find(p.steps.last.img_id).picture_url,
+        id: p.id}
+      },
+      page: params[:page],
+      pages: (Recipe.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+    }
+
+    respond_to do |format|
+      format.json { render :json => data}
     end
   end
 

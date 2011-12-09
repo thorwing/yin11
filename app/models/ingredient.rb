@@ -5,6 +5,7 @@ class Ingredient
   field :amount, :type => String
   field :is_major_ingredient, :type => Boolean
 
+  attr_accessible  :name, :amount, :is_major_ingredient
   embedded_in :recipe
 
   validates_presence_of :name

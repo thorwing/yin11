@@ -25,30 +25,38 @@
   <!--</tr>-->
 <!--< end %>-->
 <!--</table>-->
-<div class="block">
-    <div class="block" >
-      <%= link_to image_tag("recipe_search.png", :border => 0, :alt => t("recipes.search"))%>
+<!--<div class="block">-->
+    <!--<div class="block" >-->
+      <!--<= link_to image_tag("recipe_search.png", :border => 0, :alt => t("recipes.search"))%>-->
 
-    </div>
+    <!--</div>-->
 
-    <div class="fl">
-      <%= link_to image_tag("recipe_show.png", :border => 0, :alt => t("recipes.show"))%>
-    </div>
+    <!--<div class="fl">-->
+      <!--<= link_to image_tag("recipe_show.png", :border => 0, :alt => t("recipes.show"))%>-->
+    <!--</div>-->
 
-    <div class="fl">
-        <% @recipes.each do |recipe| %>
-            <%= recipe.author.screen_name %>
-            <%= t("recipes.uploaded") %>
-            <%= recipe.name %>
-            <%= t("recipes.use") %>
-            <%= recipe.ingredients.count %>
-            <%= t("recipes.kind") %>
-            <%= t("recipes.including") %>
-            <%= recipe.steps.count %>
-            <%= t("recipes.step") %>
-            <%= link_to t("recipes.detail"), recipe %>
-            <br/>
-        <% end %>
-    </div>
+    <!--<div class="fl">-->
+        <!--< @recipes.each do |recipe| %>-->
+            <!--<= recipe.author.screen_name %>-->
+            <!--<= t("recipes.uploaded") %>-->
+            <!--<= recipe.name %>-->
+            <!--<= t("recipes.use") %>-->
+            <!--<= recipe.ingredients.count %>-->
+            <!--<= t("recipes.kind") %>-->
+            <!--<= t("recipes.including") %>-->
+            <!--<= recipe.steps.count %>-->
+            <!--<= t("recipes.step") %>-->
+            <!--<= link_to t("recipes.detail"), recipe %>-->
+            <!--<= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %>-->
+            <!--<br/>-->
+        <!--< end %>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="grid_9 block">
+    <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 240 %>
 </div>
+<div>
+
+</div>
+
 <%= link_to t("recipes.new"), new_recipe_path %>
