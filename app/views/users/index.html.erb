@@ -1,11 +1,7 @@
-<div class="box_shadow mt10">
-
-</div>
-
 <div>
-  <% @masters.each do |master| %>
-    <div class="master">
-        <%= render "users/user", :user => master %>
+  <% @users.each do |user| %>
+    <div>
+        <%= render "users/user", :user => user %>
     </div>
   <% end %>
 </div>

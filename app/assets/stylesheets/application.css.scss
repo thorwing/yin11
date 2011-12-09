@@ -13,6 +13,7 @@
 *= require catalogs
 *= require search
 *= require personal
+*= require users
 *= require upload
 *= require tab_control
 *= require token-input-facebook
@@ -126,6 +127,8 @@ ul.menu li {
 
 .center {margin: 0 auto; display: block;}
 
+.clear { visibility: hidden; height: 0; clear: both; }
+
 .clearfix:after {
     visibility: hidden;
     display: block;
@@ -138,6 +141,9 @@ ul.menu li {
 
 .fl {float: left;}
 .fr {float: right;}
+
+.to_left { margin-left: 0;}
+.to_right { margin-right: 0;}
 
 .al {text-align: left;}
 .ar {text-align: right;}
@@ -154,6 +160,10 @@ ul.menu li {
 .display {
      display: inline;
     visibility: visible;
+}
+
+.cursor {
+    cursor: pointer;
 }
 
 
@@ -188,7 +198,7 @@ a.button, input.button {
 	text-decoration: none;
 	border:1px solid #32312f;
 	text-transform:uppercase;
-    height: 24px;
+    height: 18px;
     margin: 2px 0;
 }
 a.button:hover, input.button:hover {
@@ -257,7 +267,7 @@ body {
 }
 
 html, body, #main { height: 100%; }
-body #main { height: auto; padding-bottom: 15em;}
+body #main { height: auto; padding-bottom: 10em;}
 
 #content_area { min-height: 600px;  }
 
@@ -274,8 +284,8 @@ body #main { height: auto; padding-bottom: 15em;}
     clear: both;
     position: relative;
     z-index: 10;
-    height: 15em;
-    margin-top: -15em;
+    height: 10em;
+    margin-top: -10em;
     overflow:hidden;
     color:#FFFFFF;
     background-color: $green;

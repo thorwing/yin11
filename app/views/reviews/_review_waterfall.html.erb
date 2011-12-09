@@ -3,10 +3,6 @@
      <a href="<%= "reviews/{{id}}" %>" >
         <img height="{{height}}" width = "<%= IMAGE_THUMB_WIDTH %>" alt="{{name}}" src="{{picture_url}}" />
      </a>
-     <div class="fl ml10 mt5">
-        <a href="/relationships?target_id={{user_id}}&amp;target_type=User" class="button new_relationship" data-method="post" data-remote="true" rel="nofollow"><%= t("relationships.new") %></a>
-        <a href="/relationships/cancel?target_id={{user_id}}&amp;target_type=User" class="button cancel_relationship hide" data-method="put" data-remote="true" rel="nofollow"><%= t("relationships.cancel") %></a>
-     </div>
      <!--<a href="/comments/new?item_id={{id}}&amp;item_type=Review" class="fr mr10 mt5" rel="facebox"><%= t("comments.reply") %></a>-->
      <a href="/comments/new?item_id={{id}}&amp;item_type=Review" class="reply_comment_link fr mr10 mt5"><%= t("comments.reply") %></a>
      <div class="clearfix"/>
@@ -27,7 +23,9 @@
         </a>
         <div class="fl">
             <%= link_to "{{user_name}}", "users/{{user_id}}", class: "fl" %><br/>
-            <%= link_to t("reviews.by_user", count: "{{user_reviews_cnt}}"), "#" %>
+            <%= link_to t("reviews.by_user", count: "{{user_reviews_cnt}}"), "#" %><br/>
+            <a href="/relationships?target_id={{user_id}}&amp;target_type=User" class="button new_relationship" data-method="post" data-remote="true" rel="nofollow"><%= t("relationships.new") %></a>
+            <a href="/relationships/cancel?target_id={{user_id}}&amp;target_type=User" class="button cancel_relationship hide" data-method="put" data-remote="true" rel="nofollow"><%= t("relationships.cancel") %></a>
         </div>
         <div class="clearfix"/>
         <p class="ml10">

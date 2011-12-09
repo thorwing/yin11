@@ -1,0 +1,28 @@
+<h2 class="daren_t f16 mt10">明星达人</h2>
+<div class="grid_12 box_shadow mt10">
+    <% @stars.each do |star| %>
+        <div class="grid_3 fl mt10" id="<%= star.id %>">
+            <%= link_to image_tag(star.get_avatar, border: 0, width: 218, height:328), star %>
+
+            <%= render "shared/follow_field", target: star %>
+        </div>
+    <% end %>
+
+</div>
+
+<div>
+    <div class="grid_9 mt20 to_left">
+      <% @masters.each do |master| %>
+        <%= render "users/user", user: master %>
+      <% end %>
+    </div>
+
+    <div class="grid_3 mt20 to_right box_shadow">
+        <h3>根据标签查找达人</h3>
+        <% @hot_tags.each do |tag, weight| %>
+            <%= link_to tag, {:controller => "search", :action => "index", :tags => tag}, :class => "tag" %> * <%= weight %><br/>
+        <% end %>
+    </div>
+</div>
+
+<div class="clear">.</div>

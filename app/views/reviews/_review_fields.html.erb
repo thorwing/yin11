@@ -10,7 +10,6 @@
 
         <div>
             <div class = "fl">
-                <div class="fr "><%= f.label :images, t("images.images") %></div >
                 <div id="uploader" class="fl m5 w50"></div>
                 <div id="images_container" class="block fl m5">
                     <%= render :partial => "images/single_image_field",  :collection => review.images, :as => :image %>

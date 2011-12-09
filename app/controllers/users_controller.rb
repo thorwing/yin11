@@ -5,7 +5,14 @@ class UsersController < ApplicationController
   before_filter(:only => [:edit, :update, :show]) { |c| c.require_permission :normal_user }
 
   def index
+    @users = User.all
+  end
+
+  def masters
     @masters = User.enabled.masters
+    @stars = @masters.reject{|m| m.avatar.blank?}
+
+    @hot_tags = Group.tags_with_weight
   end
 
   # GET /users/new

@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @masters = User.masters
+    @hard_workers = User.desc(:reviews_count)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
         user_reviews_cnt: r.author.reviews.count,
         user_established: r.author.relationships.select{|rel| rel.target_type == "User" && r.target_id == r.author.id.to_s}.size > 0,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        picture_url: r.get_image_url(true), id: r.id}
+        picture_url: r.get_image_url(true, 0, false), id: r.id}
       },
       page: params[:page],
       pages: (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil

@@ -119,6 +119,8 @@ Yin11::Application.routes.draw do
 
   resources :reports, :only => [:new, :create]
 
+  match "masters" => "users#masters"
+
   resources :users, :except => [:destroy] do
     member do
       put "block"

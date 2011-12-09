@@ -18,7 +18,7 @@ module ImagesHelper
   #  image_tag("severity_3_small.png", :width => width, :height => height)
   #end
 
-  def get_thumbnail(image, group = false)
+  def get_thumbnail(image)
     if image.picture?
       link_to(image_tag(image.picture_url, :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :alt => "image_thumbnail"),
         image.picture_url, :title => image.caption, :rel => "facebox" , :class => "thumbnail" )
