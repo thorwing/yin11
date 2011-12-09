@@ -3,6 +3,7 @@ class Step
   field :num, :type => Integer
   field :content, :type => String
   field :img_id
+  field :img_url
   has_one :images
 
   embedded_in :recipe
