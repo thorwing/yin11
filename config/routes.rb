@@ -19,6 +19,8 @@ Yin11::Application.routes.draw do
     resources :users, :except => [:new, :create]
     resources :tags
     resources :products
+    resources :pages
+    resources :images
   end
 
   put 'administrator/base/toggle'
@@ -40,7 +42,9 @@ Yin11::Application.routes.draw do
 
   get "home/more_items"
 
-  resources :topics
+  resources :topics do
+    member { post :mercury_update }
+  end
 
   resources :search do
     collection do

@@ -1,12 +1,55 @@
 <% home_page %>
 <% meta_tag t("site.introduction") %>
 
-<div id="hot_topics">
-    <% @hot_topics.each do |topic| %>
-        <%= render "topics/large_topic", :topic => topic %>
+<div class="banner grid_12"><%= image_tag "banner1.jpg", width:960, height:200 %></div>
+
+<h1>今日美食达人</h1>
+<div class="clearfix">
+    <% @daily_stars.each do |master| %>
+        <%= render "users/user", user: master %>
     <% end %>
 </div>
 
+<h3>更多美食达人</h3>
+<div>
+    <% @more_masters.each do |master| %>
+        <%= image_tag master.get_avatar, width:50, height:50, class: "more_head_img" %>
+    <% end %>
+</div>
+
+<div class="topic_block grid_12 mt20 center">
+    <div class=banner>
+      <IMG src="主页_files/Xmas_banner3.jpg" width=940 height=200>
+    </div>
+    <DIV class="sub_box mt10">
+        <DIV class=description_box>
+            <P><BR>缤纷圣诞零食</P>
+            <P>圣诞糖果，圣诞蛋糕，圣诞布丁，让我们一起来淘圣诞最爱的零食吧.选择一种进餐方式，便是选择截然不同的生活。今时今日如《欲望都市》里的四名女子[详细]</P>
+            <DIV class=imgBox><IMG src="主页_files/topicImg_1.jpg" width=290 height=200></DIV>
+        </DIV>
+    </DIV>
+    <DIV class="sub_box mt10">
+        <DIV class=imgBox><IMG src="主页_files/topicImg_2.jpg" width=290 height=200></DIV>
+        <DIV class=description_box>
+            <P><BR>不可错过的圣诞大餐</P>
+            <P><BR>温馨的圣诞节当然要在自己家里和家人朋友们一起过啦，自己动手DIY属于你自己的圣诞大餐吧！火鸡、火腿、三文鱼？我的厨房我做主~何谓国宴？</P>
+        </DIV>
+    </DIV>
+    <DIV class="sub_box mt10">
+        <DIV class=description_box>
+            <P><BR>圣诞怎能缺少美酒</P>
+            <P>葡萄美酒夜光杯，欲饮琵琶马上催！有没有一个词能像香槟那样直白地表达庆典的含义？那个一直被喜庆、浪漫、欢乐定义的美酒。永远都是聚会不可或缺的饮品。</P>
+        </DIV>
+        <DIV class=imgBox><IMG src="主页_files/topicImg_3.jpg" width=290 height=200></DIV>
+    </DIV>
+</div>
+
+<DIV class="topic_block grid_12 fl mt20"><BR>
+<P style="FONT-SIZE: 24px" align=left>冬令进补，春来打虎</P>
+<P>冬令进补，是我国民间习俗之一。中医《素问直解》云："万物皆生于春，长于夏，收于秋，藏于冬，人也亦之。"古人认为，冬三月是"生机潜伏、阳气内藏"的季节。冬天是一年四季中保养、积蓄的最佳时机。冬天人们食欲大增，脾胃运化转旺，此时进补吸收率高，更能发挥补身的作用，投资少，见效快。事实证明，冬令进补不仅能调养身体，还能增强体质，提高机体的抗病能力。因此，民间有"今年冬令进补，明年三春打虎"之说。</P>
+<DIV class=banner><IMG src="主页_files/dljb_banner.jpg" width=940
+height=200></DIV></DIV></DIV>
+<DIV></DIV>
 
 
 

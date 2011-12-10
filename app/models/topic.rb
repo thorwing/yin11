@@ -6,8 +6,9 @@ class Topic
   field :title
   field :description
   field :priority, :type => Integer, :default => 100
+  field :content
 
-  attr_accessible :title, :description, :priority
+  attr_accessible :title, :description, :content, :priority
 
   #relationships
   has_many :articles

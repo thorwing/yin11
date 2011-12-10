@@ -75,6 +75,7 @@ zh-CN:
     are_you_sure_to_delete: 确定要删除吗？
     are_you_sure_to_disable_enable: "确定要禁用/启用邮件吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
+    mercury_edit: “所见即所得”编辑
 
   flash:
     notice: 通知
@@ -191,6 +192,8 @@ zh-CN:
     products: 管理产品
     users: 管理用户
     tags: 管理标签
+    pages: 管理页面
+    images: 管理图片
 
   location:
     default_country: 中国
@@ -380,6 +383,9 @@ zh-CN:
     producer: 厂商
     original_place: 原产地
     description: 商品描述
+
+  pages:
+    pages: 页面
 
   money:
     yuan_mark1: "￥"

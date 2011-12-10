@@ -1,6 +1,10 @@
 <% title @topic.title %>
 <p><%= @topic.description %></p>
 
+<div id="page_content" class="mercury-region" data-type="editable">
+  <%= raw @topic.content %>
+</div>
+
 <div id="topic_articles" class="block round">
     <% get_recipes(@topic).each do |recipe| %>
         <div>
@@ -25,6 +29,7 @@
 
 <div class="actions">
   <% if current_user_has_permission? :editor %>
+    <%= link_to t("general.mercury_edit"), "/editor" + request.path, id: "edit_link", data: {save_url: mercury_update_topic_path(@topic)}, :class => "button" %>
     <%= link_to t("general.change"), edit_topic_path(@topic), :class => "button" %>
     <%= link_to t("general.delete"), @topic, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
   <% end %>

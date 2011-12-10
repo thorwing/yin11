@@ -86,4 +86,11 @@ class TopicsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def mercury_update
+    topic = Topic.find(params[:id])
+    topic.content = params[:content][:topic_content][:value]
+    topic.save!
+    render text: ""
+  end
 end

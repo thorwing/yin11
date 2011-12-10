@@ -1,4 +1,4 @@
-<div id="page_title" class="mercury-region" data-type="editable"><span><%= raw @page.title %></span></div>
+<h1><%= @page.title %></h1>
 
 <div id="page_content" class="mercury-region" data-type="editable">
     <%= raw @page.content %>
@@ -6,7 +6,7 @@
 
 <% if current_user_has_permission? :editor %>
     <div class="actions">
-        <%= link_to t("pages.mercury_edit"), "/editor" + request.path, id: "edit_link", data: {save_url: mercury_update_page_path(@page)}, :class => "button" %>
+        <%= link_to t("general.mercury_edit"), "/editor" + request.path, id: "edit_link", data: {save_url: mercury_update_page_path(@page)}, :class => "button" %>
         <%= link_to t("general.edit"), edit_page_path(@page), :class => "button" %>
     </div>
 <% end %>
