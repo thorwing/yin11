@@ -70,6 +70,17 @@ function delete_image(link, limit) {
         }
     });
 }
+function show(url)
+{
+//    alert(url);
+    var length = $('.step_uploader').find('.qq-upload-button').length;
+    if(url==null||url=="")
+    {
+        url = "default_step.png";
+    }
+    $('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ url +")");
+
+}
 
 function step_uploader()
 {
@@ -107,16 +118,11 @@ function step_uploader()
             params: {"authenticity_token": tokentag},
             onComplete: function(id, fileName, responseJSON){
               if (responseJSON.success) {
-
-//                  alert("total:" + $('.step_uploader').length);
-//                  alert(length + "th is clicked!");
                 $('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ responseJSON.picture_url +")");
                 $('.step_uploader').eq(length-1).parent().find('.img_id').val(responseJSON.image_id);
                 $('.step_uploader .qq-upload-success').hide();
                 $('.step_uploader .qq-upload-file').hide();
                 $('.step_uploader .qq-upload-size').hide();
-
-
               }
 
               else {}
@@ -125,8 +131,8 @@ function step_uploader()
     }
 }
 
-$(function() {
-     step_uploader();
-});
+//$(function() {
+//     step_uploader();
+//});
 
 

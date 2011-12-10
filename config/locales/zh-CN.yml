@@ -521,11 +521,16 @@ zh-CN:
     cn_colon: "："
 
   recipes:
+     recipe_collection: 菜谱大全
      recipe_name: 菜谱名
      ingredients: 食材明细
      ingredient_name: 名称
      ingredient_amount: 用量
+     ingredients_count: 食材数
+     is_major_ingredient: 是否主料
      steps: 菜谱步骤
+     steps_count: 步骤数
+     uploaded_by: 上传者
      tips: 小贴士
      new: 新菜谱
      add_ingredient: +增加一种
@@ -534,4 +539,15 @@ zh-CN:
      descriptions: 说明
      tips: 温馨提示
      how_to: 如何上传菜谱？
+     uploaded: 上传了
+     use: 使用了
+     kind: 种材料
+     including: 包含
+     step: 个步骤
+     detail: 详细
+     search: 查找
+     show: 显示
+     major: 主料
+     minor: 辅料
+     note: (请在最终的步骤中附上大作的成品图)
 

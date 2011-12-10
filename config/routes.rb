@@ -7,7 +7,9 @@ Yin11::Application.routes.draw do
 
   resources :steps
 
-  resources :recipes
+  resources :recipes do
+    collection {get :more}
+  end
 
   namespace :administrator do
     root :to => "base#index"
