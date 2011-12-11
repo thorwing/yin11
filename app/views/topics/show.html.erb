@@ -1,8 +1,10 @@
 <% title @topic.title %>
 <p><%= @topic.description %></p>
 
-<div id="topic_content" class="mercury-region" data-type="editable">
-  <%= raw @topic.content %>
+<div class="topic_block grid_12 fl mt20">
+    <div id="topic_content" class="mercury-region" data-type="editable">
+        <%= raw @topic.content %>
+    </div>
 </div>
 
 <div id="topic_articles" class="block round">

@@ -12,9 +12,9 @@
   <div class="field">
     <b><%= t("images.image") %></b><br/>
     <%= image_tag @image.picture.url %><br/>
-    <%= f.file_field :picture %> <br/>
+    <%= f.file_field :picture  %> <br/>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "button" %>
   </div>
 <% end %>

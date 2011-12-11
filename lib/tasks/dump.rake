@@ -39,17 +39,18 @@ namespace :yin11 do
   desc "dump images"
   task :dump_images => :environment do
     array = []
-    images = Image.without(:_id).to_a
+    images = Image.all.to_a
     #Only allow topics'' images here
-    images = images.reject{|i| i.topic_id.blank?}
+    #images = images.reject{|i| i.topic_id.blank?}
     File.open(File.join(Rails.root, "app/seeds/images.yml"), 'w') do |file|
       images.each do |image|
         hash = {}
-        hash[:file_name] = image.picture.to_s
+        hash[:id] = image.id
+        hash[:file_name] = image.picture.path.split('/').last.gsub(image.id.to_s + "_", '')
         hash[:binary_data] = image.picture.read
         #hash[:product_id] = image.product_id
         #hash[:article_id] = image.article_id
-        hash[:topic_id] = image.topic_id
+        #hash[:topic_id] = image.topic_id
         array << hash
       end
       YAML::dump(array, file)

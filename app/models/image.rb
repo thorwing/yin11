@@ -15,6 +15,9 @@ class Image
   belongs_to :review
   belongs_to :topic
 
+  #validations
+  validates_presence_of :picture
+
   #callback
   before_save :sync_status
 
