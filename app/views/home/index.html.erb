@@ -17,10 +17,9 @@
     <% end %>
 </div>
 
+<h3>专题</h3>
 <% @hot_topics.each do |topic| %>
-    <div class="topic_block grid_12 fl mt20">
-        <%= raw topic.content %>
-    </div>
+    <%= raw topic.content %>
 <% end %>
 
 
