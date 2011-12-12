@@ -152,6 +152,16 @@ require "topic"
     #topic.save!
   end
 
+  p "generating pages"
+  pages = YAML::load(File.open("app/seeds/pages.yml"))
+  pages.each do |p|
+    Page.create! do |page|
+      page.id = p.id
+      page.title = p.title
+      page.content = p.content
+    end
+  end
+
   #p "generating recipes"
   #recipes = YAML::load(File.open("app/seeds/recipes.yml"))
   #recipes.each do |r|

@@ -36,6 +36,14 @@ namespace :yin11 do
     end
   end
 
+  desc "dump pages"
+  task :dump_pages => :environment do
+    pages = Page.all.to_a
+    File.open(File.join(Rails.root, "app/seeds/pages.yml"), 'w') do |file|
+    YAML::dump(pages, file)
+    end
+  end
+
   desc "dump images"
   task :dump_images => :environment do
     array = []
