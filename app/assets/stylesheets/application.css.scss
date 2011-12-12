@@ -3,6 +3,7 @@
 *= require base
 *= require_self
 *= require fonts
+*= require header
 *= require waterfall
 *= require comment
 *= require items
@@ -125,7 +126,8 @@ ul.menu li {
 
 .w50 {width: 50px;}
 
-.red {color: red;}
+.red {color: $red;}
+.white {color: $white;}
 
 .center {margin: 0 auto; display: block;}
 
@@ -256,28 +258,12 @@ body #main { height: auto; padding-bottom: 20em;}
     height: 10em;
     margin-top: -10em;
     overflow:hidden;
-    color:#FFFFFF;
-    background-color: $green;
+    color:$white;
+    background-color:$green;
 }
-.footer_column {
-	float:left;
-	width:120px;
-	margin-right:30px;
-}
-#footer .long {
-	width:610px;
-}
-#footer h3 {
-	color:#FFFFFF;
-	font-size:12px;
-}
+
 #footer a {
-	color:#FFFFFF;
+	color:$white;
 	text-decoration:underline;
-}
-.footer_column ul li, .footer_column ul {
-	list-style:none;
-	margin:0;
-	padding:0;
 }
 

@@ -1,0 +1,41 @@
+<div id="header" class="clearfix">
+    <div id="logo" class="ml10 fl">
+        <%= link_to image_tag("yin11_logo.png", :border => 0), root_path %>
+        <h1><%= t("site.name") %></h1>
+        <h2><%= t("site.description") %></h2>
+    </div>
+    <ul id="top_menu" class="jewelry fl ml20 mr20">
+        <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me") %></li><% end %>
+        <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
+        <li><%= render_menu(t("menu.masters"), masters_path) %></li>
+        <li><%= render_menu(t("menu.topics"), topics_path) %></li>
+        <li><%= render_menu(t("menu.recipes"), recipes_path) %></li>
+        <% if current_user && current_user.has_permission?(:editor) %>
+            <li><%= render_menu(t("menu.administrator_control"), administrator_root_path) %></li>
+        <% end %>
+    </ul>
+    <div class="jewelry ml20 fl" >
+        <%= form_tag '/search', :method => :get do %>
+            <%= text_field_tag :query, @default_query, :class => "clear_default not_cleared" %>
+            <%= submit_tag t("general.search") %>
+        <% end %>
+    </div>
+    <div class="jewelry fr mr10">
+        <% if current_user %>
+            <span class="nav_menu">
+                <%= link_to(image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow") + image_tag(current_user.get_avatar(true), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT) + current_user.screen_name, profile_path(current_user.profile), :class => "white f16") %>
+                <ul>
+                    <li><%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %></li>
+                    <li><%= link_to t("menu.logout"), logout_path %></li>
+                </ul>
+            </span>
+        <% else %>
+          <% unless hide_quick_auth? %>
+             <span id ="login_logout">
+                <%= link_to t("authentication.login"), login_path %>
+                <%= link_to t("authentication.sign_up"), sign_up_path %>
+            </span>
+          <% end %>
+        <% end %>
+    </div>
+</div>

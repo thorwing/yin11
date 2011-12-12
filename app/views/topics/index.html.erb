@@ -1,20 +1,10 @@
 <% title t("topics.topics") %>
 
-<table>
-    <tr>
-        <th><%= t("general.title") %></th>
-        <th><%= t("articles.articles") %></th>
-    </tr>
+<% @topics.each do |topic| %>
+    <h2><%= link_to topic.title, topic %></h2>
 
-    <% @topics.each do |topic| %>
-        <tr id='<%= topic.id %>'>
-            <td><%= link_to topic.title, topic %></td>
-            <td><%= topic.articles.size.to_s %></td>
-        </tr>
-    <% end %>
-</table>
-
-<br />
+    <%= raw topic.content %>
+<% end %>
 
 <% if current_user_has_permission? :editor %>
     <div class="actions">

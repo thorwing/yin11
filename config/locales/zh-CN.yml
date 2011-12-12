@@ -96,8 +96,8 @@ zh-CN:
       max_limit_msg: 最多可以设置%{max}个标签
 
   authentication:
-    logout: "登出"
-    login: "登入"
+    logout: 登出
+    login: 登录
     quick_login: "快速登录："
     sign_up: "注册"
     email: "邮箱地址"

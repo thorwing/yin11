@@ -30,7 +30,7 @@ class ImagesController < ApplicationController
     if @image.save!
       data = { :success => true, :picture_url => @image.picture_url, :image_id => @image.id}
       respond_to do |format|
-        format.html { redirect_to @image }
+        format.html { params[:qqfile].present? ? (render :json => data) : (redirect_to @image) }
         format.json { render :json => data }
       end
     end

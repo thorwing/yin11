@@ -10,6 +10,7 @@
 
         <div>
             <div class = "fl">
+                <%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>
                 <div id="uploader" class="fl m5 w50"></div>
                 <div id="images_container" class="block fl m5">
                     <%= render :partial => "images/single_image_field",  :collection => review.images, :as => :image %>

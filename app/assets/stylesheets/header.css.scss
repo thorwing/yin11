@@ -1,0 +1,32 @@
+@import "attributes";
+
+#header {
+    background: gray;
+    height: 80px;}
+
+#header .jewelry {
+    padding-top: 20px;
+}
+
+/*  Logo */
+#header #logo h1, #header #logo h2 {
+	margin:0px;
+    padding: 0px;
+	text-indent:-9999px;
+    line-height:0px;
+}
+
+#header a {
+    font-size: 16px;
+    color:$white;
+    text-decoration:none;
+}
+
+#header a:hover, #header a.selected {color:$yellow_green;}
+
+/*
+	Top-Menu-Styles
+*/
+#top_menu {line-height:40px; display:inline-block; }
+#top_menu li {float:left; padding:0 15px;}
+

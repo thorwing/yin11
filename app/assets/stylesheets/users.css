@@ -1,7 +1,7 @@
-.master {height:140px;}
+.master {height:160px;}
 .master .head_img{margin:5px; width:120px; height:120px; padding:5px;}
 .master .description_box{width:500px;margin: 5px}
 .master .img_list_box{width:280px;padding:5px;margin-top:5px;}
 .master img{ float:left; vertical-align:middle; margin:2px;}
 
-.more_head_img{float:left; width:50px; height:50px; margin:3px;}
+.more_head_img {float:left; width:48px; height:48px; margin:3px;}
