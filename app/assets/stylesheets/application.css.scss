@@ -170,28 +170,6 @@ ul.menu li {
 
 
 /* Common stuff */
-h2 { font-size:24px; }
-h3 { font-size:14px; }
-h4 { font-size:13px; }
-h5 { font-size:12px; }
-
-h2, h3, h4, h5 {margin: 0 5px;}
-
-small {
-	color:#595856;
-	font-weight:bold;
-	font-size:11px;
-	display:inline-block;
-    margin-bottom: 5px;
-}
-
-a {
-	color: $green;
-	text-decoration:none;
-}
-a:hover { text-decoration:underline; }
-
-p { margin: 0 0 15px 0; }
 
 a.button, input.button {
 	background: $blue;
@@ -257,19 +235,8 @@ h1.title {
     text-align: center;
 }
 
-
-body {
-	margin:0px;
-	padding:0px;
-	line-height:22px;
-    background-color: $background_gray;
-    color: $font_black;
-    font-size:13px;
-    font-family: $general_font;
-}
-
 html, body, #main { height: 100%; }
-body #main { height: auto; padding-bottom: 10em;}
+body #main { height: auto; padding-bottom: 20em;}
 
 #content_area { min-height: 600px;  }
 
