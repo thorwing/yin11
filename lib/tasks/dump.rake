@@ -20,13 +20,13 @@ namespace :yin11 do
     end
   end
 
-  desc "dump recipes"
-  task :dump_recipes => :environment do
-    recipes = Article.recipes.without(:updated_at, :created_at, :_type, :votes, :fan_ids, :hater_ids, "source._id").to_a
-    File.open(File.join(Rails.root, "app/seeds/recipes.yml"), 'w') do |file|
-      YAML::dump(recipes, file)
-    end
-  end
+  #desc "dump recipes"
+  #task :dump_recipes => :environment do
+  #  recipes = Article.recipes.without(:updated_at, :created_at, :_type, :votes, :fan_ids, :hater_ids, "source._id").to_a
+  #  File.open(File.join(Rails.root, "app/seeds/recipes.yml"), 'w') do |file|
+  #    YAML::dump(recipes, file)
+  #  end
+  #end
 
   desc "dump topics"
   task :dump_topics => :environment do
@@ -35,6 +35,35 @@ namespace :yin11 do
       YAML::dump(topics, file)
     end
   end
+
+  desc "dump recipes"
+  task :dump_recipes => :environment do
+    recipes = Recipe.all.to_a
+    File.open(File.join(Rails.root, "app/seeds/recipes.yml"), 'w') do |file|
+      YAML::dump(recipes, file)
+    end
+
+    array = []
+    recipes = Recipe.all.to_a
+    File.open(File.join(Rails.root, "app/seeds/recipes_imgs.yml"), 'w') do |file|
+       recipes.each do |recipe|
+            steps = recipe.steps
+            steps.each do |step|
+                image = Image.find(step.img_id)
+                hash = {}
+                hash[:id] = image.id
+                hash[:step_id] = image.step_id
+                hash[:file_name] = image.picture.path.split('/').last.gsub(image.id.to_s + "_", '')
+                hash[:binary_data] = image.picture.read
+                array << hash
+                p "hash[:file_name] "+ hash[:file_name]
+                end
+       end
+       YAML::dump(array, file)
+       p "array " + array.size.to_s
+    end
+  end
+
 
   desc "dump images"
   task :dump_images => :environment do

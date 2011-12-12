@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter(:except => [:index, :show]) { |c| c.require_permission :editor }
+  before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :editor }
 
   # GET /products
   # GET /products.json

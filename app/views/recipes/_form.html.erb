@@ -51,6 +51,7 @@
             <% end %>
         </div>
         <%= link_to_add_fields( t("recipes.add_step"), f, :steps, ".steps", get_max_length(Recipe, :steps) ) %>
+        <!--<= javascript_tag "show('');" %>-->
 
       <div class="actions">
         <%= f.submit %>

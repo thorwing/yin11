@@ -20,7 +20,24 @@ class Recipe
     validates_presence_of :author
 
     before_save :sync_tag
+    before_save :sync_image
+
     def sync_tag
         self.tags |= self.ingredients.map(&:name)
+    end
+
+    def sync_image
+      p "before recipe sync_image"
+      #p "self.img_id" + self.steps.img_id
+      self.steps.each do |step|
+        if step.img_id.present?
+          #&& (step.img_id.changed? || step.new_record?)
+          image = Image.first(conditions: {id: step.img_id})
+          if image
+            image.step_id = step.id
+            image.save!
+          end
+        end
+      end
     end
 end

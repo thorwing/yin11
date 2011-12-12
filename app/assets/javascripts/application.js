@@ -67,6 +67,7 @@ function add_fields(link, association, content, divname) {
     char_aware();
 //    alert($(link).html());
     step_uploader();
+    show();
 
     var count= $(divname).find(".addedclass").length;
 //    alert(count);

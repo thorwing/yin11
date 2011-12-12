@@ -74,6 +74,7 @@ function show(url)
 {
 
     var length = $('.step_uploader').find('.qq-upload-button').length;
+//    alert(length);
     if(url==null||url=="")
     {
         url = "/assets/default_step.png";

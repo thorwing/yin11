@@ -14,6 +14,7 @@ class Image
   belongs_to :product
   belongs_to :review
   belongs_to :topic
+  belongs_to :step
 
   #validations
   validates_presence_of :picture
@@ -27,7 +28,8 @@ class Image
   private
 
   def sync_status
-    alone = article_id.blank? && product_id.blank? && review_id.blank? && topic_id.blank?
+    self.alone = article_id.blank? && product_id.blank? && review_id.blank? && topic_id.blank? && step_id.blank?
+    true #return true for the callback function
   end
 
 end

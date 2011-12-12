@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Recipe.name, c.params[:id], true)}
   # GET /recipes
   # GET /recipes.json
   def index
@@ -8,16 +10,21 @@ class RecipesController < ApplicationController
   end
 
   def more
+    #p "Recipe.all" + Recipe.all.size.to_s
+    #Recipe.delete_all
+    #Image.delete_all
     @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
     data = {
       items: @recipes.inject([]){|memo, p| memo << {
         name: p.recipe_name,
-        picture_url: p.steps.last == nil ? 'no-pic' : Image.find(p.steps.last.img_id).picture_url,
+        picture_url: p.steps.last == nil ? 'no-pic' : p.steps.last.image.picture_url,
         id: p.id}
       },
       page: params[:page],
       pages: (Recipe.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
     }
+
+    #p "data" + data.to_yaml
 
     respond_to do |format|
       format.json { render :json => data}
@@ -38,6 +45,7 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   # GET /recipes/new.json
   def new
+
     @recipe = Recipe.new
     ingredient = @recipe.ingredients.build
     1.upto(3) {

@@ -1,6 +1,12 @@
 <div class="field grid_3 addedclass" position="relative">
+        <%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>
         <div class="step_uploader fl m5 w50"></div>
         <%= javascript_tag "step_uploader();"%>
+        <% url = "" %>
+        <% if f.object.img_id %>
+            <% url = Image.find( f.object.img_id ).picture_url  %>
+        <% end %>
+        <%= javascript_tag "show('"+ url +"');" %>
 
         <%= f.text_field :img_id, :maxlength => "10", :class => "img_id", :style => "display:none"  %>
         <%= f.text_area :content, :maxlength => get_max_length(Step, :content), 'data-comment_max_len' => get_max_length(Step, :content), :class => "char_aware step_content center" %>
@@ -8,9 +14,5 @@
         <%= link_to_remove_fields( t("recipes.remove"), f, ".addedclass", ".steps" ) %>
 </div>
 
-<% url = "" %>
-<% if f.object.img_id %>
-    <% url = Image.find( f.object.img_id ).picture_url  %>
-<% end %>
-<%= javascript_tag "show('"+ url +"');" %>
+
 <!--<= javascript_tag "$('.step_uploader .qq-upload-button').css(background-image, url("+ "'" + "/images/uploads/1323349889_2.jpg" + "'"+ "));" %>-->

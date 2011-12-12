@@ -4,6 +4,9 @@
 require "article"
 require "source"
 require "topic"
+require "recipe"
+require "step"
+require "ingredient"
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
@@ -152,27 +155,61 @@ require "topic"
     #topic.save!
   end
 
-  #p "generating recipes"
-  #recipes = YAML::load(File.open("app/seeds/recipes.yml"))
-  #recipes.each do |r|
-  #  begin
-  #    Article.create! do |recipe|
-  #      recipe.id = r.id
-  #      recipe.title = r.title
-  #      recipe.type = r.type
-  #      recipe.tags = r.tags
-  #      recipe.reported_on = r.reported_on
-  #      recipe.introduction = r.introduction
-  #      recipe.content = r.content
-  #      recipe.recommended = r.recommended
-  #      recipe.enabled = r.enabled
-  #    end
-  #  rescue Exception => exc
-  #    p r.title
-  #    p exc.message
-  #    p exc.backtrace
-  #  end
-  #end
+  p "generating recipes"
+  recipes = YAML::load(File.open("app/seeds/recipes.yml"))
+  recipes.each do |r|
+    begin
+      recipe = Recipe.new
+          recipe.id = r[:_id]
+          recipe.recipe_name = r[:recipe_name]
+          recipe.tags = r[:tags]
+          recipe.author_id = @admin.id
+
+          #ingredients
+          r[:ingredients].each do |ing|
+              ingredient = recipe.ingredients.build
+              ingredient.name = ing["name"]
+              ingredient.amount = ing["amount"]
+              ingredient.is_major_ingredient = ing["is_major_ingredient"]
+              ingredient.id = ing["_id"]
+              ingredient.save!
+          end
+      #steps
+          r[:steps].each do |s|
+            step = recipe.steps.build
+            step.img_id = s["img_id"]
+            step.content = s["content"]
+            step.id = s["_id"]
+             #p "recipe.id " + r[:_id].to_s
+            step.save!
+          end
+
+      recipe.save!
+      #p "recipe.to_yaml" + recipe.to_yaml
+    rescue Exception => exc
+      p r.recipe_name
+      p exc.message
+      p exc.backtrace
+    end
+  end
+
+  imgs = YAML::load(File.open("app/seeds/recipes_imgs.yml"))
+  p "total "+ imgs.length.to_s+ " imgs"
+  imgs.each do |i|
+     begin
+        image = Image.create! do |image|
+          image.id = i[:id]
+          image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
+          image.step_id = i[:step_id]
+        end
+       p "image_name" + i[:file_name] + " succ"
+     rescue Exception => exc
+        p i[:file_name]
+        p exc.message
+        p exc.backtrace
+     end
+
+  end
 
   p "generating images"
   images = YAML::load(File.open("app/seeds/images.yml"))
