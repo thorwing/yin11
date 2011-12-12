@@ -1,11 +1,32 @@
 #encoding utf-8
 
-
 namespace :yin11 do
+  def store_images(images, path)
+    array = []
+    File.open(File.join(Rails.root, path), 'w') do |file|
+      images.each do |image|
+        hash = {}
+        hash[:id] = image.id
+        hash[:file_name] = image.picture.path.split('/').last.gsub(image.id.to_s + "_", '')
+        hash[:binary_data] = image.picture.read
+        #TODO  use reflect here
+        hash[:product_id] = image.product_id
+        hash[:article_id] = image.article_id
+        hash[:topic_id] = image.topic_id
+        hash[:article_id] = image.article_id
+        hash[:step_id] = image.step_id
+        hash[:ingredient_id] = image.ingredient_id
+        array << hash
+      end
+      YAML::dump(array, file)
+    end
+  end
+
   desc "dump all"
   task :dump_all => :environment do
     #Rake::Task['yin11:dump_articles'].invoke
     Rake::Task['yin11:dump_topics'].invoke
+    Rake::Task['yin11:dump_pages'].invoke
     Rake::Task['yin11:dump_images'].invoke
     #Rake::Task['yin11:dump_vendors'].invoke
   end
@@ -40,29 +61,13 @@ namespace :yin11 do
   task :dump_pages => :environment do
     pages = Page.all.to_a
     File.open(File.join(Rails.root, "app/seeds/pages.yml"), 'w') do |file|
-    YAML::dump(pages, file)
+      YAML::dump(pages, file)
     end
   end
 
   desc "dump images"
   task :dump_images => :environment do
-    array = []
-    images = Image.all.to_a
-    #Only allow topics'' images here
-    #images = images.reject{|i| i.topic_id.blank?}
-    File.open(File.join(Rails.root, "app/seeds/images.yml"), 'w') do |file|
-      images.each do |image|
-        hash = {}
-        hash[:id] = image.id
-        hash[:file_name] = image.picture.path.split('/').last.gsub(image.id.to_s + "_", '')
-        hash[:binary_data] = image.picture.read
-        #hash[:product_id] = image.product_id
-        #hash[:article_id] = image.article_id
-        #hash[:topic_id] = image.topic_id
-        array << hash
-      end
-      YAML::dump(array, file)
-    end
+    store_images(Image.lonely.to_a, "app/seeds/images.yml")
   end
 
   desc "dump vendors"

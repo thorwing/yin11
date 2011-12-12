@@ -14,6 +14,8 @@ class Image
   belongs_to :product
   belongs_to :review
   belongs_to :topic
+  belongs_to :step
+  belongs_to :ingredient
 
   #validations
   validates_presence_of :picture
