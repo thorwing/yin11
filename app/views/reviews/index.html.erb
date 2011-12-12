@@ -1,3 +1,22 @@
-<% title t("reviews.reviews") %>
+<% title t("reviews.reviews"), false %>
 
-<%= render "shared/waterfall", :path => reviews_path %>
+<div class="grid_12 box_shadow mb20 top-left top-right">
+    <%= image_tag "http://flickholdr.com/920/180/sea,sun/1", :class => "mt10 ml10 mb10 mr10" %>
+</div>
+<div class="clearfix"></div>
+
+<div class="grid_9 to_left">
+    <%= render "shared/waterfall", :path => more_reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 3, :columns_width => 230 %>
+</div>
+
+<div class="grid_3 to_right">
+    <h3>今日红榜</h3>
+    <% @hard_workers.each do |user| %>
+        <div class="box_shadow mb10">
+            <span><%= link_to image_tag(user.get_avatar, border: 0, width: 120, height: 120), user %></span><br/>
+            <span><%= link_to user.screen_name, user %></span><br/>
+            <%= link_to t("reviews.by_user", count: user.reviews.count), "#" %><br/>
+        </div>
+    <% end %>
+</div>
+

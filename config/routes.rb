@@ -7,7 +7,9 @@ Yin11::Application.routes.draw do
 
   resources :steps
 
-  resources :recipes
+  resources :recipes do
+    collection {get :more}
+  end
 
   namespace :administrator do
     root :to => "base#index"
@@ -17,6 +19,8 @@ Yin11::Application.routes.draw do
     resources :users, :except => [:new, :create]
     resources :tags
     resources :products
+    resources :pages
+    resources :images
   end
 
   put 'administrator/base/toggle'
@@ -38,7 +42,9 @@ Yin11::Application.routes.draw do
 
   get "home/more_items"
 
-  resources :topics
+  resources :topics do
+    member { post :mercury_update }
+  end
 
   resources :search do
     collection do
@@ -87,7 +93,9 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :reviews
+  resources :reviews do
+    collection {get :more}
+  end
 
   resources :groups, :except => [:destroy] do
     member do
@@ -111,9 +119,13 @@ Yin11::Application.routes.draw do
   end
 
   #resources :products, :except => [:new, :create]
-  resources :products
+  resources :products do
+    collection {get :more}
+  end
 
   resources :reports, :only => [:new, :create]
+
+  match "masters" => "users#masters"
 
   resources :users, :except => [:destroy] do
     member do

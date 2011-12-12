@@ -1,0 +1,39 @@
+<script type="tpl" id="tpl">
+    <div class="waterfall grid_3 box_shadow" data-id="{{id}}">
+     <a href="<%= "reviews/{{id}}" %>" >
+        <img height="{{height}}" width = "<%= IMAGE_THUMB_WIDTH %>" alt="{{name}}" src="{{picture_url}}" />
+     </a>
+     <!--<a href="/comments/new?item_id={{id}}&amp;item_type=Review" class="fr mr10 mt5" rel="facebox"><%= t("comments.reply") %></a>-->
+     <a href="/comments/new?item_id={{id}}&amp;item_type=Review" class="reply_comment_link fr mr10 mt5"><%= t("comments.reply") %></a>
+     <div class="clearfix"/>
+     <div class="new_reply_comment" style="display:none">
+        <%= form_tag url_for(:controller => "comments", :method => :post), :remote => true do %>
+            <%= hidden_field_tag :item_id, "{{id}}" %>
+            <%= hidden_field_tag :item_type, "Review" %>
+            <%= text_area_tag :content, "", :maxlength => get_max_length(Comment, :content), :rows => 5, :class => "char_aware",
+            'data-comment_max_len' => get_max_length(Comment, :content) %>
+            <%= content_tag :span, "", :class => "char_counter" %>
+            <%= submit_tag t("comments.new"), :class => "button" %>
+        <% end %>
+     </div>
+
+     <div>
+        <a href="users/{{user_id}}" class="fl">
+            <img height="<%= AVATAR_THUMB_HEIGHT %>" width = "<%= AVATAR_THUMB_WIDTH %>" alt="avatar" src="{{user_avatar}}" />
+        </a>
+        <div class="fl">
+            <%= link_to "{{user_name}}", "users/{{user_id}}", class: "fl" %><br/>
+            <%= link_to t("reviews.by_user", count: "{{user_reviews_cnt}}"), "#" %><br/>
+            <a href="/relationships?target_id={{user_id}}&amp;target_type=User" class="button new_relationship" data-method="post" data-remote="true" rel="nofollow"><%= t("relationships.new") %></a>
+            <a href="/relationships/cancel?target_id={{user_id}}&amp;target_type=User" class="button cancel_relationship hide" data-method="put" data-remote="true" rel="nofollow"><%= t("relationships.cancel") %></a>
+        </div>
+        <div class="clearfix"/>
+        <p class="ml10">
+            <a href="<%= path + "/{{id}}" %>" >
+                {{content}}
+            </a>
+            <span class="trivial">{{time}}</span>
+        </p>
+     </div>
+    </div>
+</script>

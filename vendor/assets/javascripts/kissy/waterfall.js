@@ -163,7 +163,7 @@ KISSY.add("waterfall/base", function(S, Node, Base) {
         adjust:function(callback) {
             S.log("waterfall:adjust");
             var self = this,
-                items = self.get("container").all(".ks-waterfall");
+                items = self.get("container").all(".waterfall");
             /* 正在加，直接开始这次调整，剩余的加和正在调整的一起处理 */
             /* 正在调整中，取消上次调整，开始这次调整 */
             if (self.isAdjusting()) {

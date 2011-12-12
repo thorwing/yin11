@@ -36,8 +36,8 @@ module ApplicationHelper
 
   end
 
-  def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+  def link_to_remove_fields(name, f, removefield, showfield)
+    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this,"+ "'"+ removefield + "',"+ "'"+ showfield + "'" +")")
   end
 
   def get_provinces_for_select(drop_first = true)

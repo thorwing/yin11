@@ -5,11 +5,34 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @reviews = Review.desc(:reported_on, :votes).page(params[:page]).per(20)
+    @hard_workers = User.desc(:reviews_count)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => {:items => @reviews.inject([]){|memo, r| memo << {:name => r.content, :picture_url => r.get_first_image, :id => r.id}}, :page => params[:page], :pages => (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil}}
+    end
+  end
+
+  def more
+    #  used for waterfall displaying
+    @reviews = Review.desc(:created_at, :votes).page(params[:page]).per(20)
+
+    data = {
+      items: @reviews.inject([]){|memo, r| memo <<  {
+        content: r.content,
+        user_id: r.author.id,
+        user_name: r.author.screen_name,
+        user_avatar: r.author.get_avatar(true, false),
+        user_reviews_cnt: r.author.reviews.count,
+        user_established: r.author.relationships.select{|rel| rel.target_type == "User" && r.target_id == r.author.id.to_s}.size > 0,
+        time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+        picture_url: r.get_image_url(true, 0, false), id: r.id}
+      },
+      page: params[:page],
+      pages: (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+    }
+
+    respond_to do |format|
+      format.json { render :json => data}
     end
   end
 
@@ -48,6 +71,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.xml
   def create
+    p "params[:review]" + params[:review].to_yaml
     @review = Review.new(params[:review])
     @review.author = current_user
 

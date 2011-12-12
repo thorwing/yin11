@@ -16,6 +16,10 @@ class HomeController < ApplicationController
 
     @hot_topics = Topic.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
 
+    @daily_stars = User.enabled.masters
+
+    @more_masters = User.all
+
     @catalogs = Catalog.all.to_a
 
     ##data for control panel

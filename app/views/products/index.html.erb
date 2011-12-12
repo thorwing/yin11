@@ -1,12 +1,12 @@
 <% title t("products.products_list") %>
 
-<%= render "shared/catalogs", :catalogs => @catalogs %>
+<%= render "shared/catalogs", catalogs: @catalogs %>
 
 <% if current_user_has_permission? :editor %>
     <div class="actions">
-      <%= link_to t("vendors.new_product"), new_product_path(@product), :class => "button" %>
+      <%= link_to t("vendors.new_product"), new_product_path, class: "button" %>
     </div>
 <% end %>
 
 
-<%= render "shared/waterfall", :path => products_path %>
+<%= render "shared/waterfall", path: more_products_path, waterfall_partial: "products/product_waterfall", columns_count: 4, columns_width: 240 %>

@@ -46,7 +46,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   def filename
-     [ model.updated_at.to_i.to_s, original_filename ].join("_") if original_filename
+    [ model.id.to_s, original_filename ].join("_") if original_filename
   end
 
 end

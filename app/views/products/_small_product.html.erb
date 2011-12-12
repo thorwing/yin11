@@ -1,10 +1,6 @@
 <div class="small_product">
     <div class="product_image_frame">
-      <% if product.image && product.image.picture_url %>
-        <%= link_to image_tag( product.image.picture_url, :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), product%>
-      <% else %>
-        <%= link_to image_tag( "default_article.jpg", :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT),  product%>
-      <% end %>
+      <%= link_to image_tag( product.get_image_url(true), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), product%>
     </div>
     <div>
         <%= link_to product.name, product %> <br/>

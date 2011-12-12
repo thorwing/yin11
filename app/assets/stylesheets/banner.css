@@ -1,0 +1,61 @@
+/*TODO*/
+.banner {
+	BACKGROUND: #fff; HEIGHT: auto; OVERFLOW: hidden
+}
+.banner .banner-title {
+	Z-INDEX: 10; POSITION: absolute; TOP: 35px; LEFT: 30px
+}
+.banner .banner-title .maintitle {
+	COLOR: #fff; FONT-SIZE: 50px
+}
+.banner .banner-title .subtitle {
+	COLOR: #fff; FONT-SIZE: 18px
+}
+.banner .editor {
+	Z-INDEX: 11; POSITION: absolute; BOTTOM: 25px; DISPLAY: none; LEFT: 35px
+}
+.banner .editor .face {
+	WIDTH: 50px; FLOAT: left; HEIGHT: 50px; MARGIN-RIGHT: 10px
+}
+.banner .editor .info {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 7px
+}
+.banner .editor .info P {
+	LINE-HEIGHT: 1.5; COLOR: #fff
+}
+.banner .editor .info P .name {
+	FONT-SIZE: 16px
+}
+.banner .tags-base {
+	Z-INDEX: 9; POSITION: absolute; FILTER: alpha(opacity=60); WIDTH: 100%; BOTTOM: 0px; BACKGROUND: #000; HEIGHT: 50px; LEFT: 0px; opacity: .6
+}
+.banner .tags {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 100%; BOTTOM: 0px; HEIGHT: 50px; LEFT: 0px
+}
+.banner .tags SPAN {
+	LINE-HEIGHT: 24px; MARGIN: 13px 15px 0px 0px; COLOR: #fff
+}
+.banner .tags A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; MARGIN: 13px 15px 0px 0px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; BACKGROUND: #666; FLOAT: right; HEIGHT: 24px; COLOR: #ccc; OVERFLOW: hidden; PADDING-TOP: 0px; -moz-border-radius: 6px; border-radius: 6px; -webkit-border-radius: 6px
+}
+.banner .tags A:hover {
+	TEXT-DECORATION: none
+}
+.bigfs {
+	FONT-FAMILY: "Helvetica Neue", Helvetica, Arial, Sans-serif
+}
+.rc {
+	COLOR: #f32a6b
+}
+.bc {
+	COLOR: #6eb6e8
+}
+.yc {
+	COLOR: #fa6525
+}
+.gc {
+	COLOR: #999
+}
+.gc6 {
+	COLOR: #666
+}

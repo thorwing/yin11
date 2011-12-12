@@ -2,11 +2,17 @@ class IngredientsController < ApplicationController
   # GET /materials
   # GET /materials.json
   def index
-    @ingredient = Ingredient.all
+    #@ingredient = Ingredient.all
+    #
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.json { render json: @ingredient }
+    #end
 
+    @ingredient = Ingredient.where("name like ?", "%#{params[:q]}%")
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @ingredient }
+      format.html
+      format.json { render :json => @ingredient.map(&:attributes) }
     end
   end
 

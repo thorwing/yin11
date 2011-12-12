@@ -71,9 +71,11 @@ zh-CN:
     severity_3: 严重
     total: 总共
     all: 全部
+    back_to_top: 回到顶部
     are_you_sure_to_delete: 确定要删除吗？
     are_you_sure_to_disable_enable: "确定要禁用/启用邮件吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
+    mercury_edit: “所见即所得”编辑
 
   flash:
     notice: 通知
@@ -190,6 +192,8 @@ zh-CN:
     products: 管理产品
     users: 管理用户
     tags: 管理标签
+    pages: 管理页面
+    images: 管理图片
 
   location:
     default_country: 中国
@@ -380,6 +384,9 @@ zh-CN:
     original_place: 原产地
     description: 商品描述
 
+  pages:
+    pages: 页面
+
   money:
     yuan_mark1: "￥"
     yuan_mark2: "¥"
@@ -411,6 +418,7 @@ zh-CN:
     new_review: 新分享
     make_choice_please: 请选择
     choose_vendor: 选择商户
+    by_user: 发表了%{count}条美食分享
     new_review_with_vnedor: 先找到针对的商户
     new_review_without_vendor: 实在想不起在哪儿买的食物了
     see_more_reviews: 查看更多分享
@@ -519,11 +527,16 @@ zh-CN:
     cn_colon: "："
 
   recipes:
+     recipe_collection: 菜谱大全
      recipe_name: 菜谱名
      ingredients: 食材明细
      ingredient_name: 名称
      ingredient_amount: 用量
+     ingredients_count: 食材数
+     is_major_ingredient: 是否主料
      steps: 菜谱步骤
+     steps_count: 步骤数
+     uploaded_by: 上传者
      tips: 小贴士
      new: 新菜谱
      add_ingredient: +增加一种
@@ -532,4 +545,15 @@ zh-CN:
      descriptions: 说明
      tips: 温馨提示
      how_to: 如何上传菜谱？
+     uploaded: 上传了
+     use: 使用了
+     kind: 种材料
+     including: 包含
+     step: 个步骤
+     detail: 详细
+     search: 查找
+     show: 显示
+     major: 主料
+     minor: 辅料
+     note: (请在最终的步骤中附上大作的成品图)
 

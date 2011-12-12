@@ -17,6 +17,10 @@
     <%= f.label :priority, t("topics.priority") %><br />
     <%= f.text_field :priority %>
   </div>
+  <div class="field">
+    <%= f.label :content, t("general.content") %><br />
+    <%= f.text_area :content %>
+  </div>
   <%= render "images/images_fields", :f => f, :item => @topic %>
 
   <div class="actions">

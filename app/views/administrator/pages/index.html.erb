@@ -1,0 +1,24 @@
+<% title t("pages.pages") %>
+
+<div>
+    <table>
+      <tr>
+        <th><%= t("general.name") %></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <%= paginate @pages %>
+    <% @pages.each do |page| %>
+      <tr id='<%= page.id %>'>
+        <td><%= link_to page.title, page%></td>
+        <td><%= link_to t("general.edit"), edit_page_path(page), :class => "button" %></td>
+        <td><%= link_to t("general.delete"), page, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
+      </tr>
+    <% end %>
+    </table>
+</div>
+
+<br/>
+
+<%= link_to t("general.new"),new_page_path, :class => "button" %>

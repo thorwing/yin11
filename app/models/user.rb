@@ -26,6 +26,8 @@ class User
   field :access_token
   field :access_token_secret
   field :is_master, :type => Boolean, :default => false
+  #cached fields
+  field :reviews_count, :type => Integer
 
   mount_uploader :avatar, AvatarUploader
 
@@ -80,7 +82,7 @@ class User
 
   #Others
   after_initialize { self.profile ||= Profile.new; self.contribution ||= Contribution.new }
-  before_save :encrypt_password, :handle_identity
+  before_save :encrypt_password, :handle_identity, :sync_cached_fields
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
 
@@ -128,13 +130,12 @@ class User
     User.first(:conditions => { :email => email}).nil?
   end
 
-  def get_avatar
+  def get_avatar(thumb = false, origin = true)
     if self.avatar?
-      logger = Logger.new(STDOUT)
-      logger.info self.avatar.url.to_s
-      self.avatar.url
+      thumb ? self.avatar_url(:thumb) : self.avatar_url
     else
-      "default_user.png"
+      #origin url is used for image_tag, the other one is used for waterfall displaying
+      origin ? "default_user.png" : "assets/default_user.png"
     end
   end
 
@@ -194,6 +195,10 @@ class User
   def handle_identity
     self.provider ||= SELF_PROVIDER
     self.uid ||= self.email
+  end
+
+  def sync_cached_fields
+    self.reviews_count = self.reviews.size
   end
 
   def generate_token(column)

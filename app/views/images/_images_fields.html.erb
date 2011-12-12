@@ -1,7 +1,7 @@
 <b><%= f.label :images, t("images.images") %><%= mark_required(item, :images) %></b>
 <br/>
 
-<input id="tokentag" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+<%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>
 
 <div id="uploader">
     <noscript><p><%= t("general.javascript_please") %></p></noscript>
