@@ -103,6 +103,25 @@ require "topic"
     end
   end
 
+  def restore_images(path, field)
+    images = YAML::load(File.open(path))
+      if images.present? && images.size > 0
+        images.each do |i|
+          begin
+            image = Image.create! do |image|
+              image.id = i[:id]
+              image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
+              image.send(field, i[field]) if field.present?
+            end
+          rescue Exception => exc
+            p i[:file_name]
+            p exc.message
+            p exc.backtrace
+          end
+        end
+      end
+  end
+
   #groups
   p "generating groups"
   groups = YAML::load(File.open("app/seeds/groups.yml"))
@@ -152,7 +171,19 @@ require "topic"
     #topic.save!
   end
 
-  #p "generating recipes"
+  p "generating pages"
+  pages = YAML::load(File.open("app/seeds/pages.yml"))
+  pages.each do |p|
+    Page.create! do |page|
+      page.id = p.id
+      page.title = p.title
+      page.content = p.content
+    end
+  end
+
+  p "generating recipes"
+  restore_images("app/seeds/images.yml", nil)
+
   #recipes = YAML::load(File.open("app/seeds/recipes.yml"))
   #recipes.each do |r|
   #  begin
@@ -174,23 +205,24 @@ require "topic"
   #  end
   #end
 
-  p "generating images"
-  images = YAML::load(File.open("app/seeds/images.yml"))
-  if images.present? && images.size > 0
-    images.each do |i|
-      begin
-        image = Image.create! do |image|
-          image.id = i[:id]
-          image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
-          #Only allow topics'' images here
-          #image.product_id = i[:product_id]
-          #image.article_id = i[:article_id]
-          #image.topic_id = i[:topic_id]
-        end
-      rescue Exception => exc
-        p i[:file_name]
-        p exc.message
-        p exc.backtrace
-      end
-    end
-  end
+  #p "generating images"
+  #images = YAML::load(File.open("app/seeds/images.yml"))
+  #if images.present? && images.size > 0
+  #  images.each do |i|
+  #    begin
+  #      image = Image.create! do |image|
+  #        image.id = i[:id]
+  #        image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
+  #        #Only allow topics'' images here
+  #        #image.product_id = i[:product_id]
+  #        #image.article_id = i[:article_id]
+  #        #image.topic_id = i[:topic_id]
+  #      end
+  #    rescue Exception => exc
+  #      p i[:file_name]
+  #      p exc.message
+  #      p exc.backtrace
+  #    end
+  #  end
+  #end
+
