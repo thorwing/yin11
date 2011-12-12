@@ -39,8 +39,10 @@ class RecipesController < ApplicationController
   # GET /recipes/new.json
   def new
     @recipe = Recipe.new
-    #ingredient = @recipe.ingredients.build
-    #step = @recipe.steps.build
+    ingredient = @recipe.ingredients.build
+    1.upto(3) {
+      step = @recipe.steps.build
+    }
 
     respond_to do |format|
       format.html # new.html.erb

@@ -72,12 +72,13 @@ function delete_image(link, limit) {
 }
 function show(url)
 {
-//    alert(url);
+
     var length = $('.step_uploader').find('.qq-upload-button').length;
     if(url==null||url=="")
     {
-        url = "default_step.png";
+        url = "/assets/default_step.png";
     }
+//    alert(url);
     $('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ url +")");
 
 }
