@@ -37,7 +37,7 @@
 }
 
 .product_block p{
- font-family: $product_font;
+ font-family: $general_font;
  font-size:18px;
  text-align:center;
 }
@@ -106,13 +106,13 @@
 }
 
 .product_detail_box p{
- font-family: $product_font;
+ font-family: $general_font;
  font-size:16px;
  text-align:left;
 }
 
 .product_detail_box b{
- font-family: $product_font;
+ font-family: $general_font;
  font-size:16px;
  text-align:left;
 }
@@ -150,6 +150,6 @@
 .banner .tags a { float:right;height:24px;line-height:24px;padding:0 8px;margin:13px 15px 0 0;color:#ccc;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;background:#666;overflow:hidden; }
 .banner .tags a:hover { text-decoration:none; }
 
-.bigfs{font-family: $product_font;}
+.bigfs{font-family: $general_font;}
 .rc{color:#f32a6b;}.bc{color:#6eb6e8;}.yc{color:#fa6525;}.gc{color:#999;}.gc6{color:#666;}
 
