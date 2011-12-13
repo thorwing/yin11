@@ -2,15 +2,22 @@
 <!--<= Recipe.all.size %>-->
 <!--<= Image.all.size %>-->
 
-<div class="grid_9 block">
-    <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 240 %>
-</div>
+<div class="grid_9 box_shadow">
+    <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 240 , tag: params[:tag]%>
 
-<div class="tags area">
-</div>
-
-<div>
+  <div>
     <%= link_to t("recipes.new"), new_recipe_path %>
+    </div>
 </div>
+
+<div class="grid_3 box_shadow">
+    <% @hot_tags.each do |tag, weight| %>
+        <div class ="ml20">
+            <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag}, :class => "tag" %> * <%= weight %><br/>
+        </div>
+    <% end %>
+</div>
+
+
 
 

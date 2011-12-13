@@ -4,16 +4,20 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
+     @hot_tags = Recipe.tags_with_weight
     respond_to do |format|
       format.html # index.html.erb
     end
   end
 
   def more
-    #p "Recipe.all" + Recipe.all.size.to_s
-    #Recipe.delete_all
-    #Image.delete_all
-    @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+     tag = params[:tag]
+     if tag.present?
+      @recipes = Recipe.tagged_with(tag).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+     else
+      @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+     end
+
     data = {
       items: @recipes.inject([]){|memo, p| memo << {
         name: p.recipe_name,
@@ -35,7 +39,6 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
-
     prior = {"user_tag"=> 3, "major_tag" => 2.5, "minor_tag" => 1}
     @related_product = get_related_products(@recipe, 7, prior)
 
@@ -76,10 +79,11 @@ class RecipesController < ApplicationController
     #p "@recipe: " + @recipe.to_yaml
 
     respond_to do |format|
-      if @recipe.save!
+      if @recipe.save
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render json: @recipe, status: :created, location: @recipe }
       else
+        #raise("hi")
         format.html { render action: "new" }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end

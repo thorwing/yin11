@@ -1,15 +1,16 @@
-<div class="field grid_3 addedclass" position="relative">
+<div class="grid_3 addedclass to_left to_right" position="relative">
         <%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>
-        <div class="step_uploader fl m5 w50"></div>
+        <div class="step_uploader fl m5 w50 "></div>
         <%= javascript_tag "step_uploader();"%>
         <% url = "" %>
         <% if f.object.img_id %>
-            <% url = Image.find( f.object.img_id ).picture_url  %>
+            <% url = f.object.image.picture_url if f.object.image %>
         <% end %>
         <%= javascript_tag "show('"+ url +"');" %>
+        <div style="clear:both"></div>
 
         <%= f.text_field :img_id, :maxlength => "10", :class => "img_id", :style => "display:none"  %>
-        <%= f.text_area :content, :maxlength => get_max_length(Step, :content), 'data-comment_max_len' => get_max_length(Step, :content), :class => "char_aware step_content center" %>
+        <br/><%= f.text_area :content, :maxlength => get_max_length(Step, :content), 'data-comment_max_len' => get_max_length(Step, :content), :class => "char_aware step_content center" %>
         <%= content_tag :span, "", :class => "char_counter" %>
         <%= link_to_remove_fields( t("recipes.remove"), f, ".addedclass", ".steps" ) %>
 </div>

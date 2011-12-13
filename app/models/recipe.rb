@@ -18,6 +18,8 @@ class Recipe
     validates_length_of :ingredients, :maximum => 10
     validates_length_of :steps, :maximum => 30
     validates_presence_of :author
+    validates_associated :steps
+    validates_associated :ingredients
 
     before_save :name_strip
     before_save :sync_tag

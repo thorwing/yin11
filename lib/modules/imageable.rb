@@ -18,7 +18,7 @@ module Imageable
         thumb ? image.picture_url(:thumb) : image.picture_url
       else
         #origin url is used for image_tag, the other one is used for waterfall displaying
-        origin ? "not_found.png" : "assets/not_found.png"
+        origin ? "not_found.png" : "/assets/not_found.png"
       end
     end
 

@@ -1,4 +1,4 @@
-<div class="grid_9">
+<div class="grid_9 box_shadow">
     <div >
         <div class="final_img">
             <%= link_to image_tag(@recipe.steps.last.image.picture_url, :border => 0 )%>
@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<div id = "product area" class="grid_3">
+<div id = "product area" class = "grid_3 box_shadow"  >
   <!--<= "tags" %>-->
   <!--<= @recipe.tags  %><br/><br/>-->
   <!--<= "major" %>-->
@@ -52,14 +52,13 @@
   <!--<= @minor_tags %><br/><br/>-->
   <!--<= "user" %>-->
   <!--<= @user_tags %><br/><br/>-->
-  <%= t("recipes.related_product") %>
+  <%= t("recipes.related_product") %> <br/>
 
   <% @related_product.each do |product| %>
-      <li>
-        <%= render "products/related _product", :product => product %>
-        <%= product.price if product.price.present? %>
-        <%= t("money.yuan") %><br/>
-        <%= product.vendor.name %>
-      </li>
+        <div class="ml60">
+            <%= render "products/related _product", :product => product %>
+            <%= product.price.to_s + t("money.yuan") if product.price.present? %><br/>
+            <%= product.vendor.name %>
+        </div>
   <% end %>
 </div>
