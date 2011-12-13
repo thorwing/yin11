@@ -40,8 +40,6 @@ Yin11::Application.routes.draw do
   match "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
   #match "follow_yin11" => "syncs#follow_yin11"
 
-  get "home/more_items"
-
   resources :topics do
     member { post :mercury_update }
   end

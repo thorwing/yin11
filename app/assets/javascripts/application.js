@@ -154,14 +154,23 @@ $(document).ready(function() {
 
 //Remove tips from search box
 jQuery(function() {
-  $('.clear_default').click(function() {
-    $(this).val('');
-    return $(this).removeClass('not_cleared');
+  $('#search_btn').click(function(){
+    $('#query.not_cleared').val('');
   });
-  return $('.close_panel_link').click(function() {
-    return $(this).parents('.panel').slideUp();
+
+  $('#query.not_cleared').click(function() {
+    if($(this).hasClass('not_cleared')) {
+      $(this).val('');
+      $(this).removeClass('not_cleared');
+    }
   });
 });
+
+//$(function()) {
+//    return $('.close_panel_link').click(function() {
+//    return $(this).parents('.panel').slideUp();
+//  });
+//}
 
 //Add comment
 $(function() {
@@ -192,7 +201,7 @@ $(function () {
 
 //Provide hints for how many chars left
 $(function() {
-//     char_aware();
+     char_aware();
 });
 
 
@@ -202,14 +211,22 @@ function char_aware()
     if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
     else { bind_name = 'input'; }
 
-    $('.char_aware').bind(bind_name, function()
+    $('.char_aware').bind(bind_name, function(e)
     {
         var max = parseInt ($(this).data('comment_max_len'));
-        var mystring = $(this).val();
+        var content = $(this).val();
         var chineseRegex = /[^\x00-\xff]/g;
-        var strLength = mystring.replace(chineseRegex,"**").length;
+        var strLength = content.replace(chineseRegex,"**").length;
         var remaining = max - strLength;
-       $(this).next('.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
+        if(remaining >= 0) {
+            //  cache the content
+            $(this).nextAll('.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
+            $(this).nextAll('.char_saver').val(content);
+        }
+        else {
+            //  restore the cached content
+            $(this).val($(this).nextAll('.char_saver').val());
+        }
     });
 }
 

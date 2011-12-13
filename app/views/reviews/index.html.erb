@@ -5,15 +5,15 @@
 </div>
 <div class="clearfix"></div>
 
-<div class="grid_9 to_left">
+<div class="grid_10 to_left">
     <%= render "shared/waterfall", :path => more_reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 3, :columns_width => 230 %>
 </div>
 
-<div class="grid_3 to_right">
+<div class="grid_2 to_right">
     <h3>今日红榜</h3>
     <% @hard_workers.each do |user| %>
         <div class="box_shadow mb10">
-            <span><%= link_to image_tag(user.get_avatar, border: 0, width: 120, height: 120), user %></span><br/>
+            <span><%= link_to image_tag(user.get_avatar, border: 0, width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), user %></span><br/>
             <span><%= link_to user.screen_name, user %></span><br/>
             <%= link_to t("reviews.by_user", count: user.reviews.count), "#" %><br/>
         </div>

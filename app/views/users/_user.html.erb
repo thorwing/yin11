@@ -1,12 +1,12 @@
 <div class="master box_shadow fl">
     <div class="head_img fl">
-      <%= link_to image_tag(user.get_avatar, border: 0, width: 120, height: 120), user %><br/>
+      <%= link_to image_tag(user.get_avatar, border: 0, width: AVATAR_WIDTH, height: AVATAR_HEIGHT), user %><br/>
       <%= link_to user.screen_name, user %>
     </div>
     <div class="description_box fl"><%= user.profile.biography %></div>
     <div class="img_list_box fr">
-        <%= image_tag "http://flickholdr.com/80/80/bake,bread", width:80, height:80 %>
-        <%= image_tag "http://flickholdr.com/80/80/cup,cake", width:80, height:80 %>
-        <%= image_tag "http://flickholdr.com/80/80/wine,bottle", width:80, height:80 %>
+        <%= image_tag "http://flickholdr.com/100/100/bake,bread", width:100, height:100 %>
+        <%= image_tag "http://flickholdr.com/100/100/milk,cake", width:100, height:100 %>
+        <%= image_tag "http://flickholdr.com/100/100/wine,bottle", width:100, height:100 %>
     </div>
 </div>

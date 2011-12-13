@@ -10,15 +10,11 @@ class HomeController < ApplicationController
     #@raw_hot_tags = CacheManager.hot_tags_with_weight
     #for default search query
 
-    @default_query = (@raw_hot_tags.nil? || @raw_hot_tags.empty?) ? "" : @raw_hot_tags.first[0]
-
     @recommended_products = Product.via_editor.limit(3)
 
     @hot_topics = Topic.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
 
     @daily_stars = User.enabled.masters
-
-    @more_masters = User.all
 
     @catalogs = Catalog.all.to_a
 

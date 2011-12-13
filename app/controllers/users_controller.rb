@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
 
   def masters
-    @masters = User.enabled.masters
-    @stars = @masters.reject{|m| m.avatar.blank?}
+    @masters = User.all
+    @stars = @masters.reject{|m| m.avatar.blank?}[0..4]
 
     @hot_tags = Group.tags_with_weight
   end

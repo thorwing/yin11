@@ -1,103 +1,80 @@
 <% title t("profile.show_profile") %>
 
 <div class = "statictab" >
-        <div class="tabContainer ">
-            <div class = "fl selected">
-                <a id= "basic_info" class="tab " href="" data-page = '.basic_info' >
-                <%= t("users.basic_info") %>
-                </a>
-            </div>
-            <div class = "fl unselected">
-                <a class="tab  " href=""  data-page = '.my_groups' >
-                <%= t("profile.my_groups") %>
-                </a>
-            </div>
-            <div class = "fl unselected">
-                <a id= "my_followings"  class="tab  " href=""  data-page = '.my_followings' >
-                <%= t("profile.my_followings") %>
-                </a>
-            </div>
-
-            <div class = "fl unselected">
-                <a class="tab  " href=""  data-page = '.my_fans' >
-                <%= t("profile.my_fans") %>
-                </a>
-            </div>
-            <div class = "fl unselected">
-                <a class="tab  " href=""  data-page = '.my_following_products'>
-                <%= t("profile.my_following_products") %>
-                </a>
-            </div>
-            <div class = "fl unselected">
-                <a class="tab  " href=""  data-page = '.my_following_vendors'>
-                <%= t("profile.my_following_vendors") %>
-                </a>
-            </div>
+    <div class="tabContainer ">
+        <div class = "fl selected">
+            <a id= "basic_info" class="tab " href="" data-page = '.basic_info' >
+            <%= t("users.basic_info") %>
+            </a>
+        </div>
+        <div class = "fl unselected">
+            <a id= "my_followings"  class="tab  " href=""  data-page = '.my_followings' >
+            <%= t("profile.my_followings") %>
+            </a>
         </div>
 
-        <div class="tabContent block round">
-                <div class = "basic_info display">
-                     <br/>
-                     <b><%= t("user_basic.login_name") %></b><br/>
-                     <%= current_user.screen_name %><br/>
-                     <b><%= t("general.email_address") %></b><br/>
-                     <%= current_user.email %><br/>
-                     <b><%= t("user_basic.avatar") %></b><br/>
-                     <%= image_tag current_user.get_avatar, :width => AVATAR_WIDTH, :height => AVATAR_HEIGHT, :class => "avatar" %><br/>
-                </div>
-
-                <div class = "my_groups display_none" >
-                     <br/>
-                     <dd id="joined_groups">
-                        <%= render :partial => "group", :collection => current_user.groups %>
-                     </dd>
-                </div>
-                <div class = "my_followings display_none">
-                  <br/>
-                    <dd>
-                        <% current_user.relationships.each do |r| %>
-                            <% item = r.get_item %>
-                            <% if item.class.name == "User"  %>
-                                <%= render item %>
-                            <% end  %>
-                        <% end %>
-                    </dd>
-                </div>
-                <div class = "my_fans display_none">
-                  <br/>
-                    <dd>
-                        <% current_user.followers.each do |r| %>
-                            <% item = r.get_item %>
-                            <%= render item %>
-                        <% end %>
-                    </dd>
-                </div>
-                <div class = "my_following_products display_none">
-                  <br/>
-                    <dd>
-                        <% current_user.relationships.each do |r| %>
-                            <% item = r.get_item %>
-                            <% if item.class.name == "Product"  %>
-                                <%= render item %>
-                            <% end  %>
-                        <% end %>
-                    </dd>
-                </div>
-                <div class = "my_following_vendors display_none">
-                  <br/>
-                    <dd>
-                        <% current_user.relationships.each do |r| %>
-                            <% item = r.get_item %>
-                            <% if item.class.name == "Vendor"  %>
-                                <%= render item %>
-                            <% end  %>
-                        <% end %>
-                    </dd>
-                </div>
-
-            </div>
+        <div class = "fl unselected">
+            <a class="tab  " href=""  data-page = '.my_fans' >
+            <%= t("profile.my_fans") %>
+            </a>
         </div>
     </div>
+
+    <div class="tabContent block round">
+        <div class = "basic_info display">
+            <br/>
+            <b><%= t("user_basic.login_name") %></b><br/>
+            <%= current_user.screen_name %><br/>
+            <b><%= t("general.email_address") %></b><br/>
+            <%= current_user.email %><br/>
+            <b><%= t("user_basic.avatar") %></b><br/>
+            <div class="img_frame">
+                <%= image_tag current_user.get_avatar, width: AVATAR_WIDTH, height: AVATAR_HEIGHT, rel: "facebox" %>
+            </div>
+            <br/>
+            <b><%= t("user_basic.biography") %></b><br/>
+            <%= current_user.profile.biography %><br/>
+        </div>
+        <div class = "my_followings display_none">
+          <br/>
+            <dd>
+                <% current_user.relationships.each do |r| %>
+                    <% item = r.get_item %>
+                    <% if item.class.name == "User"  %>
+                        <%= render item %>
+                    <% end  %>
+                <% end %>
+
+                <hr/>
+
+                <% current_user.relationships.each do |r| %>
+                    <% item = r.get_item %>
+                    <% if item.class.name == "Product"  %>
+                        <%= render item %>
+                    <% end  %>
+                <% end %>
+
+                <hr/>
+
+                <% current_user.relationships.each do |r| %>
+                    <% item = r.get_item %>
+                    <% if item.class.name == "Vendor"  %>
+                        <%= render item %>
+                    <% end  %>
+                <% end %>
+            </dd>
+        </div>
+        <div class = "my_fans display_none">
+          <br/>
+            <dd>
+                <% current_user.followers.each do |r| %>
+                    <% item = r.get_item %>
+                    <%= render item %>
+                <% end %>
+            </dd>
+        </div>
+    </div>
+</div>
 <div class="actions">
   <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile), :class => "button" %>
 </div>
