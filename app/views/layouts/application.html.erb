@@ -32,9 +32,9 @@
 </div>
 
 <div id="footer">
-  <div class="container_12">
+  <div class="container_12 p5">
     <div class="grid_6">
-        <h3><%= t("site.name") %> <%= t("footer.general") %></h3>
+        <h3><%= t("site.name") %></h3>
     </div>
 
     <div class="grid_3">
@@ -45,10 +45,8 @@
     </div>
 
     <div class="grid_3">
-        <h3><%= t("footer.links") %></h3>
         <ul>
-            <li><a href="">Your site</a></li>
-            <li><a href="">Your site</a></li>
+            <li><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_yin11_on_sina"), YIN11_SINA_WEIBO %></li>
         </ul>
     </div>
   </div>

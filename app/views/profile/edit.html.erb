@@ -1,6 +1,6 @@
-<%= form_for current_user.profile, :html => {:multipart => true} do |f| %>
-    <h3 class="trivial"><%= t("profile.edit_hint") %></h3>
+<% title t("menu.edit_profile") %>
 
+<%= form_for current_user.profile, :html => {:multipart => true} do |f| %>
     <%= render "#{current_user.profile.current_step}", :f => f %>
 
     <div class="actions">

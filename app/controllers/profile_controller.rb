@@ -31,7 +31,7 @@ class ProfileController < ApplicationController
 	    render :action => :edit
     else
 	    session[:profile_step] = nil
-	    redirect_to root_path, :notice => t("profile.profile_updated_notice")
+	    redirect_to profile_path(current_user.profile), :notice => t("profile.profile_updated_notice")
     end
   end
 

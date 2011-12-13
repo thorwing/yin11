@@ -122,16 +122,16 @@ require "topic"
       end
   end
 
-  #groups
-  p "generating groups"
-  groups = YAML::load(File.open("app/seeds/groups.yml"))
-  groups.each do |seed|
-    Group.create! do |g|
-      g.name = seed["name"]
-      g.creator_id = @admin.id
-      g.tags = seed["tags"]
-    end
-  end
+  ##groups
+  #p "generating groups"
+  #groups = YAML::load(File.open("app/seeds/groups.yml"))
+  #groups.each do |seed|
+  #  Group.create! do |g|
+  #    g.name = seed["name"]
+  #    g.creator_id = @admin.id
+  #    g.tags = seed["tags"]
+  #  end
+  #end
 
   def generate_catalog(parent, node)
     if parent

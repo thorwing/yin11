@@ -37,8 +37,7 @@ $(function() {
                 var new_image = '<div class="image fl"><input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>'
                     + '<a onclick="delete_image(this, 5); return false;" href="#" data-image_id="' + responseJSON.image_id +'"><img border="0" src="/assets/cancel.png" alt="delete_image"></a><br>'
                     + '<a class="thumbnail" rel="facebox" href="' + responseJSON.picture_url + '">'
-                    + '<img width="200" height="200" border="0" src="' + responseJSON.picture_url + '" alt="image_thumbnail"></a><br>'
-                    + responseJSON.picture_url
+                    + '<img width="48" height="48" border="0" src="' + responseJSON.picture_url + '" alt="image_thumbnail"></a>'
                     + '</div>'
                 $('#images_container').append(new_image);
                 //Apply facebox

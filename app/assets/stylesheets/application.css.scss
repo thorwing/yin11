@@ -17,13 +17,11 @@
 *= require personal
 *= require users
 *= require banner
-*= require upload
 *= require tab_control
 *= require token-input-facebook
 *= require facebox
 *= require jquery.jgrowl
 *= require slider
-*= require upload
 *= require recipes
 *= require fileuploader
 */
@@ -180,16 +178,16 @@ ul.menu li {
 
 a.button, input.button {
 	background: $blue;
-	padding:3px 6px 3px 6px;
-	color: #FFFFFF;
+	padding:2px 6px;
+	color: $white;
 	text-decoration: none;
 	border:1px solid #32312f;
 	text-transform:uppercase;
-    height: 18px;
+    height: 24px;
     margin: 2px 0;
 }
 a.button:hover, input.button:hover {
-	background: darken($blue, 9%);;
+	background: darken($blue, 10%);;
     cursor:pointer;
 }
 
@@ -221,17 +219,14 @@ a.tag:hover {
 }
 
 .trivial {
-    color: #999999;
+    color: $trivial_gray;
 }
 
-.asterisk {
-    color: red;
-}
-
-.avatar {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    vertical-align:top;
+.img_frame {
+    display: inline-block;
+    border: 1px solid $trivial_gray;
+    background: $white;
+    padding: 2px;
 }
 
 .clear {
@@ -246,6 +241,8 @@ html, body, #main { height: 100%; }
 body #main { height: auto; padding-bottom: 20em;}
 
 #content_area { min-height: 600px;  }
+
+.third_pty_login_button:hover {opacity: 0.7;}
 
 /*
 	Footer-Styles
