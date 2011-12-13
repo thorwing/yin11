@@ -1,23 +1,34 @@
 class RecipesController < ApplicationController
+  before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Recipe.name, c.params[:id], true)}
   # GET /recipes
   # GET /recipes.json
   def index
+     @hot_tags = Recipe.tags_with_weight
     respond_to do |format|
       format.html # index.html.erb
     end
   end
 
   def more
-    @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+     tag = params[:tag]
+     if tag.present?
+      @recipes = Recipe.tagged_with(tag).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+     else
+      @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+     end
+
     data = {
       items: @recipes.inject([]){|memo, p| memo << {
         name: p.recipe_name,
-        picture_url: p.steps.last == nil ? 'no-pic' : Image.find(p.steps.last.img_id).picture_url,
+        picture_url: p.steps.last == nil ? 'no-pic' : p.image_url,
         id: p.id}
       },
       page: params[:page],
       pages: (Recipe.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
     }
+
+    #p "data" + data.to_yaml
 
     respond_to do |format|
       format.json { render :json => data}
@@ -28,6 +39,8 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
+    prior = {"user_tag"=> 3, "major_tag" => 2.5, "minor_tag" => 1}
+    @related_product = get_related_products(@recipe, 7, prior)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,9 +51,12 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   # GET /recipes/new.json
   def new
+
     @recipe = Recipe.new
-    #ingredient = @recipe.ingredients.build
-    #step = @recipe.steps.build
+    ingredient = @recipe.ingredients.build
+    1.upto(3) {
+      step = @recipe.steps.build
+    }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -63,10 +79,11 @@ class RecipesController < ApplicationController
     #p "@recipe: " + @recipe.to_yaml
 
     respond_to do |format|
-      if @recipe.save!
+      if @recipe.save
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render json: @recipe, status: :created, location: @recipe }
       else
+        #raise("hi")
         format.html { render action: "new" }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
@@ -100,4 +117,56 @@ class RecipesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def get_related_products(recipe, max, prior)
+    @major_tags= []
+    @minor_tags = []
+    @recipe.ingredients.each do |ingredient|
+      if ingredient.is_major_ingredient
+        #TODO  for ingredient.name.strip , strip is not necessory, name should be striped before save
+        @major_tags << ingredient.name.strip
+      else
+        @minor_tags << ingredient.name.strip
+      end
+    end
+    @user_tags = @recipe.tags - @major_tags - @minor_tags
+
+    user_product = Product.tagged_with(@user_tags).limit(max* @user_tags.length)
+    major_product = Product.tagged_with(@major_tags).limit(max* @major_tags.length)
+    minor_product = Product.tagged_with(@minor_tags).limit(max* @minor_tags.length)
+
+    hash = {}
+    user_product.each do |product|
+      hash[product] = product.reviews.size * prior["user_tag"]
+      #3
+    end
+
+    major_product.each do |product|
+      hash[product] = product.reviews.size * prior["major_tag"]
+    end
+
+    minor_product.each do |product|
+      hash[product] = product.reviews.size * prior["minor_tag"]
+    end
+
+    #p "before"
+    #hash.each do |k,v|
+    #   p k.to_s + "=>" + v.to_s
+    #end
+
+    hash = hash.sort_by { |k,v| -v }
+
+    #p "after"
+    #hash.each do |k,v|
+    #   p k.to_s + "=>" + v.to_s
+    #end
+
+    related_product = []
+    count = hash.size-1 > max ? max : hash.size-1
+    for i in 0..count
+      related_product << hash[i].first
+    end
+    return related_product
+  end
 end
+

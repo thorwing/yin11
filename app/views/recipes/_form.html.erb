@@ -1,14 +1,5 @@
 <%= form_for(@recipe) do |f| %>
-    <% if @recipe.errors.any? %>
-        <div id="error_explanation">
-        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-        <ul>
-            <% @recipe.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-        </ul>
-        </div>
-   <% end %>
+ <%= render "shared/error_messages", target: @recipe %>
 
    <div class = "grid_9">
        <div class="field block round">
@@ -51,6 +42,7 @@
             <% end %>
         </div>
         <%= link_to_add_fields( t("recipes.add_step"), f, :steps, ".steps", get_max_length(Recipe, :steps) ) %>
+        <!--<= javascript_tag "show('');" %>-->
 
       <div class="actions">
         <%= f.submit %>

@@ -29,7 +29,8 @@ class Image
   private
 
   def sync_status
-    alone = article_id.blank? && product_id.blank? && review_id.blank? && topic_id.blank?
+    self.alone = article_id.blank? && product_id.blank? && review_id.blank? && topic_id.blank? && step_id.blank?
+    true #return true for the callback function
   end
 
 end

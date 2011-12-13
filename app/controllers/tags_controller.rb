@@ -15,7 +15,7 @@ class TagsController < ApplicationController
     #new_tag = Tag.create(:name => new_tag_name) if is_new_tag
 
     #TODO to_s
-    @tags =  @tags.map { |t| {:id => t.id, :name => t.name.to_s} }
+    @tags =  @tags.map { |t| {:id => t.name, :name => t.name} }
 
     #insert new tag
     @tags.insert(0, {:id => new_tag_name, :name => "#{new_tag_name} (#{t("tags.new_tag")})" }) if is_new_tag

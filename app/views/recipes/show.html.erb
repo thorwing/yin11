@@ -1,44 +1,50 @@
-<p id="notice"><%= notice %></p>
-<div class="up block round grid_9">
-    <div class="final_img">
-        <%= link_to image_tag(Image.find(@recipe.steps.last().img_id).picture_url, :border => 0 )%>
+<div class="grid_9 box_shadow">
+    <div class="p5">
+        <div class="img_frame fl">
+            <%= link_to image_tag(@recipe.image_url, border: 0, width: 280, height:218 )%>
+        </div>
+
+        <div class="fl f16 ml10">
+            <h2><%= @recipe.recipe_name %></h2>
+            <span class="trivial"><%= t("recipes.uploaded_by") + ": " + @recipe.author.screen_name %></span> <br/>
+            <%= t_with_colon("recipes.ingredients") %><br/>
+            <p>
+              <% @recipe.ingredients.each do |i|%>
+                  <%= i.name %>
+                  <%= i.amount %>
+                  <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
+                  <br/>
+              <% end %>
+            </p>
+            <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
+                <div class="actions">
+                    <%= link_to t("general.edit"), edit_recipe_path(@recipe), class: "button" %>
+                </div>
+            <% end %>
+        </div>
     </div>
 
-
-    <div class="ingredients_show">
+    <div class="steps_show grid_9 ">
         <p>
-          <%= @recipe.recipe_name %>
-        </p>
-          <%= t("recipes.uploaded_by") + ": " + @recipe.author.screen_name %>
-        <p>
-          <b><%= t("recipes.ingredients") %></b> <br/>
-        </p>
-        <p>
-          <% @recipe.ingredients.each do |f|%>
-              <% if(f.is_major_ingredient) %>
-                <%= t("recipes.major")  %>
-              <% else  %>
-                <%= t("recipes.minor")  %>
-              <%end%>
-              <%= f.name %>
-              <%= f.amount %>  <br/>
+          <b><%= t("recipes.steps") %></b>
+          <% @recipe.steps.each do |f|%>
+              <div class="step_container grid_3 ">
+                <div ><%= link_to image_tag( f.image.picture_url, :border => 0,:class=> "center", :size => "210x150" )%></div>
+                <div class="step_content"><%= f.content %></div>
+              </div>
           <% end %>
         </p>
     </div>
 </div>
 
-<div class="steps_show grid_9 block round">
-    <p>
-      <b><%= t("recipes.steps") %></b>
-      <% @recipe.steps.each do |f|%>
-          <div class="step_container grid_3 ">
-                <div ><%= link_to image_tag(Image.find( f.img_id).picture_url, :border => 0,:class=> "center", :size => "210x150" )%></div>
-                <div class="step_content "><%= f.content %></div>
-          </div>
-      <% end %>
-    </p>
-</div>
-<div class="grid_9 block round">
-    <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-    <%= link_to 'Back', recipes_path %>
+<div id = "product area" class = "grid_3 box_shadow"  >
+  <%= t("recipes.related_product") %> <br/>
+
+  <% @related_product.each do |product| %>
+        <div class="ml60">
+            <%= render "products/related _product", :product => product %>
+            <%= product.price.to_s + t("money.yuan") if product.price.present? %><br/>
+            <%= product.vendor.name %>
+        </div>
+  <% end %>
 </div>
