@@ -36,6 +36,9 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
 
+    prior = {"user_tag"=> 3, "major_tag" => 2.5, "minor_tag" => 1}
+    @related_product = get_related_products(@recipe, 7, prior)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @recipe }
@@ -110,4 +113,56 @@ class RecipesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def get_related_products(recipe, max, prior)
+    @major_tags= []
+    @minor_tags = []
+    @recipe.ingredients.each do |ingredient|
+      if ingredient.is_major_ingredient
+        #TODO  for ingredient.name.strip , strip is not necessory, name should be striped before save
+        @major_tags << ingredient.name.strip
+      else
+        @minor_tags << ingredient.name.strip
+      end
+    end
+    @user_tags = @recipe.tags - @major_tags - @minor_tags
+
+    user_product = Product.tagged_with(@user_tags).limit(max* @user_tags.length)
+    major_product = Product.tagged_with(@major_tags).limit(max* @major_tags.length)
+    minor_product = Product.tagged_with(@minor_tags).limit(max* @minor_tags.length)
+
+    hash = {}
+    user_product.each do |product|
+      hash[product] = product.reviews.size * prior["user_tag"]
+      #3
+    end
+
+    major_product.each do |product|
+      hash[product] = product.reviews.size * prior["major_tag"]
+    end
+
+    minor_product.each do |product|
+      hash[product] = product.reviews.size * prior["minor_tag"]
+    end
+
+    #p "before"
+    #hash.each do |k,v|
+    #   p k.to_s + "=>" + v.to_s
+    #end
+
+    hash = hash.sort_by { |k,v| -v }
+
+    #p "after"
+    #hash.each do |k,v|
+    #   p k.to_s + "=>" + v.to_s
+    #end
+
+    related_product = []
+    count = hash.size-1 > max ? max : hash.size-1
+    for i in 0..count
+      related_product << hash[i].first
+    end
+    return related_product
+  end
 end
+
