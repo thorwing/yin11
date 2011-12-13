@@ -174,18 +174,17 @@ require "ingredient"
               ingredient.id = ing["_id"]
               ingredient.save!
           end
-      #steps
+
+          #steps
           r[:steps].each do |s|
             step = recipe.steps.build
             step.img_id = s["img_id"]
             step.content = s["content"]
             step.id = s["_id"]
-             #p "recipe.id " + r[:_id].to_s
             step.save!
           end
+          recipe.save!
 
-      recipe.save!
-      #p "recipe.to_yaml" + recipe.to_yaml
     rescue Exception => exc
       p r.recipe_name
       p exc.message
@@ -193,8 +192,9 @@ require "ingredient"
     end
   end
 
+  #images
   imgs = YAML::load(File.open("app/seeds/recipes_imgs.yml"))
-  p "total "+ imgs.length.to_s+ " imgs"
+  #p "total "+ imgs.length.to_s+ " imgs"
   imgs.each do |i|
      begin
         image = Image.create! do |image|
@@ -202,7 +202,7 @@ require "ingredient"
           image.picture = AppSpecificStringIO.new(i[:file_name], i[:binary_data])
           image.step_id = i[:step_id]
         end
-       p "image_name" + i[:file_name] + " succ"
+       #p "image_name" + i[:file_name] + " succ"
      rescue Exception => exc
         p i[:file_name]
         p exc.message

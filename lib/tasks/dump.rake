@@ -38,11 +38,13 @@ namespace :yin11 do
 
   desc "dump recipes"
   task :dump_recipes => :environment do
+    #recipes
     recipes = Recipe.all.to_a
     File.open(File.join(Rails.root, "app/seeds/recipes.yml"), 'w') do |file|
       YAML::dump(recipes, file)
     end
 
+    #images
     array = []
     recipes = Recipe.all.to_a
     File.open(File.join(Rails.root, "app/seeds/recipes_imgs.yml"), 'w') do |file|
@@ -56,11 +58,11 @@ namespace :yin11 do
                 hash[:file_name] = image.picture.path.split('/').last.gsub(image.id.to_s + "_", '')
                 hash[:binary_data] = image.picture.read
                 array << hash
-                p "hash[:file_name] "+ hash[:file_name]
+                #p "hash[:file_name] "+ hash[:file_name]
                 end
        end
        YAML::dump(array, file)
-       p "array " + array.size.to_s
+       #p "array " + array.size.to_s
     end
   end
 

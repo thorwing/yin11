@@ -1,74 +1,16 @@
 <h1 class = "center"><%= t("recipes.recipe_collection") %></h1>
-<!--%= debug Recipe.all.first %>-->
-<%= Recipe.all.size %>
-<%= Image.all.size %>
-           <!--<= Image.last.step_id.to_s %>-->
-<!--< Recipe.all.each do |recipe| %>-->
-    <!--<= link_to recipe.recipe_name, recipe  %>-->
-    <!--< recipe.steps.each do |step|  %>-->
-        <!--<= step.id %>-->
-        <!--%= step.image.picture_url %><br/>-->
-        <!--<= step.image.step_id %>-->
-    <!--<end  %>-->
+<!--<= Recipe.all.size %>-->
+<!--<= Image.all.size %>-->
 
-<!--< end  %>-->
-<!--<table>-->
-  <!--<tr>-->
-    <!--<th class ="grid_2"><= t("recipes.recipe_name") %></th>-->
-    <!--<th class ="grid_1"><= t("recipes.ingredients_count") %></th>-->
-    <!--<th class ="grid_1"><= t("recipes.steps_count") %></th>-->
-    <!--<th class ="grid_1"><= t("recipes.uploaded_by") %></th>-->
-
-    <!--<th></th>-->
-    <!--<th></th>-->
-    <!--<th></th>-->
-  <!--</tr>-->
-
-<!--< @recipes.each do |recipe| %>-->
-  <!--<tr>-->
-    <!--<td class ="grid_2"><= recipe.name %></td>-->
-    <!--<td class ="grid_1"><= recipe.ingredients.count %></td>-->
-    <!--<td class ="grid_1"><= recipe.steps.count %></td>-->
-    <!--<td class ="grid_1"><= recipe.author.screen_name %></td>-->
-
-    <!--<td ><= link_to 'Show', recipe %></td>-->
-    <!--<td><= link_to 'Edit', edit_recipe_path(recipe) %></td>-->
-    <!--<td><= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %></td>-->
-  <!--</tr>-->
-<!--< end %>-->
-<!--</table>-->
-<!--<div class="block">-->
-    <!--<div class="block" >-->
-      <!--<= link_to image_tag("recipe_search.png", :border => 0, :alt => t("recipes.search"))%>-->
-
-    <!--</div>-->
-
-    <!--<div class="fl">-->
-      <!--<= link_to image_tag("recipe_show.png", :border => 0, :alt => t("recipes.show"))%>-->
-    <!--</div>-->
-
-    <!--<div class="fl">-->
-        <!--< @recipes.each do |recipe| %>-->
-            <!--<= recipe.author.screen_name %>-->
-            <!--<= t("recipes.uploaded") %>-->
-            <!--<= recipe.name %>-->
-            <!--<= t("recipes.use") %>-->
-            <!--<= recipe.ingredients.count %>-->
-            <!--<= t("recipes.kind") %>-->
-            <!--<= t("recipes.including") %>-->
-            <!--<= recipe.steps.count %>-->
-            <!--<= t("recipes.step") %>-->
-            <!--<= link_to t("recipes.detail"), recipe %>-->
-            <!--<= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %>-->
-            <!--<br/>-->
-        <!--< end %>-->
-    <!--</div>-->
-<!--</div>-->
 <div class="grid_9 block">
     <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 240 %>
 </div>
-<div>
 
+<div class="tags area">
 </div>
 
-<%= link_to t("recipes.new"), new_recipe_path %>
+<div>
+    <%= link_to t("recipes.new"), new_recipe_path %>
+</div>
+
+

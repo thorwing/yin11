@@ -40,6 +40,11 @@
       <% end %>
     </p>
 </div>
+<div class="product area">
+  <% @recipe.tags.each do |tag| %>
+  <!--<= Product.find %>-->
+  <% end %>
+</div>
 <div class="grid_9 block round">
     <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
     <%= link_to 'Back', recipes_path %>
