@@ -23,13 +23,23 @@ class RecipesController < ApplicationController
      @recipes.each do |recipe|
        p "recipe_name " + recipe.recipe_name
        p "recipe_image_url " + recipe.image_url
+       p "user_id " + recipe.author.id.to_s
+       p "user_name " + recipe.author.screen_name
+       p "time " + recipe.created_at.strftime("%Y-%m-%d %H:%M:%S")
+       p "user_recipes_cnt" + recipe.author.recipes.size.to_s
        p "recipe_id " + recipe.id.to_s
+
      end
 
     data = {
       items: @recipes.inject([]){|memo, p| memo << {
         name: p.recipe_name,
         picture_url: p.steps.last == nil ? 'no-pic' : p.image_url,
+        user_id: p.author.id,
+        user_name: p.author.screen_name,
+        user_avatar: p.author.get_avatar(true, false),
+        user_recipes_cnt: p.author.recipes.size,
+        time: p.created_at.strftime("%Y-%m-%d %H:%M:%S"),
         id: p.id}
       },
       page: params[:page],
