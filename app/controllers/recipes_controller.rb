@@ -12,24 +12,24 @@ class RecipesController < ApplicationController
 
   def more
      tag = params[:tag]
-     p "tag "+ tag
+     #p "tag "+ tag
      if tag.blank?
         @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
      else
         @recipes = Recipe.tagged_with(tag).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
      end
 
-     p "@recipes "  + @recipes.length.to_s
-     @recipes.each do |recipe|
-       p "recipe_name " + recipe.recipe_name
-       p "recipe_image_url " + recipe.image_url
-       p "user_id " + recipe.author.id.to_s
-       p "user_name " + recipe.author.screen_name
-       p "time " + recipe.created_at.strftime("%Y-%m-%d %H:%M:%S")
-       p "user_recipes_cnt" + recipe.author.recipes.size.to_s
-       p "recipe_id " + recipe.id.to_s
-
-     end
+     #p "@recipes "  + @recipes.length.to_s
+     #@recipes.each do |recipe|
+     #  p "recipe_name " + recipe.recipe_name
+     #  p "recipe_image_url " + recipe.image_url
+     #  p "user_id " + recipe.author.id.to_s
+     #  p "user_name " + recipe.author.screen_name
+     #  p "time " + recipe.created_at.strftime("%Y-%m-%d %H:%M:%S")
+     #  p "user_recipes_cnt" + recipe.author.recipes.size.to_s
+     #  p "recipe_id " + recipe.id.to_s
+     #
+     #end
 
     data = {
       items: @recipes.inject([]){|memo, p| memo << {
@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
-    prior = {"user_tag"=> 3, "major_tag" => 2.5, "minor_tag" => 1}
+    prior = {"user_tag"=> 3, "major_tag" => 2, "minor_tag" => 1}
     @related_product = get_related_products(@recipe, 7, prior)
 
     respond_to do |format|

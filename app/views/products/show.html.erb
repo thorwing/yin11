@@ -55,7 +55,8 @@
         </p>
 
         <div class="actions">
-          <%= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>
+           <!--<= new_tab_link_to t("products.go_to_buy"), @product.url, :class => "button" %>-->
+           <%= link_to t("products.go_to_buy"), {:controller => "home", :action => "gateway", :url => @product.url}, :class => "button"%><br/>
         </div>
 
         <div class="actions">

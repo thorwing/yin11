@@ -82,4 +82,16 @@ class HomeController < ApplicationController
   #
   #end
 
+  def gateway
+    user_ip = request.remote_ip
+    user_id = current_user.id
+    product_url = params[:url]
+    p "user_ip " + user_ip
+
+    @audit = Audit.create(:user_ip => user_ip, :user_id => user_id, :product_url => product_url )
+    #@audit.save!
+    redirect_to product_url
+
+  end
+
 end

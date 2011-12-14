@@ -193,6 +193,7 @@ zh-CN:
     tags: 管理标签
     pages: 管理页面
     images: 管理图片
+    audits: 管理审计
 
   location:
     default_country: 中国
