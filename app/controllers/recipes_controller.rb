@@ -12,10 +12,18 @@ class RecipesController < ApplicationController
 
   def more
      tag = params[:tag]
-     if tag.present?
-      @recipes = Recipe.tagged_with(tag).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+     p "tag "+ tag
+     if tag.blank?
+        @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
      else
-      @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+        @recipes = Recipe.tagged_with(tag).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+     end
+
+     p "@recipes "  + @recipes.length.to_s
+     @recipes.each do |recipe|
+       p "recipe_name " + recipe.recipe_name
+       p "recipe_image_url " + recipe.image_url
+       p "recipe_id " + recipe.id.to_s
      end
 
     data = {
@@ -27,8 +35,6 @@ class RecipesController < ApplicationController
       page: params[:page],
       pages: (Recipe.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
     }
-
-    #p "data" + data.to_yaml
 
     respond_to do |format|
       format.json { render :json => data}

@@ -4,12 +4,7 @@ $(function(){
    the_tabs.click(function(e)
    {
         /* "this" points to the clicked tab hyperlink: */
-        var element = $(this);
-        $(".statictab .tabContent .display").addClass("display_none");
-        $(".statictab .tabContent .display").removeClass("display");
-        tmp =  $(".statictab .tabContent");
-        tmp.find(element.data('page')).removeClass("display_none");
-        tmp.find(element.data('page')).addClass("display");
+
         e.preventDefault();
    });
 
@@ -22,7 +17,14 @@ $(function(){     //change the background of the tabs when
 //          display the selected
           $(this).removeClass("unselected");
           $(this).addClass("selected");
-          e.preventDefault();
+//          e.preventDefault();
+
+          var element = $(this).find('.tab');
+        $(".statictab .tabContent .display").addClass("display_none");
+        $(".statictab .tabContent .display").removeClass("display");
+        tmp =  $(".statictab .tabContent");
+        tmp.find(element.data('page')).removeClass("display_none");
+        tmp.find(element.data('page')).addClass("display");
      })
 })
 

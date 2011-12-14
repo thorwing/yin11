@@ -1,4 +1,6 @@
 <% title t("recipes.recipe_collection"), false %>
+<%= Recipe.all.size %>
+<%= Image.all.size %>
 
 <% if current_user_has_permission? :normal_user %>
     <div>

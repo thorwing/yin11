@@ -3,9 +3,14 @@
 /*TODO*/
 
 .tabContainer .tab{
-    font-size: 12px;
-
+    font-size: 14px;
 }
+
+.tabContainer .tab:hover{
+    /*text-decoration:underline;*/
+    text-decoration:none;
+}
+
 .tabContainer div{
     width: 100px;
     height: 20px;
