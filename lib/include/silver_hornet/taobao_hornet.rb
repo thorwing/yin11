@@ -269,7 +269,7 @@ class SilverHornet::TaobaoHornet
                 :method => "taobao.item.get",
                 :partner_id => "top-apitools",
                 :format => "xml",
-                :fields => "desc",
+                :fields => "detail_url", #desc
                 :sign_method => "md5",
                 :v => "2.0",
                 :num_iid => prod["num_iid"]
@@ -290,6 +290,9 @@ class SilverHornet::TaobaoHornet
               product = Product.find_or_initialize_by(name: product_name)
             end
 
+            #set the url
+            product.url = xml_doc["item_get_response"]["item"]["detail_url"]
+
             #get the price
             product.price = prod["price"]
 
@@ -303,7 +306,8 @@ class SilverHornet::TaobaoHornet
             #set the vendor
             product.vendor = vendor
 
-            product.description = xml_doc["item_get_response"]["item"]["desc"]
+            #set the description (html)
+            #product.description = xml_doc["item_get_response"]["item"]["desc"]
 
             #get the image
             pic_url = prod["pic_url"]

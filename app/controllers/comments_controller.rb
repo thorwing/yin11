@@ -12,8 +12,8 @@ class CommentsController < ApplicationController
     end
 
     respond_to do |format|
-        format.html  {render "new", :layout => "dialog"}
-      end
+      format.html  {render "new", :layout => "dialog"}
+    end
   end
 
   def create

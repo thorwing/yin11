@@ -1,0 +1,19 @@
+$(document).trigger('close.facebox');
+<% if @product %>
+
+    function append_image(id, url) {
+         var new_image = '<div class="image fl">'
+                    + '<a onclick="delete_image(this, 5); return false;" href="#" data-image_id="' + id +'"><img border="0" src="/assets/cancel.png" alt="delete_image"></a><br>'
+                    + '<a class="thumbnail" rel="facebox" href="' + url + '">'
+                    + '<img width="48" height="48" border="0" src="' + url + '" alt="image_thumbnail"></a>'
+                    + '</div>'
+        $('#images_container').append(new_image);
+        //Apply facebox
+        $('a[rel*=facebox]').facebox();
+        // var image_count = $('#images_container .image').size();
+        //  if (image_count >= images_limit) { $('#image_uploaderUploader').hide(); }
+    }
+    append_image("<%= @product.id.to_s %>", "<%= @product.get_image_url(true) %>");
+    var product_field = '<input id="products_" type="hidden" value="' + "<%= @product.id.to_s %>" + '" name="review[product_ids][]"/>';
+    $('#images_container').append(product_field);
+<% end %>

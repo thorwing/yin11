@@ -77,10 +77,17 @@ class ReviewsController < ApplicationController
 
     ImagesHelper.process_uploaded_images(@review, params[:images])
 
+    #handle products'' links
+    @review.product_ids.each do |product_id|
+      product = Product.find(product_id)
+      product.review_ids ||= []
+      product.review_ids << @review.id
+      product.save
+    end
+
     #RewardManager.new(current_user).contribute(:posted_reviews)
 
     @remote_status = false
-
     @user_message = ''
 
     if params[:sync_to]
@@ -146,5 +153,27 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def link
+    url = params[:product_url]
 
+    @product = Product.first(conditions: {url: url})
+
+    if @product.nil?
+      #It's not in our database, then fetch it now
+      site = SilverHornet::ProductsSite.new
+      site.name = t("third_party.taobao")
+      conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
+      conf[t("third_party.taobao")].each do |key, value|
+        site.send("#{key}=", value) if site.respond_to?("#{key}=")
+      end
+
+      site.agent = Mechanize.new
+      site.agent.get(url)
+      @product = site.process_product(nil)
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end

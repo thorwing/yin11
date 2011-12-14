@@ -40,7 +40,7 @@ zh-CN:
     image: 图像
     delete: 删除
     show: 查看
-    submit: 完成
+    submit: 确定
     post: 发表
     change: 修改
     search: 搜索
@@ -280,12 +280,6 @@ zh-CN:
     add_tag_hint: 为您收集和标签相关的事件，食物安全早知道
     add_location_hint: 关注地点附近的事件全部掌握
     login: 登入
-
-  severity:
-    severity_0: 安全
-    severity_1: 注意
-    severity_2: 警惕
-    severity_3: 严重
 
   users:
     index: 所有用户
@@ -559,3 +553,5 @@ zh-CN:
      minor: 辅料
      note: (请在最终的步骤中附上大作的成品图)
 
+  third_party:
+    taobao: 淘宝

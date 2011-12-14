@@ -92,7 +92,10 @@ Yin11::Application.routes.draw do
   end
 
   resources :reviews do
-    collection {get :more}
+    collection do
+      get :more
+      post :link
+    end
   end
 
   resources :groups, :except => [:destroy] do

@@ -2,7 +2,8 @@
 
 <%= hidden_field_tag "columns_count", columns_count, :id => "wf_col_count" %>
 <%= hidden_field_tag "columns_width", columns_width, :id => "wf_col_width" %>
-<%= hidden_field_tag "tag", tag, :id => "wf_tag" %>
+<% tag ||= nil %>
+<%= (hidden_field_tag "tag", tag, :id => "wf_tag") %>
 
 <div id="waterfall_container" class="mt20">
 

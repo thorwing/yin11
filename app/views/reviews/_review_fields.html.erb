@@ -2,15 +2,13 @@
     <div class="block round clearfix" id = "review_dialog" >
         <h2><%= t("reviews.new_review") %></h2>
         <%= render "shared/error_messages", :target => review %>
-        <%= hidden_field_tag "review[product_id]", review.product_id %>
-        <%= hidden_field_tag "review[article_id]", review.article_id %>
-        <%= hidden_field_tag "review[topic_id]", review.topic_id %>
         <%= f.text_area :content, :maxlength => get_max_length(review, :content), 'data-comment_max_len' => get_max_length(review, :content), :class => "char_aware" %>
         <%= content_tag :span, "", class: "char_saver display_none" %>
         <%= content_tag :span, "", class: "char_counter block trivial" %>
 
         <div>
-            <div class = "fl">
+            <!--image uploader-->
+            <div class = "fl" style="width:105px">
                 <%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>
                 <div id="uploader" class="fl m5 w50"></div>
                 <div id="images_container" class="block fl m5">
@@ -18,6 +16,12 @@
                 </div>
             </div>
 
+            <!--product linker-->
+            <div class="fl">
+                <%= link_to_function "Link Product", "link_product()", class: "button" %>
+            </div>
+
+            <!--submit and sync to 3rd-->
             <div class = "fr">
                 <% unless current_user.provider == SELF_PROVIDER %>
                     <div class="fl">
@@ -33,3 +37,15 @@
     </div>
 <% end %>
 
+
+ <div id="product_linker" class="display_none">
+    <%= form_tag url_for(controller: "reviews", action: "link", method: :post), :remote => true do %>
+        <p><%= "将网上商城上美食的地址粘帖在下方框中即可：" %></p>
+        <%= text_field_tag "product_url", "" %>
+        <%= submit_tag t("general.submit"), class: "button" %>
+        <p>已支持以下网上商城：</p>
+        <div>
+          <%= link_to image_tag("third_party/taobao.png") + "淘宝", "http://www.taobao.com/" %>
+        </div>
+    <% end %>
+</div>

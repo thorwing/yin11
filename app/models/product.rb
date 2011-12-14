@@ -38,7 +38,7 @@ class Product
   belongs_to :vendor
   tokenize_one :vendor
   has_one :image
-  has_many :reviews
+  has_and_belongs_to_many :reviews
   has_and_belongs_to_many :catalogs
   embeds_many :feeds
 

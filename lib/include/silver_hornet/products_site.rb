@@ -254,8 +254,9 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     #end
   end
 
-#process the detailed product info
+  #process the detailed product info
   def process_product(catalog_name)
+    product = nil
     try do
       #get the product name
       product_name = catalog_name_filter(agent.page.at(elements["product_name"]).try(:content))
@@ -290,7 +291,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
 
         product.catalogs = []
         #set the product catalog
-        get_product_catalog(catalog_name, product)
+        get_product_catalog(catalog_name, product) if catalog_name.present?
 
         #record the product
         if product.new_record?
@@ -317,6 +318,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
 
     end
 
+    product
   end
 
   #Filtering the unwanted symbols

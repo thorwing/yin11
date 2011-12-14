@@ -394,3 +394,11 @@ QQ网购:
     product_price: '.price.price_now'
     #product_weight: '#goodsWeight'
     next_link_css_selector: 'a.page-next'
+
+#used to fetch product on demand
+淘宝:
+  skipped: true
+  elements:
+    product_name: '#detail .tb-detail-hd h3'
+    product_image: '#J_ImgBooth'
+    product_price: '#J_StrPrice' ##J_SpanLimitProm
