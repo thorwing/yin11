@@ -77,9 +77,8 @@
     -moz-border-radius: 10px;
     border-radius: 10px;
     border:1px solid #dbdbdb;
-    background: white;
-    margin-bottom:10px;
-    padding:10px;
+    background: $azure;
+    box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
 }
 
 .box_shadow {
@@ -179,6 +178,7 @@ ul.menu li {
 /* Common stuff */
 
 a.button, input.button {
+    display: inline-block;
 	background: $blue;
 	padding:2px 6px;
 	color: $white;

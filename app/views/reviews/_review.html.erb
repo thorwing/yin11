@@ -1,4 +1,4 @@
-<div class="block round " id = "myreviews">
+<div class="block round mb10" id = "myreviews">
   <%= render "shared/vote_fields", :item => review %>
   <%= link_to review.author.screen_name, review.author %>:
   <%= review.content %><br/>
@@ -12,10 +12,6 @@
       <% end %>
      <!--render :partial => "images/image", :collection => review.images-->
   <%end%>
-
-  <% review.products.each do |product| %>
-    <%= product.name %>
-  <% end %>
 
   <% if current_user_has_permission? :normal_user %>
     <%= link_to review.comments.empty? ? t("comments.add_comment") : t("comments.n_comments", :count => review.comments.size.to_s), new_comment_path(:item_id => review.id, :item_type => review.class.name), :class => "add_comment_link" %>

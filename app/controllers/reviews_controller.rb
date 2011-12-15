@@ -14,7 +14,10 @@ class ReviewsController < ApplicationController
 
   def more
     #  used for waterfall displaying
-    @reviews = Review.desc(:created_at, :votes).page(params[:page]).per(20)
+    criteria = Review.all
+    criteria = criteria.any_in(product_ids: [params[:product_id]]) if params[:product_id].present?
+    criteria = criteria.desc(:created_at, :votes)
+    @reviews = criteria.page(params[:page]).per(20)
 
     data = {
       items: @reviews.inject([]){|memo, r| memo <<  {
@@ -25,7 +28,8 @@ class ReviewsController < ApplicationController
         user_reviews_cnt: r.author.reviews.count,
         user_established: r.author.relationships.select{|rel| rel.target_type == "User" && r.target_id == r.author.id.to_s}.size > 0,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        picture_url: r.get_image_url(true, 0, false), id: r.id}
+        picture_url: get_review_image(r),
+        id: r.id}
       },
       page: params[:page],
       pages: (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
@@ -175,6 +179,15 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.js
+    end
+  end
+
+  private
+  def get_review_image(review)
+    if review.images.empty? && review.products.size > 0
+      review.products.first.get_image_url(true, 0, false)
+    else
+      review.get_image_url(true, 0, false)
     end
   end
 end

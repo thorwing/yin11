@@ -1,3 +1,5 @@
+$("#link_spinner").hide();
+
 <% if @valid%>
   <% if @product %>
     $(document).trigger('close.facebox');
@@ -9,4 +11,3 @@
 <% else %>
   alert("请输入正确的地址");
 <% end %>
-

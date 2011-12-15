@@ -3,7 +3,7 @@
 <%= render "shared/catalogs", catalogs: @catalogs %>
 
 <% if current_user_has_permission? :editor %>
-    <div class="actions">
+    <div class="m5">
       <%= link_to t("vendors.new_product"), new_product_path, class: "button" %>
     </div>
 <% end %>

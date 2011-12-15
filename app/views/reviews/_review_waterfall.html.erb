@@ -1,7 +1,7 @@
 <script type="tpl" id="tpl">
     <div class="waterfall grid_3 box_shadow" data-id="{{id}}">
      <a href="<%= "reviews/{{id}}" %>" >
-        <img height="{{height}}" width = "<%= IMAGE_THUMB_WIDTH %>" alt="{{name}}" src="{{picture_url}}" />
+        <img height="{{height}}" width = "200" alt="{{name}}" src="{{picture_url}}" />
      </a>
      <!--<a href="/comments/new?item_id={{id}}&amp;item_type=Review" class="fr mr10 mt5" rel="facebox"><%= t("comments.reply") %></a>-->
      <a href="/comments/new?item_id={{id}}&amp;item_type=Review" class="reply_comment_link fr mr10 mt5"><%= t("comments.reply") %></a>

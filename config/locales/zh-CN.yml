@@ -270,6 +270,7 @@ zh-CN:
 
   control_panel:
     actions: 我要：
+    editor_actions: 作为编辑，我要：
     watching: 我关注：
     watching_tags: 我吃：
     watching_locations: 我在：
@@ -398,6 +399,7 @@ zh-CN:
 
   reviews:
     review: 分享
+    head: 我要分享
     submit: 发表分享
     title: 分享
     new: +分享
@@ -523,6 +525,7 @@ zh-CN:
     cn_colon: "："
 
   recipes:
+     add: +菜谱
      related_product: 相关产品
      recipe_collection: 菜谱大全
      recipe_name: 菜谱名

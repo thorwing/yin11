@@ -41,6 +41,8 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    limit = 6
+    @related_products = Product.tagged_with(@product.tags).limit(limit).reject{|p| p == @product}
 
     respond_to do |format|
       format.html # show.html.erb

@@ -136,7 +136,7 @@ class User
       thumb ? self.avatar_url(:thumb) : self.avatar_url
     else
       #origin url is used for image_tag, the other one is used for waterfall displaying
-      origin ? "default_user.png" : "assets/default_user.png"
+      origin ? "default_user.png" : "/assets/default_user.png"
     end
   end
 
