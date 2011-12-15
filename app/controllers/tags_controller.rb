@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   before_filter(:except => [:index]) { |c| c.require_permission :editor }
 
-  def index
+  def query
     query_str = params[:q]
     if query_str.present?
       @tags = Tag.where(name: /#{query_str}?/).to_a #CacheManager.all_tags_with_weight.select {|t| t[0] =~ /#{query}?/}

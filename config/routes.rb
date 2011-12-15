@@ -62,7 +62,11 @@ Yin11::Application.routes.draw do
 
   resources :password_resets
 
-  resources :tags
+  resources :tags  do
+    collection do
+      get "query"
+    end
+  end
 
   resources :articles
 
