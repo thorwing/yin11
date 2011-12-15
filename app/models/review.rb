@@ -23,6 +23,7 @@ class Review
   has_many :images
 
   #override the settings in Informative
+  validates_presence_of :content
   validates_length_of :content, :maximum => 280
   validates_presence_of :author
 

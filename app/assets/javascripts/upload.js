@@ -32,24 +32,34 @@ $(function() {
                     '<span class="qq-upload-failed-text">上传失败</span>' +
                 '</li>',
             params: {"authenticity_token": tokentag},
+            onSubmit: function(id, fileName) {
+                $('#upload_spinner').show();
+            },
             onComplete: function(id, fileName, responseJSON){
+              $('#upload_spinner').hide();
               if (responseJSON.success) {
-                var new_image = '<div class="image fl"><input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>'
-                    + '<a onclick="delete_image(this, 5); return false;" href="#" data-image_id="' + responseJSON.image_id +'"><img border="0" src="/assets/cancel.png" alt="delete_image"></a><br>'
-                    + '<a class="thumbnail" rel="facebox" href="' + responseJSON.picture_url + '">'
-                    + '<img width="48" height="48" border="0" src="' + responseJSON.picture_url + '" alt="image_thumbnail"></a>'
-                    + '</div>'
-                $('#images_container').append(new_image);
-                //Apply facebox
-                $('a[rel*=facebox]').facebox();
-                var image_count = $('#images_container .image').size();
-                if (image_count >= images_limit) { $('#image_uploaderUploader').hide(); }
+                var image_field = '<input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>';
+                append_image(responseJSON.image_id, responseJSON.picture_url, image_field);
               }
-              else {}
             }
         });
     }
 });
+
+//Append the image, it could belong to Image or Product
+function append_image(id, url, post_params) {
+     var new_image = '<div class="image fl">'
+                + post_params
+                + '<a onclick="delete_image(this, 5); return false;" class="del_img_link lighter_touch" href="#" data-image_id="' + id +'"><img border="0" src="/assets/cancel.png" alt="delete_image"></a><br>'
+                + '<a class="thumbnail" rel="facebox" href="' + url + '">'
+                + '<img width="100" height="100" border="0" src="' + url + '" alt="image_thumbnail"></a>'
+                + '</div>'
+    $('#images_container').append(new_image);
+    //Apply facebox
+    $('a[rel*=facebox]').facebox();
+    // var image_count = $('#images_container .image').size();
+    //  if (image_count >= images_limit) { $('#image_uploaderUploader').hide(); }
+}
 
 //Delete image
 function delete_image(link, limit) {

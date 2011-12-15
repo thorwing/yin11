@@ -397,8 +397,9 @@ zh-CN:
     priority: 优先级
 
   reviews:
+    review: 分享
     submit: 发表分享
-    title: "分享"
+    title: 分享
     new: +分享
     reviews: 分享
     all: 所有分享

@@ -244,7 +244,7 @@ body #main { height: auto; padding-bottom: 20em;}
 
 #content_area { min-height: 600px;  }
 
-.third_pty_login_button:hover {opacity: 0.7;}
+.lighter_touch:hover {opacity: 0.7;}
 
 /*
 	Footer-Styles
@@ -271,3 +271,12 @@ body #main { height: auto; padding-bottom: 20em;}
 	text-decoration:underline;
 }
 
+.image {
+    position: relative;
+    margin-right: 10px;
+    .del_img_link {
+        position: absolute;
+        right: 0;
+        top: 10px;
+    }
+}

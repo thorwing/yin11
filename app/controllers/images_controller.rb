@@ -53,8 +53,8 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @image = Image.find(params[:id])
-    @image.destroy
+    @image = Image.first(conditions: {id: params[:id]})
+    @image.destroy if @image
 
     render :text => ""
   end

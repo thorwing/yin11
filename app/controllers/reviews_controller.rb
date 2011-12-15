@@ -71,7 +71,6 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.xml
   def create
-    p "params[:review]" + params[:review].to_yaml
     @review = Review.new(params[:review])
     @review.author = current_user
 
@@ -87,25 +86,24 @@ class ReviewsController < ApplicationController
 
     #RewardManager.new(current_user).contribute(:posted_reviews)
 
-    @remote_status = false
+    #default value
+    @remote_status = true
+    @local_status = false
     @user_message = ''
 
     if params[:sync_to]
       @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
     end
+    @local_status = @review.save if @remote_status
 
     respond_to do |format|
-      if @review.save
-        @local_status = true
+      if @local_status
         @user_message = t("notices.review_posted") + @user_message
         format.html { redirect_to(@review, :notice => @user_message) }
-        format.xml  { render :xml => @review, :status => :created, :location => @review }
         format.js
       else
-        @local_status = false
         @user_message = t("notices.review_post_failure") + @user_message
         format.html { render :action => "new", :notice => @user_message }
-        format.xml  { render :xml => @review.errors, :status => :unprocessable_entity }
         format.js
       end
     end
@@ -154,22 +152,25 @@ class ReviewsController < ApplicationController
   end
 
   def link
-    url = params[:product_url]
+    @valid = false
+    site = SilverHornet::ProductsSite.new
+    url = site.handle_url(params[:product_url])
+    if url
+      @valid = true
+      @product = Product.first(conditions: {url: url})
 
-    @product = Product.first(conditions: {url: url})
+      if @product.nil?
+        #It's not in our database, then fetch it now
+        site.name = t("third_party.taobao")
+        conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
+        conf[t("third_party.taobao")].each do |key, value|
+          site.send("#{key}=", value) if site.respond_to?("#{key}=")
+        end
 
-    if @product.nil?
-      #It's not in our database, then fetch it now
-      site = SilverHornet::ProductsSite.new
-      site.name = t("third_party.taobao")
-      conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
-      conf[t("third_party.taobao")].each do |key, value|
-        site.send("#{key}=", value) if site.respond_to?("#{key}=")
+        site.agent = Mechanize.new
+        site.agent.get(url)
+        @product = site.process_product(nil)
       end
-
-      site.agent = Mechanize.new
-      site.agent.get(url)
-      @product = site.process_product(nil)
     end
 
     respond_to do |format|

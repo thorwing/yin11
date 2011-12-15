@@ -254,6 +254,15 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     #end
   end
 
+  def handle_url(url_string)
+    url = URI.parse(url_string)
+    if url && url.path && url.query
+      'http://' + (url.host ? url.host : "") + url.path + '?' +url.query
+    else
+      nil
+    end
+  end
+
   #process the detailed product info
   def process_product(catalog_name)
     product = nil
@@ -267,7 +276,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         #try to find the vendor
         product.vendor = Vendor.first(conditions: {name: self.name})
         #record the product's ulr
-        product.url = agent.page.uri.to_s
+        product.url = handle_url(agent.page.uri.to_s)
         #record the product's price
         if elements["product_price"].present?
           product_price = agent.page.at(elements["product_price"]).try(:content)
@@ -384,7 +393,6 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   end
 
   def get_price(product)
-
     selector = elements["product_price"]
     return unless selector.present?
 

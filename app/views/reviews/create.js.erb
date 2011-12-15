@@ -14,16 +14,14 @@
     }
 <% end %>
 
-var remote_status = "<%= @remote_status %>";
 var local_status = "<%= @local_status %>";
 
-if(local_status == "true" && remote_status == "true")
+if(local_status == "true")
 {
     jQuery.facebox( '<img border="0" src="/assets/correct_icon.gif" alt="correct"><span><%= @user_message %></span>');
-}
-else if (local_status == "true" && remote_status == "false")
-{
-    jQuery.facebox( '<span><%= @user_message %></span>');
+
+    $('#review_content').val('');
+    $('#images_container').html('');
 }
 else
 {
