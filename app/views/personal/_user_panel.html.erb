@@ -25,6 +25,7 @@
             <%= link_to t("articles.new"), new_article_path, :class => "button" if current_user_has_permission?(:editor) %>
             <%= link_to t("groups.browse"), groups_path, :class => "button" %>
             <%= link_to t("vendors.browse"), vendors_path, :class => "button" %>
+            <%= link_to t("recipes.add"), new_recipe_path, :class => "button" %>
         </p>
     </div>
 <% end %>

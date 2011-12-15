@@ -72,16 +72,6 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :locations do
-    collection do
-      get "search"
-      get "edit_current_city"
-      post "update_current_city"
-      get "show_nearby_items"
-      get "regions"
-      get "cities"
-    end
-  end
 
   resources :profile do
     collection do

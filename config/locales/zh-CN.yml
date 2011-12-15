@@ -195,17 +195,6 @@ zh-CN:
     images: 管理图片
     audits: 管理审计
 
-  location:
-    default_country: 中国
-    default_city: 上海
-    city: 城市
-    street: 地址
-    address: 详细地址
-    miles: 公里
-    nearby: 发生在附近
-    show_nearby_tip: 点击标志物，可以查看具体信息
-    address_hint: "如: 南京东路1809号"
-    city_center: "市中心"
 
   address:
     province: 省份
@@ -529,6 +518,7 @@ zh-CN:
     cn_colon: "："
 
   recipes:
+     add: +菜谱
      related_product: 相关产品
      recipe_collection: 菜谱大全
      recipe_name: 菜谱名

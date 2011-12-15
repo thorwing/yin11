@@ -26,14 +26,14 @@ Given /^I log in as "(.+)"$/ do |name|
   visit path_to("the login page")
   fill_in "email", :with => email
   fill_in "password", :with => pwd
-  click_button("登入")
+  click_button("登录")
 end
 
 Given /^I log in with email "(.+)" and password "(.+)"$/ do |email, password|
   visit path_to("the login page")
   fill_in "email", :with => email
   fill_in "password", :with => password
-  click_button("登入")
+  click_button("登录")
 end
 
 Given /^I log out$/ do
