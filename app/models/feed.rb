@@ -20,10 +20,53 @@ class Feed
 
   validates_inclusion_of :target_operation, :in => Feed.operations
 
+  def item
+    @item ||= get_item
+    @item
+  end
+
+  def content
+    @content ||= get_content
+    @content
+  end
+
+  def author
+    @author ||= get_author
+    @author
+  end
+
+  def picture_url
+    if item.is_a?(Review)
+      item.get_review_image_url
+    elsif item.respond_to?(:get_picture_url)
+      item.get_image_url(true, 0, false)
+    else
+      ''
+    end
+  end
+
+  private
+
   def get_item
     begin
       eval("#{target_type}.find(\"#{target_id}\")")
     rescue
+      nil
+    end
+  end
+
+  def get_content
+    [:title, :name, :content].each do |field|
+      return item.send(field) if item.respond_to?(field)
+    end
+
+    return ''
+  end
+
+  def get_author
+    if item.respond_to?(:author)
+      return item.author
+    else
       nil
     end
   end

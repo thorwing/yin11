@@ -29,6 +29,7 @@ Yin11::Application.routes.draw do
   put 'administrator/base/toggle'
 
   match "me" => "personal#me"
+  match "personal/feeds" => "personal#feeds"
   match "personal/my_feeds" => "personal#my_feeds"
   match "personal/all_feeds" => "personal#all_feeds"
 

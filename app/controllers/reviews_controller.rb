@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     criteria = Review.all
     criteria = criteria.any_in(product_ids: [params[:product_id]]) if params[:product_id].present?
     criteria = criteria.desc(:created_at, :votes)
-    @reviews = criteria.page(params[:page]).per(20)
+    @reviews = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 
     data = {
       items: @reviews.inject([]){|memo, r| memo <<  {
@@ -26,9 +26,9 @@ class ReviewsController < ApplicationController
         user_name: r.author.screen_name,
         user_avatar: r.author.get_avatar(true, false),
         user_reviews_cnt: r.author.reviews.count,
-        user_established: r.author.relationships.select{|rel| rel.target_type == "User" && r.target_id == r.author.id.to_s}.size > 0,
+        user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        picture_url: get_review_image(r),
+        picture_url: r.get_review_image_url,
         id: r.id}
       },
       page: params[:page],
@@ -179,15 +179,6 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.js
-    end
-  end
-
-  private
-  def get_review_image(review)
-    if review.images.empty? && review.products.size > 0
-      review.products.first.get_image_url(true, 0, false)
-    else
-      review.get_image_url(true, 0, false)
     end
   end
 end

@@ -47,17 +47,18 @@ class FeedsManager
     end
   end
 
-  def self.pull_feeds(user)
+  def self.pull_feeds(user, page, per)
     feeds = user.tags.inject([]) do  |memo, t|
       tag = Tag.find(t)
       memo | tag.feeds
     end
 
     user.relationships.each do |r|
-      followable = r.get_item
+      followable = r.item
       feeds |= followable.feeds
     end
 
     feeds.compact.uniq
+    return feeds[(page * per)..((page + 1)* per)], feeds.size
   end
 end

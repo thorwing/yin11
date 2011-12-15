@@ -1,19 +1,19 @@
 <% title t("profile.show_profile") %>
 
-<div class = "statictab" >
+<div class = "tab_control" >
     <div class="tabContainer ">
-        <div class = "fl selected">
+        <div class = "selected">
             <a id= "basic_info" class="tab " href="" data-page = '.basic_info' >
             <%= t("users.basic_info") %>
             </a>
         </div>
-        <div class = "fl unselected">
+        <div class = "unselected">
             <a id= "my_followings"  class="tab  " href=""  data-page = '.my_followings' >
             <%= t("profile.my_followings") %>
             </a>
         </div>
 
-        <div class = "fl unselected">
+        <div class = "unselected">
             <a class="tab  " href=""  data-page = '.my_fans' >
             <%= t("profile.my_fans") %>
             </a>
@@ -39,7 +39,7 @@
           <br/>
             <dd>
                 <% current_user.relationships.each do |r| %>
-                    <% item = r.get_item %>
+                    <% item = r.item %>
                     <% if item.class.name == "User"  %>
                         <%= render item %>
                     <% end  %>
@@ -48,7 +48,7 @@
                 <hr/>
 
                 <% current_user.relationships.each do |r| %>
-                    <% item = r.get_item %>
+                    <% item = r.item %>
                     <% if item.class.name == "Product"  %>
                         <%= render item %>
                     <% end  %>
@@ -57,7 +57,7 @@
                 <hr/>
 
                 <% current_user.relationships.each do |r| %>
-                    <% item = r.get_item %>
+                    <% item = r.item %>
                     <% if item.class.name == "Vendor"  %>
                         <%= render item %>
                     <% end  %>
@@ -68,7 +68,7 @@
           <br/>
             <dd>
                 <% current_user.followers.each do |r| %>
-                    <% item = r.get_item %>
+                    <% item = r.item %>
                     <%= render item %>
                 <% end %>
             </dd>

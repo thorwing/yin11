@@ -11,19 +11,20 @@
     text-decoration:none;
 }
 
-.tabContainer div{
+.tabContainer > div{
     width: 100px;
     height: 20px;
     text-align: center;
     padding-top: 5px;
+    float: left;
 }
 
-.tabContainer .unselected{
+.tabContainer > div.unselected{
     background-image: url("tab.png");
     background-repeat: no-repeat;
 }
 
-.tabContainer .unselected a {
+.tabContainer > div.unselected a {
     color:  $blue;
 }
 
@@ -35,6 +36,10 @@
 
 .tabContainer .selected a {
     color:  #ffffff;
+}
+
+.tabContent {
+    min-height: 400px;
 }
 
 #contentHolder .preloader{

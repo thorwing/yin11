@@ -3,15 +3,47 @@
         <div class="mb20">
             <%= render "reviews/review_fields", :review => Review.new %>
         </div>
+    </div>
 
-        <div class = "dynamictab">
+    <div class="grid_3 fl ">
+        <div id="control_panel">
+            <%= render "user_panel" %>
+        </div> <!--end of control_panel -->
+    </div>
+</div>
+
+<div class="grid_12 to_left to_right">
+  <div class="tab_control">
+    <div class="tabContainer ">
+        <div class = "selected">
+          <%= link_to t("feeds.all"), "#", "data-page" => '.all_feeds', class: "tab" %>
+        </div>
+        <div class = "unselected">
+          <%= link_to t("feeds.my"), "#", "data-page" => '.my_feeds', class: "tab" %>
+        </div>
+    </div>
+
+    <div class="tabContent block round">
+        <div class = "all_feeds display">
+            <%= render "shared/waterfall", :path => "/personal/feeds", :waterfall_partial => "personal/feed_waterfall", :columns_count => 4, :columns_width => 230 %>
+        </div>
+        <div class = "my_feeds display_none">
+          sdf
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<% if false %>
+    <div class = "tab_control dynamic">
             <div class = "tabContainer">
-                <div class = "fl selected">
+                <div class = "selected">
                     <a class = "tab" href="/personal/all_feeds" data-page = '/personal/all_feeds' >
                     <%= t("feeds.all") %>
                     </a>
                 </div>
-                <div class = "fl unselected">
+                <div class = "unselected">
                     <a class = "tab" href="/personal/my_feeds"  data-page = '/personal/my_feeds' >
                     <%= t("feeds.my") %>
                     </a>
@@ -25,12 +57,6 @@
             </div>
         </div>
     </div>
-
-    <div class="grid_3 fl ">
-        <div id="control_panel">
-            <%= render "user_panel" %>
-        </div> <!--end of control_panel -->
-    </div>
-</div>
+    <% end %>
 
 

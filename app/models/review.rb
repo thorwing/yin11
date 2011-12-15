@@ -37,4 +37,12 @@ class Review
     self.votes >= ITEM_MEASURE_POPULAR ? true : false
   end
 
+  def get_review_image_url
+    if self.images.empty? && self.products.size > 0
+      self.products.first.get_image_url(true, 0, false)
+    else
+      self.get_image_url(true, 0, false)
+    end
+  end
+
 end
