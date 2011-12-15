@@ -11,24 +11,24 @@ class RecipesController < ApplicationController
   end
 
   def more
-     tag = params[:tag]
-     if tag.present?
-      @recipes = Recipe.tagged_with(tag).page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-     else
-      @recipes = Recipe.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-     end
+    criteria = Recipe.all
+    criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
+    @recipes = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 
     data = {
       items: @recipes.inject([]){|memo, p| memo << {
         name: p.recipe_name,
         picture_url: p.steps.last == nil ? 'no-pic' : p.image_url,
+        user_id: p.author.id,
+        user_name: p.author.screen_name,
+        user_avatar: p.author.get_avatar(true, false),
+        user_recipes_cnt: p.author.recipes.size,
+        time: p.created_at.strftime("%Y-%m-%d %H:%M:%S"),
         id: p.id}
       },
       page: params[:page],
       pages: (Recipe.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
     }
-
-    #p "data" + data.to_yaml
 
     respond_to do |format|
       format.json { render :json => data}
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
-    prior = {"user_tag"=> 3, "major_tag" => 2.5, "minor_tag" => 1}
+    prior = {"user_tag"=> 3, "major_tag" => 2, "minor_tag" => 1}
     @related_product = get_related_products(@recipe, 7, prior)
 
     respond_to do |format|

@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   before_filter(:except => [:index]) { |c| c.require_permission :editor }
 
-  def index
+  def query
     query_str = params[:q]
     if query_str.present?
       @tags = Tag.where(name: /#{query_str}?/).to_a #CacheManager.all_tags_with_weight.select {|t| t[0] =~ /#{query}?/}
@@ -41,6 +41,16 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(administrator_tags_url) }
+    end
+  end
+
+  def index
+    @hot_tags = Tag.all.limit(15)
+
+    @records = YAML::load(File.open("app/seeds/tags.yml"))
+
+    respond_to do |format|
+      format.html
     end
   end
 

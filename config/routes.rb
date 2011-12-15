@@ -3,6 +3,8 @@ Yin11::Application.routes.draw do
   match '/editor(/*requested_uri)' => 'mercury_auth#edit', :as => :mercury_editor
   Mercury::Engine.routes
 
+  match '/home/gateway' => 'home#gateway'
+
   resources :ingredients
 
   resources :steps
@@ -21,6 +23,7 @@ Yin11::Application.routes.draw do
     resources :products
     resources :pages
     resources :images
+    resources :audits
   end
 
   put 'administrator/base/toggle'
@@ -59,7 +62,11 @@ Yin11::Application.routes.draw do
 
   resources :password_resets
 
-  resources :tags
+  resources :tags  do
+    collection do
+      get "query"
+    end
+  end
 
   resources :articles
 
@@ -69,16 +76,6 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :locations do
-    collection do
-      get "search"
-      get "edit_current_city"
-      post "update_current_city"
-      get "show_nearby_items"
-      get "regions"
-      get "cities"
-    end
-  end
 
   resources :profile do
     collection do

@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = user.auth_token
       end
 
-      redirect_back root_url
+      redirect_back '/me'
     else
       flash.now.alert = t("authentication.invalid_usr_pwd")
       render "new"

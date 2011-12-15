@@ -1,0 +1,17 @@
+<% title t("tags.all") %>
+<div >
+    <%= t("tags.hot_tags") %>
+    <%= @hot_tags.size %> <br/>
+    <% @hot_tags.each do |tag| %>
+        <%= ( link_to tag.name, {:controller => "recipes", :action => "index", :tag => tag}, :class => "tag" )%>
+    <% end  %>
+    <br/><br/>
+</div>
+<div>
+    <% @records.each do |record|%>
+        <%= record["name"] %><br/>
+        <% record["detail"].split(' ').each do |tag|  %>
+            <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag}, :class => "tag" %>
+        <% end  %><br/><br/>
+    <% end  %>
+</div>

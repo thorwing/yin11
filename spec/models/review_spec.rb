@@ -1,30 +1,16 @@
 require 'spec_helper'
 
 describe Review do
-  before { @review = Review.new }
-  subject{ @review }
+  it {should validate_presence_of :content}
+  it {should ensure_length_of(:content ).
+    is_at_most(280) }
 
-  describe "title is present" do
-    before {@review.title = "test"}
-    it {should be_valid}
+  #before { @review = Review.new }
+  #subject{ @review }
 
-    context "title is too long" do
-      before { @review.title = "1" * 31 }
-      it {should_not be_valid}
-    end
+  #context "get_faults works" do
+  #  before {@review.faults = ["bad", "terrible"]}
+  #  specify {@review.get_faults.should == "bad | terrible"}
+  #end
 
-    context "content is too long" do
-      before {@review.content = "1" * 3001 }
-      it {should_not be_valid}
-    end
-
-    context "get_faults works" do
-      before {@review.faults = ["bad", "terrible"]}
-      specify {@review.get_faults.should == "bad | terrible"}
-    end
-  end
-
-  describe "title is not present" do
-    it{should_not be_valid}
-  end
 end

@@ -7,6 +7,7 @@ require "topic"
 require "recipe"
 require "step"
 require "ingredient"
+require "tag"
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
@@ -226,5 +227,13 @@ require "ingredient"
 
   p "generating recipes images"
   restore_images("app/seeds/recipes_imgs.yml", :step_id)
+
+  p "generating tags"
+  records = YAML::load(File.open("app/seeds/tags.yml"))
+  records.each do |record|
+      record["detail"].split(' ').each do |tag|
+        Tag.create(:name => tag )
+      end
+  end
 
 

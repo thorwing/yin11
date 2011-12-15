@@ -13,16 +13,12 @@ describe Article do
   it {should ensure_length_of(:introduction).
     is_at_most(300) }
 
-
-
-
   it "simpley create a article" do
     @editor = Factory(:editor)
     @editor.should be_valid
     #Article.new(:title => "test", :content => "sample text", :type => I18n.t("article_types.news"), :author_id=> @editor.id).should be_valid
     Article.new(:title => "test", :content => "sample text", :type => "news", :author_id=> @editor.id).should be_valid
   end
-
 
   it "type must be of certain value" do
     Article.create(:title => "test", :content => "sample text", :type => "test").should_not be_valid

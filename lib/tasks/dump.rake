@@ -41,14 +41,6 @@ namespace :yin11 do
     end
   end
 
-  #desc "dump recipes"
-  #task :dump_recipes => :environment do
-  #  recipes = Article.recipes.without(:updated_at, :created_at, :_type, :votes, :fan_ids, :hater_ids, "source._id").to_a
-  #  File.open(File.join(Rails.root, "app/seeds/recipes.yml"), 'w') do |file|
-  #    YAML::dump(recipes, file)
-  #  end
-  #end
-
   desc "dump topics"
   task :dump_topics => :environment do
     topics = Topic.all.to_a
@@ -106,4 +98,14 @@ namespace :yin11 do
       YAML::dump(Vendor.only(:name, :city, :street, :latitude, :longitude, :category, :sub_category).to_a, file)
     end
   end
+
+  #desc "dump tags"
+  #task :dump_tags => :environment do
+  #  #recipes
+  #  tags = Tag.all.to_a
+  #  File.open(File.join(Rails.root, "app/seeds/hot_tags.yml"), 'w') do |file|
+  #    YAML::dump(tags, file)
+  #  end
+  #end
+
 end

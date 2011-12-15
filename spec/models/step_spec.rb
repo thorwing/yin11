@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Step do
-  pending "add some examples to (or delete) #{__FILE__}"
+    it {should validate_presence_of :content}
+    it {should ensure_length_of(:content ).
+      is_at_most(100) }
 end

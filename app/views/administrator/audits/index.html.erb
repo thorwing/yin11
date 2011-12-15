@@ -1,0 +1,10 @@
+<% @audit.each do |audit| %>
+    <span>user id</span>
+    <%= audit.user_id %>
+    <span>product_url</span>
+    <%= audit.product_url %>
+    <span>user_ip</span>
+    <%= audit.user_ip %>
+    <span>time</span>
+    <%= audit.created_at.strftime("%Y-%m-%d %H:%M:%S") %><br/>
+<% end %>

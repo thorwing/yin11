@@ -193,18 +193,8 @@ zh-CN:
     tags: 管理标签
     pages: 管理页面
     images: 管理图片
+    audits: 管理审计
 
-  location:
-    default_country: 中国
-    default_city: 上海
-    city: 城市
-    street: 地址
-    address: 详细地址
-    miles: 公里
-    nearby: 发生在附近
-    show_nearby_tip: 点击标志物，可以查看具体信息
-    address_hint: "如: 南京东路1809号"
-    city_center: "市中心"
 
   address:
     province: 省份
@@ -494,8 +484,10 @@ zh-CN:
 
   tags:
     tags: 标签
-    all: 所有标签
+    all: 标签大全
     new_tag: 新标签
+    hot_tags: 人气标签
+
 
   views:
     pagination:
@@ -556,6 +548,7 @@ zh-CN:
      major: 主料
      minor: 辅料
      note: (请在最终的步骤中附上大作的成品图)
+     by_user: 发表了%{count}个菜谱
 
   third_party:
     taobao: 淘宝

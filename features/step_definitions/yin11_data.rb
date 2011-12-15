@@ -7,10 +7,10 @@ Given /^There are minimum seeds data$/ do
   @editor = Factory(:editor)
   @admin = Factory(:administrator)
 
-  sh_province = Factory(:province, :name => "上海", :code => "SH")
-  Factory(:shanghai, :name => "上海", :postcode => "20000", :province_id => sh_province.id)
-  bj_province = Factory(:province, :name => "北京", :code => "BJ")
-  Factory(:beijing, :name => "北京", :postcode => "10000", :province_id => bj_province.id)
+  #sh_province = Factory(:province, :name => "上海", :code => "SH")
+  #Factory(:shanghai, :name => "上海", :postcode => "20000", :province_id => sh_province.id)
+  #bj_province = Factory(:province, :name => "北京", :code => "BJ")
+  #Factory(:beijing, :name => "北京", :postcode => "10000", :province_id => bj_province.id)
 end
 
 Given /^There are some groups$/ do

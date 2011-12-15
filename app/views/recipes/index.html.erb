@@ -1,11 +1,13 @@
 <% title t("recipes.recipe_collection"), false %>
+<%= Recipe.all.size %>
+<%= Image.all.size %>
 
 <% if current_user_has_permission? :normal_user %>
     <div>
         <%= link_to t("recipes.new"), new_recipe_path, class: "button" %>
     </div>
 <% end %>
-<div class="grid_10 to_left">
+<div class="grid_10 to_left block">
     <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 230 , tag: params[:tag]%>
 </div>
 
