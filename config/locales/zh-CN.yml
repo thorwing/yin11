@@ -487,8 +487,10 @@ zh-CN:
 
   tags:
     tags: 标签
-    all: 所有标签
+    all: 标签大全
     new_tag: 新标签
+    hot_tags: 人气标签
+
 
   views:
     pagination:
