@@ -73,6 +73,11 @@ module ApplicationHelper
     tree
   end
 
+  def get_hot_tags(limit = ITEMS_PER_PAGE_FEW)
+    #TODO cache it
+    Tag.desc(:feeds).limit(limit)
+  end
+
   def get_icon_of(obj)
     image_tag("#{obj.class.name.downcase}_icon.png")
   end

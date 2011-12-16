@@ -16,15 +16,16 @@ class RecipesController < ApplicationController
     @recipes = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 
     data = {
-      items: @recipes.inject([]){|memo, p| memo << {
-        name: p.recipe_name,
-        picture_url: p.steps.last == nil ? 'no-pic' : p.image_url,
-        user_id: p.author.id,
-        user_name: p.author.screen_name,
-        user_avatar: p.author.get_avatar(true, false),
-        user_recipes_cnt: p.author.recipes.size,
-        time: p.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        id: p.id}
+      items: @recipes.inject([]){|memo, r| memo << {
+        name: r.recipe_name,
+        picture_url: r.steps.last == nil ? 'no-pic' : r.image_url,
+        user_id: r.author.id,
+        user_name: r.author.screen_name,
+        user_avatar: r.author.get_avatar(true, false),
+        user_reviews_cnt: r.author.reviews.count,
+        user_recipes_cnt: r.author.recipes.count,
+        time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+        id: r.id}
       },
       page: params[:page],
       pages: (Recipe.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil

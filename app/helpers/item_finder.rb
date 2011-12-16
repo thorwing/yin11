@@ -1,6 +1,6 @@
 class ItemFinder
   def self.get_item(type, id)
-    eval("#{type}.find(id)")
+    eval("#{type}.find('#{id}')")
   end
 
   def self.get_region(region_id)

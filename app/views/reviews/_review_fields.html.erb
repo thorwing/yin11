@@ -19,10 +19,19 @@
             <!--product linker-->
             <% if review.product_ids.empty? %>
                 <div class="fl mr10">
-                    <%= link_to_function image_tag("group_icon.png", border: 0, width: 24, height:24), "link_product()", class: "lighter_touch"%>
+                    <%= link_to_function image_tag("add_product.png", border: 0, width: 24, height:24), "link_product()", class: "lighter_touch"%>
                 </div>
             <% else %>
                 <%= hidden_field_tag "review[product_ids][]", review.product_ids.first %>
+            <% end %>
+
+            <!--recipe linker-->
+            <% if review.recipe_ids.empty? %>
+                <div class="fl mr10">
+                    <%= link_to_function image_tag("add_recipe.png", border: 0, width: 24, height:24), "link_recipe()", class: "lighter_touch"%>
+                </div>
+            <% else %>
+                <%= hidden_field_tag "review[recipe_ids][]", review.recipe_ids.first %>
             <% end %>
 
             <!--submit and sync to 3rd-->
@@ -46,7 +55,7 @@
 
  <div id="product_linker" class="display_none">
     <%= form_tag url_for(controller: "reviews", action: "link", method: :post), :remote => true do %>
-        <p><%= "将网上商城上美食的地址粘帖在下方框中即可：" %></p>
+        <p><%= "将网上的美食的地址粘帖在下方框中即可：" %></p>
         <%= text_field_tag "product_url", "" %>
         <%= submit_tag t("general.submit"), id: "link_prod_btn", class: "button", onclick: '$("#link_spinner").show();' %>
         <div id="link_spinner" style="display:none" ><%= image_tag "loading.gif", width: 16, height: 16 %></div>

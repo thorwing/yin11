@@ -45,7 +45,7 @@ class TagsController < ApplicationController
   end
 
   def index
-    @hot_tags = Tag.all.limit(15)
+    @hot_tags = get_hot_tags
 
     @records = YAML::load(File.open("app/seeds/tags.yml"))
 

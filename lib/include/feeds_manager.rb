@@ -15,15 +15,24 @@ class FeedsManager
     #end
 
     #feed is an embedded model
+    #TODO
+    # decides using "product" or "products"
+    products = []
     if item.respond_to?(:product) && item.product.present?
-      item.product.feeds << initialize_feed(item)
-      item.product.save!
+      products = [item.product]
+    elsif item.respond_to?(:products) && item.products.present?
+      products = item.products
+    end
+
+    products.each do |product|
+      product.feeds << initialize_feed(item)
+      product.save!
 
       #push feed to it's vendor'
-      item.product.vendor.feeds << initialize_feed(item)
-      item.product.vendor.save!
+      product.vendor.feeds << initialize_feed(item)
+      product.vendor.save!
 
-      item.product.tags.each do |t|
+      product.tags.each do |t|
         tag = Tag.find_or_initialize_by(:name => t)
         tag.feeds << initialize_feed(item)
         tag.save!
@@ -54,11 +63,21 @@ class FeedsManager
     end
 
     user.relationships.each do |r|
-      followable = r.item
+      followable = r.get_item
       feeds |= followable.feeds
     end
 
-    feeds.compact.uniq
+    feeds = feeds.compact.uniq {|f| f.identity }
     return feeds[(page * per)..((page + 1)* per)], feeds.size
   end
+
+  def self.get_tagged_feeds(tags, page, per)
+    feeds = tags.inject([]) do  |memo, tag|
+      memo | tag.feeds
+    end
+
+    feeds = feeds.compact.uniq {|f| f.identity }
+    return feeds[(page * per)..((page + 1)* per)], feeds.size
+  end
+
 end

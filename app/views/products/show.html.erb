@@ -35,7 +35,7 @@
 
 
         <div class="m5">
-           <%= render "shared/follow_field", :target => @product %>
+           <%= render "relationships/follow_field", :target => @product %>
            <%= link_to t("products.go_to_buy"), {:controller => "home", :action => "gateway", :url => @product.url}, :class => "button"%><br/>
         </div>
 

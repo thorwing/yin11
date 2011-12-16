@@ -9,14 +9,14 @@ class Review
 
   field :content
 
-  attr_accessible :content, :images_attributes, :product_ids, :article_id, :topic_id
+  attr_accessible :content, :images_attributes, :product_ids, :recipe_ids, :topic_id
 
   #scopes
   scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
 
   #relationships
   has_and_belongs_to_many :products
-  belongs_to :article
+  has_and_belongs_to_many :recipe
   belongs_to :topic
   embeds_many :comments
   belongs_to :author, :class_name => "User"

@@ -20,6 +20,10 @@ class Feed
 
   validates_inclusion_of :target_operation, :in => Feed.operations
 
+  def identity
+    [target_type, target_id, target_operation].join(' ')
+  end
+
   def item
     @item ||= get_item
     @item

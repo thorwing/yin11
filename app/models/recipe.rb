@@ -12,6 +12,7 @@ class Recipe
     embeds_many :ingredients
     embeds_many :steps
     belongs_to :author, :class_name => "User"
+    has_and_belongs_to_many :reviews
 
     accepts_nested_attributes_for :ingredients
     accepts_nested_attributes_for :steps
