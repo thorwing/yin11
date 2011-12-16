@@ -9,7 +9,7 @@
     <p><%= feed.content %></p>
     <p>
       <div class="img_frame">
-        <%= link_to (image_tag feed.picture_url(true)), feed.picture_url(false), rel: "facebox" %>
+        <%= link_to (image_tag feed.picture_url(true), width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), feed.picture_url(false), rel: "facebox" %>
       </div>
     </p>
     <% if feed.author != current_user %>

@@ -25,15 +25,6 @@
                 <%= hidden_field_tag "review[product_ids][]", review.product_ids.first %>
             <% end %>
 
-            <!--recipe linker-->
-            <% if review.recipe_ids.empty? %>
-                <div class="fl mr10">
-                    <%= link_to_function image_tag("add_recipe.png", border: 0, width: 24, height:24), "link_recipe()", class: "lighter_touch"%>
-                </div>
-            <% else %>
-                <%= hidden_field_tag "review[recipe_ids][]", review.recipe_ids.first %>
-            <% end %>
-
             <!--submit and sync to 3rd-->
             <div class = "fr">
                 <% unless current_user.provider == SELF_PROVIDER %>
@@ -57,8 +48,7 @@
     <%= form_tag url_for(controller: "reviews", action: "link", method: :post), :remote => true do %>
         <p><%= "将网上的美食的地址粘帖在下方框中即可：" %></p>
         <%= text_field_tag "product_url", "" %>
-        <%= submit_tag t("general.submit"), id: "link_prod_btn", class: "button", onclick: 'document.getElementById("link_spinner").style.display = "block";' %>
-        <div id="link_spinner" style="display:none" ><%= image_tag "loading.gif", width: 16, height: 16 %></div>
+        <%= submit_tag t("general.submit"), id: "link_prod_btn", class: "button", onclick: '$(this).after("<p><img id = link_spinner src= assets/loading.gif></p>");' %>
         <p>已支持以下网上商城：</p>
         <div>
           <%= link_to image_tag("third_party/taobao.png") + "淘宝", "http://www.taobao.com/" %>

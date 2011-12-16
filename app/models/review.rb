@@ -16,7 +16,7 @@ class Review
 
   #relationships
   has_and_belongs_to_many :products
-  has_and_belongs_to_many :recipe
+  belongs_to :recipe
   belongs_to :topic
   embeds_many :comments
   belongs_to :author, :class_name => "User"
@@ -38,11 +38,15 @@ class Review
   end
 
   def get_review_image_url(thumb = false)
-    if self.images.empty? && self.products.size > 0
-      self.products.first.get_image_url(thumb, 0, false)
-    else
-      self.get_image_url(thumb, 0, false)
+    if self.images.empty?
+      if self.products.size > 0
+        return self.products.first.get_image_url(thumb, 0, false)
+      elsif self.recipe
+        return self.recipe.image_url
+      end
     end
+
+    self.get_image_url(thumb, 0, false)
   end
 
 end

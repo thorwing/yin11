@@ -119,6 +119,21 @@ class RecipesController < ApplicationController
     end
   end
 
+  def mark
+    @recipe = Recipe.find(params[:id])
+    @review = @recipe.reviews.new(content: params[:content])
+    @review.author = current_user
+    @review.save!
+    @user_message = t("notices.review_posted")
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  #for non-action methods
+  private
+
   def get_related_products(recipe, max, prior)
     @major_tags= []
     @minor_tags = []
