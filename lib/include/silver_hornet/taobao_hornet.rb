@@ -242,6 +242,7 @@ class SilverHornet::TaobaoHornet
     parameters[:timestamp] = time.strftime("%Y-%m-%d+%H:%M:%S")
     #return the restful WS address
     uri = URI.parse("http://gw.api.taobao.com/router/rest?#{convert_to_http_params(parameters)}")
+    p "Products url: #{uri}"
   end
 
   def convert_to_http_params(hash = {})
@@ -279,6 +280,7 @@ class SilverHornet::TaobaoHornet
             parameters[:timestamp] = time.strftime("%Y-%m-%d+%H:%M:%S")
             #return the restful WS address
             uri = URI.parse("http://gw.api.taobao.com/router/rest?#{convert_to_http_params(parameters)}")
+            p "product url: #{uri}"
             response = Net::HTTP.get(uri)
             xml_doc = Crack::XML.parse(response)
 
