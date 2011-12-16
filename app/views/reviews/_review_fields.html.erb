@@ -53,11 +53,11 @@
 <% end %>
 
 
- <div id="product_linker" class="display_none">
+<div id="product_linker" class="display_none">
     <%= form_tag url_for(controller: "reviews", action: "link", method: :post), :remote => true do %>
         <p><%= "将网上的美食的地址粘帖在下方框中即可：" %></p>
         <%= text_field_tag "product_url", "" %>
-        <%= submit_tag t("general.submit"), id: "link_prod_btn", class: "button", onclick: '$("#link_spinner").show();' %>
+        <%= submit_tag t("general.submit"), id: "link_prod_btn", class: "button", onclick: 'document.getElementById("link_spinner").style.display = "block";' %>
         <div id="link_spinner" style="display:none" ><%= image_tag "loading.gif", width: 16, height: 16 %></div>
         <p>已支持以下网上商城：</p>
         <div>

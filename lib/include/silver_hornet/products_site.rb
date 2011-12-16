@@ -255,7 +255,12 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   end
 
   def handle_url(url_string)
-    url = URI.parse(url_string)
+    begin
+      url = URI.parse(url_string)
+    rescue
+      url = nil
+    end
+
     if url && url.path && url.query
       'http://' + (url.host ? url.host : "") + url.path + '?' +url.query
     else
