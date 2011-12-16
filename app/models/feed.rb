@@ -35,11 +35,11 @@ class Feed
     @author
   end
 
-  def picture_url
+  def picture_url(thumb = true)
     if item.is_a?(Review)
-      item.get_review_image_url
+      item.get_review_image_url(thumb)
     elsif item.respond_to?(:get_picture_url)
-      item.get_image_url(true, 0, false)
+      item.get_image_url(thumb, 0, false)
     else
       ''
     end

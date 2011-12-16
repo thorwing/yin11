@@ -176,7 +176,7 @@ jQuery(function() {
 //Add comment
 $(function() {
     $('.reply_comment_link').live('click', function() {
-        $(this).nextAll('.new_reply_comment').toggle('fast');
+        $(this).siblings('.new_reply_comment').toggle('fast');
         return false;
     });
 });

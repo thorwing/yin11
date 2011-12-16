@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-     @hot_tags = Recipe.tags_with_weight
+    t@hot_tags = Recipe.tags_with_weight
     respond_to do |format|
       format.html # index.html.erb
     end
