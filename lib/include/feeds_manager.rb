@@ -64,7 +64,7 @@ class FeedsManager
 
     user.relationships.each do |r|
       followable = r.get_item
-      feeds |= followable.feeds
+      feeds += followable.feeds
     end
 
     feeds = feeds.compact.uniq {|f| f.identity }
