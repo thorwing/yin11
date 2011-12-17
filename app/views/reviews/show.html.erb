@@ -1,13 +1,16 @@
 <% title t("reviews.title"), false%>
 
 <div class="grid_9 to_left">
-    <%= render "shared/vote_fields", :item => @review %>
-    <div class="clearfix"></div>
+    <div class="fr">
+        <%= render "shared/vote_fields", :item => @review %>
+    </div>
+    <% if @review.author %>
+        <%= link_to image_tag(@review.author.get_avatar(true), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), @review.author %>
+        <%= link_to @review.author.screen_name, @review.author %><br/>
+    <% end %>
 
+    <div class="clearfix"></div>
     <p>
-        <% if @review.author %>
-            <%= link_to @review.author.screen_name, @review.author %>:
-        <% end %>
         <%= @review.content %>
     </p>
     <div id="gallery">

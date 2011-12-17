@@ -1,9 +1,9 @@
 <script type="tpl" id="tpl">
     <div class="waterfall grid_3 box_shadow" data-id="{{id}}">
         <% if path %>
-            <a href="<%= "#{path}/{{id}}" %>" class="image"><img height="{{height}}" width = "200" alt="{{name}}" src="{{picture_url}}" /></a>
+            <a href="<%= "#{path}/{{id}}" %>" class="image"><img alt="{{name}}" src="{{picture_url}}" /></a>
         <% else %>
-            <a href="<%= "{{target_path}}" %>" class="image"><img height="{{height}}" width = "200" alt="{{name}}" src="{{picture_url}}" /></a>
+            <a href="<%= "{{target_path}}" %>" class="image"><img alt="{{name}}" src="{{picture_url}}" /></a>
         <% end %>
         <% if show_name %>
             <span class="ml10 f16">{{name}}</span><br/>

@@ -58,7 +58,7 @@ class Review
     end
 
     image_urls = []
-    image_urls += images.map{|i| thumb ? i.picture_url(:thumb) : i.picture_url }
+    image_urls += images.map{|i| thumb ? i.picture_url(:thumb) : i.picture_url(:waterfall) }
 
     if self.products.size > 0
       image_urls += self.products.map {|p| p.get_image_url(thumb, 0, false)}

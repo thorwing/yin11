@@ -35,7 +35,7 @@ class Recipe
     #TODO use a real image field here
     def image_url
       if self.steps.size > 0 && self.steps.last.image.picture?
-        self.steps.last.image.picture_url
+        self.steps.last.image.picture_url(:waterfall)
       else
         nil
       end
