@@ -49,4 +49,28 @@ class Review
     self.get_image_url(thumb, 0, false)
   end
 
+  def get_review_all_image_url(thumb = false)
+    images = []
+    if self.respond_to?(:image)
+      images << self.image
+    elsif self.respond_to?(:images)
+      images += self.images
+    end
+
+    image_urls = []
+    image_urls += images.map{|i| thumb ? i.picture_url(:thumb) : i.picture_url }
+
+    if self.products.size > 0
+      image_urls += self.products.map {|p| p.get_image_url(thumb, 0, false)}
+    elsif self.recipe
+      image_urls << self.recipe.image_url
+    end
+
+    if image_urls.empty?
+      ["/assets/not_found.png"]
+    else
+      image_urls
+    end
+  end
+
 end

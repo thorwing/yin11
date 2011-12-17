@@ -22,6 +22,21 @@ module Imageable
       end
     end
 
+    def get_all_image_urls(thumb = false)
+      images = []
+      if self.respond_to?(:image)
+        images << self.image
+      elsif self.respond_to?(:images)
+        images += self.images
+      end
+
+      if images.empty?
+        ["/assets/not_found.png"]
+      else
+        images.map{|i| thumb ? i.picture_url(:thumb) : i.picture_url }
+      end
+    end
+
     def has_image?
       if self.respond_to?(:image)
         return true if self.image

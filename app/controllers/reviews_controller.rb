@@ -46,6 +46,12 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
 
+    tags = []
+    tags += @review.products.inject([]){|memo, p| memo + p.tags} if @review.products
+    tags += @review.recipe.tags if @review.recipe
+
+    @related_products = Product.tagged_with(tags).limit(RELATED_RPODUCTS_LIMIT).reject{|p| p == @product}
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @review }

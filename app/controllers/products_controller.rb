@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     limit = 6
-    @related_products = Product.tagged_with(@product.tags).limit(limit).reject{|p| p == @product}
+    @related_products = Product.tagged_with(@product.tags).limit(RELATED_RPODUCTS_LIMIT).reject{|p| p == @product}
 
     respond_to do |format|
       format.html # show.html.erb
