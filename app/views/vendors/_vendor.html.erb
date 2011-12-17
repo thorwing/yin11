@@ -1,9 +1,6 @@
-<div id="<%= vendor.id.to_s %>" class="block round">
-
-  <div class="left_column">
-    <%= link_to vendor.name, vendor %><br/>
+<div id="<%= vendor.id.to_s %>" class="block">
+    <%= link_to vendor.name, vendor %><span class="trivial">(<%= vendor.mall.name %>)</span><br/>
     <div class="actions">
         <%= render "relationships/follow_field", :target => vendor %>
     </div>
-  </div>
 </div>

@@ -299,7 +299,8 @@ class SilverHornet::TaobaoHornet
             product.price = prod["price"]
 
             #find or new a vendor
-            vendor = Vendor.find_or_initialize_by(name: prod["nick"])
+            @taobao ||= Mall.first(conditions: {name: I18n.t("third_party.taobao")})
+            vendor = Vendor.find_or_initialize_by(name: prod["nick"], mall_id: @taobao.id)
             if vendor.new_record?
               #it's a vendor from Taobao Mall
               vendor.is_tmall = true

@@ -11,7 +11,8 @@ class PersonalController < ApplicationController
     if total < ITEMS_PER_PAGE_FEW
       hot_tags= get_hot_tags
       extra_feeds, extra_total = FeedsManager.get_tagged_feeds(hot_tags, params[:page].to_i, ITEMS_PER_PAGE_FEW)
-      @feeds |= extra_feeds
+      #TODO sometimes @feeds is nil
+      @feeds =  @feeds + extra_feeds
       total += extra_total
     end
 

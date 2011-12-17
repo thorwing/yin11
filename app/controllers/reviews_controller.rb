@@ -158,7 +158,7 @@ class ReviewsController < ApplicationController
 
   def link
     @valid = false
-    site = SilverHornet::ProductsSite.new
+    site = SilverHornet::ProductsSite.new(true)
     url = site.handle_url(params[:product_url])
     if url
       @valid = true
