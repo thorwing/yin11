@@ -10,7 +10,6 @@
 *= require menu
 *= require form
 *= require products
-*= require topics
 *= require reviews
 *= require catalogs
 *= require search
@@ -99,6 +98,12 @@
 }
 
 /*
+    Larget Item
+*/
+
+.large_item .slice {overflow:hidden;}
+
+/*
     Menu Styles
 */
 ul.menu {
@@ -142,6 +147,8 @@ ul.menu li {
 .ml60 {margin-left: 60px;}
 
 .w50 {width: 50px;}
+
+.w_image {width: 120px;}
 
 .red {color: $red;}
 .white {color: $white;}

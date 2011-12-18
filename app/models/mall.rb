@@ -2,7 +2,8 @@ class Mall
   include Mongoid::Document
 
   field :name
-  attr_accessible :name
+  field :entry_url
+  attr_accessible :name, :entry_url
 
   #Relationships
   has_many :vendors

@@ -10,7 +10,7 @@
         </div>
 
         <div class="fl f16 ml10">
-            <h2><%= @recipe.recipe_name %></h2>
+            <h2><%= @recipe.name %></h2>
             <span class="trivial"><%= t("recipes.uploaded_by") + ": " + @recipe.author.screen_name %></span> <br/>
             <%= t_with_colon("recipes.ingredients") %><br/>
             <p>
@@ -23,8 +23,8 @@
             </p>
             <% if current_user_has_permission? :normal_user %>
                 <div class="actions">
-                    <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.recipe_name}" %>
-                    <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.recipe_name}"  %>
+                    <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
+                    <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
                 </div>
             <% end %>
             <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>

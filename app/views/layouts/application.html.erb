@@ -12,7 +12,7 @@
   <%= csrf_meta_tag %>
   <title>
     <% if home_page? %>
-        <%= [t("site.name"), t("site.description"), t("site.mark")].join(' - ') %>
+        <%= [t("site.name"), t("site.description")].join(' - ') %>
     <% else %>
         <%= @content_for_title + ' - ' if show_title? %><%= t("site.mark") %>
     <% end %>

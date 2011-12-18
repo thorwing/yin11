@@ -398,6 +398,8 @@ QQ网购:
 #used to fetch product on demand
 淘宝:
   skipped: true
+  entries:
+    ["http://www.taobao.com"]
   elements:
     product_name: '#detail .tb-detail-hd h3'
     product_image: '#J_ImgBooth'

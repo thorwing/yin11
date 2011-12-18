@@ -13,11 +13,16 @@
     <p>
         <%= @review.content %>
     </p>
-    <div id="gallery">
-        <% @review.get_review_all_image_url.each do |picture_url| %>
-            <div class="img_frame">
-              <%= link_to image_tag(picture_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), picture_url, rel: "facebox" %>
-            </div>
+    <div id="gallery" class="clearfix">
+        <% @review.get_images_with_objects.each do |hash| %>
+          <div class="fl mr5 w_image">
+            <% if hash[:object] %>
+                <%= link_to image_tag(hash[:picture_url], width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), hash[:object] %>
+                <p><%= link_to hash[:object].name, hash[:object] %></p>
+            <% else %>
+                <%= link_to image_tag(hash[:picture_url], width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), hash[:picture_url], rel: "facebox" %>
+            <% end %>
+          </div>
         <% end %>
     </div>
 
