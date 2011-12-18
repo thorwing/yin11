@@ -10,8 +10,8 @@ class Step
   embedded_in :recipe
 
   validates_presence_of :content
-  validates_length_of :content, :maximum => 100
+  validates_length_of :content, :maximum => 200
 
-  validates_presence_of :img_id
+  #validates_presence_of :img_id
 
 end

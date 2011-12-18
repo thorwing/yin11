@@ -59,7 +59,7 @@
         <div class="ml60">
             <%= render "products/related _product", :product => product %>
             <%= product.price.to_s + t("money.yuan") if product.price.present? %><br/>
-            <%= product.vendor.name %>
+            <!--<= product.vendor.name %>-->
         </div>
   <% end %>
 </div>

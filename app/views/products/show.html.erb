@@ -36,7 +36,7 @@
 
         <div class="m5">
            <%= render "relationships/follow_field", :target => @product %>
-           <%= link_to t("products.go_to_buy"), {:controller => "home", :action => "gateway", :url => @product.url}, :class => "button"%><br/>
+           <%= new_tab_link_to t("products.go_to_buy"), {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "button"%><br/>
         </div>
 
         <div class="m5">
