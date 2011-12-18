@@ -1,43 +1,47 @@
-<% title t("reviews.title")%>
+<% title t("reviews.title"), false%>
 
-<div class="block">
-    <%= render "shared/vote_fields", :item => @review %>
-    <br/>
+<div class="grid_9 to_left">
+    <div class="fr">
+        <%= render "shared/vote_fields", :item => @review %>
+    </div>
     <% if @review.author %>
-        <%= t("info_items.posted_by")  %> <%= link_to @review.author.screen_name, @review.author %>
+        <%= link_to image_tag(@review.author.get_avatar(true), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), @review.author %>
+        <%= link_to @review.author.screen_name, @review.author %><br/>
     <% end %>
-    <br/>
-    <%= render "shared/show_tags", :item => @review %>
-    <br/>
+
+    <div class="clearfix"></div>
+    <p>
+        <%= @review.content %>
+    </p>
+    <div id="gallery">
+        <% @review.get_review_all_image_url.each do |picture_url| %>
+            <div class="img_frame">
+              <%= link_to image_tag(picture_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), picture_url, rel: "facebox" %>
+            </div>
+        <% end %>
+    </div>
+
+    <% if the_author_himself(Review.name, @review.id, true, false) %>
+        <div>
+            <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
+        </div>
+    <% end %>
+
+    <hr/>
+    <%= render "comments/comments", :item => @review %>
 </div>
 
-<table>
-    <tr>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr>
-        <td><b><%= t("reviews.content") %></b></td>
-        <td><%= t("general.none") if @review.content.blank? %></td>
-    </tr>
-</table>
+<div class="grid_3 box_shadow to_right">
+  <p class="maintitle"><span class="bigfs">您可能还爱吃？</span></p>
+  <div class="related_product_block">
+    <% @related_products.each do |product| %>
+        <li>
+          <%= render "products/related _product", :product => product %>
+        </li>
+    <% end %>
+  </div>
+</div>
 
-<%= content_tag(:div, @review.content.html_safe, :class => "block round" ) if @review.content.present? %>
 
-<% if @review.images.size > 0 %>
-    <b><%= t("images.images") %></b>
-    <div id="gallery" class="block round">
-        <%= render :partial => "images/image", :collection => @review.images %>
-    </div>
-<% end %>
 
-<br/>
-<% if the_author_himself(Review.name, @review.id, true, false) %>
-    <%= link_to t("general.edit"), edit_review_path(@review) %> |
-<% end %>
 
-<%= link_to t("general.back_to_list"), review_path %>
-
-<hr/>
-
-<%= render "comments/comments", :item => @review %>

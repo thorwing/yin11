@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.xml
   def index
-    criteria = Vendor.enabled#.of_city(current_city.name)
+    criteria = Vendor.all#.of_city(current_city.name)
     criteria = criteria.where(:type => params[:type]) if params[:type].present?
     @vendors = criteria.page(params[:page]).per(50)
 
@@ -91,7 +91,7 @@ class VendorsController < ApplicationController
 
 
   def browse
-    criteria = Vendor.enabled.of_city(current_city.name)
+    criteria = Vendor.all.of_city(current_city.name)
     @vendors = criteria.all
 
     respond_to do |format|

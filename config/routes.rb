@@ -5,14 +5,6 @@ Yin11::Application.routes.draw do
 
   match '/home/gateway' => 'home#gateway'
 
-  resources :ingredients
-
-  resources :steps
-
-  resources :recipes do
-    collection {get :more}
-  end
-
   namespace :administrator do
     root :to => "base#index"
 
@@ -144,6 +136,15 @@ Yin11::Application.routes.draw do
 
   resources :pages do
     member { post :mercury_update }
+  end
+
+  resources :ingredients
+
+  resources :steps
+
+  resources :recipes do
+    collection {get :more}
+    member {post :mark}
   end
 
   # The priority is based upon order of creation:

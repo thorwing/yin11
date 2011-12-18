@@ -1,7 +1,7 @@
 <%= form_for(@recipe) do |f| %>
  <%= render "shared/error_messages", target: @recipe %>
 
-   <div class = "grid_9">
+   <div class = "grid_9 box round">
        <div class="field block round">
             <%= f.label :title, t("recipes.recipe_name") , :class => "f14" %>
             <%= f.text_field :recipe_name, :maxlength => get_max_length(Recipe, :recipe_name) %>
@@ -45,7 +45,7 @@
         <!--<= javascript_tag "show('');" %>-->
 
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit t("general.submit"), class: "mt20 button" %>
       </div>
   </div>
 

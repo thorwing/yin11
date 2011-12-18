@@ -2,7 +2,7 @@
     <div>
         <%= "#{@vendor.products.count} #{t("products.products")}" %>
         <% if current_user_has_permission? :normal_user %>
-            <%= render "shared/follow_field", :target => @vendor %>
+            <%= render "relationships/follow_field", :target => @vendor %>
         <% end %>
 
 

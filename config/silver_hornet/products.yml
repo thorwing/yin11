@@ -402,3 +402,6 @@ QQ网购:
     product_name: '#detail .tb-detail-hd h3'
     product_image: '#J_ImgBooth'
     product_price: '#J_StrPrice' ##J_SpanLimitProm
+    product_vendor:
+      - '#header .shop-title a'
+      - '#header .shop-info-simple a.hCard'

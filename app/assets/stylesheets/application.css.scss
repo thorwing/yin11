@@ -103,8 +103,10 @@ ul.menu li {
     margin-right: 5px;
 }
 
-.m5 {margin: 5px;}
 .p5 {padding: 5px;}
+.p10 {padding: 10px;}
+
+.m5 {margin: 5px;}
 
 .mt5 {margin-top: 5px;}
 .ml5 {margin-left: 5px;}
@@ -160,14 +162,15 @@ ul.menu li {
 .hor_stretch {width:100%; overflow:hidden;}
 
 .display_none {
-    visibility: hidden;
     display: none;
-    float:none;
 }
 
-.display {
-     display: inline;
-    visibility: visible;
+.display_inline {
+    display: inline;
+}
+
+.display_block {
+    display: block;
 }
 
 .cursor {
@@ -180,7 +183,7 @@ ul.menu li {
 a.button, input.button {
     display: inline-block;
 	background: $blue;
-	padding:2px 6px;
+	padding: 0 2px;
 	color: $white;
 	text-decoration: none;
 	border:1px solid #32312f;
@@ -189,16 +192,24 @@ a.button, input.button {
     margin: 2px 0;
 }
 a.button:hover, input.button:hover {
-	background: darken($blue, 10%);;
+	background: darken($blue, 10%);
     cursor:pointer;
 }
 
 a.button.new_relationship {
-    background: green;
+    background: $green;
+}
+
+a.button.new_relationship:hover {
+    background: darken($green, 10%);
 }
 
 a.button.cancel_relationship {
-    background: gray;
+    background: $gray;
+}
+
+a.button.cancel_relationship:hover {
+    background: darken($gray, 10%);
 }
 
 a.button.hide {
@@ -276,7 +287,7 @@ body #main { height: auto; padding-bottom: 20em;}
     margin-right: 10px;
     .del_img_link {
         position: absolute;
-        right: 0;
+        right: -5px;
         top: 10px;
     }
 }

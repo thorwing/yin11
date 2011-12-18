@@ -2,5 +2,5 @@
     <%= @user.screen_name %><br/>
     <%= image_tag @user.get_avatar, :class => "avatar" %><br/>
     <%= @user.profile.biography %><br/>
-    <%= render "shared/follow_field", :target => @user %>
+    <%= render "relationships/follow_field", :target => @user %>
 </div>

@@ -9,14 +9,14 @@ class Review
 
   field :content
 
-  attr_accessible :content, :images_attributes, :product_ids, :article_id, :topic_id
+  attr_accessible :content, :images_attributes, :product_ids, :recipe_ids, :topic_id
 
   #scopes
   scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
 
   #relationships
   has_and_belongs_to_many :products
-  belongs_to :article
+  belongs_to :recipe
   belongs_to :topic
   embeds_many :comments
   belongs_to :author, :class_name => "User"
@@ -37,11 +37,39 @@ class Review
     self.votes >= ITEM_MEASURE_POPULAR ? true : false
   end
 
-  def get_review_image_url
-    if self.images.empty? && self.products.size > 0
-      self.products.first.get_image_url(true, 0, false)
+  def get_review_image_url(thumb = false)
+    if self.images.empty?
+      if self.products.size > 0
+        return self.products.first.get_image_url(thumb, 0, false)
+      elsif self.recipe
+        return self.recipe.image_url
+      end
+    end
+
+    self.get_image_url(thumb, 0, false)
+  end
+
+  def get_review_all_image_url(thumb = false)
+    images = []
+    if self.respond_to?(:image)
+      images << self.image
+    elsif self.respond_to?(:images)
+      images += self.images
+    end
+
+    image_urls = []
+    image_urls += images.map{|i| thumb ? i.picture_url(:thumb) : i.picture_url(:waterfall) }
+
+    if self.products.size > 0
+      image_urls += self.products.map {|p| p.get_image_url(thumb, 0, false)}
+    elsif self.recipe
+      image_urls << self.recipe.image_url
+    end
+
+    if image_urls.empty?
+      ["/assets/not_found.png"]
     else
-      self.get_image_url(true, 0, false)
+      image_urls
     end
   end
 

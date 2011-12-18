@@ -1,23 +1,21 @@
-<h1>Listing pages</h1>
+<% title "页面列表" %>
 
 <table>
   <tr>
-    <th>Title</th>
-    <th></th>
+    <th><%= t("general.title") %></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @pages.each do |page| %>
   <tr>
-    <td><%= raw page.title %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to page.title, page %></td>
+    <td><%= link_to t("general.edit"), edit_page_path(page), class: "button" %></td>
+    <td><%= link_to t("general.delete"), page, confirm: 'Are you sure?', method: :delete, class: "button" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Page', new_page_path %>
+<%= link_to t("pages.add"), new_page_path, class: "button" %>

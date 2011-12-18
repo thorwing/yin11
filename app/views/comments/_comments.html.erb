@@ -1,11 +1,12 @@
-<h3><%= t("comments.all") %></h3>
-<div id="comments">
-    <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
-</div>
-
-<%= content_tag(:p, t("comments.new_hint"), :class => "trivial") %>
-
+<% if item.comments.empty? %>
+    <%= content_tag(:p, t("comments.new_hint"), :class => "trivial") %>
+<% else %>
+    <b><%= t("comments.all") %></b>
+    <div id="comments">
+        <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
+    </div>
+<% end %>
+<div class="clearfix"></div>
 <% if current_user %>
-    <b><%= t("comments.new_comment") %></b><span class="trivial"></span><br/>
     <%= render "comments/new_comment", :item => item%>
 <% end %>

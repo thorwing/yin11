@@ -371,6 +371,7 @@ zh-CN:
 
   pages:
     pages: 页面
+    add: +页面
 
   money:
     yuan_mark1: "￥"
@@ -449,8 +450,15 @@ zh-CN:
     default_source_name: 银筷子原创
 
   feeds:
-    all: 用户动态
+    all: 关注动态
     my: 我的动态
+    operations:
+      create: 创建
+      update: 更新
+      delete: 删除
+    types:
+      Review: 分享
+      Recipe: 菜谱
 
   badges:
     badges: 徽章
@@ -537,6 +545,8 @@ zh-CN:
      descriptions: 说明
      tips: 温馨提示
      how_to: 如何上传菜谱？
+     want: 想做
+     did: 做成了
      uploaded: 上传了
      use: 使用了
      kind: 种材料

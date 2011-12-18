@@ -28,7 +28,12 @@ class ImagesController < ApplicationController
     @limit = IMAGES_LIMIT
 
     if @image.save!
-      data = { :success => true, :picture_url => @image.picture_url, :image_id => @image.id}
+      data = {
+          :success => true,
+          :thumb_url => @image.picture_url(:thumb),
+          :origin_url => @image.picture_url,
+          :image_id => @image.id
+      }
       respond_to do |format|
         format.html { params[:qqfile].present? ? (render :json => data) : (redirect_to @image) }
         format.json { render :json => data }

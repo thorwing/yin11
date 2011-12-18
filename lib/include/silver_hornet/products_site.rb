@@ -15,7 +15,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   @@cat_words ||={}
   @@catalogs||=[]
 
-  def initialize
+  def initialize(skip_catalogs = false)
     #load the segmentation dictionaries
     unless @@is_initialized
 
@@ -27,7 +27,7 @@ class SilverHornet::ProductsSite < SilverHornet::Site
       load_food_word
 
       #load the catalogs
-      load_catalogs
+      load_catalogs unless skip_catalogs
 
       @@is_initialized = true
     end
@@ -255,7 +255,12 @@ class SilverHornet::ProductsSite < SilverHornet::Site
   end
 
   def handle_url(url_string)
-    url = URI.parse(url_string)
+    begin
+      url = URI.parse(url_string)
+    rescue
+      url = nil
+    end
+
     if url && url.path && url.query
       'http://' + (url.host ? url.host : "") + url.path + '?' +url.query
     else
@@ -274,7 +279,27 @@ class SilverHornet::ProductsSite < SilverHornet::Site
         #according to the name, either find the product from database or initialize a new one
         product = Product.find_or_initialize_by(name: product_name)
         #try to find the vendor
-        product.vendor = Vendor.first(conditions: {name: self.name})
+        if name == I18n.t("third_party.taobao")
+          @taobao ||= Mall.first(conditions: {name: I18n.t("third_party.taobao")})
+
+          if elements["product_vendor"].present?
+            arr = elements["product_vendor"]
+            arr.each do |selector|
+              nick = agent.page.at(selector).try(:content)
+              if nick
+                vendor = Vendor.find_or_initialize_by(name: nick, mall_id: @taobao.id)
+                if vendor.new_record?
+                  vendor.save!
+                end
+                #set the vendor
+                product.vendor = vendor
+                break
+              end
+            end
+          end
+        else
+          product.vendor = Vendor.first(conditions: {name: self.name})
+        end
         #record the product's ulr
         product.url = handle_url(agent.page.uri.to_s)
         #record the product's price

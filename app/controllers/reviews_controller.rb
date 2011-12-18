@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
+  before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
 
   # GET /reviews
@@ -26,6 +26,7 @@ class ReviewsController < ApplicationController
         user_name: r.author.screen_name,
         user_avatar: r.author.get_avatar(true, false),
         user_reviews_cnt: r.author.reviews.count,
+        user_recipes_cnt: r.author.recipes.count,
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
         picture_url: r.get_review_image_url,
@@ -44,6 +45,12 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.xml
   def show
     @review = Review.find(params[:id])
+
+    tags = []
+    tags += @review.products.inject([]){|memo, p| memo + p.tags} if @review.products
+    tags += @review.recipe.tags if @review.recipe
+
+    @related_products = Product.tagged_with(tags).limit(RELATED_RPODUCTS_LIMIT).reject{|p| p == @product}
 
     respond_to do |format|
       format.html # show.html.erb
@@ -157,7 +164,7 @@ class ReviewsController < ApplicationController
 
   def link
     @valid = false
-    site = SilverHornet::ProductsSite.new
+    site = SilverHornet::ProductsSite.new(true)
     url = site.handle_url(params[:product_url])
     if url
       @valid = true

@@ -39,7 +39,7 @@ $(function() {
               $('#upload_spinner').hide();
               if (responseJSON.success) {
                 var image_field = '<input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>';
-                append_image(responseJSON.image_id, responseJSON.picture_url, image_field);
+                append_image(responseJSON.image_id, responseJSON.thumb_url, responseJSON.origin_url, image_field);
               }
             }
         });
@@ -47,13 +47,20 @@ $(function() {
 });
 
 //Append the image, it could belong to Image or Product
-function append_image(id, url, post_params) {
+function append_image(id, thumb_url, original_url, post_params) {
      var new_image = '<div class="image fl">'
                 + post_params
-                + '<a onclick="delete_image(this, 5); return false;" class="del_img_link lighter_touch" href="#" data-image_id="' + id +'"><img border="0" src="/assets/cancel.png" alt="delete_image"></a><br>'
-                + '<a class="thumbnail" rel="facebox" href="' + url + '">'
-                + '<img width="100" height="100" border="0" src="' + url + '" alt="image_thumbnail"></a>'
-                + '</div>'
+                + '<a onclick="delete_image(this, 5); return false;" class="del_img_link lighter_touch" href="#" data-image_id="' + id +'"><img border="0" src="/assets/close_x.png" alt="delete_image"></a><br>'
+                + '<a class="thumbnail" rel="facebox" href="' + original_url + '">'
+                + '<img src="' + thumb_url + '" alt="image_thumbnail"></a>'
+    var debug = $('#uploader').data("debug");
+    if(debug == true)
+    {
+        new_image += '<p>' + original_url + '</p>'
+    }
+    new_image += '</div>'
+
+
     $('#images_container').append(new_image);
     //Apply facebox
     $('a[rel*=facebox]').facebox();
@@ -128,7 +135,7 @@ function step_uploader()
             params: {"authenticity_token": tokentag},
             onComplete: function(id, fileName, responseJSON){
               if (responseJSON.success) {
-                $('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ responseJSON.picture_url +")");
+                $('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
                 $('.step_uploader').eq(length-1).parent().find('.img_id').val(responseJSON.image_id);
                 $('.step_uploader .qq-upload-success').hide();
                 $('.step_uploader .qq-upload-file').hide();
