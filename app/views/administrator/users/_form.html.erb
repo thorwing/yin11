@@ -2,12 +2,12 @@
   <%= render "shared/error_messages", :target => @user %>
 
   <div class="field">
-    <b>Role</b>
+    <%= f.label :role, t("users.role") %><br />
     <%= select_tag "new_role", options_for_select(get_roles_for_select, @user.role) %>
   </div>
 
   <div class="field">
-     <%= f.label :is_master,master %><br />
+     <%= f.label :is_master, t("users.master") %><br />
      <%= f.check_box :is_master, {}, true, false %>
   </div>
 

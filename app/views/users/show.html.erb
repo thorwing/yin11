@@ -1,6 +1,16 @@
 <div>
     <%= @user.screen_name %><br/>
-    <%= image_tag @user.get_avatar, :class => "avatar" %><br/>
+    <%= link_to (image_tag @user.get_avatar(:regular)), @user.get_avatar, rel: 'facebox' %><br/>
     <%= @user.profile.biography %><br/>
+    <span class="trivial"><%= t("reviews.by_user", count: @user.reviews.size) %></span><br/>
+    <span class="trivial"><%= t("recipes.by_user", count: @user.recipes.size) %></span><br/>
     <%= render "relationships/follow_field", :target => @user %>
+</div>
+
+<hr/>
+<h3>该用户的动态：</h3>
+<div>
+    <% @user.feeds.each do |feed| %>
+        <%= render feed %>
+    <% end %>
 </div>

@@ -10,7 +10,7 @@ Yin11::Application.routes.draw do
 
     resources :articles
     resources :vendors
-    resources :users, :except => [:new, :create]
+    resources :users, :except => [:new, :create, :destroy]
     resources :tags
     resources :products
     resources :pages

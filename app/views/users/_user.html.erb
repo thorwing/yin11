@@ -1,12 +1,17 @@
-<div class="master box_shadow fl">
-    <div class="head_img fl">
-      <%= link_to image_tag(user.get_avatar, border: 0, width: AVATAR_WIDTH, height: AVATAR_HEIGHT), user %><br/>
-      <%= link_to user.screen_name, user %>
+<div class="master block round mt5 mb5 p5 fl">
+    <div class="head fl">
+      <%= link_to image_tag(user.get_avatar(:regular), "max-width" => AVATAR_WIDTH, "max-height" => AVATAR_HEIGHT), user %><br/>
     </div>
-    <div class="description_box fl"><%= user.profile.biography %></div>
-    <div class="img_list_box fr">
-        <%= image_tag "http://flickholdr.com/100/100/bake,bread", width:100, height:100 %>
-        <%= image_tag "http://flickholdr.com/100/100/milk,cake", width:100, height:100 %>
-        <%= image_tag "http://flickholdr.com/100/100/wine,bottle", width:100, height:100 %>
+    <div class="desc fl">
+       <%= link_to user.screen_name, user %><br/>
+      <%= user.profile.biography %>
+    </div>
+    <div class="fr">
+        <% user.get_recent_feeds(3).each do |feed| %>
+          <div class="hint_box fl">
+            <%= link_to image_tag(feed.picture_url), feed.item %>
+            <span class="hint b_black white"><%= feed.content %></span>
+          </div>
+        <% end %>
     </div>
 </div>

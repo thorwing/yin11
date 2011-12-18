@@ -19,7 +19,7 @@
             <!--product linker-->
             <% if review.product_ids.empty? %>
                 <div class="fl mr10">
-                    <%= link_to_function image_tag("add_product.png", border: 0, width: 24, height:24), "link_product()", class: "lighter_touch"%>
+                    <%= link_to_function image_tag("add_product.png", border: 0, width: 55, height:26), "link_product()", class: "lighter_touch"%>
                 </div>
             <% else %>
                 <%= hidden_field_tag "review[product_ids][]", review.product_ids.first %>

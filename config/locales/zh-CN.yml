@@ -284,6 +284,11 @@ zh-CN:
     who_am_i: 我是谁？
     details: 详细
     recent_activities: 最近活动
+    master: 达人
+    role: 身份
+    role_3: 普通用户
+    role_7: 编辑
+    role_9: 管理员
 
   groups:
     join: 加入
@@ -526,6 +531,7 @@ zh-CN:
 
   recipes:
      add: +菜谱
+     recipes: 菜谱
      related_product: 相关产品
      recipe_collection: 菜谱大全
      recipe_name: 菜谱名

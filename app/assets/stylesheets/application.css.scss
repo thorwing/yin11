@@ -16,7 +16,6 @@
 *= require search
 *= require personal
 *= require users
-*= require banner
 *= require pages
 *= require tab_control
 *= require token-input-facebook
@@ -88,6 +87,17 @@
     box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
 }
 
+.hint_box { position: relative;}
+
+.hint_box .hint {
+    display: none;
+    position: absolute;
+    line-height: 20px;
+    bottom: 0px;
+    opacity: 0.7;
+    padding: 0 5px;
+}
+
 /*
     Menu Styles
 */
@@ -135,6 +145,12 @@ ul.menu li {
 
 .red {color: $red;}
 .white {color: $white;}
+
+.b_black {background-color: $black;}
+.b_gray {background-color: $gray;}
+
+.lb {border-left: 1px solid;}
+.rb {border-right: 1px solid;}
 
 .center {margin: 0 auto; display: block;}
 

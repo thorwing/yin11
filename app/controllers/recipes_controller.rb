@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
         picture_url: r.steps.last == nil ? 'no-pic' : r.image_url,
         user_id: r.author.id,
         user_name: r.author.screen_name,
-        user_avatar: r.author.get_avatar(true, false),
+        user_avatar: r.author.get_avatar(:thumb, false),
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),

@@ -5,7 +5,7 @@
         <%= render "shared/vote_fields", :item => @review %>
     </div>
     <% if @review.author %>
-        <%= link_to image_tag(@review.author.get_avatar(true), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), @review.author %>
+        <%= link_to image_tag(@review.author.get_avatar(:thumb), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), @review.author %>
         <%= link_to @review.author.screen_name, @review.author %><br/>
     <% end %>
 

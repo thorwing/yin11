@@ -25,7 +25,7 @@ class PersonalController < ApplicationController
         content: f.content,
         user_id: f.author.id,
         user_name: f.author.screen_name,
-        user_avatar: f.author.get_avatar(true, false),
+        user_avatar: f.author.get_avatar(:thumb, false),
         user_reviews_cnt: f.author.reviews.count,
         user_recipes_cnt: f.author.recipes.count,
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == f.author.id.to_s}.size > 0,
