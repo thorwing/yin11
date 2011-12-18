@@ -1,16 +1,14 @@
 module ExternalLinkHelper
   def new_tab_link_to *args, &block
-    #p "here args"
-    #p "args: " + args.join("::")
+    @external = false
 
     if block_given?
       options = args.first || {}
       html_options = args[1] || {}
 
       if options.is_a? String
-        if (is_external_link? request.host, options) ||  (options[:force] == "true")
-          html_options[:target] = '_BLANK'
-          html_options[:rel] = 'nofollow'
+        if (is_external_link? request.host, options)
+          @external = true
         end
       end
 
@@ -21,21 +19,21 @@ module ExternalLinkHelper
       options = args[1] || {}
       html_options = args[2] || {rel: 'nofollow'}
 
-      #p "html_options_old: " + html_options.to_yaml
-
       if options.is_a? String
         if (is_external_link? request.host, options)
-        # ||  ((options.is_a? Hash) && (options[:force].present?) && (options[:force] == "true"))
-          html_options[:target] = '_BLANK'
-          html_options[:rel] = 'nofollow'
+          @external = true
         end
       else if options.is_a? Hash
-             if (is_external_link? request.host, options) || (options[:force] == "true")
-                html_options[:target] = '_BLANK'
-                html_options[:rel] = 'nofollow'
-             end
-           end
+         if (is_external_link? request.host, options) || (options[:force] == "true")
+            @external = true
+         end
       end
+    end
+
+    if @external
+      html_options[:target] = '_BLANK'
+      html_options[:rel] = 'nofollow'
+    end
 
       #p "name" + name
       #p "options class: "+ options.class.name
