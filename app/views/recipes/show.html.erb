@@ -53,12 +53,12 @@
 </div>
 
 <div id = "product area" class = "grid_3 box_shadow"  >
-  <%= t("recipes.related_product") %> <br/>
+  <div class = "p5"><%= t("recipes.related_product") %> </div><br/>
 
   <% @related_product.each do |product| %>
-        <div class="ml60">
+        <div style ="width:100px" class= "fl p5">
             <%= render "products/related _product", :product => product %>
-            <%= product.price.to_s + t("money.yuan") if product.price.present? %><br/>
+            <%= product.price.to_s + t("money.yuan") if product.price.present? %>
             <!--<= product.vendor.name %>-->
         </div>
   <% end %>

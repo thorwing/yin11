@@ -526,6 +526,7 @@ zh-CN:
     cn_colon: "："
 
   recipes:
+     edit: 编辑菜谱
      add: +菜谱
      related_product: 相关产品
      recipe_collection: 菜谱大全
