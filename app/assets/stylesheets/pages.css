@@ -1,0 +1,40 @@
+/*TODO*/
+.topic_block {
+	BACKGROUND-COLOR: #fff; HEIGHT: auto
+}
+.topic_block .banner {
+	HEIGHT: 200px
+}
+.topic_block .sub_box {
+	BACKGROUND-COLOR: #fff; WIDTH: 300px; FLOAT: left; HEIGHT: 380px; MARGIN-LEFT: 10px
+}
+.topic_block .sub_box .description_box {
+	WIDTH: 300px; FLOAT: left; HEIGHT: 150px
+}
+.topic_block .sub_box .imgBox {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; WIDTH: 290px; PADDING-RIGHT: 5px; FLOAT: left; HEIGHT: 200px; PADDING-TOP: 5px
+}
+
+.mr10{margin-right:10px;} .mt30{margin-top:30px}
+
+.topic_block{
+	float:left;
+	width:960px;
+	padding-left:40px;
+	padding-right:40px;
+	padding-bottom:40px;
+	background-color: #FFF;
+}
+
+.topic_block .box{float:left; height:auto; width:200px; margin-left:10px; margin-right:10px; position: relative;}
+
+.topic_block .box .hint {
+    display: none;
+    position: absolute;
+    line-height: 20px;
+    bottom: 0px;
+    background-color: gray;
+    color: white;
+    opacity: 0.7;
+    padding: 0 5px;
+}
