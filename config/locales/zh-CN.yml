@@ -548,8 +548,8 @@ zh-CN:
      uploaded_by: 上传者
      tips: 小贴士
      new: 新菜谱
-     add_ingredient: +增加一种
-     add_step: +增加步骤
+     add_ingredient: +食材
+     add_step: +步骤
      remove: -删除
      descriptions: 说明
      tips: 温馨提示
