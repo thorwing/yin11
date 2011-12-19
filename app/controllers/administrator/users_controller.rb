@@ -2,7 +2,7 @@ class Administrator::UsersController < Administrator::BaseController
   before_filter() { |c| c.require_permission :administrator}
 
   def index
-    @users = User.excludes(:role => ADMIN_ROLE).all
+    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,16 +35,6 @@ class Administrator::UsersController < Administrator::BaseController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
-    end
-  end
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(administrator_users_url) }
-      format.xml  { head :ok }
     end
   end
 end

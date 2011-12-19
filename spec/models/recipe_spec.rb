@@ -12,6 +12,6 @@ describe Recipe do
 
       @editor = Factory(:editor)
       @editor.should be_valid
-      Article.new(:recipe_name => "test", :steps => step, :ingredients => ingredient, :author_id=> @editor.id).should be_valid
+      Article.new(:name => "test", :steps => step, :ingredients => ingredient, :author_id=> @editor.id).should be_valid
     end
 end

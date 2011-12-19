@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
         content: r.content,
         user_id: r.author.id,
         user_name: r.author.screen_name,
-        user_avatar: r.author.get_avatar(true, false),
+        user_avatar: r.author.get_avatar(:thumb, false),
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0,

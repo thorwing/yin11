@@ -1,24 +1,7 @@
 <% title t("vendors.vendors") %>
 
-<div class="search_fields">
-  <%= form_tag "/vendors", :method => :get do %>
-    <%= text_field_tag :q %>
-    <%= submit_tag t("general.search"), :class => "button" %>
+<div id="vendors_list">
+  <% @vendors.each do |vendor| %>
+    <%= render :partial => "vendor", :collection => @vendors %>
   <% end %>
 </div>
-
-<div class="nav_links">
-    <%= link_to t("vendors.my_vendors"), mine_vendors_path, :class => "right_column" %>
-    <%= link_to t("general.all"), vendors_path %>
-
-</div>
-
-<div id="vendors_list">
-  <%= paginate @vendors %>
-  <%= render :partial => "vendor", :collection => @vendors %>
-</div>
-
-<br />
-<% if current_user_has_permission?(:editor) %>
-    <%= link_to t("vendors.new"), new_vendor_path, :class => "button" %>
-<% end %>

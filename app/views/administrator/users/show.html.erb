@@ -9,12 +9,9 @@
 </p>
 
 <p>
-  <b>Role</b>
+  <b><%= t("users.role") %></b>
   <%= @user.role %>
 </p>
 
-<%= link_to t("general.edit"), edit_administrator_user_path(@user), :class => "button" %> |
-<%= link_to t("general.delete"), [:administrator, @user], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-<div>
-    <%= link_to t("general.back_to_list"), administrator_users_path %>
-</div>
+<%= link_to t("general.edit"), edit_administrator_user_path(@user), :class => "button" %>
+

@@ -4,9 +4,8 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.xml
   def index
-    criteria = Vendor.all#.of_city(current_city.name)
-    criteria = criteria.where(:type => params[:type]) if params[:type].present?
-    @vendors = criteria.page(params[:page]).per(50)
+    #TODO
+    @vendors = Vendor.all.reject{|v| v.products.empty? }
 
     respond_to do |format|
       format.html # index.html.erb

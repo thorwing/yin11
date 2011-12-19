@@ -81,7 +81,7 @@ require "tag"
   conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
   conf.each do |site_name, values|
     begin
-      mall = Mall.create!(:name => site_name)
+      mall = Mall.create!(:name => site_name, :entry_url => values["entries"].first)
       vendor = mall.vendors.create!(:name => site_name) unless site_name == I18n.t("third_party.taobao")
     rescue Exception => exc
       p exc.backtrace
@@ -175,7 +175,7 @@ require "tag"
     begin
       recipe = Recipe.new
           recipe.id = r[:_id]
-          recipe.recipe_name = r[:recipe_name]
+          recipe.name = r[:name]
           recipe.tags = r[:tags]
           recipe.author_id = @admin.id
 
@@ -200,7 +200,7 @@ require "tag"
           recipe.save!
 
     rescue Exception => exc
-      p r.recipe_name
+      p r.name
       p exc.message
       p exc.backtrace
     end

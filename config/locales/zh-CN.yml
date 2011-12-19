@@ -1,9 +1,9 @@
 zh-CN:
   site:
     name: 银筷子
-    description: "食品安全 食品质量 美食分享 饮食健康"
-    introduction: "银筷子，专注于食品安全，教您辨别有害的食品， 帮助您挑选卫生又美味的餐厅，搭建一个和好友分享好吃的，安全的食物的平台。"
-    mark: "银筷子：关注食品安全"
+    description: "发现美食 分享美食 料理菜谱 食品安全"
+    introduction: "银筷子，专注于发现美食 分享菜谱， 帮助您挑选卫生又美味的食物，搭建一个和好友分享美的平台。"
+    mark: "银筷子：美味又安心"
     saying: 盘古内测版
 
   symbols:
@@ -125,6 +125,7 @@ zh-CN:
   footer:
     general: "专注食事"
     links: 友情链接
+    contact_us: 联系我们
 
   roles:
     inactive_user: 未激活用户
@@ -284,6 +285,11 @@ zh-CN:
     who_am_i: 我是谁？
     details: 详细
     recent_activities: 最近活动
+    master: 达人
+    role: 身份
+    role_3: 普通用户
+    role_7: 编辑
+    role_9: 管理员
 
   groups:
     join: 加入
@@ -328,6 +334,7 @@ zh-CN:
     vendors: 所有商户
     browse: 找商户
     new: +商户
+    go_to_see: 去逛逛
     enabled_vendors: 启用的商户
     disabled_vendors: 禁用的商户
     vendor_name: 商户名
@@ -525,10 +532,12 @@ zh-CN:
     cn_colon: "："
 
   recipes:
+     edit: 编辑菜谱
      add: +菜谱
+     recipes: 菜谱
      related_product: 相关产品
      recipe_collection: 菜谱大全
-     recipe_name: 菜谱名
+     name: 菜谱名
      ingredients: 食材明细
      ingredient_name: 名称
      ingredient_amount: 用量

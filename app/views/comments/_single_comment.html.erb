@@ -1,6 +1,6 @@
 <div class="comment grid_6 block round p5 mb10" id='<%= comment.id.to_s %>'>
     <div>
-      <%= image_tag comment.user.get_avatar, :width => 24, :height => 24 %>
+      <%= image_tag comment.user.get_avatar(:thumb), :width => 24, :height => 24 %>
       <%= link_to comment.user.screen_name, comment.user %>:
         <blockquote>
           <% if comment.enabled %>

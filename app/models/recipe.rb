@@ -4,9 +4,9 @@ class Recipe
     include Taggable
 
     #fields
-    field :recipe_name
+    field :name
 
-    attr_accessible  :author_id, :recipe_name , :ingredients_attributes, :steps_attributes
+    attr_accessible  :author_id, :name , :ingredients_attributes, :steps_attributes
 
     #relationships
     embeds_many :ingredients
@@ -18,8 +18,8 @@ class Recipe
     accepts_nested_attributes_for :steps
 
     #validations
-    validates_presence_of :recipe_name
-    validates_length_of :recipe_name, :maximum => 20
+    validates_presence_of :name
+    validates_length_of :name, :maximum => 20
     validates_associated :ingredients
     validates_length_of :ingredients, :maximum => 10
     validates_length_of :steps, :maximum => 30

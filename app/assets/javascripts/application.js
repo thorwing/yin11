@@ -200,6 +200,17 @@ $(function () {
     });
 });
 
+$(function(){
+    $(".hint_box").hover(
+        function(){
+            $(this).find(".hint").css("display", "block")
+        },
+        function(){
+            $(this).find(".hint").slideUp('fast');
+        }
+    );
+});
+
 //Provide hints for how many chars left
 $(function() {
      char_aware();

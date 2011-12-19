@@ -1,0 +1,69 @@
+/*TODO*/
+.banner {
+	BACKGROUND: #fff; HEIGHT: auto;
+}
+.banner .banner-title {
+	Z-INDEX: 10; POSITION: absolute; TOP: 35px; LEFT: 30px
+}
+.banner .banner-title .maintitle {
+	COLOR: #fff; FONT-SIZE: 50px
+}
+.banner .banner-title .subtitle {
+	COLOR: #fff; FONT-SIZE: 18px
+}
+.banner .editor {
+	Z-INDEX: 11; POSITION: absolute; BOTTOM: 25px; DISPLAY: none; LEFT: 35px
+}
+.banner .editor .face {
+	WIDTH: 50px; FLOAT: left; HEIGHT: 50px; MARGIN-RIGHT: 10px
+}
+.banner .editor .info {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 7px
+}
+.banner .editor .info P {
+	LINE-HEIGHT: 1.5; COLOR: #fff
+}
+.banner .editor .info P .name {
+	FONT-SIZE: 16px
+}
+
+/*TODO*/
+.topic_block {
+	BACKGROUND-COLOR: #fff; HEIGHT: auto
+}
+.topic_block .banner {
+	HEIGHT: 200px
+}
+.topic_block .sub_box {
+	BACKGROUND-COLOR: #fff; WIDTH: 300px; FLOAT: left; HEIGHT: 380px; MARGIN-LEFT: 10px
+}
+.topic_block .sub_box .description_box {
+	WIDTH: 300px; FLOAT: left; HEIGHT: 150px
+}
+.topic_block .sub_box .imgBox {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; WIDTH: 290px; PADDING-RIGHT: 5px; FLOAT: left; HEIGHT: 200px; PADDING-TOP: 5px
+}
+
+.mr10{margin-right:10px;} .mt30{margin-top:30px}
+
+.topic_block{
+	float:left;
+	width:960px;
+	padding-left:40px;
+	padding-right:40px;
+	padding-bottom:40px;
+	background-color: #FFF;
+}
+
+.topic_block .box{float:left; height:auto; width:200px; margin-left:10px; margin-right:10px; position: relative;}
+
+.topic_block .box .hint {
+    display: none;
+    position: absolute;
+    line-height: 20px;
+    bottom: 0px;
+    background-color: gray;
+    color: white;
+    opacity: 0.7;
+    padding: 0 5px;
+}

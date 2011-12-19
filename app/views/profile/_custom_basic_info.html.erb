@@ -1,9 +1,9 @@
-<div class="block round">
+<div class="block round p5">
     <b><%= label_tag "user[login_name]", t("user_basic.login_name")  %></b><br/>
     <%= text_field_tag "user[login_name]", current_user.screen_name, :maxlength => get_max_length(current_user, :login_name) %>
     <p>
       <b><%= t("user_basic.avatar") %></b><br/>
-      <%= image_tag current_user.get_avatar, :class => "avatar" %><br/>
+      <%= image_tag current_user.get_avatar(:thumb), :class => "avatar" %><br/>
       <%= t("user_basic.change_avator") %><br/>
       <%= file_field_tag "user[avatar]" %> <br/>
     </p>

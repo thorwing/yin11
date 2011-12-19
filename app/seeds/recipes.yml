@@ -4,636 +4,2657 @@
     _id: !ruby/object:BSON::ObjectId 
       data: 
       - 78
-      - 230
-      - 9
-      - 215
+      - 237
+      - 90
+      - 6
       - 29
       - 65
       - 200
-      - 125
-      - 152
+      - 10
+      - 92
       - 0
       - 0
-      - 119
+      - 16
     author_id: !ruby/object:BSON::ObjectId 
       data: 
       - 78
-      - 231
-      - 36
-      - 161
+      - 237
+      - 88
+      - 217
       - 29
       - 65
       - 200
-      - 83
-      - 56
+      - 18
+      - 187
       - 0
       - 0
       - 13
+    created_at: 2011-12-18 03:12:06 Z
     ingredients: 
     - !map:BSON::OrderedHash 
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 230
-        - 9
-        - 215
+        - 237
+        - 90
+        - 6
         - 29
         - 65
         - 200
-        - 125
-        - 152
+        - 10
+        - 92
         - 0
         - 0
-        - 120
+        - 17
+      amount: "\xE4\xB8\x80\xE4\xBB\xBD"
       is_major_ingredient: true
-      name: "\xE6\x84\x8F\xE9\x9D\xA2\xEF\xBC\x88\xE8\xB4\x9D\xE5\xA3\xB3\xE9\x9D\xA2\xEF\xBC\x89"
-      amount: " \xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE5\x8D\xB0\xE5\xBA\xA6\xE9\xA6\x99\xE8\xBE\xA3\xE5\xA5\xB6\xE8\x8C\xB6"
     - !map:BSON::OrderedHash 
+      name: "\xE5\x85\xA8\xE8\x84\x82\xE7\x89\x9B\xE5\xA5\xB6"
+      amount: "\xE4\xB8\x80\xE4\xBB\xBD"
+      is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 230
-        - 9
-        - 215
+        - 237
+        - 90
+        - 6
         - 29
         - 65
         - 200
-        - 125
-        - 152
+        - 10
+        - 92
         - 0
         - 0
-        - 121
-      is_major_ingredient: true
-      name: "\xE9\xB2\x9C\xE9\xA6\x99\xE8\x8F\x87 "
-      amount: "6\xE6\x9C\xB5"
+        - 18
     - !map:BSON::OrderedHash 
+      name: "\xE5\x85\xAB\xE8\xA7\x92"
+      amount: "\xE4\xB8\x80\xE4\xB8\xAA"
+      is_major_ingredient: false
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 230
-        - 9
-        - 215
+        - 237
+        - 90
+        - 6
         - 29
         - 65
         - 200
-        - 125
-        - 152
+        - 10
+        - 92
         - 0
         - 0
-        - 122
+        - 19
+    - !map:BSON::OrderedHash 
+      name: "\xE7\x99\xBD\xE5\x85\xB0\xE5\x9C\xB0"
+      amount: "\xE4\xB8\x80\xE7\x9B\x8E\xE5\x8F\xB8"
       is_major_ingredient: true
-      name: "\xE7\x83\xA4\xE8\x82\xA0 "
-      amount: "\xE4\xB8\x80\xE6\xA0\xB9"
-    recipe_name: "\xE4\xBB\x80\xE9\x94\xA6\xE7\x82\x92\xE6\x84\x8F\xE9\x9D\xA2"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 90
+        - 6
+        - 29
+        - 65
+        - 200
+        - 10
+        - 92
+        - 0
+        - 0
+        - 20
+    - !map:BSON::OrderedHash 
+      name: "\xE8\xBF\xAA\xE5\x87\xAF\xE5\xA0\xA1\xE7\x84\xA6\xE7\xB3\x96\xE6\x9D\x9C\xE6\x9D\xBE\xE5\xAD\x90\xE9\x85\x92"
+      amount: "\xE4\xB8\x80\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 90
+        - 6
+        - 29
+        - 65
+        - 200
+        - 10
+        - 92
+        - 0
+        - 0
+        - 21
+    - !map:BSON::OrderedHash 
+      name: "\xE5\x85\xA8\xE9\xBA\xA6\xE9\xA5\xBC\xE5\xB9\xB2"
+      amount: "\xE5\x8D\x8A\xE4\xB8\xAA"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 90
+        - 6
+        - 29
+        - 65
+        - 200
+        - 10
+        - 92
+        - 0
+        - 0
+        - 22
+    name: "\xEF\xBB\xBFChai Toddy"
     steps: 
     - !map:BSON::OrderedHash 
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 230
-        - 9
-        - 215
+        - 237
+        - 90
+        - 6
         - 29
         - 65
         - 200
-        - 125
-        - 152
+        - 10
+        - 92
         - 0
         - 0
-        - 123
-      img_id: 4ee609811d41c87d98000059
-      content: "\xE7\x85\xAE\xE5\xA5\xBD\xE7\x9A\x84\xE6\x84\x8F\xE9\x9D\xA2\xE8\xBF\x87\xE5\x87\x89\xE5\xA4\x87\xE7\x94\xA8\xE3\x80\x82"
-    - !map:BSON::OrderedHash 
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 230
-        - 9
-        - 215
-        - 29
-        - 65
-        - 200
-        - 125
-        - 152
-        - 0
-        - 0
-        - 124
-      img_id: 4ee609881d41c87d9800005e
-      content: "\xE5\x80\x92\xE5\x85\xA5\xE9\xA6\x99\xE8\x8F\x87\xEF\xBC\x8C\xE7\x83\xA4\xE8\x82\xA0\xEF\xBC\x8C\xE8\x83\xA1\xE8\x90\x9D\xE5\x8D\x9C\xE7\xBF\xBB\xE7\x82\x92\xE5\x9D\x87\xE5\x8C\x80\xE3\x80\x82"
-    - !map:BSON::OrderedHash 
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 230
-        - 9
-        - 215
-        - 29
-        - 65
-        - 200
-        - 125
-        - 152
-        - 0
-        - 0
-        - 125
-      img_id: 4ee609901d41c87d98000063
-      content: "\xE5\x8A\xA0\xE5\x85\xA5\xE6\x9D\x8E\xE9\x94\xA6\xE8\xAE\xB0\xE5\x8F\x89\xE7\x83\xA7\xE9\x85\xB1\xEF\xBC\x8C\xE7\xB3\x96\xE3\x80\x82"
-    - !map:BSON::OrderedHash 
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 230
-        - 9
-        - 215
-        - 29
-        - 65
-        - 200
-        - 125
-        - 152
-        - 0
-        - 0
-        - 126
-      img_id: 4ee609b81d41c87d98000068
-      content: "\xE5\x9C\xA8\xE5\x8A\xA0\xE5\x85\xA5\xE7\x94\x9F\xE6\x8A\xBD\xEF\xBC\x8C\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89\xE7\xBF\xBB\xE7\x82\x92\xE5\x9D\x87\xE5\x8C\x80\xE3\x80\x82"
-    - !map:BSON::OrderedHash 
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 230
-        - 9
-        - 215
-        - 29
-        - 65
-        - 200
-        - 125
-        - 152
-        - 0
-        - 0
-        - 127
-      img_id: 4ee609bd1d41c87d9800006d
-      content: "\xE6\x8A\x8A\xE9\x9D\x92\xE6\xA4\x92\xE5\x9D\x97\xE5\x80\x92\xE5\x85\xA5\xE7\xBF\xBB\xE7\x82\x92\xE3\x80\x82"
-    - !map:BSON::OrderedHash 
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 230
-        - 9
-        - 215
-        - 29
-        - 65
-        - 200
-        - 125
-        - 152
-        - 0
-        - 0
-        - 128
-      img_id: 4ee609c21d41c87d98000072
-      content: "\xE6\x88\x90\xE5\x93\x81"
+        - 23
+      content: "\xE5\xB0\x86\xE5\x8D\xB0\xE5\xBA\xA6\xE9\xA6\x99\xE8\xBE\xA3\xE5\xA5\xB6\xE8\x8C\xB6\xE5\x92\x8C\xE5\x85\xA8\xE8\x84\x82\xE7\x89\x9B\xE5\xA5\xB6\xE7\xA8\x8D\xE5\xBE\xAE\xE5\x8A\xA0\xE7\x83\xAD\xEF\xBC\x8C\xE5\x8A\xA0\xE5\x85\xA5\xE5\x85\xAB\xE8\xA7\x92\xE8\xB0\x83\xE5\x91\xB3\xE3\x80\x82\xE5\xB0\x86\xE7\x84\xA6\xE7\xB3\x96\xE6\x9D\x9C\xE6\x9D\xBE\xE5\xAD\x90\xE9\x85\x92\xE5\x8A\xA0\xE5\x85\xA5\xE6\x9D\xAF\xE4\xB8\xAD\xE3\x80\x82\xE5\xB9\xB6\xE5\x92\x8C\xE9\xA6\x99\xE8\xBE\xA3\xE5\xA5\xB6\xE8\x8C\xB6\xE6\xB7\xB7\xE5\x90\x88\xEF\xBC\x8C\xE7\xA8\x8D\xE5\xBE\xAE\xE6\x90\x85\xE6\x8B\x8C\xE5\x90\x8E\xEF\xBC\x8C\xE6\x92\x92\xE4\xB8\x8A\xE9\xA5\xBC\xE5\xB9\xB2\xE6\x9C\xAB"
+      img_id: 4eed5a001d41c80a5c000009
     tags: 
-    - "\xE6\x84\x8F\xE9\x9D\xA2\xEF\xBC\x88\xE8\xB4\x9D\xE5\xA3\xB3\xE9\x9D\xA2\xEF\xBC\x89"
-    - "\xE9\xB2\x9C\xE9\xA6\x99\xE8\x8F\x87 "
-    - "\xE7\x83\xA4\xE8\x82\xA0 "
-    - "\xE9\xB2\x9C\xE9\xA6\x99\xE8\x8F\x87"
-    - "\xE7\x83\xA4\xE8\x82\xA0"
+    - "\xE5\x85\xA8\xE8\x84\x82\xE7\x89\x9B\xE5\xA5\xB6"
+    - "\xE5\x85\xAB\xE8\xA7\x92"
+    - "\xE7\x99\xBD\xE5\x85\xB0\xE5\x9C\xB0"
+    - "\xE8\xBF\xAA\xE5\x87\xAF\xE5\xA0\xA1\xE7\x84\xA6\xE7\xB3\x96\xE6\x9D\x9C\xE6\x9D\xBE\xE5\xAD\x90\xE9\x85\x92"
+    - "\xE5\x85\xA8\xE9\xBA\xA6\xE9\xA5\xBC\xE5\xB9\xB2"
+    - "\xE5\x8D\xB0\xE5\xBA\xA6\xE9\xA6\x99\xE8\xBE\xA3\xE5\xA5\xB6\xE8\x8C\xB6"
+    updated_at: 2011-12-18 07:28:15 Z
 - !ruby/object:Recipe 
   attributes: !map:BSON::OrderedHash 
     _id: !ruby/object:BSON::ObjectId 
       data: 
       - 78
-      - 231
-      - 80
-      - 172
+      - 237
+      - 141
+      - 150
       - 29
       - 65
       - 200
-      - 38
-      - 134
+      - 47
+      - 166
       - 0
-      - 1
-      - 109
-    recipe_name: "\xE6\x97\xA5\xE5\xBC\x8F\xE5\xB1\xB1\xE8\x8D\xAF\xE9\xA5\xAD"
+      - 0
+      - 47
+    name: Citrus Temptation
     tags: 
-    - "\xE5\xB1\xB1\xE8\x8D\xAF"
-    - "\xE8\x9B\x8B\xE6\xB8\x85"
-    - "\xE6\x9C\xA8\xE9\xB1\xBC\xE8\x8A\xB1"
-    - "\xE8\x8A\xA5\xE6\x9C\xAB"
+    - "\xE7\xB3\x96"
+    - "\xE6\x9F\xA0\xE6\xAA\xAC\xE9\x85\x92"
+    - "\xE6\xA9\x99\xE5\x8F\xA3\xE5\x91\xB3\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0"
+    - "\xE9\x9D\x92\xE6\x9F\xA0\xE8\xA7\x92"
+    - "\xE5\x86\xB0\xE5\x9D\x97"
     author_id: !ruby/object:BSON::ObjectId 
       data: 
       - 78
-      - 231
-      - 36
-      - 161
+      - 237
+      - 88
+      - 217
       - 29
       - 65
       - 200
-      - 83
-      - 56
+      - 18
+      - 187
       - 0
       - 0
       - 13
+    updated_at: 2011-12-18 06:52:06 Z
+    created_at: 2011-12-18 06:52:06 Z
     ingredients: 
     - !map:BSON::OrderedHash 
-      name: "\xE5\xB1\xB1\xE8\x8D\xAF"
-      amount: "1\xE6\x9D\xA1"
+      name: "\xE7\xB3\x96"
+      amount: "\xE5\xB0\x91\xE9\x87\x8F"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 141
+        - 150
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 48
+    - !map:BSON::OrderedHash 
+      name: "\xE6\x9F\xA0\xE6\xAA\xAC\xE9\x85\x92"
+      amount: "1.5\xE7\x9B\x8E\xE5\x8F\xB8"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 80
-        - 172
+        - 237
+        - 141
+        - 150
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
-        - 1
-        - 110
+        - 0
+        - 49
     - !map:BSON::OrderedHash 
-      name: "\xE8\x9B\x8B\xE6\xB8\x85"
-      amount: "1\xE5\x8F\xAA"
+      name: "\xE6\xA9\x99\xE5\x8F\xA3\xE5\x91\xB3\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0"
+      amount: "0.75\xE7\x9B\x8E\xE5\x8F\xB8"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 80
-        - 172
+        - 237
+        - 141
+        - 150
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
-        - 1
-        - 111
+        - 0
+        - 50
     - !map:BSON::OrderedHash 
-      name: "\xE6\x9C\xA8\xE9\xB1\xBC\xE8\x8A\xB1"
+      name: "\xE9\x9D\x92\xE6\x9F\xA0\xE8\xA7\x92"
+      amount: "3\xE4\xB8\xAA"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 141
+        - 150
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 51
+    - !map:BSON::OrderedHash 
+      name: "\xE5\x86\xB0\xE5\x9D\x97"
       amount: "\xE9\x80\x82\xE9\x87\x8F"
       is_major_ingredient: false
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 80
-        - 172
+        - 237
+        - 141
+        - 150
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
-        - 1
-        - 112
-    - !map:BSON::OrderedHash 
-      name: "\xE8\x8A\xA5\xE6\x9C\xAB"
-      amount: "\xE5\xB0\x8F\xE9\x87\x8F"
-      is_major_ingredient: false
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 80
-        - 172
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
         - 0
-        - 1
-        - 113
+        - 52
     steps: 
     - !map:BSON::OrderedHash 
-      img_id: 4ee750051d41c82686000140
-      content: "\xE6\x8A\x8A\xE5\xB1\xB1\xE8\x8D\xAF\xE5\x8E\xBB\xE7\x9A\xAE\xEF\xBC\x8C\xE7\x84\xB6\xE5\x90\x8E\xE6\x94\xBE\xE5\x9C\xA8\xE7\xA3\xA8\xE7\xA2\x97\xE9\x87\x8C\xE7\xA3\xA8\xE5\x87\xBA\xE7\xBA\xA640g\xE7\x9A\x84\xE5\xB1\xB1\xE8\x8D\xAF\xE7\xB3\x8A"
+      img_id: 4eed8d7e1d41c82fa6000028
+      content: "\xE5\x9C\xA8\xE9\xB8\xA1\xE5\xB0\xBE\xE9\x85\x92\xE6\x9D\xAF\xE7\x9A\x84\xE8\xBE\xB9\xE7\xBC\x98\xE6\xB2\xBE\xE6\xB0\xB4\xEF\xBC\x8C\xE5\xB9\xB6\xE6\x8A\xB9\xE4\xB8\x8A\xE4\xB8\x80\xE5\xB1\x82\xE7\xB2\x97\xE7\xB3\x96\xE3\x80\x82\xE5\xB0\x86\xE6\x9F\xA0\xE6\xAA\xAC\xE9\x85\x92\xE3\x80\x81\xE4\xBC\x8F\xE7\x89\xB9\xE5\x92\x8C\xE9\x9D\x92\xE6\x9F\xA0\xE6\xB1\x81\xE5\x8A\xA0\xE5\x85\xA5\xE8\xB0\x83\xE9\x85\x92\xE5\xA3\xB6\xE3\x80\x82\xE6\x91\x87\xE5\x8C\x80\xE5\x90\x8E\xEF\xBC\x8C\xE5\x80\x92\xE5\x85\xA5\xE9\xB8\xA1\xE5\xB0\xBE\xE9\x85\x92\xE6\x9D\xAF\xEF\xBC\x8C\xE5\xB9\xB6\xE5\x8A\xA0\xE5\x85\xA5\xE5\x86\xB0\xE5\x9D\x97\xE3\x80\x82"
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 80
-        - 172
+        - 237
+        - 141
+        - 150
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
-        - 1
-        - 114
-    - !map:BSON::OrderedHash 
-      img_id: 4ee7500c1d41c82686000145
-      content: "\xE6\x8A\x8A\xE8\x9B\x8B\xE6\xB8\x85\xE5\x92\x8C\xE6\x9C\xA8\xE9\xB1\xBC\xE8\x8A\xB1\xE6\xB0\xB4\xE5\x80\x92\xE8\xBF\x9B\xE5\xB1\xB1\xE8\x8D\xAF\xE7\xB3\x8A\xE9\x87\x8C,\xE7\x94\xA8\xE7\xAD\xB7\xE5\xAD\x90\xE6\x8A\x8A\xE8\xB0\x83\xE5\xA5\xBD\xE5\x91\xB3\xE7\x9A\x84\xE5\xB1\xB1\xE8\x8D\xAF\xE7\xB3\x8A\xE6\x89\x93\xE5\x8C\x80\xEF\xBC\x9B"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 80
-        - 172
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
         - 0
-        - 1
-        - 115
-    - !map:BSON::OrderedHash 
-      img_id: 4ee750111d41c8268600014a
-      content: "\xE6\x8A\x8A\xE9\x80\x82\xE9\x87\x8F\xE6\x9C\xA8\xE9\xB1\xBC\xE8\x8A\xB1\xE6\x94\xBE\xE8\xBF\x9B\xE5\xB9\xB3\xE5\xBA\x95\xE9\x94\x85\xE9\x87\x8C\xE7\x95\xA5\xE4\xB8\xBA\xE5\x8A\xA0\xE7\x83\xAD\xEF\xBC\x9B"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 80
-        - 172
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 116
-    - !map:BSON::OrderedHash 
-      img_id: 4ee7503b1d41c82686000168
-      content: "\xE6\x8A\x8A\xE6\xBB\x91\xE5\xAD\x90\xE8\x8F\x87\xE3\x80\x81\xE6\x9C\xA8\xE9\xB1\xBC\xE8\x8A\xB1\xE3\x80\x81\xE8\x91\xB1\xE8\x8A\xB1\xE3\x80\x81\xE8\x8A\xA5\xE6\x9C\xAB\xE7\xAD\x89\xE9\x93\xBA\xE5\xA5\xBD\xEF\xBC\x8C"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 80
-        - 172
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 117
-    - !map:BSON::OrderedHash 
-      img_id: 4ee750351d41c82686000163
-      content: "\xE8\xBF\x98\xE5\x8F\xAF\xE4\xBB\xA5\xE5\x86\x8D\xE5\x8A\xA01\xE5\x8F\xAA\xE5\xB0\x8F\xE9\xB9\x8C\xE9\xB9\x91\xE8\x9B\x8B"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 80
-        - 172
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 118
-    - !map:BSON::OrderedHash 
-      img_id: 4ee750251d41c82686000159
-      content: "\xE6\x88\x90\xE5\x93\x81"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 80
-        - 172
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 119
+        - 53
 - !ruby/object:Recipe 
   attributes: !map:BSON::OrderedHash 
     _id: !ruby/object:BSON::ObjectId 
       data: 
       - 78
-      - 231
-      - 82
-      - 90
+      - 237
+      - 145
+      - 98
       - 29
       - 65
       - 200
-      - 38
-      - 134
+      - 47
+      - 166
+      - 0
+      - 0
+      - 114
+    name: Ginger Snap
+    tags: 
+    - "\xE5\xA7\x9C\xE6\xB1\x81\xE5\x95\xA4\xE9\x85\x92"
+    - "\xE5\xA7\x9C\xE6\xB1\x81"
+    - "\xE9\xBB\x91\xE6\x9C\x97\xE5\xA7\x86\xE9\x85\x92"
+    - "\xE8\x82\x89\xE6\xA1\x82\xE8\x92\xB8\xE9\xA6\x8F\xE9\x85\x92"
+    - "\xE4\xB8\x81\xE9\xA6\x99\xE7\xB2\x89"
+    - "\xE9\xB8\xA1\xE8\x9B\x8B\xE6\xB8\x85"
+    - "\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92"
+    - "\xE5\xA7\x9C\xE6\x96\xB9\xE7\xB3\x96"
+    - "\xE5\xA7\x9C\xE4\xBB\x81\xE8\x9B\x8B\xE7\xB3\x95\xE6\x9D\xBE\xE9\xA5\xBC\xE7\xB2\x89"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:29:09 Z
+    created_at: 2011-12-18 07:08:19 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA7\x9C\xE6\xB1\x81\xE5\x95\xA4\xE9\x85\x92"
+      amount: "1\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 115
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA7\x9C\xE6\xB1\x81"
+      amount: "1\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 116
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xBB\x91\xE6\x9C\x97\xE5\xA7\x86\xE9\x85\x92"
+      amount: "1.5\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 117
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x82\x89\xE6\xA1\x82\xE8\x92\xB8\xE9\xA6\x8F\xE9\x85\x92"
+      amount: "1\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 118
+    - !map:BSON::OrderedHash 
+      name: "\xE4\xB8\x81\xE9\xA6\x99\xE7\xB2\x89"
+      amount: "\xE5\xB0\x91\xE9\x87\x8F"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 119
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xB8\xA1\xE8\x9B\x8B\xE6\xB8\x85"
+      amount: "\xE4\xB8\x80\xE4\xB8\xAA"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 120
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92"
+      amount: "\xE4\xB8\x80\xE4\xB8\xAA"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 121
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA7\x9C\xE6\x96\xB9\xE7\xB3\x96"
+      amount: "\xE5\xB0\x91\xE9\x87\x8F"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 122
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA7\x9C\xE4\xBB\x81\xE8\x9B\x8B\xE7\xB3\x95\xE6\x9D\xBE\xE9\xA5\xBC\xE7\xB2\x89"
+      amount: "\xE5\xB0\x91\xE9\x87\x8F"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 98
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 123
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed915c1d41c82fa600006b
+      content: "\xE5\x9C\xA8\xE9\xB8\xA1\xE5\xB0\xBE\xE9\x85\x92\xE6\x9D\xAF\xE7\x9A\x84\xE8\xBE\xB9\xE7\xBC\x98\xE6\xB2\xBE\xE5\xA7\x9C\xE6\xB1\x81\xE5\x95\xA4\xE9\x85\x92\xEF\xBC\x8C\xE5\xB9\xB6\xE6\x8A\xB9\xE4\xB8\x8A\xE4\xB8\x80\xE5\xB1\x82\xE6\x9D\xBE\xE9\xA5\xBC\xE7\xB2\x89\xE3\x80\x82\xE5\x9C\xA8\xE8\xB0\x83\xE9\x85\x92\xE5\xA3\xB6\xE4\xB8\xAD\xE5\x8A\xA0\xE5\x85\xA5\xE5\x86\xB0\xE5\x9D\x97\xEF\xBC\x8C\xE5\x80\x92\xE5\x85\xA5\xE5\xA7\x9C\xE6\xB1\x81\xE3\x80\x81\xE6\x9C\x97\xE5\xA7\x86\xE9\x85\x92\xE3\x80\x81\xE8\x82\x89\xE6\xA1\x82\xE8\x92\xB8\xE9\xA6\x8F\xE9\x85\x92\xEF\xBC\x8C\xE5\x8A\xA0\xE5\x85\xA5\xE5\xB0\x91\xE9\x87\x8F\xE4\xB8\x81\xE9\xA6\x99\xE7\xB2\x89\xE5\x92\x8C\xE8\x9B\x8B\xE6\xB8\x85\xE3\x80\x82\xE5\x85\x85\xE5\x88\x86\xE6\x91\x87\xE6\x99\x83\xE8\x87\xB3\xE8\xB5\xB7\xE6\xB2\xAB\xE5\x90\x8E\xEF\xBC\x8C\xE5\x80\x92\xE5\x85\xA5\xE6\x9D\xAF\xE4\xB8\xAD\xE3\x80\x82\xE7\x94\xA8\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92\xE3\x80\x81\xE5\xA7\x9C\xE6\x96\xB9\xE7\xB3\x96\xE8\xA3\x85\xE9\xA5\xB0\xE5\x90\x8E\xEF\xBC\x8C\xE6\x92\x92\xE4\xB8\x8A\xE6\x9D\xBE\xE9\xA5\xBC\xE7\xB2\x89\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 145
+        - 99
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 124
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 146
+      - 170
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 0
+      - 163
+    name: Maple Butter Kiss
+    tags: 
+    - "\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0"
+    - "\xE8\xBF\xAA\xE5\x87\xAF\xE5\xA0\xA1\xE7\x84\xA6\xE7\xB3\x96\xE6\x9D\x9C\xE6\x9D\xBE\xE5\xAD\x90\xE9\x85\x92"
+    - "\xE6\x9E\xAB\xE5\x8F\xB6\xE7\xB3\x96\xE6\xB5\x86"
+    - "\xE8\x82\x89\xE8\xB1\x86\xE8\x94\xBB\xE7\xB2\x89"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:14:01 Z
+    created_at: 2011-12-18 07:13:47 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0"
+      amount: "1.5\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 170
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 164
+    - !map:BSON::OrderedHash 
+      name: "\xE8\xBF\xAA\xE5\x87\xAF\xE5\xA0\xA1\xE7\x84\xA6\xE7\xB3\x96\xE6\x9D\x9C\xE6\x9D\xBE\xE5\xAD\x90\xE9\x85\x92"
+      amount: "0.5\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 170
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 165
+    - !map:BSON::OrderedHash 
+      name: "\xE6\x9E\xAB\xE5\x8F\xB6\xE7\xB3\x96\xE6\xB5\x86"
+      amount: "0.25\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 170
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 166
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x82\x89\xE8\xB1\x86\xE8\x94\xBB\xE7\xB2\x89"
+      amount: "\xE5\xB0\x91\xE9\x87\x8F"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 170
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 167
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed92a31d41c82fa600009c
+      content: "\xE5\xB0\x86\xE6\x89\x80\xE6\x9C\x89\xE6\x9D\x90\xE6\x96\x99\xE5\x8A\xA0\xE5\x85\xA5\xE8\xB0\x83\xE9\x85\x92\xE5\xA3\xB6\xE4\xB8\xAD\xEF\xBC\x8C\xE5\x85\x85\xE5\x88\x86\xE6\x91\x87\xE6\x99\x83\xE5\x90\x8E\xE5\x80\x92\xE5\x85\xA5\xE6\x9D\xAF\xE4\xB8\xAD\xEF\xBC\x8C\xE6\x92\x92\xE4\xB8\x8A\xE8\x82\x89\xE8\xB1\x86\xE8\x94\xBB\xE7\xB2\x89"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 170
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 168
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 146
+      - 3
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 0
+      - 139
+    name: Mapletini
+    tags: 
+    - "\xE7\x88\xB1\xE5\xB0\x94\xE5\x85\xB0\xE5\xA5\xB6\xE6\xB2\xB9\xE9\xA6\x99\xE7\x94\x9C\xE9\x85\x92"
+    - "\xE7\x99\xBD\xE5\x85\xB0\xE5\x9C\xB0"
+    - "\xE8\x82\x89\xE6\xA1\x82\xE8\x92\xB8\xE9\xA6\x8F\xE9\x85\x92"
+    - "\xE6\x9E\xAB\xE5\x8F\xB6\xE7\xB3\x96\xE6\xB5\x86"
+    - "\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92"
+    - "\xE5\x86\xB0\xE5\x9D\x97"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:11:20 Z
+    created_at: 2011-12-18 07:10:59 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE7\x88\xB1\xE5\xB0\x94\xE5\x85\xB0\xE5\xA5\xB6\xE6\xB2\xB9\xE9\xA6\x99\xE7\x94\x9C\xE9\x85\x92"
+      amount: "2\xE5\xB0\x8F\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 3
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 140
+    - !map:BSON::OrderedHash 
+      name: "\xE7\x99\xBD\xE5\x85\xB0\xE5\x9C\xB0"
+      amount: "1\xE5\xB0\x8F\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 3
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 141
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x82\x89\xE6\xA1\x82\xE8\x92\xB8\xE9\xA6\x8F\xE9\x85\x92"
+      amount: "0.5\xE5\xB0\x8F\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 3
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 142
+    - !map:BSON::OrderedHash 
+      name: "\xE6\x9E\xAB\xE5\x8F\xB6\xE7\xB3\x96\xE6\xB5\x86"
+      amount: "1\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 3
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 143
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92"
+      amount: "\xE4\xB8\x80\xE4\xB8\xAA"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 3
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 144
+    - !map:BSON::OrderedHash 
+      name: "\xE5\x86\xB0\xE5\x9D\x97"
+      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 3
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 145
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed91fe1d41c82fa6000084
+      content: "\xE5\xB0\x86\xE6\x89\x80\xE6\x9C\x89\xE6\x9D\x90\xE6\x96\x99\xE5\x8A\xA0\xE5\x85\xA5\xE8\xB0\x83\xE9\x85\x92\xE5\xA3\xB6\xE4\xB8\xAD\xEF\xBC\x8C\xE6\x91\x87\xE5\x8C\x80\xE5\x90\x8E\xE5\x80\x92\xE5\x85\xA5\xE6\x9D\xAF\xE4\xB8\xAD\xEF\xBC\x8C\xE7\x94\xA8\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92\xE8\xA3\x85\xE9\xA5\xB0"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 146
+        - 3
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 146
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 148
+      - 157
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 0
+      - 185
+    name: Hard Rocker Cider
+    tags: 
+    - "\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0"
+    - "\xE8\x8B\xB9\xE6\x9E\x9C\xE6\xB1\x81"
+    - "\xE8\xB6\x8A\xE6\xA9\x98\xE6\xB1\x81"
+    - "\xE6\xA9\x99\xE5\x91\xB3\xE5\x88\xA9\xE5\x8F\xA3\xE9\x85\x92"
+    - "\xE8\x82\x89\xE8\xB1\x86\xE8\x94\xBB\xE7\xB2\x89"
+    - "\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:30:17 Z
+    created_at: 2011-12-18 07:22:05 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0"
+      amount: "1\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 148
+        - 157
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 186
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x8B\xB9\xE6\x9E\x9C\xE6\xB1\x81"
+      amount: "4\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 148
+        - 157
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 187
+    - !map:BSON::OrderedHash 
+      name: "\xE8\xB6\x8A\xE6\xA9\x98\xE6\xB1\x81"
+      amount: "1\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 148
+        - 157
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 188
+    - !map:BSON::OrderedHash 
+      name: "\xE6\xA9\x99\xE5\x91\xB3\xE5\x88\xA9\xE5\x8F\xA3\xE9\x85\x92"
+      amount: "0.25\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 148
+        - 157
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 189
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x82\x89\xE8\xB1\x86\xE8\x94\xBB\xE7\xB2\x89"
+      amount: "1\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 148
+        - 157
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 190
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92"
+      amount: "1\xE4\xB8\xAA"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 148
+        - 157
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 191
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed94871d41c82fa60000b2
+      content: "\xE4\xBD\x8E\xE6\xB8\xA9\xE5\x8A\xA0\xE7\x83\xAD\xE8\x8B\xB9\xE6\x9E\x9C\xE6\xB1\x81\xE3\x80\x81\xE8\xB6\x8A\xE6\xA9\x98\xE6\xB1\x81\xE3\x80\x81\xE8\x82\x89\xE8\xB1\x86\xE8\x94\xBB\xE7\xB2\x892\xE5\xB0\x8F\xE6\x97\xB6\xEF\xBC\x8C\xE4\xB8\x8D\xE8\xA6\x81\xE7\x85\xAE\xE6\xB2\xB8\xE3\x80\x82\xE9\xAB\x98\xE6\xB8\xA9\xE5\x8A\xA0\xE7\x83\xAD10\xE5\x88\x86\xE9\x92\x9F\xEF\xBC\x8C\xE5\xB9\xB6\xE5\x8A\xA0\xE5\x85\xA5\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0\xE5\x92\x8C\xE5\x88\xA9\xE5\x8F\xA3\xE9\x85\x92\xE3\x80\x82\xE7\x94\xA8\xE8\x82\x89\xE6\xA1\x82\xE6\xA3\x92\xE8\xA3\x85\xE9\xA5\xB0\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 148
+        - 157
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 192
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 149
+      - 88
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 0
+      - 207
+    name: Candy Cane Swirl Coc
+    tags: 
+    - "\xE8\x8E\x93\xE5\xAD\x90\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0"
+    - "\xE8\xB6\x8A\xE6\xA9\x98\xE6\xB1\x81"
+    - "\xE7\xBA\xA2\xE7\x9F\xB3\xE6\xA6\xB4\xE7\xB3\x96\xE6\xB5\x86"
+    - "\xE8\x96\x84\xE8\x8D\xB7\xE5\x8A\x9B\xE5\xA8\x87\xE9\x85\x92"
+    - "\xE6\x9F\xA0\xE6\xAA\xAC\xE5\x91\xB3\xE8\x8B\x8F\xE6\x89\x93"
+    - "\xE6\x8B\x90\xE6\x9D\x96\xE7\xB3\x96\xE6\x9E\x9C"
+    - "\xE5\x86\xB0\xE5\x9D\x97"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:25:33 Z
+    created_at: 2011-12-18 07:25:12 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x8E\x93\xE5\xAD\x90\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0"
+      amount: "1\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 88
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 208
+    - !map:BSON::OrderedHash 
+      name: "\xE8\xB6\x8A\xE6\xA9\x98\xE6\xB1\x81"
+      amount: "3\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 88
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 209
+    - !map:BSON::OrderedHash 
+      name: "\xE7\xBA\xA2\xE7\x9F\xB3\xE6\xA6\xB4\xE7\xB3\x96\xE6\xB5\x86"
+      amount: "0.5\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 88
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 210
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x96\x84\xE8\x8D\xB7\xE5\x8A\x9B\xE5\xA8\x87\xE9\x85\x92"
+      amount: "0.5\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 88
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 211
+    - !map:BSON::OrderedHash 
+      name: "\xE6\x9F\xA0\xE6\xAA\xAC\xE5\x91\xB3\xE8\x8B\x8F\xE6\x89\x93"
+      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 88
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 212
+    - !map:BSON::OrderedHash 
+      name: "\xE6\x8B\x90\xE6\x9D\x96\xE7\xB3\x96\xE6\x9E\x9C"
+      amount: "2\xE4\xB8\xAA"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 88
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 213
+    - !map:BSON::OrderedHash 
+      name: "\xE5\x86\xB0\xE5\x9D\x97"
+      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 88
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 214
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed95541d41c82fa60000c8
+      content: "\xE5\x9C\xA8\xE9\xB8\xA1\xE5\xB0\xBE\xE9\x85\x92\xE6\x9D\xAF\xE7\x9A\x84\xE8\xBE\xB9\xE7\xBC\x98\xE6\xB2\xBE\xE6\xB0\xB4\xEF\xBC\x8C\xE5\xB9\xB6\xE6\x8A\xB9\xE4\xB8\x8A\xE4\xB8\x80\xE5\xB1\x82\xE6\x8B\x90\xE6\x9D\x96\xE7\xB3\x96\xE6\x9E\x9C\xE6\x9C\xAB\xE3\x80\x82\xE5\xB0\x86\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0\xE3\x80\x81\xE8\xB6\x8A\xE6\xA9\x98\xE6\xB1\x81\xE3\x80\x81\xE7\xBA\xA2\xE7\x9F\xB3\xE6\xA6\xB4\xE7\xB3\x96\xE6\xB5\x86\xE5\x92\x8C\xE5\x8A\x9B\xE5\xA8\x87\xE9\x85\x92\xE5\x80\x92\xE5\x85\xA5\xE8\xB0\x83\xE9\x85\x92\xE5\xA3\xB6\xE4\xB8\xAD\xE3\x80\x82\xE6\x91\x87\xE5\x8C\x80\xE5\x90\x8E\xE5\x80\x92\xE5\x85\xA5\xE6\x9D\xAF\xE4\xB8\xAD\xEF\xBC\x8C\xE5\x8A\xA0\xE5\x85\xA5\xE8\x8B\x8F\xE6\x89\x93\xEF\xBC\x8C\xE5\xB9\xB6\xE7\x94\xA8\xE6\x8B\x90\xE6\x9D\x96\xE7\xB3\x96\xE6\x9E\x9C\xE8\xA3\x85\xE9\xA5\xB0\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 88
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 215
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 149
+      - 236
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 0
+      - 232
+    name: Merry Cranberry Marg
+    tags: 
+    - "\xE6\xB2\x9B\xE8\x94\x93\xE8\xB6\x8A\xE8\x8E\x93\xE6\xB1\x81"
+    - "\xE7\xB3\x96"
+    - "\xE6\xB2\x9B\xE8\x94\x93\xE8\xB6\x8A\xE8\x8E\x93"
+    - "\xE9\x85\xB8\xE6\xA9\x99\xE6\xB1\x81"
+    - "\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0"
+    - "\xE6\xA9\x99\xE5\x91\xB3\xE5\x8A\x9B\xE5\xA8\x87\xE9\x85\x92"
+    - "\xE5\x86\xB0\xE5\x9D\x97"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:27:41 Z
+    created_at: 2011-12-18 07:27:41 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE6\xB2\x9B\xE8\x94\x93\xE8\xB6\x8A\xE8\x8E\x93\xE6\xB1\x81"
+      amount: "1.25\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 236
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 233
+    - !map:BSON::OrderedHash 
+      name: "\xE7\xB3\x96"
+      amount: "0.5\xE6\x9D\xAF"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 236
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 234
+    - !map:BSON::OrderedHash 
+      name: "\xE6\xB2\x9B\xE8\x94\x93\xE8\xB6\x8A\xE8\x8E\x93"
+      amount: "1.5\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 236
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 235
+    - !map:BSON::OrderedHash 
+      name: "\xE9\x85\xB8\xE6\xA9\x99\xE6\xB1\x81"
+      amount: "0.75\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 236
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 236
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0"
+      amount: "0.75\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 236
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 237
+    - !map:BSON::OrderedHash 
+      name: "\xE6\xA9\x99\xE5\x91\xB3\xE5\x8A\x9B\xE5\xA8\x87\xE9\x85\x92"
+      amount: "0.5\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 236
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 238
+    - !map:BSON::OrderedHash 
+      name: "\xE5\x86\xB0\xE5\x9D\x97"
+      amount: "3\xE6\x9D\xAF"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 236
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 239
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed95cd1d41c82fa60000e1
+      content: "\xE5\x9C\xA8\xE9\xB8\xA1\xE5\xB0\xBE\xE9\x85\x92\xE6\x9D\xAF\xE7\x9A\x84\xE8\xBE\xB9\xE7\xBC\x98\xE6\xB2\xBE\xE6\xB2\x9B\xE8\x94\x93\xE8\xB6\x8A\xE8\x8E\x93\xE6\xB1\x81\xEF\xBC\x8C\xE5\xB9\xB6\xE6\x8A\xB9\xE4\xB8\x8A\xE4\xB8\x80\xE5\xB1\x82\xE7\xB3\x96\xE3\x80\x82\xE6\x90\x85\xE6\x8B\x8C\xE6\xB2\x9B\xE8\x94\x93\xE8\xB6\x8A\xE8\x8E\x93\xE3\x80\x81\xE6\xB2\x9B\xE8\x94\x93\xE8\xB6\x8A\xE8\x8E\x93\xE6\xB1\x81\xE3\x80\x81\xE7\xB3\x96\xE3\x80\x81\xE9\x85\xB8\xE6\xA9\x99\xE6\xB1\x81\xE3\x80\x81\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0\xE3\x80\x81\xE5\x8A\x9B\xE5\xA8\x87\xE9\x85\x92\xE5\x92\x8C\xE5\x86\xB0\xE5\x9D\x97\xEF\xBC\x8C\xE6\x90\x85\xE6\x8B\x8C\xE6\x88\x90\xE6\xB3\xA5\xE7\x8A\xB6\xE3\x80\x82\xE7\x94\xA8\xE7\x89\x99\xE7\xAD\xBE\xE7\xA9\xBF\xE8\xB5\xB7\xE6\xB2\x9B\xE8\x94\x93\xE8\xB6\x8A\xE8\x8E\x93\xE4\xBD\x9C\xE4\xB8\xBA\xE8\xA3\x85\xE9\xA5\xB0\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 149
+        - 236
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 0
+        - 240
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 151
+      - 74
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
       - 0
       - 1
-      - 157
-    recipe_name: "\xE6\xB5\xB7\xE5\xB8\xA6\xE8\xB1\x86\xE8\x85\x90\xE9\xB2\xAB\xE9\xB1\xBC\xE6\xB1\xA4"
+      - 5
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    created_at: 2011-12-18 07:33:30 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE5\x9F\xB9\xE6\xA0\xB9"
+      amount: " 1\xE7\xA3\x85"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 151
+        - 74
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 6
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x8D\xB8\xE8\x8D\xA0"
+      amount: "8\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 151
+        - 74
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 7
+    - !map:BSON::OrderedHash 
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 151
+        - 74
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 8
+      amount: "0.5\xE6\x9D\xAF"
+      is_major_ingredient: false
+      name: "\xE6\xA3\x95\xE7\xB3\x96"
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x9B\x8B\xE9\xBB\x84\xE9\x85\xB1"
+      amount: "0.5\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 151
+        - 74
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 9
+    - !map:BSON::OrderedHash 
+      name: "\xE8\xBE\xA3\xE5\x91\xB3\xE7\x95\xAA\xE8\x8C\x84\xE9\x85\xB1"
+      amount: "0.25\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 151
+        - 74
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 10
+    name: "\xE5\x9F\xB9\xE6\xA0\xB9\xE8\x8D\xB8\xE8\x8D\xA0\xE5\x8D\xB7"
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed97351d41c82fa60000fe
+      content: "\xE7\x85\x8E\xE9\x94\x85\xE4\xB8\xAD\xE7\xAD\x89\xE6\xB8\xA9\xE5\xBA\xA6\xE7\x83\xB9\xE8\xB0\x83\xE5\x9F\xB9\xE6\xA0\xB9\xEF\xBC\x8C\xE7\x9B\xB4\xE8\x87\xB3\xE5\xB9\xB2\xE8\x84\x86\xE3\x80\x82\xE7\x94\xA8\xE5\x9F\xB9\xE6\xA0\xB9\xE5\x8C\x85\xE8\xA3\xB9\xE5\x9F\xB9\xE6\xA0\xB9\xEF\xBC\x8C\xE5\xB9\xB6\xE7\x94\xA8\xE7\x89\x99\xE7\xAD\xBE\xE5\x9B\xBA\xE5\xAE\x9A\xE3\x80\x82\xE5\xB0\x86\xE6\xA3\x95\xE7\xB3\x96\xE3\x80\x81\xE8\x9B\x8B\xE9\xBB\x84\xE9\x85\xB1\xE3\x80\x81\xE8\xBE\xA3\xE5\x91\xB3\xE7\x95\xAA\xE8\x8C\x84\xE9\x85\xB1\xE6\xB7\xB7\xE5\x90\x88\xE5\x90\x8E\xEF\xBC\x8C\xE6\xB5\x87\xE5\x9C\xA8\xE8\x8D\xB8\xE8\x8D\xA0\xE4\xB8\x8A\xEF\xBC\x8C180C\xE7\x83\xA430\xE5\x88\x86\xE9\x92\x9F\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 151
+        - 74
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 11
     tags: 
-    - "\xE9\xB2\xAB\xE9\xB1\xBC"
-    - "\xE6\xB5\xB7\xE5\xB8\xA6"
-    - "\xE8\xB1\x86\xE8\x85\x90"
-    - "\xE5\xA7\x9C"
+    - "\xE5\x9F\xB9\xE6\xA0\xB9"
+    - "\xE8\x8D\xB8\xE8\x8D\xA0"
+    - "\xE6\xA3\x95\xE7\xB3\x96"
+    - "\xE8\x9B\x8B\xE9\xBB\x84\xE9\x85\xB1"
+    - "\xE8\xBE\xA3\xE5\x91\xB3\xE7\x95\xAA\xE8\x8C\x84\xE9\x85\xB1"
+    updated_at: 2011-12-18 07:34:32 Z
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 152
+      - 20
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 1
+      - 28
+    name: "\xE9\xB9\x85\xE8\x82\x9D\xE8\x8B\xB9\xE6\x9E\x9C\xE5\x9C\x88 "
+    tags: 
+    - "\xE9\xB9\x85\xE8\x82\x9D"
+    - "\xE8\x8B\xB9\xE6\x9E\x9C\xE5\x9C\x88"
+    - "\xE9\xBB\x84\xE6\xB2\xB9"
+    - "\xE8\x90\x8D\xE6\x9E\x9C\xE9\x86\x8B"
     - "\xE9\xB8\xA1\xE7\xB2\xBE"
     author_id: !ruby/object:BSON::ObjectId 
       data: 
       - 78
-      - 231
-      - 36
-      - 161
+      - 237
+      - 88
+      - 217
       - 29
       - 65
       - 200
-      - 83
-      - 56
+      - 18
+      - 187
       - 0
       - 0
       - 13
+    updated_at: 2011-12-18 07:36:53 Z
+    created_at: 2011-12-18 07:36:53 Z
     ingredients: 
     - !map:BSON::OrderedHash 
-      name: "\xE9\xB2\xAB\xE9\xB1\xBC"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE9\xB9\x85\xE8\x82\x9D"
+      amount: "1.25\xE7\xA3\x85"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 152
+        - 20
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
+        - 0
+        - 1
+        - 29
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x8B\xB9\xE6\x9E\x9C\xE5\x9C\x88"
+      amount: "20\xE4\xB8\xAA"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 20
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 30
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xBB\x84\xE6\xB2\xB9"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 20
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 31
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x90\x8D\xE6\x9E\x9C\xE9\x86\x8B"
+      amount: "3\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 20
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 32
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xB8\xA1\xE7\xB2\xBE"
+      amount: "0.75\xE6\x9D\xAF"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 20
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 33
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed97fd1d41c82fa6000115
+      content: "\xE8\x8B\xB9\xE6\x9E\x9C\xE5\x89\x8A\xE7\x9A\xAE\xE5\x8E\xBB\xE6\xA0\xB8\xE5\x90\x8E\xEF\xBC\x8C\xE5\x88\x87\xE6\x88\x900.5\xE5\x8E\x98\xE7\xB1\xB3\xE5\x8E\x9A\xE7\x9A\x84\xE5\x9C\x88\xE3\x80\x82\xE4\xB8\xAD\xE9\xAB\x98\xE6\xB8\xA9\xE5\x8A\xA0\xE7\x83\xAD\xE9\xBB\x84\xE6\xB2\xB9\xE8\x87\xB3\xE6\xBA\xB6\xE5\x8C\x96\xE3\x80\x82\xE5\xB0\x86\xE8\x8B\xB9\xE6\x9E\x9C\xE5\x9C\x88\xE7\x82\x92\xE5\x88\xB0\xE8\x84\x86\xEF\xBC\x8C\xE5\xB9\xB6\xE5\x8F\x8C\xE9\x9D\xA2\xE9\x87\x91\xE9\xBB\x84\xE3\x80\x82\xE5\x8A\xA0\xE5\x85\xA5\xE6\x9E\x9C\xE9\x86\x8B\xE5\x92\x8C\xE8\x9B\x8B\xE9\xBB\x84\xE9\x85\xB1\xE3\x80\x82\xE5\x9C\xA8\xE5\xB9\xB2\xE5\x87\x80\xE7\x9A\x84\xE7\x83\xAD\xE7\x85\x8E\xE9\x94\x85\xE4\xB8\xAD\xE6\x94\xBE\xE5\x85\xA5\xE5\x88\x87\xE6\x88\x901.5\xE5\x8E\x98\xE7\xB1\xB3\xE5\x8E\x9A\xE7\x9A\x84\xE9\xB9\x85\xE8\x82\x9D\xEF\xBC\x8C\xE5\x8A\xA0\xE5\x85\xA5\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89\xE5\x92\x8C\xE7\x9B\x90\xEF\xBC\x8C\xE7\x83\xB9\xE8\xB0\x83\xE7\xBA\xA640\xE7\xA7\x92\xE5\x90\x8E\xE3\x80\x82\xE6\x94\xBE\xE5\x9C\xA8\xE8\x8B\xB9\xE6\x9E\x9C\xE5\x9C\x88\xE4\xB8\x8A\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 20
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 34
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 152
+      - 218
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 1
+      - 49
+    name: "\xE7\x83\xA4\xE8\x99\xBE"
+    tags: 
+    - "\xE5\xA4\xA7\xE8\x99\xBE"
+    - "\xE8\xBE\xA3\xE6\xA4\x92\xE7\xB2\x89"
+    - "\xE5\xA4\xA7\xE8\x92\x9C\xE6\x9C\xAB"
+    - "\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE6\xB7\xB7\xE5\x90\x88\xE9\xA6\x99\xE6\x96\x99"
+    - "\xE6\x9F\xA0\xE6\xAA\xAC\xE6\xB1\x81"
+    - "\xE6\xA9\x84\xE6\xA6\x84\xE6\xB2\xB9"
+    - "\xE9\xBB\x91\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89"
+    - "\xE7\xBD\x97\xE5\x8B\x92\xE5\x8F\xB6"
+    - "\xE6\xA3\x95\xE7\xB3\x96"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:40:10 Z
+    created_at: 2011-12-18 07:40:10 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA4\xA7\xE8\x99\xBE"
+      amount: "2\xE7\xA3\x85"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 50
+    - !map:BSON::OrderedHash 
+      name: "\xE8\xBE\xA3\xE6\xA4\x92\xE7\xB2\x89"
+      amount: "1\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 51
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA4\xA7\xE8\x92\x9C\xE6\x9C\xAB"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 52
+    - !map:BSON::OrderedHash 
+      name: "\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE6\xB7\xB7\xE5\x90\x88\xE9\xA6\x99\xE6\x96\x99"
+      amount: "1\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 53
+    - !map:BSON::OrderedHash 
+      name: "\xE6\x9F\xA0\xE6\xAA\xAC\xE6\xB1\x81"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 54
+    - !map:BSON::OrderedHash 
+      name: "\xE6\xA9\x84\xE6\xA6\x84\xE6\xB2\xB9"
+      amount: "2\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 55
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xBB\x91\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89"
+      amount: "0.5\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 56
+    - !map:BSON::OrderedHash 
+      name: "\xE7\xBD\x97\xE5\x8B\x92\xE5\x8F\xB6"
+      amount: "1\xE8\x8C\xB6\xE5\x8C\x99 "
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 57
+    - !map:BSON::OrderedHash 
+      name: "\xE6\xA3\x95\xE7\xB3\x96"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99 "
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 58
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed98d61d41c82fa600012a
+      content: "\xE5\xB0\x86\xE8\x99\xBE\xE7\x94\xA8\xE8\xB0\x83\xE6\x96\x99\xE8\x85\x8C\xE6\xB3\xA120\xE5\x88\x86\xE9\x92\x9F\xE5\x90\x8E\xEF\xBC\x8C\xE7\x83\xA7\xE7\x83\xA4\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 152
+        - 218
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 59
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 153
+      - 222
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 1
+      - 74
+    name: "\xE6\x84\x8F\xE5\xBC\x8F\xE8\xB4\x9D\xE5\xA3\xB3\xE9\x9D\xA2\xE8\x89\xB2\xE6\x8B\x89"
+    tags: 
+    - "\xE5\xA4\xA7\xE5\x8F\xB7\xE8\xB4\x9D\xE5\xA3\xB3\xE9\x9D\xA2"
+    - "\xE5\x88\x87\xE7\xA2\x8E\xE7\x9A\x84\xE7\x94\x9F\xE8\x8F\x9C"
+    - "\xE7\xBD\x97\xE5\x8B\x92\xE5\x8F\xB6"
+    - "\xE9\xB8\xA1\xE8\x82\x89"
+    - "\xE7\x95\xAA\xE8\x8C\x84\xE4\xB8\x81"
+    - "\xE9\xBB\x84\xE7\x93\x9C\xE4\xB8\x81"
+    - "\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE8\x85\x8A\xE8\x82\xA0\xE4\xB8\x81"
+    - "\xE7\x83\xA4\xE8\x92\x9C"
+    - "\xE8\x89\xB2\xE6\x8B\x89\xE8\xB0\x83\xE5\x91\xB3\xE6\xB1\x81"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:44:31 Z
+    created_at: 2011-12-18 07:44:31 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA4\xA7\xE5\x8F\xB7\xE8\xB4\x9D\xE5\xA3\xB3\xE9\x9D\xA2"
+      amount: "1\xE5\x8C\x85"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 75
+    - !map:BSON::OrderedHash 
+      name: "\xE5\x88\x87\xE7\xA2\x8E\xE7\x9A\x84\xE7\x94\x9F\xE8\x8F\x9C"
+      amount: "4\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 76
+    - !map:BSON::OrderedHash 
+      name: "\xE7\xBD\x97\xE5\x8B\x92\xE5\x8F\xB6"
+      amount: "0.5\xE6\x9D\xAF"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 77
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xB8\xA1\xE8\x82\x89"
+      amount: "1\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 78
+    - !map:BSON::OrderedHash 
+      name: "\xE7\x95\xAA\xE8\x8C\x84\xE4\xB8\x81"
+      amount: "1\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 79
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xBB\x84\xE7\x93\x9C\xE4\xB8\x81"
+      amount: "0.75\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 80
+    - !map:BSON::OrderedHash 
+      name: "\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE8\x85\x8A\xE8\x82\xA0\xE4\xB8\x81"
+      amount: "3\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 81
+    - !map:BSON::OrderedHash 
+      name: "\xE7\x83\xA4\xE8\x92\x9C"
+      amount: "0.5\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 82
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x89\xB2\xE6\x8B\x89\xE8\xB0\x83\xE5\x91\xB3\xE6\xB1\x81"
+      amount: "\xE5\xB0\x91\xE9\x87\x8F"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 83
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed99c31d41c82fa6000143
+      content: "\xE5\xB0\x86\xE8\xB4\x9D\xE5\xA3\xB3\xE9\x9D\xA2\xE7\x85\xAE\xE5\xA5\xBD\xE6\xB2\xA5\xE6\xB0\xB4\xE6\x8D\x9E\xE5\x87\xBA\xEF\xBC\x8C\xE6\x94\xBE\xE5\x87\x89\xE3\x80\x82\xE5\xB0\x86\xE8\x89\xB2\xE6\x8B\x89\xE8\xB0\x83\xE5\x91\xB3\xE6\xB1\x81\xE6\xB5\x87\xE5\x9C\xA8\xE5\x8E\x9F\xE6\x96\x99\xE4\xB8\x8A\xE3\x80\x82\xE5\xB0\x86\xE8\x89\xB2\xE6\x8B\x89\xE5\xA1\x9E\xE8\xBF\x9B\xE8\xB4\x9D\xE5\xA3\xB3\xE9\x9D\xA2\xE4\xB8\xAD\xEF\xBC\x8C\xE6\x94\xBE\xE5\x85\xA5\xE5\x86\xB0\xE7\xAE\xB12\xE5\xB0\x8F\xE6\x97\xB6\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 153
+        - 222
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 84
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 155
+      - 117
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 1
+      - 99
+    name: "\xE6\x91\xA9\xE5\x8D\xA1\xE5\x86\xB0\xE6\xB7\x87\xE6\xB7\x8B\xE7\x94\x9C\xE7\x82\xB9"
+    tags: 
+    - "\xE5\xA4\xB9\xE5\xBF\x83\xE5\xB7\xA7\xE5\x85\x8B\xE5\x8A\x9B\xE9\xA5\xBC\xE5\xB9\xB2\xE5\xB1\x91"
+    - "\xE9\xBB\x84\xE6\xB2\xB9"
+    - "\xE9\x9B\xAA\xE7\xB3\x95\xE6\x96\xB0\xE5\x9C\xB0"
+    - "\xE5\x92\x96\xE5\x95\xA1\xE5\x86\xB0\xE6\xB7\x87\xE6\xB7\x8B"
+    - "\xE5\xB7\xA7\xE5\x85\x8B\xE5\x8A\x9B\xE5\x8D\xB7"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:51:18 Z
+    created_at: 2011-12-18 07:51:18 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA4\xB9\xE5\xBF\x83\xE5\xB7\xA7\xE5\x85\x8B\xE5\x8A\x9B\xE9\xA5\xBC\xE5\xB9\xB2\xE5\xB1\x91"
+      amount: "3.75\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 155
+        - 117
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 100
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xBB\x84\xE6\xB2\xB9"
+      amount: "0.5\xE6\x9D\xAF"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 155
+        - 117
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 101
+    - !map:BSON::OrderedHash 
+      name: "\xE9\x9B\xAA\xE7\xB3\x95\xE6\x96\xB0\xE5\x9C\xB0"
+      amount: "16\xE7\x9B\x8E\xE5\x8F\xB8"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 155
+        - 117
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 102
+    - !map:BSON::OrderedHash 
+      name: "\xE5\x92\x96\xE5\x95\xA1\xE5\x86\xB0\xE6\xB7\x87\xE6\xB7\x8B"
+      amount: "0.5\xE5\x8A\xA0\xE4\xBB\x91"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 155
+        - 117
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 103
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xB7\xA7\xE5\x85\x8B\xE5\x8A\x9B\xE5\x8D\xB7"
+      amount: "8\xE7\x9B\x8E\xE5\x8F\xB8 "
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 155
+        - 117
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 104
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed9b6f1d41c82fa600015c
+      content: "\xE5\xB0\x86\xE9\xA5\xBC\xE5\xB9\xB2\xE5\xB1\x91\xE5\x92\x8C\xE9\xBB\x84\xE6\xB2\xB9\xE6\xB7\xB7\xE5\x90\x88\xE5\x90\x8E\xE5\x8E\x8B\xE6\x88\x90\xE5\xBA\x95\xE9\x83\xA8\xEF\xBC\x8C\xE6\x94\xBE\xE5\x85\xA5\xE5\x86\xB0\xE7\xAE\xB1\xE5\x86\xB7\xE5\x86\xBB1\xE5\xB0\x8F\xE6\x97\xB6\xE3\x80\x82\xE6\x94\xBE\xE4\xB8\x8A\xE9\x9B\xAA\xE7\xB3\x95\xE6\x96\xB0\xE5\x9C\xB0\xEF\xBC\x8C\xE5\x86\xB7\xE5\x86\xBB30\xE5\x88\x86\xE9\x92\x9F\xE3\x80\x82\xE6\xB6\x82\xE4\xB8\x8A\xE5\x86\xB0\xE6\xB7\x87\xE6\xB7\x8B\xE5\x90\x8E\xE5\x86\xB7\xE5\x86\xBB8\xE5\xB0\x8F\xE6\x97\xB6\xE5\x90\x8E\xEF\xBC\x8C\xE7\x94\xA8\xE5\xB7\xA7\xE5\x85\x8B\xE5\x8A\x9B\xE5\x8D\xB7\xE8\xA3\x85\xE9\xA5\xB0\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 155
+        - 117
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 105
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 156
+      - 47
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 1
+      - 136
+    name: "\xE7\x83\xA4\xE7\x89\x9B\xE8\x82\x8B\xE9\xAA\xA8\xE8\x82\x89 "
+    tags: 
+    - "\xE7\x89\x9B\xE8\x82\x8B\xE9\xAA\xA8\xE8\x82\x89"
+    - "\xE7\xB2\x97\xE7\x9B\x90"
+    - "\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89"
+    - "\xE8\xBF\xB7\xE8\xBF\xAD\xE9\xA6\x99"
+    - "\xE5\xA4\xA7\xE8\x92\x9C\xE7\x93\xA3"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:54:24 Z
+    created_at: 2011-12-18 07:54:24 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE7\x89\x9B\xE8\x82\x8B\xE9\xAA\xA8\xE8\x82\x89"
+      amount: "5\xE7\xA3\x85"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 156
+        - 47
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 137
+    - !map:BSON::OrderedHash 
+      name: "\xE7\xB2\x97\xE7\x9B\x90"
+      amount: "2\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 156
+        - 47
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 138
+    - !map:BSON::OrderedHash 
+      name: "\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89"
+      amount: "2\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 156
+        - 47
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 139
+    - !map:BSON::OrderedHash 
+      name: "\xE8\xBF\xB7\xE8\xBF\xAD\xE9\xA6\x99"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 156
+        - 47
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 140
+    - !map:BSON::OrderedHash 
+      name: "\xE5\xA4\xA7\xE8\x92\x9C\xE7\x93\xA3"
+      amount: "10\xE4\xB8\xAA"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 156
+        - 47
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 141
+    steps: 
+    - !map:BSON::OrderedHash 
+      img_id: 4eed9c2c1d41c82fa6000181
+      content: "\xE5\xB0\x86\xE7\xB2\x97\xE7\x9B\x90\xE3\x80\x81\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89\xE3\x80\x81\xE8\xBF\xB7\xE8\xBF\xAD\xE9\xA6\x99\xE6\xB7\xB7\xE5\x90\x88\xE3\x80\x82\xE5\xB0\x86\xE5\xA4\xA7\xE8\x92\x9C\xE5\x9D\x87\xE5\x8C\x80\xE7\x9A\x84\xE6\x94\xBE\xE5\x9C\xA8\xE8\x82\x89\xE4\xB8\x8A\xEF\xBC\x8C\xE5\xB9\xB6\xE6\x92\x92\xE5\xA5\xBD\xE8\xB0\x83\xE5\x91\xB3\xE7\xB2\x89\xEF\xBC\x8C\xE5\xB0\x86\xE7\x83\xA4\xE7\x82\x89\xE8\xAE\xBE\xE7\xBD\xAE\xE5\x88\xB0190C\xEF\xBC\x8C\r\n\
+        \xE8\x84\x82\xE8\x82\xAA\xE8\xBE\x83\xE5\xA4\x9A\xE7\x9A\x84\xE9\x82\xA3\xE4\xB8\x80\xE9\x9D\xA2\xE6\x9C\x9D\xE4\xB8\x8A\xEF\xBC\x8C\xE7\x83\xA41\xE4\xB8\xAA\xE5\xB0\x8F\xE6\x97\xB6\xE3\x80\x82"
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 156
+        - 47
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 142
+- !ruby/object:Recipe 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 157
+      - 10
+      - 29
+      - 65
+      - 200
+      - 47
+      - 166
+      - 0
+      - 1
+      - 157
+    name: "\xE7\x99\xBD\xE8\x83\xA1\xE6\xA1\x83\xE6\xB1\xA4"
+    tags: 
+    - "\xE7\x99\xBD\xE8\x83\xA1\xE6\xA1\x83\xE6\xB3\xA5"
+    - "\xE6\xA9\x84\xE6\xA6\x84\xE6\xB2\xB9"
+    - "\xE9\xBB\x84\xE6\xB2\xB9"
+    - "\xE9\xB8\xA1\xE6\xB1\xA4"
+    - "\xE8\x92\x9C\xE7\x93\xA3"
+    - "\xE5\xB9\xB2\xE7\x99\xBD"
+    - "\xE7\x99\xBE\xE9\x87\x8C\xE9\xA6\x99"
+    - "\xE9\xBB\x91\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x92"
+    - "\xE6\x9C\x88\xE6\xA1\x82\xE5\x8F\xB6"
+    - "\xE8\xA5\xBF\xE8\x8A\xB9"
+    author_id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 237
+      - 88
+      - 217
+      - 29
+      - 65
+      - 200
+      - 18
+      - 187
+      - 0
+      - 0
+      - 13
+    updated_at: 2011-12-18 07:58:02 Z
+    created_at: 2011-12-18 07:58:02 Z
+    ingredients: 
+    - !map:BSON::OrderedHash 
+      name: "\xE7\x99\xBD\xE8\x83\xA1\xE6\xA1\x83\xE6\xB3\xA5"
+      amount: "2\xE7\xA3\x85"
+      is_major_ingredient: true
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 157
+        - 10
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
         - 0
         - 1
         - 158
     - !map:BSON::OrderedHash 
-      name: "\xE6\xB5\xB7\xE5\xB8\xA6"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE6\xA9\x84\xE6\xA6\x84\xE6\xB2\xB9"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 159
     - !map:BSON::OrderedHash 
-      name: "\xE8\xB1\x86\xE8\x85\x90"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE9\xBB\x84\xE6\xB2\xB9"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 160
     - !map:BSON::OrderedHash 
-      name: "\xE5\xA7\x9C"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
-      is_major_ingredient: false
+      name: "\xE9\xB8\xA1\xE6\xB1\xA4"
+      amount: "4\xE6\x9D\xAF"
+      is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 161
     - !map:BSON::OrderedHash 
-      name: "\xE9\xB8\xA1\xE7\xB2\xBE"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE8\x92\x9C\xE7\x93\xA3"
+      amount: "2\xE4\xB8\xAA "
       is_major_ingredient: false
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 162
-    steps: 
     - !map:BSON::OrderedHash 
-      img_id: 4ee751e91d41c8268600017f
-      content: "\xE9\xB2\xAB\xE9\xB1\xBC\xE5\x8E\xBB\xE9\xB3\x9E\xE3\x80\x81\xE5\x8E\xBB\xE9\xB3\x83\xE3\x80\x81\xE5\x8E\xBB\xE5\x86\x85\xE8\x84\x8F\xE6\xB4\x97\xE5\x87\x80\xEF\xBC\x8C\xE6\xB3\xA8\xE6\x84\x8F\xEF\xBC\x9A\xE9\xB2\xAB\xE9\xB1\xBC\xE8\x82\x9A\xE5\xAD\x90\xE9\x87\x8C\xE7\x9A\x84\xE9\x82\xA3\xE5\xB1\x82\xE9\xBB\x91\xE9\xBB\x91\xE7\x9A\x84\xE9\xBB\x91\xE8\x86\x9C\xE9\x9C\x80\xE5\x8E\xBB\xE6\x8E\x89\xEF\xBC\x8C\xE5\x90\xA6\xE5\x88\x99\xE4\xBC\x9A\xE5\xBE\x88\xE8\x85\xA5\xE3\x80\x82"
+      name: "\xE5\xB9\xB2\xE7\x99\xBD"
+      amount: "0.5\xE6\x9D\xAF"
+      is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 163
     - !map:BSON::OrderedHash 
-      img_id: 4ee751ee1d41c82686000184
-      content: "\xE6\x8A\x8A\xE9\xB2\xAB\xE9\xB1\xBC\xE6\x94\xBE\xE8\xBF\x9B\xE6\xB2\xB9\xE9\x94\x85\xE9\x87\x8C\xE7\x85\x8E\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE9\xB1\xBC\xE6\x94\xBE\xE8\xBF\x9B\xE5\x8E\xBB\xE5\x90\x8E\xE5\x85\x88\xE4\xB8\x8D\xE5\x8A\xA8\xE5\xAE\x83\xEF\xBC\x8C\xE8\xAE\xA9\xE9\xB1\xBC\xE5\x85\x88\xE7\x85\x8E\xE4\xB8\x80\xE4\xBC\x9A\xEF\xBC\x8C\xE7\x84\xB6\xE5\x90\x8E\xE5\x86\x8D\xE7\xBF\xBB\xE5\x8A\xA8\xEF\xBC\x8C\xE5\x90\xA6\xE5\x88\x99\xE9\xB1\xBC\xE7\x9A\xAE\xE4\xBC\x9A\xE6\x8E\x89\xEF\xBC\x8C\xE5\xBD\xB1\xE5\x93\x8D\xE7\xBE\x8E\xE8\xA7\x82\xEF\xBC\x9B"
+      name: "\xE7\x99\xBE\xE9\x87\x8C\xE9\xA6\x99"
+      amount: "0.5\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: false
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 164
     - !map:BSON::OrderedHash 
-      img_id: 4ee751f11d41c82686000189
-      content: "\xE6\x8A\x8A\xE7\x85\x8E\xE5\xA5\xBD\xE7\x9A\x84\xE9\xB2\xAB\xE9\xB1\xBC\xE6\x94\xBE\xE8\xBF\x9B\xE7\x85\xAE\xE5\xBC\x80\xE6\xB0\xB4\xE7\x9A\x84\xE7\xA0\x82\xE9\x94\x85\xE9\x87\x8C\xEF\xBC\x8C\xE5\xA4\xA7\xE7\x81\xAB\xE7\x85\xAE\xE5\xBC\x80\xEF\xBC\x8C\xE6\x94\xB9\xE5\xB0\x8F\xE7\x81\xAB\xE6\x85\xA2\xE6\x85\xA2\xE7\x82\x9620-30\xE5\x88\x86\xE9\x92\x9F\xE3\x80\x82\xEF\xBC\x88\xE4\xBE\x9D\xE8\x87\xAA\xE5\xB7\xB1\xE5\xAF\x8C\xE4\xBD\x99\xE7\x9A\x84\xE6\x97\xB6\xE9\x97\xB4\xE6\x9D\xA5\xE5\xAE\x9A\xEF\xBC\x89"
+      name: "\xE9\xBB\x91\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x92"
+      amount: "0.5\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: false
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 165
     - !map:BSON::OrderedHash 
-      img_id: 4ee751fa1d41c8268600018e
-      content: "\xE7\x82\x96\xE7\x9A\x84\xE6\xB1\xA4\xE5\xA5\xB6\xE7\x99\xBD\xE5\xA5\xB6\xE7\x99\xBD\xE7\x9A\x84\xE5\xB0\xB1\xE6\x8A\x8A\xE6\xB5\xB7\xE5\xB8\xA6\xE6\x94\xBE\xE8\xBF\x9B\xE5\x8E\xBB\xEF\xBC\x8C\xE5\xA4\xA7\xE7\x81\xAB\xE7\x85\xAE\xE5\xBC\x80\xEF\xBC\x8C\xE6\x94\xB9\xE4\xB8\xAD\xE7\x81\xAB\xE7\x85\xAE10\xE5\x88\x86\xE9\x92\x9F\xE5\xB7\xA6\xE5\x8F\xB3\xE3\x80\x82"
+      name: "\xE6\x9C\x88\xE6\xA1\x82\xE5\x8F\xB6"
+      amount: "\xE5\xB0\x91\xE9\x87\x8F"
+      is_major_ingredient: false
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 166
     - !map:BSON::OrderedHash 
-      img_id: 4ee751fe1d41c82686000193
-      content: "\xE7\x84\xB6\xE5\x90\x8E\xE6\x8A\x8A\xE8\xB1\x86\xE8\x85\x90\xE6\x94\xBE\xE8\xBF\x9B\xE5\x8E\xBB\xE5\xA4\xA7\xE7\x81\xAB\xE7\x85\xAE\xE5\xBC\x80\xEF\xBC\x8C\xE7\x84\xB6\xE5\x90\x8E\xE5\x86\x8D\xE7\x85\xAE2\xE5\x88\x86\xE9\x92\x9F\xEF\xBC\x8C\xE8\xB0\x83\xE5\x85\xA5\xE9\x80\x82\xE9\x87\x8F\xE7\xB2\xBE\xE7\x9B\x90\xE3\x80\x82"
+      name: "\xE8\xA5\xBF\xE8\x8A\xB9"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99"
+      is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 167
+    steps: 
     - !map:BSON::OrderedHash 
-      img_id: 4ee752021d41c82686000198
-      content: "\xE6\x88\x90\xE5\x93\x81"
+      img_id: 4eed9cfd1d41c82fa6000196
+      content: "\xE5\x9C\xA8\xE9\xBB\x84\xE6\xB2\xB9\xE4\xB8\xAD\xE4\xB8\xAD\xE4\xBD\x8E\xE6\xB8\xA9\xE7\x83\xB9\xE8\xB0\x83\xE6\xB4\x8B\xE8\x91\xB1\xEF\xBC\x8C\xE8\x87\xB3\xE6\x9F\x94\xE8\xBD\xAF\xEF\xBC\x8C\xE4\xBD\x86\xE4\xB8\x8D\xE8\xA6\x81\xE7\x84\xA6\xE3\x80\x82\xE5\x8A\xA0\xE5\x85\xA5\xE5\xA4\xA7\xE8\x92\x9C\xE7\x83\xB9\xE8\xB0\x831\xE5\x88\x86\xE9\x92\x9F\xE3\x80\x82\xE5\x8A\xA0\xE5\x85\xA5\xE5\xB9\xB2\xE7\x99\xBD\xE5\xB9\xB6\xE5\xBF\xAB\xE9\x80\x9F\xE6\x90\x85\xE6\x8B\x8C10\xE5\x88\x86\xE9\x92\x9F\xE3\x80\x82\r\n\
+        \xE5\xB0\x86\xE9\xA6\x99\xE6\x96\x99\xE7\x94\xA8\xE7\xBA\xB1\xE5\xB8\x83\xE5\x8C\x85\xE5\xA5\xBD\xE5\x90\x8E\xE6\x94\xBE\xE5\x85\xA5\xE7\x85\xAE\xE9\x94\x85\xEF\xBC\x8C\xE5\x8A\xA0\xE5\x85\xA5\xE7\x99\xBD\xE8\x83\xA1\xE6\xA1\x83\xE6\xB3\xA5\xE5\x92\x8C\xE9\xB8\xA1\xE6\xB1\xA4\xE3\x80\x82\xE5\xB0\x8F\xE7\x81\xAB\xE7\x82\x9620\xE5\x88\x86\xE9\x92\x9F\xEF\xBC\x8C\xE5\x8A\xA0\xE5\x85\xA5\xE7\x9B\x90\xE5\x92\x8C\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89\xE8\xB0\x83\xE5\x91\xB3\xE3\x80\x82"
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 82
-        - 90
+        - 237
+        - 157
+        - 10
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
         - 168
@@ -642,229 +2663,166 @@
     _id: !ruby/object:BSON::ObjectId 
       data: 
       - 78
-      - 231
-      - 83
-      - 205
+      - 237
+      - 157
+      - 192
       - 29
       - 65
       - 200
-      - 38
-      - 134
+      - 47
+      - 166
       - 0
       - 1
-      - 206
-    recipe_name: "\xE7\x88\x86\xE7\x82\x92\xE8\x85\xB0\xE8\x8A\xB1"
+      - 183
+    name: "\xE7\x83\xA4\xE8\xA5\xBF\xE8\x91\xAB\xE8\x8A\xA6"
     tags: 
-    - "\xE7\x8C\xAA\xE8\x85\xB0"
-    - "\xE8\xA5\xBF\xE8\x8A\xB9"
-    - "\xE5\xA7\x9C"
-    - "\xE7\x99\xBD\xE7\xB3\x96"
-    - "\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89"
+    - "\xE8\xA5\xBF\xE8\x91\xAB\xE8\x8A\xA6"
+    - "\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE8\xB0\x83\xE6\x96\x99"
+    - "\xE5\x88\x9D\xE6\xA6\xA8\xE6\xA9\x84\xE6\xA6\x84\xE6\xB2\xB9"
+    - "\xE5\xB7\xB4\xE9\xA9\xAC\xE5\xA5\xB6\xE9\x85\xAA\xE7\xB2\x89"
+    - "\xE7\x9B\x90"
+    - "\xE9\xBB\x91\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89"
     author_id: !ruby/object:BSON::ObjectId 
       data: 
       - 78
-      - 231
-      - 36
-      - 161
+      - 237
+      - 88
+      - 217
       - 29
       - 65
       - 200
-      - 83
-      - 56
+      - 18
+      - 187
       - 0
       - 0
       - 13
+    updated_at: 2011-12-18 08:01:04 Z
+    created_at: 2011-12-18 08:01:04 Z
     ingredients: 
     - !map:BSON::OrderedHash 
-      name: "\xE7\x8C\xAA\xE8\x85\xB0"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE8\xA5\xBF\xE8\x91\xAB\xE8\x8A\xA6"
+      amount: "3\xE4\xB8\xAA"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 83
-        - 205
+        - 237
+        - 157
+        - 192
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
-        - 207
+        - 184
     - !map:BSON::OrderedHash 
-      name: "\xE8\xA5\xBF\xE8\x8A\xB9"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE8\xB0\x83\xE6\x96\x99"
+      amount: "1\xE9\xA4\x90\xE5\x8C\x99"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 83
-        - 205
+        - 237
+        - 157
+        - 192
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
-        - 208
+        - 185
     - !map:BSON::OrderedHash 
-      name: "\xE5\xA7\x9C"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE5\x88\x9D\xE6\xA6\xA8\xE6\xA9\x84\xE6\xA6\x84\xE6\xB2\xB9"
+      amount: "2\xE9\xA4\x90\xE5\x8C\x99"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 83
-        - 205
+        - 237
+        - 157
+        - 192
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
-        - 209
+        - 186
     - !map:BSON::OrderedHash 
-      name: "\xE7\x99\xBD\xE7\xB3\x96"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
+      name: "\xE5\xB7\xB4\xE9\xA9\xAC\xE5\xA5\xB6\xE9\x85\xAA\xE7\xB2\x89"
+      amount: "2\xE9\xA4\x90\xE5\x8C\x99"
       is_major_ingredient: true
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 83
-        - 205
+        - 237
+        - 157
+        - 192
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
-        - 210
+        - 187
     - !map:BSON::OrderedHash 
-      name: "\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89"
-      amount: "\xE9\x80\x82\xE9\x87\x8F"
-      is_major_ingredient: true
+      name: "\xE7\x9B\x90"
+      amount: "0.5\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: false
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 83
-        - 205
+        - 237
+        - 157
+        - 192
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
-        - 211
+        - 188
+    - !map:BSON::OrderedHash 
+      name: "\xE9\xBB\x91\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89"
+      amount: "0.5\xE8\x8C\xB6\xE5\x8C\x99"
+      is_major_ingredient: false
+      _id: !ruby/object:BSON::ObjectId 
+        data: 
+        - 78
+        - 237
+        - 157
+        - 192
+        - 29
+        - 65
+        - 200
+        - 47
+        - 166
+        - 0
+        - 1
+        - 189
     steps: 
     - !map:BSON::OrderedHash 
-      img_id: 4ee753811d41c826860001b0
-      content: "\xE7\x8C\xAA\xE8\x85\xB0\xE5\x88\x87\xE8\x8A\xB1\xE5\x88\x80\xEF\xBC\x8C\xE8\xA5\xBF\xE8\x8A\xB9\xE5\x88\x87\xE5\xA4\xA7\xE7\x89\x87\xE3\x80\x81\xE5\xA7\x9C\xE3\x80\x81\xE8\x83\xA1\xE8\x90\x9D\xE5\x8D\x9C\xE5\x88\x87\xE7\x89\x87\xE3\x80\x81\xE8\x91\xB1\xE5\x88\x87\xE6\xAE\xB5\xE3\x80\x82\xE8\x8A\xB1\xE5\x88\x80\xE5\x88\x87\xE6\xB3\x95\xE5\xA6\x82\xE4\xB8\x8A\xE6\x89\x80\xE7\xA4\xBA\xE3\x80\x82"
+      img_id: 4eed9dad1d41c82fa60001b0
+      content: "\xE5\xB0\x86\xE7\x83\xA4\xE7\xAE\xB1\xE6\xB8\xA9\xE5\xBA\xA6\xE8\xAE\xBE\xE7\xBD\xAE\xE4\xB8\xBA200C\xE3\x80\x82\xE5\x9C\xA8\xE5\xA4\xA7\xE7\xA2\x97\xE4\xB8\xAD\xE5\xB0\x86\xE8\xA5\xBF\xE8\x91\xAB\xE8\x8A\xA6\xE7\x89\x87\xE3\x80\x81\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE8\xB0\x83\xE6\x96\x99\xE3\x80\x81\xE6\xA9\x84\xE6\xA6\x84\xE6\xB2\xB9\xE3\x80\x81\xE5\xA5\xB6\xE9\x85\xAA\xE3\x80\x81\xE7\x9B\x90\xE3\x80\x81\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89\xE6\xB7\xB7\xE5\x90\x88\xE3\x80\x82\r\n\
+        \xE5\x9C\xA8\xE7\x83\xA4\xE7\x9B\x98\xE4\xB8\xAD\xE5\x9D\x87\xE5\x8C\x80\xE6\x94\xBE\xE5\xA5\xBD\xE8\xB0\x83\xE5\x91\xB3\xE5\xA5\xBD\xE7\x9A\x84\xE8\xA5\xBF\xE8\x91\xAB\xE8\x8A\xA6\xE7\x89\x87\xEF\xBC\x8C\xE7\x83\x98\xE7\x83\xA48\xE5\x88\xB010\xE5\x88\x86\xE9\x92\x9F\xEF\xBC\x8C\xE7\xBF\xBB\xE8\xBD\xAC\xE4\xB8\x80\xE6\xAC\xA1\xE3\x80\x82"
       _id: !ruby/object:BSON::ObjectId 
         data: 
         - 78
-        - 231
-        - 83
-        - 205
+        - 237
+        - 157
+        - 192
         - 29
         - 65
         - 200
-        - 38
-        - 134
+        - 47
+        - 166
         - 0
         - 1
-        - 212
-    - !map:BSON::OrderedHash 
-      img_id: 4ee753861d41c826860001b5
-      content: "\xE9\x94\x85\xE4\xB8\xAD\xE5\x9D\x90\xE6\xB0\xB4\xEF\xBC\x8C\xE5\x8A\xA0\xE5\x85\xA5\xE8\x8A\xB1\xE6\xA4\x92\xE3\x80\x81\xE7\x94\x9F\xE5\xA7\x9C\xE3\x80\x81\xE6\x96\x99\xE9\x85\x92\xEF\xBC\x8C\xE6\xB0\xB4\xE7\x83\xA7\xE5\xBC\x80\xE5\x90\x8E\xE6\x94\xBE\xE5\x85\xA5\xE7\x8C\xAA\xE8\x85\xB0\xE7\x95\xA5\xE7\x84\xAF\xE5\x8E\xBB\xE9\x99\xA4\xE8\xA1\x80\xE6\xB0\xB4\xE6\x8D\x9E\xE5\x87\xBA\xE6\x8E\xA7\xE5\xB9\xB2\xE6\xB0\xB4\xE5\x88\x86\xE3\x80\x82"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 83
-        - 205
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 213
-    - !map:BSON::OrderedHash 
-      img_id: 4ee753891d41c826860001ba
-      content: "\xE5\x8A\xA0\xE5\x85\xA5\xE8\x83\xA1\xE8\x90\x9D\xE5\x8D\x9C\xE7\x89\x87\xE3\x80\x81\xE8\xA5\xBF\xE8\x8A\xB9\xE5\xA4\xA7\xE7\x81\xAB\xE7\xBF\xBB\xE7\x82\x92\xE7\x89\x87\xE5\x88\xBB\xEF\xBC\x8C\xE5\x86\x8D\xE4\xB8\x8B\xE5\x85\xA5\xE7\x84\xAF\xE5\xA5\xBD\xE6\xB0\xB4\xE7\x9A\x84\xE8\x85\xB0\xE8\x8A\xB1\xE7\xBF\xBB\xE7\x82\x92"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 83
-        - 205
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 214
-    - !map:BSON::OrderedHash 
-      img_id: 4ee7538d1d41c826860001bf
-      content: "\xE5\x8A\xA0\xE5\x85\xA5\xE6\x96\x99\xE9\x85\x92\xEF\xBC\x8C\xE5\xA4\xA7\xE7\x81\xAB\xE7\xBF\xBB\xE7\x82\x92\xE7\x89\x87\xE5\x88\xBB\xE3\x80\x82"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 83
-        - 205
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 215
-    - !map:BSON::OrderedHash 
-      img_id: 4ee753911d41c826860001c4
-      content: "\xE5\x8A\xA0\xE5\x85\xA5\xE5\xB0\x91\xE8\xAE\xB8\xE7\x94\x9F\xE6\x8A\xBD\xE3\x80\x81\xE7\x99\xBD\xE7\xB3\x96\xE3\x80\x81\xE9\x86\x8B\xE3\x80\x81\xE7\x9B\x90\xE3\x80\x81\xE8\x83\xA1\xE6\xA4\x92\xE7\xB2\x89\xE7\xBF\xBB\xE7\x82\x92\xE5\x9D\x87\xE5\x8C\x80\xE5\x8D\xB3\xE5\x8F\xAF\xE3\x80\x82"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 83
-        - 205
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 216
-    - !map:BSON::OrderedHash 
-      img_id: 4ee753941d41c826860001c9
-      content: "\xE6\xAC\xA2\xE8\xBF\x8E\xE5\x93\x81\xE5\xB0\x9D"
-      _id: !ruby/object:BSON::ObjectId 
-        data: 
-        - 78
-        - 231
-        - 83
-        - 205
-        - 29
-        - 65
-        - 200
-        - 38
-        - 134
-        - 0
-        - 1
-        - 217
+        - 190

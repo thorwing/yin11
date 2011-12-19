@@ -2,7 +2,7 @@
 <div class="block box_shadow mt10">
     <% @stars.each do |star| %>
         <div class="grid_6 fl mt10" id="<%= star.id %>">
-            <%= link_to image_tag(star.get_avatar, border: 0, width: 200, height:200), star %><br/>
+            <%= link_to image_tag(star.get_avatar(:regular)), star %><br/>
 
             <%= link_to star.screen_name, star %><br/>
             <%= star.profile.biography %><br/>

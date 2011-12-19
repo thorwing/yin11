@@ -3,21 +3,21 @@
 <table>
     <tr>
         <th><%= t("users.screen_name") %></th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Master</th>
-        <th></th>
+        <th><%= t("users.role") %></th>
+        <th><%= t("reviews.reviews") %></th>
+        <th><%= t("recipes.recipes") %></th>
+        <th><%= t("users.master") %></th>
         <th></th>
     </tr>
 
     <% @users.each do |user| %>
     <tr id='<%= user.id %>'>
         <td><%= link_to user.screen_name, [:administrator, user] %></td>
-        <td><%= user.email %></td>
-        <td><%= user.role %></td>
+        <td><%= t("users.role_#{user.role.to_s}")%></td>
+        <td><%= user.reviews.size %></td>
+        <td><%= user.recipes.size %></td>
         <td><%= render "administrator/shared/toggle_fields", :item => user, :field => :is_master %></td>
         <td><%= link_to t("general.edit"), edit_administrator_user_path(user), :class => "button" %></td>
-        <td><%= link_to t("general.delete"), [:administrator, user], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
     </tr>
     <% end %>
 </table>

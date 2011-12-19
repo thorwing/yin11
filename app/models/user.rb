@@ -131,9 +131,9 @@ class User
     User.first(:conditions => { :email => email}).nil?
   end
 
-  def get_avatar(thumb = false, origin = true)
+  def get_avatar(version = nil, origin = true)
     if self.avatar?
-      thumb ? self.avatar_url(:thumb) : self.avatar_url
+      version ? self.avatar_url(version) : self.avatar_url
     else
       #origin url is used for image_tag, the other one is used for waterfall displaying
       origin ? "default_user.png" : "/assets/default_user.png"
@@ -166,17 +166,9 @@ class User
     end
   end
 
-  def members_from_same_group
-    groups.inject([]) {|memo, group| memo | group.member_ids }
-  end
-
-  def get_evaluation(days = self.profile.concern_days)
-    data = get_raw_updates(days)
-    result = {}
-    data.each do |k,v|
-      result[k] = v.size #EvaluationManager.evaluate_items(v)
-    end
-    result
+  def get_recent_feeds(limit)
+    feeds = self.feeds.desc(:created_at)
+    feeds.reject{|f| f.picture_url.blank? || f.picture_url.include?('not_found')}[0..(limit-1)]
   end
 
   def get_updates(days = self.profile.concern_days)
@@ -207,32 +199,6 @@ class User
        self[column] = SecureRandom.urlsafe_base64
      end while User.exists?(:conditions => {column => self[column]})
   end
-
-  #def get_raw_updates(days)
-  #  data = {}
-  #  self.tags.map{|t| data[t] = []}
-  #  InfoItem.enabled.in_days_of(days).tagged_with(self.tags).all.each do |item|
-  #    (self.tags & item.tags).each do |tag|
-  #      data[tag] << item
-  #    end
-  #  end
-  #
-  #  self.profile.watched_locations.each do |location|
-  #    data[location.address] = Review.near(location.to_coordinates, self.profile.watched_distance).enabled.in_days_of(days).all
-  #  end
-  #
-  #  self.groups.each do |group|
-  #    data[group] = Review.enabled.in_days_of(days).any_in(:author_id => group.member_ids).all
-  #  end
-  #
-  #  data
-  #end
-  #
-  #def self.send_updates_to_users
-  #  self.enabled.valid_email_users.mail_receiver.each do |user|
-  #    user.send_updates
-  #  end
-  #end
 
   def non_third_party_login
     provider.blank?
