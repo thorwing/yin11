@@ -28,6 +28,7 @@ class PersonalController < ApplicationController
         user_avatar: f.author.get_avatar(:thumb, false),
         user_reviews_cnt: f.author.reviews.count,
         user_recipes_cnt: f.author.recipes.count,
+        user_fans_cnt: f.author.followers.count,
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == f.author.id.to_s}.size > 0,
         target_path: url_for(f.item),
         time: f.created_at.strftime("%Y-%m-%d %H:%M:%S"),

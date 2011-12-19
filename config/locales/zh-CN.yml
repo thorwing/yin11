@@ -143,9 +143,10 @@ zh-CN:
     email_verified: 邮箱已验证
     password_reset: 密码已更改
     review_posted: 分享已发布
-    review_post_failure: 分享发布失败
+    review_post_failure: 分享发布失败,
     review_updated: 分享已修改
     article_posted: 文章已发布
+    already_published: 这个...好像发过了嘛
     article_updated: 文章已更新
     group_created: 饭桌已创建
     group_updated: 饭桌已更新

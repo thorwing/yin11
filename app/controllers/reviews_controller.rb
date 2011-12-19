@@ -27,6 +27,7 @@ class ReviewsController < ApplicationController
         user_avatar: r.author.get_avatar(:thumb, false),
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,
+        user_fans_cnt: r.author.followers.count,
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
         picture_url: r.get_review_image_url,
@@ -82,40 +83,52 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.xml
   def create
-    @review = Review.new(params[:review])
-    @review.author = current_user
+    last_review = current_user.reviews.desc(:created_at).limit(1).first
+    #p "last_review: " + last_review.class.name
+    #p "last_review: " + last_review.content
+    #p "params[:review]: " + params[:review].to_param
+    #p "params[:review]: " + params[:review][:content]
+    if (last_review.content == params[:review][:content])
+        @user_message = t("notices.already_published")
+        respond_to do |format|
+          @user_message = t("notices.review_post_failure") + @user_message
+          format.html { render :action => "new", :notice => @user_message }
+          format.js
+        end
+    else
+      @review = Review.new(params[:review])
+      @review.author = current_user
 
-    ImagesHelper.process_uploaded_images(@review, params[:images])
+      ImagesHelper.process_uploaded_images(@review, params[:images])
 
-    #handle products'' links
-    @review.product_ids.each do |product_id|
-      product = Product.find(product_id)
-      product.review_ids ||= []
-      product.review_ids << @review.id
-      product.save
-    end
+      #handle products'' links
+      @review.product_ids.each do |product_id|
+        product = Product.find(product_id)
+        product.review_ids ||= []
+        product.review_ids << @review.id
+        product.save
+      end
 
-    #RewardManager.new(current_user).contribute(:posted_reviews)
+      #default value
+      @remote_status = true
+      @local_status = false
+      @user_message = ''
 
-    #default value
-    @remote_status = true
-    @local_status = false
-    @user_message = ''
+      if params[:sync_to]
+        @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
+      end
+      @local_status = @review.save if @remote_status
 
-    if params[:sync_to]
-      @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
-    end
-    @local_status = @review.save if @remote_status
-
-    respond_to do |format|
-      if @local_status
-        @user_message = t("notices.review_posted") + @user_message
-        format.html { redirect_to(@review, :notice => @user_message) }
-        format.js
-      else
-        @user_message = t("notices.review_post_failure") + @user_message
-        format.html { render :action => "new", :notice => @user_message }
-        format.js
+      respond_to do |format|
+        if @local_status
+          @user_message = t("notices.review_posted") + @user_message
+          format.html { redirect_to(@review, :notice => @user_message) }
+          format.js
+        else
+          @user_message = t("notices.review_post_failure") + @user_message
+          format.html { render :action => "new", :notice => @user_message }
+          format.js
+        end
       end
     end
   end
