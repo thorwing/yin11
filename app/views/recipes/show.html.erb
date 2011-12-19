@@ -15,10 +15,20 @@
             <%= t_with_colon("recipes.ingredients") %><br/>
             <p>
               <% @recipe.ingredients.each do |i|%>
-                  <%= i.name %>
-                  <%= i.amount %>
-                  <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
-                  <br/>
+                  <% if i.is_major_ingredient == true %>
+                      <%= i.name %>
+                      <%= i.amount %>
+                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
+                      <br/>
+                  <% end  %>
+              <% end %>
+              <% @recipe.ingredients.each do |i|%>
+                  <% if i.is_major_ingredient == false %>
+                      <%= i.name %>
+                      <%= i.amount %>
+                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
+                      <br/>
+                  <% end  %>
               <% end %>
             </p>
             <% if current_user_has_permission? :normal_user %>

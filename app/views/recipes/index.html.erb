@@ -1,21 +1,32 @@
 <% title t("recipes.recipe_collection"), false %>
-
-<% if current_user_has_permission? :normal_user %>
-    <div>
-        <%= link_to t("recipes.new"), new_recipe_path, class: "button" %>
-    </div>
-<% end %>
-
 <div class="grid_10 to_left">
     <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 230 , tag: params[:tag]%>
 </div>
 
 <div class="grid_2 box_shadow to_right">
-    <% @hot_tags.each do |tag, weight| %>
-        <div class ="ml20">
-            <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag}, :class => "tag" %> * <%= weight %><br/>
+    <% if current_user_has_permission? :normal_user %>
+        <div>
+            <%= link_to t("recipes.new"), new_recipe_path, class: "button" %>
         </div>
     <% end %>
+
+    <div class="f14"><%= t("tags.hot_tags") %></div>
+    <% @hot_tags.each do |tag, weight| %>
+            <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag} %>
+    <% end %><br/>
+    <%= link_to t("tags.more"), tags_path  %>
+    <br/><br/>
+
+    <% @records.each do |record|%>
+        <div class="f14"><%= record["name"] %></div>
+        <% tags = record["detail"].split(' ') %>
+        <% len = tags.size > 8 ? 8 : tags.size  %>
+        <% tags[0..len-1].each do |tag|  %>
+            <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag} %>
+        <% end  %><br/>
+        <%= link_to t("tags.more"), tags_path  %>
+        <br/><br/>
+    <% end  %>
 </div>
 
 

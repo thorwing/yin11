@@ -194,7 +194,7 @@ zh-CN:
     tags: 管理标签
     pages: 管理页面
     images: 管理图片
-    audits: 管理审计
+    recipes: 管理菜谱
 
 
   address:
@@ -499,9 +499,10 @@ zh-CN:
 
   tags:
     tags: 标签
-    all: 标签大全
+    all: 美食大全
     new_tag: 新标签
-    hot_tags: 人气标签
+    hot_tags: 人气
+    more: >>更多
 
 
   views:

@@ -4,7 +4,8 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    t@hot_tags = Recipe.tags_with_weight
+    @hot_tags = Recipe.tags_with_weight[0..7]
+    @records = YAML::load(File.open("app/seeds/tags.yml"))
     respond_to do |format|
       format.html # index.html.erb
     end
