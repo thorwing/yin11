@@ -2,7 +2,6 @@ class Recipe
     include Mongoid::Document
     include Mongoid::Timestamps
     include Taggable
-    include Imageable
 
     #fields
     field :name
@@ -38,7 +37,7 @@ class Recipe
       if self.steps.size > 0 && self.steps.last.image.present?
         self.steps.last.image.picture_url(:waterfall)
       else
-        "/assets/not_found.png"
+        nil
       end
     end
 

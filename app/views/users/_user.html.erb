@@ -1,7 +1,13 @@
 <div class="master box_shadow mt5 mb5 p5 fl">
-    <div class="head fl">
+    <div class="user_info fl">
       <%= link_to user.screen_name, user %><br/>
       <%= link_to image_tag(user.get_avatar(:regular), "max-width" => AVATAR_WIDTH, "max-height" => AVATAR_HEIGHT), user %><br/>
+      <div class="more_user_info box_shadow display_none" >
+        <span class="p5"><%= t("reviews.by_user", count: user.reviews.size) %></span><br/>
+        <span class="p5"><%= t("recipes.by_user", count: user.recipes.size) %></span><br/>
+        <span class="p5"><%= t("recipes.author_followers", count: user.followers.size) %></span>
+        <div class="fr"><%= render "relationships/follow_field", target: user %><br/> </div>
+      </div>
     </div>
     <div class="desc fl f12">
       <%= user.profile.biography %>
