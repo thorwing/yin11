@@ -18,11 +18,11 @@
                 </a>
                 <%= link_to "{{user_name}}", "users/{{user_id}}", class: "fl" %><br/>
             </div>
-            <div class="more_user_info box_shadow display_none" onmouseover= '$(this).show();' onmouseout='$(this).hide();' >
+            <div class="more_user_info box_shadow display_none p5" onmouseover= '$(this).show();' onmouseout='$(this).hide();' >
 
-                <span class="p5"><%= t("reviews.by_user", count: "{{user_reviews_cnt}}") %></span><br/>
-                <span class="p5"><%= t("recipes.by_user", count: "{{user_recipes_cnt}}") %></span><br/>
-                <span class="p5"><%= t("recipes.author_followers", count: "{{user_fans_cnt}}") %></span>
+                <span><%= t("reviews.by_user", count: "{{user_reviews_cnt}}") %></span><br/>
+                <span><%= t("recipes.by_user", count: "{{user_recipes_cnt}}") %></span><br/>
+                <span><%= t("recipes.author_followers", count: "{{user_fans_cnt}}") %></span>
                 <div class="fr"><%= render "relationships/follow_field_waterfall" %><br/> </div>
             </div>
         </div>

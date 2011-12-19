@@ -83,52 +83,50 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.xml
   def create
-    last_review = current_user.reviews.desc(:created_at).limit(1).first
-    #p "last_review: " + last_review.class.name
-    #p "last_review: " + last_review.content
-    #p "params[:review]: " + params[:review].to_param
-    #p "params[:review]: " + params[:review][:content]
+    #default value
+    @remote_status = true
+    @local_status = false
+    @user_message = ''
+
+    #prevent from mistakes ( two reviews in a row)
+    last_review = current_user.reviews.in_days_of(1).desc(:created_at).limit(1).first
     if (last_review.content == params[:review][:content])
-        @user_message = t("notices.already_published")
-        respond_to do |format|
-          @user_message = t("notices.review_post_failure") + @user_message
-          format.html { render :action => "new", :notice => @user_message }
-          format.js
-        end
-    else
-      @review = Review.new(params[:review])
-      @review.author = current_user
-
-      ImagesHelper.process_uploaded_images(@review, params[:images])
-
-      #handle products'' links
-      @review.product_ids.each do |product_id|
-        product = Product.find(product_id)
-        product.review_ids ||= []
-        product.review_ids << @review.id
-        product.save
-      end
-
-      #default value
-      @remote_status = true
-      @local_status = false
-      @user_message = ''
-
-      if params[:sync_to]
-        @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
-      end
-      @local_status = @review.save if @remote_status
-
+      @user_message = t("notices.already_published")
       respond_to do |format|
-        if @local_status
-          @user_message = t("notices.review_posted") + @user_message
-          format.html { redirect_to(@review, :notice => @user_message) }
-          format.js
-        else
-          @user_message = t("notices.review_post_failure") + @user_message
-          format.html { render :action => "new", :notice => @user_message }
-          format.js
-        end
+        format.html { render :action => "new", :notice => @user_message }
+        format.js
+      end
+
+      return
+    end
+
+    @review = Review.new(params[:review])
+    @review.author = current_user
+
+    ImagesHelper.process_uploaded_images(@review, params[:images])
+
+    #handle products'' links
+    @review.product_ids.each do |product_id|
+      product = Product.find(product_id)
+      product.review_ids ||= []
+      product.review_ids << @review.id
+      product.save
+    end
+
+    if params[:sync_to]
+      @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
+    end
+    @local_status = @review.save if @remote_status
+
+    respond_to do |format|
+      if @local_status
+        @user_message = t("notices.review_posted") + @user_message
+        format.html { redirect_to(@review, :notice => @user_message) }
+        format.js
+      else
+        @user_message = t("notices.review_post_failure") + @user_message
+        format.html { render :action => "new", :notice => @user_message }
+        format.js
       end
     end
   end

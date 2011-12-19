@@ -2,10 +2,10 @@
     <div class="user_info fl">
       <%= link_to user.screen_name, user %><br/>
       <%= link_to image_tag(user.get_avatar(:regular), "max-width" => AVATAR_WIDTH, "max-height" => AVATAR_HEIGHT), user %><br/>
-      <div class="more_user_info box_shadow display_none" >
-        <span class="p5"><%= t("reviews.by_user", count: user.reviews.size) %></span><br/>
-        <span class="p5"><%= t("recipes.by_user", count: user.recipes.size) %></span><br/>
-        <span class="p5"><%= t("recipes.author_followers", count: user.followers.size) %></span>
+      <div class="more_user_info box_shadow display_none p5" >
+        <span><%= t("reviews.by_user", count: user.reviews.size) %></span><br/>
+        <span><%= t("recipes.by_user", count: user.recipes.size) %></span><br/>
+        <span><%= t("recipes.author_followers", count: user.followers.size) %></span>
         <div class="fr"><%= render "relationships/follow_field", target: user %><br/> </div>
       </div>
     </div>
