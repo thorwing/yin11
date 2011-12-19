@@ -176,6 +176,11 @@ class User
     data.inject([]){|memo, (k,v)| memo | v}.compact.uniq
   end
 
+  #TODO
+  def score
+    followers.size * 3 + recipes.size * 2 + reviews.size
+  end
+
   private
 
   def encrypt_password

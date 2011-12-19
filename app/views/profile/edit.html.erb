@@ -3,7 +3,7 @@
 <%= form_for current_user.profile, :html => {:multipart => true} do |f| %>
     <%= render "#{current_user.profile.current_step}", :f => f %>
 
-    <div class="actions">
+    <div class="mt10">
         <%= submit_tag t("profile.previous"), :name => "previous_button", :class => "button"  unless current_user.profile.first_step? %>
         <%= submit_tag current_user.profile.last_step? ? t("general.submit") : t("profile.next"), :class => "button" %>
         <br/>

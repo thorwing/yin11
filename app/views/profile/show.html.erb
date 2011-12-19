@@ -27,13 +27,10 @@
             <b><%= t("general.email_address") %></b><br/>
             <%= current_user.email %><br/>
             <b><%= t("user_basic.avatar") %></b><br/>
-            <div class="img_frame">
-                <%= link_to (image_tag current_user.get_avatar(:regular)), current_user.get_avatar(nil, false), rel: "facebox" %>
-            </div>
-            <br/>
+            <%= link_to (image_tag current_user.get_avatar(:regular)), current_user.get_avatar(nil, false), rel: "facebox" %><br/>
             <b><%= t("user_basic.biography") %></b><br/>
             <%= current_user.profile.biography %><br/>
-            <div>
+            <div class="mt10">
                 <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile), :class => "button" %>
             </div>
         </div>

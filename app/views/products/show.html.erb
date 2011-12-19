@@ -3,11 +3,11 @@
     <%= render "product_nav", :product => @product %>
 
     <div class="grid_9 box_shadow to_left p5">
-      <div class="img_frame fl">
-        <%= link_to image_tag(@product.image.picture_url, :class=>"product_img_box") if @product.image && @product.image.picture_url %>
+      <div class="fl">
+        <%= link_to image_tag(@product.image.picture_url, :class=>"img_frame") if @product.image && @product.image.picture_url %>
       </div>
 
-      <div class="product_detail_box fl">
+      <div class="ml10 fl">
         <p>
           <b><%= t("general.name") %></b>
           <%= @product.name %>
@@ -59,16 +59,8 @@
     </div>
 
     <div class="grid_3 box_shadow to_right">
-      <p class="maintitle"><span class="bigfs">您可能还爱吃？</span></p>
-      <div class="related_product_block">
-        <% @related_products.each do |product| %>
-            <li>
-              <%= render "related _product", :product => product %>
-            </li>
-        <% end %>
-      </div>
+      <%= render "products/related_products", products: @related_products %>
     </div>
-
   </div>
 </div>
 

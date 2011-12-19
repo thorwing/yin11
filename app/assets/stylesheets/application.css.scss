@@ -34,6 +34,7 @@
     float: left;
     margin-left: 10px;
     margin-right: 10px;
+    overflow: hidden;
 }
 
 .grid_1 { width: 60px;}
@@ -170,6 +171,7 @@ ul.menu li {
 
 .b_black {background-color: $black;}
 .b_gray {background-color: $gray;}
+.b_azure {background-color: $azure;}
 
 .lb {border-left: 1px solid;}
 .rb {border-right: 1px solid;}
@@ -199,6 +201,8 @@ ul.menu li {
 .ac {text-align: center;}
 
 .full_w {width:100%; overflow:hidden;}
+.auto_w {width: auto;}
+.auto_h {height: auto;}
 
 .display_none {
     display: none;
@@ -275,10 +279,9 @@ a.tag:hover {
 }
 
 .img_frame {
-    display: inline-block;
-    border: 1px solid $trivial_gray;
-    background: $white;
-    padding: 2px;
+   padding:1px;
+   border:1px solid #021a40;
+   background-color:$white;
 }
 
 .clear {

@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   end
 
   def masters
-    @masters = User.enabled.masters
+    #TODO
+    @masters = User.enabled.masters.sort_by{|master| -1 * master.score}
     @stars = @masters.reject{|m| m.avatar.blank?}[0..4]
 
     @hot_tags = Group.tags_with_weight

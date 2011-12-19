@@ -1,12 +1,19 @@
 <h2 class="f16 mt10">明星达人</h2>
 <div class="block box_shadow mt10">
     <% @stars.each do |star| %>
-        <div class="grid_6 fl mt10" id="<%= star.id %>">
-            <%= link_to image_tag(star.get_avatar(:regular)), star %><br/>
-
-            <%= link_to star.screen_name, star %><br/>
-            <%= star.profile.biography %><br/>
-            <%= render "relationships/follow_field", target: star %>
+        <div class="grid_3 fl mt10 mb10" id="<%= star.id %>">
+          <div class="hint_box">
+            <div style="width:220px;height:300px">
+                <%= link_to image_tag(star.get_avatar), star %><br/>
+            </div>
+            <span class="fix_hint b_black white full_w">
+                <%= link_to star.screen_name, star %><br/>
+                <span class="trivial"><%= t("reviews.by_user", count: star.reviews.size) %></span><br/>
+                <span class="trivial"><%= t("recipes.by_user", count: star.recipes.size) %></span><br/>
+                <span class="trivial"><%= t("user_basic.fans") + " " + star.followers.size.to_s %></span><br/>
+                <%= render "relationships/follow_field", target: star %>
+            </span>
+          </div>
         </div>
     <% end %>
 
@@ -16,12 +23,5 @@
   <% @masters.each do |master| %>
     <%= render "users/user", user: master %>
   <% end %>
-</div>
-
-<div class="grid_3 mt20 to_right box_shadow">
-    <span>根据标签查找达人</span>
-    <% @hot_tags.each do |tag, weight| %>
-        <%= link_to tag, {:controller => "search", :action => "index", :tags => tag}, :class => "tag" %> * <%= weight %><br/>
-    <% end %>
 </div>
 

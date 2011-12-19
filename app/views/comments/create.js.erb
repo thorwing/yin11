@@ -9,6 +9,7 @@
     //reset input
     $('textarea[name="content"]:visible').val('');
     $('.new_reply_comment:visible').hide();
+    $('.first_comment_tip').remove();
 <% elsif @over_limit %>
     alert('<%= t("alerts.posted_comment_too_ofen", :seconds => COMMENTS_INTERVAL) %>');
 <% end %>

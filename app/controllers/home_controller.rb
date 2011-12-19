@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @hot_topics = Topic.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
 
     #TODO
-    @daily_stars = User.enabled.masters
+    @daily_stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..2]
     @masters = User.all.limit(@daily_stars.size * 8)
   end
 
