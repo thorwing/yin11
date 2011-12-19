@@ -136,7 +136,12 @@ class User
       version ? self.avatar_url(version) : self.avatar_url
     else
       #origin url is used for image_tag, the other one is used for waterfall displaying
-      origin ? "default_user.png" : "/assets/default_user.png"
+      prefix = origin ? '' : '/assets/'
+      if version && version == :thumb
+        prefix + "default_head_48.jpg"
+      else
+        prefix + "default_head_100.jpg"
+      end
     end
   end
 
