@@ -45,25 +45,3 @@
 }
 
 .mr10{margin-right:10px;} .mt30{margin-top:30px}
-
-.topic_block{
-	float:left;
-	width:960px;
-	padding-left:40px;
-	padding-right:40px;
-	padding-bottom:40px;
-	background-color: #FFF;
-}
-
-.topic_block .box{float:left; height:auto; width:200px; margin-left:10px; margin-right:10px; position: relative;}
-
-.topic_block .box .hint {
-    display: none;
-    position: absolute;
-    line-height: 20px;
-    bottom: 0px;
-    background-color: gray;
-    color: white;
-    opacity: 0.7;
-    padding: 0 5px;
-}
