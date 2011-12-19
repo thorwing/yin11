@@ -1,57 +1,57 @@
 <%= form_for(@recipe) do |f| %>
  <%= render "shared/error_messages", target: @recipe %>
 
-   <div class = "grid_9 box_shadow to_left p5">
-       <div class="field block ">
+   <div class = "grid_9  to_left ">
+       <div class="field block box_shadow m10 p5">
+            <%= f.label :title, t("recipes.basic_info") , :class => "f16" %><br/><br/>
             <%= f.label :title, t("recipes.name") , :class => "f14" %>
             <%= f.text_field :name, :maxlength => get_max_length(Recipe, :name) %>
             <div class="field f14">
-                 <b><%= f.label :tags_string, t("tags.tags") %></b>
+                 <%= f.label :tags_string, t("tags.tags") %>
                  <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
             </div>
        </div>
 
-        <div class ="ingredients p5">
-            <%= f.label :title, t("recipes.ingredients") , :class => "f16" %><br/>
-            <table>
-                <tr>
-                    <th><%= t("recipes.ingredient_name") %></th>
-                    <th><%= t("recipes.ingredient_amount") %></th>
-                    <th><%= t("recipes.is_major_ingredient") %></th>
-                    <th></th>
-                </tr>
+       <div class="box_shadow m10 p5">
+            <div class ="ingredients ">
+                <%= f.label :title, t("recipes.ingredients") , :class => "f16" %><br/>
+                <table>
+                    <tr>
+                        <th><%= t("recipes.ingredient_name") %></th>
+                        <th><%= t("recipes.ingredient_amount") %></th>
+                        <th><%= t("recipes.is_major_ingredient") %></th>
+                        <th></th>
+                    </tr>
 
-                <%= f.fields_for :ingredients  do |builder| %>
-                    <%= render "ingredient_fields", :f => builder %>
-                <% end  %>
-            </table>
+                    <%= f.fields_for :ingredients  do |builder| %>
+                        <%= render "ingredient_fields", :f => builder %>
+                    <% end  %>
+                </table>
+            </div>
+            <%= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients, ".ingredients table" , get_max_length(Recipe, :ingredients))  %>
         </div>
-        <%= link_to_add_fields( t("recipes.add_ingredient"), f, :ingredients, ".ingredients table" , get_max_length(Recipe, :ingredients))  %>
+
+        <div class="box_shadow m10 p5">
+            <div class ="steps block ">
+                <%= f.label :title, t("recipes.steps"), :class => "f16" %><br/>
+                <%= f.fields_for :steps  do |builder| %>
+                    <%= render "step_fields", :f => builder %>
+                <% end %>
+            </div>
+            <%= link_to_add_fields( t("recipes.add_step"), f, :steps, ".steps", get_max_length(Recipe, :steps) ) %><br/>
 
 
-
-        <div class ="steps block">
-            <%= f.label :title, t("recipes.steps"), :class => "f16" %>
             <%= f.label :title, t("recipes.note"), :class => "f14" %>
-            <br/>
-
-            <!--<= :steps.length %>-->
-            <%= f.fields_for :steps  do |builder| %>
-            <%= render "step_fields", :f => builder %>
-
-            <% end %>
         </div>
-        <%= link_to_add_fields( t("recipes.add_step"), f, :steps, ".steps", get_max_length(Recipe, :steps) ) %>
-        <!--<= javascript_tag "show('');" %>-->
 
       <div class="actions">
         <%= f.submit t("general.submit"), class: "mt20 button" %>
       </div>
   </div>
 
-  <div class = "grid_3 box_shadow to_right">
-    <%= t("recipes.tips") %><br/>
-    <%= link_to t("recipes.how_to") %>
-  </div>
+  <!--<div class = "grid_3 box_shadow to_right m10 p5">-->
+    <!--<h3><= t("recipes.tips") %></h3>-->
+    <!--<= t("recipes.how_to") %>-->
+  <!--</div>-->
 
 <% end %>

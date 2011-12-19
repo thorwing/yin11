@@ -15,10 +15,20 @@
             <%= t_with_colon("recipes.ingredients") %><br/>
             <p>
               <% @recipe.ingredients.each do |i|%>
-                  <%= i.name %>
-                  <%= i.amount %>
-                  <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
-                  <br/>
+                  <% if i.is_major_ingredient == true %>
+                      <%= i.name %>
+                      <%= i.amount %>
+                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
+                      <br/>
+                  <% end  %>
+              <% end %>
+              <% @recipe.ingredients.each do |i|%>
+                  <% if i.is_major_ingredient == false %>
+                      <%= i.name %>
+                      <%= i.amount %>
+                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
+                      <br/>
+                  <% end  %>
               <% end %>
             </p>
             <% if current_user_has_permission? :normal_user %>
@@ -40,11 +50,11 @@
           <b><%= t("recipes.steps") %></b>
           <% @recipe.steps.each do |f|%>
               <div class="step_container grid_3 ">
-
-                  <a  rel="facebox" href ="<%=f.image.picture_url%>">
-                    <%= image_tag f.image.picture_url, :width => "210", :height => "150", :alt=> "step_image"%>
-                  </a><br/>
-
+                  <% if f.image.present?%>
+                      <a  rel="facebox" href ="<%=f.image.picture_url%>">
+                        <%= image_tag f.image.picture_url, :width => "210", :height => "150", :alt=> "step_image"%>
+                      </a><br/>
+                   <% end  %>
                 <div class="step_content"><%= f.content %></div>
               </div>
           <% end %>

@@ -1,24 +1,29 @@
 <script type="tpl" id="tpl">
     <div class="waterfall grid_3 box_shadow" data-id="{{id}}">
         <% if path %>
-            <a href="<%= "#{path}/{{id}}" %>" class="image"><img alt="{{name}}" src="{{picture_url}}" /></a>
+            <div align="center"><a href="<%= "#{path}/{{id}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" /></a></div>
         <% else %>
-            <a href="<%= "{{target_path}}" %>" class="image"><img alt="{{name}}" src="{{picture_url}}" /></a>
+            <div align="center"><a href="<%= "{{target_path}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" /></a></div>
         <% end %>
+        <br/>
         <% if show_name %>
-            <span class="ml10 f16">{{name}}</span><br/>
+
+            <div class = "ml10 f16"><%= link_to "{{name}}", "#{path}/{{id}}" %><br/></div>
+            <!--<span class="ml10 f16">{{name}}</span><br/>-->
         <% end %>
-        <div class="user_info ml10">
+        <div class="user_info ml10" position = "relative">
             <div>
-                <a href="users/{{user_id}}" class="fl mr10" onmouseover='show_user_info($(this));'>
+                <a href="users/{{user_id}}"  class="fl mr10" onmouseover='show_user_info($(this));'>
                     <img alt="avatar" src="{{user_avatar}}" />
                 </a>
                 <%= link_to "{{user_name}}", "users/{{user_id}}", class: "fl" %><br/>
             </div>
-            <div class="more_user_info box_shadow display_none" onmouseout='$(this).hide();'>
-                <%= render "relationships/follow_field_waterfall" %><br/>
-                <span class="trivial"><%= t("reviews.by_user", count: "{{user_reviews_cnt}}") %></span><br/>
-                <span class="trivial"><%= t("recipes.by_user", count: "{{user_recipes_cnt}}") %></span><br/>
+            <div class="more_user_info box_shadow display_none" onmouseover= '$(this).show();' onmouseout='$(this).hide();' >
+
+                <span class="p5"><%= t("reviews.by_user", count: "{{user_reviews_cnt}}") %></span><br/>
+                <span class="p5"><%= t("recipes.by_user", count: "{{user_recipes_cnt}}") %></span><br/>
+                <span class="p5"><%= t("recipes.author_followers", count: "{{user_fans_cnt}}") %></span>
+                <div class="fr"><%= render "relationships/follow_field_waterfall" %><br/> </div>
             </div>
         </div>
         <div class="ml10">

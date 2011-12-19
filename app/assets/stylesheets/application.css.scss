@@ -135,6 +135,7 @@ ul.menu li {
 .p10 {padding: 10px;}
 
 .m5 {margin: 5px;}
+.m10 {margin: 10px;}
 
 .ml2 {margin-left: 2px;}
 
@@ -260,6 +261,7 @@ a.button.hide {
 }
 
 a.tag {
+    display:inline-block;
     text-decoration: none;
     -moz-border-radius: 5px;
     border-radius: 5px;

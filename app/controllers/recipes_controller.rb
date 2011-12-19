@@ -4,7 +4,8 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    t@hot_tags = Recipe.tags_with_weight
+    @hot_tags = Recipe.tags_with_weight[0..7]
+    @records = YAML::load(File.open("app/seeds/tags.yml"))
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -24,6 +25,7 @@ class RecipesController < ApplicationController
         user_avatar: r.author.get_avatar(:thumb, false),
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,
+        user_fans_cnt: r.author.followers.count,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
         id: r.id}
       },

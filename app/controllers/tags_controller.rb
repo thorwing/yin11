@@ -46,7 +46,6 @@ class TagsController < ApplicationController
 
   def index
     @hot_tags = get_hot_tags
-
     @records = YAML::load(File.open("app/seeds/tags.yml"))
 
     respond_to do |format|

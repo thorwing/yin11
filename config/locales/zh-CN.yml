@@ -195,7 +195,7 @@ zh-CN:
     pages: 管理页面
     images: 管理图片
     audits: 管理审计
-
+    recipes: 管理菜谱
 
   address:
     province: 省份
@@ -499,9 +499,10 @@ zh-CN:
 
   tags:
     tags: 标签
-    all: 标签大全
+    all: 美食大全
     new_tag: 新标签
-    hot_tags: 人气标签
+    hot_tags: 人气
+    more: >>更多
 
 
   views:
@@ -539,6 +540,7 @@ zh-CN:
      recipe_collection: 菜谱大全
      name: 菜谱名
      ingredients: 食材明细
+     basic_info: 基本信息
      ingredient_name: 名称
      ingredient_amount: 用量
      ingredients_count: 食材数
@@ -566,8 +568,9 @@ zh-CN:
      show: 显示
      major: 主料
      minor: 辅料
-     note: (请在最终的步骤中附上大作的成品图)
+     note: 提示:请在最终的步骤中附上大作的成品图
      by_user: 发表了%{count}个菜谱
+     author_followers: 拥有%{count}个粉丝
 
   third_party:
     taobao: 淘宝

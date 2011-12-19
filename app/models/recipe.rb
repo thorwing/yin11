@@ -2,6 +2,7 @@ class Recipe
     include Mongoid::Document
     include Mongoid::Timestamps
     include Taggable
+    include Imageable
 
     #fields
     field :name
@@ -34,10 +35,10 @@ class Recipe
 
     #TODO use a real image field here
     def image_url
-      if self.steps.size > 0 && self.steps.last.image.picture?
+      if self.steps.size > 0 && self.steps.last.image.present?
         self.steps.last.image.picture_url(:waterfall)
       else
-        nil
+        "/assets/not_found.png"
       end
     end
 

@@ -24,26 +24,26 @@
 </div>
 
 
-<div id="disabled_products">
-  <h3><%= t("products.disalbed_products") %></h3>
-  <table>
-    <tr>
-        <th><%= t("general.name") %></th>
-        <th><%= t("general.enable") %></th>
-        <th></th>
-        <th></th>
-    </tr>
+<!--<div id="disabled_products">-->
+  <!--<h3><= t("products.disalbed_products") %></h3>-->
+  <!--<table>-->
+    <!--<tr>-->
+        <!--<th><= t("general.name") %></th>-->
+        <!--<th><= t("general.enable") %></th>-->
+        <!--<th></th>-->
+        <!--<th></th>-->
+    <!--</tr>-->
 
-    <% @disabled_products.each do |product| %>
-      <tr id='<%= product.id %>'>
-        <td><%= link_to product.name, product %></td>
-        <td><%= render "administrator/shared/toggle_fields", :item => product, :field => :enabled %></td>
-        <td><%= link_to t("general.edit"), edit_vendor_path(product), :class => "button" %></td>
-        <td><%= link_to t("general.delete"), product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+    <!--< @disabled_products.each do |product| %>-->
+      <!--<tr id='<= product.id %>'>-->
+        <!--<td><= link_to product.name, product %></td>-->
+        <!--<td><= render "administrator/shared/toggle_fields", :item => product, :field => :enabled %></td>-->
+        <!--<td><= link_to t("general.edit"), edit_vendor_path(product), :class => "button" %></td>-->
+        <!--<td><= link_to t("general.delete"), product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>-->
+      <!--</tr>-->
+    <!--< end %>-->
+  <!--</table>-->
+<!--</div>-->
 
 <br />
 
