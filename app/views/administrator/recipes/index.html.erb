@@ -1,0 +1,25 @@
+<div id="recipes.recipes">
+  <h3><%= t("recipes.recipes") %></h3>
+  <%= @recipes.size.to_s %>
+    <table>
+      <tr>
+        <th><%= t("recipes.name") %></th>
+        <th><%= t("recipes.ingredients_count") %></th>
+        <th><%= t("recipes.steps_count") %></th>
+        <th><%= t("recipes.uploaded_by") %></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @recipes.each do |recipe| %>
+      <tr id='<%= recipe.id %>'>
+        <td><%= link_to recipe.name, recipe %></td>
+        <td><%= recipe.ingredients.size %></td>
+        <td><%= recipe.steps.size %></td>
+        <td><%= recipe.author.screen_name %></td>
+        <td><%= link_to t("general.edit"), edit_recipe_path(recipe), :class => "button" %></td>
+        <td><%= link_to t("general.delete"), recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
+      </tr>
+    <% end %>
+    </table>
+</div>

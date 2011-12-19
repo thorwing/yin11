@@ -1,7 +1,8 @@
 <% title t("tags.all") %>
 <div >
     <%= t("tags.hot_tags") %>
-    <%= @hot_tags.size %> <br/>
+    <!--<= @hot_tags.size %> -->
+    <br/>
     <% @hot_tags.each do |tag| %>
         <%= ( link_to tag.name, {:controller => "recipes", :action => "index", :tag => tag} )%>
     <% end  %>

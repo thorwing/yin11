@@ -1,5 +1,7 @@
 class Step
   include Mongoid::Document
+  include Imageable
+
   field :num, :type => Integer
   field :content, :type => String
   field :img_id

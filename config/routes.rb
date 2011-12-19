@@ -16,6 +16,7 @@ Yin11::Application.routes.draw do
     resources :pages
     resources :images
     resources :audits
+    resources :recipes
   end
 
   put 'administrator/base/toggle'

@@ -3,10 +3,12 @@ class RelationshipsController < ApplicationController
   before_filter :find_followable
 
   def create
-    current_user.relationships << Relationship.new(:target_type => params[:target_type], :target_id => params[:target_id])
-    current_user.save!
-    @followable.add_follower!(current_user)
-
+    relationship =  current_user.relationships.find_or_initialize_by( :target_type => params[:target_type], :target_id => params[:target_id] )
+    if relationship.new_record?
+      current_user.relationships << relationship
+      current_user.save!
+      @followable.add_follower!(current_user)
+    end
     respond_to do |format|
         format.js {render :content_type => 'text/javascript'}
     end
