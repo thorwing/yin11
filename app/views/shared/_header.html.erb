@@ -23,7 +23,7 @@
     <div class="jewelry fr mr10">
         <% if current_user %>
             <span class="nav_menu">
-                <%= link_to(image_tag(current_user.get_avatar(:thumb), "max-width" => AVATAR_THUMB_WIDTH, "max-height" => AVATAR_THUMB_HEIGHT) + current_user.screen_name + image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow"), profile_path(current_user.profile), :class => "white f14") %>
+                <%= link_to(image_tag(current_user.get_avatar(:thumb), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT) + current_user.screen_name + image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow"), profile_path(current_user.profile), :class => "white f14") %>
                 <ul>
                     <li><%= link_to t("menu.show_profile"), profile_path(current_user.profile) %></li>
                     <li><%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %></li>

@@ -1,14 +1,14 @@
-<div class="master block round mt5 mb5 p5 fl">
+<div class="master box_shadow mt5 mb5 p5 fl">
     <div class="head fl">
+      <%= link_to user.screen_name, user %><br/>
       <%= link_to image_tag(user.get_avatar(:regular), "max-width" => AVATAR_WIDTH, "max-height" => AVATAR_HEIGHT), user %><br/>
     </div>
     <div class="desc fl">
-       <%= link_to user.screen_name, user %><br/>
       <%= user.profile.biography %>
     </div>
-    <div class="fr">
+    <div class="feeds fr mt15">
         <% user.get_recent_feeds(3).each do |feed| %>
-          <div class="hint_box fl">
+          <div class="hint_box ml2 fl">
             <%= link_to image_tag(feed.picture_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), feed.item %>
             <span class="hint b_black white"><%= feed.content %></span>
           </div>
