@@ -40,7 +40,7 @@
                 <div class="block round mb10">
                     <b>关注的用户：</b><br/>
                     <% current_user.relationships.each do |r| %>
-                        <% item = r.item %>
+                        <% item = r.get_item %>
                         <% if item.class.name == "User"  %>
                             <%= render item %>
                         <% end  %>
@@ -50,7 +50,7 @@
                 <div class="block round mb10">
                     <b>关注的商品：</b><br/>
                     <% current_user.relationships.each do |r| %>
-                        <% item = r.item %>
+                        <% item = r.get_item %>
                         <% if item.class.name == "Product"  %>
                             <%= render item %>
                         <% end  %>
@@ -60,7 +60,7 @@
                 <div class="block round mb10">
                     <b>关注的商户：</b><br/>
                     <% current_user.relationships.each do |r| %>
-                        <% item = r.item %>
+                        <% item = r.get_item %>
                         <% if item.class.name == "Vendor"  %>
                             <%= render item %>
                         <% end  %>
