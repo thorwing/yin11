@@ -5,93 +5,6 @@
       data: 
       - 78
       - 229
-      - 101
-      - 125
-      - 29
-      - 65
-      - 200
-      - 14
-      - 41
-      - 0
-      - 0
-      - 8
-    content: "<style type=\"text/css\">\r\n\
-      .mr10{margin-right:10px;} .mt30{margin-top:30px}\r\n\
-      \r\n\
-      .topic_block{\r\n\
-      \tfloat:left\r\n\
-      \twidth:960px;\r\n\
-      \tpadding-left:40px;\r\n\
-      \tpadding-right:40px;\r\n\
-      \tpadding-bottom:40px;\r\n\
-      \tbackground-color: #FFF;\r\n\
-      }\r\n\
-      \r\n\
-      .topic_block .box{float:left; height:auto; width:200px; margin-left:10px; margin-right:10px;}\r\n\
-      </style>\r\n\
-      \r\n\
-      <div class=\"topic_block\" style=\"height:560px; background-color:#000\">\r\n\
-      <img src=\"/images/uploads/4eeafaba1d41c80923000008_wine_1.jpg\r\n\
-      \" width=\"860\" height=\"260\" class=\"ml10 mb20\"/>\r\n\
-      <div class=\"box\" style=\"height:260px;\"><a href=\"http://www.amazon.com/CuisineMentor-Gluhwein-Gourmet-Cardamom-Swedish/dp/tags-on-product/B000CQUASO\"><img src=\"/images/uploads/4eeafb141d41c8092300000e_Gluehwein-America.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE5\xBE\xB7\xE5\x9B\xBD\xE4\xBA\xBA\xE6\x9C\x80\xE7\x88\xB1\xE7\x9A\x84\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xBA\xA2\xE9\x85\x92Gluehwein</a></div>\r\n\
-      <div class=\"box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1103sSE*.3-3aco.h-Bxwy&id=10336268371\"><img src=\"/images/uploads/4eeafb441d41c80923000014_yaomingWine.jpg\r\n\
-      \" width=\"197\" height=\"260\" class=\"fl\"/>\xE6\x96\xB0\xE8\xB4\xB5\xE9\xA9\xBE\xE5\x88\xB0 \xE5\xA7\x9A\xE6\x98\x8E\xE7\xBA\xA2\xE9\x85\x92</a></div>\r\n\
-      <div class=\"box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1103sSE*.3-3aco.h-Bxwy&id=10336268371\"><img src=\"/images/uploads/4eeafb6c1d41c8092300001a_wine_2.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE4\xB8\x96\xE7\x95\x8C\xE9\xA1\xB6\xE7\xBA\xA7\xE9\x85\x92\xE5\xBA\x84 \xE5\xA5\xA5\xE6\xAF\x94\xE6\x98\x82\xE5\xA0\xA1\xE7\xBA\xA2\xE9\xA2\x9C\xE5\xAE\xB9\xE5\xB9\xB2\xE7\xBA\xA2</a></div>\r\n\
-      <div class=\"box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?id=7149097879&ali_trackid=1_46655161abd2981a35718afb5b59f020&ali_refid=a3_420434_1006%3A1102849785%3A6%3A%D5%C5%D4%A3%BD%E2%B0%D9%C4%C9%3A46655161abd2981a35718afb5b59f020&prt=1323836497218&prc=1\"><img src=\"/images/uploads/4eeafba51d41c80923000020_wine_3.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE7\xBB\x8F\xE5\x85\xB8\xE5\x9B\xBD\xE4\xBA\xA7\xE7\xBA\xA2\xE9\x85\x92 \xE5\xBC\xA0\xE8\xA3\x95\xE8\xA7\xA3\xE7\x99\xBE\xE7\xBA\xB3</a></div>\r\n\
-      </div>\r\n\
-      \r\n\
-      \r\n\
-      <div class=\"clearfix\">\r\n\
-      <div class=\"topic_block mt20\" style=\"height:780px; background-color:#000\">\r\n\
-      <img src=\"/images/uploads/4eeafbd51d41c80923000026_sub_banner_22.jpg\r\n\
-      \" width=\"860\" height=\"200\" class=\"ml10\"/>\r\n\
-      <div class=\"box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?id=4370645147&spm=1008.1000032.1000012.2&is_b=1\"><img src=\"/images/uploads/4eeafc091d41c8092300002c_jonnie_walker.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE8\x8B\x8F\xE6\xA0\xBC\xE5\x85\xB0\xE5\xA8\x81\xE5\xA3\xAB\xE5\xBF\x8C</a></div>\r\n\
-      <div class=\"box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?id=7084871485&spm=1008.1000032.1000012.5&is_b=1\"><img src=\"/images/uploads/4eeafc421d41c80923000032_chase-vodka-liquor-drink.png\" width=\"200\" height=\"260\" class=\"fl\"/>\xE4\xBF\x84\xE7\xBD\x97\xE6\x96\xAF\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0</a></div>\r\n\
-      <div class=\"box \" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.5&is_b=1&id=2611952615\"><img src=\"/images/uploads/4eeafd5c1d41c8092300003f_maotai02.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE4\xB8\xAD\xE5\x9B\xBD\xE7\x99\xBD\xE9\x85\x92</a></div>\r\n\
-      <div class=\"box \" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.8&is_b=1&id=8773690850\"><img src=\"/images/uploads/4eeafd861d41c80923000045_Hennessy.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE6\xB3\x95\xE5\x9B\xBD\xE7\x99\xBD\xE5\x85\xB0\xE5\x9C\xB0</a></div>\r\n\
-      <div class=\"box mt30\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.35&is_b=1&id=8800438564\"><img src=\"/images/uploads/4eeafdb31d41c8092300004b_images64gordongin.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE8\x8B\xB1\xE5\x9B\xBD\xE9\x87\x91\xE9\x85\x92</a></div>\r\n\
-      <div class=\"box mt30\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.11&id=6665978053&is_b=1\"><img src=\"/images/uploads/4eeafdf11d41c80923000051_jose-cuervo-especial-silver.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE5\xA2\xA8\xE8\xA5\xBF\xE5\x93\xA5\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0</a></div>\r\n\
-      <div class=\"box mt30\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.5&is_b=1&id=2611952615\"><img src=\"/images/uploads/4eeafe1c1d41c80923000058_rum.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE5\x8F\xA4\xE5\xB7\xB4\xE6\x9C\x97\xE5\xA7\x86</a></div>\r\n\
-      <div class=\"box mt30\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.11&id=6665978053&is_b=1\"><img src=\"/images/uploads/4eeafe451d41c8092300005e_sake1.jpg\r\n\
-      \" width=\"200\" height=\"260\" class=\"fl\"/>\xE6\x97\xA5\xE6\x9C\xAC\xE6\xB8\x85\xE9\x85\x92</a></div>\r\n\
-      </div></div>\r\n\
-      \r\n\
-      \r\n\
-      <div class=\"clearfix\">\r\n\
-      <div class=\"topic_block mt20\" style=\"height:700px; background-color:#000\">\r\n\
-      <img src=\"/images/uploads/4eeafe7d1d41c80923000064_sub_banner_3.jpg\r\n\
-      \" width=\"860\" height=\"200\" class=\"ml10\"/>\r\n\
-      <div class=\"box \" style=\"height:240px;\"><img src=\"/images/uploads/4eeafeaf1d41c8092300006a_candy-cane-swirl.jpg\r\n\
-      \" width=\"200\" height=\"240\" class=\"fl\"/>\xE6\xBC\xA9\xE6\xB6\xA1\xE6\x8B\x90\xE6\x9D\x96\xE7\xB3\x96\xE6\x9E\x9C\xE9\x85\x92Candy Cane Swirl <br />1 oz. SKYY Infusions Raspberry <br />3 oz. Red Cranberry juice <br />0.5 oz. Grenadine <br />0.5 oz. Peppermint Schnapps<br /> Lemon Lime soda <br />\xE6\xB7\xB7\xE5\x90\x88\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0\xEF\xBC\x8C\xE8\x96\x84\xE8\x8D\xB7\xE6\x9D\x9C\xE6\x9D\xBE\xE5\xAD\x90\xE9\x85\x92\xEF\xBC\x8C\xE9\x85\xB8\xE6\x9E\x9C\xE8\x94\x93\xE6\xB1\x81\xE5\x92\x8C\xE7\xBA\xA2\xE7\x9F\xB3\xE6\xA6\xB4\xE7\xB3\x96\xE6\xB5\x86\xE7\x9A\x84\xE5\x9C\xA3\xE8\xAF\x9E\xE4\xBD\xB3\xE9\xA5\xAE</div>\r\n\
-      <div class=\"box\" style=\"height:240px;\"><img src=\"/images/uploads/4eeafede1d41c80923000070_hot-apple-cider-400.jpg\r\n\
-      \" width=\"200\" height=\"240\" class=\"fl\"/>Hard Rocker Cider <br />1 cup Cabo Wabo Reposado Tequila <br />4 cups Apple Cider <br />1 cup Cranberry juice<br /> 1/4 cup Orange Liqueur <br />1 teaspoon Nutmeg <br />cinnamon stick <br />\xE6\xB8\xA9\xE7\x83\xAD\xE8\x8B\xB9\xE6\x9E\x9C\xE6\xB1\x81\xE5\x92\x8C\xE9\x85\xB8\xE6\x9E\x9C\xE8\x94\x93\xE6\xB1\x81\xEF\xBC\x8C\xE9\x85\x8D\xE4\xB8\x8A\xE8\x82\x89\xE8\xB1\x86\xE8\x94\xBB\xE3\x80\x82\xE9\x9A\x8F\xE5\x90\x8E\xE4\xB8\x8E\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0\xE4\xB8\x8E\xE5\x88\xA9\xE5\x8F\xA3\xE9\x85\x92\xE6\xB7\xB7\xE5\x90\x88\xE3\x80\x82</div>\r\n\
-      <div class=\"box\" style=\"height:240px;\"><img src=\"/images/uploads/4eeaff061d41c80923000076_SH1209-1_Mapletini_s4x3_lg.jpg\r\n\
-      \" width=\"200\" height=\"240\" class=\"fl\"/></div>\r\n\
-      <div class=\"box\" style=\"height:240px;\"><img src=\"/images/uploads/4eeaff8f1d41c8092300007c_6478200061_8a69b4564a.jpg\r\n\
-      \" width=\"200\" height=\"240\" class=\"fl\"/>Cranberry Margarita <br />8 oz Seagram's Escapes Margarita<br /> 4 oz Cranberry juice<br /> 1/4 cup fresh Lime Juice <br />Salt(optional) <br />Rosemary(optional) <br />Ice \xE5\xA2\xA8\xE8\xA5\xBF\xE5\x93\xA5\xE7\x8E\x9B\xE6\xA0\xBC\xE4\xB8\xBD\xE5\xA1\x94\xE6\xB7\xB7\xE5\x90\x88\xE9\x85\xB8\xE6\x9E\x9C\xE8\x94\x93\xE6\xB1\x81+\xE9\x85\xB8\xE6\xA9\x99\xE6\xB1\x81</div>\r\n\
-      <div class=\"box mt30\" style=\"height:240px;\"><img src=\"/images/uploads/4eeb000c1d41c80923000088_12-Days-Selects_Citrus-Temptation-closeup_s3x4_lg.jpg\" width=\"200\" height=\"240\" class=\"fl\"/></div>\r\n\
-      <div class=\"box mt30\" style=\"height:240px;\"><img src=\"/images/uploads/4eeaffc11d41c80923000082_12-Days-Selects_Chai-Toddy-closeup__s3x4_lg.jpg\r\n\
-      \" width=\"200\" height=\"240\" class=\"fl\"/></div>\r\n\
-      <div class=\"box mt30\" style=\"height:240px;\"><img src=\"/images/uploads/4eeb01661d41c8092300008e_12-Days-Cocktails-Jills-Ginger-Snap_s4x3_lg.jpg\" width=\"200\" height=\"240\" class=\"fl\"/></div>\r\n\
-      <div class=\"box mt30\" style=\"height:240px;\"><img src=\"/images/uploads/4eeb01911d41c80923000094_12-Days-Selects_Maple-Butter-Kiss-close_s4x3_lg.jpg\r\n\
-      \" width=\"200\" height=\"240\" class=\"fl\"/></div>\r\n\
-      </div></div>"
-    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xBE\x8E\xE9\x85\x92"
-- !ruby/object:Page 
-  attributes: !map:BSON::OrderedHash 
-    _id: !ruby/object:BSON::ObjectId 
-      data: 
-      - 78
-      - 229
       - 173
       - 252
       - 29
@@ -102,6 +15,7 @@
       - 0
       - 0
       - 2
+    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xB3\x96\xE6\x9E\x9C"
     content: "<style type=\"text/css\">\r\n\
       .sdtg_block{float:left;height:auto;width:960px;}\r\n\
       .sdtg_block2{float:left;height:1100px;width:960px;}\r\n\
@@ -143,4 +57,219 @@
       \r\n\
       \r\n\
       \r\n"
-    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xB3\x96\xE6\x9E\x9C"
+- !ruby/object:Page 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 229
+      - 101
+      - 125
+      - 29
+      - 65
+      - 200
+      - 14
+      - 41
+      - 0
+      - 0
+      - 8
+    content: "<style type=\"text/css\">\r\n\
+      .sdmj_block{\t\r\n    float:left\r\n\
+      \twidth:960px;\r\n\
+      \tpadding-left:40px;\r\n\
+      \tpadding-right:40px;\r\n\
+      \tpadding-bottom:40px;\r\n\
+      \tbackground-color: #FFF;}\r\n\
+      \r\n\
+      .sdmj_block .hint_box{float:left; height:auto; width:200px; margin-left:10px; margin-right:10px;}\r\n\
+      \r\n\
+      </style>\r\n\
+      \r\n\
+      <div class=\"clearfix\">\r\n\
+      <div class=\"sdmj_block mt20\" style=\"height:700px; background-color:#000\">\r\n\
+      <img src=\"/images/uploads/4eeafe7d1d41c80923000064_sub_banner_3.jpg\" width=\"860\" height=\"200\" class=\"ml10\"/>\r\n\
+      <div class=\"hint_box \" style=\"height:240px;\"><img src=\"/images/uploads/4eeafeaf1d41c8092300006a_candy-cane-swirl.jpg\" width=\"200\" height=\"240\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE6\xBC\xA9\xE6\xB6\xA1\xE6\x8B\x90\xE6\x9D\x96\r\n\
+      \r\n\
+      \xE7\xB3\x96\xE6\x9E\x9C\xE9\x85\x92Candy Cane Swirl<br/>\xE6\xB7\xB7\xE5\x90\x88\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0\xEF\xBC\x8C\xE8\x96\x84\xE8\x8D\xB7\xE6\x9D\x9C\xE6\x9D\xBE\xE5\xAD\x90\xE9\x85\x92\xEF\xBC\x8C\xE9\x85\xB8\xE6\x9E\x9C\xE8\x94\x93\xE6\xB1\x81\xE5\x92\x8C\xE7\xBA\xA2\xE7\x9F\xB3\xE6\xA6\xB4\xE7\xB3\x96\xE6\xB5\x86\xE7\x9A\x84\xE5\x9C\xA3\xE8\xAF\x9E\xE4\xBD\xB3\xE9\xA5\xAE</span></div>\r\n\
+      <div class=\"hint_box\" style=\"height:240px;\"><img src=\"/images/uploads/4eeafede1d41c80923000070_hot-apple-cider-400.jpg\" width=\"200\" height=\"240\" class=\"fl\"/><span class=\"flex_hint b_black white\">Hard \r\n\
+      \r\n\
+      Rocker Cider <br />\xE6\xB8\xA9\xE7\x83\xAD\xE8\x8B\xB9\xE6\x9E\x9C\xE6\xB1\x81\xE5\x92\x8C\xE9\x85\xB8\xE6\x9E\x9C\xE8\x94\x93\xE6\xB1\x81\xEF\xBC\x8C\xE9\x85\x8D\xE4\xB8\x8A\xE8\x82\x89\xE8\xB1\x86\xE8\x94\xBB\xE3\x80\x82\xE9\x9A\x8F\xE5\x90\x8E\xE4\xB8\x8E\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0\xE4\xB8\x8E\xE5\x88\xA9\xE5\x8F\xA3\xE9\x85\x92\xE6\xB7\xB7\xE5\x90\x88\xE3\x80\x82</span></div>\r\n\
+      <div class=\"hint_box\" style=\"height:240px;\"><img src=\"/images/uploads/4eeaff061d41c80923000076_SH1209-1_Mapletini_s4x3_lg.jpg\" width=\"200\" height=\"240\" class=\"fl\"/><span class=\"flex_hint b_black \r\n\
+      \r\n\
+      white\">Mapletini</span></div>\r\n\
+      <div class=\"hint_box\" style=\"height:240px;\"><img src=\"/images/uploads/4eeaff8f1d41c8092300007c_6478200061_8a69b4564a.jpg\" width=\"200\" height=\"240\" class=\"fl\"/><span class=\"flex_hint b_black \r\n\
+      \r\n\
+      white\">Cranberry Margarita <br />\xE5\xA2\xA8\xE8\xA5\xBF\xE5\x93\xA5\xE7\x8E\x9B\xE6\xA0\xBC\xE4\xB8\xBD\xE5\xA1\x94\xE6\xB7\xB7\xE5\x90\x88\xE9\x85\xB8\xE6\x9E\x9C\xE8\x94\x93\xE6\xB1\x81+\xE9\x85\xB8\xE6\xA9\x99\xE6\xB1\x81</span></div>\r\n\
+      <div class=\"hint_box mt30\" style=\"height:240px;\"><img src=\"/images/uploads/4eeb000c1d41c80923000088_12-Days-Selects_Citrus-Temptation-closeup_s3x4_lg.jpg\" width=\"200\" height=\"240\" \r\n\
+      \r\n\
+      class=\"fl\"/><br />\r\n\
+      <span class=\"flex_hint b_black white\">Citrus Temptation</span></div>\r\n\
+      <div class=\"hint_box mt30\" style=\"height:240px;\"><img src=\"/images/uploads/4eeaffc11d41c80923000082_12-Days-Selects_Chai-Toddy-closeup__s3x4_lg.jpg\" width=\"200\" height=\"240\" class=\"fl\"/><span \r\n\
+      \r\n\
+      class=\"flex_hint b_black white\">Chai Toddy</span></div>\r\n\
+      <div class=\"hint_box mt30\" style=\"height:240px;\"><img src=\"/images/uploads/4eeb01661d41c8092300008e_12-Days-Cocktails-Jills-Ginger-Snap_s4x3_lg.jpg\r\n\
+      \" width=\"200\" height=\"240\" class=\"fl\"/><span class=\"flex_hint b_black white\">Jills Ginger Snap</span></div>\r\n\
+      <div class=\"hint_box mt30\" style=\"height:240px;\"><img src=\"/images/uploads/4eeb01911d41c80923000094_12-Days-Selects_Maple-Butter-Kiss-close_s4x3_lg.jpg\" width=\"200\" height=\"240\" class=\"fl\"/><span \r\n\
+      \r\n\
+      class=\"flex_hint b_black white\">Maple Butter Kiss</span></div>\r\n\
+      </div></div>\r\n\
+      \r\n\
+      \r\n\
+      <div class=\"sdmj_block\" style=\"height:560px; background-color:#000\">\r\n\
+      <img src=\"/images/uploads/4eeafaba1d41c80923000008_wine_1.jpg\" width=\"860\" height=\"260\" class=\"ml10 mb20\"/>\r\n\
+      <div class=\"hint_box\" style=\"height:260px;\"><a href=\"http://www.amazon.com/CuisineMentor-Gluhwein-Gourmet-Cardamom-Swedish/dp/tags-on-product/B000CQUASO\"><img \r\n\
+      \r\n\
+      src=\"/images/uploads/4eeafb141d41c8092300000e_Gluehwein-America.jpg\" width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE5\xBE\xB7\xE5\x9B\xBD\xE4\xBA\xBA\xE6\x9C\x80\xE7\x88\xB1\xE7\x9A\x84\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xBA\xA2\xE9\x85\x92Gluehwein</span></a></div>\r\n\
+      <div class=\"hint_box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1103sSE*.3-3aco.h-Bxwy&id=10336268371\"><img src=\"/images/uploads/4eeafb441d41c80923000014_yaomingWine.jpg\" \r\n\
+      \r\n\
+      width=\"197\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE6\x96\xB0\xE8\xB4\xB5\xE9\xA9\xBE\xE5\x88\xB0 \xE5\xA7\x9A\xE6\x98\x8E\xE7\xBA\xA2\xE9\x85\x92</span></a></div>\r\n\
+      <div class=\"hint_box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1103sSE*.3-3aco.h-Bxwy&id=10336268371\"><img src=\"/images/uploads/4eeafb6c1d41c8092300001a_wine_2.jpg\" \r\n\
+      \r\n\
+      width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE4\xB8\x96\xE7\x95\x8C\xE9\xA1\xB6\xE7\xBA\xA7\xE9\x85\x92\xE5\xBA\x84 \xE5\xA5\xA5\xE6\xAF\x94\xE6\x98\x82\xE5\xA0\xA1\xE7\xBA\xA2\xE9\xA2\x9C\xE5\xAE\xB9\xE5\xB9\xB2\xE7\xBA\xA2</span></a></div>\r\n\
+      <div class=\"hint_box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?id=7149097879&ali_trackid=1_46655161abd2981a35718afb5b59f020&ali_refid=a3_420434_1006%3A1102849785%3A6%3A\r\n\
+      \r\n\
+      %D5%C5%D4%A3%BD%E2%B0%D9%C4%C9%3A46655161abd2981a35718afb5b59f020&prt=1323836497218&prc=1\"><img src=\"/images/uploads/4eeafba51d41c80923000020_wine_3.jpg\" width=\"200\" height=\"260\" class=\"fl\"/><span \r\n\
+      \r\n\
+      class=\"flex_hint b_black white\">\xE7\xBB\x8F\xE5\x85\xB8\xE5\x9B\xBD\xE4\xBA\xA7\xE7\xBA\xA2\xE9\x85\x92 \xE5\xBC\xA0\xE8\xA3\x95\xE8\xA7\xA3\xE7\x99\xBE\xE7\xBA\xB3</span></a></div>\r\n\
+      </div>\r\n\
+      \r\n\
+      \r\n\
+      <div class=\"clearfix\">\r\n\
+      <div class=\"sdmj_block mt20\" style=\"height:780px; background-color:#000\">\r\n\
+      <img src=\"/images/uploads/4eeafbd51d41c80923000026_sub_banner_22.jpg\" width=\"860\" height=\"200\" class=\"ml10\"/>\r\n\
+      <div class=\"hint_box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?id=4370645147&spm=1008.1000032.1000012.2&is_b=1\"><img \r\n\
+      \r\n\
+      src=\"/images/uploads/4eeafc091d41c8092300002c_jonnie_walker.jpg\" width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE8\x8B\x8F\xE6\xA0\xBC\xE5\x85\xB0\xE5\xA8\x81\xE5\xA3\xAB\xE5\xBF\x8C</span></a></div>\r\n\
+      <div class=\"hint_box\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?id=7084871485&spm=1008.1000032.1000012.5&is_b=1\"><img src=\"/images/uploads/4eeafc421d41c80923000032_chase-vodka-\r\n\
+      \r\n\
+      liquor-drink.png\" width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE4\xBF\x84\xE7\xBD\x97\xE6\x96\xAF\xE4\xBC\x8F\xE7\x89\xB9\xE5\x8A\xA0</span></a></div>\r\n\
+      <div class=\"hint_box \" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.5&is_b=1&id=2611952615\"><img src=\"/images/uploads/4eeafd5c1d41c8092300003f_maotai02.jpg\" \r\n\
+      \r\n\
+      width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE4\xB8\xAD\xE5\x9B\xBD\xE7\x99\xBD\xE9\x85\x92</span></a></div>\r\n\
+      <div class=\"hint_box \" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.8&is_b=1&id=8773690850\"><img src=\"/images/uploads/4eeafd861d41c80923000045_Hennessy.jpg\" \r\n\
+      \r\n\
+      width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE6\xB3\x95\xE5\x9B\xBD\xE7\x99\xBD\xE5\x85\xB0\xE5\x9C\xB0</span></a></div>\r\n\
+      <div class=\"hint_box mt30\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.35&is_b=1&id=8800438564\"><img \r\n\
+      \r\n\
+      src=\"/images/uploads/4eeafdb31d41c8092300004b_images64gordongin.jpg\" width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE8\x8B\xB1\xE5\x9B\xBD\xE9\x87\x91\xE9\x85\x92</span></a></div>\r\n\
+      <div class=\"hint_box mt30\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.11&id=6665978053&is_b=1\"><img src=\"/images/uploads/4eeafdf11d41c80923000051_jose-\r\n\
+      \r\n\
+      cuervo-especial-silver.jpg\" width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE5\xA2\xA8\xE8\xA5\xBF\xE5\x93\xA5\xE9\xBE\x99\xE8\x88\x8C\xE5\x85\xB0</span></a></div>\r\n\
+      <div class=\"hint_box mt30\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.5&is_b=1&id=2611952615\"><img src=\"/images/uploads/4eeafe1c1d41c80923000058_rum.jpg\" \r\n\
+      \r\n\
+      width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE5\x8F\xA4\xE5\xB7\xB4\xE6\x9C\x97\xE5\xA7\x86</span></a></div>\r\n\
+      <div class=\"hint_box mt30\" style=\"height:260px;\"><a href=\"http://detail.tmall.com/item.htm?spm=1008.1000032.1000012.11&id=6665978053&is_b=1\"><img src=\"/images/uploads/4eeafe451d41c8092300005e_sake1.jpg\" \r\n\
+      \r\n\
+      width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE6\x97\xA5\xE6\x9C\xAC\xE6\xB8\x85\xE9\x85\x92</span></a></div>\r\n\
+      </div></div>"
+    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xBE\x8E\xE9\x85\x92"
+- !ruby/object:Page 
+  attributes: !map:BSON::OrderedHash 
+    _id: !ruby/object:BSON::ObjectId 
+      data: 
+      - 78
+      - 238
+      - 230
+      - 205
+      - 29
+      - 65
+      - 200
+      - 13
+      - 159
+      - 0
+      - 0
+      - 13
+    content: "<style type=\"text/css\">\r\n\
+      body{margin:0,auto;padding:0px;line-height:22px;background-color:#f2f0f0;color:#333230;font-size:13px;font-family:\"Helvetica Neue\", Helvetica, Arial, Sans-serif; background-image:url(/images/uploads/4eeee58d1d41c80d9f000004_DearSantacopy.jpg);background-repeat:repeat-y;}\r\n\
+      \r\n\
+      .sddc_block{\r\n\
+      \tfloat:left;\r\n\
+      \twidth:960px;\r\n\
+      \tpadding-left:60px;\r\n\
+      \tpadding-bottom:40px;\r\n\
+      \theight:auto;\r\n\
+      }\r\n\
+      \r\n\
+      .titleBox{\r\n\
+      \twidth:700px;\r\n\
+      \theight:70px;\r\n\
+      \tfloat:left;\r\n\
+      \tmargin-left:10px;\r\n\
+      }\r\n\
+      \r\n\
+      .toucaiBox{\r\n\
+      \twidth:700px;\r\n\
+      \theight:500px;\r\n\
+      \tfloat:left;\r\n\
+      \tmargin-left:10px;\r\n\
+      }\r\n\
+      \r\n\
+      .menuBox{\r\n\
+      \twidth:650px;\r\n\
+      \theight:auto;\r\n\
+      \tfloat:left;\r\n\
+      \tmargin-left: 10px;\r\n\
+      }\r\n\
+      \r\n\
+      .soapBox{\r\n\
+      \twidth:700px;\r\n\
+      \theight:400px;\r\n\
+      \tfloat:left;\r\n\
+      \tmargin-left:10px;\r\n\
+      }\r\n\
+      \r\n\
+      \r\n\
+      .maindishBox{\r\n\
+      \twidth:700px;\r\n\
+      \theight:580px;\r\n\
+      \tfloat:left;\r\n\
+      \tmargin-left:10px;\r\n\
+      }\r\n\
+      \r\n\
+      .sddc_block .maindishBox .imgbox{\r\n\
+      \tfloat:left;\r\n\
+      \theight:auto;\r\n\
+      \twidth:600px;\r\n\
+      \tmargin-left:10px;\r\n\
+      \tmargin-bottom:10px;\r\n\
+      }\r\n\
+      \r\n\
+      .sddc_block .imgbox{float:left; height:auto; width:200px; margin-left:10px; margin-right:10px;}\r\n\
+      </style>\r\n\
+      \r\n\
+      <div class=\"sddc_block\" style=\"height:560px;\">\r\n\
+      <div class=\"titleBox\">\r\n  <p>&nbsp;</p>\r\n  <p style=\"font-family:'\xE7\xAB\xA0\xE8\x8D\x89'; font-size:44px; color:#F00\">\xE5\x9C\xA3\xE8\xAF\x9E\xE8\x8F\x9C\xE5\x8D\x95 Christmas Dinner Menu</p>\r\n\
+      </div>\r\n\
+      <div class=\"toucaiBox\">\r\n  <p>&nbsp;</p>\r\n  <p>&nbsp;</p>\r\n  <p style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:24px; color:#000\">&nbsp;\xE5\xBC\x80\xE8\x83\x83\xE5\xA4\xB4\xE8\x8F\x9C&nbsp;&nbsp;<span style=\"font-family: 'Smudger LET'; font-size:18px;\"> APPETIZER</span></p>\r\n  <img src=\"/images/uploads/4eeee7ff1d41c80d9f00000e_toucai_banner.png\r\n\
+      \" width=\"600\" height=\"120\" class=\"ml10\"/>\r\n  <div class=\"menuBox\">\r\n  <br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE7\x81\xAB\xE8\x85\xBF\xE8\x89\xB2\xE6\x8B\x89\xE5\x8D\xB7<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Italian Chopped Salad in Shells</span></span><br/><br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE5\x9F\xB9\xE6\xA0\xB9\xE6\xA0\x97\xE5\xAD\x90\xE5\x8D\xB7<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Bacon Water Chestnut Wraps</span></span><br/><br/>\r\n    <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE9\xA6\x99\xE7\x85\x8E\xE9\xB9\x85\xE8\x82\x9D\xE9\x85\x8D\xE8\x8B\xB9\xE6\x9E\x9C\xE5\x9C\x88<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Seared Foie Gras with Apple Rings</span></span><br/><br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE8\x92\x9C\xE9\xA6\x99\xE5\xBC\x80\xE8\x83\x83\xE8\x99\xBE<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Grilled Shrimp with Garlic and Herb</span></span><br/><br/>\r\n  </div>\r\n\
+      </div>\r\n\
+      \r\n\
+      <div class=\"soapBox\">\r\n  <p style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:24px; color:#000\">&nbsp;\xE6\xB1\xA4&nbsp;&nbsp;<span style=\"font-family: 'Smudger LET'; font-size:18px;\">SOAP</span></p>\r\n  <img src=\"/images/uploads/4eeee8281d41c80d9f000015_soap_1.png\r\n\
+      \" width=\"200\" height=\"200\"/>\r\n  <div class=\"menuBox\">\r\n   <br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE5\x86\xAC\xE5\xAD\xA3\xE9\xA6\x99\xE6\xB5\x93\xE5\x8D\x97\xE7\x93\x9C\xE6\xB1\xA4<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Roasted Winter Squash Soap</span></span><br/><br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE6\x96\xB0\xE8\x8B\xB1\xE6\xA0\xBC\xE5\x85\xB0\xE5\xA5\xB6\xE6\xB2\xB9\xE8\x9B\xA4\xE8\x9B\x8E\xE6\xB1\xA4<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Thick & Creamy New England Calm Chowder</span></span><br/><br/>\r\n  </div>\r\n\
+      </div>\r\n\
+      \r\n\
+      <div class=\"maindishBox\">\r\n  <p style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:24px; color:#000\">&nbsp;\xE4\xB8\xBB\xE8\x8F\x9C&nbsp;&nbsp;<span style=\"font-family: 'Smudger LET'; font-size:18px;\">MAIN DISH</span></p>\r\n  <br />\r\n\
+      <div class=\"imgbox\">  <img src=\"/images/uploads/4eeee8541d41c80d9f00001c_maindish_2.png\r\n\
+      \" width=\"230\" height=\"140\" class=\"fl\"/><span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\"><br />&nbsp;&nbsp;&nbsp;&nbsp;\xE7\x83\xA4\xE7\x81\xAB\xE9\xB8\xA1\xE9\x85\x8D\xE8\x9C\x9C\xE7\xB3\x96\xE7\x81\xAB\xE8\x85\xBF</span><span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> <br /><br />&nbsp;&nbsp;&nbsp;&nbsp; Tradtional Roast Turkey and Honey Glazed Ham</span> \r\n\
+      </div>\r\n\
+      <div class=\"imgbox\">  \r\n  <p><span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\"><img src=\"/images/uploads/4eeee8791d41c80d9f000024_miandish_3.png\r\n\
+      \" width=\"230\" height=\"140\" class=\"fr mr20\"/><br />\r\n    \xE7\x84\x97\xE9\xA6\x99\xE8\x8D\x89\xE7\xBE\x8A\xE6\x9E\xB6</span><span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> <br />\r\n    </span></p>\r\n  <p><span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\">Oven-Roasted Rack of Lamb Stuffed with Herbs and Dates</span></p>\r\n\
+      </div>\r\n\
+      <div class=\"imgbox\">  <img src=\"/images/uploads/4eeee8891d41c80d9f00002c_maindish_4.png\r\n\
+      \" width=\"230\" height=\"140\" class=\"fl\"/><span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\"><br />&nbsp;&nbsp;&nbsp;&nbsp;\xE7\x83\xA4\xE7\x89\x9B\xE8\x82\x8B\xE6\x8E\x92</span><span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> <br />\r\n\
+      <br />&nbsp;&nbsp;&nbsp;&nbsp; Prime Rib of Beef Roasted on the Bone</span>\r\n\
+      </div> \r\n\
+      </div>\r\n\
+      \r\n\
+      \r\n\
+      <div class=\"soapBox\">\r\n  <p style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:24px; color:#000\">&nbsp;\xE5\x89\xAF\xE8\x8F\x9C&nbsp;&nbsp;<span style=\"font-family: 'Smudger LET'; font-size: 18px\"> SIDE DISH</span></p>\r\n  <img src=\"/images/uploads/4eeee89e1d41c80d9f000034_sidedish_1.png\r\n\
+      \" width=\"220\" height=\"180\"/>\r\n  <div class=\"menuBox\">\r\n   <br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE9\xA6\x99\xE8\x8C\x84\xE7\x9B\x92&nbsp;<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\">Zucchini Round</span></span><br/>\r\n  <br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE8\x8A\x9D\xE9\xBA\xBB\xE8\x8A\xA6\xE7\xAC\x8B&nbsp;<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\">Roasted Sesame Asparagus</span></span><br/><br/>\r\n  </div>\r\n\
+      </div>\r\n\
+      \r\n\
+      <div class=\"soapBox\">\r\n  <p style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:24px; color:#000\">&nbsp;\xE7\x94\x9C\xE7\x82\xB9&nbsp;&nbsp;<span style=\"font-family: 'Smudger LET'; font-size: 18px\"> Desserts</span></p>\r\n  <img src=\"/images/uploads/4eeee8b81d41c80d9f00003c_dessert_3.png\r\n\
+      \" width=\"450\" height=\"200\"/>\r\n  <div class=\"menuBox\">\r\n   <br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE5\x9C\xA3\xE8\xAF\x9E\xE7\x81\xAB\xE7\x84\xB0\xE5\xB8\x83\xE4\xB8\x81&nbsp;<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\">Christmas Flamed Pudding</span></span><br/>\r\n  <br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE6\x9D\x8F\xE5\xAD\x90\xE5\x90\x88\xE6\xA1\x83\xE8\x83\xA1\xE6\xA1\x83\xE6\x92\xBB&nbsp;<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\">Apricot, Walnut and Pecan Tart</span></span><br/>\r\n  <br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\">\xE6\x91\xA9\xE5\x8D\xA1\xE5\x86\xB0\xE6\xBF\x80\xE5\x87\x8C\xE8\x9B\x8B\xE7\xB3\x95&nbsp;<span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\">Mocha Fudge Ice Cream Cake</span></span><br/><br/>\r\n  </div>\r\n\
+      </div>\r\n\
+      \r\n\
+      \r\n\
+      </div>"
+    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE5\xA4\xA7\xE9\xA4\x90"
