@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def more
-    criteria = Recipe.all
+    criteria = Recipe.all.desc(:created_at)
     criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
     @recipes = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 

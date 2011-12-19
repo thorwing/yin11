@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @catalogs = Catalog.all.to_a
+    @catalogs = Catalog.desc(:created_at).to_a
 
     respond_to do |format|
       format.html # index.html.erb

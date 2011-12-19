@@ -67,7 +67,7 @@ class FeedsManager
       feeds += followable.feeds
     end
 
-    feeds = feeds.compact.uniq {|f| f.identity }
+    feeds = feeds.compact.uniq {|f| f.identity }.sort_by!{|f| f.created_at}
     return feeds[(page * per)..((page + 1)* per)], feeds.size
   end
 
