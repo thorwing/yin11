@@ -203,10 +203,12 @@ $(function () {
 $(function(){
     $(".hint_box").hover(
         function(){
-            $(this).find(".hint").css("display", "block")
+            var hint = $(this).find(".flex_hint");
+            hint.css("display", "block");
         },
         function(){
-            $(this).find(".hint").slideUp('fast');
+            var hint = $(this).find(".flex_hint");
+            hint.slideUp('fast');
         }
     );
 });
