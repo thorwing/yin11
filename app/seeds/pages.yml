@@ -83,6 +83,8 @@
       \r\n\
       .sdmj_block .hint_box{float:left; height:auto; width:200px; margin-left:10px; margin-right:10px;}\r\n\
       \r\n\
+      body{background-color: #000}\r\n\
+      \r\n\
       </style>\r\n\
       \r\n\
       <div class=\"clearfix\">\r\n\
@@ -115,7 +117,7 @@
       </div></div>\r\n\
       \r\n\
       \r\n\
-      <div class=\"sdmj_block\" style=\"height:560px; background-color:#000\">\r\n\
+      <div class=\"sdmj_block mt20\" style=\"height:560px; background-color:#000\">\r\n\
       <img src=\"/images/uploads/4eeafaba1d41c80923000008_wine_1.jpg\" width=\"860\" height=\"260\" class=\"ml10 mb20\"/>\r\n\
       <div class=\"hint_box\" style=\"height:260px;\"><a href=\"http://www.amazon.com/CuisineMentor-Gluhwein-Gourmet-Cardamom-Swedish/dp/tags-on-product/B000CQUASO\"><img \r\n\
       \r\n\
