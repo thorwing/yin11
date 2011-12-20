@@ -39,7 +39,7 @@ class Recipe
     #TODO use a real image field here
     def image_url(version = nil)
       if self.steps.size > 0 && self.steps.last.image.present?
-        self.steps.last.image.picture_url(version)
+        self.steps.last.get_image_url(version)
       else
         ''
       end
