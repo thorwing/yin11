@@ -5,19 +5,21 @@
     position:relative;
     overflow: hidden;
 
-    .nav_menu a:hover, a.selected {color: $yellow_green;}
+    .nav_menu a:hover, a.selected {color: $blue;}
     .nav_menu a { margin-right: 8px; }
 
     /* sub-menus*/
-    ul{ position:absolute; right:0px; top:0px;  line-height:16px; margin-top: 16px; padding: 5px 0px;
-        border:1px solid $black;
+    ul { position:absolute; right:0px; top:0px;  line-height:16px; margin-top: 16px; padding: 5px 0px;
+        background: none repeat scroll 0 0 $shadow_gray;
+        border-radius: 4px 4px 4px 4px;
+        box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
         z-index: 2000; /* for IE */ display:none;
-        background: $gray;}
+       }
 
     ul li {display:block;  padding: 0 0 2px 4px; list-style-type:none; }
     ul li:first-child { border-top: none; }
-    ul li a {  color: $black; }
-    ul li a:hover { color:$yellow_green; }
+    ul li a {  color: $ink_black; }
+    ul li a:hover { color:$blue; }
 }
 
 .nav_menu:hover ul { display:block;  }
@@ -25,8 +27,8 @@
 #quick_login {margin: 5px 0 2px 0}
 
 #third_party_submenu { width:80px;}
-#top_third_party a {margin-right:  10px; color: $black;}
-#top_third_party a:hover { color: $yellow_green; }
+#top_third_party a {margin-right:  10px; color: $ink_black;}
+#top_third_party a:hover { color: $blue; }
 
 #login_logout a {text-decoration:underline; margin-right:  10px;}
 /*#third_party_submenu li {margin:0px 10px; padding: 0px,10px; }*/

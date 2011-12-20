@@ -1,3 +1,4 @@
+@import "attributes";
 /*
     Waterfall Styles
 */
@@ -15,7 +16,6 @@
 
 .waterfall {
     display: inline-block;
-    background-color: #FFFFFF;
     margin-bottom: 20px;
     overflow: hidden;
     position: absolute;

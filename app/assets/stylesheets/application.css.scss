@@ -81,7 +81,7 @@
 }
 
 .box_shadow {
-    background: none repeat scroll 0 0 #FFFFFF;
+    background: none repeat scroll 0 0 $shadow_gray;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
 }
@@ -239,11 +239,11 @@ a.button:hover, input.button:hover {
 }
 
 a.button.new_relationship {
-    background: $green;
+    background: $blue;
 }
 
 a.button.new_relationship:hover {
-    background: darken($green, 10%);
+    background: darken($blue, 10%);
 }
 
 a.button.cancel_relationship {
@@ -270,7 +270,7 @@ a.tag {
 
 a.tag:hover {
     color: white;
-    background-color: $green;
+    background-color: $blue;
     cursor:pointer;
 }
 
@@ -293,7 +293,7 @@ h1.title {
 }
 
 html, body, #main { height: 100%; }
-body #main { height: auto; padding-bottom: 20em;}
+body #main { height: auto; padding-bottom: 260px;}
 
 #content_area { min-height: 600px;  }
 
@@ -312,15 +312,15 @@ body #main { height: auto; padding-bottom: 20em;}
     clear: both;
     position: relative;
     z-index: 10;
-    height: 10em;
-    margin-top: -10em;
+    height: 130px;
+    margin-top: -130px;
     overflow:hidden;
-    color:$white;
-    background-color:$green;
+    color:$ink_black;
+    background-color:$light_gray;
+    background: url("footer_bg.png") repeat-x;
 }
 
 #footer a {
-	color:$white;
 	text-decoration:underline;
 }
 

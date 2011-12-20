@@ -18,7 +18,8 @@ module Imageable
         thumb ? image.picture_url(:thumb) : image.picture_url(:waterfall)
       else
         #origin url is used for image_tag, the other one is used for waterfall displaying
-        origin ? "not_found.png" : "/assets/not_found.png"
+        #origin ? "not_found.png" : "/assets/not_found.png"
+        nil
       end
     end
 
@@ -31,7 +32,7 @@ module Imageable
       end
 
       if images.empty?
-        ["/assets/not_found.png"]
+        []
       else
         images.map{|i| thumb ? i.picture_url(:thumb) : i.picture_url(:waterfall) }
       end

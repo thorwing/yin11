@@ -1,5 +1,5 @@
 <div id="header" class="clearfix">
-    <div id="logo" class="ml10 fl">
+    <div id="logo" class="ml10 fl lighter_touch">
         <%= link_to image_tag("yin11_logo.png", :border => 0), root_path %>
         <h1><%= t("site.name") %></h1>
         <h2><%= t("site.description") %></h2>
@@ -19,11 +19,11 @@
             <%= submit_tag t("general.search"), id: "search_btn" %>
         <% end %>
     </div>
-    <div class="jewelry fr mr10">
+    <div class="jewelry mt5 mr10 fr">
         <% if current_user %>
-            <span class="nav_menu">
-                <%= link_to(image_tag(current_user.get_avatar(:thumb), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT) + current_user.screen_name + image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow"), profile_path(current_user.profile), :class => "white f14") %>
-                <ul>
+            <span class="nav_menu" >
+                <%= link_to(image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow") + current_user.screen_name, profile_path(current_user.profile), :class => "f16") %>
+                <ul style="width:60px;">
                     <li><%= link_to t("menu.show_profile"), profile_path(current_user.profile) %></li>
                     <li><%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %></li>
                     <li><%= link_to t("menu.logout"), logout_path %></li>
