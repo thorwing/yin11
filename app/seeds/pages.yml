@@ -15,6 +15,7 @@
       - 0
       - 0
       - 8
+    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xBE\x8E\xE9\x85\x92"
     content: "<style type=\"text/css\">\r\n\
       .sdmj_block{\t\r\n    float:left\r\n\
       \twidth:960px;\r\n\
@@ -106,7 +107,6 @@
       \r\n\
       width=\"200\" height=\"260\" class=\"fl\"/><span class=\"flex_hint b_black white\">\xE6\x97\xA5\xE6\x9C\xAC\xE6\xB8\x85\xE9\x85\x92</span></a></div>\r\n\
       </div></div>"
-    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xBE\x8E\xE9\x85\x92"
 - !ruby/object:Page 
   attributes: !map:BSON::OrderedHash 
     _id: !ruby/object:BSON::ObjectId 
@@ -123,6 +123,7 @@
       - 0
       - 0
       - 2
+    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xB3\x96\xE6\x9E\x9C"
     content: "<style type=\"text/css\">\r\n\
       .sdtg_block{float:left;height:auto;width:960px;}\r\n\
       .sdtg_block2{float:left;height:1100px;width:960px;}\r\n\
@@ -164,7 +165,6 @@
       \r\n\
       \r\n\
       \r\n"
-    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE7\xB3\x96\xE6\x9E\x9C"
 - !ruby/object:Page 
   attributes: !map:BSON::OrderedHash 
     _id: !ruby/object:BSON::ObjectId 
@@ -181,13 +181,14 @@
       - 0
       - 0
       - 13
+    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE5\xA4\xA7\xE9\xA4\x90"
     content: "<style type=\"text/css\">\r\n\
       body{margin:0,auto;padding:0px;line-height:22px;background-color:#f2f0f0;color:#333230;font-size:13px;font-family:\"Helvetica Neue\", Helvetica, Arial, Sans-serif; background-image:url(/images/uploads/4eeee58d1d41c80d9f000004_DearSantacopy.jpg);background-repeat:repeat-y;}\r\n\
       \r\n\
       .sddc_block{\r\n\
       \tfloat:left;\r\n\
       \twidth:960px;\r\n\
-      \tpadding-left:60px;\r\n\
+      \tpadding-left:210px;\r\n\
       \tpadding-bottom:40px;\r\n\
       \theight:auto;\r\n\
       }\r\n\
@@ -240,7 +241,7 @@
       </style>\r\n\
       \r\n\
       <div class=\"sddc_block\">\r\n\
-      <div class=\"titleBox\">\r\n  <p>&nbsp;</p>\r\n  <p style=\"font-family:'\xE7\xAB\xA0\xE8\x8D\x89'; font-size:44px; color:#F00\">\xE5\x9C\xA3\xE8\xAF\x9E\xE8\x8F\x9C\xE5\x8D\x95 Christmas Dinner Menu</p>\r\n\
+      <div class=\"titleBox\">\r\n  <p>&nbsp;</p>\r\n  <p style=\"font-family:'\xE7\xAB\xA0\xE8\x8D\x89'; font-size:44px; color:#F00\">\xE5\x9C\xA3\xE8\xAF\x9E\xE8\x8F\x9C\xE5\x8D\x95 </p>\r\n\
       </div>\r\n\
       <div class=\"toucaiBox\">\r\n  <p>&nbsp;</p>\r\n  <p>&nbsp;</p>\r\n  <p style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:24px; color:#000\">&nbsp;\xE5\xBC\x80\xE8\x83\x83\xE5\xA4\xB4\xE8\x8F\x9C&nbsp;&nbsp;<span style=\"font-family: 'Smudger LET'; font-size:18px;\"> APPETIZER</span></p>\r\n  <img src=\"/images/uploads/4eeee7ff1d41c80d9f00000e_toucai_banner.png\r\n\
       \" width=\"600\" height=\"120\" class=\"ml10\"/>\r\n  <div class=\"menuBox\">\r\n  <br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\"><a href=\"/recipes/4eed99de1d41c82fa600014a\">\xE6\x84\x8F\xE5\xA4\xA7\xE5\x88\xA9\xE7\x81\xAB\xE8\x85\xBF\xE8\x89\xB2\xE6\x8B\x89\xE5\x8D\xB7</a><span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Italian Chopped Salad in Shells</span></span><br/><br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\"><a href=\"/recipes/4eed974a1d41c82fa6000105\">\xE5\x9F\xB9\xE6\xA0\xB9\xE6\xA0\x97\xE5\xAD\x90\xE5\x8D\xB7</a><span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Bacon Water Chestnut Wraps</span></span><br/><br/>\r\n    <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\"><a href=\"/recipes/4eed98141d41c82fa600011c\">\xE9\xA6\x99\xE7\x85\x8E\xE9\xB9\x85\xE8\x82\x9D\xE9\x85\x8D\xE8\x8B\xB9\xE6\x9E\x9C\xE5\x9C\x88</a><span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Seared Foie Gras with Apple Rings</span></span><br/><br/>\r\n  <span style=\"font-family: '\xE5\xBE\xAE\xE8\xBD\xAF\xE9\x9B\x85\xE9\xBB\x91', sans-serif, Helvetica; font-size:18px; color:#000\"><a href=\"/recipes/4eed98da1d41c82fa6000131\">\xE8\x92\x9C\xE9\xA6\x99\xE5\xBC\x80\xE8\x83\x83\xE8\x99\xBE</a><span style=\"font-family: ' 'Staccato222 BT''; font-size:14px;\"> Grilled Shrimp with Garlic and Herb</span></span><br/><br/>\r\n  </div>\r\n\
@@ -274,4 +275,3 @@
       \r\n\
       \r\n\
       </div>"
-    title: "\xE5\x9C\xA3\xE8\xAF\x9E\xE5\xA4\xA7\xE9\xA4\x90"
