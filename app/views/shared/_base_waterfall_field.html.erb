@@ -5,9 +5,7 @@
         <% else %>
             <div align="center"><a href="<%= "{{target_path}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" /></a></div>
         <% end %>
-        <br/>
         <% if show_name %>
-
             <div class = "ml10 f16"><%= link_to "{{name}}", "#{path}/{{id}}" %><br/></div>
             <!--<span class="ml10 f16">{{name}}</span><br/>-->
         <% end %>

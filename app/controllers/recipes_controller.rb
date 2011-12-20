@@ -19,6 +19,7 @@ class RecipesController < ApplicationController
     data = {
       items: @recipes.inject([]){|memo, r| memo << {
         name: r.name,
+        content: r.instruction,
         picture_url: r.image_url(:waterfall),
         user_id: r.author.id,
         user_name: r.author.screen_name,

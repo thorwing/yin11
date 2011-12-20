@@ -517,7 +517,7 @@ zh-CN:
   search:
     kinds:
       product: 商品
-      article: 文章
+      recipe: 菜谱
       review: 分享
       user: 用户
     tip: 食物、菜谱、用户

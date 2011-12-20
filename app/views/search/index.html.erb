@@ -1,5 +1,6 @@
 <div>
-    <span id="keywords"><%= t("search.result_of", :text => @query ) %></span>
+    <%= t("search.result_of", :text => @query ) %>
+    <span id="keywords" class="display_none"><%= @query %></span>
 </div>
 
 <hr/>
@@ -11,7 +12,7 @@
         <% unless @users.empty? %>
             <h3><%= t("search.kinds.user") %></h3>
             <% @users.each do |user| %>
-                <%= render user %>
+                <%= render "shared/search_result", :item => user %>
             <% end %>
           <hr/>
         <% end %>
@@ -19,14 +20,14 @@
         <% unless @products.empty? %>
             <h3><%= t("search.kinds.product") %></h3>
             <% @products.each do |product| %>
-                <%= render "products/small_product", :product => product %>
+                <%= render "shared/search_result", :item => product %>
             <% end %>
         <% end %>
 
-        <% unless @articles.empty? %>
-            <h3><%= t("search.kinds.article") %></h3>
-            <% @articles.each do |article| %>
-                <%= render "info_items/info_item_short", :item => article %>
+        <% unless @recipes.empty? %>
+            <h3><%= t("search.kinds.recipe") %></h3>
+            <% @recipes.each do |recipe| %>
+                <%= render "shared/search_result", :item => recipe %>
             <% end %>
         <% end %>
 
