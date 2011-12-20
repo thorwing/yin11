@@ -1,4 +1,4 @@
-<%= link_to image_tag( product.get_image_url, :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), product%>
+<%= link_to image_tag( product.get_image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), product%>
 
 <div class="w_image">
     <%= link_to product.name, product %> <br/>

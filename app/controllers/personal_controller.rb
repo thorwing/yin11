@@ -32,7 +32,7 @@ class PersonalController < ApplicationController
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == f.author.id.to_s}.size > 0,
         target_path: url_for(f.item),
         time: f.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        picture_url: f.picture_url(false),
+        picture_url: f.picture_url(:waterfall),
         id: f.id}
       },
       page: params[:page],

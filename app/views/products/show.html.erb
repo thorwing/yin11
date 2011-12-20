@@ -2,9 +2,9 @@
   <div class="clearfix">
     <%= render "product_nav", :product => @product %>
 
-    <div class="grid_9 box_shadow to_left p5">
+    <div class="grid_9 box_shadow to_left p5 overflow_hidden">
       <div class="fl">
-        <%= link_to image_tag(@product.image.picture_url, :class=>"img_frame") if @product.image && @product.image.picture_url %>
+        <%= image_tag(@product.get_image_url, class: "img_frame")%>
       </div>
 
       <div class="ml10 fl">

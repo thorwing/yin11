@@ -173,7 +173,7 @@ class User
 
   def get_recent_feeds(limit)
     feeds = self.feeds.desc(:created_at)
-    feeds.reject{|f| f.picture_url.blank? || f.picture_url.include?('not_found')}[0..(limit-1)]
+    feeds.reject{|f| f.picture_url.blank? }[0..(limit-1)]
   end
 
   def get_updates(days = self.profile.concern_days)

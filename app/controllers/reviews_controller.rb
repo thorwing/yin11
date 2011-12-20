@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
         user_fans_cnt: r.author.followers.count,
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        picture_url: r.get_review_image_url,
+        picture_url: r.get_review_image_url(:waterfall),
         id: r.id}
       },
       page: params[:page],
@@ -90,7 +90,7 @@ class ReviewsController < ApplicationController
 
     #prevent from mistakes ( two reviews in a row)
     last_review = current_user.reviews.in_days_of(1).desc(:created_at).limit(1).first
-    if (last_review.content == params[:review][:content])
+    if (last_review && last_review.content == params[:review][:content])
       @user_message = t("notices.already_published")
       respond_to do |format|
         format.html { render :action => "new", :notice => @user_message }

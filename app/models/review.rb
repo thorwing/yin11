@@ -37,25 +37,25 @@ class Review
     self.votes >= ITEM_MEASURE_POPULAR ? true : false
   end
 
-  def get_review_image_url(thumb = false)
+  def get_review_image_url(version = nil)
     if self.images.empty?
       if self.products.size > 0
-        return self.products.first.get_image_url(thumb, 0, false)
+        return self.products.first.get_image_url(version)
       elsif self.recipe
-        return self.recipe.image_url
+        return self.recipe.image_url(version)
       end
     end
 
-    self.get_image_url(thumb, 0, false)
+    self.get_image_url(version)
   end
 
-  def get_images_with_objects(thumb = false)
-    images = self.images.map{|i| {picture_url: (thumb ? i.picture_url(:thumb) : i.picture_url(:waterfall)), object: nil }} || []
+  def get_images_with_objects(version = nil)
+    images = self.images.map{|i| {picture_url: i.picture_url(version), object: nil }} || []
 
     if self.products.size > 0
-      images += self.products.map {|p| {picture_url: p.get_image_url(thumb, 0, false), object: p} }
+      images += self.products.map {|p| {picture_url: p.get_image_url(version), object: p} }
     elsif self.recipe
-      images << {picture_url: self.recipe.image_url, object: self.recipe}
+      images << {picture_url: self.recipe.image_url(version), object: self.recipe}
     end
 
     images

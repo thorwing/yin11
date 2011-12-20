@@ -1,12 +1,7 @@
 <div class="grid_9 box_shadow">
     <div class="p5">
-        <div class="img_frame fl">
-            <!--<= link_to image_tag(@recipe.image_url, border: 0, width: 280, height:218 )%>-->
-
-            <a  rel="facebox" href ="<%=@recipe.image_url%>">
-                <%= image_tag @recipe.image_url, :width => "280", :height => "218", :alt=> "recipe_image"%>
-            </a><br/>
-
+        <div class="fl">
+            <%= link_to image_tag(@recipe.image_url, width: 280, height: 218, alt: @recipe.name, class: 'img_frame overflow_hidden'), @recipe.image_url, rel: "facebox"  %>
         </div>
 
         <div class="fl f16 ml10">
@@ -51,10 +46,8 @@
           <% @recipe.steps.each do |f|%>
               <div class="step_container grid_3 ">
                   <% if f.image.present?%>
-                      <a  rel="facebox" href ="<%=f.image.picture_url%>">
-                        <%= image_tag f.image.picture_url, :width => "210", :height => "150", :alt=> "step_image"%>
-                      </a><br/>
-                   <% end  %>
+                    <%= link_to image_tag(f.get_image_url(:thumb), :alt=> "step_image"), f.get_image_url, rel: "facebox" %><br/>
+                  <% end  %>
                 <div class="step_content"><%= f.content %></div>
               </div>
           <% end %>

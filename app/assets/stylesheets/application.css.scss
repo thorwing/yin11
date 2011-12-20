@@ -180,6 +180,8 @@ ul.menu li {
 
 .clear { visibility: hidden; height: 0; clear: both; }
 
+.overflow_hidden { overflow: hidden; }
+
 .clearfix:after {
     visibility: hidden;
     display: block;

@@ -33,11 +33,11 @@ class Recipe
     before_save :sync_image
 
     #TODO use a real image field here
-    def image_url
+    def image_url(version = nil)
       if self.steps.size > 0 && self.steps.last.image.present?
-        self.steps.last.image.picture_url(:waterfall)
+        self.steps.last.image.picture_url(version)
       else
-        nil
+        ''
       end
     end
 

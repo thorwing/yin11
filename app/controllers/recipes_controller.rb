@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
     data = {
       items: @recipes.inject([]){|memo, r| memo << {
         name: r.name,
-        picture_url: r.steps.last == nil ? 'not_found.png' : r.image_url,
+        picture_url: r.image_url(:waterfall),
         user_id: r.author.id,
         user_name: r.author.screen_name,
         user_avatar: r.author.get_avatar(:thumb, false),
