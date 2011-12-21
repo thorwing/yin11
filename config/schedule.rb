@@ -33,6 +33,6 @@
 
 set :output, "/var/www/yin11/current/log/cron_log.log"
 
-every 2.hours do
+every 5.hours do
   command "/usr/local/coreseek/bin/indexer -c /var/www/yin11/current/config/production.sphinx.conf --all --rotate"
 end
