@@ -7,7 +7,7 @@
 //= require facebox
 //= require jquery.highlight-3
 //= require fileuploader
-//= require_directory kissy
+//= require kissy/kissy
 //= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
@@ -102,18 +102,6 @@ $(function() {
     tokenize_input("#recipe_tags_string", "/tags/query.json", 10);
     tokenize_input("#group_tags_string", "/tags/query.json", 10);
     tokenize_input("#vendor_fields #product_vendor_token", "/vendors.json", 1);
-});
-
-
-//Apply Tinymce
-$(function() {
-    $('.rich_editor').tinymce({
-        theme : "advanced",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true
-    });
 });
 
 //Apply facebox
