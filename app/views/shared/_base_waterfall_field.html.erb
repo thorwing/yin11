@@ -1,5 +1,5 @@
 <script type="tpl" id="tpl">
-    <div class="waterfall grid_3 box_shadow" data-id="{{id}}" onmouseout='hide_user_info($(this));'>
+    <div class="waterfall grid_3 box_shadow" height="{{height}}" data-id="{{id}}" onmouseout='hide_user_info($(this));'>
         <% if path %>
             <div align="center"><a href="<%= "#{path}/{{id}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" /></a></div>
         <% else %>
