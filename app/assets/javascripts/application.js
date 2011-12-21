@@ -6,8 +6,8 @@
 //= require jquery.jgrowl
 //= require facebox
 //= require jquery.highlight-3
-//= require kissy/kissy
 //= require fileuploader
+//= require_directory kissy
 //= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
@@ -38,24 +38,6 @@ theInterval = function(cur){
 
         }, 3000);
 };
-
-$(function(){
-
-        $("#main-photo-slider").codaSlider();
-
-        $navthumb = $(".nav-thumb");
-        $crosslink = $(".cross-link");
-
-        $navthumb
-        .click(function() {
-                var $this = $(this);
-                theInterval($this.parent().attr('href').slice(1) - 1);
-                return false;
-        });
-
-        theInterval();
-});
-
 
 //Add fields to DOM
 function add_fields(link, association, content, divname) {
