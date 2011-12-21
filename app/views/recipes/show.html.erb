@@ -55,16 +55,9 @@
     </div>
 </div>
 
-<div id = "product area" class = "grid_3 box_shadow"  >
-  <div class = "p5"><%= t("recipes.related_product") %> </div><br/>
 
-  <% @related_product.each do |product| %>
-        <div style ="width:100px" class= "fl p5">
-            <%= render "products/related _product", :product => product %>
-            <%= product.price.to_s + t("money.yuan") if product.price.present? %>
-            <!--<= product.vendor.name %>-->
-        </div>
-  <% end %>
+<div class = "grid_3 box_shadow to_right"  >
+  <%= render "products/related_products", products: @related_products %>
 </div>
 
 <div id="review_linker" class="display_none">

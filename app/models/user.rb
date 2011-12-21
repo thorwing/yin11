@@ -75,7 +75,7 @@ class User
               :email_format => true,
               :if => :non_third_party_login
   #validates_presence_of :login_name
-  validates_length_of :login_name, :maximum => 30 #or 15 chinese charactors, a validation should be implemented
+  validates_length_of :login_name, :maximum => 15 #or 30 eng charactors, a validation should be implemented
   validates_presence_of :password, :on => :create, :if => :non_third_party_login
   validates_confirmation_of :password, :if => :non_third_party_login
   validates_length_of :password, :minimum => 6, :on => :create, :if => :non_third_party_login
