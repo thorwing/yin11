@@ -5,8 +5,6 @@
 //= require jquery.metadata
 //= require jquery.jgrowl
 //= require facebox
-//= require coda-slider.1.1.1.pack
-//= require tinymce-jquery
 //= require jquery.highlight-3
 //= require kissy/kissy
 //= require fileuploader
