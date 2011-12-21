@@ -16,7 +16,7 @@
         <% user.get_recent_feeds(3).each do |feed| %>
           <div class="hint_box ml2 fl">
             <%= link_to image_tag(feed.picture_url(:thumb), :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), feed.item %>
-            <span class="flex_hint b_black white"><%= feed.content %></span>
+            <span class="flex_hint b_black white"><%= truncate_content(feed.content, 20) %></span>
           </div>
         <% end %>
     </div>
