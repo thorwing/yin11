@@ -14,8 +14,8 @@
     </div>
     <div class="feeds fr mt30">
         <% user.get_recent_feeds(4).each do |feed| %>
-          <div class="hint_box ml2 fl">
-            <%= link_to image_tag(feed.picture_url(:thumb), :width => 80, :height => 80), feed.item %>
+          <div class="hint_box ml2 fl overflow_hidden" style="width: 80px;height: 80px;">
+            <%= link_to image_tag(feed.picture_url(:thumb)), feed.item %>
             <span class="flex_hint b_black white f11"><%= truncate_content(feed.content, 15) %></span>
           </div>
         <% end %>
