@@ -20,7 +20,8 @@ function waterfall(url) {
                         // 拼装每页数据
                         var items = [];
                         S.each(d.items, function(item) {
-//                            item.height = Math.round(Math.random()*(400 - 280) + 280); // fake height
+                            //TODO Try to make waterfall block big  to avoid diplaying issue
+                            item.height = item.picture_height + 280;
                             items.push(new S.Node(tpl.render(item)));
                         });
 

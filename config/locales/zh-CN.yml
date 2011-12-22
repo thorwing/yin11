@@ -412,7 +412,7 @@ zh-CN:
     when: 什么时候?
     whats_wrong: 哪里不对劲?
     post_new_review: 发表新分享
-    edit_review: 编辑 %{title}
+    edit_review: 编辑分享
     new_review: 新分享
     make_choice_please: 请选择
     choose_vendor: 选择商户

@@ -2,7 +2,8 @@ class PersonalController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
 
   def me
-    @my_feeds = current_user.feeds
+    #TODO why there are feed that doesn't belong to a user
+    @my_feeds = current_user.feeds.reject{|f| f.author.blank?}
   end
 
   def feeds

@@ -15,7 +15,7 @@ $(function() {
             allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'] ,
             // each file size limit in bytes
             // this option isn't supported in all browsers
-            sizeLimit: 2097152, // max size 2MB
+            sizeLimit: 4194304, // max size 4MB
             minSizeLimit: 0, // min size
             // set to true to output server response to console
             debug: false,
@@ -116,7 +116,7 @@ function step_uploader()
             allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'] ,
             // each file size limit in bytes
             // this option isn't supported in all browsers
-            sizeLimit: 2097152, // max size 2MB
+            sizeLimit: 4194304, // max size 4MB
             minSizeLimit: 0, // min size
             // set to true to output server response to console
             debug: false,
