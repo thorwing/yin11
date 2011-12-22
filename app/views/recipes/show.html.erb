@@ -10,7 +10,7 @@
         <div class="fl f16 ml10">
             <h2><%= @recipe.name %></h2>
             <span class="trivial"><%= t("recipes.uploaded_by") + ": " + @recipe.author.screen_name %></span> <br/>
-            <%= t_with_colon("recipes.ingredients") %><br/>
+            <%= t("recipes.ingredients") %><br/>
             <p>
               <% @recipe.ingredients.each do |i|%>
                       <%= i.name %>
