@@ -49,6 +49,16 @@ class Feed
     end
   end
 
+  def picture_height(version = nil)
+    if item.is_a?(Review)
+      item.get_review_image_height(version)
+    elsif item.respond_to?(:get_image_url)
+      item.get_image_height(version)
+    else
+      0
+    end
+  end
+
   private
 
   def get_item

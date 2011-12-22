@@ -33,6 +33,7 @@ class PersonalController < ApplicationController
         target_path: url_for(f.item),
         time: f.created_at.strftime("%Y-%m-%d %H:%M:%S"),
         picture_url: f.picture_url(:waterfall),
+        picture_height: f.picture_height(:waterfall),
         id: f.id}
       },
       page: params[:page],

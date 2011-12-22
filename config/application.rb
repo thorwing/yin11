@@ -59,5 +59,7 @@ module Yin11
     config.filter_parameters += [:password]
 
     config.mongoid.preload_models = false
+
+    config.cache_store = :memory_store
   end
 end

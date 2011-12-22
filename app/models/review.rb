@@ -37,16 +37,26 @@ class Review
     self.votes >= ITEM_MEASURE_POPULAR ? true : false
   end
 
-  def get_review_image_url(version = nil)
+  def get_imageable_item
     if self.images.empty?
       if self.products.size > 0
-        return self.products.first.get_image_url(version)
+        return self.products.first
       elsif self.recipe
-        return self.recipe.image_url(version)
+        return self.recipe
       end
     end
 
-    self.get_image_url(version)
+    self
+  end
+
+  def get_review_image_url(version = nil)
+    imageable = self.get_imageable_item
+    imageable.get_image_url(version)
+  end
+
+  def get_review_image_height(version = nil)
+    imageable = self.get_imageable_item
+    imageable.get_image_height(version)
   end
 
   def get_images_with_objects(version = nil)
@@ -55,7 +65,7 @@ class Review
     if self.products.size > 0
       images += self.products.map {|p| {picture_url: p.get_image_url(version), object: p} }
     elsif self.recipe
-      images << {picture_url: self.recipe.image_url(version), object: self.recipe}
+      images << {picture_url: self.recipe.get_image_url(version), object: self.recipe}
     end
 
     images

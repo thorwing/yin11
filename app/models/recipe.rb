@@ -3,6 +3,7 @@ class Recipe
     include Mongoid::Timestamps
     include Taggable
     include SilverSphinxModel
+    include Imageable
 
     #fields
     field :name
@@ -37,12 +38,10 @@ class Recipe
     before_save :sync_image
 
     #TODO use a real image field here
-    def image_url(version = nil)
-      if self.steps.size > 0 && self.steps.last.image.present?
-        self.steps.last.get_image_url(version)
-      else
-        ''
-      end
+    def image
+      image = nil
+      image = self.steps.last.get_image if (self.steps.size > 0 && self.steps.last.image.present?)
+      image
     end
 
     def instruction

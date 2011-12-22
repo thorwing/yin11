@@ -20,7 +20,7 @@ function waterfall(url) {
                         // 拼装每页数据
                         var items = [];
                         S.each(d.items, function(item) {
-                            item.height = Math.round(Math.random()*(400 - 280) + 280); // fake height
+//                            item.height = Math.round(Math.random()*(400 - 280) + 280); // fake height
                             items.push(new S.Node(tpl.render(item)));
                         });
 

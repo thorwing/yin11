@@ -31,6 +31,7 @@ class ReviewsController < ApplicationController
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
         picture_url: r.get_review_image_url(:waterfall),
+        picture_height: r.get_review_image_height(:waterfall),
         id: r.id}
       },
       page: params[:page],

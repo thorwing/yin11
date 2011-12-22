@@ -20,7 +20,8 @@ class RecipesController < ApplicationController
       items: @recipes.inject([]){|memo, r| memo << {
         name: r.name,
         content: r.instruction,
-        picture_url: r.image_url(:waterfall),
+        picture_url: r.get_image_url(:waterfall),
+        picture_height: r.get_image_height(:waterfall),
         user_id: r.author.id,
         user_name: r.author.screen_name,
         user_avatar: r.author.get_avatar(:thumb, false),
