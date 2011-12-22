@@ -1,8 +1,6 @@
 <div class="grid_9 box_shadow">
     <div class="p5">
         <div class="img_frame fl">
-            <!--<= link_to image_tag(@recipe.image_url, border: 0, width: 280, height:218 )%>-->
-
             <a  rel="facebox" href ="<%=@recipe.image_url%>">
                 <%= image_tag @recipe.image_url, :width => "280", :height => "218", :alt=> "recipe_image"%>
             </a><br/>
@@ -15,21 +13,19 @@
             <%= t_with_colon("recipes.ingredients") %><br/>
             <p>
               <% @recipe.ingredients.each do |i|%>
-                  <% if i.is_major_ingredient == true %>
                       <%= i.name %>
                       <%= i.amount %>
-                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
+                      <!--<span class="trivial"><= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>-->
                       <br/>
-                  <% end  %>
               <% end %>
-              <% @recipe.ingredients.each do |i|%>
-                  <% if i.is_major_ingredient == false %>
-                      <%= i.name %>
-                      <%= i.amount %>
-                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
-                      <br/>
-                  <% end  %>
-              <% end %>
+              <!--< @recipe.ingredients.each do |i|%>-->
+                  <!--< if i.is_major_ingredient == false %>-->
+                      <!--<= i.name %>-->
+                      <!--<= i.amount %>-->
+                      <!--<span class="trivial"><= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>-->
+                      <!--<br/>-->
+                  <!--< end  %>-->
+              <!--< end %>-->
             </p>
             <% if current_user_has_permission? :normal_user %>
                 <div class="actions">
@@ -48,9 +44,12 @@
     <div class="steps_show grid_9 ">
         <p>
           <b><%= t("recipes.steps") %></b>
+          <%= @recipe.steps.count %>
           <% @recipe.steps.each do |f|%>
+              <!--<= debug f %>-->
+
               <div class="step_container grid_3 ">
-                  <% if f.image.present?%>
+                  <% if f.img_id?%>
                       <a  rel="facebox" href ="<%=f.image.picture_url%>">
                         <%= image_tag f.image.picture_url, :width => "210", :height => "150", :alt=> "step_image"%>
                       </a><br/>

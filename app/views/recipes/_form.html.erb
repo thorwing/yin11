@@ -3,11 +3,11 @@
 
    <div class = "grid_9  to_left ">
        <div class="field block box_shadow m10 p5">
-            <%= f.label :title, t("recipes.basic_info") , :class => "f16" %><br/><br/>
-            <%= f.label :title, t("recipes.name") , :class => "f14" %>
+            <!--<= f.label :title, t("recipes.basic_info") , :class => "f16" %><br/><br/>-->
+            <b><%= f.label :title, t("recipes.name") , :class => "f14 " %></b>
             <%= f.text_field :name, :maxlength => get_max_length(Recipe, :name) %>
             <div class="field f14">
-                 <%= f.label :tags_string, t("tags.tags") %>
+                 <b><%= f.label :tags_string, t("tags.tags") %></b>
                  <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
             </div>
        </div>
@@ -19,7 +19,7 @@
                     <tr>
                         <th><%= t("recipes.ingredient_name") %></th>
                         <th><%= t("recipes.ingredient_amount") %></th>
-                        <th><%= t("recipes.is_major_ingredient") %></th>
+                        <!--<th><= t("recipes.is_major_ingredient") %></th>-->
                         <th></th>
                     </tr>
 

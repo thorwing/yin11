@@ -183,8 +183,8 @@ require "tag"
           r[:ingredients].each do |ing|
               ingredient = recipe.ingredients.build
               ingredient.name = ing["name"]
-              ingredient.amount = ing["amount"]
-              ingredient.is_major_ingredient = ing["is_major_ingredient"]
+              #ingredient.amount = ing["amount"]
+              #ingredient.is_major_ingredient = ing["is_major_ingredient"]
               ingredient.id = ing["_id"]
               ingredient.save!
           end

@@ -540,17 +540,17 @@ zh-CN:
      related_product: 相关产品
      recipe_collection: 菜谱大全
      name: 菜谱名
-     ingredients: 食材明细
+     ingredients: 食材
      basic_info: 基本信息
      ingredient_name: 名称
      ingredient_amount: 用量
      ingredients_count: 食材数
      is_major_ingredient: 是否主料
-     steps: 菜谱步骤
+     steps: 步骤
      steps_count: 步骤数
      uploaded_by: 上传者
      tips: 小贴士
-     new: 新菜谱
+     new: +新菜谱
      add_ingredient: +食材
      add_step: +步骤
      remove: -删除

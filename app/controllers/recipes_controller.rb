@@ -4,8 +4,23 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @hot_tags = Recipe.tags_with_weight[0..7]
-    @records = YAML::load(File.open("app/seeds/tags.yml"))
+    @hot_tags = Rails.cache.fetch('hot_tags')
+    if @hot_tags.nil?
+       Logger.new(STDOUT).info "hot_tags are cached"
+       @hot_tags = Recipe.tags_with_weight[0..7]
+       Rails.cache.write('hot_tags', @hot_tags, :expires_in => 5.hours)
+    end
+
+    #@hot_tags = Rails.cache.fetch('hot_tags', :expires_in => 5.hours){ Recipe.tags_with_weight[0..7] }
+    #@records = Rails.cache.read('records', :expires_in => 5.hours){ YAML::load(File.open("app/seeds/tags.yml"))}
+
+    @records = Rails.cache.fetch('records')
+    if @records.nil?
+       Logger.new(STDOUT).info "records are cached"
+       @records = YAML::load(File.open("app/seeds/tags.yml"))
+       Rails.cache.write('records', @records, :expires_in => 5.hours)
+    end
+
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -56,9 +71,12 @@ class RecipesController < ApplicationController
   def new
 
     @recipe = Recipe.new
-    ingredient = @recipe.ingredients.build
+
     1.upto(3) {
       step = @recipe.steps.build
+    }
+    1.upto(5) {
+      ingredient = @recipe.ingredients.build
     }
 
     respond_to do |format|
@@ -75,11 +93,24 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    #p "params[:recipe]" + params[:recipe].to_yaml
+    #p "params[:recipe]" + params[:recipe][:steps_attributes].to_s
     @recipe = Recipe.new(params[:recipe])
     #p "screen_name: " + current_user.screen_name
     @recipe.author_id = current_user.id
     #p "@recipe: " + @recipe.to_yaml
+
+    #steps = params[:recipe][:steps_attributes]
+    #steps.each do |s|
+    #  p s.class.name
+    #  p "s: " + s.to_s
+    #end
+
+
+    #p "_____________"
+
+    #@recipe.steps.each do |s|
+    #  p "s.img_id" +  s.img_id
+    #end
 
     respond_to do |format|
       if @recipe.save
