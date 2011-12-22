@@ -5,6 +5,8 @@ Feature: tests user's personal page
   注册用户，编辑，管理员可以在个人首页上直接发布分享
   注册用户，编辑，管理员可以看到个人的基本信息
   注册用户，编辑，管理员可以看到各种动态（全部，个人，所关注的）
+  注册用户点击昵称,可进入自己或者他人个人首页
+  注册用户点击自己的粉丝数, 可以看到自己的粉丝
 
   Background:
     Given There are minimum seeds data
