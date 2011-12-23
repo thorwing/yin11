@@ -21,7 +21,8 @@ class Feed
   validates_inclusion_of :target_operation, :in => Feed.operations
 
   def identity
-    [target_type, target_id, target_operation].join(' ')
+    #for different operations,  only the latest one matters
+    [target_type, target_id].join(' ')
   end
 
   def cracked?

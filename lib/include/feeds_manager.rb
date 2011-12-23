@@ -67,7 +67,7 @@ class FeedsManager
       feeds += followable.feeds
     end
 
-    feeds = feeds.reject{|f| f.cracked?}.sort_by!{|f| f.created_at}.compact.uniq {|f| f.identity }
+    feeds = process_feeds(feeds)
     return feeds[(page * per)..((page + 1)* per)], feeds.size
   end
 
@@ -76,12 +76,17 @@ class FeedsManager
       memo | tag.feeds
     end
 
-    feeds = feeds.reject{|f| f.cracked?}.compact.uniq {|f| f.identity }
+    feeds = process_feeds(feeds)
     return feeds[(page * per)..((page + 1)* per)], feeds.size
   end
 
   def self.get_feeds_of(user)
-    feeds = user.feeds.reject{|f| f.cracked?}.sort_by!{|f| f.created_at}.compact.uniq {|f| f.identity }
+    feeds = process_feeds(user.feeds)
+  end
+
+  private
+  def self.process_feeds(feeds)
+    feeds.reject{|f| f.cracked?}.sort{|x, y| y.created_at <=> x.created_at}.compact.uniq {|f| f.identity }
   end
 
 end

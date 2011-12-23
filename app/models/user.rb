@@ -181,6 +181,10 @@ class User
     data.inject([]){|memo, (k,v)| memo | v}.compact.uniq
   end
 
+  def has_followed?(target)
+    self.relationships.select{|r| r.target_type == target.class.name && r.target_id == target.id.to_s}.size > 0
+  end
+
   #TODO
   def score
     followers.size * 3 + recipes.size * 2 + reviews.size

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   #TODO
   # Self-signed key will generate warnings
   #force_ssl unless Rails.env.test?
+  before_filter(:only => [:index]) { |c| c.require_permission :editor }
   before_filter(:only => [:edit, :update]) { |c| c.require_permission :normal_user }
 
   def index

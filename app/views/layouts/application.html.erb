@@ -52,6 +52,8 @@
   </div>
 </div>
 
+<%= hidden_field_tag "current_user_id", current_user.id.to_s, id: "current_user_id" if current_user %>
+
 <%= yield :deferred_javascript if content_for?(:deferred_javascript) %>
 </body>
 </html>
