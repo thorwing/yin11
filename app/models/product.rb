@@ -20,12 +20,10 @@ class Product
   field :url
   #for indexing of search
   field :vendor_name
-
   field :editor_score, :type => Integer, :default => 0
-
   field :original_name
 
-  search_index(:fields => [:name, :vendor_name],
+  search_index(:fields => [:name],
               :attributes => [:updated_at, :created_at])
 
   attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score

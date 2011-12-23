@@ -5,7 +5,8 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @hard_workers = User.desc(:reviews_count)
+    @hot_tags = Recipe.tags_with_weight[0..7]
+    @records = YAML::load(File.open("app/seeds/tags.yml"))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,7 @@ class ReviewsController < ApplicationController
 
   def more
     #  used for waterfall displaying
-    criteria = Review.all
+    criteria = Review.all.desc(:created_at)
     criteria = criteria.any_in(product_ids: [params[:product_id]]) if params[:product_id].present?
     criteria = criteria.desc(:created_at, :votes)
     @reviews = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
@@ -28,9 +29,10 @@ class ReviewsController < ApplicationController
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,
         user_fans_cnt: r.author.followers.count,
-        user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0,
+        user_established: current_user ? (current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0) : false,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        picture_url: r.get_review_image_url,
+        picture_url: r.get_review_image_url(:waterfall),
+        picture_height: r.get_review_image_height(:waterfall),
         id: r.id}
       },
       page: params[:page],
@@ -83,52 +85,50 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.xml
   def create
-    last_review = current_user.reviews.desc(:created_at).limit(1).first
-    #p "last_review: " + last_review.class.name
-    #p "last_review: " + last_review.content
-    #p "params[:review]: " + params[:review].to_param
-    #p "params[:review]: " + params[:review][:content]
-    if (last_review.content == params[:review][:content])
-        @user_message = t("notices.already_published")
-        respond_to do |format|
-          @user_message = t("notices.review_post_failure") + @user_message
-          format.html { render :action => "new", :notice => @user_message }
-          format.js
-        end
-    else
-      @review = Review.new(params[:review])
-      @review.author = current_user
+    #default value
+    @remote_status = true
+    @local_status = false
+    @user_message = ''
 
-      ImagesHelper.process_uploaded_images(@review, params[:images])
-
-      #handle products'' links
-      @review.product_ids.each do |product_id|
-        product = Product.find(product_id)
-        product.review_ids ||= []
-        product.review_ids << @review.id
-        product.save
-      end
-
-      #default value
-      @remote_status = true
-      @local_status = false
-      @user_message = ''
-
-      if params[:sync_to]
-        @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
-      end
-      @local_status = @review.save if @remote_status
-
+    #prevent from mistakes ( two reviews in a row)
+    last_review = current_user.reviews.in_days_of(1).desc(:created_at).limit(1).first
+    if (last_review && last_review.content == params[:review][:content])
+      @user_message = t("notices.already_published")
       respond_to do |format|
-        if @local_status
-          @user_message = t("notices.review_posted") + @user_message
-          format.html { redirect_to(@review, :notice => @user_message) }
-          format.js
-        else
-          @user_message = t("notices.review_post_failure") + @user_message
-          format.html { render :action => "new", :notice => @user_message }
-          format.js
-        end
+        format.html { render :action => "new", :notice => @user_message }
+        format.js
+      end
+
+      return
+    end
+
+    @review = Review.new(params[:review])
+    @review.author = current_user
+
+    ImagesHelper.process_uploaded_images(@review, params[:images])
+
+    #handle products'' links
+    @review.product_ids.each do |product_id|
+      product = Product.find(product_id)
+      product.review_ids ||= []
+      product.review_ids << @review.id
+      product.save
+    end
+
+    if params[:sync_to]
+      @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
+    end
+    @local_status = @review.save if @remote_status
+
+    respond_to do |format|
+      if @local_status
+        @user_message = t("notices.review_posted") + @user_message
+        format.html { redirect_to(@review, :notice => @user_message) }
+        format.js
+      else
+        @user_message = t("notices.review_post_failure") + @user_message
+        format.html { render :action => "new", :notice => @user_message }
+        format.js
       end
     end
   end
@@ -138,8 +138,10 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
-    @review.images.each do |image|
-      image.delete unless params[:images][0..4].include? image.id.to_s
+    if @review.images && params[:images]
+      @review.images.each do |image|
+        image.delete unless params[:images][0..4].include? image.id.to_s
+      end
     end
 
     if params[:images]

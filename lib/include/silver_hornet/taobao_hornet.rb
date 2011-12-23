@@ -172,54 +172,33 @@ class SilverHornet::TaobaoHornet
   #get the response xml file by posing a restful WS url
   def get_xml(page_no, page_size, cid, cat_name)
     retry_times = 3
-    if @@fetch_log.present? && @@fetch_log.has_key?(cid)
-      begin
-        page_no = @@fetch_log[cid].split(",").last.to_i + 1
-        #get the restful WS url
-        p "page_no: #{page_no}"
-        uri = get_uri(page_no, page_size, cid)
-        #get the response xml file
-        response = Net::HTTP.get(uri)
-        xml_doc = Crack::XML.parse(response)
-        #process the product info on xml file
-        process_product(xml_doc, cat_name)
-        #count the page number
-        total_no=(xml_doc["items_get_response"]["total_results"].to_i/page_size).to_i+1
-        write_fetch_log(page_no.to_s, cid.to_s)
-        if page_no<=total_no
-          get_xml(page_no, page_size, cid, cat_name)
-        end
-      rescue StandardError => ex_msg
-        p ex_msg
-        retry if (retry_times -= 1) > 0
+    is_fetch_log = @@fetch_log.present? && @@fetch_log.has_key?(cid)
+    page_no = @@fetch_log[cid].split(",").last.to_i + 1 if is_fetch_log
+
+    begin
+      #get the restful WS url
+      uri = get_uri(page_no, page_size, cid)
+      #get the response xml file
+      response = Net::HTTP.get(uri)
+      xml_doc = Crack::XML.parse(response)
+      #process the product info on xml file
+      process_product(xml_doc, cat_name)
+      #count the page number
+      total_no=(xml_doc["items_get_response"]["total_results"].to_i/page_size).to_i+1
+      write_fetch_log(page_no.to_s, cid.to_s)
+      if page_no<=total_no
+        page_no+=1 if is_fetch_log
+        get_xml(page_no, page_size, cid, cat_name)
       end
-    else
-      begin
-        p "page_no: #{page_no}"
-        uri = get_uri(page_no, page_size, cid)
-        #get the response xml file
-        response = Net::HTTP.get(uri)
-        xml_doc = Crack::XML.parse(response)
-        #process the product info on xml file
-        process_product(xml_doc, cat_name)
-        #count the page number
-        total_no=(xml_doc["items_get_response"]["total_results"].to_i/page_size).to_i+1
-        write_fetch_log(page_no.to_s, cid.to_s)
-        if page_no<=total_no
-          page_no+=1
-          get_xml(page_no, page_size, cid, cat_name)
-        end
-      rescue StandardError => ex_msg
-        p ex_msg
-        retry if (retry_times -= 1) > 0
-      end
+    rescue StandardError => ex_msg
+      p ex_msg
+      p "retrying... #{retry_times}times"
+      retry if (retry_times -= 1) > 0
     end
   end
 
   #get the restful WS url for products
   def get_uri(page_no, page_size, cid)
-    p_no=page_no
-    p_size=page_size
     #parameters of http request
     time = Time.now
     parameters = {
@@ -234,15 +213,14 @@ class SilverHornet::TaobaoHornet
         :cid => "#{cid.to_s}",
         :start_score => "13",
         :is_mall =>"true",
-        :page_size => "#{p_size.to_s}",
-        :page_no => "#{p_no.to_s}"
+        :page_size => page_size.to_s,
+        :page_no => page_no.to_s
     }
     parameters[:sign] = ::Digest::MD5.hexdigest(@config["secret"] + parameters.sort.flatten.join + @config["secret"]).upcase
     #to replace the blank ' '
     parameters[:timestamp] = time.strftime("%Y-%m-%d+%H:%M:%S")
     #return the restful WS address
     uri = URI.parse("http://gw.api.taobao.com/router/rest?#{convert_to_http_params(parameters)}")
-    p "Products url: #{uri}"
   end
 
   def convert_to_http_params(hash = {})
@@ -280,7 +258,7 @@ class SilverHornet::TaobaoHornet
             parameters[:timestamp] = time.strftime("%Y-%m-%d+%H:%M:%S")
             #return the restful WS address
             uri = URI.parse("http://gw.api.taobao.com/router/rest?#{convert_to_http_params(parameters)}")
-            p "product url: #{uri}"
+            #p "product url: #{uri}"
             response = Net::HTTP.get(uri)
             xml_doc = Crack::XML.parse(response)
 
@@ -428,90 +406,5 @@ class SilverHornet::TaobaoHornet
       end
     end
   end
-
-  #def get_product_catalog(cat_name, product)
-  #  begin
-  #    try do
-  #      cat_tags = seg_word(cat_name)
-  #      @@catalogs.each do |cat|
-  #        cat_words=[]
-  #        if cat.alias_name.present?
-  #          cat_words=cat.alias_name | seg_word(cat.name)
-  #        else
-  #          cat_words = seg_word(cat.name)
-  #        end
-  #        cat_words.each do |cat_word|
-  #          if cat_tags.include?(cat_word)
-  #            product.catalogs << cat unless product.catalogs.include?(cat)
-  #            if cat.children.present?
-  #              cat.children.all.each do |child|
-  #                unless product.catalogs.include?(child)
-  #                  if seg_word(product.name).include?(child.name)
-  #                    product.catalogs << child
-  #                    break
-  #                  else
-  #                    if child.alias_name.present?
-  #                      child.alias_name.each do |alias_name|
-  #                        if seg_word(product.name).include?(alias_name)
-  #                          product.catalogs << child
-  #                          break
-  #                        end
-  #                      end
-  #                    end
-  #                  end
-  #                else
-  #                  break
-  #                end
-  #              end
-  #            end
-  #          end
-  #        end
-  #      end
-  #      if product.catalogs.size > 1
-  #        word = seg_word(product.name)
-  #        catalogs ={}
-  #        product.catalogs.each do |catalog|
-  #          if catalogs[catalog.ancestry].present?
-  #            catalogs[catalog.ancestry] = catalogs[catalog.ancestry].to_s + "," + catalog.id.to_s
-  #          else
-  #            catalogs[catalog.ancestry] = catalog.id.to_s
-  #          end
-  #        end
-  #        catalogs.each do |(key, value)|
-  #          cat_id = value.split(",").uniq
-  #          if cat_id.size > 1
-  #            cat_id.each do |id|
-  #              is_related = false
-  #              if Catalog.find(id).alias_name.present?
-  #                words = Catalog.find(id).alias_name | seg_word(Catalog.find(id).name)
-  #                words.each do |w|
-  #                  if word.include?(w)
-  #                    is_related = true
-  #                  end
-  #                end
-  #              else
-  #                words = seg_word(Catalog.find(id).name)
-  #                words.each do |w|
-  #                  if word.include?(w)
-  #                    is_related = true
-  #                  end
-  #                end
-  #              end
-  #              unless is_related
-  #                product.catalogs.delete(Catalog.find(id))
-  #              end
-  #            end
-  #          end
-  #          if product.catalogs.size < 1
-  #            product.catalogs << Catalog.find(cat_id[0]) unless product.catalogs.include?(Catalog.find(cat_id[0]))
-  #          end
-  #        end
-  #      end
-  #    end
-  #  rescue StandardError => ex_msg
-  #    p ex_msg
-  #    return
-  #  end
-  #end
 
 end

@@ -1,11 +1,17 @@
 @import "attributes";
 
 #header {
-    background: $gray;
+    background-color: $light_gray;
+    background: url("header_bg.png") repeat-x;
     height: 80px;
 
     .jewelry {
         padding-top: 20px;
+    }
+
+    #inter_header {
+        width: 960px;
+        margin: 0 auto;
     }
 
     #top_menu {
@@ -16,10 +22,10 @@
 
         li a {
             font-size: 16px;
-            color:$white;
+            color:$ink_black;
             text-decoration:none;
         }
-        li a:hover, li a.selected {color:$yellow_green;}
+        li a:hover, li a.selected {color:$blue;}
     }
 
     /*  Logo */

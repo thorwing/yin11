@@ -71,9 +71,10 @@
         <div class = "my_fans display_none">
           <br/>
             <dd>
-                <% current_user.followers.each do |r| %>
-                    <% item = r.item %>
-                    <%= render item %>
+                <!--TODO-->
+                <% current_user.followers.each do |id| %>
+                    <% user = User.find(id) %>
+                    <%= render user %>
                 <% end %>
             </dd>
         </div>

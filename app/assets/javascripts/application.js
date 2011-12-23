@@ -5,11 +5,9 @@
 //= require jquery.metadata
 //= require jquery.jgrowl
 //= require facebox
-//= require coda-slider.1.1.1.pack
-//= require tinymce-jquery
 //= require jquery.highlight-3
-//= require kissy/kissy
 //= require fileuploader
+//= require kissy/kissy
 //= require_tree .
 
 // Place your application-specific JavaScript functions and classes here
@@ -40,24 +38,6 @@ theInterval = function(cur){
 
         }, 3000);
 };
-
-$(function(){
-
-        $("#main-photo-slider").codaSlider();
-
-        $navthumb = $(".nav-thumb");
-        $crosslink = $(".cross-link");
-
-        $navthumb
-        .click(function() {
-                var $this = $(this);
-                theInterval($this.parent().attr('href').slice(1) - 1);
-                return false;
-        });
-
-        theInterval();
-});
-
 
 //Add fields to DOM
 function add_fields(link, association, content, divname) {
@@ -122,18 +102,6 @@ $(function() {
     tokenize_input("#recipe_tags_string", "/tags/query.json", 10);
     tokenize_input("#group_tags_string", "/tags/query.json", 10);
     tokenize_input("#vendor_fields #product_vendor_token", "/vendors.json", 1);
-});
-
-
-//Apply Tinymce
-$(function() {
-    $('.rich_editor').tinymce({
-        theme : "advanced",
-        theme_advanced_toolbar_location : "top",
-        theme_advanced_toolbar_align : "left",
-        theme_advanced_statusbar_location : "bottom",
-        theme_advanced_resizing : true
-    });
 });
 
 //Apply facebox

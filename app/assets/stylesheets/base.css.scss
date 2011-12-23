@@ -19,7 +19,7 @@ small {
 }
 
 a {
-	color: $green;
+	color: $blue;
 	text-decoration:none;
 }
 a:hover { text-decoration:underline; }
@@ -32,8 +32,8 @@ body {
 	margin:0px;
 	padding:0px;
 	line-height:22px;
-    background-color: $background_gray;
-    color: $font_black;
+    /*background-color: $shadow_gray;*/
+    color: $ink_black;
     font-size:13px;
     font-family: $general_font;
 }

@@ -4,7 +4,7 @@
 *= require_self
 *= require fonts
 *= require header
-*= require waterfall
+*= require silver_waterfall
 *= require comment
 *= require items
 *= require menu
@@ -17,11 +17,10 @@
 *= require users
 *= require pages
 *= require tab_control
+*= require recipes
 *= require token-input-facebook
 *= require facebox
 *= require jquery.jgrowl
-*= require slider
-*= require recipes
 *= require fileuploader
 */
 
@@ -34,7 +33,6 @@
     float: left;
     margin-left: 10px;
     margin-right: 10px;
-    overflow: hidden;
 }
 
 .grid_1 { width: 60px;}
@@ -82,7 +80,7 @@
 }
 
 .box_shadow {
-    background: none repeat scroll 0 0 #FFFFFF;
+    background: none repeat scroll 0 0 $shadow_gray;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
 }
@@ -157,6 +155,8 @@ ul.menu li {
 .mb20 {margin-bottom:20px;}
 .mr20 {margin-right: 20px;}
 
+.mt25 {margin-top: 25px;}
+
 .mt30 {margin-top:30px;}
 .ml30 {margin-left: 30px;}
 .mb30 {margin-bottom:30px;}
@@ -181,6 +181,8 @@ ul.menu li {
 .center {margin: 0 auto; display: block;}
 
 .clear { visibility: hidden; height: 0; clear: both; }
+
+.overflow_hidden { overflow: hidden; }
 
 .clearfix:after {
     visibility: hidden;
@@ -234,7 +236,6 @@ a.button, input.button {
 	border:1px solid #32312f;
 	text-transform:uppercase;
     height: 24px;
-    margin: 2px 0;
 }
 a.button:hover, input.button:hover {
 	background: darken($blue, 10%);
@@ -242,11 +243,11 @@ a.button:hover, input.button:hover {
 }
 
 a.button.new_relationship {
-    background: $green;
+    background: $blue;
 }
 
 a.button.new_relationship:hover {
-    background: darken($green, 10%);
+    background: darken($blue, 10%);
 }
 
 a.button.cancel_relationship {
@@ -273,7 +274,7 @@ a.tag {
 
 a.tag:hover {
     color: white;
-    background-color: $green;
+    background-color: $blue;
     cursor:pointer;
 }
 
@@ -296,7 +297,7 @@ h1.title {
 }
 
 html, body, #main { height: 100%; }
-body #main { height: auto; padding-bottom: 20em;}
+body #main { height: auto; padding-bottom: 260px;}
 
 #content_area { min-height: 600px;  }
 
@@ -315,15 +316,15 @@ body #main { height: auto; padding-bottom: 20em;}
     clear: both;
     position: relative;
     z-index: 10;
-    height: 10em;
-    margin-top: -10em;
+    height: 130px;
+    margin-top: -130px;
     overflow:hidden;
-    color:$white;
-    background-color:$green;
+    color:$ink_black;
+    background-color:$light_gray;
+    background: url("footer_bg.png") repeat-x;
 }
 
 #footer a {
-	color:$white;
 	text-decoration:underline;
 }
 

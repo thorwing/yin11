@@ -1,16 +1,3 @@
-GIT
-  remote: https://github.com/jejacks0n/mercury.git
-  revision: a2b16bcdc96f12a21c04e95e145588595847523b
-  ref: a2b16bcdc9
-  specs:
-    mercury-rails (0.2.3)
-      coffee-script
-      formtastic
-      json
-      paperclip
-      rails (~> 3.1.0)
-      sass-rails
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -128,6 +115,13 @@ GEM
       net-http-persistent (~> 1.8)
       nokogiri (~> 1.4)
       webrobots (~> 0.0, >= 0.0.9)
+    mercury-rails (0.2.3)
+      coffee-script
+      formtastic
+      json
+      paperclip
+      rails (~> 3.1.0)
+      sass-rails
     mime-types (1.16)
     mini_magick (3.3)
       subexec (~> 0.1.0)
@@ -260,7 +254,7 @@ DEPENDENCIES
   kaminari
   launchy
   mechanize
-  mercury-rails!
+  mercury-rails
   mini_magick
   mongoid
   mongoid-ancestry

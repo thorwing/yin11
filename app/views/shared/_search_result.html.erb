@@ -1,0 +1,10 @@
+<div class="m5">
+    <% if item.is_a?(Product) %>
+        <%= link_to  item.name, item %>
+    <% elsif item.is_a?(Recipe) %>
+        <%= link_to  item.name, item %>
+    <% elsif item.is_a?(User) %>
+        <%= link_to item.login_name, item %>
+    <% end %>
+</div>
+

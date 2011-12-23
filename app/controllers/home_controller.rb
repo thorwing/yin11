@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
     #TODO
     @daily_stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..2]
-    @masters = User.all.limit(@daily_stars.size * 8)
+    @masters = User.enabled.masters.limit(40)
   end
 
   # get more items for pagination on home page

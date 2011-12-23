@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @catalogs = Catalog.all.to_a
+    @catalogs = Catalog.desc(:created_at).to_a
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,8 @@ class ProductsController < ApplicationController
     data = {
       items: @products.inject([]){|memo, p| memo << {
         name: p.name,
-        picture_url: p.get_image_url(true, 0 , false),
+        picture_url: p.get_image_url(:waterfall),
+        picture_height: p.get_image_height(:waterfall),
         id: p.id}
       },
       page: params[:page],

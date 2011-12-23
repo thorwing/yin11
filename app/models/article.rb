@@ -7,7 +7,6 @@ class Article
   include Votable
   include Imageable
   include Feedable
-  include SilverSphinxModel
 
   #fields
   field :title
@@ -18,9 +17,6 @@ class Article
   field :region_ids, :type => Array
 
   index :title
-
-  search_index(:fields => [:title, :content],
-              :attributes => [:created_at, :updated_at])
 
   #accessibles
   attr_reader :region_tokens

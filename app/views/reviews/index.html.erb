@@ -9,16 +9,22 @@
 </div>
 
 <div class="grid_3 to_right">
-    <h3>今日红榜</h3>
-    <% @hard_workers.each do |user| %>
-        <div class="clearfix mt10">
-            <div class="fl mr5"><%= link_to image_tag(user.get_avatar(:thumb), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), user %></div>
-            <div class="fl">
-                <span><%= link_to user.screen_name, user %></span><br/>
-                <span class="trivial"><%= t("reviews.by_user", count: user.reviews.count) %></span><br/>
-                <span class="trivial"><%= t("recipes.by_user", count: user.recipes.count) %></span>
-            </div>
-        </div>
-    <% end %>
+   <h3><%= t("tags.hot_tags") %></h3>
+    <% @hot_tags.each do |tag, weight| %>
+            <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag} %>
+    <% end %><br/>
+    <%= link_to t("tags.more"), tags_path  %>
+    <br/><br/>
+
+    <% @records.each do |record|%>
+        <h3><%= record["name"] %></h3>
+        <% tags = record["detail"].split(' ') %>
+        <% len = tags.size > 12 ? 12 : tags.size  %>
+        <% tags[0..len-1].each do |tag|  %>
+            <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag} %>
+        <% end  %><br/>
+        <%= link_to t("tags.more"), tags_path  %>
+        <br/><br/>
+    <% end  %>
 </div>
 

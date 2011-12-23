@@ -49,7 +49,7 @@ gem 'tinymce-rails'
 #gem "tiny_mce"
 #gem 'ckeditor-rails'
 
-gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: 'a2b16bcdc9'
+gem 'mercury-rails' #, git: 'https://github.com/jejacks0n/mercury.git', ref: 'a2b16bcdc9'
 
 gem 'mini_magick'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

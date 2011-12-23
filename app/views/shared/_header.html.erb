@@ -1,15 +1,15 @@
 <div id="header" class="clearfix">
-    <div id="logo" class="ml10 fl">
+  <div id="inter_header">
+    <div id="logo" class="ml10 fl lighter_touch">
         <%= link_to image_tag("yin11_logo.png", :border => 0), root_path %>
         <h1><%= t("site.name") %></h1>
         <h2><%= t("site.description") %></h2>
     </div>
     <ul id="top_menu" class="jewelry fl ml20 mr20">
         <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me") %></li><% end %>
-        <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
-        <li><%= render_menu(t("menu.masters"), masters_path) %></li>
-        <li><%= render_menu(t("menu.topics"), topics_path) %></li>
         <li><%= render_menu(t("menu.recipes"), recipes_path) %></li>
+        <li><%= render_menu(t("menu.masters"), masters_path) %></li>
+        <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
         <% if current_user && current_user.has_permission?(:editor) %>
             <li><%= render_menu(t("menu.administrator_control"), administrator_root_path) %></li>
         <% end %>
@@ -20,11 +20,11 @@
             <%= submit_tag t("general.search"), id: "search_btn" %>
         <% end %>
     </div>
-    <div class="jewelry fr mr10">
+    <div class="jewelry mt5 mr10 fr">
         <% if current_user %>
-            <span class="nav_menu">
-                <%= link_to(image_tag(current_user.get_avatar(:thumb), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT) + current_user.screen_name + image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow"), profile_path(current_user.profile), :class => "white f14") %>
-                <ul>
+            <span class="nav_menu" >
+                <%= link_to(image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow") + current_user.screen_name, profile_path(current_user.profile), :class => "f16") %>
+                <ul style="width:60px;">
                     <li><%= link_to t("menu.show_profile"), profile_path(current_user.profile) %></li>
                     <li><%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %></li>
                     <li><%= link_to t("menu.logout"), logout_path %></li>
@@ -32,11 +32,12 @@
             </span>
         <% else %>
           <% unless hide_quick_auth? %>
-             <span id ="login_logout">
+             <span id ="login_logout" class="f14">
                 <%= link_to t("authentication.login"), login_path %>
                 <%= link_to t("authentication.sign_up"), sign_up_path %>
             </span>
           <% end %>
         <% end %>
     </div>
+  </div>
 </div>

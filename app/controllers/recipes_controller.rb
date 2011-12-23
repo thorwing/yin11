@@ -27,14 +27,16 @@ class RecipesController < ApplicationController
   end
 
   def more
-    criteria = Recipe.all
+    criteria = Recipe.all.desc(:created_at)
     criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
     @recipes = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 
     data = {
       items: @recipes.inject([]){|memo, r| memo << {
         name: r.name,
-        picture_url: r.steps.last == nil ? 'not_found.png' : r.image_url,
+        content: r.instruction,
+        picture_url: r.get_image_url(:waterfall),
+        picture_height: r.get_image_height(:waterfall),
         user_id: r.author.id,
         user_name: r.author.screen_name,
         user_avatar: r.author.get_avatar(:thumb, false),
@@ -58,7 +60,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     prior = {"user_tag"=> 3, "major_tag" => 2, "minor_tag" => 1}
-    @related_product = get_related_products(@recipe, 7, prior)
+    @related_products = get_related_products(@recipe, 7, prior)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -114,7 +116,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.html { redirect_to @recipe, notice: t("notices.recipe_created") }
         format.json { render json: @recipe, status: :created, location: @recipe }
       else
         #raise("hi")
@@ -131,7 +133,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe])
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
+        format.html { redirect_to @recipe, notice: t("notices.recipe_updated") }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

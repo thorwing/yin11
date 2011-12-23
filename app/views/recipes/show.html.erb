@@ -1,10 +1,7 @@
 <div class="grid_9 box_shadow">
     <div class="p5">
-        <div class="img_frame fl">
-            <a  rel="facebox" href ="<%=@recipe.image_url%>">
-                <%= image_tag @recipe.image_url, :width => "280", :height => "218", :alt=> "recipe_image"%>
-            </a><br/>
-
+        <div class="fl">
+            <%= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox"  %>
         </div>
 
         <div class="fl f16 ml10">
@@ -28,13 +25,13 @@
               <!--< end %>-->
             </p>
             <% if current_user_has_permission? :normal_user %>
-                <div class="actions">
+                <div class="mt5">
                     <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
                     <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
                 </div>
             <% end %>
             <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
-                <div class="actions">
+                <div class="mt5">
                     <%= link_to t("general.edit"), edit_recipe_path(@recipe), class: "button" %>
                 </div>
             <% end %>
@@ -49,11 +46,9 @@
               <!--<= debug f %>-->
 
               <div class="step_container grid_3 ">
-                  <% if f.img_id?%>
-                      <a  rel="facebox" href ="<%=f.image.picture_url%>">
-                        <%= image_tag f.image.picture_url, :width => "210", :height => "150", :alt=> "step_image"%>
-                      </a><br/>
-                   <% end  %>
+                  <% if f.image.present?%>
+                    <%= link_to image_tag(f.get_image_url(:thumb), :alt=> "step_image"), f.get_image_url, rel: "facebox" %><br/>
+                  <% end  %>
                 <div class="step_content"><%= f.content %></div>
               </div>
           <% end %>
@@ -61,16 +56,9 @@
     </div>
 </div>
 
-<div id = "product area" class = "grid_3 box_shadow"  >
-  <div class = "p5"><%= t("recipes.related_product") %> </div><br/>
 
-  <% @related_product.each do |product| %>
-        <div style ="width:100px" class= "fl p5">
-            <%= render "products/related _product", :product => product %>
-            <%= product.price.to_s + t("money.yuan") if product.price.present? %>
-            <!--<= product.vendor.name %>-->
-        </div>
-  <% end %>
+<div class = "grid_3 box_shadow to_right"  >
+  <%= render "products/related_products", products: @related_products %>
 </div>
 
 <div id="review_linker" class="display_none">

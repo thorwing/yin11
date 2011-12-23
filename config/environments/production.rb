@@ -60,5 +60,7 @@ Yin11::Application.configure do
   config.assets.digest = true
 
   #config.assets.prefix = ''
+  config.assets.precompile += %w( *.css *.js )
+
 
 end

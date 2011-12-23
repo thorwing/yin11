@@ -2,11 +2,15 @@ class Recipe
     include Mongoid::Document
     include Mongoid::Timestamps
     include Taggable
+    include SilverSphinxModel
     include Imageable
 
     #fields
     field :name
     field :description
+
+    search_index(:fields => [:name],
+              :attributes => [:updated_at, :created_at])
 
     attr_accessible  :author_id, :name , :ingredients_attributes, :steps_attributes
 
@@ -36,11 +40,20 @@ class Recipe
     before_save :sync_image
 
     #TODO use a real image field here
-    def image_url
-      if self.steps.size > 0 && self.steps.last.image.present?
-        self.steps.last.image.picture_url(:waterfall)
+    def image
+      image = nil
+      image = self.steps.last.get_image if (self.steps.size > 0 && self.steps.last.image.present?)
+      image
+    end
+
+    def instruction
+      #TODO
+      text = self.steps.map(&:content).join("    ") || ""
+      limit = 40
+      if text.size > limit
+        text[0..(limit - 4)] + "..."
       else
-        "/assets/not_found.png"
+        text
       end
     end
 
