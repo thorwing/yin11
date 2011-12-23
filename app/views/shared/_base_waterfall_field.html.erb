@@ -5,7 +5,7 @@
         <% else %>
             <div align="center"><a href="<%= "{{target_path}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" height="{{picture_height}}" /></a></div>
         <% end %>
-        <div class="user_info ml10" position = "relative" onmouseover='show_user_info($(this));'>
+        <div class="user_info ml10 mr10" position = "relative" onmouseover='show_user_info($(this));'>
             <div class="fl">
                 <a href="users/{{user_id}}"  class="mr10">
                     <img alt="avatar" src="{{user_avatar}}" />
@@ -19,9 +19,9 @@
                 <div class="fr"><%= render "relationships/follow_field_waterfall" %><br/> </div>
             </div>
         </div>
-        <div class="ml10">
+        <div class="ml10 mr10">
            <% if show_name %>
-                <div class = "ml10 f16"><%= link_to "{{name}}", "#{path}/{{id}}" %><br/></div>
+                <div class = "f16"><%= link_to "{{name}}", "#{path}/{{id}}" %><br/></div>
                 <!--<span class="ml10 f16">{{name}}</span><br/>-->
             <% end %>
             <% if show_content %>
