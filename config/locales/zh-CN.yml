@@ -553,7 +553,10 @@ zh-CN:
      uploaded_by: 上传者
      tips: 小贴士
      new: +新菜谱
-     add_ingredient: +食材
+     major: 主料
+     minor: 辅料
+     add_major: +主料
+     add_minor: +辅料
      add_step: +步骤
      remove: -删除
      descriptions: 说明

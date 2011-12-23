@@ -71,14 +71,19 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   # GET /recipes/new.json
   def new
-
     @recipe = Recipe.new
 
     1.upto(3) {
       step = @recipe.steps.build
     }
-    1.upto(5) {
+
+    1.upto(2) {
       ingredient = @recipe.ingredients.build
+      ingredient.is_major_ingredient = true;
+    }
+    1.upto(3) {
+      ingredient = @recipe.ingredients.build
+      ingredient.is_major_ingredient = false;
     }
 
     respond_to do |format|
@@ -95,24 +100,8 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    #p "params[:recipe]" + params[:recipe][:steps_attributes].to_s
     @recipe = Recipe.new(params[:recipe])
-    #p "screen_name: " + current_user.screen_name
     @recipe.author_id = current_user.id
-    #p "@recipe: " + @recipe.to_yaml
-
-    #steps = params[:recipe][:steps_attributes]
-    #steps.each do |s|
-    #  p s.class.name
-    #  p "s: " + s.to_s
-    #end
-
-
-    #p "_____________"
-
-    #@recipe.steps.each do |s|
-    #  p "s.img_id" +  s.img_id
-    #end
 
     respond_to do |format|
       if @recipe.save
@@ -189,7 +178,6 @@ class RecipesController < ApplicationController
     hash = {}
     user_product.each do |product|
       hash[product] = product.reviews.size * prior["user_tag"]
-      #3
     end
 
     major_product.each do |product|
@@ -199,18 +187,6 @@ class RecipesController < ApplicationController
     minor_product.each do |product|
       hash[product] = product.reviews.size * prior["minor_tag"]
     end
-
-    #p "before"
-    #hash.each do |k,v|
-    #   p k.to_s + "=>" + v.to_s
-    #end
-
-    hash = hash.sort_by { |k,v| -v }
-
-    #p "after"
-    #hash.each do |k,v|
-    #   p k.to_s + "=>" + v.to_s
-    #end
 
     related_product = []
     count = hash.size-1 > max ? max : hash.size-1

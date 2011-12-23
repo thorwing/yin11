@@ -40,23 +40,19 @@ theInterval = function(cur){
 };
 
 //Add fields to DOM
-function add_fields(link, association, content, divname) {
+function add_fields(link, association, content, divname, count_range) {
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_" + association, "g");
     $(divname).append(content.replace(regexp, new_id));
     char_aware();
-//    alert($(link).html());
     step_uploader();
     show();
 
-    var count= $(divname).find(".addedclass").length;
-//    alert(count);
+    var count= $(count_range).find(".addedclass").length;
     max = parseInt ($(link).data('max_len'));
-//    alert($(link).data('ingredients_max_len'));
     if (max) {
-//              var max = parseInt(data.max);
           if(count >= max) {
-            $(link).hide();
+            $(count_range).find(".add_fields").hide();
           }
       }
 
@@ -65,19 +61,8 @@ function add_fields(link, association, content, divname) {
 
 //Remove fields from DOM
 function remove_fields(link, removefield, showfield) {
-  $(link).prev("input[type=hidden]").val("1");
-//    alert(showfield);
-//    alert(removefield);
-
-//    show the add link when the existing items < max
-    var button = $(link).parents(showfield).next();
-//    alert(button.html());
-//    change
-    if (button.hasClass("add_fields"))
-    {
-        button.show();
-    }
-
+    $(link).prev("input[type=hidden]").val("1");
+    $(link).parents(showfield).find(".add_fields").show();
     $(link).parents(removefield).remove();
 }
 
@@ -117,8 +102,6 @@ $(document).ready(function() {
     $(".radio_group" ).buttonset();
     $(".checkbox").button();
     $(".checkbox_group").buttonset();
-
-    //$(".button" ).button();
 });
 
 //Remove tips from search box

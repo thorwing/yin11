@@ -27,13 +27,17 @@ module ApplicationHelper
     link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) + " f16" )
   end
 
-  #<%= link_to_add_fields( t("recipes.add"), f, :ingredients, ".steps" ) %>
-  def link_to_add_fields(name, f, association, divname, max_len)
+  # example: <%= link_to_add_fields( t("recipes.add"), f, :ingredients, ".steps" ) %>
+  # name:  the words displayed on the add field link
+  # max_len: the max num for the added item
+  # divname: the position inside which to insert the item
+
+  def link_to_add_fields(name, f, association, divname, count_range, max_len)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
-    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{divname}\")", :class => "button add_fields", 'data-max_len'=> max_len)
+    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{divname}\", \"#{count_range}\")", :class => "button add_fields", 'data-max_len'=> max_len)
 
   end
 

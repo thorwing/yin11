@@ -10,19 +10,21 @@
             <%= t("recipes.ingredients") %><br/>
             <p>
               <% @recipe.ingredients.each do |i|%>
+                  <% if i.is_major_ingredient == true %>
                       <%= i.name %>
                       <%= i.amount %>
-                      <!--<span class="trivial"><= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>-->
+                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
                       <br/>
+                  <% end  %>
               <% end %>
-              <!--< @recipe.ingredients.each do |i|%>-->
-                  <!--< if i.is_major_ingredient == false %>-->
-                      <!--<= i.name %>-->
-                      <!--<= i.amount %>-->
-                      <!--<span class="trivial"><= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>-->
-                      <!--<br/>-->
-                  <!--< end  %>-->
-              <!--< end %>-->
+              <% @recipe.ingredients.each do |i|%>
+                  <% if i.is_major_ingredient == false %>
+                      <%= i.name %>
+                      <%= i.amount %>
+                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
+                      <br/>
+                  <% end  %>
+              <% end %>
             </p>
             <% if current_user_has_permission? :normal_user %>
                 <div class="mt5">
@@ -41,7 +43,7 @@
     <div class="steps_show grid_9 ">
         <p>
           <b><%= t("recipes.steps") %></b>
-          <%= @recipe.steps.count %>
+          <!--<= @recipe.steps.count %>-->
           <% @recipe.steps.each do |f|%>
               <!--<= debug f %>-->
 
