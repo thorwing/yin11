@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @feeds = FeedsManager.get_feeds_of(@user)
   end
 
   # POST /users

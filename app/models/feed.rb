@@ -24,6 +24,10 @@ class Feed
     [target_type, target_id, target_operation].join(' ')
   end
 
+  def cracked?
+    item.blank? || author.blank?
+  end
+
   def item
     @item ||= get_item
     @item
@@ -45,7 +49,7 @@ class Feed
     elsif item.respond_to?(:get_image_url)
       item.get_image_url(version)
     else
-      ''
+      nil
     end
   end
 
@@ -70,15 +74,17 @@ class Feed
   end
 
   def get_content
-    [:title, :name, :content].each do |field|
-      return item.send(field) if item.respond_to?(field)
+    if item
+      [:title, :name, :content].each do |field|
+        return item.send(field) if item.respond_to?(field)
+      end
     end
 
     return ''
   end
 
   def get_author
-    if item.respond_to?(:author)
+    if item && item.respond_to?(:author)
       return item.author
     else
       nil
