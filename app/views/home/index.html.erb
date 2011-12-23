@@ -50,6 +50,7 @@
 </div>
 
 <div class="clearfix mt10">
+  <% unless @daily_stars.empty? %>
     <h2 class="fl">今日美食达人</h2>
     <div class="clearfix"></div>
     <div class="grid_9 to_left ">
@@ -64,6 +65,7 @@
       <div class="clearfix"></div>
       <p class="fr"><%= link_to "更多美食达人>>", masters_path %></p>
     </div>
+  <% end %>
 </div>
 
 <div class="clearfix mt10">

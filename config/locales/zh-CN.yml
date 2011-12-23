@@ -158,6 +158,8 @@ zh-CN:
     user_basic_info_updated: 基本信息已更新
     profile_updated: 偏好设定已更新
     rapid_user_creation: 你已经在最近注册了一个帐号啦
+    recipe_created: 菜谱创建成功
+    recipe_updated: 菜谱更新成功
 
   alerts:
     password_reset_expired: 密码重置口令已过期
@@ -175,7 +177,7 @@ zh-CN:
     me: 我的首页
     recipes: 菜谱
     articles: 文章
-    reviews: 美食大发现
+    reviews: 美食分享
     masters: 达人
     products: 美食
     topics: 专题
@@ -410,7 +412,7 @@ zh-CN:
     when: 什么时候?
     whats_wrong: 哪里不对劲?
     post_new_review: 发表新分享
-    edit_review: 编辑 %{title}
+    edit_review: 编辑分享
     new_review: 新分享
     make_choice_please: 请选择
     choose_vendor: 选择商户
@@ -517,7 +519,7 @@ zh-CN:
   search:
     kinds:
       product: 商品
-      article: 文章
+      recipe: 菜谱
       review: 分享
       user: 用户
     tip: 食物、菜谱、用户

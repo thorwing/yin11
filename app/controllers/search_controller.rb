@@ -9,8 +9,9 @@ class SearchController < ApplicationController
 
   def index
     @users = []
-    @articles = []
+    @recipes = []
     @products = []
+    @reviews = []
     @empty = true
     @query = ""
 
@@ -24,23 +25,24 @@ class SearchController < ApplicationController
         when "users"
           @users = User.search(@query).documents
           @empty = @user.empty?
-        when "articles"
-          @articles = Article.search(@query).documents
-          @empty = @articles.empty?
+        when "recipes"
+          @recipes = Recipe.search(@query).documents
+          @empty = @recipes.empty?
         when "products"
           @products = Product.search(@query).documents
           @empty = @products.empty?
         else
           @users = User.search(@query).documents
           @products = Product.search(@query).documents
-          @empty = @products.empty? && @users.empty?
+          @recipes = Recipe.search(@query).documents
+          @empty = @products.empty? && @users.empty? && @recipes.empty?
       end
     elsif params[:tags]
       @query = params[:tags]
       query_tags = params[:tags].split(' ')
       @products = Product.tagged_with(query_tags).via_editor
-      @articles = Article.tagged_with(query_tags)
-      @empty = @products.empty? && @articles.empty?
+      @recipes = Recipe.tagged_with(query_tags)
+      @empty = @products.empty? && @recipes.empty?
     end
   end
 

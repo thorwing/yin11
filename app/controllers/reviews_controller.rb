@@ -5,7 +5,8 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @hard_workers = User.desc(:reviews_count)
+    @hot_tags = Recipe.tags_with_weight[0..7]
+    @records = YAML::load(File.open("app/seeds/tags.yml"))
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,9 +29,10 @@ class ReviewsController < ApplicationController
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,
         user_fans_cnt: r.author.followers.count,
-        user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0,
+        user_established: current_user ? (current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0) : false,
         time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-        picture_url: r.get_review_image_url,
+        picture_url: r.get_review_image_url(:waterfall),
+        picture_height: r.get_review_image_height(:waterfall),
         id: r.id}
       },
       page: params[:page],
@@ -90,7 +92,7 @@ class ReviewsController < ApplicationController
 
     #prevent from mistakes ( two reviews in a row)
     last_review = current_user.reviews.in_days_of(1).desc(:created_at).limit(1).first
-    if (last_review.content == params[:review][:content])
+    if (last_review && last_review.content == params[:review][:content])
       @user_message = t("notices.already_published")
       respond_to do |format|
         format.html { render :action => "new", :notice => @user_message }
@@ -136,8 +138,10 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
-    @review.images.each do |image|
-      image.delete unless params[:images][0..4].include? image.id.to_s
+    if @review.images && params[:images]
+      @review.images.each do |image|
+        image.delete unless params[:images][0..4].include? image.id.to_s
+      end
     end
 
     if params[:images]

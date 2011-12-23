@@ -1,13 +1,11 @@
 <script type="tpl" id="tpl">
-    <div class="waterfall grid_3 box_shadow" data-id="{{id}}" onmouseout='hide_user_info($(this));'>
+    <div class="waterfall grid_3 box_shadow" height="{{height}}" data-id="{{id}}" onmouseout='hide_user_info($(this));'>
         <% if path %>
-            <div align="center"><a href="<%= "#{path}/{{id}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" /></a></div>
+            <div align="center"><a href="<%= "#{path}/{{id}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" height="{{picture_height}}" /></a></div>
         <% else %>
-            <div align="center"><a href="<%= "{{target_path}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" /></a></div>
+            <div align="center"><a href="<%= "{{target_path}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" height="{{picture_height}}" /></a></div>
         <% end %>
-        <br/>
         <% if show_name %>
-
             <div class = "ml10 f16"><%= link_to "{{name}}", "#{path}/{{id}}" %><br/></div>
             <!--<span class="ml10 f16">{{name}}</span><br/>-->
         <% end %>
@@ -16,7 +14,7 @@
                 <a href="users/{{user_id}}"  class="fl mr10">
                     <img alt="avatar" src="{{user_avatar}}" />
                 </a>
-                <%= link_to "{{user_name}}", "users/{{user_id}}", class: "fl" %><br/>
+                <%= link_to "{{user_name}}", "users/{{user_id}}"%><br/>
             </div>
             <div class="more_user_info box_shadow display_none p5" onmouseover= '$(this).show();' onmouseout='$(this).hide();' >
 

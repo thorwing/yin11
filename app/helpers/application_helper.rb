@@ -16,7 +16,8 @@ module ApplicationHelper
     text ||= ""
     text = strip_tags(text)
     if text.size > length
-      text[0..length - 1]
+      #3 for dots
+      text[0..length - 4] + "..."
     else
       text
     end

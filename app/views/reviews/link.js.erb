@@ -4,7 +4,7 @@ $("#link_spinner").hide();
   <% if @product %>
     $(document).trigger('close.facebox');
     var product_field = '<input id="products_" type="hidden" value="' + "<%= @product.id.to_s %>" + '" name="review[product_ids][]"/>';
-    append_image("<%= @product.id.to_s %>", "<%= @product.get_image_url(true) %>", "<%= @product.get_image_url(false) %>", product_field);
+    append_image("<%= @product.id.to_s %>", "<%= @product.get_image_url(:thumb) %>", "<%= @product.get_image_url %>", product_field);
   <% else %>
     alert("抱歉，未能找到该商品");
   <% end %>

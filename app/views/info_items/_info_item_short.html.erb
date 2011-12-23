@@ -1,5 +1,9 @@
 <div class="item info short">
-    <h3><%= link_to item.title, item %></h3>
+    <% if item.respond_to?(:title) %>
+        <h3><%= link_to  item.title, item %></h3>
+    <% elsif item.respond_to?(:name) %>
+        <h3><%= link_to  item.name, item %></h3>
+    <% end %>
     <div class="clues">
         <%= clues = get_clues_of_item(item) %>
         <%= render "shared/show_tags", :item => item %>
@@ -8,7 +12,7 @@
       <%= truncate_content(item.content, 100) %>
       <%= link_to(t("info_items.detail"), item)  %>
       <span class="trivial">
-        <%= content_tag(:span, distance_of_time_in_words(item.reported_on, Time.now) + t("info_items.ago") ) if item.reported_on %>
+        <%= content_tag(:span, distance_of_time_in_words(item.created_at, Time.now) + t("info_items.ago") ) if item.created_at %>
         <%= content_tag(:span, t("info_items.posted_by") + item.author.screen_name ) if item.author %>
       </span>
     </p>

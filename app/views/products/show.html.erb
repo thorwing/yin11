@@ -2,9 +2,9 @@
   <div class="clearfix">
     <%= render "product_nav", :product => @product %>
 
-    <div class="grid_9 box_shadow to_left p5">
+    <div class="grid_9 box_shadow to_left p5 overflow_hidden">
       <div class="fl">
-        <%= link_to image_tag(@product.image.picture_url, :class=>"img_frame") if @product.image && @product.image.picture_url %>
+        <%= image_tag(@product.get_image_url, class: "img_frame")%>
       </div>
 
       <div class="ml10 fl">
@@ -36,7 +36,7 @@
 
         <div class="m5">
            <%= render "relationships/follow_field", :target => @product %>
-           <%= new_tab_link_to t("products.go_to_buy"), {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "button"%><br/>
+           <%= new_tab_link_to t("products.go_to_buy"), {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "mt5 button"%>
         </div>
 
         <div class="m5">
@@ -46,16 +46,6 @@
           <% end %>
         </div>
       </div>
-
-      <% if @product.description.present? %>
-          <div class="clearfix">
-            <h2 align="center"><b><%= t("products.description") %></b></h2>
-
-            <div class="product_desc_box">
-                <%= raw @product.description  %>
-            </div>
-          </div>
-      <% end %>
     </div>
 
     <div class="grid_3 box_shadow to_right">

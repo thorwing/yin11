@@ -4,7 +4,7 @@
     <p>
       <b><%= t("user_basic.avatar") %></b><br/>
       <%= image_tag current_user.get_avatar(:thumb), :class => "avatar" %><br/>
-      <%= t("user_basic.change_avator") %><br/>
+      <%= t("user_basic.change_avator") %><span class="trivial">(4MB以下)</span><br/>
       <%= file_field_tag "user[avatar]" %> <br/>
     </p>
     <p>

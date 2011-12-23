@@ -25,7 +25,8 @@ class ProductsController < ApplicationController
     data = {
       items: @products.inject([]){|memo, p| memo << {
         name: p.name,
-        picture_url: p.get_image_url(true, 0 , false),
+        picture_url: p.get_image_url(:waterfall),
+        picture_height: p.get_image_height(:waterfall),
         id: p.id}
       },
       page: params[:page],
