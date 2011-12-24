@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
         id: r.id}
       },
       page: params[:page],
-      pages: (Recipe.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+      pages: (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
     }
 
     respond_to do |format|

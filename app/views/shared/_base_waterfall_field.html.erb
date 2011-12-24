@@ -26,7 +26,7 @@
             <% end %>
             <% if show_content %>
                 <p>
-                  {{content}} <%= link_to t("general.details") + ">>", "#{path}/{{id}}" %>
+                  {{content}} <span class="display_inline_block"><%= link_to t("general.details"), "#{path}/{{id}}" %></span>
                 </p>
             <% end %>
             <span class="trivial">{{time}}</span>
