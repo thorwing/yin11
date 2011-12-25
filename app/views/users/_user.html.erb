@@ -1,5 +1,5 @@
 <div class="master box_shadow mt5 mb5 p5 fl">
-    <div class="user_info fl mt20">
+    <div class="user_info fl">
       <%= link_to image_tag(user.get_avatar(:thumb)), user %><br/>
       <div class="more_user_info box_shadow display_none p5" >
         <span><%= t("reviews.by_user", count: user.reviews.size) %></span><br/>
@@ -12,9 +12,9 @@
       <span class="f12"><%= link_to user.screen_name, user %></span><br/>
       <%= user.profile.biography %>
     </div>
-    <div class="feeds fr mt30">
-        <% user.get_recent_feeds(4).each do |feed| %>
-          <div class="hint_box ml2 fl overflow_hidden" style="width: 80px;height: 80px;">
+    <div class="feeds fr mt15">
+        <% user.get_recent_feeds(3).each do |feed| %>
+          <div class="hint_box ml2 fl overflow_hidden" style="width: 100px; height: 100px;">
             <%= link_to image_tag(feed.picture_url(:thumb)), feed.item %>
             <span class="flex_hint b_black white f11"><%= truncate_content(feed.content, 15) %></span>
           </div>

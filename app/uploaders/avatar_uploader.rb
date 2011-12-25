@@ -27,20 +27,17 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  #process :resize_to_limit => [MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT]
   process :convert => 'jpg'
+  process :resize_to_fit => [AVATAR_LARGE_WIDTH, AVATAR_LARGE_HEIGHT]
   #
   # def scale(width, height)
   #   # do something
   # end
 
   #Create different versions of your uploaded files:
-  version :large do
-    process :resize_to_fit => [AVATAR_LARGE_WIDTH, AVATAR_LARGE_HEIGHT]
-  end
-
   version :thumb do
     process :manualcrop
+    process :resize_to_fill => [AVATAR_THUMB_WIDTH, AVATAR_THUMB_HEIGHT]
   end
 
   def manualcrop

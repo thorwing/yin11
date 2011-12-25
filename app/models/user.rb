@@ -199,8 +199,8 @@ class User
 
   def avatar_geometry
     #default size
-    width = 500
-    height = 500
+    width = AVATAR_LARGE_WIDTH
+    height = AVATAR_LARGE_HEIGHT
 
     if avatar?
       img = Magick::Image::from_blob(self.avatar.read).first
