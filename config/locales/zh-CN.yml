@@ -60,6 +60,7 @@ zh-CN:
     unlock: 解锁
     upload: 上传
     more: 更多
+    preview: 预览
     author: 作者
     report: "报错/纠正"
     email_address: 邮件地址
@@ -214,6 +215,8 @@ zh-CN:
     user_basic: 基本信息
     login_name: 昵称
     avatar: 头像
+    crop:  裁剪
+    crop_avatar: 裁剪头像
     change_avator: 换一张头像
     biography: 个人简介
     shares: 分享

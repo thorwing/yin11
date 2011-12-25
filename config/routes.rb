@@ -125,6 +125,8 @@ Yin11::Application.routes.draw do
       put "unlock"
       get "activate"
       get 'verify_email'
+      get "crop"
+      put "crop_update"
     end
     collection do
       get 'check_email'

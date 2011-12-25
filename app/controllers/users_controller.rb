@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # Self-signed key will generate warnings
   #force_ssl unless Rails.env.test?
   before_filter(:only => [:index]) { |c| c.require_permission :editor }
-  before_filter(:only => [:edit, :update]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:edit, :update, :crop, :crop_edit]) { |c| c.require_permission :normal_user }
 
   def index
     @users = User.all
@@ -82,6 +82,19 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json { render :json => User.is_email_available?(params[:user][:email]) }
     end
+  end
+
+  def crop
+
+  end
+
+  def crop_update
+    current_user.crop_x = params[:avatar]["crop_x"]
+    current_user.crop_y = params[:avatar]["crop_y"]
+    current_user.crop_h = params[:avatar]["crop_h"]
+    current_user.crop_w = params[:avatar]["crop_w"]
+    current_user.save
+    redirect_to current_user.profile
   end
 
 end

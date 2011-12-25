@@ -24,21 +24,31 @@ module Imageable
 
     def get_image_height(version = nil, index = 0)
       image = get_image(index)
-      img_attributes = nil
-      #sub key
-      sub_key = version ? "#{version.to_s}_height" : "origin_height"
       if image
-        img_attributes = Rails.cache.read(image.picture_url(version))
-        unless img_attributes.present? && img_attributes[sub_key]
-          picture = version ? image.picture.versions[version] : image.picture
-          magick = MiniMagick::Image.read(picture.read)
-          img_attributes ||= {}
-          img_attributes[sub_key] = magick['height']
-          Rails.cache.write(image.picture_url(version), img_attributes, :time_to_idle => 60.seconds, :timeToLive => 600.seconds)
-        end
-      end
+        if version == :waterfall && image.waterfall_height.present?
+          #new solution: use cached filed
+          image.waterfall_height.to_i
+        else
+          #old solution: calculate and cache it, prepare to retire
+          img_attributes = nil
+          sub_key = version ? "#{version.to_s}_height" : "origin_height"
+          img_attributes = Rails.cache.read(image.picture_url(version))
+          unless img_attributes.present? && img_attributes[sub_key]
+            picture = version ? image.picture.versions[version] : image.picture
+            img = Magick::Image::from_blob(picture.read).first
+            img_attributes ||= {}
+            img_attributes[sub_key] = img.rows
+            Rails.cache.write(image.picture_url(version), img_attributes, :time_to_idle => 60.seconds, :timeToLive => 600.seconds)
+          end
 
-      img_attributes ? img_attributes[sub_key] : 0
+          image.waterfall_height = img_attributes[sub_key]
+          image.save
+
+          image.waterfall_height
+        end
+      else
+        0
+      end
     end
   end
 

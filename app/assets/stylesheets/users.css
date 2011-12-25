@@ -21,3 +21,9 @@
     left: 0px;
     background-color: #EDEFF4;
 }
+
+.preview {
+    width:100px;
+    height:100px;
+    overflow:hidden;
+}

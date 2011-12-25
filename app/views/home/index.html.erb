@@ -59,7 +59,7 @@
     </div>
     <div class="grid_3 to_right" to_right>
       <% @masters.each do |master| %>
-            <%= link_to image_tag(master.get_avatar(:thumb), width: 40, height: 40), master, class: "more_head_img" %>
+            <%= link_to image_tag(master.get_avatar(:thumb), width: 48, height: 48), master, class: "more_head_img" %>
       <% end %>
       <div class="clearfix"></div>
       <p class="fr"><%= link_to "更多美食达人>>", masters_path %></p>
