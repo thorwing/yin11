@@ -1,39 +1,43 @@
 <% title t("reviews.title"), false%>
 
 <div class="grid_9 to_left">
-    <div class="fr">
-        <%= render "shared/vote_fields", :item => @review %>
-    </div>
     <% if @review.author %>
-       <div class="fl">
+       <div class="box_shadow">
         <%= link_to image_tag(@review.author.get_avatar(:thumb)), @review.author %>
         <%= link_to @review.author.screen_name, @review.author %><br/>
        </div>
     <% end %>
 
-    <div class="clearfix"></div>
-    <p>
-        <%= @review.content %>
-    </p>
-    <div id="gallery" class="clearfix">
-        <% @review.get_images_with_objects.each do |hash| %>
-          <div class="fl mr5 w_image">
-            <% if hash[:object] %>
-                <%= link_to image_tag(hash[:picture_url], width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), hash[:object] %>
-                <p><%= link_to hash[:object].name, hash[:object] %></p>
-            <% else %>
-                <%= link_to image_tag(hash[:picture_url], width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), hash[:picture_url], rel: "facebox" %>
+    <div class="mt10 p10 clearfix">
+        <div class="fr">
+            <%= render "shared/vote_fields", :item => @review %>
+        </div>
+        <p>
+            <%= @review.content %>
+        </p>
+
+        <div class="clearfix mt10">
+            <% @review.get_images_with_objects(:waterfall).each do |hash| %>
+                 <div class="fl mr5">
+                    <% if hash[:object] %>
+                        <div class="hint_box">
+                            <%= link_to image_tag(hash[:picture_url], width: 100, height: 100), hash[:object] %>
+                            <span class="fix_hint b_black white f11"><%= hash[:object].name %></span>
+                        </div>
+                    <% else %>
+                        <%= link_to image_tag(hash[:picture_url], width: 100, height: 100), hash[:picture_url], rel: "facebox" %>
+                    <% end %>
+                 </div>
             <% end %>
-          </div>
+        </div>
+
+         <% if the_author_himself(Review.name, @review.id, true, false) %>
+            <div>
+                <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
+                <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+            </div>
         <% end %>
     </div>
-
-    <% if the_author_himself(Review.name, @review.id, true, false) %>
-        <div>
-            <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
-            <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-        </div>
-    <% end %>
 
     <hr/>
     <%= render "comments/comments", :item => @review %>

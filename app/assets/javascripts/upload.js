@@ -1,10 +1,8 @@
 // Use Valums Ajax Upload
-//TODO make a template for uploaded image
 
 $(function() {
     var tokentag = $('#tokentag').val();
 
-    var images_limit = 5;
     if($('#uploader').length > 0) {
         var uploader = new qq.FileUploader({
             // pass the dom node (ex. $(selector)[0] for jQuery users)
@@ -33,6 +31,12 @@ $(function() {
                 '</li>',
             params: {"authenticity_token": tokentag},
             onSubmit: function(id, fileName) {
+                var count = $('#images_container .image').size();
+                if (count >= images_limit) {
+                    alert("想上传更多图片，请先创建“专辑”");
+                    cancel();
+                }
+
                 $('#upload_spinner').show();
             },
             onComplete: function(id, fileName, responseJSON){
@@ -48,11 +52,11 @@ $(function() {
 
 //Append the image, it could belong to Image or Product
 function append_image(id, thumb_url, original_url, post_params) {
-     var new_image = '<div class="image fl">'
+    var new_image = '<div class="image fl">'
                 + post_params
-                + '<a onclick="delete_image(this, 5); return false;" class="del_img_link lighter_touch" href="#" data-image_id="' + id +'"><img border="0" src="/assets/close_x.png" alt="delete_image"></a><br>'
-                + '<a class="thumbnail" rel="facebox" href="' + original_url + '">'
-                + '<img src="' + thumb_url + '" alt="image_thumbnail"></a>'
+                + '<a onclick="delete_image(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_image"></a>'
+                + '<a rel="facebox" href="' + original_url + '">'
+                + '<img class="thumbnail" src="' + thumb_url + '" alt="image_thumbnail"></a>'
     var debug = $('#uploader').data("debug");
     if(debug == true)
     {
@@ -60,32 +64,34 @@ function append_image(id, thumb_url, original_url, post_params) {
     }
     new_image += '</div>'
 
-
     $('#images_container').append(new_image);
     //Apply facebox
     $('a[rel*=facebox]').facebox();
-    // var image_count = $('#images_container .image').size();
-    //  if (image_count >= images_limit) { $('#image_uploaderUploader').hide(); }
 }
 
 //Delete image
-function delete_image(link, limit) {
-    var image_id = $(link).data('image_id');
-
-    $.ajax({
-        url: "/images/" + image_id,
-        type: "DELETE",
-        processData: false,
-        contentType: false,
-        success: function (res) {
-            $(link).parent().remove();
-            var image_count = $('#images_container .image').size();
-            if (image_count < limit) {
-                $('#image_uploader').show();
-            }
-        }
-    });
+function delete_image(link) {
+//    var image_id = $(link).data('image_id');
+//
+//    $.ajax({
+//        url: "/images/" + image_id,
+//        type: "DELETE",
+//        processData: false,
+//        contentType: false,
+//        success: function (res) {
+//            $(link).parent().remove();
+//        }
+//    });
+    $(link).parent().remove();
 }
+
+//Delete product
+function delete_product(link) {
+//    var product_id = $(link).data('product_id');
+//    $('#product_' + product_id).remove();
+    $(link).parent().remove();
+}
+
 function show(url)
 {
     var length = $('.step_uploader').find('.qq-upload-button').length;

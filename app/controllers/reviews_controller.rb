@@ -138,21 +138,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
-    if @review.images && params[:images]
-      @review.images.each do |image|
-        image.delete unless params[:images][0..4].include? image.id.to_s
-      end
-    end
-
-    if params[:images]
-      params[:images][0..4].each do |image_id|
-        image = Image.find(image_id)
-        if image.info_item_id.blank?
-          image.info_item_id = @review.id
-          image.save
-        end
-      end
-    end
+    ImagesHelper.process_uploaded_images(@review, params[:images])
 
     respond_to do |format|
       if @review.update_attributes(params[:review])

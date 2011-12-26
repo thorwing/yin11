@@ -166,8 +166,6 @@ ul.menu li {
 
 .w50 {width: 50px;}
 
-.w_image {width: 120px;}
-
 .red {color: $red;}
 .white {color: $white;}
 
@@ -332,12 +330,13 @@ body #main { height: auto; padding-bottom: 260px;}
 	text-decoration:underline;
 }
 
-.image {
+.image, .product {
     position: relative;
     margin-right: 10px;
-    .del_img_link {
+    .del_link {
         position: absolute;
         right: -5px;
-        top: 10px;
+        top: 0px;
     }
 }
+

@@ -11,30 +11,9 @@
 //= require jquery.Jcrop.min
 //= require_tree .
 
-var theInt = null;
-var $crosslink, $navthumb;
-var curclicked = 0;
+var products_limit = 3;
+var images_limit = 3;
 
-theInterval = function(cur){
-        clearInterval(theInt);
-
-        if( typeof cur != 'undefined' )
-                curclicked = cur;
-
-        $crosslink.removeClass("active-thumb");
-        $navthumb.eq(curclicked).parent().addClass("active-thumb");
-                $(".stripNav ul li a").eq(curclicked).trigger('click');
-
-        theInt = setInterval(function(){
-                $crosslink.removeClass("active-thumb");
-                $navthumb.eq(curclicked).parent().addClass("active-thumb");
-                $(".stripNav ul li a").eq(curclicked).trigger('click');
-                curclicked++;
-                if( 6 == curclicked )
-                        curclicked = 0;
-
-        }, 3000);
-};
 
 //Add fields to DOM
 function add_fields(link, association, content, divname) {

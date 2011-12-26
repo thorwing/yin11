@@ -4,7 +4,7 @@
     <% products = vendor.products %>
     <div class="slice">
         <% products.values_at(* products.each_index.select{|i| i.odd?}).each do |product| %>
-          <div class="hint_box m5 w_image fl" s>
+          <div class="hint_box m5 fl" s>
             <%= link_to image_tag(product.get_image_url(:thumb)), product %>
             <span class="hint  b_black white"><%= product.name %></span>
           </div>
@@ -12,7 +12,7 @@
     </div>
     <div class="slice">
         <% products.values_at(* products.each_index.select{|i| i.even?}).each do |product| %>
-          <div class="hint_box m5 w_image fl">
+          <div class="hint_box m5 fl">
             <%= link_to image_tag(product.get_image_url(:thumb)), product %>
             <span class="hint  b_black white"><%= product.name %></span>
           </div>
