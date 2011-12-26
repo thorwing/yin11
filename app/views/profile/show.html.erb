@@ -67,6 +67,16 @@
                         <% end  %>
                     <% end %>
                 </div>
+
+                <div class="block round mb10">
+                    <b>关注的菜谱：</b><br/>
+                    <% current_user.relationships.each do |r| %>
+                        <% item = r.get_item %>
+                        <% if item.class.name == "Recipe"  %>
+                            <%= render item %>
+                        <% end  %>
+                    <% end %>
+                </div>
             </dd>
         </div>
         <div class = "my_fans display_none">

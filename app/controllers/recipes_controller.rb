@@ -58,6 +58,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    @related_recipes = Recipe.limit(10).all
     @recipe = Recipe.find(params[:id])
     prior = {"user_tag"=> 3, "major_tag" => 2, "minor_tag" => 1}
     @related_products = get_related_products(@recipe, 7, prior)
@@ -187,6 +188,8 @@ class RecipesController < ApplicationController
     minor_product.each do |product|
       hash[product] = product.reviews.size * prior["minor_tag"]
     end
+
+    hash = hash.sort_by { |k,v| -v }
 
     related_product = []
     count = hash.size-1 > max ? max : hash.size-1

@@ -1,77 +1,114 @@
-<div class="grid_9 box_shadow">
-    <div class="p5">
-        <div class="fl">
-            <%= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox"  %>
+<div class="recipe_block grid_9 to_left box_shadow mt10">
+  <%= render "author_panel", author: @recipe.author %>
+
+    <div class="recipe_info fl">
+        <%= link_to image_tag(@recipe.get_image_url(:waterfall), size: '280', alt: @recipe.name, class: 'recipeImg fl img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox"  %>
+
+        <div class="recipe_detailedInfo">
+            <div class="title fl">
+                <span><recipename><%= @recipe.name %></recipename></span>
+                <br/>
+                  <%= t("recipes.published_at") %> <%= @recipe.created_at.getgm %>
+                <!--发表于 2011-12-23 15:22-->
+            </div>
+
+            <div class="top fl mt10">
+                <% if current_user_has_permission? :normal_user %>
+                    <div class="mt5">
+                        <% target = @recipe %>
+                        <%= link_to t("recipes.collect"), relationships_path(:target_type => target.class.name, :target_id => target.id), :method => :post, :remote => true, :class => "new_relationship" %>
+
+                        <%= link_to t("recipes.want"), "", class: "mark_recipe", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
+                        <%= link_to t("recipes.did"), "", class: "mark_recipe", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
+                    </div>
+                <% end %>
+                <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
+                    <div class="mt5">
+                        <%= link_to t("general.edit"), edit_recipe_path(@recipe)%>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="middle fl mt10">
+                <span><%= t("recipes.tags") %></span>
+                <br/>
+                <% @recipe.tags.each do |tag|  %>
+                <a><%= tag %></a>
+                <% end  %>
+            </div>
+
+            <div class="bottom fl mt10">
+                <span style="font-size:18px"><%= t("recipes.ingredients") %></span>
+                <div class="foodList ">
+                    <ul>
+                        <% @recipe.ingredients.each do |i|%>
+                          <% if i.is_major_ingredient == true %>
+                              <li style="float:left; width:50%;"> <%= i.name %>  <%= i.amount %></li>
+                          <% end  %>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="foodList ">
+                    <ul>
+                        <% @recipe.ingredients.each do |i|%>
+                          <% if i.is_major_ingredient == false %>
+                              <li style="float:left; width:50%;"> <%= i.name %>  <%= i.amount %></li>
+                          <% end  %>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <div class="fl f16 ml10">
-            <h2><%= @recipe.name %></h2>
-            <span class="trivial"><%= t("recipes.uploaded_by") + ": " + @recipe.author.screen_name %></span> <br/>
-            <%= t("recipes.ingredients") %><br/>
-            <p>
-              <% @recipe.ingredients.each do |i|%>
-                  <% if i.is_major_ingredient == true %>
-                      <%= i.name %>
-                      <%= i.amount %>
-                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
-                      <br/>
-                  <% end  %>
-              <% end %>
-              <% @recipe.ingredients.each do |i|%>
-                  <% if i.is_major_ingredient == false %>
-                      <%= i.name %>
-                      <%= i.amount %>
-                      <span class="trivial"><%= i.is_major_ingredient ? t("recipes.major") : t("recipes.minor") %></span>
-                      <br/>
-                  <% end  %>
-              <% end %>
-            </p>
-            <% if current_user_has_permission? :normal_user %>
-                <div class="mt5">
-                    <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
-                    <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
-                </div>
-            <% end %>
-            <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
-                <div class="mt5">
-                    <%= link_to t("general.edit"), edit_recipe_path(@recipe), class: "button" %>
-                </div>
-            <% end %>
+
+        <div class="recipe_description fl mt10 ">
+            <%= t("recipes.description") %>
+            <br/>
+            <%= @recipe.description %>
         </div>
-    </div>
 
-    <div class="steps_show grid_9 ">
-        <p>
-          <b><%= t("recipes.steps") %></b>
-          <!--<= @recipe.steps.count %>-->
-          <% @recipe.steps.each do |f|%>
-              <!--<= debug f %>-->
+        <div class="recipe_steps fl mt10">
+            <ul>
+                <% i = 1 %>
+                <% @recipe.steps.each do |s|%>
+                    <li style="float:left;width:33.33%;">
+                        <h2><%= i %></h2>
+                        <% if s.image.present?%>
+                            <%= link_to image_tag(s.get_image_url(:thumb), :size => '180x135', :alt=> "step_image"), s.get_image_url, rel: "facebox" %><br/>
+                        <% end  %>
+                        <br/>
+                        <div class= "m5"><%= s.content %></div>
+                        <% i = i + 1  %>
+                    </li>
+                <% end  %>
+            </ul>
+        </div>
 
-              <div class="step_container grid_3 ">
-                  <% if f.image.present?%>
-                    <%= link_to image_tag(f.get_image_url(:thumb), :alt=> "step_image"), f.get_image_url, rel: "facebox" %><br/>
-                  <% end  %>
-                <div class="step_content"><%= f.content %></div>
-              </div>
-          <% end %>
-        </p>
+        <div class="discuss_block mt10 ">
+            <div class="discuss_deliver">
+                <span><h2>我来说两句</h2></span>
+                <p>
+                  <%= text_area_tag "content", "", :style => "width:90%; height:100px;", :maxlength => get_max_length(Review, :content), 'data-comment_max_len' => get_max_length(Review, :content), :class => "char_aware" %>
+                  <%= content_tag :span, "", class: "char_saver display_none" %>
+                  <%= content_tag :span, "", class: "char_counter block trivial" %>
+                </p>
+                表情
+                <span style="float:right; font-size:24px;"><%= submit_tag t("general.post"), class: "button" %> </span>
+            </div>
+        </div>
     </div>
 </div>
 
+<div class="related_recipe_block grid_3 mt10 to_right ">
+    <span><h2>您可能还喜欢...</h2></span>
+    <br/>
+    <ul>
+        <%= render "related_recipes", related_recipes: @related_recipes %>
+    </ul>
 
-<div class = "grid_3 box_shadow to_right"  >
-  <%= render "products/related_products", products: @related_products %>
-</div>
-
-<div id="review_linker" class="display_none">
-    <%= form_tag url_for(controller: "recipes", action: "mark", id: @recipe.id, method: :post), :remote => true do %>
-        <%= hidden_field_tag "behavior", "", id: "behavior" %>
-        <span>顺便说两句吧</span>
-        <p>
-          <%= text_area_tag "content", "", :rows => 10, :columns => 30, :maxlength => get_max_length(Review, :content), 'data-comment_max_len' => get_max_length(Review, :content), :class => "char_aware" %>
-          <%= content_tag :span, "", class: "char_saver display_none" %>
-          <%= content_tag :span, "", class: "char_counter block trivial" %>
-        </p>
-        <%= submit_tag t("general.submit"), class: "button" %>
-    <% end %>
+    <span><h2>相关产品推荐...</h2></span>
+    <br/>
+    <ul>
+        <%= render "products/related_products", products: @related_products %>
+    </ul>
 </div>

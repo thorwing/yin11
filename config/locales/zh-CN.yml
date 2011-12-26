@@ -279,6 +279,7 @@ zh-CN:
     add_tag_hint: 为您收集和标签相关的事件，食物安全早知道
     add_location_hint: 关注地点附近的事件全部掌握
     login: 登入
+    album: 专辑
 
   users:
     index: 所有用户
@@ -291,6 +292,7 @@ zh-CN:
     preference: 偏好设定
     who_am_i: 我是谁？
     details: 详细
+    see_user_info: 查看个人资料
     recent_activities: 最近活动
     master: 达人
     role: 身份
@@ -464,6 +466,7 @@ zh-CN:
     default_source_name: 银筷子原创
 
   feeds:
+    feed: 动态
     all: 关注动态
     my: 我的动态
     operations:
@@ -543,6 +546,10 @@ zh-CN:
      edit: 编辑菜谱
      add: +菜谱
      recipes: 菜谱
+     published_at: 发表于
+     description: 描述
+     you_may_like: 您可能还喜欢...
+     related_products_recommend: 相关产品推荐...
      related_product: 相关产品
      recipe_collection: 菜谱大全
      name: 菜谱名
@@ -568,6 +575,8 @@ zh-CN:
      how_to: 如何上传菜谱？
      want: 想做
      did: 做成了
+     tags: 标签：
+     collect: 收藏
      uploaded: 上传了
      use: 使用了
      kind: 种材料
