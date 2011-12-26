@@ -27,7 +27,8 @@
             <b><%= t("general.email_address") %></b><br/>
             <%= current_user.email %><br/>
             <b><%= t("user_basic.avatar") %></b><br/>
-            <%= link_to (image_tag current_user.get_avatar(:regular)), current_user.get_avatar(nil, false), rel: "facebox" %><br/>
+            <%= image_tag current_user.get_avatar(:thumb) %>
+            <%= link_to t("user_basic.crop_avatar"), crop_user_path(current_user) if current_user.avatar? %><br/>
             <b><%= t("user_basic.biography") %></b><br/>
             <%= current_user.profile.biography %><br/>
             <div class="mt10">

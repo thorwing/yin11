@@ -1,6 +1,6 @@
 <div class="master box_shadow mt5 mb5 p5 fl">
     <div class="user_info fl mt20">
-      <%= link_to image_tag(user.get_avatar(:regular), "max-width" => AVATAR_WIDTH, "max-height" => AVATAR_HEIGHT), user %><br/>
+      <%= link_to image_tag(user.get_avatar(:thumb)), user %><br/>
       <div class="more_user_info box_shadow display_none p5" >
         <span><%= t("reviews.by_user", count: user.reviews.size) %></span><br/>
         <span><%= t("recipes.by_user", count: user.recipes.size) %></span><br/>

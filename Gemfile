@@ -51,7 +51,8 @@ gem 'tinymce-rails'
 
 gem 'mercury-rails' #, git: 'https://github.com/jejacks0n/mercury.git', ref: 'a2b16bcdc9'
 
-gem 'mini_magick'
+#gem 'mini_magick'
+gem "rmagick", "2.12.0", :require => 'RMagick'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 gem 'kaminari'
@@ -61,11 +62,11 @@ gem 'kaminari'
 #factory_girl is also used for db seeds
 gem 'factory_girl_rails'
 
-gem "geocoder"
-gem "gmaps4rails"
+#gem "geocoder"
+#gem "gmaps4rails"
 
 gem "mechanize"
-gem "spreadsheet"
+#gem "spreadsheet"
 
 gem 'oauth'
 gem 'crack'

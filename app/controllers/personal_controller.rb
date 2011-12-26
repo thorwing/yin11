@@ -3,7 +3,7 @@ class PersonalController < ApplicationController
 
   def me
     #TODO why there are feed that doesn't belong to a user
-    @my_feeds = current_user.feeds.reject{|f| f.author.blank?}
+    @my_feeds = FeedsManager.get_feeds_of(current_user)
   end
 
   def feeds

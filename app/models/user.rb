@@ -30,6 +30,7 @@ class User
   field :reviews_count, :type => Integer
 
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :thumb, ThumbUploader
 
   search_index(:fields => [:login_name],
               :attributes => [:created_at])
@@ -38,8 +39,8 @@ class User
   index :uid
   index :auth_token
 
-  attr_accessor :password
-  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar, :group_ids
+  attr_accessor :password, :crop_x, :crop_y, :crop_h, :crop_w
+  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar, :thumb, :group_ids
 
   # strange error when trying to using scope, so using class method instead
   scope :masters, where(:is_master => true)
@@ -86,6 +87,8 @@ class User
   before_save :encrypt_password, :handle_identity, :sync_cached_fields
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
+  after_update :reprocess_avatar, :if => :cropping?
+
 
   def screen_name
     login_name.present? ? login_name : email
@@ -132,17 +135,17 @@ class User
   end
 
   def get_avatar(version = nil, origin = true)
-    if self.avatar?
-      version ? self.avatar_url(version) : self.avatar_url
-    else
-      #origin url is used for image_tag, the other one is used for waterfall displaying
-      prefix = origin ? '' : '/assets/'
-      if version && version == :thumb
-        prefix + "default_head_48.jpg"
-      else
-        prefix + "default_head_100.jpg"
-      end
+    if self.thumb? && version == :thumb
+      return self.thumb_url
     end
+
+    if self.avatar?
+      return self.avatar_url(version)
+    end
+
+    #origin url is used for image_tag, the other one is used for waterfall displaying
+    prefix = origin ? '' : '/assets/'
+    prefix + "default_head_100.jpg"
   end
 
   def vote_weight
@@ -181,10 +184,33 @@ class User
     data.inject([]){|memo, (k,v)| memo | v}.compact.uniq
   end
 
+  def has_followed?(target)
+    self.relationships.select{|r| r.target_type == target.class.name && r.target_id == target.id.to_s}.size > 0
+  end
+
   #TODO
   def score
     followers.size * 3 + recipes.size * 2 + reviews.size
   end
+
+  def cropping?
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
+  def avatar_geometry
+    #default size
+    width = 500
+    height = 500
+
+    if avatar?
+      img = Magick::Image::from_blob(self.avatar.read).first
+      width = img.columns
+      height = img.rows
+    end
+
+    @geometry = {:width => width, :height => height }
+  end
+
 
   private
 
@@ -212,6 +238,10 @@ class User
 
   def non_third_party_login
     provider.blank?
+  end
+
+  def reprocess_avatar
+    self.avatar.recreate_versions!
   end
 
 end

@@ -5,28 +5,29 @@
         <% else %>
             <div align="center"><a href="<%= "{{target_path}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" height="{{picture_height}}" /></a></div>
         <% end %>
-        <% if show_name %>
-            <div class = "ml10 f16"><%= link_to "{{name}}", "#{path}/{{id}}" %><br/></div>
-            <!--<span class="ml10 f16">{{name}}</span><br/>-->
-        <% end %>
-        <div class="user_info ml10" position = "relative" onmouseover='show_user_info($(this));'>
-            <div>
-                <a href="users/{{user_id}}"  class="fl mr10">
-                    <img alt="avatar" src="{{user_avatar}}" />
-                </a>
-                <%= link_to "{{user_name}}", "users/{{user_id}}"%><br/>
+        <div class="user_info ml10 mr10" position = "relative" onmouseover='show_user_info($(this));'>
+            <div class="fl">
+                <a href="users/{{user_id}}"  class="mr10">
+                    <img alt="avatar" width="48" height="48" src="{{user_avatar}}" />
+                </a><br/>
+                <%= link_to "{{user_name}}", "users/{{user_id}}"%>
             </div>
-            <div class="more_user_info box_shadow display_none p5" onmouseover= '$(this).show();' onmouseout='$(this).hide();' >
-
+            <div class="more_user_info box_shadow display_none p5" >
                 <span><%= t("reviews.by_user", count: "{{user_reviews_cnt}}") %></span><br/>
                 <span><%= t("recipes.by_user", count: "{{user_recipes_cnt}}") %></span><br/>
                 <span><%= t("recipes.author_followers", count: "{{user_fans_cnt}}") %></span>
                 <div class="fr"><%= render "relationships/follow_field_waterfall" %><br/> </div>
             </div>
         </div>
-        <div class="ml10">
+        <div class="ml10 mr10">
+           <% if show_name %>
+                <div class = "f16"><%= link_to "{{name}}", "#{path}/{{id}}" %><br/></div>
+                <!--<span class="ml10 f16">{{name}}</span><br/>-->
+            <% end %>
             <% if show_content %>
-                <p>{{content}}</p>
+                <p>
+                  {{content}} <span class="display_inline_block"><%= link_to t("general.details"), "#{path}/{{id}}" %></span>
+                </p>
             <% end %>
             <span class="trivial">{{time}}</span>
         </div>

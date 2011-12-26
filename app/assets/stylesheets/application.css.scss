@@ -22,6 +22,7 @@
 *= require facebox
 *= require jquery.jgrowl
 *= require fileuploader
+*= require jquery.Jcrop
 */
 
 @charset "utf-8";
@@ -218,6 +219,10 @@ ul.menu li {
 
 .display_block {
     display: block;
+}
+
+.display_inline_block {
+    display: inline-block;
 }
 
 .cursor {

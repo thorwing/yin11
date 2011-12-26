@@ -14,7 +14,6 @@ class FeedsManager
     #  return nil unless item.enabled
     #end
 
-    #feed is an embedded model
     #TODO
     # decides using "product" or "products"
     products = []
@@ -25,6 +24,7 @@ class FeedsManager
     end
 
     products.each do |product|
+      #feed is an embedded model, create a new feed everytime
       product.feeds << initialize_feed(item)
       product.save!
 
@@ -67,7 +67,7 @@ class FeedsManager
       feeds += followable.feeds
     end
 
-    feeds = feeds.compact.uniq {|f| f.identity }.sort_by!{|f| f.created_at}
+    feeds = process_feeds(feeds)
     return feeds[(page * per)..((page + 1)* per)], feeds.size
   end
 
@@ -76,8 +76,17 @@ class FeedsManager
       memo | tag.feeds
     end
 
-    feeds = feeds.compact.uniq {|f| f.identity }
+    feeds = process_feeds(feeds)
     return feeds[(page * per)..((page + 1)* per)], feeds.size
+  end
+
+  def self.get_feeds_of(user)
+    feeds = process_feeds(user.feeds)
+  end
+
+  private
+  def self.process_feeds(feeds)
+    feeds.reject{|f| f.cracked?}.sort{|x, y| y.created_at <=> x.created_at}.compact.uniq {|f| f.identity }
   end
 
 end

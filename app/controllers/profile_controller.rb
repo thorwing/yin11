@@ -83,4 +83,5 @@ class ProfileController < ApplicationController
       format.js {render :content_type => 'text/javascript'}
     end
   end
+
 end

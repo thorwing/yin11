@@ -60,6 +60,7 @@ zh-CN:
     unlock: 解锁
     upload: 上传
     more: 更多
+    preview: 预览
     author: 作者
     report: "报错/纠正"
     email_address: 邮件地址
@@ -75,6 +76,7 @@ zh-CN:
     are_you_sure_to_disable_enable: "确定要禁用/启用邮件吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
     mercury_edit: “所见即所得”编辑
+    details: 详细>>
 
   flash:
     notice: 通知
@@ -213,6 +215,8 @@ zh-CN:
     user_basic: 基本信息
     login_name: 昵称
     avatar: 头像
+    crop:  裁剪
+    crop_avatar: 裁剪头像
     change_avator: 换一张头像
     biography: 个人简介
     shares: 分享

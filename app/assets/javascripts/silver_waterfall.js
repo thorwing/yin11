@@ -6,7 +6,7 @@ function waterfall(url) {
         var tag = $('#wf_tag').val();
 
         var tpl = S.Template($('#tpl').html()),
-            nextpage = 0,
+            nextpage = 1,
             waterfall = new Waterfall.Loader({
             container:"#waterfall_container",
             load:function(success, end) {
@@ -25,10 +25,12 @@ function waterfall(url) {
                             items.push(new S.Node(tpl.render(item)));
                         });
 
-                        if (nextpage > 0)
+                        if (nextpage > 1)
                         {
                             $('#back_to_top').show();
                         }
+
+                        success(items);
 
                         // 如果到最后一页了, 也结束加载
                         nextpage = parseInt(d.page) + 1;
@@ -36,8 +38,6 @@ function waterfall(url) {
                             end();
                             return;
                         }
-
-                        success(items);
                     },
                     complete: function() {
                         $('#loading_pins').hide();
