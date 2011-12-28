@@ -2,16 +2,23 @@
 
 #header {
     background-color: $light_gray;
-    background: url("header_bg.png") repeat-x;
-    height: 80px;
+    /*background: url("header_bg.png") repeat-x;*/
 
-    .jewelry {
-        padding-top: 20px;
-    }
+    a { text-decoration:none; }
 
-    #inter_header {
+    .inter_header {
         width: 960px;
         margin: 0 auto;
+    }
+
+    #head_lv1 {
+        height: 60px;
+    }
+
+    #head_lv2 {
+        height: 40px;
+        background: $azure;
+        background: url("header_bg.png") repeat-x;
     }
 
     #top_menu {
@@ -23,13 +30,12 @@
         li a {
             font-size: 16px;
             color:$ink_black;
-            text-decoration:none;
         }
         li a:hover, li a.selected {color:$blue;}
     }
 
     /*  Logo */
-    #logo {margin-top: 10px;}
+    #logo {}
     #logo h1, #logo h2 {
         margin:0px;
         padding: 0px;

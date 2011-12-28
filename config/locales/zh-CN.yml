@@ -171,12 +171,12 @@ zh-CN:
     only_author_self: 只有作者才可以执行此操作
 
   menu:
-    home: 主页
     administrator_control: 管理面板
     show_profile: 我的资料
-    edit_profile: 修改资料
+    edit_profile: 设置
     update_profile: 偏好设定
-    me: 我的首页
+    home: 首页
+    me: 我的主页
     recipes: 菜谱
     articles: 文章
     reviews: 美食分享
