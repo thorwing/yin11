@@ -19,7 +19,8 @@ class PersonalController < ApplicationController
       total += extra_total
     end
 
-    @feeds = @feeds.compact.uniq {|f| f.identity }
+    #TODO why author is nil
+    @feeds = @feeds.reject{|f| f.cracked?}.compact.uniq {|f| f.identity }
 
     data = {
       items: @feeds.inject([]){|memo, f| memo <<  {
@@ -32,7 +33,7 @@ class PersonalController < ApplicationController
         user_fans_cnt: f.author.followers.count,
         user_established: current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == f.author.id.to_s}.size > 0,
         target_path: url_for(f.item),
-        time: f.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+        time: f.created_at.strftime("%m-%d %H:%M:%S"),
         picture_url: f.picture_url(:waterfall),
         picture_height: f.picture_height(:waterfall),
         id: f.id}

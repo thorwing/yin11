@@ -30,11 +30,11 @@
     <% @hard_workers.each do |user| %>
         <div class="clearfix mt10">
             <div class="fl mr5"><%= link_to image_tag(user.get_avatar(:thumb), width: 48, height: 48), user %></div>
-            <div class="fl">
-                <span><%= link_to user.screen_name, user %></span><br/>
-                <span class="trivial"><%= t("reviews.by_user", count: user.reviews.count) %></span><br/>
-                <span class="trivial"><%= t("recipes.by_user", count: user.recipes.count) %></span>
-            </div>
+            <span><%= link_to user.screen_name, user %></span><br/>
+        </div>
+        <div>
+            <span class="trivial"><%= t("reviews.by_user", count: user.reviews.count) %></span><br/>
+            <span class="trivial"><%= t("recipes.by_user", count: user.recipes.count) %></span>
         </div>
     <% end %>
 </div>

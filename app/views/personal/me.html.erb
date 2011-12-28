@@ -1,40 +1,37 @@
-<div class="clearfix">
-    <div class="grid_9 to_left">
-        <div class="mb20">
-            <%= render "reviews/review_fields", :review => Review.new %>
-        </div>
+<div class="grid_9 to_left">
+    <div class="mb20">
+        <%= render "reviews/review_fields", :review => Review.new %>
     </div>
 
-    <div class="grid_3 to_right">
-        <div id="control_panel">
-            <%= render "user_panel" %>
-        </div> <!--end of control_panel -->
+    <div class="tab_control">
+        <div class="tabContainer ">
+            <div class = "selected">
+              <%= link_to t("feeds.all"), "#", "data-page" => '.all_feeds', class: "tab" %>
+            </div>
+            <div class = "unselected">
+              <%= link_to t("feeds.my"), "#", "data-page" => '.my_feeds', class: "tab" %>
+            </div>
+        </div>
+
+        <div class="tabContent block">
+            <div class = "all_feeds display">
+                <%= render "shared/waterfall", :path => "/personal/feeds", :waterfall_partial => "feeds/feed_waterfall", :columns_count => 4, :columns_width => 230 %>
+            </div>
+            <div class = "my_feeds display_none">
+              <% @my_feeds.each do |feed| %>
+                <%= render feed %>
+              <% end %>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="grid_12 to_left to_right">
-  <div class="tab_control">
-    <div class="tabContainer ">
-        <div class = "selected">
-          <%= link_to t("feeds.all"), "#", "data-page" => '.all_feeds', class: "tab" %>
-        </div>
-        <div class = "unselected">
-          <%= link_to t("feeds.my"), "#", "data-page" => '.my_feeds', class: "tab" %>
-        </div>
-    </div>
-
-    <div class="tabContent block">
-        <div class = "all_feeds display">
-            <%= render "shared/waterfall", :path => "/personal/feeds", :waterfall_partial => "feeds/feed_waterfall", :columns_count => 4, :columns_width => 230 %>
-        </div>
-        <div class = "my_feeds display_none">
-          <% @my_feeds.each do |feed| %>
-            <%= render feed %>
-          <% end %>
-        </div>
-    </div>
-  </div>
+<div class="grid_3 to_right">
+    <div id="control_panel">
+        <%= render "user_panel" %>
+        <%= render "follows_panel" %>
+        <%= render "fans_panel" %>
+    </div> <!--end of control_panel -->
 </div>
-
 
 

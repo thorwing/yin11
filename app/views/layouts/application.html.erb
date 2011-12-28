@@ -25,7 +25,7 @@
 <div id="main" class="container_12 mt10">
   <div id="container">
     <div id="content_area" class="block">
-        <%= content_tag(:h1, @content_for_title, :class => "title") if show_title?  %>
+        <%= content_tag(:h1, @content_for_title, :class => "mb5") if show_title?  %>
         <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </div>

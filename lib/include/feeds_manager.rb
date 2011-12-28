@@ -39,6 +39,17 @@ class FeedsManager
       end
     end
 
+    if item.respond_to?(:recipe) && item.recipe.present?
+      item.recipe.feeds << initialize_feed(item)
+      item.recipe.save!
+
+      item.recipe.tags.each do |t|
+        tag = Tag.find_or_initialize_by(:name => t)
+        tag.feeds << initialize_feed(item)
+        tag.save!
+      end
+    end
+
     #push feed to it's author
     if item.respond_to?(:author) && item.author.present?
       new_feed = initialize_feed(item)
@@ -57,17 +68,22 @@ class FeedsManager
   end
 
   def self.pull_feeds(user, page, per)
-    feeds = user.tags.inject([]) do  |memo, t|
-      tag = Tag.find(t)
-      memo | tag.feeds
-    end
+    #feeds = user.tags.inject([]) do  |memo, t|
+    #  tag = Tag.find(t)
+    #  memo | tag.feeds
+    #end
 
+    feeds ||= []
+    #pull the feeds from items that the use followed
     user.relationships.each do |r|
       followable = r.get_item
       feeds += followable.feeds
     end
 
     feeds = process_feeds(feeds)
+
+    #different pagination of waterfall, it starts from 1
+    page = page -1 if page > 0
     return feeds[(page * per)..((page + 1)* per)], feeds.size
   end
 
@@ -86,7 +102,7 @@ class FeedsManager
 
   private
   def self.process_feeds(feeds)
-    feeds.reject{|f| f.cracked?}.sort{|x, y| y.created_at <=> x.created_at}.compact.uniq {|f| f.identity }
+    feeds.reject{|f| f.cracked?}.sort{|x, y| y.created_at <=> x.created_at}.compact.uniq
   end
 
 end

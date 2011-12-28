@@ -30,6 +30,7 @@
                 <div class="mt5">
                     <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
                     <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
+                    <%= render "relationships/follow_field", :target => @recipe %>
                 </div>
             <% end %>
             <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>

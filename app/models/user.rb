@@ -148,6 +148,14 @@ class User
     prefix + "default_head_100.jpg"
   end
 
+  def following_users(limit = 100)
+    self.relationships.where(target_type: "User").limit(limit).map{|r| r.get_item}
+  end
+
+  def following_recipes(limit = 7)
+    self.relationships.where(target_type: "Recipe").limit(limit).map{|r| r.get_item}
+  end
+
   def vote_weight
     if has_permission?(:administrator)
       ADMIN_VOTE_WEIGHT

@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,
         user_fans_cnt: r.author.followers.count,
-        time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+        time: r.created_at.strftime("%m-%d %H:%M:%S"),
         id: r.id}
       },
       page: params[:page],

@@ -222,6 +222,8 @@ zh-CN:
     shares: 分享
     fans: 粉丝
     follows: 关注
+    following_users: 关注的用户
+    following_recipes: 关注的菜谱
 
   profile:
     default_bio: 爱美食，更爱分享
@@ -465,7 +467,7 @@ zh-CN:
 
   feeds:
     all: 关注动态
-    my: 我的动态
+    my: 我的日志
     operations:
       create: 创建
       update: 更新
