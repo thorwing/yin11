@@ -4,6 +4,7 @@ class Recipe
     include Taggable
     include SilverSphinxModel
     include Imageable
+    include Followable
 
     #fields
     field :name
@@ -12,13 +13,14 @@ class Recipe
     search_index(:fields => [:name],
               :attributes => [:updated_at, :created_at])
 
-    attr_accessible  :author_id, :name , :ingredients_attributes, :steps_attributes
+    attr_accessible  :author_id, :name , :ingredients_attributes, :steps_attributes, :description
 
     #relationships
     embeds_many :ingredients
     embeds_many :steps
     belongs_to :author, :class_name => "User"
     has_many :reviews
+    embeds_many :comments
 
     accepts_nested_attributes_for :ingredients, :reject_if => lambda { |i| i[:name].blank?}, :allow_destroy => true
     accepts_nested_attributes_for :steps, :reject_if => lambda { |s| s[:img_id].blank? && s[:content].blank? }, :allow_destroy => true
@@ -27,7 +29,7 @@ class Recipe
     validates_presence_of :name
     validates_length_of :name, :maximum => 20
     validates_associated :ingredients
-    validates_length_of :ingredients, :maximum => 15
+    validates_length_of :ingredients, :maximum => 16
     validates_length_of :steps, :maximum => 30
     validates_presence_of :author
     validates_associated :steps

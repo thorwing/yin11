@@ -11,6 +11,7 @@ class Comment
   embedded_in :review
   embedded_in :article
   embedded_in :post
+  embedded_in :recipe
   belongs_to :user
 
   validates_presence_of :user

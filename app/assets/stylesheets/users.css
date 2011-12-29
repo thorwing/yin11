@@ -27,3 +27,22 @@
     height:100px;
     overflow:hidden;
 }
+.user_register #user_login_name{
+    width:300px;
+
+}
+
+.user_register #user_password_confirmation{
+    width:300px;
+
+}
+
+.user_register #user_password{
+    width:300px;
+
+}
+
+.user_register #user_email{
+    width:300px;
+
+}
