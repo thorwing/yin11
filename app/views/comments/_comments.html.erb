@@ -1,13 +1,16 @@
 <div id="comments">
     <% if item.comments.empty? %>
-      <span class = "first_comment_tip trivial"><%= t("comments.new_hint") %></span><br/>
+        <span class = "first_comment_tip trivial"><%= t("comments.new_hint") %></span><br/>
     <% else %>
         <b><%= t("comments.all") %></b><br/>
         <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
     <% end %>
 </div>
-
 <div class="clearfix"></div>
-<% if current_user %>
-    <%= render "comments/new_comment", :item => item%>
-<% end %>
+
+
+<div class="clearfix">
+    <% if current_user %>
+        <%= render "comments/new_comment", :item => item%>
+    <% end %>
+</div>

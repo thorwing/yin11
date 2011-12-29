@@ -8,11 +8,12 @@ class Recipe
 
     #fields
     field :name
+    field :description
 
     search_index(:fields => [:name],
               :attributes => [:updated_at, :created_at])
 
-    attr_accessible  :author_id, :name , :ingredients_attributes, :steps_attributes
+    attr_accessible  :author_id, :name , :ingredients_attributes, :steps_attributes, :description
 
     #relationships
     embeds_many :ingredients
@@ -20,19 +21,21 @@ class Recipe
     belongs_to :author, :class_name => "User"
     has_many :reviews
     embeds_many :feeds
+    embeds_many :comments
 
-    accepts_nested_attributes_for :ingredients
-    accepts_nested_attributes_for :steps
+    accepts_nested_attributes_for :ingredients, :reject_if => lambda { |i| i[:name].blank?}, :allow_destroy => true
+    accepts_nested_attributes_for :steps, :reject_if => lambda { |s| s[:img_id].blank? && s[:content].blank? }, :allow_destroy => true
 
     #validations
     validates_presence_of :name
     validates_length_of :name, :maximum => 20
     validates_associated :ingredients
-    validates_length_of :ingredients, :maximum => 10
+    validates_length_of :ingredients, :maximum => 16
     validates_length_of :steps, :maximum => 30
     validates_presence_of :author
     validates_associated :steps
     validates_associated :ingredients
+    validates_length_of :description, :maximum => 300
 
     #callbacks
     before_save :strip_spaces

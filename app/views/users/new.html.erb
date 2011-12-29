@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="grid_6">
+<div class="grid_6 user_register">
     <%= form_for @user do |f| %>
       <%= render "shared/error_messages", :target => @user %>
       <p>
@@ -23,7 +23,7 @@
       </p>
       <p>
         <%= f.label t("authentication.login_name") %><%= mark_required(@user, :login_name) %><br />
-        <%= f.text_field :login_name %>
+        <%= f.text_field :login_name, :maxlength => get_max_length(User, :login_name)  %>
       </p>
       <p class="button"><%= submit_tag t("authentication.sign_up"), :class => "button" %></p>
     <% end %>

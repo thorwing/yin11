@@ -38,7 +38,7 @@ class SyncsManager
         client = SilverOauth::Qq.load(:access_token => @user.access_token, :access_token_secret => @user.access_token_secret)
         #client.add_status("ͬ����qq΢��..")
         url = "http://open.t.qq.com/api/t/add"
-        message = [review.title, review.content].join(": ")
+        message = review.content
         response = client.access_token.request(:post, url, :content => message, :format => "xml")
         p "qq_response: " + response.to_yaml
       if Crack::XML.parse(response.body)["root"]["msg"] == "ok"
@@ -54,7 +54,7 @@ class SyncsManager
             :api_key => "=" + client.key,
             :method => "=blog.addBlog",
             :call_id => "=" + Time.now.tv_usec.to_s,
-            :title => review.title,
+            #:title => review.title,
             :content => review.content,
             :access_token => client.access_token
              }

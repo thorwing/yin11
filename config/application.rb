@@ -63,3 +63,5 @@ module Yin11
     config.cache_store = :memory_store
   end
 end
+
+
