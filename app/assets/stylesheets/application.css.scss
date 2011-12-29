@@ -169,6 +169,7 @@ ul.menu li {
 
 .red {color: $red;}
 .white {color: $white;}
+.orange {color: $orange;}
 
 .b_black {background-color: $black;}
 .b_gray {background-color: $gray;}
@@ -177,7 +178,7 @@ ul.menu li {
 .lb {border-left: 1px solid;}
 .rb {border-right: 1px solid;}
 
-.center {margin: 0 auto; display: block;}
+.center {margin: 0 auto; display: block; text-align: center;}
 .middle {vertical-align: middle;}
 
 .clear { visibility: hidden; height: 0; clear: both; }
@@ -204,7 +205,7 @@ ul.menu li {
 .ar {text-align: right;}
 .ac {text-align: center;}
 
-.full_w {width:100%; overflow:hidden;}
+.full_w {width: 100%; overflow:hidden;}
 .auto_w {width: auto;}
 .auto_h {height: auto;}
 

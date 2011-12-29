@@ -60,6 +60,14 @@ class Recipe
       end
     end
 
+    def major_ingredients
+      self.ingredients.where(is_major_ingredient: true)
+    end
+
+     def minor_ingredients
+      self.ingredients.where(is_major_ingredient: false)
+    end
+
     private
 
     def strip_spaces

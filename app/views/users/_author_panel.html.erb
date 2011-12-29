@@ -1,10 +1,10 @@
-<div class="user_info_head_block grid_9 to_left">
+<div class="user_info_head_block grid_9 to_left p5">
     <%= link_to image_tag(author.get_avatar(:thumb), :class => "fl"), profile_path(author) %><br/>
 
-    <div class="user_profile fl">
-        <span><username>
+    <div class="userprofile fl ml10 pt10">
+        <span class="f28">
             <%= link_to author.screen_name, user_path(author) %>
-        </username></span>
+        </span>
         <br/>
         <%= render "relationships/follow_field", :target => author %>
     </div>
@@ -27,9 +27,9 @@
     </div>
 
     <div class="userInfoNav fl mt10">
-        <%= link_to t("feeds.feed"), user_path(author) %>
-        <%= link_to t("recipes.recipes"), user_path(author) %>
-        <%= link_to t("control_panel.album"), user_path(author) %>
-        <%= link_to t("control_panel.groups"), user_path(author) %>
+        <%= link_to t("feeds.feed"), user_path(author), class: "fl f16 orange" %>
+        <%= link_to t("recipes.recipes"), user_path(author), class: "fl f16 orange" %>
+        <%= link_to t("control_panel.album"), user_path(author), class: "fl f16 orange" %>
+        <%= link_to t("control_panel.groups"), user_path(author), class: "fl f16 orange" %>
     </div>
 </div>

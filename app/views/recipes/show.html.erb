@@ -1,17 +1,17 @@
 <div class="recipe_block grid_9 to_left mt10">
     <div class="clearfix box_shadow ">
-        <%= render "author_panel", author: @recipe.author %>
+        <%= render "users/author_panel", author: @recipe.author %>
     </div>
 
-    <div class="recipe_info  mt10">
-        <%= link_to image_tag(@recipe.get_image_url(:waterfall), size: '280', alt: @recipe.name, class: 'recipeImg fl img_frame overflow_hidden '), @recipe.get_image_url, rel: "facebox"  %>
+    <div class="recipe_info mt10 to_left box_shadow p5">
+        <%= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'fl img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox"  %>
 
-        <div class="clearfix box_shadow">
-            <div class="recipe_detailedInfo">
-                <div class="title fl mt10">
-                    <span><recipename><%= @recipe.name %></recipename></span>
+        <div class="clearfix">
+            <div class="recipe_detailedInfo fl ml10">
+                <div class="fl mt10">
+                    <span class="f28"><%= @recipe.name %></span>
                     <br/>
-                      <%= t("recipes.published_at") %> <%= @recipe.created_at.getgm %>
+                      <%= t("recipes.published_at") %> <%= @recipe.created_at.strftime("%y-%m-%d %H:%M:%S") %>
                 </div>
 
                 <div class="top fl mt10">
@@ -33,79 +33,61 @@
                 </div>
 
 
-                <div class="middle fl mt10">
-                    <span><%= t("recipes.tags") %></span>
-                    <br/>
-                    <% @recipe.tags.each do |tag|  %>
-                    <a><%= tag %></a>
-                    <% end  %>
+                <div class="fl mt10">
+                    <b><%= t("recipes.tags") %></b>
+                    <%= render "shared/show_tags", item: @recipe %>
                 </div>
 
-                <div class="bottom fl mt10">
-                    <span style="font-size:18px"><%= t("recipes.ingredients") %></span>
-                    <div class="foodList ">
+                <div class="fl mt10">
+                    <div class="clearfix">
+                        <b><%= t_with_colon("recipes.major") %></b>
                         <ul>
-                            <% @recipe.ingredients.each do |i|%>
-                              <% if i.is_major_ingredient == true %>
-                                  <li style="float:left; width:50%;"> <%= i.name %>  <%= i.amount %></li>
-                              <% end  %>
+                            <% @recipe.major_ingredients.each do |i|%>
+                                <li class="fl" style="width:50%;"> <%= i.name %>  <span class="trivial"><%= i.amount %></span></li>
                             <% end %>
                         </ul>
                     </div>
-                    <div class="foodList ">
+                    <div class="clearfix">
+                        <b><%= t_with_colon("recipes.minor") %></b>
                         <ul>
-                            <% @recipe.ingredients.each do |i|%>
-                              <% if i.is_major_ingredient == false %>
-                                  <li style="float:left; width:50%;"> <%= i.name %>  <%= i.amount %></li>
-                              <% end  %>
+                            <% @recipe.minor_ingredients.each do |i|%>
+                                <li class="fl" style="width:50%;"> <%= i.name %> <span class="trivial"><%= i.amount %></span></li>
                             <% end %>
                         </ul>
                     </div>
                 </div>
             </div>
 
-
-            <div class="recipe_description fl mt10 ">
-                <%= t("recipes.description") %>
-                <br/>
-                <%= @recipe.description %>
-            </div>
+            <% if @recipe.description.present? %>
+                <div class="recipe_description fl mt10 ">
+                    <%= t("recipes.description") %><br/>
+                    <%= @recipe.description %>
+                </div>
+            <% end %>
 
             <div class="recipe_steps fl mt10  block">
                 <ul>
-                    <% i = 1 %>
-                    <% @recipe.steps.each do |s|%>
-                        <li style="float:left;width:33.33%;">
-                            <h2><%= i %></h2>
+                    <% @recipe.steps.each_with_index do |s, i|%>
+                        <li class="fl" style="width:33.33%;">
+                            <b><%= i + 1 %></b><br/>
                             <% if s.image.present?%>
-                                <%= link_to image_tag(s.get_image_url(:thumb), :size => '180x135', :alt=> "step_image"), s.get_image_url, rel: "facebox" %><br/>
+                                <%= link_to image_tag(s.get_image_url(:thumb), :size => '180x135', :alt=> "step_image"), s.get_image_url, rel: "facebox" %>
                             <% end  %>
                             <br/>
-                            <div class= "m5"><%= s.content %></div>
-                            <% i = i + 1  %>
+                            <div><%= s.content %></div>
                         </li>
-                    <% end  %>
+                    <% end %>
                 </ul>
             </div>
         </div>
-
-        <div class="recipe_comments p10">
-            <!--<span><h2>我来说两句</h2></span>-->
-            <%= render "comments/comments", item: @recipe %>
-        </div>
     </div>
+
+     <div class="recipe_comments p10">
+        <%= render "comments/comments", item: @recipe %>
+     </div>
 </div>
 
-<div class="related_recipe_block grid_3 mt10 to_right box_shadow">
-    <span><h2>您可能还喜欢...</h2></span>
-    <br/>
-    <ul>
-        <%= render "related_recipes", related_recipes: @related_recipes %>
-    </ul>
-
-    <span><h2>相关产品推荐...</h2></span>
-    <br/>
-    <ul>
-        <%= render "products/related_products", products: @related_products %>
-    </ul>
+<div class="related_recipe_block grid_3 mt10 to_right box_shadow p5">
+    <%= render "recipes/related_recipes", related_recipes: @related_recipes %>
+    <%= render "products/related_products", products: @related_products %>
 </div>

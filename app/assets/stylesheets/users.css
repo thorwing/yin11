@@ -44,5 +44,10 @@
 
 .user_register #user_email{
     width:300px;
-
 }
+
+
+/*author panel partial*/
+.user_info_head_block .userprofile{width:400px; }
+.user_info_head_block .userinfoCollection .collectList{height:35px; width:60px; text-align:center;}
+.user_info_head_block .userInfoNav a{float:left;width:65px; height:32px; text-align:center; font-size:18px; }

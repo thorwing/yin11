@@ -1,3 +1,4 @@
+@import "attributes";
 .step_uploader {
     .qq-upload-button {
         display:block; /* or inline-block */
@@ -54,32 +55,16 @@
     float:left;
 }
 
-/*recipe_show*/
-.user_info_head_block{height:140px;  padding-top:10px; padding-left:5px;}
-.user_info_head_block .headImgBox{width:100px; height:100px;}
-.user_info_head_block .user_profile{margin-left:10px; width:400px; padding-top:10px;}
-.user_info_head_block username{ font-size:36px;}
-.user_info_head_block .userinfoCollection{height:auto;width:auto;}
-.user_info_head_block .userinfoCollection .collectList{height:35px; width:60px; text-align:center;}
-.user_info_head_block .userInfoNav a{float:left;width:65px; height:32px; text-align:center; font-size:18px; color:pink}
-
 
 /*.recipe_block{padding-top:10px;padding-bottom:20px;padding-left:5px;}*/
-.recipe_block .recipe_info{width:100%;}
-.recipe_block .recipe_info .recipeImg{width:280px;}
-.recipe_block .recipe_info .recipe_detailedInfo{float:left; margin-left:10px; width:400px;}
-.recipe_block .recipe_info .recipe_detailedInfo recipename{font-size:36px;}
-.recipe_block .recipe_info .recipe_detailedInfo .title{width:400px;}
+.recipe_block .recipe_info .recipeImg{width:200px;}
+.recipe_block .recipe_info .recipe_detailedInfo { width:400px;}
 .recipe_block .recipe_info .recipe_detailedInfo .top{width:400px;}
-.recipe_block .recipe_info .recipe_detailedInfo .top a{float:left;width:65px; height:32px; text-align:left; font-size:18px; color: orange}
-.recipe_block .recipe_info .recipe_detailedInfo .middle{width:400px;}
-.recipe_block .recipe_info .recipe_detailedInfo .bottom{width:400px;}
-.recipe_block .recipe_info .recipe_detailedInfo .bottom .foodList{height:30px;}
+.recipe_block .recipe_info .recipe_detailedInfo .top a{float:left;width:65px; height:32px; text-align:left; font-size:18px;}
 .recipe_block .recipe_description{width:100%;}
 .recipe_block .recipe_steps{width:100%;}
 .recipe_block .recipe_steps ul{clear:both;}
 .recipe_block .recipe_steps ul img{clear:right;}
-
 
 
 
