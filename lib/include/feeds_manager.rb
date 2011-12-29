@@ -67,7 +67,7 @@ class FeedsManager
     end
   end
 
-  def self.pull_feeds(user, page, per)
+  def self.pull_feeds(user)
     #feeds = user.tags.inject([]) do  |memo, t|
     #  tag = Tag.find(t)
     #  memo | tag.feeds
@@ -80,29 +80,28 @@ class FeedsManager
       feeds += followable.feeds
     end
 
-    feeds = process_feeds(feeds)
+    feeds = process(feeds)
 
     #different pagination of waterfall, it starts from 1
-    page = page -1 if page > 0
-    return feeds[(page * per)..((page + 1)* per)], feeds.size
+    return feeds, feeds.size
   end
 
-  def self.get_tagged_feeds(tags, page, per)
+  def self.get_tagged_feeds(tags)
     feeds = tags.inject([]) do  |memo, tag|
       memo | tag.feeds
     end
 
-    feeds = process_feeds(feeds)
-    return feeds[(page * per)..((page + 1)* per)], feeds.size
+    feeds = process(feeds)
+    return feeds, feeds.size
   end
 
   def self.get_feeds_of(user)
-    feeds = process_feeds(user.feeds)
+    feeds = process(user.feeds)
   end
 
   private
-  def self.process_feeds(feeds)
-    feeds.reject{|f| f.cracked?}.sort{|x, y| y.created_at <=> x.created_at}.compact.uniq
+  def self.process(feeds)
+    feeds.reject{|f| f.cracked?}.sort{|x, y| y.created_at <=> x.created_at}.uniq {|f| f.identity}
   end
 
 end

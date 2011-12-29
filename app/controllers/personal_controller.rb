@@ -7,11 +7,12 @@ class PersonalController < ApplicationController
   end
 
   def feeds
-    @feeds, total = FeedsManager.pull_feeds(current_user, params[:page].to_i, ITEMS_PER_PAGE_FEW)
+    @feeds, total = FeedsManager.pull_feeds(current_user)
 
+    #less than 1 page
     if total < ITEMS_PER_PAGE_FEW
       hot_tags= get_hot_tags
-      extra_feeds, extra_total = FeedsManager.get_tagged_feeds(hot_tags, params[:page].to_i, ITEMS_PER_PAGE_FEW)
+      extra_feeds, extra_total = FeedsManager.get_tagged_feeds(hot_tags)
       #TODO sometimes @feeds is nil
       @feeds ||= []
       extra_feeds ||= []
@@ -19,8 +20,11 @@ class PersonalController < ApplicationController
       total += extra_total
     end
 
-    #TODO why author is nil
-    @feeds = @feeds.reject{|f| f.cracked?}.compact.uniq {|f| f.identity }
+    page = params[:page].to_i
+    #different pagination of waterfall, it starts from 1
+    page = page -1 if page > 0
+
+    @feeds = FeedsManager.process(@feeds)[(page * ITEMS_PER_PAGE_FEW)..((page + 1)* ITEMS_PER_PAGE_FEW)]
 
     data = {
       items: @feeds.inject([]){|memo, f| memo <<  {
