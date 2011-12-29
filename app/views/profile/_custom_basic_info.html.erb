@@ -1,14 +1,9 @@
-<div class="block round p5">
-    <b><%= label_tag "user[login_name]", t("user_basic.login_name")  %></b><br/>
-    <%= text_field_tag "user[login_name]", current_user.screen_name, :maxlength => get_max_length(current_user, :login_name) %>
-    <p>
-      <b><%= t("user_basic.avatar") %></b><br/>
-      <%= image_tag current_user.get_avatar(:thumb), :class => "avatar" %>
-      <%= link_to t("user_basic.crop_avatar"), crop_user_path(current_user) if current_user.avatar? %><br/>
-      <%= t("user_basic.change_avator") %><span class="trivial">(4MB以下)</span><br/>
-      <%= file_field_tag "user[avatar]" %> <br/>
+<div class="p5">
+    <p class="mb5">
+        <b><%= label_tag "user[login_name]", t("user_basic.login_name")  %></b><br/>
+        <%= text_field_tag "user[login_name]", current_user.screen_name, :maxlength => get_max_length(current_user, :login_name) %>
     </p>
-    <p>
+    <p class="mb5">
       <b><%= t("user_basic.biography") %><%= mark_required_length(Profile, :biography) %></b><br/>
       <%= f.text_area :biography, rows: 5, maxlength: get_max_length(Profile, :biography), 'data-comment_max_len' => get_max_length(Profile, :biography), class: "char_aware" %>
       <%= content_tag :span, "", class: "char_saver display_none" %>

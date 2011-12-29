@@ -1,13 +1,21 @@
 <% title t("menu.edit_profile"), false %>
 
- <h1 class="mb5"><%= t("menu.edit_profile") %></h1>
-<%= form_for current_user.profile, :html => {:multipart => true} do |f| %>
-    <%= render "#{current_user.profile.current_step}", :f => f %>
+<div class="box_shadow clearfix p5">
+<div class="grid_3 to_left">
+    <h2><%= t("menu.edit_profile") %></h2>
+    <% current_user.profile.steps.each do |step| %>
+        <%= link_to t("profile.steps.#{step}"), edit_profile_path(current_user, step: step) %><br/>
+    <% end %>
+</div>
 
-    <div class="mt10">
-        <%= submit_tag t("profile.previous"), :name => "previous_button", :class => "button"  unless current_user.profile.first_step? %>
-        <%= submit_tag current_user.profile.last_step? ? t("general.submit") : t("profile.next"), :class => "button" %>
-        <br/>
-    </div>
-<% end %>
+<div class="grid_9 to_right">
+    <%= form_for current_user.profile, :html => {:multipart => true} do |f| %>
+        <%= render "#{current_user.profile.current_step}", :f => f %>
 
+        <div class="mt10">
+            <%= submit_tag t("general.submit"), :class => "button" %>
+            <br/>
+        </div>
+    <% end %>
+</div>
+</div>

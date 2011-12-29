@@ -49,6 +49,7 @@ zh-CN:
     new: 新建
     update: 更新
     back: 返回
+    browse: 浏览
     back_to_list: 返回列表
     none: 无
     empty: 暂无
@@ -218,7 +219,7 @@ zh-CN:
     crop:  裁剪
     crop_avatar: 裁剪头像
     change_avator: 换一张头像
-    biography: 个人简介
+    biography: 自我介绍
     shares: 分享
     fans: 粉丝
     follows: 关注
@@ -255,6 +256,10 @@ zh-CN:
     my_following_vendors: 关注商户
     my_following_users: 我关注的用户
     profile_updated_notice: 信息已更新
+    steps:
+      custom_basic_info: 基本信息
+      custom_avatar: 修改头像
+      custom_groups: 加入饭桌
 
   home:
     foods_buy_question: "您的餐桌安全吗？"
