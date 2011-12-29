@@ -20,7 +20,7 @@ module Followable
 
     def remove_follower!(user)
       return unless followers.present?
-      self.followers.remove(user.id.to_s)
+      self.followers.delete(user.id.to_s)
       self.save!
     end
 

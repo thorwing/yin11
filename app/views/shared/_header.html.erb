@@ -20,8 +20,8 @@
                    </span> |
                     <%= link_to t("menu.logout"), logout_path %>
                 </div>
-                <div class="box_shadow fr mr30 mt15 p5">
-                    <%= link_to(current_user.screen_name, profile_path(current_user.profile), :class => "f16") %>
+                <div class="fr mr30 mt15 p5">
+                    <%= link_to(current_user.screen_name, profile_path(current_user.profile), :class => "orange f16") %>
                 </div>
             <% else %>
               <% unless hide_quick_auth? %>

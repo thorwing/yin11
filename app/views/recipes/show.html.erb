@@ -4,41 +4,36 @@
     </div>
 
     <div class="recipe_info mt10 to_left box_shadow p5">
-        <%= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'fl img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox"  %>
+        <% if @recipe.image.present? %>
+            <%= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'fl img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox"  %>
+        <% else %>
+            <%= image_tag "not_found.png", class: 'fl img_frame overflow_hidden' %>
+        <% end %>
 
         <div class="clearfix">
             <div class="recipe_detailedInfo fl ml10">
-                <div class="fl mt10">
-                    <span class="f28"><%= @recipe.name %></span>
-                    <br/>
-                      <%= t("recipes.published_at") %> <%= @recipe.created_at.strftime("%y-%m-%d %H:%M:%S") %>
+                <div class="mt10">
+                    <span class="f28"><%= @recipe.name %></span><br/>
+                    <span class="trivial"><%= t("recipes.published_at") %> <%= @recipe.created_at.strftime("%y-%m-%d %H:%M:%S") %></span>
                 </div>
 
-                <div class="top fl mt10">
+                <div class="mt10">
                     <% if current_user_has_permission? :normal_user %>
                         <div class="mt5">
-                            <% target = @recipe %>
                             <%= render "relationships/follow_field", :target => @recipe %>
-                            <!--<= link_to t("recipes.collect"), relationships_path(:target_type => target.class.name, :target_id => target.id), :method => :post, :remote => true, :class => "new_relationship", :id => "collect" %>-->
-
-                            <%= link_to t("recipes.want"), "", class: "mark_recipe", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
-                            <%= link_to t("recipes.did"), "", class: "mark_recipe", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
-                        </div>
-                    <% end %>
-                    <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
-                        <div class="mt5">
-                            <%= link_to t("general.edit"), edit_recipe_path(@recipe)%>
+                            <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
+                            <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
+                            <%= link_to t("general.edit"), edit_recipe_path(@recipe), class: "button" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
                         </div>
                     <% end %>
                 </div>
 
-
-                <div class="fl mt10">
+                <div class="mt10">
                     <b><%= t("recipes.tags") %></b>
                     <%= render "shared/show_tags", item: @recipe %>
                 </div>
 
-                <div class="fl mt10">
+                <div class="mt10">
                     <div class="clearfix">
                         <b><%= t_with_colon("recipes.major") %></b>
                         <ul>
@@ -65,19 +60,24 @@
                 </div>
             <% end %>
 
-            <div class="recipe_steps fl mt10  block">
-                <ul>
-                    <% @recipe.steps.each_with_index do |s, i|%>
-                        <li class="fl" style="width:33.33%;">
-                            <b><%= i + 1 %></b><br/>
-                            <% if s.image.present?%>
-                                <%= link_to image_tag(s.get_image_url(:thumb), :size => '180x135', :alt=> "step_image"), s.get_image_url, rel: "facebox" %>
-                            <% end  %>
-                            <br/>
-                            <div><%= s.content %></div>
-                        </li>
-                    <% end %>
-                </ul>
+            <div class="fl mt10  block">
+                <% @recipe.steps.each_slice(3).each do |slice| %>
+                    <div class="clearfix">
+                     <% slice.each do |s| %>
+                        <div class="fl ml10 mr10 mb5" style="width:30%;">
+                            <b><%= @recipe.steps.index(s) + 1 %></b><br/>
+                            <span class="center">
+                                <% if s.image.present?%>
+                                    <%= link_to image_tag(s.get_image_url, :size => '180x135', :alt=> "step_image"), s.get_image_url, rel: "facebox" %>
+                                <% else  %>
+                                    <%= image_tag "not_found.png", :size => '180x135' %>
+                                <% end %>
+                            </span>
+                            <span><%= s.content %></span>
+                        </div>
+                     <% end %>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>
@@ -88,6 +88,6 @@
 </div>
 
 <div class="related_recipe_block grid_3 mt10 to_right box_shadow p5">
-    <%= render "recipes/related_recipes", related_recipes: @related_recipes %>
+    <%= render "recipes/related_recipes", recipes: @related_recipes %>
     <%= render "products/related_products", products: @related_products %>
 </div>

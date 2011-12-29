@@ -44,8 +44,11 @@ class Recipe
 
     #TODO use a real image field here
     def image
+      #the last step who has an image
       image = nil
-      image = self.steps.last.get_image if (self.steps.size > 0 && self.steps.last.image.present?)
+      self.steps ||= []
+      steps_with_image = self.steps.select{|s| s.image.present?}
+      image = steps_with_image.last.get_image unless steps_with_image.empty?
       image
     end
 

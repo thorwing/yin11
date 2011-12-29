@@ -1,10 +1,12 @@
-<span><h2>您可能还喜欢...</h2></span><br/>
-<ul>
-    <% related_recipes.each do |recipe| %>
-        <li class="fl center" style="width:50%;">
-            <%= link_to image_tag( recipe.get_image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :class=>"product_small_img_box"), recipe%>
-            <br/>
-            <%= link_to recipe.name, recipe %>
-        </li>
-    <% end %>
-</ul>
+<% unless recipes.blank? || recipes.empty? %>
+    <span><h2>您可能还喜欢...</h2></span><br/>
+    <ul>
+        <% recipes.each do |recipe| %>
+            <li class="fl center" style="width:50%;">
+                <%= link_to image_tag( recipe.get_image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :class=>"product_small_img_box"), recipe%>
+                <br/>
+                <%= link_to recipe.name, recipe %>
+            </li>
+        <% end %>
+    </ul>
+<% end %>
