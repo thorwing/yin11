@@ -1,5 +1,5 @@
 <% if current_user %>
-    <div id="user_panel" class="panel">
+    <div id="user_panel" class="panel clearfix">
         <b><%= link_to current_user.screen_name, profile_path(current_user) %></b><br/>
         <%= link_to image_tag(current_user.get_avatar(:thumb), :border => 0, :class => "avatar"), profile_path(current_user) %><br/>
 
@@ -19,16 +19,19 @@
             </div>
         </div>
 
-        <p class="actions">
+        <div>
             <b><%= t("control_panel.actions") %></b><br/>
-            <%= link_to t("recipes.add"), new_recipe_path, :class => "button" %>
-            <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile), :class => "button" %> <br/>
+            <%= link_to "", new_recipe_path, :class => "btn_addRecipe m5 fl" %>
+            <%= link_to "", edit_profile_path(current_user.profile), :class => "btn_modifyProfile m5 fl" %>
+          <br/>
             <% if current_user_has_permission?(:editor) %>
+              <div>
                 <b><%= t("control_panel.editor_actions") %></b><br/>
-                <%= link_to t("topics.new"), new_topic_path, :class => "button"  %>
-                <%= link_to t("articles.new"), new_article_path, :class => "button" %>
-                <%= link_to t("pages.add"), new_page_path, :class => "button" %>
-            <% end %>
-        </p>
+                <%= link_to "", new_topic_path, :class => "btn_addTopic m5 fl" %>
+                <%= link_to "", new_article_path, :class => "btn_addArticle m5 fl" %>
+                <%= link_to "", new_page_path, :class => "btn_addPage m5 fl" %>
+              </div>
+          <% end %>
+        </div>
     </div>
 <% end %>

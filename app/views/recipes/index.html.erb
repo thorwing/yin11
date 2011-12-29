@@ -5,8 +5,8 @@
 
 <div class="grid_3 box_shadow to_right p5">
     <% if current_user_has_permission? :normal_user %>
-        <div class="p5">
-            <%= link_to t("recipes.new"), new_recipe_path, class: "button" %>
+        <div class="clearfix p5">
+            <%= link_to "", new_recipe_path, class: "btn_addRecipe fl" %>
         </div>
         <hr/>
     <% end %>

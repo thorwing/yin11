@@ -1,0 +1,130 @@
+a.btn_register{
+ width:110px;
+ height:45px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-8px -9px;
+}
+
+a.btn_register:hover{
+ width:110px;
+ height:45px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-8px -63px;}
+
+.btn_shareReview{
+ width:115px;
+ height:35px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-7px -118px;
+}
+.btn_shareReview:hover{
+ width:115px;
+ height:35px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-7px -155px;/}
+
+.btn_comment{
+ width:115px;
+ height:35px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -9px;/}
+
+.btn_comment:hover{
+ width:115px;
+ height:35px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -47px;/}
+
+.btn_addRecipe{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-7px -222px;
+}
+
+.btn_addAttention{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-7px -261px;
+}
+
+.btn_addArticle{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -249px;
+}
+
+.btn_addPage{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -289px;
+}
+
+.btn_addTopic{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -208px;
+}
+
+.btn_modifyProfile{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -169px;
+}
+
+.btn_done{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -342px;
+}
+
+.btn_wantToDo{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -383px;
+}
+
+.btn_cancelAttention{
+ width:85px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-140px -431px;
+}
+
+.btn_modify{
+ width:65px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-7px -383px;
+}
+
+.btn_delete{
+ width:65px;
+ height:30px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-7px -341px;
+}
