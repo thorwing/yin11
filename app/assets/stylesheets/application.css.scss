@@ -22,6 +22,7 @@
 *= require facebox
 *= require jquery.jgrowl
 *= require fileuploader
+*= require jquery.Jcrop
 */
 
 @charset "utf-8";
@@ -137,8 +138,6 @@ ul.menu li {
 
 .ml2 {margin-left: 2px;}
 
-.mt15 {margin-top: 15px;}
-
 .mt5 {margin-top: 5px;}
 .ml5 {margin-left: 5px;}
 .mb5 {margin-bottom: 5px;}
@@ -148,6 +147,8 @@ ul.menu li {
 .ml10 {margin-left: 10px;}
 .mb10 {margin-bottom:10px;}
 .mr10 {margin-right: 10px;}
+
+.mt15 {margin-top: 15px;}
 
 .mt20 {margin-top:20px;}
 .ml20 {margin-left: 20px;}
@@ -165,8 +166,6 @@ ul.menu li {
 
 .w50 {width: 50px;}
 
-.w_image {width: 120px;}
-
 .red {color: $red;}
 .white {color: $white;}
 
@@ -178,6 +177,7 @@ ul.menu li {
 .rb {border-right: 1px solid;}
 
 .center {margin: 0 auto; display: block;}
+.middle {vertical-align: middle;}
 
 .clear { visibility: hidden; height: 0; clear: both; }
 
@@ -217,6 +217,10 @@ ul.menu li {
 
 .display_block {
     display: block;
+}
+
+.display_inline_block {
+    display: inline-block;
 }
 
 .cursor {
@@ -291,10 +295,6 @@ a.tag:hover {
     clear: both;
 }
 
-h1.title {
-    text-align: center;
-}
-
 html, body, #main { height: 100%; }
 body #main { height: auto; padding-bottom: 260px;}
 
@@ -327,12 +327,13 @@ body #main { height: auto; padding-bottom: 260px;}
 	text-decoration:underline;
 }
 
-.image {
+.image, .product {
     position: relative;
     margin-right: 10px;
-    .del_img_link {
+    .del_link {
         position: absolute;
         right: -5px;
-        top: 10px;
+        top: 0px;
     }
 }
+

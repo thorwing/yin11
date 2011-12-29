@@ -3,7 +3,7 @@
 <head>
   <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css", "application" %>
   <%= javascript_include_tag "application", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js" %>
-  <%= yield :header_including if content_for?(:header_including) %>
+  <%= yield :head if content_for?(:head) %>
 
   <!--<meta name="google-site-verification" content="GF_EoI9-lwWznbOBC3y1-joOBGeE7EBPEfui_-4vMZo" />-->
   <% if has_meta_tag? %>
@@ -25,7 +25,7 @@
 <div id="main" class="container_12 mt10">
   <div id="container">
     <div id="content_area" class="block">
-        <%= content_tag(:h1, @content_for_title, :class => "title") if show_title?  %>
+        <%= content_tag(:h1, @content_for_title, :class => "mb5") if show_title?  %>
         <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </div>
@@ -51,6 +51,8 @@
     </div>
   </div>
 </div>
+
+<%= hidden_field_tag "current_user_id", current_user.id.to_s, id: "current_user_id" if current_user %>
 
 <%= yield :deferred_javascript if content_for?(:deferred_javascript) %>
 </body>

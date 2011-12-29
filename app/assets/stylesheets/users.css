@@ -1,7 +1,7 @@
-.master {height:150px;}
+.master {height:130px;}
 .master .user_info { width: 100px;}
-.master .desc { width: 230px; margin: 0 5px;}
-.master .feeds {width: 348px;}
+.master .desc { width: 250px; margin: 0 5px;}
+.master .feeds {width: 328px;}
 
 .more_head_img {float:left; width:40px; height:40px; border: 1px solid white;}
 
@@ -20,4 +20,10 @@
     top: 70px;
     left: 0px;
     background-color: #EDEFF4;
+}
+
+.preview {
+    width:100px;
+    height:100px;
+    overflow:hidden;
 }

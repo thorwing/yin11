@@ -1,10 +1,23 @@
 $("#link_spinner").hide();
 
-<% if @valid%>
+<% if @valid %>
   <% if @product %>
     $(document).trigger('close.facebox');
-    var product_field = '<input id="products_" type="hidden" value="' + "<%= @product.id.to_s %>" + '" name="review[product_ids][]"/>';
-    append_image("<%= @product.id.to_s %>", "<%= @product.get_image_url(:thumb) %>", "<%= @product.get_image_url %>", product_field);
+
+    if(document.getElementById("product_" + "<%= @product.id.to_s %>")) {
+      alert("已添加了该商品");
+    }
+    else {
+        var new_product = '<div class="product fl mr5"><div class="hint_box">'
+            + '<a href="/products/' + "<%= @product.id.to_s %>" + '">'
+            + '<img class="thumbnail" src="' + "<%= @product.get_image_url(:thumb) %>" + '" alt="thumbnail"></a>'
+            + '<span class="fix_hint b_black white f11">' + "<%= @product.name %>" + '</span></div>'
+            + '<a onclick="delete_product(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_product"></a>'
+            + '<input type="hidden" value="' + "<%= @product.id.to_s %>" + '" name="review[product_ids][]" id="product_' + "<%= @product.id.to_s %>" + '"/>'
+            + '</div>';
+
+        $('#images_container').append(new_product);
+    }
   <% else %>
     alert("抱歉，未能找到该商品");
   <% end %>

@@ -1,0 +1,54 @@
+<% content_for :head do %>
+    <script type="text/javascript" charset="utf-8">
+    $(function() {
+      $('#cropbox').Jcrop({
+        onChange: update_crop,
+        onSelect: update_crop,
+        setSelect: [0, 0, 500, 500],
+        aspectRatio: 1
+      });
+    });
+
+    function update_crop(coords) {
+        var rx = 100/coords.w;
+        var ry = 100/coords.h;
+        var lw = $('#cropbox').width();
+        var lh = $('#cropbox').height();
+        var ratio = <%= current_user.avatar_geometry[:width] %> / lw ;
+
+      $('#preview').css({
+        width: Math.round(rx * lw) + 'px',
+        height: Math.round(ry * lh) + 'px',
+        marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+        marginTop: '-' + Math.round(ry * coords.y) + 'px'
+      });
+      $("#crop_x").val(Math.round(coords.x * ratio));
+      $("#crop_y").val(Math.round(coords.y * ratio));
+      $("#crop_w").val(Math.round(coords.w * ratio));
+      $("#crop_h").val(Math.round(coords.h * ratio));
+    }
+    </script>
+<% end %>
+
+
+<div class="fl">
+    <%= image_tag current_user.get_avatar, :id => "cropbox" %>
+</div>
+
+<div class="fl ml20">
+    <h3><%= t("general.preview") %></h3>
+    <div class="preview">
+        <%= image_tag current_user.get_avatar, :id => "preview" %>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="mt10">
+    <%= form_for current_user, :as => :avatar, :url => {action: "crop_update"} do |f| %>
+        <% for attribute in [:crop_x, :crop_y, :crop_h, :crop_w] %>
+            <%= f.hidden_field attribute, :id => attribute %>
+        <% end %>
+        <p><%= f.submit t("user_basic.crop"), class: "button" %></p>
+    <% end %>
+</div>

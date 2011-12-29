@@ -3,9 +3,9 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::ImageScience
-  include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
+  #include CarrierWave::ImageScience
+  #include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -27,7 +27,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process :resize_to_limit => [MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT]
+  process :convert => 'jpg'
+  process :resize_to_fit => [AVATAR_LARGE_WIDTH, AVATAR_LARGE_HEIGHT]
   #
   # def scale(width, height)
   #   # do something
@@ -35,22 +36,32 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   #Create different versions of your uploaded files:
   version :thumb do
-     process :resize_to_limit => [AVATAR_THUMB_WIDTH, AVATAR_THUMB_HEIGHT]
+    process :manualcrop
+    process :resize_to_fill => [AVATAR_THUMB_WIDTH, AVATAR_THUMB_HEIGHT]
   end
 
-  version :regular do
-    process :resize_to_fit => [AVATAR_WIDTH, AVATAR_HEIGHT]
+  def manualcrop
+    manipulate! do |img|
+      #File.open(File.join(Rails.root, "/tmp/uploads/test.png"), 'w') do |f|
+      #  f.syswrite(img.to_blob)
+      #end
+      if model.cropping?
+        img = img.crop(model.crop_x.to_i,model.crop_y.to_i,model.crop_h.to_i,model.crop_w.to_i)
+      end
+      model.thumb = AppSpecificStringIO.new("#{model.id.to_s}_thumbnail.jpg", img.to_blob)
+      img
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-     %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png)
   end
 
   # Override the filename of the uploaded files:
   def filename
-     [ model.updated_at.to_i.to_s, original_filename ].join("_") if original_filename
+    [ model.updated_at.to_i.to_s, original_filename ].join("_") if original_filename
   end
 
 end

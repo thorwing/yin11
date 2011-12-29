@@ -1,82 +1,16 @@
 <% title t("profile.show_profile") %>
-
-<div class = "tab_control" >
-    <div class="tabContainer ">
-        <div class = "selected">
-            <a id= "basic_info" class="tab " href="" data-page = '.basic_info' >
-            <%= t("users.basic_info") %>
-            </a>
-        </div>
-        <div class = "unselected">
-            <a id= "my_followings"  class="tab  " href=""  data-page = '.my_followings' >
-            <%= t("profile.my_followings") %>
-            </a>
-        </div>
-
-        <div class = "unselected">
-            <a class="tab  " href=""  data-page = '.my_fans' >
-            <%= t("profile.my_fans") %>
-            </a>
-        </div>
-    </div>
-
-    <div class="tabContent block">
-        <div class = "basic_info display">
-            <b><%= t("user_basic.login_name") %></b><br/>
-            <%= current_user.screen_name %><br/>
-            <b><%= t("general.email_address") %></b><br/>
-            <%= current_user.email %><br/>
-            <b><%= t("user_basic.avatar") %></b><br/>
-            <%= link_to (image_tag current_user.get_avatar(:regular)), current_user.get_avatar(nil, false), rel: "facebox" %><br/>
-            <b><%= t("user_basic.biography") %></b><br/>
-            <%= current_user.profile.biography %><br/>
-            <div class="mt10">
-                <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile), :class => "button" %>
-            </div>
-        </div>
-        <div class = "my_followings display_none">
-          <br/>
-            <dd>
-                <div class="block round mb10">
-                    <b>关注的用户：</b><br/>
-                    <% current_user.relationships.each do |r| %>
-                        <% item = r.get_item %>
-                        <% if item.class.name == "User"  %>
-                            <%= render item %>
-                        <% end  %>
-                    <% end %>
-                </div>
-
-                <div class="block round mb10">
-                    <b>关注的商品：</b><br/>
-                    <% current_user.relationships.each do |r| %>
-                        <% item = r.get_item %>
-                        <% if item.class.name == "Product"  %>
-                            <%= render item %>
-                        <% end  %>
-                    <% end %>
-                </div>
-
-                <div class="block round mb10">
-                    <b>关注的商户：</b><br/>
-                    <% current_user.relationships.each do |r| %>
-                        <% item = r.get_item %>
-                        <% if item.class.name == "Vendor"  %>
-                            <%= render item %>
-                        <% end  %>
-                    <% end %>
-                </div>
-            </dd>
-        </div>
-        <div class = "my_fans display_none">
-          <br/>
-            <dd>
-                <!--TODO-->
-                <% current_user.followers.each do |id| %>
-                    <% user = User.find(id) %>
-                    <%= render user %>
-                <% end %>
-            </dd>
+    <div class = "basic_info display">
+        <b><%= t("user_basic.login_name") %></b><br/>
+        <%= current_user.screen_name %><br/>
+        <b><%= t("general.email_address") %></b><br/>
+        <%= current_user.email %><br/>
+        <b><%= t("user_basic.avatar") %></b><br/>
+        <%= image_tag current_user.get_avatar(:thumb) %>
+        <%= link_to t("user_basic.crop_avatar"), crop_user_path(current_user) if current_user.avatar? %><br/>
+        <b><%= t("user_basic.biography") %></b><br/>
+        <%= current_user.profile.biography %><br/>
+        <div class="mt10">
+            <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile), :class => "button" %>
         </div>
     </div>
 </div>

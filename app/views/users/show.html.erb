@@ -1,6 +1,6 @@
 <div>
     <%= @user.screen_name %><br/>
-    <%= link_to (image_tag @user.get_avatar(:regular)), @user.get_avatar, rel: 'facebox' %><br/>
+    <%= image_tag @user.get_avatar(:thumb) %><br/>
     <%= @user.profile.biography %><br/>
     <span class="trivial"><%= t("reviews.by_user", count: @user.reviews.size) %></span><br/>
     <span class="trivial"><%= t("recipes.by_user", count: @user.recipes.size) %></span><br/>
@@ -10,7 +10,7 @@
 <hr/>
 <h3>该用户的动态：</h3>
 <div>
-    <% @user.feeds.each do |feed| %>
+    <% @feeds.each do |feed| %>
         <%= render feed %>
     <% end %>
 </div>

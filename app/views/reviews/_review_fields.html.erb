@@ -31,7 +31,7 @@
                     <div class="fl">
                         <div class= "fl m5"><%= check_box_tag  :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %></div>
                         <div class= "fl m5">
-                            <%= link_to image_tag("third_party/#{current_user.provider}_24.png", :border => 0, :alt => t("syncs.sites.#{current_user.provider}"))%>
+                            <%= link_to image_tag("third_party/#{current_user.provider}.png", :border => 0, :alt => t("syncs.sites.#{current_user.provider}"))%>
                         </div>
                     </div>
                 <%end%>
@@ -44,14 +44,4 @@
 <% end %>
 
 
-<div id="product_linker" class="display_none">
-    <%= form_tag url_for(controller: "reviews", action: "link", method: :post), :remote => true do %>
-        <p><%= "将网上的美食的地址粘帖在下方框中即可：" %></p>
-        <%= text_field_tag "product_url", "" %>
-        <%= submit_tag t("general.submit"), id: "link_prod_btn", class: "button", onclick: '$(this).after("<p><img id = link_spinner src= assets/loading.gif></p>");' %>
-        <p>已支持以下网上商城：</p>
-        <div>
-          <%= link_to image_tag("third_party/taobao.png") + "淘宝", "http://www.taobao.com/" %>
-        </div>
-    <% end %>
-</div>
+<%= render "reviews/product_linker" %>

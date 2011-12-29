@@ -60,6 +60,7 @@ zh-CN:
     unlock: 解锁
     upload: 上传
     more: 更多
+    preview: 预览
     author: 作者
     report: "报错/纠正"
     email_address: 邮件地址
@@ -75,6 +76,7 @@ zh-CN:
     are_you_sure_to_disable_enable: "确定要禁用/启用邮件吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
     mercury_edit: “所见即所得”编辑
+    details: 详细>>
 
   flash:
     notice: 通知
@@ -169,12 +171,12 @@ zh-CN:
     only_author_self: 只有作者才可以执行此操作
 
   menu:
-    home: 主页
     administrator_control: 管理面板
     show_profile: 我的资料
-    edit_profile: 修改资料
+    edit_profile: 设置
     update_profile: 偏好设定
-    me: 我的首页
+    home: 首页
+    me: 我的主页
     recipes: 菜谱
     articles: 文章
     reviews: 美食分享
@@ -213,11 +215,15 @@ zh-CN:
     user_basic: 基本信息
     login_name: 昵称
     avatar: 头像
+    crop:  裁剪
+    crop_avatar: 裁剪头像
     change_avator: 换一张头像
     biography: 个人简介
     shares: 分享
     fans: 粉丝
     follows: 关注
+    following_users: 关注的用户
+    following_recipes: 关注的菜谱
 
   profile:
     default_bio: 爱美食，更爱分享
@@ -461,7 +467,7 @@ zh-CN:
 
   feeds:
     all: 关注动态
-    my: 我的动态
+    my: 我的日志
     operations:
       create: 创建
       update: 更新

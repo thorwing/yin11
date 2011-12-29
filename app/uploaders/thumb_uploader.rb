@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class PictureUploader < CarrierWave::Uploader::Base
+class ThumbUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
   include CarrierWave::RMagick
@@ -27,42 +27,23 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process :resize_to_limit => [MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT]
-
-  #def scale(width, height)
+  #process :resize_to_limit => [MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT]
+  process :convert => 'jpg'
+  #
+  # def scale(width, height)
   #   # do something
-  #end
-
-  # Create different versions of your uploaded files:
-  version :thumb do
-     process :resize_to_limit => [IMAGE_THUMB_WIDTH, IMAGE_THUMB_HEIGHT]
-  end
-
-  version :waterfall do
-     process :resize_to_limit => [IMAGE_WATERFALL_WIDTH, IMAGE_WATERFALL_HEIGHT]
-     process :get_geometry
-
-     def geometry
-       @geometry
-     end
-  end
-
-  def get_geometry
-    if (@file)
-      img = ::Magick::Image::read(@file.file).first
-      @geometry = [ img.columns, img.rows ]
-    end
-  end
+  # end
+  process :resize_to_fill => [AVATAR_THUMB_WIDTH, AVATAR_THUMB_HEIGHT]
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_white_list
-     %w(jpg jpeg gif png)
-  end
+  #def extension_white_list
+  #  %w(jpg jpeg gif png)
+  #end
 
   # Override the filename of the uploaded files:
   def filename
-    [ model.id.to_s, original_filename ].join("_") if original_filename
+    [ model.id.to_s, "thumbnail.jpg" ].join("_") if original_filename
   end
 
 end

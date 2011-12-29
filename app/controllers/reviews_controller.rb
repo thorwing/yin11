@@ -30,13 +30,13 @@ class ReviewsController < ApplicationController
         user_recipes_cnt: r.author.recipes.count,
         user_fans_cnt: r.author.followers.count,
         user_established: current_user ? (current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0) : false,
-        time: r.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+        time: r.created_at.strftime("%m-%d %H:%M:%S"),
         picture_url: r.get_review_image_url(:waterfall),
         picture_height: r.get_review_image_height(:waterfall),
         id: r.id}
       },
       page: params[:page],
-      pages: (Review.all.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+      pages: (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
     }
 
     respond_to do |format|
@@ -138,21 +138,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
-    if @review.images && params[:images]
-      @review.images.each do |image|
-        image.delete unless params[:images][0..4].include? image.id.to_s
-      end
-    end
-
-    if params[:images]
-      params[:images][0..4].each do |image_id|
-        image = Image.find(image_id)
-        if image.info_item_id.blank?
-          image.info_item_id = @review.id
-          image.save
-        end
-      end
-    end
+    ImagesHelper.process_uploaded_images(@review, params[:images])
 
     respond_to do |format|
       if @review.update_attributes(params[:review])

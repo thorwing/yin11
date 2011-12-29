@@ -4,6 +4,7 @@ class Recipe
     include Taggable
     include SilverSphinxModel
     include Imageable
+    include Followable
 
     #fields
     field :name
@@ -18,6 +19,7 @@ class Recipe
     embeds_many :steps
     belongs_to :author, :class_name => "User"
     has_many :reviews
+    embeds_many :feeds
 
     accepts_nested_attributes_for :ingredients
     accepts_nested_attributes_for :steps

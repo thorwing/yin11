@@ -11,6 +11,7 @@ class Feed
   embedded_in :vendor
   embedded_in :user
   embedded_in :product
+  embedded_in :recipe
   embedded_in :group
 
   #validations
@@ -21,7 +22,12 @@ class Feed
   validates_inclusion_of :target_operation, :in => Feed.operations
 
   def identity
-    [target_type, target_id, target_operation].join(' ')
+    #for different operations,  only the latest one matters
+    [target_type, target_id].join(' ')
+  end
+
+  def cracked?
+    item.blank? || author.blank?
   end
 
   def item
@@ -45,7 +51,7 @@ class Feed
     elsif item.respond_to?(:get_image_url)
       item.get_image_url(version)
     else
-      ''
+      nil
     end
   end
 
@@ -70,15 +76,17 @@ class Feed
   end
 
   def get_content
-    [:title, :name, :content].each do |field|
-      return item.send(field) if item.respond_to?(field)
+    if item
+      [:title, :name, :content].each do |field|
+        return item.send(field) if item.respond_to?(field)
+      end
     end
 
     return ''
   end
 
   def get_author
-    if item.respond_to?(:author)
+    if item && item.respond_to?(:author)
       return item.author
     else
       nil
