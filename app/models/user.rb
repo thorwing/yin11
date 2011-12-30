@@ -70,12 +70,13 @@ class User
   embeds_many :feeds
 
   #Validators
+  validate :login_name_is_unique
   validates :email,
               :presence => true,
               :uniqueness => true,
               :email_format => true,
               :if => :non_third_party_login
-  #validates_presence_of :login_name
+  validates_presence_of :login_name
   validates_length_of :login_name, :maximum => 15 #or 30 eng charactors, a validation should be implemented
   validates_presence_of :password, :on => :create, :if => :non_third_party_login
   validates_confirmation_of :password, :if => :non_third_party_login
@@ -88,11 +89,6 @@ class User
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
   after_update :reprocess_avatar, :if => :cropping?
-
-
-  def screen_name
-    login_name.present? ? login_name : email
-  end
 
   def tags
     groups.collect{|g| g.tags}.flatten.compact.uniq
@@ -132,6 +128,10 @@ class User
 
   def self.is_email_available?(email)
     User.first(:conditions => { :email => email}).nil?
+  end
+
+  def self.is_login_name_available?(login_name)
+    User.first(:conditions => { :login_name => login_name, :provider => SELF_PROVIDER}).nil?
   end
 
   def get_avatar(version = nil, origin = true)
@@ -250,6 +250,12 @@ class User
 
   def reprocess_avatar
     self.avatar.recreate_versions!
+  end
+
+  def login_name_is_unique
+    if User.first(conditions: { provide: self.provider, login_name: self.login_name})
+      record.errors[:name] << t("validations.login_name_duplicate")
+    end
   end
 
 end

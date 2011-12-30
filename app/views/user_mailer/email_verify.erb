@@ -1,4 +1,4 @@
-亲爱的<%= @user.screen_name %>，
+亲爱的<%= @user.login_name %>，
 
 请点击以下链接来完成邮箱的验证
 <%= verify_email_user_url(@user.email_verification_token) %>

@@ -120,7 +120,8 @@ Yin11::Application.routes.draw do
       put "crop_update"
     end
     collection do
-      get 'check_email'
+      get 'validates_email'
+      get 'validates_login_name'
     end
   end
 

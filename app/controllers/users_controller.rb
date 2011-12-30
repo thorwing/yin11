@@ -78,9 +78,15 @@ class UsersController < ApplicationController
 
 
   #for validation
-  def check_email
+  def validates_email
     respond_to do |format|
       format.json { render :json => User.is_email_available?(params[:user][:email]) }
+    end
+  end
+
+  def validates_login_name
+    respond_to do |format|
+      format.json { render :json => User.is_login_name_available?(params[:user][:login_name]) }
     end
   end
 

@@ -1,17 +1,21 @@
 <% title t("authentication.sign_up"), false %>
 
-<div class="clearfix">
+<div class="clearfix mb5">
     <div class="grid_4 block round">
-        <h3>赶快加入我们，发现美食，分享快乐！</h3>
+        <h3 class="p5">赶快加入我们，发现美食，分享快乐！</h3>
     </div>
 </div>
 
-<div class="grid_6 user_register">
+<div class="grid_7 user_register">
     <%= form_for @user do |f| %>
       <%= render "shared/error_messages", :target => @user %>
       <p>
         <%= f.label t("authentication.email") %><%= mark_required(@user, :email) %><br />
-        <%= f.email_field :email %>
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.label t("authentication.login_name") %><%= mark_required(@user, :login_name) %><br />
+        <%= f.text_field :login_name, :maxlength => get_max_length(User, :login_name)  %>
       </p>
       <p>
         <%= f.label t("authentication.password") %><%= mark_required(@user, :password) %><br />
@@ -21,15 +25,11 @@
         <%= f.label t("authentication.password_confirmation") %> <br/>
         <%= f.password_field :password_confirmation %>
       </p>
-      <p>
-        <%= f.label t("authentication.login_name") %><%= mark_required(@user, :login_name) %><br />
-        <%= f.text_field :login_name, :maxlength => get_max_length(User, :login_name)  %>
-      </p>
       <p class="button"><%= submit_tag t("authentication.sign_up"), :class => "button" %></p>
     <% end %>
 </div>
 
-<div class="grid_6">
+<div class="grid_5">
     <p>已有帐号？<%= link_to "直接登录", login_path %></p>
     <%= label_tag t("authentication.other_logins") %><br/>
     <table>

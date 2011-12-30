@@ -1,5 +1,5 @@
 <div>
-    <%= @user.screen_name %><br/>
+    <%= @user.login_name %><br/>
     <%= image_tag @user.get_avatar(:thumb) %><br/>
     <%= @user.profile.biography %><br/>
     <span class="trivial"><%= t("reviews.by_user", count: @user.reviews.size) %></span><br/>

@@ -120,7 +120,8 @@ $(function() {
 $(function () {
     $("#new_user").validate({
         rules: {
-            "user[email]": {required: true, email: true, remote: "/users/check_email"},
+            "user[email]": {required: true, email: true, remote: "/users/validates_email"},
+            "user[login_name]": {required: true, remote: "/users/validates_login_name"},
             "user[password]": {required: true, minlength: 6},
             "user[password_confirmation]": {required: true, equalTo: "#user_password"}
         }

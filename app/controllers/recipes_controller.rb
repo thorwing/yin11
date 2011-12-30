@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
         picture_url: r.get_image_url(:waterfall),
         picture_height: r.get_image_height(:waterfall),
         user_id: r.author.id,
-        user_name: r.author.screen_name,
+        user_name: r.author.login_name,
         user_avatar: r.author.get_avatar(:thumb, false),
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,

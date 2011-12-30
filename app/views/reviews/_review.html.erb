@@ -1,6 +1,6 @@
 <div class="block round mb10" id = "myreviews">
   <%= render "shared/vote_fields", :item => review %>
-  <%= link_to review.author.screen_name, review.author %>:
+  <%= link_to review.author.login_name, review.author %>:
   <%= review.content %><br/>
   <!--pic display-->
    <!--unless review.images.first.picture.path.blank?-->

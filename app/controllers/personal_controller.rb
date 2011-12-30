@@ -30,7 +30,7 @@ class PersonalController < ApplicationController
       items: @feeds.inject([]){|memo, f| memo <<  {
         content: f.content,
         user_id: f.author.id,
-        user_name: f.author.screen_name,
+        user_name: f.author.login_name,
         user_avatar: f.author.get_avatar(:thumb, false),
         user_reviews_cnt: f.author.reviews.count,
         user_recipes_cnt: f.author.recipes.count,

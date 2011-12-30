@@ -4,7 +4,7 @@
     <% if @review.author %>
        <div class="box_shadow">
         <%= link_to image_tag(@review.author.get_avatar(:thumb)), @review.author %>
-        <%= link_to @review.author.screen_name, @review.author %><br/>
+        <%= link_to @review.author.login_name, @review.author %><br/>
        </div>
     <% end %>
 

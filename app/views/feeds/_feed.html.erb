@@ -5,7 +5,7 @@
   <div class="fl">
     <p class="trivial">
       <%= time_ago_in_words(feed.created_at) + t("general.ago") %>
-      <%= link_to feed.author.screen_name, feed.author %> <%= t("feeds.operations.#{feed.target_operation}") %><%= t("feeds.types.#{feed.target_type}") %>:</p>
+      <%= link_to feed.author.login_name, feed.author %> <%= t("feeds.operations.#{feed.target_operation}") %><%= t("feeds.types.#{feed.target_type}") %>:</p>
     <p><%= feed.content %></p>
     <% if feed.picture_url.present? %>
         <p>

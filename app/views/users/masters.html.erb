@@ -7,7 +7,7 @@
                 <%= link_to image_tag(star.get_avatar, width: 200, height: 218), star %><br/>
             </div>
             <span class="fix_hint b_black white">
-                <%= link_to star.screen_name, star %><br/>
+                <%= link_to star.login_name, star %><br/>
                 <span class="trivial"><%= t("reviews.by_user", count: star.reviews.size) %></span><br/>
                 <span class="trivial"><%= t("recipes.by_user", count: star.recipes.size) %></span><br/>
                 <span class="trivial"><%= t("user_basic.fans") + " " + star.followers.size.to_s %></span><br/>
@@ -30,7 +30,7 @@
     <% @hard_workers.each do |user| %>
         <div class="clearfix mt10">
             <div class="fl mr5"><%= link_to image_tag(user.get_avatar(:thumb), width: 48, height: 48), user %></div>
-            <span><%= link_to user.screen_name, user %></span><br/>
+            <span><%= link_to user.login_name, user %></span><br/>
         </div>
         <div>
             <span class="trivial"><%= t("reviews.by_user", count: user.reviews.count) %></span><br/>
