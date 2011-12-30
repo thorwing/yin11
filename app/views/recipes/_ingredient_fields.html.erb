@@ -1,6 +1,7 @@
 <tr class ="addedclass">
-    <td class="" ><%= f.text_field :name, :maxlength => get_max_length(Ingredient, :name), :class => "ingredient_name" %></td>
-    <td><%= f.text_field :amount, :maxlength => get_max_length(Ingredient, :amount) %></td>
+    <%= f.hidden_field :id unless f.object.new_record? %>
+    <td><%= f.text_field :name, :maxlength => get_max_length(Ingredient, :name), :class => "ingredient_name" %></td>
+    <td><%= f.text_field :amount, :maxlength => get_max_length(Ingredient, :amount), :class => "ingredient_amount"%></td>
     <td><%= f.check_box :is_major_ingredient, {:style => 'display:none;'}, true, false %></td>
     <!--<td><= f.check_box :is_major_ingredient, {}, true, false %></td>-->
     <td><%= link_to_remove_fields( t("recipes.remove"), f , "tr", ".ingredients" ) %></td>
