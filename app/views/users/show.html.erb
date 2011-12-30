@@ -1,16 +1,21 @@
-<div>
-    <%= @user.login_name %><br/>
-    <%= image_tag @user.get_avatar(:thumb) %><br/>
-    <%= @user.profile.biography %><br/>
-    <span class="trivial"><%= t("reviews.by_user", count: @user.reviews.size) %></span><br/>
-    <span class="trivial"><%= t("recipes.by_user", count: @user.recipes.size) %></span><br/>
-    <%= render "relationships/follow_field", :target => @user %>
-</div>
-
-<hr/>
-<h3>该用户的动态：</h3>
-<div>
-    <% @feeds.each do |feed| %>
-        <%= render feed %>
-    <% end %>
+<div class="recipe_block grid_9 to_left mt10">
+    <div class="clearfix box_shadow ">
+        <%= render "users/author_panel", author: @user %>
+    </div>
+    <div class="tab_control mt10">
+        <div class="tabContainer ">
+            <% @modes.each do |mode| %>
+                <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">
+                    <%= link_to t("personal.#{mode}"), user_path(@user, mode: mode), "data-page" => ".#{mode}", class: "tab" %>
+                </div>
+            <% end %>
+        </div>
+        <div class="tabContent block">
+          <% @modes.each do |mode| %>
+             <div class = "<%= mode %> <%= mode == @current_mode ? "display" : "display_none" %>">
+                <%= render "#{mode}_mode" %>
+             </div>
+          <% end %>
+        </div>
+    </div>
 </div>

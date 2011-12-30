@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter(:only => [:edit, :update, :crop, :crop_edit]) { |c| c.require_permission :normal_user }
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
   end
 
   def masters
@@ -29,7 +29,21 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    @modes = ["feeds", "reviews", "recipes"]
+    if params[:mode].present?
+      @current_mode = params[:mode]
+    elsif session[:user_mode].present?
+      @current_mode = session[:user_mode]
+    else
+       @current_mode = "feeds"
+    end
+    session[:user_mode] = @current_mode
+
+    page = params[:page].present? ? params[:page].to_i : 0
     @feeds = FeedsManager.get_feeds_of(@user)
+    @reviews = @user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    @recipes = @user.recipes.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
   end
 
   # POST /users

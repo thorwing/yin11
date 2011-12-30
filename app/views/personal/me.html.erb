@@ -7,14 +7,14 @@
         <div class="tabContainer ">
             <% @modes.each do |mode| %>
                 <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">
-                    <%= link_to t("personal.#{mode}"), "/me?mode=#{mode}", "data-page" => ".#{mode}", class: "tab" %>
+                    <%= link_to t("personal.#{mode}_mode"), "/me?mode=#{mode}", "data-page" => ".#{mode}", class: "tab" %>
                 </div>
             <% end %>
         </div>
         <div class="tabContent block">
           <% @modes.each do |mode| %>
              <div class = "<%= mode %> <%= mode == @current_mode ? "display" : "display_none" %>">
-                <%= render mode %>
+                <%= render "#{mode}_mode" %>
              </div>
           <% end %>
         </div>

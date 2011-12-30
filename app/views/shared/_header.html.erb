@@ -21,10 +21,9 @@
                     <%= link_to t("menu.logout"), logout_path %>
                 </div>
                 <div class="fr mr30 mt15 p5 box_shadow">
-                    <%= link_to(current_user.login_name, profile_path(current_user.profile), :class => "orange f16") %> |
-                    <span class="ml5 mr5"><%= link_to t("personal.feeds"), "/me?mode=feeds_mode" %></span> |
-                    <span class="ml5 mr5"><%= link_to t("personal.reviews"), "/me?mode=reviews_mode" %></span> |
-                    <span class="ml5 mr5"><%= link_to t("personal.recipes"), "/me?mode=recipes_mode" %></span>
+                    <%= link_to(current_user.login_name, "/me?mode=default", :class => "orange f16") %> |
+                    <span class="ml5 mr5"><%= link_to t("personal.reviews"), "/me?mode=reviews" %></span> |
+                    <span class="ml5 mr5"><%= link_to t("personal.recipes"), "/me?mode=recipes" %></span>
                 </div>
             <% else %>
               <% unless hide_quick_auth? %>

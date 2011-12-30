@@ -1,6 +1,16 @@
-<div class="block round grid100">
-    <div class=" fl">
-        <%= link_to image_tag(recipe.get_image_url, :style=>"width:100px;height:100px") if recipe.get_image_url %>
-        <%= recipe.name %>
-    </div>
+<div class="clearfix">
+  <div class="fl mr10">
+    <%= link_to image_tag(recipe.author.get_avatar(:thumb), width: "48", height: "48"), recipe.author %>
+  </div>
+  <div class="fl">
+    <%= link_to recipe.author.login_name, recipe.author %>:<br/>
+    <span class="trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
+    <p><%= recipe.name %></p>
+    <% thumb_url = recipe.get_image_url(:thumb) %>
+    <% if thumb_url.present? %>
+        <p><%= link_to image_tag(thumb_url, class: "img_frame"), recipe.get_image_url, rel: "facebox" %></p>
+    <% end %>
+    <%= render "comments/mini_comment_fields", item_id: recipe.id, item_type: recipe.class.name %>
+  </div>
 </div>
+<hr/>

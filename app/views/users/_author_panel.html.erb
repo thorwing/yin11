@@ -1,8 +1,8 @@
 <div class="user_info_head_block grid_9 to_left p5">
     <%= link_to image_tag(author.get_avatar(:thumb), :class => "fl"), profile_path(author) %>
-    <div class="fl ml10">
+    <div class="fl ml10" style="width: 350px;">
         <span class="f20"><%= link_to author.login_name, user_path(author) %></span><br/>
-        <%= render "relationships/follow_field", :target => author %>
+        <%= author.profile.biography %>
     </div>
 
     <div class="clearfix ">
@@ -23,12 +23,16 @@
                 <%= author.reviews.count %><br/>
                 <%= t("user_basic.shares") %>
             </div>
+            <div class="clearfix"></div>
+            <div class="fr mt10 mr10">
+              <%= render "relationships/follow_field", :target => author %>
+            </div>
         </div>
     </div>
 
     <div class="userInfoNav fl mt10">
-        <%= link_to t("feeds.feed"), user_path(author), class: "fl f16 orange" %>
-        <%= link_to t("recipes.recipes"), user_path(author), class: "fl f16 orange" %>
-        <%= link_to t("control_panel.album"), user_path(author), class: "fl f16 orange" %>
+        <%= link_to t("feeds.feed"), user_path(author, mode: "feeds"), class: "fl f16 orange" %>
+        <%= link_to t("reviews.reviews"), user_path(author, mode: "reviews"), class: "fl f16 orange" %>
+        <%= link_to t("recipes.recipes"), user_path(author, mode: "recipes"), class: "fl f16 orange" %>
     </div>
 </div>

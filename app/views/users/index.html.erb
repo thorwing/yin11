@@ -1,4 +1,5 @@
 <div>
+  <%= paginate @users %>
   <% @users.each do |user| %>
     <div>
         <%= render "users/user", :user => user %>
