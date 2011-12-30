@@ -2,8 +2,12 @@ class PersonalController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
 
   def me
-    #TODO why there are feed that doesn't belong to a user
+    @modes = ["default_mode", "feeds_mode", "reviews_mode", "recipes_mode"]
+    @current_mode = params[:mode].present? ? params[:mode] : "default_mode"
+     #TODO why there are feed that doesn't belong to a user
     @my_feeds = FeedsManager.get_feeds_of(current_user)
+    @my_reviews = current_user.reviews
+    @my_recipes = current_user.recipes
   end
 
   def feeds

@@ -309,6 +309,16 @@ zh-CN:
     role_7: 编辑
     role_9: 管理员
 
+  personal:
+    default_mode: 美食情报
+    feeds_mode: 我的动态
+    reviews_mode: 我的菜谱
+    recipes_mode: 我的分享
+    feeds: 动态
+    reviews: 分享
+    recipes: 菜谱
+
+
   groups:
     join: 加入
     quit: 离席

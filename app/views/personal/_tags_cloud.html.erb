@@ -1,6 +1,0 @@
-<div id="tag_cloud" class="panel">
-    <h3><%= t("home.hot_tags") %></h3>
-    <% tag_cloud @raw_hot_tags do |name, css_class| %>
-        <%= link_to name, {:controller => "search", :action => "index", :tags => name}, :class => css_class %>
-    <% end %>
-</div>

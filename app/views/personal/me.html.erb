@@ -5,23 +5,18 @@
 
     <div class="tab_control">
         <div class="tabContainer ">
-            <div class = "selected">
-              <%= link_to t("feeds.all"), "#", "data-page" => '.all_feeds', class: "tab" %>
-            </div>
-            <div class = "unselected">
-              <%= link_to t("feeds.my"), "#", "data-page" => '.my_feeds', class: "tab" %>
-            </div>
+            <% @modes.each do |mode| %>
+                <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">
+                    <%= link_to t("personal.#{mode}"), "/me?mode=#{mode}", "data-page" => ".#{mode}", class: "tab" %>
+                </div>
+            <% end %>
         </div>
-
         <div class="tabContent block">
-            <div class = "all_feeds display">
-                <%= render "shared/waterfall", :path => "/personal/feeds", :waterfall_partial => "feeds/feed_waterfall", :columns_count => 4, :columns_width => 230 %>
-            </div>
-            <div class = "my_feeds display_none">
-              <% @my_feeds.each do |feed| %>
-                <%= render feed %>
-              <% end %>
-            </div>
+          <% @modes.each do |mode| %>
+             <div class = "<%= mode %> <%= mode == @current_mode ? "display" : "display_none" %>">
+                <%= render mode %>
+             </div>
+          <% end %>
         </div>
     </div>
 </div>
