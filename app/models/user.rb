@@ -28,6 +28,7 @@ class User
   field :is_master, :type => Boolean, :default => false
   #cached fields
   field :reviews_count, :type => Integer
+  field :remote_ip
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :thumb, ThumbUploader

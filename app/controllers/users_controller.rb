@@ -35,20 +35,21 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    @user = User.new(params[:user])
+    ip = request.remote_ip.to_s
+    #if Cooler.crazy_register?(ip)
+    #  redirect_to root_path, :notice => t("notices.rapid_user_creation", cooldown: REGISTRATION_COOLDOWM)
+    #  return
+    #end
 
-    if IncomingRequest.is_rapid_creation?(request.remote_ip.to_s)
-      redirect_to root_path, :notice => t("notices.rapid_user_creation")
-      return
-    end
+    @user = User.new(params[:user])
+    @user.remote_ip = ip
 
     respond_to do |format|
       if @user.save
-        IncomingRequest.record_creation(request.remote_ip.to_s)
-        #TODO wrap in a method?
+        #sign in
         cookies[:auth_token] = @user.auth_token
 
-        format.html { redirect_to edit_profile_path(current_user.profile) }
+        format.html { redirect_to "/me" }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }

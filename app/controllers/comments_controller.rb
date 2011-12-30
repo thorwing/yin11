@@ -17,10 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    #TODO
-    #use cookie instead
-    comments = @item.comments.where(:user_id => current_user.id).desc(:created_at).to_a
-    @over_limit = (comments.first && comments.first.created_at > COMMENTS_INTERVAL.seconds.ago)
+    @over_limit = Cooler.rapid_commenter? (current_user, @item)
 
     unless @over_limit
       if params[:parent_id].present?

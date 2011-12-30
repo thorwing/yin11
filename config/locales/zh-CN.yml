@@ -162,7 +162,7 @@ zh-CN:
     current_city_updated: 当前城市已更新
     user_basic_info_updated: 基本信息已更新
     profile_updated: 偏好设定已更新
-    rapid_user_creation: 你已经在最近注册了一个帐号啦
+    rapid_user_creation: 你已经在%{cooldown}小时内注册了一个帐号啦
     recipe_created: 菜谱创建成功
     recipe_updated: 菜谱更新成功
 
