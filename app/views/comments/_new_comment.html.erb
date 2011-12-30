@@ -3,8 +3,9 @@
       <%= hidden_field_tag :item_id, item.id %>
       <%= hidden_field_tag :item_type, item.class.name %>
       <%= hidden_field_tag :parent_id, parent.id if (defined? parent) %>
-      <%= text_area_tag :content, "", :maxlength => get_max_length(Comment, :content), :rows => 10, :class => "char_aware",
+      <%= text_area_tag :content, "", :maxlength => get_max_length(Comment, :content), :rows => 5, :class => "char_aware full_w",
       'data-comment_max_len' => get_max_length(Comment, :content) %>
+      <%= content_tag :span, "", class: "char_saver display_none" %>
       <%= content_tag :span, "", class: "char_counter block trivial" %>
       <p><%= submit_tag t("comments.new"), :class => "button" %></p>
     <% end %>

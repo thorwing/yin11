@@ -11,7 +11,7 @@
         <% end %>
 
         <div class="clearfix">
-            <div class="recipe_detailedInfo fl ml10">
+            <div class="fl ml10">
                 <div class="mt10">
                     <span class="f28"><%= @recipe.name %></span><br/>
                     <span class="trivial"><%= t("recipes.published_at") %> <%= @recipe.created_at.strftime("%y-%m-%d %H:%M:%S") %></span>
@@ -23,7 +23,12 @@
                             <%= render "relationships/follow_field", :target => @recipe %>
                             <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
                             <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
-                            <%= link_to t("general.edit"), edit_recipe_path(@recipe), class: "button" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
+                        </div>
+                    <% end %>
+                    <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
+                        <div class="mt5">
+                          <%= link_to t("general.edit"), edit_recipe_path(@recipe), class: "button" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
+                            <%= link_to t("general.delete"), @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
                         </div>
                     <% end %>
                 </div>
@@ -82,12 +87,12 @@
         </div>
     </div>
 
-     <div class="recipe_comments p10">
+     <div class="mt10">
         <%= render "comments/comments", item: @recipe %>
      </div>
 </div>
 
-<div class="related_recipe_block grid_3 mt10 to_right box_shadow p5">
+<div class="related_items_block grid_3 mt10 to_right box_shadow p5 overflow_hidden">
     <%= render "recipes/related_recipes", recipes: @related_recipes %>
     <%= render "products/related_products", products: @related_products %>
 </div>

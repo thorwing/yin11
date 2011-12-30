@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @over_limit = Cooler.rapid_commenter? (current_user, @item)
+    @over_limit = Cooler.rapid_commenter?(current_user, @item)
 
     unless @over_limit
       if params[:parent_id].present?

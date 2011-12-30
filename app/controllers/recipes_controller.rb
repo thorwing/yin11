@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
   def more
     criteria = Recipe.all.desc(:created_at)
     criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
-    @recipes = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+    @recipes = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW).reject{|r| r.image.blank?}
 
     data = {
       items: @recipes.inject([]){|memo, r| memo << {
@@ -62,7 +62,7 @@ class RecipesController < ApplicationController
     #TODO
     @related_recipes = Recipe.tagged_with(@recipe.tags).excludes(id: @recipe.id).limit(10).reject{|r| r.image.blank?}
     prior = {"user_tag"=> 3, "major_tag" => 2, "minor_tag" => 1}
-    @related_products = get_related_products(@recipe, 7, prior)
+    @related_products = get_related_products(@recipe, RELATED_RPODUCTS_LIMIT, prior)
 
     respond_to do |format|
       format.html # show.html.erb

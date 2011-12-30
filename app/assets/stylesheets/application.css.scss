@@ -176,6 +176,7 @@ ul.menu li {
 
 .b_black {background-color: $black;}
 .b_gray {background-color: $gray;}
+.b_white {background-color: $white;}
 .b_azure {background-color: $azure;}
 
 .lb {border-left: 1px solid;}
@@ -306,6 +307,10 @@ body #main { height: auto; padding-bottom: 260px;}
 #content_area { min-height: 600px;  }
 
 .lighter_touch:hover {opacity: 0.7;}
+
+/*for the shared right panel: related products and related recipes*/
+.related_items_block li {width:80px; height:130px;}
+.related_items_block li img{width:80px; height:80px;}
 
 /*
 	Footer-Styles

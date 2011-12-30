@@ -36,10 +36,10 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     ip = request.remote_ip.to_s
-    #if Cooler.crazy_register?(ip)
-    #  redirect_to root_path, :notice => t("notices.rapid_user_creation", cooldown: REGISTRATION_COOLDOWM)
-    #  return
-    #end
+    if Cooler.crazy_register?(ip)
+      redirect_to root_path, :notice => t("notices.rapid_user_creation", cooldown: REGISTRATION_COOLDOWM_INTERVAL)
+      return
+    end
 
     @user = User.new(params[:user])
     @user.remote_ip = ip

@@ -1,4 +1,4 @@
-<div class="comment grid_6 block round p5 mb10" id='<%= comment.id.to_s %>'>
+<div class="comment grid_6 box_shadow p5 mb10 b_white" id='<%= comment.id.to_s %>'>
     <div>
       <%= image_tag comment.user.get_avatar(:thumb), :width => 24, :height => 24 %>
       <%= link_to comment.user.login_name, comment.user %>:
