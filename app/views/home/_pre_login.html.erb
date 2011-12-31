@@ -1,0 +1,40 @@
+<div class="clearfix">
+    <%= link_to "立即注册", new_user_path, class: "button fl mt20 ml10 f16" %>
+    <div class="fr" style="width:200px">
+      登录后才可发表分享、关注美食达人、找到对味的美食！<br/>
+      已经有了帐号？<%= link_to "[登录]", login_path %>
+    </div>
+</div>
+<hr/>
+<div>
+  <span>使用已有的ID登录：</span>
+  <table>
+    <tr>
+        <th/>
+        <th/>
+    </tr>
+    <tr>
+        <td><%= link_to image_tag("third_party/sina_big.png", :border => 0, :alt => t("syncs.sites.sina")), "/syncs/sina/new", :id => "login_via_sinablog", class: "lighter_touch m5" %></td>
+        <td><%= link_to image_tag("third_party/douban_big.png", :border => 0, :alt => t("syncs.sites.douban")), "/syncs/douban/new", :id => "login_via_douban", class: "lighter_touch m5" %></td>
+    </tr>
+    <tr>
+        <td><%= link_to image_tag("third_party/taobao_big.png", :border => 0, :alt => t("syncs.sites.taobao")), "/syncs/taobao/new", :id => "login_via_taobao", class: "lighter_touch m5" %></td>
+        <td><%= link_to image_tag("third_party/renren_big.png", :border => 0, :alt => t("syncs.sites.renren")), "/syncs/renren/new", :id => "login_via_renren", class: "lighter_touch m5" %></td>
+    </tr>
+    <tr>
+        <td>
+          <span class="nav_menu">
+            <%= image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow") + t("syncs.more") %>
+              <ul class="sub_menu">
+               <li><%= link_to image_tag("third_party/qq.png", :border => 0, :alt => t("syncs.sites.qq")) + t("syncs.sites.qq"), "/syncs/qq/new", :id => "login_via_qqblog" %></li>
+               <li><%= link_to image_tag("third_party/sohu.png", :border => 0, :alt => t("syncs.sites.sohu")) + t("syncs.sites.sohu"), "/syncs/sohu/new", :id => "login_via_sohublog" %></li>
+               <li><%= link_to image_tag("third_party/netease.png", :border => 0, :alt => t("syncs.sites.netease"))+ t("syncs.sites.netease"), "/syncs/netease/new", :id => "login_via_neteaseblog" %></li>
+              </ul>
+           </span>
+        </td>
+        <td>
+            <%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_yin11_on_sina"), YIN11_SINA_WEIBO %>
+        </td>
+    </tr>
+  </table>
+</div>

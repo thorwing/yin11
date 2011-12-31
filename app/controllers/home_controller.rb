@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   include ApplicationHelper
 
   def index
-    @hot_topics = Topic.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
+    @hot_topics = Topic.where(:priority.gt => 0).asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
 
     #TODO
     @daily_stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..2]

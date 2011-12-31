@@ -1,19 +1,25 @@
-<div class="clearfix">
+<div class="commentable clearfix">
   <div class="fl mr10">
     <%= link_to image_tag(review.author.get_avatar(:thumb), width: "48", height: "48"), review.author %>
   </div>
-  <div class="fl">
-    <%= link_to review.author.login_name, review.author %>:<br/>
-    <span class="trivial"><%= time_ago_in_words(review.created_at) + t("general.ago") %></span>
+  <div class="fl" style="width: 600px;">
+    <%= review.author.login_name%>:<br/>
     <p>
-      <%= review.content %><br/>
-      <%= link_to t("general.details"), review %>
+      <%= review.content %>  <%= link_to t("general.details"), review %>
     </p>
     <% thumb_url = review.get_review_image_url(:thumb) %>
     <% if thumb_url.present? %>
         <p><%= link_to image_tag(thumb_url, class: "img_frame"), review.get_review_image_url, rel: "facebox" %></p>
     <% end %>
-    <%= render "comments/mini_comment_fields", item_id: review.id, item_type: review.class.name %>
+    <div>
+      <span class="fl trivial"><%= time_ago_in_words(review.created_at) + t("general.ago") %></span>
+      <div class="fr">
+        <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= review.comments.size %></span>)
+      </div>
+    </div>
+  </div>
+  <div class="embedded_comments display_none">
+    <%= render "comments/comments", item: review %>
   </div>
 </div>
 <hr/>

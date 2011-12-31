@@ -100,22 +100,6 @@ jQuery(function() {
 //  });
 //}
 
-//Add comment
-$(function() {
-    $('.reply_comment_link').live('click', function() {
-
-        $(this).siblings('.new_reply_comment').toggle('fast');
-        return false;
-    });
-});
-
-//Reply comment
-$(function() {
-    $('.add_comment_link').live('click', function() {
-        $('#comments_block').toggle();
-        return false;
-    });
-});
 
 //Validates user's registration information
 $(function () {

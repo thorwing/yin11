@@ -3,13 +3,17 @@
     <% if @parent %>
         $('#<%= @parent.id.to_s %>').nextAll('.nested_comments:first').append(child);
     <% else %>
-         $("#comments").prepend(child);
+         $(".comments_container.<%= @item.id.to_s %>").prepend(child);
     <% end %>
 
     //reset input
     $('textarea[name="content"]:visible').val('');
     $('.new_reply_comment:visible').hide();
     $('.first_comment_tip').remove();
+    var counter = $(".comments_container.<%= @item.id.to_s %>").parents(".commentable").find(".comments_counter")
+    if (counter.length > 0 ) {
+        counter.text("<%= @item.comments.size %>");
+    }
 <% elsif @over_limit %>
     alert('<%= t("alerts.posted_comment_too_ofen") %>');
 <% end %>
