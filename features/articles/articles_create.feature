@@ -2,7 +2,7 @@ Feature: create article
   编辑和管理员可以新建文章
   个人主页上有新建文章的链接
   游客和用户不可以新建文章
-  新建文章默认的来源是银筷子网站
+  新建文章默认的来源是美食客栈网站
   新建文章默认的启用状态是启用的
   推送文章到主页
 
@@ -46,11 +46,11 @@ Feature: create article
       | Guest       |
       | David User  |
 
-  Scenario: 新建文章默认的来源是银筷子网站
+  Scenario: 新建文章默认的来源是美食客栈网站
     When I log in as "Castle Editor"
     And I go to the me page
     And I follow "+文章"
-    Then the "article_source_attributes_name" field should contain "银筷子原创"
+    Then the "article_source_attributes_name" field should contain "美食客栈原创"
 
 
   Scenario: 新建文章默认的启用状态是启用的

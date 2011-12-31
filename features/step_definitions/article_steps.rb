@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 Given /^There are some articles$/ do
-  mysource = Source.new(:name => "银筷子原创", :site => "www.sina.com", :url => "http://www.sina.com")
+  mysource = Source.new(:name => "美食客栈原创", :site => "www.sina.com", :url => "http://www.sina.com")
   Article.create(:title => "关爱心脏：5种减少盐摄入量的方法", :content => "盐的摄入量过高会导致高血压......", :tags_string => "心脏", :author_id=> @normal_user.id, :type => "theme"  )  do |a|
       a.recommended = true
   end
