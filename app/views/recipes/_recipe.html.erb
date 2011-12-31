@@ -5,10 +5,10 @@
   <div class="fl">
     <%= link_to recipe.author.login_name, recipe.author %>:<br/>
     <span class="trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
-    <p><%= recipe.name %></p>
+    <p><%= link_to recipe.name, recipe %></p>
     <% thumb_url = recipe.get_image_url(:thumb) %>
     <% if thumb_url.present? %>
-        <p><%= link_to image_tag(thumb_url, class: "img_frame"), recipe.get_image_url, rel: "facebox" %></p>
+        <p><%= link_to image_tag(thumb_url, class: "img_frame"), recipe %></p>
     <% end %>
     <%= render "comments/mini_comment_fields", item_id: recipe.id, item_type: recipe.class.name %>
   </div>

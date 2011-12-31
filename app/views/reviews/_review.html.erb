@@ -5,7 +5,10 @@
   <div class="fl">
     <%= link_to review.author.login_name, review.author %>:<br/>
     <span class="trivial"><%= time_ago_in_words(review.created_at) + t("general.ago") %></span>
-    <p><%= review.content %></p>
+    <p>
+      <%= review.content %><br/>
+      <%= link_to t("general.details"), review %>
+    </p>
     <% thumb_url = review.get_review_image_url(:thumb) %>
     <% if thumb_url.present? %>
         <p><%= link_to image_tag(thumb_url, class: "img_frame"), review.get_review_image_url, rel: "facebox" %></p>
