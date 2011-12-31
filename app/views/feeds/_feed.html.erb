@@ -1,11 +1,9 @@
-<div class="clearfix">
+<div class="commentable clearfix">
   <div class="fl mr10">
     <%= link_to image_tag(feed.author.get_avatar(:thumb), width: "48", height: "48"), feed.author %>
   </div>
-  <div class="fl">
-    <p class="trivial">
-      <%= time_ago_in_words(feed.created_at) + t("general.ago") %>
-      <%= link_to feed.author.login_name, feed.author %> <%= t("feeds.operations.#{feed.target_operation}") %><%= t("feeds.types.#{feed.target_type}") %>:</p>
+  <div class="fl" style="width: 600px;">
+    <%= feed.author.login_name %> <%= t("feeds.operations.#{feed.target_operation}") %><%= t("feeds.types.#{feed.target_type}") %>:<br/>
     <p><%= feed.content %></p>
     <% thumb_url = feed.picture_url(:thumb) %>
     <% if thumb_url.present? %>
@@ -13,7 +11,19 @@
             <%= link_to image_tag(thumb_url, class: "img_frame"), feed.picture_url, rel: "facebox" %>
         </p>
     <% end %>
-    <%= render "comments/mini_comment_fields", item_id: feed.target_id, item_type: feed.target_type %>
+    <div>
+      <span class="fl trivial"><%= time_ago_in_words(feed.created_at) + t("general.ago") %></span>
+      <% if feed.item.respond_to?(:comments) %>
+          <div class="fr">
+            <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= feed.item.comments.size %></span>)
+          </div>
+      <% end %>
+    </div>
   </div>
+  <% if feed.item.respond_to?(:comments) %>
+      <div class="embedded_comments display_none">
+        <%= render "comments/comments", item: feed.item %>
+      </div>
+  <% end %>
 </div>
 <hr/>

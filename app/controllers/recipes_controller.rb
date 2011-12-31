@@ -1,24 +1,17 @@
 class RecipesController < ApplicationController
   before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Recipe.name, c.params[:id], true)}
+
   # GET /recipes
   # GET /recipes.json
   def index
-    @hot_tags = Rails.cache.fetch('hot_tags')
-    if @hot_tags.nil?
-       Logger.new(STDOUT).info "hot_tags are cached"
-       @hot_tags = Recipe.tags_with_weight[0..7]
-       Rails.cache.write('hot_tags', @hot_tags, :expires_in => 5.hours)
-    end
-
-    #@hot_tags = Rails.cache.fetch('hot_tags', :expires_in => 5.hours){ Recipe.tags_with_weight[0..7] }
-    #@records = Rails.cache.read('records', :expires_in => 5.hours){ YAML::load(File.open("app/seeds/tags.yml"))}
+    @hot_tags = get_hot_tags(7, :recipes)
 
     @records = Rails.cache.fetch('records')
     if @records.nil?
        Logger.new(STDOUT).info "records are cached"
        @records = YAML::load(File.open("app/seeds/tags.yml"))
-       Rails.cache.write('records', @records, :expires_in => 5.hours)
+       Rails.cache.write('records', @records, :expires_in => 3.hours)
     end
 
     respond_to do |format|
