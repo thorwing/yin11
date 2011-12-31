@@ -21,8 +21,8 @@ function add_fields(link, association, content, divname, count_range) {
     var regexp = new RegExp("new_" + association, "g");
     $(divname).append(content.replace(regexp, new_id));
     char_aware();
-    step_uploader();
-    show();
+    step_uploader(count_range);
+    change_back_img(count_range);
 
     var count= $(count_range).find(".addedclass").length;
     max = parseInt ($(link).data('max_len'));

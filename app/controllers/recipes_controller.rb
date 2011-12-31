@@ -122,8 +122,20 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
 
+    database_step_ids = @recipe.steps.map{|s| s.id.to_s }
+    database_ingredient_ids = @recipe.ingredients.map{|s| s.id.to_s }
+    saved = @recipe.update_attributes(params[:recipe])
+    if saved
+      params_step_ids = params[:recipe][:steps_attributes].map{|k,v| v["id"]}
+      params_ingredient_ids = params[:recipe][:ingredients_attributes].map{|k,v| v["id"]}
+      to_be_deleted_step_ids = database_step_ids - params_step_ids
+      to_be_deleted_ingredient_ids = database_ingredient_ids - params_ingredient_ids
+      @recipe.steps.any_in(_id: to_be_deleted_step_ids).delete_all
+      @recipe.ingredients.any_in(_id: to_be_deleted_ingredient_ids).delete_all
+    end
+
     respond_to do |format|
-      if @recipe.update_attributes(params[:recipe])
+      if saved
         format.html { redirect_to @recipe, notice: t("notices.recipe_updated") }
         format.json { head :ok }
       else

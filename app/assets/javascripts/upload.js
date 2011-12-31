@@ -92,8 +92,9 @@ function delete_product(link) {
     $(link).parent().remove();
 }
 
-function show(url)
+function change_back_img(search_range, url)
 {
+//    alert(search_range + ":" + url);
     var length = $('.step_uploader').find('.qq-upload-button').length;
 //    alert(length);
     if(url==null||url=="")
@@ -101,21 +102,23 @@ function show(url)
         url = "/assets/default_step.png";
     }
 //    alert(url);
-    $('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ url +")");
-
+    if($(search_range).find('.step_uploader').length>0)
+    {
+        $(search_range).find('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ url +")");
+    }
 }
 
-function step_uploader()
+function step_uploader(search_range)
 {
     var tokentag = $('#tokentag').val();
 //    alert(tokentag);
 
     var images_limit = 1;
-    var length = $('.step_uploader').length
+    var length = $(search_range).find('.step_uploader').length
     if( length > 0) {
         var uploader = new qq.FileUploader({
             // pass the dom node (ex. $(selector)[0] for jQuery users)
-            element: $('.step_uploader')[length-1],
+            element: $(search_range).find('.step_uploader')[length-1],
             // path to server-side upload script
             action: '/images',
             // validation
