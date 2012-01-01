@@ -1,7 +1,7 @@
 <% if current_user && current_user != target %>
     <span class="<%= target.id %>">
         <% established = current_user.has_followed?(target) %>
-        <%= link_to t("relationships.new"), relationships_path(:target_type => target.class.name, :target_id => target.id), :method => :post, :remote => true, :class => "button new_relationship#{" hide" if established}" %>
-        <%= link_to t("relationships.cancel"), cancel_relationships_path(:target_type => target.class.name, :target_id => target.id), :method => :put, :remote => true, :class => "button cancel_relationship#{" hide" unless established}" %>
+        <%= link_to "", relationships_path(:target_type => target.class.name, :target_id => target.id), :method => :post, :remote => true, :class => "btn_addAttention#{" hide" if established} fl" %>
+        <%= link_to "", cancel_relationships_path(:target_type => target.class.name, :target_id => target.id), :method => :put, :remote => true, :class => "btn_cancelAttention#{" hide" unless established} fl" %>
     </span>
 <% end %>

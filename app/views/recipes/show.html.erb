@@ -28,14 +28,14 @@
             </p>
             <% if current_user_has_permission? :normal_user %>
                 <div class="mt5">
-                    <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
-                    <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
+                    <%= link_to "", "", class: "btn_wantToDo fl", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
+                    <%= link_to "", "", class: "btn_done fl", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
                     <%= render "relationships/follow_field", :target => @recipe %>
                 </div>
             <% end %>
             <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
                 <div class="mt5">
-                    <%= link_to t("general.edit"), edit_recipe_path(@recipe), class: "button" %>
+                    <%= link_to "", edit_recipe_path(@recipe), class: "btn_modify fl" %>
                 </div>
             <% end %>
         </div>

@@ -43,7 +43,7 @@ a.btn_register:hover{
 
 .btn_addRecipe{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-7px -222px;
@@ -51,7 +51,7 @@ a.btn_register:hover{
 
 .btn_addAttention{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-7px -261px;
@@ -59,7 +59,7 @@ a.btn_register:hover{
 
 .btn_addArticle{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-140px -249px;
@@ -67,7 +67,7 @@ a.btn_register:hover{
 
 .btn_addPage{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-140px -289px;
@@ -75,7 +75,7 @@ a.btn_register:hover{
 
 .btn_addTopic{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-140px -208px;
@@ -83,7 +83,7 @@ a.btn_register:hover{
 
 .btn_modifyProfile{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-140px -169px;
@@ -91,7 +91,7 @@ a.btn_register:hover{
 
 .btn_done{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-140px -342px;
@@ -99,7 +99,7 @@ a.btn_register:hover{
 
 .btn_wantToDo{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-140px -383px;
@@ -107,7 +107,7 @@ a.btn_register:hover{
 
 .btn_cancelAttention{
  width:85px;
- height:30px;
+ height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-140px -431px;
@@ -127,4 +127,8 @@ a.btn_register:hover{
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-7px -341px;
+}
+
+.hide {
+    display: none;
 }
