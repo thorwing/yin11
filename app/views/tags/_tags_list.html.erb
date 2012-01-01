@@ -1,0 +1,26 @@
+<% if current_user_has_permission? :normal_user %>
+    <div class="p5">
+        <%= link_to t("recipes.new"), new_recipe_path, class: "button" %>
+    </div>
+    <hr/>
+<% end %>
+
+<div class="mb10">
+    <h3><%= t("tags.hot_tags") %></h3>
+    <% hot_tags.each do |tag, weight| %>
+            <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag} %>
+    <% end %><br/>
+    <!--<= link_to t("tags.more"), tags_path  %>-->
+</div>
+
+<% records.each do |record|%>
+  <div class="mb10">
+    <h3><%= record["name"] %></h3>
+    <% tags = record["detail"].split(' ') %>
+    <% len = tags.size > 12 ? 12 : tags.size  %>
+    <% tags[0..len-1].each do |tag|  %>
+        <%= link_to tag, {:controller => "recipes", :action => "index", :tag => tag} %>
+    <% end  %><br/>
+    <!--<= link_to t("tags.more"), tags_path  %>-->
+  </div>
+<% end  %>
