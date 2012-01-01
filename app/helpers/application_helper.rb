@@ -138,6 +138,15 @@ module ApplicationHelper
     tags.take(limit)
   end
 
+  def get_records
+    records = Rails.cache.fetch('records')
+    if records.nil?
+       Logger.new(STDOUT).info "records are cached"
+       records = YAML::load(File.open("app/seeds/tags.yml"))
+       Rails.cache.write('records', records, :expires_in => 3.hours)
+    end
+  end
+
 
   def display_flash
     flash_types = [:error, :alert, :notice]

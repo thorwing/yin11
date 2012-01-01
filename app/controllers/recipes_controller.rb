@@ -5,14 +5,8 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @hot_tags = get_hot_tags(7, :recipes)
-
-    @records = Rails.cache.fetch('records')
-    if @records.nil?
-       Logger.new(STDOUT).info "records are cached"
-       @records = YAML::load(File.open("app/seeds/tags.yml"))
-       Rails.cache.write('records', @records, :expires_in => 3.hours)
-    end
+    @hot_tags = get_hot_tags(14, :recipes)
+    #@records = get_records
 
     respond_to do |format|
       format.html # index.html.erb

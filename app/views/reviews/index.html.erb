@@ -4,11 +4,13 @@
     <%= image_tag "reviews_banner.png" %>
 </div>
 
-<div class="grid_9 to_left">
-    <%= render "shared/waterfall", :path => more_reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 3, :columns_width => 230 %>
+<div class="clearfix">
+    <div class="grid_9 to_left">
+        <%= render "reviews/review_fields", :review => Review.new %>
+    </div>
 </div>
 
-<div class="grid_3 box_shadow to_right p5">
-   <%= render "tags/tags_list", hot_tags: @hot_tags, records: @records %>
+<div class="grid_12 to_left to_right">
+    <%= render "shared/waterfall", :path => more_reviews_path, :waterfall_partial => "reviews/review_waterfall", :columns_count => 4, :columns_width => 230 %>
 </div>
 

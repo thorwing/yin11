@@ -70,5 +70,4 @@ class Review
 
     images
   end
-
 end

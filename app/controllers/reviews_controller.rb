@@ -5,8 +5,8 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    @hot_tags = Recipe.tags_with_weight[0..7]
-    @records = YAML::load(File.open("app/seeds/tags.yml"))
+    #@hot_tags = get_hot_tags(14, :reviews)
+    #@records = get_records
 
     respond_to do |format|
       format.html # index.html.erb
