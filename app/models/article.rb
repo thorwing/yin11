@@ -36,7 +36,6 @@ class Article
   belongs_to :author, :class_name => "User"
   has_many :images
   embeds_one :source
-  belongs_to :topic
 
   accepts_nested_attributes_for :images, :reject_if => lambda { |i| i[:image].blank? && i[:remote_picture_url].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :source, :reject_if => lambda { |s| s[:name].blank? }, :allow_destroy => true

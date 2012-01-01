@@ -19,7 +19,7 @@
 </div>
 
 <div class="clearfix mt10">
-    <h2 class="mt10">专题</h2>
+    <h2 class="mt10"><%= t("topics.topics") %></h2>
     <% @hot_topics.each do |topic| %>
         <%= raw topic.content %>
     <% end %>

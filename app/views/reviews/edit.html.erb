@@ -11,7 +11,7 @@
 <div class="grid_9">
     <%= form_for @review do |f| %>
         <%= render "shared/error_messages", :target => @review %>
-        <div class="block round p5 clearfix" id = "review_dialog" >
+        <div class="block round p5 clearfix" id = "review_fields" >
             <h2><%= t("reviews.edit_review" ) %></h2>
             <%= f.text_area :content, :maxlength => get_max_length(@review, :content), 'data-comment_max_len' => get_max_length(@review, :content), :class => "char_aware" %>
             <%= content_tag :span, "", class: "char_saver display_none" %>

@@ -17,7 +17,6 @@ class Review
   #relationships
   has_and_belongs_to_many :products
   belongs_to :recipe
-  belongs_to :topic
   embeds_many :comments
   belongs_to :author, :class_name => "User"
   has_many :images

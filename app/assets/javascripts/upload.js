@@ -31,10 +31,13 @@ $(function() {
                 '</li>',
             params: {"authenticity_token": tokentag},
             onSubmit: function(id, fileName) {
-                var count = $('#images_container .image').size();
-                if (count >= images_limit) {
-                    alert("想上传更多图片，请先创建“专辑”");
-                    cancel();
+                if($('#review_fields #images_container').length > 0)
+                {
+                    var count = $('#review_fields #images_container .image').size();
+                    if (count >= images_limit) {
+                        alert("想上传更多图片，请先创建“专辑”");
+                        cancel();
+                    }
                 }
 
                 $('#upload_spinner').show();
