@@ -1,9 +1,5 @@
 #encoding utf-8
 module ApplicationHelper
-  def is_user_self(user)
-    current_user && current_user.id == user.id
-  end
-
   def current_user_has_permission?(permission)
     if current_user.present? && current_user.has_permission?(permission)
       true
@@ -17,7 +13,7 @@ module ApplicationHelper
     text = strip_tags(text)
     if text.size > length
       #3 for dots
-      text[0..length - 4] + "..."
+      text.take(length - 3) + "..."
     else
       text
     end
@@ -31,7 +27,6 @@ module ApplicationHelper
   # name:  the words displayed on the add field link
   # max_len: the max num for the added item
   # divname: the position inside which to insert the item
-
   def link_to_add_fields(name, f, association, divname, count_range, max_len)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
@@ -44,15 +39,6 @@ module ApplicationHelper
   def link_to_remove_fields(name, f, removefield, showfield)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this,"+ "'"+ removefield + "',"+ "'"+ showfield + "'" +")")
   end
-  #
-  #def get_provinces_for_select(drop_first = true)
-  #  provinces = Province.only(:name, :code).asc(:code).collect {|c|[ c.name, c.id ]}
-  #  drop_first ? provinces.reject{|p| p[1] == "ALL"} : provinces
-  #end
-  #
-  #def get_cities_of_provinces(province)
-  #  province.cities.collect {|c|[ c.name, c.id ]}
-  #end
 
   def nested_comments(item, comments)
     comments.map do |comment, sub_comments|
@@ -78,45 +64,6 @@ module ApplicationHelper
     tree
   end
 
-  #def get_clues_of_item(item)
-  #  result = []
-  #  result << link_to(t("info_items.#{item.class.name.downcase}"), "/" + item.class.name.downcase.pluralize)
-  #
-  #  if item.is_a?(Article)
-  #    (result << item.source.name) if item.source
-  #
-  #    if item.region_ids.present?
-  #      item.region_ids.each do |region_id|
-  #        city = City.first(:conditions => {:id => region_id})
-  #        if city
-  #          result << city.name
-  #        else
-  #          province = Province.first(:conditions => {:id => region_id})
-  #          result << province.name
-  #        end
-  #      end
-  #    end
-  #  end
-  #
-  #   result.map{|r| content_tag(:small, r)}.join("|").html_safe
-  #end
-
-  #def tag_cloud( tags )
-  #   classes = %w(cloud1 cloud2 cloud3 cloud4 cloud5 cloud6 cloud7)
-  #
-  #   max, min = 0, 0
-  #   tags.each { |t|
-  #     max = t[1].to_i if t[1].to_i > max
-  #     min = t[1].to_i if t[1].to_i < min
-  #   }
-  #
-  #   divisor = ((max - min) / classes.size) + 1
-  #
-  #   tags.each { |t|
-  #      yield t[0], classes[(t[1].to_i - min) / divisor]
-  #   }
-  # end
-
   def get_hot_tags(limit = ITEMS_PER_PAGE_FEW, of = :feeds)
     key = "hot_tags_of_#{of.to_s}"
     tags = Rails.cache.fetch(key)
@@ -126,12 +73,10 @@ module ApplicationHelper
           tags = Tag.desc(:feeds).limit(100)
         when :recipes
           tags = Recipe.tags_with_weight.take(100)
-        when :reviews
-          tags = Review.tags_with_weight.take(100)
         else
           tags = []
       end
-      Rails.cache.write(key, tags, :expires_in => 3.hours)
+      Rails.cache.write(key, tags, :expires_in => 1.hours)
     end
 
     #take some of the cached tags, 100 is too many

@@ -14,7 +14,6 @@ describe Contribution do
   it "all field should have default value" do
     c = Contribution.new(:user_id => user.id)
     c.posted_reviews.should == 0
-    c.posted_articles.should == 0
     c.posted_tips.should == 0
     c.edited_tips.should == 0
     c.created_groups.should == 0

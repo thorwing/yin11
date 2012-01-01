@@ -60,7 +60,7 @@ zh-CN:
     lock: 锁定
     unlock: 解锁
     upload: 上传
-    more: 更多
+    more: >>更多
     preview: 预览
     author: 作者
     report: "报错/纠正"
@@ -77,7 +77,7 @@ zh-CN:
     are_you_sure_to_disable_enable: "确定要禁用/启用邮件吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
     mercury_edit: “所见即所得”编辑
-    details: 详细>>
+    details: >>详细
 
   flash:
     notice: 通知
@@ -150,9 +150,7 @@ zh-CN:
     review_posted: 分享已发布
     review_post_failure: 分享发布失败,
     review_updated: 分享已修改
-    article_posted: 文章已发布
     already_published: 这个...好像发过了嘛
-    article_updated: 文章已更新
     group_created: 饭桌已创建
     group_updated: 饭桌已更新
     group_joind: 已加入该饭桌
@@ -181,7 +179,6 @@ zh-CN:
     home: 首页
     me: 我的主页
     recipes: 菜谱
-    articles: 文章
     reviews: 美食分享
     masters: 达人
     products: 美食
@@ -194,7 +191,6 @@ zh-CN:
     logout: 登出
 
   administrator_control:
-    articles: 管理文章
     reviews: 管理分享
     vendors: 管理商户
     products: 管理产品
@@ -328,13 +324,13 @@ zh-CN:
     edit_joined_gorup: 选择饭桌
     posts: 最近话题
     member: 成员
-    new: +饭桌
+    new: +新饭桌
     new_group: 新饭桌
     edit: 编辑饭桌
     browse: 找饭桌
 
   posts:
-    new: +话题
+    new: +新话题
     new_post: 新话题
     edit_post: 编辑话题
     comments: 回应
@@ -361,7 +357,7 @@ zh-CN:
     vendor: 商户
     vendors: 所有商户
     browse: 找商户
-    new: +商户
+    new: +新商户
     go_to_see: 去逛逛
     enabled_vendors: 启用的商户
     disabled_vendors: 禁用的商户
@@ -375,8 +371,8 @@ zh-CN:
     new_vendor: 新商户
     edit_vendor: 编辑商户
     create_vendor: 添加商户
-    new_review: +分享
-    new_product: +产品
+    new_review: +新分享
+    new_product: +新产品
     all_reviews: "所有分享："
     my_vendors: "查看我创建的商户"
     recent: 最近一个月：
@@ -393,7 +389,7 @@ zh-CN:
     enabled_products: 启用的商品
     disalbed_products: 禁用的商品
     products_list: 美食列表
-    add: +商品
+    add: +新商品
     edit: 编辑商品
     new_product: 新商品
     go_to_buy: 去购买
@@ -419,10 +415,9 @@ zh-CN:
 
   topics:
     topics: 策划
-    new: +策划
+    new: +新策划
     new_topic: 新策划
     edit_topic: 编辑策划
-    more: 更多>>
     priority: 优先级
 
   reviews:
@@ -430,7 +425,7 @@ zh-CN:
     head: 我要分享
     submit: 发表分享
     title: 分享
-    new: +分享
+    new: +新分享
     reviews: 分享
     all: 所有分享
     what: 关于?
@@ -461,30 +456,10 @@ zh-CN:
     n_comments: %{count}条评论
     new_comment: 新评论
     all: 所有评论：
-    new: +评论
+    new: +新评论
     new_hint: 成为第一个评论的人
     reply: 回复
     deleted: 该内容已删除
-
-  articles:
-    articles: 文章
-    more_news: >>更多新闻
-    headlines: 美食客栈专题
-    hot_news: 食事新闻
-    topics: 专题
-    new: +文章
-    introduction: 简介
-    recommended_articles: 推荐文章
-    source: 来源
-    post_new_article: 发表新文章
-    new_article: 新文章
-    post: 发表
-    involved_foods: 涉及食物
-    involved_regions: 涉及地区
-    source_name: 媒体名称
-    source_site: 网站
-    source_url: 链接
-    default_source_name: 美食客栈原创
 
   feeds:
     feed: 动态
@@ -500,7 +475,7 @@ zh-CN:
 
   badges:
     badges: 徽章
-    new: +徽章
+    new: +新徽章
     all: 所有徽章
     got: 已获得徽章
     receivers: 已授予人数
@@ -522,19 +497,11 @@ zh-CN:
     remote_link: 图片链接
     add_image: 上传图片
 
-  article_types:
-    theme: 主题
-    news: 新闻
-    tip: 锦囊
-    recipe: 食谱
-
   tags:
     tags: 标签
     all: 美食大全
     new_tag: 新标签
     hot_tags: 人气
-    more: >>更多
-
 
   views:
     pagination:
@@ -565,7 +532,7 @@ zh-CN:
 
   recipes:
      edit: 编辑菜谱
-     add: +菜谱
+     add: +新菜谱
      recipes: 菜谱
      published_at: 发表于
      description: 描述

@@ -11,9 +11,7 @@ namespace :yin11 do
         hash[:binary_data] = image.picture.read
         #TODO  use reflect here
         hash[:product_id] = image.product_id
-        hash[:article_id] = image.article_id
         hash[:topic_id] = image.topic_id
-        hash[:article_id] = image.article_id
         hash[:step_id] = image.step_id
         hash[:ingredient_id] = image.ingredient_id
         array << hash
@@ -29,16 +27,6 @@ namespace :yin11 do
     Rake::Task['yin11:dump_pages'].invoke
     Rake::Task['yin11:dump_images'].invoke
     #Rake::Task['yin11:dump_vendors'].invoke
-  end
-
-  desc "dump articles"
-  task :dump_articles => :environment do
-    articles_group = Article.without(:_id, :updated_at, :created_at, :positive, :_type, :votes, :fan_ids, :hater_ids, "source._id").to_a.group_by{ |a| a.reported_on.strftime("%y_%m")}
-      articles_group.each do |month, articles|
-        File.open(File.join(Rails.root, "app/seeds/articles/articles_#{month}.yml"), 'w') do |file|
-        YAML::dump(articles, file)
-      end
-    end
   end
 
   desc "dump topics"

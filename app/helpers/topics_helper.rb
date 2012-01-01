@@ -23,20 +23,4 @@ module TopicsHelper
     end
   end
 
-  def get_first_recipes(topic)
-    unless topic.tags.blank? || topic.tags.empty?
-      Article.recipes.enabled.tagged_with(topic.tags).limit(1)
-    else
-      nil
-    end
-  end
-
-  def get_recipes(topic)
-    unless topic.tags.blank? || topic.tags.empty?
-      Article.recipes.enabled.tagged_with(topic.tags)
-    else
-      []
-    end
-  end
-
 end

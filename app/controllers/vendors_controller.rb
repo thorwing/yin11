@@ -60,10 +60,6 @@ class VendorsController < ApplicationController
     end
   end
 
-  def mine
-      @my_vendors = Vendor.where(:creator_id => current_user.id)
-  end
-
   def update
     @vendor = Vendor.find(params[:id])
 
@@ -85,28 +81,6 @@ class VendorsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(vendors_url) }
       format.xml  { head :ok }
-    end
-  end
-
-
-  def browse
-    criteria = Vendor.all.of_city(current_city.name)
-    @vendors = criteria.all
-
-    respond_to do |format|
-      if params[:popup]
-        format.html {render "browse", :layout => "dialog" }
-      else
-        format.html
-      end
-    end
-  end
-
-  def pick
-    @vendor = Vendor.find(params[:id])
-
-    respond_to do |format|
-        format.js {render :content_type => 'text/javascript'}
     end
   end
 

@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   before_filter {|c| c.require_permission(:normal_user) }
 
   def create
-    @item = ItemFinder.get_item(params[:item_type], params[:item_id])
+    @item = eval("#{params[:item_type]}.find('#{params[:item_id]}')")
 
     delta = params[:delta].to_i
 

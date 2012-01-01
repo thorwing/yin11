@@ -9,7 +9,6 @@ class Comment
 
   #Relationships
   embedded_in :review
-  embedded_in :article
   embedded_in :post
   embedded_in :recipe
   belongs_to :user

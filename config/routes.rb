@@ -8,7 +8,6 @@ Yin11::Application.routes.draw do
   namespace :administrator do
     root :to => "base#index"
 
-    resources :articles
     resources :vendors
     resources :users, :except => [:new, :create, :destroy]
     resources :tags
@@ -62,8 +61,6 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :articles
-
   resources :relationships, :only => [:index, :show, :create] do
     collection do
       put "cancel"
@@ -91,15 +88,7 @@ Yin11::Application.routes.draw do
 
   resources :images
 
-  resources :vendors do
-    collection do
-      get "mine"
-      get 'browse'
-    end
-    member do
-      put 'pick'
-    end
-  end
+  resources :vendors
 
   #resources :products, :except => [:new, :create]
   resources :products do

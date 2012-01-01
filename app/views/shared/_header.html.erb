@@ -39,7 +39,7 @@
     <div id="head_lv2" class="clearfix">
         <div class="inter_header">
             <ul id="top_menu" class="fl">
-                <li><%= render_menu(t("menu.home"), root_path) %></li>
+                <li><%= render_menu(t("menu.home"), "/") %></li>
                 <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me")%></li><% end %>
                 <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
                 <li><%= render_menu(t("menu.recipes"), recipes_path) %></li>

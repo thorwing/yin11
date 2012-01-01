@@ -9,7 +9,7 @@
         <b><%= link_to current_user.login_name, "/me" %></b><br/>
         <%= link_to image_tag(current_user.get_avatar(:thumb)), "/me" %><br/>
         <div>
-            <%= link_to "去看看我关注的动态>>", "/me" %><br/>
+            <%= link_to ">>去看看我关注的动态", "/me" %><br/>
             <span><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %></span>
         </div>
     <% else %>
@@ -39,7 +39,7 @@
             <%= link_to image_tag(master.get_avatar(:thumb), width: 48, height: 48), master, class: "more_head_img" %>
       <% end %>
       <div class="clearfix"></div>
-      <p class="fr"><%= link_to "更多美食达人>>", masters_path %></p>
+      <p class="fr"><%= link_to ">>更多美食达人", masters_path %></p>
     </div>
   <% end %>
 </div>

@@ -24,11 +24,4 @@ module ProductsHelper
       result
     end.join.html_safe
   end
-
-  #def get_categories_for_select
-  #  Tag.categories.map do |c|
-  #    category_name = c.parent ? "--" + c.name : c.name
-  #    [category_name, c.name]
-  #  end
-  #end
 end

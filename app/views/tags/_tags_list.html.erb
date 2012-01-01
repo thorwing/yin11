@@ -8,9 +8,9 @@
 <div class="mb10">
     <h3><%= t("tags.hot_tags") %></h3>
     <% hot_tags.each do |tag, weight| %>
-            <%= link_to tag, {:controller => controller.controller_name, :action => "index", :tag => tag} %>
+            <%= link_to tag, {:controller => controller.controller_name, :action => "index", :tag => tag}, class: "tag m2" %>
     <% end %><br/>
-    <!--<= link_to t("tags.more"), tags_path  %>-->
+    <!--<= link_to t("general.more"), tags_path  %>-->
 </div>
 
 <!--TODO-->
@@ -23,7 +23,7 @@
         <% tags[0..len-1].each do |tag|  %>
             <%= link_to tag, {:controller => controller.controller_name, :action => "index", :tag => tag} %>
         <% end  %><br/>
-        <!--<= link_to t("tags.more"), tags_path  %>-->
+        <!--<= link_to t("general.more"), tags_path  %>-->
       </div>
     <% end  %>
 <% end %>

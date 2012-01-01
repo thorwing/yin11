@@ -26,7 +26,6 @@
             <% if current_user_has_permission?(:editor) %>
                 <b><%= t("control_panel.editor_actions") %></b><br/>
                 <%= link_to t("topics.new"), new_topic_path, :class => "button"  %>
-                <%= link_to t("articles.new"), new_article_path, :class => "button" %>
                 <%= link_to t("pages.add"), new_page_path, :class => "button" %>
             <% end %>
         </p>

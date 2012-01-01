@@ -4,7 +4,7 @@
         <%= text_field_tag "user[login_name]", current_user.login_name, :maxlength => get_max_length(current_user, :login_name) %>
     </p>
     <p class="mb5">
-      <b><%= t("user_basic.biography") %><%= mark_required_length(Profile, :biography) %></b><br/>
+      <b><%= t("user_basic.biography") %></b><br/>
       <%= f.text_area :biography, rows: 5, maxlength: get_max_length(Profile, :biography), 'data-comment_max_len' => get_max_length(Profile, :biography), class: "char_aware" %>
       <%= content_tag :span, "", class: "char_saver display_none" %>
       <%= content_tag :span, "", :class => "char_counter block trivial" %>

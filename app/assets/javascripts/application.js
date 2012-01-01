@@ -57,7 +57,6 @@ $(function() {
         });
     }
 
-    tokenize_input("#article_tags_string", "/tags/query.json", 10);
     tokenize_input("#topic_tags_string", "/tags/query.json", 10);
     tokenize_input("#product_tags_string", "/tags/query.json", 10);
     tokenize_input("#recipe_tags_string", "/tags/query.json", 10);

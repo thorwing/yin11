@@ -12,7 +12,6 @@ class Image
   attr_accessible :picture, :remote_picture_url, :caption, :description
 
   #relationships
-  belongs_to :article
   belongs_to :product
   belongs_to :review
   belongs_to :topic
@@ -32,7 +31,7 @@ class Image
   private
 
   def sync_status
-    self.alone = article_id.blank? && product_id.blank? && review_id.blank? && topic_id.blank? && step_id.blank?
+    self.alone = product_id.blank? && review_id.blank? && topic_id.blank? && step_id.blank?
     true #return true for the callback function
   end
 
