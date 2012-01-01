@@ -13,7 +13,7 @@ module ApplicationHelper
     text = strip_tags(text)
     if text.size > length
       #3 for dots
-      text.take(length - 3) + "..."
+      text[0..length - 4] + "..."
     else
       text
     end
