@@ -185,6 +185,7 @@ ul.menu li {
 
 .center {margin: 0 auto; display: block; text-align: center;}
 .middle {vertical-align: middle;}
+.bottom {vertical-align: bottom;}
 
 .clear { visibility: hidden; height: 0; clear: both; }
 
@@ -316,6 +317,18 @@ body #main { height: auto; padding-bottom: 260px;}
 .field {margin: 5px 0;}
 .label {margin-right: 5px;
         vertical-align: top;}
+
+.more_info_container {
+    position: relative;
+}
+
+.more_info_container .more_info {
+    width: 200px;
+    height: atuo;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
 
 /*
 	Footer-Styles

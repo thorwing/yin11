@@ -1,5 +1,5 @@
 <script type="tpl" id="tpl">
-    <div class="waterfall grid_3 box_shadow" height="{{height}}" data-id="{{id}}" onmouseout='hide_user_info($(this));'>
+    <div class="waterfall grid_3 box_shadow" height="{{height}}" data-id="{{id}}">
         <% if path %>
             <div align="center"><a href="<%= "#{path}/{{id}}" %>" class="image" ><img alt="{{name}}" src="{{picture_url}}" height="{{picture_height}}" /></a></div>
         <% else %>
@@ -18,18 +18,12 @@
             <span class="trivial">{{time}}</span>
         </div>
 
-        <div class="user_info ml10 mr10 clearfix" position = "relative" onmouseover='show_user_info($(this));'>
+        <div class="user_info fl ml10 mr10 clearfix">
             <div class="fl">
                 <a href="users/{{user_id}}"  class="mr10">
                     <img alt="avatar" width="48" height="48" src="{{user_avatar}}" />
                 </a><br/>
                 <%= link_to "{{user_name}}", "users/{{user_id}}"%>
-            </div>
-            <div class="more_user_info box_shadow display_none p5" >
-                <span><%= t("reviews.by_user", count: "{{user_reviews_cnt}}") %></span><br/>
-                <span><%= t("recipes.by_user", count: "{{user_recipes_cnt}}") %></span><br/>
-                <span><%= t("recipes.author_followers", count: "{{user_fans_cnt}}") %></span>
-                <div class="fr"><%= render "relationships/follow_field_waterfall" %><br/> </div>
             </div>
         </div>
     </div>

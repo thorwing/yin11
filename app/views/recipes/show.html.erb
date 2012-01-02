@@ -3,7 +3,7 @@
         <%= render "users/author_panel", author: @recipe.author %>
     </div>
 
-    <div class="recipe_info mt10 to_left box_shadow p5">
+    <div class="recipe_info mt20 to_left box_shadow p5">
         <% if @recipe.image.present? %>
             <%= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'fl img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox"  %>
         <% else %>

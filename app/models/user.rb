@@ -220,6 +220,17 @@ class User
     @geometry = {:width => width, :height => height }
   end
 
+  def has_collected?(item)
+    if item.is_a? Review
+      self.albums.each do |album|
+        if album.review_ids.include?(item.id)
+          return true, album
+        end
+      end
+    end
+
+    return false, nil
+  end
 
   private
 

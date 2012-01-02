@@ -1,0 +1,4 @@
+$(".collect_fields .to_collect").remove();
+var child = '<%= escape_javascript(render("albums/has_collected", :album => @album)) %>';
+$(".collect_fields").prepend(child);
+

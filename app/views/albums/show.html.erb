@@ -6,6 +6,7 @@
 <% if the_author_himself(Album.name, @album.id, true, false) %>
     <div class="mt5">
         <%= link_to t("general.edit"), edit_album_path(@album), class: "button" %>
+        <%= link_to t("general.delete"), @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "button" %>
         <%= link_to_function t("albums.add_content"), '$(this).next("div").toggle();', class: "button m5" %>
         <div class="clearfix display_none">
             <div class="grid_9 to_left">

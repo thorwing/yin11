@@ -83,4 +83,23 @@ class AlbumsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def collect
+    @album = Album.find(params[:id])
+    @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
+    if @item.is_a? Review
+      @album.review_ids ||= []
+      @album.review_ids << @item.id.to_s
+      @album.save
+
+      @item.album_ids ||= []
+      @item.album_ids << @album.id.to_s
+      @item.save
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

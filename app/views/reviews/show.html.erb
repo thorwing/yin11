@@ -5,11 +5,16 @@
         <%= render "users/author_panel", author: @review.author %>
     </div>
 
-    <div class="mt10 clearfix">
+    <div class="mt20 clearfix">
         <div class="box_shadow p5">
-            <div class="fr">
-                <%= render "shared/vote_fields", :item => @review %>
-            </div>
+            <% if current_user_has_permission? :normal_user %>
+                <div class="fr">
+                    <%= render "shared/vote_fields", :item => @review %>
+                </div>
+                <div class="fr">
+                    <%= render "albums/collect_fields", :item => @review %>
+                </div>
+            <% end %>
             <p>
                 <%= @review.content %>
             </p>

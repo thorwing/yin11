@@ -8,6 +8,10 @@ module ApplicationHelper
     end
   end
 
+  def find_item_by_type_and_id(type, id)
+    eval("#{type}.find('#{id.to_s}')")
+  end
+
   def truncate_content(text, length)
     text ||= ""
     text = strip_tags(text)

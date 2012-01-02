@@ -1,16 +1,5 @@
-$(function(){
-    $('.master .user_info').hover(function(){
-        $(this).find('.more_user_info').removeClass('display_none');
-        $(this).find('.more_user_info').removeClass('display_block');
-    },
-    function(){
-        $(this).find('.more_user_info').addClass('display_none');
-    });
-});
-
-
-function show_user_info(link) {
-    var infos = $(link).find('.more_user_info');
+function show_more_info(container) {
+    var infos = $(container).find('.more_info');
     infos.show();
 
     var current_user_id = $('#current_user_id');
@@ -21,7 +10,7 @@ function show_user_info(link) {
     }
 }
 
-function hide_user_info(link) {
-    var infos = $(link).find('.more_user_info');
+function hide_more_info(container) {
+    var infos = $(container).find('.more_info');
     infos.hide();
 }

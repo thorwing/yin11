@@ -27,12 +27,10 @@ function add_fields(link, association, content, divname, count_range) {
     var count= $(count_range).find(".addedclass").length;
     max = parseInt ($(link).data('max_len'));
     if (max) {
-          if(count >= max) {
-            $(count_range).find(".add_fields").hide();
-          }
-      }
-
-
+        if(count >= max) {
+        $(count_range).find(".add_fields").hide();
+        }
+    }
 }
 
 //Remove fields from DOM
@@ -157,6 +155,16 @@ function char_aware()
 }
 
 
+$(function(){
+    $('.more_info_container').hover(
+    function(){
+        $(this).find('.more_info').removeClass('display_none');
+        $(this).find('.more_info').removeClass('display_block');
+    },
+    function(){
+        $(this).find('.more_info').addClass('display_none');
+    });
+});
 
 
 

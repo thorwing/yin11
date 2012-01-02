@@ -2,7 +2,7 @@
     <div class="clearfix box_shadow ">
         <%= render "users/author_panel", author: @user %>
     </div>
-    <div class="tab_control mt10">
+    <div class="tab_control mt20">
         <div class="tabContainer ">
             <% @modes.each do |mode| %>
                 <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">

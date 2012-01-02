@@ -131,7 +131,9 @@ Yin11::Application.routes.draw do
     member {post :mark}
   end
 
-  resources :albums
+  resources :albums do
+    member {put :collect}
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

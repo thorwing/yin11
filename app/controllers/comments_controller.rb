@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
   protected
 
   def find_item
-    @item = eval("#{params[:item_type]}.find('#{params[:item_id]}')")
+    @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
   end
 
 end

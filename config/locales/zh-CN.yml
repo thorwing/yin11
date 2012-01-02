@@ -520,6 +520,9 @@ zh-CN:
     new_album: 新建专辑
     cover: 封面
     add_content: 添加内容
+    collect: 收集
+    has_collected: 已收集到
+    collect_to_album: 到专辑：
 
   search:
     kinds:
