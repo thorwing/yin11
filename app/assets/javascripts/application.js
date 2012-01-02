@@ -146,7 +146,7 @@ function char_aware()
         var remaining = max - strLength;
         if(remaining >= 0) {
             //  cache the content
-            $(this).nextAll('.char_counter').html('您还可输入' + parseInt(remaining/2) + '字' );
+            $(this).nextAll('.char_counter').html('还可以输入' + parseInt(remaining/2) + '字' );
             $(this).nextAll('.char_saver').val(content);
         }
         else {

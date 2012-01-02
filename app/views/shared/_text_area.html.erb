@@ -1,5 +1,11 @@
 <div class="field">
     <% length_msg = mark_required_length(f.object, field) %>
-    <b><%= f.label field, label  %><%= mark_required(f.object, field) %><%= length_msg %></b><br/>
-    <%= f.text_area field, :maxlength => get_max_length(f.object, field), :rows => (get_max_length(f.object, field) / 30) %>
+    <span class="label"><%= f.label field, label  %><%= length_msg if defined?(show_length) && show_length %>:</span>
+    <% if length_msg.present? %>
+        <%= f.text_area field, :maxlength => get_max_length(f.object, field), :rows => (get_max_length(f.object, field) / 30), 'data-comment_max_len' => get_max_length(Profile, :biography), class: "char_aware" %><%= mark_required(f.object, field) %>
+        <%= content_tag :span, "", class: "char_saver display_none" %>
+        <%= content_tag :span, "", :class => "char_counter block trivial" %>
+    <% else %>
+        <%= f.text_area field%><%= mark_required(f.object, field) %>
+    <% end %>
 </div>

@@ -1,0 +1,23 @@
+<div class="commentable clearfix">
+  <div class="fl mr10">
+    <%= link_to image_tag(album.author.get_avatar(:thumb), width: "48", height: "48"), album.author %>
+  </div>
+  <div class="fl" style="width: 600px;">
+    <%= album.author.login_name %>:<br/>
+    <p><%= link_to album.title, album %></p>
+    <% thumb_url = album.get_image_url(:thumb) %>
+    <% if thumb_url.present? %>
+        <p><%= link_to image_tag(thumb_url, class: "img_frame"), album %></p>
+    <% end %>
+    <div>
+      <span class="fl trivial"><%= time_ago_in_words(album.created_at) + t("general.ago") %></span>
+      <div class="fr">
+        <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= album.comments.size %></span>)
+      </div>
+    </div>
+  </div>
+  <div class="embedded_comments display_none">
+    <%= render "comments/comments", item: album %>
+  </div>
+</div>
+<hr/>

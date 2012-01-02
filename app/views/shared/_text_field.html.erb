@@ -1,9 +1,9 @@
 <div class="field">
     <% length_msg = mark_required_length(f.object, field) %>
-    <b><%= f.label field, label  %><%= mark_required(f.object, field) %><%= length_msg %></b><br/>
+    <span class="label"><%= f.label field, label  %><%= length_msg if defined?(show_length) && show_length %>:</span>
     <% if length_msg.present? %>
-        <%= f.text_field field, :maxlength => get_max_length(f.object, field) %>
+        <%= f.text_field field, :maxlength => get_max_length(f.object, field) %><%= mark_required(f.object, field) %>
     <% else %>
-        <%= f.text_field field %>
+        <%= f.text_field field %><%= mark_required(f.object, field) %>
     <% end %>
 </div>

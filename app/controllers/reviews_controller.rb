@@ -115,6 +115,14 @@ class ReviewsController < ApplicationController
       product.save
     end
 
+    #handle album
+    @review.album_ids.each do |album_id|
+      album = Album.find(album_id)
+      album.review_ids ||= []
+      album.review_ids << @review.id
+      album.save
+    end
+
     if params[:sync_to]
       @user_message, @remote_status = SyncsManager.new(current_user).sync(@review)
     end

@@ -2,6 +2,10 @@
     <%= render "shared/error_messages", :target => @group %>
 
     <%= render "shared/text_field", :f => f, :label => t("general.name"), :field => :name %>
+    <div class="field">
+      <span class="label"><%= f.label :tags_string, t("tags.tags") %></span>
+      <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
+    </div>
     <%= render "shared/text_area", :f => f, :label => t("general.description"), :field => :description %>
 
     <div class="actions">

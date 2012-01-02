@@ -163,6 +163,8 @@ zh-CN:
     rapid_user_creation: 你已经在%{cooldown}小时内注册了一个帐号啦
     recipe_created: 菜谱创建成功
     recipe_updated: 菜谱更新成功
+    album_created: 专辑创建成功
+    album_updated: 专辑更新成功
 
   alerts:
     password_reset_expired: 密码重置口令已过期
@@ -310,9 +312,11 @@ zh-CN:
     feeds_mode: 我的动态
     reviews_mode: 我的分享
     recipes_mode: 我的菜谱
+    albums_mode: 我的专辑
     feeds: 动态
     reviews: 分享
     recipes: 菜谱
+    albums: 专辑
 
 
   groups:
@@ -325,7 +329,7 @@ zh-CN:
     posts: 最近话题
     member: 成员
     new: +新饭桌
-    new_group: 新饭桌
+    new_group: 新建饭桌
     edit: 编辑饭桌
     browse: 找饭桌
 
@@ -368,7 +372,7 @@ zh-CN:
     exact_vendor_not_found: 没有找到名为<%{name}>的商户
     please_create: "欢迎您创建:"
     normal_vendor: "商户: <%{name}>"
-    new_vendor: 新商户
+    new_vendor: 新建商户
     edit_vendor: 编辑商户
     create_vendor: 添加商户
     new_review: +新分享
@@ -391,7 +395,7 @@ zh-CN:
     products_list: 美食列表
     add: +新商品
     edit: 编辑商品
-    new_product: 新商品
+    new_product: 新建商品
     go_to_buy: 去购买
     price: 价格
     editor_score: 编辑推荐指数
@@ -416,7 +420,7 @@ zh-CN:
   topics:
     topics: 策划
     new: +新策划
-    new_topic: 新策划
+    new_topic: 新建策划
     edit_topic: 编辑策划
     priority: 优先级
 
@@ -435,7 +439,7 @@ zh-CN:
     whats_wrong: 哪里不对劲?
     post_new_review: 发表新分享
     edit_review: 编辑分享
-    new_review: 新分享
+    new_review: 新建分享
     make_choice_please: 请选择
     choose_vendor: 选择商户
     by_user: 发表了%{count}条美食分享
@@ -481,7 +485,7 @@ zh-CN:
     receivers: 已授予人数
     enabled_badges: 启用的徽章
     disabled_badges: 禁用的徽章
-    new_badge: 新徽章
+    new_badge: 新建徽章
     edit_badge: 编辑徽章
 
   relationships:
@@ -500,7 +504,7 @@ zh-CN:
   tags:
     tags: 标签
     all: 美食大全
-    new_tag: 新标签
+    new_tag: 新建标签
     hot_tags: 人气
 
   views:
@@ -510,6 +514,12 @@ zh-CN:
       first: "第一页"
       last: "最后一页"
       truncate: "..."
+
+  albums:
+    new: +新专辑
+    new_album: 新建专辑
+    cover: 封面
+    add_content: 添加内容
 
   search:
     kinds:

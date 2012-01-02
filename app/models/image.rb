@@ -17,6 +17,7 @@ class Image
   belongs_to :topic
   belongs_to :step
   belongs_to :ingredient
+  belongs_to :album
 
   #validations
   validates_presence_of :picture

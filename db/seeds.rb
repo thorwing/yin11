@@ -144,7 +144,6 @@ require "tag"
       topic.id = t.id
       topic.title = t.title
       topic.tags = t.tags
-      topic.description = t.description
       topic.content = t.content
       topic.priority = t.priority
     end

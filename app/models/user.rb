@@ -63,6 +63,7 @@ class User
   embeds_one :contribution
   has_many :reviews, :inverse_of => "author"
   has_many :recipes, :inverse_of => "author"
+  has_many :albums, :inverse_of => "author"
   has_and_belongs_to_many :groups, :inverse_of => "members"
   has_and_belongs_to_many :badges
   has_many :vendors

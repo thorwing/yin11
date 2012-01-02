@@ -2,7 +2,7 @@ class PersonalController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
 
   def me
-    @modes = ["default", "reviews", "recipes"]
+    @modes = ["default", "reviews", "recipes", "albums"]
     if params[:mode].present?
       @current_mode = params[:mode]
     elsif session[:personal_mode].present?
@@ -15,6 +15,7 @@ class PersonalController < ApplicationController
      #TODO why there are feed that doesn't belong to a user
     @my_reviews = current_user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @my_recipes = current_user.recipes.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    @my_albums = current_user.albums.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
   end
 
   def feeds

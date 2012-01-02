@@ -3,6 +3,7 @@ class Recipe
     include Mongoid::Timestamps
     include Taggable
     include SilverSphinxModel
+    include Votable
     include Imageable
     include Followable
 

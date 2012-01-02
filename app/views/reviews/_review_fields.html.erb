@@ -2,6 +2,9 @@
 
 <%= form_for review, :html => { :multipart => true }, :remote => true do |f| %>
     <div class="block round p5 clearfix" id = "review_fields" >
+        <!--hidden attributes-->
+        <%= (hidden_field_tag "review[album_ids][]", @album.id) if @album %>
+
         <h2><%= t("reviews.head") %></h2>
         <%= f.text_area :content, :maxlength => get_max_length(review, :content), 'data-comment_max_len' => get_max_length(review, :content), :class => "char_aware" %>
         <%= content_tag :span, "", class: "char_saver display_none" %>
