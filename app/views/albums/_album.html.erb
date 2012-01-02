@@ -1,23 +1,30 @@
-<div class="commentable clearfix">
-  <div class="fl mr10">
-    <%= link_to image_tag(album.author.get_avatar(:thumb), width: "48", height: "48"), album.author %>
-  </div>
-  <div class="fl" style="width: 600px;">
-    <%= album.author.login_name %>:<br/>
-    <p><%= link_to album.title, album %></p>
-    <% thumb_url = album.get_image_url(:thumb) %>
-    <% if thumb_url.present? %>
-        <p><%= link_to image_tag(thumb_url, class: "img_frame"), album %></p>
-    <% end %>
+<div class="large_item block round mb20 p5">
+    <p>
+      <span><%= link_to album.title, album %></span>
+      <span class="ml5 trivial"><%= album.reviews.size %><%= t("albums.items") %></span> |
+      <span class="ml5"><%= link_to album.author.login_name, album.author %><%= link_to image_tag(album.author.get_avatar(:thumb), width: 22, height: 22), album.author %></span>
+    </p>
     <div>
-      <span class="fl trivial"><%= time_ago_in_words(album.created_at) + t("general.ago") %></span>
-      <div class="fr">
-        <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= album.comments.size %></span>)
-      </div>
+        <div class="fl">
+            <%= link_to image_tag(album.get_image_url(:waterfall), width: 200, height: 200), album %>
+        </div>
+
+        <div class="fl">
+            <% reviews = album.reviews.limit(10) %>
+            <div class="slice">
+                <% reviews.values_at(* reviews.each_index.select{|i| i.odd?}).each do |review| %>
+                  <div class="m1 fl">
+                    <%= link_to image_tag(review.get_review_image_url(:thumb), width: 80, height: 80), album %>
+                  </div>
+                <% end %>
+            </div>
+            <div class="slice">
+                <% reviews.values_at(* reviews.each_index.select{|i| i.even?}).each do |review| %>
+                  <div class="m1 fl">
+                    <%= link_to image_tag(review.get_image_url(:thumb), width: 80, height: 80), album %>
+                  </div>
+                <% end %>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="embedded_comments display_none">
-    <%= render "comments/comments", item: album %>
-  </div>
 </div>
-<hr/>

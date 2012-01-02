@@ -523,6 +523,7 @@ zh-CN:
     collect: 收集
     has_collected: 已收集到
     collect_to_album: 到专辑：
+    items: 个收集
 
   search:
     kinds:
