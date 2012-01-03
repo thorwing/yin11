@@ -2,6 +2,10 @@
 Feature: create recipe
   用户,编辑和管理员可以新建菜谱,  个人主页上有新建菜谱的链接
   游客不可以新建菜谱
+  添加菜谱时，步骤描述可以为空
+
+
+
 
   Background:
     Given There are minimum seeds data
