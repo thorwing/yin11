@@ -11,7 +11,7 @@
          <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
       </div>
       <div class="field">
-        <b><%= f.label :priority, t("topics.priority") %></b><br />
+        <b><%= f.label :priority, t("general.priority") %></b><br />
         <%= f.text_field :priority %>
       </div>
       <div class="field">

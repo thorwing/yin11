@@ -4,8 +4,12 @@ class Album
   include Taggable
   field :title
   field :description
+  field :priority, :type => Integer, :default => 0
 
   attr_accessible :title, :description, :author_id
+
+  #scopes
+  scope :recommended, where(:priority.gt => 0)
 
   #relationships
   has_one :image

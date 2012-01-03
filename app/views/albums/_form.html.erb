@@ -3,6 +3,9 @@
 
   <%= render "shared/text_field", :f => f, :label => t("general.title"), :field => :title %>
   <%= render "shared/text_area", :f => f, :label => t("general.description"), :field => :description %>
+  <% if current_user_has_permission? :editor %>
+    <%= render "shared/text_field", :f => f, :label => t("general.priority"), :field => :priority %>
+  <% end %>
 
   <div class="mt5">
     <%= f.submit t("general.submit"), class: "button" %>

@@ -60,6 +60,10 @@ class AlbumsController < ApplicationController
   # PUT /albums/1.json
   def update
     @album = Album.find(params[:id])
+    #make sure only the editor can set priority
+    if current_user_has_permission?(:editor) && params[:album][:priority].present?
+      @album.priority = params[:album][:priority].to_i
+    end
 
     respond_to do |format|
       if @album.update_attributes(params[:album])

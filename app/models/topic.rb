@@ -3,10 +3,13 @@ class Topic
   include Taggable
 
   field :title
-  field :priority, :type => Integer, :default => 100
+  field :priority, :type => Integer, :default => 0
   field :content
 
   attr_accessible :title, :description, :content, :priority
+
+  #scopes
+  scope :recommended, where(:priority.gt => 0)
 
   #validators
   validates_presence_of :title

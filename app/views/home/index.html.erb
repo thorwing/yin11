@@ -19,19 +19,20 @@
 </div>
 
 <div class="clearfix mt10">
+  <% unless @hot_topics.empty? %>
     <h2 class="mt10"><%= t("topics.topics") %></h2>
     <% @hot_topics.each do |topic| %>
         <%= raw topic.content %>
     <% end %>
+  <% end %>
 </div>
 
 <div class="clearfix mt10">
   <% unless @daily_stars.empty? %>
-    <h2 class="fl">今日美食达人</h2>
-    <div class="clearfix"></div>
+    <h2 class="fl"><%= t("users.daily_stars") %></h2><br/>
     <div class="grid_9 to_left ">
         <% @daily_stars.each do |master| %>
-            <%= render "users/user", user: master %>
+            <%= render master %>
         <% end %>
     </div>
     <div class="grid_3 to_right" to_right>
@@ -40,6 +41,15 @@
       <% end %>
       <div class="clearfix"></div>
       <p class="fr"><%= link_to ">>更多美食达人", masters_path %></p>
+    </div>
+  <% end %>
+</div>
+
+<div class="clearfix mt10">
+  <% unless @recommended_albums.empty? %>
+    <h2 class="fl"><%= t("albums.recommended") %></h2><br/>
+    <div class="grid_9 to_left ">
+        <%= render @recommended_albums %>
     </div>
   <% end %>
 </div>

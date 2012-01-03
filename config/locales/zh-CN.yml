@@ -66,10 +66,7 @@ zh-CN:
     report: "报错/纠正"
     email_address: 邮件地址
     ago: 以前
-    severity_0: 无异常报告
-    severity_1: 注意
-    severity_2: 警惕
-    severity_3: 严重
+    priority: 优先级
     total: 总共
     all: 全部
     back_to_top: 回到顶部
@@ -302,6 +299,7 @@ zh-CN:
     details: 详细
     see_user_info: 查看个人资料
     recent_activities: 最近活动
+    daily_stars: 今日美食达人
     master: 达人
     role: 身份
     role_3: 普通用户
@@ -423,7 +421,6 @@ zh-CN:
     new: +新策划
     new_topic: 新建策划
     edit_topic: 编辑策划
-    priority: 优先级
 
   reviews:
     review: 分享
@@ -526,6 +523,7 @@ zh-CN:
     has_collected: 已收集到
     collect_to_album: 到专辑：
     items: 个收集
+    recommended: 推荐专辑
 
   search:
     kinds:
