@@ -1,24 +1,35 @@
-<% title @album.title %>
-<p>
-  <%= @album.description %>
-</p>
+<% title @album.title, false%>
 
-<% if the_author_himself(Album.name, @album.id, true, false) %>
-    <div class="mt5">
-        <%= link_to t("general.edit"), edit_album_path(@album), class: "button" %>
-        <%= link_to t("general.delete"), @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "button" %><br/>
-        <%= link_to_function t("albums.add_content"), '$(this).next("div").toggle();', class: "button mt5 mb10" %>
-        <div class="clearfix display_none">
-            <div class="grid_9 to_left">
+<div class="grid_9 to_left">
+    <div class="clearfix box_shadow ">
+        <%= render "users/author_panel", author: @album.author %>
+    </div>
+
+    <% if the_author_himself(Album.name, @album.id, true, false) %>
+        <div class="mt5">
+            <%= link_to_function t("albums.add_content"), '$(this).next("div").toggle();', class: "button mt5 mb10" %>
+            <div class="clearfix display_none">
                 <%= render "reviews/review_fields", :review => Review.new %>
             </div>
         </div>
-    </div>
-<% end %>
+    <% end %>
 
-<div class="mt20">
-    <% @album.items.each do |item| %>
-        <%= render "shared/frozen_waterfall_field", item: item %>
+    <div id="static_waterfall_container">
+        <% @album.items.each do |item| %>
+            <%= render "shared/frozen_waterfall_field", item: item %>
+        <% end %>
+    </div>
+</div>
+
+<div class="grid_3 to_right box_shadow p5">
+    <h1><%= @album.title %></h1>
+    <p><%= @album.description %></p>
+    <% if the_author_himself(Album.name, @album.id, true, false) %>
+        <div class="mt5">
+            <%= link_to t("general.edit"), edit_album_path(@album), class: "button" %>
+            <%= link_to t("general.delete"), @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "button" %><br/>
+        </div>
     <% end %>
 </div>
 
+<%= javascript_tag "static_waterfall();" %>

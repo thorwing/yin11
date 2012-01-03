@@ -2,7 +2,7 @@ class PersonalController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
 
   def me
-    @modes = ["default", "reviews", "recipes", "albums"]
+    @modes = ["default", "reviews", "albums", "recipes"]
     if params[:mode].present?
       @current_mode = params[:mode]
     elsif session[:personal_mode].present?

@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = Album.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -8,4 +8,9 @@ class Cooler
     comments = item.comments.where(:user_id => user.id, :created_at.gt => COMMENTS_COOLDOWM_INTERVAL.seconds.ago).to_a
     comments.size >= COMMENTS_COOLDOWM_LIMIT
   end
+
+  def self.nervous_reviewer?(user, content)
+    reviews = user.reviews.where(:created_at.gt => COMMENTS_COOLDOWM_INTERVAL.seconds.ago, :content => content).to_a
+    reviews.size >= 1
+  end
 end

@@ -5,20 +5,23 @@
 
 #waterfall_container {
     position: relative;
-    overflow: hidden;
 }
 
-#loading_pins {
+#static_waterfall_container {
+    position: relative;
+}
+
+/*for real waterfall, not the frozen(fake) waterfall*/
+#waterfall_container .waterfall {
     position: absolute;
-    bottom: 0px;
-    z-index:4;
+    overflow: hidden;
 }
 
 .waterfall {
+
     display: inline-block;
-    margin-bottom: 20px;
-    overflow: hidden;
-    position: absolute;
+    width: 220px;
+    margin: 0 5px 20px 5px;
 }
 
 .waterfall .image img {
@@ -39,6 +42,12 @@
     left: 0px;
     top: -80px;
     background-color: #EDEFF4;
+}
+
+#loading_pins {
+    position: absolute;
+    bottom: 0px;
+    z-index:4;
 }
 
 #back_to_top {

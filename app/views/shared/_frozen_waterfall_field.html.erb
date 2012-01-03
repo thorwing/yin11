@@ -1,6 +1,6 @@
-<div class="grid_3 box_shadow fl mb20" data-id="<%= item.id.to_s %>" >
-    <div align="center" style="margin: 10px 0;">
-        <%= link_to image_tag(item.get_review_image_url(:thumb), height: item.get_review_image_height(:waterfall)), item %>
+<div class="waterfall box_shadow" data-id="<%= item.id.to_s %>" >
+    <div align="center">
+        <%= link_to image_tag(item.get_review_image_url(:waterfall), height: item.get_review_image_height(:waterfall)), item, class: "image" %>
     </div>
     <div class="ml10 mr10 clearfix">
         <% if (item.respond_to? :name) %>
@@ -16,7 +16,7 @@
 
     <div class="user_info ml10 mr10 clearfix" position = "relative">
         <div class="fl">
-            <%= link_to image_tag(item.author.get_avatar(:thumb, false), width: 48, height:48), item.author, class: "mr10" %>
+            <%= link_to image_tag(item.author.get_avatar(:thumb, false), width: 48, height:48), item.author, class: "mr10" %><br/>
             <%= link_to item.author.login_name, item.author %>
         </div>
     </div>

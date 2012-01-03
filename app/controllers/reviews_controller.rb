@@ -91,8 +91,8 @@ class ReviewsController < ApplicationController
     @user_message = ''
 
     #prevent from mistakes ( two reviews in a row)
-    last_review = current_user.reviews.in_days_of(1).desc(:created_at).limit(1).first
-    if (last_review && last_review.content == params[:review][:content])
+
+    if Cooler.nervous_reviewer?(current_user, params[:review][:content])
       @user_message = t("notices.already_published")
       respond_to do |format|
         format.html { render :action => "new", :notice => @user_message }

@@ -23,11 +23,6 @@
             <b><%= t("control_panel.actions") %></b><br/>
             <%= link_to t("recipes.add"), new_recipe_path, :class => "button" %>
             <%= link_to t("albums.new"), new_album_path, :class => "button" %><br/>
-            <% if current_user_has_permission?(:editor) %>
-                <b><%= t("control_panel.editor_actions") %></b><br/>
-                <%= link_to t("topics.new"), new_topic_path, :class => "button"  %>
-                <%= link_to t("pages.add"), new_page_path, :class => "button" %>
-            <% end %>
         </p>
     </div>
 <% end %>

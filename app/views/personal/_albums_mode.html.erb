@@ -1,4 +1,3 @@
+<span class="mb10 clearfix"><%= link_to t("albums.new"), new_album_path, :class => "button" %></span><br/>
 <%= paginate @my_albums %>
-<% @my_albums.each do |album| %>
-    <%= render album %>
-<% end %>
+<%= render @my_albums %>
