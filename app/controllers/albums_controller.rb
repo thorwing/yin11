@@ -106,4 +106,24 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def pick_cover
+    @album = Album.find(params[:id])
+    @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
+    if @item.is_a? Review
+      imageable = @item.get_imageable_item
+      if imageable
+        image = imageable.get_image
+        if image
+          @new_cover_url = image.picture_url(:waterfall)
+          @album.cover_id = image.id
+          @album.save
+        end
+      end
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

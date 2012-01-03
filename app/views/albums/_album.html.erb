@@ -1,4 +1,4 @@
-<div class="large_item block round mb20 p5">
+<div class="large_item block round mb20 p10">
     <p>
       <b><%= link_to album.title, album %></b>
       <span class="ml5 mr5 trivial"><%= album.reviews.size %><%= t("albums.items") %></span> |
@@ -6,7 +6,7 @@
     </p>
     <div class="lighter_touch">
         <div class="fl">
-            <%= link_to image_tag(album.get_image_url(:waterfall), width: 200, height: 200), album %>
+            <%= link_to image_tag(album.get_cover_url(:waterfall), width: 200, height: 200), album %>
         </div>
 
         <div class="fl">

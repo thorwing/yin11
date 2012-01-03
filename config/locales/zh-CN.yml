@@ -162,6 +162,7 @@ zh-CN:
     recipe_updated: 菜谱更新成功
     album_created: 专辑创建成功
     album_updated: 专辑更新成功
+    album_cover_picked: 专辑封面已更改
 
   alerts:
     password_reset_expired: 密码重置口令已过期
@@ -519,6 +520,7 @@ zh-CN:
     albums: 专辑
     cover: 封面
     add_content: 添加内容
+    pick_cover: 设为封面
     collect: 收集
     has_collected: 已收集到
     collect_to_album: 到专辑：

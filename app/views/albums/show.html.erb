@@ -16,7 +16,7 @@
 
     <div id="static_waterfall_container">
         <% @album.items.each do |item| %>
-            <%= render "shared/frozen_waterfall_field", item: item %>
+            <%= render "albums/album_waterfall_field", item: item %>
         <% end %>
     </div>
 </div>
@@ -24,6 +24,13 @@
 <div class="grid_3 to_right box_shadow p5">
     <h1><%= @album.title %></h1>
     <p><%= @album.description %></p>
+    <% cover_url = @album.get_cover_url(:waterfall) %>
+    <% if cover_url.present? %>
+        <span class="trivial"><%= t_with_colon("albums.cover") %></span>
+        <div class="center">
+          <%= image_tag cover_url, width: 200, height:200, class: "cover_image" %>
+        </div>
+    <% end %>
     <% if the_author_himself(Album.name, @album.id, true, false) %>
         <div class="mt5">
             <%= link_to t("general.edit"), edit_album_path(@album), class: "button" %>

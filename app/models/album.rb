@@ -5,6 +5,7 @@ class Album
   field :title
   field :description
   field :priority, :type => Integer, :default => 0
+  field :cover_id
 
   attr_accessible :title, :description, :author_id
 
@@ -26,9 +27,19 @@ class Album
     self.reviews.desc(:votes)
   end
 
-  def get_image_url(version = nil)
-    image = self.reviews.first{|r| r.get_review_image_url(version).present?}
-    image ? image.get_review_image_url(version) : ''
+  def get_cover_url(version = nil)
+    image_url = nil
+    if cover_id
+      image = Image.first(conditions: {id: cover_id})
+      image_url = image.picture_url(version) if image
+    end
+
+    unless image_url
+      image = self.reviews.first{|r| r.get_review_image_url(version).present?}
+      image_url = (image ? image.get_review_image_url(version) : '')
+    end
+
+    image_url
   end
 
 end

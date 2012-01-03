@@ -132,7 +132,10 @@ Yin11::Application.routes.draw do
   end
 
   resources :albums do
-    member {put :collect}
+    member do
+      put :collect
+      put :pick_cover
+    end
   end
 
   # The priority is based upon order of creation:

@@ -92,12 +92,17 @@
 
     img {vertical-align: bottom;}
 
-    .fix_hint, .flex_hint {
+    .fix_hint, .flex_hint, {
         position: absolute;
-        line-height: 20px;
-        bottom: 0px;
         opacity: 0.7;
         padding: 0 5px;
+        /*by default*/
+        bottom: 0px;
+    }
+
+    .top_right {
+        right: 5px;
+        top: 10px;
     }
 
     .fix_hint {
