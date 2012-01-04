@@ -33,16 +33,10 @@
     </div>
 </div>
 
-
 <div class="grid_3 to_right">
-    <div class="clearfix box_shadow p5">
-        <%= render "users/author_panel", author: @review.author %>
-    </div>
-
-    <div class="mt10 related_items_block box_shadow overflow_hidden p5">
-        <%= render "products/related_products", products: @related_products %>
-    </div>
+    <%= render "users/author_panel", author: @review.author %>
+    <div class="mt5"></div>
+    <%= render "products/related_products", products: @related_products %>
 </div>
-
 
 <%= javascript_tag "static_waterfall(3);" %>

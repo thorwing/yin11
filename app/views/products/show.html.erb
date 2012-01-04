@@ -56,6 +56,6 @@
     <%= render "shared/waterfall", :path => more_reviews_path(product_id: @product.id), :waterfall_partial => "reviews/review_waterfall", :columns_count => 3, :columns_width => 230 %>
 </div>
 
-<div class="grid_3 to_right box_shadow">
-    <%= render "products/related_products", products: @related_products %>
+<div class="grid_3 to_right">
+  <%= render "products/related_products", products: @related_products %>
 </div>

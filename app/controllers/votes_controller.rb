@@ -30,7 +30,8 @@ class VotesController < ApplicationController
       end
     end
 
-    weight = delta * current_user.vote_weight
+    # all people are the same
+    weight = delta * 1 #current_user.vote_weight
     @item.votes += weight
     @votes = @item.votes
 

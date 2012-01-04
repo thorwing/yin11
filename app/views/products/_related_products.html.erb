@@ -1,13 +1,11 @@
 <% unless products.blank? || products.empty? %>
-    <span><h2>相关产品推荐...</h2></span><br/>
-    <ul>
+    <div class="box_shadow overflow_hidden p5">
+        <h3>相关产品推荐...</h3>
         <% products.each do |product| %>
-            <li>
-              <%= link_to image_tag( product.get_image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :class=>"product_small_img_box"), product%>
-              <div>
-                  <%= link_to product.name, product %>
-              </div>
-            </li>
+            <div class="fl center overflow_hidden mt2" style="width:100px; height:130px;">
+              <%= link_to image_tag( product.get_image_url(:thumb), width: 80, height: 80), product%><br/>
+              <%= link_to product.name, product %>
+            </div>
         <% end %>
-    </ul>
+    </div>
 <% end %>

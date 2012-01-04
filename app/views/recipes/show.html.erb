@@ -89,12 +89,9 @@
 </div>
 
 <div class="grid_3 to_right">
-    <div class="clearfix box_shadow p5">
-        <%= render "users/author_panel", author: @recipe.author %>
-    </div>
-
-    <div class="related_items_block mt10 box_shadow overflow_hidden p5">
-        <%= render "recipes/related_recipes", recipes: @related_recipes %>
-        <%= render "products/related_products", products: @related_products %>
-    </div>
+    <%= render "users/author_panel", author: @recipe.author %>
+    <div class="mt5"></div>
+    <%= render "recipes/related_recipes", recipes: @related_recipes %>
+    <div class="mt5"></div>
+    <%= render "products/related_products", products: @related_products %>
 </div>

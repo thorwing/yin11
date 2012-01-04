@@ -145,7 +145,10 @@ ul.menu li {
 .m5 {margin: 5px;}
 .m10 {margin: 10px;}
 
+.mt2 {margin-top: 2px;}
 .ml2 {margin-left: 2px;}
+.mb2 {margin-bottom: 2px;}
+.mr2 {margin-right: 2px;}
 
 .mt5 {margin-top: 5px;}
 .ml5 {margin-left: 5px;}
@@ -288,6 +291,8 @@ a.tag {
     padding: 2px;
     border: 1px solid #333333;
     background-color: $azure;
+    font-size: 12px;
+    line-height: 16px;
 }
 
 a.tag:hover {
@@ -316,10 +321,6 @@ body #main { height: auto; padding-bottom: 260px;}
 #content_area { min-height: 600px;  }
 
 .lighter_touch:hover {opacity: 0.7;}
-
-/*for the shared right panel: related products and related recipes*/
-.related_items_block li {width:80px; height:130px;}
-.related_items_block li img{width:80px; height:80px;}
 
 .field {margin: 5px 0;}
 .label {margin-right: 5px;
