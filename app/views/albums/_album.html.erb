@@ -21,7 +21,7 @@
             <div class="slice">
                 <% reviews.values_at(* reviews.each_index.select{|i| i.odd?}).each do |review| %>
                   <div class="m1 fl">
-                    <%= link_to image_tag(review.get_image_url(:thumb), width: 80, height: 80), album %>
+                    <%= link_to image_tag(review.get_review_image_url(:thumb), width: 80, height: 80), album %>
                   </div>
                 <% end %>
             </div>
