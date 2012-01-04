@@ -73,11 +73,11 @@ function waterfall(url) {
     });
 };
 
-function static_waterfall() {
+function static_waterfall(col) {
     KISSY.use("waterfall", function (S, Waterfall) {
         new Waterfall({
             container: "#static_waterfall_container",
-            minColCount: 3,
+            minColCount: col,
             colWidth: 230
         });
     });

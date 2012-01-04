@@ -5,7 +5,7 @@
     <% else %>
         <div class="to_collect more_info_container">
             <%= link_to t("albums.collect"), "", class: "button", onclick: "return false;" %>
-            <div class="more_info display_none box_shadow" style="width:300px;">
+            <div class="more_info display_none box_shadow" style="width:300px;" align="left">
                 <%= link_to t("albums.collect"), "", class: "button", onclick: "return false;" %><%= t("albums.collect_to_album") %><br/>
                 <div class="mt10 p5 mb20">
                     <% current_user.albums.each do |album| %>

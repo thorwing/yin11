@@ -5,40 +5,28 @@
         <%= render "users/author_panel", author: @review.author %>
     </div>
 
-    <div class="mt20 clearfix">
-        <div class="box_shadow p5">
+    <div class="mt20">
+        <div class="box_shadow clearfix p5">
             <% if current_user_has_permission? :normal_user %>
-                <div class="fr">
-                    <%= render "shared/vote_fields", :item => @review %>
-                </div>
-                <div class="fr">
-                    <%= render "albums/collect_fields", :item => @review %>
+                <div class="fr" align="right">
+                  <%= render "albums/collect_fields", :item => @review %>
+                  <%= render "votes/vote_fields", :item => @review %>
                 </div>
             <% end %>
-            <p>
+            <p class="ml10" style="width: 600px;">
                 <%= @review.content %>
             </p>
-
-            <div class="clearfix mt10">
-                <% @review.get_images_with_objects(:waterfall).each do |hash| %>
-                     <div class="fl mr5">
-                        <% if hash[:object] %>
-                            <div class="hint_box">
-                                <%= link_to image_tag(hash[:picture_url], width: 100, height: 100), hash[:object] %>
-                                <span class="fix_hint b_black white f11"><%= hash[:object].name %></span>
-                            </div>
-                        <% else %>
-                            <%= link_to image_tag(hash[:picture_url], width: 100, height: 100), hash[:picture_url], rel: "facebox" %>
-                        <% end %>
-                     </div>
-                <% end %>
-            </div>
-
-             <% if the_author_himself(Review.name, @review.id, true, false) %>
+            <% if the_author_himself(Review.name, @review.id, true, false) %>
                 <div class="mt5">
                     <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
                     <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
                 </div>
+            <% end %>
+        </div>
+
+        <div id="static_waterfall_container" class="mt10">
+            <% @review.get_images_with_objects(:waterfall).each do |hash| %>
+                <%= render "reviews/review_waterfall_field", picture_url: hash[:picture_url], item:  hash[:object] %>
             <% end %>
         </div>
     </div>
@@ -54,3 +42,4 @@
 </div>
 
 
+<%= javascript_tag "static_waterfall(3);" %>

@@ -1,0 +1,15 @@
+<div id="<%= item.id.to_s %>" class="clearfix">
+  <div class="vote_fields fr">
+    <% if current_user_has_permission?(:normal_user) && item.can_like? %>
+        <%= link_to "", votes_path(:item_id => item.id, :item_type => item.class.name, :delta => 1), :method => :post, :remote => true,
+                :class => item.fan_ids.include?(current_user.id) ? "vote_button liked" : "vote_button to_like" %>
+    <% end %>
+
+    <span class="votes fl"><%= item.votes %></span>
+
+    <% if current_user_has_permission?(:normal_user) && item.can_hate? %>
+        <%= link_to "", votes_path(:item_id => item.id, :item_type => item.class.name, :delta => -1), :method => :post, :remote => true,
+                :class => item.fan_ids.include?(current_user.id) ? "vote_button hated" : "vote_button to_hate" %>
+    <% end %>
+  </div>
+</div>

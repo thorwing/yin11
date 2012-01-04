@@ -595,5 +595,9 @@ zh-CN:
      by_user: 发表了%{count}个菜谱
      author_followers: 拥有%{count}个粉丝
 
+  votes:
+    like: 喜欢
+    hate: 反对
+
   third_party:
     taobao: 淘宝

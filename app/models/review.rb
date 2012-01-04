@@ -3,9 +3,10 @@ class Review
   include Mongoid::Timestamps
   include AssociatedModels
   include Available
-  include Votable
   include Feedable
   include Imageable
+  include Votable
+  can_like
 
   field :content
 

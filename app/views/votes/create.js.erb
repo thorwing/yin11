@@ -1,24 +1,23 @@
-var vote_fields = $('#<%= @item.id.to_s %>');
+var vote_fields = $('#<%= @item.id.to_s %> .vote_fields');
 vote_fields.find(".votes").text("<%= @votes.to_s %>");
-var up_link = vote_fields.find('a[text=up]');
-if(up_link) {
-    up_link.removeClass("up");
-    up_link.removeClass("up_voted");
-    if('<%= @is_fan %>' == 'true') {
-        up_link.addClass("up_voted");
-    }
-    else {
-        up_link.addClass("up");
-    }
-}
-var down_link = vote_fields.find('a[text=down]');
-if(down_link) {
-    down_link.removeClass("down");
-    down_link.removeClass("down_voted");
-    if('<%= @is_hater %>' == 'true') {
-        down_link.addClass("down_voted");
-    }
-    else {
-        down_link.addClass("down");
-    }
-}
+
+<% if @is_fan %>
+    var link = vote_fields.find(".vote_button.to_like");
+    link.removeClass("to_like");
+    link.addClass("liked");
+<% else %>
+    var link = vote_fields.find(".vote_button.liked");
+    link.removeClass("liked");
+    link.addClass("to_like");
+<% end %>
+
+<% if @is_hater %>
+    var link = vote_fields.find(".vote_button.to_hate");
+    link.removeClass("to_hate");
+    link.addClass("hated");
+<% else %>
+    var link = vote_fields.find(".vote_button.hated");
+    link.removeClass("hated");
+    link.addClass("to_hate");
+<% end %>
+

@@ -4,6 +4,7 @@ a.btn_register{
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-8px -9px;
+ text-indent:-9999px;
 }
 
 a.btn_register:hover{
