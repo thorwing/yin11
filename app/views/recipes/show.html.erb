@@ -1,9 +1,5 @@
-<div class="recipe_block grid_9 to_left mt10">
-    <div class="clearfix box_shadow ">
-        <%= render "users/author_panel", author: @recipe.author %>
-    </div>
-
-    <div class="recipe_info mt20 to_left box_shadow p5">
+<div class="grid_9 to_left">
+    <div class="box_shadow p5">
         <% if @recipe.image.present? %>
             <%= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'fl img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox"  %>
         <% else %>
@@ -11,8 +7,8 @@
         <% end %>
 
         <div class="clearfix">
-            <div class="recipe_detailedInfo fl ml10" style="width:460px">
-                <div class="mt10">
+            <div class="fl ml10 clearfix" style="width:470px">
+                <div>
                     <span class="f28"><%= @recipe.name %></span><br/>
                     <span class="trivial"><%= t("recipes.published_at") %> <%= @recipe.created_at.strftime("%y-%m-%d %H:%M:%S") %></span>
                 </div>
@@ -58,16 +54,14 @@
                 </div>
             </div>
 
-
             <% if @recipe.description.present? %>
-              <div class="clearfix"> </div>
-                <div class="recipe_description mt10 ">
+                <div class="mt5">
                     <b><%= t("recipes.description") %></b><br/>
                     <%= @recipe.description %>
                 </div>
             <% end %>
 
-            <div class="fl mt10  block">
+            <div class="fl mt10 block">
                 <% @recipe.steps.each_slice(3).each do |slice| %>
                     <div class="clearfix">
                      <% slice.each do |s| %>
@@ -94,7 +88,13 @@
      </div>
 </div>
 
-<div class="related_items_block grid_3 mt10 to_right box_shadow p5 overflow_hidden">
-    <%= render "recipes/related_recipes", recipes: @related_recipes %>
-    <%= render "products/related_products", products: @related_products %>
+<div class="grid_3 to_right">
+    <div class="clearfix box_shadow p5">
+        <%= render "users/author_panel", author: @recipe.author %>
+    </div>
+
+    <div class="related_items_block mt10 box_shadow overflow_hidden p5">
+        <%= render "recipes/related_recipes", recipes: @related_recipes %>
+        <%= render "products/related_products", products: @related_products %>
+    </div>
 </div>

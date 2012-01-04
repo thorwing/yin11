@@ -6,6 +6,8 @@ class Recipe
     include Votable
     include Imageable
     include Followable
+    include Votable
+    can_like
 
     #fields
     field :name

@@ -1,4 +1,4 @@
-var vote_fields = $('#<%= @item.id.to_s %> .vote_fields');
+var vote_fields = $('.vote_fields.<%= @item.id.to_s %>');
 vote_fields.find(".votes").text("<%= @votes.to_s %>");
 
 <% if @is_fan %>

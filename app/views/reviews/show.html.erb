@@ -1,10 +1,6 @@
 <% title t("reviews.title"), false%>
 
-<div class="recipe_block grid_9 to_left mt10">
-    <div class="clearfix box_shadow ">
-        <%= render "users/author_panel", author: @review.author %>
-    </div>
-
+<div class="grid_9 to_left">
     <div class="mt20">
         <div class="box_shadow clearfix p5">
             <% if current_user_has_permission? :normal_user %>
@@ -16,13 +12,14 @@
             <p class="ml10" style="width: 600px;">
                 <%= @review.content %>
             </p>
-            <% if the_author_himself(Review.name, @review.id, true, false) %>
-                <div class="mt5">
-                    <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
-                    <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
-                </div>
-            <% end %>
         </div>
+
+        <% if the_author_himself(Album.name, @review.id, true, false) %>
+            <div class="mt10 p5 clearfix">
+                <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
+                <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+            </div>
+        <% end %>
 
         <div id="static_waterfall_container" class="mt10">
             <% @review.get_images_with_objects(:waterfall).each do |hash| %>
@@ -37,8 +34,14 @@
 </div>
 
 
-<div class="related_items_block grid_3 mt10 to_right box_shadow p5 overflow_hidden">
-    <%= render "products/related_products", products: @related_products %>
+<div class="grid_3 to_right">
+    <div class="clearfix box_shadow p5">
+        <%= render "users/author_panel", author: @review.author %>
+    </div>
+
+    <div class="mt10 related_items_block box_shadow overflow_hidden p5">
+        <%= render "products/related_products", products: @related_products %>
+    </div>
 </div>
 
 

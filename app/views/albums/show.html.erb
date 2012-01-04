@@ -1,42 +1,52 @@
 <% title @album.title, false%>
 
 <div class="grid_9 to_left">
-    <div class="clearfix box_shadow ">
-        <%= render "users/author_panel", author: @album.author %>
+    <div class="box_shadow p5">
+        <h1><%= @album.title %><span class="trivial f13"><%= "(#{@album.reviews.size}#{t("albums.items")})" %></span></h1>
+        <p><%= @album.description %></p>
+        <%= render "votes/vote_fields", :item => @album %>
     </div>
 
     <% if the_author_himself(Album.name, @album.id, true, false) %>
-        <div class="mt5">
-            <%= link_to_function t("albums.add_content"), '$(this).next("div").toggle();', class: "button mt5 mb10" %>
-            <div class="clearfix display_none">
+        <div class="box_shadow mt10 p5 clearfix">
+            <div class="hint_box fl" style="width:200px; height:200px;">
+                 <% cover_url = @album.get_cover_url(:waterfall) %>
+                 <% if cover_url.present? %>
+                     <%= image_tag cover_url, width: 200, height:200, class: "cover_image" %>
+                 <% else %>
+                     <%= image_tag "not_found.png", width: 200, height:200, class: "cover_image" %>
+                 <% end %>
+                 <span class="fix_hint"><%= t("albums.cover") %></span>
+            </div>
+
+            <div class="ml10 fl">
+                <div>
+                    <%= link_to t("general.edit"), edit_album_path(@album), class: "button" %>
+                    <%= link_to t("general.delete"), @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "button" %><br/>
+                </div>
+
+                <div class="mt5">
+                    <%= link_to_function t("albums.add_content"), '$("#add_album_review_fields").toggle();', class: "button mt5 mb10" %>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="clearfix display_none mt5" id="add_album_review_fields">
                 <%= render "reviews/review_fields", :review => Review.new %>
             </div>
         </div>
     <% end %>
 
-    <div id="static_waterfall_container">
+    <div id="static_waterfall_container" class="mt10">
         <% @album.items.each do |item| %>
             <%= render "albums/album_waterfall_field", item: item %>
         <% end %>
     </div>
 </div>
 
-<div class="grid_3 to_right box_shadow p5">
-    <h1><%= @album.title %></h1>
-    <p><%= @album.description %></p>
-    <% cover_url = @album.get_cover_url(:waterfall) %>
-    <% if cover_url.present? %>
-        <span class="trivial"><%= t_with_colon("albums.cover") %></span>
-        <div class="center">
-          <%= image_tag cover_url, width: 200, height:200, class: "cover_image" %>
-        </div>
-    <% end %>
-    <% if the_author_himself(Album.name, @album.id, true, false) %>
-        <div class="mt5">
-            <%= link_to t("general.edit"), edit_album_path(@album), class: "button" %>
-            <%= link_to t("general.delete"), @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "button" %><br/>
-        </div>
-    <% end %>
+<div class="grid_3 to_right">
+    <div class="clearfix box_shadow p5">
+        <%= render "users/author_panel", author: @album.author %>
+    </div>
 </div>
 
 <%= javascript_tag "static_waterfall(3);" %>

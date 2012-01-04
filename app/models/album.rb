@@ -2,6 +2,9 @@ class Album
   include Mongoid::Document
   include Mongoid::Timestamps
   include Taggable
+  include Votable
+  can_like
+
   field :title
   field :description
   field :priority, :type => Integer, :default => 0
@@ -21,7 +24,7 @@ class Album
   #validations
   validates_presence_of :title
   validates_length_of :title, :maximum => 20
-  validates_length_of :description, :maximum => 200
+  validates_length_of :description, :maximum => 400
 
   def items
     self.reviews.desc(:votes)
