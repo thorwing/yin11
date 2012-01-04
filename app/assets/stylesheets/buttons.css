@@ -26,21 +26,21 @@ a.btn_register:hover{
  height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-7px -155px;/}
+ background-position:-7px -155px;}
 
 .btn_comment{
  width:115px;
  height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-140px -9px;/}
+ background-position:-140px -9px;}
 
 .btn_comment:hover{
  width:115px;
  height:35px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-140px -47px;/}
+ background-position:-140px -47px;}
 
 .btn_addRecipe{
  width:85px;
