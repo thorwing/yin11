@@ -14,7 +14,7 @@
             </p>
         </div>
 
-        <% if the_author_himself(Album.name, @review.id, true, false) %>
+        <% if the_author_himself(Review.name, @review.id, true, false) %>
             <div class="mt10 p5 clearfix">
                 <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
                 <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
