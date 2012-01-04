@@ -73,12 +73,12 @@ function waterfall(url) {
     });
 };
 
-//function static_waterfall() {
-//    KISSY.use("waterfall", function (S, Waterfall) {
-//        new Waterfall({
-//            container: "#static_waterfall_container",
-//            minColCount: 3,
-//            colWidth: 230
-//        });
-//    });
-//};
+function static_waterfall() {
+    KISSY.use("waterfall", function (S, Waterfall) {
+        new Waterfall({
+            container: "#static_waterfall_container",
+            minColCount: 3,
+            colWidth: 230
+        });
+    });
+};

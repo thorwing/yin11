@@ -1,38 +1,37 @@
 @import "attributes";
+
 /*
     Waterfall Styles
 */
+
+
+/*Static Waterfall*/
+#static_waterfall_container {
+    position: relative;
+}
 
 #waterfall_container {
     position: relative;
 }
 
-#static_waterfall_container {
-    position: relative;
-}
-
-/*for real waterfall, not the frozen(fake) waterfall*/
-#waterfall_container .waterfall {
+/*for static waterfall, the class must be called "ks-waterfall" ... */
+.ks-waterfall {
     position: absolute;
     overflow: hidden;
-}
-
-.waterfall {
-
     display: inline-block;
     width: 220px;
     margin: 0 5px 20px 5px;
 }
 
-.waterfall .image img {
+.ks-waterfall .image img {
     margin: 10px 10px 0 10px;
 }
 
-.waterfall .user_info {
+.ks-waterfall .user_info {
     position: relative;
 }
 
-.waterfall .more_info {
+.ks-waterfall .more_info {
     width:200px;
     height:70px;
     border-style:solid;
