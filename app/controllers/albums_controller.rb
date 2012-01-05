@@ -106,6 +106,19 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def remove
+    @album = Album.find(params[:id])
+    @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
+    if @item.is_a? Review
+      @album.reviews.delete(@item)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @album }
+      format.js
+    end
+  end
+
   def pick_cover
     @album = Album.find(params[:id])
     @item = find_item_by_type_and_id(params[:item_type], params[:item_id])

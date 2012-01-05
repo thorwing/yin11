@@ -519,6 +519,7 @@ zh-CN:
     new_album: 新建专辑
     albums: 专辑
     cover: 封面
+    remove: 从专辑移除
     add_content: 添加内容
     pick_cover: 设为封面
     collect: 收集

@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div class="clearfix mt10">
+<div class="clearfix mt20">
   <% unless @hot_topics.empty? %>
     <h2 class="mt10"><%= t("topics.topics") %></h2>
     <% @hot_topics.each do |topic| %>
@@ -27,28 +27,29 @@
   <% end %>
 </div>
 
-<div class="clearfix mt10">
+<div class="mt20 clearfix ">
   <% unless @daily_stars.empty? %>
     <h2 class="fl"><%= t("users.daily_stars") %></h2><br/>
-    <div class="grid_9 to_left ">
+    <div>
         <% @daily_stars.each do |master| %>
             <%= render master %>
         <% end %>
     </div>
-    <div class="grid_3 to_right" to_right>
-      <% @masters.each do |master| %>
-            <%= link_to image_tag(master.get_avatar(:thumb), width: 48, height: 48), master, class: "more_head_img" %>
-      <% end %>
-      <div class="clearfix"></div>
-      <p class="fr"><%= link_to ">>更多美食达人", masters_path %></p>
+    <div>
+      <%= link_to ">>更多美食达人", masters_path %><br/>
+      <div class="p5">
+          <% @masters.each do |master| %>
+                <div class="fl m1" style="width:48px;height:48px;"><%= link_to image_tag(master.get_avatar(:thumb), width: 48, height: 48), master %></div>
+          <% end %>
+      </div>
     </div>
   <% end %>
 </div>
 
-<div class="clearfix mt10">
+<div class="clearfix mt20">
   <% unless @recommended_albums.empty? %>
     <h2 class="fl"><%= t("albums.recommended") %></h2><br/>
-    <div class="grid_9 to_left ">
+    <div class="grid_8 to_left ">
         <%= render @recommended_albums %>
     </div>
   <% end %>

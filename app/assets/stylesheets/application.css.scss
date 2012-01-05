@@ -94,7 +94,8 @@
 
     .fix_hint, .flex_hint, {
         position: absolute;
-        opacity: 0.7;
+        width: 100%;
+        opacity: 0.8;
         padding: 0 5px;
         /*by default*/
         bottom: 0px;
@@ -113,12 +114,6 @@
         display: none;
     }
 }
-
-/*
-    Larget Item
-*/
-
-.large_item .slice {overflow:hidden;}
 
 /*
     Menu Styles

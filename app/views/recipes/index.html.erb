@@ -3,8 +3,15 @@
     <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 230 , tag: params[:tag]%>
 </div>
 
-<div class="grid_3 box_shadow to_right p5">
+<div class="grid_3 to_right">
+  <div class="box_shadow p5">
+    <% if current_user_has_permission? :normal_user %>
+        <%= link_to t("recipes.new"), new_recipe_path, class: "button" %>
+        <hr/>
+    <% end %>
+
     <%= render "tags/tags_list", hot_tags: @hot_tags, records: @records %>
+  </div>
 </div>
 
 

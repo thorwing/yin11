@@ -134,6 +134,7 @@ Yin11::Application.routes.draw do
   resources :albums do
     member do
       put :collect
+      put :remove
       put :pick_cover
     end
   end

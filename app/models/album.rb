@@ -45,4 +45,12 @@ class Album
     image_url
   end
 
+  def get_image_urls(limit, version = nil)
+    #the version may not actually be the version of cover to use, but we use it to compare. e.g. :waterfall instead of thumb
+    cover_url = get_cover_url(version)
+    #get one more in case it's cover
+    image_urls = self.reviews.limit(limit + 1).map{|r| r.get_review_image_url(version)}.reject{|url| url == cover_url}
+    image_urls.take(limit)
+  end
+
 end

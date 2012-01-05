@@ -4,3 +4,13 @@
     <%= paginate @albums %>
     <%= render @albums %>
 </div>
+
+<div class="grid_3 to_right">
+  <div class="box_shadow p5">
+      <% if current_user_has_permission? :normal_user %>
+        <%= link_to t("albums.new"), new_album_path, class: "button" %>
+        <hr/>
+      <% end %>
+  </div>
+</div>
+

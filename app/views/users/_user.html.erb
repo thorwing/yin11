@@ -1,23 +1,39 @@
-<div class="master box_shadow mt5 mb5 p5 fl">
-    <div class="more_info_container fl">
-      <%= link_to image_tag(user.get_avatar(:thumb)), user %><br/>
-      <div class="more_info box_shadow display_none p5" >
-        <span><%= t("reviews.by_user", count: user.reviews.size) %></span><br/>
-        <span><%= t("recipes.by_user", count: user.recipes.size) %></span><br/>
-        <span><%= t("recipes.author_followers", count: user.followers.size) %></span>
-        <div class="fr"><%= render "relationships/follow_field", target: user %><br/> </div>
-      </div>
+<div class="master box_shadow mt5 mb5 p5 fl clearfix" style="height: 120px;">
+    <div class="fl clearfix" style="width: 100px;">
+        <%= link_to image_tag(user.get_avatar(:thumb)), user %><br/>
+        <div class="mt2"><%= render "relationships/follow_field", :target => user %></div>
     </div>
-    <div class="desc fl f12">
-      <span class="f12"><%= link_to user.login_name, user %></span><br/>
-      <%= user.profile.biography %>
+    <div class="fl ml10 clearfix" style="width:502px;">
+        <%= link_to user.login_name, user_path(user) %><br/>
+         <div class="clearfix">
+            <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+                <%= user.followers.count %><br/>
+                <%= link_to t("user_basic.fans"), user_path(user, mode: "default") %>
+            </div>
+            <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+                <%= user.reviews.count %><br/>
+                <%= link_to t("reviews.reviews"), user_path(user, mode: "reviews") %>
+            </div>
+            <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+                <%= user.albums.count%><br/>
+                <%= link_to t("albums.albums"), user_path(user, mode: "albums") %>
+            </div>
+            <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+                <%= user.recipes.count %><br/>
+                <%= link_to t("recipes.recipes"), user_path(user, mode: "recipes") %>
+            </div>
+        </div>
+        <div><%= user.profile.biography %></div>
     </div>
-    <div class="feeds fr mt15">
-        <% user.get_recent_feeds(3).each do |feed| %>
-          <div class="hint_box ml2 fl overflow_hidden" style="width: 100px; height: 100px;">
-            <%= link_to image_tag(feed.picture_url(:thumb)), feed.item %>
-            <span class="flex_hint b_black white f11"><%= truncate_content(feed.content, 15) %></span>
-          </div>
-        <% end %>
+
+    <div class="fl ml10 mt20 clearfix" style="width:328px;">
+        <div class="fr">
+            <% user.get_recent_feeds(4).each do |feed| %>
+              <div class="hint_box m1 fl" style="width: 80px; height: 80px;">
+                <%= link_to image_tag(feed.picture_url(:thumb), width:80, height:80), feed.item %>
+                <span class="flex_hint b_white black f11"><%= truncate_content(feed.content, 15) %></span>
+              </div>
+            <% end %>
+        </div>
     </div>
 </div>
