@@ -61,12 +61,12 @@ class Review
   end
 
   def get_images_with_objects(version = nil)
-    images = self.images.map{|i| {picture_url: i.picture_url(version), object: nil }} || []
+    images = self.images.map{|i| {picture_url: i.picture_url(version), picture_height: (version == :waterfall && i.waterfall_height.present?) ? i.waterfall_height.to_i : 200, object: nil }} || []
 
     if self.products.size > 0
-      images += self.products.map {|p| {picture_url: p.get_image_url(version), object: p} }
+      images += self.products.map {|p| {picture_url: p.get_image_url(version), picture_height: p.get_image_height(version), object: p} }
     elsif self.recipe
-      images << {picture_url: self.recipe.get_image_url(version), object: self.recipe}
+      images << {picture_url: self.recipe.get_image_url(version), picture_height: self.recipe.get_image_height(version), object: self.recipe}
     end
 
     images

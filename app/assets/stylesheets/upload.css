@@ -8,6 +8,7 @@
     height: 40px; position:relative; width: 100%;}
 
 .qq-upload-button {
+    vertical-align: top;
     display: inline-block;
     width: 55px;
     height: 26px;

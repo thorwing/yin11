@@ -1,7 +1,7 @@
 <div class="ks-waterfall box_shadow">
     <% if defined?(item) && item %>
         <div class="center">
-            <%= link_to image_tag(picture_url), item %>
+            <%= link_to image_tag(picture_url, height: picture_height, class: "mt10"), item, class: "image" %>
         </div>
         <div class="ml10 mr10 clearfix">
             <% if (item.respond_to? :name) %>
@@ -16,7 +16,7 @@
         </div>
     <% else %>
         <div class="center">
-            <%= image_tag(picture_url) %>
+            <div class="image"><%= image_tag(picture_url, height: picture_height) %></div>
         </div>
     <% end %>
 </div>

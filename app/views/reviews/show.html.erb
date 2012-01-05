@@ -1,33 +1,30 @@
 <% title t("reviews.title"), false%>
 
 <div class="grid_9 to_left">
-    <div class="mt20">
-        <div class="box_shadow clearfix p5">
-            <% if current_user_has_permission? :normal_user %>
-                <div class="fr" align="right">
-                  <%= render "albums/collect_fields", :item => @review %>
-                  <%= render "votes/vote_fields", :item => @review %>
-                </div>
-            <% end %>
-            <p class="ml10" style="width: 600px;">
-                <%= @review.content %>
-            </p>
-        </div>
-
-        <% if the_author_himself(Review.name, @review.id, true, false) %>
-            <div class="mt10 p5 clearfix">
-                <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
-                <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+    <div class="box_shadow clearfix p5">
+        <% if current_user_has_permission? :normal_user %>
+            <div class="fr" align="right">
+              <%= render "albums/collect_fields", :item => @review %>
+              <%= render "votes/vote_fields", :item => @review %>
             </div>
         <% end %>
-
-        <div id="static_waterfall_container" class="mt10">
-            <% @review.get_images_with_objects(:waterfall).each do |hash| %>
-                <%= render "reviews/review_waterfall_field", picture_url: hash[:picture_url], item:  hash[:object] %>
-            <% end %>
-        </div>
+        <p class="ml10" style="width: 600px;">
+            <%= @review.content %>
+        </p>
     </div>
 
+    <% if the_author_himself(Review.name, @review.id, true, false) %>
+        <div class="mt10 p5 clearfix">
+            <%= link_to t("general.edit"), edit_review_path(@review), class: "button" %>
+            <%= link_to t("general.delete"), @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+        </div>
+    <% end %>
+
+    <div id="static_waterfall_container" class="mt10">
+        <% @review.get_images_with_objects(:waterfall).each do |hash| %>
+            <%= render "reviews/review_waterfall_field", picture_url: hash[:picture_url], picture_height: hash[:picture_height], item:  hash[:object] %>
+        <% end %>
+    </div>
     <div class="mt10">
         <%= render "comments/comments", :item => @review %>
     </div>

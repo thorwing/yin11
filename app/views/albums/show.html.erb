@@ -44,7 +44,9 @@
 </div>
 
 <div class="grid_3 to_right">
-    <%= render "users/author_panel", author: @album.author %>
+    <div class="clearfix box_shadow p5">
+        <%= render "users/author_panel", author: @album.author %>
+    </div>
 </div>
 
 <%= javascript_tag "static_waterfall(3);" %>

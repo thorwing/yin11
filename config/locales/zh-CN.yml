@@ -60,7 +60,7 @@ zh-CN:
     lock: 锁定
     unlock: 解锁
     upload: 上传
-    more: >>更多
+    more: "[更多]"
     preview: 预览
     author: 作者
     report: "报错/纠正"
@@ -74,7 +74,7 @@ zh-CN:
     are_you_sure_to_disable_enable: "确定要禁用/启用邮件吗？"
     javascript_please: 请启用Javascript，否则本站的一些功能将无法使用
     mercury_edit: “所见即所得”编辑
-    details: >>详细
+    details: "[详细]"
 
   flash:
     notice: 通知
@@ -308,7 +308,7 @@ zh-CN:
     role_9: 管理员
 
   personal:
-    default_mode: 美食发现
+    default_mode: 美食动态
     feeds_mode: 我的动态
     reviews_mode: 我的分享
     recipes_mode: 我的菜谱
