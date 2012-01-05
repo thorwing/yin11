@@ -289,6 +289,7 @@ zh-CN:
 
   users:
     index: 所有用户
+    users: 用户
     new: 新建用户
     edit: 编辑用户
     login_name: 登录名

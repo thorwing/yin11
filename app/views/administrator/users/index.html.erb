@@ -1,5 +1,7 @@
 <% title t("users.index") %>
 
+<%= User.all.size.to_s %> <%= t("users.users") %>
+
 <table>
     <tr>
         <th><%= t("users.login_name") %></th>
