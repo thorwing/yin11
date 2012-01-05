@@ -5,24 +5,7 @@
     </div>
     <div class="fl ml10 clearfix" style="width:502px;">
         <%= link_to user.login_name, user_path(user) %><br/>
-         <div class="clearfix">
-            <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-                <%= user.followers.count %><br/>
-                <%= link_to t("user_basic.fans"), user_path(user, mode: "default") %>
-            </div>
-            <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-                <%= user.reviews.count %><br/>
-                <%= link_to t("reviews.reviews"), user_path(user, mode: "reviews") %>
-            </div>
-            <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-                <%= user.albums.count%><br/>
-                <%= link_to t("albums.albums"), user_path(user, mode: "albums") %>
-            </div>
-            <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-                <%= user.recipes.count %><br/>
-                <%= link_to t("recipes.recipes"), user_path(user, mode: "recipes") %>
-            </div>
-        </div>
+        <%= render "users/user_statics", user: user %>
         <div><%= user.profile.biography %></div>
     </div>
 
