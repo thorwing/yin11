@@ -13,52 +13,47 @@ class FeedsManager
     #if item.respond_to?(:enabled)
     #  return nil unless item.enabled
     #end
+    if item.respond_to?(:products) && item.products
+      item.products.each do |product|
+        #feed is an embedded model, create a new feed everytime
+        product.feeds << initialize_feed(item)
+        product.save!
 
-    #TODO
-    # decides using "product" or "products"
-    products = []
-    if item.respond_to?(:product) && item.product.present?
-      products = [item.product]
-    elsif item.respond_to?(:products) && item.products.present?
-      products = item.products
-    end
+        #push feed to it's vendor'
+        product.vendor.feeds << initialize_feed(item)
+        product.vendor.save!
 
-    products.each do |product|
-      #feed is an embedded model, create a new feed everytime
-      product.feeds << initialize_feed(item)
-      product.save!
-
-      #push feed to it's vendor'
-      product.vendor.feeds << initialize_feed(item)
-      product.vendor.save!
-
-      product.tags.each do |t|
-        tag = Tag.find_or_initialize_by(:name => t)
-        tag.feeds << initialize_feed(item)
-        tag.save!
+        product.tags.each do |t|
+          tag = Tag.find_or_initialize_by(:name => t)
+          tag.feeds << initialize_feed(item)
+          tag.save!
+        end
       end
     end
 
-    if item.respond_to?(:recipe) && item.recipe.present?
-      item.recipe.feeds << initialize_feed(item)
-      item.recipe.save!
+    if item.respond_to?(:recipes) && item.recipes
+      item.recipes.each do |recipe|
+        #feed is an embedded model, create a new feed everytime
+        recipe.feeds << initialize_feed(item)
+        recipe.save!
 
-      item.recipe.tags.each do |t|
-        tag = Tag.find_or_initialize_by(:name => t)
-        tag.feeds << initialize_feed(item)
-        tag.save!
+        recipe.tags.each do |t|
+          tag = Tag.find_or_initialize_by(:name => t)
+          tag.feeds << initialize_feed(item)
+          tag.save!
+        end
       end
     end
 
-    #push feed to it's author
-    if item.respond_to?(:author) && item.author.present?
+    if item.respond_to?(:author) && item.author
+      #push feed to it's author
       new_feed = initialize_feed(item)
       item.author.feeds << new_feed
       item.author.save!
     end
 
-    #push feed to all tags it contains
-    if item.respond_to?(:tags)  && item.tags.present?
+    if item.respond_to?(:tags) && item.tags
+      #push feed to all tags it contains
       item.tags.each do |t|
         tag = Tag.find_or_initialize_by(:name => t)
         tag.feeds << initialize_feed(item)

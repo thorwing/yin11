@@ -127,7 +127,10 @@ Yin11::Application.routes.draw do
   resources :steps
 
   resources :recipes do
-    collection {get :more}
+    collection do
+      get :more
+      get :browse
+    end
     member {post :mark}
   end
 

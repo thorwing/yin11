@@ -12,6 +12,7 @@
 //= require_tree .
 
 var products_limit = 3;
+var recipes_limit = 3;
 var images_limit = 3;
 
 

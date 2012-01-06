@@ -156,6 +156,14 @@ class RecipesController < ApplicationController
     end
   end
 
+  def browse
+    @recipes = Recipe.all
+
+    respond_to do |format|
+      format.json { head :ok }
+    end
+  end
+
   #for non-action methods
   private
 

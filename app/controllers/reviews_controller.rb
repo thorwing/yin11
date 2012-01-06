@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
 
     tags = []
     tags += @review.products.inject([]){|memo, p| memo + p.tags} if @review.products
-    tags += @review.recipe.tags if @review.recipe
+    tags += @review.recipes.inject([]){|memo, r| memo + r.tags} if @review.recipes
 
     @related_products = Product.tagged_with(tags).limit(RELATED_RPODUCTS_LIMIT).reject{|p| p == @product}
 

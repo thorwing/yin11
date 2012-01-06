@@ -17,7 +17,7 @@ class Review
 
   #relationships
   has_and_belongs_to_many :products
-  belongs_to :recipe
+  has_and_belongs_to_many :recipes
   embeds_many :comments
   belongs_to :author, :class_name => "User"
   has_many :images
@@ -42,8 +42,8 @@ class Review
     if self.images.empty?
       if self.products.size > 0
         return self.products.first
-      elsif self.recipe
-        return self.recipe
+      elsif self.recipes.size > 0
+        return self.recipes.first
       end
     end
 
@@ -65,8 +65,8 @@ class Review
 
     if self.products.size > 0
       images += self.products.map {|p| {picture_url: p.get_image_url(version), picture_height: p.get_image_height(version), object: p} }
-    elsif self.recipe
-      images << {picture_url: self.recipe.get_image_url(version), picture_height: self.recipe.get_image_height(version), object: self.recipe}
+    elsif self.recipes.size > 0
+      images += self.recipes.map {|r| {picture_url: r.get_image_url(version), picture_height: r.get_image_height(version), object: r} }
     end
 
     images

@@ -1,0 +1,20 @@
+<script type="text/javascript">
+  function browse_recipes(name_field) {
+    var name = $(name_field).val();
+    $.ajax({
+        url: "/recipes/browse",
+        dataType: "json",
+        json: "jsoncallback",
+        success: function(data){
+            alert("back");
+        }
+    });
+  };
+</script>
+
+<div id="recipe_linker" class="display_none">
+    <%= text_field_tag "recipe_name", "", onchange: 'browse_recipes(this);' %>
+    <div class="recipes_list" style="min-height: 300px;">
+
+    </div>
+</div>

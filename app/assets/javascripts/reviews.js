@@ -15,6 +15,18 @@ function pre_link_product(link)
     return true;
 };
 
+function link_recipe()
+{
+    var count = $('#images_container .recipe').size();
+    if (count >= recipes_limit) {
+        alert("最多只能添加3份菜谱");
+        return;
+    }
+
+    jQuery.facebox($('#recipe_linker').html());
+};
+
+
 $(function(){
     $('#submit_review').click(function(e){
         var text = $('#review_content').val();
