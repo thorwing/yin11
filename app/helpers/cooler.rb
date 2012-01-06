@@ -10,7 +10,7 @@ class Cooler
   end
 
   def self.nervous_reviewer?(user, content)
-    reviews = user.reviews.where(:created_at.gt => COMMENTS_COOLDOWM_INTERVAL.seconds.ago, :content => content).to_a
+    reviews = user.reviews.where(:created_at.gt => 5.seconds.ago, :content => content).to_a
     reviews.size >= 1
   end
 end

@@ -1,6 +1,6 @@
 <div class="ks-waterfall box_shadow" data-id="<%= item.id.to_s %>" >
     <div class="hint_box" align="right">
-        <%= link_to image_tag(item.get_review_image_url(:waterfall), height: item.get_review_image_height(:waterfall)), item, class: "image" %>
+        <%= link_to image_tag(item.get_review_image_url(:waterfall), height: item.get_review_image_height(:waterfall)), item, class: "image" if item.get_review_image_url(:waterfall).present? %>
         <% if the_author_himself(Album.name, @album.id, false, false) %>
           <span class="flex_hint top_right">
             <span class="ml20 fl"><%= link_to t("albums.remove"), remove_album_path(@album, item_id: item.id, item_type: item.class.name), method: :put, class: "button"  %></span>
