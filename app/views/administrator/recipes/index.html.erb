@@ -17,8 +17,8 @@
         <td><%= recipe.ingredients.size %></td>
         <td><%= recipe.steps.size %></td>
         <td><%= recipe.author.login_name %></td>
-        <td><%= link_to t("general.edit"), edit_recipe_path(recipe), :class => "button" %></td>
-        <td><%= link_to t("general.delete"), [:administrator, recipe], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %></td>
+        <td><%= link_to "", edit_recipe_path(recipe), :class => "modify_btn" %></td>
+        <td><%= link_to "", [:administrator, recipe], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %></td>
       </tr>
     <% end %>
     </table>

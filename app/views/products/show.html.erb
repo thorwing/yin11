@@ -36,13 +36,13 @@
                 <% if current_user_has_permission? :normal_user %>
                     <%= render "votes/vote_fields", :item => @product %>
                 <% end %>
-                <%= new_tab_link_to t("products.go_to_buy"), {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "mt5 button"%>
+                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "go_buy_btn"%>
             </div>
 
             <% if current_user_has_permission? :administrator %>
                 <div class="mt5">
-                    <%= link_to t("general.edit"), edit_product_path(@product), :class => "button" %>
-                    <%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+                    <%= link_to "", edit_product_path(@product), :class => "modify_btn" %>
+                    <%= link_to "", @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
                 </div>
             <% end %>
         </div>

@@ -4,16 +4,16 @@
         <%= render "albums/has_collected", album: album %>
     <% else %>
         <div class="to_collect more_info_container">
-            <%= link_to t("albums.collect"), "", class: "button", onclick: "return false;" %>
+            <%= link_to "", "", class: "collect_btn", onclick: "return false;" %>
             <div class="more_info display_none box_shadow" style="width:300px;" align="left">
-                <%= link_to t("albums.collect"), "", class: "button", onclick: "return false;" %><%= t("albums.collect_to_album") %><br/>
+                <%= link_to "", "", class: "collect_btn", onclick: "return false;" %><%= t("albums.collect_to_album") %><br/>
                 <div class="mt10 p5 mb20">
                     <% current_user.albums.each do |album| %>
                       <span class="ml5 mr5 display_inline_block"><%= link_to album.title, collect_album_path(album, item_type: item.class.name, item_id: item.id.to_s), method: :put, remote: true %></span>
                     <% end %>
                 </div>
                 <div class="p5">
-                  <%= link_to t("albums.new"), "", class: "button" %>
+                  <%= link_to "", "", class: "add_album_btn" %>
                 </div>
             </div>
         </div>

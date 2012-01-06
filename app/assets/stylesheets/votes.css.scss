@@ -2,20 +2,11 @@
 	Vote-Fields-Styles
 */
 
-.vote_fields {
-    .vote_button {float: left; display: block; width: 16px; height: 16px; margin:0px; padding: 0px; line-height:0px; text-indent:-9999px;}
-
-    .vote_button.to_like { background: image-url('good_thumb.png') center no-repeat; opacity: 0.5;}
-    .vote_button.to_like:hover { background: image-url('good_thumb.png') center no-repeat; opacity: 0.7;}
-    .vote_button.liked { background: image-url('good_thumb.png') center no-repeat; }
-
-    .vote_button.to_hate { background: image-url('bad_thumb.png') center no-repeat; opacity: 0.5;}
-    .vote_button.to_hate:hover { background: image-url('bad_thumb.png') center no-repeat; opacity: 0.7;}
-    .vote_button.hated { background: image-url('bad_thumb.png') center no-repeat; }
-
-
-    .votes {font-size:16px; font-family:"Comic Sans MS", cursive;}
-}
+/*.vote_fields {*/
+    /*.vote_button.to_hate { background: image-url('bad_thumb.png') center no-repeat; opacity: 0.5;}*/
+    /*.vote_button.to_hate:hover { background: image-url('bad_thumb.png') center no-repeat; opacity: 0.7;}*/
+    /*.vote_button.hated { background: image-url('bad_thumb.png') center no-repeat; }*/
+/*}*/
 
 /*.vote_fields .vote_button.down_voted { background: image-url('voted_down_button.png') center no-repeat; text-indent:-9999px;}*/
 /*.vote_fields .vote_button.down:hover { background: image-url('voted_down_button.png') center no-repeat; text-indent:-9999px;}*/
