@@ -16,7 +16,7 @@
                 <div class="mt10">
                     <% if current_user_has_permission? :normal_user %>
                         <div class="mt5">
-                            <%= render "relationships/follow_field", :target => @recipe %>
+                            <%= render "votes/vote_fields", :item => @recipe %>
                             <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
                             <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
                         </div>

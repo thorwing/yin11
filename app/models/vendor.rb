@@ -1,6 +1,5 @@
 class Vendor
   include Mongoid::Document
-  include Followable
 
   field :name
   field :is_tmall, :type => Boolean

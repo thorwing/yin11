@@ -4,9 +4,6 @@
   <span class="trivial"><%= @vendor.mall.name %></span><br/>
   <%= "#{@vendor.products.count} #{t("products.products")}" %><br/>
   <%= new_tab_link_to t("vendors.go_to_see"), @vendor.mall.entry_url, class: "button" %>
-  <% if current_user_has_permission? :normal_user %>
-    <%= render "relationships/follow_field", :target => @vendor %>
-  <% end %>
 </div>
 <div class="clearfix"></div>
 

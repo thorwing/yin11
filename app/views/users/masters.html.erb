@@ -19,22 +19,24 @@
 
 </div>
 
-<div class="grid_9 mt20 to_left">
+<div class="mt20 to_left to_right">
   <% @masters.each do |master| %>
     <%= render "users/user", user: master %>
   <% end %>
 </div>
 
-<div class="grid_3 mt20 to_right">
+<div class="grid_3 mt20 to_left">
     <h3>今日红榜</h3>
     <% @hard_workers.each do |user| %>
-        <div class="clearfix mt10">
-            <div class="fl mr5"><%= link_to image_tag(user.get_avatar(:thumb), width: 48, height: 48), user %></div>
-            <span><%= link_to user.login_name, user %></span><br/>
-        </div>
-        <div>
-            <span class="trivial"><%= t("reviews.by_user", count: user.reviews.count) %></span><br/>
-            <span class="trivial"><%= t("recipes.by_user", count: user.recipes.count) %></span>
+        <div class="fl clearfix mt10" style="width:150px;">
+            <div>
+                <%= link_to image_tag(user.get_avatar(:thumb), width: 48, height: 48), user %><br/>
+                <%= link_to user.login_name, user %>
+            </div>
+            <div>
+                <span class="trivial"><%= t("reviews.by_user", count: user.reviews.count) %></span><br/>
+                <span class="trivial"><%= t("recipes.by_user", count: user.recipes.count) %></span>
+            </div>
         </div>
     <% end %>
 </div>

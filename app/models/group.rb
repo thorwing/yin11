@@ -2,7 +2,6 @@ class Group
   include Mongoid::Document
   include Mongoid::Timestamps
   include Taggable
-  include Followable
 
   field :name
   field :description

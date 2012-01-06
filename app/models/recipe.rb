@@ -5,7 +5,6 @@ class Recipe
     include SilverSphinxModel
     include Votable
     include Imageable
-    include Followable
     include Votable
     can_like
 
