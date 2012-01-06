@@ -36,7 +36,7 @@
                 <% if current_user_has_permission? :normal_user %>
                     <%= render "relationships/follow_field", :target => @product %>
                 <% end %>
-                <%= new_tab_link_to t("products.go_to_buy"), {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "mt5 button"%>
+                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "go_buy_btn"%>
             </div>
 
             <% if current_user_has_permission? :administrator %>

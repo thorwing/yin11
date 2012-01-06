@@ -317,7 +317,7 @@ a.btn_register:hover{
  height:25px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-425px -142px;
+ background-position:-425px -141px;
  text-indent: -9999px;
 }
 
@@ -327,6 +327,24 @@ a.btn_register:hover{
  background-image: url(buttons.png);
  background-repeat:no-repeat;
  background-position:-425px -167px;
+ text-indent: -9999px;
+}
+
+.go_buy_btn{ float: left;
+ width:51px;
+ height:25px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-490px -310px;
+ text-indent: -9999px;
+}
+
+.go_buy_btn:hover{float: left;
+ width:51px;
+ height:25px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-490px -338px;
  text-indent: -9999px;
 }
 
@@ -353,7 +371,7 @@ a.btn_register:hover{
  height:25px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-489px -142px;
+ background-position:-489px -141px;
  text-indent: -9999px;
 }
 
