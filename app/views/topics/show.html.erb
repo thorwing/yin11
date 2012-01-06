@@ -7,7 +7,7 @@
 <% if current_user_has_permission? :editor %>
     <div class="mt10">
         <%= link_to t("general.mercury_edit"), "/editor" + request.path, id: "edit_link", data: {save_url: mercury_update_topic_path(@topic)}, :class => "button" %>
-        <%= link_to t("general.edit"), edit_topic_path(@topic), :class => "button" %>
-        <%= link_to t("general.delete"), @topic, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+        <%= link_to "", edit_topic_path(@topic), :class => "modify_btn" %>
+        <%= link_to "", @topic, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
     </div>
 <% end %>

@@ -23,8 +23,8 @@
 
 
 <% if current_user_has_permission?(:editor) %>
-    <%= link_to t("general.edit"), edit_vendor_path(@vendor), :class => "button" %>
-    <%= link_to t("general.delete"), @vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %><br/>
+    <%= link_to "", edit_vendor_path(@vendor), :class => "modify_btn" %>
+    <%= link_to "", @vendor, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %><br/>
     <%= link_to t("vendors.new_product"), new_product_path(@product), :class => "button" %>
     <br/>
 <% end %>

@@ -1,6 +1,6 @@
 <% if current_user %>
     <span class="follow_field {{user_id}}">
-        <a href="/relationships?target_id={{user_id}}&amp;target_type=User" class="button new_relationship" data-method="post" data-remote="true" rel="nofollow"><%= t("relationships.new") %></a>
-        <a href="/relationships/cancel?target_id={{user_id}}&amp;target_type=User" class="button cancel_relationship hide" data-method="put" data-remote="true" rel="nofollow"><%= t("relationships.cancel") %></a>
+        <a href="/relationships?target_id={{user_id}}&amp;target_type=User" class="add_relationship_btn" data-method="post" data-remote="true" rel="nofollow"><%= "" %></a>
+        <a href="/relationships/cancel?target_id={{user_id}}&amp;target_type=User" class="cancel_relationship_btn" data-method="put" data-remote="true" rel="nofollow"><%= "" %></a>
     </span>
 <% end %>

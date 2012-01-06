@@ -3,8 +3,8 @@
         <%= link_to image_tag(item.get_review_image_url(:waterfall), height: item.get_review_image_height(:waterfall)), item, class: "image" %>
         <% if the_author_himself(Album.name, @album.id, false, false) %>
           <span class="flex_hint top_right">
-            <span class="ml20 fl"><%= link_to t("albums.remove"), remove_album_path(@album, item_id: item.id, item_type: item.class.name), method: :put, class: "button"  %></span>
-            <span class="fr"><%= link_to t("albums.pick_cover"), pick_cover_album_path(@album, item_id: item.id, item_type: item.class.name), method: :put, remote: true, class: "button" %></span>
+            <span class="ml20 fl"><%= link_to "", remove_album_path(@album, item_id: item.id, item_type: item.class.name), method: :put, class: "delete_from_album_btn"  %></span>
+            <span class="fr"><%= link_to "", pick_cover_album_path(@album, item_id: item.id, item_type: item.class.name), method: :put, remote: true, class: "set_cover_btn" %></span>
           </span>
         <% end %>
     </div>

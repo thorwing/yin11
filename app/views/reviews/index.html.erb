@@ -5,7 +5,7 @@
 </div>
 
 <% if current_user_has_permission? :normal_user %>
-    <%= link_to_function t("reviews.new"), '$(this).next("div").toggle();', class: "button m5" %>
+    <%= link_to_function "", '$(this).next("div").toggle();', class: "add_review_btn" %>
     <div class="clearfix display_none">
         <div class="grid_9 to_left">
             <%= render "reviews/review_fields", :review => Review.new %>

@@ -17,14 +17,14 @@
                     <% if current_user_has_permission? :normal_user %>
                         <div class="mt5">
                             <%= render "relationships/follow_field", :target => @recipe %>
-                            <%= link_to t("recipes.want"), "", class: "mark_recipe button", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
-                            <%= link_to t("recipes.did"), "", class: "mark_recipe button", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
+                            <%= link_to "", "", class: "want_do_btn", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
+                            <%= link_to "", "", class: "done_btn", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
                         </div>
                     <% end %>
                     <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
                         <div class="mt5">
-                          <%= link_to t("general.edit"), edit_recipe_path(@recipe), class: "button" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
-                            <%= link_to t("general.delete"), @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+                          <%= link_to "", edit_recipe_path(@recipe), class: "modify_btn" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
+                            <%= link_to "", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
                         </div>
                     <% end %>
                 </div>

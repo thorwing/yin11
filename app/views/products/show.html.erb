@@ -41,8 +41,8 @@
 
             <% if current_user_has_permission? :administrator %>
                 <div class="mt5">
-                    <%= link_to t("general.edit"), edit_product_path(@product), :class => "button" %>
-                    <%= link_to t("general.delete"), @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "button" %>
+                    <%= link_to "", edit_product_path(@product), :class => "modify_btn" %>
+                    <%= link_to "", @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
                 </div>
             <% end %>
         </div>
