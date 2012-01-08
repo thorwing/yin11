@@ -44,7 +44,7 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(params[:topic])
 
-    ImagesHelper.process_uploaded_images(@topic, params[:images])
+    #ImagesHelper.process_uploaded_images(@topic, params[:images])
 
     respond_to do |format|
       if @topic.save
@@ -62,7 +62,7 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
 
-    ImagesHelper.process_uploaded_images(@topic, params[:images])
+    #ImagesHelper.process_uploaded_images(@topic, params[:images])
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
