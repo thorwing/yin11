@@ -29,15 +29,14 @@
             <% end %>
 
             <!--recipe linker-->
-            <% if false %>
-                <% if review.recipe_ids.empty? %>
-                     <div class="fl mr10">
-                        <%= link_to_function image_tag("add_recipe.png", border: 0, width: 55, height:26), "link_recipe()", class: "lighter_touch"%>
-                    </div>
-                <% else %>
-                    <%= hidden_field_tag "review[recipe_ids][]", review.recipe_ids.first %>
-                <% end %>
+            <% if review.recipe_ids.empty? %>
+                 <div class="fl mr10">
+                    <%= link_to_function image_tag("add_recipe.png", border: 0, width: 55, height:26), "link_recipe()", class: "lighter_touch"%>
+                </div>
+            <% else %>
+                <%= hidden_field_tag "review[recipe_ids][]", review.recipe_ids.first %>
             <% end %>
+
 
             <!--submit and sync to 3rd-->
             <div class = "fr">

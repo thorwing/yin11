@@ -4,7 +4,8 @@ class TagsController < ApplicationController
   def query
     query_str = params[:q]
     if query_str.present?
-      @tags = Tag.where(name: /#{query_str}?/).to_a #CacheManager.all_tags_with_weight.select {|t| t[0] =~ /#{query}?/}
+      # not case sensitive
+      @tags = Tag.where(name: /#{query_str}/i).to_a #CacheManager.all_tags_with_weight.select {|t| t[0] =~ /#{query}?/}
     else
       @tags = Tag.all.to_a
     end

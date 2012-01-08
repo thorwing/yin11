@@ -1,20 +1,17 @@
 <script type="text/javascript">
   function browse_recipes(name_field) {
+    $(name_field).nextAll("div").html('');
+
     var name = $(name_field).val();
     $.ajax({
         url: "/recipes/browse",
-        dataType: "json",
-        json: "jsoncallback",
-        success: function(data){
-            alert("back");
-        }
+        data: {name: name}
     });
   };
 </script>
 
 <div id="recipe_linker" class="display_none">
-    <%= text_field_tag "recipe_name", "", onchange: 'browse_recipes(this);' %>
-    <div class="recipes_list" style="min-height: 300px;">
-
+    <%= "请输入菜谱的名字：" %><%= text_field_tag "recipe_name", "", onchange: 'browse_recipes(this);' %><br/>
+    <div id="recipe_hints_container" style="min-height: 200px;">
     </div>
 </div>

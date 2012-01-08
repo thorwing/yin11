@@ -18,8 +18,8 @@ module ExternalLinkHelper
       name = args.first
       options = args[1] || {}
       html_options = args[2] || {rel: 'nofollow'}
-
       if options.is_a? String
+
         if (is_external_link? request.host, options)
           @external = true
         end

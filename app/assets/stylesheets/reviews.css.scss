@@ -1,0 +1,25 @@
+#review_fields {
+    height:auto;
+
+    .char_aware { width:665px; height: 90px; }
+    .button {float: right; width:116px; height: 32px; background-position: 0 0; font-size: 20px;  }
+}
+
+#images_container {
+    .image, .product, .recipe {
+        position: relative;
+        margin-right: 10px;
+    }
+
+    .del_link {
+        position: absolute;
+        right: -5px;
+        top: 0px;
+    }
+
+    .thumbnail{
+        width: 100px;
+        height: 100px;
+    }
+}
+

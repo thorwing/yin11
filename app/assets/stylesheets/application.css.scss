@@ -131,8 +131,9 @@ ul.menu li {
     margin-right: 5px;
 }
 
-.p5 {padding: 5px;}
+.p1 {padding: px;}
 .p2 {padding: 2px;}
+.p5 {padding: 5px;}
 .p10 {padding: 10px;}
 
 .pt5 {padding-top: 5px;}
@@ -360,13 +361,4 @@ body #main { height: auto; padding-bottom: 260px;}
 	text-decoration:underline;
 }
 
-.image, .product {
-    position: relative;
-    margin-right: 10px;
-    .del_link {
-        position: absolute;
-        right: -5px;
-        top: 0px;
-    }
-}
 

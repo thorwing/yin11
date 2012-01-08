@@ -1,8 +1,0 @@
-#review_fields { height:auto;}
-#review_fields .char_aware { width:665px; height: 90px; }
-#review_fields .button {float: right; width:116px; height: 32px; background-position: 0 0; font-size: 20px;  }
-
-#images_container .product .thumbnail, #images_container .image .thumbnail {
-    width: 100px;
-    height: 100px;
-}

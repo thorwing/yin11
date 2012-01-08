@@ -157,10 +157,14 @@ class RecipesController < ApplicationController
   end
 
   def browse
-    @recipes = Recipe.all
+    if params[:name].present?
+      # not case sensitive
+      @recipes = Recipe.where(name: /#{params[:name]}/i)
+    end
+    @recipes ||= []
 
     respond_to do |format|
-      format.json { head :ok }
+      format.js
     end
   end
 

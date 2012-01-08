@@ -57,7 +57,7 @@ $(function() {
 function append_image(id, thumb_url, original_url, post_params) {
     var new_image = '<div class="image fl">'
                 + post_params
-                + '<a onclick="delete_image(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_image"></a>'
+                + '<a onclick="delete_review_related_item(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_image"></a>'
                 + '<a rel="facebox" href="' + original_url + '">'
                 + '<img class="thumbnail" src="' + thumb_url + '" alt="image_thumbnail"></a>'
     var debug = $('#uploader').data("debug");
@@ -70,29 +70,6 @@ function append_image(id, thumb_url, original_url, post_params) {
     $('#images_container').append(new_image);
     //Apply facebox
     $('a[rel*=facebox]').facebox();
-}
-
-//Delete image
-function delete_image(link) {
-//    var image_id = $(link).data('image_id');
-//
-//    $.ajax({
-//        url: "/images/" + image_id,
-//        type: "DELETE",
-//        processData: false,
-//        contentType: false,
-//        success: function (res) {
-//            $(link).parent().remove();
-//        }
-//    });
-    $(link).parent().remove();
-}
-
-//Delete product
-function delete_product(link) {
-//    var product_id = $(link).data('product_id');
-//    $('#product_' + product_id).remove();
-    $(link).parent().remove();
 }
 
 function change_back_img(search_range, url)
