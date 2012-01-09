@@ -61,6 +61,7 @@ $(function() {
     tokenize_input("#recipe_tags_string", "/tags/query.json", 10);
     tokenize_input("#group_tags_string", "/tags/query.json", 10);
     tokenize_input("#vendor_fields #product_vendor_token", "/vendors.json", 1);
+    tokenize_input("#message_fields #user_id", "/users/fans.json", 1);
 });
 
 //Apply facebox

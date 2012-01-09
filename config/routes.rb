@@ -29,6 +29,7 @@ Yin11::Application.routes.draw do
   match "login" => "sessions#new"
   match "sign_up" => "users#new"
 
+  match "info_center" => "info_center#index"
 
   match "/images/uploads/*path" => "gridfs#serve"
 
@@ -111,6 +112,7 @@ Yin11::Application.routes.draw do
     collection do
       get 'validates_email'
       get 'validates_login_name'
+      get "fans"
     end
   end
 
@@ -147,6 +149,8 @@ Yin11::Application.routes.draw do
       put :read
     end
   end
+
+  resources :messages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # Self-signed key will generate warnings
   #force_ssl unless Rails.env.test?
   before_filter(:only => [:index]) { |c| c.require_permission :editor }
-  before_filter(:only => [:edit, :update, :crop, :crop_edit]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:edit, :update, :crop, :crop_edit, :fans]) { |c| c.require_permission :normal_user }
 
   def index
     @users = User.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
@@ -82,6 +82,21 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @current.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  #for auto complete in writing messages
+  def fans
+    query_str = params[:q]
+    criteria = User.any_in(_id: current_user.followers)
+    if query_str.present?
+      criteria = criteria.where(login_name: /#{query_str}/i)
+    end
+
+    @fans = criteria.to_a
+
+    respond_to do |format|
+      format.json { render :json => @fans.map { |f| {:id => f.id.to_s, :name => f.login_name}} }
     end
   end
 

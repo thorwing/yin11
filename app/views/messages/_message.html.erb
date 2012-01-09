@@ -1,0 +1,22 @@
+<div class="box_shadow mb10 p5 clearfix">
+    <blockquote>
+        <% if message.from %>
+            <span>
+                <%= link_to image_tag(message.from.get_avatar(:thumb), width: 24, height: 24), message.from %>
+                <%= link_to message.from.login_name, message.from %>:
+            </span>
+        <% end %>
+        <span class="quoted">
+            <%= message.content %>
+        </span>
+
+        <% if message.to %>
+            <span>
+                <span class="fr">
+                    <%= link_to image_tag(message.to.get_avatar(:thumb), width: 24, height: 24), message.to %>
+                    <%= link_to message.to.login_name, message.to %>
+                </span>
+            </span>
+        <% end %>
+    </blockquote>
+</div>

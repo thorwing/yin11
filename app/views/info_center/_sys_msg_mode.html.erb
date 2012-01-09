@@ -21,9 +21,9 @@
                 <%= link_to "[" + t("general.show") + "]", notification.item %>
             <% end %>
         </div>
-        <div class="fr" style="width: 200px;">
+        <div class="fr" style="width: 200px;" align="right">
             <span class="trivial"><%= notification.created_at.strftime("%m-%d %H:%M:%S") %></span>
-            <%= link_to image_tag("correct_icon.gif") + "知道了",  {:controller => "notifications", :action => "read", :id => notification.id}, :remote => true, :method => :put %>
+            <%= link_to image_tag("correct_icon.gif") + "知道了",  {:controller => "notifications", :action => "read", :id => notification.id}, :remote => true, :method => :put unless notification.read %>
             <%= link_to image_tag("wrong_icon.gif") + "删除", notification, :confirm => t("general.are_you_sure_to_delete"), remote: true, method: :delete %>
         </div>
         <div class="clearfix"></div>

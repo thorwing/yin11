@@ -254,7 +254,7 @@ class User
 
   def send_notifications
     if self.is_master_changed? && self.is_master == true
-      NotificationsManager.generate!(self, nil, "become_master")
+      NotificationsManager.generate!(current_user, nil, "become_master")
     end
   end
 
