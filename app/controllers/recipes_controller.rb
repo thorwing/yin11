@@ -66,11 +66,11 @@ class RecipesController < ApplicationController
       step = @recipe.steps.build
     }
 
-    1.upto(2) {
+    1.upto(3) {
       ingredient = @recipe.ingredients.build
       ingredient.is_major_ingredient = true;
     }
-    1.upto(3) {
+    1.upto(5) {
       ingredient = @recipe.ingredients.build
       ingredient.is_major_ingredient = false;
     }

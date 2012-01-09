@@ -2,9 +2,10 @@
 .step_uploader {
     .qq-upload-button {
         display:block; /* or inline-block */
-        height:128px; width: 200px; padding: 7px 0; text-align:center;
+        height:128px; width: 210px;
+        margin:10px 10px;
+        text-align:center;
         background-position: center;
-        /*background-image: url("default_step.png");*/
         background-repeat: no-repeat;
         background-color: #FFFFFF;
         border-bottom:1px solid #ddd;color:#fff;
@@ -19,7 +20,7 @@
 }
 
 .step_content{
-    width: 200px;
+    width: 210px;
     height: 100px;
 }
 
@@ -48,4 +49,5 @@
     width:350px;
     float:left;
 }
+
 
