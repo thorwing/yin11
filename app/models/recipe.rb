@@ -86,15 +86,14 @@ class Recipe
     end
 
     def sync_image
-      #p "before recipe sync_image"
-      #p "self.img_id" + self.steps.img_id
+      #p "invoked ?"
       self.steps.each do |step|
         if step.img_id.present?
-          #&& (step.img_id.changed? || step.new_record?)
+          Image.all(conditions: {step_id: step.id.to_s}).delete_all
           image = Image.first(conditions: {id: step.img_id})
           if image
             image.step_id = step.id
-            image.save!
+            image.save
           end
         end
       end
