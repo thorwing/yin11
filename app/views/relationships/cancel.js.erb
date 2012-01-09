@@ -1,4 +1,4 @@
-<% if @followable %>
+<% if @success %>
     $(".<%= params[:target_id] %> .add_relationship_btn").removeClass('hide');
     $(".<%= params[:target_id] %> .cancel_relationship_btn").addClass('hide');
 <% end %>

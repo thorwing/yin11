@@ -38,6 +38,10 @@ class VotesController < ApplicationController
     if first_vote
       if weight > 0
         RewardManager.new(current_user).contribute(:total_up_votes)
+        if @item && @item.respond_to?(:author)
+          NotificationsManager.generate!(@item.author, current_user, "like", @item )
+        end
+
       elsif weight < 0
         RewardManager.new(current_user).contribute(:total_down_votes)
       end

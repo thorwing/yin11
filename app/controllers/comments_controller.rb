@@ -29,6 +29,14 @@ class CommentsController < ApplicationController
       else
         @comment = @item.comments.create(:content => params[:content], :user => current_user)
       end
+
+      #if @parent
+      #  NotificationsManager.generate!(@parent.user, current_user, "comment", @parent, @comment.content)
+      #end
+
+      if @item && @item.respond_to?(:author)
+        NotificationsManager.generate!(@item.author, current_user, "comment", @item, @comment.content)
+      end
     end
 
     respond_to do |format|

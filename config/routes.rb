@@ -142,6 +142,12 @@ Yin11::Application.routes.draw do
     end
   end
 
+  resources :notifications do
+    member do
+      put :read
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

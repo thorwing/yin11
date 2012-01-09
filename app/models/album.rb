@@ -31,7 +31,7 @@ class Album
   end
 
   def get_cover_url(version = nil)
-    image_url = nil
+    image_url = "not_found.png"
     if cover_id
       image = Image.first(conditions: {id: cover_id})
       image_url = image.picture_url(version) if image

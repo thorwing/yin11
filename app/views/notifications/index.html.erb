@@ -1,0 +1,18 @@
+<% title t("notifications.index_title"), false %>
+<div class="tab_control">
+    <div class="tabContainer ">
+        <% @modes.each do |mode| %>
+            <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">
+                <%= link_to t("notifications.modes.#{mode}_mode"), "/notifications?mode=#{mode}", "data-page" => ".#{mode}", class: "tab" %>
+            </div>
+        <% end %>
+    </div>
+    <div class="tabContent block">
+        <% @modes.each do |mode| %>
+            <div class = "<%= mode %> <%= mode == @current_mode ? "display" : "display_none" %>">
+                <%= render "#{mode}_mode" %>
+            </div>
+        <% end %>
+    </div>
+</div>
+

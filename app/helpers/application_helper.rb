@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def find_item_by_type_and_id(type, id)
-    eval("#{type}.find('#{id.to_s}')")
+    eval("#{type}.first(conditions: {id: '#{id.to_s}'})")
   end
 
   def truncate_content(text, length)

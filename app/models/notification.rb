@@ -1,0 +1,69 @@
+class Notification
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  #when , who, did what
+  field :person_id
+  field :item_type
+  field :item_id
+  field :operation
+  field :message
+  field :read, :type => Boolean, :default => false
+
+  #relationships
+  embedded_in :user
+
+  #validations
+  def self.operations
+    ["comment", "like", "recommend", "edit", "delete", "follow", "become_master", nil]
+  end
+  validates_inclusion_of :operation, :in => Notification.operations
+
+  def self.item_types
+    ["Review", "Recipe", "Album", "Comment", nil]
+  end
+  validates_inclusion_of :item_type, :in => Notification.item_types
+
+  def person
+    @person ||= User.first(conditions: {id: self.person_id})
+    @person
+  end
+
+  def item
+    if @item
+      @item
+    elsif self.item_id.present? && self.item_type.present?
+      @item = eval("#{self.item_type}.first(conditions: {id: '#{self.item_id.to_s}'})")
+      @item
+    else
+      nil
+    end
+  end
+
+  def subject
+    subject = ''
+    if self.item_id.present? && self.item_type.present? && self.operation.present? && self.person_id.present?
+      if self.item && self.person
+        #item notification
+        item_str = I18n.t("notifications.item_types.#{self.item_type}")
+        operation_str = I18n.t("notifications.operations.#{self.operation}")
+        person_str = self.person.login_name
+        subject = I18n.t("notifications.item_notification", person_str: person_str, operation_str: operation_str, item_str: item_str)
+      end
+    end
+
+    if self.operation == "become_master"
+      subject = I18n.t("notifications.master_notification")
+    end
+
+    if self.operation == "follow"
+      person = User.first(conditions: {id: self.person_id})
+      person_str = person.login_name
+      operation_str = I18n.t("notifications.operations.#{self.operation}")
+      subject = I18n.t("notifications.me_notification", person_str: person_str, operation_str: operation_str)
+    end
+
+    (subject || notification.message) || ''
+  end
+
+end

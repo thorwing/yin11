@@ -181,6 +181,7 @@ zh-CN:
     recipes: 菜谱
     reviews: 美食分享
     albums: 专辑
+    notifications: 消息
     masters: 达人
     products: 美食
     topics: 策划
@@ -603,3 +604,26 @@ zh-CN:
 
   third_party:
     taobao: 淘宝
+
+  notifications:
+    index_title: 消息中心
+    modes:
+      inbox_mode: 收件箱
+      outbox_mode: 发件箱
+      sys_msg_mode: 系统通知
+    item_notification: %{person_str}%{operation_str}我的%{item_str}
+    master_notification: 我被授予了达人的称号！
+    me_notification: %{person_str}%{operation_str}了我
+    item_types:
+      Review: 分享
+      Recipe: 菜谱
+      Album: 专辑
+      Comment: 评论
+    operations:
+      comment: 评论
+      like: 喜欢
+      recommend: 推荐
+      edit: 编辑
+      delete: 删除
+      follow: 关注
+      become_master: 成为达人

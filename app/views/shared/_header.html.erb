@@ -9,15 +9,17 @@
 
             <% if current_user %>
                 <div class="fr mt20">
-                  <span class="nav_menu">
-                    <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %>
-                      <ul class="sub_menu">
-                         <% current_user.profile.steps.each do |step| %>
-                            <li><%= link_to t("profile.steps.#{step}"), edit_profile_path(current_user, step: step) %></li>
-                         <% end %>
-                        <%=  %>
-                      </ul>
-                   </span> |
+                    <span class="nav_menu">
+                        <%= link_to t("menu.notifications") + "(#{current_user.notifications.where(read: false).size})", notifications_path %>
+                    </span> |
+                    <span class="nav_menu">
+                        <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %>
+                        <ul class="sub_menu">
+                            <% current_user.profile.steps.each do |step| %>
+                                <li><%= link_to t("profile.steps.#{step}"), edit_profile_path(current_user, step: step) %></li>
+                            <% end %>
+                        </ul>
+                    </span> |
                     <%= link_to t("menu.logout"), logout_path %>
                 </div>
                 <div class="fr mr30 mt15 p5 box_shadow">

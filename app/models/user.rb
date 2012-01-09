@@ -69,6 +69,8 @@ class User
   has_many :vendors
   embeds_many :relationships
   embeds_many :feeds
+  embeds_many :notifications
+  embeds_many :messages
 
   #Validators
   validate :login_name_is_unique
@@ -86,7 +88,7 @@ class User
 
   #Others
   after_initialize { self.profile ||= Profile.new; self.contribution ||= Contribution.new }
-  before_save :encrypt_password, :handle_identity, :sync_cached_fields
+  before_save :encrypt_password, :handle_identity, :sync_cached_fields, :send_notifications
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
   after_update :reprocess_avatar, :if => :cropping?
@@ -248,6 +250,12 @@ class User
 
   def sync_cached_fields
     self.reviews_count = self.reviews.size
+  end
+
+  def send_notifications
+    if self.is_master_changed? && self.is_master == true
+      NotificationsManager.generate!(self, nil, "become_master")
+    end
   end
 
   def generate_token(column)
