@@ -89,6 +89,13 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
+    newhash = {}
+    params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
+       #p "key: #{key}, value: #{value}, index: #{index}\n"
+       newhash[index]= value
+    end
+    params[:recipe][:steps_attributes] =  newhash
+
     @recipe = Recipe.new(params[:recipe])
     @recipe.author_id = current_user.id
 
@@ -107,6 +114,15 @@ class RecipesController < ApplicationController
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
+    p "before" + params[:recipe].to_yaml
+    newhash = {}
+    params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
+       #p "key: #{key}, value: #{value}, index: #{index}\n"
+       newhash[index]= value
+    end
+    params[:recipe][:steps_attributes]= newhash
+    p "after" + params[:recipe].to_yaml
+
     @recipe = Recipe.find(params[:id])
 
     database_step_ids = @recipe.steps.map{|s| s.id.to_s }
@@ -119,6 +135,18 @@ class RecipesController < ApplicationController
       to_be_deleted_ingredient_ids = database_ingredient_ids - params_ingredient_ids
       @recipe.steps.any_in(_id: to_be_deleted_step_ids).delete_all
       @recipe.ingredients.any_in(_id: to_be_deleted_ingredient_ids).delete_all
+
+
+      @recipe.steps.delete_all
+
+      params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
+       #p "key: #{key}, value: #{value}, index: #{index}\n"
+        step = @recipe.steps.build
+        step.content = value[:content]
+        step.img_id = value[:img_id]
+      end
+
+      @recipe.save
     end
 
     respond_to do |format|

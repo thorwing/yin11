@@ -132,7 +132,7 @@ function step_uploader(search_range)
             minSizeLimit: 0, // min size
             // set to true to output server response to console
             debug: false,
-            template: '<div class="qq-uploader">' +
+            template: '<div class="qq-uploader" id="qq-uploader'+ length +'">' +
                     '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
                     '<div class="qq-upload-button">上传图片</div>' +
                     '<ul class="qq-upload-list"></ul>' +
@@ -147,8 +147,11 @@ function step_uploader(search_range)
             params: {"authenticity_token": tokentag},
             onComplete: function(id, fileName, responseJSON){
               if (responseJSON.success) {
-                $('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
-                $('.step_uploader').eq(length-1).parent().find('.img_id').val(responseJSON.image_id);
+
+                  var str= '#qq-uploader' + length ;
+//                  alert(str);
+                $(str).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
+                $(str).parent().parent().find('.img_id').val(responseJSON.image_id);
                 $('.step_uploader .qq-upload-success').hide();
                 $('.step_uploader .qq-upload-file').hide();
                 $('.step_uploader .qq-upload-size').hide();
