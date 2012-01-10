@@ -1,0 +1,10 @@
+<div class="messages_container">
+  <% @messages.each do |message| %>
+    <%= render "messages/message", message: message, target: message.from %>
+  <% end %>
+</div>
+
+<%= link_to_function "回复", "$(this).next().toggle();", class: "button" %>
+<div class="display_none">
+    <%= render "messages/message_fields", to: @to, remote: true %>
+</div>

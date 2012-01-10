@@ -1,8 +1,17 @@
-<%= link_to_function "写信", "$(this).next().toggle();", class: "button" %>
-<div class="display_none">
-    <%= render "messages/message_fields" %>
-</div>
-
-<% @incoming_messages.each do |message| %>
-    <%= render message %>
+<% @incoming_messages.each do |key, msg_array| %>
+    <div class="clearfix p5">
+        <div class="fl" style="width: 150px;">
+            <% last = msg_array.last %>
+            <%= link_to(image_tag(last.from.get_avatar(:thumb), width: 50, height: 50), last.from) %>
+            <span class="trivial" style="vertical-align: top;"><%= last.created_at.strftime(GENERAL_TIME_FORMAT) %></span><br/>
+            <%= link_to last.from.login_name, last.from %>
+        </div>
+        <div class="fl ml20 lighter_touch" style="width: 770px;" onclick='window.location.href = "/messages/<%= msg_array.last.id.to_s %>";'>
+            <%= last.content %><br/>
+            <% new_msg_count = msg_array.select{|m| !m.read}.size %>
+            <%= link_to "新消息", msg_array.last, class: "tag" if new_msg_count > 0 %><span class="trivial"><%= "共#{msg_array.size.to_s}条会话" %></span><%= link_to "+展开", msg_array.last %>
+        </div>
+        <div class="clearfix"></div>
+        <hr/>
+    </div>
 <% end %>

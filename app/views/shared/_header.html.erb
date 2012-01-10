@@ -10,7 +10,14 @@
             <% if current_user %>
                 <div class="fr mt20">
                     <span class="nav_menu">
-                        <%= link_to t("menu.notifications") + "(#{current_user.notifications.where(read: false).size})", "info_center" %>
+                        <% new_pm_count = current_user.messages.where(to_id: current_user.id.to_s, read: false).size %>
+                        <% sys_msg_count = current_user.notifications.where(read: false).size %>
+                        <% total_msg_count = new_pm_count + sys_msg_count %>
+                        <%= link_to t("menu.notifications") + (total_msg_count > 0 ? "(#{total_msg_count.to_s})" : ""), "/info_center" %>
+                        <ul class="sub_menu">
+                            <li><%= link_to "私信" + (new_pm_count > 0 ? "(#{new_pm_count.to_s})" : ""), "/info_center?mode=inbox"%></li>
+                            <li><%= link_to t("notifications.modes.sys_msg_mode") + (sys_msg_count > 0 ? "(#{sys_msg_count.to_s})" : ""), "/info_center?mode=sys_msg"%></li>
+                        </ul>
                     </span> |
                     <span class="nav_menu">
                         <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %>

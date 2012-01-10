@@ -1,1 +1,6 @@
-alert("posted");
+var child = '<%= escape_javascript(render("messages/message", :message => @message)) %>';
+
+$(".messages_container").append(child);
+$('#message_fields textarea').val('');
+
+

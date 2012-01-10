@@ -1,8 +1,3 @@
-<%= link_to_function "写信", "$(this).next().toggle();", class: "button" %>
-<div class="display_none">
-    <%= render "messages/message_fields" %>
-</div>
-
 <% @outgoing_messages.each do |message| %>
-    <%= render message %>
+   <%= render "messages/message", message: message, target: message.to %>
 <% end %>

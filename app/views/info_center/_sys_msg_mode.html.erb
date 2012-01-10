@@ -1,11 +1,11 @@
 <div class="clearfix">
-    <span class="fr"><%= link_to "未读", notifications_path(read: false) %></span>
+    <span class="fl"><%= link_to "只显示未读", "/info_center?mode=sys_msg&read=false" %></span>
 </div>
 <% @notifications.each do |notification| %>
     <div class="clearfix overflow_hidden" id="<%= notification.id.to_s %>">
         <div class="fl" style="width: 300px;">
             <% unless notification.read %>
-                <div class="fl mr10"><%= link_to "未读", notifications_path(read: false), class: "tag" %></div>
+                <div class="fl mr10"><%= link_to "未读", "/info_center?mode=sys_msg&read=false", class: "tag" %></div>
             <% end %>
             <% if notification.person %>
                 <%= link_to image_tag(notification.person.get_avatar(:thumb), width:24, height:24), notification.person %>
@@ -22,7 +22,7 @@
             <% end %>
         </div>
         <div class="fr" style="width: 200px;" align="right">
-            <span class="trivial"><%= notification.created_at.strftime("%m-%d %H:%M:%S") %></span>
+            <span class="trivial"><%= notification.created_at.strftime(GENERAL_TIME_FORMAT) %></span>
             <%= link_to image_tag("correct_icon.gif") + "知道了",  {:controller => "notifications", :action => "read", :id => notification.id}, :remote => true, :method => :put unless notification.read %>
             <%= link_to image_tag("wrong_icon.gif") + "删除", notification, :confirm => t("general.are_you_sure_to_delete"), remote: true, method: :delete %>
         </div>

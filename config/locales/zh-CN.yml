@@ -163,6 +163,7 @@ zh-CN:
     album_created: 专辑创建成功
     album_updated: 专辑更新成功
     album_cover_picked: 专辑封面已更改
+    message_sent: 消息已发出
 
   alerts:
     password_reset_expired: 密码重置口令已过期
@@ -611,6 +612,7 @@ zh-CN:
       inbox_mode: 收件箱
       outbox_mode: 发件箱
       sys_msg_mode: 系统通知
+      writing_mode: 写信
     item_notification: %{person_str}%{operation_str}我的%{item_str}
     master_notification: 我被授予了达人的称号！
     me_notification: %{person_str}%{operation_str}了我

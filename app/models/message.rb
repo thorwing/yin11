@@ -5,6 +5,7 @@ class Message
   field :from_id
   field :to_id
   field :content
+  field :read, :type => Boolean, :default => false
 
   #relationships
   embedded_in :user

@@ -18,6 +18,7 @@
 *= require pages
 *= require tab_control
 *= require recipes
+*= require messages
 *= require token-input-facebook
 *= require facebox
 *= require jquery.jgrowl
@@ -318,7 +319,7 @@ body #main { height: auto; padding-bottom: 260px;}
 
 #content_area { min-height: 600px;  }
 
-.lighter_touch:hover {opacity: 0.7;}
+.lighter_touch:hover {opacity: 0.7; cursor: pointer;}
 
 .field {margin: 5px 0;}
 .label {margin-right: 5px;
