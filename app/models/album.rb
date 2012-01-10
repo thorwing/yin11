@@ -31,7 +31,7 @@ class Album
   end
 
   def get_cover_url(version = nil)
-    image_url = "not_found.png"
+    image_url = nil
     if cover_id
       image = Image.first(conditions: {id: cover_id})
       image_url = image.picture_url(version) if image
@@ -39,7 +39,7 @@ class Album
 
     unless image_url
       image = self.reviews.first{|r| r.get_review_image_url(version).present?}
-      image_url = (image ? image.get_review_image_url(version) : '')
+      image_url = (image ? image.get_review_image_url(version) : "not_found.png")
     end
 
     image_url

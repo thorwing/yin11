@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
 
   def more
     #  used for waterfall displaying
-    criteria = Review.all.desc(:votes, :created_at)
+    criteria = Review.all.desc(:created_at) #votes
     criteria = criteria.any_in(product_ids: [params[:product_id]]) if params[:product_id].present?
     criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
     @reviews = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
