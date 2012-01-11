@@ -1,0 +1,63 @@
+<script type="text/javascript">
+
+  function fill_tag(link) {
+    var name = $(link).text();
+    var input = $(".tags_input");
+    if(input.length > 0)
+    {
+        var data = {id: name, name: name};
+        input.tokenInput("add", data);
+    }
+  }
+
+  function expand_tags(link) {
+    $(link).parents(".first_level").next().toggle();
+    var text = $(link).text();
+    if ($(link).text() == "+展开") {
+        $(link).text("-收起");
+    }
+    else {
+        $(link).text("+展开");
+    }
+
+
+  }
+</script>
+
+<!--< get_hot_tags(5).each do |tag| %>-->
+    <!--<= link_to_function tag.name, "fill_tag(this);", class: "tag" %>-->
+<!--< end %>-->
+<%= t_with_colon("tags.hot_tags") %>
+<% get_primary_tags.each do |first_lv, tags| %>
+    <div class="box_shadow p5 m5">
+        <div class="first_level clearfix mb5 mt5">
+            <div class="fl">
+                <h2 class="display_inline"><%= first_lv %></h2>
+                <% hot_tags = get_hot_primary_tags(tags) %>
+                <% hot_tag_names = hot_tags.map(&:name) %>
+                <% hot_tags.each do |tag| %>
+                    <%= link_to_function tag.name, "fill_tag(this);", class: "" %>
+                <% end %>
+            </div>
+            <span class="fr"><%= link_to_function "+展开", 'expand_tags(this);' %></span>
+        </div>
+        <div class="display_none">
+            <% if tags.is_a?(Array) %>
+                <div class="ml30 mb5">
+                    <% tags.reject{|t| hot_tag_names.include?(t)}.each do |tag_name| %>
+                        <%= link_to_function tag_name, "fill_tag(this);", class: "" %>
+                    <% end %>
+                </div>
+            <% elsif tags.is_a?(Hash) %>
+                <% tags.each do |second_lv, v| %>
+                    <h3 style="font-weight: normal;"><%= second_lv %>: </h3>
+                    <div class="ml30 mb5">
+                        <% v.reject{|t| hot_tag_names.include?(t)}.each do |tag_name| %>
+                            <%= link_to_function tag_name, "fill_tag(this);", class: "" %>
+                        <% end %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

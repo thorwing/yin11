@@ -5,7 +5,7 @@ class Tag
   key :name
   #item: "<type> <id>"
   field :items, :type => Array, :default => []
-
+  field :primary, :type => Boolean, :default => false
 
   #relationships
   embeds_many :feeds

@@ -207,11 +207,46 @@ require "tag"
   restore_images("app/seeds/recipes_imgs.yml", :step_id)
 
   p "generating tags"
-  records = YAML::load(File.open("app/seeds/tags.yml"))
-  records.each do |record|
-      record["detail"].split(' ').each do |tag|
-        Tag.create(:name => tag )
+  #records = YAML::load(File.open("app/seeds/tags.yml"))
+  #records.each do |record|
+  #    record["detail"].split(' ').each do |tag|
+  #      Tag.create(:name => tag )
+  #    end
+  #end
+
+  def handle_record(record)
+    if record.is_a?(Hash)
+      hash = {}
+      record.each do |k, v|
+        hash[k] = handle_record(v)
       end
+      hash
+    elsif record.is_a?(String)
+      record.split(' ')
+    end
   end
 
+  records = YAML::load(File.open("app/seeds/tags.yml"))
 
+  tags = {}
+  records.each do |first_lv, value|
+   tags[first_lv] = handle_record(value)
+  end
+
+  tags.each do |first_lv, tags|
+    if tags.is_a?(Array)
+      tags.each do |tag_name|
+        tag = Tag.find_or_initialize_by(name: tag_name)
+        tag.primary = true
+        tag.save
+      end
+    elsif tags.is_a?(Hash)
+      tags.each do |second_lv, v|
+        v.each do |tag_name|
+          tag = Tag.find_or_initialize_by(name: tag_name)
+          tag.primary = true
+          tag.save
+        end
+      end
+    end
+  end
