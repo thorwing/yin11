@@ -74,17 +74,6 @@ function append_image(id, thumb_url, original_url, post_params) {
 
 //Delete image
 function delete_image(link) {
-//    var image_id = $(link).data('image_id');
-//
-//    $.ajax({
-//        url: "/images/" + image_id,
-//        type: "DELETE",
-//        processData: false,
-//        contentType: false,
-//        success: function (res) {
-//            $(link).parent().remove();
-//        }
-//    });
     $(link).parent().remove();
 }
 
@@ -144,10 +133,7 @@ function step_uploader(search_range)
             params: {"authenticity_token": tokentag},
             onComplete: function(id, fileName, responseJSON){
               if (responseJSON.success) {
-
-                  var str= '#qq-uploader' + (length-1) ;
-//                  var str2 = '#recipe_steps_attributes_'+ (length-1) +'_img_id';
-                  alert(str);
+                var str= '#qq-uploader' + (length-1) ;
                 $(str).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
                 $(str).parents('.addedclass').find('.img_id').val(responseJSON.image_id);
                 $('.step_uploader .qq-upload-success').hide();
@@ -161,8 +147,5 @@ function step_uploader(search_range)
     }
 }
 
-//$(function() {
-//     step_uploader();
-//});
 
 

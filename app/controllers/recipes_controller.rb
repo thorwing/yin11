@@ -114,39 +114,22 @@ class RecipesController < ApplicationController
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
-    p "before" + params[:recipe].to_yaml
     newhash = {}
     params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
-       #p "key: #{key}, value: #{value}, index: #{index}\n"
+       value.delete("id")
        newhash[index]= value
     end
     params[:recipe][:steps_attributes]= newhash
-    p "after" + params[:recipe].to_yaml
 
     @recipe = Recipe.find(params[:id])
-
-    database_step_ids = @recipe.steps.map{|s| s.id.to_s }
     database_ingredient_ids = @recipe.ingredients.map{|s| s.id.to_s }
+
+    @recipe.steps.delete_all
     saved = @recipe.update_attributes(params[:recipe])
     if saved
-      params_step_ids = params[:recipe][:steps_attributes].map{|k,v| v["id"]}
       params_ingredient_ids = params[:recipe][:ingredients_attributes].map{|k,v| v["id"]}
-      to_be_deleted_step_ids = database_step_ids - params_step_ids
       to_be_deleted_ingredient_ids = database_ingredient_ids - params_ingredient_ids
-      @recipe.steps.any_in(_id: to_be_deleted_step_ids).delete_all
       @recipe.ingredients.any_in(_id: to_be_deleted_ingredient_ids).delete_all
-
-
-      @recipe.steps.delete_all
-      params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
-       #p "key: #{key}, value: #{value}, index: #{index}\n"
-        step = @recipe.steps.build
-        step.content = value[:content]
-        step.img_id = value[:img_id]
-          @recipe.save
-      end
-
-
     end
 
     respond_to do |format|

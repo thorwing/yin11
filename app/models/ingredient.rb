@@ -3,7 +3,7 @@ class Ingredient
 
     #fields
   field :name, :type => String
-  field :amount, :type => String
+  field :amount, :type => String, :default => I18n.t("recipes.default_amount")
   field :is_major_ingredient, :type => Boolean ,:default => true
   attr_accessible  :name, :amount, :is_major_ingredient
 
@@ -12,6 +12,6 @@ class Ingredient
 
       #validations
   validates_presence_of :name
-  validates_length_of :name, :maximum => 15
-  validates_length_of :amount, :maximum => 10
+  validates_length_of :name, :maximum => 18
+  validates_length_of :amount, :maximum => 8
 end

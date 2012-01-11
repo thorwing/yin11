@@ -31,6 +31,11 @@
     overflow: hidden;
 }
 
+.steps .addedclass
+{
+  height:360px;
+}
+
 .step_container .step_content
 {
     height: 120px;
@@ -50,4 +55,16 @@
     float:left;
 }
 
+.ingredient_amount
+{
+  width:100px;
+}
 
+.ingredient_name
+{
+  width:210px;
+}
+
+.addedclass .not_cleared {
+    color: $trivial_gray;
+}

@@ -86,7 +86,6 @@ class Recipe
     end
 
     def sync_image
-      #p "invoked ?"
       self.steps.each do |step|
         if step.img_id.present?
           Image.all(conditions: {step_id: step.id.to_s}).delete_all
