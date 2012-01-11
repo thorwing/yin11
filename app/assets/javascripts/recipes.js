@@ -12,25 +12,7 @@ $(function(){
     });
 });
 
-
-function consistency_check(range)
-{
-//    alert(range);
-    var result = -1;
-    var addedclasses = $(range).find('.addedclass');
-    addedclasses.each(function(index, addedclass){
-        var amount = String($(addedclass).find('.ingredient_amount').val());
-        var name = String($(addedclass).find('.ingredient_name').val());
-
-        if(amount != "" && name == "")
-        {
-//             alert("return is " + (index+1));
-             result = index + 1;
-        }
-    });
-    return result;
-}
-
+//check before submit a recipe
 $(function(){
 //    check if all the necessory info is given
     $('#recipe_submit').click(function(e){
@@ -106,6 +88,7 @@ $(function(){
     });
 });
 
+//amount input click
 jQuery(function()
 {
   $('.not_cleared').live("click", function(){

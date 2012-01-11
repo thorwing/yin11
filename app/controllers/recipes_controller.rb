@@ -89,12 +89,14 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
+    #after Click on and drag sort, the sequence may not in the right order
     newhash = {}
     params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
        #p "key: #{key}, value: #{value}, index: #{index}\n"
        newhash[index]= value
     end
     params[:recipe][:steps_attributes] =  newhash
+    #reordered
 
     @recipe = Recipe.new(params[:recipe])
     @recipe.author_id = current_user.id
@@ -114,14 +116,18 @@ class RecipesController < ApplicationController
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
+    #after Click on and drag sort, the sequence may not in the right order
     newhash = {}
     params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
        value.delete("id")
        newhash[index]= value
     end
     params[:recipe][:steps_attributes]= newhash
+    #reordered
 
     @recipe = Recipe.find(params[:id])
+
+    #record all ingredients in db
     database_ingredient_ids = @recipe.ingredients.map{|s| s.id.to_s }
 
     @recipe.steps.delete_all
