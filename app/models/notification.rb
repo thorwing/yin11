@@ -66,4 +66,9 @@ class Notification
     (subject || notification.message) || ''
   end
 
+  #used for uniq()
+  def identity
+    [self.created_at.strftime("%y-%m-%d"), self.person_id, self.item_type, self.item_id, self.operation]
+  end
+
 end

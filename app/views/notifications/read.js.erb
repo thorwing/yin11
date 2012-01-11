@@ -1,1 +1,4 @@
-$('#<%= @notification.id.to_s %> a.tag').hide();
+var tag = $('#<%= @notification.id.to_s %> a.tag');
+tag.before('<span class="trivial">已读</span>');
+tag.hide();
+$('#<%= @notification.id.to_s %> a.read_btn').hide();
