@@ -138,15 +138,15 @@ class RecipesController < ApplicationController
 
 
       @recipe.steps.delete_all
-
       params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
        #p "key: #{key}, value: #{value}, index: #{index}\n"
         step = @recipe.steps.build
         step.content = value[:content]
         step.img_id = value[:img_id]
+          @recipe.save
       end
 
-      @recipe.save
+
     end
 
     respond_to do |format|

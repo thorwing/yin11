@@ -75,6 +75,19 @@
                 <b><%= f.label :title, t("recipes.steps"), :class => "f16" %></b><br/>
                 <%= f.fields_for :steps  do |builder| %>
                     <%= render "step_fields", :f => builder %>
+
+                    <%=  javascript_tag "step_uploader(\'.steps\');"%>
+                    <% if builder.object.new_record? %>
+                           <%= javascript_tag "change_back_img(\'.steps\');" %>
+                    <% else %>
+                        <% url = (builder.object.img_id && builder.object.image) ?  builder.object.image.picture_url(:thumb) : "" %>
+                        <% if url.blank?  %>
+                            <%= javascript_tag "change_back_img(\'.steps\');" %>
+                        <% else %>
+                            <%= javascript_tag "change_back_img(\'.steps\',"+"'"+ url +"');" %>
+                        <% end  %>
+                    <% end  %>
+
                 <% end %>
             </ul>
 
@@ -91,6 +104,7 @@
 
     <% end %>
 </div>
+
 
  <!--<div class = "grid_3 box_shadow to_right m10 p5">-->
     <!--<h3><= t("recipes.tips") %></h3>-->

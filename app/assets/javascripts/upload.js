@@ -97,14 +97,11 @@ function delete_product(link) {
 
 function change_back_img(search_range, url)
 {
-//    alert(search_range + ":" + url);
     var length = $('.step_uploader').find('.qq-upload-button').length;
-//    alert(length);
     if(url==null||url=="")
     {
         url = "/assets/default_step.png";
     }
-//    alert(url);
     if($(search_range).find('.step_uploader').length>0)
     {
         $(search_range).find('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ url +")");
@@ -132,7 +129,7 @@ function step_uploader(search_range)
             minSizeLimit: 0, // min size
             // set to true to output server response to console
             debug: false,
-            template: '<div class="qq-uploader" id="qq-uploader'+ length +'">' +
+            template: '<div class="qq-uploader" id="qq-uploader'+ (length -1) +'">' +
                     '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
                     '<div class="qq-upload-button">上传图片</div>' +
                     '<ul class="qq-upload-list"></ul>' +
@@ -148,10 +145,11 @@ function step_uploader(search_range)
             onComplete: function(id, fileName, responseJSON){
               if (responseJSON.success) {
 
-                  var str= '#qq-uploader' + length ;
-//                  alert(str);
+                  var str= '#qq-uploader' + (length-1) ;
+//                  var str2 = '#recipe_steps_attributes_'+ (length-1) +'_img_id';
+                  alert(str);
                 $(str).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
-                $(str).parent().parent().find('.img_id').val(responseJSON.image_id);
+                $(str).parents('.addedclass').find('.img_id').val(responseJSON.image_id);
                 $('.step_uploader .qq-upload-success').hide();
                 $('.step_uploader .qq-upload-file').hide();
                 $('.step_uploader .qq-upload-size').hide();

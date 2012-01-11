@@ -4,21 +4,8 @@
     <%= f.hidden_field :id unless f.object.new_record? %>
     <%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>
     <div class="step_uploader"></div>
-    <%= javascript_tag "step_uploader(\'.steps\');"%>
-
-    <% if f.object.new_record? %>
-           <%= javascript_tag "change_back_img(\'.steps\');" %>
-    <% else %>
-        <% url = (f.object.img_id && f.object.image) ?  f.object.image.picture_url(:thumb) : "" %>
-        <% if url.blank?  %>
-            <%= javascript_tag "change_back_img(\'.steps\');" %>
-        <% else %>
-            <%= javascript_tag "change_back_img(\'.steps\',"+"'"+ url +"');" %>
-        <% end  %>
-    <% end  %>
 
     <div class="clearfix"></div>
-
     <%= f.text_field :img_id, :maxlength => "10", :class => "img_id"  %>
     <%= f.text_area :content, :maxlength => get_max_length(Step, :content), 'data-comment_max_len' => get_max_length(Step, :content), :class => "char_aware step_content" %><br/>
     <%= content_tag :span, "", class: "char_saver display_none" %>
