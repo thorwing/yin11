@@ -10,6 +10,7 @@
 //= require kissy/kissy
 //= require jquery.Jcrop.min
 //= require_tree .
+//= require lazyload
 
 var products_limit = 3;
 var recipes_limit = 3;
@@ -167,5 +168,7 @@ $(function(){
     });
 });
 
-
+$(function(){
+    $("img.lazy").lazyload();
+});
 
