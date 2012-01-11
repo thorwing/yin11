@@ -14,14 +14,14 @@ module Followable
       self.followers ||= []
       unless self.followers.include?(user.id.to_s)
         self.followers << user.id.to_s
-        self.save!
+        self.save
       end
     end
 
     def remove_follower!(user)
       return unless followers.present?
       self.followers.delete(user.id.to_s)
-      self.save!
+      self.save
     end
 
   end
