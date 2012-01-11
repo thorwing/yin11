@@ -11,7 +11,7 @@
                 <div class="fr mt20">
                     <span class="nav_menu">
                         <% new_pm_count = current_user.messages.where(to_id: current_user.id.to_s, read: false).size %>
-                        <% sys_msg_count = current_user.notifications.where(read: false).size %>
+                        <% sys_msg_count = current_user.unread_system_notifications.size %>
                         <% total_msg_count = new_pm_count + sys_msg_count %>
                         <%= image_tag("bubble_48.jpg", width: 13, height: 13) if total_msg_count > 0 %>
                         <%= link_to t("menu.notifications") + (total_msg_count > 0 ? "(#{total_msg_count.to_s})" : ""), "/info_center" %>

@@ -190,6 +190,10 @@ class User
     feeds.reject{|f| f.picture_url.blank? }[0..(limit-1)]
   end
 
+  def unread_system_notifications
+    self.notifications.where(read: false).desc(:created_at).to_a.uniq{|n| n.identity}
+  end
+
   def get_updates(days = self.profile.concern_days)
     data = get_raw_updates(days)
     data.inject([]){|memo, (k,v)| memo | v}.compact.uniq
