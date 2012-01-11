@@ -12,25 +12,7 @@ $(function(){
     });
 });
 
-
-function consistency_check(range)
-{
-//    alert(range);
-    var result = -1;
-    var addedclasses = $(range).find('.addedclass');
-    addedclasses.each(function(index, addedclass){
-        var amount = String($(addedclass).find('.ingredient_amount').val());
-        var name = String($(addedclass).find('.ingredient_name').val());
-
-        if(amount != "" && name == "")
-        {
-//             alert("return is " + (index+1));
-             result = index + 1;
-        }
-    });
-    return result;
-}
-
+//check before submit a recipe
 $(function(){
 //    check if all the necessory info is given
     $('#recipe_submit').click(function(e){
@@ -40,7 +22,6 @@ $(function(){
         var has_one_step = false;
         var has_one_image =false;
         var has_one_content =false;
-        var warning = false;
         var message = "您忘了添加:\n";
 //   check if all the neccessary info are given
 
@@ -50,21 +31,6 @@ $(function(){
         }
         else{
             message += '     - 菜谱名\n';
-        }
-
-//          user may forget to give ingredient name but not amount
-        var pos = 0;
-
-        var ranges = new Array(".minor_ingredients", ".major_ingredients");
-        var displays = new Array("主料", "辅料")
-        for (var i = 0; i < ranges.length; i++)
-        {
-            pos = consistency_check(ranges[i]);
-            if(pos !=  -1)
-            {
-                 warning = true;
-                 message += "     -您忘记填写第" + pos + "个"+ displays[i] +"的名称了\n";
-            }
         }
 
 //        1 at least one ingredient name is given
@@ -100,7 +66,7 @@ $(function(){
         if(has_one_content==true || has_one_image == true)
             has_one_step = true;
 
-        if(has_one_step == true && has_one_ingredient == true && has_recipe_name == true && warning == false)
+        if(has_one_step == true && has_one_ingredient == true && has_recipe_name == true)
             verify_passed = true;
 
 
@@ -121,3 +87,18 @@ $(function(){
 
     });
 });
+
+//amount input click
+jQuery(function()
+{
+  $('.not_cleared').live("click", function(){
+            alert("here");
+            if($(this).hasClass('not_cleared'))
+            {
+                $(this).val('');
+                $(this).removeClass('not_cleared');
+            }
+          }
+      );
+});
+

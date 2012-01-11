@@ -74,14 +74,11 @@ function append_image(id, thumb_url, original_url, post_params) {
 
 function change_back_img(search_range, url)
 {
-//    alert(search_range + ":" + url);
     var length = $('.step_uploader').find('.qq-upload-button').length;
-//    alert(length);
     if(url==null||url=="")
     {
         url = "/assets/default_step.png";
     }
-//    alert(url);
     if($(search_range).find('.step_uploader').length>0)
     {
         $(search_range).find('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ url +")");
@@ -109,7 +106,7 @@ function step_uploader(search_range)
             minSizeLimit: 0, // min size
             // set to true to output server response to console
             debug: false,
-            template: '<div class="qq-uploader">' +
+            template: '<div class="qq-uploader" id="qq-uploader'+ (length -1) +'">' +
                     '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
                     '<div class="qq-upload-button">上传图片</div>' +
                     '<ul class="qq-upload-list"></ul>' +
@@ -124,8 +121,9 @@ function step_uploader(search_range)
             params: {"authenticity_token": tokentag},
             onComplete: function(id, fileName, responseJSON){
               if (responseJSON.success) {
-                $('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
-                $('.step_uploader').eq(length-1).parent().find('.img_id').val(responseJSON.image_id);
+                var str= '#qq-uploader' + (length-1) ;
+                $(str).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
+                $(str).parents('.addedclass').find('.img_id').val(responseJSON.image_id);
                 $('.step_uploader .qq-upload-success').hide();
                 $('.step_uploader .qq-upload-file').hide();
                 $('.step_uploader .qq-upload-size').hide();
@@ -137,8 +135,5 @@ function step_uploader(search_range)
     }
 }
 
-//$(function() {
-//     step_uploader();
-//});
 
 

@@ -66,11 +66,11 @@ class RecipesController < ApplicationController
       step = @recipe.steps.build
     }
 
-    1.upto(2) {
+    1.upto(3) {
       ingredient = @recipe.ingredients.build
       ingredient.is_major_ingredient = true;
     }
-    1.upto(3) {
+    1.upto(5) {
       ingredient = @recipe.ingredients.build
       ingredient.is_major_ingredient = false;
     }
@@ -89,6 +89,15 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
+    #after Click on and drag sort, the sequence may not in the right order
+    newhash = {}
+    params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
+       #p "key: #{key}, value: #{value}, index: #{index}\n"
+       newhash[index]= value
+    end
+    params[:recipe][:steps_attributes] =  newhash
+    #reordered
+
     @recipe = Recipe.new(params[:recipe])
     @recipe.author_id = current_user.id
 
@@ -107,17 +116,25 @@ class RecipesController < ApplicationController
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
+    #after Click on and drag sort, the sequence may not in the right order
+    newhash = {}
+    params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
+       value.delete("id")
+       newhash[index]= value
+    end
+    params[:recipe][:steps_attributes]= newhash
+    #reordered
+
     @recipe = Recipe.find(params[:id])
 
-    database_step_ids = @recipe.steps.map{|s| s.id.to_s }
+    #record all ingredients in db
     database_ingredient_ids = @recipe.ingredients.map{|s| s.id.to_s }
+
+    @recipe.steps.delete_all
     saved = @recipe.update_attributes(params[:recipe])
     if saved
-      params_step_ids = params[:recipe][:steps_attributes].map{|k,v| v["id"]}
       params_ingredient_ids = params[:recipe][:ingredients_attributes].map{|k,v| v["id"]}
-      to_be_deleted_step_ids = database_step_ids - params_step_ids
       to_be_deleted_ingredient_ids = database_ingredient_ids - params_ingredient_ids
-      @recipe.steps.any_in(_id: to_be_deleted_step_ids).delete_all
       @recipe.ingredients.any_in(_id: to_be_deleted_ingredient_ids).delete_all
     end
 

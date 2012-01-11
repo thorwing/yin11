@@ -31,17 +31,17 @@ module ApplicationHelper
   # name:  the words displayed on the add field link
   # max_len: the max num for the added item
   # divname: the position inside which to insert the item
-  def link_to_add_fields(name, f, association, divname, count_range, max_len)
+  def link_to_add_fields(name, f, association, divname, count_range, max_len, add_class)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
-    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{divname}\", \"#{count_range}\")", :class => "button add_fields", 'data-max_len'=> max_len)
+    link_to_function(name,  "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{divname}\", \"#{count_range}\")", :class => "add_fields "+ add_class, 'data-max_len'=> max_len )
 
   end
 
-  def link_to_remove_fields(name, f, removefield, showfield)
-    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this,"+ "'"+ removefield + "',"+ "'"+ showfield + "'" +")")
+  def link_to_remove_fields(name, f, removefield, showfield, html_options)
+    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this,"+ "'"+ removefield + "',"+ "'"+ showfield + "'" +")", html_options)
   end
 
   def nested_comments(item, comments)

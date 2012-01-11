@@ -9,6 +9,7 @@
 //= require fileuploader
 //= require kissy/kissy
 //= require jquery.Jcrop.min
+//= require lazyload
 //= require_tree .
 
 var products_limit = 3;
@@ -168,5 +169,7 @@ $(function(){
     });
 });
 
-
+$(function(){
+    $("img.lazy").lazyload();
+});
 

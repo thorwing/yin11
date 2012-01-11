@@ -478,24 +478,83 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.delete_step_btn{display: inline-block;
- width:51px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-490px -257px;
- text-indent: -9999px;
-}
+/*.delete_step_btn{display: inline-block;*/
+ /*width:51px;*/
+ /*height:25px;*/
+ /*background-image: url(buttons.png);*/
+ /*background-repeat:no-repeat;*/
+ /*background-position:-490px -257px;*/
+ /*text-indent: -9999px;*/
+/*}*/
 
-.delete_step_btn:hover{display: inline-block;
- width:51px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-490px -283px;
- text-indent: -9999px;
-}
+/*.delete_step_btn:hover{display: inline-block;*/
+ /*width:51px;*/
+ /*height:25px;*/
+ /*background-image: url(buttons.png);*/
+ /*background-repeat:no-repeat;*/
+ /*background-position:-490px -283px;*/
+ /*text-indent: -9999px;*/
+/*}*/
 
 .hide {
     display: none;
 }
+
+.delete_ingredients_btn{ display: inline-block;
+
+ width:16px;
+ height:16px;
+ background-image: url(cancel.png);
+ background-repeat:no-repeat;
+ /*text-indent: -9999px;*/
+}
+
+.delete_steps_btn{ display: inline-block;
+
+ width:16px;
+ height:16px;
+ background-image: url(close_x.png);
+ background-repeat:no-repeat;
+ /*text-indent: -9999px;*/
+}
+
+.add_major_btn:hover{
+ display: inline-block;
+ width:61px;
+ height:25px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-490px -229px;
+ text-indent: -9999px;
+}
+
+.add_major_btn{
+ display: inline-block;
+ width:61px;
+ height:25px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-490px -200px;
+ text-indent: -9999px;
+ }
+
+
+.add_minor_btn{
+ display: inline-block;
+ width:61px;
+ height:25px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-362px -257px;
+ text-indent: -9999px;
+}
+
+.add_minor_btn:hover{
+ display: inline-block;
+ width:61px;
+ height:25px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-362px -282px;
+ text-indent: -9999px;
+ }

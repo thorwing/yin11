@@ -1,3 +1,10 @@
+ <script>
+	$(function() {
+		$( "#sortable" ).sortable();
+//		$( "#sortable" ).disableSelection();
+	});
+	</script>
+
 <div class = "grid_10 to_left to_right">
     <%= form_for(@recipe) do |f| %>
         <%= render "shared/error_messages", target: @recipe %>
@@ -35,7 +42,9 @@
                         <% end  %>
                     </table>
                 </div>
-                <%= link_to_add_fields( t("recipes.add_major"), f, :ingredients, ".major_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients))  %>
+
+                 <% add_class= "add_major_btn" %>
+                <%= link_to_add_fields( "", f, :ingredients, ".major_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients), add_class)  %>
             </div>
 
             <div class ="minor_ingredients to_right">
@@ -55,18 +64,35 @@
                         <% end  %>
                     </table>
                 </div>
-                <%= link_to_add_fields( t("recipes.add_minor"), f, :ingredients, ".minor_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients))  %>
+
+                <% add_class= "add_minor_btn" %>
+                <%= link_to_add_fields( "", f, :ingredients, ".minor_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients), add_class)  %>
             </div>
         </div>
 
-        <div class="steps box_shadow clearfix mb10 p5">
-            <div class ="block ">
+        <div class="steps box_shadow clearfix mb10 p10">
+            <ul id="sortable" class ="block ">
                 <b><%= f.label :title, t("recipes.steps"), :class => "f16" %></b><br/>
                 <%= f.fields_for :steps  do |builder| %>
                     <%= render "step_fields", :f => builder %>
+
+                    <%=  javascript_tag "step_uploader(\'.steps\');"%>
+                    <% if builder.object.new_record? %>
+                           <%= javascript_tag "change_back_img(\'.steps\');" %>
+                    <% else %>
+                        <% url = (builder.object.img_id && builder.object.image) ?  builder.object.image.picture_url(:thumb) : "" %>
+                        <% if url.blank?  %>
+                            <%= javascript_tag "change_back_img(\'.steps\');" %>
+                        <% else %>
+                            <%= javascript_tag "change_back_img(\'.steps\',"+"'"+ url +"');" %>
+                        <% end  %>
+                    <% end  %>
+
                 <% end %>
-            </div>
-            <%= link_to_add_fields( t("recipes.add_step"), f, :steps, ".steps >div", ".steps", get_max_length(Recipe, :steps) ) %><br/>
+            </ul>
+
+            <% add_class= "add_step_btn" %>
+            <%= link_to_add_fields( "", f, :steps, ".steps >ul", ".steps", get_max_length(Recipe, :steps), add_class ) %><br/>
 
 
             <%= f.label :title, t("recipes.note"), :class => "f14" %>
@@ -78,6 +104,7 @@
 
     <% end %>
 </div>
+
 
  <!--<div class = "grid_3 box_shadow to_right m10 p5">-->
     <!--<h3><= t("recipes.tips") %></h3>-->

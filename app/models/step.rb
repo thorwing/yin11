@@ -2,15 +2,17 @@ class Step
   include Mongoid::Document
   include Imageable
 
-    #fields
+  #fields
   field :content, :type => String
   field :img_id
-  has_one :image
+
   attr_accessible  :content, :img_id , :img_url
 
-    #relationships
+  #relationships
+  has_one :image
   embedded_in :recipe
-    #validations
+
+  #validations
   validates_length_of :content, :maximum => 200
 
 end
