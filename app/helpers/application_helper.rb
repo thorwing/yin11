@@ -113,4 +113,16 @@ module ApplicationHelper
     end
   end
 
+  def load_appkey()
+    sites = ["sina","qq","sohu"]
+    appkeyhash = {}
+
+    sites.each do |site|
+      configs = YAML::load(File.open("config/oauth/#{site}.yml"))
+      appkeyhash["#{site}_appkey"] = configs[Rails.env]["key"]
+      p appkeyhash["#{site}_appkey"]
+    end
+    return appkeyhash
+  end
+
 end
