@@ -35,7 +35,7 @@
             <div class="center">
                 <%= link_to image_tag(recipe.get_image_url(:waterfall), height: recipe.get_image_height(:waterfall)), recipe %>
             </div>
-            <span class="f14 b_white black"><%= link_to recipe.name, recipe %></span><br/>
+            <span class="f14"><%= link_to recipe.name, recipe %></span><br/>
             <span><%= truncate_content(recipe.description, 30) %></span>
           </div>
         </div>
