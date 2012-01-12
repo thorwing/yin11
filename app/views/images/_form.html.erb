@@ -11,7 +11,7 @@
   </div>
   <div class="field">
     <b><%= t("images.image") %></b><br/>
-    <%= image_tag @image.picture.url %><br/>
+    <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=>  @image.picture.url %><br/>
     <%= f.file_field :picture  %> <br/>
   </div>
   <div class="actions">

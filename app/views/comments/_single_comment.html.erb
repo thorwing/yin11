@@ -1,6 +1,6 @@
 <div class="comment grid_6 box_shadow p5 mb10 b_white" id='<%= comment.id.to_s %>'>
     <div>
-      <%= image_tag comment.user.get_avatar(:thumb), :width => 24, :height => 24 %>
+      <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=>comment.user.get_avatar(:thumb), :width => 24, :height => 24 %>
       <%= link_to comment.user.login_name, comment.user %>:
         <blockquote>
           <% if comment.enabled %>

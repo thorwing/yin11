@@ -4,7 +4,7 @@
             <!--<= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'fl img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox" %>-->
             <%= link_to image_tag("grey.gif", :alt=> @recipe.name, "class" => 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall) ), @recipe.get_image_url, rel: "facebox"  %>
         <% else %>
-            <%= image_tag "not_found.png", class: 'fl img_frame overflow_hidden' %>
+            <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", class: 'lazy fl img_frame overflow_hidden' %>
         <% end %>
 
         <div class="clearfix">
@@ -75,7 +75,7 @@
                                     <!--<img class="lazy" src="grey.gif" data-original= "<=s.get_image_url%>" width="180" heigh="135" rel="facebox" :alt="step_image"  >-->
                                     <%= link_to image_tag("grey.gif", :size => '180x135', :alt=> "step_image", "class" => "lazy", "data-original" => s.get_image_url(:thumb) ), s.get_image_url, rel: "facebox" %>
                                 <% else  %>
-                                    <%= image_tag "not_found.png", :size => '180x135' %>
+                                    <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> "/assets/not_found.png", :size => '180x135' %>
                                 <% end %>
                             </span>
                             <span><%= s.content %></span>

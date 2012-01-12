@@ -1,6 +1,6 @@
 <div class="master box_shadow mt5 mb5 p5 fl clearfix" style="height: 120px;">
     <div class="fl clearfix" style="width: 100px;">
-        <%= link_to image_tag(user.get_avatar(:thumb)), user %><br/>
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false)), user %><br/>
     </div>
     <div class="fl ml10 clearfix" style="width:502px;">
         <div class="clearfix">

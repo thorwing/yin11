@@ -1,6 +1,6 @@
 <div class="ks-waterfall box_shadow" data-id="<%= item.id.to_s %>" >
     <div class="hint_box" align="right">
-        <%= link_to image_tag(item.get_review_image_url(:waterfall), height: item.get_review_image_height(:waterfall)), item, class: "image" if item.get_review_image_url(:waterfall).present? %>
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_review_image_url(:waterfall), height: item.get_review_image_height(:waterfall)), item, class: "image" if item.get_review_image_url(:waterfall).present? %>
         <% if the_author_himself(Album.name, @album.id, false, false) %>
           <span class="flex_hint top_right">
             <span class="ml20 fl"><%= link_to "", remove_album_path(@album, item_id: item.id, item_type: item.class.name), method: :put, class: "delete_from_album_btn"  %></span>
@@ -22,7 +22,7 @@
 
     <div class="user_info ml10 mr10 clearfix" position = "relative">
         <div class="fl">
-            <%= link_to image_tag(item.author.get_avatar(:thumb, false), width: 48, height:48), item.author, class: "mr10" %><br/>
+            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.author.get_avatar(:thumb, false), width: 48, height:48), item.author, class: "mr10" %><br/>
             <%= link_to item.author.login_name, item.author %>
         </div>
     </div>

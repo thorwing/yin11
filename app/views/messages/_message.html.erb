@@ -1,7 +1,7 @@
 <div class="box_shadow mb10 p5 clearfix" id="<%= message.id.to_s %>">
     <div class="fl" style="width: 200px;">
         <div class="fl">
-            <%= link_to(image_tag(target.get_avatar(:thumb), width: 50, height: 50), target) %>
+            <%= link_to(image_tag("grey.gif", "class" => 'lazy', "data-original"=> target.get_avatar(:thumb, false), width: 50, height: 50), target) %>
         </div>
         <div class="fl ml5">
             <%= link_to target.login_name, target %><br/>

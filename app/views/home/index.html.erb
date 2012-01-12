@@ -3,11 +3,11 @@
 
 <div class="box_shadow mb10 clearfix" style="height:200px;">
   <!--Golden Ratio 960 * 0.618 = 593.28 -->
-  <%= image_tag "home_banner.png", width:593, height:200, class: "grid_8 to_left" %>
+  <%= image_tag "grey.gif", width:593, height:200, class: "lazy grid_8 to_left", "data-original"=> "/assets/home_banner.png" %>
   <div class="grid_4 to_right">
     <% if current_user_has_permission? :normal_user %>
         <b><%= link_to current_user.login_name, "/me" %></b><br/>
-        <%= link_to image_tag(current_user.get_avatar(:thumb)), "/me" %><br/>
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false)), "/me" %><br/>
         <%= render "users/user_statics", user: current_user %>
 
         <span class="mt5"><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %></span>
@@ -35,10 +35,10 @@
         <% end %>
     </div>
     <div>
-      <%= link_to ">>更多美食达人", masters_path %><br/>
+      <%= link_to ">>更多美食达人", masters_path %><br/>                                                                                           W
       <div class="p5">
           <% @masters.each do |master| %>
-                <div class="fl m1" style="width:48px;height:48px;"><%= link_to image_tag(master.get_avatar(:thumb), width: 48, height: 48), master %></div>
+                <div class="fl m1" style="width:48px;height:48px;"><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> master.get_avatar(:thumb, false), width: 48, height: 48), master %></div>
           <% end %>
       </div>
     </div>

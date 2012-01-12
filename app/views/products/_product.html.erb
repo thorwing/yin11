@@ -1,6 +1,6 @@
 <div class="block round">
     <div class=" fl">
-        <%= link_to image_tag(product.image.picture_url) if product.image && product.image.picture_url %>
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> product.image.picture_url) if product.image && product.image.picture_url %>
         <%= product.name %>
     </div>
 </div>
