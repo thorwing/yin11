@@ -1,0 +1,37 @@
+<% title t("desires.desire") %>
+
+<div class="grid_9 to_left">
+    <div class="box_shadow clearfix p5">
+        <% if current_user_has_permission? :normal_user %>
+            <div class="fr" align="right">
+              <%= render "votes/vote_fields", :item => @desire %>
+            </div>
+        <% end %>
+        <p class="ml10" style="width: 600px;">
+            <%= @desire.content %>
+        </p>
+    </div>
+
+    <% if the_author_himself(Desire.name, @desire.id, true, false) %>
+        <div class="mt10 p5 clearfix">
+            <%= link_to "", edit_desire_path(@desire), class: "modify_btn" %>
+            <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
+        </div>
+    <% end %>
+
+    <div id="static_waterfall_container" class="mt10">
+        <%= image_tag @desire.get_image_url(:waterfall) %>
+        <!--< @desire.get_images_with_objects(:waterfall).each do |hash| %>-->
+            <!--< render "reviews/review_waterfall_field", picture_url: hash[:picture_url], picture_height: hash[:picture_height], item:  hash[:object] %>-->
+        <!--< end %>-->
+    </div>
+    <div class="mt10">
+        <%= render "comments/comments", :item => @desire %>
+    </div>
+</div>
+
+<div class="grid_3 to_right">
+    <%= render "users/author_panel", author: @desire.author %>
+</div>
+
+<%= javascript_tag "static_waterfall(3);" %>

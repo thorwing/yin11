@@ -1,5 +1,7 @@
 Yin11::Application.routes.draw do
 
+  resources :desires
+
   match '/editor(/*requested_uri)' => 'mercury_auth#edit', :as => :mercury_editor
   Mercury::Engine.routes
 

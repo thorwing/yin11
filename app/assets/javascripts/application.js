@@ -63,6 +63,7 @@ $(function() {
     tokenize_input("#product_tags_string", "/tags/query.json", 10);
     tokenize_input("#recipe_tags_string", "/tags/query.json", 10);
     tokenize_input("#group_tags_string", "/tags/query.json", 10);
+    tokenize_input("#desire_tags_string", "/tags/query.json", 10);
     tokenize_input("#vendor_fields #product_vendor_token", "/vendors.json", 1);
     tokenize_input("#message_fields .token #user_id", "/users/fans.json", 1);
 });

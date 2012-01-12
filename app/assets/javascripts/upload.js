@@ -1,6 +1,6 @@
 // Use Valums Ajax Upload
 
-$(function() {
+function general_upload() {
     var tokentag = $('#tokentag').val();
 
     if($('#uploader').length > 0) {
@@ -51,6 +51,10 @@ $(function() {
             }
         });
     }
+}
+
+$(function() {
+    general_upload();
 });
 
 //Append the image, it could belong to Image or Product

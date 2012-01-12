@@ -426,6 +426,10 @@ zh-CN:
     new_topic: 新建策划
     edit_topic: 编辑策划
 
+  desires:
+    desire: 馋人的
+
+
   reviews:
     review: 分享
     head: 我要分享

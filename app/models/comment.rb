@@ -12,6 +12,7 @@ class Comment
   embedded_in :post
   embedded_in :recipe
   embedded_in :album
+  embedded_in :desire
   belongs_to :user
 
   validates_presence_of :user
