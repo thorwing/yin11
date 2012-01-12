@@ -1,5 +1,8 @@
 <% title @topic.title %>
 
+<div>
+  <%= render "shared/show_tags", item: @topic %>
+</div>
 <div id="topic_content" class="mercury-region" data-type="editable">
     <%= raw @topic.content %>
 </div>

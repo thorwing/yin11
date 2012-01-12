@@ -1,3 +1,5 @@
+
+
 <div class="grid_9 to_left">
     <%= form_for(@topic) do |f| %>
       <%= render "shared/error_messages", :target => @topic %>
@@ -7,9 +9,11 @@
         <%= f.text_field :title %>
       </div>
       <div class="field">
-         <b><%= f.label :tags_string, t("tags.tags") %></b><br/>
-         <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
+          <b><%= f.label :tags_string, t("tags.tags") %></b><br/>
+          <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json, class: "tags_input" %>
       </div>
+      <%= render "tags/tags_options" %>
+
       <div class="field">
         <b><%= f.label :priority, t("general.priority") %></b><br />
         <%= f.text_field :priority %>
