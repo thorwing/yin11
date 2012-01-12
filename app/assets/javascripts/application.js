@@ -10,6 +10,8 @@
 //= require kissy/kissy
 //= require jquery.Jcrop.min
 //= require lazyload
+//= require jquery.isotope.min
+//= require jquery.timer
 //= require_tree .
 
 var products_limit = 3;
@@ -173,3 +175,71 @@ $(function(){
     $("img.lazy").lazyload();
 });
 
+function shift_masonry(link) {
+    var $container = $('#masonry_container');
+    $('#filters a.selected').removeClass('selected');
+    $(link).addClass('selected');
+    var selector = $(link).attr('data-filter');
+    $container.isotope({ filter: selector });
+    return false;
+}
+
+$(function(){
+    var $container = $('#masonry_container');
+
+    $('#filters a').click(function(){
+       shift_masonry(this);
+    });
+
+    $('#filters a').hover(function(){
+       shift_masonry(this);
+    });
+
+    $.Isotope.prototype._masonryReset = function() {
+        // layout-specific props
+        this.masonry = {};
+        this._getSegments();
+        var i = this.masonry.cols;
+        this.masonry.colYs = [];
+        while (i--) {
+          this.masonry.colYs.push( 0 );
+        }
+
+        if ( this.options.masonry.cornerStampSelector ) {
+          var $cornerStamp = this.element.find( this.options.masonry.cornerStampSelector ),
+              stampWidth = $cornerStamp.outerWidth(true) - ( this.element.width() % this.masonry.columnWidth ),
+              cornerCols = Math.ceil( stampWidth / this.masonry.columnWidth ),
+              cornerStampHeight = $cornerStamp.outerHeight(true);
+          for ( i = Math.max( this.masonry.cols - cornerCols, cornerCols ); i < this.masonry.cols; i++ ) {
+            this.masonry.colYs[i] = cornerStampHeight;
+          }
+        }
+    };
+
+
+
+//    $container.imagesLoaded( function(){
+//    });
+    var first_tag = $('#filters a:first');
+    first_tag.addClass('selected');
+
+    $container.isotope({
+        // options
+        itemSelector : '.item',
+        layoutMode : 'masonry',
+        masonry: {
+            columnWidth: 220,
+            cornerStampSelector: '.corner-stamp'
+        },
+        filter: first_tag.attr('data-filter')
+    });
+
+    $('#filters').everyTime(10000, 'controlled', function() {
+        var length = $(this).find('a').length;
+        var index = Math.floor((length) * (Math.random() % 1));
+        $('#filters a.selected').removeClass('selected');
+        var tag = $('#filters a:eq(' + index + ')');
+        tag.addClass('selected');
+        tag.click();
+    });
+});

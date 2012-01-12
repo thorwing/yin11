@@ -17,6 +17,32 @@
   </div>
 </div>
 
+<div class="box_shadow p5">
+    <% tags = get_top_primary_tags %>
+    <% recipes = Recipe.tagged_with(tags.map(&:name)).to_a %>
+    <ul id="filters">
+        <% tags.each do |tag| %>
+            <li class="display_inline"><%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "tag" %></li>
+        <% end %>
+    </ul>
+    <div id="masonry_container" class="mt10">
+      <div class="corner-stamp">
+        <%= "诱人的美食图片，你被馋到了吗？ 点击进去吧，看看怎么解馋！" %>
+      </div>
+      <% recipes.each do |recipe| %>
+        <div class="item <%= recipe.tags.join(' ') %>" style="margin: 10px;">
+          <div class="box_shadow p5">
+            <div class="center">
+                <%= link_to image_tag(recipe.get_image_url(:waterfall), height: recipe.get_image_height(:waterfall)), recipe %>
+            </div>
+            <span class="f14 b_white black"><%= link_to recipe.name, recipe %></span><br/>
+            <span><%= truncate_content(recipe.description, 30) %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+
 <div class="clearfix mt20">
   <% unless @hot_topics.empty? %>
     <h2 class="mt10"><%= t("topics.topics") %></h2>

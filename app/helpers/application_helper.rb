@@ -96,6 +96,10 @@ module ApplicationHelper
       tags
   end
 
+  def get_top_primary_tags
+    Tag.where(primary: true).desc(:items_count).limit(7)
+  end
+
   def get_hot_primary_tags(tags)
     flat_tag_names = []
       if tags.is_a?(Array)
