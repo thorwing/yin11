@@ -15,8 +15,10 @@
             </div>
             <div class="field">
                  <b><%= f.label :tags_string, t("tags.tags") %></b>
-                 <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
+                 <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json, class: "tags_input" %>
             </div>
+            <%= render "tags/tags_options" %>
+
             <div  class="field">
                 <b><%= f.label :title, t("recipes.description") %></b><br/>
                 <%= f.text_area :description, :maxlength => get_max_length(Recipe, :description), 'data-comment_max_len' => get_max_length(Recipe, :description), rows: 8, :class => "char_aware " %>
