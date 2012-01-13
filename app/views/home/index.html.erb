@@ -17,12 +17,12 @@
   </div>
 </div>
 
-<div class="box_shadow p5">
+<div id="desires_box" class="p5 b_white">
     <% tags = get_top_primary_tags %>
     <% items = Desire.tagged_with(tags.map(&:name)).to_a %>
     <ul id="filters">
         <% tags.each do |tag| %>
-            <li class="display_inline"><%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "tag" %></li>
+            <li class="display_inline"><%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "f14 p5" %></li>
         <% end %>
     </ul>
     <div id="masonry_container" class="mt10">
@@ -35,13 +35,13 @@
       </div>
       <% items.each do |item| %>
         <div class="item <%= item.tags.join(' ') %>" style="margin: 10px;">
-          <div class="box_shadow p5">
+          <div class="box_shadow p5" style="max-width: 200px;">
             <div class="center">
                 <%= link_to image_tag(item.get_image_url(:waterfall), height: item.get_image_height(:waterfall)), item %>
             </div>
             <!--<span class="f14"><= link_to recipe.name, recipe %></span><br/>-->
             <!--<span><= truncate_content(recipe.description, 30) %></span>-->
-            <%= truncate_content(item.content, 30) %>
+            <%= truncate_content(item.content, 50) %>
           </div>
         </div>
       <% end %>
