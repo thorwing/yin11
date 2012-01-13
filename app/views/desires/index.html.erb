@@ -8,6 +8,6 @@
 <% end %>
 
 <div class="grid_12 to_left to_right">
-    <%= render "shared/waterfall", :path => more_desires_path, :waterfall_partial => "desires/desire_waterfall", :columns_count => 4, :columns_width => 230 %>
+    <%= render "shared/waterfall", :path => more_desires_path, :waterfall_partial => "desires/desire_waterfall", :columns_count => 4, :columns_width => 230, tag: params[:tag] %>
 </div>
 
