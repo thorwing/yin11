@@ -273,6 +273,10 @@ zh-CN:
     current_city: 当前城市：
     change_city: 切换
     recommended_products: 推荐商品
+    banner:
+    topic_name1: 年货大合集
+    topic_name2: 料理仙姬中的美食
+    topic_name3: 素食主义（策划中）
 
   control_panel:
     actions: 我要：
