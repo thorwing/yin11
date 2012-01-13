@@ -6,6 +6,7 @@ class Review
   include Feedable
   include Imageable
   include Votable
+  include Taggable
   can_like
 
   field :content

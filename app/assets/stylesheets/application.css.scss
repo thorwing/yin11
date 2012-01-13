@@ -19,11 +19,16 @@
 *= require tab_control
 *= require recipes
 *= require messages
+*= require buttons
+*= require home
+*= require isotope
 *= require token-input-facebook
 *= require facebox
+*= require buttons
 *= require jquery.jgrowl
 *= require fileuploader
 *= require jquery.Jcrop
+<<<<<<< HEAD
 *= require buttons
 *= require rcarousel
 */
@@ -288,6 +293,7 @@ a.tag {
     text-decoration: none;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    margin: 1px;
     padding: 2px;
     border: 1px solid #333333;
     background-color: $azure;
@@ -359,7 +365,7 @@ body #main { height: auto; padding-bottom: 260px;}
     background: url("footer_bg.png") repeat-x;
 }
 
-#footer a {
+#footer a {                    s
 	text-decoration:underline;
 }
 

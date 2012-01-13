@@ -1,0 +1,21 @@
+.piece,{background-color:#FFF;height:220px;}
+.piece .content{border-right:1px solid;border-left:1px solid;overflow:hidden;}
+.b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8{height:1px; font-size:1px; overflow:hidden; display:block;}
+.b1,.b8{margin:0 5px;}
+.b2,.b7{margin:0 3px;border-right:2px solid; border-left:2px solid;}
+.b3,.b6{margin:0 2px;border-right:1px solid; border-left:1px solid;}
+.b4,.b5{margin:0 1px;border-right:1px solid; border-left:1px solid; height:2px;}
+
+.color1 .b2,.color1 .b3,.color1 .b4,.color1 .b5,.color1 .b6,.color1 .b7,.color1 .content{border-color:#fff; background-color:#fff;}
+.color1 .b1,.color1 .b8{background:#fff;}
+
+.piece h2{font-size:16px; height:40px; line-height:40px;margin-left:8px; vertical-align: text-bottom;}
+.piece h3{font-size:13px; height:40px;margin-left:8px;}
+.piece .tag_link{ height:40px; padding-top:10px;}
+.piece .recipe_list {width:930px; margin-left:8px;}
+
+.recipe_list .hint_box{margin:2px; font-size:20px; font-weight: bold;}
+.recipe_list .hint_box img.sep_6{width:150px; height:150px;}
+.recipe_list .hint_box img.sep_5{width:180px; height:150px;}
+
+.recipe_list .a {text-decoration: none;}

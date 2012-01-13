@@ -68,6 +68,50 @@ module ApplicationHelper
     tree
   end
 
+  def handle_record(record)
+    if record.is_a?(Hash)
+      hash = {}
+      record.each do |k, v|
+        hash[k] = handle_record(v)
+      end
+      hash
+    elsif record.is_a?(String)
+      record.split(' ')
+    end
+  end
+
+  def get_primary_tags
+      tags = nil #Rails.cache.fetch('primary_tags')
+      if tags.nil?
+         Logger.new(STDOUT).info "records are cached"
+         records = YAML::load(File.open("app/seeds/tags.yml"))
+
+         tags = {}
+         records.each do |first_lv, value|
+           tags[first_lv] = handle_record(value)
+         end
+         Rails.cache.write('primary_tags', tags, :expires_in => 3.hours)
+      end
+
+      tags
+  end
+
+  def get_top_primary_tags
+    Tag.where(primary: true).desc(:items_count).limit(7)
+  end
+
+  def get_hot_primary_tags(tags)
+    flat_tag_names = []
+      if tags.is_a?(Array)
+        flat_tag_names |= tags
+      elsif tags.is_a?(Hash)
+        tags.each do |second_lv, v|
+          flat_tag_names |= v
+        end
+      end
+    tags = Tag.any_in(name: flat_tag_names.uniq).desc(:items).limit(7)
+  end
+
   def get_hot_tags(limit = ITEMS_PER_PAGE_FEW, of = :feeds)
     key = "hot_tags_of_#{of.to_s}"
     tags = Rails.cache.fetch(key)
