@@ -389,38 +389,56 @@ a.btn_register:hover{
 }
 
 .vote_button.to_like {display: inline-block;
- width:50px;
- height:22px;
+ width:61px;
+ height:25px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-371px -200px;
+ background-position:-361px -370px;
  text-indent: -9999px;
 }
 
 .vote_button.to_like:hover, .vote_button.liked{display: inline-block;
- width:50px;
- height:22px;
+ width:61px;
+ height:25px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-371px -229px;
+ background-position:-361px -397px;
  text-indent: -9999px;
 }
 
 .collect_btn{ display: inline-block;
- width:50px;
- height:22px;
+ width:61px;
+ height:25px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-430px -200px;
+ background-position:-426px -370px;
  text-indent: -9999px;
 }
 
 .collect_btn:hover{ display: inline-block;
- width:50px;
- height:22px;
+ width:61px;
+ height:25px;
  background-image: url(buttons.png);
  background-repeat:no-repeat;
- background-position:-430px -229px;
+ background-position:-430px -397px;
+ text-indent: -9999px;
+}
+
+.desire_btn{ display: inline-block;
+ width:61px;
+ height:25px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-361px -428px;
+ text-indent: -9999px;
+}
+
+.desire_btn:hover{ display: inline-block;
+ width:61px;
+ height:25px;
+ background-image: url(buttons.png);
+ background-repeat:no-repeat;
+ background-position:-361px -457px;
  text-indent: -9999px;
 }
 
