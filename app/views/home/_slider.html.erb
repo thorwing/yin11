@@ -1,10 +1,10 @@
 <div id="content" class="grid_8 to_left">
     <div id="container2">
         <div id="pages" class="fl m10" style="text-align: center;">
-          <div><a class = "sliders m10 mt20" id ="0"><%= t("home.banner") %></a></div>
-          <% @hot_topics.each_with_index do |topic, index| %>
-            <div><a class = "sliders m10 mt20" id ="<%= (index + 1).to_s %>"><%= topic.title %></a></div>
-          <% end %>
+            <div class="sliders" id ="0" ><a class = " lighter_touch"  ><%= t("home.banner") %></a></div>
+            <% @hot_topics.each_with_index do |topic, index| %>
+            <div class="sliders" id ="<%= (index + 1).to_s %>"><a class = " lighter_touch"> <%= topic.title %></a></div>
+            <% end %>
         </div>
         <div id="carousel" class="fl m10">
             <img src="/assets/home_banner.png" style="width:453px;height:200px;"/>

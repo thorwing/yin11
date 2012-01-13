@@ -31,15 +31,6 @@
     </div>
 </div>
 
-<div class="clearfix mt20">
-  <% unless @hot_topics.empty? %>
-    <h2 class="mt10"><%= t("topics.topics") %></h2>
-    <% @hot_topics.each do |topic| %>
-        <%= raw topic.content %>
-    <% end %>
-  <% end %>
-</div>
-
 <div class="mt20 clearfix ">
   <%= render "primary_tags" %>
 </div>

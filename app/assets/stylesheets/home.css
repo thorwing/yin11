@@ -31,3 +31,12 @@
     height: 200px;
     margin: 5px auto 0 auto;
 }
+
+.sliders
+{
+    height:44px;
+    border-style:solid;
+    border-width:3px;
+    border-color:white;
+    cursor: pointer;
+ }
