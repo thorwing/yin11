@@ -22,13 +22,13 @@
         </div>
     <% end %>
 
-    <div class="mb20">
-        <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "我来分享如何解馋" %>
-    </div>
     <div id="static_waterfall_container" class="mt10">
         <% @desire.reviews.each do |review| %>
             <%= render "reviews/review_waterfall_field", picture_url: review.get_review_image_url(:waterfall), picture_height: review.get_review_image_height(:waterfall), item: review %>
         <% end %>
+    </div>
+    <div class="mb20">
+        <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "我来分享如何解馋" %>
     </div>
     <div class="mt10">
         <%= render "comments/comments", :item => @desire %>

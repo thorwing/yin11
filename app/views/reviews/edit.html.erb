@@ -2,10 +2,6 @@
 
 <% content_for :head do %>
     <%= stylesheet_link_tag "upload" %>
-    <script type="text/javascript" charset="utf-8">
-
-
-    </script>
 <% end %>
 
 <div class="grid_9">
@@ -53,7 +49,7 @@
 
                 <% @review.images.each do |image| %>
                     <div class="image fl">
-                        <%= link_to image_tag("/assets/close_x.png", alt: "delete_image"), "", onclick: "delete_review_related_item(this); return false;", class: "del_link lighter_touch" %>
+                        <%= link_to image_tag("/assets/close_x.png", alt: "delete_image"), "", onclick: "delete_related_item(this); return false;", class: "del_link lighter_touch" %>
                         <%= link_to image_tag("grey.gif", "data-original"=> image.picture_url(:thumb), alt: "image_thumbnail", class: "lazy thumbnail"), image.picture_url, rel: "facebox" %>
                         <%= hidden_field_tag "images[]", image.id.to_s %>
                     </div>

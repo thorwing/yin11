@@ -74,7 +74,7 @@ $(function() {
 function append_image(id, thumb_url, original_url, post_params) {
     var new_image = '<div class="image fl">'
                 + post_params
-                + '<a onclick="delete_review_related_item(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_image"></a>'
+                + '<a onclick="delete_related_item(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_image"></a>'
                 + '<a rel="facebox" href="' + original_url + '">'
                 + '<img class="thumbnail" src="' + thumb_url + '" alt="image_thumbnail"></a>'
     var debug = $('#uploader').data("debug");

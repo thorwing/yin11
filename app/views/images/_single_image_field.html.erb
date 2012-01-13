@@ -1,6 +1,6 @@
 <div class="image fl ">
     <%= hidden_field_tag "images[]", image.id %>
-    <%= link_to_function image_tag("cancel.png", :border => 0), "delete_review_related_item(this)", class: "del_link lighter_touch" %><br/>
+    <%= link_to_function image_tag("cancel.png", :border => 0), "delete_related_item(this)", class: "del_link lighter_touch" %><br/>
     <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> image.picture_url, :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, :alt => "image_thumbnail"),
         image.picture_url, :title => image.caption, :rel => "facebox" , :class => "thumbnail" %>
 </div>

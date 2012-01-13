@@ -8,8 +8,12 @@ class Desire
 
   field :content
   field :wanted_count, :type => Integer, :default => 0
+  field :priority, :type => Integer, :default => 0
 
-  attr_accessible :content
+  attr_accessible :content, :priority
+
+  #scopes
+  scope :recommended, where(:priority.gt => 0)
 
   #relationships
   has_many :images

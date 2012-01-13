@@ -6,7 +6,7 @@
 
 
 #desires_box{
-    #filters a {
+    #filters a.filter {
         border-top: 1px solid #a3a09e;
         border-left: 1px solid #a3a09e;
         border-right: 1px solid #a3a09e;
@@ -14,7 +14,7 @@
         color: $ink_black;
         background: $azure;
     }
-    #filters a.selected {
+    #filters a.filter.selected {
         color: $ink_black;
         background: white;
         border-bottom: 0px solid #a3a09e;

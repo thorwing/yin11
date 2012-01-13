@@ -53,6 +53,7 @@
                 <li><%= render_menu(t("menu.home"), "/") %></li>
                 <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me")%></li><% end %>
                 <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
+                <li><%= render_menu(t("menu.desires"), desires_path) %></li>
                 <li><%= render_menu(t("menu.albums"), albums_path) %></li>
                 <li><%= render_menu(t("menu.recipes"), recipes_path) %></li>
                 <li><%= render_menu(t("menu.masters"), masters_path) %></li>

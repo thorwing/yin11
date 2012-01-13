@@ -235,12 +235,12 @@ $(function(){
         filter: first_tag.attr('data-filter')
     });
 
-    $('#filters').everyTime(10000, 'controlled', function() {
-        var length = $(this).find('a').length;
-        var index = Math.floor((length) * (Math.random() % 1));
-        $('#filters a.selected').removeClass('selected');
-        var tag = $('#filters a:eq(' + index + ')');
-        tag.addClass('selected');
-        tag.click();
-    });
+//    $('#filters').everyTime(10000, 'controlled', function() {
+//        var length = $(this).find('a').length;
+//        var index = Math.floor((length) * (Math.random() % 1));
+//        $('#filters a.selected').removeClass('selected');
+//        var tag = $('#filters a:eq(' + index + ')');
+//        tag.addClass('selected');
+//        tag.click();
+//    });
 });

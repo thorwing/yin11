@@ -10,7 +10,7 @@ class Album
   field :priority, :type => Integer, :default => 0
   field :cover_id
 
-  attr_accessible :title, :description, :author_id
+  attr_accessible :title, :description, :author_id, :priority
 
   #scopes
   scope :recommended, where(:priority.gt => 0)

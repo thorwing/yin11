@@ -50,7 +50,7 @@ function pick_recipe(link, id, name, image_url) {
             + '<a href="/recipes/' + id + '">'
             + '<img class="thumbnail" src="' + image_url + '" alt="thumbnail"></a>'
             + '<span class="fix_hint b_black white f11">' + name + '</span></div>'
-            + '<a onclick="delete_review_related_item(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_recipe"></a>'
+            + '<a onclick="delete_related_item(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_recipe"></a>'
             + '<input type="hidden" value="' + id + '" name="review[recipe_ids][]" id="recipe_' + id + '"/>'
             + '</div>';
 
@@ -83,6 +83,6 @@ function pick_recipe(link, id, name, image_url) {
 //}
 
 //Delete product, recipe or image
-function delete_review_related_item(link) {
+function delete_related_item(link) {
     $(link).parent().remove();
 }

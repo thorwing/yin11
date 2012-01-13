@@ -3,6 +3,6 @@
         <%= link_to image_tag("grey.gif", "data-original"=> picture_url, class: "lazy thumbnail"), product %>
         <span class="fix_hint b_black white f11"><%= product.name %></span>
     </div>
-    <%= link_to image_tag("/assets/close_x.png", alt: "delete_product"), "", onclick: "delete_review_related_item(this); return false;", class: "del_link lighter_touch" %>
+    <%= link_to image_tag("/assets/close_x.png", alt: "delete_product"), "", onclick: "delete_related_item(this); return false;", class: "del_link lighter_touch" %>
     <%= hidden_field_tag "review[product_ids][]", product.id.to_s, id: "product_" + product.id.to_s %>
 </div>

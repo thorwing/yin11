@@ -1,5 +1,5 @@
 class DesiresController < ApplicationController
-  before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
+  before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Desire.name, c.params[:id], true)}
 
   # GET /desires
@@ -10,6 +10,36 @@ class DesiresController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @desires }
+    end
+  end
+
+  def more
+    #  used for waterfall displaying
+    criteria = Desire.all.desc(:created_at) #votes
+    criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
+    @desires = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+
+    data = {
+      items: @desires.inject([]){|memo, d| memo <<  {
+        content: d.content,
+        user_id: d.author.id,
+        user_name: d.author.login_name,
+        user_avatar: d.author.get_avatar(:thumb, false),
+        user_reviews_cnt: d.author.reviews.count,
+        user_recipes_cnt: d.author.recipes.count,
+        user_fans_cnt: d.author.followers.count,
+        user_established: current_user ? (current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == d.author.id.to_s}.size > 0) : false,
+        time: d.created_at.strftime("%m-%d %H:%M:%S"),
+        picture_url: d.get_image_url(:waterfall),
+        picture_height: d.get_image_height(:waterfall),
+        id: d.id}
+      },
+      page: params[:page],
+      pages: (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+    }
+
+    respond_to do |format|
+      format.json { render :json => data}
     end
   end
 

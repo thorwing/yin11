@@ -1,0 +1,34 @@
+<% if @desires && @desires.size > 0 %>
+    <div id="desires_box" class="grid_12 mt10">
+        <ul id="filters">
+            <% @hot_primary_tags.each do |tag| %>
+                <li class="display_inline"><%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "filter f14 p5" %></li>
+            <% end %>
+            <%= link_to t("general.more"), desires_path, class: "fr" %>
+            <div class="clearfix"></div>
+        </ul>
+        <div id="masonry_container" class="b_white">
+          <div class="corner-stamp">
+            <%= content_tag :span, "秀色可餐？你被馋到了吗？" %><br/>
+            <%= content_tag :span, "点击看如何把它变成盘中餐！" %><br/>
+            <%= link_to "+我来馋馋大家", new_desire_path, class: "desire_dialog_btn" %>
+            <div id="desire_dialog" class="display_none">
+                <%= render "desires/desire_fields", desire: Desire.new %>
+            </div>
+          </div>
+          <% @desires.each do |item| %>
+            <div class="item <%= item.tags.join(' ') %>" style="margin: 10px;">
+              <div class="box_shadow p5" style="max-width: 200px;">
+                <div class="center">
+                    <%= link_to image_tag(item.get_image_url(:waterfall), height: item.get_image_height(:waterfall)), item %>
+                </div>
+                <!--<span class="f14"><= link_to recipe.name, recipe %></span><br/>-->
+                <!--<span><= truncate_content(recipe.description, 30) %></span>-->
+                <%= truncate_content(item.content, 50) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+<% end %>

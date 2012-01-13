@@ -1,23 +1,13 @@
-<h1>Listing desires</h1>
+<% title t("desires.desire"), false %>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @desires.each do |desire| %>
-  <tr>
-    <td><%= desire.content %></td>
-    <td><%= link_to 'Show', desire %></td>
-    <td><%= link_to 'Edit', edit_desire_path(desire) %></td>
-    <td><%= link_to 'Destroy', desire, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% if current_user_has_permission? :normal_user %>
+    <%= link_to "+添加馋人的东西", new_desire_path, class: "desire_dialog_btn" %>
+    <div id="desire_dialog" class="display_none">
+        <%= render "desires/desire_fields", desire: Desire.new %>
+    </div>
 <% end %>
-</table>
 
-<br />
+<div class="grid_12 to_left to_right">
+    <%= render "shared/waterfall", :path => more_desires_path, :waterfall_partial => "desires/desire_waterfall", :columns_count => 4, :columns_width => 230 %>
+</div>
 
-<%= link_to 'New Desire', new_desire_path %>
