@@ -115,6 +115,14 @@ class ReviewsController < ApplicationController
       product.save
     end
 
+    #handle recipes'' links
+    @review.recipe_ids.each do |recipe_id|
+      recipe = Recipe.find(recipe_id)
+      recipe.review_ids ||= []
+      recipe.review_ids << @review.id
+      recipe.save
+    end
+
     #handle album
     @review.album_ids.each do |album_id|
       album = Album.find(album_id)

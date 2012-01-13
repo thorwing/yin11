@@ -5,8 +5,11 @@ class Tag
   key :name
   #item: "<type> <id>"
   field :items, :type => Array, :default => []
-  field :items_count, :type => Integer, :default => 0
   field :primary, :type => Boolean, :default => false
+  #cached fields
+  field :items_count, :type => Integer, :default => 0
+  field :desires_count, :type => Integer, :default => 0
+
 
   before_save :sync_count
 
@@ -18,6 +21,7 @@ class Tag
 
   def sync_count
     self.items_count = self.items.size
+    self.desires_count = self.items.select{|item| item.split(' ').first == "Desire"}.size
   end
 
 end

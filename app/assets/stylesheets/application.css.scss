@@ -18,13 +18,13 @@
 *= require pages
 *= require tab_control
 *= require recipes
+*= require desires
 *= require messages
 *= require buttons
 *= require home
 *= require isotope
 *= require token-input-facebook
 *= require facebox
-*= require buttons
 *= require jquery.jgrowl
 *= require fileuploader
 *= require jquery.Jcrop
@@ -78,8 +78,9 @@
 }
 
 .block.round {
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
     border:1px solid #dbdbdb;
     background: $azure;
     box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);

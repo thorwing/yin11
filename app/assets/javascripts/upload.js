@@ -1,6 +1,6 @@
 // Use Valums Ajax Upload
 
-$(function() {
+function general_upload() {
     var tokentag = $('#tokentag').val();
 
     if($('#uploader').length > 0) {
@@ -39,6 +39,14 @@ $(function() {
                         cancel();
                     }
                 }
+                if($('#desire_fields #images_container').length > 0)
+                {
+                    var count = $('#desire_fields #images_container .image').size();
+                    if (count >= 1) {
+                        alert("上传1张图片来馋人就够啦");
+                        cancel();
+                    }
+                }
 
                 $('#upload_spinner').show();
             },
@@ -48,9 +56,18 @@ $(function() {
                 var image_field = '<input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>';
                 append_image(responseJSON.image_id, responseJSON.thumb_url, responseJSON.origin_url, image_field);
               }
+
+
+              if($('#desire_fields #images_container').length > 0) {
+                $('#uploader').hide();
+              }
             }
         });
     }
+}
+
+$(function() {
+    general_upload();
 });
 
 //Append the image, it could belong to Image or Product

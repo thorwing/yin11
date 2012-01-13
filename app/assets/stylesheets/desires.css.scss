@@ -1,0 +1,22 @@
+@import "attributes";
+
+// Place all the styles related to the Desires controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#desires_box{
+    #filters a {
+        border-top: 1px solid #a3a09e;
+        border-left: 1px solid #a3a09e;
+        border-right: 1px solid #a3a09e;
+        border-bottom: 1px solid #a3a09e;
+        color: $ink_black;
+        background: $azure;
+    }
+    #filters a.selected {
+        color: $ink_black;
+        background: white;
+        border-bottom: 0px solid #a3a09e;
+    }
+}

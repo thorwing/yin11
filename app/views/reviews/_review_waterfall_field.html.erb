@@ -12,7 +12,7 @@
                   <%= item.content %> <span class="display_inline_block"><%= link_to t("general.details"), item %></span>
                 </p>
             <% end %>
-            <span class="trivial"><%= item.created_at.strftime("%m-%d %H:%M:%S") %></span>
+            <span class="trivial"><%= item.created_at.strftime("%m-%d %H:%M:%S") if item.created_at %></span>
         </div>
     <% else %>
         <div class="center">

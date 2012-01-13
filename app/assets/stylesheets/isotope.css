@@ -45,8 +45,8 @@
 }
 
 .corner-stamp {
-    width: 200px;
-    height: 150px;
+    width: 180px;
+    height: 100px;
     padding: 10px;
     margin: 10px;
     float: right;
@@ -55,8 +55,4 @@
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
-}
-
-#filters a.selected {
-    background: orange;
 }

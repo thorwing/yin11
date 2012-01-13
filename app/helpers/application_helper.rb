@@ -97,7 +97,7 @@ module ApplicationHelper
   end
 
   def get_top_primary_tags
-    Tag.where(primary: true).desc(:items_count).limit(7)
+    Tag.where(primary: true).desc(:desires_count).limit(7)
   end
 
   def get_hot_primary_tags(tags)
