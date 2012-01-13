@@ -6,12 +6,11 @@ class Review
   include Feedable
   include Imageable
   include Votable
-  include Taggable
   can_like
 
   field :content
 
-  attr_accessible :content, :images_attributes, :product_ids, :recipe_ids, :album_ids
+  attr_accessible :content, :images_attributes, :product_ids, :recipe_ids, :album_ids, :desire_id
 
   #scopes
   scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
@@ -21,6 +20,7 @@ class Review
   has_and_belongs_to_many :recipes
   embeds_many :comments
   belongs_to :author, :class_name => "User"
+  belongs_to :desire
   has_many :images
   has_and_belongs_to_many :albums
 

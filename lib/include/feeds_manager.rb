@@ -13,37 +13,37 @@ class FeedsManager
     #if item.respond_to?(:enabled)
     #  return nil unless item.enabled
     #end
-    if item.respond_to?(:products) && item.products
-      item.products.each do |product|
-        #feed is an embedded model, create a new feed everytime
-        product.feeds << initialize_feed(item)
-        product.save!
-
-        #push feed to it's vendor'
-        product.vendor.feeds << initialize_feed(item)
-        product.vendor.save!
-
-        product.tags.each do |t|
-          tag = Tag.find_or_initialize_by(:name => t)
-          tag.feeds << initialize_feed(item)
-          tag.save!
-        end
-      end
-    end
-
-    if item.respond_to?(:recipes) && item.recipes
-      item.recipes.each do |recipe|
-        #feed is an embedded model, create a new feed everytime
-        recipe.feeds << initialize_feed(item)
-        recipe.save!
-
-        recipe.tags.each do |t|
-          tag = Tag.find_or_initialize_by(:name => t)
-          tag.feeds << initialize_feed(item)
-          tag.save!
-        end
-      end
-    end
+    #if item.respond_to?(:products) && item.products
+    #  item.products.each do |product|
+    #    #feed is an embedded model, create a new feed everytime
+    #    product.feeds << initialize_feed(item)
+    #    product.save!
+    #
+    #    #push feed to it's vendor'
+    #    product.vendor.feeds << initialize_feed(item)
+    #    product.vendor.save!
+    #
+    #    product.tags.each do |t|
+    #      tag = Tag.find_or_initialize_by(:name => t)
+    #      tag.feeds << initialize_feed(item)
+    #      tag.save!
+    #    end
+    #  end
+    #end
+    #
+    #if item.respond_to?(:recipes) && item.recipes
+    #  item.recipes.each do |recipe|
+    #    #feed is an embedded model, create a new feed everytime
+    #    recipe.feeds << initialize_feed(item)
+    #    recipe.save!
+    #
+    #    recipe.tags.each do |t|
+    #      tag = Tag.find_or_initialize_by(:name => t)
+    #      tag.feeds << initialize_feed(item)
+    #      tag.save!
+    #    end
+    #  end
+    #end
 
     if item.respond_to?(:author) && item.author
       #push feed to it's author

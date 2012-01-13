@@ -28,7 +28,7 @@
     <div id="masonry_container" class="mt10">
       <div class="corner-stamp">
         <%= "诱人的美食图片，你被馋到了吗？ 点击进去吧，看看怎么解馋！" %><br/>
-        <%= link_to "+添加我的馋人图片", new_desire_path, class: "desire_dialog_btn" %>
+        <%= link_to "+添加馋人的东西", new_desire_path, class: "desire_dialog_btn" %>
         <div id="desire_dialog" class="display_none">
             <%= render "desires/desire_fields", desire: Desire.new %>
         </div>

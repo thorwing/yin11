@@ -2,14 +2,17 @@
 
 <div class="grid_9 to_left">
     <div class="box_shadow clearfix p5">
+        <%= link_to image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'lazy fl img_frame overflow_hidden', "data-original"=>  @desire.get_image_url(:waterfall) ), @desire.get_image_url, rel: "facebox"  %>
         <% if current_user_has_permission? :normal_user %>
             <div class="fr" align="right">
               <%= render "votes/vote_fields", :item => @desire %>
             </div>
         <% end %>
-        <p class="ml10" style="width: 600px;">
-            <%= @desire.content %>
-        </p>
+        <div class="clearfix">
+            <div class="fl ml10 clearfix" style="width:470px">
+                <%= @desire.content %>
+            </div>
+        </div>
     </div>
 
     <% if the_author_himself(Desire.name, @desire.id, true, false) %>
@@ -19,11 +22,13 @@
         </div>
     <% end %>
 
+    <div class="mb20">
+        <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "我来分享如何解馋" %>
+    </div>
     <div id="static_waterfall_container" class="mt10">
-        <%= image_tag @desire.get_image_url(:waterfall) %>
-        <!--< @desire.get_images_with_objects(:waterfall).each do |hash| %>-->
-            <!--< render "reviews/review_waterfall_field", picture_url: hash[:picture_url], picture_height: hash[:picture_height], item:  hash[:object] %>-->
-        <!--< end %>-->
+        <% @desire.reviews.each do |review| %>
+            <%= render "reviews/review_waterfall_field", picture_url: review.get_review_image_url(:waterfall), picture_height: review.get_review_image_height(:waterfall), item: review %>
+        <% end %>
     </div>
     <div class="mt10">
         <%= render "comments/comments", :item => @desire %>

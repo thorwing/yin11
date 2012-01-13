@@ -13,6 +13,7 @@ class Desire
 
   #relationships
   has_many :images
+  has_many :reviews
   belongs_to :author, :class_name => "User"
   embeds_many :comments
 

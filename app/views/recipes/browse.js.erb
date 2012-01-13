@@ -1,4 +1,5 @@
 <% @recipes.each do |recipe| %>
     var child = '<%= escape_javascript(render("recipes/recipe_hint", recipe: recipe)) %>';
     $('div.popup #recipe_hints_container').append(child);
+    $('div.popup #link_spinner').hide();
 <% end %>

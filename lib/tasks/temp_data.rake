@@ -17,6 +17,14 @@ namespace :yin11 do
   desc "generate primary tags"
   task :generate_primary_tags => :environment do
     p "generate primary tags..."
+
+    #to sync counts
+    Tag.all.to_a.each do |t|
+      t.primary = false
+      t.save
+    end
+
+
     records = YAML::load(File.open("app/seeds/tags.yml"))
 
     tags = {}
