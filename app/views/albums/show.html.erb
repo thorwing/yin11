@@ -12,9 +12,9 @@
             <div class="hint_box fl" style="width:200px; height:200px;">
                  <% cover_url = @album.get_cover_url(:waterfall) %>
                  <% if cover_url.present? %>
-                     <%= image_tag cover_url, width: 200, height:200, class: "cover_image" %>
+                     <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> cover_url, width: 200, height:200, class: "cover_image" %>
                  <% else %>
-                     <%= image_tag "not_found.png", width: 200, height:200, class: "cover_image" %>
+                     <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> "/assets/not_found.png", width: 200, height:200, class: "cover_image" %>
                  <% end %>
                  <span class="fix_hint"><%= t("albums.cover") %></span>
             </div>

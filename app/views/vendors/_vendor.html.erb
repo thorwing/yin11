@@ -5,7 +5,7 @@
     <div class="slice">
         <% products.values_at(* products.each_index.select{|i| i.even?}).each do |product| %>
           <div class="hint_box m5 fl" s>
-            <%= link_to image_tag(product.get_image_url(:thumb)), product %>
+            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> product.get_image_url(:thumb)), product %>
             <span class="hint  b_black white"><%= product.name %></span>
           </div>
         <% end %>

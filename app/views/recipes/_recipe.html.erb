@@ -1,13 +1,13 @@
 <div class="commentable clearfix">
   <div class="fl mr10">
-    <%= link_to image_tag(recipe.author.get_avatar(:thumb), width: "48", height: "48"), recipe.author %>
+    <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> recipe.author.get_avatar(:thumb,false), width: "48", height: "48"), recipe.author %>
   </div>
   <div class="fl" style="width: 600px;">
     <%= recipe.author.login_name %>:<br/>
     <p><%= link_to recipe.name, recipe %></p>
     <% thumb_url = recipe.get_image_url(:thumb) %>
     <% if thumb_url.present? %>
-        <p><%= link_to image_tag(thumb_url, class: "img_frame"), recipe %></p>
+        <p><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> thumb_url, class: "img_frame"), recipe %></p>
     <% end %>
     <div>
       <span class="fl trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>

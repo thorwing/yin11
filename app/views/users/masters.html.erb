@@ -4,7 +4,7 @@
         <div class="grid_3 fl mt10 mb10" id="<%= star.id %>">
           <div class="hint_box">
             <div>
-                <%= link_to image_tag(star.get_avatar, width: 200, height: 218), star %><br/>
+                <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> star.get_avatar, width: 200, height: 218), star %><br/>
             </div>
             <span class="fix_hint b_black white">
                 <%= link_to star.login_name, star %><br/>

@@ -4,7 +4,7 @@
             <!--<= link_to image_tag(@recipe.get_image_url(:waterfall), alt: @recipe.name, class: 'fl img_frame overflow_hidden'), @recipe.get_image_url, rel: "facebox" %>-->
             <%= link_to image_tag("grey.gif", :alt=> @recipe.name, "class" => 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall) ), @recipe.get_image_url, rel: "facebox"  %>
         <% else %>
-            <%= image_tag "not_found.png", class: 'fl img_frame overflow_hidden' %>
+            <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", class: 'lazy fl img_frame overflow_hidden' %>
         <% end %>
 
         <div class="clearfix">
@@ -12,12 +12,18 @@
                 <div>
                     <span class="f28"><%= @recipe.name %></span><br/>
                     <span class="trivial"><%= t("recipes.published_at") %> <%= @recipe.created_at.strftime("%y-%m-%d %H:%M:%S") %></span>
+
+                    <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》: ”" + truncate_content(@recipe.description,30) + "”。" %>
+                    <% summarystr = "大家去看看吧！" %>
+                    <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
+                    <% appkeyhash = load_appkey() %>
+                    <%= render "shared/jiathis", :titlestr => titlestr, :summarystr => summarystr, :picstr => picstr, :appkeyhash => appkeyhash %>
                 </div>
 
                 <div class="mt10">
                     <% if current_user_has_permission? :normal_user %>
                         <div class="mt5">
-                          <%= render "votes/vote_fields", :item => @recipe %>
+                            <%= render "votes/vote_fields", :item => @recipe %>
                         </div>
                         <div class="mt5">
                             <%= link_to "", "", class: "mark_recipe want_do_btn", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
@@ -26,7 +32,7 @@
                     <% end %>
                     <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
                         <div class="mt5">
-                          <%= link_to "", edit_recipe_path(@recipe), class: "modify_btn" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
+                            <%= link_to "", edit_recipe_path(@recipe), class: "modify_btn" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
                             <%= link_to "", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
                         </div>
                     <% end %>
@@ -57,9 +63,10 @@
                 </div>
             </div>
 
+            <div class="clearfix"></div>
             <% if @recipe.description.present? %>
-                <div class="mt5">
-                    <b><%= t("recipes.description") %></b><br/>
+                <div  class="mt5">
+                    <b ><%= t("recipes.description") %></b><br/>
                     <%= @recipe.description %>
                 </div>
             <% end %>
@@ -75,7 +82,7 @@
                                     <!--<img class="lazy" src="grey.gif" data-original= "<=s.get_image_url%>" width="180" heigh="135" rel="facebox" :alt="step_image"  >-->
                                     <%= link_to image_tag("grey.gif", :size => '180x135', :alt=> "step_image", "class" => "lazy", "data-original" => s.get_image_url(:thumb) ), s.get_image_url, rel: "facebox" %>
                                 <% else  %>
-                                    <%= image_tag "not_found.png", :size => '180x135' %>
+                                    <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> "/assets/not_found.png", :size => '180x135' %>
                                 <% end %>
                             </span>
                             <span><%= s.content %></span>
@@ -113,3 +120,5 @@
         <%= submit_tag t("general.submit"), class: "button" %>
     <% end %>
 </div>
+
+
