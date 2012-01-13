@@ -10,6 +10,9 @@
 //= require kissy/kissy
 //= require jquery.Jcrop.min
 //= require lazyload
+//= require jquery.ui.core.min
+//= require jquery.ui.widget.min
+//= require jquery.ui.rcarousel.min
 //= require jquery.isotope.min
 //= require jquery.timer
 //= require_tree .

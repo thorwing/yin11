@@ -19,3 +19,24 @@
 .recipe_list .hint_box img.sep_5{width:180px; height:150px;}
 
 .recipe_list .a {text-decoration: none;}
+
+#content
+{
+    width: 593px;
+}
+
+#pages
+{
+    width: 140px;
+    height: 200px;
+    margin: 5px auto 0 auto;
+}
+
+.sliders
+{
+    height:44px;
+    border-style:solid;
+    border-width:3px;
+    border-color:white;
+    cursor: pointer;
+ }

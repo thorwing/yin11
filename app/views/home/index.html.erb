@@ -1,37 +1,11 @@
 <% home_page %>
 <% meta_tag t("site.introduction") %>
 
-<div class="box_shadow mb10 clearfix" style="height:200px;">
-  <!--Golden Ratio 960 * 0.618 = 593.28 -->
-  <%= image_tag "grey.gif", width:593, height:200, class: "lazy grid_8", "data-original"=> "/assets/home_banner.png" %>
-  <div class="grid_4">
-    <% if current_user_has_permission? :normal_user %>
-        <b><%= link_to current_user.login_name, "/me" %></b><br/>
-        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false)), "/me" %><br/>
-        <%= render "users/user_statics", user: current_user %>
-
-        <span class="mt5"><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %></span>
-    <% else %>
-        <%= render "pre_login" %>
-    <% end %>
-  </div>
-</div>
+<%= render "slider" %>
 
 <%= render "desires_box" %>
 
-<div class="clearfix mt20">
-  <% unless @hot_topics.empty? %>
-    <h2 class="mt10"><%= t("topics.topics") %></h2>
-    <% @hot_topics.each do |topic| %>
-        <%= raw topic.content %>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="mt20 clearfix ">
-  <%= render "primary_tags" %>
-</div>
-
+<%= render "primary_tags" %>
 
 <div class="mt20 clearfix ">
   <% unless @daily_stars.empty? %>

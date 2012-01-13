@@ -1,0 +1,31 @@
+<div class="box_shadow mb10 clearfix" style="height:200px;">
+    <div id="content" class="grid_8 to_left">
+        <div id="container2">
+            <div id="pages" class="fl m10" style="text-align: center;">
+                <div class="sliders" id ="0" ><a class = " lighter_touch"  ><%= t("site.name") %></a></div>
+                <% @hot_topics.each_with_index do |topic, index| %>
+                <div class="sliders" id ="<%= (index + 1).to_s %>"><a class = " lighter_touch"> <%= topic.title %></a></div>
+                <% end %>
+            </div>
+            <div id="carousel" class="fl m10">
+                <img src="/assets/home_banner.png" style="width:453px;height:200px;"/>
+                <% @hot_topics.each do |topic| %>
+                    <%= raw topic.content %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid_4 to_right">
+        <% if current_user_has_permission? :normal_user %>
+            <b><%= link_to current_user.login_name, "/me" %></b><br/>
+            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false)), "/me" %><br/>
+            <%= render "users/user_statics", user: current_user %>
+
+            <span class="mt5"><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %></span>
+        <% else %>
+            <%= render "pre_login" %>
+        <% end %>
+    </div>
+</div>
+
