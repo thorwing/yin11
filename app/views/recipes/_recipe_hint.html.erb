@@ -1,7 +1,27 @@
-<div class="m2 overflow_hidden" style="height: 50px;">
-    <% function_call = "pick_recipe(this, \"#{recipe.id.to_s}\", \"#{recipe.name}\", \"#{recipe.get_image_url(:thumb)}\");" %>
-    <span><%= new_tab_link_to(image_tag("grey.gif", "class" => 'lazy', "data-original"=> recipe.get_image_url(:thumb), width: 48, height: 48), {controller: "recipes", actions: "show", id: recipe.id, force: "true"})%></span>
-    <span class="ml2"><%= new_tab_link_to(recipe.name, {controller: "recipes", actions: "show", id: recipe.id, force: "true"}) %></span>
-    <span class="ml2"><%= link_to_function("选择", function_call, class: "button") %></span>
+<script type="text/javascript">
+    function pick_recipe(link, id, name, image_url) {
+        $(document).trigger('close.facebox');
 
+        if(document.getElementById("recipe_" + id)) {
+          alert("已添加了该菜谱");
+        }
+        else {
+            var new_recipe = '<div class="linked_item fl mr5 b_white">'
+                + '<a href="/recipes/' + id + '">'
+                + '<img class="thumbnail" src="' + image_url + '" alt="thumbnail"></a>'
+                + '<span class="f11">' + name + '</span>'
+                + '<img class="linked_item_icon" src="/assets/icons/recipe.png" width="16px" height="16px">'
+                + '<a onclick="delete_related_item(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_recipe"></a>'
+                + '<input type="hidden" value="' + id + '" name="review[recipe_ids][]" id="recipe_' + id + '"/>'
+                + '</div>';
+
+            $('#images_container').append(new_recipe);
+        }
+    };
+</script>
+
+<div class="m2 overflow_hidden" style="height: 50px;">
+    <span><%= new_tab_link_to(image_tag(recipe.get_image_url(:thumb), width: 48, height: 48), {controller: "recipes", actions: "show", id: recipe.id, force: "true"})%></span>
+    <span class="ml2"><%= new_tab_link_to(recipe.name, {controller: "recipes", actions: "show", id: recipe.id, force: "true"}) %></span>
+    <span class="ml2"><%= link_to_function("选择", "pick_recipe(this, \"#{recipe.id.to_s}\", \"#{recipe.name}\", \"#{recipe.get_image_url(:thumb)}\");", class: "button") %></span>
 </div>

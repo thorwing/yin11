@@ -1,17 +1,17 @@
 /*Override the qq upload button*/
 #uploader {
-    width: 55px;
+    width: 50px;
     height: 40px;}
 
 .qq-uploader {
-    width: 55px;
+    width: 50px;
     height: 40px; position:relative; width: 100%;}
 
 .qq-upload-button {
     vertical-align: top;
     display: inline-block;
-    width: 55px;
-    height: 26px;
+    width: 50px;
+    height: 22px;
     padding: 0;
     margin: 0;
     background: no-repeat url("add_image.png");

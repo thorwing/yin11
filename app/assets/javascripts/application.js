@@ -86,18 +86,15 @@ $(document).ready(function() {
     $(".checkbox_group").buttonset();
 });
 
-//Remove tips from search box
-jQuery(function() {
-  $('#search_btn').click(function(){
-    $('#query.not_cleared').val('');
-  });
-
-  $('#query.not_cleared').click(function() {
-    if($(this).hasClass('not_cleared')) {
-      $(this).val('');
-      $(this).removeClass('not_cleared');
-    }
-  });
+//Remove tips from input
+$(function()
+{
+    $('.not_cleared').live("click", function(){
+        if($(this).hasClass('not_cleared')) {
+            $(this).val('');
+            $(this).removeClass('not_cleared');
+        }
+    });
 });
 
 //$(function()) {

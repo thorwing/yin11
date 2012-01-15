@@ -88,17 +88,4 @@ $(function(){
     });
 });
 
-//amount input click
-jQuery(function()
-{
-  $('.not_cleared').live("click", function(){
-            alert("here");
-            if($(this).hasClass('not_cleared'))
-            {
-                $(this).val('');
-                $(this).removeClass('not_cleared');
-            }
-          }
-      );
-});
 

@@ -88,7 +88,6 @@ class Recipe
     def sync_image
       self.steps.each do |step|
         if step.img_id.present?
-          Image.all(conditions: {step_id: step.id.to_s}).delete_all
           image = Image.first(conditions: {id: step.img_id})
           if image
             image.step_id = step.id

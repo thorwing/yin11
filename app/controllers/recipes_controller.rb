@@ -130,6 +130,8 @@ class RecipesController < ApplicationController
     #record all ingredients in db
     database_ingredient_ids = @recipe.ingredients.map{|s| s.id.to_s }
 
+    #delete all old images
+    Image.any_in(step_id: @recipe.steps.map(&:id)).delete_all
     @recipe.steps.delete_all
     saved = @recipe.update_attributes(params[:recipe])
     if saved

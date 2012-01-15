@@ -41,10 +41,8 @@
                 </div>
            </div>
            <div id="images_container" class="block fl m5" >
-                <% @review.get_images_with_objects(:thumb).each do |hash| %>
-                    <% if hash[:object] %>
-                      <%= render "reviews/linked_product", product: hash[:object], picture_url: hash[:picture_url] %>
-                    <% end %>
+                <% @review.get_linked_items each do |item| %>
+                    <%= render "reviews/linked_item", item: item %>
                 <% end %>
 
                 <% @review.images.each do |image| %>

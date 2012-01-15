@@ -6,9 +6,16 @@
 }
 
 #images_container {
-    .image, .product, .recipe {
+    .linked_item {
         position: relative;
         margin-right: 10px;
+        width: 100px;
+
+        .linked_item_icon {
+            position: absolute;
+            right: 0px;
+            top: 100px;
+        }
     }
 
     .del_link {

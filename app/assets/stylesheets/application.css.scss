@@ -345,6 +345,11 @@ body #main { height: auto; padding-bottom: 260px;}
     left: 0px;
 }
 
+/*input with default value*/
+input.not_cleared {
+    color: $trivial_gray;
+}
+
 /*
 	Footer-Styles
 */

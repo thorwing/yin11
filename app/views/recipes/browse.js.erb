@@ -1,5 +1,10 @@
-<% @recipes.each do |recipe| %>
-    var child = '<%= escape_javascript(render("recipes/recipe_hint", recipe: recipe)) %>';
-    $('div.popup #recipe_hints_container').append(child);
-    $('div.popup #link_spinner').hide();
+$('div.popup #link_spinner').hide();
+<% if @recipes.blank? || @recipes.empty? %>
+//    $('div.popup #recipe_not_found_label').show();
+<% else %>
+//    $('div.popup #recipe_not_found_label').hide();
+    <% @recipes.each do |recipe| %>
+        var child = '<%= escape_javascript(render("recipes/recipe_hint", recipe: recipe)) %>';
+        $('div.popup #recipe_hints_container').append(child);
+    <% end %>
 <% end %>

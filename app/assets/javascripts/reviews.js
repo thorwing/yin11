@@ -15,6 +15,23 @@ function pre_link_product(link)
     return true;
 };
 
+function listen_recipe_name() {
+    var bind_name = '';
+    if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
+    else { bind_name = 'input'; }
+
+    $('div.popup #recipe_name').bind(bind_name, function(e) {
+        $(this).nextAll('#link_spinner').show();
+        $(this).nextAll("div").html('');
+
+        var name = $(this).val();
+        $.ajax({
+            url: "/recipes/browse",
+            data: {name: name}
+        });
+    });
+};
+
 function link_recipe()
 {
     var count = $('#images_container .recipe').size();
@@ -24,6 +41,7 @@ function link_recipe()
     }
 
     jQuery.facebox($('#recipe_linker').html());
+    listen_recipe_name();
 };
 
 
@@ -37,26 +55,6 @@ $(function(){
         }
     });
 });
-
-
-function pick_recipe(link, id, name, image_url) {
-    $(document).trigger('close.facebox');
-
-    if(document.getElementById("recipe_" + id)) {
-      alert("已添加了该菜谱");
-    }
-    else {
-        var new_recipe = '<div class="recipe fl mr5"><div class="hint_box">'
-            + '<a href="/recipes/' + id + '">'
-            + '<img class="thumbnail" src="' + image_url + '" alt="thumbnail"></a>'
-            + '<span class="fix_hint b_black white f11">' + name + '</span></div>'
-            + '<a onclick="delete_related_item(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_recipe"></a>'
-            + '<input type="hidden" value="' + id + '" name="review[recipe_ids][]" id="recipe_' + id + '"/>'
-            + '</div>';
-
-        $('#images_container').append(new_recipe);
-    }
-};
 
 //
 ////Delete image
@@ -86,3 +84,20 @@ function pick_recipe(link, id, name, image_url) {
 function delete_related_item(link) {
     $(link).parent().remove();
 }
+
+$(function(){
+    var bind_name = '';
+    if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
+    else { bind_name = 'input'; }
+
+    $('#recipe_linker #recipe_name').bind(bind_name, function(e) {
+        $(this).nextAll('#link_spinner').show();
+        $(this).nextAll("div").html('');
+
+        var name = $(this).val();
+        $.ajax({
+            url: "/recipes/browse",
+            data: {name: name}
+        });
+    });
+});
