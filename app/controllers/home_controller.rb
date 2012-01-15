@@ -10,6 +10,7 @@ class HomeController < ApplicationController
     @masters = User.enabled.masters.limit(40)
 
     @hot_primary_tags = Tag.where(primary: true, :desires_count.gt => 0).desc(:desires_count).limit(7).to_a
+    #TODO
     @desires = Desire.recommended.tagged_with(@hot_primary_tags.map(&:name))
   end
 

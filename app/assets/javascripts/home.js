@@ -1,3 +1,4 @@
+//Slider
 function pageLoaded(event, data) {
     $("#home_slider #silder_tabs .navigator.selected").removeClass('selected');
     $("#home_slider #silder_tabs #navigator_" + data.page).addClass('selected');

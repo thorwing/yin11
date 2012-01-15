@@ -11,7 +11,7 @@
           <div class="corner-stamp">
             <%= content_tag :span, "秀色可餐？你被馋到了吗？" %><br/>
             <%= content_tag :span, "点击看如何把它变成盘中餐！" %><br/>
-            <%= link_to "+我来馋馋大家", new_desire_path, class: "desire_dialog_btn" %>
+            <%= link_to "+我也来馋人", new_desire_path, class: "desire_dialog_btn" %>
             <div id="desire_dialog" class="display_none">
                 <%= render "desires/desire_fields", desire: Desire.new %>
             </div>
