@@ -80,7 +80,7 @@ class DesiresController < ApplicationController
 
     respond_to do |format|
       if @desire.save
-        format.html { redirect_to @desire, notice: 'Desire was successfully created.' }
+        format.html { redirect_to @desire, notice: t("notices.desire_created") }
         format.json { render json: @desire, status: :created, location: @desire }
         format.js
       else
@@ -100,7 +100,7 @@ class DesiresController < ApplicationController
 
     respond_to do |format|
       if @desire.update_attributes(params[:desire])
-        format.html { redirect_to @desire, notice: 'Desire was successfully updated.' }
+        format.html { redirect_to @desire, notice: t("notices.desire_updated") }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

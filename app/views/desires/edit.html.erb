@@ -21,9 +21,9 @@
         </div>
         <div id="images_container" class="block fl m5" >
             <% @desire.images.each do |image| %>
-                <div class="image fl">
+                <div class="linked_item fl">
                     <%= link_to image_tag("/assets/close_x.png", alt: "delete_image"), "", onclick: "delete_related_item(this); return false;", class: "del_link lighter_touch" %>
-                    <%= link_to image_tag("grey.gif", "data-original"=> image.picture_url(:thumb), alt: "image_thumbnail", class: "lazy thumbnail"), image.picture_url, rel: "facebox" %>
+                    <%= link_to image_tag(image.picture_url(:thumb), alt: "image_thumbnail", class: "thumbnail"), image.picture_url, rel: "facebox" %>
                     <%= hidden_field_tag "images[]", image.id.to_s %>
                 </div>
             <% end %>

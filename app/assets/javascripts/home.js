@@ -5,7 +5,9 @@ function pageLoaded(event, data) {
 
 jQuery(function($) {
       $( "#home_slider #carousel" ).rcarousel({
-          auto: {enabled: true},
+          auto: {enabled: true,
+          direction:"next",
+          interval:5000},
 //          start: generatePages,
           pageLoaded: pageLoaded,
           step: 1,

@@ -56,11 +56,6 @@ function general_upload() {
                 var image_field = '<input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>';
                 append_image(responseJSON.image_id, responseJSON.thumb_url, responseJSON.origin_url, image_field);
               }
-
-
-              if($('#desire_fields #images_container').length > 0) {
-                $('#uploader').hide();
-              }
             }
         });
     }

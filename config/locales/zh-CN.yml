@@ -163,6 +163,8 @@ zh-CN:
     album_created: 专辑创建成功
     album_updated: 专辑更新成功
     album_cover_picked: 专辑封面已更改
+    desire_created: 馋人图片创建成功
+    desire_updated: 馋人图片修改成功
     message_sent: 消息已发出
 
   alerts:
