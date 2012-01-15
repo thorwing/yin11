@@ -1,22 +1,20 @@
-<div class="box_shadow mb10 clearfix" style="height:200px;">
-    <div id="content" class="grid_8 to_left">
-        <div id="container2">
-            <div id="pages" class="fl m10" style="text-align: center;">
-                <div class="sliders" id ="0" ><a class = " lighter_touch"  ><%= t("site.name") %></a></div>
-                <% @hot_topics.each_with_index do |topic, index| %>
-                <div class="sliders" id ="<%= (index + 1).to_s %>"><a class = " lighter_touch"> <%= topic.title %></a></div>
-                <% end %>
-            </div>
-            <div id="carousel" class="fl m10">
-                <img src="/assets/home_banner.png" style="width:453px;height:200px;"/>
-                <% @hot_topics.each do |topic| %>
-                    <%= raw topic.content %>
-                <% end %>
-            </div>
+<div id='home_header' class="grid_12 box_shadow b_white">
+    <div id="home_slider" class="fl b_white clearfix mr10">
+        <div id="silder_tabs" class="fl">
+            <% @hot_topics.each_with_index do |topic, index| %>
+                <div class="navigator <%= (index == 0) ? "selected" : '' %> lighter_touch" data-page = "<%= index.to_s %>" id="navigator_<%= index.to_s %>">
+                  <h3><%= topic.title %></h3>
+                </div>
+            <% end %>
+        </div>
+        <div id="carousel" class="fl">
+            <% @hot_topics.each do |topic| %>
+                <%= raw topic.content %>
+            <% end %>
         </div>
     </div>
 
-    <div class="grid_4 to_right">
+    <div id="home_stamp" class="fl ml10">
         <% if current_user_has_permission? :normal_user %>
             <b><%= link_to current_user.login_name, "/me" %></b><br/>
             <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false)), "/me" %><br/>
@@ -28,4 +26,3 @@
         <% end %>
     </div>
 </div>
-

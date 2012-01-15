@@ -1,5 +1,5 @@
 <% if @desires && @desires.size > 0 %>
-    <div id="desires_box" class="grid_12 mt10">
+    <div id="desires_box" class="grid_12 mt20">
         <ul id="filters">
             <% @hot_primary_tags.each do |tag| %>
                 <li class="display_inline"><%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "filter f14 p5" %></li>

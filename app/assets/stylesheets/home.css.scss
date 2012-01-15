@@ -1,3 +1,5 @@
+@import "attributes";
+
 .piece,{background-color:#FFF;height:220px;}
 .piece .content{border-right:1px solid;border-left:1px solid;overflow:hidden;}
 .b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8{height:1px; font-size:1px; overflow:hidden; display:block;}
@@ -20,23 +22,31 @@
 
 .recipe_list .a {text-decoration: none;}
 
-#content
-{
-    width: 593px;
-}
 
-#pages
-{
-    width: 140px;
-    height: 200px;
-    margin: 5px auto 0 auto;
-}
+#home_header {
+    height:200px;
 
-.sliders
-{
-    height:44px;
-    border-style:solid;
-    border-width:3px;
-    border-color:white;
-    cursor: pointer;
+    #home_slider {
+        #silder_tabs { width: 160px; }
+
+        #carousel { width: 450px; }
+
+        .navigator
+        {
+            padding-left: 5px;
+            margin: 2px 0;
+            background: $shadow_gray;
+            height:46px;
+            cursor: pointer;
+        }
+
+        .navigator.selected
+        {
+            background: $azure;
+        }
+    }
+
+    #home_stamp {
+        width: 310px;
+    }
  }

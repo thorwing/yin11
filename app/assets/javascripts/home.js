@@ -1,21 +1,30 @@
+function pageLoaded(event, data) {
+    $("#home_slider #silder_tabs .navigator.selected").removeClass('selected');
+    $("#home_slider #silder_tabs #navigator_" + data.page).addClass('selected');
+}
+
 jQuery(function($) {
-      $( "#carousel" ).rcarousel({
+      $( "#home_slider #carousel" ).rcarousel({
           auto: {enabled: true},
-//            start: generatePages,
-//            pageLoaded: pageLoaded,
+//          start: generatePages,
+          pageLoaded: pageLoaded,
           step: 1,
-          speed: 1000,
+          speed: 700,
           visible: 1,
-          width: 453,
+          width: 450,
           height: 200
       });
 
   });
 
-   $(function() {
-      $(".sliders").hover(function(event){
-            pos = $(this).attr('id');
-            $( "#carousel" ).rcarousel( "goToPage", parseInt(pos) );
-            event.preventDefault();
-        });
-  });
+$(function() {
+    $("#home_slider #silder_tabs .navigator").hover(
+        function(){
+            pos = $(this).data('page');
+            $("#home_slider #silder_tabs .navigator.selected").removeClass('selected');
+            $(this).addClass('selected');
+
+            $( "#home_header #carousel").rcarousel( "goToPage", parseInt(pos) );
+        },
+        function(){});
+});
