@@ -12,10 +12,12 @@
           <div class="corner-stamp">
             <%= content_tag :span, "被这些美食图片馋到了吗？", class: "f14" %><br/>
             <%= content_tag :span, "点击看如何把它变成盘中餐！", class: "f14" %><br/>
-            <div class="mt10">
-                <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
-                <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
-            </div>
+            <% if current_user_has_permission? :normal_user %>
+                <div class="mt10">
+                    <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
+                    <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
+                </div>
+            <% end %>
             <div id="desire_dialog" class="display_none">
                 <%= render "desires/desire_fields", desire: Desire.new %>
             </div>
