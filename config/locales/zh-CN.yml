@@ -42,6 +42,7 @@ zh-CN:
     show: 查看
     submit: 确定
     post: 发表
+    publish: 发布
     change: 修改
     search: 搜索
     edit: 编辑
@@ -431,6 +432,7 @@ zh-CN:
 
   desires:
     desire: 馋人
+    new: 上传馋人图片
 
 
   reviews:

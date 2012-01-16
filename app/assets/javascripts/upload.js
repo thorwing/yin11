@@ -13,7 +13,7 @@ function general_upload() {
             allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'] ,
             // each file size limit in bytes
             // this option isn't supported in all browsers
-            sizeLimit: 4194304, // max size 4MB
+            sizeLimit: 2097152, // max size 2MB
             minSizeLimit: 0, // min size
             // set to true to output server response to console
             debug: false,
@@ -36,14 +36,6 @@ function general_upload() {
                     var count = $('#review_fields #images_container .image').size();
                     if (count >= images_limit) {
                         alert("想上传更多图片，请先创建“专辑”");
-                        cancel();
-                    }
-                }
-                if($('#desire_fields #images_container').length > 0)
-                {
-                    var count = $('#desire_fields #images_container .image').size();
-                    if (count >= 1) {
-                        alert("上传1张图片来馋人就够啦");
                         cancel();
                     }
                 }
@@ -114,7 +106,7 @@ function step_uploader(search_range)
             allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'] ,
             // each file size limit in bytes
             // this option isn't supported in all browsers
-            sizeLimit: 4194304, // max size 4MB
+            sizeLimit: 2097152, // max size 2MB
             minSizeLimit: 0, // min size
             // set to true to output server response to console
             debug: false,
@@ -149,3 +141,64 @@ function step_uploader(search_range)
 
 
 
+function desire_upload() {
+    var tokentag = $('#tokentag').val();
+
+    if($('#desire_uploader').length > 0) {
+        var uploader = new qq.FileUploader({
+            // pass the dom node (ex. $(selector)[0] for jQuery users)
+            element: document.getElementById('desire_uploader'),
+            // path to server-side upload script
+            action: '/images',
+            // validation
+            allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'] ,
+            // each file size limit in bytes
+            // this option isn't supported in all browsers
+            sizeLimit: 2097152, // max size 2MB
+            minSizeLimit: 0, // min size
+            // set to true to output server response to console
+            debug: false,
+            template: '<div class="qq-uploader">' +
+                    '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
+                    '<div class="qq-upload-button">上传图片</div>' +
+                    '<ul class="qq-upload-list"></ul>' +
+                 '</div>',
+            fileTemplate: '<li>' +
+                    '<span class="qq-upload-file"></span>' +
+                    '<span class="qq-upload-spinner"></span>' +
+                    '<span class="qq-upload-size"></span>' +
+                    '<a class="qq-upload-cancel" href="#">取消</a>' +
+                    '<span class="qq-upload-failed-text">上传失败</span>' +
+                '</li>',
+            params: {"authenticity_token": tokentag},
+            onSubmit: function(id, fileName) {
+                if($('#desire_fields #images_container').length > 0)
+                {
+                    var count = $('#desire_fields #images_container .image').size();
+                    if (count >= 1) {
+                        alert("上传1张图片来馋人就够啦");
+                        cancel();
+                    }
+                }
+
+                $('#upload_spinner').show();
+            },
+            onComplete: function(id, fileName, responseJSON){
+              $('#upload_spinner').hide();
+              if (responseJSON.success) {
+                var image_field = '<input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>';
+//                append_image(responseJSON.image_id, responseJSON.thumb_url, responseJSON.origin_url, image_field);
+                var new_image = '<div class="uploaded_image fl">'
+                            + image_field
+                            + '<img src="' +  responseJSON.origin_url + '" alt="image_thumbnail"></div>';
+
+                $('#images_container').append(new_image);
+              }
+
+              if($('#desire_fields #images_container .uploaded_image').length > 0) {
+                $('#desire_fields #desire_uploader').hide();
+              }
+            }
+        });
+    }
+}

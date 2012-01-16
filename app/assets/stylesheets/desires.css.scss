@@ -3,7 +3,61 @@
 // Place all the styles related to the Desires controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#desire_fields {
+    #upload_area{
+        width: 480px;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
 
+        #images_container {width: 100%; height: 100%;}
+        #images_container .uploaded_image {
+            vertical-align: middle;
+            float: none;
+
+            img {max-width: 480px; max-height: 300px;}
+        }
+    }
+
+    #desire_content {width: 480px;}
+
+    .qq-upload-button {
+        position: absolute;
+        left: 200px;
+        top:138px;
+        vertical-align: middle;
+        display: inline-block;
+        width: 80px;
+        height: 25px;
+        padding: 0;
+        margin: 0;
+        background: no-repeat url("upload_image.png");
+        border: none;
+
+        /*no text displayed*/
+        text-indent:-9999px;
+        line-height:0px;
+    }
+
+    .qq-upload-button-hover {opacity: 0.7;}
+
+
+    .qq-upload-list {list-style:none;
+        display: none;}
+    .qq-upload-list li { list-style:none; line-height:15px; font-size:12px;}
+    .qq-upload-file, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+        display: none;
+    }
+
+    .qq-upload-success {display: none;}
+
+    .qq-upload-spinner {display:inline-block; background: url("loading_big.gif"); width:24px; height:24px; vertical-align:text-bottom;}
+    .qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+    .qq-upload-failed-text {display:none;}
+    .qq-upload-fail .qq-upload-failed-text {display:inline;}
+
+}
 
 #desires_box{
 
