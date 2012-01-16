@@ -10,8 +10,14 @@ class HomeController < ApplicationController
     @masters = User.enabled.masters.limit(40)
 
     @hot_primary_tags = Tag.where(primary: true, :desires_count.gt => 0).desc(:desires_count).limit(7).to_a
-    #TODO
-    @desires = Desire.recommended.tagged_with(@hot_primary_tags.map(&:name))
+
+    more_desires = Desire.recommended.tagged_with(@hot_primary_tags.map(&:name))
+    result = {}
+    @hot_primary_tags.each do |tag|
+      result[tag.name] = more_desires.select{|d| d.tags.include?(tag.name)}.take(10)
+    end
+    @desires = result.inject([]){|memo, (key, values)| memo | values}.compact.uniq
+
   end
 
   # get more items for pagination on home page
