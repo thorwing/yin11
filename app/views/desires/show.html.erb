@@ -1,18 +1,20 @@
-<% title t("desires.desire") %>
+<% title t("desires.desire"), false %>
 
-<div class="grid_9 to_left">
+<div class="grid_9 to_left overflow_hidden">
     <div class="box_shadow clearfix p5">
-        <%= link_to image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'lazy fl img_frame overflow_hidden', "data-original"=>  @desire.get_image_url(:waterfall) ), @desire.get_image_url, rel: "facebox"  %>
-        <% if current_user_has_permission? :normal_user %>
-            <div class="fr" align="right">
-              <%= render "votes/vote_fields", :item => @desire %>
-            </div>
-        <% end %>
+        <div>
+            <%= image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'img_frame restricted lazy fl overflow_hidden', "data-original"=>  @desire.get_image_url) %>
+        </div>
         <div class="clearfix">
-            <div class="fl ml10 clearfix" style="width:470px">
+            <div class="fl clearfix" style="width:470px">
                 <%= @desire.content %>
             </div>
         </div>
+        <% if current_user_has_permission? :normal_user %>
+            <div align="right">
+              <%= render "votes/vote_fields", :item => @desire %>
+            </div>
+        <% end %>
     </div>
 
     <% if the_author_himself(Desire.name, @desire.id, true, false) %>

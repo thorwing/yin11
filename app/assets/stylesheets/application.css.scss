@@ -318,6 +318,11 @@ a.tag:hover {
    background-color:$white;
 }
 
+.img_frame.restricted {
+    max-width: 680px;
+    max-height: 680px;
+}
+
 .clear {
     clear: both;
 }
