@@ -18,7 +18,7 @@ function general_upload() {
             // set to true to output server response to console
             debug: false,
             template: '<div class="qq-uploader">' +
-                    '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
+//                    '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
                     '<div class="qq-upload-button">上传图片</div>' +
                     '<ul class="qq-upload-list"></ul>' +
                  '</div>',
@@ -111,7 +111,7 @@ function step_uploader(search_range)
             // set to true to output server response to console
             debug: false,
             template: '<div class="qq-uploader" id="qq-uploader'+ (length -1) +'">' +
-                    '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
+//                    '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
                     '<div class="qq-upload-button">上传图片</div>' +
                     '<ul class="qq-upload-list"></ul>' +
                  '</div>',
@@ -159,7 +159,7 @@ function desire_upload() {
             // set to true to output server response to console
             debug: false,
             template: '<div class="qq-uploader">' +
-                    '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
+//                    '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
                     '<div class="qq-upload-button">上传图片</div>' +
                     '<ul class="qq-upload-list"></ul>' +
                  '</div>',
@@ -188,9 +188,9 @@ function desire_upload() {
               if (responseJSON.success) {
                 var image_field = '<input id="images_" type="hidden" value="' + responseJSON.image_id + '" name="images[]"/>';
 //                append_image(responseJSON.image_id, responseJSON.thumb_url, responseJSON.origin_url, image_field);
-                var new_image = '<div class="uploaded_image fl">'
+                var new_image = '<div class="uploaded_image">'
                             + image_field
-                            + '<img src="' +  responseJSON.origin_url + '" alt="image_thumbnail"></div>';
+                            + '<img src="' +  responseJSON.origin_url + '" alt="image"></div>';
 
                 $('#images_container').append(new_image);
               }

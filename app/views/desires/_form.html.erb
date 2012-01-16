@@ -7,10 +7,15 @@
         <div class="grid_7">
             <div id="upload_area" class="b_white"  >
                 <%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>
-                <div id="desire_uploader"></div>
-                <div id="upload_spinner" class="display_none" align="center" ><%= image_tag "loading_big.gif", width: 64, height: 64 %></div>
-                <div id="images_container"align="center">
-                </div>
+                <% if @desire.new_record? %>
+                    <div id="desire_uploader"></div>
+                    <div id="upload_spinner" class="display_none" align="center" ><%= image_tag "loading_big.gif", width: 64, height: 64 %></div>
+                    <div id="images_container"align="center"></div>
+                <% else %>
+                    <div id="images_container"align="center">
+                      <div class="uploaded_image"><%= image_tag @desire.get_image_url %></div>
+                    </div>
+                <% end %>
             </div>
 
             <span><%= "描述一下它有多诱人吧：" %></span><br/>

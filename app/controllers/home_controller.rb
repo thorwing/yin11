@@ -16,6 +16,7 @@ class HomeController < ApplicationController
     @hot_primary_tags.each do |tag|
       result[tag.name] = more_desires.select{|d| d.tags.include?(tag.name)}.take(10)
     end
+    @hot_primary_tags.reject!{|t| result[t.name].empty?}
     @desires = result.inject([]){|memo, (key, values)| memo | values}.compact.uniq
 
   end

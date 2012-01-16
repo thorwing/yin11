@@ -1,7 +1,9 @@
 module ImagesHelper
   def self.process_uploaded_images(item, image_params)
-    item.images.reject{|i| image_params.present? && image_params.include?(i.id.to_s)}.each do |image|
-      image.delete
+    if image_params.present?
+      item.images.reject{|i| image_params.include?(i.id.to_s)}.each do |image|
+        image.delete
+      end
     end
 
     if image_params.present?

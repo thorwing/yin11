@@ -12,12 +12,14 @@
           <div class="corner-stamp">
             <%= content_tag :span, "被这些美食图片馋到了吗？", class: "f14" %><br/>
             <%= content_tag :span, "点击看如何把它变成盘中餐！", class: "f14" %><br/>
-            <% if current_user_has_permission? :normal_user %>
-                <div class="mt10">
-                    <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
+            <div class="mt10">
+                <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
+                <% if current_user_has_permission? :normal_user %>
                     <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
-                </div>
-            <% end %>
+                <% else %>
+                    <%= link_to "立即注册", new_user_path, class: "button" %>
+                <% end %>
+            </div>
             <div id="desire_dialog" class="display_none">
                 <%= render "desires/desire_fields", desire: Desire.new %>
             </div>
@@ -26,11 +28,17 @@
             <div class="item <%= desire.tags.join(' ') %>" style="margin: 10px;">
               <div class="box_shadow p5" style="max-width: 200px;">
                 <div class="center">
-                    <%= link_to image_tag(desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall)), desire %>
+                    <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall), class: "lazy"), desire %>
                 </div>
                 <!--<span class="f14"><= link_to recipe.name, recipe %></span><br/>-->
                 <!--<span><= truncate_content(recipe.description, 30) %></span>-->
-                <%= truncate_content(desire.content, 50) %>
+                <div class="clearfix">
+                  <span>
+                    <%= link_to image_tag("grey.gif", "data-original" => desire.author.get_avatar(:thumb, false), width: 22, height: 22, class: "lazy"), desire.author %>
+                    <%= link_to desire.author.login_name, desire.author %>
+                  </span>
+                  <span class="ml5"><%= truncate_content(desire.content, 50) %></span>
+                </div>
               </div>
             </div>
           <% end %>
