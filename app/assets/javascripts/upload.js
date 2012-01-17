@@ -59,7 +59,7 @@ $(function() {
 
 //Append the image, it could belong to Image or Product
 function append_image(id, thumb_url, original_url, post_params) {
-    var new_image = '<div class="linked_item fl">'
+    var new_image = '<div class="image fl">'
                 + post_params
                 + '<a onclick="delete_related_item(this); return false;" class="del_link lighter_touch" href="#"><img border="0" src="/assets/close_x.png" alt="delete_image"></a>'
                 + '<a rel="facebox" href="' + original_url + '">'

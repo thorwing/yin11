@@ -1,25 +1,43 @@
 <div class="commentable clearfix">
-  <div class="fl mr10">
-    <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> review.author.get_avatar(:thumb, false ), width: "48", height: "48"), review.author %>
-  </div>
-  <div class="fl" style="width: 600px;">
-    <%= review.author.login_name%>:<br/>
-    <p>
-      <%= review.content %>  <%= link_to t("general.details"), review %>
-    </p>
-    <% thumb_url = review.get_review_image_url(:thumb) %>
-    <% if thumb_url.present? %>
-        <p><%= link_to image_tag(thumb_url, class: "img_frame"), review.get_review_image_url, rel: "facebox" %></p>
-    <% end %>
-    <div>
-      <span class="fl trivial"><%= time_ago_in_words(review.created_at) + t("general.ago") %></span>
-      <div class="fr">
-        <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= review.comments.size %></span>)
-      </div>
+    <div class="fl mr10" style="width:50px;">
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> review.author.get_avatar(:thumb, false ), width: "48", height: "48"), review.author %><br/>
+        <%= link_to review.author.login_name, review.author %>
     </div>
-  </div>
-  <div class="embedded_comments display_none">
-    <%= render "comments/comments", item: review %>
-  </div>
+    <div class="fl" style="width: 640px;">
+        <div id="images_container" class="clearfix">
+            <% review.get_linked_items.each do |item| %>
+                <div class="linked_item fl mr5 hint_box">
+                    <%= link_to image_tag(item.get_image_url(:thumb), class: "thumbnail"), item %><br/>
+                    <span class="flex_hint black b_white f11"><%= item.name %></span>
+                    <% if item.is_a?(Product) %>
+                      <%= image_tag("icons/cart.png", width: 16, height: 16, class: "linked_item_icon") %>
+                    <% elsif item.is_a?(Recipe) %>
+                      <%= image_tag("icons/recipe.png", width: 16, height: 16, class: "linked_item_icon") %>
+                    <% end %>
+                </div>
+            <% end %>
+
+            <% review.images.each do |image| %>
+                <div class="image mr5 fl">
+                    <%= link_to image_tag("grey.gif", "data-original"=> image.picture_url(:thumb), alt: "image_thumbnail", class: "lazy thumbnail"), image.picture_url, rel: "facebox" %>
+                </div>
+            <% end %>
+        </div>
+        <p>
+            <%= review.content %> <%= link_to t("general.details"), review %>
+        </p>
+        <div>
+            <span class="fl trivial"><%= review.created_at.strftime(GENERAL_TIME_FORMAT) %></span>
+            <div class="fr">
+                <%= render "votes/vote_fields", :item => review %>
+            </div>
+            <div class="fr mr20">
+                <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= review.comments.size %></span>)
+            </div>
+        </div>
+        <div class="embedded_comments display_none">
+            <%= render "comments/comments", item: review %>
+        </div>
+    </div>
 </div>
 <hr/>

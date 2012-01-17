@@ -2,11 +2,14 @@
 	Vote-Fields-Styles
 */
 
-/*.vote_fields {*/
+.vote_fields {
+    .vote_button, .votes  {
+        vertical-align: bottom;
+    }
     /*.vote_button.to_hate { background: image-url('bad_thumb.png') center no-repeat; opacity: 0.5;}*/
     /*.vote_button.to_hate:hover { background: image-url('bad_thumb.png') center no-repeat; opacity: 0.7;}*/
     /*.vote_button.hated { background: image-url('bad_thumb.png') center no-repeat; }*/
-/*}*/
+}
 
 /*.vote_fields .vote_button.down_voted { background: image-url('voted_down_button.png') center no-repeat; text-indent:-9999px;}*/
 /*.vote_fields .vote_button.down:hover { background: image-url('voted_down_button.png') center no-repeat; text-indent:-9999px;}*/

@@ -24,7 +24,7 @@
 
                 <!--product linker-->
                 <div class="fl mr10">
-                    <%= link_to_function image_tag("add_product.png", border: 0, width: 55, height:26), "link_product()", class: "lighter_touch"%>
+                    <%= link_to_function image_tag("add_product.png", border: 0, width: 50, height:22), "link_product()", class: "lighter_touch"%>
                 </div>
 
                 <!--submit and sync to 3rd-->
@@ -41,7 +41,7 @@
                 </div>
            </div>
            <div id="images_container" class="block fl m5" >
-                <% @review.get_linked_items each do |item| %>
+                <% @review.get_linked_items.each do |item| %>
                     <%= render "reviews/linked_item", item: item %>
                 <% end %>
 

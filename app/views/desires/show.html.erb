@@ -2,17 +2,10 @@
 
 <div class="grid_9 to_left overflow_hidden">
     <div class="box_shadow clearfix p5">
-        <div>
-            <%= image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'img_frame restricted lazy fl overflow_hidden', "data-original"=>  @desire.get_image_url) %>
-        </div>
-        <div class="clearfix">
-            <div class="fl clearfix" style="width:470px">
-                <%= @desire.content %>
-            </div>
-        </div>
+        <%= image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'img_frame restricted lazy overflow_hidden', "data-original"=>  @desire.get_image_url) %><br/>
+        <%= @desire.content %>
         <% if current_user_has_permission? :normal_user %>
             <div align="right">
-              <%= render "votes/vote_fields", :item => @desire %><br/>
               <%= render "admire_fields", :item => @desire %>
             </div>
         <% end %>
@@ -24,22 +17,16 @@
             <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
         </div>
     <% end %>
-
-    <div id="static_waterfall_container" class="mt10">
-        <% @desire.reviews.each do |review| %>
-            <%= render "reviews/review_waterfall_field", picture_url: review.get_review_image_url(:waterfall), picture_height: review.get_review_image_height(:waterfall), item: review %>
-        <% end %>
-    </div>
     <div class="mb20">
-        <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "我来分享如何解馋" %>
+        <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "分享解馋攻略：" %>
     </div>
-    <div class="mt10">
-        <%= render "comments/comments", :item => @desire %>
-    </div>
+
+    <h3 class="mb5">用户的解馋攻略：</h3>
+    <% @desire.reviews.desc(:votes, :updated_at).reject{|d| d.new_record?}.each do |review| %>
+        <%= render review %>
+    <% end %>
 </div>
 
 <div class="grid_3 to_right">
     <%= render "users/author_panel", author: @desire.author %>
 </div>
-
-<%= javascript_tag "static_waterfall(3);" %>

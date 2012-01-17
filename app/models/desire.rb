@@ -3,8 +3,6 @@ class Desire
   include Mongoid::Timestamps
   include Taggable
   include Imageable
-  include Votable
-  can_like
 
   field :content
   #field :admired_count, :type => Integer, :default => 0
@@ -21,7 +19,7 @@ class Desire
   has_many :reviews
   belongs_to :author, :class_name => "User"
   has_and_belongs_to_many :admirers, :class_name => "User", :inverse_of => "admired_desires", :index => true
-  embeds_many :comments
+  #embeds_many :comments
 
   #validations
   validates_presence_of :author

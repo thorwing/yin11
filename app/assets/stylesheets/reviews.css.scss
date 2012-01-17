@@ -6,7 +6,7 @@
 }
 
 #images_container {
-    .linked_item {
+    .linked_item, .image {
         position: relative;
         margin-right: 10px;
         width: 100px;
@@ -14,7 +14,7 @@
         .linked_item_icon {
             position: absolute;
             right: 0px;
-            top: 100px;
+            top: 84px;
         }
     }
 
