@@ -313,9 +313,19 @@ a.tag:hover {
 }
 
 .img_frame {
-   padding:1px;
-   border:1px solid #021a40;
-   background-color:$white;
+    padding:1px;
+    border:1px solid #021a40;
+    background-color:$white;
+}
+
+.image_frame {
+    position: relative;
+}
+
+.image_frame .ribbon {
+    position: absolute;
+    right: -1px;
+    top: -2px;
 }
 
 .img_frame.restricted {

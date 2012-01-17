@@ -27,7 +27,8 @@
           <% @desires.each do |desire| %>
             <div class="item <%= desire.tags.join(' ') %>" style="margin: 10px;">
               <div class="box_shadow p5" style="max-width: 200px;">
-                <div class="center">
+                <div class="image_frame center">
+                    <%= image_tag "icons/jiechan_2.png", class: "ribbon" if desire.get_solutions_count > 0 %>
                     <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall), class: "lazy"), desire %>
                 </div>
                 <!--<span class="f14"><= link_to recipe.name, recipe %></span><br/>-->

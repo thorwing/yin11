@@ -8,6 +8,7 @@ class Desire
   #field :admired_count, :type => Integer, :default => 0
   #field :admirers_ids, :type => Array, :default => []
   field :priority, :type => Integer, :default => 0
+  field :solutions_count, :type => Integer, :default => 0
 
   attr_accessible :content, :priority
 
@@ -24,4 +25,17 @@ class Desire
   #validations
   validates_presence_of :author
   validates_length_of :content, :maximum => 280
+
+  before_save :sync_counts
+
+  #TODO
+  def get_solutions_count
+    self.solutions_count = self.reviews.count(conditions: {:votes.gt => 3})
+  end
+
+  private
+
+  def sync_counts
+    self.solutions_count = self.reviews.count(conditions: {:votes.gt => 3})
+  end
 end
