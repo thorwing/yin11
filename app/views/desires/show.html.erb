@@ -12,7 +12,8 @@
         </div>
         <% if current_user_has_permission? :normal_user %>
             <div align="right">
-              <%= render "votes/vote_fields", :item => @desire %>
+              <%= render "votes/vote_fields", :item => @desire %><br/>
+              <%= render "admire_fields", :item => @desire %>
             </div>
         <% end %>
     </div>

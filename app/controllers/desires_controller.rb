@@ -120,4 +120,24 @@ class DesiresController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def admire
+    @desire = Desire.find(params[:id])
+    if (@desire.admirer_ids.include? current_user.id)
+      @desire.admirers.delete(current_user)
+      @success = true
+    else
+      @desire.admirers << current_user
+
+      @success = true
+    end
+
+    respond_to do |format|
+      if @desire.save
+        format.js {render :content_type => 'text/javascript'}
+      else
+        format.js { head :unprocessable_entity }
+      end
+    end
+  end
 end

@@ -1,0 +1,16 @@
+<% if @success %>
+    var admire_fields  = $('.admire_fields.<%= @desire.id.to_s %>');
+    admire_fields.find(".admiration").text("<%= @desire.admirer_ids.size.to_s %>个人被馋到");
+
+    var btn = admire_fields.find(".admire_btn");
+    if(btn.length > 0) {
+        if(btn.hasClass('to_admire')) {
+            btn.removeClass('to_admire');
+            btn.addClass('admired');
+        }
+        else{
+            btn.removeClass('admired');
+            btn.addClass('to_admire');
+        }
+    }
+<% end %>

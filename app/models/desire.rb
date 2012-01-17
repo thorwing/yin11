@@ -7,7 +7,8 @@ class Desire
   can_like
 
   field :content
-  field :wanted_count, :type => Integer, :default => 0
+  #field :admired_count, :type => Integer, :default => 0
+  #field :admirers_ids, :type => Array, :default => []
   field :priority, :type => Integer, :default => 0
 
   attr_accessible :content, :priority
@@ -19,6 +20,7 @@ class Desire
   has_many :images
   has_many :reviews
   belongs_to :author, :class_name => "User"
+  has_and_belongs_to_many :admirers, :class_name => "User", :inverse_of => "admired_desires", :index => true
   embeds_many :comments
 
   #validations

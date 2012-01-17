@@ -424,7 +424,7 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.desire_btn{ display: inline-block;
+.admire_btn.to_admire{ display: inline-block;
  width:61px;
  height:25px;
  background-image: url(buttons.png);
@@ -433,7 +433,7 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.desire_btn:hover{ display: inline-block;
+.admire_btn.to_admire:hover, .admire_btn.admired{ display: inline-block;
  width:61px;
  height:25px;
  background-image: url(buttons.png);

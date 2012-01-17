@@ -1,0 +1,8 @@
+<span class="admire_fields <%= item.id.to_s %> clearfix">
+    <% if current_user_has_permission?(:normal_user) %>
+        <%= link_to "", admire_desire_path(:id => item.id), :method => :put, :remote => true,
+                :class => "admire_btn " + (item.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
+    <% end %>
+
+    <span class="admiration ml2 f12 trivial" style="vertical-align: top;"><%= "#{item.admirer_ids.size}个人被馋到" %></span>
+</span>

@@ -78,6 +78,9 @@ Yin11::Application.routes.draw do
   end
 
   resources :desires do
+    member do
+      put :admire
+    end
     collection do
       get :more
     end
