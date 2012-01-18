@@ -13,6 +13,11 @@ module Votable
     def can_hate?
       return false
     end
+
+    def fans
+      User.any_in(_id: fan_ids)
+    end
+
     base.extend(ClassMethods)
   end
 

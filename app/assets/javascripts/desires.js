@@ -91,10 +91,3 @@ $(function(){
         }
     });
 });
-
-$(function(){
-    $(".show_admirers_btn").live("click", function(e){
-        e.preventDefault();
-        jQuery.facebox($(this).parents().find(".admirers_list").html());
-    });
-});

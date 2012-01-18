@@ -4,10 +4,10 @@
                 :class => "admire_btn " + (desire.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
     <% end %>
 
-    <span class="admiration ml2 f12 trivial" style="vertical-align: top;"><%= link_to "#{desire.admirer_ids.size}个人被馋到", "#", class: "show_admirers_btn" %></span>
-    <div class="admirers_list display_none">
+    <span class="admiration ml2 f12 trivial" style="vertical-align: top;"><%= link_to "#{desire.admirer_ids.size}个人被馋到", "#", class: "show_users_btn" %></span>
+    <div class="users_short_list display_none">
       <% desire.admirers.each do |admirer| %>
-         <div class="fl admirer">
+         <div class="fl user">
             <%= link_to image_tag(admirer.get_avatar(:thumb), width: 24, height: 24, class: "mr2"), admirer %><br/>
             <%= link_to admirer.login_name, admirer %>
         </div>
