@@ -1,6 +1,6 @@
 <% if @desires && @desires.size > 0 %>
     <div id="desires_box" class="grid_12 mt20">
-        <h2><%= "馋人图片" %></h2>
+        <h2><%= link_to "馋人图片（全部）", desires_path %></h2>
         <ul id="filters" class="mt5">
             <% @hot_primary_tags.each do |tag| %>
                 <li class="display_inline"><%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "filter f14 p5" %></li>

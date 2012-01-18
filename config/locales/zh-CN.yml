@@ -307,7 +307,7 @@ zh-CN:
     details: 详细
     see_user_info: 查看个人资料
     recent_activities: 最近活动
-    daily_stars: 今日美食达人
+    stars: 活跃美食达人（全部）
     master: 达人
     role: 身份
     role_3: 普通用户
@@ -539,7 +539,7 @@ zh-CN:
     has_collected: 已收集到
     collect_to_album: 到专辑：
     items: 个收集
-    recommended: 推荐专辑
+    recommended: 推荐专辑（全部）
 
   search:
     kinds:

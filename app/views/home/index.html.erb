@@ -7,39 +7,26 @@
 
 <%= render "primary_tags" %>
 
-<div class="mt20 clearfix ">
-  <% unless @daily_stars.empty? %>
-    <h2 class="fl"><%= t("users.daily_stars") %></h2><br/>
-    <div>
-        <% @daily_stars.each do |master| %>
-            <%= render master %>
-        <% end %>
-    </div>
-    <div>
-      <%= link_to ">>更多美食达人", masters_path %><br/>
-      <div class="p5">
-          <% @masters.each do |master| %>
-                <div class="fl m1" style="width:48px;height:48px;"><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> master.get_avatar(:thumb, false), width: 48, height: 48), master %></div>
-          <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
 
-<div class="clearfix mt20">
-  <% unless @recommended_albums.empty? %>
-    <h2 class="fl"><%= t("albums.recommended") %></h2><br/>
-    <div class="grid_8 to_left ">
+
+<div class="mt20 clearfix">
+    <div class="grid_8">
+        <h2 class="fl"><%= link_to t("albums.recommended"), albums_path %></h2><br/>
         <%= render @recommended_albums %>
     </div>
-  <% end %>
+    <div class="grid_4">
+        <h2 class="fl"><%= link_to t("users.stars"), "\masters" %></h2><br/>
+        <% @stars.each do |user| %>
+            <div class="mt10 clearfix">
+              <div class="fl mr5">
+                  <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false), width: 48, height: 48), user %>
+              </div>
+              <div class="fl">
+                  <%= link_to user.login_name, user %>
+                  <%= render "users/user_statics", user: user %>
+              </div>
+            </div>
+            <hr/>
+        <% end %>
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
