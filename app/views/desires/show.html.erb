@@ -6,7 +6,7 @@
         <%= @desire.content %>
         <% if current_user_has_permission? :normal_user %>
             <div align="right">
-              <%= render "admire_fields", :item => @desire %>
+              <%= render "admire_fields", :desire => @desire %>
             </div>
         <% end %>
     </div>
@@ -14,14 +14,13 @@
     <% if the_author_himself(Desire.name, @desire.id, true, false) %>
         <div class="mt10 p5 clearfix">
             <%= link_to "", edit_desire_path(@desire), class: "modify_btn" %>
-            <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
         </div>
     <% end %>
     <div class="mb20">
         <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "分享解馋攻略：" %>
     </div>
 
-    <h3 class="mb5">用户的解馋攻略：</h3>
+    <h3 class="mb5">来自用户的解馋攻略：</h3>
     <% @desire.reviews.desc(:votes, :updated_at).reject{|d| d.new_record?}.each do |review| %>
         <%= render review %>
     <% end %>

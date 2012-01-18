@@ -1,8 +1,16 @@
-<span class="admire_fields <%= item.id.to_s %> clearfix">
+<span class="admire_fields <%= desire.id.to_s %> clearfix">
     <% if current_user_has_permission?(:normal_user) %>
-        <%= link_to "", admire_desire_path(:id => item.id), :method => :put, :remote => true,
-                :class => "admire_btn " + (item.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
+        <%= link_to "", admire_desire_path(:id => desire.id), :method => :put, :remote => true,
+                :class => "admire_btn " + (desire.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
     <% end %>
 
-    <span class="admiration ml2 f12 trivial" style="vertical-align: top;"><%= "#{item.admirer_ids.size}个人被馋到" %></span>
+    <span class="admiration ml2 f12 trivial" style="vertical-align: top;"><%= link_to "#{desire.admirer_ids.size}个人被馋到", "#", class: "show_admirers_btn" %></span>
+    <div class="admirers_list display_none">
+      <% desire.admirers.each do |admirer| %>
+         <div class="fl admirer">
+            <%= link_to image_tag(admirer.get_avatar(:thumb), width: 24, height: 24, class: "mr2"), admirer %><br/>
+            <%= link_to admirer.login_name, admirer %>
+        </div>
+      <% end %>
+    </div>
 </span>
