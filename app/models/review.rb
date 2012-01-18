@@ -76,6 +76,6 @@ class Review
   def get_linked_items
     #images = self.images.map{|i| {picture_url: i.picture_url(version), picture_height: (version == :waterfall && i.waterfall_height.present?) ? i.waterfall_height.to_i : 200, object: nil }} || []
     data = self.products + self.recipes
-    data.compact
+    data.compact.reject{|item| item.item.get_image_url.blank?}
   end
 end
