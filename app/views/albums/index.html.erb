@@ -1,16 +1,20 @@
 <% title t("albums.albums"), false %>
 
-<div class="grid_9 to_left">
-    <%= paginate @albums %>
-    <%= render @albums %>
-</div>
+<%= paginate @albums %>
 
-<div class="grid_3 to_right">
-  <div class="box_shadow p5">
-      <% if current_user_has_permission? :normal_user %>
+<div class="grid_3">
+    <div style="width:200px; height: 200px;">
+        <span class="f12 trivial">热门标签</span>
+        <div class="mb5">
+            <% get_top_primary_tags.each do |tag| %>
+                <%= link_to tag.name, albums_path(tag: tag.name), class: "tag" %>
+            <% end %>
+        </div>
         <%= link_to "", new_album_path, class: "add_album_btn" %>
-        <hr/>
-      <% end %>
-  </div>
+    </div>
 </div>
+<% @albums.each do |album| %>
+    <%= render "albums/album_cover", album: album %>
+<% end %>
+
 

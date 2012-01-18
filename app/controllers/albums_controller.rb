@@ -4,7 +4,9 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+    criteria = Album.all
+    criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
+    @albums = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 
     respond_to do |format|
       format.html # index.html.erb
