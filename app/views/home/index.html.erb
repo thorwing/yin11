@@ -11,11 +11,11 @@
 
 <div class="mt20 clearfix">
     <div class="grid_8">
-        <h2 class="fl"><%= link_to t("albums.recommended"), albums_path %></h2><br/>
+        <%= link_to content_tag(:b, "推荐专辑", class: "f15") + content_tag(:span, "（全部）"), albums_path %><br/>
         <%= render @recommended_albums %>
     </div>
     <div class="grid_4">
-        <h2 class="fl"><%= link_to t("users.stars"), "\masters" %></h2><br/>
+        <%= link_to content_tag(:b, "美食达人", class: "f15") + content_tag(:span, "（全部）"), "\masters" %><br/>
         <% @stars.each do |user| %>
             <div class="mt10 clearfix">
               <div class="fl mr5">
