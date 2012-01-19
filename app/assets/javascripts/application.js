@@ -184,3 +184,24 @@ $(function(){
         jQuery.facebox($(this).parents().find(".users_short_list").html());
     });
 });
+
+function fill_tag(link) {
+    var name = $(link).text();
+    var input = $(".tags_input");
+    if(input.length > 0)
+    {
+        var data = {id: name, name: name};
+        input.tokenInput("add", data);
+    }
+  }
+
+function expand_tags(link) {
+    $(link).parents(".first_level").next().toggle();
+    var text = $(link).text();
+    if ($(link).text() == "+展开") {
+        $(link).text("-收起");
+    }
+    else {
+        $(link).text("+展开");
+    }
+}

@@ -97,10 +97,18 @@ module ApplicationHelper
   end
 
   def get_top_primary_tags
-    Tag.where(primary: true).desc(:desires_count).limit(7)
+    tags = Rails.cache.fetch('top_primary_tags')
+    if tags.nil?
+       Logger.new(STDOUT).info "records are cached"
+       tags = YAML::load(File.open("config/primary_tags.yml"))
+
+       Rails.cache.write('top_primary_tags', tags, :expires_in => 10.minutes)
+    end
+
+    tags
   end
 
-  def get_hot_primary_tags(tags)
+  def pick_hot_primary_tags(tags, limit = 7)
     flat_tag_names = []
       if tags.is_a?(Array)
         flat_tag_names |= tags
@@ -109,7 +117,7 @@ module ApplicationHelper
           flat_tag_names |= v
         end
       end
-    tags = Tag.any_in(name: flat_tag_names.uniq).desc(:items).limit(7)
+    tags = Tag.any_in(name: flat_tag_names.uniq).desc(:items).limit(limit)
   end
 
   def get_hot_tags(limit = ITEMS_PER_PAGE_FEW, of = :feeds)
@@ -121,6 +129,8 @@ module ApplicationHelper
           tags = Tag.desc(:feeds).limit(100)
         when :recipes
           tags = Recipe.tags_with_weight.take(100)
+        when :albums
+          tags = Album.tags_with_weight.take(100)
         else
           tags = []
       end
@@ -129,15 +139,6 @@ module ApplicationHelper
 
     #take some of the cached tags, 100 is too many
     tags.take(limit)
-  end
-
-  def get_records
-    records = Rails.cache.fetch('records')
-    if records.nil?
-       Logger.new(STDOUT).info "records are cached"
-       records = YAML::load(File.open("app/seeds/tags.yml"))
-       Rails.cache.write('records', records, :expires_in => 3.hours)
-    end
   end
 
 

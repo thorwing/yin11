@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_filter(:except => [:index]) { |c| c.require_permission :editor }
+  before_filter(:only => [:destroy]) { |c| c.require_permission :editor }
 
   def query
     query_str = params[:q]
@@ -42,15 +42,6 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(administrator_tags_url) }
-    end
-  end
-
-  def index
-    @hot_tags = get_hot_tags
-    @records = YAML::load(File.open("app/seeds/tags.yml"))
-
-    respond_to do |format|
-      format.html
     end
   end
 

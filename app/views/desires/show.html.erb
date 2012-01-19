@@ -16,6 +16,9 @@
             <%= link_to "", edit_desire_path(@desire), class: "modify_btn" %>
         </div>
     <% end %>
+    <% if current_user_has_permission? :administrator %>
+        <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
+    <% end %>
     <div class="mb20">
         <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "分享解馋攻略：" %>
     </div>

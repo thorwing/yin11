@@ -6,10 +6,10 @@ class HomeController < ApplicationController
     @recommended_albums = Album.recommended.desc(:priority).limit(RECOMENDED_ALBUMS_ON_HOME_PAGE)
 
     #TODO
-    @stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..2]
+    @stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..5]
     #@masters = User.enabled.masters.limit(40)
-
-    @hot_primary_tags = Tag.where(primary: true, :desires_count.gt => 0).desc(:desires_count).limit(7).to_a
+    primary_tags = get_top_primary_tags
+    @hot_primary_tags = Tag.any_in(name: get_top_primary_tags).to_a.sort{|x,y| get_top_primary_tags.index(x.name) <=> get_top_primary_tags.index(y.name) }
 
     more_desires = Desire.recommended.tagged_with(@hot_primary_tags.map(&:name))
     result = {}

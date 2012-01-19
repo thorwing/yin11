@@ -5,9 +5,6 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.xml
   def index
-    #@hot_tags = get_hot_tags(14, :reviews)
-    #@records = get_records
-
     respond_to do |format|
       format.html # index.html.erb
     end

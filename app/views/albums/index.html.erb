@@ -6,8 +6,8 @@
     <div style="width:200px; height: 200px;">
         <span class="f12 trivial">热门标签</span>
         <div class="mb5">
-            <% get_top_primary_tags.each do |tag| %>
-                <%= link_to tag.name, albums_path(tag: tag.name), class: "tag" %>
+            <% get_hot_tags(14, :albums).each do |tag| %>
+                <%= link_to tag[0], albums_path(tag: tag[0]), class: "tag" %>
             <% end %>
         </div>
         <%= link_to "", new_album_path, class: "add_album_btn" %>

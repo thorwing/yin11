@@ -6,17 +6,39 @@
     <!--<= link_to t("general.more"), tags_path  %>-->
 </div>
 
-<!--TODO-->
-<% if false %>
-    <% records.each do |record|%>
-      <div class="mb10">
-        <h3><%= record["name"] %></h3>
-        <% tags = record["detail"].split(' ') %>
-        <% len = tags.size > 12 ? 12 : tags.size  %>
-        <% tags[0..len-1].each do |tag|  %>
-            <%= link_to tag, {:controller => controller.controller_name, :action => "index", :tag => tag} %>
-        <% end  %><br/>
-        <!--<= link_to t("general.more"), tags_path  %>-->
-      </div>
-    <% end  %>
+<% primary_tags.each do |first_lv, tags| %>
+    <div class="p5 m5">
+        <div class="first_level clearfix mb5 mt5">
+            <div>
+                <div class="clearfix">
+                    <h2 class="fl display_inline f14" style="font-weight: normal;"><%= first_lv %></h2>
+                    <span class="fr"><%= link_to_function "+展开", 'expand_tags(this);' unless (tags.is_a?(Array) && tags.size <= 7) %></span>
+                </div>
+              <% hot_tags = pick_hot_primary_tags(tags, 5) %>
+                        <% hot_tag_names = hot_tags.map(&:name) %>
+                        <% hot_tags.each do |tag| %>
+                            <%= link_to tag.name, {:controller => controller.controller_name, :action => "index", :tag => tag.name}, class: "tag" %>
+                        <% end %>
+            </div>
+        </div>
+        <div class="display_none">
+            <% if tags.is_a?(Array) %>
+                <div class="ml30 mb5">
+                    <% tags.reject{|t| hot_tag_names.include?(t)}.each do |tag_name| %>
+                        <%= link_to tag_name, {:controller => controller.controller_name, :action => "index", :tag => tag_name}, class: "tag" %>
+                    <% end %>
+                </div>
+            <% elsif tags.is_a?(Hash) %>
+                <% tags.each do |second_lv, v| %>
+                    <h3 class="f13" style="font-weight: normal;"><%= second_lv %>: </h3>
+                    <div class="ml30 mb5">
+                        <% v.reject{|t| hot_tag_names.include?(t)}.each do |tag_name| %>
+                            <%= link_to tag_name, {:controller => controller.controller_name, :action => "index", :tag => tag_name}, class: "tag" %>
+                        <% end %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+    <div class="clearfix"></div>
 <% end %>

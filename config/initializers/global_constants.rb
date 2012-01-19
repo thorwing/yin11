@@ -1,3 +1,4 @@
+#encoding utf-8
 # also notice the call to 'freeze'
 #default
 SELF_PROVIDER = 'yin11'
