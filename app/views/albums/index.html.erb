@@ -1,6 +1,7 @@
 <% title t("albums.albums"), false %>
 
 <%= paginate @albums %>
+<% @albums = @albums.reject{|a| a.get_cover_url(:waterfall).include?("assets/not_found.png")} %>
 
 <div class="grid_3">
     <div style="width:200px; height: 200px;">
@@ -13,8 +14,20 @@
         <%= link_to "", new_album_path, class: "add_album_btn" %>
     </div>
 </div>
-<% @albums.each do |album| %>
-    <%= render "albums/album_cover", album: album %>
+<div class="clearfix">
+    <% @albums.take(3).each do |album| %>
+        <%= render "albums/album_cover", album: album %>
+    <% end %>
+</div>
+
+<% if @albums.size > 3 %>
+    <% @albums.drop(3).each_slice(4).each do |albums| %>
+        <div class="clearfix">
+            <% albums.each do |album| %>
+                <%= render "albums/album_cover", album: album %>
+            <% end %>
+        </div>
+    <% end %>
 <% end %>
 
 

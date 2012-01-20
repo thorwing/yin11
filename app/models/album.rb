@@ -39,7 +39,7 @@ class Album
 
     unless image_url
       image = self.reviews.first{|r| r.get_review_image_url(version).present?}
-      image_url = (image ? image.get_review_image_url(version) : "not_found.png")
+      image_url = (image ? image.get_review_image_url(version) : "assets/not_found.png")
     end
 
     image_url
