@@ -6,8 +6,6 @@ function shift_masonry(filter) {
 
     var selector = $(filter).attr('data-filter');
     $container.isotope({filter: selector});
-//    $container.isotope('option', {filter: selector});
-//    $container.isotope('reLayout', function(){});
     return false;
 }
 

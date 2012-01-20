@@ -31,3 +31,16 @@
 //        },
 //        function(){});
 //});
+
+
+$(function(){
+    $(".primary_tag").hover(
+        function(){
+            $(this).find(".tag_summary").show();
+        },
+        function(){
+            $(this).find(".tag_summary").hide();
+        }
+    );
+
+});

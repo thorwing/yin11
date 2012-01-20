@@ -81,7 +81,7 @@ module ApplicationHelper
   end
 
   def get_primary_tags
-      tags = nil #Rails.cache.fetch('primary_tags')
+      tags = Rails.cache.fetch('primary_tags')
       if tags.nil?
          Logger.new(STDOUT).info "records are cached"
          records = YAML::load(File.open("app/seeds/tags.yml"))

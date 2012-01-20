@@ -8,7 +8,18 @@ class HomeController < ApplicationController
     #TODO
     @stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..5]
     #@masters = User.enabled.masters.limit(40)
-    primary_tags = get_top_primary_tags
+
+    @primary_tags = {}
+    get_primary_tags.each do |lv, tags|
+      if tags.is_a?(Array)
+        tags.each{|t| @primary_tags[t] = Tag.find(t)}
+      elsif tags.is_a?(Hash)
+        tags.each do |key, value|
+          value.each{|t| @primary_tags[t] = Tag.first(conditions: {name: t})}
+        end
+      end
+    end
+
     @hot_primary_tags = Tag.any_in(name: get_top_primary_tags).to_a.sort{|x,y| get_top_primary_tags.index(x.name) <=> get_top_primary_tags.index(y.name) }
 
     more_desires = Desire.recommended.tagged_with(@hot_primary_tags.map(&:name))

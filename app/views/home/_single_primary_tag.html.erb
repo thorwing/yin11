@@ -1,3 +1,9 @@
-<div class="hint_box fl lighter_touch">
-  <%= link_to image_tag("grey.gif", "data-original" => "assets/primary_tags/#{pic}",  width: (sep == "sep_6" ? 150 : 180), height:150, class: "lazy #{sep}") + content_tag(:span, primary_tag, class: "fix_hint b_black_alpha30 white", style: "text-align:center;"), desires_path(tag: primary_tag) %>
+<div class="primary_tag hint_box fl lighter_touch">
+    <% tag = @primary_tags[primary_tag] %>
+    <div class="tag_summary display_none">
+        <% if tag %>
+            <%= "#{tag.desires_count}张馋人图片" %>
+        <% end %>
+    </div>
+    <%= link_to image_tag("grey.gif", "data-original" => "assets/primary_tags/#{pic}",  width: (sep == "sep_6" ? 150 : 180), height:150, class: "lazy #{sep}") + content_tag(:span, primary_tag, class: "fix_hint b_black_alpha30 white", style: "text-align:center;"), desires_path(tag: primary_tag) %>
 </div>
