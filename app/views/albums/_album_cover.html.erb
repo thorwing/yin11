@@ -7,7 +7,7 @@
         <span class="mr5 trivial"><%= album.reviews.size %><%= t("albums.items") %></span> |
         <span class="ml5 trivial"><%= "#{album.votes.to_s}个人喜欢" %></span>
     </div>
-    <div class="ml20">
+    <div class="ml20 mr10 mb10">
         <%= link_to image_tag("grey.gif", "data-original"=> album.author.get_avatar(:thumb, false), width: 24, height:24, class: "lazy"), album.author %>
         <%= link_to album.author.login_name, album.author %><br/>
         <%= album.description %>

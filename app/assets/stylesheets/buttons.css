@@ -1,134 +1,16 @@
 a.btn_register{
- width:110px;
- height:45px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-8px -9px;
- text-indent:-9999px;
+    width:110px;
+    height:45px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-8px -9px;
+    text-indent:-9999px;
 }
 
 a.btn_register:hover{
- width:110px;
- height:45px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-8px -63px;}
+    background-position:-8px -63px;
+}
 
-/*.btn_shareReview{*/
- /*width:115px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-7px -118px;*/
-/*}*/
-/*.btn_shareReview:hover{*/
- /*width:115px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-7px -155px;}*/
-
-/*.btn_comment{*/
- /*width:115px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -9px;}*/
-
-/*.btn_comment:hover{*/
- /*width:115px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -47px;}*/
-
-/*.btn_addRecipe{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-7px -222px;*/
-/*}*/
-
-/*.btn_addAttention{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-7px -261px;*/
-/*}*/
-
-/*.btn_addArticle{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -249px;*/
-/*}*/
-
-/*.btn_addPage{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -289px;*/
-/*}*/
-
-/*.btn_addTopic{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -208px;*/
-/*}*/
-
-/*.btn_modifyProfile{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -169px;*/
-/*}*/
-
-/*.btn_done{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -342px;*/
-/*}*/
-
-/*.btn_wantToDo{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -383px;*/
-/*}*/
-
-/*.btn_cancelAttention{*/
- /*width:85px;*/
- /*height:35px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-140px -431px;*/
-/*}*/
-
-/*.btn_modify{*/
- /*width:65px;*/
- /*height:30px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-7px -383px;*/
-/*}*/
-
-/*.btn_delete{*/
- /*width:65px;*/
- /*height:30px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-7px -341px;*/
-/*}*/
 
 .delete_btn{
  display: inline-block;
@@ -140,13 +22,8 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.delete_btn:hover{display: inline-block;
- width:41px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
+.delete_btn:hover{
  background-position:-362px -52px;
- text-indent: -9999px;
 }
 
 .delete_2_btn{ display: inline-block;
@@ -178,13 +55,7 @@ a.btn_register:hover{
 }
 
 .want_do_btn:hover{
-    display: inline-block;
-    width:41px;
-    height:25px;
-    background-image: url(buttons.png);
-    background-repeat:no-repeat;
     background-position:-404px -52px;
-    text-indent: -9999px;
 }
 
 .done_btn{
@@ -198,122 +69,86 @@ a.btn_register:hover{
 }
 
 .done_btn:hover{
-    display: inline-block;
- width:41px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-448px -52px;
- text-indent: -9999px;
+    background-position:-448px -52px;
 }
 
 .modify_btn{ display: inline-block;
- width:41px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-494px -20px;
- text-indent: -9999px;
+    width:41px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-494px -20px;
+    text-indent: -9999px;
 }
 
-.modify_btn:hover{display: inline-block;
- width:41px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-494px -52px;
- text-indent: -9999px;
+.modify_btn:hover{
+    background-position:-494px -52px;
 }
 
 
 .add_recipe_btn{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-362px -87px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-362px -87px;
+    text-indent: -9999px;
 }
 
-.add_recipe_btn:hover{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-362px -113px;
- text-indent: -9999px;
+.add_recipe_btn:hover{
+    background-position:-362px -113px;
 }
 
 .add_album_btn{  display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-362px -141px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-362px -141px;
+    text-indent: -9999px;
 }
 
-.add_album_btn:hover{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-362px -167px;
- text-indent: -9999px;
+.add_album_btn:hover{
+    background-position:-362px -167px;
 }
 
 .delete_from_album_btn{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-426px -310px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-426px -310px;
+    text-indent: -9999px;
 }
 
-.delete_from_album_btn:hover{display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-426px -338px;
- text-indent: -9999px;
+.delete_from_album_btn:hover{
+    background-position:-426px -338px;
 }
 
 .add_content_btn{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-361px -310px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-361px -310px;
+    text-indent: -9999px;
 }
 
-.add_content_btn:hover{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-361px -338px;
- text-indent: -9999px;
+.add_content_btn:hover{
+    background-position:-361px -338px;
 }
 
 .add_review_btn{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-425px -88px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-425px -88px;
+    text-indent: -9999px;
 }
 
-.add_review_btn:hover{display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-425px -114px;
- text-indent: -9999px;
+.add_review_btn:hover{
+    background-position:-425px -114px;
 }
 
 .add_relationship_btn{display: inline-block;
@@ -325,13 +160,8 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.add_relationship_btn:hover{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-425px -167px;
- text-indent: -9999px;
+.add_relationship_btn:hover{
+    background-position:-425px -167px;
 }
 
 .go_buy_btn{ display: inline-block;
@@ -343,13 +173,8 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.go_buy_btn:hover{display: inline-block;
- width:51px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-490px -338px;
- text-indent: -9999px;
+.go_buy_btn:hover{
+    background-position:-490px -338px;
 }
 
 .set_cover_btn{display: inline-block;
@@ -361,103 +186,72 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.set_cover_btn:hover{display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
+.set_cover_btn:hover{
  background-position:-489px -114px;
- text-indent: -9999px;
 }
 
 .cancel_relationship_btn{display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-489px -141px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-489px -141px;
+    text-indent: -9999px;
 }
 
-.cancel_relationship_btn:hover{display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-489px -167px;
- text-indent: -9999px;
+.cancel_relationship_btn:hover{
+    background-position:-489px -167px;
 }
 
 .vote_button.to_like {display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-361px -370px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-361px -370px;
+    text-indent: -9999px;
 }
-
-.vote_button.to_like:hover, .vote_button.liked{display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-361px -397px;
- text-indent: -9999px;
+.vote_button.to_like:hover, .vote_button.liked{
+    background-position:-361px -397px;
 }
 
 .collect_btn{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-426px -370px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-426px -370px;
+    text-indent: -9999px;
 }
 
-.collect_btn:hover{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-430px -397px;
- text-indent: -9999px;
+.collect_btn:hover{
+    background-position:-426px -397px;
 }
 
 .admire_btn.to_admire{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-361px -428px;
- text-indent: -9999px;
+    width:61px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-361px -428px;
+    text-indent: -9999px;
 }
 
-.admire_btn.to_admire:hover, .admire_btn.admired{ display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-361px -457px;
- text-indent: -9999px;
+.admire_btn.to_admire:hover, .admire_btn.admired{
+    background-position:-361px -457px;
 }
 
 .add_major_ingredient_btn{display: inline-block;
- width:51px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-489px -200px;
- text-indent: -9999px;
+    width:51px;
+    height:25px;
+    background-image: url(buttons.png);
+    background-repeat:no-repeat;
+    background-position:-489px -200px;
+    text-indent: -9999px;
 }
 
-.add_major_ingredient_btn:hover{ display: inline-block;
- width:51px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-489px -229px;
- text-indent: -9999px;
+.add_major_ingredient_btn:hover{
+    background-position:-489px -229px;
 }
 
 .add_minor_ingredient_btn{display: inline-block;
@@ -469,13 +263,8 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.add_minor_ingredient_btn:hover{ display: inline-block;
- width:51px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
+.add_minor_ingredient_btn:hover{
  background-position:-370px -283px;
- text-indent: -9999px;
 }
 
 .add_step_btn{display: inline-block;
@@ -487,13 +276,8 @@ a.btn_register:hover{
  text-indent: -9999px;
 }
 
-.add_step_btn:hover{ display: inline-block;
- width:51px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-430px -283px;
- text-indent: -9999px;
+.add_step_btn:hover{
+    background-position:-430px -283px;
 }
 
 /*.delete_step_btn{display: inline-block;*/
@@ -537,13 +321,7 @@ a.btn_register:hover{
 }
 
 .add_major_btn:hover{
- display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
  background-position:-490px -229px;
- text-indent: -9999px;
 }
 
 .add_major_btn{
@@ -568,11 +346,5 @@ a.btn_register:hover{
 }
 
 .add_minor_btn:hover{
- display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
  background-position:-362px -282px;
- text-indent: -9999px;
  }
