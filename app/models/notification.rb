@@ -15,12 +15,12 @@ class Notification
 
   #validations
   def self.operations
-    ["comment", "like", "recommend", "edit", "delete", "follow", "become_master", nil]
+    ["comment", "like", "admire", "recommend", "edit", "delete", "follow", "become_master", nil]
   end
   validates_inclusion_of :operation, :in => Notification.operations
 
   def self.item_types
-    ["Review", "Recipe", "Album", "Comment", nil]
+    ["Review", "Recipe", "Album", "Comment", "Desire", nil]
   end
   validates_inclusion_of :item_type, :in => Notification.item_types
 

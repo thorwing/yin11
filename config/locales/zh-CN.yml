@@ -320,10 +320,12 @@ zh-CN:
     reviews_mode: 我的分享
     recipes_mode: 我的菜谱
     albums_mode: 我的专辑
+    desires_mode: 我的馋人图片
     feeds: 动态
     reviews: 分享
     recipes: 菜谱
     albums: 专辑
+    desires: 馋人图片
 
 
   groups:
@@ -633,11 +635,13 @@ zh-CN:
       Recipe: 菜谱
       Album: 专辑
       Comment: 评论
+      Desire: 馋人图片
     operations:
       comment: 评论
       like: 喜欢
       recommend: 推荐
       edit: 编辑
+      admire: 垂涎
       delete: 删除
       follow: 关注
       become_master: 成为达人

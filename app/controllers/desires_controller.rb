@@ -132,6 +132,10 @@ class DesiresController < ApplicationController
       @success = true
     end
 
+    if @success
+      NotificationsManager.generate!(@desire.author, current_user, "admire", @desire )
+    end
+
     respond_to do |format|
       if @desire.save
         format.js {render :content_type => 'text/javascript'}

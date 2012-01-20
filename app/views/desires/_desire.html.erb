@@ -1,0 +1,23 @@
+<div class="commentable clearfix">
+    <div class="fl mr10" style="width:50px;">
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> desire.author.get_avatar(:thumb, false ), width: "48", height: "48"), desire.author %><br/>
+        <%= link_to desire.author.login_name, desire.author %>
+    </div>
+    <div class="fl" style="width: 630px;">
+        <div id="images_container" class="clearfix">
+            <div class="linked_item fl mr5 hint_box">
+                <%= link_to image_tag(desire.get_image_url(:thumb), class: "thumbnail"), desire %><br/>
+            </div>
+        </div>
+        <p>
+            <%= desire.content %> <%= link_to t("general.details"), desire %>
+        </p>
+        <div>
+            <span class="fl trivial"><%= desire.created_at.strftime(GENERAL_TIME_FORMAT) %></span>
+            <div class="fr">
+                <%= render "desires/admire_fields", :desire => desire %>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
