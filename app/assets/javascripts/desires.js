@@ -1,23 +1,25 @@
 //Desires Box
-function shift_masonry(link) {
+function shift_masonry(filter) {
     var $container = $('#masonry_container');
-    $('#filters a.selected').removeClass('selected');
-    $(link).addClass('selected');
-    var selector = $(link).attr('data-filter');
-    $container.isotope({ filter: selector });
+    $('#filters .filter_tab.selected').removeClass('selected');
+    $(filter).parents(".filter_tab").addClass('selected');
+
+    var selector = $(filter).attr('data-filter');
+    $container.isotope({filter: selector});
+//    $container.isotope('option', {filter: selector});
+//    $container.isotope('reLayout', function(){});
     return false;
 }
 
 $(function(){
     var $container = $('#masonry_container');
-
-    $('#filters a').click(function(e){
+    $('#filters .filter').click(function(e){
         e.preventDefault();
         shift_masonry(this);
     });
 
-    $('#filters a').hover(
-        function(){
+    $('#filters .filter').hover(
+        function(e){
             shift_masonry(this);
         },
         function(){
@@ -45,8 +47,9 @@ $(function(){
         }
     };
 
-    var first_tag = $('#filters a:first');
-    first_tag.addClass('selected');
+    var first_tab = $('#filters .filter_tab:first');
+    first_tab.addClass('selected');
+    first_tag = first_tab.find('.filter').attr('data-filter');
 
     $container.imagesLoaded( function(){
         $container.isotope({
@@ -55,7 +58,7 @@ $(function(){
             masonry: {
                 cornerStampSelector: '.corner-stamp'
             },
-            filter: first_tag.attr('data-filter')
+            filter: first_tag
         });
     });
 

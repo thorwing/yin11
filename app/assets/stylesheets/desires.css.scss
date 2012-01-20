@@ -61,19 +61,32 @@
 
 #desires_box{
 
-    #filters a.filter {
-        text-decoration: none;
-        border-top: 1px solid #a3a09e;
-        border-left: 1px solid #a3a09e;
-        border-right: 1px solid #a3a09e;
-        border-bottom: 1px solid #a3a09e;
-        color: $ink_black;
-        background: $azure;
-    }
-    #filters a.filter.selected {
-        color: $ink_black;
-        background: white;
-        border-bottom: 0px solid #a3a09e;
+    #filters {
+        .filter_tab {
+            display: inline-block;
+            margin: 0 2px 0 0;
+
+            background: $azure;
+
+            a {  color: $font_gray;
+                 text-decoration: none; }
+
+            .small_bar {
+                display: block;
+                height: 5px;
+                margin: 1px 0 5px 0;
+                text-indent: -9999px;
+            };
+
+        }
+
+        .filter_tab.selected {
+            background: white;
+            .small_bar {
+                 background: url("small_bar.jpg") repeat-x
+            };
+            a {  color: $ink_black;}
+        }
     }
 }
 

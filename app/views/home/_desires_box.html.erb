@@ -3,7 +3,9 @@
         <%= link_to content_tag(:b, "馋人图片", class: "f15") + content_tag(:span, "（全部）"), desires_path %><br/>
         <ul id="filters" class="mt5">
             <% @hot_primary_tags.each do |tag| %>
-                <li class="display_inline"><%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "filter f14 p5" %></li>
+                <li class="filter_tab">
+                  <div class="small_bar">.</div>
+                  <%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "filter f15 bold p10" %></li>
             <% end %>
             <%= link_to t("general.more"), desires_path, class: "fr" %>
             <div class="clearfix"></div>
