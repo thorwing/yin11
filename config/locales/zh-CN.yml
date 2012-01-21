@@ -184,7 +184,7 @@ zh-CN:
     me: 我的主页
     recipes: 菜谱
     reviews: 美食分享
-    desires: 馋人
+    desires: 馋人图片
     albums: 专辑
     notifications: 消息
     masters: 达人
@@ -317,7 +317,7 @@ zh-CN:
   personal:
     default_mode: 美食动态
     feeds_mode: 我的动态
-    reviews_mode: 我的分享
+    reviews_mode: 我的解馋分享
     recipes_mode: 我的菜谱
     albums_mode: 我的专辑
     desires_mode: 我的馋人图片

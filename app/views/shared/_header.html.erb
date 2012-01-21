@@ -33,7 +33,6 @@
                 <div class="fr mr30 mt15 p5 box_shadow">
                     <span class="ml5 mr5"><%= link_to(current_user.login_name, "/me?mode=default", :class => "orange f16") %></span> |
                     <span class="ml5 mr5"><%= link_to t("personal.desires"), "/me?mode=desires" %></span> |
-                    <span class="ml5 mr5"><%= link_to t("personal.reviews"), "/me?mode=reviews" %></span> |
                     <span class="ml5 mr5"><%= link_to t("personal.albums"), "/me?mode=albums" %></span> |
                     <span class="ml5 mr5"><%= link_to t("personal.recipes"), "/me?mode=recipes" %></span>
                 </div>
@@ -53,7 +52,6 @@
             <ul id="top_menu" class="fl">
                 <li><%= render_menu(t("menu.home"), "/") %></li>
                 <% if current_user_has_permission? :normal_user %><li><%= render_menu(t("menu.me"), "/me")%></li><% end %>
-                <li><%= render_menu(t("menu.reviews"), reviews_path) %></li>
                 <li><%= render_menu(t("menu.desires"), desires_path) %></li>
                 <li><%= render_menu(t("menu.albums"), albums_path) %></li>
                 <li><%= render_menu(t("menu.recipes"), recipes_path) %></li>

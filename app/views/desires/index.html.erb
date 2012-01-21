@@ -1,13 +1,12 @@
 <% title t("desires.desire"), false %>
 
 <% if current_user_has_permission? :normal_user %>
-    <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
-    <div id="desire_dialog" class="display_none">
-        <%= render "desires/desire_fields", desire: Desire.new %>
+    <div class="ml25">
+        <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
     </div>
 <% end %>
 
-<div class="grid_12 to_left to_right">
+<div class="grid_12">
     <%= render "shared/waterfall", :path => more_desires_path, :waterfall_partial => "desires/desire_waterfall", :columns_count => 4, :columns_width => 230, tag: params[:tag] %>
 </div>
 
