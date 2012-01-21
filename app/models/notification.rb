@@ -15,7 +15,7 @@ class Notification
 
   #validations
   def self.operations
-    ["comment", "like", "admire", "recommend", "edit", "delete", "follow", "become_master", nil]
+    ["comment", "like", "admire", "recommend", "edit", "delete", "follow", "become_master", "add_review", nil]
   end
   validates_inclusion_of :operation, :in => Notification.operations
 

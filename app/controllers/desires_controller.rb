@@ -47,7 +47,7 @@ class DesiresController < ApplicationController
   # GET /desires/1.json
   def show
     @desire = Desire.find(params[:id])
-    @related_desires = Desire.tagged_with(@desire.tags).desc(:admirer_ids, :created_at).limit(9)
+    @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:admirer_ids, :created_at).limit(9)
 
     respond_to do |format|
       format.html # show.html.erb

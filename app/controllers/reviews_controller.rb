@@ -133,6 +133,18 @@ class ReviewsController < ApplicationController
     end
     @local_status = @review.save if @remote_status
 
+
+    if @local_status
+      if @review.desire
+        @review.desire.admirers.each do |admirer|
+          NotificationsManager.generate!(admirer, current_user, "add_review", @review.desire)
+        end
+        if current_user != @review.author
+          NotificationsManager.generate!(@review.desire.author, current_user, "add_review", @review.desire)
+        end
+      end
+    end
+
     respond_to do |format|
       if @local_status
         @user_message = t("notices.review_posted") + @user_message
