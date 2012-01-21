@@ -20,6 +20,7 @@ class Desire
   has_many :reviews
   belongs_to :author, :class_name => "User"
   has_and_belongs_to_many :admirers, :class_name => "User", :inverse_of => "admired_desires", :index => true
+  has_and_belongs_to_many :albums
   #embeds_many :comments
 
   #validations

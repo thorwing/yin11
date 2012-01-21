@@ -18,6 +18,7 @@ class Album
   #relationships
   has_one :image
   has_and_belongs_to_many :reviews
+  has_and_belongs_to_many :desires
   belongs_to :author, :class_name => "User"
   embeds_many :comments
 
@@ -38,11 +39,16 @@ class Album
     end
 
     unless image_url
-      image = self.reviews.first{|r| r.get_review_image_url(version).present?}
-      image_url = (image ? image.get_review_image_url(version) : "assets/not_found.png")
+      if self.desires.size > 0
+        imagable = self.desires.first{|r| r.get_image_url(version).present?}
+        image_url = imagable.get_image_url(version) if imagable
+      elsif self.reviews.size > 0
+        imagable = self.reviews.first{|r| r.get_review_image_url(version).present?}
+        image_url = imagable.get_review_image_url(version) if imagable
+      end
     end
 
-    image_url
+    image_url ? image_url : "assets/not_found.png"
   end
 
   def get_image_urls(limit, version = nil)

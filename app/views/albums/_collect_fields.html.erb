@@ -4,7 +4,7 @@
         <%= render "albums/has_collected", album: album %>
     <% else %>
         <div class="to_collect more_info_container">
-            <%= link_to "", "", class: "collect_btn", onclick: "return false;" %>
+            <%= link_to t("albums.collect"), "", class: "collect_btn", onclick: "return false;" %>
             <div class="more_info display_none box_shadow" align="left">
                 <%= link_to t("albums.collect"), "", class: "collect_btn", onclick: "return false;" %><%= t("albums.collect_to_album") %><br/>
                 <div class="mt10 p5 mb20">
@@ -13,7 +13,7 @@
                     <% end %>
                 </div>
                 <div class="p5">
-                  <%= link_to t("albums.new"), new_album_path, class: "add_album_btn" %>
+                    <%= link_to t("albums.new"), new_album_path, class: "add_album_btn" %>
                 </div>
             </div>
         </div>

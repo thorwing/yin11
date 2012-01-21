@@ -229,9 +229,13 @@ class User
   end
 
   def has_collected?(item)
-    if item.is_a? Review
-      self.albums.each do |album|
+    self.albums.each do |album|
+      if item.is_a? Review
         if album.review_ids.include?(item.id)
+          return true, album
+        end
+      elsif item.is_a? Desire
+        if album.desire_ids.include?(item.id)
           return true, album
         end
       end

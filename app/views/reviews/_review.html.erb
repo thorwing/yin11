@@ -8,7 +8,7 @@
             <% review.get_linked_items.each do |item| %>
                 <div class="linked_item fl mr5 hint_box">
                     <%= link_to image_tag(item.get_image_url(:thumb), class: "thumbnail"), item %><br/>
-                    <span class="flex_hint black b_white f11"><%= item.name %></span>
+                    <span class="flex_hint black b_white f12"><%= link_to truncate_content(item.name, 18), item %></span>
                     <% if item.is_a?(Product) %>
                       <%= image_tag("icons/cart.png", width: 16, height: 16, class: "linked_item_icon") %>
                     <% elsif item.is_a?(Recipe) %>

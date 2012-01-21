@@ -1,7 +1,7 @@
 Feature: display topics to users
   推荐的策划会被列在主页上（策划中最受推荐的产品也会一起显示）
   在策划的索引页面，策划会被列显示
-  在策划项中，相关产品将以分数来排序
+  在策划项中，相关商品将以分数来排序
   编辑,在策划的详细页面，和策划相关（通过标签）的所有产品将会被显示
   访客，普通用户,在策划的详细页面,不会看到标签
 
@@ -24,7 +24,7 @@ Feature: display topics to users
     And I follow "冬令进补"
     And I should see "梅山猪"
 
-  Scenario: 在策划项中，相关产品将以分数来排序
+  Scenario: 在策划项中，相关商品将以分数来排序
     When I go to the topics page
     And I follow "冬令进补"
     Then I should see "梅山猪"

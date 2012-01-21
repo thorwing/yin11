@@ -101,6 +101,14 @@ class AlbumsController < ApplicationController
       @item.album_ids ||= []
       @item.album_ids << @album.id.to_s
       @item.save
+    elsif @item.is_a? Desire
+      @album.desire_ids ||= []
+      @album.desire_ids << @item.id.to_s
+      @album.save
+
+      @item.album_ids ||= []
+      @item.album_ids << @album.id.to_s
+      @item.save
     end
 
     respond_to do |format|

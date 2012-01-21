@@ -1,5 +1,5 @@
 <span class="admire_fields <%= desire.id.to_s %> clearfix">
-    <% if current_user_has_permission?(:normal_user) %>
+    <% if current_user_has_permission?(:normal_user) &&  !the_author_himself(Desire.name, desire.id, false, false) %>
         <%= link_to "", admire_desire_path(:id => desire.id), :method => :put, :remote => true,
                 :class => "admire_btn " + (desire.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
     <% end %>

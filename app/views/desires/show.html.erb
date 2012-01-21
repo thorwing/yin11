@@ -1,34 +1,56 @@
-<% title t("desires.desire") %>
+<% title t("desires.desire"), false %>
 
-<div class="grid_9 to_left overflow_hidden">
-    <div class="box_shadow clearfix p5">
-        <%= image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'img_frame restricted lazy overflow_hidden', "data-original"=>  @desire.get_image_url) %><br/>
-        <%= @desire.content %>
-        <% if current_user_has_permission? :normal_user %>
-            <div align="right">
-              <%= render "admire_fields", :desire => @desire %>
+<div class="grid_9">
+    <div class="box_shadow p10">
+        <div class="clearfix">
+            <%= link_to image_tag("grey.gif", "data-original"=> @desire.author.get_avatar(:thumb, false), :class => "lazy fl", width: 48, height: 48), @desire.author %>
+            <div class="fl ml5">
+                <%= link_to @desire.author.login_name, user_path(@desire.author) %><span class="ml5 trivial"><%= "发布于" %><%= @desire.created_at.strftime(GENERAL_TIME_FORMAT) %></span><br/>
+                <%= render "relationships/follow_field", :target => @desire.author %>
+            </div>
+        </div>
+        <div class="mt10 clearfix">
+            <%= image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'img_frame restricted lazy overflow_hidden', "data-original"=>  @desire.get_image_url) %><br/>
+            <p><blockquote><span class="quoted f15"><%= @desire.content %></span></blockquote></p>
+            <p><%= content_tag :span, t_with_colon("tags.tags"), class: "trivial"%><%= render "shared/show_tags", item: @desire %></p>
+        </div>
+        <div class="mt10 clearfix">
+           <% if current_user_has_permission? :normal_user %>
+                <div class="fl">
+                    <%= render "albums/collect_fields", :item => @desire %>
+                </div>
+                <div class="fr" align="right">
+                    <%= render "admire_fields", :desire => @desire %>
+                </div>
+            <% end %>
+        </div>
+        <% if the_author_himself(Desire.name, @desire.id, true, false) %>
+            <div class="mt10 clearfix">
+                <% if the_author_himself(Desire.name, @desire.id, true, false) %>
+                    <%= link_to "", edit_desire_path(@desire), class: "modify_btn" %>
+                    <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
+                <% end %>
             </div>
         <% end %>
     </div>
 
-    <% if the_author_himself(Desire.name, @desire.id, true, false) %>
-        <div class="mt10 p5 clearfix">
-            <%= link_to "", edit_desire_path(@desire), class: "modify_btn" %>
-        </div>
-    <% end %>
-    <% if current_user_has_permission? :administrator %>
-        <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
-    <% end %>
-    <div class="mb20">
+    <div class="mt20">
         <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "分享解馋攻略：" %>
     </div>
 
-    <h3 class="mb5">来自用户的解馋攻略：</h3>
-    <% @desire.reviews.desc(:votes, :updated_at).reject{|d| d.new_record?}.each do |review| %>
-        <%= render review %>
-    <% end %>
+    <div class="mt20">
+        <h3 class="mb5">来自用户的解馋攻略：</h3>
+        <% @desire.reviews.desc(:votes, :updated_at).reject{|d| d.new_record?}.each do |review| %>
+            <%= render review %>
+        <% end %>
+    </div>
 </div>
 
-<div class="grid_3 to_right">
-    <%= render "users/author_panel", author: @desire.author %>
+<div class="grid_3">
+    <div class="box_shadow">
+        <h3>相似的馋人图片：</h3>
+        <% @related_desires.each do |desire| %>
+            <%= link_to image_tag("grey.gif", "data-original"=> desire.get_image_url(:thumb), width: 70, height: 70, class: "lazy"), desire, class: "lighter_touch" %>
+        <% end %>
+    </div>
 </div>

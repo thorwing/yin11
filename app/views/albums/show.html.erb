@@ -1,40 +1,12 @@
 <% title @album.title, false%>
 
-<div class="grid_9 to_left">
+<div class="grid_9">
     <div class="box_shadow p5">
-        <h1><%= @album.title %><span class="trivial f13"><%= "(#{@album.reviews.size}#{t("albums.items")})" %></span></h1>
+        <h1><%= @album.title %> <span class="trivial f13"><%= "(#{@album.reviews.size}#{t("albums.items")})" %></span></h1>
         <p><%= @album.description %></p>
+        <p><%= render "shared/show_tags", :item => @album %></p>
         <%= render "votes/vote_fields", :item => @album %>
     </div>
-
-    <% if the_author_himself(Album.name, @album.id, true, false) %>
-        <div class="box_shadow mt10 p5 clearfix">
-            <div class="hint_box fl" style="width:200px; height:200px;">
-                 <% cover_url = @album.get_cover_url(:waterfall) %>
-                 <% if cover_url.present? %>
-                     <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> cover_url, width: 200, height:200, class: "cover_image" %>
-                 <% else %>
-                     <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> "/assets/not_found.png", width: 200, height:200, class: "cover_image" %>
-                 <% end %>
-                 <span class="fix_hint"><%= t("albums.cover") %></span>
-            </div>
-
-            <div class="ml10 fl">
-                <div>
-                    <%= link_to "", edit_album_path(@album), class: "modify_btn" %>
-                    <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "delete_btn" %><br/>
-                </div>
-
-                <div class="mt5">
-                    <%= link_to_function "", '$("#add_album_review_fields").toggle();', class: "add_content_btn mt5 mb10" %>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="clearfix display_none mt5" id="add_album_review_fields">
-                <%= render "reviews/review_fields", :review => Review.new %>
-            </div>
-        </div>
-    <% end %>
 
     <div id="static_waterfall_container" class="mt10">
         <% @album.items.each do |item| %>
@@ -43,8 +15,29 @@
     </div>
 </div>
 
-<div class="grid_3 to_right">
-    <%= render "users/author_panel", author: @album.author %>
+<div class="grid_3">
+    <div>
+        <%= render "users/author_panel", author: @album.author %>
+    </div>
+
+    <% if the_author_himself(Album.name, @album.id, true, false) %>
+        <div class="box_shadow mt10 p5 clearfix">
+            <div class="hint_box" style="width: <%= IMAGE_THUMB_WIDTH %>px">
+                 <% cover_url = @album.get_cover_url(:thumb) %>
+                 <% if cover_url.present? %>
+                     <%= image_tag "grey.gif", "data-original"=> cover_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image" %>
+                 <% else %>
+                     <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image" %>
+                 <% end %>
+                 <span class="fix_hint b_black_alpha30 white"><%= t("albums.cover") %></span>
+            </div>
+
+            <div>
+                <%= link_to "", edit_album_path(@album), class: "modify_btn" %>
+                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "delete_btn" %><br/>
+            </div>
+        </div>
+    <% end %>
 </div>
 
 <%= javascript_tag "static_waterfall(3);" %>

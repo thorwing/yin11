@@ -126,6 +126,7 @@
         position: absolute;
 
         width: 100%;
+        max-height: 50%;
         /*opacity: 0.5;*/
         padding: 0px;
         /*by default*/
@@ -388,7 +389,8 @@ body #main { height: auto; padding-bottom: 260px;}
     height: atuo;
     position: absolute;
     top: 0px;
-    left: 61px;
+    left: 0px;
+    z-index: 1;
 }
 
 /*input with default value*/

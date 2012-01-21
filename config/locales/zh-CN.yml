@@ -538,7 +538,7 @@ zh-CN:
     add_content: 添加内容
     pick_cover: 设为封面
     collect: 收集
-    has_collected: 已收集到
+    has_collected: 已收集到专辑《%{title}》
     collect_to_album: 到专辑：
     items: 个收集
     recommended: 推荐专辑（全部）
@@ -569,8 +569,6 @@ zh-CN:
      published_at: 发表于
      description: 描述
      you_may_like: 您可能还喜欢...
-     related_products_recommend: 相关产品推荐...
-     related_product: 相关产品
      recipe_collection: 菜谱大全
      name: 菜谱名
      ingredients: 食材

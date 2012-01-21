@@ -51,7 +51,8 @@ class ApplicationController < ActionController::Base
         if object.respond_to?(:author_id)
           has_permission = (object.author_id == current_user.id)
         else
-          raise "The object of " + class_name + " doesn't implement author_id."
+          #raise "The object of " + class_name + " doesn't implement author_id."
+          false
         end
       end
     end
