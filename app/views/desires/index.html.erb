@@ -6,6 +6,12 @@
     </div>
 <% end %>
 
+<% if params[:tag] %>
+    <div class="ml25 mt5 mb5">
+        <h2><%= "“#{params[:tag] }”的馋人图片"%></h2>
+    </div>
+<% end %>
+
 <div class="grid_12">
     <%= render "shared/waterfall", :path => more_desires_path, :waterfall_partial => "desires/desire_waterfall", :columns_count => 4, :columns_width => 230, tag: params[:tag] %>
 </div>

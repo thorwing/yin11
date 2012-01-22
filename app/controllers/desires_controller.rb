@@ -5,8 +5,6 @@ class DesiresController < ApplicationController
   # GET /desires
   # GET /desires.json
   def index
-    @desires = Desire.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @desires }
@@ -17,7 +15,7 @@ class DesiresController < ApplicationController
     #  used for waterfall displaying
     criteria = Desire.all.desc(:created_at) #votes
     criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
-    @desires = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
+    @desires = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW).select{|d| d.get_image_url(:waterfall).present?}
 
     data = {
       items: @desires.inject([]){|memo, d| memo <<  {
