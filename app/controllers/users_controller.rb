@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def masters
     #TODO
     @masters = User.enabled.masters.sort_by{|master| -1 * master.score}
-    @stars = @masters.reject{|m| m.avatar.blank?}[0..4]
+    #@stars = @masters.reject{|m| m.avatar.blank?}[0..4]
     @hard_workers = User.desc(:reviews_count).limit(7)
   end
 

@@ -1,23 +1,4 @@
 <h2 class="f16 mt10">明星达人</h2>
-<div class="block box_shadow mt10">
-    <% @stars.each do |star| %>
-        <div class="grid_3 fl mt10 mb10" id="<%= star.id %>">
-          <div class="hint_box">
-            <div>
-                <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> star.get_avatar, width: 200, height: 218), star %><br/>
-            </div>
-            <span class="fix_hint b_black white">
-                <%= link_to star.login_name, star %><br/>
-                <span class="trivial"><%= t("reviews.by_user", count: star.reviews.size) %></span><br/>
-                <span class="trivial"><%= t("recipes.by_user", count: star.recipes.size) %></span><br/>
-                <span class="trivial"><%= t("user_basic.fans") + " " + star.followers.size.to_s %></span><br/>
-                <%= render "relationships/follow_field", target: star %>
-            </span>
-          </div>
-        </div>
-    <% end %>
-
-</div>
 
 <div class="mt20 to_left to_right">
   <% @masters.each do |master| %>
