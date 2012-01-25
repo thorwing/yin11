@@ -1,8 +1,23 @@
 <% title "美食客栈工具安装使用说明" %>
 
-<span>可以方便快捷地一键保存网上的图片和网址到堆糖</span>
-<div>
-    <% js_src = 'http://' + request.host_with_port + '/home/collect' %>
-    <%= link_to "+收集到美食客栈", 'javascript:void((function(){var d=document,e=d.createElement("script");e.setAttribute("charset","UTF-8");e.setAttribute("src", "' + "#{js_src}" + '");d.body.appendChild(e)})());', class: "button" %>
-    <span>←拖拽【+收集到堆糖】至浏览器书签栏 （没看到浏览器书签栏？快捷键 Ctrl+Shift+B 展开）</span>
- </div>
+<p class="mt10 trivial">在网上看到了馋人的美食？轻松点击，把美食图片保存到美食客栈上，让更多的人和你一起咽口水！</p>
+<p class="trivial">更重要的是，也许有人知道怎么把它吃到哦～！</p>
+
+<% caption = "+收集到美食客栈" %>
+
+<div class="mt10">
+    <% js_src = 'http://' + request.host_with_port + '/collect.js' %>
+    <%= link_to caption, 'javascript:void((function(){var d=document,e=d.createElement("script");e.setAttribute("charset","UTF-8");e.setAttribute("src", "' + "#{js_src}" + '");d.body.appendChild(e)})());', class: "button" %>
+</div>
+
+<div class="mt10">
+    <span><%="↑拖拽【#{caption}】至浏览器书签栏" %></span>
+    <% case users_browser %>
+        <% when /ie9/ %>
+            <span class="trivial"><%="没看到浏览器书签栏？右键点击左边【+收集到堆糖】 然后“添加到收藏夹...”" %></span>
+        <% when 'gecko' %>
+            <span class="trivial"><%="没看到浏览器书签栏？右键点击浏览器顶部空白处，勾选书签栏" %></span>
+        <% when 'chrome' %>
+            <span class="trivial"><%="没看到浏览器书签栏？快捷键 Ctrl+Shift+B 展开" %></span>
+    <% end %>
+</div>

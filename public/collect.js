@@ -1,5 +1,8 @@
-<% base_url = 'http://' + request.host_with_port %>
-<% afar_url = base_url + '/desires/afar' %>
+//TODO   change via env
+//var base_url = 'http://192.168.75.131:3000';
+var base_url = 'http://www.meishikezhan.com';
+var afar_url = base_url + '/desires/afar';
+var close_img_url = base_url + '/assets/collout.gif';
 
 (function (c, t) {
     if (t.MEISHI_COLLECT) {
@@ -18,8 +21,7 @@
         u = O == "MSIE8.0",
         X = x.indexOf("Opera") >= 0 ? true : false,
         h = /(webkit)[ \/]([\w.]+)/.exec(x.toLowerCase()),
-        <% afar_url = 'http://' + request.host_with_port + '/desires/afar' %>
-        ae = "<%= afar_url %>",
+        ae = afar_url,
         s;
 
     function m(i, b, d) {
@@ -221,7 +223,7 @@
         ao = "background",
         r = "position:relative",
         ap = ao + "-color:",
-        p = "url(<%= base_url + '/assets/collout.gif' %>)",
+        p = "url(" + close_img_url + ")",
         Z = "z-index:90000000",
         ag = [" #", an, "mask{position:fixed;", Z, "0;top:0;right:0;bottom:0;left:0;", ap, " #000;opacity:.7;filter:alpha(opacity=70);} ", o, "{position: absolute;width:100%;line-height:1.2;padding:0;", Z, "1;top:0;left:0;", ap, "transparent;} #", an, "container{zoom:1;width:904px;margin:0 auto;padding-bottom:24px;color:#666} #", an, "container:after{content:'\\0020';display:block;height:0;overflow:hidden;clear:both;} #", an, "panel{", r, ";float:right;", Z, "4;height:0px;width:0px;} #", an, "panel a:link,#", an, "panel a:visited{position:fixed;_position:absolute;top:12px;right:30px;_right:12px;width:80px;height:80px;padding:0;margin:0;", ap, "transparent;", ao, "-image:", p, "} #", an, "panel a:hover{", ao, "-position:0 -80px} ", o, " .", an, "unit{", r, ";float:left;+display:inline;padding:0;margin:0;height:200px;width:200px;overflow:hidden;margin:24px 12px 0;", Z, "2;border:1px solid #e7e7e7;text-align: center;", ap, "#fff;} ", o, " .", an, "unit .tpmImg{", r, ";width:100%;height:100%;margin:0;padding:0;} ", o, " .", an, "unit a{display:block;overflow:hidden;width:200px;height:200px;margin:0;padding:0;text-align:center;", ao, ":none !important} ", o, " .", an, "unit img{display:block;padding:0;margin:0 auto;border:0 none;vertical-align:top;} ", o, " .", an, "unit a *{cursor:pointer} ", o, " .", an, "unit_sm,", o, " .", an, "unit_sm a{width:150px;height:150px;} ", o, " .", an, "dimen{", r, ";width:56px;margin:-16px auto 0;padding:0 2px 1px;text-align:center;font-size:10px;font-family:tahoma,arial,sans-serif;", Z, "3;", ao, ":#000;opacity:.9;filter:alpha(opacity=90);border-radius:3px;color:#fff} ", o, " .", an, "cover{position:absolute;width:200px;height:200px;top:0;left:0;", ap, "#000;opacity:.15;filter:alpha(opacity=15);display:none} ", o, " .", an, "cross{position:absolute;width:100px;height:59px;line-height:16px;padding:41px 0 0;top:50px;left:50px;", ao, ":", p, " no-repeat 0 -160px;border:0 none;} ", o, " .", an, "action:link .", an, "cross,", o, " .", an, "action:visited .", an, "cross{display:none;} ", o, " .", an, "action:hover .", an, "cross,", o, " .", an, "action:hover .", an, "cover{display:block;} ", o, " .", an, "unit_sm .", an, "cross{top:25px;left:25px;} ", o, " .", an, "seper{float:left;border-top:1px solid #eaeaea;padding:24px 0 0;margin:24px 0 0;color:#ebebeb;font:normal 16px/20px tahoma;} ", o, " img{margin:0 auto} "].join(""),
         l = R(),
@@ -308,7 +310,7 @@
                 imw = Q[al].ssw;
                 imh = Q[al].ssh;
                 if (typeof aa != "string") {
-                    aa = '<div class="meishikezhan_seper" ' + (aa == s ? "" : 'style="border-top:0 none;margin-top:0;"') + ">å–‚ï¼â†“_â†“è¿™äº›å›¾ç‰‡å¤ªå°å•¦ï¼Œä½ ç¡®å®šè¦æ”¶é›†åˆ°å †ç³–å—ï¼Ÿ</div>"
+                    aa = '<div class="meishikezhan_seper" ' + (aa == s ? "" : 'style="border-top:0 none;margin-top:0;"') + ">这些图片太小了哦，你确定要收集吗？</div>"
                 }
             } else {
                 aa = s;
