@@ -48,4 +48,13 @@ class HomeController < ApplicationController
     redirect_to product_url
   end
 
+  def collect
+     respond_to do |format|
+       format.js {render :content_type => 'text/javascript'}
+    end
+  end
+
+  def collect_intro
+
+  end
 end

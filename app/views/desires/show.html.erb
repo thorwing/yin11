@@ -11,8 +11,12 @@
         </div>
         <div class="mt10 clearfix">
             <%= image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'img_frame restricted lazy overflow_hidden', "data-original"=>  @desire.get_image_url) %><br/>
-            <p><blockquote><span class="quoted f15"><%= @desire.content %></span></blockquote></p>
-            <p><%= content_tag :span, t_with_colon("tags.tags"), class: "trivial"%><%= render "shared/show_tags", item: @desire %></p>
+            <% if @desire.content.present? %>
+                <p><blockquote><span class="quoted f15"><%= @desire.content %></span></blockquote></p>
+            <% end %>
+            <% unless @desire.tags.empty? %>
+                <p><%= content_tag :span, t_with_colon("tags.tags"), class: "trivial"%><%= render "shared/show_tags", item: @desire %></p>
+            <% end %>
         </div>
         <div class="mt10 clearfix">
            <% if current_user_has_permission? :normal_user %>

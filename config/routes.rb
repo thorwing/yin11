@@ -3,6 +3,8 @@ Yin11::Application.routes.draw do
   Mercury::Engine.routes
 
   match '/home/gateway' => 'home#gateway'
+  match '/home/collect' => 'home#collect'
+  match '/home/collect_intro' => 'home#collect_intro'
 
   namespace :administrator do
     root :to => "base#index"
@@ -83,6 +85,7 @@ Yin11::Application.routes.draw do
     end
     collection do
       get :more
+      get :afar
     end
   end
 

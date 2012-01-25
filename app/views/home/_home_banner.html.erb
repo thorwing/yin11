@@ -5,11 +5,17 @@
 
   <div id="home_stamp" class="fl box_shadow pl10" style="width: 320px;height:200px;">
         <% if current_user_has_permission? :normal_user %>
-            <b><%= link_to current_user.login_name, "/me" %></b><br/>
-            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false)), "/me" %><br/>
+            <div class="clearfix">
+                <div class="fl">
+                    <b><%= link_to current_user.login_name, "/me" %></b><br/>
+                    <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false)), "/me" %><br/>
+                </div>
+                <div class="fr m10">
+                    <span class="mt5"><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %></span><br/>
+                    <%= link_to "【+收集到美食客栈工具】", "/home/collect_intro" %>
+                </div>
+            </div>
             <%= render "users/user_statics", user: current_user %>
-
-            <span class="mt5"><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %></span>
         <% else %>
             <%= render "pre_login" %>
         <% end %>

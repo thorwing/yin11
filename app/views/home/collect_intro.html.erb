@@ -1,0 +1,8 @@
+<% title "美食客栈工具安装使用说明" %>
+
+<span>可以方便快捷地一键保存网上的图片和网址到堆糖</span>
+<div>
+    <% js_src = 'http://' + request.host_with_port + '/home/collect' %>
+    <%= link_to "+收集到美食客栈", 'javascript:void((function(){var d=document,e=d.createElement("script");e.setAttribute("charset","UTF-8");e.setAttribute("src", "' + "#{js_src}" + '");d.body.appendChild(e)})());', class: "button" %>
+    <span>←拖拽【+收集到堆糖】至浏览器书签栏 （没看到浏览器书签栏？快捷键 Ctrl+Shift+B 展开）</span>
+ </div>

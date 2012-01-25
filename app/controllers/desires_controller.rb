@@ -75,7 +75,7 @@ class DesiresController < ApplicationController
     @desire = Desire.new(params[:desire])
     @desire.author = current_user
 
-    ImagesHelper.process_uploaded_images(@desire, params[:images])
+    ImagesHelper.process_uploaded_images(@desire, params[:images], params[:remote_image_url])
 
     respond_to do |format|
       if @desire.save
@@ -144,4 +144,11 @@ class DesiresController < ApplicationController
     end
   end
 
+  def afar
+    @desire = Desire.new
+
+    respond_to do |format|
+      format.html {render "afar", :layout => "dialog"}
+    end
+  end
 end

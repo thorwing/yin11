@@ -19,10 +19,13 @@
             </div>
         </div>
 
-        <p class="actions">
+        <div class="mt5">
             <b><%= t("control_panel.actions") %></b><br/>
             <%= link_to "", new_recipe_path, :class => "add_recipe_btn" %>
             <%= link_to "", new_album_path, :class => "add_album_btn" %><br/>
-        </p>
+        </div>
+        <div>
+          <%= link_to "【+收集到美食客栈工具】", "/home/collect_intro" %>
+        </div>
     </div>
 <% end %>
