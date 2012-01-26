@@ -24,6 +24,7 @@ Yin11::Application.routes.draw do
   match "personal/feeds" => "personal#feeds"
   match "personal/my_feeds" => "personal#my_feeds"
   match "personal/all_feeds" => "personal#all_feeds"
+  match "personal/favorites" => "personal#favorites"
 
   match "logout" => "sessions#destroy"
   match "login" => "sessions#new"

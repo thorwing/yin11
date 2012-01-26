@@ -1,0 +1,8 @@
+<div id="admired_desires_panel" class="panel clearfix">
+    <%= link_to content_tag(:b, t("user_basic.admired_desires"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=desires" %><br/>
+    <% current_user.admired_desires.limit(7).each do |desire| %>
+        <div class="clearfix">
+            <%= link_to image_tag(desire.get_image_url(:thumb), width: 32, height: 32), desire, class: "fl" %>
+        </div>
+    <% end %>
+</div>

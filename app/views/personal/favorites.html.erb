@@ -1,16 +1,17 @@
 <div class="grid_9 to_left">
+    <h1>我喜欢的：</h1>
     <div class="tab_control">
         <div class="tabContainer ">
             <% @modes.each do |mode| %>
                 <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">
-                    <%= link_to t("personal.#{mode}_mode"), "/me?mode=#{mode}", "data-page" => ".#{mode}", class: "tab" %>
+                    <%= link_to t("personal.favorites.modes.#{mode}"), "/favorites?mode=#{mode}", "data-page" => ".#{mode}", class: "tab" %>
                 </div>
             <% end %>
         </div>
         <div class="tabContent block">
           <% @modes.each do |mode| %>
              <div class = "<%= mode %> <%= mode == @current_mode ? "display" : "display_none" %>">
-                <%= render "#{mode}_mode" %>
+                <%= render "favorites_#{mode}_mode" %>
              </div>
           <% end %>
         </div>
@@ -20,5 +21,3 @@
 <div class="grid_3 to_right">
     <%= render "right_panels" %>
 </div>
-
-

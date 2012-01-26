@@ -31,7 +31,6 @@ class User
   field :remote_ip
   field :liked_recipe_ids, :type => Array, :default => []
   field :liked_product_ids, :type => Array, :default => []
-  field :liked_desire_ids, :type => Array, :default => []
   field :liked_album_ids, :type => Array, :default => []
 
   mount_uploader :avatar, AvatarUploader
@@ -163,6 +162,14 @@ class User
 
   def liked_recipes(limit = 7)
     Recipe.any_in(_id: self.liked_recipe_ids).limit(limit)
+  end
+
+  def liked_albums(limit = 7)
+    Album.any_in(_id: self.liked_album_ids).limit(limit)
+  end
+
+  def liked_products(limit = 7)
+    Product.any_in(_id: self.liked_product_ids).limit(limit)
   end
 
   def vote_weight

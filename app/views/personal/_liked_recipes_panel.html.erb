@@ -1,10 +1,9 @@
 <div id="liked_recipes_panel" class="panel clearfix">
-    <h3><%= t("user_basic.liked_recipes") %></h3>
+    <%= link_to content_tag(:b, t("user_basic.liked_recipes"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=recipes" %><br/>
     <% current_user.liked_recipes(7).each do |recipe| %>
         <div class="clearfix">
             <%= link_to image_tag(recipe.get_image_url(:thumb), width: 32, height: 32), recipe, class: "fl" %>
             <%= link_to recipe.name, recipe, class: "fl ml5" %>
         </div>
     <% end %>
-    <%= link_to t("general.more"), "" %>
 </div>

@@ -6,27 +6,22 @@
 }
 
 #images_container {
-    .linked_item, .image {
-        position: relative;
-        margin-right: 10px;
-        width: 100px;
-
-        .linked_item_icon {
-            position: absolute;
-            right: 0px;
-            top: 84px;
-        }
-    }
-
     .del_link {
         position: absolute;
         right: -5px;
         top: 0px;
     }
 
-    .thumbnail{
-        width: 100px;
-        height: 100px;
+    .linked_item, .image {
+    position: relative;
+    margin-right: 10px;
+    width: 100px;
+
+    .linked_item_icon {
+        position: absolute;
+        right: 0px;
+        top: 84px;
     }
+}
 }
 

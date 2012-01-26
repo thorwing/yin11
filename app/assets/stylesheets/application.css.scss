@@ -402,6 +402,24 @@ input.not_cleared {
     color: $trivial_gray;
 }
 
+.listed_item {
+    .user_info_area {
+        float: left;
+        margin-right: 10px;
+        width: 50px;
+    }
+
+    .content_area {
+        float: left;
+        width: 630px;
+    }
+}
+
+.thumbnail{
+    width: 100px;
+    height: 100px;
+}
+
 /*
 	Footer-Styles
 */

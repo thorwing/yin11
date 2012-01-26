@@ -2,7 +2,7 @@
     Control-Panel-Styles
 */
 
-#control_panel .panel {
+.panel {
     -moz-border-radius: 5px;
     border-radius: 5px;
     border:1px solid #dbdbdb;
@@ -11,10 +11,6 @@
     padding:10px;
 }
 
-#control_panel p {
-    margin-bottom:10px;
-}
-
-#control_panel .close_panel_link {
+.panel .close_panel_link {
     float: right;
 }

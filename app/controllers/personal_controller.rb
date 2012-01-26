@@ -64,4 +64,22 @@ class PersonalController < ApplicationController
     end
   end
 
+  def favorites
+    @modes = ["desires", "recipes", "albums", "products" ]
+    if params[:mode].present?
+      @current_mode = params[:mode]
+    elsif session[:personal_mode].present?
+      @current_mode = session[:personal_mode]
+    else
+       @current_mode = "desires"
+    end
+    session[:personal_mode] = @current_mode
+    page = params[:page].present? ? params[:page].to_i : 0
+
+    @liked_recipes = Recipe.any_in(_id: current_user.liked_recipe_ids).desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    @liked_albums = Album.any_in(_id: current_user.liked_album_ids).desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    @liked_products = Product.any_in(_id: current_user.liked_product_ids).desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    @admired_desires = current_user.admired_desires.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+  end
+
 end

@@ -231,6 +231,9 @@ zh-CN:
     follows: 关注
     following_users: 关注用户
     liked_recipes: 喜欢的菜谱
+    liked_albums: 喜欢的专辑
+    liked_products: 喜欢的商品
+    admired_desires: 馋到我的图片
 
   profile:
     default_bio: 爱美食，更爱分享
@@ -327,7 +330,12 @@ zh-CN:
     recipes: 菜谱
     albums: 专辑
     desires: 馋人图片
-
+    favorites:
+      modes:
+        recipes: 菜谱
+        albums: 专辑
+        products: 商品
+        desires: 馋人图片
 
   groups:
     join: 加入

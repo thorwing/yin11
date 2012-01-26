@@ -1,12 +1,12 @@
-<div class="commentable clearfix">
-    <div class="fl mr10" style="width:50px;">
+<div class="listed_item commentable clearfix">
+    <div class="user_info_area">
         <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> review.author.get_avatar(:thumb, false ), width: "48", height: "48"), review.author %><br/>
         <%= link_to review.author.login_name, review.author %>
     </div>
-    <div class="fl" style="width: 630px;">
-        <div id="images_container" class="clearfix">
+    <div class="content_area">
+        <div class="clearfix">
             <% review.get_linked_items.each do |item| %>
-                <div class="linked_item fl mr5 hint_box">
+                <div class="fl mr5 hint_box">
                     <%= link_to image_tag(item.get_image_url(:thumb), class: "thumbnail"), item %><br/>
                     <span class="flex_hint black b_white f12"><%= link_to truncate_content(item.name, 18), item %></span>
                     <% if item.is_a?(Product) %>

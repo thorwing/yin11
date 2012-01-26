@@ -1,23 +1,26 @@
-<div class="commentable clearfix">
-  <div class="fl mr10">
-    <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> recipe.author.get_avatar(:thumb,false), width: "48", height: "48"), recipe.author %>
-  </div>
-  <div class="fl" style="width: 600px;">
-    <%= recipe.author.login_name %>:<br/>
-    <p><%= link_to recipe.name, recipe %></p>
-    <% thumb_url = recipe.get_image_url(:thumb) %>
-    <% if thumb_url.present? %>
-        <p><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> thumb_url, class: "img_frame"), recipe %></p>
-    <% end %>
-    <div>
-      <span class="fl trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
-      <div class="fr">
-        <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= recipe.comments.size %></span>)
-      </div>
+<div class="listed_item commentable clearfix">
+    <div class="user_info_area">
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> recipe.author.get_avatar(:thumb,false), width: "48", height: "48"), recipe.author %>
+        <%= recipe.author.login_name %>:<br/>
     </div>
-  </div>
-  <div class="embedded_comments display_none">
-    <%= render "comments/comments", item: recipe %>
-  </div>
+    <div class="content_area">
+        <div class="clearfix">
+            <p class="f15"><%= link_to recipe.name, recipe %></p>
+            <!--avoid assets error when image_url is nil-->
+            <% thumb_url = recipe.get_image_url(:thumb) %>
+            <% if thumb_url.present? %>
+                <p><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> thumb_url, class: "thumbnail"), recipe %></p>
+            <% end %>
+            <div>
+              <span class="fl trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
+              <div class="fr">
+                <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= recipe.comments.size %></span>)
+              </div>
+            </div>
+        </div>
+        <div class="embedded_comments display_none">
+            <%= render "comments/comments", item: recipe %>
+        </div>
+    </div>
 </div>
 <hr/>

@@ -3,7 +3,7 @@
     <% first_catalogs(catalogs).each do |first_catalog| %>
         <span class="nav_menu">
             <span class="cat first"><%= link_to first_catalog.name, products_path(:action => "index", :catalog => first_catalog.name) %></span>
-            <ul>
+            <ul class="sub_menu">
                 <%= nested_catalogs first_catalog.children.arrange %>
             </ul>
         </span>
