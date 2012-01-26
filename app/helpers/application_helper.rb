@@ -80,23 +80,42 @@ module ApplicationHelper
     end
   end
 
-  def get_primary_tags
-      tags = Rails.cache.fetch('primary_tags')
-      if tags.nil?
-         Logger.new(STDOUT).info "records are cached"
+  def get_primary_tag_names
+      tag_names = Rails.cache.fetch('primary_tag_names')
+      if tag_names.nil?
          records = YAML::load(File.open("app/seeds/tags.yml"))
 
-         tags = {}
+         tag_names = {}
          records.each do |first_lv, value|
-           tags[first_lv] = handle_record(value)
+           tag_names[first_lv] = handle_record(value)
          end
-         Rails.cache.write('primary_tags', tags, :expires_in => 3.hours)
+         Rails.cache.write('primary_tag_names', tag_names, :expires_in => 3.hours)
       end
 
-      tags
+      tag_names
   end
 
-  def get_top_primary_tags
+  def get_primary_tags
+    tags = Rails.cache.fetch('primary_tags')
+    if tags.nil?
+      tags = {}
+      get_primary_tag_names.each do |lv, tag_names|
+        if tag_names.is_a?(Array)
+          tag_names.each{|t| tags[t] = Tag.find(t)}
+        elsif tag_names.is_a?(Hash)
+         tag_names.each do |key, value|
+           value.each{|t| tags[t] = Tag.first(conditions: {name: t})}
+         end
+        end
+      end
+
+      Rails.cache.write('primary_tags', tags, :expires_in => 3.hours)
+    end
+
+    tags
+  end
+
+  def get_desired_tags_config
     tags = Rails.cache.fetch('top_primary_tags')
     if tags.nil?
        Logger.new(STDOUT).info "records are cached"

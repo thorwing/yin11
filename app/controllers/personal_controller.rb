@@ -12,7 +12,7 @@ class PersonalController < ApplicationController
     end
     session[:personal_mode] = @current_mode
     page = params[:page].present? ? params[:page].to_i : 0
-     #TODO why there are feed that doesn't belong to a user
+    #TODO why there are feed that doesn't belong to a user
     @my_reviews = current_user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @my_recipes = current_user.recipes.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @my_albums = current_user.albums.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)

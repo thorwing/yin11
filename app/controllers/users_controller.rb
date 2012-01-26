@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @modes = ["feeds", "reviews", "albums", "recipes"]
+    @modes = ["feeds", "desires", "reviews", "albums", "recipes"]
     if params[:mode].present?
       @current_mode = params[:mode]
     elsif session[:user_mode].present?
@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
     page = params[:page].present? ? params[:page].to_i : 0
     @feeds = FeedsManager.get_feeds_of(@user)
+    @desires = @user.desires.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @reviews = @user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @albums = @user.albums.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @recipes = @user.recipes.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)

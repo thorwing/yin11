@@ -2,34 +2,21 @@ class HomeController < ApplicationController
   include ApplicationHelper
 
   def index
-    @hot_topics = Topic.recommended.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
+    #@hot_topics = Topic.recommended.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
     @recommended_albums = Album.recommended.desc(:priority).limit(RECOMENDED_ALBUMS_ON_HOME_PAGE)
+    @stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
+    configured_tags = get_desired_tags_config
+    @desired_tags = Tag.any_in(name: configured_tags).sort_by {|tag| -1 * configured_tags.index(tag.name)}
 
-    #TODO
-    @stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..5]
-    #@masters = User.enabled.masters.limit(40)
-
-    @primary_tags = {}
-    get_primary_tags.each do |lv, tags|
-      if tags.is_a?(Array)
-        tags.each{|t| @primary_tags[t] = Tag.find(t)}
-      elsif tags.is_a?(Hash)
-        tags.each do |key, value|
-          value.each{|t| @primary_tags[t] = Tag.first(conditions: {name: t})}
-        end
-      end
-    end
-
-    @hot_primary_tags = Tag.any_in(name: get_top_primary_tags).to_a.sort{|x,y| get_top_primary_tags.index(x.name) <=> get_top_primary_tags.index(y.name) }
-
-    more_desires = Desire.recommended.tagged_with(@hot_primary_tags.map(&:name))
+    more_desires = Desire.recommended.tagged_with(@desired_tags.map(&:name)).desc(:priority)
     result = {}
-    @hot_primary_tags.each do |tag|
+    @desired_tags.each do |tag|
       result[tag.name] = more_desires.select{|d| d.tags.include?(tag.name)}.take(10)
     end
-    @hot_primary_tags.reject!{|t| result[t.name].empty?}
+    @desired_tags.reject!{|t| result[t.name].empty?}
     @desires = result.inject([]){|memo, (key, values)| memo | values}.compact.uniq
 
+    @primary_tags = get_primary_tags
   end
 
   # get more items for pagination on home page

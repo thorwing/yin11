@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
     @hot_tags = get_hot_tags(14, :recipes)
-    @primary_tags = get_primary_tags
+    @primary_tags = get_primary_tag_names
 
     respond_to do |format|
       format.html # index.html.erb

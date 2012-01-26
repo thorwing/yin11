@@ -4,6 +4,10 @@
         <%= link_to t("user_basic.fans"), user_path(user, mode: "default") %>
     </div>
     <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+        <%= user.desires.count %><br/>
+        <%= link_to t("user_basic.desires"), user_path(user, mode: "desires") %>
+    </div>
+    <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
         <%= user.reviews.count %><br/>
         <%= link_to t("reviews.reviews"), user_path(user, mode: "reviews") %>
     </div>
