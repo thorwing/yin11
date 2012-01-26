@@ -206,7 +206,7 @@ class ReviewsController < ApplicationController
 
         site.agent = Mechanize.new
         site.agent.get(url)
-        @product = site.process_product(nil)
+        @product = site.process_taobao_product
       end
     end
 

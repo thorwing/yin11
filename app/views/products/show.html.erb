@@ -32,9 +32,11 @@
             </p>
 
 
-            <div class="mt5">
+            <div class="mt5 clearfix">
                 <% if current_user_has_permission? :normal_user %>
-                    <%= render "votes/vote_fields", :item => @product %>
+                    <div class="fr">
+                        <%= render "votes/vote_fields", :item => @product %>
+                    </div>
                 <% end %>
                 <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "go_buy_btn"%>
             </div>

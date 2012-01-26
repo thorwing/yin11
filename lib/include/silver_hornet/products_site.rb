@@ -355,6 +355,55 @@ class SilverHornet::ProductsSite < SilverHornet::Site
     product
   end
 
+
+  def process_taobao_product
+    product = nil
+    try do
+      #get the product name
+      product_name = agent.page.at('input[type=hidden][name=title]').attr('value').to_s
+      #according to the name, either find the product from database or initialize a new one
+      product = Product.find_or_initialize_by(name: product_name)
+      #try to find the vendor
+
+      taobao = Mall.find_or_initialize_by(name: I18n.t("third_party.taobao"))
+      taobao.save if taobao.new_record?
+      nick = agent.page.at('input[type=hidden][name=seller_nickname]').attr('value').to_s
+      vendor = Vendor.find_or_initialize_by(name: nick, mall_id: taobao.id)
+      vendor.save if vendor.new_record?
+      #set the vendor
+      product.vendor = vendor
+      #record the product's ulr
+      product.url = handle_url(agent.page.uri.to_s)
+      #record the product's price
+      product_price = agent.page.at('input[type=hidden][name=current_price]').attr('value').to_s
+      #delete the symbols of price
+      money_symbols = [I18n.t("money.yuan_mark1"), I18n.t("money.yuan"), I18n.t("money.yuan_mark2")].join
+      product_price = product_price.gsub(/[#{money_symbols}]/, '').strip
+      product.price = product_price.to_f
+
+      pic_url = agent.page.at('input[type=hidden][name=photo_url]').attr('value').to_s
+      pic_url =  'http://img01.taobaocdn.com/bao/uploaded/' + pic_url + '_310x310.jpg'
+
+      if product.image.blank? || product.image.remote_picture_url != pic_url
+        #we are using Carrierwave, so just set the remote_picture_url, it will download the image for us
+        pic = product.create_image(remote_picture_url: pic_url)
+      end
+
+      #initialize the tags of product
+      product.tags=[]
+      #get the tag
+      product.tags = seg_word(product_name)
+
+      product.catalogs = []
+      #set the product catalog
+
+      product.save!
+    end
+
+    product
+  end
+
+
   #Filtering the unwanted symbols
   def catalog_name_filter(name)
     return name.to_s.strip.gsub(/[\r\n\t(商品名称：)]/, "")
