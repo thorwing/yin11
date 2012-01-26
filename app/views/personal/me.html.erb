@@ -19,9 +19,10 @@
 
 <div class="grid_3 to_right">
     <div id="control_panel">
-        <%= render "profile_panel" %>
+        <%= render "users/author_panel", author: current_user %>
+        <%= render "actions_panel" %>
         <%= render "follows_panel" %>
-        <%= render "fans_panel" %>
+        <%= render "liked_recipes_panel" %>
     </div> <!--end of control_panel -->
 </div>
 

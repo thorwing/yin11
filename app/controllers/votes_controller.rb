@@ -1,6 +1,44 @@
 class VotesController < ApplicationController
   before_filter {|c| c.require_permission(:normal_user) }
 
+  def like
+    @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
+
+    if @item.fan_ids.include?(current_user.id)
+      @item.votes -= 1
+      @item.fan_ids.delete(current_user.id)
+      if current_user.respond_to? "liked_#{@item.class.name.downcase}_ids".to_sym
+        eval "current_user.liked_#{@item.class.name.downcase}_ids.delete @item.id.to_s"
+        current_user.save
+      end
+    else
+      @item.votes += 1
+      @item.fan_ids << current_user.id
+      if @item && @item.respond_to?(:author)
+        NotificationsManager.generate!(@item.author, current_user, "like", @item )
+      end
+      if current_user.respond_to? "liked_#{@item.class.name.downcase}_ids".to_sym
+        eval "current_user.liked_#{@item.class.name.downcase}_ids << @item.id.to_s"
+        current_user.save
+      end
+    end
+
+    @is_fan = @item.fan_ids.include?(current_user.id)
+    @votes = @item.votes
+
+    respond_to do |format|
+      if @item.save
+        format.html {redirect_to :root }
+        format.xml {head :ok}
+        format.js {render :content_type => 'text/javascript'}
+      else
+        format.html { redirect_to @item }
+        format.xml  { render :xml => @item.errors, :status => :unprocessable_entity }
+        format.js { head :unprocessable_entity }
+      end
+    end
+  end
+
   def create
     @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
 

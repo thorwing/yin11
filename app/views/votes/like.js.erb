@@ -10,14 +10,3 @@ vote_fields.find(".votes").text("<%= @votes.to_s %>个人喜欢");
     link.removeClass("liked");
     link.addClass("to_like");
 <% end %>
-
-<% if @is_hater %>
-    var link = vote_fields.find(".vote_button.to_hate");
-    link.removeClass("to_hate");
-    link.addClass("hated");
-<% else %>
-    var link = vote_fields.find(".vote_button.hated");
-    link.removeClass("hated");
-    link.addClass("to_hate");
-<% end %>
-

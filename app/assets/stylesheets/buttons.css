@@ -203,7 +203,7 @@ a.btn_register:hover{
     background-position:-489px -167px;
 }
 
-.vote_button.to_like {display: inline-block;
+.vote_button {display: inline-block;
     width:61px;
     height:25px;
     background-image: url(buttons.png);

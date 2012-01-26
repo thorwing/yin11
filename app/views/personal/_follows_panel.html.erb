@@ -1,19 +1,15 @@
-<% if current_user %>
-    <div id="follows_panel" class="panel clearfix">
-        <h3><%= t("user_basic.following_users") %></h3>
-        <div class="clearfix">
-            <% current_user.following_users(100).each do |user| %>
-                <%= link_to image_tag("grey.gif", "data-original"=> user.get_avatar(:thumb, false), width: 24, height: 24), user, class: "lazy more_head_img" %>
-            <% end %>
-        </div>
-        <%= link_to t("general.more"), "" %>
-
-        <h3><%= t("user_basic.following_recipes") %></h3>
-        <div class="clearfix">
-            <% current_user.following_recipes(7).each do |recipe| %>
-                <%= link_to recipe.name, recipe %><br/>
-            <% end %>
-        </div>
-        <%= link_to t("general.more"), "" %>
+<div id="follows_panel" class="panel clearfix">
+    <h3><%= t("user_basic.following_users") %></h3>
+    <div class="clearfix">
+        <% current_user.following_users(100).each do |user| %>
+            <%= link_to image_tag("grey.gif", "data-original"=> user.get_avatar(:thumb, false), width: 24, height: 24), user, class: "lazy more_head_img" %>
+        <% end %>
     </div>
-<% end %>
+    <%= link_to t("general.more"), "" %>
+    <hr/>
+    <h3><%= t("user_basic.fans") %></h3>
+    <% current_user.followers.each do |id| %>
+        <% user = User.find(id) %>
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false), width: 24, height: 24), user, class: "more_head_img" %>
+    <% end %>
+</div>

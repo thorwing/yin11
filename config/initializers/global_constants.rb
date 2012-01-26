@@ -59,4 +59,4 @@ IMAGES_LIMIT = 5
 EACH_SLICE = 4
 RELATED_RPODUCTS_LIMIT = 6
 ACCECPTED_IMAGES = 'image/png,image/gif,image/jpg,image/jpeg'
-GENERAL_TIME_FORMAT = "%m-%d %H:%M:%S"
+GENERAL_TIME_FORMAT = "%y-%m-%d %H:%M:%S"

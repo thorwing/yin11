@@ -8,7 +8,6 @@ class Product
   include Imageable
   include SilverSphinxModel
   include Votable
-  can_like
 
   field :name
   field :price, :type => Float

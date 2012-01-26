@@ -1,17 +1,11 @@
 <div class="grid_9 to_left">
     <div class="box_shadow p5">
-        <% if @recipe.image.present? %>
-            <%= link_to image_tag("grey.gif", :alt=> @recipe.name, "class" => 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall) ), @recipe.get_image_url, rel: "facebox"  %>
-        <% else %>
-            <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", class: 'lazy fl img_frame overflow_hidden' %>
-        <% end %>
+        <%= link_to image_tag("grey.gif", :alt=> @recipe.name, "class" => 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall) ), @recipe.get_image_url, rel: "facebox"  %>
 
         <div class="clearfix">
-            <div class="fl ml10 clearfix" style="width:470px">
-                <div>
-                    <span class="f28"><%= @recipe.name %></span><br/>
-                    <span class="trivial"><%= t("recipes.published_at") %> <%= @recipe.created_at.strftime("%y-%m-%d %H:%M:%S") %></span>
-
+            <div id="recipe_info" class="fl ml10 clearfix">
+                <h1 class="f28"><%= @recipe.name %></h1>
+                <div class="mt5">
                     <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》: ”" + truncate_content(@recipe.description,30) + "”。" %>
                     <% summarystr = "大家去看看吧！" %>
                     <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
@@ -23,10 +17,6 @@
                     <% if current_user_has_permission? :normal_user %>
                         <div class="mt5">
                             <%= render "votes/vote_fields", :item => @recipe %>
-                        </div>
-                        <div class="mt5">
-                            <%= link_to "", "", class: "mark_recipe want_do_btn", "data-behavior" => "want", "data-msg" => "我#{t("recipes.want")}#{@recipe.name}" %>
-                            <%= link_to "", "", class: "mark_recipe done_btn", "data-behavior" => "did", "data-msg" => "我#{t("recipes.did")}#{@recipe.name}"  %>
                         </div>
                     <% end %>
                     <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>

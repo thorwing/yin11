@@ -8,7 +8,9 @@
     .nav_menu a { margin-right: 8px; }
 
     /* sub-menus*/
-    ul { position:absolute; left:0px; top: -2px;  line-height:16px; margin-top: 16px; padding: 5px 0px;
+    ul.sub_menu { position:absolute; left:0px; top: -2px;
+        width:100px;
+        line-height:16px; margin-top: 16px; padding: 5px 0px;
         background: none repeat scroll 0 0 $shadow_gray;
         border-radius: 4px 4px 4px 4px;
         box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
@@ -23,7 +25,6 @@
 
 .nav_menu:hover ul { display:block;  }
 
-.sub_menu { width:80px;}
 #top_third_party a {margin-right:  10px; color: $ink_black;}
 #top_third_party a:hover { color: $blue; }
 

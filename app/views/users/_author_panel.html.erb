@@ -8,19 +8,23 @@
     </div>
 
     <div class="clearfix mt5">
-        <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+        <div class="fl f12" style="width: 40px; height:34px; line-height: 17px;">
             <%= author.followers.count %><br/>
             <%= link_to t("user_basic.fans"), user_path(author, mode: "default") %>
         </div>
-        <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+        <div class="fl f12" style="width: 40px; height:34px; line-height: 17px;">
+            <%= author.desires.count %><br/>
+            <%= link_to "馋人", user_path(author, mode: "desires") %>
+        </div>
+        <div class="fl f12" style="width: 40px; height:34px; line-height: 17px;">
             <%= author.reviews.count %><br/>
             <%= link_to t("reviews.reviews"), user_path(author, mode: "reviews") %>
         </div>
-        <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+        <div class="fl f12" style="width: 40px; height:34px; line-height: 17px;">
             <%= author.albums.count%><br/>
             <%= link_to t("albums.albums"), user_path(author, mode: "albums") %>
         </div>
-        <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
+        <div class="fl f12" style="width: 40px; height:34px; line-height: 17px;">
             <%= author.recipes.count %><br/>
             <%= link_to t("recipes.recipes"), user_path(author, mode: "recipes") %>
         </div>

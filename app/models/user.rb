@@ -29,6 +29,10 @@ class User
   #cached fields
   field :reviews_count, :type => Integer
   field :remote_ip
+  field :liked_recipe_ids, :type => Array, :default => []
+  field :liked_product_ids, :type => Array, :default => []
+  field :liked_desire_ids, :type => Array, :default => []
+  field :liked_album_ids, :type => Array, :default => []
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :thumb, ThumbUploader
@@ -157,8 +161,8 @@ class User
     self.relationships.where(target_type: "User").limit(limit).map{|r| r.get_item}
   end
 
-  def following_recipes(limit = 7)
-    self.relationships.where(target_type: "Recipe").limit(limit).map{|r| r.get_item}
+  def liked_recipes(limit = 7)
+    Recipe.any_in(_id: self.liked_recipe_ids).limit(limit)
   end
 
   def vote_weight

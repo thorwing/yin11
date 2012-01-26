@@ -3,7 +3,6 @@ class Album
   include Mongoid::Timestamps
   include Taggable
   include Votable
-  can_like
 
   field :title
   field :description

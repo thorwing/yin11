@@ -229,8 +229,8 @@ zh-CN:
     fans: 粉丝
     desires: 馋人
     follows: 关注
-    following_users: 关注的用户
-    following_recipes: 关注的菜谱
+    following_users: 关注用户
+    liked_recipes: 喜欢的菜谱
 
   profile:
     default_bio: 爱美食，更爱分享
