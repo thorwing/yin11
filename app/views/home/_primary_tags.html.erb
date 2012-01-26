@@ -98,16 +98,17 @@
         <div class="content">
         <h3 class="fl"><span class="f20" style="color: red">甜品</span>饮料</h3>
         <ul class="tag_link fl ml20">
-                <% %w[甜点 糖果].each do |tag| %>
+                <% %w[甜点].each do |tag| %>
                     <li class="fl ml5"><%= link_to tag, desires_path(tag: tag) %></li>
                 <% end %>
             </ul>
         <ul class="tags_list fl">
-            <%  [{primary_tag: "烘培", pic: "hb.jpg", sep: "sep_5" },
-                 {primary_tag: "巧克力", pic: "qkl.jpg", sep: "sep_5" },
-                 {primary_tag: "冰品", pic: "bp.jpg", sep: "sep_5" },
-                 {primary_tag: "饮料", pic: "ry.jpg", sep: "sep_5" },
-                 {primary_tag: "零食", pic: "tg.jpg", sep: "sep_5" }].each do |data| %>
+            <%  [{primary_tag: "烘培", pic: "hb.jpg", sep: "sep_6" },
+                 {primary_tag: "巧克力", pic: "qkl.jpg", sep: "sep_6" },
+                 {primary_tag: "饮料", pic: "yl.jpg", sep: "sep_6" },
+                 {primary_tag: "冰品", pic: "bp.jpg", sep: "sep_6" },
+                 {primary_tag: "糖果", pic: "tg.jpg", sep: "sep_6" },
+                 {primary_tag: "零食", pic: "ls.jpg", sep: "sep_6" }].each do |data| %>
                 <%= render "single_primary_tag", data %>
             <% end %>
         </ul>
