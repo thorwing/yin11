@@ -57,7 +57,18 @@
                 <li><%= render_menu(t("menu.recipes"), recipes_path) %></li>
                 <li><%= render_menu(t("menu.masters"), masters_path) %></li>
                 <% if current_user && current_user.has_permission?(:editor) %>
-                    <li><%= render_menu(t("menu.administrator_control"), administrator_root_path) %></li>
+                    <li class="nav_menu"><%= render_menu(t("menu.administrator_control"), administrator_root_path) %>
+                        <ul class="sub_menu">
+                            <li><%= link_to t("administrator_control.products"), administrator_products_path %> </li>
+                            <li><%= link_to t("administrator_control.vendors"), administrator_vendors_path %></li>
+                            <li><%= link_to t("administrator_control.users"), administrator_users_path %></li>
+                            <li><%= link_to t("administrator_control.tags"), administrator_tags_path %> </li>
+                            <li><%= link_to t("administrator_control.pages"), administrator_pages_path %> </li>
+                            <li><%= link_to t("administrator_control.images"), administrator_images_path %> </li>
+                            <li><%= link_to t("administrator_control.audits"), administrator_audits_path %> </li>
+                            <li><%= link_to t("administrator_control.recipes"), administrator_recipes_path %> </li>
+                        </ul>
+                    </li>
                 <% end %>
             </ul>
             <div class="mt10 fr" >
