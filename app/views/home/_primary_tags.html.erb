@@ -1,85 +1,85 @@
-<div id="primary_tags" class="mt20 clearfix ">
+<div id="primary_tags" class="mt10 clearfix ">
     <span class="ml10"><%= link_to content_tag(:b, "更多馋人图片", class: "f15"), desires_path %></span><br/>
-    <div class="piece grid_12 color1">
+    <div class="piece grid_12 round_box">
         <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
         <div class="content">
-        <h3 class="fl">传统<span class="f20" style="color: red">中餐</span></h3>
-        <ul class="tag_link fl ml20">
-            <% %w[家常菜 鲁菜 闽菜 浙菜 苏菜 徽菜 北京菜 东北菜 西北菜 豫菜 鄂菜 云贵菜 清真菜].each do |tag| %>
-                <li class="fl ml5"><%= link_to tag, desires_path(tag: tag) %></li>
-            <% end %>
-        </ul>
-        <ul class="tags_list fl">
-            <%  [{primary_tag: "私房菜", pic: "sfc.jpg", sep: "sep_6" },
-                 {primary_tag: "本帮菜", pic: "bbc.jpg", sep: "sep_6" },
-                 {primary_tag: "川菜", pic: "cc.jpg", sep: "sep_6" },
-                 {primary_tag: "粤菜", pic: "yc.jpg", sep: "sep_6" },
-                 {primary_tag: "湘菜", pic: "xc.jpg", sep: "sep_6" },
-                 {primary_tag: "台湾菜", pic: "tyc.jpg", sep: "sep_6" }].each do |data| %>
-                <%= render "single_primary_tag", data %>
-            <% end %>
-        </ul>
-       <!--<div class="share_person">
-            <h3 class="fl mt10">分享<a>中餐</a><br/>的客官们</h3>
-            <ul class="fl mt15 ml20">
-            <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h2.jpg" class="mr5"/></a>
-            <a class="fl"><span>我的名字</span></a>
-            <a class="fl"><span>+ 关注</span></a>
-            </li>
-            <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h3.jpg" class="mr5"/></a>
-            <a class="fl"><span>我的名字</span></a>
-            <a class="fl"><span>+ 关注</span></a>
-            </li>
-            <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h4.jpg" class="mr5"/></a>
-            <a class="fl"><span>我的名字</span></a>
-            <a class="fl"><span>+ 关注</span></a>
-            </li>
-            <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h5.jpg" class="mr5"/></a>
-            <a class="fl"><span>我的名字</span></a>
-            <a class="fl"><span>+ 关注</span></a>
-            </li>
-            <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h6.jpg" class="mr5"/></a>
-            <a class="fl"><span>我的名字</span></a>
-            <a class="fl"><span>+ 关注</span></a>
-            </li>
-            </ul>-->
+            <h3>传统<span class="f20" style="color: red">中餐</span></h3>
+            <ul class="tag_links">
+                <% %w[家常菜 鲁菜 闽菜 浙菜 苏菜 徽菜 北京菜 东北菜 西北菜 豫菜 鄂菜 云贵菜 清真菜].each do |tag| %>
+                    <li><%= link_to tag, desires_path(tag: tag) %></li>
+                <% end %>
+            </ul>
+            <ul class="tags_list">
+                <%  [{primary_tag: "私房菜", pic: "sfc.jpg", sep: "sep_6" },
+                     {primary_tag: "本帮菜", pic: "bbc.jpg", sep: "sep_6" },
+                     {primary_tag: "川菜", pic: "cc.jpg", sep: "sep_6" },
+                     {primary_tag: "粤菜", pic: "yc.jpg", sep: "sep_6" },
+                     {primary_tag: "湘菜", pic: "xc.jpg", sep: "sep_6" },
+                     {primary_tag: "台湾菜", pic: "tyc.jpg", sep: "sep_6" }].each do |data| %>
+                    <%= render "single_primary_tag", data %>
+                <% end %>
+            </ul>
+            <!--<div class="share_person">
+                    <h3 class="fl mt10">分享<a>中餐</a><br/>的客官们</h3>
+                    <ul class="fl mt15 ml20">
+                    <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h2.jpg" class="mr5"/></a>
+                    <a class="fl"><span>我的名字</span></a>
+                    <a class="fl"><span>+ 关注</span></a>
+                    </li>
+                    <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h3.jpg" class="mr5"/></a>
+                    <a class="fl"><span>我的名字</span></a>
+                    <a class="fl"><span>+ 关注</span></a>
+                    </li>
+                    <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h4.jpg" class="mr5"/></a>
+                    <a class="fl"><span>我的名字</span></a>
+                    <a class="fl"><span>+ 关注</span></a>
+                    </li>
+                    <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h5.jpg" class="mr5"/></a>
+                    <a class="fl"><span>我的名字</span></a>
+                    <a class="fl"><span>+ 关注</span></a>
+                    </li>
+                    <li class="fl mr10"><a class="fl"><img src="../../Pictures/yinkuaizi/h6.jpg" class="mr5"/></a>
+                    <a class="fl"><span>我的名字</span></a>
+                    <a class="fl"><span>+ 关注</span></a>
+                    </li>
+                    </ul>-->
     </div>
     <b class="b5"></b><b class="b6"></b><b class="b7"></b><b class="b8"></b>
     </div>
 
-    <div class="piece grid_12 color1 mt20">
+    <div class="piece grid_12 round_box">
         <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
         <div class="content">
-        <h3 class="fl"><span class="f20" style="color: red">异域</span>风情</h3>
-        <ul class="tag_link fl ml20">
-            <% %w[美国 德国].each do |tag| %>
-                <li class="fl ml5"><%= link_to tag, desires_path(tag: tag) %></li>
-            <% end %>
-        </ul>
-        <ul class="tags_list fl">
-            <%  [{primary_tag: "日本料理", pic: "rbll.jpg", sep: "sep_6" },
-                 {primary_tag: "韩国料理", pic: "hgll.jpg", sep: "sep_6" },
-                 {primary_tag: "东南亚", pic: "dnyll.jpg", sep: "sep_6" },
-                 {primary_tag: "法国", pic: "fgdc.jpg", sep: "sep_6" },
-                 {primary_tag: "意大利", pic: "ydl.jpg", sep: "sep_6" },
-                 {primary_tag: "墨西哥", pic: "mxg.jpg", sep: "sep_6" }].each do |data| %>
-                <%= render "single_primary_tag", data %>
-            <% end %>
-        </ul>
+            <h3><span class="f20" style="color: red">异域</span>风情</h3>
+            <ul class="tag_links">
+                <% %w[美国 德国].each do |tag| %>
+                    <li><%= link_to tag, desires_path(tag: tag) %></li>
+                <% end %>
+            </ul>
+            <ul class="tags_list">
+                <%  [{primary_tag: "日本料理", pic: "rbll.jpg", sep: "sep_6" },
+                     {primary_tag: "韩国料理", pic: "hgll.jpg", sep: "sep_6" },
+                     {primary_tag: "东南亚", pic: "dnyll.jpg", sep: "sep_6" },
+                     {primary_tag: "法国", pic: "fgdc.jpg", sep: "sep_6" },
+                     {primary_tag: "意大利", pic: "ydl.jpg", sep: "sep_6" },
+                     {primary_tag: "墨西哥", pic: "mxg.jpg", sep: "sep_6" }].each do |data| %>
+                    <%= render "single_primary_tag", data %>
+                <% end %>
+            </ul>
         </div>
         <b class="b5"></b><b class="b6"></b><b class="b7"></b><b class="b8"></b>
     </div>
 
-    <div class="piece grid_12 color1 mt20">
+    <div class="piece grid_12 round_box">
         <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
         <div class="content">
             <h3 class="fl">菜式<span class="f20" style="color: red">菜品</span></h3>
-            <ul class="tag_link fl ml20">
+            <ul class="tag_links">
                 <% %w[米面主食 烧烤 沙拉 卤酱 素食].each do |tag| %>
                     <li class="fl ml5"><%= link_to tag, desires_path(tag: tag) %></li>
                 <% end %>
             </ul>
-            <ul class="tags_list fl">
+            <ul class="tags_list">
                 <%  [{primary_tag: "热菜", pic: "rc.jpg", sep: "sep_6" },
                      {primary_tag: "凉菜", pic: "lc.jpg", sep: "sep_6" },
                      {primary_tag: "汤煲", pic: "tb.jpg", sep: "sep_6" },
@@ -93,16 +93,16 @@
         <b class="b5"></b><b class="b6"></b><b class="b7"></b><b class="b8"></b>
     </div>
 
-    <div class="piece grid_12 color1 mt20">
+    <div class="piece grid_12 round_box">
         <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
         <div class="content">
-        <h3 class="fl"><span class="f20" style="color: red">甜品</span>饮料</h3>
-        <ul class="tag_link fl ml20">
+        <h3><span class="f20" style="color: red">甜品</span>饮料</h3>
+        <ul class="tag_links">
                 <% %w[甜点].each do |tag| %>
-                    <li class="fl ml5"><%= link_to tag, desires_path(tag: tag) %></li>
+                    <li><%= link_to tag, desires_path(tag: tag) %></li>
                 <% end %>
             </ul>
-        <ul class="tags_list fl">
+        <ul class="tags_list">
             <%  [{primary_tag: "烘培", pic: "hb.jpg", sep: "sep_6" },
                  {primary_tag: "巧克力", pic: "qkl.jpg", sep: "sep_6" },
                  {primary_tag: "饮料", pic: "yl.jpg", sep: "sep_6" },
@@ -116,11 +116,11 @@
         <b class="b5"></b><b class="b6"></b><b class="b7"></b><b class="b8"></b>
     </div>
 
-    <!--<div class="piece grid_12 color1 mt20">-->
+    <!--<div class="piece grid_12 round_box mt20">-->
         <!--<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>-->
         <!--<div class="content">-->
         <!--<h3 class="fl"><span class="f20" style="color: red">功效</span>美食</h3>-->
-        <!--<ul class="tag_link fl ml20">-->
+        <!--<ul class="tag_links fl ml20">-->
         <!--</ul>-->
         <!--<ul class="tags_list fl">-->
             <!--<  [{primary_tag: "滋补保健", pic: "zb.jpg", sep: "sep_5" },-->

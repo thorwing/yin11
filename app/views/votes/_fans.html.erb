@@ -1,0 +1,8 @@
+<% if item.fan_ids.size > 0 %>
+    <div class="box_shadow p5 mt5 mb5 admiration_fields">
+        <%= "#{item.fan_ids.size}人喜欢：" %><br/>
+        <% item.fans.each do |fan| %>
+            <%= link_to image_tag(fan.get_avatar(:thumb), width: 32, height: 32), fan, class: "m2", alt: fan.login_name, title: fan.login_name %>
+        <% end %>
+    </div>
+<% end %>

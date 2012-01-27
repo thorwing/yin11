@@ -1,10 +1,9 @@
-<% title t("reviews.title") %>
+<% title "解馋分享" %>
 
-<div class="grid_9 to_left">
+<div class="grid_9">
     <div class="box_shadow clearfix p5">
         <% if current_user_has_permission? :normal_user %>
             <div class="fr" align="right">
-              <%= render "albums/collect_fields", :item => @review %>
               <%= render "votes/vote_fields", :item => @review %>
             </div>
         <% end %>
@@ -20,17 +19,24 @@
         </div>
     <% end %>
 
-    <div id="static_waterfall_container" class="mt10">
-        <% @review.get_images_with_objects(:waterfall).each do |hash| %>
-            <%= render "reviews/review_waterfall_field", picture_url: hash[:picture_url], picture_height: hash[:picture_height], item:  hash[:object] %>
-        <% end %>
-    </div>
+    <%= render "votes/fans", item: @review %>
+
+    <% images_with_objects = @review.get_images_with_objects(:waterfall) %>
+    <% if images_with_objects.size > 0 %>
+        <%= "相关：" %><br/>
+        <div id="static_waterfall_container" class="mt10">
+            <% images_with_objects.each do |hash| %>
+                <%= render "reviews/review_waterfall_field", picture_url: hash[:picture_url], picture_height: hash[:picture_height], item:  hash[:object] %>
+            <% end %>
+        </div>
+    <% end %>
+
     <div class="mt10">
         <%= render "comments/comments", :item => @review %>
     </div>
 </div>
 
-<div class="grid_3 to_right">
+<div class="grid_3">
     <%= render "users/author_panel", author: @review.author %>
     <div class="mt5"></div>
     <%= render "products/related_products", products: @related_products %>

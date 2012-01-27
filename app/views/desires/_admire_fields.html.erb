@@ -3,13 +3,4 @@
         <%= link_to "", admire_desire_path(:id => desire.id), :method => :put, :remote => true,
                 :class => "admire_btn " + (desire.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
     <% end %>
-
-    <div class="users_short_list display_none">
-      <% desire.admirers.each do |admirer| %>
-         <div class="fl user">
-            <%= link_to image_tag(admirer.get_avatar(:thumb), width: 24, height: 24, class: "mr2"), admirer %><br/>
-            <%= link_to admirer.login_name, admirer %>
-        </div>
-      <% end %>
-    </div>
 </span>

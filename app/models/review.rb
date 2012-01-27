@@ -21,7 +21,6 @@ class Review
   belongs_to :author, :class_name => "User"
   belongs_to :desire
   has_many :images
-  has_and_belongs_to_many :albums
 
   #override the settings in Informative
   validates_presence_of :content

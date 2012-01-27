@@ -93,15 +93,7 @@ class AlbumsController < ApplicationController
   def collect
     @album = Album.find(params[:id])
     @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
-    if @item.is_a? Review
-      @album.review_ids ||= []
-      @album.review_ids << @item.id.to_s
-      @album.save
-
-      @item.album_ids ||= []
-      @item.album_ids << @album.id.to_s
-      @item.save
-    elsif @item.is_a? Desire
+    if @item.is_a? Desire
       @album.desire_ids ||= []
       @album.desire_ids << @item.id.to_s
       @album.save
@@ -119,8 +111,8 @@ class AlbumsController < ApplicationController
   def remove
     @album = Album.find(params[:id])
     @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
-    if @item.is_a? Review
-      @album.reviews.delete(@item)
+    if @item.is_a? Desire
+      @album.desires.delete(@item)
     end
 
     respond_to do |format|
@@ -132,15 +124,12 @@ class AlbumsController < ApplicationController
   def pick_cover
     @album = Album.find(params[:id])
     @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
-    if @item.is_a? Review
-      imageable = @item.get_imageable_item
-      if imageable
-        image = imageable.get_image
-        if image
-          @new_cover_url = image.picture_url(:waterfall)
-          @album.cover_id = image.id
-          @album.save
-        end
+    if @item.is_a? Desire
+      image = @item.get_image
+      if image
+        @new_cover_url = image.picture_url(:waterfall)
+        @album.cover_id = image.id
+        @album.save
       end
     end
 

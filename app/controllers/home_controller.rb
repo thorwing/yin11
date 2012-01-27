@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @recommended_albums = Album.recommended.desc(:priority).limit(RECOMENDED_ALBUMS_ON_HOME_PAGE)
     @stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
     configured_tags = get_desired_tags_config
-    @desired_tags = Tag.any_in(name: configured_tags).sort_by {|tag| -1 * configured_tags.index(tag.name)}
+    @desired_tags = Tag.any_in(name: configured_tags).sort_by {|tag| configured_tags.index(tag.name)}
 
     more_desires = Desire.recommended.tagged_with(@desired_tags.map(&:name)).desc(:priority)
     result = {}

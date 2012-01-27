@@ -16,7 +16,6 @@ class Album
 
   #relationships
   has_one :image
-  has_and_belongs_to_many :reviews
   has_and_belongs_to_many :desires
   belongs_to :author, :class_name => "User"
   embeds_many :comments
@@ -26,10 +25,6 @@ class Album
   validates_length_of :title, :maximum => 20
   validates_length_of :description, :maximum => 400
 
-  def items
-    self.reviews.desc(:votes)
-  end
-
   def get_cover_url(version = nil)
     image_url = nil
     if cover_id
@@ -38,13 +33,8 @@ class Album
     end
 
     unless image_url
-      if self.desires.size > 0
-        imagable = self.desires.first{|r| r.get_image_url(version).present?}
-        image_url = imagable.get_image_url(version) if imagable
-      elsif self.reviews.size > 0
-        imagable = self.reviews.first{|r| r.get_review_image_url(version).present?}
-        image_url = imagable.get_review_image_url(version) if imagable
-      end
+      imagable = self.desires.first{|r| r.get_image_url(version).present?}
+      image_url = imagable.get_image_url(version) if imagable
     end
 
     image_url ? image_url : "assets/not_found.png"
@@ -54,7 +44,7 @@ class Album
     #the version may not actually be the version of cover to use, but we use it to compare. e.g. :waterfall instead of thumb
     cover_url = get_cover_url(version)
     #get one more in case it's cover
-    image_urls = self.reviews.limit(limit + 1).map{|r| r.get_review_image_url(version)}.reject{|url| url == cover_url || url.blank?}
+    image_urls = self.desires.limit(limit + 1).map{|d| d.get_image_url(version)}.reject{|url| url == cover_url || url.blank?}
     image_urls.take(limit)
   end
 

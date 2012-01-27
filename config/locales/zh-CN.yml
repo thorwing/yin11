@@ -541,6 +541,7 @@ zh-CN:
   albums:
     new: +新专辑
     new_album: 新建专辑
+    album: 专辑
     albums: 专辑
     cover: 封面
     remove: 从专辑移除

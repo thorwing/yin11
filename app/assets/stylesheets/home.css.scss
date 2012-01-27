@@ -2,13 +2,14 @@
 
 
 .piece {
+    margin-top: 10px;
     background-color:white;
-    height:220px;
 
-    h3 {font-size: 16px; height:40px; line-height:40px;margin-left:8px; vertical-align: text-bottom;}
-    .content{border-right:1px solid;border-left:1px solid;overflow:hidden;}
-    .tag_link{ height:40px; padding-top:10px;}
+    h3 {float: left; font-size: 16px; height:30px; line-height:30px;margin-left:5px;}
+    .tag_links { float: left; margin-left: 20px; height:30px; padding-top:5px;}
+    .tag_links li{ float: left; margin: 0 5px;}
     .tags_list {
+        float: left;
         width:930px;
         margin-left:8px;
         .hint_box {
@@ -17,14 +18,17 @@
     }
 }
 
-.b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8{height:1px; font-size:1px; overflow:hidden; display:block;}
-.b1,.b8{margin:0 5px;}
-.b2,.b7{margin:0 3px;border-right:2px solid; border-left:2px solid;}
-.b3,.b6{margin:0 2px;border-right:1px solid; border-left:1px solid;}
-.b4,.b5{margin:0 1px;border-right:1px solid; border-left:1px solid; height:2px;}
+.round_box {
+    .b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8{height:1px; font-size:1px; overflow:hidden; display:block;}
+    .b1,.b8{margin:0 5px;}
+    .b2,.b7{margin:0 3px;border-right:2px solid; border-left:2px solid;}
+    .b3,.b6{margin:0 2px;border-right:1px solid; border-left:1px solid;}
+    .b4,.b5{margin:0 1px;border-right:1px solid; border-left:1px solid; height:2px;}
+    .content{border-right:1px solid;border-left:1px solid;overflow:hidden;}
+    .b2, .b3, .b4, .b5, .b6, .b7, .content{border-color:#fff; background-color:#fff;}
+    .b1, .b8 {background:#fff;}
+}
 
-.color1 .b2,.color1 .b3,.color1 .b4,.color1 .b5,.color1 .b6,.color1 .b7,.color1 .content{border-color:#fff; background-color:#fff;}
-.color1 .b1,.color1 .b8{background:#fff;}
 
 #home_header {
     height:200px;

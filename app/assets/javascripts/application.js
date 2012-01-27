@@ -177,14 +177,6 @@ $(function(){
     $("img.lazy").lazyload();
 });
 
-
-$(function(){
-    $(".show_users_btn").live("click", function(e){
-        e.preventDefault();
-        jQuery.facebox($(this).parents().find(".users_short_list").html());
-    });
-});
-
 function fill_tag(link) {
     var name = $(link).text();
     var input = $(".tags_input");

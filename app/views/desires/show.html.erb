@@ -42,19 +42,22 @@
         <div class="box_shadow p5 mt5 mb5 admiration_fields">
             <%= "#{@desire.admirer_ids.size}人被馋到：" %><br/>
             <% @desire.admirers.each do |admirer| %>
-                <%= link_to image_tag(admirer.get_avatar(:thumb), width: 32, height: 32), admirer, class: "m2" %>
+                <%= link_to image_tag(admirer.get_avatar(:thumb), width: 32, height: 32), admirer, class: "m2", alt: admirer.login_name, title: admirer.login_name %>
             <% end %>
         </div>
     <% end %>
 
     <% if @desire.album_ids.size > 0 %>
         <div class="box_shadow p5 mt5 mb5 albums_fields">
-            <%= "#{@desire.album_ids.size}收集到：" %><br/>
+            <%= "#{@desire.album_ids.size}人收集：" %><br/>
             <% @desire.albums.each do |album| %>
-                <%= link_to image_tag(album.author.get_avatar(:thumb), width: 32, height: 32), album.author, class: "m2" %>
-                <%= link_to album.author.login_name, album.author %>
-                <%= " 收集到 " %>
-                <%= link_to album.title, album %>
+                <div>
+                    <%= link_to image_tag(album.author.get_avatar(:thumb), width: 32, height: 32), album.author, class: "m2" %>
+                    <%= link_to album.author.login_name, album.author %>
+                    <%= " 收集到 " %>
+                    <%= link_to album.title, album %>
+                </div>
+                <hr/>
             <% end %>
         </div>
     <% end %>

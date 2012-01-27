@@ -1,16 +1,18 @@
-<% title @album.title, false%>
+<% title t("albums.album") %>
 
 <div class="grid_9">
     <div class="box_shadow p5">
-        <h1><%= @album.title %> <span class="trivial f13"><%= "(#{@album.reviews.size}#{t("albums.items")})" %></span></h1>
+        <h1><%= @album.title %> <span class="trivial f13"><%= "(#{@album.desires.size}#{t("albums.items")})" %></span></h1>
         <p><%= @album.description %></p>
         <p><%= render "shared/show_tags", :item => @album %></p>
         <%= render "votes/vote_fields", :item => @album %>
     </div>
 
+    <%= render "votes/fans", item: @album %>
+
     <div id="static_waterfall_container" class="mt10">
-        <% @album.items.each do |item| %>
-            <%= render "albums/album_waterfall_field", item: item %>
+        <% @album.desires.each do |desire| %>
+            <%= render "albums/album_waterfall_field", item: desire %>
         <% end %>
     </div>
 </div>

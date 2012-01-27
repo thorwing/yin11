@@ -1,9 +1,9 @@
 <% unless products.blank? || products.empty? %>
-    <div class="box_shadow overflow_hidden p5">
-        <h3>相关商品：</h3>
+    <div class="box_shadow overflow_hidden">
+        <h3 class="m5">相关商品：</h3>
         <% products.each do |product| %>
-            <div class="fl center overflow_hidden mt2" style="width:100px; height:130px;">
-              <%= link_to image_tag( "grey.gif", "class" => 'lazy', "data-original"=> product.get_image_url(:thumb), width: 80, height: 80), product%><br/>
+            <div class="fl overflow_hidden m5 m" style="width:100px; height:130px;">
+              <%= link_to image_tag( "grey.gif", "class" => 'lazy', "data-original"=> product.get_image_url(:thumb), width: 80, height: 80), product %><br/>
               <%= link_to product.name, product %>
             </div>
         <% end %>
