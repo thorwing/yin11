@@ -4,7 +4,6 @@
                 :class => "admire_btn " + (desire.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
     <% end %>
 
-    <span class="admiration ml2 f12 trivial"><%= link_to "#{desire.admirer_ids.size}个人被馋到", "#", class: "show_users_btn top" %></span>
     <div class="users_short_list display_none">
       <% desire.admirers.each do |admirer| %>
          <div class="fl user">

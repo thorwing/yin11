@@ -228,7 +228,7 @@ a.btn_register:hover{
     background-position:-426px -397px;
 }
 
-.admire_btn.to_admire{ display: inline-block;
+.admire_btn { display: inline-block;
     width:61px;
     height:25px;
     background-image: url(buttons.png);

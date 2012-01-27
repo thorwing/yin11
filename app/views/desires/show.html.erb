@@ -38,23 +38,47 @@
         <% end %>
     </div>
 
-    <div class="mt20">
+    <% if @desire.admirer_ids.size > 0 %>
+        <div class="box_shadow p5 mt5 mb5 admiration_fields">
+            <%= "#{@desire.admirer_ids.size}人被馋到：" %><br/>
+            <% @desire.admirers.each do |admirer| %>
+                <%= link_to image_tag(admirer.get_avatar(:thumb), width: 32, height: 32), admirer, class: "m2" %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <% if @desire.album_ids.size > 0 %>
+        <div class="box_shadow p5 mt5 mb5 albums_fields">
+            <%= "#{@desire.album_ids.size}收集到：" %><br/>
+            <% @desire.albums.each do |album| %>
+                <%= link_to image_tag(album.author.get_avatar(:thumb), width: 32, height: 32), album.author, class: "m2" %>
+                <%= link_to album.author.login_name, album.author %>
+                <%= " 收集到 " %>
+                <%= link_to album.title, album %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <div class="mt10 mb10">
         <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "分享解馋攻略：" %>
     </div>
 
-    <div class="mt20">
-        <h3 class="mb5">来自用户的解馋攻略：</h3>
-        <% @desire.reviews.desc(:votes, :updated_at).reject{|d| d.new_record?}.each do |review| %>
-            <%= render review %>
-        <% end %>
-    </div>
+    <% reviews = @desire.reviews.desc(:votes, :updated_at).reject{|d| d.new_record?} %>
+    <% if reviews.size > 0 %>
+        <div class="mt10">
+            <h3 class="mb5">来自用户的解馋攻略：</h3>
+            <% reviews.each do |review| %>
+                <%= render review %>
+            <% end %>
+        </div>
+    <% end %>
 </div>
 
 <div class="grid_3">
-    <div class="box_shadow">
+    <div class="box_shadow p5">
         <h3>相似的馋人图片：</h3>
         <% @related_desires.each do |desire| %>
-            <%= link_to image_tag("grey.gif", "data-original"=> desire.get_image_url(:thumb), width: 70, height: 70, class: "lazy"), desire, class: "lighter_touch" %>
+            <%= link_to image_tag("grey.gif", "data-original"=> desire.get_image_url(:thumb), width: 66, height: 66, class: "lazy"), desire, class: "lighter_touch" %>
         <% end %>
     </div>
 </div>
