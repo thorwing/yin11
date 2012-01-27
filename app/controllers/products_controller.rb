@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
       criteria = criteria.any_in(catalog_ids: catalog_ids)
     end
 
+    criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
+
     @products = criteria.via_editor.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 
     data = {

@@ -73,8 +73,10 @@
             .small_bar {
                 display: block;
                 height: 5px;
-                margin: 1px 0 5px 0;
+                margin: 0 auto;
                 text-indent: -9999px;
+                background: url("small_bar.jpg") repeat-x;
+                width: 0;
             };
 
         }
@@ -82,7 +84,7 @@
         .filter_tab.selected {
             background: white;
             .small_bar {
-                 background: url("small_bar.jpg") repeat-x
+                width: 100%;
             };
             a {  color: $ink_black;}
         }

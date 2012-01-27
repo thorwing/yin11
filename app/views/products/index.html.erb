@@ -1,6 +1,13 @@
-<% title t("products.products_list") %>
+<% if params[:tag] %>
+    <div class="ml25 mt5 mb5">
+        <h2><%= "有关“#{params[:tag] }”的商品"%></h2>
+    </div>
+<% else %>
 
-<%= render "shared/catalogs", catalogs: @catalogs %>
+    <% title t("products.products_list") %>
+
+    <%= render "shared/catalogs", catalogs: @catalogs %>
+<% end %>
 
 <% if current_user_has_permission? :editor %>
     <div class="m5">
@@ -9,5 +16,5 @@
 <% end %>
 
 <div class="grid_12 to_left to_right">
-    <%= render "shared/waterfall", path: more_products_path, waterfall_partial: "products/product_waterfall", columns_count: 4, columns_width: 230 %>
+    <%= render "shared/waterfall", path: more_products_path, waterfall_partial: "products/product_waterfall", columns_count: 4, columns_width: 230, tag: params[:tag], catalog: params[:catalog] %>
 </div>

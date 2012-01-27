@@ -1,9 +1,19 @@
 //Desires Box
 function shift_masonry(filter) {
-    var $container = $('#masonry_container');
     $('#filters .filter_tab.selected').removeClass('selected');
     $(filter).parents(".filter_tab").addClass('selected');
+    $('#filters .filter_tab .small_bar').width(0);
 
+    var small_bar = $(filter).parents(".filter_tab").find(".small_bar");
+    small_bar.animate ({
+        width: '100%'
+    }, 300, function(){
+    // TODO  make sure if a new tab selected during the duration, the old one is cleared
+        $('#filters .filter_tab .small_bar').width(0);
+        $('#filters .filter_tab.selected .small_bar').width('100%');
+    });
+
+    var $container = $('#masonry_container');
     var selector = $(filter).attr('data-filter');
     $container.isotope({filter: selector});
     return false;

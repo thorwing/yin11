@@ -1,4 +1,11 @@
-<% title t("recipes.recipe_collection"), false %>
+<% if params[:tag] %>
+    <div class="ml25 mt5 mb5">
+        <h2><%= "有关“#{params[:tag] }”的菜谱"%></h2>
+    </div>
+<% else %>
+    <% title t("recipes.recipe_collection"), false %>
+<% end %>
+
 <div class="grid_9 to_left">
     <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 230 , tag: params[:tag]%>
 </div>

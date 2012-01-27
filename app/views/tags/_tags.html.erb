@@ -1,0 +1,3 @@
+<% item.tags.each do |tag| %>
+    <%= link_to tag, {:controller => item.class.name.downcase.pluralize, :action => "index", :tag => tag}, :class => "tag" %>
+<% end %>

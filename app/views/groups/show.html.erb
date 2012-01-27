@@ -1,5 +1,5 @@
 <% title @group.name %>
-<p><%= render "shared/show_tags", :item => @group %></p>
+<p><%= render "tags/tags", :item => @group %></p>
 <p class="trivial"><%= t("general.created_at") %> <%= @group.created_at.strftime(TIME_FORMAT) %></p>
 
 <p><%= @group.description %></p>

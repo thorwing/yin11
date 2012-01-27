@@ -5,6 +5,8 @@
 
 <% tag ||= nil %>
 <%= (hidden_field_tag "tag", tag, :id => "wf_tag") %>
+<% catalog ||= nil %>
+<%= (hidden_field_tag "catalog", catalog, :id => "wf_catalog") %>
 
 <div id="waterfall_container" class="mt20">
 

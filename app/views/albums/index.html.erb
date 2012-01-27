@@ -3,17 +3,24 @@
 <%= paginate @albums %>
 <% @albums = @albums.reject{|a| a.get_cover_url(:waterfall).include?("assets/not_found.png")} %>
 
-<div class="grid_3">
-    <div style="width:200px; height: 200px;">
-        <span class="f12 trivial">热门标签</span>
-        <div class="mb5">
-            <% get_hot_tags(14, :albums).each do |tag| %>
-                <%= link_to tag[0], albums_path(tag: tag[0]), class: "tag" %>
-            <% end %>
-        </div>
-        <%= link_to "", new_album_path, class: "add_album_btn" %>
+<% if params[:tag] %>
+    <div class="ml25 mt5 mb5">
+        <h2><%= "有关“#{params[:tag] }”的专辑"%></h2>
     </div>
-</div>
+<% else %>
+    <div class="grid_3">
+        <div style="width:200px; height: 200px;">
+            <span class="f12 trivial">热门标签</span>
+            <div class="mb5">
+                <% get_hot_tags(14, :albums).each do |tag| %>
+                    <%= link_to tag[0], albums_path(tag: tag[0]), class: "tag" %>
+                <% end %>
+            </div>
+            <%= link_to "", new_album_path, class: "add_album_btn" %>
+        </div>
+    </div>
+<% end
+%>
 <div class="clearfix">
     <% @albums.take(3).each do |album| %>
         <%= render "albums/album_cover", album: album %>
