@@ -5,5 +5,5 @@
             <%= "#{tag.desires_count}张馋人图片" %>
         <% end %>
     </div>
-    <%= link_to image_tag("grey.gif", "data-original" => "assets/primary_tags/#{pic}",  width: (sep == "sep_6" ? 150 : 180), height:150, class: "lazy #{sep}") + content_tag(:span, primary_tag, class: "fix_hint b_black_alpha30 white", style: "text-align:center;"), desires_path(tag: primary_tag) %>
+    <%= link_to image_tag("grey.gif", "data-original" => "assets/primary_tags/#{pic}", class: "lazy sep") + content_tag(:span, primary_tag, class: "fix_hint b_black_alpha30 white", style: "text-align:center;"), desires_path(tag: primary_tag) %>
 </div>

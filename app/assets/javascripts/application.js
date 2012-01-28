@@ -15,6 +15,7 @@
 //= require jquery.ui.rcarousel.min
 //= require jquery.isotope.min
 //= require jquery.timer
+//= require liteaccordion.jquery.min
 //= require_tree .
 
 var products_limit = 3;

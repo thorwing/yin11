@@ -34,6 +34,22 @@
 
 
 $(function(){
+    $('#primary_tags').liteAccordion({
+        containerWidth : 920,                   // fixed (px)
+        containerHeight : 170,                  // fixed (px)
+        headerWidth: 40,                        // fixed (px)
+
+        activateOn : 'mouseover',               // click or mouseover
+        firstSlide : 1,                         // displays slide (n) on page load
+        slideSpeed : 800,                       // slide animation speed
+        easing : 'swing',                       // custom easing function
+
+        theme : 'stitch',                        // basic, dark, light, or stitch
+        rounded : false,                        // square or rounded corners
+        enumerateSlides : false,                // put numbers on slides
+        linkable : false                        // link slides via hash
+    });
+
     $(".primary_tag").hover(
         function(){
             $(this).find(".tag_summary").show();
@@ -42,5 +58,4 @@ $(function(){
             $(this).find(".tag_summary").hide();
         }
     );
-
 });
