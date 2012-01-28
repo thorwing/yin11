@@ -62,9 +62,11 @@
         </div>
     <% end %>
 
-    <div class="mt10 mb10">
-        <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "分享解馋攻略：" %>
-    </div>
+    <% if current_user_has_permission? :normal_user %>
+        <div class="mt10 mb10">
+            <%= render "reviews/review_fields", :review => @desire.reviews.build, caption: "分享解馋攻略：" %>
+        </div>
+    <% end %>
 
     <% reviews = @desire.reviews.desc(:votes, :updated_at).reject{|d| d.new_record?} %>
     <% if reviews.size > 0 %>
