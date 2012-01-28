@@ -1,50 +1,48 @@
-<% if @desires && @desires.size > 0 %>
-    <div id="desires_box" class="grid_12 mt20">
-        <%= link_to content_tag(:b, "馋人图片", class: "f15") + content_tag(:span, "（全部）"), desires_path %><br/>
-        <ul id="filters" class="mt5">
-            <% @desired_tags.each do |tag| %>
-                <li class="filter_tab">
-                  <div class="small_bar">.</div>
-                  <%= link_to tag.name, "#", "data-filter" => ".#{tag.name}", class: "filter f15 bold p10" %></li>
+<div id="desires_box" class="grid_12 mt20">
+    <%= link_to content_tag(:b, "馋人图片", class: "f15") + content_tag(:span, "（全部）"), desires_path %><br/>
+    <ul id="filters" class="mt5">
+        <% @desired_tags.keys.each do |tag| %>
+            <li class="filter_tab">
+              <div class="small_bar">.</div>
+              <%= link_to tag, "#", "data-filter" => ".#{tag}", class: "filter f15 bold p10" %></li>
+        <% end %>
+        <div class="clearfix"></div>
+    </ul>
+    <div id="masonry_container" class="b_white">
+      <div class="corner-stamp">
+        <%= content_tag :span, "被这些美食图片馋到了吗？", class: "f14" %><br/>
+        <%= content_tag :span, "点击看如何把它变成盘中餐！", class: "f14" %><br/>
+        <div class="mt10">
+            <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
+            <% if current_user_has_permission? :normal_user %>
+                <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
+            <% else %>
+                <%= link_to "立即注册", new_user_path, class: "button" %>
             <% end %>
-            <div class="clearfix"></div>
-        </ul>
-        <div id="masonry_container" class="b_white">
-          <div class="corner-stamp">
-            <%= content_tag :span, "被这些美食图片馋到了吗？", class: "f14" %><br/>
-            <%= content_tag :span, "点击看如何把它变成盘中餐！", class: "f14" %><br/>
-            <div class="mt10">
-                <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
-                <% if current_user_has_permission? :normal_user %>
-                    <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
-                <% else %>
-                    <%= link_to "立即注册", new_user_path, class: "button" %>
-                <% end %>
+        </div>
+        <div id="desire_dialog" class="display_none">
+            <%= render "desires/desire_fields", desire: Desire.new %>
+        </div>
+      </div>
+      <% @desires.each do |desire| %>
+        <div class="item <%= desire.tags.join(' ') %>" style="margin: 10px; width: 210px;">
+          <div class="box_shadow p5">
+            <div class="image_frame center">
+                <%= image_tag "icons/jiechan_2.png", class: "ribbon" if desire.get_solutions_count > 0 %>
+                <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall), class: "lazy"), desire %>
             </div>
-            <div id="desire_dialog" class="display_none">
-                <%= render "desires/desire_fields", desire: Desire.new %>
+            <!--<span class="f14"><= link_to recipe.name, recipe %></span><br/>-->
+            <!--<span><= truncate_content(recipe.description, 30) %></span>-->
+            <div class="clearfix">
+              <span>
+                <%= link_to image_tag("grey.gif", "data-original" => desire.author.get_avatar(:thumb, false), width: 22, height: 22, class: "lazy"), desire.author %>
+                <%= link_to desire.author.login_name, desire.author %>
+              </span>
+              <span class="ml5"><%= truncate_content(desire.content, 50) %></span>
             </div>
           </div>
-          <% @desires.each do |desire| %>
-            <div class="item <%= desire.tags.join(' ') %>" style="margin: 10px; width: 210px;">
-              <div class="box_shadow p5">
-                <div class="image_frame center">
-                    <%= image_tag "icons/jiechan_2.png", class: "ribbon" if desire.get_solutions_count > 0 %>
-                    <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall), class: "lazy"), desire %>
-                </div>
-                <!--<span class="f14"><= link_to recipe.name, recipe %></span><br/>-->
-                <!--<span><= truncate_content(recipe.description, 30) %></span>-->
-                <div class="clearfix">
-                  <span>
-                    <%= link_to image_tag("grey.gif", "data-original" => desire.author.get_avatar(:thumb, false), width: 22, height: 22, class: "lazy"), desire.author %>
-                    <%= link_to desire.author.login_name, desire.author %>
-                  </span>
-                  <span class="ml5"><%= truncate_content(desire.content, 50) %></span>
-                </div>
-              </div>
-            </div>
-          <% end %>
         </div>
+      <% end %>
     </div>
-    <div class="clearfix"></div>
-<% end %>
+</div>
+<div class="clearfix"></div>
