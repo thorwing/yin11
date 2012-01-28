@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "upload" %>
 
-<%= form_for review, :html => { :multipart => true }, :remote => true do |f| %>
+<%= form_for review, :html => { :multipart => true } do |f| %>
     <div class="block round p5 clearfix" id = "review_fields" >
         <!--hidden attributes-->
         <%= (hidden_field_tag "review[desire_id]", review.desire_id) %>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 <%end%>
-                <div class= "fr m5"><%= f.submit t("reviews.submit"), id: "submit_review", class: "button" %> </div>
+                <div class= "fr m5"><%= f.submit t("reviews.submit"), id: "submit_review_btn", class: "button" %> </div>
             </div>
        </div>
        <div id="images_container" class="block fl m5" >

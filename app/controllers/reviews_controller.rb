@@ -140,7 +140,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @local_status
         @user_message = t("notices.review_posted") + @user_message
-        format.html { redirect_to(@review, :notice => @user_message) }
+        format.html { redirect_to(:back, :notice => @user_message) }
         format.js
       else
         @user_message = t("notices.review_post_failure") + @user_message

@@ -1,5 +1,5 @@
-<div class="fl">
-    <div class="clearfix ml5"><b class="fl"><%= t_with_colon("comments.comment") %></b></div>
+<div>
+    <div class="clearfix ml5"><span class="fl"><%= t_with_colon("comments.comment") %></span></div>
     <div class="clearfix m5">
         <% if current_user %>
             <%= render "comments/new_comment", :item => item%>

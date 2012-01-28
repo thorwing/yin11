@@ -46,7 +46,7 @@ function link_recipe()
 
 
 $(function(){
-    $('#submit_review').click(function(e){
+    $('#submit_review_btn').click(function(e){
         var text = $('#review_content').val();
         if(text == null || text.trim() == '')
         {

@@ -15,6 +15,10 @@
             <%= render "albums/album_waterfall_field", item: desire %>
         <% end %>
     </div>
+
+    <div class="mt10">
+        <%= render "comments/comments", :item => @album %>
+    </div>
 </div>
 
 <div class="grid_3">

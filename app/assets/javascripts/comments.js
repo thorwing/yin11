@@ -7,16 +7,8 @@ $(function() {
     });
 });
 
-//Reply comment
-$(function() {
-    $('.add_comment_link').live('click', function() {
-        $('#comments_block').toggle();
-        return false;
-    });
-});
-
 function show_embedded_comments(link) {
-    $(link).parents(".commentable").find(".embedded_comments").toggle();
+    $(link).parents(".commentable").find(".embedded_comments").toggle('fast');
 }
 
 $(function() {
