@@ -51,16 +51,17 @@ class HomeController < ApplicationController
       desired_tags = {}
       desires = Desire.where(:priority.gte => 0).excludes(tags: []).desc(:created_at)
       desires.each do |desire|
-        desire.tags.each do |tag|
-          desired_tags[tag] ||= []
-          desired_tags[tag] |= [desire]
-        end
+        #pick the first tag to avoid duplication...
+        tag = desire.tags.first
+        desired_tags[tag] ||= []
+        desired_tags[tag] << desire
       end
 
       top_tags = desired_tags.inject({}){|memo, (k, v)| memo[k] = v.size; memo}.sort_by{|k, v| -1 * v}.map{|i| i[0]}.take(7)
-      desired_tags = top_tags.inject({}){|memo, tag| memo[tag] = desired_tags[tag]; memo}
-      desired_tags.each {|k,v| desired_tags[k].sort!{|a, b| b.created_at <=> a.created_at}.take(10)}
-      Rails.cache.write('desired_tags', desired_tags, :expires_in => 2.hours) if Rails.env.production?
+      #modify the tag to avoid duplication...
+      desired_tags = top_tags.inject({}){|memo, tag| memo[tag] = desired_tags[tag].sort{|a, b| b.created_at <=> a.created_at}.take(10).each{|d| d.tags = [tag]}; memo}
+      #raise desired_tags.to_yaml
+      Rails.cache.write('desired_tags', nil, :expires_in => 2.hours) if Rails.env.production?
     end
 
     return desired_tags
