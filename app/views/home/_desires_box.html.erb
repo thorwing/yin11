@@ -4,7 +4,7 @@
         <% @desired_tags.keys.each do |tag| %>
             <li class="filter_tab">
               <div class="small_bar">.</div>
-              <%= link_to tag, "#", "data-filter" => ".#{tag}", class: "filter f15 bold p10" %></li>
+              <%= link_to tag, "#", "data-filter" => ".#{tag}", class: "filter" %></li>
         <% end %>
         <div class="clearfix"></div>
     </ul>
