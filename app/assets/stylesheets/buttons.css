@@ -152,16 +152,16 @@ a.btn_register:hover{
 }
 
 .add_relationship_btn{display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
+ width:60px;
+ height:26px;
+ background-image: url("buttons/follow.png");
  background-repeat:no-repeat;
- background-position:-425px -141px;
+ background-position:0px 0px;
  text-indent: -9999px;
 }
 
 .add_relationship_btn:hover{
-    background-position:-425px -167px;
+    background-position: 0px -28px;
 }
 
 .go_buy_btn{ display: inline-block;
@@ -191,54 +191,54 @@ a.btn_register:hover{
 }
 
 .cancel_relationship_btn{display: inline-block;
-    width:61px;
-    height:25px;
-    background-image: url(buttons.png);
+    width:120px;
+    height:26px;
+    background-image: url("buttons/follow.png");
     background-repeat:no-repeat;
-    background-position:-489px -141px;
+    background-position:0px -56px;
     text-indent: -9999px;
 }
 
 .cancel_relationship_btn:hover{
-    background-position:-489px -167px;
+    background-position: 0px -84px;
 }
 
 .vote_button {display: inline-block;
-    width:61px;
-    height:25px;
-    background-image: url(buttons.png);
+    width:60px;
+    height:26px;
+    background-image: url("buttons/like.png");
     background-repeat:no-repeat;
-    background-position:-361px -370px;
+    background-position:0px 0px;
     text-indent: -9999px;
 }
 .vote_button.to_like:hover, .vote_button.liked{
-    background-position:-361px -397px;
+    background-position:0px -28px;
 }
 
 .collect_btn{ display: inline-block;
-    width:61px;
-    height:25px;
-    background-image: url(buttons.png);
+    width:60px;
+    height:26px;
+    background-image: url("buttons/collect.png");
     background-repeat:no-repeat;
-    background-position:-426px -370px;
+    background-position:0px 0px;
     text-indent: -9999px;
 }
 
 .collect_btn:hover{
-    background-position:-426px -397px;
+    background-position:0px -28px;
 }
 
 .admire_btn { display: inline-block;
-    width:61px;
-    height:25px;
-    background-image: url(buttons.png);
+    width:60px;
+    height:26px;
+    background-image: url("buttons/admire.png");
     background-repeat:no-repeat;
-    background-position:-361px -428px;
+    background-position: 0px 0px;
     text-indent: -9999px;
 }
 
 .admire_btn.to_admire:hover, .admire_btn.admired{
-    background-position:-361px -457px;
+    background-position: 0px -28px;
 }
 
 .add_major_ingredient_btn{display: inline-block;
