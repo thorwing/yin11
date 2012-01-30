@@ -53,7 +53,7 @@ class Product
   end
 
   def price_as_money_string
-    format('%.2f', price)
+    price ? format('%.2f', price) : ''
   end
 
 end

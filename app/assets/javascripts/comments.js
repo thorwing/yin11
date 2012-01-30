@@ -8,7 +8,16 @@ $(function() {
 });
 
 function show_embedded_comments(link) {
-    $(link).parents(".commentable").find(".embedded_comments").toggle('fast');
+    var embedded_comments = $(link).parents(".commentable").find(".embedded_comments")
+    $(embedded_comments).toggle('fast', function(){
+        if ($(this).css('display') == "block")
+        {
+            $(link).text("-收起评论");
+        }
+        else {
+            $(link).text("+评论");
+        }
+    });
 }
 
 $(function() {

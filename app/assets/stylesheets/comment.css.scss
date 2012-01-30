@@ -3,8 +3,21 @@
 /*
 	Comments-Styles
 */
+
+.comments_fields {
+    border:1px solid $light_gray;
+    padding: 5px;
+    margin: 5px;
+    display:block;
+    overflow:hidden;
+    clear: both;
+}
 .comment {
+    padding: 5px;
+    margin-bottom: 10px;
+    background: white;
     word-wrap: break-word;
+    width: 500px;
 }
 
 .nested_comments {
@@ -15,13 +28,7 @@
   margin-left: 0;
 }
 
-blockquote {
-    display:inline;
-	margin: 0;
-    padding: 0;}
-blockquote span.quoted:before {
-	content: '"'; color: $trivial_gray; font-size: 2em; margin-right: 5px; }
-blockquote span.quoted:after {
-	content: '"'; color: $trivial_gray; font-size: 2em; margin-left: 5px;}
-blockquote span.quoted.blocked {
-	text-decoration: line-through; }
+.new_comment_fields {
+    textarea {width: 445px; resize: none;}
+    .submit_comment_btn {float: right; width:80px; height: 24px; background-position: 0 0; font-size: 14px;  }
+}

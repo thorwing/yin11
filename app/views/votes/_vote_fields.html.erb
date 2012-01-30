@@ -1,6 +1,6 @@
-<span class="vote_fields <%= item.id.to_s %> clearfix">
-    <% if current_user_has_permission?(:normal_user) && !the_author_himself(item.class.name, item.id, false, false) %>
+<% if current_user_has_permission?(:normal_user) && !the_author_himself(item.class.name, item.id, false, false) %>
+    <span class="vote_fields <%= item.id.to_s %> clearfix">
         <%= link_to "", like_votes_path(:item_id => item.id, :item_type => item.class.name), :method => :put, :remote => true,
                 :class => (item.fan_ids.include?(current_user.id) ? "vote_button liked" : "vote_button to_like")  %>
-    <% end %>
-</span>
+    </span>
+<% end %>

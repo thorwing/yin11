@@ -1,11 +1,12 @@
+<% title "商品" %>
+
 <div class="grid_9 to_left overflow_hidden p5 clearfix">
-    <%= render "product_nav", :product => @product %>
-    <div class="clearfix box_shadow p5">
+    <div class="product_info clearfix box_shadow p5">
         <div class="fl">
             <%= link_to (image_tag("grey.gif", "class" => 'lazy', "data-original"=> @product.get_image_url(:waterfall), class: "img_frame")), @product.get_image_url, rel: "facebox" %>
         </div>
 
-        <div class="ml10 fl" style="width:470px">
+        <div class="product_detail ml10 fl">
             <p>
               <b><%= t("general.name") %></b>
               <%= @product.name %>
@@ -33,12 +34,12 @@
 
 
             <div class="mt5 clearfix">
+                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "fl go_buy_btn"%>
                 <% if current_user_has_permission? :normal_user %>
                     <div class="fr">
                         <%= render "votes/vote_fields", :item => @product %>
                     </div>
                 <% end %>
-                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => @product.url, :force => "true"}, :class => "go_buy_btn"%>
             </div>
 
             <% if current_user_has_permission? :administrator %>
@@ -50,12 +51,10 @@
         </div>
     </div>
 
-    <% if current_user_has_permission? :normal_user %>
-        <div class="mt10">
-            <%= render "reviews/review_fields", :review => @product.reviews.new %>
-        </div>
-    <% end %>
-    <%= render "shared/waterfall", :path => more_reviews_path(product_id: @product.id), :waterfall_partial => "reviews/review_waterfall", :columns_count => 3, :columns_width => 230 %>
+    <div class="mt20">
+        <span class="trivial">以下分享中提到了该商品：</span><br/>
+        <%= render @refer_reviews %>
+    </div>
 </div>
 
 <div class="grid_3 to_right">

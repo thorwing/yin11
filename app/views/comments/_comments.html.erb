@@ -1,6 +1,5 @@
-<div>
-    <div class="clearfix ml5"><span class="fl"><%= t_with_colon("comments.comment") %></span></div>
-    <div class="clearfix m5">
+<div class="comments_fields">
+    <div class="clearfix">
         <% if current_user %>
             <%= render "comments/new_comment", :item => item%>
         <% end %>
@@ -10,6 +9,7 @@
         <% if item.comments.empty? %>
             <span class = "first_comment_tip trivial"><%= t("comments.new_hint") %></span><br/>
         <% else %>
+            <span class="trivial"><%= t_with_colon("comments.comment") %></span><br/>
             <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
         <% end %>
     </div>

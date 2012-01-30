@@ -37,3 +37,14 @@ body {
     font-size:13px;
     font-family: $general_font;
 }
+
+blockquote {
+    display:inline;
+	margin: 0;
+    padding: 0;}
+blockquote span.quoted:before {
+	content: '"'; color: $trivial_gray; font-size: 2em; margin-right: 5px; }
+blockquote span.quoted:after {
+	content: '"'; color: $trivial_gray; font-size: 2em; margin-left: 5px;}
+blockquote span.quoted.blocked {
+	text-decoration: line-through; }

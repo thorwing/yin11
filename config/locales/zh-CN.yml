@@ -483,7 +483,7 @@ zh-CN:
     n_comments: %{count}条评论
     new_comment: 新评论
     all: 所有评论：
-    new: +新评论
+    new: +评论
     new_hint: 成为第一个评论的人
     reply: 回复
     deleted: 该内容已删除
