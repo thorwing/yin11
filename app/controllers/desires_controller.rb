@@ -124,15 +124,12 @@ class DesiresController < ApplicationController
     @desire = Desire.find(params[:id])
     if (@desire.admirer_ids.include? current_user.id)
       @desire.admirers.delete(current_user)
-      @success = true
     else
       @desire.admirers << current_user
 
-      @success = true
-    end
-
-    if @success
-      NotificationsManager.generate!(@desire.author, current_user, "admire", @desire )
+      unless @desire.history_admirer_ids.include? current_user.id
+        RewardManager.reward_for_admire(@desire, current_user)
+      end
     end
 
     respond_to do |format|

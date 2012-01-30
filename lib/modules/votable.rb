@@ -3,6 +3,7 @@ module Votable
     base.class_eval do
       field :votes, :type => Integer, :default => 0
       field :fan_ids, :type => Array, :default => []
+      field :history_fan_ids, :type => Array, :default => []
     end
 
     def fans

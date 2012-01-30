@@ -47,8 +47,6 @@ class GroupsController < ApplicationController
     #@group.join!(current_user)
     @group.save!
 
-    RewardManager.new(current_user).contribute(:created_groups)
-
     respond_to do |format|
         format.html { redirect_to(@group, :notice => t("notices.group_created")) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }

@@ -636,6 +636,7 @@ zh-CN:
       sys_msg_mode: 系统通知
       writing_mode: 写信
     item_notification: %{person_str}%{operation_str}我的%{item_str}
+    reward_notification: " ,我获得了%{count}颗星星"
     master_notification: 我被授予了达人的称号！
     me_notification: %{person_str}%{operation_str}了我
     item_types:

@@ -1,5 +1,5 @@
 class NotificationsManager
-  def self.generate!(user_to_notify, person, operation = nil, item = nil, message = nil)
+  def self.generate!(user_to_notify, person, operation = nil, item = nil, message = nil, score = nil)
     return if user_to_notify == person
     user_to_notify.notifications.create! do |n|
       n.person_id = person.id if person
@@ -7,6 +7,7 @@ class NotificationsManager
       n.item_type = item.class.name if item
       n.operation = operation if operation
       n.message = message
+      n.score = score if score
     end
   end
 

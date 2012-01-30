@@ -9,6 +9,7 @@ class Notification
   field :operation
   field :message
   field :read, :type => Boolean, :default => false
+  field :score, :type => Integer, :default => 0
 
   #relationships
   embedded_in :user
@@ -49,6 +50,7 @@ class Notification
         operation_str = I18n.t("notifications.operations.#{self.operation}")
         person_str = self.person.login_name
         subject = I18n.t("notifications.item_notification", person_str: person_str, operation_str: operation_str, item_str: item_str)
+        subject += I18n.t("notifications.reward_notification", count: self.score) if (self.score && self.score > 0)
       end
     end
 

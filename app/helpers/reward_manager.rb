@@ -1,14 +1,22 @@
 class RewardManager
-  def initialize(user)
-    @user = user
+  def self.reward_for_like(item, user = nil)
+    if (item.respond_to? :author) && item.author
+      score_value = 5
+      item.author.score += score_value
+      item.author.save
+
+      NotificationsManager.generate!(item.author, user, "like", item, nil, score_value)
+    end
   end
 
-  def contribute(field)
-    #TODO
-    @user.contribution[field] += 1
-    ask_for_badges
-    #save user at last
-    @user.save!
+  def self.reward_for_admire(item, user = nil)
+    if (item.respond_to? :author) && item.author
+      score_value = 5
+      item.author.score += score_value
+      item.author.save
+
+      NotificationsManager.generate!(item.author, user, "admire", item, nil, score_value)
+    end
   end
 
   def ask_for_badges

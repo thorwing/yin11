@@ -1,11 +1,8 @@
-<div class="clearfix">
-    <span class="fl"><%= link_to "只显示未读", "/info_center?mode=sys_msg&read=false" %></span>
-</div>
 <% @notifications.each do |notification| %>
     <div id="<%= notification.id.to_s %>">
         <div class="grid_1">
             <% unless notification.read %>
-                <div class="fl mr10"><%= link_to "未读", "/info_center?mode=sys_msg&read=false", class: "tag" %></div>
+                <%= content_tag :span, "未读", class: "orange" %>
             <% else %>
                 <%= content_tag :span, "已读", class: "trivial" %>
             <% end %>
@@ -30,7 +27,6 @@
         <div class="grid_3">
             <span class="trivial"><%= notification.created_at.strftime(GENERAL_TIME_FORMAT) %></span>
             <div class="fr">
-                <%= link_to image_tag("correct_icon.gif") + "知道了",  {:controller => "notifications", :action => "read", :id => notification.id}, :remote => true, :method => :put, :class => "read_btn"  unless notification.read %>
                 <%= link_to image_tag("wrong_icon.gif") + "删除", notification, :confirm => t("general.are_you_sure_to_delete"), remote: true, method: :delete %>
             </div>
         </div>

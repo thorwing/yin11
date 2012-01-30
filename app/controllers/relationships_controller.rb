@@ -10,7 +10,6 @@ class RelationshipsController < ApplicationController
         current_user.save!
         @followable.add_follower!(current_user)
         NotificationsManager.generate!(@followable, current_user, "follow")  if @followable.is_a?(User)
-        @success = true
       end
     end
     respond_to do |format|
@@ -23,7 +22,6 @@ class RelationshipsController < ApplicationController
       current_user.relationships.destroy_all(:conditions => {:target_type => params[:target_type], :target_id => params[:target_id]})
       current_user.save!
       @followable.remove_follower!(current_user)
-      @success = true
     end
 
     respond_to do |format|
