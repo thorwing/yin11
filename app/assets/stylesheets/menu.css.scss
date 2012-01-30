@@ -3,7 +3,6 @@
 .nav_menu {
     cursor:pointer;
     position:relative;
-    overflow: hidden;
 
     .nav_menu a:hover, a.selected {color: $blue;}
     .nav_menu a { margin-right: 8px; }

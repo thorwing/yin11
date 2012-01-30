@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def render_menu(name, path)
-    link_to(name, path, :class => (current_page?(path) ? "selected" : "unselected" ) + " f16" )
+    link_to(name, path, :class => "menu_item " + (current_page?(path) ? "selected" : "unselected" ) + " f16" )
   end
 
   # example: <%= link_to_add_fields( t("recipes.add"), f, :ingredients, ".steps" ) %>

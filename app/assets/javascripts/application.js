@@ -10,13 +10,15 @@
 //= require kissy/kissy
 //= require jquery.Jcrop.min
 //= require lazyload
-//= require jquery.ui.core.min
-//= require jquery.ui.widget.min
-//= require jquery.ui.rcarousel.min
 //= require jquery.isotope.min
 //= require jquery.timer
 //= require liteaccordion.jquery.min
 //= require_tree .
+
+//not included
+// require jquery.ui.core.min
+// require jquery.ui.widget.min
+//require jquery.ui.rcarousel.min
 
 var products_limit = 3;
 var recipes_limit = 3;
