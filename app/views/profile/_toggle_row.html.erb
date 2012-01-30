@@ -1,3 +1,0 @@
-<span class='toggle <%= field %> <%= current_user.profile[field] ? "on" : "off" %>'>
-    <%= link_to image_tag("toggle_transparent.png", :border => 0), toggle_profile_index_path(:field => field), :method => :put, :remote => true, :title => "toggle_link" %>
-</span>

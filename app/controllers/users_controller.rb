@@ -74,10 +74,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    current_user.current_step = params[:step]
+  end
+
   def update
     respond_to do |format|
       if current_user.update_attributes(params[:user])
-        format.html { redirect_to(root_path, :notice => t("notices.user_basic_info_updated")) }
+        format.html { redirect_to(profile_user_path(current_user), :notice => t("notices.user_basic_info_updated")) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -132,7 +136,7 @@ class UsersController < ApplicationController
     current_user.crop_h = params[:avatar]["crop_h"]
     current_user.crop_w = params[:avatar]["crop_w"]
     current_user.save
-    redirect_to current_user.profile
+    redirect_to profile_user_path(current_user)
   end
 
 end

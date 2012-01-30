@@ -1,6 +1,6 @@
 <div id="user_panel" class="panel">
-    <b><%= link_to current_user.login_name, profile_path(current_user) %></b><br/>
-    <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false )), profile_path(current_user) %><br/>
+    <b><%= link_to current_user.login_name, profile_user_path(current_user) %></b><br/>
+    <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false )), profile_user_path(current_user) %><br/>
 
     <div class="block">
         <div class ="fl m5">
@@ -9,12 +9,12 @@
         </div>
         <div class ="fl m5">
             <%= t("user_basic.fans") %><br/>
-            <%= link_to current_user.followers.count, profile_path(current_user) %>
+            <%= current_user.followers.count %>
 
         </div>
         <div class ="fl m5">
             <%= t("user_basic.follows") %><br/>
-            <%= link_to current_user.relationships.count, profile_path(current_user) %>
+            <%= current_user.relationships.count %>
         </div>
     </div>
 

@@ -1,0 +1,21 @@
+<% title t("menu.edit_profile"), false %>
+
+<div class="box_shadow clearfix p5">
+    <div class="grid_3 to_left">
+        <h2><%= t("menu.edit_profile") %></h2>
+        <% current_user.steps.each do |step| %>
+            <%= link_to t("profile.steps.#{step}"), edit_user_path(current_user, step: step) %><br/>
+        <% end %>
+    </div>
+
+    <div class="grid_9 to_right">
+        <%= form_for current_user, :html => {:multipart => true} do |f| %>
+            <%= render "#{current_user.current_step}", :f => f %>
+
+            <div class="mt10">
+                <%= submit_tag t("general.submit"), :class => "button" %>
+                <br/>
+            </div>
+        <% end %>
+    </div>
+</div>

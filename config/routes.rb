@@ -69,9 +69,6 @@ Yin11::Application.routes.draw do
     end
   end
 
-
-  resources :profile
-
   resources :reviews do
     collection do
       get :more
@@ -117,6 +114,7 @@ Yin11::Application.routes.draw do
 
   resources :users, :except => [:destroy] do
     member do
+      get "profile"
       put "block"
       put "unlock"
       get "activate"

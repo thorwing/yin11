@@ -26,6 +26,8 @@ class User
   field :access_token
   field :access_token_secret
   field :is_master, :type => Boolean, :default => false
+  field :biography, type: String, default: I18n.t("profile.default_bio")
+  field :score, :type => Integer, :default => 0
   #cached fields
   field :reviews_count, :type => Integer
   field :remote_ip
@@ -44,13 +46,12 @@ class User
   index :auth_token
 
   attr_accessor :password, :crop_x, :crop_y, :crop_h, :crop_w
-  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar, :thumb, :group_ids
+  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar, :thumb, :group_ids, :biography
 
   # strange error when trying to using scope, so using class method instead
   scope :masters, where(:is_master => true)
   scope :rookies, where(:is_master => false)
   scope :valid_email_users, where(:email_verified => true)
-  scope :mail_receiver, where("profile.receive_mails" => true)
   class << self
     def of_auth_token(token)
       first(:conditions => {:auth_token => token})
@@ -62,8 +63,6 @@ class User
   end
 
   #Relationships
-  embeds_one :profile
-  embeds_one :contribution
   has_many :reviews, :inverse_of => "author"
   has_many :recipes, :inverse_of => "author"
   has_many :albums, :inverse_of => "author"
@@ -89,14 +88,25 @@ class User
   validates_presence_of :password, :on => :create, :if => :non_third_party_login
   validates_confirmation_of :password, :if => :non_third_party_login
   validates_length_of :password, :minimum => 6, :on => :create, :if => :non_third_party_login
-  validates_associated :profile, :contribution
+  validates_length_of :biography, :maximum => 200
 
   #Others
-  after_initialize { self.profile ||= Profile.new; self.contribution ||= Contribution.new }
   before_save :encrypt_password, :handle_identity, :sync_cached_fields, :send_notifications
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
   after_update :reprocess_avatar, :if => :cropping?
+
+  #for multilstep form
+  attr_writer :current_step
+
+  def steps
+    #%w[custom_groups custom_basic_info]
+    %w[custom_basic_info custom_avatar]
+  end
+
+  def current_step
+	  @current_step || steps.first
+  end
 
   def tags
     groups.collect{|g| g.tags}.flatten.compact.uniq
@@ -207,18 +217,8 @@ class User
     self.notifications.where(read: false).desc(:created_at).to_a.uniq{|n| n.identity}
   end
 
-  def get_updates(days = self.profile.concern_days)
-    data = get_raw_updates(days)
-    data.inject([]){|memo, (k,v)| memo | v}.compact.uniq
-  end
-
   def has_followed?(target)
     self.relationships.select{|r| r.target_type == target.class.name && r.target_id == target.id.to_s}.size > 0
-  end
-
-  #TODO
-  def score
-    followers.size * 3 + recipes.size * 2 + reviews.size
   end
 
   def cropping?

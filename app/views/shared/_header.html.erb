@@ -21,10 +21,10 @@
                         </ul>
                     </span> |
                     <span class="nav_menu">
-                        <%= link_to t("menu.edit_profile"), edit_profile_path(current_user.profile) %>
+                        <%= link_to t("menu.edit_profile"), edit_user_path(current_user) %>
                         <ul class="sub_menu">
-                            <% current_user.profile.steps.each do |step| %>
-                                <li><%= link_to t("profile.steps.#{step}"), edit_profile_path(current_user, step: step) %></li>
+                            <% current_user.steps.each do |step| %>
+                                <li><%= link_to t("profile.steps.#{step}"), edit_user_path(current_user, step: step) %></li>
                             <% end %>
                         </ul>
                     </span> |

@@ -32,13 +32,13 @@
 
 
 <div class="fl">
-    <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar, :id => "cropbox" %>
+    <%= image_tag current_user.get_avatar, :id => "cropbox" %>
 </div>
 
 <div class="fl ml20">
     <h3><%= t("general.preview") %></h3>
     <div class="preview">
-        <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar, :id => "preview" %>
+        <%= image_tag current_user.get_avatar, :id => "preview" %>
     </div>
 </div>
 
