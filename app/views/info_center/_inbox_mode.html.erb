@@ -1,15 +1,15 @@
 <% @incoming_messages.each do |key, msg_array| %>
     <div class="clearfix p5">
-        <div class="fl" style="width: 150px;">
+        <div class="fl" style="width: 170px;">
             <% last = msg_array.last %>
-            <%= link_to(image_tag("grey.gif", "class" => 'lazy', "data-original"=> last.from.get_avatar(:thumb,false), width: 50, height: 50), last.from) %>
-            <span class="trivial" style="vertical-align: top;"><%= last.created_at.strftime(GENERAL_TIME_FORMAT) %></span><br/>
-            <%= link_to last.from.login_name, last.from %>
+            <%= link_to(image_tag("grey.gif", "class" => 'lazy', "data-original"=> last.from.get_avatar(:thumb,false), width: 50, height: 50), last.from) %><br/>
+            <%= link_to last.from.login_name, last.from %><br/>
+            <span class="trivial" style="vertical-align: top;"><%= last.created_at.strftime(GENERAL_TIME_FORMAT) %></span>
         </div>
-        <div class="fl ml20 lighter_touch" style="width: 770px;" onclick='window.location.href = "/messages/<%= msg_array.last.id.to_s %>";'>
-            <%= last.content %><br/>
+        <div class="fl ml20 lighter_touch" style="width: 750px;" onclick='window.location.href = "/messages/<%= msg_array.last.id.to_s %>";'>
+            <blockquote><span class="quoted"><%= last.content %></span></blockquote><br/>
             <% new_msg_count = msg_array.select{|m| !m.read}.size %>
-            <%= link_to "新消息", msg_array.last, class: "tag" if new_msg_count > 0 %><span class="trivial"><%= "共#{msg_array.size.to_s}条会话" %></span><%= link_to "+展开", msg_array.last %>
+            <%= content_tag :span, "新消息", class: "orange" if new_msg_count > 0 %><span class="trivial"><%= "共#{msg_array.size.to_s}条会话" %></span><%= link_to "+展开", msg_array.last %>
         </div>
         <div class="clearfix"></div>
         <hr/>

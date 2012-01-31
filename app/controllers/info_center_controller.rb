@@ -12,16 +12,11 @@ class InfoCenterController < ApplicationController
     end
     session[:notification_mode] = @current_mode
 
-    criteria = current_user.notifications
-    if params[:read].present? && params[:read] == "false"
-      criteria = criteria.where(read: false)
-    end
-    @notifications = criteria.desc(:created_at).to_a.uniq{|n| n.identity}
-
+    unread_notification_ids = current_user.notifications.where(read: false).only(:id).map(&:id)
     #mark all as read
-    if @current_mode == "sys_msg"
-      current_user.notifications.where(read: false).update_all(read: true)
-    end
+    current_user.notifications.where(read: false).update_all(read: true)
+    @notifications = current_user.notifications.desc(:created_at).to_a.uniq{|n| n.identity}
+    @notifications.each {|n| n.read = false if unread_notification_ids.include?(n.id)}
 
     @incoming_messages = current_user.messages.desc(:created_at).group_by{|m| [m.from_id, m.to_id].sort()}.reject{|key, value| value.select{|m| m.to_id == current_user.id.to_s }.empty? }
     @outgoing_messages = current_user.messages.where(from_id: current_user.id.to_s).desc(:created_at)

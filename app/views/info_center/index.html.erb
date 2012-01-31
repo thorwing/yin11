@@ -8,7 +8,7 @@
             </div>
         <% end %>
     </div>
-    <div class="tabContent block">
+    <div class="tabContent">
         <% @modes.each do |mode| %>
             <div class = "<%= mode %> <%= mode == @current_mode ? "display" : "display_none" %>">
                 <%= render "#{mode}_mode" %>

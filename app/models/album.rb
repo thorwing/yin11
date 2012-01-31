@@ -40,6 +40,11 @@ class Album
     image_url ? image_url : "assets/not_found.png"
   end
 
+  #proxy
+  def get_image_url(version = nil)
+    get_cover_url(version)
+  end
+
   def get_image_urls(limit, version = nil)
     #the version may not actually be the version of cover to use, but we use it to compare. e.g. :waterfall instead of thumb
     cover_url = get_cover_url(version)

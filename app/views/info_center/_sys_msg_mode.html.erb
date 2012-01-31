@@ -1,34 +1,32 @@
 <% @notifications.each do |notification| %>
     <div id="<%= notification.id.to_s %>">
         <div class="grid_1">
-            <% unless notification.read %>
-                <%= content_tag :span, "未读", class: "orange" %>
-            <% else %>
+            <% if notification.read %>
                 <%= content_tag :span, "已读", class: "trivial" %>
+            <% else %>
+                <%= content_tag :span, "未读", class: "orange" %>
             <% end %>
         </div>
         <div class="grid_2">
             <% if notification.person %>
-                <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> notification.person.get_avatar(:thumb, false), width:24, height:24), notification.person %>
+                <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> notification.person.get_avatar(:thumb, false), width:48, height:48), notification.person %><br/>
                 <%= link_to notification.person.login_name, notification.person %>
             <% else %>
                 <%= content_tag :span, "来自系统", class: "trivial" %>
             <% end %>
         </div>
-        <div class="grid_5">
+        <div class="grid_7">
             <%= notification.subject %><br/>
             <% if notification.message.present? %>
                 <blockquote><span class="quoted"><%= notification.message %></span> </blockquote>
             <% end %>
             <% if notification.item.present? %>
-                <%= link_to "[" + t("general.show") + "]", notification.item %>
+                <%= link_to image_tag(notification.item.get_image_url(:thumb), width: 50, height: 50), notification.item %><%= link_to "[" + t("general.show") + "]", notification.item %>
             <% end %>
         </div>
-        <div class="grid_3">
-            <span class="trivial"><%= notification.created_at.strftime(GENERAL_TIME_FORMAT) %></span>
-            <div class="fr">
-                <%= link_to image_tag("wrong_icon.gif") + "删除", notification, :confirm => t("general.are_you_sure_to_delete"), remote: true, method: :delete %>
-            </div>
+        <div class="grid_2">
+            <div class="fr"><%= link_to image_tag("cancel.png", title: "删除"), notification, :confirm => t("general.are_you_sure_to_delete"), remote: true, method: :delete, class: "lighter_touch" %></div><br/>
+            <div class="fr"><span class="trivial"><%= notification.created_at.strftime(GENERAL_TIME_FORMAT) %></span></div>
         </div>
         <div class="clearfix"></div>
         <hr/>

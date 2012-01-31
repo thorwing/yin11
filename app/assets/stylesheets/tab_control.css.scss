@@ -39,9 +39,11 @@
 }
 
 .tabContent {
-    padding :5px;
+    padding-top: 10px;
     min-height: 400px;
     border-top: 1px solid $gray;
+    overflow: hidden;
+    clear: both;
 }
 
 #contentHolder .preloader{
