@@ -12,7 +12,7 @@ function show_embedded_comments(link) {
     $(embedded_comments).toggle('fast', function(){
         if ($(this).css('display') == "block")
         {
-            $(link).text("-收起评论");
+            $(link).text("-收起");
         }
         else {
             $(link).text("+评论");

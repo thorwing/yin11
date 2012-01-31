@@ -26,3 +26,25 @@
 /*author panel partial*/
 .user_info_head_block .userinfoCollection .collectList{float: left; height:35px; width:60px; text-align:center;}
 .user_info_head_block .userInfoNav a{float:left;width:65px; height:32px; text-align:center; font-size:18px; }
+
+
+
+.user {
+    width: 940px;
+    height: 150px;
+    margin: 10px 0;
+    padding: 5px;
+    .avatar_area {
+         float: left;
+         width: 100px;}
+    .center_area {
+        margin: 0 5px;
+        float: left;
+        width: 422px;
+        .biography_area {float: left; width: 222px;
+        .biography {font-size: 12px; line-height: 20px;}
+        }
+        .statics_area {float: left; width: 180px; margin: 0 10px;}
+    }
+    .feeds_area { float: left; margin-top: 25px; width: 408px;}
+}

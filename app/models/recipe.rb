@@ -6,6 +6,7 @@ class Recipe
     include Votable
     include Imageable
     include Votable
+    include Feedable
 
     #fields
     field :name

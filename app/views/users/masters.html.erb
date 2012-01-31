@@ -1,12 +1,12 @@
 <h2 class="f16 mt10">明星达人</h2>
 
-<div class="to_left to_right clearfix">
+<div class="grid_12 clearfix">
   <% @masters.each do |master| %>
     <%= render "users/user", user: master %>
   <% end %>
 </div>
 
-<div class="mt20 to_left clearfix">
+<div class="mt20 grid_12 clearfix">
     <h3>今日红榜</h3>
     <% @hard_workers.each do |user| %>
         <div class="fl clearfix mt10" style="width:150px;">
@@ -15,8 +15,9 @@
                 <%= link_to user.login_name, user %>
             </div>
             <div>
-                <span class="trivial"><%= t("reviews.by_user", count: user.reviews.count) %></span><br/>
-                <span class="trivial"><%= t("recipes.by_user", count: user.recipes.count) %></span>
+                <span class="trivial"><%= "上传了#{user.desires.count}张馋人图片" %></span><br/>
+                <span class="trivial"><%= "发表了#{user.reviews.count}条分享" %></span><br/>
+                <span class="trivial"><%= "添加了#{user.recipes.count}份菜谱" %></span>
             </div>
         </div>
     <% end %>

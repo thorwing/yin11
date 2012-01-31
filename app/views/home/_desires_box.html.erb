@@ -20,9 +20,6 @@
                 <%= link_to "立即注册", new_user_path, class: "button" %>
             <% end %>
         </div>
-        <div id="desire_dialog" class="display_none">
-            <%= render "desires/desire_fields", desire: Desire.new %>
-        </div>
       </div>
       <% @desires.each do |desire| %>
         <div class="item <%= desire.tags.join(' ') %>" style="margin: 10px; width: 210px;">

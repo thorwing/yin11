@@ -1,26 +1,26 @@
 <div class="clearfix">
-    <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-        <%= user.followers.count %><br/>
-        <%= link_to t("user_basic.fans"), user_path(user, mode: "default") %>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= user.followers.count %></span>
+        <%= link_to t("user_basic.fans"), user_path(user, mode: "default"), class: "center" %>
     </div>
-    <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-        <%= user.desires.count %><br/>
-        <%= link_to t("user_basic.desires"), user_path(user, mode: "desires") %>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= user.desires.count %></span>
+        <%= link_to t("user_basic.desires"), user_path(user, mode: "desires"), class: "center" %>
     </div>
-    <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-        <%= user.reviews.count %><br/>
-        <%= link_to t("reviews.reviews"), user_path(user, mode: "reviews") %>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= user.reviews.count %></span>
+        <%= link_to t("reviews.reviews"), user_path(user, mode: "reviews"), class: "center" %>
     </div>
-    <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-        <%= user.albums.count%><br/>
-        <%= link_to t("albums.albums"), user_path(user, mode: "albums") %>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= user.albums.count%></span>
+        <%= link_to t("albums.albums"), user_path(user, mode: "albums"), class: "center" %>
     </div>
-    <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-        <%= user.recipes.count %><br/>
-        <%= link_to t("recipes.recipes"), user_path(user, mode: "recipes") %>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= user.recipes.count %></span>
+        <%= link_to t("recipes.recipes"), user_path(user, mode: "recipes"), class: "center" %>
     </div>
-    <div class="fl f12" style="width: 50px; height:34px; line-height: 17px;">
-        <%= user.score %><br/>
-        <%= image_tag "star.png", width: 14, height: 14, title: "积分" %>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= user.score %></span>
+        <%= image_tag "star.png", width: 14, height: 14, title: "积分", class: "center" %>
     </div>
 </div>

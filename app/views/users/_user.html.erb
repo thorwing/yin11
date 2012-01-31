@@ -1,26 +1,26 @@
-<div class="master box_shadow mt5 mb5 p5 fl clearfix" style="height: 120px;">
-    <div class="fl clearfix" style="width: 100px;">
+<div class="user box_shadow clearfix" >
+    <div class="avatar_area clearfix" >
         <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false)), user %><br/>
     </div>
-    <div class="fl ml10 clearfix" style="width:502px;">
-        <div class="clearfix">
-            <div class="fl">
-                <%= link_to user.login_name, user_path(user) %><br/>
-                <%= render "relationships/follow_field", :target => user %>
-            </div>
-            <div class="fr pt5"><%= render "users/user_statics", user: user %></div>
+    <div class="center_area clearfix">
+        <div class="biography_area" >
+            <%= link_to user.login_name, user_path(user) %>
+            <p class="biography"><%= user.biography %></p>
         </div>
-        <div class="mt5"><%= user.biography %></div>
+        <div class="statics_area">
+          <%= render "users/user_statics", user: user %>
+          <div class="mt10">
+            <%= render "relationships/follow_field", :target => user %>
+          </div>
+        </div>
     </div>
 
-    <div class="fl ml10 mt20 clearfix" style="width:328px;">
-        <div class="fr">
-            <% user.get_recent_feeds(4).each do |feed| %>
-              <div class="hint_box m1 fl" style="width: 80px; height: 80px;">
-                <%= link_to image_tag(feed.picture_url(:thumb), width:80, height:80), feed.item %>
-                <span class="flex_hint b_white black f11"><%= truncate_content(feed.content, 15) %></span>
-              </div>
-            <% end %>
-        </div>
+    <div class="feeds_area clearfix">
+        <% user.get_recent_feeds(4).each do |feed| %>
+          <div class="hint_box m1 fl">
+            <%= link_to image_tag(feed.picture_url(:thumb), width:100, height:100), feed.item %>
+            <span class="flex_hint b_black_alpha30 white f12"><%= [t("object_types.#{feed.target_type.downcase}"), '-', truncate_content(feed.content, 15)].join(' ') %></span>
+          </div>
+        <% end %>
     </div>
 </div>

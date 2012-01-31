@@ -1,5 +1,5 @@
 var vote_fields = $('.vote_fields.<%= @item.id.to_s %>');
-vote_fields.find(".votes").text("<%= @votes.to_s %>个人喜欢");
+vote_fields.find(".votes").text("<%= @votes.to_s %>");
 
 <% if @is_fan %>
     var link = vote_fields.find(".vote_button.to_like");

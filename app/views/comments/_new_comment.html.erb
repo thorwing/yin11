@@ -1,6 +1,6 @@
 <div class="new_comment_fields clearfix" >
     <%= form_tag url_for(:controller => "comments", :method => :post), :remote => true do %>
-      <%= image_tag current_user.get_avatar(:thumb), width: 54, height: 54, class: "fl" %>
+      <%= image_tag current_user.get_avatar(:thumb), width: 54, height:54, class: "fl m1" %>
       <%= hidden_field_tag :item_id, item.id %>
       <%= hidden_field_tag :item_type, item.class.name %>
       <%= hidden_field_tag :parent_id, parent.id if (defined? parent) %>

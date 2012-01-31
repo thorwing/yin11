@@ -3,6 +3,7 @@ class Desire
   include Mongoid::Timestamps
   include Taggable
   include Imageable
+  include Feedable
 
   field :content
   #field :admired_count, :type => Integer, :default => 0

@@ -48,3 +48,5 @@ blockquote span.quoted:after {
 	content: '"'; color: $trivial_gray; font-size: 2em; margin-left: 5px;}
 blockquote span.quoted.blocked {
 	text-decoration: line-through; }
+
+textarea {resize: none;}
