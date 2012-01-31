@@ -8,13 +8,13 @@
         <% end %>
 
         <div class="ml10 mr10 b_shadow_gray clearfix">
-            <div class="fl">
+            <div class="user_area fl">
                 <a href="users/{{user_id}}">
                     <img alt="avatar" width="32" height="32" src="{{user_avatar}}" />
                 </a><br/>
+                <%= link_to "{{user_name}}", "users/{{user_id}}", class: "f12" %>
             </div>
             <div class="content_area fl ml5">
-                <%= link_to "{{user_name}}", "users/{{user_id}}", class: "f12" %><br/>
                 <% if show_name %><p><%= link_to "{{name}}", link_path, class: "f14" %></p><% end %>
                 <% if show_content %><p>{{content}}</p><% end %>
             </div>

@@ -1,4 +1,4 @@
-<div class="mb10">
+<div class="m5">
     <h3><%= t("tags.hot_tags") %></h3>
     <% hot_tags.each do |tag, weight| %>
             <%= link_to tag, {:controller => controller.controller_name, :action => "index", :tag => tag}, class: "tag m2" %>
@@ -7,7 +7,7 @@
 </div>
 
 <% primary_tags.each do |first_lv, tags| %>
-    <div class="p5 m5">
+    <div class="m5">
         <div class="first_level clearfix mb5 mt5">
             <div>
                 <div class="clearfix">

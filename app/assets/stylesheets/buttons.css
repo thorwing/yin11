@@ -199,10 +199,6 @@ a.btn_register:hover{
     text-indent: -9999px;
 }
 
-.cancel_relationship_btn:hover{
-    background-position: 0px -84px;
-}
-
 .vote_button {display: inline-block;
     width:60px;
     height:26px;
@@ -211,8 +207,13 @@ a.btn_register:hover{
     background-position:0px 0px;
     text-indent: -9999px;
 }
-.vote_button.to_like:hover, .vote_button.liked{
+.vote_button.to_like:hover {
     background-position:0px -28px;
+}
+
+.vote_button.liked {
+    width: 75px;
+    background-position:0px -56px;
 }
 
 .collect_btn{ display: inline-block;
@@ -237,8 +238,13 @@ a.btn_register:hover{
     text-indent: -9999px;
 }
 
-.admire_btn.to_admire:hover, .admire_btn.admired{
+.admire_btn.to_admire:hover{
     background-position: 0px -28px;
+}
+
+.admire_btn.admired {
+    width: 75px;
+    background-position: 0px -56px;
 }
 
 .add_major_ingredient_btn{display: inline-block;

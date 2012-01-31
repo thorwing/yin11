@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
   def more
     criteria = Recipe.all.desc(:created_at)
     criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
+    criteria = criteria.where(name: /#{params[:query]}/i) if params[:query].present?
     @recipes = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW).reject{|r| r.image.blank?}
 
     data = {

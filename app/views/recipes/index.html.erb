@@ -7,7 +7,10 @@
 <% end %>
 
 <div class="grid_9 to_left">
-    <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 230 , tag: params[:tag]%>
+    <% if params[:query] %>
+        <span><%= '关于"' + params[:query] +'"的菜谱：' %></span><br/>
+    <% end %>
+    <%= render "shared/waterfall", path: more_recipes_path, waterfall_partial: "recipes/recipe_waterfall", columns_count: 3, columns_width: 230 , tag: params[:tag], query: params[:query]%>
 </div>
 
 <div class="grid_3 to_right">
@@ -16,7 +19,12 @@
         <%= link_to "", new_recipe_path, class: "add_recipe_btn" %>
         <hr/>
     <% end %>
-
+    <div class="mt10 mb10" >
+        <%= form_tag recipes_path, :method => :get do %>
+            <%= text_field_tag :query, "红烧肉", class: "not_cleared" %>
+            <%= submit_tag "搜索", class: "button" %>
+        <% end %>
+    </div>
     <%= render "tags/tags_list", hot_tags: @hot_tags, primary_tags: @primary_tags%>
   </div>
 </div>

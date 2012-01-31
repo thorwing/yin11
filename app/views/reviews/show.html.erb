@@ -1,35 +1,36 @@
 <% title "解馋分享" %>
 
 <div class="grid_9">
-    <div class="box_shadow clearfix p5">
-        <% if current_user_has_permission? :normal_user %>
-            <div class="fr" align="right">
-              <%= render "votes/vote_fields", :item => @review %>
+    <div class="box_shadow p5">
+        <div class="clearfix">
+            <% if current_user_has_permission? :normal_user %>
+                <div class="fr" align="right">
+                  <%= render "votes/vote_fields", :item => @review %>
+                </div>
+            <% end %>
+            <p class="ml10" style="width: 600px;">
+                <blockquote><span class="quoted"><%= @review.content %></span></blockquote>
+            </p>
+        </div>
+
+        <% if the_author_himself(Review.name, @review.id, true, false) %>
+            <div class="mt10 p5 clearfix">
+                <%= link_to "", edit_review_path(@review), class: "modify_btn" %>
+                <%= link_to "", @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
             </div>
         <% end %>
-        <p class="ml10" style="width: 600px;">
-            <blockquote><span class="quoted"><%= @review.content %></span></blockquote>
-        </p>
+
+        <%= render "votes/fans", item: @review %>
+
+        <% images_with_objects = @review.get_images_with_objects(:waterfall) %>
+        <% if images_with_objects.size > 0 %>
+            <div id="static_waterfall_container" class="mt10">
+                <% images_with_objects.each do |hash| %>
+                    <%= render "reviews/review_waterfall_field", picture_url: hash[:picture_url], picture_height: hash[:picture_height], item:  hash[:object] %>
+                <% end %>
+            </div>
+        <% end %>
     </div>
-
-    <% if the_author_himself(Review.name, @review.id, true, false) %>
-        <div class="mt10 p5 clearfix">
-            <%= link_to "", edit_review_path(@review), class: "modify_btn" %>
-            <%= link_to "", @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
-        </div>
-    <% end %>
-
-    <%= render "votes/fans", item: @review %>
-
-    <% images_with_objects = @review.get_images_with_objects(:waterfall) %>
-    <% if images_with_objects.size > 0 %>
-        <%= "相关：" %><br/>
-        <div id="static_waterfall_container" class="mt10">
-            <% images_with_objects.each do |hash| %>
-                <%= render "reviews/review_waterfall_field", picture_url: hash[:picture_url], picture_height: hash[:picture_height], item:  hash[:object] %>
-            <% end %>
-        </div>
-    <% end %>
 
     <div class="mt10">
         <%= render "comments/comments", :item => @review %>

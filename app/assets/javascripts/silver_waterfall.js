@@ -5,6 +5,7 @@ function waterfall(url) {
         var columns_width = parseInt($('#wf_col_width').val());
         var tag = $('#wf_tag').val();
         var catalog = $('#wf_catalog').val();
+        var query = $('#wf_query').val();
 
         var tpl = S.Template($('#tpl').html()),
             nextpage = 1,
@@ -13,7 +14,7 @@ function waterfall(url) {
             load:function(success, end) {
                 $('#loading_pins').show();
                 S.ajax({
-                    data:{ 'page': nextpage, 'tag': tag, 'catalog': catalog },
+                    data:{ 'page': nextpage, 'tag': tag, 'catalog': catalog, 'query': query },
                     url: url,
                     dataType: "json",
                     json: "jsoncallback",
