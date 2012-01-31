@@ -10,7 +10,6 @@ class VendorsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @vendors }
-      format.json { render :json => @vendors.map { |f| {:id => f.id, :name => f.name} } }
     end
   end
 

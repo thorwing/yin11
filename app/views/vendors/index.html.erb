@@ -1,7 +1,5 @@
 <% title t("vendors.vendors") %>
 
 <div id="vendors_list">
-  <% @vendors.each do |vendor| %>
-    <%= render :partial => "vendor", :collection => @vendors %>
-  <% end %>
+    <%= render @vendors %>
 </div>
