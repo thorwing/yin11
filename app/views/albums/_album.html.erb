@@ -4,7 +4,7 @@
             <div class="fl">
               <b><%= link_to album.title, album %></b>
               <span class="ml5 mr5 trivial"><%= album.desires.size %><%= t("albums.items") %></span> |
-              <span class="ml5"><%= link_to album.author.login_name, album.author %><%= link_to image_tag("grey.gif", "data-original"=> album.author.get_avatar(:thumb, false), width: 22, height: 22, "class" => 'lazy' ), album.author %></span>
+              <span class="ml5"><%= link_to image_tag("grey.gif", "data-original"=> album.author.get_avatar(:thumb, false), width: 22, height: 22, "class" => 'lazy' ), album.author %><%= link_to album.author.login_name, album.author %></span>
             </div>
             <div class="fr">
                 <%= render "votes/vote_fields", :item => album %>

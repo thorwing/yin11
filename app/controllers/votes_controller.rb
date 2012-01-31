@@ -18,6 +18,10 @@ class VotesController < ApplicationController
         eval "current_user.liked_#{@item.class.name.downcase}_ids << @item.id.to_s"
       end
 
+      #for older records
+      if @item.history_fan_ids.blank?
+        @item.history_fan_ids ||= []
+      end
       unless @item.history_fan_ids.include? current_user.id
         RewardManager.reward_for_like(@item, current_user)
         @item.history_fan_ids << current_user.id
