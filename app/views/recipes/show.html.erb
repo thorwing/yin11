@@ -14,13 +14,13 @@
                 </div>
 
                 <div class="mt10">
-                    <b><%= t("recipes.tags") %></b>
+                    <span class="trivial"><%= t("recipes.tags") %></span>
                     <%= render "tags/tags", item: @recipe %>
                 </div>
 
                 <div class="mt10">
                     <div class="clearfix">
-                        <b><%= t_with_colon("recipes.major") if @recipe.major_ingredients.length >0 %></b>
+                        <span class="orange"><%= t_with_colon("recipes.major") if @recipe.major_ingredients.length >0 %></span>
                         <ul>
                             <% @recipe.major_ingredients.each do |i|%>
                                 <li class="fl" style="width:50%;"> <%= i.name %>  <span class="trivial"><%= i.amount %></span></li>
@@ -28,7 +28,7 @@
                         </ul>
                     </div>
                     <div class="clearfix">
-                        <b><%= t_with_colon("recipes.minor") if @recipe.minor_ingredients.length >0%></b>
+                        <span class="orange"><%= t_with_colon("recipes.minor") if @recipe.minor_ingredients.length >0%></span>
                         <ul>
                             <% @recipe.minor_ingredients.each do |i|%>
                                 <li class="fl" style="width:50%;"> <%= i.name %> <span class="trivial"><%= i.amount %></span></li>
@@ -54,18 +54,19 @@
 
             <div class="clearfix"></div>
             <% if @recipe.description.present? %>
-                <div  class="mt5">
-                    <b ><%= t("recipes.description") %></b><br/>
+                <div class="mt5">
+                    <span class="orange"><%= t_with_colon("recipes.description") %></span>
                     <%= @recipe.description %>
                 </div>
             <% end %>
 
             <div class="fl mt10 block">
+                 <span class="orange"><%= t_with_colon("recipes.steps") %></span><br/>
                 <% @recipe.steps.each_slice(3).each do |slice| %>
                     <div class="clearfix">
                      <% slice.each do |s| %>
                         <div class="fl ml10 mr10 mb5" style="width:205px">
-                            <b><%= @recipe.steps.index(s) + 1 %></b><br/>
+                            <b class="center"><%= @recipe.steps.index(s) + 1 %></b>
                             <span class="center">
                                 <% if s.image.present?%>
                                     <!--<img class="lazy" src="grey.gif" data-original= "<=s.get_image_url%>" width="180" heigh="135" rel="facebox" :alt="step_image"  >-->

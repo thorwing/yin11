@@ -12,6 +12,11 @@ $(function(){
     });
 });
 
+$(function() {
+    $( "#sortable" ).sortable();
+//		$( "#sortable" ).disableSelection();
+});
+
 //check before submit a recipe
 $(function(){
 //    check if all the necessory info is given

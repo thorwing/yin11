@@ -326,31 +326,31 @@ a.btn_register:hover{
  /*text-indent: -9999px;*/
 }
 
-.add_major_btn:hover{
- background-position:-490px -229px;
-}
+/*.add_major_btn:hover{*/
+ /*background-position:-490px -229px;*/
+/*}*/
 
-.add_major_btn{
- display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-490px -200px;
- text-indent: -9999px;
- }
+/*.add_major_btn{*/
+ /*display: inline-block;*/
+ /*width:61px;*/
+ /*height:25px;*/
+ /*background-image: url(buttons.png);*/
+ /*background-repeat:no-repeat;*/
+ /*background-position:-490px -200px;*/
+ /*text-indent: -9999px;*/
+ /*}*/
 
 
-.add_minor_btn{
- display: inline-block;
- width:61px;
- height:25px;
- background-image: url(buttons.png);
- background-repeat:no-repeat;
- background-position:-362px -257px;
- text-indent: -9999px;
-}
+/*.add_minor_btn{*/
+ /*display: inline-block;*/
+ /*width:61px;*/
+ /*height:25px;*/
+ /*background-image: url(buttons.png);*/
+ /*background-repeat:no-repeat;*/
+ /*background-position:-362px -257px;*/
+ /*text-indent: -9999px;*/
+/*}*/
 
-.add_minor_btn:hover{
- background-position:-362px -282px;
- }
+/*.add_minor_btn:hover{*/
+ /*background-position:-362px -282px;*/
+ /*}*/
