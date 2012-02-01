@@ -37,7 +37,7 @@ class Album
       image_url = imagable.get_image_url(version) if imagable
     end
 
-    image_url ? image_url : "assets/not_found.png"
+    image_url ? image_url : "/assets/not_found.png"
   end
 
   #proxy

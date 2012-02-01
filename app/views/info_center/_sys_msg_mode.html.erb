@@ -21,7 +21,10 @@
                 <blockquote><span class="quoted"><%= notification.message %></span> </blockquote>
             <% end %>
             <% if notification.item.present? %>
-                <%= link_to image_tag(notification.item.get_image_url(:thumb), width: 50, height: 50), notification.item %><%= link_to "[" + t("general.show") + "]", notification.item %>
+                <% image_url = notification.item.get_image_url(:thumb) %>
+                <% if image_url.present? %>
+                    <%= link_to image_tag(image_url, width: 50, height: 50), notification.item %><%= link_to "[" + t("general.show") + "]", notification.item %>
+                <% end %>
             <% end %>
         </div>
         <div class="grid_2">
