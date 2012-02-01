@@ -356,16 +356,6 @@ a.tag:hover {
     background-color:$white;
 }
 
-.image_frame {
-    position: relative;
-}
-
-.image_frame .ribbon {
-    position: absolute;
-    right: -1px;
-    top: -2px;
-}
-
 .img_frame.restricted {
     max-width: 680px;
     max-height: 680px;

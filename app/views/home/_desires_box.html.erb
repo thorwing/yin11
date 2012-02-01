@@ -8,7 +8,7 @@
         <% end %>
         <div class="clearfix"></div>
     </ul>
-    <div id="masonry_container" class="b_white">
+    <div id="masonry_container">
       <div class="corner-stamp">
         <%= content_tag :span, "被这些美食图片馋到了吗？", class: "f14" %><br/>
         <%= content_tag :span, "点击看如何把它变成盘中餐！", class: "f14" %><br/>
@@ -23,9 +23,9 @@
       </div>
       <% @desires.each do |desire| %>
         <div class="item <%= desire.tags.join(' ') %>" style="margin: 10px; width: 210px;">
-          <div class="box_shadow p5">
-            <div class="image_frame center">
-                <%= image_tag "icons/jiechan.png", class: "ribbon" if desire.get_solutions_count > 0 %>
+          <div class="desire_frame p5">
+            <%= image_tag "icons/jiechan.png", class: "ribbon" if desire.get_solutions_count > 0 %>
+            <div class="center">
                 <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall), class: "lazy"), desire %>
             </div>
             <!--<span class="f14"><= link_to recipe.name, recipe %></span><br/>-->
