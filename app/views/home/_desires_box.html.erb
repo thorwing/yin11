@@ -22,17 +22,26 @@
         </div>
       </div>
       <% @desires.each do |desire| %>
+        <% lazyload = !(desire.tags.include? @desired_tags.keys.first) %>
         <div class="item <%= desire.tags.join(' ') %>" style="margin: 10px; width: 210px;">
           <div class="desire_frame p5">
             <%= image_tag "icons/jiechan.png", class: "ribbon" if desire.get_solutions_count > 0 %>
             <div class="center">
-                <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall), class: "lazy"), desire %>
+                <% if lazyload %>
+                    <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall), class: "lazy"), desire %>
+                <% else %>
+                    <%= link_to image_tag(desire.get_image_url(:waterfall), height: desire.get_image_height(:waterfall)), desire %>
+                <% end %>
             </div>
             <!--<span class="f14"><= link_to recipe.name, recipe %></span><br/>-->
             <!--<span><= truncate_content(recipe.description, 30) %></span>-->
             <div class="clearfix">
               <span>
-                <%= link_to image_tag("grey.gif", "data-original" => desire.author.get_avatar(:thumb, false), width: 22, height: 22, class: "lazy"), desire.author %>
+                <% if lazyload %>
+                    <%= link_to image_tag("grey.gif", "data-original" => desire.author.get_avatar(:thumb, false), width: 22, height: 22, class: "lazy"), desire.author %>
+                <% else %>
+                    <%= link_to image_tag(desire.author.get_avatar(:thumb, false), width: 22, height: 22), desire.author %>
+                <% end %>
                 <%= link_to desire.author.login_name, desire.author %>
               </span>
               <span class="ml5"><%= truncate_content(desire.content, 50) %></span>

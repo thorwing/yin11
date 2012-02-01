@@ -9,7 +9,7 @@
 //= require fileuploader
 //= require kissy/kissy
 //= require jquery.Jcrop.min
-//= require lazyload
+//= require jquery.lazyload
 //= require jquery.isotope.min
 //= require jquery.timer
 //= require liteaccordion.jquery.min
@@ -176,7 +176,10 @@ $(function(){
 });
 
 $(function(){
-    $("img.lazy").lazyload();
+    $("img.lazy").lazyload({
+        skip_invisible : true,
+        threshold : 500,
+        failure_limit : 10});
 });
 
 function fill_tag(link) {
