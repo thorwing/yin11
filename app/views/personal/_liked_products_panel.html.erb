@@ -1,9 +1,12 @@
-<div id="liked_products_panel" class="panel clearfix">
-    <%= link_to content_tag(:b, t("user_basic.liked_products"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=products" %><br/>
-    <% current_user.liked_products(7).each do |product| %>
-        <div class="clearfix">
-            <%= link_to image_tag(product.get_image_url(:thumb), width: 32, height: 32), product, class: "fl" %>
-            <%= link_to product.name, product, class: "fl ml5" %>
-        </div>
-    <% end %>
-</div>
+<% liked_products = current_user.liked_products(7) %>
+<% unless liked_products.empty? %>
+    <div id="liked_products_panel" class="panel clearfix">
+        <%= link_to content_tag(:b, t("user_basic.liked_products"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=products" %><br/>
+        <% liked_products.each do |product| %>
+            <div class="clearfix">
+                <%= link_to image_tag(product.get_image_url(:thumb), width: 32, height: 32), product, class: "fl" %>
+                <%= link_to product.name, product, class: "fl ml5" %>
+            </div>
+        <% end %>
+    </div>
+<% end %>

@@ -1,9 +1,10 @@
-<div id="liked_recipes_panel" class="panel clearfix">
-    <%= link_to content_tag(:b, t("user_basic.liked_recipes"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=recipes" %><br/>
-    <% current_user.liked_recipes(7).each do |recipe| %>
-        <div class="clearfix">
-            <%= link_to image_tag(recipe.get_image_url(:thumb), width: 32, height: 32), recipe, class: "fl" %>
-            <%= link_to recipe.name, recipe, class: "fl ml5" %>
-        </div>
-    <% end %>
-</div>
+<% liked_recipes = current_user.liked_recipes(7) %>
+
+<% unless liked_recipes.empty? %>
+    <div id="liked_recipes_panel" class="panel clearfix">
+        <%= link_to content_tag(:b, t("user_basic.liked_recipes"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=recipes" %><br/>
+        <% liked_recipes.each do |recipe| %>
+           <%= link_to recipe.name, recipe %><br/>
+        <% end %>
+    </div>
+<% end %>

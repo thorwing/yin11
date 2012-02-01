@@ -1,29 +1,30 @@
-<div id="user_panel" class="panel">
-    <b><%= link_to current_user.login_name, profile_user_path(current_user) %></b><br/>
-    <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> current_user.get_avatar(:thumb, false )), profile_user_path(current_user) %><br/>
-
-    <div class="block">
-        <div class ="fl m5">
-            <%= t("user_basic.shares") %><br/>
-            <%= current_user.reviews.count %>
-        </div>
-        <div class ="fl m5">
-            <%= t("user_basic.fans") %><br/>
-            <%= current_user.followers.count %>
-
-        </div>
-        <div class ="fl m5">
-            <%= t("user_basic.follows") %><br/>
-            <%= current_user.relationships.count %>
-        </div>
+<div class="clearfix box_shadow p5 panel">
+    <%= link_to current_user.login_name, profile_user_path(current_user) %><br/>
+    <%= link_to image_tag("grey.gif", "data-original"=> current_user.get_avatar(:thumb, false), :class => "lazy"), profile_user_path(current_user) %>
+    <div class="clearfix">
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= current_user.followers.count %></span>
+        <%= content_tag :span, t("user_basic.fans"), class: "center" %>
     </div>
-
-    <div class="mt5">
-        <b><%= t("control_panel.actions") %></b><br/>
-        <%= link_to "", new_recipe_path, :class => "add_recipe_btn" %>
-        <%= link_to "", new_album_path, :class => "add_album_btn" %><br/>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= current_user.desires.count %></span>
+        <%= content_tag :span, t("user_basic.desires"), class: "center" %>
     </div>
-    <div>
-      <%= link_to "【+收集到美食客栈工具】", "/home/collect_intro" %>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= current_user.reviews.count %></span>
+        <%= content_tag :span, t("reviews.reviews"), class: "center" %>
     </div>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= current_user.albums.count%></span>
+        <%= content_tag :span, t("albums.albums"), class: "center" %>
+    </div>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= current_user.recipes.count %></span>
+        <%= content_tag :span, t("recipes.recipes"), class: "center" %>
+    </div>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= current_user.score %></span>
+        <%= image_tag "star.png", width: 14, height: 14, title: "积分", class: "center" %>
+    </div>
+</div>
 </div>

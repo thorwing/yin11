@@ -1,8 +1,11 @@
-<div id="admired_desires_panel" class="panel clearfix">
-    <%= link_to content_tag(:b, t("user_basic.admired_desires"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=desires" %>
-    <div class="clearfix">
-        <% current_user.admired_desires.limit(7).each do |desire| %>
-            <%= link_to image_tag(desire.get_image_url(:thumb), width: 45, height: 45), desire, class: "fl m2" %>
-        <% end %>
+<% admired_desires = current_user.admired_desires %>
+<% unless admired_desires.empty? %>
+    <div id="admired_desires_panel" class="panel clearfix">
+        <%= link_to content_tag(:b, t("user_basic.admired_desires"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=desires" %>
+        <div class="clearfix">
+            <% admired_desires.each do |desire| %>
+                <%= link_to image_tag(desire.get_image_url(:thumb), width: 45, height: 45), desire, class: "fl m2" %>
+            <% end %>
+        </div>
     </div>
-</div>
+<% end %>
