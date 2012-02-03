@@ -64,19 +64,6 @@
         background: $shadow_gray;
     }
 
-    .desire_frame {
-        position: relative;
-        background: none repeat scroll 0 0 white;
-        border-radius: 4px 4px 4px 4px;
-        box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
-
-        .ribbon {
-            position: absolute;
-            right: -4px;
-            top: -4px;
-        }
-    }
-
     #filters {
         .filter_tab {
             display: inline-block;

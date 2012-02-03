@@ -1,10 +1,13 @@
-<% title t("desires.desire"), false %>
+<% title t("desires.desire") %>
 
 <% if current_user_has_permission? :normal_user %>
-    <div class="ml25">
+    <div class="ml25 fr">
         <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
     </div>
 <% end %>
+
+<%= render "primary_tags" %>
+<div class="clearfix mb10"></div>
 
 <% if params[:tag] %>
     <div class="ml25 mt5 mb5">

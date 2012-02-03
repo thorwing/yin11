@@ -5,6 +5,8 @@ class DesiresController < ApplicationController
   # GET /desires
   # GET /desires.json
   def index
+    @primary_tags = get_primary_tags
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @desires }
@@ -27,6 +29,7 @@ class DesiresController < ApplicationController
         user_recipes_cnt: d.author.recipes.count,
         user_fans_cnt: d.author.followers.count,
         user_established: current_user ? (current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == d.author.id.to_s}.size > 0) : false,
+        display_ribbon: d.get_solutions_count > 0 ? "display" : "display_none",
         time: d.created_at.strftime("%m-%d %H:%M:%S"),
         picture_url: d.get_image_url(:waterfall),
         picture_height: d.get_image_height(:waterfall),

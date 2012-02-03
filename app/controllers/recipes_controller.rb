@@ -31,6 +31,7 @@ class RecipesController < ApplicationController
         user_reviews_cnt: r.author.reviews.count,
         user_recipes_cnt: r.author.recipes.count,
         user_fans_cnt: r.author.followers.count,
+        display_ribbon: "display_none",
         time: r.created_at.strftime("%m-%d %H:%M:%S"),
         id: r.id}
       },

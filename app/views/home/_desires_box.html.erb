@@ -10,8 +10,7 @@
     </ul>
     <div id="masonry_container">
       <div class="corner-stamp">
-        <%= content_tag :span, "被这些美食图片馋到了吗？", class: "f14" %><br/>
-        <%= content_tag :span, "点击看如何把它变成盘中餐！", class: "f14" %><br/>
+        <%= content_tag :span, "被馋到了？点击“解馋”标记，看如何把它变成盘中餐！", class: "f14" %><br/>
         <div class="mt10">
             <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
             <% if current_user_has_permission? :normal_user %>
@@ -24,7 +23,7 @@
       <% @desires.each do |desire| %>
         <% lazyload = !(desire.tags.include? @desired_tags.keys.first) %>
         <div class="item <%= desire.tags.join(' ') %>" style="margin: 10px; width: 210px;">
-          <div class="desire_frame p5">
+          <div class="item_frame p5">
             <%= image_tag "icons/jiechan.png", class: "ribbon" if desire.get_solutions_count > 0 %>
             <div class="center">
                 <% if lazyload %>

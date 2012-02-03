@@ -8,8 +8,6 @@ class HomeController < ApplicationController
 
     @desired_tags = get_desired_tags
     @desires = @desired_tags.inject([]){|memo, (k, v)| memo | v }.compact.uniq
-
-    @primary_tags = get_primary_tags
   end
 
   # get more items for pagination on home page
