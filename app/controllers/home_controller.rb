@@ -3,8 +3,8 @@ class HomeController < ApplicationController
 
   def index
     #@hot_topics = Topic.recommended.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
-    @recommended_albums = Album.recommended.desc(:priority).limit(RECOMENDED_ALBUMS_ON_HOME_PAGE)
-    @stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
+    #@recommended_albums = Album.recommended.desc(:priority).limit(RECOMENDED_ALBUMS_ON_HOME_PAGE)
+    #@stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
 
     @desired_tags = get_desired_tags
 

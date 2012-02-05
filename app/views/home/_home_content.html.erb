@@ -1,6 +1,18 @@
+<% if false %>
+    <%= content_tag :span, "被馋到了？点击“解馋”标记，看如何把它变成盘中餐！", class: "f14" %><br/>
+    <div class="mt10">
+        <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
+        <% if current_user_has_permission? :normal_user %>
+            <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
+        <% else %>
+            <%= link_to "立即注册", new_user_path, class: "button" %>
+        <% end %>
+    </div>
+<% end %>
+
 <ul id="filters" class="mt5">
     <% @modes.each do |mode| %>
-        <li class="<%= (mode == @current_mode ? "filter_tab selected" : "filter_tab") %>">
+        <li class="<%= (mode == @current_mode ? "filter_tab selected hovered" : "filter_tab") %>">
           <div class="small_bar">.</div>
           <%= link_to t("home.modes.#{mode}"), "/?mode=#{mode}", class: "filter" %>
         </li>
@@ -9,26 +21,21 @@
     <div class="clearfix"></div>
 </ul>
 
-<% if @current_mode == "collections" %>
-    <div class="grid_8">
-        <%= link_to content_tag(:b, "推荐专辑", class: "f15") + content_tag(:span, "（全部）"), albums_path %><br/>
-        <%= render @recommended_albums %>
+<div id="masonry_container" class="clearfix">
+    <!--corner stmap-->
+    <div class="masonary_item">
+        <div class="inner_frame">
+            <%= content_tag :span, "美食标签：", class: "trivial f14" %><br/>
+            <% @desired_tags.each do |tag, array| %>
+                <%= link_to tag, desires_path(tag: tag), class: "tag" %>
+            <% end %>
+        </div>
     </div>
-    <div class="grid_4">
-        <%= link_to content_tag(:b, "美食达人", class: "f15") + content_tag(:span, "（全部）"), "\masters" %><br/>
-        <% @stars.each do |user| %>
-            <div class="mt10 clearfix">
-              <div class="fl mr5">
-                  <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false), width: 48, height: 48), user %>
-              </div>
-              <div class="fl">
-                  <%= link_to user.login_name, user %>
-                  <%= render "users/user_statics", user: user %>
-              </div>
-            </div>
-            <hr/>
-        <% end %>
-    </div>
-<% else %>
-    <%= render "desires_box" %>
-<% end %>
+    <% @desires.each do |desire| %>
+        <%= render "desires/desire_item", desire: desire %>
+    <% end %>
+</div>
+
+<nav id="page_nav">
+    <%= link_to "", 'http://' + request.host_with_port + "/more_desires/#{@current_mode}/2" %>
+</nav>

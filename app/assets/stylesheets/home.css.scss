@@ -103,9 +103,9 @@
 
     .filter_tab.selected {
         background: $shadow_gray;
-        .small_bar {
-            width: 100%;
-        };
         a {  color: $ink_black;}
+    }
+    .filter_tab.hovered {
+        .small_bar {width: 100%;};
     }
 }
