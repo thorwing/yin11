@@ -1,0 +1,18 @@
+<div class="masonary_item">
+  <div class="inner_frame">
+    <%= image_tag "icons/jiechan.png", class: "ribbon" if desire.get_solutions_count > 0 %>
+    <div class="centered">
+        <% pic_url = desire.get_image_url(:waterfall) %>
+        <% if pic_url.present? %>
+            <%= link_to image_tag(pic_url, height: desire.get_image_height(:waterfall)), desire %>
+        <% end %>
+    </div>
+    <div class="clearfix">
+      <span>
+        <%= link_to image_tag(desire.author.get_avatar(:thumb, false), width: 22, height: 22), desire.author %>
+        <%= link_to desire.author.login_name, desire.author %>
+      </span>
+      <span class="ml5"><%= truncate_content(desire.content, 50) %></span>
+    </div>
+  </div>
+</div>

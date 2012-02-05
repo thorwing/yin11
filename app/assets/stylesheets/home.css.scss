@@ -70,4 +70,42 @@
     #home_stamp {
         width: 310px;
     }
- }
+}
+
+
+#filters {
+    .filter_tab {
+        display: inline-block;
+        margin: 0 2px 0 0;
+        height:30px;
+
+        background: $azure;
+
+        a {  color: $font_gray;
+             text-decoration: none; }
+
+        .filter {
+            font-size: 15px;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        .small_bar {
+            display: block;
+            height: 5px;
+            margin: 0 auto;
+            text-indent: -9999px;
+            background: url("small_bar.jpg") repeat-x;
+            width: 0;
+        };
+
+    }
+
+    .filter_tab.selected {
+        background: $shadow_gray;
+        .small_bar {
+            width: 100%;
+        };
+        a {  color: $ink_black;}
+    }
+}

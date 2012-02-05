@@ -7,13 +7,24 @@ class HomeController < ApplicationController
     @stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
 
     @desired_tags = get_desired_tags
-    @desires = @desired_tags.inject([]){|memo, (k, v)| memo | v }.compact.uniq
+
+    @modes = ["hottest", "newest"]
+    if params[:mode].present?
+      @current_mode = params[:mode]
+    end
+
+    unless @modes.include? @current_mode
+      @current_mode = "hottest"
+    end
+
+    @desires = get_desires(@current_mode, 1)
   end
 
-  # get more items for pagination on home page
-  def more_items
+  def more_desires
+    @desires = get_desires(params[:mode], params[:page])
+
     respond_to do |format|
-      format.html {render :more_items, :layout => false}
+      format.html {render :more_desires, :layout => false}
     end
   end
 
@@ -63,5 +74,19 @@ class HomeController < ApplicationController
     end
 
     return desired_tags
+  end
+
+  private
+
+  def get_desires(mode, page = 1)
+    desires = []
+    criteria = Desire.all
+    if mode == "hottest"
+      desires = criteria.desc(:admirer_ids).page(page).per(ITEMS_PER_PAGE_FEW)
+    elsif mode == "newest"
+      desires = criteria.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    end
+
+    desires
   end
 end

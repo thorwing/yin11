@@ -1,84 +1,84 @@
 //Desires Box
-function shift_masonry(filter) {
-    $('#filters .filter_tab.selected').removeClass('selected');
-    $(filter).parents(".filter_tab").addClass('selected');
-//    $('#filters .filter_tab .small_bar').width(0);
+//function shift_masonry(filter) {
+//    $('#filters .filter_tab.selected').removeClass('selected');
+//    $(filter).parents(".filter_tab").addClass('selected');
+////    $('#filters .filter_tab .small_bar').width(0);
+////
+////    var small_bar = $(filter).parents(".filter_tab").find(".small_bar");
+////    small_bar.animate ({
+////        width: '100%'
+////    }, 500, function(){
+////    // TODO  make sure if a new tab selected during the duration, the old one is cleared
+////        $('#filters .filter_tab .small_bar').width(0);
+////        $('#filters .filter_tab.selected .small_bar').width('100%');
+////    });
 //
-//    var small_bar = $(filter).parents(".filter_tab").find(".small_bar");
-//    small_bar.animate ({
-//        width: '100%'
-//    }, 500, function(){
-//    // TODO  make sure if a new tab selected during the duration, the old one is cleared
-//        $('#filters .filter_tab .small_bar').width(0);
-//        $('#filters .filter_tab.selected .small_bar').width('100%');
+//    var $container = $('#masonry_container');
+//    var selector = $(filter).attr('data-filter');
+//    $container.isotope({filter: selector});
+//    return false;
+//}
+
+//$(function(){
+//    var $container = $('#masonry_container');
+//    $('#filters .filter').click(function(e){
+//        e.preventDefault();
+//        shift_masonry(this);
 //    });
-
-    var $container = $('#masonry_container');
-    var selector = $(filter).attr('data-filter');
-    $container.isotope({filter: selector});
-    return false;
-}
-
-$(function(){
-    var $container = $('#masonry_container');
-    $('#filters .filter').click(function(e){
-        e.preventDefault();
-        shift_masonry(this);
-    });
-
-    $('#filters .filter').hover(
-        function(e){
-            shift_masonry(this);
-        },
-        function(){
-        }
-    );
-
-    $.Isotope.prototype._masonryReset = function() {
-        // layout-specific props
-        this.masonry = {};
-        this._getSegments();
-        var i = this.masonry.cols;
-        this.masonry.colYs = [];
-        while (i--) {
-          this.masonry.colYs.push( 0 );
-        }
-
-        if ( this.options.masonry.cornerStampSelector ) {
-          var $cornerStamp = this.element.find( this.options.masonry.cornerStampSelector ),
-              stampWidth = $cornerStamp.outerWidth(true) - ( this.element.width() % this.masonry.columnWidth ),
-              cornerCols = Math.ceil( stampWidth / this.masonry.columnWidth ),
-              cornerStampHeight = $cornerStamp.outerHeight(true);
-          for ( i = Math.max( this.masonry.cols - cornerCols, cornerCols ); i < this.masonry.cols; i++ ) {
-            this.masonry.colYs[i] = cornerStampHeight;
-          }
-        }
-    };
-
-    var first_tab = $('#filters .filter_tab:first');
-    first_tab.addClass('selected');
-    first_tag = first_tab.find('.filter').attr('data-filter');
-
-    $container.imagesLoaded( function(){
-        $container.isotope({
-            // options
-            itemSelector : '.item',
-            masonry: {
-                cornerStampSelector: '.corner-stamp'
-            },
-            filter: first_tag
-        });
-    });
-
-//    $('#filters').everyTime(10000, 'controlled', function() {
-//        var length = $(this).find('a').length;
-//        var index = Math.floor((length) * (Math.random() % 1));
-//        $('#filters a.selected').removeClass('selected');
-//        var tag = $('#filters a:eq(' + index + ')');
-//        tag.addClass('selected');
-//        tag.click();
+//
+//    $('#filters .filter').hover(
+//        function(e){
+//            shift_masonry(this);
+//        },
+//        function(){
+//        }
+//    );
+//
+//    $.Isotope.prototype._masonryReset = function() {
+//        // layout-specific props
+//        this.masonry = {};
+//        this._getSegments();
+//        var i = this.masonry.cols;
+//        this.masonry.colYs = [];
+//        while (i--) {
+//          this.masonry.colYs.push( 0 );
+//        }
+//
+//        if ( this.options.masonry.cornerStampSelector ) {
+//          var $cornerStamp = this.element.find( this.options.masonry.cornerStampSelector ),
+//              stampWidth = $cornerStamp.outerWidth(true) - ( this.element.width() % this.masonry.columnWidth ),
+//              cornerCols = Math.ceil( stampWidth / this.masonry.columnWidth ),
+//              cornerStampHeight = $cornerStamp.outerHeight(true);
+//          for ( i = Math.max( this.masonry.cols - cornerCols, cornerCols ); i < this.masonry.cols; i++ ) {
+//            this.masonry.colYs[i] = cornerStampHeight;
+//          }
+//        }
+//    };
+//
+//    var first_tab = $('#filters .filter_tab:first');
+//    first_tab.addClass('selected');
+//    first_tag = first_tab.find('.filter').attr('data-filter');
+//
+//    $container.imagesLoaded( function(){
+//        $container.isotope({
+//            // options
+//            itemSelector : '.item',
+//            masonry: {
+//                cornerStampSelector: '.corner-stamp'
+//            },
+//            filter: first_tag
+//        });
 //    });
-});
+//
+////    $('#filters').everyTime(10000, 'controlled', function() {
+////        var length = $(this).find('a').length;
+////        var index = Math.floor((length) * (Math.random() % 1));
+////        $('#filters a.selected').removeClass('selected');
+////        var tag = $('#filters a:eq(' + index + ')');
+////        tag.addClass('selected');
+////        tag.click();
+////    });
+//});
 
 
 //$(function(){
@@ -102,3 +102,30 @@ $(function(){
         }
     });
 });
+
+
+//$(function(){
+//
+//  var $container = $('#masonry_container');
+//
+//  $container.isotope({
+//    itemSelector : '.item'
+//  });
+//
+//  $container.infinitescroll({
+//    navSelector  : '#page_nav',    // selector for the paged navigation
+//    nextSelector : '#page_nav a',  // selector for the NEXT link (to page 2)
+//    itemSelector : '.item',     // selector for all items you'll retrieve
+//    loading: {
+//        finishedMsg: 'No more pages to load.',
+//        img: '/assets/loading.gif'
+//      }
+//    },
+//    // call Isotope as a callback
+//    function( newElements ) {
+//      $container.isotope( 'appended', $( newElements ) );
+//    }
+//  );
+//
+//});
+

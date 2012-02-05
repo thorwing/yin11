@@ -1,6 +1,7 @@
 class DesiresController < ApplicationController
   before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Desire.name, c.params[:id], true)}
+  layout :resolve_layout
 
   # GET /desires
   # GET /desires.json
@@ -151,4 +152,15 @@ class DesiresController < ApplicationController
       format.html {render "afar", :layout => "dialog"}
     end
   end
+
+  private
+  def resolve_layout
+    case action_name
+      when "more"
+        nil
+      else
+        'application'
+    end
+  end
+
 end

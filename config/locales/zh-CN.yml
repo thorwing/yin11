@@ -288,6 +288,10 @@ zh-CN:
     current_city: 当前城市：
     change_city: 切换
     recommended_products: 推荐商品
+    modes:
+      hottest: 人气
+      newest: 最新
+      collections: "专辑&达人"
 
   control_panel:
     actions: 我要：

@@ -59,3 +59,77 @@ $(function(){
         }
     );
 });
+
+$(function(){
+
+    var $container = $('#masonry_container');
+
+    $container.imagesLoaded(function(){
+      $container.masonry({
+//        cornerStampSelector: '.coner_stamp',
+        itemSelector: '.masonary_item',
+        columnWidth: 10
+      });
+    });
+
+    $container.infinitescroll({
+      debug: true,
+      navSelector  : '#page_nav',    // selector for the paged navigation
+      nextSelector : '#page_nav a:first',  // selector for the NEXT link (to page 2)
+      itemSelector : '.masonary_item',     // selector for all items you'll retrieve
+      loading: {
+          finishedMsg: '暂时就这么多图片啦！去看看其他的吧～',
+          img: '/assets/loading_big.gif',
+          msgText : '正在加载更多图片...'
+        }
+      },
+      // trigger Masonry as a callback
+      function( newElements ) {
+        // hide new items while they are loading
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        // ensure that images load before adding to masonry layout
+        $newElems.imagesLoaded(function(){
+          // show elems now they're ready
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true );
+        });
+      }
+    );
+
+});
+
+function shift_masonry(filter) {
+    $('#filters .filter_tab.selected').removeClass('selected');
+    $(filter).parents(".filter_tab").addClass('selected');
+//    $('#filters .filter_tab .small_bar').width(0);
+//
+//    var small_bar = $(filter).parents(".filter_tab").find(".small_bar");
+//    small_bar.animate ({
+//        width: '100%'
+//    }, 500, function(){
+//    // TODO  make sure if a new tab selected during the duration, the old one is cleared
+//        $('#filters .filter_tab .small_bar').width(0);
+//        $('#filters .filter_tab.selected .small_bar').width('100%');
+//    });
+
+//    var $container = $('#masonry_container');
+//    var selector = $(filter).attr('data-filter');
+//    $container.isotope({filter: selector});
+    return false;
+}
+
+$(function(){
+    var $container = $('#masonry_container');
+//    $('#filters .filter').click(function(e){
+//        e.preventDefault();
+//        shift_masonry(this);
+//    });
+
+//    $('#filters .filter').hover(
+//        function(e){
+//            shift_masonry(this);
+//        },
+//        function(){
+//        }
+//    );
+});

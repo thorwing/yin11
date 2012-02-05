@@ -1,0 +1,44 @@
+@import "attributes";
+
+#masonry_container {
+    background: $shadow_gray;
+}
+
+.masonary_item {
+    margin: 10px;
+    width:220px;
+
+}
+
+ .inner_frame {
+    padding: 10px;
+    position: relative;
+    background: none repeat scroll 0 0 white;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
+
+    .ribbon {
+        position: absolute;
+        right: -4px;
+        top: -4px;
+    }
+
+    .centered img {
+        width :200px;
+    }
+}
+
+.corner_stamp {
+    width: 190px;
+    height: 100px;
+    padding: 10px;
+    /*margin: 10px 30px 0 0;*/
+
+    margin-left: 10px;
+    float: right;
+    background: $light_gray;
+    color: #333230;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}

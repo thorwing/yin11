@@ -13,6 +13,8 @@
 //= require jquery.isotope.min
 //= require jquery.timer
 //= require liteaccordion.jquery.min
+//= require jquery.masonary
+//= require jquery.infinitescroll
 //= require_tree .
 
 //not included

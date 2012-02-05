@@ -1,0 +1,34 @@
+<ul id="filters" class="mt5">
+    <% @modes.each do |mode| %>
+        <li class="<%= (mode == @current_mode ? "filter_tab selected" : "filter_tab") %>">
+          <div class="small_bar">.</div>
+          <%= link_to t("home.modes.#{mode}"), "/?mode=#{mode}", class: "filter" %>
+        </li>
+    <% end %>
+
+    <div class="clearfix"></div>
+</ul>
+
+<% if @current_mode == "collections" %>
+    <div class="grid_8">
+        <%= link_to content_tag(:b, "推荐专辑", class: "f15") + content_tag(:span, "（全部）"), albums_path %><br/>
+        <%= render @recommended_albums %>
+    </div>
+    <div class="grid_4">
+        <%= link_to content_tag(:b, "美食达人", class: "f15") + content_tag(:span, "（全部）"), "\masters" %><br/>
+        <% @stars.each do |user| %>
+            <div class="mt10 clearfix">
+              <div class="fl mr5">
+                  <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false), width: 48, height: 48), user %>
+              </div>
+              <div class="fl">
+                  <%= link_to user.login_name, user %>
+                  <%= render "users/user_statics", user: user %>
+              </div>
+            </div>
+            <hr/>
+        <% end %>
+    </div>
+<% else %>
+    <%= render "desires_box" %>
+<% end %>
