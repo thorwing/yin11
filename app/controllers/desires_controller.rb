@@ -1,12 +1,12 @@
 class DesiresController < ApplicationController
   before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Desire.name, c.params[:id], true)}
-  layout :resolve_layout
 
   # GET /desires
   # GET /desires.json
   def index
     @primary_tags = get_primary_tags
+    @desires = get_desires(params[:tag], 1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,33 +15,10 @@ class DesiresController < ApplicationController
   end
 
   def more
-    #  used for waterfall displaying
-    criteria = Desire.all.desc(:created_at) #votes
-    criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
-    @desires = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW).select{|d| d.get_image_url(:waterfall).present?}
-
-    data = {
-      items: @desires.inject([]){|memo, d| memo <<  {
-        content: d.content,
-        user_id: d.author.id,
-        user_name: d.author.login_name,
-        user_avatar: d.author.get_avatar(:thumb, false),
-        user_reviews_cnt: d.author.reviews.count,
-        user_recipes_cnt: d.author.recipes.count,
-        user_fans_cnt: d.author.followers.count,
-        user_established: current_user ? (current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == d.author.id.to_s}.size > 0) : false,
-        display_ribbon: d.get_solutions_count > 0 ? "display" : "display_none",
-        time: d.created_at.strftime("%m-%d %H:%M:%S"),
-        picture_url: d.get_image_url(:waterfall),
-        picture_height: d.get_image_height(:waterfall),
-        id: d.id}
-      },
-      page: params[:page],
-      pages: (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
-    }
+    @desires = get_desires(params[:tag] , params[:page])
 
     respond_to do |format|
-      format.json { render :json => data}
+      format.json { render :more, layout: false}
     end
   end
 
@@ -154,13 +131,13 @@ class DesiresController < ApplicationController
   end
 
   private
-  def resolve_layout
-    case action_name
-      when "more"
-        nil
-      else
-        'application'
+
+  def get_desires(tag = nil, page = 1)
+    criteria = Desire.all
+    if tag.present? && tag != "null"
+      criteria = criteria.tagged_with(tag)
     end
+    @desires = criteria.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
   end
 
 end

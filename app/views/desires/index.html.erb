@@ -1,21 +1,30 @@
-<% title t("desires.desire") %>
-
-<% if current_user_has_permission? :normal_user %>
-    <div class="ml25 fr">
-        <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
-    </div>
-<% end %>
+<% title t("desires.desire"), false %>
 
 <%= render "primary_tags" %>
 <div class="clearfix mb10"></div>
 
-<% if params[:tag] %>
-    <div class="ml25 mt5 mb5">
-        <h2><%= "“#{params[:tag] }”的馋人图片"%></h2>
+<div id="masonry_container" class="clearfix">
+    <!--corner stmap-->
+    <div class="masonary_item">
+        <div class="inner_frame">
+            <% if params[:tag] %>
+                <h2 class="mb10"><%= "“#{params[:tag] }”的馋人图片"%></h2>
+            <% end %>
+            <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
+            <% if current_user_has_permission? :normal_user %>
+                <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
+            <% else %>
+                <%= link_to "立即注册", new_user_path, class: "button" %>
+            <% end %>
+        </div>
     </div>
-<% end %>
 
-<div class="grid_12">
-    <%= render "shared/waterfall", :path => more_desires_path, :waterfall_partial => "desires/desire_waterfall", :columns_count => 4, :columns_width => 230, tag: params[:tag] %>
+    <% @desires.each do |desire| %>
+        <%= render "desires/desire_item", desire: desire %>
+    <% end %>
 </div>
 
+<nav id="page_nav">
+    <% tag = params[:tag] || "null"  %>
+    <%= link_to "", 'http://' + request.host_with_port + "/desires/more/#{tag}/2" %>
+</nav>

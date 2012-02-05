@@ -38,6 +38,7 @@ Yin11::Application.routes.draw do
   match "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
   #match "follow_yin11" => "syncs#follow_yin11"
   match '/more_desires/:mode/:page' => 'home#more_desires'
+  match '/desires/more/:tag/:page' => 'desires#more'
 
   resources :topics do
     member { post :mercury_update }
@@ -82,7 +83,7 @@ Yin11::Application.routes.draw do
       put :admire
     end
     collection do
-      get :more
+      #get :more
       get :afar
     end
   end
