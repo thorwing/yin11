@@ -105,14 +105,14 @@
     border: 9px solid white;
     border-bottom-width: 8px;
     padding: 5px 5px 6px 0;
-    background: #c4e2fe;
-    -webkit-box-shadow: -1px -1px 0 #F7F7F7, 1px 1px 0 #F7F7F7, 0 5px 15px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: -1px -1px 0 #F7F7F7, 1px 1px 0 #F7F7F7, 0 5px 15px rgba(0, 0, 0, 0.4);
-    -ms-box-shadow: -1px -1px 0 #F7F7F7, 1px 1px 0 #F7F7F7, 0 5px 15px rgba(0, 0, 0, 0.4);
-    -o-box-shadow: -1px -1px 0 #F7F7F7, 1px 1px 0 #F7F7F7, 0 5px 15px rgba(0, 0, 0, 0.4);
-	box-shadow: -1px -1px 0 #F7F7F7, 1px 1px 0 #F7F7F7, 0 5px 15px rgba(0, 0, 0, 0.4);
+    background: #a0a0a0;
+    -webkit-box-shadow: -1px -1px 0 #c0c0c0, 1px 1px 0 #c0c0c0, 0 5px 15px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: -1px -1px 0 #c0c0c0, 1px 1px 0 #c0c0c0, 0 5px 15px rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: -1px -1px 0 #c0c0c0, 1px 1px 0 #c0c0c0, 0 5px 15px rgba(0, 0, 0, 0.4);
+    -o-box-shadow: -1px -1px 0 #c0c0c0, 1px 1px 0 #c0c0c0, 0 5px 15px rgba(0, 0, 0, 0.4);
+	box-shadow: -1px -1px 0 #c0c0c0, 1px 1px 0 #c0c0c0, 0 5px 15px rgba(0, 0, 0, 0.4);
 }
-.light .slide > h2 { background: #c4e2fe; text-shadow: 0 -1px 0 white; line-height: 265% }
+.light .slide > h2 { background: #a0a0a0; text-shadow: 0 -1px 0 white; line-height: 265% }
 .light .slide > h2 span {
     background: #fcfcfc;
     background: -moz-linear-gradient(left,  #fcfcfc 0%, #ededed 100%);
@@ -122,22 +122,22 @@
     background: -ms-linear-gradient(left,  #fcfcfc 0%,#ededed 100%);
     background: linear-gradient(left,  #fcfcfc 0%,#ededed 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=1 );
-    -webkit-box-shadow: -1px -1px 0 #999999 inset, 1px 1px 0 #999999 inset;
-    -moz-box-shadow: -1px -1px 0 #999999 inset, 1px 1px 0 #999999 inset;
-    -o-box-shadow: -1px -1px 0 #999999 inset, 1px 1px 0 #999999 inset;
-	box-shadow: -1px -1px 0 #999999 inset, 1px 1px 0 #999999 inset;
+    -webkit-box-shadow: -1px -1px 0 #909090 inset, 1px 1px 0 #909090 inset;
+    -moz-box-shadow: -1px -1px 0 #909090 inset, 1px 1px 0 #909090 inset;
+    -o-box-shadow: -1px -1px 0 #909090 inset, 1px 1px 0 #909090 inset;
+	box-shadow: -1px -1px 0 #909090 inset, 1px 1px 0 #909090 inset;
     color: #909090;
 }
 .light .slide > h2 b { background: #ffffff; color: #909090; text-shadow: -1px 1px 0 white }
 .light .slide > h2.selected span, .light .slide h2.selected span:hover, .light .slide > h2.selected b { background: #ffffff }
-.light .slide > div { background: #c4e2fe; margin-left: 5px }
+.light .slide > div { background: #a0a0a0; margin-left: 5px }
 
 /**************************************** Stitch */
 .stitch {
     position: relative;
     padding: 5px 0 5px 5px;
-    border: 11px solid #ffffff;
-    background: #ffffff;
+    border: 11px solid #353535;
+    background: #353535;
     -webkit-box-shadow: 0 -1px 0 #5b5b5b inset, 0 5px 15px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0 -1px 0 #5b5b5b inset, 0 5px 15px rgba(0, 0, 0, 0.4);
     -o-box-shadow: 0 -1px 0 #5b5b5b inset, 0 5px 15px rgba(0, 0, 0, 0.4);
@@ -150,14 +150,14 @@
     position: absolute;
     top: -9px;
     left: -9px;
-    background: #ffffff;
+    background: #353535;
     border-width: 9px;
     -webkit-border-image: url('bg_stitch.png') 9 repeat;
     -moz-border-image: url('bg_stitch.png') 9 repeat;
     -o-border-image: url('bg_stitch.png') 9 repeat;
     border-image: url('bg_stitch.png') 9 repeat;
 }
-.stitch .slide > h2 { background: #ffffff }
+.stitch .slide > h2 { background: #353535 }
 .stitch .slide > h2 span {
     height: auto;
     padding-right: 5%;

@@ -18,7 +18,7 @@ class DesiresController < ApplicationController
     @desires = get_desires(params[:tag] , params[:page])
 
     respond_to do |format|
-      format.json { render :more, layout: false}
+      format.html { render :more, layout: false}
     end
   end
 

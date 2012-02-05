@@ -1,0 +1,72 @@
+@charset 'utf-8';
+/*************************************************!
+*
+*   project:    liteAccordion - a horizontal accordion plugin for jQuery
+*   author:     Nicola Hibbert
+*   url:        http://nicolahibbert.com/liteaccordion-v2/
+*   demo:       http://www.nicolahibbert.com/demo/liteAccordion/
+*
+*   Version:    2.0.2
+*   Copyright:  (c) 2010-2011 Nicola Hibbert
+*   Licence:    MIT
+*
+**************************************************/
+/****************************************** Core */
+
+.accordion { text-align: left; font: 'Helvetica Neue', Verdana, Arial, sans-serif }
+.accordion > ol { position: relative; overflow: hidden; height: 100%; margin: 0; padding: 0; list-style-type: none }
+.accordion .slide > h2 {
+	color: black;
+    font-size: 16px;
+	font-weight: normal;
+	margin: 0;
+	z-index: 100;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.accordion .slide > h2 span {
+    display: block;
+    padding-right: 8%;
+    text-align: right;
+    height: 90%;
+    margin-top: 5px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.accordion .slide > h2:hover { cursor: pointer }
+.accordion .slide > div { height: 100%; position: absolute; top: 0; z-index: 10; overflow: hidden; background: white }
+.accordion noscript p { padding: 10px; margin: 0; background: white }
+
+/**************************************** Stitch */
+.stitch {
+    position: relative;
+    padding: 5px 0 5px 5px;
+    background: #ffffff;
+    -webkit-box-shadow: 0 -1px 0 #5b5b5b inset, 0 5px 15px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 -1px 0 #5b5b5b inset, 0 5px 15px rgba(0, 0, 0, 0.4);
+    -o-box-shadow: 0 -1px 0 #5b5b5b inset, 0 5px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 -1px 0 #5b5b5b inset, 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.stitch .slide > h2 { background: #ffffff }
+.stitch .slide > h2 span {
+    height: 170px;
+    width: 25px;
+    color: white;
+    margin-top: 0;
+}
+
+
+.stitch .slide:nth-child(1) > h2 span, .stitch .slide:nth-child(1) > h2:after { background-color: #c25252 }
+.stitch .slide:nth-child(2) > h2 span, .stitch .slide:nth-child(2) > h2:after { background-color: #ca9859 }
+.stitch .slide:nth-child(3) > h2 span, .stitch .slide:nth-child(3) > h2:after { background-color: #96ba5f }
+.stitch .slide:nth-child(4) > h2 span, .stitch .slide:nth-child(4) > h2:after { background-color: #59abb7 }
+.stitch .slide:nth-child(5) > h2 span, .stitch .slide:nth-child(5) > h2:after { background-color: #bb6098 }
+.ie.stitch .slide-0 > h2 span { background-color: #c25252 }
+.ie.stitch .slide-1 > h2 span { background-color: #ca9859 }
+.ie.stitch .slide-2 > h2 span { background-color: #96ba5f }
+.ie.stitch .slide-3 > h2 span { background-color: #59abb7 }
+.ie.stitch .slide-4 > h2 span { background-color: #bb6098 }
