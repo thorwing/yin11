@@ -14,6 +14,32 @@ namespace :yin11 do
     end
   end
 
+  desc "create desires according to recipes"
+  task :create_desires_for_recipes => :environment do
+    p "create desires for recipes..."
+    Recipe.all.each do |recipe|
+      image_id = nil
+      image = nil
+      recipe.steps.each do |step|
+        image_id = step.img_id if step.img_id.present?
+      end
+      image = Image.first(conditions: {id: image_id}) if image_id
+      if image
+        Desire.create do |d|
+          d.author = current_user
+          d.content = I18n.t("desires.new_recipe", user: current_user.login_name, name: recipe.name)
+          cloned_image = image.clone
+          d.images << cloned_image
+          recipe.reviews.create do |r|
+            r.author = current_user
+            r.desire = d
+            r.content = recipe.name
+          end
+        end
+      end
+    end
+  end
+
   desc "generate primary tags"
   task :generate_primary_tags => :environment do
     p "generate primary tags..."

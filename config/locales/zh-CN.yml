@@ -454,6 +454,7 @@ zh-CN:
 
   desires:
     desire: 馋人图片
+    new_recipe: %{user}添加了菜谱“%{name}”
     new: 上传馋人图片
     edit: 编辑馋人图片
 

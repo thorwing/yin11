@@ -8,13 +8,13 @@ class HomeController < ApplicationController
 
     @desired_tags = get_desired_tags
 
-    @modes = ["hottest", "newest"]
+    @modes = ["newest", "hottest"]
     if params[:mode].present?
       @current_mode = params[:mode]
     end
 
     unless @modes.include? @current_mode
-      @current_mode = "hottest"
+      @current_mode = "newest"
     end
 
     @desires = get_desires(@current_mode, 1)

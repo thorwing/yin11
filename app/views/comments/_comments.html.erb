@@ -1,9 +1,9 @@
 <div class="comments_fields">
-    <div class="clearfix">
-        <% if current_user %>
+    <% if current_user %>
+        <div class="mb10 clearfix">
             <%= render "comments/new_comment", :item => item%>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 
     <div class="comments_container <%= item.id.to_s %>">
         <% if item.comments.empty? %>
