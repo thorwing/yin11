@@ -20,7 +20,6 @@
 *= require recipes
 *= require desires
 *= require messages
-*= require buttons
 *= require home
 *= require buttons
 *= require masonary
@@ -226,12 +225,14 @@ ul.menu li {
 .black {color: $ink_black;}
 .white {color: $white;}
 .orange {color: $orange;}
+.berry_pink {color: $berry_pink;}
+.berry_red {color: $berry_red;}
 
 .b_black {background-color: $black;}
 .b_gray {background-color: $gray;}
 .b_shadow_gray {background-color: $shadow_gray;}
 .b_white {background-color: $white;}
-.b_azure {background-color: $azure;}
+.b_azure {background-color: $berry_azure;}
 
 .lb {border-left: 1px solid;}
 .rb {border-right: 1px solid;}
@@ -295,7 +296,7 @@ ul.menu li {
 
 a.button, input.button {
     display: inline-block;
-	background: $blue;
+	background: $berry_red;
 	padding: 0 2px;
 	color: $white;
 	text-decoration: none;
@@ -304,28 +305,8 @@ a.button, input.button {
     height: 24px;
 }
 a.button:hover, input.button:hover {
-	background: darken($blue, 10%);
+	background: darken($berry_red, 10%);
     cursor:pointer;
-}
-
-a.button.new_relationship {
-    background: $blue;
-}
-
-a.button.new_relationship:hover {
-    background: darken($blue, 10%);
-}
-
-a.button.cancel_relationship {
-    background: $gray;
-}
-
-a.button.cancel_relationship:hover {
-    background: darken($gray, 10%);
-}
-
-a.button.hide {
-    display: none;
 }
 
 a.tag {

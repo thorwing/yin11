@@ -4,7 +4,7 @@
     cursor:pointer;
     position:relative;
 
-    .nav_menu a:hover, a.selected {color: $blue;}
+    .nav_menu a:hover, a.selected {color: $berry_green;}
     .nav_menu a { margin-right: 8px; }
 
     /* sub-menus*/
@@ -20,13 +20,13 @@
     ul li {display:block;  padding: 0 0 2px 4px; list-style-type:none; }
     ul li:first-child { border-top: none; }
     ul li a {  color: $ink_black; }
-    ul li a:hover { color:$blue; }
+    ul li a:hover { color:$berry_green; }
 }
 
 .nav_menu:hover ul { display:block;  }
 
 #top_third_party a {margin-right:  10px; color: $ink_black;}
-#top_third_party a:hover { color: $blue; }
+#top_third_party a:hover { color: $berry_green; }
 
 
 

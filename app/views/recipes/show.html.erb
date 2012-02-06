@@ -20,7 +20,7 @@
 
                 <div class="mt10">
                     <div class="clearfix">
-                        <span class="orange"><%= t_with_colon("recipes.major") if @recipe.major_ingredients.length >0 %></span>
+                        <span class="berry_pink"><%= t_with_colon("recipes.major") if @recipe.major_ingredients.length >0 %></span>
                         <ul>
                             <% @recipe.major_ingredients.each do |i|%>
                                 <li class="fl" style="width:50%;"> <%= i.name %>  <span class="trivial"><%= i.amount %></span></li>
@@ -28,7 +28,7 @@
                         </ul>
                     </div>
                     <div class="clearfix">
-                        <span class="orange"><%= t_with_colon("recipes.minor") if @recipe.minor_ingredients.length >0%></span>
+                        <span class="berry_pink"><%= t_with_colon("recipes.minor") if @recipe.minor_ingredients.length >0%></span>
                         <ul>
                             <% @recipe.minor_ingredients.each do |i|%>
                                 <li class="fl" style="width:50%;"> <%= i.name %> <span class="trivial"><%= i.amount %></span></li>
@@ -55,7 +55,7 @@
             <div class="clearfix"></div>
             <% if @recipe.description.present? %>
                 <div class="mt5">
-                    <span class="orange"><%= t_with_colon("recipes.description") %></span>
+                    <span class="berry_pink"><%= t_with_colon("recipes.description") %></span>
                     <%= @recipe.description %>
                 </div>
             <% end %>

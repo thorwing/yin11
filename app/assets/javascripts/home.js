@@ -139,4 +139,14 @@ $(function(){
         },
         function(){}
     );
+
+    $('#filters').hover(
+        function(){},
+        function(e){
+            $('#filters .filter_tab:not(.selected)').removeClass('hovered');
+            $('#filters .filter_tab:not(.selected) .small_bar').width(0);
+            $('#filters .filter_tab.selected').addClass('hovered');
+            $('#filters .filter_tab.selected .small_bar').width('100%');
+        }
+    );
 });

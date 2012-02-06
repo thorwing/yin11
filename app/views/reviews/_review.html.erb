@@ -17,7 +17,7 @@
                         <span class="display_inline_block">
                           <%= image_tag("icons/#{item.class.name.downcase}.png", width: 12, height: 12) %>
                           <% if item.is_a?(Product) %>
-                            <span class="f11 orange"><%= (t("money.yuan_mark1") + item.price_as_money_string) if item.price? %></span>
+                            <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + item.price_as_money_string) if item.price? %></span>
                           <% end %>
                         </span>
                     </div>

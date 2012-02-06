@@ -1,5 +1,9 @@
 @import "attributes";
 
+#desires_box {
+    background: $shadow_gray
+}
+
 #masonry_container {
     /*background: $shadow_gray;*/
 }
@@ -7,7 +11,6 @@
 .masonary_item {
     margin: 10px;
     width:220px;
-
 }
 
  .inner_frame {
@@ -41,4 +44,46 @@
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
+}
+
+
+#filters {
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+    /*border-bottom: 5px solid $berry_azure;*/
+
+    .filter_tab {
+        display: inline-block;
+        margin: 0 2px 0 0;
+        height:30px;
+
+        background: $berry_gray;
+
+        a {  color: $font_gray;
+             text-decoration: none; }
+
+        .filter {
+            font-size: 15px;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        .small_bar {
+            display: block;
+            height: 5px;
+            margin: 0 auto;
+            text-indent: -9999px;
+            background: $berry_green repeat-x;
+            width: 0;
+        };
+
+    }
+
+    .filter_tab.selected {
+        background: $shadow_gray;
+        a {  color: $berry_pink;}
+    }
+    .filter_tab.hovered {
+        .small_bar {width: 100%;};
+    }
 }

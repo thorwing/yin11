@@ -13,11 +13,12 @@
 
     #head_lv1 {
         height: 65px;
+        background: $shadow_gray;
     }
 
     #head_lv2 {
         height: 40px;
-        background: $azure;
+        background: $berry_red;
         background: url("header_bg.png") repeat-x;
     }
 
@@ -28,10 +29,13 @@
         li {float:left; padding:0 15px; }
 
         li a {
-            font-size: 16px;
-            color:$ink_black;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
         }
-        li a:hover, li a.selected {color:$orange;}
+        li a:hover, li a.selected {color: $berry_pink;}
+
+        .sub_menu {background: $berry_red;}
     }
 
     /*  Logo */

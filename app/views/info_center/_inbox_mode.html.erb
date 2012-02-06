@@ -9,7 +9,7 @@
         <div class="fl ml20 lighter_touch" style="width: 750px;" onclick='window.location.href = "/messages/<%= msg_array.last.id.to_s %>";'>
             <blockquote><span class="quoted"><%= last.content %></span></blockquote><br/>
             <% new_msg_count = msg_array.select{|m| !m.read}.size %>
-            <%= content_tag :span, "新消息", class: "orange" if new_msg_count > 0 %><span class="trivial"><%= "共#{msg_array.size.to_s}条会话" %></span><%= link_to "+展开", msg_array.last %>
+            <%= content_tag :span, "新消息", class: "berry_red" if new_msg_count > 0 %><span class="trivial"><%= "共#{msg_array.size.to_s}条会话" %></span><%= link_to "+展开", msg_array.last %>
         </div>
         <div class="clearfix"></div>
         <hr/>

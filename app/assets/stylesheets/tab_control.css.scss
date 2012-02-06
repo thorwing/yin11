@@ -25,11 +25,11 @@
 }
 
 .tabContainer > div.unselected a {
-    color:  $blue;
+    color:  $berry_green;
 }
 
 .tabContainer .selected{
-    background-color: $blue;
+    background-color: $berry_green;
     background-image: url("tab_clicked.png");
     background-repeat: no-repeat;
 }

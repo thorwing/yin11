@@ -1,21 +1,9 @@
-<% if false %>
-    <%= content_tag :span, "被馋到了？点击“解馋”标记，看如何把它变成盘中餐！", class: "f14" %><br/>
-    <div class="mt10">
-        <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
-        <% if current_user_has_permission? :normal_user %>
-            <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
-        <% else %>
-            <%= link_to "立即注册", new_user_path, class: "button" %>
-        <% end %>
-    </div>
-<% end %>
-
-<div style="height: 200px;">
+<div style="height: 200px;" class="img_frame">
   <div class="grid_8 to_right">
     <%= image_tag "sologan.jpg", width: 618, height: 198 %>
   </div>
 
-  <div id="home_stamp" class="fl box_shadow pl10" style="width: 320px;height:200px;">
+  <div id="home_stamp" class="fl pl10">
         <% if current_user_has_permission? :normal_user %>
             <div class="clearfix">
                 <div class="fl">
