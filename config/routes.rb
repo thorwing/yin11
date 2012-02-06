@@ -39,6 +39,7 @@ Yin11::Application.routes.draw do
   #match "follow_yin11" => "syncs#follow_yin11"
   match '/more_desires/:mode/:page' => 'home#more_desires'
   match '/desires/more/:tag/:page' => 'desires#more'
+  match '/recipes/more/:tag/:page' => 'recipes#more'
 
   resources :topics do
     member { post :mercury_update }

@@ -71,7 +71,7 @@
                     </li>
                 <% end %>
             </ul>
-            <div class="mt10 fr" >
+            <div id="header_search_form" class="fr" >
                 <%= form_tag '/search', :method => :get do %>
                     <%= text_field_tag :query, t("search.tip"), class: "not_cleared" %>
                     <%= submit_tag t("general.search"), id: "search_btn" %>

@@ -1,0 +1,17 @@
+<div class="masonary_item">
+  <div class="inner_frame">
+    <div class="centered">
+        <% pic_url = recipe.get_image_url(:waterfall) %>
+        <% if pic_url.present? %>
+            <%= link_to image_tag(pic_url, height: recipe.get_image_height(:waterfall)), recipe %>
+        <% end %>
+    </div>
+    <div class="clearfix">
+      <span>
+        <%= link_to image_tag(recipe.author.get_avatar(:thumb, false), width: 22, height: 22), recipe.author %>
+        <%= link_to recipe.author.login_name, recipe.author %>
+      </span>
+      <span class="ml5"><%= link_to recipe.name, recipe %></span>
+    </div>
+  </div>
+</div>

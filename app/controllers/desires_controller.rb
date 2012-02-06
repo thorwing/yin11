@@ -137,7 +137,7 @@ class DesiresController < ApplicationController
     if tag.present? && tag != "null"
       criteria = criteria.tagged_with(tag)
     end
-    @desires = criteria.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    criteria.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
   end
 
 end

@@ -8,39 +8,18 @@ class RecipesController < ApplicationController
     @hot_tags = get_hot_tags(14, :recipes)
     @primary_tags = get_primary_tag_names
 
+    @recipes = get_recipes(params[:tag], 1)
+
     respond_to do |format|
       format.html # index.html.erb
     end
   end
 
   def more
-    criteria = Recipe.all.desc(:created_at)
-    criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
-    criteria = criteria.where(name: /#{params[:query]}/i) if params[:query].present?
-    @recipes = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW).reject{|r| r.image.blank?}
-
-    data = {
-      items: @recipes.inject([]){|memo, r| memo << {
-        name: r.name,
-        content: r.instruction,
-        picture_url: r.get_image_url(:waterfall),
-        picture_height: r.get_image_height(:waterfall),
-        user_id: r.author.id,
-        user_name: r.author.login_name,
-        user_avatar: r.author.get_avatar(:thumb, false),
-        user_reviews_cnt: r.author.reviews.count,
-        user_recipes_cnt: r.author.recipes.count,
-        user_fans_cnt: r.author.followers.count,
-        display_ribbon: "display_none",
-        time: r.created_at.strftime("%m-%d %H:%M:%S"),
-        id: r.id}
-      },
-      page: params[:page],
-      pages: (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
-    }
+    @recipes = get_recipes(params[:tag] , params[:page])
 
     respond_to do |format|
-      format.json { render :json => data}
+      format.html { render :more, layout: false}
     end
   end
 
@@ -241,6 +220,14 @@ class RecipesController < ApplicationController
     end
 
     new_attributes
+  end
+
+  def get_recipes(tag = nil, page = 1)
+    criteria = Recipe.all
+    if tag.present? && tag != "null"
+      criteria = criteria.tagged_with(tag)
+    end
+    criteria.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
   end
 
 end

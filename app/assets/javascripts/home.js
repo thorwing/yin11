@@ -78,9 +78,9 @@ $(function(){
       nextSelector : '#page_nav a:first',  // selector for the NEXT link (to page 2)
       itemSelector : '.masonary_item',     // selector for all items you'll retrieve
       loading: {
-          finishedMsg: '暂时就这么多图片啦！去看看其他的吧～',
+          finishedMsg: '暂时就这么多啦！去看看其他的吧～',
           img: '/assets/loading_big.gif',
-          msgText : '正在加载更多图片...'
+          msgText : '正在加载更多...'
         }
       },
       // trigger Masonry as a callback
