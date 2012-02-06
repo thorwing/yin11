@@ -61,23 +61,16 @@
             <% end %>
 
             <div class="fl mt10 block">
-                 <span class="orange"><%= t_with_colon("recipes.steps") %></span><br/>
-                <% @recipe.steps.each_slice(3).each do |slice| %>
-                    <div class="clearfix">
-                     <% slice.each do |s| %>
-                        <div class="fl ml10 mr10 mb5" style="width:205px">
-                            <b class="center"><%= @recipe.steps.index(s) + 1 %></b>
-                            <span class="center">
-                                <% if s.image.present?%>
-                                    <!--<img class="lazy" src="grey.gif" data-original= "<=s.get_image_url%>" width="180" heigh="135" rel="facebox" :alt="step_image"  >-->
-                                    <%= link_to image_tag("grey.gif", :size => '180x135', :alt=> "step_image", "class" => "lazy", "data-original" => s.get_image_url(:thumb) ), s.get_image_url, rel: "facebox" %>
-                                <% else  %>
-                                    <%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> "/assets/not_found.png", :size => '180x135' %>
-                                <% end %>
-                            </span>
-                            <span><%= s.content %></span>
+                <span class="orange"><%= t_with_colon("recipes.steps") %></span><br/>
+                <% @recipe.steps.each_with_index do |step, index| %>
+                    <div class="mt10 mb10 clearfix">
+                        <div class="fl mr10"><b class="trivial f20"><%= index + 1 %></b></div>
+                        <div class="fl">
+                            <p><%= step.content %></p>
+                            <% if step.image.present?%>
+                                <%= link_to image_tag("grey.gif", :alt=> "step_image", "class" => "lazy", "data-original" => step.get_image_url(:waterfall), title: "点击放大" ), step.get_image_url, rel: "facebox" %>
+                            <% end %>
                         </div>
-                     <% end %>
                     </div>
                 <% end %>
             </div>

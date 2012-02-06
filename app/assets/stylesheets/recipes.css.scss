@@ -1,4 +1,5 @@
 @import "attributes";
+
 .step_uploader {
     .qq-upload-button {
         display:block; /* or inline-block */
@@ -19,48 +20,53 @@
     .qq-upload-button-hover {opacity: 0.7;}
 }
 
-.step_content{
-    width: 210px;
-    height: 100px;
+#recipe_form {
+    #recipe_name {width: 343px;}
+
+    .step_content{
+        width: 210px;
+        height: 100px;
+    }
+
+    .step_container
+    {
+        margin-left: 0px;
+        margin-right: 0px;
+        overflow: hidden;
+    }
+
+    .steps .addedclass
+    {
+      height:360px;
+    }
+
+    .step_container .step_content
+    {
+        height: 120px;
+    }
+
+    .major_ingredients
+    {
+        width:350px;
+    }
+
+    .minor_ingredients
+    {
+        width:350px;
+    }
+
+    .ingredient_amount
+    {
+      width:100px;
+    }
+
+    .ingredient_name
+    {
+      width:210px;
+    }
+
+    #recipe_info {
+        width: 470px;
+    }
 }
 
-.step_container
-{
-    margin-left: 0px;
-    margin-right: 0px;
-    overflow: hidden;
-}
-
-.steps .addedclass
-{
-  height:360px;
-}
-
-.step_container .step_content
-{
-    height: 120px;
-}
-
-.major_ingredients
-{
-    width:350px;
-}
-
-.minor_ingredients
-{
-    width:350px;
-}
-
-.ingredient_amount
-{
-  width:100px;
-}
-
-.ingredient_name
-{
-  width:210px;
-}
-
-#recipe_info {
-    width: 470px;
-}

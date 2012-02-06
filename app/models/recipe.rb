@@ -5,7 +5,6 @@ class Recipe
     include SilverSphinxModel
     include Votable
     include Imageable
-    include Votable
     include Feedable
 
     #fields
@@ -40,9 +39,8 @@ class Recipe
     validates_length_of :description, :maximum => 300
 
     #callbacks
-    before_save :strip_spaces
-    before_save :sync_tag
-    before_save :sync_image
+    #mongoid doesn't call create/update callback on embedded documents
+    before_save :sync_children
 
     #TODO use a real image field here
     def image
@@ -75,17 +73,11 @@ class Recipe
 
     private
 
-    def strip_spaces
-       self.ingredients.each do |ingredient|
-         ingredient.name.strip!
-       end
-    end
+    def sync_children
+      self.ingredients.each do |ingredient|
+       ingredient.name.strip!
+      end
 
-    def sync_tag
-        self.tags |= self.ingredients.map(&:name)
-    end
-
-    def sync_image
       self.steps.each do |step|
         if step.img_id.present?
           image = Image.first(conditions: {id: step.img_id})
@@ -96,4 +88,5 @@ class Recipe
         end
       end
     end
+
 end

@@ -65,16 +65,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
 
     1.upto(3) {
-      step = @recipe.steps.build
-    }
-
-    1.upto(3) {
-      ingredient = @recipe.ingredients.build
-      ingredient.is_major_ingredient = true;
-    }
-    1.upto(5) {
-      ingredient = @recipe.ingredients.build
-      ingredient.is_major_ingredient = false;
+      @recipe.steps.build
+      @recipe.ingredients.build {|i| i.is_major_ingredient = true }
+      @recipe.ingredients.build {|i| i.is_major_ingredient = false }
     }
 
     respond_to do |format|
@@ -91,14 +84,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    #after Click on and drag sort, the sequence may not in the right order
-    newhash = {}
-    params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
-       #p "key: #{key}, value: #{value}, index: #{index}\n"
-       newhash[index]= value
-    end
-    params[:recipe][:steps_attributes] =  newhash
-    #reordered
+    params[:recipe][:steps_attributes] = sort_steps(params[:recipe][:steps_attributes])
 
     @recipe = Recipe.new(params[:recipe])
     @recipe.author_id = current_user.id
@@ -143,32 +129,20 @@ class RecipesController < ApplicationController
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
-    #after Click on and drag sort, the sequence may not in the right order
-    newhash = {}
-    params[:recipe][:steps_attributes].each_with_index do |(key, value), index|
-       value.delete("id")
-       newhash[index]= value
-    end
-    params[:recipe][:steps_attributes]= newhash
-    #reordered
-
     @recipe = Recipe.find(params[:id])
+    #delete ingredients removed by user
+    ingredient_ids_to_be_deleted = @recipe.ingredients.map{|i| i.id.to_s } - params[:recipe][:ingredients_attributes].map{|k,v| v["id"]}
+    @recipe.ingredients.any_in(_id: ingredient_ids_to_be_deleted).delete_all
 
-    #record all ingredients in db
-    database_ingredient_ids = @recipe.ingredients.map{|s| s.id.to_s }
-
-    #delete all old images
-    Image.any_in(step_id: @recipe.steps.map(&:id)).delete_all
+    #delete steps removed by user
+    step_ids_to_be_deleted = @recipe.steps.map{|s| s.id.to_s } - params[:recipe][:steps_attributes].map{|k,v| v["id"]}
+    Image.any_in(step_id: step_ids_to_be_deleted).delete_all
     @recipe.steps.delete_all
-    saved = @recipe.update_attributes(params[:recipe])
-    if saved
-      params_ingredient_ids = params[:recipe][:ingredients_attributes].map{|k,v| v["id"]}
-      to_be_deleted_ingredient_ids = database_ingredient_ids - params_ingredient_ids
-      @recipe.ingredients.any_in(_id: to_be_deleted_ingredient_ids).delete_all
-    end
+
+    params[:recipe][:steps_attributes] = sort_steps(params[:recipe][:steps_attributes])
 
     respond_to do |format|
-      if saved
+      if @recipe.update_attributes(params[:recipe])
         format.html { redirect_to @recipe, notice: t("notices.recipe_updated") }
         format.json { head :ok }
       else
@@ -256,5 +230,18 @@ class RecipesController < ApplicationController
     end
     return related_product
   end
+
+  def sort_steps(old_attributes)
+    #after Click on and drag sort, the sequence may not be in the right order
+    new_attributes = {}
+    old_attributes.each_with_index do |(old_index, value), correct_index|
+      #must clear id incase the step has alrady been deleted
+      value.delete("id")
+      new_attributes[correct_index]= value
+    end
+
+    new_attributes
+  end
+
 end
 
