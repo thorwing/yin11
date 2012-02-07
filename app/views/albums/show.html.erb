@@ -1,22 +1,28 @@
 <% title t("albums.album") %>
 
-<div class="grid_9">
-    <div class="box_shadow p5">
-        <h1><%= @album.title %> <span class="trivial f13"><%= "(#{@album.desires.size}#{t("albums.items")})" %></span></h1>
-        <p><%= @album.description %></p>
-        <p><%= render "tags/tags", :item => @album %></p>
-        <%= render "votes/vote_fields", :item => @album %>
+<div class="fl">
+    <div class="grid_9">
+        <div class="box_shadow p5">
+            <h1><%= @album.title %> <span class="trivial f13"><%= "(#{@album.desires.size}#{t("albums.items")})" %></span></h1>
+            <p><%= @album.description %></p>
+            <p><%= render "tags/tags", :item => @album %></p>
+            <%= render "votes/vote_fields", :item => @album %>
+        </div>
+
+        <%= render "votes/fans", item: @album %>
     </div>
 
-    <%= render "votes/fans", item: @album %>
-
-    <div id="static_waterfall_container" class="mt10">
-        <% @album.desires.each do |desire| %>
-            <%= render "albums/album_waterfall_field", item: desire %>
-        <% end %>
+    <div class="clearfix"></div>
+    <div class="fl" style="width: 720px;">
+        <div id="masonry_container" class="clearfix">
+            <% @album.desires.each do |desire| %>
+                <%= render "albums/album_desire", desire: desire %>
+            <% end %>
+        </div>
     </div>
 
-    <div class="mt10">
+    <div class="clearfix"></div>
+    <div class="grid_9 mt10">
         <%= render "comments/comments", :item => @album %>
     </div>
 </div>
@@ -45,5 +51,3 @@
         </div>
     <% end %>
 </div>
-
-<%= javascript_tag "static_waterfall(3);" %>

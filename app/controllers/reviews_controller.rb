@@ -1,45 +1,6 @@
 class ReviewsController < ApplicationController
-  before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
+  before_filter(:except => [:show]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
-
-  # GET /reviews
-  # GET /reviews.xml
-  def index
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
-  def more
-    #  used for waterfall displaying
-    criteria = Review.all.desc(:created_at) #votes
-    criteria = criteria.any_in(product_ids: [params[:product_id]]) if params[:product_id].present?
-    criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
-    @reviews = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-
-    data = {
-      items: @reviews.inject([]){|memo, r| memo <<  {
-        content: r.content,
-        user_id: r.author.id,
-        user_name: r.author.login_name,
-        user_avatar: r.author.get_avatar(:thumb, false),
-        user_reviews_cnt: r.author.reviews.count,
-        user_recipes_cnt: r.author.recipes.count,
-        user_fans_cnt: r.author.followers.count,
-        user_established: current_user ? (current_user.relationships.select{|rel| rel.target_type == "User" && rel.target_id == r.author.id.to_s}.size > 0) : false,
-        time: r.created_at.strftime("%m-%d %H:%M:%S"),
-        picture_url: r.get_review_image_url(:waterfall),
-        picture_height: r.get_review_image_height(:waterfall),
-        id: r.id}
-      },
-      page: params[:page],
-      pages: (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
-    }
-
-    respond_to do |format|
-      format.json { render :json => data}
-    end
-  end
 
   # GET /reviews/1
   # GET /reviews/1.xml

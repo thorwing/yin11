@@ -7,7 +7,6 @@
 //= require facebox
 //= require jquery.highlight-3
 //= require fileuploader
-//= require kissy/kissy
 //= require jquery.Jcrop.min
 //= require jquery.lazyload
 //= require jquery.isotope.min

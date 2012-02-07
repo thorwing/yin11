@@ -21,6 +21,7 @@
     box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
 
     .ribbon {
+        z-index: 100;
         position: absolute;
         right: -4px;
         top: -4px;

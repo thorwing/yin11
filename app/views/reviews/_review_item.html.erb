@@ -1,0 +1,18 @@
+<div class="masonary_item">
+    <div class="inner_frame">
+        <% if item.is_a?(Image) %>
+            <%= image_tag(item.picture_url(:waterfall), height: item.waterfall_height) %>
+        <% else %>
+            <% pic_url = item.get_image_url(:waterfall) %>
+            <% if pic_url.present? %>
+                <%= link_to image_tag(pic_url, height: item.get_image_height(:waterfall)), item %>
+            <% end %>
+            <div class="ml10 mr10 clearfix">
+                <% if (item.respond_to? :name) %>
+                    <%= image_tag("icons/#{item.class.name.downcase}.png", width: 16, height: 16) %>
+                    <span class = "f16"><%= link_to item.name, item %></span><br/>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>

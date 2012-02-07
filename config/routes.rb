@@ -72,9 +72,8 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :reviews do
+  resources :reviews, :except => [:index] do
     collection do
-      get :more
       post :link
     end
   end

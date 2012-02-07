@@ -4,7 +4,6 @@
 *= require_self
 *= require fonts
 *= require header
-*= require silver_waterfall
 *= require comment
 *= require votes
 *= require menu
@@ -138,7 +137,12 @@
 
     .top_right {
         right: 5px;
-        top: 10px;
+        top: 5px;
+    }
+
+    .top_left {
+        left: 5px;
+        top: 5px;
     }
 
     .fix_hint {
