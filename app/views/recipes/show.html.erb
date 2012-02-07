@@ -5,18 +5,13 @@
         <div class="clearfix">
             <div id="recipe_info" class="fl ml10 clearfix">
                 <h1 class="f20"><%= @recipe.name %></h1>
-                <div class="mt5">
-                    <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》: ”" + truncate_content(@recipe.description,30) + "”。" %>
-                    <% summarystr = "大家去看看吧！" %>
-                    <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
-                    <% appkeyhash = load_appkey() %>
-                    <%= render "shared/jiathis", :titlestr => titlestr, :summarystr => summarystr, :picstr => picstr, :appkeyhash => appkeyhash %>
-                </div>
 
-                <div class="mt10">
-                    <span class="trivial"><%= t("recipes.tags") %></span>
-                    <%= render "tags/tags", item: @recipe %>
-                </div>
+                <% unless @recipe.tags.blank? || @recipe.tags.empty? %>
+                    <div class="mt10">
+                        <span class="berry_pink"><%= t("recipes.tags") %></span>
+                        <%= render "tags/tags", item: @recipe %>
+                    </div>
+                <% end %>
 
                 <div class="mt10">
                     <div class="clearfix">
@@ -50,6 +45,14 @@
                         </div>
                     <% end %>
                 </div>
+
+                <div class="mt5">
+                    <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》: ”" + truncate_content(@recipe.description,30) + "”。" %>
+                    <% summarystr = "大家去看看吧！" %>
+                    <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
+                    <% appkeyhash = load_appkey() %>
+                    <%= render "shared/jiathis", :titlestr => titlestr, :summarystr => summarystr, :picstr => picstr, :appkeyhash => appkeyhash %>
+                </div>
             </div>
 
             <div class="clearfix"></div>
@@ -61,7 +64,7 @@
             <% end %>
 
             <div class="fl mt10 block">
-                <span class="orange"><%= t_with_colon("recipes.steps") %></span><br/>
+                <span class="berry_pink"><%= t_with_colon("recipes.steps") %></span><br/>
                 <% @recipe.steps.each_with_index do |step, index| %>
                     <div class="mt10 mb10 clearfix">
                         <div class="fl mr10"><b class="trivial f20"><%= index + 1 %></b></div>

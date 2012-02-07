@@ -3,12 +3,12 @@
         <div class="mb10 clearfix">
             <%= render "comments/new_comment", :item => item%>
         </div>
+    <% else %>
+        <span class = "trivial">想来评论两句？</span><%= link_to "立即注册", new_user_path, class: "button" %>
     <% end %>
 
     <div class="comments_container <%= item.id.to_s %>">
-        <% if item.comments.empty? %>
-            <span class = "first_comment_tip trivial"><%= t("comments.new_hint") %></span><br/>
-        <% else %>
+        <% unless item.comments.empty? %>
             <span class="trivial"><%= t_with_colon("comments.comment") %></span><br/>
             <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
         <% end %>
