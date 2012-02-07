@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
     @hot_tags = get_hot_tags(14, :recipes)
     @primary_tags = get_primary_tag_names
 
-    @recipes = get_recipes(params[:tag], 1)
+    @recipes, @total_chapters = get_recipes(params[:tag], params[:page], params[:chapter])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
   end
 
   def more
-    @recipes = get_recipes(params[:tag] , params[:page])
+    @recipes, dummy = get_recipes(params[:tag], params[:page])
 
     respond_to do |format|
       format.html { render :more, layout: false}
@@ -222,13 +222,30 @@ class RecipesController < ApplicationController
     new_attributes
   end
 
-  def get_recipes(tag = nil, page = 1)
-    criteria = Recipe.all
-    if tag.present? && tag != "null"
-      criteria = criteria.tagged_with(tag)
+
+  def get_recipes(tag, page, chapter = nil)
+    total_chapters = 0
+    if chapter.present?
+      chapter = chapter.to_i
+    elsif session[:current_recipes_chapter].present?
+      chapter = session[:current_recipes_chapter].to_i
+    else
+      chapter = 1
     end
-    criteria.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    page = (page ? page.to_i : 1)
+    if page <= PAGES_PER_CHAPTER
+      criteria = Recipe.all
+      if tag.present? && tag != "null"
+        criteria = criteria.tagged_with(tag)
+      end
+      total_chapters = (criteria.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+
+      return criteria.desc(:created_at).page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW), total_chapters
+    else
+      return [], total_chapters
+    end
   end
+
 
 end
 

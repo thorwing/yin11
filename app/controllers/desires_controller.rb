@@ -11,7 +11,6 @@ class DesiresController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @desires }
     end
   end
 

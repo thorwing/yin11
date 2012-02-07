@@ -25,7 +25,6 @@
 </div>
 
 <% base_url = 'http://' + request.host_with_port %>
-<% current_chapter = params[:chapter] ? params[:chapter].to_i : 1 %>
 
 <nav id="page_nav">
     <% tag = params[:tag] || "null"  %>
@@ -33,7 +32,8 @@
 </nav>
 
 <div id="more_nav" class="mt10 centered display_none">
-     <% if current_chapter > 1 %>
+    <% current_chapter = params[:chapter] ? params[:chapter].to_i : 1 %>
+    <% if current_chapter > 1 %>
         <%= link_to "上一页", desires_path(chapter: current_chapter - 1), class: "chapter_link" %>
     <% end %>
     <% indexes = [1, current_chapter -1, current_chapter, current_chapter + 1, @total_chapters].uniq.sort.select{|i| i > 0 && i <= @total_chapters} %>
@@ -49,3 +49,5 @@
     <% end %>
     <span class="trivial"><%= "共#{@total_chapters}页" %></span>
 </div>
+
+<%= link_to image_tag("back_to_top.jpg", :width => 48, :height => 48, :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>

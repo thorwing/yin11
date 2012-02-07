@@ -97,9 +97,21 @@ $(function(){
           $newElems.animate({ opacity: 1 });
           $container.masonry( 'appended', $newElems, true );
         });
+
+        $('#back_to_top').show();
       }
     );
 
+    // scrollTo
+    $('#back_to_top').on('click', function(e) {
+        e.halt();
+        e.preventDefault();
+        $(window).stop();
+        $(window).animate({
+            scrollTop:0
+        },1,"easeOut");
+        $(this).hide();
+    });
 });
 
 function shift_masonry(filter) {
@@ -122,7 +134,7 @@ function shift_masonry(filter) {
 }
 
 $(function(){
-    var $container = $('#masonry_container');
+//    var $container = $('#masonry_container');
 //    $('#filters .filter').click(function(e){
 //        e.preventDefault();
 //        shift_masonry(this);

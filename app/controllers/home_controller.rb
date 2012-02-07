@@ -20,7 +20,7 @@ class HomeController < ApplicationController
   end
 
   def more_desires
-    if params[:page].to_i < PAGES_PER_CHAPTER
+    if params[:page].to_i <= PAGES_PER_CHAPTER
       @desires = get_desires(params[:mode], params[:page])
     end
     @desires ||= []

@@ -13,10 +13,32 @@
         <% end %>
     </div>
 
+    <% base_url = 'http://' + request.host_with_port %>
     <nav id="page_nav">
         <% tag = params[:tag] || "null"  %>
-        <%= link_to "", 'http://' + request.host_with_port + "/recipes/more/#{tag}/2" %>
+        <%= link_to "", base_url + "/recipes/more/#{tag}/2" %>
     </nav>
+
+    <div id="more_nav" class="mt10 centered display_none">
+        <% current_chapter = params[:chapter] ? params[:chapter].to_i : 1 %>
+        <% if current_chapter > 1 %>
+            <%= link_to "上一页", recipes_path(chapter: current_chapter - 1), class: "chapter_link" %>
+        <% end %>
+        <% indexes = [1, current_chapter -1, current_chapter, current_chapter + 1, @total_chapters].uniq.sort.select{|i| i > 0 && i <= @total_chapters} %>
+        <% indexes.each_with_index do |chapter_index, index| %>
+            <% if (index > 0) && ((indexes[index] - indexes[index - 1]) > 1) %>
+                ...
+            <% end %>
+            <%= link_to chapter_index, recipes_path(chapter: chapter_index), class: (chapter_index == current_chapter ? "chapter_link current" : "chapter_link") %>
+        <% end %>
+
+        <% if current_chapter < @total_chapters %>
+            <%= link_to "下一页", recipes_path(chapter: current_chapter + 1), class: "chapter_link" %>
+        <% end %>
+        <span class="trivial"><%= "共#{@total_chapters}页" %></span>
+    </div>
+
+    <%= link_to image_tag("back_to_top.jpg", :width => 48, :height => 48, :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>
 </div>
 
 <div class="grid_3 to_right">
