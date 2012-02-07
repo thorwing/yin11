@@ -98,20 +98,21 @@ $(function(){
           $container.masonry( 'appended', $newElems, true );
         });
 
-        $('#back_to_top').show();
+        if($('#back_to_top').length > 0) {
+            $('#back_to_top').show();
+            // scrollTo
+            $('#back_to_top').on('click', function(e) {
+                e.halt();
+                e.preventDefault();
+                $(window).stop();
+                $(window).animate({
+                    scrollTop:0
+                },1,"easeOut");
+                $(this).hide();
+            });
+        }
       }
     );
-
-    // scrollTo
-    $('#back_to_top').on('click', function(e) {
-        e.halt();
-        e.preventDefault();
-        $(window).stop();
-        $(window).animate({
-            scrollTop:0
-        },1,"easeOut");
-        $(this).hide();
-    });
 });
 
 function shift_masonry(filter) {

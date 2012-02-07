@@ -1,1 +1,11 @@
-<%= render "shared/waterfall", :path => "/personal/feeds", :waterfall_partial => "feeds/feed_waterfall", :columns_count => 3, :columns_width => 230 %>
+<div id="masonry_container" class="clearfix">
+    <% @feeds.each do |feed| %>
+        <%= render "shared/masonary_item", item: feed.item %>
+    <% end %>
+
+    <nav id="page_nav">
+        <%= link_to "", 'http://' + request.host_with_port + "/personal/more_feeds/2" %>
+    </nav>
+</div>
+
+<%= link_to image_tag("back_to_top.jpg", :width => 48, :height => 48, :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>

@@ -63,11 +63,6 @@ class FeedsManager
   end
 
   def self.pull_feeds(user)
-    #feeds = user.tags.inject([]) do  |memo, t|
-    #  tag = Tag.find(t)
-    #  memo | tag.feeds
-    #end
-
     feeds ||= []
     #pull the feeds from items that the use followed
     user.relationships.each do |r|
@@ -78,7 +73,7 @@ class FeedsManager
     feeds = process(feeds)
 
     #different pagination of waterfall, it starts from 1
-    return feeds, feeds.size
+    return feeds
   end
 
   def self.get_tagged_feeds(tags)
@@ -96,7 +91,7 @@ class FeedsManager
 
   private
   def self.process(feeds)
-    feeds.reject{|f| f.cracked?}.sort{|x, y| y.created_at <=> x.created_at}.uniq {|f| f.identity}
+    feeds.compact.uniq
   end
 
 end

@@ -21,9 +21,6 @@ Yin11::Application.routes.draw do
   put 'administrator/base/toggle'
 
   match "me" => "personal#me"
-  match "personal/feeds" => "personal#feeds"
-  match "personal/my_feeds" => "personal#my_feeds"
-  match "personal/all_feeds" => "personal#all_feeds"
   match "personal/favorites" => "personal#favorites"
 
   match "logout" => "sessions#destroy"
@@ -38,6 +35,7 @@ Yin11::Application.routes.draw do
   match "syncs/:type/callback" => "syncs#callback", :as => :sync_callback
   #match "follow_yin11" => "syncs#follow_yin11"
   match '/more_desires/:mode/:page' => 'home#more_desires'
+  match '/personal/more_feeds/:page' => 'personal#more_feeds'
   match '/desires/more/:tag/:page' => 'desires#more'
   match '/recipes/more/:tag/:page' => 'recipes#more'
 

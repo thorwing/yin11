@@ -12,6 +12,11 @@
                     <%= image_tag("icons/#{item.class.name.downcase}.png", width: 16, height: 16) %>
                     <span class = "f16"><%= link_to item.name, item %></span><br/>
                 <% end %>
+                <% if (item.respond_to? :content) %>
+                    <p>
+                      <%= item.content %> <span class="display_inline_block"><%= link_to t("general.details"), item %></span>
+                    </p>
+                <% end %>
             </div>
         <% end %>
     </div>
