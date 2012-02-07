@@ -6,7 +6,8 @@ class DesiresController < ApplicationController
   # GET /desires.json
   def index
     @primary_tags = get_primary_tags
-    @desires = get_desires(params[:tag], 1)
+
+    @desires, @total_chapters = get_desires( params[:tag], params[:page], params[:chapter])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class DesiresController < ApplicationController
   end
 
   def more
-    @desires = get_desires(params[:tag] , params[:page])
+    @desires, dummy = get_desires(params[:tag], params[:page])
 
     respond_to do |format|
       format.html { render :more, layout: false}
@@ -132,12 +133,27 @@ class DesiresController < ApplicationController
 
   private
 
-  def get_desires(tag = nil, page = 1)
-    criteria = Desire.all
-    if tag.present? && tag != "null"
-      criteria = criteria.tagged_with(tag)
+  def get_desires(tag, page, chapter = nil)
+    total_chapters = 0
+    if chapter.present?
+      chapter = chapter.to_i
+    elsif session[:current_desires_chapter].present?
+      chapter = session[:current_desires_chapter].to_i
+    else
+      chapter = 1
     end
-    criteria.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+    page = (page ? page.to_i : 1)
+    if page <= PAGES_PER_CHAPTER
+      criteria = Desire.all
+      if tag.present? && tag != "null"
+        criteria = criteria.tagged_with(tag)
+      end
+      total_chapters = (criteria.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+
+      return criteria.desc(:created_at).page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW), total_chapters
+    else
+      return [], total_chapters
+    end
   end
 
 end

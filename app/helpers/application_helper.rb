@@ -136,20 +136,20 @@ module ApplicationHelper
           flat_tag_names |= v
         end
       end
-    tags = Tag.any_in(name: flat_tag_names.uniq).desc(:items).limit(limit)
+    Tag.any_in(name: flat_tag_names.uniq).desc(:items).limit(limit)
   end
 
-  def get_hot_tags(limit = ITEMS_PER_PAGE_FEW, of = :feeds)
+  def get_hot_tags(limit = ITEMS_PER_PAGE_FEW, of = nil)
     key = "hot_tags_of_#{of.to_s}"
     tags = Rails.cache.fetch(key)
     unless tags
       case of
-        when :feeds
-          tags = Tag.desc(:feeds).limit(100)
         when :recipes
-          tags = Recipe.tags_with_weight.take(100)
+          tags = Recipe.tags_with_weight.take(100).map{|tag| tag[0]}
         when :albums
-          tags = Album.tags_with_weight.take(100)
+          tags = Album.tags_with_weight.take(100).map{|tag| tag[0]}
+        when :desires
+          tags = Desire.tags_with_weight.take(100).map{|tag| tag[0]}
         else
           tags = []
       end

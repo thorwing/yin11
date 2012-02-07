@@ -22,17 +22,6 @@ class PersonalController < ApplicationController
   def feeds
     @feeds, total = FeedsManager.pull_feeds(current_user)
 
-    #less than 1 page
-    if total < ITEMS_PER_PAGE_FEW
-      hot_tags= get_hot_tags(ITEMS_PER_PAGE_FEW, :feeds)
-      extra_feeds, extra_total = FeedsManager.get_tagged_feeds(hot_tags)
-      #TODO sometimes @feeds is nil
-      @feeds ||= []
-      extra_feeds ||= []
-      @feeds =  @feeds + extra_feeds
-      total += extra_total
-    end
-
     page = params[:page].to_i
     #different pagination of waterfall, it starts from 1
     page = page -1 if page > 0

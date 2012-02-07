@@ -13,7 +13,7 @@
             <span class="f12 trivial">热门标签</span>
             <div class="mb5">
                 <% get_hot_tags(14, :albums).each do |tag| %>
-                    <%= link_to tag[0], albums_path(tag: tag[0]), class: "tag" %>
+                    <%= link_to tag, albums_path(tag: tag), class: "tag" %>
                 <% end %>
             </div>
             <%= link_to "", new_album_path, class: "add_album_btn" %>

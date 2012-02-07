@@ -27,7 +27,7 @@
         <div class="masonary_item">
             <div class="inner_frame">
                 <%= content_tag :span, "美食标签：", class: "trivial f14" %><br/>
-                <% @desired_tags.each do |tag, array| %>
+                <% @hot_tags.each do |tag| %>
                     <%= link_to tag, desires_path(tag: tag), class: "tag" %>
                 <% end %>
             </div>
@@ -40,4 +40,8 @@
     <nav id="page_nav">
         <%= link_to "", 'http://' + request.host_with_port + "/more_desires/#{@current_mode}/2" %>
     </nav>
+</div>
+
+<div id="more_nav" class="mt10 centered display_none">
+    <%= link_to "查看更多馋人图片", desires_path, class: "button", id: "more_nav_button" %>
 </div>
