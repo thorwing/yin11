@@ -142,26 +142,7 @@ class ReviewsController < ApplicationController
   end
 
   def link
-    @valid = false
-    site = SilverHornet::ProductsSite.new(true)
-    url = site.handle_url(params[:product_url])
-    if url
-      @valid = true
-      @product = Product.first(conditions: {url: url})
-
-      if @product.nil?
-        #It's not in our database, then fetch it now
-        site.name = t("third_party.taobao")
-        conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
-        conf[t("third_party.taobao")].each do |key, value|
-          site.send("#{key}=", value) if site.respond_to?("#{key}=")
-        end
-
-        site.agent = Mechanize.new
-        site.agent.get(url)
-        @product = site.process_taobao_product
-      end
-    end
+    @valid_url, @product = handle_taobao_product(params[:product_url])
 
     respond_to do |format|
       format.js

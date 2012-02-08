@@ -58,6 +58,16 @@ class DesiresController < ApplicationController
 
     ImagesHelper.process_uploaded_images(@desire, params[:images], params[:remote_image_url])
 
+    if params[:product_id].present?
+      product = Product.find(params[:product_id])
+      #create a review as well
+      product.reviews.create do |r|
+        r.author = current_user
+        r.desire = @desire
+        r.content = product.name
+      end
+    end
+
     respond_to do |format|
       if @desire.save
         format.html { redirect_to @desire, notice: t("notices.desire_created") }
@@ -124,6 +134,8 @@ class DesiresController < ApplicationController
 
   def afar
     @desire = Desire.new
+
+    valid_url, @product = handle_taobao_product(params[:url])
 
     respond_to do |format|
       format.html {render "afar", :layout => "dialog"}

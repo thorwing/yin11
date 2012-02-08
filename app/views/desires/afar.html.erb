@@ -11,7 +11,16 @@
                 </div>
                 <%= hidden_field_tag "remote_image_url", params[:img] %>
             </div>
-
+            <% if @product %>
+                <p>
+                    <%= hidden_field_tag "product_id", @product.id %>
+                    <span class="f12"><%= truncate_content(@product.name, 30) %></span>
+                    <span class="display_inline_block">
+                        <%= image_tag("icons/product.png", width: 12, height: 12) %>
+                        <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + @product.price_as_money_string) if @product.price? %></span>
+                    </span>
+                </p>
+            <% end %>
             <span class="trivial"><%= "添点描述，让它变得更诱人吧：" %></span><br/>
             <%= f.text_area :content, :maxlength => get_max_length(@desire, :content), 'data-comment_max_len' => get_max_length(@desire, :content), :class => "char_aware" %>
             <%= content_tag :span, "", class: "char_saver display_none" %>
