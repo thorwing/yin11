@@ -1,15 +1,3 @@
-<% if false %>
-    <%= content_tag :span, "被馋到了？点击“解馋”标记，看如何把它变成盘中餐！", class: "f14" %><br/>
-    <div class="mt10">
-        <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
-        <% if current_user_has_permission? :normal_user %>
-            <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
-        <% else %>
-            <%= link_to "立即注册", new_user_path, class: "button" %>
-        <% end %>
-    </div>
-<% end %>
-
 <ul id="filters" class="mt5">
     <% @modes.each do |mode| %>
         <li class="<%= (mode == @current_mode ? "filter_tab selected hovered" : "filter_tab") %>">
@@ -21,28 +9,28 @@
     <div class="clearfix"></div>
 </ul>
 
-<div id="desires_box">
-    <div id="masonry_container" class="clearfix">
-        <!--corner stmap-->
-        <div class="masonary_item">
-            <div class="inner_frame">
-                <%= content_tag :span, "美食标签：", class: "trivial f14" %><br/>
-                <% @hot_tags.each do |tag| %>
-                    <%= link_to tag, desires_path(tag: tag), class: "tag" %>
-                <% end %>
-            </div>
+
+<div id="masonry_container" class="clearfix">
+    <!--corner stmap-->
+    <div class="masonary_item">
+        <div class="inner_frame">
+            <%= content_tag :span, "美食标签：", class: "trivial f14" %><br/>
+            <% @hot_tags.each do |tag| %>
+                <%= link_to tag, desires_path(tag: tag), class: "tag" %>
+            <% end %>
         </div>
-        <% @desires.each do |desire| %>
-            <%= render "desires/desire_item", desire: desire %>
-        <% end %>
     </div>
-
-    <nav id="page_nav">
-        <%= link_to "", 'http://' + request.host_with_port + "/more_desires/#{@current_mode}/2" %>
-    </nav>
-
-    <%= link_to image_tag("back_to_top.jpg", :width => 48, :height => 48, :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>
+    <% @desires.each do |desire| %>
+        <%= render "desires/desire_item", desire: desire %>
+    <% end %>
 </div>
+
+<nav id="page_nav">
+    <%= link_to "", 'http://' + request.host_with_port + "/more_desires/#{@current_mode}/2" %>
+</nav>
+
+<%= link_to image_tag("back_to_top.jpg", :width => 48, :height => 48, :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>
+
 
 <div id="more_nav" class="mt10 centered display_none">
     <%= link_to "查看更多馋人图片", desires_path, class: "button", id: "more_nav_button" %>

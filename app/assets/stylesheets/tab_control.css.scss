@@ -29,7 +29,8 @@
 }
 
 .tabContainer .selected{
-    background-color: $berry_green;
+    color:  $berry_gray;
+    background-color: $berry_red;
     background-image: url("tab_clicked.png");
     background-repeat: no-repeat;
 }

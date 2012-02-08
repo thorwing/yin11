@@ -1,8 +1,8 @@
 @import "attributes";
 
-#desires_box {
-    background: $shadow_gray
-}
+/*#desires_box {*/
+    /*background: $shadow_gray*/
+/*}*/
 
 #masonry_container {
     /*background: $shadow_gray;*/
@@ -51,7 +51,7 @@
 #filters {
     /*margin-left: 10px;*/
     /*margin-right: 10px;*/
-    /*border-bottom: 5px solid $berry_azure;*/
+    /*border-bottom: 5px solid white;*/
 
     .filter_tab {
         display: inline-block;
@@ -74,15 +74,15 @@
             height: 5px;
             margin: 0 auto;
             text-indent: -9999px;
-            background: $berry_green repeat-x;
+            background: $berry_red repeat-x;
             width: 0;
         };
 
     }
 
     .filter_tab.selected {
-        background: $shadow_gray;
-        a {  color: $berry_pink;}
+        background: white;
+        a {  color: $ink_black;}
     }
     .filter_tab.hovered {
         .small_bar {width: 100%;};

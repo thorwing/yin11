@@ -300,15 +300,16 @@ ul.menu li {
 
 a.button, input.button {
     display: inline-block;
-	background: $berry_red;
+	background-color: $berry_red;
 	padding: 0 2px;
-	color: $white;
+	color: $berry_gray;
 	text-decoration: none;
-	border:1px solid #32312f;
+	border:1px solid #32312f;;
 	text-transform:uppercase;
     height: 24px;
 }
 a.button:hover, input.button:hover {
+    color: white;
 	background: darken($berry_red, 10%);
     cursor:pointer;
 }
