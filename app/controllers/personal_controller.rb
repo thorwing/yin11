@@ -12,13 +12,19 @@ class PersonalController < ApplicationController
     end
     session[:personal_mode] = @current_mode
     page = params[:page].present? ? params[:page].to_i : 0
-    #TODO why there are feed that doesn't belong to a user
-    @my_reviews = current_user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
-    @my_recipes = current_user.recipes.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
-    @my_albums = current_user.albums.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
-    @my_desires = current_user.desires.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
 
-    @feeds = get_feeds(params[:page])
+    case @current_mode
+      when "reviews"
+        @my_reviews = current_user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+      when "recipes"
+        @my_recipes = current_user.recipes.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+      when "albums"
+        @my_albums = current_user.albums.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+      when "desires"
+        @my_desires = current_user.desires.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
+      else
+        @feeds = get_feeds(params[:page])
+    end
   end
 
   def more_feeds
@@ -50,7 +56,7 @@ class PersonalController < ApplicationController
   private
   def get_feeds(page)
     page = page ? page.to_i : 1
-    FeedsManager.pull_feeds(current_user)[((page - 1) * ITEMS_PER_PAGE_FEW)..((page)* ITEMS_PER_PAGE_FEW)].reject{|f| f.cracked? || f.created_at.blank?}.sort{|x, y| y.created_at <=> x.created_at}
+    FeedsManager.pull_feeds(current_user).reject{|f| f.cracked? || f.created_at.blank?}.sort{|x, y| y.created_at <=> x.created_at}[((page - 1) * ITEMS_PER_PAGE_FEW)..((page)* ITEMS_PER_PAGE_FEW)]
   end
 
 end

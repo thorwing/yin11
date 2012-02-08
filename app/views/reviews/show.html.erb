@@ -29,7 +29,7 @@
     <div class="fl" style="width: 720px;">
         <div id="masonry_container" class="mt10 clearfix">
             <% (@review.recipes + @review.products + @review.images).each do |item| %>
-                <%= render "shared/masonary_item", item: item %>
+                <%= render "reviews/review_item", item: item %>
             <% end %>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="fl" style="width: 720px;">
-    <div class="tab_control">
+    <div class="tab_control no_work">
         <div class="tabContainer ">
             <% @modes.each do |mode| %>
                 <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">
@@ -8,11 +8,7 @@
             <% end %>
         </div>
         <div class="tabContent block">
-          <% @modes.each do |mode| %>
-             <div class = "<%= mode %> <%= mode == @current_mode ? "display" : "display_none" %>">
-                <%= render "#{mode}_mode" %>
-             </div>
-          <% end %>
+            <%= render "#{@current_mode}_mode" %>
         </div>
     </div>
 </div>

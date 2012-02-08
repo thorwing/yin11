@@ -14,7 +14,7 @@ class Recipe
     search_index(:fields => [:name],
               :attributes => [:updated_at, :created_at])
 
-    attr_accessible  :author_id, :name , :ingredients_attributes, :steps_attributes, :description
+    attr_accessible  :author_id, :name, :ingredients_attributes, :steps_attributes, :description
 
     #relationships
     embeds_many :ingredients

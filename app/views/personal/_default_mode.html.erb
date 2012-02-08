@@ -1,6 +1,6 @@
 <div id="masonry_container" class="clearfix">
     <% @feeds.each do |feed| %>
-        <%= render "shared/masonary_item", item: feed.item %>
+        <%= render "feeds/feed_item", feed: feed %>
     <% end %>
 
     <nav id="page_nav">

@@ -12,9 +12,17 @@
                     <%= image_tag("icons/#{item.class.name.downcase}.png", width: 16, height: 16) %>
                     <span class = "f16"><%= link_to item.name, item %></span><br/>
                 <% end %>
+            </div>
+            <div class="clearfix">
+                <% if (item.respond_to? :author) && item.author %>
+                    <span>
+                        <%= link_to image_tag(item.author.get_avatar(:thumb, false), width: 22, height: 22), item.author %>
+                        <%= link_to item.author.login_name, item.author %>
+                    </span>
+                <% end %>
                 <% if (item.respond_to? :content) %>
                     <p>
-                      <%= item.content %> <span class="display_inline_block"><%= link_to t("general.details"), item %></span>
+                        <%= item.content %> <span class="display_inline_block"><%= link_to t("general.details"), item %></span>
                     </p>
                 <% end %>
             </div>

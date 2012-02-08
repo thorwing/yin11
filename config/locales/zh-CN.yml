@@ -505,9 +505,9 @@ zh-CN:
     all: 关注动态
     my: 我的日志
     operations:
-      create: 创建
-      update: 更新
-      delete: 删除
+      create: 添加了
+      update: 更新了
+      delete: 删除了
     types:
       Review: 分享
       Recipe: 菜谱

@@ -1,13 +1,13 @@
 $(function(){
-   $('.tab_control .tab').click(function(e)
+   $('.tab_control:not(.no_work) .tab').click(function(e)
    {
         e.preventDefault();
    });
-   $('.tab_control .tab.selected').eq(0).click();
+   $('.tab_control:not(.no_work) .tab.selected').eq(0).click();
 });
 
 $(function(){     //change the background of the tabs when
-    $(".tab_control .tabContainer > div").click(function(e){
+    $(".tab_control:not(.no_work) .tabContainer > div").click(function(e){
         $(".tab_control .selected").addClass("unselected");
         $(".tab_control .selected").removeClass("selected");
 

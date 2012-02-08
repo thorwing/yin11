@@ -91,7 +91,7 @@ class FeedsManager
 
   private
   def self.process(feeds)
-    feeds.compact.uniq
+    feeds.compact.uniq{|f| f.identity}
   end
 
 end
