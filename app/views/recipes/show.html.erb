@@ -32,6 +32,14 @@
                     </div>
                 </div>
 
+                <div class="mt5">
+                    <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》: ”" + truncate_content(@recipe.description,30) + "”。" %>
+                    <% summarystr = "大家去看看吧！" %>
+                    <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
+                    <% appkeyhash = load_appkey() %>
+                    <%= render "shared/jiathis", :titlestr => titlestr, :summarystr => summarystr, :picstr => picstr, :appkeyhash => appkeyhash %>
+                </div>
+
                 <div class="mt10">
                     <% if current_user_has_permission? :normal_user %>
                         <div class="mt5">
@@ -39,19 +47,11 @@
                         </div>
                     <% end %>
                     <% if the_author_himself(Recipe.name, @recipe.id, true, false) %>
-                        <div class="mt5">
-                            <%= link_to "", edit_recipe_path(@recipe), class: "modify_btn" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
-                            <%= link_to "", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
+                        <div class="mt5 clearfix">
+                            <%= link_to "", edit_recipe_path(@recipe), class: "btn btn_edit" if the_author_himself(Recipe.name, @recipe.id, true, false) %>
+                            <%= link_to "", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete" %>
                         </div>
                     <% end %>
-                </div>
-
-                <div class="mt5">
-                    <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》: ”" + truncate_content(@recipe.description,30) + "”。" %>
-                    <% summarystr = "大家去看看吧！" %>
-                    <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
-                    <% appkeyhash = load_appkey() %>
-                    <%= render "shared/jiathis", :titlestr => titlestr, :summarystr => summarystr, :picstr => picstr, :appkeyhash => appkeyhash %>
                 </div>
             </div>
 

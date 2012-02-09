@@ -31,7 +31,7 @@
                             </table>
                         </div>
 
-                        <%= link_to_add_fields( "+添加主料", f, :ingredients, ".major_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients), "button")  %>
+                        <%= link_to_add_fields( "+添加主料", f, :ingredients, ".major_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients), "btn btn_add_major_ingredient")  %>
                     </div>
 
                     <div class ="minor_ingredients mt10">
@@ -52,7 +52,7 @@
                             </table>
                         </div>
 
-                        <%= link_to_add_fields( "+添加辅料", f, :ingredients, ".minor_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients), "button")  %>
+                        <%= link_to_add_fields( "+添加辅料", f, :ingredients, ".minor_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients), "btn btn_add_minor_ingredient")  %>
                     </div>
                 </div>
             </div>
@@ -86,15 +86,15 @@
                 <% end %>
             </ul>
 
-            <% add_class= "add_step_btn" %>
+            <% add_class= "btn btn_add_step" %>
             <%= link_to_add_fields( "", f, :steps, ".steps >ul", ".steps", get_max_length(Recipe, :steps), add_class ) %><br/>
 
 
-            <%= f.label :title, t("recipes.note"), :class => "f14" %>
+            <%= f.label :title, t("recipes.note"), :class => "f14 mt5" %>
         </div>
 
         <div class="mt10">
-            <%= f.submit t("general.submit"), class: "button", id: "recipe_submit" %>
+          <%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn submit_post" : "btn submit_update"}", id: "recipe_submit" %>
         </div>
      <% end %>
 </div>

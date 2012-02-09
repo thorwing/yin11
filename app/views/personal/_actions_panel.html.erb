@@ -1,11 +1,13 @@
 <div id="actions_panel" class="panel clearfix">
     <div class="mt5">
         <b><%= t("control_panel.actions") %></b><br/>
-        <span class="mb10 clearfix"><%= link_to "上传馋人图片", new_desire_path, class: "button" %></span><br/>
-        <%= link_to "+添加菜谱", new_recipe_path, :class => "button" %>
-        <%= link_to "+新建专辑", new_album_path, :class => "button" %><br/>
+        <div class="clearfix"><%= link_to "上传馋人图片", new_desire_path, :class => "btn btn_new_desire" %></div>
+        <div class="mt5 clearfix">
+            <%= link_to "+添加菜谱", new_recipe_path, :class => "btn btn_new_recipe fl" %>
+            <%= link_to "+新建专辑", new_album_path, :class => "btn btn_new_album fl" %>
+        </div>
     </div>
-    <div>
+    <div class="mt5">
       <%= link_to "【+收集到美食客栈工具】", "/home/collect_intro" %>
     </div>
 </div>

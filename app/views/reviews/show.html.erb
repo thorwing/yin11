@@ -16,8 +16,8 @@
 
             <% if the_author_himself(Review.name, @review.id, true, false) %>
                 <div class="mt10 p5 clearfix">
-                    <%= link_to "", edit_review_path(@review), class: "modify_btn" %>
-                    <%= link_to "", @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
+                    <%= link_to "", edit_review_path(@review), class: "btn btn_edit" %>
+                    <%= link_to "", @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete" %>
                 </div>
             <% end %>
 

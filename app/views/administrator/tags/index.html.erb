@@ -15,7 +15,7 @@
         <td><%= link_to tag.name, search_index_path(:tags => [tag]) %></td>
         <td><%= tag.feeds.size.to_s %></td>
         <td><%= tag.items.size.to_s %></td>
-        <td><%= link_to "", tag_path(tag), :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %></td>
+        <td><%= link_to "", tag_path(tag), :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete" %></td>
       </tr>
     <% end %>
     </table>

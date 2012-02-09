@@ -44,9 +44,9 @@
                  <span class="fix_hint b_black_alpha30 white"><%= t("albums.cover") %></span>
             </div>
 
-            <div>
-                <%= link_to "", edit_album_path(@album), class: "modify_btn" %>
-                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "delete_btn" %><br/>
+            <div class="mt5">
+                <%= link_to "", edit_album_path(@album), class: "btn btn_edit" %>
+                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "btn btn_delete" %><br/>
             </div>
         </div>
     <% end %>

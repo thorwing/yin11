@@ -27,7 +27,7 @@
                 <%= render "shared/text_field", :f => f, :label => t("general.priority"), :field => :priority %>
             <% end %>
 
-            <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "button", id: "submit_desire" %> </div>
+            <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn submit_post" : "btn submit_update"}", id: "submit_desire" %> </div>
         </div>
 
         <div class="fl display_inline" style="width:400px;">

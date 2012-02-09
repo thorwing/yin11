@@ -1,6 +1,6 @@
 <div class="masonary_item">
   <div class="inner_frame">
-    <%= image_tag "icons/jiechan.png", class: "ribbon" if desire.get_solutions_count > 0 %>
+    <%= image_tag "jiechan.png", class: "ribbon" if desire.get_solutions_count > 0 %>
     <div class="hint_box">
         <% pic_url = desire.get_image_url(:waterfall) %>
         <% if pic_url.present? %>
@@ -8,8 +8,8 @@
         <% end %>
         <% if the_author_himself(Album.name, @album.id, false, false) %>
             <span class="flex_hint top_left">
-                <p><%= link_to "", pick_cover_album_path(@album, item_id: desire.id, item_type: desire.class.name), method: :put, remote: true, class: "set_cover_btn" %></p>
-                <p><%= link_to "", remove_album_path(@album, item_id: desire.id, item_type: desire.class.name), method: :put, class: "delete_from_album_btn", confirm: "确定要从专辑中移除吗？"  %></p>
+                <p><%= link_to "", pick_cover_album_path(@album, item_id: desire.id, item_type: desire.class.name), method: :put, remote: true, class: "btn btn_set_cover" %></p>
+                <p><%= link_to "", remove_album_path(@album, item_id: desire.id, item_type: desire.class.name), method: :put, class: "btn btn_remove_from_album", confirm: "确定要从专辑中移除吗？"  %></p>
             </span>
         <% end %>
     </div>

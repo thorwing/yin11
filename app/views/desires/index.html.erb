@@ -12,7 +12,9 @@
             <% end %>
             <%= content_tag :span, "也想馋馋别人？", class: "f14" %>
             <% if current_user_has_permission? :normal_user %>
-                <%= link_to "+上传馋人图片", new_desire_path, class: "desire_dialog_btn button" %>
+                <div class="mt5 clearfix">
+                    <%= link_to "+上传馋人图片", new_desire_path, class: "btn btn_new_desire" %>
+                </div>
             <% else %>
                 <%= link_to "立即注册", new_user_path, class: "button" %>
             <% end %>
@@ -50,4 +52,4 @@
     <span class="trivial"><%= "共#{@total_chapters}页" %></span>
 </div>
 
-<%= link_to image_tag("back_to_top.jpg", :width => 48, :height => 48, :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>
+<%= link_to image_tag("back_to_top.png", :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>

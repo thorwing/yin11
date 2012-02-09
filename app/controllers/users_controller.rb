@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     session[:user_mode] = @current_mode
 
     page = params[:page].present? ? params[:page].to_i : 0
-    @feeds = FeedsManager.get_feeds_of(@user)
+    @feeds = FeedsManager.get_feeds_of(@user).reject{|f| f.cracked? || f.created_at.blank? || f.author.blank?}.sort{|x, y| y.created_at <=> x.created_at}.take(ITEMS_PER_PAGE_MANY)
     @desires = @user.desires.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @reviews = @user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @albums = @user.albums.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)

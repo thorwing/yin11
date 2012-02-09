@@ -5,12 +5,12 @@
       <%= hidden_field_tag :item_type, item.class.name %>
       <%= hidden_field_tag :parent_id, parent.id if (defined? parent) %>
       <div class="fl ml5">
-            <%= text_area_tag :content, "添加评论...", :maxlength => get_max_length(Comment, :content),
+            <%= text_area_tag :content, "说点什么吧...", :maxlength => get_max_length(Comment, :content),
           'data-comment_max_len' => get_max_length(Comment, :content),
           :rows => 3, :class => "char_aware not_cleared" %>
         <%= content_tag :span, "", class: "char_saver display_none" %>
         <%= content_tag :span, "", class: "char_counter block trivial" %>
-        <div class="fr"><%= submit_tag "添加评论", :class => "button submit_comment_btn" %></div>
+        <div class="fr"><%= submit_tag "添加评论", :class => "btn_submit_comment" %></div>
       </div>
     <% end %>
 </div>

@@ -90,7 +90,7 @@
 }
 
 .box_shadow {
-    background: none repeat scroll 0 0 $shadow_gray;
+    background: none repeat scroll 0 0 white;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
 }
@@ -297,22 +297,6 @@ ul.menu li {
 
 
 /* Common stuff */
-
-a.button, input.button {
-    display: inline-block;
-	background-color: $berry_red;
-	padding: 0 2px;
-	color: $berry_gray;
-	text-decoration: none;
-	border:1px solid #32312f;;
-	text-transform:uppercase;
-    height: 24px;
-}
-a.button:hover, input.button:hover {
-    color: white;
-	background: darken($berry_red, 10%);
-    cursor:pointer;
-}
 
 
 a.tag {

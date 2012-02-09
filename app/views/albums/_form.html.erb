@@ -18,7 +18,5 @@
     </div>
 
     <div class="clearfix"></div>
-    <div class="mt5">
-        <%= f.submit t("general.submit"), class: "button" %>
-    </div>
+    <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn submit_post" : "btn submit_update"}" %> </div>
 <% end %>

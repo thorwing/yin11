@@ -12,8 +12,8 @@
     <% @pages.each do |page| %>
       <tr id='<%= page.id %>'>
         <td><%= link_to page.title, page%></td>
-        <td><%= link_to "", edit_page_path(page), :class => "modify_btn" %></td>
-        <td><%= link_to "", page, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %></td>
+        <td><%= link_to "", edit_page_path(page), :class => "btn btn_edit" %></td>
+        <td><%= link_to "", page, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete" %></td>
       </tr>
     <% end %>
     </table>

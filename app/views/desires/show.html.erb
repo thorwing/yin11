@@ -31,8 +31,8 @@
         <% if the_author_himself(Desire.name, @desire.id, true, false) %>
             <div class="mt10 clearfix">
                 <% if the_author_himself(Desire.name, @desire.id, true, false) %>
-                    <%= link_to "", edit_desire_path(@desire), class: "modify_btn" %>
-                    <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "delete_btn" %>
+                    <%= link_to "", edit_desire_path(@desire), class: "btn btn_edit" %>
+                    <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete" %>
                 <% end %>
             </div>
         <% end %>

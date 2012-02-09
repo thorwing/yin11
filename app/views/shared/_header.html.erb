@@ -13,7 +13,7 @@
                         <% new_pm_count = current_user.messages.where(to_id: current_user.id.to_s, read: false).size %>
                         <% sys_msg_count = current_user.unread_system_notifications.size %>
                         <% total_msg_count = new_pm_count + sys_msg_count %>
-                        <%= image_tag("bubble_48.jpg", width: 13, height: 13) if total_msg_count > 0 %>
+                        <%= image_tag("bubble.png", width: 14, height: 14) if total_msg_count > 0 %>
                         <%= link_to t("menu.notifications") + (total_msg_count > 0 ? "(#{total_msg_count.to_s})" : ""), "/info_center" %>
                         <ul class="sub_menu">
                             <li><%= link_to "私信" + (new_pm_count > 0 ? "(#{new_pm_count.to_s})" : ""), "/info_center?mode=inbox"%></li>

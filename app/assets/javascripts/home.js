@@ -104,11 +104,11 @@ $(function(){
             $('#back_to_top').on('click', function(e) {
                 e.halt();
                 e.preventDefault();
+//                $('#back_to_top').hide();
                 $(window).stop();
                 $(window).animate({
                     scrollTop:0
                 },1,"easeOut");
-                $(this).hide();
             });
         }
       }

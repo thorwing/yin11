@@ -1,12 +1,7 @@
 <% title t("authentication.sign_up"), false %>
 
-<div class="clearfix mb5">
-    <div class="grid_4 block round">
-        <h3 class="p5">赶快加入我们，发现美食，分享快乐！</h3>
-    </div>
-</div>
-
 <div class="grid_7 user_register">
+    <h3 class="trivial f16">赶快加入我们，发现美食，分享快乐！</h3>
     <%= form_for @user do |f| %>
       <%= render "shared/error_messages", :target => @user %>
       <p>
@@ -25,32 +20,11 @@
         <%= f.label t("authentication.password_confirmation") %> <br/>
         <%= f.password_field :password_confirmation %>
       </p>
-      <p class="button"><%= submit_tag t("authentication.sign_up"), :class => "button" %></p>
+      <p class="button"><%= submit_tag t("authentication.sign_up"), :class => "btn_register" %></p>
     <% end %>
 </div>
 
 <div class="grid_5">
     <p>已有帐号？<%= link_to "直接登录", login_path %></p>
-    <%= label_tag t("authentication.other_logins") %><br/>
-    <table>
-        <tr>
-            <th/>
-            <th/>
-        </tr>
-        <tr>
-          <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/sina_big.png", :border => 0, :alt => t("syncs.sites.sina")), "syncs/sina/new", id: "login_via_sinablog", class: "third_pty_login_button m5" %></td>
-          <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/renren_big.png", :border => 0, :alt => t("syncs.sites.renren")), "syncs/renren/new", id: "login_via_renren", class: "third_pty_login_button m5"%></td>
-        </tr>
-        <tr>
-          <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/taobao_big.png", :border => 0, :alt => t("syncs.sites.taobao")), "syncs/taobao/new", id: "login_via_taobao", class: "third_pty_login_button m5" %></td>
-          <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/douban_big.png", :border => 0, :alt => t("syncs.sites.douban")), "syncs/douban/new", id:"login_via_douban", class: "third_pty_login_button m5" %></td>
-        </tr>
-        <tr>
-          <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/qq_big.png", :border => 0, :alt => t("syncs.sites.qq")), "syncs/qq/new", id: "login_via_qqblog" , class: "third_pty_login_button m5"%></td>
-          <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/sohu_big.png", :border => 0, :alt => t("syncs.sites.sohu")), "syncs/sohu/new", id: "login_via_sohublog" , class: "third_pty_login_button m5"%></td>
-        </tr>
-        <tr>
-          <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/netease_big.png", :border => 0, :alt => t("syncs.sites.netease")), "syncs/netease/new", id: "login_via_neteaseblog" , class: "third_pty_login_button m5"%></td>
-        </tr>
-    </table>
+    <%= render "shared/third_party_login" %>
 </div>

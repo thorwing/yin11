@@ -38,13 +38,13 @@
         <span class="trivial"><%= "共#{@total_chapters}页" %></span>
     </div>
 
-    <%= link_to image_tag("back_to_top.jpg", :width => 48, :height => 48, :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>
+    <%= link_to image_tag("back_to_top.png", :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>
 </div>
 
 <div class="grid_3 to_right">
   <div class="box_shadow p5">
     <% if current_user_has_permission? :normal_user %>
-        <%= link_to "+添加菜谱", new_recipe_path, class: "button" %>
+        <%= link_to "+添加菜谱", new_recipe_path, class: "btn btn_new_recipe" %>
         <hr/>
     <% end %>
     <!--<div class="mt10 mb10" >-->
