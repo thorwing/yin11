@@ -166,6 +166,7 @@ zh-CN:
     album_cover_picked: 专辑封面已更改
     desire_created: 馋人图片创建成功
     desire_updated: 馋人图片修改成功
+    place_updated: 地点更新成功
     message_sent: 消息已发出
 
   alerts:
@@ -195,6 +196,7 @@ zh-CN:
     albums: 专辑
     notifications: 消息
     masters: 达人
+    places: 地点
     products: 美食
     topics: 策划
     badges: 徽章
@@ -564,6 +566,9 @@ zh-CN:
     collect_to_album: 到专辑：
     items: 个收集
     recommended: 推荐专辑（全部）
+
+  places:
+    places: 地点
 
   search:
     kinds:

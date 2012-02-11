@@ -1,6 +1,7 @@
 class Place
   include Mongoid::Document
   include Gmaps4rails::ActsAsGmappable
+  include Votable
 
   field :name
   field :verified, :type => Boolean, :default => false
@@ -19,6 +20,7 @@ class Place
   scope :of_city, lambda { |city_name| where(:city => city_name)}
 
   #Relationships
+  embeds_many :comments
   has_many :desires
   belongs_to :creator, :class_name => "User"
   embeds_many :feeds
@@ -37,10 +39,10 @@ class Place
     (name || "") + " (" + address + ")"
   end
 
-  #def gmaps4rails_address
-  #  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-  #  "#{self.street}, #{self.city}, #{I18n.t("location.default_country")}"
-  #end
+  def gmaps4rails_address
+    #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.street}, #{self.city}, #{I18n.t("location.default_country")}"
+  end
 
   def address
     [(self.city ? self.city : ""), (self.street ? self.street : "")].join(" ")
@@ -49,5 +51,10 @@ class Place
   def prevent_geocoding
     #may create from seeds
     (new_record? && latitude.present? && longitude.present?) || street.blank?
+  end
+
+  def get_image_url(version = nil)
+    desire = self.desires.first
+    desire ? desire.get_image_url(version) : "not_found.png"
   end
 end

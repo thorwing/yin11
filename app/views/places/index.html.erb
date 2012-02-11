@@ -1,0 +1,26 @@
+<% title t("places.places") %>
+
+<%= paginate @places %>
+
+
+<% @places.each_slice(4).each do |places| %>
+    <div class="clearfix">
+        <% places.each do |place| %>
+            <div class="grid_3 box_shadow b_white pt10 mb10">
+                <div class="hint_box center lighter_touch" style="width:180px;">
+                    <%= link_to image_tag("grey.gif", "data-original"=> place.get_image_url(:waterfall), width: 180, height: 180, class: 'lazy img_frame'), place %>
+                    <span class="fix_hint b_black_alpha30 white center"><%= place.name %></span>
+                </div>
+                <div class="center">
+                    <span class="mr5 trivial"><%= place.desires.size %>张馋人图片</span> |
+                    <span class="ml5 trivial"><%= "#{place.votes.to_s}个人喜欢" %></span>
+                </div>
+                <div class="ml20 mr10 mb10">
+                    <%= place.address %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>
+
+

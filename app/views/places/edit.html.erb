@@ -1,0 +1,13 @@
+<%= form_for @place do |f| %>
+    <%= render "shared/error_messages", target: @place %>
+
+    <span class=""><%= "城市" %></span><br/>
+    <span class="trivial"><%= "上海（暂时仅限上海，其他城市也会陆续添加～）" %></span><br/>
+    <%= hidden_field_tag "place[city]", "上海" %>
+    <span>名称</span><%= mark_required Place, :name %><span class="trivial">例如： XX饭店</span><br/>
+    <%= f.text_field :name %><br/>
+    <span>地址</span><%= mark_required Place, :street %><span class="trivial">例如：  黄浦区XX路XXX号 A大厦...</span><br/>
+    <%= f.text_field :street %><br/>
+
+    <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn submit_post" : "btn submit_update"}" %> </div>
+<% end %>

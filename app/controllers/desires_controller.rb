@@ -38,6 +38,9 @@ class DesiresController < ApplicationController
   # GET /desires/new.json
   def new
     @desire = Desire.new
+    if params[:place_id].present?
+      @place = Place.find(params[:place_id])
+    end
 
     respond_to do |format|
       format.html # new.html.erb

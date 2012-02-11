@@ -27,16 +27,27 @@
                 <%= render "shared/text_field", :f => f, :label => t("general.priority"), :field => :priority %>
             <% end %>
 
-            <%= content_tag :span, "有地址？那赶快告诉大家在哪能吃到这份美食", class: "trivial" %><%= link_to_function "+展开", '$(this).next().toggle();' %>
-            <div class="display_none">
-                <span class=""><%= "城市" %></span><br/>
-                <span class="trivial"><%= "上海（暂时仅限上海，其他城市也会陆续添加～）" %></span><br/>
-                <%= hidden_field_tag "place[city]", "上海" %>
-                <span>名称</span><%= mark_required Place, :name %><span class="trivial">例如： XX饭店</span><br/>
-                <%= text_field_tag "place[name]", "" %><br/>
-                <span>地址</span><%= mark_required Place, :street %><span class="trivial">例如：  黄浦区XX路XXX号 A大厦...</span><br/>
-                <%= text_field_tag "place[street]", "" %><br/>
-            </div>
+            <% if @place %>
+                <div>
+                    <span class="trivial"><%= "城市：" %></span><span class="trivial"><%= "上海" %></span><br/>
+                    <%= hidden_field_tag "place[city]", "上海" %>
+                    <span class="trivial"><%= "名称：" %></span><span class="trivial"><%= @place.name %></span><br/>
+                    <%= hidden_field_tag "place[name]", @place.name %>
+                    <span class="trivial"><%= "地址：" %></span><span class="trivial"><%= @place.street %></span><br/>
+                    <%= hidden_field_tag "place[street]", @place.street %>
+                </div>
+            <% else %>
+                <%= content_tag :span, "有地址？那赶快告诉大家在哪能吃到这份美食", class: "trivial" %><%= link_to_function "+展开", '$(this).next().toggle();' %>
+                <div class="display_none">
+                    <span class=""><%= "城市" %></span><br/>
+                    <span class="trivial"><%= "上海（暂时仅限上海，其他城市也会陆续添加～）" %></span><br/>
+                    <%= hidden_field_tag "place[city]", "上海" %>
+                    <span>名称</span><%= mark_required Place, :name %><span class="trivial">例如： XX饭店</span><br/>
+                    <%= text_field_tag "place[name]", "" %><br/>
+                    <span>地址</span><%= mark_required Place, :street %><span class="trivial">例如：  黄浦区XX路XXX号 A大厦...</span><br/>
+                    <%= text_field_tag "place[street]", "" %><br/>
+                </div>
+            <% end %>
 
             <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn submit_post" : "btn submit_update"}", id: "submit_desire" %> </div>
         </div>

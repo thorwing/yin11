@@ -55,6 +55,11 @@
         <span class="trivial">以下分享中提到了该商品：</span><br/>
         <%= render @refer_reviews %>
     </div>
+
+    <div class="mt10">
+        <%= render "comments/comments", item: @product %>
+    </div>
+
 </div>
 
 <div class="grid_3 to_right">

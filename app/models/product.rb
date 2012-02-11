@@ -3,7 +3,6 @@ class Product
   include Mongoid::Timestamps
   include AssociatedModels
   include Taggable
-  include Votable
   include Available
   include Imageable
   include SilverSphinxModel

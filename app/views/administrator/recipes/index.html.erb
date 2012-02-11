@@ -16,7 +16,7 @@
         <td><%= link_to recipe.name, recipe %></td>
         <td><%= recipe.ingredients.size %></td>
         <td><%= recipe.steps.size %></td>
-        <td><%= recipe.author.login_name %></td>
+        <td><%= recipe.author.login_name if recipe.author %></td>
         <td><%= link_to "", edit_recipe_path(recipe), :class => "btn btn_edit fl" %></td>
         <td><%= link_to "", [:administrator, recipe], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %></td>
       </tr>
