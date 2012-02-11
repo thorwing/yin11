@@ -4,7 +4,7 @@ module Taggable
       field :tags, :type => Array, :default => []
       index :tags
 
-      attr_accessible :tags_string
+      attr_accessible :tags_string, :tags_string_with_spaces
       validates_length_of :tags, :maximum => MAX_TAGS, :message => I18n.translate("validations.tags.max_limit_msg", :max => MAX_TAGS)
       after_save :sync_tags
 
@@ -20,6 +20,14 @@ module Taggable
 
     def tags_string
       self.tags.join(", ") if tags
+    end
+
+    def tags_string_with_spaces=(tags)
+      self.tags = tags.split(" ").collect{ |t| t.strip }.delete_if{ |t| t.blank? }.take(MAX_TAGS)
+    end
+
+    def tags_string_with_spaces
+      self.tags.join(" ") if tags
     end
 
     def sync_tags

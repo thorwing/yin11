@@ -33,13 +33,7 @@
             <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "button", id: "submit_desire" %> </div>
         </div>
 
-        <div class="fl display_inline" style="width:400px;">
-            <div class="field">
-                 <%= f.label :tags_string, t("tags.tags") %>
-                 <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json, class: "tags_input" %>
-            </div>
-            <%= render "tags/tags_options" %>
-        </div>
+        <%= render "right_form", f: f %>
 
         <div class="clearfix"></div>
     <% end %>

@@ -70,7 +70,7 @@ $(function() {
     tokenize_input("#product_tags_string", "/tags/query.json", 10);
     tokenize_input("#recipe_tags_string", "/tags/query.json", 10);
     tokenize_input("#group_tags_string", "/tags/query.json", 10);
-    tokenize_input("#desire_tags_string", "/tags/query.json", 10);
+//    tokenize_input("#desire_tags_string", "/tags/query.json", 10);
     tokenize_input("#album_tags_string", "/tags/query.json", 10);
     tokenize_input("#message_fields .token #user_id", "/users/fans.json", 1);
 });
@@ -155,11 +155,12 @@ function char_aware()
         if(remaining >= 0) {
             //  cache the content
             $(this).nextAll('.char_counter').html('还可以输入' + parseInt(remaining/2) + '字' );
-            $(this).nextAll('.char_saver').val(content);
+//            $(this).nextAll('.char_saver').val(content);
         }
         else {
+            $(this).nextAll('.char_counter').html('超过了<b class="f15 red">' + parseInt(-1 * remaining/2) + '字</b>' );
             //  restore the cached content
-            $(this).val($(this).nextAll('.char_saver').val());
+//            $(this).val($(this).nextAll('.char_saver').val());
         }
     });
 }
@@ -191,7 +192,35 @@ function fill_tag(link) {
         var data = {id: name, name: name};
         input.tokenInput("add", data);
     }
-  }
+}
+
+function fill_desire_tag(link) {
+    var name = $(link).text();
+    var input = $("#desire_tags_string_with_spaces");
+    if(input.length > 0)
+    {
+        var value = input.val().trim();
+        var tags = value.split(" ");
+        if(tags.length >= 10) {
+            alert("已经打了10个标签啦！");
+        }
+        else {
+            tags.push(name);
+            input.val(tags.join(" ").replace(/^\s\s*/, '').replace(/\s\s*$/, ''));
+        }
+    }
+}
+
+$(function(){
+    $("#desire_tags_string_with_spaces").change(function(){
+        var value = $(this).val().trim();
+        var tags = value.split(" ");
+        if(tags.length > 10) {
+            alert("打了超过10个标签啦！");
+              $(this).val(tags.slice(0, 10).join(" ").replace(/^\s\s*/, '').replace(/\s\s*$/, ''));
+        }
+    });
+});
 
 function expand_tags(link) {
     $(link).parents(".first_level").next().toggle();

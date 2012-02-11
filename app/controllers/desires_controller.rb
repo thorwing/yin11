@@ -57,6 +57,7 @@ class DesiresController < ApplicationController
   # POST /desires.json
   def create
     @desire = Desire.new(params[:desire])
+    #@desire.content = @desire.content[0..MAX_DESIRE_CONTENT_LENGTH - 1] if (@desire.content.present? && @desire.content.size > MAX_DESIRE_CONTENT_LENGTH)
     @desire.author = current_user
 
     if params[:place][:name].present? && params[:place][:street].present?

@@ -28,7 +28,7 @@ class Desire
 
   #validations
   validates_presence_of :author
-  validates_length_of :content, :maximum => 280
+  validates_length_of :content, :maximum => MAX_DESIRE_CONTENT_LENGTH
 
   before_save :sync_counts
 

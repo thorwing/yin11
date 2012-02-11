@@ -1,6 +1,6 @@
 <% if target.errors.any? %>
 <div id="errorExplanation" class="block">
-  <div class="block round">
+  <div class="block round p5 mt10 mb10">
       <h3><%= t("validations.header_msg") %></h3>
       <ul>
       <% target.errors.full_messages.each do |msg| %>
