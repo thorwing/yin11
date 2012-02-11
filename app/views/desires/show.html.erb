@@ -1,3 +1,5 @@
+
+
 <% title t("desires.desire"), false %>
 
 <div class="grid_9">
@@ -31,8 +33,8 @@
         <% if the_author_himself(Desire.name, @desire.id, true, false) %>
             <div class="mt10 clearfix">
                 <% if the_author_himself(Desire.name, @desire.id, true, false) %>
-                    <%= link_to "", edit_desire_path(@desire), class: "btn btn_edit" %>
-                    <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete" %>
+                    <%= link_to "", edit_desire_path(@desire), class: "btn btn_edit fl" %>
+                    <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl fl" %>
                 <% end %>
             </div>
         <% end %>
@@ -80,6 +82,14 @@
 </div>
 
 <div class="grid_3">
+    <% if @desire.place %>
+        <div class="box_shadow mb10 p5">
+            <h3>美食地点：<%= link_to @desire.place.name, @desire.place %></h3>
+            <%= content_tag :span, @desire.place.address, class: "trivial" %>
+            <%= render "shared/location", location: @desire.place %>
+        </div>
+    <% end %>
+
     <div class="box_shadow p5">
         <h3>相似的馋人图片：</h3>
         <% @related_desires.each do |desire| %>

@@ -11,8 +11,8 @@
 
         <%= render "votes/fans", item: @album %>
     </div>
-
     <div class="clearfix"></div>
+
     <div class="fl" style="width: 720px;">
         <div id="masonry_container" class="clearfix">
             <% @album.desires.each do |desire| %>
@@ -20,8 +20,8 @@
             <% end %>
         </div>
     </div>
-
     <div class="clearfix"></div>
+
     <div class="grid_9 mt10">
         <%= render "comments/comments", :item => @album %>
     </div>
@@ -45,8 +45,8 @@
             </div>
 
             <div class="mt5">
-                <%= link_to "", edit_album_path(@album), class: "btn btn_edit" %>
-                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "btn btn_delete" %><br/>
+                <%= link_to "", edit_album_path(@album), class: "btn btn_edit fl" %>
+                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "btn btn_delete fl" %><br/>
             </div>
         </div>
     <% end %>

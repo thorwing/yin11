@@ -89,7 +89,6 @@ input.btn:hover {
 }
 
 a.btn {
-    float: left;
     background-repeat:no-repeat;
     text-indent:-9999px;
 }
@@ -178,7 +177,6 @@ a.btn.btn_edit:hover{
 /*}*/
 
 .btn.btn_new_album{  display: inline-block;
-    float: none;
     width:80px;
     height:26px;
     background-image: url('buttons/new_album.png');
@@ -189,7 +187,6 @@ a.btn.btn_edit:hover{
 }
 
 .btn.btn_new_recipe{  display: inline-block;
-    float: none;
     width:80px;
     height:26px;
     background-image: url('buttons/new_recipe.png');
@@ -211,7 +208,6 @@ a.btn.btn_edit:hover{
 
 .btn.btn_remove_from_album{
     display: block;
-    float:none;
     width:80px;
     height:26px;
     background-image: url('buttons/remove_from_album.png');
@@ -223,7 +219,6 @@ a.btn.btn_edit:hover{
 
 .btn.btn_set_cover{
     display: block;
-    float:none;
     width:80px;
     height:26px;
     background-image: url('buttons/set_cover.png');
@@ -340,7 +335,6 @@ a.btn.btn_edit:hover{
 }
 
 .btn.btn_add_step{
-    float: none;
     display: block;
     width:80px;
     height:26px;
@@ -352,7 +346,6 @@ a.btn.btn_edit:hover{
 }
 
 .btn.btn_add_major_ingredient{
-    float: none;
     display: block;
     width:80px;
     height:26px;
@@ -365,7 +358,6 @@ a.btn.btn_edit:hover{
 
 
 .btn.btn_add_minor_ingredient{
-    float: none;
     display: block;
     width:80px;
     height:26px;

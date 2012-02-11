@@ -103,6 +103,8 @@ Yin11::Application.routes.draw do
 
   resources :vendors
 
+  resources :places
+
   #resources :products, :except => [:new, :create]
   resources :products do
     collection {get :more}

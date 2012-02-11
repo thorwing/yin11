@@ -1,0 +1,29 @@
+<div class="grid_9">
+    <div class="box_shadow p5">
+        <h2><%= @place.name %></h2>
+        <%= content_tag :span, @place.address %>
+        <% if current_user_has_permission? :normal_user %>
+            <div class="mt5 clearfix">
+                <%= content_tag :span, "有这个地点的馋人图片要分享？", class: "trivial" %>
+                <%= link_to "+上传馋人图片", new_desire_path, class: "btn btn_new_desire" %>
+            </div>
+        <% end %>
+    </div>
+
+  <div class="mt10 fl" style="width: 720px;">
+        <%= content_tag :span, "该地点的馋人图片：", class: "trivial" %><br/>
+        <div id="masonry_container" class="clearfix">
+            <% @place.desires.each do |desire| %>
+                <%= render "desires/desire_item", desire: desire %>
+            <% end %>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="grid_3">
+  <div class="box_shadow p5">
+    <%= content_tag :span, @place.address, class: "trivial" %>
+    <%= render "shared/location", location: @place %>
+  </div>
+</div>

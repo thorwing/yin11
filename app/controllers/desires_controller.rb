@@ -56,6 +56,16 @@ class DesiresController < ApplicationController
     @desire = Desire.new(params[:desire])
     @desire.author = current_user
 
+    if params[:place][:name].present? && params[:place][:street].present?
+      place = Place.find_or_initialize_by(name: params[:place][:name])
+      if place.new_record?
+        place.city = params[:place][:city]
+        place.street = params[:place][:street]
+        place.save
+      end
+      @desire.place = place
+    end
+
     ImagesHelper.process_uploaded_images(@desire, params[:images], params[:remote_image_url])
 
     if params[:product_id].present?

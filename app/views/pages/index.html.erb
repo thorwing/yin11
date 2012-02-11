@@ -10,8 +10,8 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%= link_to page.title, page %></td>
-    <td><%= link_to "", edit_page_path(page), class: "btn btn_edit" %></td>
-    <td><%= link_to "", page, confirm: 'Are you sure?', method: :delete, class: "btn btn_delete" %></td>
+    <td><%= link_to "", edit_page_path(page), class: "btn btn_edit fl" %></td>
+    <td><%= link_to "", page, confirm: 'Are you sure?', method: :delete, class: "btn btn_delete fl" %></td>
   </tr>
 <% end %>
 </table>

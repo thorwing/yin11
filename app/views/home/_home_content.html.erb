@@ -18,6 +18,14 @@
             <% @hot_tags.each do |tag| %>
                 <%= link_to tag, desires_path(tag: tag), class: "tag" %>
             <% end %>
+            <% if current_user_has_permission? :normal_user %>
+                <div class="mt10">
+                    <%= content_tag :span, "也想馋馋别人？", class: "trivial f14" %>
+                    <div class="mt5 clearfix">
+                        <%= link_to "+上传馋人图片", new_desire_path, class: "btn btn_new_desire" %>
+                    </div>
+                </div>
+            <% end %>
         </div>
     </div>
     <% @desires.each do |desire| %>

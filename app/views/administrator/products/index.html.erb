@@ -16,8 +16,8 @@
       <tr id='<%= product.id %>'>
         <td><%= link_to product.name, product %></td>
         <td><%= render "administrator/shared/toggle_fields", :item => product, :field => :enabled %></td>
-        <td><%= link_to "", edit_product_path(product), :class => "btn btn_edit" %></td>
-        <td><%= link_to "", product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete" %></td>
+        <td><%= link_to "", edit_product_path(product), :class => "btn btn_edit fl" %></td>
+        <td><%= link_to "", product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %></td>
       </tr>
     <% end %>
     </table>
