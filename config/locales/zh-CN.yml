@@ -83,7 +83,7 @@ zh-CN:
     error: 出错啦
 
   validations:
-    header_msg: 好像表单中有一些错误，要不您再仔细看看？
+    header_msg: 好像表单中有一些错误嘛，要不您再仔细看看？
     general:
       presence_msg: 不能为空
       uniqueness_msg: 相同的%{field}已存在
