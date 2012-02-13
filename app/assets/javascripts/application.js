@@ -232,3 +232,61 @@ function expand_tags(link) {
         $(link).text("+展开");
     }
 }
+
+
+
+$(function(){
+
+    var $container = $('#masonry_container');
+
+//    $container.imagesLoaded(function(){
+      $container.masonry({
+//        cornerStampSelector: '.coner_stamp',
+        itemSelector: '.masonary_item',
+        columnWidth: 10
+      });
+//    });
+
+    $container.infinitescroll({
+      debug: false,
+      navSelector  : '#page_nav',    // selector for the paged navigation
+      nextSelector : '#page_nav a:first',  // selector for the NEXT link (to page 2)
+      itemSelector : '.masonary_item',     // selector for all items you'll retrieve
+      bufferPx: 300,
+      errorCallback : function(){
+          $('#infscr-loading').hide();
+          $('#more_nav').show();
+      },
+      loading: {
+          finishedMsg: '到底啦！去看看其他的吧～',
+          img: '/assets/loading_big.gif',
+          msgText : '正在加载更多...'
+        }
+      },
+      // trigger Masonry as a callback
+      function( newElements ) {
+        // hide new items while they are loading
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        // ensure that images load before adding to masonry layout
+        $newElems.imagesLoaded(function(){
+          // show elems now they're ready
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true );
+        });
+
+        if($('#back_to_top').length > 0) {
+            $('#back_to_top').show();
+            // scrollTo
+            $('#back_to_top').on('click', function(e) {
+                e.halt();
+                e.preventDefault();
+//                $('#back_to_top').hide();
+                $(window).stop();
+                $(window).animate({
+                    scrollTop:0
+                },1,"easeOut");
+            });
+        }
+      }
+    );
+});
