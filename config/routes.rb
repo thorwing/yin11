@@ -38,6 +38,7 @@ Yin11::Application.routes.draw do
   match '/personal/more_feeds/:page' => 'personal#more_feeds'
   match '/desires/more/:tag/:page' => 'desires#more'
   match '/recipes/more/:tag/:page' => 'recipes#more'
+  match '/products/more/:tag/:page' => 'products#more'
 
   resources :topics do
     member { post :mercury_update }
@@ -106,9 +107,7 @@ Yin11::Application.routes.draw do
   resources :places
 
   #resources :products, :except => [:new, :create]
-  resources :products do
-    collection {get :more}
-  end
+  resources :products
 
   resources :reports, :only => [:new, :create]
 
@@ -145,7 +144,7 @@ Yin11::Application.routes.draw do
 
   resources :recipes do
     collection do
-      get :more
+      #get :more
       get :browse
     end
     member {post :mark}

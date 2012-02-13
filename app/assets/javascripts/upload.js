@@ -19,7 +19,7 @@ function general_upload(uploader_container, uploader_id, on_submit_func, on_comp
             // set to true to output server response to console
             debug: false,
             template: '<div class="qq-uploader" id="' + uploader_id +'">' +
-                    '<div class="qq-upload-drop-area"><span>拖拽图片至此上传</span></div>' +
+//                    '<div class="qq-upload-drop-area"><span>拖拽图片至此上传</span></div>' +
                     '<div class="qq-upload-button">上传图片</div>' +
                     '<ul class="qq-upload-list"></ul>' +
                  '</div>',

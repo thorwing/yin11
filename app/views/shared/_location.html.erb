@@ -1,12 +1,16 @@
 <%= hidden_field_tag "place_latitude", location.latitude %>
 <%= hidden_field_tag "place_longitude", location.longitude %>
 <div id="map_canvas" class="center" style="width: 210px; height: 210px"></div>
-<!--TODO-->
-<!--http://192.168.75.131:3000-->
-<!--ABQIAAAAzu7CXt92NZgriHar1AhtRRSA03hF8ZXA_s_TIl9cAo_J0511axR3aE91-8weKsRTZW1rAFETon6tVA-->
-<!--http://meishikezhan.com-->
-<!--ABQIAAAAzu7CXt92NZgriHar1AhtRRRYKk8QssvL90kzgRojyloQR74yFBTTZcRrb7pONl7QJYYctP61BODtBQ-->
-<script src="//maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;hl=zh-CN&amp;key=ABQIAAAAzu7CXt92NZgriHar1AhtRRRYKk8QssvL90kzgRojyloQR74yFBTTZcRrb7pONl7QJYYctP61BODtBQ"
+<% case request.host %>
+    <% when "meishikezhan.com" %>
+        <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRRYKk8QssvL90kzgRojyloQR74yFBTTZcRrb7pONl7QJYYctP61BODtBQ" %>
+    <% when "yinkuaizi.com" %>
+        <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRT2H37VFXvrvhgIRNtmutCmy1bfIRQF2i-4uacF69HsVG3ToxsI9xDRkQ" %>
+    <% else %>
+        <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRSA03hF8ZXA_s_TIl9cAo_J0511axR3aE91-8weKsRTZW1rAFETon6tVA" %>
+<% end %>
+
+<script src="//maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;hl=zh-CN&amp;key=<%= map_key %>"
         type="text/javascript"></script>
 <script type="text/javascript">
   if (GBrowserIsCompatible()) {

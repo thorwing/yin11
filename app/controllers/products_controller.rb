@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @catalogs = Catalog.desc(:created_at).to_a
+    @products, @total_chapters = get_products(params[:tag], params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,31 +13,10 @@ class ProductsController < ApplicationController
   end
 
   def more
-    #  used for waterfall displaying
-    criteria = Product.enabled.without(:description)
-    if params[:catalog].present?
-      catalog = Catalog.first(conditions: {name: params[:catalog]})
-      catalog_ids = [catalog.id] | catalog.descendant_ids
-      criteria = criteria.any_in(catalog_ids: catalog_ids)
-    end
-
-    criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
-
-    @products = criteria.via_editor.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
-
-    data = {
-      items: @products.inject([]){|memo, p| memo << {
-        name: p.name,
-        picture_url: p.get_image_url(:waterfall),
-        picture_height: p.get_image_height(:waterfall),
-        id: p.id}
-      },
-      page: params[:page],
-      pages: (criteria.size.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
-    }
+    @products, dummy = get_products(params[:tag], params[:page])
 
     respond_to do |format|
-      format.json { render :json => data}
+      format.html
     end
   end
 
@@ -115,6 +95,37 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url }
       format.json { head :ok }
+    end
+  end
+
+  private
+
+  def get_products(tag, page, chapter = nil)
+    total_chapters = 0
+    if chapter.present?
+      chapter = chapter.to_i
+    elsif session[:current_products_chapter].present?
+      chapter = session[:current_products_chapter].to_i
+    else
+      chapter = 1
+    end
+    page = (page ? page.to_i : 1)
+    if page <= PAGES_PER_CHAPTER
+      criteria = Product.enabled.without(:description)
+      #if params[:catalog].present?
+      #  catalog = Catalog.first(conditions: {name: params[:catalog]})
+      #  catalog_ids = [catalog.id] | catalog.descendant_ids
+      #  criteria = criteria.any_in(catalog_ids: catalog_ids)
+      #end
+
+      if tag.present? && tag != "null"
+        criteria = criteria.tagged_with(tag)
+      end
+      total_chapters = (criteria.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+
+      return criteria.via_editor.page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW), total_chapters
+    else
+      return [], total_chapters
     end
   end
 end

@@ -22,8 +22,8 @@
         <%= hidden_field_tag "place[street]", @place.street %>
     </div>
 <% else %>
-    <%= content_tag :span, "有地址？那赶快告诉大家在哪能吃到这份美食", class: "trivial" %><%= link_to_function "+展开", '$(this).next().toggle();' %>
-    <div class="display_none mt10">
+    <%= link_to_function "+展开", '$(this).nextAll(".toggle_fields").toggle();' %><%= content_tag :span, "有地址？那赶快告诉大家在哪能吃到这份美食", class: "trivial" %>
+    <div class="toggle_fields display_none mt10">
         <span class=""><%= "城市" %></span><br/>
         <span class="trivial"><%= "上海（暂时仅限上海，其他城市也会陆续添加～）" %></span><br/>
         <%= hidden_field_tag "place[city]", "上海" %>

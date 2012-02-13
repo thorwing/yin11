@@ -1,0 +1,13 @@
+<div class="masonary_item">
+    <div class="inner_frame">
+        <div class="centered">
+            <% pic_url = product.get_image_url(:waterfall) %>
+            <% if pic_url.present? %>
+                <%= link_to image_tag(pic_url, height: product.get_image_height(:waterfall)), product %>
+            <% end %>
+        </div>
+        <div class="clearfix">
+            <span class="m5"><%= link_to product.name, product %></span>
+        </div>
+    </div>
+</div>
