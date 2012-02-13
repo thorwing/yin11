@@ -1,14 +1,4 @@
-<div class="fl display_inline mb10" style="width:400px;">
-    <div class="field">
-         <%= f.label :tags_string_with_spaces, t("tags.tags"), class: "trivial"%><%= content_tag :span, "（用空格隔开，最多#{MAX_TAGS}个）", class: "trivial" %><br/>
-         <%= f.text_area :tags_string_with_spaces, rows: 3, cols: 40  %>
-    </div>
-    <span class="trivial"><%= "热门标签" %></span><span class="trivial f12"></span>
-
-    <% get_hot_tags(7, :desires).each do |tag_name| %>
-        <%= link_to_function tag_name, "fill_desire_tag(this);", class: "tag" %>
-    <% end %>
-</div>
+<%= render "tags/tags_field", f: f %>
 
 <hr/>
 

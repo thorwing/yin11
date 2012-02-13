@@ -68,7 +68,7 @@ $(function() {
 
     tokenize_input("#topic_tags_string", "/tags/query.json", 10);
     tokenize_input("#product_tags_string", "/tags/query.json", 10);
-    tokenize_input("#recipe_tags_string", "/tags/query.json", 10);
+//    tokenize_input("#recipe_tags_string", "/tags/query.json", 10);
     tokenize_input("#group_tags_string", "/tags/query.json", 10);
 //    tokenize_input("#desire_tags_string", "/tags/query.json", 10);
     tokenize_input("#album_tags_string", "/tags/query.json", 10);
@@ -196,7 +196,7 @@ function fill_tag(link) {
 
 function fill_desire_tag(link) {
     var name = $(link).text();
-    var input = $("#desire_tags_string_with_spaces");
+    var input = $(".tags_to_fill");
     if(input.length > 0)
     {
         var value = input.val().trim();

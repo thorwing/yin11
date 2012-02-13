@@ -16,6 +16,8 @@
                     <%= link_to tag, albums_path(tag: tag), class: "tag" %>
                 <% end %>
             </div>
+            <hr/>
+            <%= content_tag :p, "把你垂涎的美食统统收集到专辑中，在你想吃的时候方便找到它们，一饱口服！", class: "trivial" %>
             <%= link_to "", new_album_path, class: "btn btn_new_album" %>
         </div>
     </div>

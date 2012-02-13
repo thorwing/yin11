@@ -18,6 +18,8 @@
             <% @hot_tags.each do |tag| %>
                 <%= link_to tag, desires_path(tag: tag), class: "tag" %>
             <% end %>
+            <hr/>
+            <p>点击带有解馋<%= image_tag "jiechan_small.png", width: 24, height: 24 %>标志的图片看如何把美食吃到！</p>
             <% if current_user_has_permission? :normal_user %>
                 <div class="mt10">
                     <%= content_tag :span, "也想馋馋别人？", class: "trivial f14" %>

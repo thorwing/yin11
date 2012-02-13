@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "upload" %>
 
-<div id="desire_fields">
+<div id="desire_fields" style="position: relative;">
     <%= form_for @desire do |f| %>
         <%= render "shared/error_messages", target: @desire %>
 
@@ -29,8 +29,13 @@
 
             <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn submit_post" : "btn submit_update"}", id: "submit_desire" %> </div>
         </div>
+        <div class="grid_5">
+            <%= render "right_form", f: f %>
 
-        <%= render "right_form", f: f %>
+            <div class="box_shadow p5 b_berry_gray" style="position: absolute; bottom: 73px;">
+              <span class="trivial">强烈推荐您使用</span> <%= link_to "收集工具", "/home/collect_intro" %><span class="trivial">。1秒钟简单拖动，以后就可已方便快捷的分享美食图片了！</span>
+            </div>
+        </div>
 
         <div class="clearfix"></div>
     <% end %>
