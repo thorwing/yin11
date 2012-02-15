@@ -1,6 +1,8 @@
 <%= hidden_field_tag "place_latitude", location.latitude %>
 <%= hidden_field_tag "place_longitude", location.longitude %>
 <div id="map_canvas" class="center" style="width: 210px; height: 210px"></div>
+<% if request.host.include? "chixinbugai.com" %>
+    <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRTTDXYzDc0TRohOFh4YJHUphGw3SBQwuFNAVF30rcmzLfjwB71COkb5XA" %>
 <% if request.host.include? "meishikezhan.com" %>
     <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRRYKk8QssvL90kzgRojyloQR74yFBTTZcRrb7pONl7QJYYctP61BODtBQ" %>
 <% elsif request.host.include? "yinkuaizi.com" %>

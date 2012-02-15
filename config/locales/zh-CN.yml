@@ -1,9 +1,9 @@
 zh-CN:
   site:
-    name: 美食客栈
+    name: 吃心不改
     description: "发现美食 分享美食 料理菜谱 食品安全"
-    introduction: "美食客栈，专注于发现美食 分享菜谱， 帮助您挑选卫生又美味的食物，搭建一个和好友分享美的平台。"
-    mark: "美食客栈：美味又安心"
+    introduction: "吃心不改，专注于发现美食 分享菜谱， 帮助您挑选卫生又美味的食物，搭建一个和好友分享美的平台。"
+    mark: "吃心不改：美味又安心"
     saying: 盘古内测版
 
   symbols:
@@ -251,7 +251,7 @@ zh-CN:
     interested_places: 感兴趣的地方
     concern_settings: 其它设定
     edit_leave: 先这样
-    edit_hint: 花个几十秒，让美食客栈能更好地为您服务
+    edit_hint: 花个几十秒，让吃心不改能更好地为您服务
     edit_groups: 我是...
     add_place: +地点
     previous: 上一步

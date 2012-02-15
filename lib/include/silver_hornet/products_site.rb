@@ -374,6 +374,11 @@ class SilverHornet::ProductsSite < SilverHornet::Site
       product.vendor = vendor
       #record the product's ulr
       product.url = handle_url(agent.page.uri.to_s)
+
+      #if agent.page.at('#J_SpanLimitProm')
+      # limited promotion price
+      #  product_price = agent.page.at('J_SpanLimitProm').try(:content)
+      #end
       #record the product's price
       product_price = agent.page.at('input[type=hidden][name=current_price]').attr('value').to_s
       #delete the symbols of price

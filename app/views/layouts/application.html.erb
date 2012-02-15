@@ -55,5 +55,23 @@
 <%= hidden_field_tag "current_user_id", current_user.id.to_s, id: "current_user_id" if current_user %>
 
 <%= yield :deferred_javascript if content_for?(:deferred_javascript) %>
+
+<% if request.host.include? "chixinbugai.com" %>
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fcee3691f72a9ba212bcd497391611bca' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+<% elsif request.host.include? "meishikezhan.com" %>
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3584467c63415abf4ba3595550e27f0b' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+<% elsif request.host.include? "yinkuaizi.com" %>
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7953e074056904992ba352e2358c0dc9' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+<% end %>
+
 </body>
 </html>
