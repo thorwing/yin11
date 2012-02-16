@@ -6,7 +6,7 @@
         <%= image_tag "loading.gif", id: "link_spinner", class: "display_none" %>
         <p>已支持以下网上商城：</p>
         <div>
-          <%= link_to image_tag("third_party/taobao.png") + "淘宝", "http://www.taobao.com/" %>
+            <%= new_tab_link_to t("syncs.sites.taobao"), "http://www.taobao.com/", class: "auth_btn_16 via_taobao_small" %><%= new_tab_link_to "淘宝", "http://www.taobao.com/" %>
         </div>
     <% end %>
 </div>

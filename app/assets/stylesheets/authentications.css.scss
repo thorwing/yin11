@@ -1,0 +1,76 @@
+
+.auth_btn {
+    display: inline-block;
+    background: url("authentications.png") 0 0 no-repeat;
+    text-indent: -9999px;
+}
+
+.auth_btn_16 {
+    display: inline-block;
+    background: url("authentications.png") 0 0 no-repeat;
+    text-indent: -9999px;
+    width: 16px;
+    height: 16px;
+}
+
+.auth_btn.via_sina {
+    width: 126px;
+    height: 24px;
+    background-position: -2px -28px;
+}
+
+.auth_btn.via_douban {
+    width: 119px;
+    height: 24px;
+    background-position: -130px -28px;
+}
+
+.auth_btn.via_taobao {
+    width: 126px;
+    height: 24px;
+    background-position: -2px -2px;
+}
+
+.auth_btn.via_renren {
+    width: 114px;
+    height: 24px;
+    background-position: -130px -2px;
+}
+
+.auth_btn.via_qq {
+    width: 126px;
+    height: 24px;
+    background-position: -2px -80px;
+}
+
+.auth_btn.via_sohu {
+    width: 128px;
+    height: 26px;
+    background-position: -130px -54px;
+}
+
+.auth_btn.via_netease {
+    width: 126px;
+    height: 24px;
+    background-position: -2px -54px;
+}
+
+.auth_btn_16.via_qq_small {
+    background-position: -233px -82px;
+}
+
+.auth_btn_16.via_sohu_small {
+    background-position: -148px -82px;
+}
+
+.auth_btn_16.via_netease_small {
+    background-position: -198px -82px;
+}
+
+.auth_btn_16.via_sina_small {
+    background-position: -182px -82px;
+}
+
+.auth_btn_16.via_taobao_small {
+    background-position: -164px -82px;
+}

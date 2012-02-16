@@ -13,26 +13,26 @@
         <th/>
     </tr>
     <tr>
-        <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/sina_big.png", :border => 0, :alt => t("syncs.sites.sina")), "/syncs/sina/new", :id => "login_via_sinablog", class: "lighter_touch m5" %></td>
-        <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/douban_big.png", :border => 0, :alt => t("syncs.sites.douban")), "/syncs/douban/new", :id => "login_via_douban", class: "lighter_touch m5" %></td>
+        <td><%= link_to t("syncs.sites.sina"), "/syncs/sina/new", :class => "auth_btn via_sina lighter_touch m2"%></td>
+        <td><%= link_to t("syncs.sites.douban"), "/syncs/douban/new", :class => "auth_btn via_douban lighter_touch m2" %></td>
     </tr>
     <tr>
-        <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/taobao_big.png", :border => 0, :alt => t("syncs.sites.taobao")), "/syncs/taobao/new", :id => "login_via_taobao", class: "lighter_touch m5" %></td>
-        <td><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> "/assets/third_party/renren_big.png", :border => 0, :alt => t("syncs.sites.renren")), "/syncs/renren/new", :id => "login_via_renren", class: "lighter_touch m5" %></td>
+        <td><%= link_to t("syncs.sites.taobao"), "/syncs/taobao/new", :class => "auth_btn via_taobao lighter_touch m2" %></td>
+        <td><%= link_to t("syncs.sites.renren"), "/syncs/renren/new", :class => "auth_btn via_renren lighter_touch m2" %></td>
     </tr>
     <tr>
         <td>
           <span class="nav_menu">
             <%= image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow") + t("syncs.more") %>
               <ul class="sub_menu">
-               <li><%= link_to image_tag("third_party/qq.png", :border => 0, :alt => t("syncs.sites.qq")) + t("syncs.sites.qq"), "/syncs/qq/new", :id => "login_via_qqblog" %></li>
-               <li><%= link_to image_tag("third_party/sohu.png", :border => 0, :alt => t("syncs.sites.sohu")) + t("syncs.sites.sohu"), "/syncs/sohu/new", :id => "login_via_sohublog" %></li>
-               <li><%= link_to image_tag("third_party/netease.png", :border => 0, :alt => t("syncs.sites.netease"))+ t("syncs.sites.netease"), "/syncs/netease/new", :id => "login_via_neteaseblog" %></li>
+               <li><%= link_to t("syncs.sites.qq"), "/syncs/qq/new", class: "auth_btn_16 via_qq_small" %><%= link_to t("syncs.sites.qq"), "/syncs/qq/new" %></li>
+               <li><%= link_to t("syncs.sites.sohu"), "/syncs/sohu/new", class: "auth_btn_16 via_sohu_small" %><%= link_to t("syncs.sites.sohu"), "/syncs/sohu/new" %></li>
+               <li><%= link_to t("syncs.sites.netease"), "/syncs/netease/new", class: "auth_btn_16 via_netease_small" %><%= link_to t("syncs.sites.netease"), "/syncs/netease/new" %></li>
               </ul>
            </span>
         </td>
         <td>
-            <%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %>
+            <%= new_tab_link_to t("syncs.sites.sina"), YIN11_SINA_WEIBO, class: "auth_btn_16 via_sina_small" %><%= new_tab_link_to t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %>
         </td>
     </tr>
   </table>

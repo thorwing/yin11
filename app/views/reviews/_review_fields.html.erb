@@ -49,9 +49,9 @@
             <div class = "fr">
                 <% unless current_user.provider == SELF_PROVIDER %>
                     <div class="fl">
-                        <div class= "fl m5"><%= check_box_tag  :sync_to %><%= label_tag :sync_to, t("syncs.sync_to") %></div>
-                        <div class= "fl m5">
-                            <%= link_to image_tag("third_party/#{current_user.provider}.png", :border => 0, :alt => t("syncs.sites.#{current_user.provider}"))%>
+                        <div class= "fl m5"><%= check_box_tag  :sync_to %>
+                            <%= label_tag :sync_to, t("syncs.sync_to") + t("syncs.sites.#{current_user.provider}") %>
+                            <%= link_to t("syncs.sites.#{current_user.provider}"), "", class: "auth_btn_16 via_#{current_user.provider}_small", :border => 0, :alt => t("syncs.sites.#{current_user.provider}")%>
                         </div>
                     </div>
                 <%end%>
