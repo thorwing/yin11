@@ -2,7 +2,7 @@ var admire_fields  = $('.admire_fields.<%= @desire.id.to_s %>');
 
 admire_fields.find(".admiration").html('<a href="#" class="show_admirers_btn"><%= @desire.admirer_ids.size.to_s %>个人被馋到</a>');
 
-var btn = admire_fields.find(".admire_btn");
+var btn = admire_fields.find(".btn.btn_admire");
 if(btn.length > 0) {
     if(btn.hasClass('to_admire')) {
         btn.removeClass('to_admire');

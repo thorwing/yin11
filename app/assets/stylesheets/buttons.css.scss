@@ -1,5 +1,6 @@
 @import "attributes";
 
+/*buttons with no background images*/
 a.button, input.button {
     display: inline-block;
 	background-color: $berry_red;
@@ -16,71 +17,11 @@ a.button:hover, input.button:hover {
 	cursor: pointer;
 }
 
-input.btn_submit_comment {
-    display: inline-block;
-	border: 0;
-    width:80px; height: 26px;
-    background-image: url('buttons/submit_comment.png');
-    background-repeat:no-repeat;
-    background-position:0 0;
-    text-indent:-9999px;
-}
-
-input.btn_submit_comment:hover {
-    cursor: pointer;
-    background-position:0 -28px;
-}
-
-a.btn_register_now{
-    float: left;
-    width:102px;
-    height:44px;
-    margin: 11px 6px 11px 6px;
-    background-image: url("buttons/register_now.png");
-    background-repeat:no-repeat;
-    text-indent:-9999px;
-}
-
-a.btn_register_now:hover{
-    cursor: pointer;
-    background-position:0px -46px;
-}
-
-input.btn_login{
-    display: inline-block;
-	border: 0;
-    width:50px;
-    height:26px;
-    background-image: url("buttons/login.png");
-    background-repeat:no-repeat;
-    text-indent:-9999px;
-}
-
-input.btn_login:hover{
-    cursor: pointer;
-    background-position:0px -28px;
-}
-
-input.btn_register{
-    display: inline-block;
-	border: 0;
-    width:50px;
-    height:26px;
-    background-image: url("buttons/register.png");
-    background-repeat:no-repeat;
-    text-indent:-9999px;
-}
-
-input.btn_register:hover{
-    cursor: pointer;
-    background-position:0px -28px;
-}
-
 /*General style here*/
 input.btn {
     display: inline-block;
 	border: 0;
-    background-repeat:no-repeat;
+    background: url("buttons.png") 0 0 no-repeat;
     text-indent:-9999px;
 }
 
@@ -89,7 +30,8 @@ input.btn:hover {
 }
 
 a.btn {
-    background-repeat:no-repeat;
+    display: inline-block;
+    background: url("buttons.png") 0 0 no-repeat;
     text-indent:-9999px;
 }
 
@@ -97,343 +39,255 @@ a.btn:hover {
      cursor: pointer;
 }
 
-.btn.submit_post {
+.btn.hide{
+    display: none;
+}
+
+/*individiual styles*/
+
+.btn.btn_register_now{
+    width:100px;
+    height:42px;
+    background-position: -2px -2px;
+    margin: 11px 6px 11px 6px;
+}
+
+.btn.btn_register_now:hover{
+    background-position:-2px -48px;
+}
+
+.btn.btn_login{
+    width:50px;
+    height:26px;
+    background-position: -52px -92px;
+}
+
+.btn.btn_login:hover{
+    background-position: -52px -120px;
+}
+
+.btn.btn_register{
+    width:50px;
+    height:26px;
+    background-position: -2px -92px;
+}
+
+.btn.btn_register:hover{
+    background-position: -2px -120px;
+}
+
+.btn.btn_submit_post {
     width:70px; height: 26px;
-    background-image: url('buttons/submit_post.png');
+    background-position: -104px -2px;
 }
 
-.btn.submit_post:hover{
-    background-position:0 -28px;
+.btn.btn_submit_post:hover{
+    background-position: -104px -30px;
 }
 
-.btn.submit_update {
+.btn.btn_submit_update {
     width:70px; height: 26px;
-    background-image: url('buttons/submit_update.png');
+    background-position: -104px -58px;
 }
 
-.btn.submit_update:hover{
-    background-position:0 -28px;
+.btn.btn_submit_update:hover{
+    background-position: -104px -86px;
+}
+
+.btn.btn_submit_comment {
+    width:80px; height: 26px;
+    background-position: -2px -148px;
+}
+
+.btn.btn_submit_comment:hover {
+    background-position: -2px -176px;
 }
 
 a.btn.btn_delete{
-    width:40px;
-    height:26px;
+    width:38px;
+    height:24px;
+    background-position: -130px -375px;
     margin-right: 4px;
-    background-image: url("buttons/delete.png");
 }
 
 a.btn.btn_delete:hover{
-    background-position:0px -28px;
+    background-position: -130px -403px;
 }
 
 a.btn.btn_edit{
-    width:40px;
-    height:26px;
+    width:38px;
+    height:24px;
+    background-position: -88px -375px;
     margin-right: 4px;
-    background-image: url("buttons/edit.png");
 }
 
 a.btn.btn_edit:hover{
-    background-position:0px -28px;
+    background-position: -88px -403px;
 }
 
-a.btn.btn_edit{
-    width:40px;
-    height:26px;
-    margin-right: 4px;
-    background-image: url("buttons/edit.png");
-}
-
-a.btn.btn_edit:hover{
-    background-position:0px -28px;
-}
-
-/*.want_do_btn{*/
- /*display: inline-block;*/
- /*width:41px;*/
- /*height:25px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-404px -20px;*/
- /*text-indent: -9999px;*/
-/*}*/
-
-/*.want_do_btn:hover{*/
-    /*background-position:-404px -52px;*/
-/*}*/
-
-/*.done_btn{*/
-    /*display: inline-block;*/
-    /*width:41px;*/
-    /*height:25px;*/
-    /*background-image: url(buttons.png);*/
-    /*background-repeat:no-repeat;*/
-    /*background-position:-448px -20px;*/
-    /*text-indent: -9999px;*/
-/*}*/
-
-/*.done_btn:hover{*/
-    /*background-position:-448px -52px;*/
-/*}*/
-
-.btn.btn_new_album{  display: inline-block;
+.btn.btn_new_album{
     width:80px;
     height:26px;
-    background-image: url('buttons/new_album.png');
+    background-position: -2px -262px;
 }
 
 .btn.btn_new_album:hover{
-    background-position:0px -28px;
+    background-position: -2px -290px;
 }
 
-.btn.btn_new_recipe{  display: inline-block;
+.btn.btn_new_recipe{
     width:80px;
     height:26px;
-    background-image: url('buttons/new_recipe.png');
+    background-position: -88px -148px;
 }
 
 .btn.btn_new_recipe:hover{
-    background-position:0px -28px;
+    background-position: -88px -176px;
 }
 
-.btn.btn_new_desire{  display: inline-block;
+.btn.btn_new_desire{
     width:120px;
     height:26px;
-    background-image: url('buttons/new_desire.png');
+    background-position: -178px -2px;
 }
 
 .btn.btn_new_desire:hover{
-    background-position:0px -28px;
+    background-position: -178px -30px;
 }
 
 .btn.btn_remove_from_album{
     display: block;
     width:80px;
     height:26px;
-    background-image: url('buttons/remove_from_album.png');
+    background-position: -2px -376px;
 }
 
 .btn.btn_remove_from_album:hover{
-    background-position:0px -28px;
+    background-position: -2px -404px;
 }
 
 .btn.btn_set_cover{
     display: block;
     width:80px;
     height:26px;
-    background-image: url('buttons/set_cover.png');
+    background-position: -2px -320px;
 }
 
 .btn.btn_set_cover:hover{
-    background-position:0px -28px;
+    background-position: -2px -348px;
 }
 
-/*.add_content_btn{ display: inline-block;*/
-    /*width:61px;*/
-    /*height:25px;*/
-    /*background-image: url(buttons.png);*/
-    /*background-repeat:no-repeat;*/
-    /*background-position:-361px -310px;*/
-    /*text-indent: -9999px;*/
-/*}*/
 
-/*.add_content_btn:hover{*/
-    /*background-position:-361px -338px;*/
-/*}*/
-
-/*.add_review_btn{ display: inline-block;*/
-    /*width:61px;*/
-    /*height:25px;*/
-    /*background-image: url(buttons.png);*/
-    /*background-repeat:no-repeat;*/
-    /*background-position:-425px -88px;*/
-    /*text-indent: -9999px;*/
-/*}*/
-
-/*.add_review_btn:hover{*/
-    /*background-position:-425px -114px;*/
-/*}*/
-
-.add_relationship_btn{display: inline-block;
- width:60px;
- height:26px;
- background-image: url("buttons/follow.png");
- background-repeat:no-repeat;
- background-position:0px 0px;
- text-indent: -9999px;
+.btn.btn_add_relationship{
+    width:60px;
+    height:26px;
+    background-position: -178px -285px;
 }
 
-.add_relationship_btn:hover{
-    background-position: 0px -28px;
+.btn.btn_add_relationship:hover{
+    background-position: -178px -313px;
+}
+
+.btn.btn_cancel_relationship {
+    width:120px;
+    height:26px;
+    background-position: -178px -341px;
 }
 
 .btn.btn_buy{
     width:80px;
     height:26px;
-    background-image: url('buttons/buy.png');
+    background-position: -2px -204px;
 }
 
 .btn.btn_buy:hover{
-    background-position: 0px -28px;
+    background-position: -2px -232px;
 }
 
-.cancel_relationship_btn{display: inline-block;
-    width:120px;
-    height:26px;
-    background-image: url("buttons/follow.png");
-    background-repeat:no-repeat;
-    background-position:0px -56px;
-    text-indent: -9999px;
-}
-
-.vote_button {display: inline-block;
+.btn.btn_vote.to_like {
     width:60px;
     height:26px;
-    background-image: url("buttons/like.png");
-    background-repeat:no-repeat;
-    background-position:0px 0px;
-    text-indent: -9999px;
+    background-position: -180px -200px;
 }
-.vote_button.to_like:hover {
-    background-position:0px -28px;
+.btn.btn_vote.to_like:hover {
+    background-position: -180px -228px;
 }
 
-.vote_button.liked {
+.btn.btn_vote.liked {
     width: 75px;
-    background-position:0px -56px;
+    height:26px;
+    background-position: -180px -256px;
 }
 
-.collect_btn{ display: inline-block;
+.btn.btn_collect{
     width:60px;
     height:26px;
-    background-image: url("buttons/collect.png");
-    background-repeat:no-repeat;
-    background-position:0px 0px;
-    text-indent: -9999px;
+    background-position: -178px -58px;
 }
 
-.collect_btn:hover{
-    background-position:0px -28px;
+.btn.btn_collect:hover{
+    background-position: -178px -86px;
 }
 
-.admire_btn { display: inline-block;
+.btn.btn_admire.to_admire {
     width:60px;
     height:26px;
-    background-image: url("buttons/admire.png");
-    background-repeat:no-repeat;
-    background-position: 0px 0px;
-    text-indent: -9999px;
+    background-position: -178px -115px;
 }
 
-.admire_btn.to_admire:hover{
-    background-position: 0px -28px;
+.btn.btn_admire.to_admire:hover{
+    background-position: -178px -143px;
 }
 
-.admire_btn.admired {
+.btn.btn_admire.admired {
     width: 75px;
-    background-position: 0px -56px;
+    height:26px;
+    background-position: -178px -171px;
 }
 
 .btn.btn_add_step{
-    display: block;
     width:80px;
     height:26px;
-    background-image: url('buttons/add_step.png');
+    background-position: -88px -316px;
 }
 
 .btn.btn_add_step:hover{
-    background-position: 0px -28px;
+    background-position: -88px -344px;
 }
 
 .btn.btn_add_major_ingredient{
-    display: block;
     width:80px;
     height:26px;
-    background-image: url('buttons/add_major_ingredient.png');
+    background-position: -88px -204px;
 }
 
 .btn.btn_add_major_ingredient:hover{
-    background-position: 0px -28px;
+    background-position: -88px -232px;
 }
 
 
 .btn.btn_add_minor_ingredient{
-    display: block;
     width:80px;
     height:26px;
-    background-image: url('buttons/add_monor_ingredient.png');
+    background-position: -88px -260px;
 }
 
 .btn.btn_add_minor_ingredient:hover{
-    background-position: 0px -28px;
+    background-position: -88px -288px;
 }
 
 
-/*.delete_step_btn{display: inline-block;*/
- /*width:51px;*/
- /*height:25px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-490px -257px;*/
- /*text-indent: -9999px;*/
-/*}*/
-
-/*.delete_step_btn:hover{display: inline-block;*/
- /*width:51px;*/
- /*height:25px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-490px -283px;*/
- /*text-indent: -9999px;*/
-/*}*/
-
-.hide {
-    display: none;
+.btn.btn_delete_ingredient {
+     width:12px;
+     height:12px;
+     background-position: -124px -116px;
+     margin-left: 2px;
 }
 
-.delete_ingredients_btn{ display: inline-block;
-
- width:16px;
- height:16px;
- background-image: url(cancel.png);
- background-repeat:no-repeat;
- /*text-indent: -9999px;*/
+.btn.btn_delete_step{
+     width:16px;
+     height:16px;
+     background-position: -104px -116px;
 }
 
-.delete_steps_btn{ display: inline-block;
 
- width:16px;
- height:16px;
- background-image: url(close_x.png);
- background-repeat:no-repeat;
- /*text-indent: -9999px;*/
-}
-
-/*.add_major_btn:hover{*/
- /*background-position:-490px -229px;*/
-/*}*/
-
-/*.add_major_btn{*/
- /*display: inline-block;*/
- /*width:61px;*/
- /*height:25px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-490px -200px;*/
- /*text-indent: -9999px;*/
- /*}*/
-
-
-/*.add_minor_btn{*/
- /*display: inline-block;*/
- /*width:61px;*/
- /*height:25px;*/
- /*background-image: url(buttons.png);*/
- /*background-repeat:no-repeat;*/
- /*background-position:-362px -257px;*/
- /*text-indent: -9999px;*/
-/*}*/
-
-/*.add_minor_btn:hover{*/
- /*background-position:-362px -282px;*/
- /*}*/

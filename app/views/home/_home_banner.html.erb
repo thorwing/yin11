@@ -11,7 +11,7 @@
                     <%= link_to image_tag(current_user.get_avatar(:thumb, false)), "/me" %><br/>
                 </div>
                 <div class="fr m10">
-                    <span class="mt5"><%= new_tab_link_to image_tag("sina_small.png", :width => 16, :height => 16) + t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %></span><br/>
+                    <span class="mt5"><%= new_tab_link_to t("syncs.sites.sina"), YIN11_SINA_WEIBO, class: "auth_btn_16 via_sina_small" %><%= new_tab_link_to t("syncs.follow_us_on_sina"), YIN11_SINA_WEIBO %></span><br/>
                     <%= link_to "【+收集到吃心不改工具】", "/home/collect_intro" %>
                 </div>
             </div>

@@ -20,7 +20,7 @@
                 <td><%= check_box_tag "remember_me", 1, true %><%= t("authentication.remember_me") %></td>
             </tr>
             <tr>
-                <td><%= submit_tag t("authentication.login"), :class => "btn_login" %></td>
+                <td><%= submit_tag t("authentication.login"), :class => "btn btn_login" %></td>
             </tr>
             <tr>
                 <td><%= link_to t("authentication.sign_up"), sign_up_path %> | <%= link_to t("authentication.forgot_password"), new_password_reset_path %></td>

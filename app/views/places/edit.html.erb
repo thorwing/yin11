@@ -9,5 +9,5 @@
     <span>地址</span><%= mark_required Place, :street %><span class="trivial">例如：  黄浦区XX路XXX号 A大厦...</span><br/>
     <%= f.text_field :street %><br/>
 
-    <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn submit_post" : "btn submit_update"}" %> </div>
+    <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn btn_submit_post" : "btn btn_submit_update"}" %> </div>
 <% end %>

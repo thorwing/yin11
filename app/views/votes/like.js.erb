@@ -2,11 +2,11 @@ var vote_fields = $('.vote_fields.<%= @item.id.to_s %>');
 vote_fields.find(".votes").text("<%= @votes.to_s %>");
 
 <% if @is_fan %>
-    var link = vote_fields.find(".vote_button.to_like");
+    var link = vote_fields.find(".btn.btn_vote.to_like");
     link.removeClass("to_like");
     link.addClass("liked");
 <% else %>
-    var link = vote_fields.find(".vote_button.liked");
+    var link = vote_fields.find(".btn.btn_vote.liked");
     link.removeClass("liked");
     link.addClass("to_like");
 <% end %>
