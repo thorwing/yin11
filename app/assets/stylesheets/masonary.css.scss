@@ -20,11 +20,14 @@
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
 
-    .ribbon {
+    .jiechan_ribbon {
         z-index: 100;
         position: absolute;
         right: -4px;
         top: -4px;
+        width: 74px;
+        height: 74px;
+        background-position: -324px -2px;
     }
 
     .centered img {
@@ -116,18 +119,4 @@
         color: white;
         background: $berry_red;
     }
-}
-
-#back_to_top {
-    z-index: 100;
-    width: 48px;
-    height: 48px;
-    position: fixed;
-    bottom: 10px;
-    right: 20px;
-    opacity: 0.5;
-}
-
-#back_to_top:hover {
-    opacity: 0.8;
 }

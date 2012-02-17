@@ -291,3 +291,17 @@ a.btn.btn_edit:hover{
 }
 
 
+.btn.btn_back_to_top {
+    z-index: 100;
+    width:46px;
+    height:46px;
+    background-position: -178px -372px;
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    opacity: 0.5;
+}
+
+.btn.btn_back_to_top:hover {
+    opacity: 1;
+}

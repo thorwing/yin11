@@ -39,12 +39,15 @@
     }
 
     /*  Logo */
-    #logo { height: 60px;}
-    #logo h1, #logo h2 {
-        margin:0px;
-        padding: 0px;
-        text-indent:-9999px;
-        line-height:0px;
+    #logo {
+      height: 60px;
+
+      h1, h2 {
+          margin:0px;
+          padding: 0px;
+          text-indent:-9999px;
+          line-height:0px;
+      }
     }
 
     /*

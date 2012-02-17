@@ -19,7 +19,7 @@
                 <%= link_to tag, desires_path(tag: tag), class: "tag" %>
             <% end %>
             <hr/>
-            <p>点击带有解馋<%= image_tag "jiechan_small.png", width: 24, height: 24 %>标志的图片看如何把美食吃到！</p>
+            <p>点击带有解馋<%= content_tag :span, "", class: "icon small_jiechan_ribbon" %>标志的图片看如何把美食吃到！</p>
             <% if current_user_has_permission? :normal_user %>
                 <div class="mt10">
                     <%= content_tag :span, "也想馋馋别人？", class: "trivial f14" %>
@@ -39,7 +39,7 @@
     <%= link_to "", 'http://' + request.host_with_port + "/more_desires/#{@current_mode}/2" %>
 </nav>
 
-<%= link_to image_tag("back_to_top.png", :border => 0, :alt => t("general.back_to_top")), "#", :id => "back_to_top", class: "display_none" %>
+<%= link_to t("general.back_to_top"), "#", :id => "back_to_top", class: "btn btn_back_to_top hide" %>
 
 
 <div id="more_nav" class="mt10 centered display_none">

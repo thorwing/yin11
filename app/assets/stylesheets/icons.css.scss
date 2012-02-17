@@ -1,0 +1,20 @@
+/*General style here*/
+.icon {
+  display: inline-block;
+  border: 0;
+  background: url("buttons.png") 0 0 no-repeat;
+  text-indent:-9999px;
+}
+
+/*individiual styles*/
+.icon.logo_img {
+  width: 148px;
+  height: 49px;
+  background-position: -2px -450px;
+}
+
+.icon.small_jiechan_ribbon {
+  width: 24px;
+  height: 24px;
+  background-position: -400px -2px;
+}
