@@ -1,12 +1,12 @@
 <div class="grid_9 to_left">
     <div class="box_shadow p5">
-        <%= link_to image_tag("grey.gif", :alt=> @recipe.name, "class" => 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall) ), @recipe.get_image_url, rel: "facebox"  %>
+        <%= link_to image_tag("grey.gif", :alt=> @recipe.name, class: 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall) ), @recipe.get_image_url, rel: "facebox"  %>
 
         <div class="clearfix">
             <div id="recipe_info" class="fl ml10 clearfix">
                 <h1 class="f20"><%= @recipe.name %></h1>
                 <div class="mt5">
-                    <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》: ”" + truncate_content(@recipe.description,30) + "”。" %>
+                    <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》。" %>
                     <% summarystr = "大家去看看吧！" %>
                     <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
                     <% appkeyhash = load_appkey() %>
@@ -55,12 +55,6 @@
             </div>
 
             <div class="clearfix"></div>
-            <% if @recipe.description.present? %>
-                <div class="mt5">
-                    <span class="berry_pink"><%= t_with_colon("recipes.description") %></span>
-                    <%= @recipe.description %>
-                </div>
-            <% end %>
 
             <div class="fl mt10 block">
                 <span class="berry_pink"><%= t_with_colon("recipes.steps") %></span><br/>
@@ -76,6 +70,14 @@
                     </div>
                 <% end %>
             </div>
+
+            <div class="clearfix"></div>
+            <% if @recipe.notice.present? %>
+              <div class="mt5">
+                  <span class="berry_pink"><%= t_with_colon("recipes.notice") %></span>
+                  <%= @recipe.notice %>
+              </div>
+            <% end %>
         </div>
     </div>
 

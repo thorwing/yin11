@@ -9,7 +9,6 @@
 //= require fileuploader
 //= require jquery.Jcrop.min
 //= require jquery.lazyload
-//= require jquery.isotope.min
 //= require jquery.timer
 //= require liteaccordion.jquery.min
 //= require jquery.masonary
@@ -32,8 +31,8 @@ function add_fields(link, association, content, divname, count_range) {
     var regexp = new RegExp("new_" + association, "g");
     $(divname).append(content.replace(regexp, new_id));
     char_aware();
-    setup_step_img_uploader(count_range);
-    change_back_img(count_range);
+    setup_step_img_uploader(false);
+    change_back_img(false);
 
     var count= $(count_range).find(".addedclass").length;
     max = parseInt ($(link).data('max_len'));
@@ -83,12 +82,12 @@ $(document).ready(function(){
 });
 
 //Apply some JQuery UI
-$(document).ready(function() {
-    $(".date_picker").datepicker({ maxDate: +0, minDate: -7 });
-    $(".radio_group" ).buttonset();
-    $(".checkbox").button();
-    $(".checkbox_group").buttonset();
-});
+//$(document).ready(function() {
+//    $(".date_picker").datepicker({ maxDate: +0, minDate: -7 });
+//    $(".radio_group" ).buttonset();
+//    $(".checkbox").button();
+//    $(".checkbox_group").buttonset();
+//});
 
 //Remove tips from input
 $(function()

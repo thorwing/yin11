@@ -19,7 +19,7 @@ function general_upload(uploader_container, uploader_id, on_submit_func, on_comp
             // set to true to output server response to console
             debug: false,
             template: '<div class="qq-uploader" id="' + uploader_id +'">' +
-//                    '<div class="qq-upload-drop-area"><span>拖拽图片至此上传</span></div>' +
+                    '<div class="qq-upload-drop-area"><span>拖拽图片至此上传</span></div>' +
                     '<div class="qq-upload-button">上传图片</div>' +
                     '<ul class="qq-upload-list"></ul>' +
                  '</div>',
@@ -95,27 +95,47 @@ function setup_desire_img_uploader() {
     );
 }
 
-
-function setup_step_img_uploader(search_range) {
-    var images_limit = 1;
-    var length = $(search_range).find('.step_uploader').length
-    if( length > 0) {
-        var uploader_container = $(search_range).find('.step_uploader')[length-1];
-
-        general_upload(uploader_container,
-            'qq-uploader'+ (length -1),
-            function(id, fileName) {},
-            function(id, fileName, responseJSON){
-                if (responseJSON.success) {
-                    var str= '#qq-uploader' + (length-1) ;
-                    $(str).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
-                    $(str).parents('.addedclass').find('.img_id').val(responseJSON.image_id);
-                    $('.step_uploader .qq-upload-success').hide();
-                    $('.step_uploader .qq-upload-file').hide();
-                    $('.step_uploader .qq-upload-size').hide();
+function setup_step_img_uploader(all) {
+    if(all == true) {
+        $('.steps .single_step .step_uploader').each(function(index, step_uploader){
+            general_upload(step_uploader,
+                'qq-uploader'+ index,
+                function(id, fileName) {},
+                function(id, fileName, responseJSON){
+                    if (responseJSON.success) {
+                        var str= '#qq-uploader' + index ;
+                        $(str).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
+                        $(str).parents('.addedclass').find('.img_id').val(responseJSON.image_id);
+                        $('.step_uploader .qq-upload-success').hide();
+                        $('.step_uploader .qq-upload-file').hide();
+                        $('.step_uploader .qq-upload-size').hide();
+                    }
                 }
-            }
-        );
+            );
+        });
+    }
+    else {
+        //        the last one
+        var length = $('.steps .single_step .step_uploader').length;
+        if(length > 0)
+        {
+            var index = length - 1;
+            var step_uploader = $('.steps .single_step .step_uploader')[index];
+            general_upload(step_uploader,
+                'qq-uploader'+ index,
+                function(id, fileName) {},
+                function(id, fileName, responseJSON){
+                    if (responseJSON.success) {
+                        var str= '#qq-uploader' + index;
+                        $(str).find('.qq-upload-button').css("background-image", "url("+ responseJSON.thumb_url +")");
+                        $(str).parents('.addedclass').find('.img_id').val(responseJSON.image_id);
+                        $('.step_uploader .qq-upload-success').hide();
+                        $('.step_uploader .qq-upload-file').hide();
+                        $('.step_uploader .qq-upload-size').hide();
+                    }
+                }
+            );
+        }
     }
 }
 
@@ -139,15 +159,39 @@ function append_image(id, thumb_url, original_url, post_params) {
     $('a[rel*=facebox]').facebox();
 }
 
-function change_back_img(search_range, url)
+function change_back_img(all)
 {
-    var length = $('.step_uploader').find('.qq-upload-button').length;
-    if(url==null||url=="")
-    {
-        url = "/assets/default_step.png";
+    if(all == true) {
+        var url = "";
+        $('.steps .single_step').each(function(index, step){
+            var url_field = $(step).find(".hidden_step_image_url");
+            if (url_field.length > 0)
+            {
+                url = url_field.val();
+            }
+            if(url==null || url=="")
+            {
+                url = "/assets/default_step.png";
+            }
+            $(step).find('.qq-upload-button').css("background-image", "url("+ url +")");
+        });
     }
-    if($(search_range).find('.step_uploader').length>0)
-    {
-        $(search_range).find('.step_uploader').eq(length-1).find('.qq-upload-button').css("background-image", "url("+ url +")");
+    else {
+        //        the last one
+        var length = $('.steps .single_step').length;
+        if(length > 0)
+        {
+            var step = $('.steps .single_step')[length-1];
+            var url_field = $(step).find(".hidden_step_image_url");
+            if (url_field.length > 0)
+            {
+                url = url_field.val();
+            }
+            if(url==null || url=="")
+            {
+                url = "/assets/default_step.png";
+            }
+            $(step).find('.qq-upload-button').css("background-image", "url("+ url +")");
+        }
     }
 }

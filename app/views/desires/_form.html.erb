@@ -1,4 +1,7 @@
-<%= stylesheet_link_tag "upload" %>
+
+<% content_for :head do %>
+    <%= stylesheet_link_tag "upload" %>
+<% end %>
 
 <div id="desire_fields" style="position: relative;">
     <%= form_for @desire do |f| %>
@@ -41,4 +44,6 @@
     <% end %>
 </div>
 
-<%= javascript_tag "setup_desire_img_uploader();" %>
+<% content_for :foot do %>
+    <%= javascript_tag "setup_desire_img_uploader();" %>
+<% end %>

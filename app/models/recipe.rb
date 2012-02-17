@@ -9,12 +9,12 @@ class Recipe
 
     #fields
     field :name
-    field :description
+    field :notice
 
     search_index(:fields => [:name],
               :attributes => [:updated_at, :created_at])
 
-    attr_accessible  :author_id, :name, :ingredients_attributes, :steps_attributes, :description
+    attr_accessible  :author_id, :name, :ingredients_attributes, :steps_attributes, :notice
 
     #relationships
     embeds_many :ingredients
@@ -36,7 +36,7 @@ class Recipe
     validates_presence_of :author
     validates_associated :steps
     validates_associated :ingredients
-    validates_length_of :description, :maximum => 300
+    validates_length_of :notice, :maximum => 300
 
     #callbacks
     #mongoid doesn't call create/update callback on embedded documents

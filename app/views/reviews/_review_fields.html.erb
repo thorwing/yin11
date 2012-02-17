@@ -67,4 +67,6 @@
 <%= render "reviews/product_linker" %>
 <%= render "reviews/recipe_linker" %>
 
-<%= javascript_tag "setup_review_img_uploader();" %>
+<% content_for :foot do %>
+    <%= javascript_tag "setup_review_img_uploader();" %>
+<% end %>

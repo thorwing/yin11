@@ -13,7 +13,10 @@ $(function(){
 });
 
 $(function() {
-    $( "#sortable" ).sortable();
+    if($( "#sortable").length > 0)
+    {
+        $( "#sortable").sortable();
+    }
 //		$( "#sortable" ).disableSelection();
 });
 
