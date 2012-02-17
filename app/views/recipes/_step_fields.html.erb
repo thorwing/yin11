@@ -1,6 +1,6 @@
 <li class="addedclass single_step m10 fl" style="position:relative;width:230px;border-style:dashed;border-width:1px;border-color:gray;text-align: center;">
     <div class="trivial cursor" >拖拽这里调整顺序</div>
-    <% html_options= { "class" => "btn btn_delete_step", "style" => "position:absolute;right:-8px;top:-8px;" } %>
+    <% html_options= { "class" => "btn btn_close", "style" => "position:absolute;right:-8px;top:-8px;" } %>
     <%= link_to_remove_fields( "", f, ".addedclass", ".steps", html_options ) %> <br/>
     <%= f.hidden_field :id unless f.object.new_record? %>
     <%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>

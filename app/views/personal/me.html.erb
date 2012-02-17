@@ -2,9 +2,7 @@
     <div class="tab_control no_work">
         <div class="tabContainer ">
             <% @modes.each do |mode| %>
-                <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">
-                    <%= link_to t("personal.#{mode}_mode"), "/me?mode=#{mode}", "data-page" => ".#{mode}", class: "tab" %>
-                </div>
+                <%= link_to t("personal.#{mode}_mode"), "/me?mode=#{mode}", "data-page" => ".#{mode}", class: "tab #{mode == @current_mode ? "selected" : "unselected"}" %>
             <% end %>
         </div>
         <div class="tabContent block">

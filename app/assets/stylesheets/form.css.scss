@@ -14,10 +14,14 @@ div.token-input-dropdown-facebook
 */
 
 .toggle.on{
-    background: image-url('correct_icon.gif') no-repeat;
+    border: 0;
+    background: url("buttons.png") -240px -90px no-repeat;
+    text-indent:-9999px;
 }
 
 .toggle.off{
-    background: image-url('wrong_icon.gif') no-repeat;
+    border: 0;
+    background: url("buttons.png") -260px -90px no-repeat;
+    text-indent:-9999px;
 }
 

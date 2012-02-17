@@ -2,7 +2,7 @@
     <%= link_to image_tag(item.get_image_url(:thumb), class: "thumbnail"), item %><br/>
     <span class="f11"><%= item.name %></span>
     <%= image_tag("icons/#{item.class.name.downcase}.png", width: 16, height: 16, class: "linked_item_icon") %>
-    <%= link_to image_tag("/assets/close_x.png", alt: "delete_related_item"), "", onclick: "delete_related_item(this); return false;", class: "del_link lighter_touch" %>
+    <%= link_to "删除", "", onclick: "delete_related_item(this); return false;", class: "del_link btn btn_close lighter_touch" %>
     <% item_class = item.class.name.downcase %>
     <%= hidden_field_tag "review[#{item_class}_ids][]", item.id.to_s, id: "#{item_class}_" + item.id.to_s %>
 </div>

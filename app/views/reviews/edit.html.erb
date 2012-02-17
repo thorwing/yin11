@@ -24,8 +24,14 @@
 
                 <!--product linker-->
                 <div class="fl mr10">
-                    <%= link_to_function image_tag("add_product.png", border: 0, width: 50, height:22), "link_product()", class: "lighter_touch"%>
+                    <%= link_to_function "添加商品", "link_product()", class: "btn btn_add_product lighter_touch"%>
                 </div>
+
+                <!--recipe linker-->
+                <div class="fl mr10">
+                  <%= link_to_function "添加菜谱", "link_recipe()", class: "btn btn_add_recipe lighter_touch"%>
+                </div>
+
 
                 <!--submit and sync to 3rd-->
                 <div class = "fr">
@@ -47,7 +53,7 @@
 
                 <% @review.images.each do |image| %>
                     <div class="image fl">
-                        <%= link_to image_tag("/assets/close_x.png", alt: "delete_image"), "", onclick: "delete_related_item(this); return false;", class: "del_link lighter_touch" %>
+                        <%= link_to "删除", "", onclick: "delete_related_item(this); return false;", class: "del_link btn btn_close lighter_touch" %>
                         <%= link_to image_tag("grey.gif", "data-original"=> image.picture_url(:thumb), alt: "image_thumbnail", class: "lazy thumbnail"), image.picture_url, rel: "facebox" %>
                         <%= hidden_field_tag "images[]", image.id.to_s %>
                     </div>
@@ -58,4 +64,9 @@
 </div>
 
 
-<%= render "product_linker" %>
+<%= render "reviews/product_linker" %>
+<%= render "reviews/recipe_linker" %>
+
+<% content_for :foot do %>
+    <%= javascript_tag "setup_review_img_uploader();" %>
+<% end %>

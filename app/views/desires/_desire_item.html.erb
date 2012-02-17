@@ -16,7 +16,7 @@
       <% if desire.place %>
         <p>
             <%= content_tag :span, "来自于 " + desire.place.name, class: "trivial" %>
-            <%= image_tag "grey.gif", "data-original" => "/assets/icons/place.png", class: "lazy" %>
+            <%= content_tag :span, "地点", class: "icon icon_place"  %>
         </p>
       <% end %>
     </div>

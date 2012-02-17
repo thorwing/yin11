@@ -23,7 +23,7 @@
     <tr>
         <td>
           <span class="nav_menu">
-            <%= image_tag("d-arrow.gif", :widht => 8, :height => 8, :alt => "d_arrow") + t("syncs.more") %>
+            <%= content_tag :span, "d_arrow", class: "icon down_arrow" %><%= t("syncs.more") %>
               <ul class="sub_menu">
                <li><%= link_to t("syncs.sites.qq"), "/syncs/qq/new", class: "auth_btn_16 via_qq_small" %><%= link_to t("syncs.sites.qq"), "/syncs/qq/new" %></li>
                <li><%= link_to t("syncs.sites.sohu"), "/syncs/sohu/new", class: "auth_btn_16 via_sohu_small" %><%= link_to t("syncs.sites.sohu"), "/syncs/sohu/new" %></li>

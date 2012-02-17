@@ -1,42 +1,31 @@
 @import "attributes";
 
-/*TODO*/
-
-.tabContainer .tab{
-    font-size: 14px;
-}
-
 .tabContainer .tab:hover{
-    /*text-decoration:underline;*/
     text-decoration:none;
 }
 
-.tabContainer > div{
-    width: 100px;
-    height: 20px;
+.tabContainer .tab{
+    line-height: 30px;
+    font-size: 14px;
     text-align: center;
-    padding-top: 5px;
+    vertical-align: middle;
     float: left;
 }
 
-.tabContainer > div.unselected{
-    background-image: url("tab.png");
-    background-repeat: no-repeat;
-}
-
-.tabContainer > div.unselected a {
+.tabContainer .tab.unselected{
     color:  $berry_green;
+    width: 100px;
+    height: 30px;
+    background: url("buttons.png") 0 0 no-repeat;
+    background-position: -322px -116px;
 }
 
-.tabContainer .selected{
-    color:  $berry_gray;
-    background-color: $berry_red;
-    background-image: url("tab_clicked.png");
-    background-repeat: no-repeat;
-}
-
-.tabContainer .selected a {
+.tabContainer .tab.selected{
     color:  #ffffff;
+    width: 100px;
+    height: 30px;
+    background: url("buttons.png") 0 0 no-repeat;
+    background-position: -322px -84px;
 }
 
 .tabContent {

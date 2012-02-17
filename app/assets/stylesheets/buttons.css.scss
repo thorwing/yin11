@@ -277,14 +277,14 @@ a.btn.btn_edit:hover{
 }
 
 
-.btn.btn_delete_ingredient {
+.btn.btn_delete_x {
      width:12px;
      height:12px;
      background-position: -124px -116px;
      margin-left: 2px;
 }
 
-.btn.btn_delete_step{
+.btn.btn_close {
      width:16px;
      height:16px;
      background-position: -104px -116px;
@@ -304,4 +304,16 @@ a.btn.btn_edit:hover{
 
 .btn.btn_back_to_top:hover {
     opacity: 1;
+}
+
+.btn.btn_add_product {
+    width: 48px;
+    height: 18px;
+    background-position: -322px -169px;
+}
+
+.btn.btn_add_recipe {
+    width: 48px;
+    height: 18px;
+    background-position: -322px -189px;
 }

@@ -18,14 +18,14 @@ var local_status = "<%= @local_status %>";
 
 if(local_status == "true")
 {
-    jQuery.facebox( '<img border="0" src="/assets/correct_icon.gif" alt="correct"><span><%= @user_message %></span>');
+    jQuery.facebox( '<%= content_tag :span, "", class: "toggle on" %><span><%= @user_message %></span>');
 
     $('#review_content').val('');
     $('#images_container').html('');
 }
 else
 {
-    jQuery.facebox( '<img border="0" src="/assets/wrong_icon.gif" alt="wrong"><span><%= @user_message %></span>');
+    jQuery.facebox( '<%= content_tag :span, "", class: "toggle off" %><span><%= @user_message %></span>');
 }
 
 setTimeout("after_delay()", parseInt("<%= REVIEW_CREATED_DELAY %>"));

@@ -10,11 +10,11 @@
 .qq-upload-button {
     vertical-align: top;
     display: inline-block;
-    width: 50px;
-    height: 22px;
+    width: 48px;
+    height: 18px;
     padding: 0;
     margin: 0;
-    background: no-repeat url("add_image.png");
+    background: url("buttons.png") -322px -151px no-repeat ;
     border: none;
 
     /*no text displayed*/

@@ -28,7 +28,7 @@
             <% end %>
         </div>
         <div class="grid_2">
-            <div class="fr"><%= link_to image_tag("cancel.png", title: "删除"), notification, :confirm => t("general.are_you_sure_to_delete"), remote: true, method: :delete, class: "lighter_touch" %></div><br/>
+            <div class="fr"><%= link_to "删除", notification, :confirm => t("general.are_you_sure_to_delete"), remote: true, method: :delete, class: "btn btn_delete_x lighter_touch" %></div><br/>
             <div class="fr"><span class="trivial"><%= notification.created_at.strftime(GENERAL_TIME_FORMAT) %></span></div>
         </div>
         <div class="clearfix"></div>
