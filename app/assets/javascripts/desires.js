@@ -104,28 +104,3 @@ $(function(){
 });
 
 
-//$(function(){
-//
-//  var $container = $('#masonry_container');
-//
-//  $container.isotope({
-//    itemSelector : '.item'
-//  });
-//
-//  $container.infinitescroll({
-//    navSelector  : '#page_nav',    // selector for the paged navigation
-//    nextSelector : '#page_nav a',  // selector for the NEXT link (to page 2)
-//    itemSelector : '.item',     // selector for all items you'll retrieve
-//    loading: {
-//        finishedMsg: 'No more pages to load.',
-//        img: '/assets/loading.gif'
-//      }
-//    },
-//    // call Isotope as a callback
-//    function( newElements ) {
-//      $container.isotope( 'appended', $( newElements ) );
-//    }
-//  );
-//
-//});
-

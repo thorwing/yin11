@@ -46,14 +46,16 @@ function link_recipe()
 
 
 $(function(){
-    $('#submit_review_btn').click(function(e){
-        var text = $('#review_content').val();
-        if(text == null || text.trim() == '')
-        {
-            e.preventDefault();
-            alert("写点什么吧");
-        }
-    });
+    if($('#submit_review_btn').length > 0) {
+        $('#submit_review_btn').click(function(e){
+            var text = $('#review_content').val();
+            if(text == null || text.trim() == '')
+            {
+                e.preventDefault();
+                alert("写点什么吧");
+            }
+        });
+    }
 });
 
 //
@@ -86,18 +88,20 @@ function delete_related_item(link) {
 }
 
 $(function(){
-    var bind_name = '';
-    if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
-    else { bind_name = 'input'; }
+    if($('#recipe_linker #recipe_name').length > 0) {
+        var bind_name = '';
+        if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
+        else { bind_name = 'input'; }
 
-    $('#recipe_linker #recipe_name').bind(bind_name, function(e) {
-        $(this).nextAll('#link_spinner').show();
-        $(this).nextAll("div").html('');
+        $('#recipe_linker #recipe_name').bind(bind_name, function(e) {
+            $(this).nextAll('#link_spinner').show();
+            $(this).nextAll("div").html('');
 
-        var name = $(this).val();
-        $.ajax({
-            url: "/recipes/browse",
-            data: {name: name}
+            var name = $(this).val();
+            $.ajax({
+                url: "/recipes/browse",
+                data: {name: name}
+            });
         });
-    });
+    }
 });

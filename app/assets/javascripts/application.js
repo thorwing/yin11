@@ -9,17 +9,10 @@
 //= require fileuploader
 //= require jquery.Jcrop.min
 //= require jquery.lazyload
-//= require jquery.timer
-//= require liteaccordion.jquery.min
 //= require jquery.masonary
 //= require jquery.infinitescroll
 //= require jquery-ui.min
 //= require_tree .
-
-//not included
-// require jquery.ui.core.min
-// require jquery.ui.widget.min
-//require jquery.ui.rcarousel.min
 
 var products_limit = 3;
 var recipes_limit = 3;
