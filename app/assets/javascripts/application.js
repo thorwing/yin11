@@ -14,6 +14,8 @@
 //= require jquery-ui.min
 //= require_tree .
 
+//Jquery_ui is for drag&drop
+
 var products_limit = 3;
 var recipes_limit = 3;
 var images_limit = 3;

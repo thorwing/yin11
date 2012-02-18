@@ -54,8 +54,10 @@
 
 <%= hidden_field_tag "current_user_id", current_user.id.to_s, id: "current_user_id" if current_user %>
 
-<%= yield :deferred_javascript if content_for?(:deferred_javascript) %>
+<%= javascript_include_tag "application" %>
+<%= yield :foot if content_for?(:foot) %>
 
+<%= hidden_field_tag "dummy_host", request.host %>
 <% if request.host.include? "chixinbugai.com" %>
     <script type="text/javascript">
         var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
@@ -73,8 +75,5 @@
     </script>
 <% end %>
 
-    <!--Jquery_ui is for drag&drop-->
-    <%= javascript_include_tag "application" %>
-    <%= yield :foot if content_for?(:foot) %>
 </body>
 </html>
