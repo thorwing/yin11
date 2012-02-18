@@ -251,7 +251,6 @@ $(function(){
       navSelector  : '#page_nav',    // selector for the paged navigation
       nextSelector : '#page_nav a:first',  // selector for the NEXT link (to page 2)
       itemSelector : '.masonary_item',     // selector for all items you'll retrieve
-      img : "../assets/loading.gif",
       bufferPx: 300,
       errorCallback : function(){
           $('#infscr-loading').hide();
@@ -259,7 +258,7 @@ $(function(){
       },
       loading: {
           finishedMsg: '到底啦！去看看其他的吧～',
-          img: '/assets/loading_big.gif',
+          img: '../assets/loading_big.gif',
           msgText : '正在加载更多...'
         }
       },

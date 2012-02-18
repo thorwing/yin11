@@ -1,6 +1,6 @@
 <div class="user box_shadow clearfix" >
     <div class="avatar_area clearfix" >
-        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false)), user %><br/>
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), user %><br/>
     </div>
     <div class="center_area clearfix">
         <div class="biography_area" >
