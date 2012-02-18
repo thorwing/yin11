@@ -9,7 +9,7 @@
             <% end %>
             <div class="ml10 mr10 clearfix">
                 <% if (item.respond_to? :name) %>
-                    <%= image_tag("icons/#{item.class.name.downcase}.png", width: 16, height: 16) %>
+                    <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "icon icon_#{item.class.name.downcase}" %>
                     <span class = "f16"><%= link_to item.name, item %></span><br/>
                 <% end %>
             </div>

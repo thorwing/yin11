@@ -15,7 +15,7 @@
                         <%= link_to image_tag(item.get_image_url(:thumb), class: "thumbnail", title: (t("object_types.#{item.class.name.downcase}") + " - #{item.name}")), item %><br/>
                         <span class="f12"><%= link_to truncate_content(item.name, 18), item %></span>
                         <span class="display_inline_block">
-                          <%= image_tag("icons/#{item.class.name.downcase}.png", width: 12, height: 12) %>
+                          <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "icon icon_#{item.class.name.downcase}", width: 12, height: 12 %>
                           <% if item.is_a?(Product) %>
                             <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + item.price_as_money_string) if item.price? %></span>
                           <% end %>
