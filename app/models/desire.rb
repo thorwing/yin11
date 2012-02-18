@@ -18,10 +18,10 @@ class Desire
   #relationships
   has_many :images
   has_many :reviews
-  belongs_to :author, :class_name => "User"
-  has_and_belongs_to_many :admirers, :class_name => "User", :inverse_of => "admired_desires", :index => true
-  has_and_belongs_to_many :albums
-  belongs_to :place
+  belongs_to :author, :class_name => "User", index: true
+  has_and_belongs_to_many :admirers, :class_name => "User", :inverse_of => "admired_desires", index: true
+  has_and_belongs_to_many :albums, index: true
+  belongs_to :place, index: true
 
   #validations
   validates_presence_of :author

@@ -12,13 +12,13 @@ class Image
   attr_accessible :picture, :remote_picture_url, :caption, :description
 
   #relationships
-  belongs_to :product
-  belongs_to :review
-  belongs_to :topic
-  belongs_to :step
-  belongs_to :ingredient
-  belongs_to :album
-  belongs_to :desire
+  belongs_to :product, index: true
+  belongs_to :review, index: true
+  belongs_to :topic, index: true
+  belongs_to :step, index: true
+  belongs_to :ingredient, index: true
+  belongs_to :album, index: true
+  belongs_to :desire, index: true
 
   #validations
   validates_presence_of :picture

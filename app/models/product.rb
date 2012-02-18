@@ -32,11 +32,11 @@ class Product
 
   #relationships
   embeds_many :comments
-  belongs_to :vendor
+  belongs_to :vendor, index: true
   tokenize_one :vendor
   has_one :image
-  has_and_belongs_to_many :reviews
-  has_and_belongs_to_many :catalogs
+  has_and_belongs_to_many :reviews, index: true
+  has_and_belongs_to_many :catalogs, index: true
   embeds_many :feeds
 
   #validators

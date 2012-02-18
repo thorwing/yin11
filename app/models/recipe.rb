@@ -19,8 +19,8 @@ class Recipe
     #relationships
     embeds_many :ingredients
     embeds_many :steps
-    belongs_to :author, :class_name => "User"
-    has_and_belongs_to_many :reviews
+    belongs_to :author, :class_name => "User", index: true
+    #has_and_belongs_to_many :reviews
     embeds_many :feeds
     embeds_many :comments
 

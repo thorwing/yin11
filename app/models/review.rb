@@ -16,10 +16,10 @@ class Review
 
   #relationships
   has_and_belongs_to_many :products
-  has_and_belongs_to_many :recipes
+  has_and_belongs_to_many :recipes, index: true
   embeds_many :comments
-  belongs_to :author, :class_name => "User"
-  belongs_to :desire
+  belongs_to :author, :class_name => "User", index: true
+  belongs_to :desire, index: true
   has_many :images
 
   #override the settings in Informative

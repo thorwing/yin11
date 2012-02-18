@@ -22,7 +22,7 @@ class Place
   #Relationships
   embeds_many :comments
   has_many :desires
-  belongs_to :creator, :class_name => "User"
+  belongs_to :creator, :class_name => "User", index: true
   embeds_many :feeds
 
   #validators

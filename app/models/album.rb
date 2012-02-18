@@ -16,8 +16,8 @@ class Album
 
   #relationships
   has_one :image
-  has_and_belongs_to_many :desires
-  belongs_to :author, :class_name => "User"
+  has_and_belongs_to_many :desires, index: true
+  belongs_to :author, :class_name => "User", index: true
   embeds_many :comments
 
   #validations
