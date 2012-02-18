@@ -1,6 +1,6 @@
 <div class="listed_item commentable clearfix">
     <div class="user_info_area">
-        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> desire.author.get_avatar(:thumb, false ), width: "48", height: "48"), desire.author %><br/>
+        <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> desire.author.get_avatar(:thumb, false ), width: "48", height: "48"), desire.author %><br/>
         <%= link_to desire.author.login_name, desire.author %>
     </div>
     <div class="content_area">

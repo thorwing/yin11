@@ -4,7 +4,7 @@
     <div class="centered">
         <% pic_url = desire.get_image_url(:waterfall) %>
         <% if pic_url.present? %>
-            <%= link_to image_tag(pic_url, height: desire.get_image_height(:waterfall)), desire %>
+            <%= link_to image_tag(pic_url, width: IMAGE_WATERFALL_WIDTH, height: desire.get_image_height(:waterfall)), desire %>
         <% end %>
     </div>
     <div class="clearfix">

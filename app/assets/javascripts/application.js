@@ -13,6 +13,7 @@
 //= require liteaccordion.jquery.min
 //= require jquery.masonary
 //= require jquery.infinitescroll
+//= require jquery-ui.min
 //= require_tree .
 
 //not included
@@ -176,11 +177,16 @@ $(function(){
     });
 });
 
-$(function(){
+function setup_lazy() {
     $("img.lazy").lazyload({
         skip_invisible : true,
         threshold : 500,
-        failure_limit : 10});
+        failure_limit : 10}
+    );
+}
+
+$(function(){
+    setup_lazy();
 });
 
 function fill_tag(link) {
@@ -267,11 +273,13 @@ $(function(){
         // hide new items while they are loading
         var $newElems = $( newElements ).css({ opacity: 0 });
         // ensure that images load before adding to masonry layout
-        $newElems.imagesLoaded(function(){
+//        $newElems.imagesLoaded(function(){
           // show elems now they're ready
           $newElems.animate({ opacity: 1 });
           $container.masonry( 'appended', $newElems, true );
-        });
+//        });
+
+//        setup_lazy();
 
         if($('#back_to_top').length > 0) {
             $('#back_to_top').show();
