@@ -1,22 +1,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <%= stylesheet_link_tag "application" %>
-  <!--"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css" -->
-  <%= yield :head if content_for?(:head) %>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!--<meta name="google-site-verification" content="GF_EoI9-lwWznbOBC3y1-joOBGeE7EBPEfui_-4vMZo" />-->
-  <% if has_meta_tag? %>
+    <%= stylesheet_link_tag "application" %>
+    <!--"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css" -->
+    <%= yield :head if content_for?(:head) %>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <% if has_meta_tag? %>
       <meta name="description" content="<%= @meta_tag %>" />
-  <% end %>
-  <%= csrf_meta_tag %>
-  <title>
+    <% end %>
+    <%= csrf_meta_tag %>
+    <title>
     <% if home_page? %>
         <%= [t("site.name"), t("site.description")].join(' - ') %>
     <% else %>
         <%= @content_for_title + ' - ' if show_title? %><%= t("site.mark") %>
     <% end %>
-    <%= t("site.name") %><%= " " + @content_for_title if show_title? %></title>
+    <%= t("site.name") %><%= " " + @content_for_title if show_title? %>
+    </title>
+    <% if request.host.include? "chixinbugai.com" %>
+        <meta name="google-site-verification" content="nWzf6pxwY2_AJjgrdYq1wfjcuU1xzJvFtJXD9M1PI8k" />
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-29310451-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    <% end %>
 </head>
 <body>
 
@@ -56,23 +71,6 @@
 
 <%= javascript_include_tag "application" %>
 <%= yield :foot if content_for?(:foot) %>
-
-<% if request.host.include? "chixinbugai.com" %>
-    <script type="text/javascript">
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fcee3691f72a9ba212bcd497391611bca' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-<% elsif request.host.include? "meishikezhan.com" %>
-    <script type="text/javascript">
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3584467c63415abf4ba3595550e27f0b' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-<% elsif request.host.include? "yinkuaizi.com" %>
-    <script type="text/javascript">
-        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7953e074056904992ba352e2358c0dc9' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-<% end %>
 
 </body>
 </html>
