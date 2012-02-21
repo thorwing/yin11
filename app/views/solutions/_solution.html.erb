@@ -1,0 +1,29 @@
+<div class="fl solution_option img_frame">
+    <% item = solution.product || solution.recipe || solution.place %>
+    <div class="hint_box">
+        <div class="fix_hint b_white_alpha30 black f12" style="top:0px;left:0px;height: 20px;">
+            <b class="f16 ml5"><%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%"  %></b>
+            <% if solution.desire.voter_ids.size > 0 %>
+                <%= link_to_function " (#{solution.votes.size}票)", 'popup_dialog($(this).nextAll(".voters_list"));' %>
+            <% end %>
+
+            <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "fr icon icon_#{item.class.name.downcase}" %>
+            <div class="voters_list display_none">
+                <%= render "solutions/voters_list", solution: solution %>
+            </div>
+        </div>
+        <% if item.present? %>
+            <%= new_tab_link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120), {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>
+        <% end %>
+        <% if item.present? %>
+            <div class="fix_hint b_white_alpha30 black f11" style="width: 120px">
+                <span class="ml5">
+                    <%= "#{truncate_content(item.name, 14)}" %>
+                </span>
+            </div>
+        <% end %>
+    </div>
+    <% unless @my_vote %>
+        <%= render "solutions/vote_fields", solution: solution %>
+    <% end %>
+</div>

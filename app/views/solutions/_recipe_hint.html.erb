@@ -1,7 +1,5 @@
 <script type="text/javascript">
     function pick_recipe(link, id, name, image_url) {
-        $(document).trigger('close.facebox');
-
         if(document.getElementById("recipe_" + id)) {
           alert("已添加了该菜谱");
         }
@@ -15,7 +13,8 @@
                 + '<input type="hidden" value="' + id + '" name="review[recipe_ids][]" id="recipe_' + id + '"/>'
                 + '</div>';
 
-            $('#images_container').append(new_recipe);
+            $('#facebox #images_container').append(new_recipe);
+            $('#facebox #recipe_id').val("<%= recipe.id.to_s %>");
         }
     };
 </script>

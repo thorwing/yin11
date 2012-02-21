@@ -23,6 +23,7 @@ class Recipe
     #has_and_belongs_to_many :reviews
     embeds_many :feeds
     embeds_many :comments
+    has_many :solutions
 
     accepts_nested_attributes_for :ingredients, :reject_if => lambda { |i| i[:name].blank?}, :allow_destroy => true
     accepts_nested_attributes_for :steps, :reject_if => lambda { |s| s[:img_id].blank? && s[:content].blank? }, :allow_destroy => true

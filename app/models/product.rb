@@ -38,6 +38,7 @@ class Product
   has_and_belongs_to_many :reviews, index: true
   has_and_belongs_to_many :catalogs, index: true
   embeds_many :feeds
+  has_many :solutions
 
   #validators
   validates_presence_of :name

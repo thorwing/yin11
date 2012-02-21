@@ -1,0 +1,19 @@
+<div id="product_linker" class="display_none">
+    <%= form_tag url_for(controller: "products", action: "link", method: :post), :remote => true do %>
+        <p><%= "将网上商品的地址粘帖在下方框中即可：" %></p>
+        <%= text_field_tag "product_url", "" %>
+        <%= submit_tag t("general.submit"), id: "link_prod_btn", class: "button", onclick: 'return pre_link_product(this);'%>
+        <%= image_tag "loading.gif", id: "link_spinner", class: "display_none" %>
+        <p>已支持以下网上商城：</p>
+        <div>
+            <%= new_tab_link_to t("syncs.sites.taobao"), "http://www.taobao.com/", class: "auth_btn_16 via_taobao_small" %><%= new_tab_link_to "淘宝", "http://www.taobao.com/" %>
+        </div>
+        <div id="images_container" class="block fl m5" ></div>
+    <% end %>
+    <div class="clearfix"></div>
+    <%= form_tag url_for(:controller => "desires", :action => "solve", :method => :post) do %>
+      <%= hidden_field_tag "desire_id", @desire.id %>
+      <%= hidden_field_tag "product_id", "" %>
+      <%= submit_tag "添加解馋方案", class: "button" %>
+    <% end %>
+</div>

@@ -31,7 +31,7 @@
         height: 26px;
         padding: 0;
         margin: 0;
-        background: no-repeat url("buttons/upload_image.png");
+        background: url("buttons.png") -242px -58px no-repeat ;
         border: none;
 
         /*no text displayed*/
@@ -57,4 +57,29 @@
     .qq-upload-failed-text {display:none;}
     .qq-upload-fail .qq-upload-failed-text {display:inline;}
 
+}
+
+
+.solution_option {
+    margin: 2px;
+
+    position: relative;
+
+    .vote_fields {
+      position: absolute;
+      top: 40px;
+      left: 45px;
+
+      .button {
+        width: 40px;
+        height: 30px;
+      }
+    }
+
+    .percentage_field {
+      font-size: 18px;
+      margin: 0 auto;
+      position: absolute;
+      top: 10px;
+    }
 }

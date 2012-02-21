@@ -27,6 +27,11 @@ class DesiresController < ApplicationController
   def show
     @desire = Desire.find(params[:id])
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:admirer_ids, :created_at).limit(9)
+    #TODO
+    @solutions = @desire.solutions.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
+    @votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
+    #@can_vote = current_user.present? && (!@desire.voter_ids.include?(current_user.id.to_s))
+    @my_vote = @votes.first{|v| v.voter_id == current_user.id.to_s} if current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -72,18 +77,11 @@ class DesiresController < ApplicationController
 
     ImagesHelper.process_uploaded_images(@desire, params[:images], params[:remote_image_url])
 
-    if params[:product_id].present?
-      product = Product.find(params[:product_id])
-      #create a review as well
-      product.reviews.create do |r|
-        r.author = current_user
-        r.desire = @desire
-        r.content = product.name
-      end
-    end
+    saved = @desire.save
+    SolutionManager.generate_solutions(@desire, params[:product_id]) if saved
 
     respond_to do |format|
-      if @desire.save
+      if saved
         format.html { redirect_to @desire, notice: t("notices.desire_created") }
         format.json { render json: @desire, status: :created, location: @desire }
         format.js
@@ -101,6 +99,8 @@ class DesiresController < ApplicationController
     @desire = Desire.find(params[:id])
 
     ImagesHelper.process_uploaded_images(@desire, params[:images])
+
+    SolutionManager.generate_solutions(@desire)
 
     respond_to do |format|
       if @desire.update_attributes(params[:desire])
@@ -143,6 +143,49 @@ class DesiresController < ApplicationController
       else
         format.js { head :unprocessable_entity }
       end
+    end
+  end
+
+  def vote
+    #@desire = Desire.find(params[:id])
+    solution = Solution.find(params[:solution_id])
+    #solution.voter_ids << current_user.id.to_s unless solution.voter_ids.include? current_user.id.to_s
+    desire = solution.desire
+    unless desire.voter_ids.include?(current_user.id)
+      solution.votes.create do |v|
+        v.voter_id = current_user.id.to_s
+        v.content = params[:voter_content]
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to(:back) }
+      format.js
+    end
+  end
+
+  def solve
+    @desire = Desire.find(params[:id])
+    if params[:product_id].present?
+      @desire.solutions.create do |s|
+        #s.product_id = params[:product_id]
+        s.product = Product.find(params[:product_id])
+        s.creator_id = current_user.id.to_s
+      end
+    elsif params[:recipe_id].present?
+      @desire.solutions.create do |s|
+        s.recipe_id = params[:recipe_id]
+        s.creator_id = current_user.id.to_s
+      end
+    elsif params[:place_id].present?
+      @desire.solutions.create do |s|
+        s.place_id = params[:place_id]
+        s.creator_id = current_user.id.to_s
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to(@desire) }
     end
   end
 

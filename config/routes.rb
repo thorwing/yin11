@@ -80,6 +80,8 @@ Yin11::Application.routes.draw do
   resources :desires do
     member do
       put :admire
+      post :solve
+      post :vote
     end
     collection do
       #get :more
@@ -107,7 +109,11 @@ Yin11::Application.routes.draw do
   resources :places
 
   #resources :products, :except => [:new, :create]
-  resources :products
+  resources :products do
+    collection do
+      post :link
+    end
+  end
 
   resources :reports, :only => [:new, :create]
 

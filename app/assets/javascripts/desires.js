@@ -103,4 +103,27 @@ $(function(){
     });
 });
 
+$(function(){
+    $('.solution_option').hover(
+        function(e){
+            $(this).find('.vote_fields').show();
+        },
+        function(e){
+            $(this).find('.vote_fields').hide();
+        }
+    );
+});
 
+
+function shift_solutions_group(link) {
+    var current_index = parseInt($(link).data('current_index'));
+    var max_index = parseInt($(link).data('max_index'));
+
+    var new_index = (current_index < max_index) ? current_index + 1 : 0;
+    $(".solutions_group.display_block").addClass("display_none");
+    $(".solutions_group.display_block").removeClass("display_block");
+
+    $(".solutions_group." + new_index).addClass("display_block");
+    $(".solutions_group." + new_index).removeClass("display_none");
+    $(link).data('current_index', new_index);
+}

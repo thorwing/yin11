@@ -1,0 +1,17 @@
+<div class="listed_item commentable clearfix">
+    <div class="user_info_area">
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> vote.voter.get_avatar(:thumb, false ), width: "48", height: "48"), vote.voter %><br/>
+        <%= link_to vote.voter.login_name, vote.voter %>
+    </div>
+    <div class="content_area">
+        <div style="min-height: 50px;">
+            <div class="clearfix mb5">
+                <span><%= "投票给了 “#{vote.solution.name}”" %><%= content_tag :span, t("object_types.#{vote.solution.item.class.name.downcase}"), class: "icon icon_#{vote.solution.item.class.name.downcase}", width: 12, height: 12 %></span>
+            </div>
+            <div class="item">
+                <%= link_to image_tag(vote.solution.item.get_image_url(:thumb), class: "thumbnail", title: vote.solution.name), vote.solution.item %><br/>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>

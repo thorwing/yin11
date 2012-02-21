@@ -1,0 +1,13 @@
+<span><%= "#{solution.voter_ids.size}人投票" %></span><br/>
+<% solution.voters.each do |user| %>
+    <%= link_to image_tag(user.get_avatar(:thumb), width: 32, height: 32), user, class: "m2", alt: user.login_name, title: user.login_name %>
+<% end %>
+<% if current_user %>
+    <% followed_users = solution.voters.select{|voter| current_user.relationships.map(&:target_id).include?(voter.id.to_s)} %>
+    <% unless followed_users.empty? %>
+        <span>你关注的人中投票的有：</span><br/>
+        <% followed_users.each do |user| %>
+            <%= link_to image_tag(user.get_avatar(:thumb), width: 32, height: 32), user, class: "m2", alt: user.login_name, title: user.login_name %>
+        <% end %>
+    <% end %>
+<% end %>

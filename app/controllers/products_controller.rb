@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :editor }
+  before_filter(:except => [:index, :show, :more, :link]) { |c| c.require_permission :editor }
 
   # GET /products
   # GET /products.json
@@ -95,6 +95,14 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url }
       format.json { head :ok }
+    end
+  end
+
+  def link
+    @valid_url, @product = handle_taobao_product(params[:product_url])
+
+    respond_to do |format|
+      format.js
     end
   end
 

@@ -42,6 +42,13 @@ namespace :yin11 do
     end
   end
 
+  desc "generate solutions for existed desires"
+  task :generate_solutions_for_desires => :environment do
+    Desire.all.to_a.each do |desire|
+      SolutionManager.generate_solutions(desire)
+    end
+  end
+
   desc "generate primary tags"
   task :generate_primary_tags => :environment do
     p "generate primary tags..."

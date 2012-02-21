@@ -290,3 +290,9 @@ function expand_tags(link) {
         $(link).text("+展开");
     }
 }
+
+
+function popup_dialog(selector)
+{
+    jQuery.facebox($(selector).html());
+};

@@ -19,12 +19,11 @@ module ExternalLinkHelper
       options = args[1] || {}
       html_options = args[2] || {rel: 'nofollow'}
       if options.is_a? String
-
         if (is_external_link? request.host, options)
           @external = true
         end
-      else if options.is_a? Hash
-         if (is_external_link? request.host, options) || (options[:force] == "true")
+      elsif options.is_a? Hash
+         if (is_external_link? request.host, options) || (options[:force] == true)
             @external = true
          end
       end
@@ -45,7 +44,6 @@ module ExternalLinkHelper
       #p "html_options_new: " + html_options.to_yaml
 
       link_to name, options, html_options
-    end
   end
 
   def is_external_link? host, url

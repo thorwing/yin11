@@ -16,8 +16,8 @@
 <script type="text/javascript">
   if (GBrowserIsCompatible()) {
     var map = new GMap2(document.getElementById("map_canvas"));
-    var latitude = $("#place_latitude").val();
-    var longitude = $("#place_longitude").val();
+    var latitude = document.getElementById("place_latitude").value;
+    var longitude = document.getElementById("place_longitude").value;
     map.setCenter(new GLatLng(latitude, longitude), 15);
 
     // Add a marker to the map

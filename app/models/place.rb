@@ -24,6 +24,8 @@ class Place
   has_many :desires
   belongs_to :creator, :class_name => "User", index: true
   embeds_many :feeds
+  has_many :solutions
+
 
   #validators
   validates_presence_of :name
