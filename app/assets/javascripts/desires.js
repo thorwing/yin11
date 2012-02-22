@@ -127,3 +127,36 @@ function shift_solutions_group(link) {
     $(".solutions_group." + new_index).removeClass("display_none");
     $(link).data('current_index', new_index);
 }
+
+$(function(){
+    if($('#solution_submit').length > 0) {
+        //    check if all the necessory info is given
+        $('#solution_submit').click(function(e){
+            var verify_passed = false;
+            var has_one_recipe = false;
+            var has_one_product = false;
+
+            var message = "您忘了添加:\n";
+            //   check if all the neccessary info are given
+
+            if($('.solution_fields #solution_content').text() == "说说解馋理由吧...") {
+                $('.solution_fields #solution_content').text('');
+            }
+
+
+            //        1 recipe name should be given
+            if(String($('.solution_fields #recipe_id').val()) != "") {
+                has_one_recipe = true;
+            }
+
+            if(String($('.solution_fields #product_id').val()) != "") {
+                has_one_product = true;
+            }
+
+            if(has_one_product == false && has_one_recipe == false) {
+                e.preventDefault();
+                alert("请添加至少一个商品或菜谱吧");
+            }
+        });
+    }
+});

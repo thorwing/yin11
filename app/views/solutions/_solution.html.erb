@@ -1,29 +1,36 @@
-<div class="fl solution_option img_frame">
-    <% item = solution.product || solution.recipe || solution.place %>
-    <div class="hint_box">
-        <div class="fix_hint b_white_alpha30 black f12" style="top:0px;left:0px;height: 20px;">
-            <b class="f16 ml5"><%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%"  %></b>
-            <% if solution.desire.voter_ids.size > 0 %>
-                <%= link_to_function " (#{solution.votes.size}票)", 'popup_dialog($(this).nextAll(".voters_list"));' %>
-            <% end %>
-
-            <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "fr icon icon_#{item.class.name.downcase}" %>
-            <div class="voters_list display_none">
-                <%= render "solutions/voters_list", solution: solution %>
+<div class="listed_item commentable clearfix">
+    <div class="user_info_area">
+        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: "48", height: "48"), solution.creator %><br/>
+        <%= link_to solution.creator.login_name, solution.creator %>
+    </div>
+    <div class="content_area">
+        <div style="min-height: 50px;">
+            <div class="clearfix mb5">
+                <span><%= "分享了解馋方案 “#{solution.name}”" %><%= content_tag :span, t("object_types.#{solution.item.class.name.downcase}"), class: "icon icon_#{solution.item.class.name.downcase}", width: 12, height: 12 %></span>
+            </div>
+            <div class="item">
+                <%= link_to image_tag(solution.item.get_image_url(:thumb), class: "thumbnail", title: solution.name), solution.item %><br/>
+            </div>
+            <div class="clearfix"></div>
+            <div class="voters_statistic">
+                <b class="f16 ml5"><%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%" %></b>
+                <%= link_to_function "查看投票者", 'popup_dialog($(this).parents(".voters_statistic").find(".voters_list"));'  %>
+                <% if current_user %>
+                  <% followed_users = solution.voters.select{|voter| current_user.relationships.map(&:target_id).include?(voter.id.to_s)} %>
+                  <% unless followed_users.empty? %>
+                      <div>
+                          <span>你关注的人中投票的有：</span><br/>
+                          <% followed_users.each do |user| %>
+                              <%= link_to image_tag(user.get_avatar(:thumb), width: 32, height: 32), user, class: "m2", alt: user.login_name, title: user.login_name %>
+                          <% end %>
+                      </div>
+                  <% end %>
+                <% end %>
+                <div class="voters_list display_none">
+                    <%= render "solutions/voters_list", solution: solution %>
+                </div>
             </div>
         </div>
-        <% if item.present? %>
-            <%= new_tab_link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120), {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>
-        <% end %>
-        <% if item.present? %>
-            <div class="fix_hint b_white_alpha30 black f11" style="width: 120px">
-                <span class="ml5">
-                    <%= "#{truncate_content(item.name, 14)}" %>
-                </span>
-            </div>
-        <% end %>
     </div>
-    <% unless @my_vote %>
-        <%= render "solutions/vote_fields", solution: solution %>
-    <% end %>
 </div>
+<hr/>

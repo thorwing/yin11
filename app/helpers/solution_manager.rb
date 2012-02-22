@@ -3,20 +3,20 @@ class SolutionManager
     if desire.solutions.size <= 9
       number = 9
 
+      #default solution for place
       if desire.place
         desire.solutions.create do |s|
           s.place = desire.place
         end
         number = 8
       end
-      #TODO
-      #name_words = WordsProcessor.process(desire.content)
 
+      #default solution for product
       if product_id.present?
-        #create a solution as well
         desire.solutions.create do |s|
           s.product_id = product_id
         end
+        number = 8
       end
 
       products =  []
@@ -31,9 +31,8 @@ class SolutionManager
         recipes |= Recipe.tagged_with(desire.tags).desc(:votes).limit(number)
       end
 
-      items = (products + recipes).sort{|i| -1 * i.votes}.take(number)
+      items = (products.uniq + recipes.uniq).sort{|i| -1 * i.votes}.take(number)
       items.each do |item|
-        #TODO
         desire.solutions.create do |s|
           if item.is_a?(Product)
             s.product = item

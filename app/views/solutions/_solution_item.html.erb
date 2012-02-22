@@ -1,0 +1,9 @@
+<div class="solution_item hint_box">
+    <%= new_tab_link_to image_tag(item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name),
+                        {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>
+    <div class="fix_hint fix_hint b_white_alpha30 black f12">
+        <%= item.name %>
+        <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "icon icon_#{item.class.name.downcase}" %>
+    </div>
+    <%= link_to_function "", "delete_related_item(this);", class: "del_link btn btn_close lighter_touch" %>
+</div>

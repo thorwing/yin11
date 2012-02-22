@@ -2,7 +2,7 @@
     <% solutions.each_slice(3).each do |slice| %>
        <div class="clearfix">
            <% slice.each do |solution| %>
-               <%= render solution %>
+               <%= render "solutions/solution_option", solution: solution %>
            <% end %>
        </div>
     <% end %>

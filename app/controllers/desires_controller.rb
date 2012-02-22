@@ -28,10 +28,12 @@ class DesiresController < ApplicationController
     @desire = Desire.find(params[:id])
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:admirer_ids, :created_at).limit(9)
     #TODO
-    @solutions = @desire.solutions.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
+    @solutions = @desire.solutions.desc(:votes).to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
     @votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
     #@can_vote = current_user.present? && (!@desire.voter_ids.include?(current_user.id.to_s))
-    @my_vote = @votes.first{|v| v.voter_id == current_user.id.to_s} if current_user
+    if current_user
+      @my_vote = @votes.select{|v| v.voter_id == current_user.id.to_s}.first
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -166,26 +168,15 @@ class DesiresController < ApplicationController
 
   def solve
     @desire = Desire.find(params[:id])
-    if params[:product_id].present?
-      @desire.solutions.create do |s|
-        #s.product_id = params[:product_id]
-        s.product = Product.find(params[:product_id])
-        s.creator_id = current_user.id.to_s
-      end
-    elsif params[:recipe_id].present?
-      @desire.solutions.create do |s|
-        s.recipe_id = params[:recipe_id]
-        s.creator_id = current_user.id.to_s
-      end
-    elsif params[:place_id].present?
-      @desire.solutions.create do |s|
-        s.place_id = params[:place_id]
-        s.creator_id = current_user.id.to_s
-      end
-    end
+    solution = @desire.solutions.new(params[:solution])
+    solution.creator_id = current_user.id.to_s
 
     respond_to do |format|
-      format.html { redirect_to(@desire) }
+      if solution.save
+        format.html { redirect_to @desire, notice: t("notices.solution_created") }
+      else
+        format.html { redirect_to @desire, notice: t("notices.solution_creation_failed") }
+      end
     end
   end
 

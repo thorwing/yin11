@@ -83,3 +83,29 @@
       top: 10px;
     }
 }
+
+.solution_fields {
+  #solution_content {
+    width: 550px;
+    height: 118px;
+  }
+
+  #image_container {
+      width: 120px;
+      height: 120px;
+
+      .del_link {
+          position: absolute;
+          right: -5px;
+          top: 0px;
+      }
+  }
+
+  /*.solution_item {*/
+      /*z-index: 100;*/
+  /*}*/
+}
+
+#facebox #product_url {
+  width: 300px;
+}

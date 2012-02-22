@@ -1,15 +1,8 @@
-<div id="recipe_linker" class="display_none">
+<div id="recipe_linker" class="display_none clearfix">
     <%= "请输入菜谱的名字：" %><%= text_field_tag "recipe_name", "例：红烧肉", class: "not_cleared" %>
     <%= image_tag "loading.gif", id: "link_spinner", class: "display_none" %>
     <br/>
     <!--<span id="recipe_not_found_label" class="display_none">抱歉，没有找到相关的菜谱。请再试试其它的。</span>-->
     <div id="recipe_hints_container" style="min-height: 200px;">
     </div>
-    <div id="images_container" class="block fl m5" ></div>
-    <div class="clearfix"></div>
-    <%= form_tag url_for(:controller => "desires", :action => "solve", :method => :post) do %>
-        <%= hidden_field_tag "desire_id", @desire.id %>
-        <%= hidden_field_tag "recipe_id", "" %>
-        <%= submit_tag "添加解馋方案", class: "button" %>
-    <% end %>
 </div>
