@@ -2,7 +2,7 @@
     <% item_path = {:controller => solution.item.class.name.downcase.pluralize, :action => "show", :id => solution.item.id, force: true} %>
     <% if solution.has_creator? %>
         <div class="fl mr10" style="width:50px;">
-            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: "48", height: "48"), solution.creator %><br/>
+            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: 48, height: 48), solution.creator %><br/>
             <span class="f12"><%= link_to solution.creator.login_name, solution.creator %></span>
         </div>
     <% end %>

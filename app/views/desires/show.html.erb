@@ -93,13 +93,16 @@
                 <%= render "solutions/recipe_linker" %>
             </div>
         <% end %>
-    </div>
 
-    <% if current_user_has_permission? :normal_user %>
-        <div class="mt10 mb10">
-            <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
-        </div>
-    <% end %>
+        <% if current_user_has_permission? :normal_user %>
+          <div class="mt10 mb10">
+              <%= link_to_function "不解馋？分享你的方案吧~", "$(this).next().toggle();" %>
+              <div class="display_none">
+                  <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
+              </div>
+          </div>
+        <% end %>
+    </div>
 
     <div class="mt10">
         <%= render "comments/comments", item: @desire %>

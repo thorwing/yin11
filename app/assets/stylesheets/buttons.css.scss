@@ -319,3 +319,26 @@ a.btn.btn_edit:hover{
     height: 18px;
     background-position: -322px -189px;
 }
+
+.btn.btn_product_solution {
+    width: 118px;
+    height: 38px;
+    background-position: -228px -372px;
+}
+
+.btn.btn_recipe_solution {
+    width: 118px;
+    height: 38px;
+    background-position: -228px -412px;
+}
+
+.btn.btn_place_solution {
+    width: 118px;
+    height: 38px;
+    opacity: 0.5;
+    background-position: -228px -452px;
+}
+
+.btn.btn_place_solution:hover {
+    cursor: default;
+}

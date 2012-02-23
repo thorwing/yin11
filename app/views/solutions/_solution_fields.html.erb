@@ -9,12 +9,9 @@
             <div class="clearfix">
                 <div class="fl" >
                     <div id="image_container" class="img_frame b_white">
-                        <div style="height: 40px;">
-                            上哪买？<%= link_to_function "添加商品", "link_product()", class: "btn btn_add_product lighter_touch"%>
-                        </div>
-                        <div style="height: 40px;">
-                            自己做？<%= link_to_function "添加菜谱", "link_recipe()", class: "btn btn_add_recipe lighter_touch"%>
-                        </div>
+                        <%= link_to_function "网上买", "link_product()", class: "btn btn_product_solution m1 lighter_touch" %>
+                        <%= link_to_function "自己做", "link_recipe()", class: "btn btn_recipe_solution m1 lighter_touch" %>
+                        <%= link_to_function "出去吃", "link_place()", class: "btn btn_place_solution m1 lighter_touch" %>
                     </div>
                 </div>
                 <div class="fl ml2" >

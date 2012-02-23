@@ -5,20 +5,23 @@
             <%= link_to_function "点击查看", 'popup_dialog($(this).parents(".solution_option").find(".solution_detail"));', class: "button" %>
         </div>
         <div class="fix_hint b_white_alpha30 black f12" style="top:0px;left:0px;height: 20px;">
-            <% ratio = ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100) %>
-            <b class="f16 ml5 <%= ratio > 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.to_s + "%" %></b>
-
+            <% ratio = ((solution.desire.votes_count == 0 ? 0 : (solution.votes.size / solution.desire.votes_count)) * 100) %>
+            <b class="f16 ml2 <%= ratio > 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.to_s + "%" %></b>
+            <% if solution.voter_ids.include? current_user.id.to_s %>
+                <span class="trivial">你投了</span>
+            <% end %>
             <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "fr icon icon_#{item.class.name.downcase}" %>
         </div>
         <% if item.present? %>
             <!--<= new_tab_link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>-->
-            <%= link_to_function image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), 'popup_dialog($(this).parents(".solution_option").find(".solution_detail"));' %>
+            <%= link_to_function image_tag("grey.gif", class: 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), 'popup_dialog($(this).parents(".solution_option").find(".solution_detail"));' %>
         <% end %>
         <% if item.present? %>
             <div class="fix_hint b_white_alpha30 black f12" style="width: 120px">
-                <span class="ml5">
-                    <%= "#{truncate_content(item.name, 25)}" %>
-                </span>
+                <% if solution.has_creator? %>
+                    <%= new_tab_link_to image_tag("grey.gif", class: 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: "24", height: "24"), {controller: "users", action: "show", id: solution.creator.id, force: true} %>
+                <% end %>
+                <%= "#{truncate_content(item.name, 25)}" %>
             </div>
         <% end %>
     </div>

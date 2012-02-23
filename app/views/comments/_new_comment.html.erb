@@ -5,6 +5,7 @@
       <%= hidden_field_tag :item_type, item.class.name %>
       <%= hidden_field_tag :parent_id, parent.id if (defined? parent) %>
       <div class="fl ml5">
+            <!--change js if change the text-->
             <%= text_area_tag :content, "说点什么吧...", :maxlength => get_max_length(Comment, :content),
           'data-comment_max_len' => get_max_length(Comment, :content),
           :rows => 3, :class => "char_aware not_cleared" %>

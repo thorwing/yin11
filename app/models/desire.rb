@@ -44,4 +44,8 @@ class Desire
     @voter_ids ||= self.solutions.inject([]){|memo, s| memo | s.voter_ids }
   end
 
+  def votes_count
+    self.solutions.inject(0){|sum, s| sum + s.voter_ids.size }
+  end
+
 end

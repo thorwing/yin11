@@ -21,9 +21,9 @@ function show_embedded_comments(link) {
 }
 
 $(function() {
-    $('.submit_comment_btn').live('click', function(e) {
+    $('.btn_submit_comment').live('click', function(e) {
         var text = $(this).parents("form").find("#content").val().replace(/(^\s*)|(\s*$)/g, "");
-        if(text == "")
+        if(text == "" || text == "说点什么吧...")
         {
             alert("说点什么吧");
             e.preventDefault();

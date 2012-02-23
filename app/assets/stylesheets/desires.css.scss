@@ -83,7 +83,7 @@
 
 .solution_fields {
   #solution_content {
-    width: 550px;
+    width: 520px;
     height: 118px;
   }
 
@@ -95,6 +95,10 @@
           position: absolute;
           right: -5px;
           top: 0px;
+      }
+
+      .a {
+        text-align: -999px;
       }
   }
 
