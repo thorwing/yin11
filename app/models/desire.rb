@@ -23,6 +23,7 @@ class Desire
   has_and_belongs_to_many :admirers, :class_name => "User", :inverse_of => "admired_desires", index: true
   has_and_belongs_to_many :albums, index: true
   belongs_to :place, index: true
+  embeds_many :comments
 
   #validations
   validates_presence_of :author

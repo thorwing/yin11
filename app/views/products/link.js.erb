@@ -11,6 +11,7 @@ $("#facebox #link_spinner").hide();
         var new_product = '<%= escape_javascript(render("solutions/solution_item", :item => @product)) %>';
         $('#image_container').html(new_product);
         $('#product_id').val("<%= @product.id.to_s %>");
+//        $('a[rel*=facebox]').facebox();
     }
   <% else %>
     alert("抱歉，未能找到该商品");

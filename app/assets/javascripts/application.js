@@ -230,16 +230,12 @@ $(function(){
     });
 });
 
-function setup_lazy() {
-    $("img.lazy").lazyload({
-        skip_invisible : true,
-        threshold : 500,
-        failure_limit : 10}
-    );
-}
-
 $(function(){
-    setup_lazy();
+    $("img.lazy").lazyload({
+            skip_invisible : true,
+            threshold : 200
+        }
+    );
 });
 
 function fill_tag(link) {
@@ -295,4 +291,9 @@ function expand_tags(link) {
 function popup_dialog(selector)
 {
     jQuery.facebox($(selector).html());
+
+//    $("#facebox img.lazy").lazyload({
+//        skip_invisible : true,
+//        threshold : 200}
+//    );
 };

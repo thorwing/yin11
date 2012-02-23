@@ -10,6 +10,8 @@ a.button, input.button {
 	border:1px solid #32312f;;
 	text-transform:uppercase;
     height: 24px;
+    text-align: center;
+    vertical-align: middle;
 }
 a.button:hover, input.button:hover {
     color: white;

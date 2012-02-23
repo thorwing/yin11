@@ -5,6 +5,8 @@ class Vote
   field :content
   field :voter_id
 
+  attr_accessible :content
+
   #relationships
   embedded_in :solution
 

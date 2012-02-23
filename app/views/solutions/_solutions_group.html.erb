@@ -1,5 +1,5 @@
 <div class="solutions_group <%= index %> <%= index == 0 ? "display_block" : "display_none" %>">
-    <% solutions.each_slice(3).each do |slice| %>
+    <% solutions.each_slice(5).each do |slice| %>
        <div class="clearfix">
            <% slice.each do |solution| %>
                <%= render "solutions/solution_option", solution: solution %>

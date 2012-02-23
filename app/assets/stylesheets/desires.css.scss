@@ -61,18 +61,15 @@
 
 
 .solution_option {
-    margin: 2px;
-
     position: relative;
 
-    .vote_fields {
+    .solution_hint {
       position: absolute;
-      top: 40px;
-      left: 45px;
+      top: 48px;
+      left: 30px;
 
       .button {
-        width: 40px;
-        height: 30px;
+        width: 60px;
       }
     }
 

@@ -154,9 +154,8 @@ class DesiresController < ApplicationController
     #solution.voter_ids << current_user.id.to_s unless solution.voter_ids.include? current_user.id.to_s
     desire = solution.desire
     unless desire.voter_ids.include?(current_user.id)
-      solution.votes.create do |v|
+      solution.votes.create(params[:vote]) do |v|
         v.voter_id = current_user.id.to_s
-        v.content = params[:voter_content]
       end
     end
 

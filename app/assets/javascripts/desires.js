@@ -106,10 +106,10 @@ $(function(){
 $(function(){
     $('.solution_option').hover(
         function(e){
-            $(this).find('.vote_fields').show();
+            $(this).find('.solution_hint').show();
         },
         function(e){
-            $(this).find('.vote_fields').hide();
+            $(this).find('.solution_hint').hide();
         }
     );
 });

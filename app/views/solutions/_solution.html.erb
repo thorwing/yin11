@@ -1,36 +1,41 @@
-<div class="listed_item commentable clearfix">
-    <div class="user_info_area">
-        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: "48", height: "48"), solution.creator %><br/>
-        <%= link_to solution.creator.login_name, solution.creator %>
-    </div>
-    <div class="content_area">
+<div class="listed_item commentable clearfix" style="width: 600px;">
+    <% item_path = {:controller => solution.item.class.name.downcase.pluralize, :action => "show", :id => solution.item.id, force: true} %>
+    <% if solution.has_creator? %>
+        <div class="fl mr10" style="width:50px;">
+            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: "48", height: "48"), solution.creator %><br/>
+            <span class="f12"><%= link_to solution.creator.login_name, solution.creator %></span>
+        </div>
+    <% end %>
+    <div class="fl">
         <div style="min-height: 50px;">
             <div class="clearfix mb5">
-                <span><%= "分享了解馋方案 “#{solution.name}”" %><%= content_tag :span, t("object_types.#{solution.item.class.name.downcase}"), class: "icon icon_#{solution.item.class.name.downcase}", width: 12, height: 12 %></span>
+                <h3>
+                  <%= new_tab_link_to "#{solution.name}", item_path %>
+                  <%= content_tag :span, t("object_types.#{solution.item.class.name.downcase}"), class: "icon icon_#{solution.item.class.name.downcase}", width: 12, height: 12 %>
+                  <% if solution.item.is_a?(Product) && solution.item.price? %>
+                    <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + solution.item.price_as_money_string) %></span>
+                  <% end %>
+                </h3>
+                <% if solution.content.present? %><blockquote><span class="quoted"><%= solution.content %></span></blockquote><% end %>
             </div>
-            <div class="item">
-                <%= link_to image_tag(solution.item.get_image_url(:thumb), class: "thumbnail", title: solution.name), solution.item %><br/>
+            <div class="item clearfix">
+                <div class="fl mr10" style="width: 120px;">
+                    <%= new_tab_link_to image_tag(solution.item.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
+                </div>
+                <div class="fl" style="width: 450px;">
+                  <% if solution.item.is_a?(Recipe) %>
+                    <%= solution.item.instruction %>
+                    <%= new_tab_link_to "[详细]", item_path %>
+                  <% end %>
+                </div>
             </div>
             <div class="clearfix"></div>
             <div class="voters_statistic">
-                <b class="f16 ml5"><%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%" %></b>
-                <%= link_to_function "查看投票者", 'popup_dialog($(this).parents(".voters_statistic").find(".voters_list"));'  %>
-                <% if current_user %>
-                  <% followed_users = solution.voters.select{|voter| current_user.relationships.map(&:target_id).include?(voter.id.to_s)} %>
-                  <% unless followed_users.empty? %>
-                      <div>
-                          <span>你关注的人中投票的有：</span><br/>
-                          <% followed_users.each do |user| %>
-                              <%= link_to image_tag(user.get_avatar(:thumb), width: 32, height: 32), user, class: "m2", alt: user.login_name, title: user.login_name %>
-                          <% end %>
-                      </div>
-                  <% end %>
-                <% end %>
-                <div class="voters_list display_none">
-                    <%= render "solutions/voters_list", solution: solution %>
-                </div>
+                <%= render "solutions/voters_list", solution: solution %>
             </div>
+            <% unless @my_vote %>
+                <%= render "solutions/vote_fields", solution: solution %>
+            <% end %>
         </div>
     </div>
 </div>
-<hr/>

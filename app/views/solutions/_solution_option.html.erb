@@ -1,26 +1,28 @@
-<div class="fl solution_option img_frame">
+<div class="fl solution_option img_frame m5">
     <% item = solution.product || solution.recipe || solution.place %>
-    <div class="hint_box">
+    <div class="">
+        <div class="solution_hint display_none">
+            <%= link_to_function "点击查看", 'popup_dialog($(this).parents(".solution_option").find(".solution_detail"));', class: "button" %>
+        </div>
         <div class="fix_hint b_white_alpha30 black f12" style="top:0px;left:0px;height: 20px;">
-            <b class="f16 ml5"><%= link_to_function ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%", 'popup_dialog($(this).parent().nextAll(".voters_list"));'  %></b>
+            <% ratio = ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100) %>
+            <b class="f16 ml5 <%= ratio > 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.to_s + "%" %></b>
 
             <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "fr icon icon_#{item.class.name.downcase}" %>
-            <div class="voters_list display_none">
-                <%= render "solutions/voters_list", solution: solution %>
-            </div>
         </div>
         <% if item.present? %>
-            <%= new_tab_link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>
+            <!--<= new_tab_link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>-->
+            <%= link_to_function image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), 'popup_dialog($(this).parents(".solution_option").find(".solution_detail"));' %>
         <% end %>
         <% if item.present? %>
-            <div class="fix_hint b_white_alpha30 black f11" style="width: 120px">
+            <div class="fix_hint b_white_alpha30 black f12" style="width: 120px">
                 <span class="ml5">
-                    <%= "#{truncate_content(item.name, 14)}" %>
+                    <%= "#{truncate_content(item.name, 25)}" %>
                 </span>
             </div>
         <% end %>
     </div>
-    <% unless @my_vote %>
-        <%= render "solutions/vote_fields", solution: solution %>
-    <% end %>
+    <div class="solution_detail display_none">
+        <%= render solution %>
+    </div>
 </div>

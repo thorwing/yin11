@@ -62,25 +62,27 @@
         </div>
     <% end %>
 
-    <div class="mt20 box_shadow clearfix p5">
+    <div class="mt20 box_shadow clearfix" style="padding:  5px 15px;">
         <div class="fl">
-            <% if @my_vote %>
-                <span class="mr2"><%="你投票给了“#{@my_vote.solution.name}”" %></span><%= link_to image_tag(@my_vote.solution.item.get_image_url(:thumb),  title: @my_vote.solution.name, width: 36, height: 36), @my_vote.solution.item %><br/>
-            <% elsif @solutions.size > 0 %>
-                <h2 class="trivial">快来给解馋的方案投票吧！</h2>
-            <% end %>
+            <span class="trivial">
+                <%= "总共#{@desire.voter_ids.size}人投票。" %>
+                <% if @my_vote %>
+                    <%="你投给了“#{@my_vote.solution.name}”" %>
+                <% elsif @solutions.size > 0 %>
+                    快来给你觉得解馋的攻略投票吧！
+                <% end %>
+            </span><br/>
             <% number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>
             <% if number_of_groups > 1  %>
                 <%= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "button" %>
             <% end %>
             <% index = 0 %>
             <div class="mt10 clearfix">
-                <% @solutions.each_slice(9) do |group| %>
+                <% @solutions.each_slice(10) do |group| %>
                     <%= render "solutions/solutions_group", solutions: group, index: index %>
                     <% index += 1 %>
                 <% end %>
             </div>
-            <span class="trivial"><%= "共#{@desire.voter_ids.size}票" %></span><br/>
         </div>
         <% if false %>
             <div class="fr">
@@ -99,16 +101,9 @@
         </div>
     <% end %>
 
-    <% user_solutions = @solutions.select{|s| s.creator_id.present?} %>
-    <% unless user_solutions.empty? %>
-        <div class="mt10">
-            <h3 class="trivial mb5">来自用户的解馋方案：</h3>
-
-            <% user_solutions.each do |solution| %>
-                <%= render solution %>
-            <% end %>
-        </div>
-    <% end %>
+    <div class="mt10">
+        <%= render "comments/comments", item: @desire %>
+    </div>
 </div>
 
 <div class="grid_3">

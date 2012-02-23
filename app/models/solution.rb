@@ -34,6 +34,10 @@ class Solution
     @voters ||= User.any_in(_id: voter_ids)
   end
 
+  def has_creator?
+    creator_id.present?
+  end
+
   def creator
     @creator ||= User.find(creator_id)
   end
