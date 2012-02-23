@@ -31,17 +31,30 @@
                     <%= link_to t("menu.logout"), logout_path %>
                 </div>
                 <div class="fr mr30 mt15 p5 box_shadow">
-                    <span class="ml5 mr5"><%= link_to(current_user.login_name, "/me?mode=default", :class => "berry_red f16") %></span> |
-                    <span class="ml5 mr5"><%= link_to t("personal.desires"), "/me?mode=desires" %></span> |
-                    <span class="ml5 mr5"><%= link_to t("personal.albums"), "/me?mode=albums" %></span> |
-                    <span class="ml5 mr5"><%= link_to t("personal.recipes"), "/me?mode=recipes" %></span>
+                    <span class="ml5 mr10"><%= link_to(current_user.login_name, "/me?mode=default", :class => "berry_red f16") %></span>
+                    <span title="积分" class="icon icon_star mr2" style="display: inline-block;"></span><span title="积分" class="trivial f14 mr5"><%= current_user.score %></span>
+
                 </div>
             <% else %>
               <% unless hide_quick_auth? %>
-                 <span class="fr mt20 f14">
-                    <%= link_to t("authentication.login"), login_path %>  |
-                    <%= link_to t("authentication.sign_up"), sign_up_path %>
-                </span>
+                 <div class="fr mt10 f14">
+                    <div class="fr">
+                        <%= link_to t("authentication.login"), login_path %>  |
+                        <%= link_to t("authentication.sign_up"), sign_up_path %>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="mt5">
+                        <span class="trivial f12">通过第三方站点登录：</span>
+                        <%= link_to t("syncs.sites.sina"), "/syncs/sina/new", :class => "auth_btn_16 via_sina_small lighter_touch mt2 ml2 mr2"%>
+                        <%= link_to t("syncs.sites.douban"), "/syncs/douban/new", :class => "auth_btn_16 via_douban_small lighter_touch mt2 ml2 mr2" %>
+                        <%= link_to t("syncs.sites.taobao"), "/syncs/taobao/new", :class => "auth_btn_16 via_taobao_small lighter_touch mt2 ml2 mr2" %>
+                        <%= link_to t("syncs.sites.renren"), "/syncs/renren/new", :class => "auth_btn_16 via_renren_small lighter_touch mt2 ml2 mr2" %>
+                        <%= link_to t("syncs.sites.qq"), "/syncs/qq/new", class: "auth_btn_16 via_qq_small lighter_touch mt2 ml2 mr2" %>
+                        <%= link_to t("syncs.sites.sohu"), "/syncs/sohu/new", class: "auth_btn_16 via_sohu_small lighter_touch mt2 ml2 mr2" %>
+                        <%= link_to t("syncs.sites.netease"), "/syncs/netease/new", class: "auth_btn_16 via_netease_small lighter_touch mt2 ml2 mr2" %>
+                    </div>
+                 </div>
+
               <% end %>
             <% end %>
         </div>

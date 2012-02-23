@@ -1,13 +1,17 @@
-<ul id="filters" class="mt5">
-    <% @modes.each do |mode| %>
-        <li class="<%= (mode == @current_mode ? "filter_tab selected hovered" : "filter_tab") %>">
-          <div class="small_bar">.</div>
-          <%= link_to t("home.modes.#{mode}"), "/?mode=#{mode}", class: "filter" %>
-        </li>
-    <% end %>
-
-    <div class="clearfix"></div>
-</ul>
+<div class="clearfix pl10 pr10">
+    <div id="filters" class="fl clearfix">
+        <% @modes.each do |mode| %>
+            <li class="<%= (mode == @current_mode ? "filter_tab selected" : "filter_tab") %>">
+              <div class="small_bar">.</div>
+              <%= link_to t("home.modes.#{mode}"), "/?mode=#{mode}", class: "filter" %>
+            </li>
+        <% end %>
+    </div>
+    <div class="fr">
+        <span class="mr15"><%= link_to "【小工具，馋人更方便】", "/home/collect_intro" %></span>
+        <span>关注我们 <%= new_tab_link_to t("syncs.sites.sina"), YIN11_SINA_WEIBO, class: "auth_btn_16 via_sina_small" %></span>
+    </div>
+</div>
 
 
 <div id="masonry_container" class="clearfix">
@@ -19,15 +23,18 @@
                 <%= link_to tag, desires_path(tag: tag), class: "tag" %>
             <% end %>
             <hr/>
-            <p>点击带有解馋<%= content_tag :span, "", class: "icon small_jiechan_ribbon" %>标志的图片看如何把美食吃到！</p>
-            <% if current_user_has_permission? :normal_user %>
-                <div class="mt10">
-                    <%= content_tag :span, "也想馋馋别人？", class: "trivial f14" %>
+            <div class="mt10">
+                <%= content_tag :span, "也想馋馋别人？", class: "trivial f14" %>
+                <% if current_user_has_permission? :normal_user %>
                     <div class="mt5 clearfix">
                         <%= link_to "+上传馋人图片", new_desire_path, class: "btn btn_new_desire" %>
                     </div>
-                </div>
-            <% end %>
+                <% else %>
+                    <div class="mt5 clearfix">
+                        <%= link_to "立即注册", new_user_path, class: "btn btn_register_now fl" %>
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
     <% @desires.each do |desire| %>
