@@ -63,13 +63,17 @@
     <% end %>
 
     <div class="mt20 box_shadow clearfix" style="padding:  5px 15px;">
-        <div class="fl">
+        <div class="clearfix">
             <span class="trivial">
-                <%= "总共#{@desire.voter_ids.size}人投票。" %>
-                <% if @my_vote %>
-                    <%="你投给了“#{@my_vote.solution.name}”" %>
-                <% elsif @solutions.size > 0 %>
-                    快来给你觉得解馋的攻略投票吧！
+                <% if @solutions.size > 0 %>
+                    <%= "总共#{@desire.voter_ids.size}人投票。" %>
+                    <% if @my_vote %>
+                        <%="你投给了“#{@my_vote.solution.name}”" %>
+                    <% else @solutions.size > 0 %>
+                        快来给你觉得解馋的攻略投票吧！
+                    <% end %>
+                <% else %>
+                    <span class="trivial">还没有解馋攻略</span>
                 <% end %>
             </span><br/>
             <% number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>
@@ -86,7 +90,7 @@
         </div>
         <% if false %>
             <div class="fr">
-                <span class="trivial">不解馋？分享你的方案吧~</span><br/>
+                <span class="trivial">分享你的攻略吧~</span><br/>
                 <%= link_to_function "添加商品", "link_product()", class: "btn btn_add_product lighter_touch"%>
                 <%= link_to_function "添加菜谱", "link_recipe()", class: "btn btn_add_recipe lighter_touch"%>
                 <%= render "solutions/product_linker" %>
@@ -96,7 +100,7 @@
 
         <% if current_user_has_permission? :normal_user %>
           <div class="mt10 mb10">
-              <%= link_to_function "不解馋？分享你的方案吧~", "$(this).next().toggle();" %>
+              <%= link_to_function "分享你的攻略吧~", "$(this).next().toggle();" %>
               <div class="display_none">
                   <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
               </div>

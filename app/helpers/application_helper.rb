@@ -170,7 +170,8 @@ module ApplicationHelper
 
     if messages.size > 0
       content_tag(:script, :type => "text/javascript") do
-        "$(document).ready(function() {#{messages}});"
+        #"$(document).ready(function() {#{messages}});"
+        "#{messages};"
       end
     else
       ""

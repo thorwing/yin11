@@ -168,8 +168,8 @@ zh-CN:
     desire_updated: 馋人图片修改成功
     place_updated: 地点更新成功
     message_sent: 消息已发出
-    solution_created: 解馋方案提交成功
-    solution_creation_failed: 解馋方案提交失败
+    solution_created: 解馋攻略提交成功
+    solution_creation_failed: 解馋攻略提交失败
 
   alerts:
     password_reset_expired: 密码重置口令已过期

@@ -86,7 +86,7 @@
             <div id="header_search_form" class="fr" >
                 <%= form_tag '/search', :method => :get do %>
                     <%= text_field_tag :query, t("search.tip"), class: "not_cleared" %>
-                    <%= submit_tag t("general.search"), id: "search_btn" %>
+                    <%= submit_tag t("general.search"), id: "search_btn", class: "btn btn_search lighter_touch" %>
                 <% end %>
             </div>
         </div>

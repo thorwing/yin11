@@ -22,7 +22,7 @@ a.button:hover, input.button:hover {
 /*General style here*/
 input.btn {
     display: inline-block;
-	border: 0;
+	border: none;
     background: url("buttons.png") 0 0 no-repeat;
     text-indent:-9999px;
 }
@@ -341,4 +341,11 @@ a.btn.btn_edit:hover{
 
 .btn.btn_place_solution:hover {
     cursor: default;
+}
+
+.btn.btn_search {
+  width: 22px;
+  height: 22px;
+  background: url("buttons.png") -270px -114px no-repeat;
+  padding: 0;
 }
