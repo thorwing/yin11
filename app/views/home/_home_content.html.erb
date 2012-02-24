@@ -46,9 +46,28 @@
     <%= link_to "", 'http://' + request.host_with_port + "/more_desires/#{@current_mode}/2" %>
 </nav>
 
+<div id="more_nav" class="mt10 centered display_none">
+    <% current_chapter = params[:chapter] ? params[:chapter].to_i : 1 %>
+    <% if current_chapter > 1 %>
+        <%= link_to "上一页", desires_path(chapter: current_chapter - 1), class: "chapter_link" %>
+    <% end %>
+    <% indexes = [1, current_chapter -1, current_chapter, current_chapter + 1, @total_chapters].uniq.sort.select{|i| i > 0 && i <= @total_chapters} %>
+    <% indexes.each_with_index do |chapter_index, index| %>
+        <% if (index > 0) && ((indexes[index] - indexes[index - 1]) > 1) %>
+            ...
+        <% end %>
+        <%= link_to chapter_index, root_path(chapter: chapter_index), class: (chapter_index == current_chapter ? "chapter_link current" : "chapter_link") %>
+    <% end %>
+
+    <% if current_chapter < @total_chapters %>
+        <%= link_to "下一页", root_path(chapter: current_chapter + 1), class: "chapter_link" %>
+    <% end %>
+    <span class="trivial"><%= "共#{@total_chapters}页" %></span>
+</div>
+
 <%= link_to t("general.back_to_top"), "#", :id => "back_to_top", class: "btn btn_back_to_top hide" %>
 
 
-<div id="more_nav" class="mt10 centered display_none">
-    <%= link_to "查看更多馋人图片", desires_path, class: "button", id: "more_nav_button" %>
-</div>
+<!--<div id="more_nav" class="mt10 centered display_none">-->
+    <!--<= link_to "查看更多馋人图片", desires_path, class: "button", id: "more_nav_button" %>-->
+<!--</div>-->
