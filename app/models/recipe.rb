@@ -37,7 +37,7 @@ class Recipe
     validates_presence_of :author
     validates_associated :steps
     validates_associated :ingredients
-    validates_length_of :notice, :maximum => 300
+    validates_length_of :notice, :maximum => 400
 
     #callbacks
     #mongoid doesn't call create/update callback on embedded documents

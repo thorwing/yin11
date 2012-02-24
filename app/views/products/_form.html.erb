@@ -50,6 +50,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t("general.submit"), :class => "button" %>
+    <%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn btn_submit_post" : "btn btn_submit_update"}" %>
   </div>
 <% end %>

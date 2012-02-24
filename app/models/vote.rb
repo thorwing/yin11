@@ -10,7 +10,7 @@ class Vote
   #relationships
   embedded_in :solution
 
-  validates_length_of :content, :maximum => 280
+  validates_length_of :content, :maximum => 400
 
   def voter
     @voter ||= User.find(voter_id)

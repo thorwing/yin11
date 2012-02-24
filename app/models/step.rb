@@ -13,6 +13,6 @@ class Step
   embedded_in :recipe
 
   #validations
-  validates_length_of :content, :maximum => 200
+  validates_length_of :content, :maximum => 400
 
 end

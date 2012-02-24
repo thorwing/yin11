@@ -14,7 +14,7 @@ class Message
   validates_presence_of :from_id
   validates_presence_of :to_id
   validates_presence_of :content
-  validates_length_of :content, :maximum => 300
+  validates_length_of :content, :maximum => 400
 
   def from
     @from ||= User.first(conditions: {_id: self.from_id})

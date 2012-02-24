@@ -16,7 +16,7 @@ class Solution
   embeds_many :votes
 
   #validations
-  validates_length_of :content, :maximum => 280
+  validates_length_of :content, :maximum => 1000
 
   def item
     @item ||= (place || product || recipe)

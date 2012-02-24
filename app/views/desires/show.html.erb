@@ -100,10 +100,12 @@
 
         <% if current_user_has_permission? :normal_user %>
           <div class="mt10 mb10">
-              <%= link_to_function "分享你的攻略吧~", "$(this).next().toggle();" %>
-              <div class="display_none">
-                  <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
-              </div>
+              <!--<= link_to_function "分享你的攻略吧~", "$(this).next().toggle();" %>-->
+              <!--<div class="display_none">-->
+                  <!--分享你的攻略吧~-->
+                  <!--<= render "solutions/solution_fields", :solution => @desire.solutions.build %>-->
+              <!--</div>-->
+            <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
           </div>
         <% end %>
     </div>
