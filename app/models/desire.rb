@@ -30,14 +30,19 @@ class Desire
   validates_length_of :content, :maximum => MAX_DESIRE_CONTENT_LENGTH
 
   def has_solution?
-    result = false
-    if self.place
-      result = true
-    elsif self.reviews.count(conditions: {:votes.gt => 3}) > 0
-      result = true
+    unless @result
+      total = 0
+      max = 0
+      self.solutions.each do |s|
+        size = s.votes.size
+        total += size
+        max = [size, max].max
+      end
+      enough_votes = total >= DESIRE_SOLVED_BAR_COUNT
+      @result = enough_votes && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
     end
 
-    result
+    @result
   end
 
   def voter_ids
