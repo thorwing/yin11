@@ -335,7 +335,7 @@ zh-CN:
     role_9: 管理员
 
   personal:
-    default_mode: 美食动态
+    default_mode: 关注的动态
     feeds_mode: 我的动态
     reviews_mode: 我的解馋分享
     recipes_mode: 我的菜谱

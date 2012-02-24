@@ -63,15 +63,16 @@ class FeedsManager
   end
 
   def self.pull_feeds(user)
-    feeds ||= []
-    #pull the feeds from items that the use followed
-    user.relationships.each do |r|
-      followable = r.get_item
-      feeds += followable.feeds
+    key = 'feeds_for_' + user.id.to_s
+    feeds = nil #Rails.cache.fetch(key)
+    if feeds.nil?
+      followed_user_ids = user.relationships.select{|r| r.target_type == "User"}.map(&:target_id)
+      users = User.any_in(_id: followed_user_ids)
+      raw_feeds = users.inject([]){|memo, user| memo | user.feeds} #.where(:created_at.lt => 1.weeks.ago)
+      feeds = process(raw_feeds)
+
+      #Rails.cache.write(key, feeds, :expires_in => 5.minutes)
     end
-
-    feeds = process(feeds)
-
     #different pagination of waterfall, it starts from 1
     return feeds
   end
@@ -91,7 +92,7 @@ class FeedsManager
 
   private
   def self.process(feeds)
-    feeds.compact.uniq{|f| f.identity}
+    feeds.compact.uniq{|f| f.identity}.reject{|f| f.created_at.blank?}.sort{|x, y| y.created_at <=> x.created_at}
   end
 
 end

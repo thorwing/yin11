@@ -1,15 +1,8 @@
-<% if feed.item %>
+<% if feed.item && (feed.item.is_a?(Desire) || feed.item.is_a?(Recipe)) %>
     <div class="masonary_item">
         <div class="inner_frame">
-            <% pic_ul = nil %>
-            <% pic_height = 0 %>
-            <% if feed.item.is_a?(Review) %>
-                <% pic_url = feed.item.get_review_image_url(:waterfall) %>
-                <% pic_height = feed.item.get_review_image_height(:waterfall) %>
-            <% elsif feed.item.is_a?(Desire) || feed.item.is_a?(Recipe) %>
-                <% pic_url = feed.item.get_image_url(:waterfall) %>
-                <% pic_height = feed.item.get_image_height(:waterfall) %>
-            <% end %>
+            <% pic_url = feed.item.get_image_url(:waterfall) %>
+            <% pic_height = feed.item.get_image_height(:waterfall) %>
             <%= link_to image_tag(pic_url, height: pic_height), feed.item if pic_url.present? %>
             <div class="clearfix">
                 <% if (feed.item.respond_to? :author) && feed.item.author %>

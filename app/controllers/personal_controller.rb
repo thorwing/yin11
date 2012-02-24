@@ -2,7 +2,7 @@ class PersonalController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
 
   def me
-    @modes = ["default", "desires", "reviews", "albums", "recipes"]
+    @modes = ["default", "albums", "desires",  "recipes"]
     if params[:mode].present?
       @current_mode = params[:mode]
     elsif session[:personal_mode].present?
@@ -14,8 +14,6 @@ class PersonalController < ApplicationController
     page = params[:page].present? ? params[:page].to_i : 0
 
     case @current_mode
-      when "reviews"
-        @my_reviews = current_user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
       when "recipes"
         @my_recipes = current_user.recipes.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
       when "albums"
@@ -56,7 +54,7 @@ class PersonalController < ApplicationController
   private
   def get_feeds(page)
     page = page ? page.to_i : 1
-    FeedsManager.pull_feeds(current_user).reject{|f| f.cracked? || f.created_at.blank?}.sort{|x, y| y.created_at <=> x.created_at}[((page - 1) * ITEMS_PER_PAGE_FEW)..((page)* ITEMS_PER_PAGE_FEW)]
+    FeedsManager.pull_feeds(current_user)[((page - 1) * ITEMS_PER_PAGE_FEW)..((page)* ITEMS_PER_PAGE_FEW)]
   end
 
 end

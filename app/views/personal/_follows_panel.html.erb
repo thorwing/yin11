@@ -1,15 +1,15 @@
 <div id="follows_panel" class="panel clearfix">
-    <h3><%= t("user_basic.following_users") %></h3>
+    <h3><%= t_with_colon("user_basic.following_users") %></h3>
     <div class="clearfix">
         <% current_user.following_users(100).each do |user| %>
-            <%= link_to image_tag("grey.gif", "data-original"=> user.get_avatar(:thumb, false), width: 24, height: 24, title: user.login_name), user, class: "lazy more_head_img" %>
+            <%= link_to image_tag("grey.gif", class: "lazy more_head_img", "data-original"=> user.get_avatar(:thumb, false), width: 24, height: 24, title: user.login_name), user %>
         <% end %>
     </div>
-    <%= link_to t("general.more"), "" %>
+    <!--<= link_to t("general.more"), "" %>-->
     <hr/>
-    <h3><%= t("user_basic.fans") %></h3>
-    <% current_user.followers.each do |id| %>
-        <% user = User.find(id) %>
-        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false), width: 24, height: 24, title: user.login_name), user, class: "more_head_img" %>
+    <h3><%= t_with_colon("user_basic.fans") %></h3>
+    <% followers = User.any_in(_id: current_user.followers) %>
+    <% followers.each do |user| %>
+        <%= link_to image_tag("grey.gif", class: "lazy more_head_img", "data-original"=> user.get_avatar(:thumb, false), width: 24, height: 24, title: user.login_name), user%>
     <% end %>
 </div>
