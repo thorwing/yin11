@@ -7,7 +7,6 @@ class Desire
 
   field :content
   field :priority, :type => Integer, :default => 0
-  field :solutions_count, :type => Integer, :default => 0
   field :history_admirer_ids, :type => Array, :default => []
 
   attr_accessible :content, :priority
