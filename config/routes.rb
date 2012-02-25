@@ -86,6 +86,7 @@ Yin11::Application.routes.draw do
     collection do
       #get :more
       get :afar
+      get :feed
     end
   end
 

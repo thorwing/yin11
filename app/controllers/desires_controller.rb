@@ -189,6 +189,15 @@ class DesiresController < ApplicationController
     end
   end
 
+  def feed
+      @desires = Desire.only(:content, :author, :id, :created_at).desc(:created_at).limit(20)
+
+      respond_to do |format|
+        #format.html
+        format.rss { render :layout => false } #index.rss.builder
+      end
+  end
+
   private
 
   def get_desires(tag, page, chapter = nil)
