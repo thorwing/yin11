@@ -1,6 +1,7 @@
 <div class="masonary_item">
   <div class="inner_frame">
-    <%= content_tag :span, "", class: "icon jiechan_ribbon" if desire.has_solution? %>
+    <% has_solution, best_solution = desire.has_solution? %>
+    <%= content_tag :span, "", class: "icon jiechan_ribbon" if has_solution %>
     <div class="hint_box">
         <% pic_url = desire.get_image_url(:waterfall) %>
         <% if pic_url.present? %>

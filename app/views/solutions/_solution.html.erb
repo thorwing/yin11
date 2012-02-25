@@ -2,7 +2,7 @@
     <% item_path = {:controller => solution.item.class.name.downcase.pluralize, :action => "show", :id => solution.item.id, force: true} %>
     <% if solution.has_creator? %>
         <div class="fl mr10" style="width:50px;">
-            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: 48, height: 48), solution.creator %><br/>
+            <%= link_to image_tag(solution.creator.get_avatar(:thumb, false ), width: 48, height: 48), solution.creator %><br/>
             <span class="f12"><%= link_to solution.creator.login_name, solution.creator %></span>
         </div>
     <% end %>
@@ -22,7 +22,7 @@
                 <div class="fl mr10" style="width: 120px;">
                     <%= new_tab_link_to image_tag(solution.item.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
                 </div>
-                <div class="fl" style="width: 450px;">
+                <div class="fl" style="width: 400px;">
                   <% if solution.item.is_a?(Recipe) %>
                     <%= solution.item.instruction %>
                     <%= new_tab_link_to "[详细]", item_path %>

@@ -35,10 +35,14 @@ class Solution
   end
 
   def has_creator?
-    creator_id.present?
+    self.creator_id.present?
   end
 
   def creator
-    @creator ||= User.find(creator_id)
+    unless @creator
+      @creator = User.find(creator_id) if has_creator?
+    end
+
+    @creator
   end
 end

@@ -32,16 +32,24 @@ class Desire
     unless @result
       total = 0
       max = 0
+      @best_solution = nil
       self.solutions.each do |s|
         size = s.votes.size
         total += size
-        max = [size, max].max
+        if size > max
+          @best_solution = s
+          max = size
+        end
       end
       enough_votes = total >= DESIRE_SOLVED_BAR_COUNT
       @result = enough_votes && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
     end
 
-    @result
+    return @result, @best_solution
+  end
+
+  def latest_user_solution
+    solutions.excludes(creator_id: nil).first(sort: [[ :created_at, :desc ]])
   end
 
   def voter_ids

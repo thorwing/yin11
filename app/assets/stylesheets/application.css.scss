@@ -176,6 +176,7 @@ ul.menu li {
 .pt10 {padding-top: 10px;}
 .pl10 {padding-left: 10px;}
 .pr10 {padding-right: 10px;}
+.pb10 {padding-bottom: 10px;}
 
 .m1 {margin: 1px;}
 .m2 {margin: 2px;}
@@ -234,6 +235,7 @@ ul.menu li {
 .b_black {background-color: $black;}
 .b_gray {background-color: $gray;}
 .b_shadow_gray {background-color: $shadow_gray;}
+.b_azure_gray {background-color: $azure_gray;}
 .b_white {background-color: $white;}
 .b_azure {background-color: $berry_azure;}
 .b_red {background-color:red;}
@@ -306,17 +308,18 @@ a.tag {
     text-decoration: none;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    margin: 1px;
-    padding: 2px;
-    border: 1px solid #333333;
-    background-color: white;
+    margin: 2px;
+    padding: 2px 4px;
+    color: $font_gray;
+    border: 1px solid $berry_red;
+    background-color: $azure_gray;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 18px;
 }
 
 a.tag:hover {
     color: white;
-    background-color: $blue;
+    background-color: $berry_gray;
     cursor:pointer;
 }
 

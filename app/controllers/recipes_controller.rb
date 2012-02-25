@@ -71,7 +71,7 @@ class RecipesController < ApplicationController
     saved = @recipe.save
 
     if saved
-      #create a desire&review as well
+      #create a desire&solution as well
       image_id = nil
       image = nil
       @recipe.steps.each do |step|
@@ -79,16 +79,16 @@ class RecipesController < ApplicationController
       end
       image = Image.first(conditions: {id: image_id}) if image_id
       if image
-        Desire.create do |d|
+        desire = Desire.create do |d|
           d.author = current_user
-          d.content = I18n.t("desires.new_recipe", user: current_user.login_name, name: @recipe.name)
+          d.content = I18n.t("desires.new_recipe", name: @recipe.name)
           cloned_image = image.clone
           d.images << cloned_image
-          @recipe.reviews.create do |r|
-            r.author = current_user
-            r.desire = d
-            r.content = @recipe.name
-          end
+        end
+
+        desire.solutions.create do |s|
+          s.recipe_id = @recipe.id
+          s.creator_id = current_user.id.to_s
         end
       end
     end

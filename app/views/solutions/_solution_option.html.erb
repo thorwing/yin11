@@ -19,7 +19,7 @@
         <% if item.present? %>
             <div class="fix_hint b_white_alpha30 black f12" style="width: 120px">
                 <% if solution.has_creator? %>
-                    <%= new_tab_link_to image_tag("grey.gif", class: 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: "24", height: "24"), {controller: "users", action: "show", id: solution.creator.id, force: true} %>
+                    <%= new_tab_link_to image_tag("grey.gif", class: 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: "24", height: "24"), {controller: "users", action: "show", id: solution.creator_id, force: true} %>
                 <% end %>
                 <%= "#{truncate_content(item.name, 25)}" %>
             </div>
