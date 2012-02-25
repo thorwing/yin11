@@ -1,135 +1,156 @@
 <% title t("desires.desire"), false %>
 
 <div class="grid_9">
-    <div class="box_shadow p10">
-        <div class="clearfix">
-            <%= link_to image_tag("grey.gif", "data-original"=> @desire.author.get_avatar(:thumb, false), :class => "lazy fl", width: 48, height: 48), @desire.author %>
-            <div class="fl ml5">
-                <%= link_to @desire.author.login_name, user_path(@desire.author) %><span class="ml5 trivial"><%= "发布于" %><%= @desire.created_at.strftime(GENERAL_TIME_FORMAT) %></span><br/>
-                <%= render "relationships/follow_field", :target => @desire.author %>
-            </div>
-        </div>
-        <div class="mt10 clearfix">
-            <%= image_tag("grey.gif", :alt=> "Desire_Img", "class" => 'img_frame restricted lazy overflow_hidden', "data-original"=>  @desire.get_image_url) %><br/>
-            <% if @desire.content.present? %>
-                <p><blockquote><span class="quoted f15"><%= @desire.content %></span></blockquote></p>
-            <% end %>
-            <% unless @desire.tags.empty? %>
-                <p><%= content_tag :span, t_with_colon("tags.tags"), class: "trivial"%><%= render "tags/tags", item: @desire %></p>
-            <% end %>
-        </div>
-        <div class="mt10 clearfix">
-           <% if current_user_has_permission? :normal_user %>
-                <div class="fl">
-                    <%= render "albums/collect_fields", :item => @desire %>
-                </div>
-                <div class="fr" align="right">
-                    <%= render "admire_fields", :desire => @desire %>
-                </div>
-            <% end %>
-        </div>
-        <% if the_author_himself(Desire.name, @desire.id, true, false) %>
-            <div class="mt10 clearfix">
-                <% if the_author_himself(Desire.name, @desire.id, true, false) %>
-                    <%= link_to "", edit_desire_path(@desire), class: "btn btn_edit fl" %>
-                    <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl fl" %>
-                <% end %>
-            </div>
-        <% end %>
+  <div class="box_shadow p10">
+    <div class="clearfix">
+      <%= link_to image_tag("grey.gif", "data-original" => @desire.author.get_avatar(:thumb, false), :class => "lazy fl", width: 48, height: 48), @desire.author %>
+      <div class="fl ml5">
+        <%= link_to @desire.author.login_name, user_path(@desire.author) %>
+        <span class="ml5 trivial"><%= "发布于" %><%= @desire.created_at.strftime(GENERAL_TIME_FORMAT) %></span><br/>
+        <%= render "relationships/follow_field", :target => @desire.author %>
+      </div>
     </div>
-
-    <% if @desire.admirer_ids.size > 0 %>
-        <div class="box_shadow p5 mt5 mb5 admiration_fields">
-            <%= "#{@desire.admirer_ids.size}人被馋到：" %><br/>
-            <% @desire.admirers.each do |admirer| %>
-                <%= link_to image_tag(admirer.get_avatar(:thumb), width: 32, height: 32), admirer, class: "m2", alt: admirer.login_name, title: admirer.login_name %>
-            <% end %>
+    <div class="mt10 clearfix">
+      <%= image_tag("grey.gif", :alt => "Desire_Img", "class" => 'img_frame restricted lazy overflow_hidden', "data-original" => @desire.get_image_url) %>
+      <br/>
+      <% if @desire.content.present? %>
+          <p>
+          <blockquote><span class="quoted f15"><%= @desire.content %></span></blockquote>
+          </p>
+      <% end %>
+      <% unless @desire.tags.empty? %>
+          <p><%= content_tag :span, t_with_colon("tags.tags"), class: "trivial" %><%= render "tags/tags", item: @desire %></p>
+      <% end %>
+    </div>
+    <div class="mt10 clearfix">
+      <% if current_user_has_permission? :normal_user %>
+          <div class="fl">
+            <%= render "albums/collect_fields", :item => @desire %>
+          </div>
+          <div class="fr" align="right">
+            <%= render "admire_fields", :desire => @desire %>
+          </div>
+      <% end %>
+    </div>
+    <% if the_author_himself(Desire.name, @desire.id, true, false) %>
+        <div class="mt10 clearfix">
+          <% if the_author_himself(Desire.name, @desire.id, true, false) %>
+              <%= link_to "", edit_desire_path(@desire), class: "btn btn_edit fl" %>
+              <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl fl" %>
+          <% end %>
         </div>
     <% end %>
+  </div>
 
-    <% if @desire.album_ids.size > 0 %>
-        <div class="box_shadow p5 mt5 mb5 albums_fields">
-            <%= "#{@desire.album_ids.size}人收集：" %><br/>
-            <% @desire.albums.each do |album| %>
-                <div>
-                    <%= link_to image_tag(album.author.get_avatar(:thumb), width: 32, height: 32), album.author, class: "m2" %>
-                    <%= link_to album.author.login_name, album.author %>
-                    <%= " 收集到 " %>
-                    <%= link_to album.title, album %>
-                </div>
-                <hr/>
-            <% end %>
-        </div>
-    <% end %>
+  <% if @desire.admirer_ids.size > 0 %>
+      <div class="box_shadow p5 mt5 mb5 admiration_fields">
+        <%= "#{@desire.admirer_ids.size}人被馋到：" %>
+        <br/>
+        <% @desire.admirers.each do |admirer| %>
+            <%= link_to image_tag(admirer.get_avatar(:thumb), width: 32, height: 32), admirer, class: "m2", alt: admirer.login_name, title: admirer.login_name %>
+        <% end %>
+      </div>
+  <% end %>
 
-    <div class="mt20 box_shadow clearfix" style="padding:  5px 15px;">
-        <div class="clearfix">
+  <% if @desire.album_ids.size > 0 %>
+      <div class="box_shadow p5 mt5 mb5 albums_fields">
+        <%= "#{@desire.album_ids.size}人收集：" %>
+        <br/>
+        <% @desire.albums.each do |album| %>
+            <div>
+              <%= link_to image_tag(album.author.get_avatar(:thumb), width: 32, height: 32), album.author, class: "m2" %>
+              <%= link_to album.author.login_name, album.author %>
+              <%= " 收集到 " %>
+              <%= link_to album.title, album %>
+            </div>
+            <hr/>
+        <% end %>
+      </div>
+  <% end %>
+
+  <div class="mt20 box_shadow clearfix" style="padding:  5px 15px;">
+    <div class="clearfix">
             <span class="trivial">
                 <% if @solutions.size > 0 %>
                     <%= "总共#{@desire.voter_ids.size}人投票。" %>
-                    <% if @my_vote %>
-                        <%="你投给了“#{@my_vote.solution.name}”" %>
-                    <% else @solutions.size > 0 %>
+                  <% if @my_vote %>
+                        <%= "你投给了“#{@my_vote.solution.name}”" %>
+                    <% else
+                         @solutions.size > 0 %>
                         快来给你觉得解馋的攻略投票吧！
                     <% end %>
                 <% else %>
                     <span class="trivial">还没有解馋攻略</span>
                 <% end %>
             </span><br/>
-            <% number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>
-            <% if number_of_groups > 1  %>
-                <%= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "button" %>
-            <% end %>
-            <% index = 0 %>
-            <div class="mt10 clearfix">
-                <% @solutions.each_slice(10) do |group| %>
-                    <%= render "solutions/solutions_group", solutions: group, index: index %>
-                    <% index += 1 %>
-                <% end %>
-            </div>
+      <% number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>
+      <% if number_of_groups > 1 %>
+          <%= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "button" %>
+      <% end %>
+      <% index = 0 %>
+      <div class="mt10 clearfix">
+        <% @solutions.each_slice(10) do |group| %>
+            <%= render "solutions/solutions_group", solutions: group, index: index %>
+            <% index += 1 %>
+        <% end %>
+      </div>
+    </div>
+    <% if false %>
+        <div class="fr">
+          <span class="trivial">分享你的攻略吧~</span><br/>
+          <%= link_to_function "添加商品", "link_product()", class: "btn btn_add_product lighter_touch" %>
+          <%= link_to_function "添加菜谱", "link_recipe()", class: "btn btn_add_recipe lighter_touch" %>
+          <%= render "solutions/product_linker" %>
+          <%= render "solutions/recipe_linker" %>
         </div>
-        <% if false %>
-            <div class="fr">
-                <span class="trivial">分享你的攻略吧~</span><br/>
-                <%= link_to_function "添加商品", "link_product()", class: "btn btn_add_product lighter_touch"%>
-                <%= link_to_function "添加菜谱", "link_recipe()", class: "btn btn_add_recipe lighter_touch"%>
-                <%= render "solutions/product_linker" %>
-                <%= render "solutions/recipe_linker" %>
-            </div>
-        <% end %>
+    <% end %>
 
-        <% if current_user_has_permission? :normal_user %>
-          <div class="mt10 mb10">
-              <!--<= link_to_function "分享你的攻略吧~", "$(this).next().toggle();" %>-->
-              <!--<div class="display_none">-->
-                  <!--分享你的攻略吧~-->
-                  <!--<= render "solutions/solution_fields", :solution => @desire.solutions.build %>-->
-              <!--</div>-->
-            <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
-          </div>
-        <% end %>
-    </div>
+    <% if current_user_has_permission? :normal_user %>
+        <div class="mt10 mb10">
+          <!--<= link_to_function "分享你的攻略吧~", "$(this).next().toggle();" %>-->
+          <!--<div class="display_none">-->
+          <!--分享你的攻略吧~-->
+          <!--<= render "solutions/solution_fields", :solution => @desire.solutions.build %>-->
+          <!--</div>-->
+          <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
+        </div>
+    <% end %>
+  </div>
 
-    <div class="mt10">
-        <%= render "comments/comments", item: @desire %>
-    </div>
+  <div class="mt10">
+    <%= render "comments/comments", item: @desire %>
+  </div>
 </div>
 
 <div class="grid_3">
-    <% if @desire.place %>
-        <div class="box_shadow mb10 p5">
-            <h3>美食地点：<%= link_to @desire.place.name, @desire.place %></h3>
-            <%= content_tag :span, @desire.place.address, class: "trivial" %>
-            <%= render "shared/location", location: @desire.place %>
-        </div>
-    <% end %>
+  <% if @desire.place %>
+      <div class="box_shadow mb10 p5">
+        <h3>美食地点：<%= link_to @desire.place.name, @desire.place %></h3>
+        <%= content_tag :span, @desire.place.address, class: "trivial" %>
+        <%= render "shared/location", location: @desire.place %>
+      </div>
+  <% end %>
 
-    <% unless @related_desires.empty? %>
-        <div class="box_shadow p5">
-            <h3>相似的馋人图片：</h3>
-            <% @related_desires.each do |desire| %>
-                <%= link_to image_tag("grey.gif", "data-original"=> desire.get_image_url(:thumb), width: 66, height: 66, class: "lazy"), desire, class: "lighter_touch" %>
-            <% end %>
-        </div>
-    <% end %>
+  <% unless @desire.albums.empty? %>
+      <div class="box_shadow p5">
+        <h3>被收集到专辑：</h3>
+        <% @desire.albums.limit(3).each do |album| %>
+            <div class="clearfix mb10 lighter_touch">
+                <%= link_to album.title, album %><br/>
+                <% album.get_image_urls(3, :thumb).each do |pic_url| %>
+                    <%= link_to image_tag("grey.gif", "data-original" => pic_url, :class => "lazy fl", width: 70, height: 70), album %>
+                <% end %>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+
+  <% unless @related_desires.empty? %>
+      <div class="box_shadow p5">
+        <h3>相似的馋人图片：</h3>
+        <% @related_desires.each do |desire| %>
+            <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:thumb), width: 66, height: 66, class: "lazy"), desire, class: "lighter_touch" %>
+        <% end %>
+      </div>
+  <% end %>
 </div>
