@@ -3,7 +3,6 @@ class Solution
   include Mongoid::Timestamps
 
   field :percentage, :type => Float, :default => 0
-  field :creator_id
   field :content
 
   attr_accessible :content, :product_id, :recipe_id, :place_id
@@ -13,6 +12,7 @@ class Solution
   belongs_to :product, index: true
   belongs_to :recipe, index: true
   belongs_to :place, index: true
+  belongs_to :author, :class_name => "User", index: true
   embeds_many :votes
 
   #validations
@@ -32,17 +32,5 @@ class Solution
 
   def voters
     @voters ||= User.any_in(_id: voter_ids)
-  end
-
-  def has_creator?
-    self.creator_id.present?
-  end
-
-  def creator
-    unless @creator
-      @creator = User.find(creator_id) if has_creator?
-    end
-
-    @creator
   end
 end

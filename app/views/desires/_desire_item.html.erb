@@ -26,11 +26,10 @@
         <% if best_solution %>
             <div class="b_azure_gray pt5 pl10 pr10">
                 <div class="clearfix">
-                    <% creator = best_solution.creator %>
-                    <% if best_solution.has_creator? %>
-                        <%= link_to image_tag(best_solution.creator.get_avatar, width: 22, height: 22), best_solution.creator %>
-                        <%= link_to best_solution.creator.login_name, best_solution.creator %>
-                        <span class="trivial f12 mr5">分享了解馋攻略：</span>
+                    <% if best_solution.author %>
+                        <%= link_to image_tag(best_solution.author.get_avatar(:thumb, false), width: 22, height: 22), best_solution.author %>
+                        <%= link_to best_solution.author.login_name, best_solution.author %>
+                        <span class="trivial f12 mr5">分享了解馋攻略<%= best_solution.content.present? ? "：" : "" %></span>
                     <% else %>
                         <span class="trivial f12 mr5">解馋攻略：</span>
                     <% end %>
@@ -46,8 +45,9 @@
                 <div>
                     <% best_solution.votes.desc(:created_at).limit(3).each do |vote| %>
                         <div>
+                            <%= link_to image_tag(vote.voter.get_avatar(:thumb, false), width: 22, height: 22), vote.voter %>
                             <span class="trivial f12 mr2"><%= link_to vote.voter.login_name, vote.voter %></span>
-                            <span class="trivial f12 mr5">投了一票<%= vote.content.present? ? "：" : "" %></span>
+                            <span class="trivial f12 mr2">投票<%= vote.content.present? ? "：" : "" %></span>
                             <span class="trivial f12"><%= vote.content %></span>
                         </div>
                     <% end %>

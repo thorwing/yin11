@@ -16,7 +16,7 @@ class Notification
 
   #validations
   def self.operations
-    ["comment", "like", "admire", "recommend", "edit", "delete", "follow", "become_master", "add_review", nil]
+    ["comment", "like", "admire", "recommend", "edit", "delete", "follow", "become_master", "add_review", "solve", "vote", nil]
   end
   validates_inclusion_of :operation, :in => Notification.operations
 
@@ -52,6 +52,10 @@ class Notification
         subject = I18n.t("notifications.item_notification", person_str: person_str, operation_str: operation_str, item_str: item_str)
         subject += I18n.t("notifications.reward_notification", count: self.score) if (self.score && self.score > 0)
       end
+    end
+
+    if self.operation == "vote"
+      subject = I18n.t("notifications.vote_notification", person_str: person_str) + I18n.t("notifications.reward_notification", count: self.score) if (self.score && self.score > 0)
     end
 
     if self.operation == "become_master"

@@ -1,9 +1,9 @@
 <div class="listed_item commentable clearfix" style="width: 600px;">
     <% item_path = {:controller => solution.item.class.name.downcase.pluralize, :action => "show", :id => solution.item.id, force: true} %>
-    <% if solution.has_creator? %>
+    <% if solution.author %>
         <div class="fl mr10" style="width:50px;">
-            <%= link_to image_tag(solution.creator.get_avatar(:thumb, false ), width: 48, height: 48), solution.creator %><br/>
-            <span class="f12"><%= link_to solution.creator.login_name, solution.creator %></span>
+            <%= link_to image_tag(solution.author.get_avatar(:thumb, false ), width: 48, height: 48), solution.author %><br/>
+            <span class="f12"><%= link_to solution.author.login_name, solution.author %></span>
         </div>
     <% end %>
     <div class="fl">

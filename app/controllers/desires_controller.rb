@@ -28,7 +28,7 @@ class DesiresController < ApplicationController
     @desire = Desire.find(params[:id])
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:admirer_ids, :created_at).limit(9)
     #TODO
-    @solutions = @desire.solutions.desc(:votes).to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
+    @solutions = @desire.solutions.desc(:votes, :created_at).to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
     @votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
     #@can_vote = current_user.present? && (!@desire.voter_ids.include?(current_user.id.to_s))
     if current_user
@@ -154,9 +154,11 @@ class DesiresController < ApplicationController
     #solution.voter_ids << current_user.id.to_s unless solution.voter_ids.include? current_user.id.to_s
     desire = solution.desire
     unless desire.voter_ids.include?(current_user.id)
-      solution.votes.create(params[:vote]) do |v|
+      vote = solution.votes.create(params[:vote]) do |v|
         v.voter_id = current_user.id.to_s
       end
+
+      RewardManager.reward_for_vote(vote, current_user)
     end
 
     respond_to do |format|
@@ -168,7 +170,7 @@ class DesiresController < ApplicationController
   def solve
     @desire = Desire.find(params[:id])
     solution = @desire.solutions.new(params[:solution])
-    solution.creator_id = current_user.id.to_s
+    solution.author = current_user
 
     respond_to do |format|
       if solution.save

@@ -67,6 +67,7 @@ class User
   has_many :recipes, :inverse_of => "author"
   has_many :albums, :inverse_of => "author"
   has_many :desires, :inverse_of => "author"
+  has_many :solutions, :inverse_of => "author"
   has_and_belongs_to_many :groups, :inverse_of => "members"
   has_and_belongs_to_many :badges
   has_and_belongs_to_many :admired_desires, :class_name => "Desire", :inverse_of => "admirers", index: true

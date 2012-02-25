@@ -5,8 +5,8 @@
             <%= link_to_function "点击查看", 'popup_dialog($(this).parents(".solution_option").find(".solution_detail"));', class: "button" %>
         </div>
         <div class="fix_hint b_white_alpha30 black f12" style="top:0px;left:0px;height: 20px;">
-            <% ratio = ((solution.desire.votes_count == 0 ? 0 : (solution.votes.size / solution.desire.votes_count)) * 100) %>
-            <b class="f16 ml2 <%= ratio > 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.to_s + "%" %></b>
+            <% ratio = ((solution.desire.votes_count == 0 ? 0 : (solution.votes.size.to_f / solution.desire.votes_count.to_f)) * 100) %>
+            <b class="f16 ml2 <%= ratio >= 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.round(0).to_s + "%" %></b>
             <% if solution.voter_ids.include? current_user.id.to_s %>
                 <span class="trivial">你投了</span>
             <% end %>
@@ -18,8 +18,8 @@
         <% end %>
         <% if item.present? %>
             <div class="fix_hint b_white_alpha30 black f12" style="width: 120px">
-                <% if solution.has_creator? %>
-                    <%= new_tab_link_to image_tag("grey.gif", class: 'lazy', "data-original"=> solution.creator.get_avatar(:thumb, false ), width: "24", height: "24"), {controller: "users", action: "show", id: solution.creator_id, force: true} %>
+                <% if solution.author %>
+                    <%= new_tab_link_to image_tag("grey.gif", class: 'lazy', "data-original"=> solution.author.get_avatar(:thumb, false ), width: "24", height: "24"), {controller: "users", action: "show", id: solution.author.id, force: true} %>
                 <% end %>
                 <%= "#{truncate_content(item.name, 25)}" %>
             </div>

@@ -19,6 +19,15 @@ class RewardManager
     end
   end
 
+  def self.reward_for_vote(vote, user = nil)
+      score_value = 5
+      solution = vote.solution
+      solution.author.score += score_value
+      solution.author.save
+
+      NotificationsManager.generate!(solution.author, user, "vote", solution.desire, vote.content, score_value)
+    end
+
   def ask_for_badges
     Badge.enabled.not_belong_to(@user).all.each do |badge|
       if badge.deserved_to?(@user)

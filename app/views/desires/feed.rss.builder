@@ -6,7 +6,7 @@ xml.rss :version => "2.0" do #, "xmlns:media" => 'http://search.yahoo.com/mrss/'
   xml.channel do
     xml.title t("site.name")
     xml.description t("site.description")
-    xml.link desires_url
+    xml.link base_url
 
     for desire in @desires
       xml.item do

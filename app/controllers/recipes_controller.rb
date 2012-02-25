@@ -88,7 +88,7 @@ class RecipesController < ApplicationController
 
         desire.solutions.create do |s|
           s.recipe_id = @recipe.id
-          s.creator_id = current_user.id.to_s
+          s.author = current_user
         end
       end
     end

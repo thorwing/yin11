@@ -48,16 +48,16 @@ class Desire
     return @result, @best_solution
   end
 
-  def latest_user_solution
-    solutions.excludes(creator_id: nil).first(sort: [[ :created_at, :desc ]])
-  end
+  #def latest_user_solution
+  #  solutions.excludes(author_id: nil).first(sort: [[ :created_at, :desc ]])
+  #end
 
   def voter_ids
     @voter_ids ||= self.solutions.inject([]){|memo, s| memo | s.voter_ids }
   end
 
   def votes_count
-    self.solutions.inject(0){|sum, s| sum + s.voter_ids.size }
+    @votes_count ||= self.solutions.inject(0){|sum, s| sum + s.voter_ids.size }
   end
 
 end

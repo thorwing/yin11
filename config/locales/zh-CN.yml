@@ -656,15 +656,17 @@ zh-CN:
       sys_msg_mode: 系统通知
       writing_mode: 写信
     item_notification: %{person_str}%{operation_str}我的%{item_str}
-    reward_notification: " ,我获得了%{count}颗星星"
+    reward_notification: "，我获得了%{count}颗星星"
     master_notification: 我被授予了达人的称号！
     me_notification: %{person_str}%{operation_str}了我
+    vote_notification: %{person_str}投票给我的解馋攻略
     item_types:
       Review: 分享
       Recipe: 菜谱
       Album: 专辑
       Comment: 评论
       Desire: 馋人图片
+      Soluton: 解馋攻略
     operations:
       comment: 评论
       like: 喜欢
@@ -675,3 +677,5 @@ zh-CN:
       follow: 关注
       become_master: 成为达人
       add_review: 分享了如何解馋
+      solve: 分享了解馋攻略
+      vote: 为解馋攻略投票
