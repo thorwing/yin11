@@ -9,7 +9,9 @@
     <div class="fl">
         <div style="min-height: 50px;">
             <div class="clearfix mb5">
+                <span class="trivial">解馋攻略</span><br/>
                 <h3>
+                  <span class="trivial"><%= t("object_types.#{solution.item.class.name.downcase}") + "： " %></span>
                   <%= new_tab_link_to "#{solution.name}", item_path %>
                   <%= content_tag :span, t("object_types.#{solution.item.class.name.downcase}"), class: "icon icon_#{solution.item.class.name.downcase}", width: 12, height: 12 %>
                   <% if solution.item.is_a?(Product) && solution.item.price? %>
@@ -33,7 +35,7 @@
             <div class="voters_statistic">
                 <%= render "solutions/voters_list", solution: solution %>
             </div>
-            <% unless @my_vote %>
+            <% unless @my_vote || (current_user && current_user == solution.author) %>
                 <%= render "solutions/vote_fields", solution: solution %>
             <% end %>
         </div>

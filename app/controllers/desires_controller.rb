@@ -162,7 +162,7 @@ class DesiresController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to(:back) }
+      format.html { redirect_to(:back, notice: t("notices.soluton_voted")) }
       format.js
     end
   end

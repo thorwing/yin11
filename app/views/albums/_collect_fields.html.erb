@@ -19,4 +19,7 @@
             </div>
         </div>
     <% end %>
+    <% if item.album_ids.size > 0 %>
+        <span class="trivial"><%= "#{item.album_ids.size}次被收集" %></span>
+    <% end %>
 </div>

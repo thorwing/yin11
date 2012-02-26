@@ -52,7 +52,7 @@
       </div>
   <% end %>
 
-  <% if @desire.album_ids.size > 0 %>
+  <% if false && @desire.album_ids.size > 0 %>
       <div class="box_shadow p5 mt5 mb5 albums_fields">
         <%= "#{@desire.album_ids.size}人收集：" %>
         <br/>
@@ -72,7 +72,7 @@
     <div class="clearfix">
             <span class="trivial">
                 <% if @solutions.size > 0 %>
-                    <%= "总共#{@desire.voter_ids.size}人投票。" %>
+                    <%= "总共#{@desire.votes_count.size}票。" %>
                   <% if @my_vote %>
                         <%= "你投给了“#{@my_vote.solution.name}”" %>
                     <% else
@@ -136,7 +136,10 @@
         <h3>被收集到专辑：</h3>
         <% @desire.albums.limit(3).each do |album| %>
             <div class="clearfix mb10 lighter_touch">
-                <%= link_to album.title, album %><br/>
+                <%= link_to album.title, album %> |
+                <%= link_to image_tag(album.author.get_avatar(:thumb), width: 20, height: 20), album.author, class: "m2" %>
+                <%= link_to album.author.login_name, album.author %>
+                <br/>
                 <% album.get_image_urls(3, :thumb).each do |pic_url| %>
                     <%= link_to image_tag("grey.gif", "data-original" => pic_url, :class => "lazy fl", width: 70, height: 70), album %>
                 <% end %>

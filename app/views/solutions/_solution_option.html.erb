@@ -7,9 +7,9 @@
         <div class="fix_hint b_white_alpha30 black f12" style="top:0px;left:0px;height: 20px;">
             <% ratio = ((solution.desire.votes_count == 0 ? 0 : (solution.votes.size.to_f / solution.desire.votes_count.to_f)) * 100) %>
             <b class="f16 ml2 <%= ratio >= 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.round(0).to_s + "%" %></b>
-            <% if solution.voter_ids.include? current_user.id.to_s %>
-                <span class="trivial">你投了</span>
-            <% end %>
+            <!--< if solution.voter_ids.include? current_user.id.to_s %>-->
+                <!--<span class="trivial">你投了</span>-->
+            <!--< end %>-->
             <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "fr icon icon_#{item.class.name.downcase}" %>
         </div>
         <% if item.present? %>

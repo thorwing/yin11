@@ -60,9 +60,9 @@
                 <span class="berry_pink"><%= t_with_colon("recipes.steps") %></span><br/>
                 <% @recipe.steps.each_with_index do |step, index| %>
                     <div class="mt10 mb10 clearfix">
-                        <div class="fl mr10"><b class="trivial f20"><%= index + 1 %></b></div>
-                        <div class="fl">
-                            <p><%= step.content %></p>
+                        <div class="fl" style="width:5%"><b class="trivial f20 middle"><%= index + 1 %></b></div>
+                        <div class="fl" style="width:95%">
+                            <p class="middle"><%= step.content %></p>
                             <% if step.image.present?%>
                                 <%= link_to image_tag("grey.gif", alt: "step_image", class: "lazy", "data-original" => step.get_image_url(:waterfall), title: "点击放大", width: IMAGE_WATERFALL_WIDTH, height: step.get_image_height(:waterfall)), step.get_image_url, rel: "facebox" %>
                             <% end %>
