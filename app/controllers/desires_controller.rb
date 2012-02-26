@@ -1,5 +1,5 @@
 class DesiresController < ApplicationController
-  before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
+  before_filter(:except => [:index, :show, :more, :feed]) { |c| c.require_permission :normal_user }
   before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Desire.name, c.params[:id], true)}
 
   # GET /desires
@@ -192,12 +192,16 @@ class DesiresController < ApplicationController
   end
 
   def feed
-      @desires = Desire.only(:content, :author, :id, :created_at).desc(:created_at).limit(20)
+    @desires = Rails.cache.fetch('desires_feed')
+    if @desires.nil?
+      @desires = Desire.only(:content, :author, :id, :created_at).desc(:admirer_ids, :created_at).limit(20)
+      Rails.cache.write('desires_feed', @desires, :expires_in => 1.hours)
+    end
 
-      respond_to do |format|
-        #format.html
-        format.rss { render :layout => false } #index.rss.builder
-      end
+    respond_to do |format|
+      #format.html
+      format.rss { render :layout => false } #index.rss.builder
+    end
   end
 
   private
