@@ -1,26 +1,20 @@
 <% if feed.item && (feed.item.is_a?(Desire) || feed.item.is_a?(Recipe)) %>
     <div class="masonary_item">
         <div class="inner_frame">
-            <% pic_url = feed.item.get_image_url(:waterfall) %>
-            <% pic_height = feed.item.get_image_height(:waterfall) %>
-            <%= link_to image_tag(pic_url, height: pic_height), feed.item if pic_url.present? %>
-            <div class="clearfix">
-                <% if (feed.item.respond_to? :author) && feed.item.author %>
-                    <span>
-                        <%= link_to image_tag(feed.item.author.get_avatar(:thumb, false), width: 22, height: 22), feed.item.author %>
-                        <%= link_to feed.item.author.login_name, feed.item.author %>
-                    </span>
-                <% end %>
+            <div class="p10">
+                <% pic_url = feed.item.get_image_url(:waterfall) %>
+                <% pic_height = feed.item.get_image_height(:waterfall) %>
+                <%= link_to image_tag(pic_url, height: pic_height), feed.item if pic_url.present? %>
+                <div class="clearfix">
+                    <% if (feed.item.respond_to? :author) && feed.item.author %>
+                        <span>
+                            <%= link_to image_tag(feed.item.author.get_avatar(:thumb, false), width: 22, height: 22), feed.item.author %>
+                            <%= link_to feed.item.author.login_name, feed.item.author %>
+                        </span>
+                    <% end %>
 
-                <% texts = [] %>
-                <% texts << t("feeds.operations.#{feed.target_operation}") if feed.target_operation.present? %>
-                <% texts << t_with_colon("object_types.#{feed.item.class.name.downcase}") %>
-                <% if feed.item.respond_to? :name %>
-                    <% texts << feed.item.name %>
-                <% elsif (feed.item.respond_to? :content) %>
-                    <% texts << feed.item.content %>
-                <% end %>
-                <%= texts.join %>
+                    <%= feed.content %>
+                </div>
             </div>
         </div>
     </div>

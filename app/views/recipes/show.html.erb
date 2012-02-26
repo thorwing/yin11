@@ -1,5 +1,5 @@
 <div class="grid_9 to_left">
-    <div class="box_shadow p5">
+    <div class="box_shadow p10">
         <%= link_to image_tag("grey.gif", :alt=> @recipe.name, class: 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall), width: IMAGE_WATERFALL_WIDTH, height: @recipe.get_image_height(:waterfall)), @recipe.get_image_url, rel: "facebox"  %>
 
         <div class="clearfix">

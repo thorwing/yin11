@@ -13,7 +13,7 @@
     <% if home_page? %>
         <%= [t("site.name"), t("site.description")].join(' - ') %>
     <% else %>
-        <%= @content_for_title + ' - ' if show_title? %><%= t("site.description") %>
+        <%= @content_for_title + ' - ' if show_title? %><%= [t("site.name"), t("site.description")].join(' - ') %>
     <% end %>
     </title>
     <% if request.host.include? "chixinbugai.com" %>

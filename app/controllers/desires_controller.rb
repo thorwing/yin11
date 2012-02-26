@@ -26,14 +26,11 @@ class DesiresController < ApplicationController
   # GET /desires/1.json
   def show
     @desire = Desire.find(params[:id])
-    @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:admirer_ids, :created_at).limit(9)
-    #TODO
-    @solutions = @desire.solutions.desc(:votes, :created_at).to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
-    @votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
-    #@can_vote = current_user.present? && (!@desire.voter_ids.include?(current_user.id.to_s))
-    if current_user
-      @my_vote = @votes.select{|v| v.voter_id == current_user.id.to_s}.first
-    end
+    @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:created_at).limit(9)
+    @solutions = @desire.solutions.desc(:votes, :created_at) #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
+
+    votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
+    @my_vote = votes.select{|v| v.voter_id == current_user.id.to_s}.first if current_user
 
     respond_to do |format|
       format.html # show.html.erb

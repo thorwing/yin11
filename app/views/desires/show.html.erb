@@ -73,10 +73,9 @@
             <span class="trivial">
                 <% if @solutions.size > 0 %>
                     <%= "总共#{@desire.votes_count.size}票。" %>
-                  <% if @my_vote %>
+                    <% if @my_vote %>
                         <%= "你投给了“#{@my_vote.solution.name}”" %>
-                    <% else
-                         @solutions.size > 0 %>
+                    <% elsif @solutions.size > 0 %>
                         快来给你觉得解馋的攻略投票吧！
                     <% end %>
                 <% else %>

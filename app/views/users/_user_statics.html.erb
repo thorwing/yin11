@@ -8,10 +8,6 @@
         <%= link_to t("user_basic.desires"), user_path(user, mode: "desires"), class: "center" %>
     </div>
     <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
-        <span class="center"><%= user.reviews.count %></span>
-        <%= link_to t("reviews.reviews"), user_path(user, mode: "reviews"), class: "center" %>
-    </div>
-    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
         <span class="center"><%= user.albums.count%></span>
         <%= link_to t("albums.albums"), user_path(user, mode: "albums"), class: "center" %>
     </div>

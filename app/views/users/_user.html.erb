@@ -1,6 +1,6 @@
 <div class="user box_shadow clearfix" >
     <div class="avatar_area clearfix" >
-        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> user.get_avatar(:thumb, false), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), user %><br/>
+        <%= link_to image_tag("grey.gif", class: "lazy", "data-original"=> user.get_avatar(:thumb, false), width: AVATAR_THUMB_WIDTH, height: AVATAR_THUMB_HEIGHT), user %><br/>
     </div>
     <div class="center_area clearfix">
         <div class="biography_area" >
@@ -18,8 +18,9 @@
     <div class="feeds_area clearfix">
         <% user.get_recent_feeds(4).each do |feed| %>
           <div class="hint_box m1 fl">
-            <%= link_to image_tag(feed.picture_url(:thumb), width:100, height:100), feed.item %>
-            <span class="flex_hint b_black_alpha30 white f12"><%= [t("object_types.#{feed.target_type.downcase}"), '-', truncate_content(feed.content, 15)].join(' ') %></span>
+            <%= link_to image_tag("grey.gif", class: "lazy", "data-original" => feed.picture_url(:thumb), width:100, height:100), feed.item %>
+            <!--[t("object_types.#{feed.target_type.downcase}"), '-', truncate_content(feed.content, 15)].join(' ')-->
+            <span class="flex_hint b_white_alpha30 $ink_black"><%= feed.content.present? ? truncate_content(feed.content, 20) : t("object_types.#{feed.target_type.downcase}") %></span>
           </div>
         <% end %>
     </div>

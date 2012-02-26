@@ -35,7 +35,7 @@
             <div class="voters_statistic">
                 <%= render "solutions/voters_list", solution: solution %>
             </div>
-            <% unless @my_vote || (current_user && current_user == solution.author) %>
+            <% if @my_vote.blank? && current_user && current_user != solution.author %>
                 <%= render "solutions/vote_fields", solution: solution %>
             <% end %>
         </div>

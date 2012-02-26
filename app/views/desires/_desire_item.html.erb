@@ -3,12 +3,10 @@
         <% has_solution, best_solution = desire.has_solution? %>
         <%= content_tag :span, "", class: "icon jiechan_ribbon" if has_solution %>
         <div class="pt10 pl10 pr10">
-            <div class="centered">
-                <% pic_url = desire.get_image_url(:waterfall) %>
-                <% if pic_url.present? %>
-                    <%= link_to image_tag(pic_url, width: IMAGE_WATERFALL_WIDTH, height: desire.get_image_height(:waterfall)), desire %>
-                <% end %>
-            </div>
+            <% pic_url = desire.get_image_url(:waterfall) %>
+            <% if pic_url.present? %>
+                <%= link_to image_tag(pic_url, width: IMAGE_WATERFALL_WIDTH, height: desire.get_image_height(:waterfall)), desire %>
+            <% end %>
             <div class="clearfix">
                 <span>
                     <%= link_to image_tag(desire.author.get_avatar(:thumb, false), width: 22, height: 22), desire.author %>

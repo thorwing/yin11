@@ -76,13 +76,20 @@ class Feed
   end
 
   def get_content
+    texts = []
+    texts << I18n.t("feeds.operations.#{self.target_operation}") if self.target_operation.present?
+    texts << (I18n.t("object_types.#{self.item.class.name.downcase}") + I18n.t("symbols.colon") ) if self.item.present?
+
     if item
       [:title, :name, :content].each do |field|
-        return item.send(field) if item.respond_to?(field)
+        if item.respond_to?(field)
+          texts << item.send(field)
+          break
+        end
       end
     end
 
-    return ''
+    return texts.join
   end
 
   def get_author
