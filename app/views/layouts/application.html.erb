@@ -13,9 +13,8 @@
     <% if home_page? %>
         <%= [t("site.name"), t("site.description")].join(' - ') %>
     <% else %>
-        <%= @content_for_title + ' - ' if show_title? %><%= t("site.mark") %>
+        <%= @content_for_title + ' - ' if show_title? %><%= t("site.description") %>
     <% end %>
-    <%= t("site.name") %><%= " " + @content_for_title if show_title? %>
     </title>
     <% if request.host.include? "chixinbugai.com" %>
         <meta name="google-site-verification" content="nWzf6pxwY2_AJjgrdYq1wfjcuU1xzJvFtJXD9M1PI8k" />

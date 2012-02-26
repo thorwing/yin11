@@ -173,6 +173,9 @@ ul.menu li {
 .p10 {padding: 10px;}
 
 .pt5 {padding-top: 5px;}
+.pl5 {padding-left: 5px;}
+.pb5 {padding-bottom: 5px;}
+.pr5 {padding-right: 5px;}
 .pt10 {padding-top: 10px;}
 .pl10 {padding-left: 10px;}
 .pr10 {padding-right: 10px;}
@@ -250,6 +253,9 @@ ul.menu li {
 .middle {vertical-align: middle;}
 .top {vertical-align: top;}
 .bottom {vertical-align: bottom;}
+
+.border_top {border-top: 1px solid $berry_gray;}
+.border_bottom {border-bottom: 1px solid $berry_gray;}
 
 .clear { visibility: hidden; height: 0; clear: both; }
 

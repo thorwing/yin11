@@ -81,7 +81,7 @@ class RecipesController < ApplicationController
       if image
         desire = Desire.create do |d|
           d.author = current_user
-          d.content = I18n.t("desires.new_recipe", name: @recipe.name)
+          d.content = current_user.login_name + I18n.t("desires.new_recipe", name: @recipe.name)
           cloned_image = image.clone
           d.images << cloned_image
         end

@@ -10,7 +10,7 @@ xml.rss :version => "2.0" do #, "xmlns:media" => 'http://search.yahoo.com/mrss/'
 
     for desire in @desires
       xml.item do
-        xml.title t("desires.desire")
+        xml.title truncate_content(desire.content, 20)
         #xml.media(:thumbnail, :url =>  base_url + desire.get_image_url(:thumb), widht: 75, height: 75)
         # qq_mail is 180 * 130
         xml.description { xml.cdata!("<p><img width=#{"120"} height=#{"120"} alt=#{'"' + t("desires.desire") + '"'} src=#{'"' + base_url + desire.get_image_url(:thumb) + '"'} ></p><p>#{desire.content}</p>") }
