@@ -191,8 +191,8 @@ class DesiresController < ApplicationController
   def feed
     @desires = Rails.cache.fetch('desires_feed')
     if @desires.nil?
-      @desires = Desire.only(:content, :author, :id, :created_at).desc(:admirer_ids, :created_at).limit(20)
-      Rails.cache.write('desires_feed', @desires, :expires_in => 1.hours)
+      @desires = Desire.recommended.only(:content, :author, :id, :created_at).desc(:created_at).limit(20)
+      Rails.cache.write('desires_feed', @desires, :expires_in => 30.minutes)
     end
 
     respond_to do |format|

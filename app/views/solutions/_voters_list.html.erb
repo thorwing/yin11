@@ -1,8 +1,8 @@
-<p>得到<b class="f16 ml5"><%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%" %></b>投票 (<span><%= "共#{solution.voter_ids.size}票" %></span>) </p>
+<p class="trivial">得到<b class="f16 ml5"><%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%" %></b>投票 (<span><%= "共#{solution.voter_ids.size}票" %></span>) </p>
 <% solution.votes.each do |vote| %>
     <hr/>
-    <div class="fl mr10" style="width:50px;">
-        <%= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: "48", height: "48"), vote.voter %><br/>
+    <div class="fl mr5" style="width:30px;">
+        <%= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: "24", height: "24"), vote.voter %>
         <span class="f12"><%= link_to vote.voter.login_name, vote.voter %></span>
     </div>
     <div class="fl">
@@ -16,7 +16,7 @@
     <% unless followed_users.empty? %>
         <span>你关注的人中投票的有：</span><br/>
         <% followed_users.each do |user| %>
-            <%= link_to image_tag(user.get_avatar(:thumb), width: 32, height: 32), user, class: "m2", alt: user.login_name, title: user.login_name %>
+            <%= link_to image_tag(user.get_avatar(:thumb), width: 24, height: 24), user, class: "m2", alt: user.login_name, title: user.login_name %>
         <% end %>
     <% end %>
 <% end %>
