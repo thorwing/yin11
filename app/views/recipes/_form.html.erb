@@ -54,8 +54,8 @@
         </div>
 
         <div class="steps box_shadow clearfix mt10 p10">
+            <b><%= f.label :title, t("recipes.steps"), :class => "f16" %></b><br/>
             <ul id="sortable" class ="block ">
-                <b><%= f.label :title, t("recipes.steps"), :class => "f16" %></b><br/>
                 <%= f.fields_for :steps  do |builder| %>
                     <%= render "step_fields", :f => builder %>
                 <% end %>

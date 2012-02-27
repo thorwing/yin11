@@ -12,12 +12,11 @@
 //    });
 //});
 
-$(function() {
-    if($( "#sortable").length > 0)
-    {
-        $( "#sortable").sortable();
-    }
-//		$( "#sortable" ).disableSelection();
+$(function(){
+    $( "#sortable" ).sortable({
+    			placeholder: "place_holder"
+    });
+    $( "#sortable" ).disableSelection();
 });
 
 //check before submit a recipe
