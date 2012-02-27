@@ -82,7 +82,6 @@
        -moz-border-radius: 10px;
             border-radius: 10px;
     border:1px solid #dbdbdb;
-    background: $azure;
     box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
 }
 
@@ -238,9 +237,10 @@ ul.menu li {
 .b_black {background-color: $black;}
 .b_gray {background-color: $gray;}
 .b_shadow_gray {background-color: $shadow_gray;}
+.b_azure {background-color: $azure;}
 .b_azure_gray {background-color: $azure_gray;}
 .b_white {background-color: $white;}
-.b_azure {background-color: $berry_azure;}
+.b_berry_azure {background-color: $berry_azure;}
 .b_red {background-color:red;}
 .b_berry_pink {background-color:$berry_pink;}
 .b_berry_gray {background-color:$berry_gray;}
@@ -312,8 +312,9 @@ ul.menu li {
 a.tag {
     display:inline-block;
     text-decoration: none;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
     margin: 2px;
     padding: 2px 4px;
     color: $font_gray;

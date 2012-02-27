@@ -1,9 +1,6 @@
-<div class="fl solution_option img_frame m5">
+<div class="fl solution_option img_frame mb5 mr5 <%= selected ? "selected" : "" %>">
     <% item = solution.product || solution.recipe || solution.place %>
     <div class="">
-        <div class="solution_hint display_none">
-            <%= link_to_function "点击查看", 'popup_dialog($(this).parents(".solution_option").find(".solution_detail"));', class: "button" %>
-        </div>
         <div class="fix_hint b_white_alpha30 black f12" style="top:0px;left:0px;height: 20px;">
             <% ratio = ((solution.desire.votes_count == 0 ? 0 : (solution.votes.size.to_f / solution.desire.votes_count.to_f)) * 100) %>
             <b class="f16 ml2 <%= ratio >= 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.round(0).to_s + "%" %></b>
@@ -14,18 +11,18 @@
         </div>
         <% if item.present? %>
             <!--<= new_tab_link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>-->
-            <%= link_to_function image_tag("grey.gif", class: 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), 'popup_dialog($(this).parents(".solution_option").find(".solution_detail"));' %>
+            <%= image_tag("grey.gif", class: 'lazy', "data-original"=> item.get_image_url(:thumb), width: 100, height: 100, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name) %>
         <% end %>
         <% if item.present? %>
-            <div class="fix_hint b_white_alpha30 black f12" style="width: 120px">
+            <div class="fix_hint b_white_alpha30 black f12" style="width: 100px; height: 26px; overflow: hidden;">
                 <% if solution.author %>
                     <%= new_tab_link_to image_tag("grey.gif", class: 'lazy', "data-original"=> solution.author.get_avatar(:thumb, false ), width: "24", height: "24"), {controller: "users", action: "show", id: solution.author.id, force: true} %>
                 <% end %>
-                <%= "#{truncate_content(item.name, 25)}" %>
+                <span class="f12"><%= "#{truncate_content(item.name, 10)}" %></span>
             </div>
         <% end %>
     </div>
-    <div class="solution_detail display_none">
+    <div class="solution_detail <%= selected ? "" : "display_none" %>">
         <%= render solution %>
     </div>
 </div>

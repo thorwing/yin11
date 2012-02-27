@@ -20,7 +20,7 @@
     };
 </script>
 
-<div class="m2 overflow_hidden" style="height: 50px;">
+<div class="m2 overflow_hidden" style="height: 60px;">
     <span><%= new_tab_link_to(image_tag(recipe.get_image_url(:thumb), width: 48, height: 48), {controller: "recipes", actions: "show", id: recipe.id, force: true})%></span>
     <span class="ml2"><%= new_tab_link_to(recipe.name, {controller: "recipes", actions: "show", id: recipe.id, force: "true"}) %></span>
     <span class="ml2"><%= link_to_function("选择", "pick_recipe(this, \"#{recipe.id.to_s}\", \"#{recipe.name}\", \"#{recipe.get_image_url(:thumb)}\");", class: "button") %></span>

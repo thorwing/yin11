@@ -26,7 +26,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     limit = 6
     @related_products = Product.tagged_with(@product.tags).limit(RELATED_RPODUCTS_LIMIT).reject{|p| p == @product}
-    @refer_reviews = Review.all.desc(:created_at).any_in(product_ids: [params[:id]])
 
     respond_to do |format|
       format.html # show.html.erb

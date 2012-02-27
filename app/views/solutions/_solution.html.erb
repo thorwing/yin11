@@ -1,43 +1,40 @@
-<div class="listed_item commentable clearfix" style="width: 600px;">
+<div class="listed_item commentable clearfix block round p5 b_azure_gray">
     <% item_path = {:controller => solution.item.class.name.downcase.pluralize, :action => "show", :id => solution.item.id, force: true} %>
     <% if solution.author %>
-        <div class="fl mr10" style="width:50px;">
-            <%= link_to image_tag(solution.author.get_avatar(:thumb, false ), width: 48, height: 48), solution.author %><br/>
-            <span class="f12"><%= link_to solution.author.login_name, solution.author %></span>
-        </div>
-    <% end %>
-    <div class="fl">
-        <div style="min-height: 50px;">
-            <div class="clearfix mb5">
-                <span class="trivial">解馋攻略</span><br/>
-                <h3>
-                  <span class="trivial"><%= t("object_types.#{solution.item.class.name.downcase}") + "： " %></span>
-                  <%= new_tab_link_to "#{solution.name}", item_path %>
-                  <%= content_tag :span, t("object_types.#{solution.item.class.name.downcase}"), class: "icon icon_#{solution.item.class.name.downcase}", width: 12, height: 12 %>
-                  <% if solution.item.is_a?(Product) && solution.item.price? %>
-                    <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + solution.item.price_as_money_string) %></span>
-                  <% end %>
-                </h3>
+        <div class="clearfix">
+            <div class="fl mr10">
+                <%= link_to image_tag(solution.author.get_avatar(:thumb, false ), width: 48, height: 48), solution.author %>
+            </div>
+            <div class="fl" style="min-height: 50px;">
+                <span class="f12"><%= link_to solution.author.login_name, solution.author %></span><br/>
                 <% if solution.content.present? %><blockquote><span class="quoted"><%= solution.content %></span></blockquote><% end %>
             </div>
-            <div class="item clearfix">
-                <div class="fl mr10" style="width: 120px;">
-                    <%= new_tab_link_to image_tag(solution.item.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
-                </div>
-                <div class="fl" style="width: 400px;">
-                  <% if solution.item.is_a?(Recipe) %>
-                    <%= solution.item.instruction %>
-                    <%= new_tab_link_to "[详细]", item_path %>
-                  <% end %>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="voters_statistic">
-                <%= render "solutions/voters_list", solution: solution %>
-            </div>
-            <% if @my_vote.blank? && current_user && current_user != solution.author %>
-                <%= render "solutions/vote_fields", solution: solution %>
-            <% end %>
+        </div>
+    <% end %>
+    <h3 class="mt5">
+        <span class="trivial"><%= t("object_types.#{solution.item.class.name.downcase}")%></span>
+        <%= content_tag :span, t("object_types.#{solution.item.class.name.downcase}"), class: "icon icon_#{solution.item.class.name.downcase}", width: 12, height: 12 %>
+        <span class="trivial">：</span>
+        <%= new_tab_link_to "#{solution.name}", item_path %>
+        <% if solution.item.is_a?(Product) && solution.item.price? %>
+            <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + solution.item.price_as_money_string) %></span>
+        <% end %>
+    </h3>
+    <div class="item clearfix">
+        <div class="fl mr10">
+            <%= new_tab_link_to image_tag(solution.item.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
+
+        </div>
+        <div class="fl">
+            <%= solution.item.instruction if solution.item.is_a?(Recipe) %>
+            <%= new_tab_link_to "[查看#{t("object_types.#{solution.item.class.name.downcase}")}]", item_path %>
         </div>
     </div>
+    <div class="clearfix"></div>
+    <div class="voters_statistic">
+        <%= render "solutions/voters_list", solution: solution %>
+    </div>
+    <% if @my_vote.blank? && current_user && current_user != solution.author %>
+        <%= render "solutions/vote_fields", solution: solution %>
+    <% end %>
 </div>

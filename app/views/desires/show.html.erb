@@ -52,8 +52,8 @@
       </div>
   <% end %>
 
-  <% if false && @desire.album_ids.size > 0 %>
-      <div class="box_shadow p5 mt5 mb5 albums_fields">
+    <% if false && @desire.album_ids.size > 0 %>
+        <div class="box_shadow p5 mt5 mb5 albums_fields">
         <%= "#{@desire.album_ids.size}人收集：" %>
         <br/>
         <% @desire.albums.each do |album| %>
@@ -65,46 +65,42 @@
             </div>
             <hr/>
         <% end %>
-      </div>
-  <% end %>
-
-  <div class="mt20 box_shadow clearfix" style="padding:  5px 15px;">
-    <div class="clearfix">
-            <span class="trivial">
-                <% if @solutions.size > 0 %>
-                    <%= "总共#{@desire.votes_count}票。" %>
-                    <% if @my_vote %>
-                        <%= "你投给了“#{@my_vote.solution.name}”" %>
-                    <% elsif @solutions.size > 0 %>
-                        快来给你觉得解馋的攻略投票吧！
-                    <% end %>
-                <% else %>
-                    <span class="trivial">还没有解馋攻略</span>
-                <% end %>
-            </span><br/>
-      <% number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>
-      <% if number_of_groups > 1 %>
-          <%= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "button" %>
-      <% end %>
-      <% index = 0 %>
-      <div class="mt10 clearfix">
-        <% @solutions.each_slice(10) do |group| %>
-            <%= render "solutions/solutions_group", solutions: group, index: index %>
-            <% index += 1 %>
-        <% end %>
-      </div>
-    </div>
-
-    <% if current_user_has_permission? :normal_user %>
-        <div class="mt10 mb10">
-          <!--<= link_to_function "分享你的攻略吧~", "$(this).next().toggle();" %>-->
-          <!--<div class="display_none">-->
-          <!--分享你的攻略吧~-->
-          <!--<= render "solutions/solution_fields", :solution => @desire.solutions.build %>-->
-          <!--</div>-->
-          <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
         </div>
     <% end %>
+
+    <div class="mt20 box_shadow clearfix" style="padding:  5px">
+    <div class="clearfix">
+        <h2 class="trivial">解馋攻略</h2>
+        <span class="trivial">
+            <% if @solutions.size > 0 %>
+                <%= "总共#{@desire.votes_count}人投票。" %>
+                <% if @my_vote %>
+                    <%= "你投给了“#{@my_vote.solution.name}”" %>
+                <% elsif @solutions.size > 0 %>
+                    快来给你觉得解馋的攻略投票吧！
+                <% end %>
+            <% else %>
+                <span class="trivial">还没有解馋攻略</span>
+            <% end %>
+        </span><br/>
+        <% number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>
+        <% if number_of_groups > 1 %>
+            <%= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "berry_pink" %>
+        <% end %>
+        <% index = 0 %>
+        <div class="solutions_container mt10 clearfix">
+            <% @solutions.each_slice(8) do |group| %>
+                <%= render "solutions/solutions_group", solutions: group, index: index %>
+                <% index += 1 %>
+            <% end %>
+
+            <% if current_user_has_permission? :normal_user %>
+                <div class="new_solution_area display_none">
+                  <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
+                </div>
+            <% end %>
+        </div>
+    </div>
   </div>
 
   <div class="mt10">

@@ -160,3 +160,26 @@ $(function(){
         });
     }
 });
+
+$(function() {
+    $('.solution_option:not(.add_new)').click(
+        function(e){
+            e.preventDefault();
+            $(".solution_option").removeClass("selected");
+            $(this).addClass("selected");
+            $(".solution_detail").hide();
+            $(this).find(".solution_detail").show();
+            $(".new_solution_area").hide();
+        }
+    );
+
+    $('.solution_option.add_new').click(
+        function(e){
+            e.preventDefault();
+            $(".solution_option").removeClass("selected");
+            $(this).addClass("selected");
+            $(".solution_detail").hide();
+            $(".new_solution_area").show();
+        }
+    );
+});

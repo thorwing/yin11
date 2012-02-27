@@ -54,30 +54,30 @@ textarea {resize: none;}
 
 /*for table*/
 table {
-	border-collapse: collapse;
-}
+  border-collapse: collapse;
 
-th {
-	padding: 0 5px;
-	text-align: left;
-}
+  th {
+  	padding: 0 5px;
+  	text-align: left;
+  }
 
-tr.head th {
-	border-top: 1px solid $berry_red;
-	border-bottom: 1px solid $berry_red;
-	background: $berry_gray;
-}
+  tr.head th {
+  	border-top: 1px solid $berry_red;
+  	border-bottom: 1px solid $berry_red;
+  	background: $berry_gray;
+  }
 
-td {
-	border-bottom: 1px solid $light_gray;
-	padding: 0 0.5em;
-}
+  td {
+  	border-bottom: 1px solid $light_gray;
+  	padding: 0 0.5em;
+  }
 
-td:first-child {
-	width: 190px;
-}
+  td:first-child {
+  	width: 190px;
+  }
 
-td+td {
-	border-left: 1px solid $light_gray;
-	text-align: center;
+  td+td {
+  	border-left: 1px solid $light_gray;
+  	text-align: center;
+  }
 }
