@@ -72,7 +72,7 @@
     <div class="clearfix">
             <span class="trivial">
                 <% if @solutions.size > 0 %>
-                    <%= "总共#{@desire.votes_count.size}票。" %>
+                    <%= "总共#{@desire.votes_count}票。" %>
                     <% if @my_vote %>
                         <%= "你投给了“#{@my_vote.solution.name}”" %>
                     <% elsif @solutions.size > 0 %>

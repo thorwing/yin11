@@ -2,8 +2,8 @@
     <%= f.hidden_field :id unless f.object.new_record? %>
     <td><%= f.text_field :name, :maxlength => get_max_length(Ingredient, :name), :class => "ingredient_name" %></td>
     <td><%= f.text_field :amount, :maxlength => get_max_length(Ingredient, :amount), :class => "ingredient_amount not_cleared"%></td>
-    <td><%= f.check_box :is_major_ingredient, {:style => 'display:none;'}, true, false %></td>
-    <% html_options= { "class" => "btn btn_delete_x" } %>
+    <td><%= f.check_box :is_major_ingredient, {style: 'display:none;'}, true, false %></td>
+    <% html_options= { class: "btn btn_delete_x", tabindex: -1 } %>
     <td><%= link_to_remove_fields( "", f , "tr", ".ingredients", html_options ) %></td>
 </tr>
 
