@@ -219,6 +219,7 @@ zh-CN:
     images: 管理图片
     audits: 管理审计
     recipes: 管理菜谱
+    invitations: 管理邀请
 
   address:
     province: 省份

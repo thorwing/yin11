@@ -1,0 +1,33 @@
+<h1>邀请</h1>
+
+<table>
+  <tr class="head">
+    <th>邀请码</th>
+    <th>授予</th>
+    <th>使用</th>
+    <th>被邀者</th>
+    <th></th>
+  </tr>
+
+<% @invitations.each do |invitation| %>
+  <tr>
+    <td><%= invitation.code %></td>
+    <td><%= invitation.entitle_to %></td>
+    <td><%= invitation.used %></td>
+    <td>
+      <% if invitation.invitee.present?  %>
+        <%= link_to invitation.invitee, {controller: "/users", action: "show", id: invitation.invitee} %>
+      <% else %>
+          <% invite_path = sign_up_url(invitation: invitation.code)  %>
+         <%= link_to invite_path, invite_path %>
+      <% end %>
+    </td>
+    <td><%= link_to "编辑", edit_administrator_invitation_path(invitation), class: "btn btn_edit" %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<div class="mt10">
+    <%= link_to "+邀请", new_administrator_invitation_path, class: "button" %>
+</div>
