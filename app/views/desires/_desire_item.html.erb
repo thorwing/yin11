@@ -46,7 +46,7 @@
                         <div class="border_top pt5 pb5">
                             <%= link_to image_tag(vote.voter.get_avatar(:thumb, false), width: 22, height: 22), vote.voter %>
                             <span class="trivial f12"><%= link_to vote.voter.login_name, vote.voter %><%= " 投票" %><%= vote.content.present? ? "：" : "" %></span>
-                            <span class="trivial f12"><%= vote.content %></span>
+                            <span class="trivial f12"><%= truncate_content vote.content, 20 %></span>
                         </div>
                     <% end %>
                 </div>
