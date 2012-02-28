@@ -27,7 +27,7 @@ class DesiresController < ApplicationController
   def show
     @desire = Desire.find(params[:id])
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:created_at).limit(9)
-    @solutions = @desire.solutions.desc(:votes, :created_at) #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
+    @solutions = @desire.solutions.desc(:votes, :created_at).reject{|s| s.item.nil? } #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
 
     votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
     @my_vote = votes.select{|v| v.voter_id == current_user.id.to_s}.first if current_user
@@ -107,7 +107,7 @@ class DesiresController < ApplicationController
 
     ImagesHelper.process_uploaded_images(@desire, params[:images])
 
-    SolutionManager.generate_solutions(@desire)
+    #SolutionManager.generate_solutions(@desire)
 
     respond_to do |format|
       if @desire.update_attributes(params[:desire])
