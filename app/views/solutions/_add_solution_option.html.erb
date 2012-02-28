@@ -4,21 +4,15 @@
 
     <div class="mt30">
         <span class="f20 trivial center">
-            <% if current_user_has_permission? :normal_user %>
-                <%= "+解馋攻略" %>
-            <% else %>
-                立即注册，分享解馋攻略
-            <% end %>
+            <%= "+添加攻略" %>
         </span>
     </div>
 
     <div class="fix_hint b_white_alpha30 black f12" style="width: 100px; height: 26px; overflow: hidden;">
     </div>
 
-    <% if current_user_has_permission? :normal_user %>
-        <div class="new_solution_area <%= selected ? "" : "display_none" %>">
-          <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
-        </div>
-    <% end %>
+    <div class="new_solution_area <%= selected ? "" : "display_none" %>">
+        <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
+    </div>
 
 </div>

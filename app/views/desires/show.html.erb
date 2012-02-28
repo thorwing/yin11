@@ -89,7 +89,7 @@
 <div class="grid_3">
   <% if @desire.place %>
       <div class="box_shadow mb10 p5">
-        <h3>美食地点：<%= link_to @desire.place.name, @desire.place %></h3>
+        <h3 class="trivial">美食地点：<%= link_to @desire.place.name, @desire.place %></h3>
         <%= content_tag :span, @desire.place.address, class: "trivial" %>
         <%= render "shared/location", location: @desire.place %>
       </div>
@@ -97,7 +97,7 @@
 
   <% unless @desire.albums.empty? %>
       <div class="box_shadow p5">
-        <h3>被收集到专辑：</h3>
+        <h3 class="trivial">被收集到专辑：</h3>
         <% @desire.albums.limit(3).each do |album| %>
             <div class="clearfix mb10 lighter_touch">
                 <%= link_to album.title, album %> |
@@ -114,10 +114,12 @@
 
   <% unless @related_desires.empty? %>
       <div class="box_shadow p5">
-        <h3>相似的馋人图片：</h3>
-        <% @related_desires.each do |desire| %>
-            <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:thumb), width: 66, height: 66, class: "lazy"), desire, class: "lighter_touch" %>
-        <% end %>
+        <h3 class="trivial">相似的馋人图片：</h3>
+        <div class="mt5">
+            <% @related_desires.each do |desire| %>
+                <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:thumb), width: 66, height: 66, class: "lazy"), desire, class: "lighter_touch" %>
+            <% end %>
+        </div>
       </div>
   <% end %>
 </div>

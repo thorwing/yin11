@@ -1,7 +1,7 @@
 <% title t("authentication.login"), false  %>
 <% hide_quick_auth %>
 
-<div class="grid_6">
+<div class="grid_7">
     <%= form_tag sessions_path, id: "login_form" do %>
         <div>
             <%= label_tag :email, t_with_colon("authentication.email"), class: "trivial" %><br/>
@@ -28,6 +28,6 @@
 </div>
 
 
-<div class="grid_6">
+<div class="grid_5">
     <%= render "shared/third_party_login" %>
 </div>

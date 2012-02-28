@@ -1,4 +1,28 @@
-<% content_for :head do %>
+<% title(t("user_basic.crop_avatar")) %>
+
+<div class="fl block square p5">
+    <%= image_tag current_user.get_avatar, :id => "cropbox" %>
+</div>
+
+<div class="fl ml30">
+    <h3 class="trivial">预览(100*100)</h3>
+    <div class="preview img_frame">
+        <%= image_tag current_user.get_avatar, :id => "preview" %>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="mt10">
+    <%= form_for current_user, :as => :avatar, :url => {action: "crop_update"} do |f| %>
+        <% for attribute in [:crop_x, :crop_y, :crop_h, :crop_w] %>
+            <%= f.hidden_field attribute, :id => attribute %>
+        <% end %>
+        <p><%= f.submit "确定", class: "btn btn_ok" %></p>
+    <% end %>
+</div>
+
+<% content_for :foot do %>
     <script type="text/javascript" charset="utf-8">
     $(function() {
       $('#cropbox').Jcrop({
@@ -29,26 +53,3 @@
     }
     </script>
 <% end %>
-
-
-<div class="fl">
-    <%= image_tag current_user.get_avatar, :id => "cropbox" %>
-</div>
-
-<div class="fl ml20">
-    <h3><%= t("general.preview") %></h3>
-    <div class="preview">
-        <%= image_tag current_user.get_avatar, :id => "preview" %>
-    </div>
-</div>
-
-<div class="clearfix"></div>
-
-<div class="mt10">
-    <%= form_for current_user, :as => :avatar, :url => {action: "crop_update"} do |f| %>
-        <% for attribute in [:crop_x, :crop_y, :crop_h, :crop_w] %>
-            <%= f.hidden_field attribute, :id => attribute %>
-        <% end %>
-        <p><%= f.submit t("user_basic.crop"), class: "button" %></p>
-    <% end %>
-</div>

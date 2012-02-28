@@ -4,6 +4,10 @@ require 'crack/xml'
 class SyncsController < ApplicationController
 
     def new
+      #TODO
+      redirect_to sign_up_path, notice: t("notices.temp_third_party_redirect")
+      return
+
       case params[:type]
         when "sina"
            client = SilverOauth::Sina.new

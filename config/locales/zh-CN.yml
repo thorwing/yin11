@@ -170,6 +170,7 @@ zh-CN:
     solution_created: 解馋攻略提交成功
     solution_creation_failed: 解馋攻略提交失败
     soluton_voted: 投票成功
+    temp_third_party_redirect: 网站处于测试阶段，请使用本站账号登陆
 
   alerts:
     password_reset_expired: 密码重置口令已过期
@@ -234,7 +235,6 @@ zh-CN:
     user_basic: 基本信息
     login_name: 昵称
     avatar: 头像
-    crop:  裁剪
     crop_avatar: 裁剪头像
     change_avator: 换一张头像
     biography: 自我介绍

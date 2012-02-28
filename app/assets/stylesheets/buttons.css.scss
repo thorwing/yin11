@@ -295,9 +295,9 @@ a.btn.btn_edit:hover{
 
 .btn.btn_back_to_top {
     z-index: 100;
-    width:46px;
-    height:46px;
-    background-position: -178px -372px;
+    width: 50px;
+    height: 50px;
+    background-position: -176px -370px;
     position: fixed;
     bottom: 10px;
     right: 20px;
@@ -321,22 +321,22 @@ a.btn.btn_edit:hover{
 }
 
 .btn.btn_product_solution {
-    width: 118px;
-    height: 38px;
+    width: 108px;
+    height: 30px;
     background-position: -228px -372px;
 }
 
 .btn.btn_recipe_solution {
-    width: 118px;
-    height: 38px;
-    background-position: -228px -412px;
+    width: 108px;
+    height: 30px;
+    background-position: -228px -406px;
 }
 
 .btn.btn_place_solution {
-    width: 118px;
-    height: 38px;
+    width: 108px;
+    height: 30px;
     opacity: 0.5;
-    background-position: -228px -452px;
+    background-position: -228px -440px;
 }
 
 .btn.btn_place_solution:hover {

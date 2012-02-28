@@ -1,31 +1,36 @@
 <div class="solution_fields clearfix">
-    <%= form_tag url_for(controller: "desires", action: "solve", method: :post, id: solution.desire_id) do %>
-        <div class="block round b_azure_gray p5 clearfix" id = "solution_fields" >
-            <%= hidden_field_tag "solution[product_id]", "", id: "product_id" %>
-            <%= hidden_field_tag "solution[recipe_id]", "", id: "recipe_id" %>
+    <% if current_user_has_permission? :normal_user %>
+        <%= form_tag url_for(controller: "desires", action: "solve", method: :post, id: solution.desire_id) do %>
+            <div class="block round b_azure_gray p5 clearfix" id = "solution_fields" >
+                <%= hidden_field_tag "solution[product_id]", "", id: "product_id" %>
+                <%= hidden_field_tag "solution[recipe_id]", "", id: "recipe_id" %>
 
-            <!--hidden attributes-->
-            <h3 class="trivial"><%= "分享我的解馋攻略：" %></h3>
-            <div >
-                <div id="image_container">
-                    <%= link_to_function "网上买", "link_product()", class: "btn btn_product_solution m1 lighter_touch" %>
-                    <%= link_to_function "自己做", "link_recipe()", class: "btn btn_recipe_solution m1 lighter_touch" %>
-                    <%= link_to_function "出去吃", "link_place()", class: "btn btn_place_solution m1 lighter_touch" %>
+                <!--hidden attributes-->
+                <h3 class="trivial"><%= "分享我的解馋攻略：" %></h3>
+                <div >
+                    <div id="image_container">
+                        <%= link_to_function "网上买", "link_product()", class: "btn btn_product_solution m1 lighter_touch" %>
+                        <%= link_to_function "自己做", "link_recipe()", class: "btn btn_recipe_solution m1 lighter_touch" %>
+                        <%= link_to_function "出去吃", "link_place()", class: "btn btn_place_solution m1 lighter_touch" %>
+                    </div>
                 </div>
-            </div>
-            <div class="mt10" >
-                <!--if change the default text, also need to change the js -->
-                <%= text_area_tag "solution[content]", "说说解馋理由吧...",
-                                :maxlength => get_max_length(solution, :content), 'data-comment_max_len' => get_max_length(solution, :content),
-                                :class => "char_aware not_cleared" %>
-                <%= content_tag :span, "", class: "char_saver display_none" %>
-                <%= content_tag :span, "", class: "char_counter block trivial" %>
-            </div>
+                <div class="mt10" >
+                    <!--if change the default text, also need to change the js -->
+                    <%= text_area_tag "solution[content]", "说说解馋理由吧...",
+                                    :maxlength => get_max_length(solution, :content), 'data-comment_max_len' => get_max_length(solution, :content),
+                                    :class => "char_aware not_cleared" %>
+                    <%= content_tag :span, "", class: "char_saver display_none" %>
+                    <%= content_tag :span, "", class: "char_counter block trivial" %>
+                </div>
 
-            <div class= "fr"><%= submit_tag t("reviews.submit"), id: "solution_submit", class: "btn btn_submit_post" %> </div>
-        </div>
+                <div class= "fr"><%= submit_tag t("reviews.submit"), id: "solution_submit", class: "btn btn_submit_post" %> </div>
+            </div>
+        <% end %>
+
+        <%= render "solutions/product_linker" %>
+        <%= render "solutions/recipe_linker" %>
+    <% else %>
+        <span class="trivial">有解馋攻略要分享？</span><br/>
+        <%= link_to "立即注册", new_user_path, class: "btn btn_register_now" %>
     <% end %>
-
-    <%= render "solutions/product_linker" %>
-    <%= render "solutions/recipe_linker" %>
 </div>

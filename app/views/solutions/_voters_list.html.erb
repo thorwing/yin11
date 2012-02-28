@@ -5,7 +5,7 @@
     <% votes = solution.votes.desc(:created_at).to_a %>
     <!--voters_summary-->
     <div>
-        <hr/>
+        <% if votes.count > 0 %>    <hr/><% end %>
         <% votes.take(2).each do |vote| %>
             <%= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: 24, height: 24), vote.voter %>
             <span class="f12 ml2 mr5"><%= link_to vote.voter.login_name, vote.voter %></span>
