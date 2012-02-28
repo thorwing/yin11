@@ -4,7 +4,7 @@
 
         <div class="clearfix">
             <div id="recipe_info" class="fl ml10 clearfix">
-                <h1 class="f20"><%= @recipe.name %></h1>
+                <h1 class="f20"><%= content_tag :span, "菜谱", class: "icon icon_recipe mr5" %><%= @recipe.name %></h1>
                 <div class="mt5">
                     <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》。" %>
                     <% summarystr = "大家去看看吧！" %>

@@ -8,7 +8,7 @@
         <span class = "trivial">想来评论两句？</span><%= link_to "立即注册", new_user_path, class: "button" %>
     <% end %>
 
-    <div class="comments_container <%= item.id.to_s %>">
+    <div class="comments_container <%= item.id.to_s %> mt10">
         <% unless item.comments.empty? %>
             <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
         <% end %>

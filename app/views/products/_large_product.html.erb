@@ -1,6 +1,8 @@
-<%= link_to image_tag( "grey.gif", "class" => 'lazy', "data-original"=> product.get_image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), product%>
+<div class="grid_3 box_shadow p5">
+    <div class="center">
+        <%= link_to image_tag( "grey.gif", "class" => 'lazy', "data-original"=> product.get_image_url(:waterfall), :border => 0, :width => IMAGE_WATERFALL_WIDTH, :height => IMAGE_WATERFALL_WIDTH), product%>
+    </div>
 
-<div>
     <%= link_to product.name, product %> <br/>
     <% if product.price.present? %>
         <%= t_with_colon("products.price") %> <%= t("money.yuan_mark2") %><%= product.price %><br/>

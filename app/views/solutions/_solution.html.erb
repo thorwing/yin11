@@ -30,9 +30,9 @@
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="voters_statistic">
-        <%= render "solutions/voters_list", solution: solution %>
-    </div>
+
+    <%= render "solutions/voters_list", solution: solution %>
+
     <% if @my_vote.blank? && current_user && current_user != solution.author %>
         <%= render "solutions/vote_fields", solution: solution %>
     <% end %>

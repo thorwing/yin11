@@ -1,6 +1,6 @@
 <div class="grid_9">
     <div class="box_shadow p5">
-        <h2><%= @place.name %></h2>
+        <h1 class="fl20"><%= content_tag :span, "地点", class: "icon icon_place mr5" %><%= @place.name %></h1>
         <%= content_tag :span, @place.address %>
         <div class="mt10">
             <% if current_user_has_permission? :normal_user %>
@@ -32,7 +32,7 @@
             <% if current_user_has_permission? :normal_user %>
                 <!--corner stmap-->
                 <div class="masonary_item">
-                    <div class="inner_frame">
+                    <div class="inner_frame p5">
                         <%= content_tag :span, "有这个地点的馋人图片要分享？", class: "trivial" %><br/>
                         <%= link_to "+上传馋人图片", new_desire_path(place_id: @place.id), class: "btn btn_new_desire" %>
                     </div>

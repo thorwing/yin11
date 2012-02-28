@@ -22,10 +22,12 @@ class RewardManager
   def self.reward_for_vote(vote, user = nil)
       score_value = 5
       solution = vote.solution
-      solution.author.score += score_value
-      solution.author.save
+      if solution.author
+        solution.author.score += score_value
+        solution.author.save
 
-      NotificationsManager.generate!(solution.author, user, "vote", solution.desire, vote.content, score_value)
+        NotificationsManager.generate!(solution.author, user, "vote", solution.desire, vote.content, score_value)
+      end
     end
 
   def ask_for_badges

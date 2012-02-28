@@ -3,32 +3,28 @@
 <div class="grid_9 to_left overflow_hidden p5 clearfix">
     <div class="product_info clearfix box_shadow p5">
         <div class="fl">
-            <%= link_to (image_tag("grey.gif", "class" => 'lazy', "data-original"=> @product.get_image_url(:waterfall), class: "img_frame")), @product.get_image_url, rel: "facebox" %>
+            <%= link_to (image_tag("grey.gif", class: 'lazy', "data-original"=> @product.get_image_url(:waterfall), class: "img_frame")), @product.get_image_url, rel: "facebox" %>
         </div>
 
         <div class="product_detail ml10 fl">
+            <h1 class="f20"><%= content_tag :span, "商品", class: "icon icon_product mr5" %><%= @product.name %></h1>
             <p>
-              <b><%= t("general.name") %></b>
-              <%= @product.name %>
-            </p>
-
-            <p>
-              <b><%= t("products.price") %></b>
+              <span class="trivial mr5"><%= t("products.price") %></span>
               <%= [t("money.yuan_mark2"), @product.price_as_money_string].join if @product.price %>
             </p>
 
             <p>
-              <b><%= t("catalogs.catalog") %></b>
+              <span class="trivial mr5"><%= t("catalogs.catalog") %></span>
               <%= @product.catalogs.map(&:name).join(" ") %>
             </p>
 
             <p>
-              <b><%= t("tags.tags") %></b>
+              <span class="trivial mr5"><%= t("tags.tags") %></span>
               <%= render "tags/tags", :item => @product %>
             </p>
 
             <p>
-              <b><%= t("vendors.vendor") %></b>
+              <span class="trivial mr5"><%= t("vendors.vendor") %></span>
               <%= new_tab_link_to @product.vendor.name, @product.vendor %>
             </p>
 

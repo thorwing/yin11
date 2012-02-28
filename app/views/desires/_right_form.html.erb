@@ -14,12 +14,10 @@
 <% else %>
     <%= link_to_function "+展开", '$(this).nextAll(".toggle_fields").toggle();' %><%= content_tag :span, "有地址？那赶快告诉大家在哪能吃到这份美食", class: "trivial" %>
     <div class="toggle_fields display_none mt10">
-        <span class=""><%= "城市" %></span><br/>
-        <span class="trivial"><%= "上海（暂时仅限上海，其他城市也会陆续添加～）" %></span><br/>
         <%= hidden_field_tag "place[city]", "上海" %>
-        <span>名称</span><%= mark_required Place, :name %><span class="trivial">例如： XX饭店</span><br/>
-        <%= text_field_tag "place[name]", "" %><br/>
-        <span>地址</span><%= mark_required Place, :street %><span class="trivial">例如：  黄浦区XX路XXX号 A大厦...</span><br/>
-        <%= text_field_tag "place[street]", "" %><br/>
+        <span class="trivial">名称</span><%= mark_required Place, :name %><br/>
+        <%= text_field_tag "place[name]", "" %><span class="trivial ml5">例： XX饭店</span><br/>
+        <span class="trivial">地址</span><%= mark_required Place, :street %><span class="trivial"><%= "（暂时仅限上海，其他城市很快会陆续添加～）" %></span><br/>
+        <span class="trivial mr2"><%= "上海" %></span><%= text_field_tag "place[street]", "" %><span class="trivial ml5">例：  黄浦区XX路XXX号 A大厦...</span><br/>
     </div>
 <% end %>

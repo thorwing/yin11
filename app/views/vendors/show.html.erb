@@ -1,16 +1,11 @@
 <% title @vendor.name, false %>
-<div class="grid_3 block round p5 to_left">
-  <h1><%= @vendor.name %></h1>
-  <span class="trivial"><%= @vendor.mall.name %></span><br/>
-  <%= "#{@vendor.products.count} #{t("products.products")}" %><br/>
-  <%= new_tab_link_to t("vendors.go_to_see"), @vendor.mall.entry_url, class: "button" %>
-</div>
-<div class="clearfix"></div>
 
-<div class="mt10 mb20 grid_12 block round p5 to_left to_right">
-    <h2><%= t("products.products") %></h2>
+<h2><%= @vendor.name %><span class="trivial"><%= new_tab_link_to "(#{@vendor.mall.name})", @vendor.mall.entry_url if @vendor.mall.name.present? %></span></h2>
+<span><%= "用户们分享了#{@vendor.products.count}款商品" %></span>
+
+<div class="mt10 mb20">
     <% @vendor.products.each_slice(EACH_SLICE) do |slice| %>
-        <div class="slice">
+        <div class="clearfix">
           <% slice.each do |product| %>
             <%= render "products/large_product", :product => product %>
           <% end %>
