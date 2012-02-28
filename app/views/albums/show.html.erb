@@ -5,7 +5,7 @@
         <div class="box_shadow p5">
             <h1><%= @album.title %> <span class="trivial f13"><%= "(#{@album.desires.size}#{t("albums.items")})" %></span></h1>
             <p><%= @album.description %></p>
-            <p><%= render "tags/tags", :item => @album %></p>
+            <p><span class="trivial">标签：</span><%= render "tags/tags", :item => @album %></p>
             <%= render "votes/vote_fields", :item => @album %>
         </div>
 
