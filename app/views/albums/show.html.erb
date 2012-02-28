@@ -16,7 +16,7 @@
     <div class="fl" style="width: 720px;">
         <div id="masonry_container" class="clearfix">
             <% @album.desires.each do |desire| %>
-                <%= render "albums/album_desire", desire: desire %>
+                <%= render "desires/desire_item", desire: desire %>
             <% end %>
         </div>
     </div>
