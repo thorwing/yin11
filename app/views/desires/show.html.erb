@@ -52,22 +52,6 @@
       </div>
   <% end %>
 
-    <% if false && @desire.album_ids.size > 0 %>
-        <div class="box_shadow p5 mt5 mb5 albums_fields">
-        <%= "#{@desire.album_ids.size}人收集：" %>
-        <br/>
-        <% @desire.albums.each do |album| %>
-            <div>
-              <%= link_to image_tag(album.author.get_avatar(:thumb), width: 32, height: 32), album.author, class: "m2" %>
-              <%= link_to album.author.login_name, album.author %>
-              <%= " 收集到 " %>
-              <%= link_to album.title, album %>
-            </div>
-            <hr/>
-        <% end %>
-        </div>
-    <% end %>
-
     <div class="mt20 box_shadow clearfix" style="padding:  5px">
     <div class="clearfix">
         <h2 class="trivial">解馋攻略</h2>
@@ -89,15 +73,9 @@
         <% end %>
         <% index = 0 %>
         <div class="solutions_container mt10 clearfix">
-            <% @solutions.each_slice(8) do |group| %>
+            <% @solutions.each_slice(9) do |group| %>
                 <%= render "solutions/solutions_group", solutions: group, index: index %>
                 <% index += 1 %>
-            <% end %>
-
-            <% if current_user_has_permission? :normal_user %>
-                <div class="new_solution_area display_none">
-                  <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
-                </div>
             <% end %>
         </div>
     </div>

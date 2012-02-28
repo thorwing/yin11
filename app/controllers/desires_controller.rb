@@ -32,6 +32,14 @@ class DesiresController < ApplicationController
     votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
     @my_vote = votes.select{|v| v.voter_id == current_user.id.to_s}.first if current_user
 
+    #dummy ojbect for new_solution_field
+    dummy = Solution.new
+    if @solutions.empty?
+      @solutions += [dummy]
+    else
+      @solutions = @solutions.each_slice(8).inject([]){|memo, group| memo + (group << dummy)}
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @desire }

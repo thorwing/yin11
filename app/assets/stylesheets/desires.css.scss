@@ -85,6 +85,12 @@
     height: 120px;
   }
 
+  .vote_fields {
+      .vote_button, .votes  {
+          vertical-align: bottom;
+      }
+  }
+
   //#image_container {
   //    width: 120px;
   //    height: 120px;
@@ -135,9 +141,19 @@
     cursor: default;
     position: absolute;
     width: 350px;
-    max-height: 430px;
+    max-height: 460px;
     left: 340px;
     top: 0;
+  }
+
+
+  .vote_fields  textarea{
+    width: 330px;
+    height: 80px;
+  }
+
+  .voters_statistic {
+    max-height: 140px;
   }
 }
 

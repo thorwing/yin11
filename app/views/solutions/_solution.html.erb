@@ -1,4 +1,4 @@
-<div class="listed_item commentable clearfix block round p5 b_azure_gray">
+<div class="block round p5 b_azure_gray clearfix ">
     <% item_path = {:controller => solution.item.class.name.downcase.pluralize, :action => "show", :id => solution.item.id, force: true} %>
     <% if solution.author %>
         <div class="clearfix">
@@ -21,11 +21,10 @@
         <% end %>
     </h3>
     <div class="item clearfix">
-        <div class="fl mr10">
+        <div class="fl mr10" style="width:100px;">
             <%= new_tab_link_to image_tag(solution.item.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
-
         </div>
-        <div class="fl">
+        <div class="fl" style="width: 228px;">
             <%= solution.item.instruction if solution.item.is_a?(Recipe) %>
             <%= new_tab_link_to "[查看#{t("object_types.#{solution.item.class.name.downcase}")}]", item_path %>
         </div>

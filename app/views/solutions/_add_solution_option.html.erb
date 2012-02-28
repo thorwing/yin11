@@ -1,4 +1,4 @@
-<div class="fl solution_option add_new img_frame mb5 mr5">
+<div class="fl solution_option add_new img_frame mb5 mr5 <%= selected ? "selected" : "" %>">
     <div class="fix_hint b_white_alpha30 black f12" style="top:0px;left:0px;height: 20px;">
     </div>
 
@@ -14,5 +14,11 @@
 
     <div class="fix_hint b_white_alpha30 black f12" style="width: 100px; height: 26px; overflow: hidden;">
     </div>
+
+    <% if current_user_has_permission? :normal_user %>
+        <div class="new_solution_area <%= selected ? "" : "display_none" %>">
+          <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
+        </div>
+    <% end %>
 
 </div>

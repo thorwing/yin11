@@ -126,6 +126,14 @@ function shift_solutions_group(link) {
     $(".solutions_group." + new_index).addClass("display_block");
     $(".solutions_group." + new_index).removeClass("display_none");
     $(link).data('current_index', new_index);
+
+
+    $(".solution_option").removeClass("selected");
+    var first_option = $(".solutions_group." + new_index).find(".solution_option:first");
+    first_option.addClass("selected");
+    $(".solution_detail").hide();
+    $(".new_solution_area").hide();
+    first_option.find(".solution_detail").show();
 }
 
 $(function(){
@@ -164,7 +172,6 @@ $(function(){
 $(function() {
     $('.solution_option:not(.add_new)').click(
         function(e){
-            e.preventDefault();
             $(".solution_option").removeClass("selected");
             $(this).addClass("selected");
             $(".solution_detail").hide();
@@ -175,7 +182,6 @@ $(function() {
 
     $('.solution_option.add_new').click(
         function(e){
-            e.preventDefault();
             $(".solution_option").removeClass("selected");
             $(this).addClass("selected");
             $(".solution_detail").hide();
