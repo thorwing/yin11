@@ -3,7 +3,7 @@
 <div class="grid_9 to_left overflow_hidden p5 clearfix">
     <div class="product_info clearfix box_shadow p5">
         <div class="fl">
-            <%= link_to (image_tag("grey.gif", class: 'lazy', "data-original"=> @product.get_image_url(:waterfall), class: "img_frame")), @product.get_image_url, rel: "facebox" %>
+            <%= link_to (image_tag(@product.get_image_url(:waterfall), class: "img_frame")), @product.get_image_url, rel: "facebox" %>
         </div>
 
         <div class="product_detail ml10 fl">
@@ -46,6 +46,16 @@
             <% end %>
         </div>
     </div>
+
+    <% if @product.fan_ids.size > 0 %>
+        <div class="box_shadow p5 mt10 mb5 admiration_fields">
+          <%= "#{@product.fan_ids.size}人喜欢：" %>
+          <br/>
+          <% @product.fans.each do |fan| %>
+              <%= link_to image_tag(fan.get_avatar(:thumb), width: 32, height: 32), fan, class: "m2", alt: fan.login_name, title: fan.login_name %>
+          <% end %>
+        </div>
+    <% end %>
 
     <div class="mt10">
         <%= render "comments/comments", item: @product %>
