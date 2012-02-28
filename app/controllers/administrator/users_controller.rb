@@ -2,7 +2,7 @@ class Administrator::UsersController < Administrator::BaseController
   before_filter() { |c| c.require_permission :administrator}
 
   def index
-    @users = User.all
+    @users = User.desc(:role).asc(:created_at)
 
     respond_to do |format|
       format.html # index.html.erb

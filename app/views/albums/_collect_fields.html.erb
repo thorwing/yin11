@@ -6,11 +6,10 @@
         <div class="to_collect more_info_container">
             <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %>
             <div class="more_info display_none box_shadow" align="left">
-                <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %>
-                <div class="p5 mb10">
-                    <%= t("albums.collect_to_album") %><br/>
+                <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %><span class="ml5 trivial"><%= t("albums.collect_to_album") %></span>
+                <div class="p5 mt10 mb10">
                     <% current_user.albums.each do |album| %>
-                      <span class="ml5 mr5 display_inline_block"><%= link_to album.title, collect_album_path(album, item_type: item.class.name, item_id: item.id.to_s), method: :put, remote: true %></span>
+                      <span class="ml5 mr5 display_inline_block f16"><%= link_to album.title, collect_album_path(album, item_type: item.class.name, item_id: item.id.to_s), method: :put, remote: true %></span>
                     <% end %>
                 </div>
                 <div class="p5">

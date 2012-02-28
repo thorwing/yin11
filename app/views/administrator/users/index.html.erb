@@ -2,13 +2,14 @@
 
 <%= User.all.size.to_s %> <%= t("users.users") %>
 
-<table>
+<table class="formatted">
     <tr>
         <th><%= t("users.login_name") %></th>
         <th><%= t("users.role") %></th>
         <th><%= t("reviews.reviews") %></th>
         <th><%= t("recipes.recipes") %></th>
         <th><%= t("users.master") %></th>
+        <th>注册时间</th>
         <th></th>
     </tr>
 
@@ -19,6 +20,7 @@
         <td><%= user.reviews.size %></td>
         <td><%= user.recipes.size %></td>
         <td><%= render "administrator/shared/toggle_fields", :item => user, :field => :is_master %></td>
+        <td><%= user.created_at.strftime("%y-%m-%d") %></td>
         <td><%= link_to t("general.edit"), edit_administrator_user_path(user), :class => "button" %></td>
     </tr>
     <% end %>

@@ -13,10 +13,11 @@
 //});
 
 $(function(){
-    $( "#sortable" ).sortable({
-    			placeholder: "place_holder"
-    });
-    $( "#sortable" ).disableSelection();
+//    TODO
+//    $( "#sortable" ).sortable({
+//    			placeholder: "place_holder"
+//    });
+//    $( "#sortable" ).disableSelection();
 });
 
 //check before submit a recipe

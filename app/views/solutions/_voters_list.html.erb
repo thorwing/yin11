@@ -4,16 +4,16 @@
     <br/>
     <% votes = solution.votes.desc(:created_at).to_a %>
     <!--voters_summary-->
-    <div>
-        <% if votes.count > 0 %>    <hr/><% end %>
-        <% votes.take(2).each do |vote| %>
-            <%= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: 24, height: 24), vote.voter %>
-            <span class="f12 ml2 mr5"><%= link_to vote.voter.login_name, vote.voter %></span>
-            <% if vote.content.present? %><blockquote><span class="f12 quoted"><%= truncate_content vote.content, 20 %></span></blockquote><% end %>
-            <span class="ml2 trivial display_inline_block"><%= time_ago_in_words(vote.created_at) + t("general.ago") %></span>
-            <hr/>
-        <% end %>
-    </div>
+    <!--<div>-->
+        <!--< if votes.count > 0 %>    <hr/>< end %>-->
+        <!--< votes.take(2).each do |vote| %>-->
+            <!--<= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: 24, height: 24), vote.voter %>-->
+            <!--<span class="f12 ml2 mr5"><= link_to vote.voter.login_name, vote.voter %></span>-->
+            <!--< if vote.content.present? %><blockquote><span class="f12 quoted"><= truncate_content vote.content, 20 %></span></blockquote>< end %>-->
+            <!--<span class="ml2 trivial display_inline_block"><= time_ago_in_words(vote.created_at) + t("general.ago") %></span>-->
+            <!--<hr/>-->
+        <!--< end %>-->
+    <!--</div>-->
 
     <div class="voters_details display_none">
         <hr/>
