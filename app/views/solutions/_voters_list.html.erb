@@ -1,12 +1,14 @@
-<p class="trivial">得到<b class="f16 ml5"><%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%" %></b>投票 (<span><%= "共#{solution.voter_ids.size}票" %></span>) </p>
+<span class="trivial"><%= "#{solution.voter_ids.size}票" %>(<%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%" %>)</span><br/>
 
-<% solution.votes.desc(:created_at).limit(3).each do |vote| %>
-    <hr/>
-    <%= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: "24", height: "24"), vote.voter %>
-    <span class="f12 mr5"><%= link_to vote.voter.login_name, vote.voter %></span>
-    <% if vote.content.present? %><blockquote><span class="quoted"><%= vote.content %></span></blockquote><% end %>
-<% end %>
-<br/>
+<div>
+    <% solution.votes.desc(:created_at).limit(3).each do |vote| %>
+        <hr/>
+        <%= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: "24", height: "24"), vote.voter %>
+        <span class="f12 mr5"><%= link_to vote.voter.login_name, vote.voter %></span>
+        <% if vote.content.present? %><blockquote><span class="quoted"><%= vote.content %></span></blockquote><% end %>
+    <% end %>
+</div>
+
 <% if current_user %>
     <% followed_users = solution.voters.select{|voter| current_user.relationships.map(&:target_id).include?(voter.id.to_s)} %>
     <% unless followed_users.empty? %>
