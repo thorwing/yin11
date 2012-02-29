@@ -5,9 +5,6 @@
     <% end %>
   </div>
   <div class="fl" style="width: 600px;">
-    <% if feed.author %>
-        <%= feed.author.login_name %> <%= t("feeds.operations.#{feed.target_operation}") %><%= t("feeds.types.#{feed.target_type}") %>:<br/>
-    <% end %>
     <p><%= feed.content %></p>
     <% thumb_url = feed.picture_url(:thumb) %>
     <% if thumb_url.present? %>

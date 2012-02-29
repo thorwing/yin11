@@ -1,4 +1,5 @@
 <%= paginate @desires %>
 <% @desires.each do |desire| %>
-    <%= render desire %>
+    <%= render "desires/listed_desire", desire: desire %>
 <% end %>
+<%= paginate @desires %>

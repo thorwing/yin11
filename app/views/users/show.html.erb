@@ -5,9 +5,7 @@
     <div class="tab_control mt20">
         <div class="tabContainer ">
             <% @modes.each do |mode| %>
-                <div class = "<%= mode == @current_mode ? "selected" : "unselected" %>">
-                    <%= link_to t("personal.#{mode}"), user_path(@user, mode: mode), "data-page" => ".#{mode}", class: "tab" %>
-                </div>
+                <%= link_to t("personal.#{mode}"), user_path(@user, mode: mode), "data-page" => ".#{mode}", class: "tab #{mode == @current_mode ? "selected" : "unselected"}" %>
             <% end %>
         </div>
         <div class="tabContent block">

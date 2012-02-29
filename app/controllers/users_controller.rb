@@ -30,20 +30,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @modes = ["feeds", "desires", "reviews", "albums", "recipes"]
-    if params[:mode].present?
+    @modes = ["desires", "albums", "recipes"]
+    if @modes.include? params[:mode]
       @current_mode = params[:mode]
-    elsif session[:user_mode].present?
-      @current_mode = session[:user_mode]
+    #elsif @modes.include? session[:user_mode]
+    #  @current_mode = session[:user_mode]
     else
-       @current_mode = "feeds"
+       @current_mode = "desires"
     end
     session[:user_mode] = @current_mode
 
     page = params[:page].present? ? params[:page].to_i : 0
-    @feeds = FeedsManager.get_feeds_of(@user).reject{|f| f.cracked? || f.created_at.blank? || f.author.blank?}.sort{|x, y| y.created_at <=> x.created_at}.take(ITEMS_PER_PAGE_MANY)
+    #@feeds = FeedsManager.get_feeds_of(@user).reject{|f| f.cracked? || f.created_at.blank? || f.author.blank?}.sort{|x, y| y.created_at <=> x.created_at}.take(ITEMS_PER_PAGE_MANY)
     @desires = @user.desires.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
-    @reviews = @user.reviews.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @albums = @user.albums.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @recipes = @user.recipes.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
   end

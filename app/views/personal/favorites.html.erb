@@ -1,6 +1,6 @@
 <div class="grid_9 to_left">
-    <h1>我喜欢的：</h1>
-    <div class="tab_control">
+    <h1 class="trivial">我喜欢的：</h1>
+    <div class="tab_control mt10">
         <div class="tabContainer ">
             <% @modes.each do |mode| %>
                 <%= link_to t("personal.favorites.modes.#{mode}"), "/favorites?mode=#{mode}", "data-page" => ".#{mode}", class: "tab #{mode == @current_mode ? "selected" : "unselected"}" %>

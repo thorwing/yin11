@@ -3,9 +3,9 @@ class InfoCenterController < ApplicationController
 
   def index
     @modes = ["inbox", "outbox", "sys_msg", "writing"]
-    if params[:mode].present?
+    if @modes.include? params[:mode]
      @current_mode = params[:mode]
-    elsif session[:notification_mode].present?
+    elsif @modes.include? session[:notification_mode]
      @current_mode = session[:notification_mode]
     else
       @current_mode = "inbox"

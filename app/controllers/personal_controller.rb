@@ -3,9 +3,9 @@ class PersonalController < ApplicationController
 
   def me
     @modes = ["default", "albums", "desires",  "recipes"]
-    if params[:mode].present?
+    if @modes.include? params[:mode]
       @current_mode = params[:mode]
-    elsif session[:personal_mode].present?
+    elsif @modes.include? session[:personal_mode]
       @current_mode = session[:personal_mode]
     else
        @current_mode = "default"
@@ -34,11 +34,11 @@ class PersonalController < ApplicationController
   end
 
   def favorites
-    @modes = ["desires", "recipes", "albums", "products" ]
-    if params[:mode].present?
+    @modes = ["desires", "recipes", "albums"]
+    if @modes.include? params[:mode]
       @current_mode = params[:mode]
-    elsif session[:personal_mode].present?
-      @current_mode = session[:personal_mode]
+    #elsif @modes.include? session[:personal_mode]
+    #  @current_mode = session[:personal_mode]
     else
        @current_mode = "desires"
     end
@@ -47,7 +47,6 @@ class PersonalController < ApplicationController
 
     @liked_recipes = Recipe.any_in(_id: current_user.liked_recipe_ids).desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @liked_albums = Album.any_in(_id: current_user.liked_album_ids).desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
-    @liked_products = Product.any_in(_id: current_user.liked_product_ids).desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
     @admired_desires = current_user.admired_desires.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
   end
 
