@@ -49,7 +49,7 @@ class FeedsManager
       #push feed to it's author
       new_feed = initialize_feed(item)
       item.author.feeds << new_feed
-      item.author.save!
+      item.author.save
     end
 
     if item.respond_to?(:tags) && item.tags
@@ -57,14 +57,14 @@ class FeedsManager
       item.tags.each do |t|
         tag = Tag.find_or_initialize_by(:name => t)
         tag.feeds << initialize_feed(item)
-        tag.save!
+        tag.save
       end
     end
   end
 
   def self.pull_feeds(user)
     key = 'feeds_for_' + user.id.to_s
-    feeds = nil #Rails.cache.fetch(key)
+    feeds = Rails.cache.fetch(key)
     if feeds.nil?
       followed_user_ids = user.relationships.select{|r| r.target_type == "User"}.map(&:target_id)
       users = User.any_in(_id: followed_user_ids)

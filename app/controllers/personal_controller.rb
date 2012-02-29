@@ -21,12 +21,12 @@ class PersonalController < ApplicationController
       when "desires"
         @my_desires = current_user.desires.desc(:created_at).page(page).per(ITEMS_PER_PAGE_FEW)
       else
-        @feeds = get_feeds(params[:page])
+        @feeds = get_feeds(params[:page]) || []
     end
   end
 
   def more_feeds
-    @feeds = get_feeds(params[:page])
+    @feeds = get_feeds(params[:page]) || []
 
     respond_to do |format|
       format.html {render :more_feeds, :layout => false}
