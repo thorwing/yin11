@@ -5,7 +5,6 @@ class Product
   include Taggable
   include Available
   include Imageable
-  include SilverSphinxModel
   include Votable
 
   field :name
@@ -22,8 +21,8 @@ class Product
   field :editor_score, :type => Integer, :default => 0
   field :original_name
 
-  search_index(:fields => [:name],
-              :attributes => [:updated_at, :created_at])
+  #search_index(:fields => [:name],
+  #            :attributes => [:updated_at, :created_at])
 
   attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score
 

@@ -10,39 +10,30 @@ class SearchController < ApplicationController
   def index
     @users = []
     @recipes = []
-    @products = []
-    @reviews = []
+    @desires = []
+    @query = params[:query] || ""
     @empty = true
-    @query = ""
 
-    if params[:query]
-      #SilverSphinx.context.indexed_models.each do |model|
-      #  model = model.constantize
-      #  @items |= model.search(params[:query]).documents
-      #end
-      @query = params[:query]
+    #SilverSphinx.context.indexed_models.each do |model|
+    #  model = model.constantize
+    #  @items |= model.search(params[:query]).documents
+    #end
+
+    if @query.present?
       case params[:scope]
         when "users"
-          @users = User.search(@query).documents
-          @empty = @user.empty?
+          @users = User.search(@query).documents.sort{|x, y|(y.score <=> x.score)} unless @users.empty?
+        when "desires"
+          @desires = Desire.search(@query).documents.sort{|x, y|(y.created_at <=> x.created_at)}
         when "recipes"
-          @recipes = Recipe.search(@query).documents
-          @empty = @recipes.empty?
-        when "products"
-          @products = Product.search(@query).documents
-          @empty = @products.empty?
+          @recipes = Recipe.search(@query).documents.sort{|x, y|(y.created_at <=> x.created_at)}
         else
-          @users = User.search(@query).documents
-          @products = Product.search(@query).documents
-          @recipes = Recipe.search(@query).documents
-          @empty = @products.empty? && @users.empty? && @recipes.empty?
+          @users = User.search(@query).documents.sort{|x, y|(y.score <=> x.score)}
+          @desires = Desire.search(@query).documents.sort{|x, y|(y.created_at <=> x.created_at)}
+          @recipes = Recipe.search(@query).documents.sort{|x, y|(y.created_at <=> x.created_at)}
       end
-    elsif params[:tags]
-      @query = params[:tags]
-      query_tags = params[:tags].split(' ')
-      @products = Product.tagged_with(query_tags).via_editor
-      @recipes = Recipe.tagged_with(query_tags)
-      @empty = @products.empty? && @recipes.empty?
+
+      @empty = @users.empty? && @recipes.empty? && @desires.empty?
     end
   end
 

@@ -1,34 +1,31 @@
 <div>
-    <%= t("search.result_of", :text => @query ) %>
+    <span class="trivial f15"><%= t("search.result_of", :text => @query ) %></span>
     <span id="keywords" class="display_none"><%= @query %></span>
 </div>
 
-<hr/>
-
-<div id="search_results">
+<div id="search_results" class="mt10">
     <% if @empty %>
-        <span class="red"><%= t("search.not_found") %></span>
+        <span class="berry_red"><%= t("search.not_found") %></span>
     <% else %>
-        <% unless @users.empty? %>
-            <h3><%= t("search.kinds.user") %></h3>
-            <% @users.each do |user| %>
-                <%= render "shared/search_result", :item => user %>
-            <% end %>
-          <hr/>
-        <% end %>
-
-        <% unless @products.empty? %>
-            <h3><%= t("search.kinds.product") %></h3>
-            <% @products.each do |product| %>
-                <%= render "shared/search_result", :item => product %>
-            <% end %>
+        <% @users.each do |user| %>
+            <%= render "users/user", :user => user %>
         <% end %>
 
         <% unless @recipes.empty? %>
-            <h3><%= t("search.kinds.recipe") %></h3>
+            <h3 class="trivial"><%= t("search.kinds.recipe") %></h3>
             <% @recipes.each do |recipe| %>
-                <%= render "shared/search_result", :item => recipe %>
+              <%= render "shared/search_result", :item => recipe %>
             <% end %>
+        <% end %>
+
+        <% unless @desires.empty? %>
+            <div class="fl" style="width: 720px;">
+                <h3 class="trivial">馋人图片</h3>
+                <% @desires.each do |desire| %>
+                    <%= render "desires/listed_desire", :desire => desire %>
+                <% end %>
+            </div>
+            <div class="clearfix"></div>
         <% end %>
 
     <% end %>

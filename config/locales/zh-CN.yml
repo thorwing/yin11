@@ -82,7 +82,7 @@ zh-CN:
     error: 出错啦
 
   validations:
-    header_msg: 好像表单中有一些错误嘛，要不您再仔细看看？
+    header_msg: 真抱歉，好像出了点错，要不您再仔细看看：
     general:
       presence_msg: 不能为空
       uniqueness_msg: 相同的%{field}已存在
@@ -93,7 +93,7 @@ zh-CN:
       reported_on_invalid_msg: 报告日期的格式不正确
     tags:
       max_limit_msg: 最多可以设置%{max}个标签
-    login_name_duplicate: 用户名已被使用
+    login_name_duplicate: 昵称已被使用
 
 
   authentication:
@@ -580,7 +580,7 @@ zh-CN:
       recipe: 菜谱
       review: 分享
       user: 用户
-    tip: 食物、菜谱、用户
+    tip: 美食、菜谱、用户
     not_found: 抱歉，没有搜索到符合条件的内容
     result_of: 为您找到关于 %{text} 的结果：
 

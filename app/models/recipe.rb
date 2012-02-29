@@ -2,17 +2,17 @@ class Recipe
     include Mongoid::Document
     include Mongoid::Timestamps
     include Taggable
-    include SilverSphinxModel
     include Votable
     include Imageable
     include Feedable
+    include SilverSphinxModel
 
     #fields
     field :name
     field :notice
 
-    search_index(:fields => [:name],
-              :attributes => [:updated_at, :created_at])
+    search_index(:fields => [:name, :tags],
+              :attributes => [:created_at])
 
     attr_accessible  :author_id, :name, :ingredients_attributes, :steps_attributes, :notice
 

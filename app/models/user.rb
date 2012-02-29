@@ -291,8 +291,8 @@ class User
   end
 
   def login_name_is_unique
-    if User.first(conditions: { provide: self.provider, login_name: self.login_name})
-      record.errors[:name] << t("validations.login_name_duplicate")
+    if User.first(conditions: { provider: self.provider, login_name: self.login_name})
+      errors.add(:base, I18n.t("validations.login_name_duplicate"))
     end
   end
 

@@ -1,12 +1,12 @@
 <% if target.errors.any? %>
-<div id="errorExplanation" class="block">
-  <div class="block round p5 mt10 mb10">
-      <h3><%= t("validations.header_msg") %></h3>
-      <ul>
-      <% target.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-  </div>
+
+<div id="errorExplanation" class="block round p5 mt10 mb10 b_berry_gray">
+  <h3><%= t("validations.header_msg") %></h3>
+  <ul>
+  <% target.errors.full_messages.each do |msg| %>
+    <li class="berry_red"><%= msg %></li>
+  <% end %>
+  </ul>
 </div>
+
 <% end %>
