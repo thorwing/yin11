@@ -22,7 +22,7 @@
     </h3>
     <div class="item clearfix">
         <div class="fl mr10" style="width:100px;">
-            <%= new_tab_link_to image_tag(solution.item.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
+            <%= new_tab_link_to image_tag(solution.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
         </div>
         <div class="fl" style="width: 228px;">
             <%= solution.item.instruction if solution.item.is_a?(Recipe) %>

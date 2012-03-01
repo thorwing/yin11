@@ -26,6 +26,12 @@ class Solution
     item ? item.name : ""
   end
 
+  def get_image_url(version = nil)
+    pic_url = nil
+    pic_url = item.get_image_url(version) if item
+    pic_url = pic_url.present? ? pic_url : "/assets/not_found.png"
+  end
+
   def voter_ids
     @voter_ids ||= self.votes.map(&:voter_id)
   end
