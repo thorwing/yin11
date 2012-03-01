@@ -3,11 +3,15 @@ class Notification
   include Mongoid::Timestamps
 
   #when , who, did what
+  field :category
   field :person_id
   field :item_type
   field :item_id
-  field :operation
-  field :message
+  field :action
+  field :status
+  field :comment_id
+  field :has_parent
+  field :content
   field :read, :type => Boolean, :default => false
   field :score, :type => Integer, :default => 0
 
@@ -15,26 +19,26 @@ class Notification
   embedded_in :user
 
   #validations
-  def self.operations
-    ["comment", "like", "admire", "recommend", "edit", "delete", "follow", "become_master", "add_review", "solve", "vote", nil]
-  end
-  validates_inclusion_of :operation, :in => Notification.operations
+  validates_inclusion_of :category, :in => ["relationship", "user", "item", "comment"]
 
-  def self.item_types
-    ["Review", "Recipe", "Album", "Comment", "Desire", nil]
-  end
-  validates_inclusion_of :item_type, :in => Notification.item_types
+  validates_inclusion_of :item_type, :in => ["Solution", "Recipe", "Album", "Desire", nil]
+
+  validates_inclusion_of :action, :in => ["delete", "like", "vote", "admire", "solve", "follow", nil]
+
+  validates_inclusion_of :status, :in => ["master", "group_admin", nil]
 
   def person
-    @person ||= User.first(conditions: {id: self.person_id})
-    @person
+    if self.person_id.present?
+      @person ||= User.first(conditions: {id: self.person_id})
+      @person
+    else
+      nil
+    end
   end
 
   def item
-    if @item
-      @item
-    elsif self.item_id.present? && self.item_type.present?
-      @item = eval("#{self.item_type}.first(conditions: {id: '#{self.item_id.to_s}'})")
+    if self.item_id.present? && self.item_type.present?
+      @item ||= eval("#{self.item_type}.first(conditions: {id: '#{self.item_id.to_s}'})")
       @item
     else
       nil
@@ -43,38 +47,51 @@ class Notification
 
   def subject
     subject = ''
-    if self.item_id.present? && self.item_type.present? && self.operation.present? && self.person_id.present?
-      if self.item && self.person
-        #item notification
-        item_str = I18n.t("notifications.item_types.#{self.item_type}")
-        operation_str = I18n.t("notifications.operations.#{self.operation}")
-        person_str = self.person.login_name
-        subject = I18n.t("notifications.item_notification", person_str: person_str, operation_str: operation_str, item_str: item_str)
-        subject += I18n.t("notifications.reward_notification", count: self.score) if (self.score && self.score > 0)
-      end
+    item_type_str = self.item_type.present? ? I18n.t("notifications.item_types.#{self.item_type}") : ""
+    action_str = self.action.present? ? I18n.t("notifications.actions.#{self.action}") : ""
+    person_str = self.person.present? ? self.person.login_name : ""
+    case category
+      when "relationship"
+        if self.action == "follow"
+          subject = I18n.t("notifications.follow_notification", person_str: person_str)
+        end
+      when "user"
+        if self.status == "master"
+          subject = I18n.t("notifications.master_notification")
+        end
+      when "item"
+        if self.item_id.present? && self.item_type.present? && self.action.present? && self.person_id.present?
+          #item notification
+          if action == "solve"
+            subject = I18n.t("notifications.solve_notification", person_str: person_str)
+          elsif action == "vote"
+            subject = I18n.t("notifications.vote_notification", person_str: person_str)
+          else
+            subject = I18n.t("notifications.item_notification", person_str: person_str, action_str: action_str, item_type_str: item_type_str)
+          end
+        end
+      when "comment"
+        if has_parent
+          subject = I18n.t("notifications.reply_comment_notifiction", person_str: person_str, item_type_str: item_type_str)
+        else
+          subject = I18n.t("notifications.comment_notifiction", person_str: person_str, item_type_str: item_type_str)
+        end
     end
 
-    if self.operation == "vote"
-      subject = I18n.t("notifications.vote_notification", person_str: person_str) + I18n.t("notifications.reward_notification", count: self.score) if (self.score && self.score > 0)
-    end
+    subject
+  end
 
-    if self.operation == "become_master"
-      subject = I18n.t("notifications.master_notification")
+  def side_notification
+    subject = ''
+    if (self.score && self.score > 0)
+      subject = I18n.t("notifications.reward_notification", count: self.score)
     end
-
-    if self.operation == "follow"
-      person = User.first(conditions: {id: self.person_id})
-      person_str = person.login_name
-      operation_str = I18n.t("notifications.operations.#{self.operation}")
-      subject = I18n.t("notifications.me_notification", person_str: person_str, operation_str: operation_str)
-    end
-
-    (subject || notification.message) || ''
+    subject
   end
 
   #used for uniq()
-  def identity
-    [self.created_at.strftime("%y-%m-%d"), self.person_id, self.item_type, self.item_id, self.operation]
-  end
+  #def identity
+  #  [self.created_at.strftime("%y-%m-%d"), self.person_id, self.item_type, self.item_id, self.action]
+  #end
 
 end

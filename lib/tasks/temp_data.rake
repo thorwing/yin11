@@ -49,6 +49,13 @@ namespace :yin11 do
     end
   end
 
+  desc "clean all notifications"
+    task :clean_all_notifications => :environment do
+      User.all.to_a.each do |user|
+        user.notifications.delete_all
+      end
+    end
+
   desc "generate primary tags"
   task :generate_primary_tags => :environment do
     p "generate primary tags..."

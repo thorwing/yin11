@@ -1,29 +1,37 @@
-<%= hidden_field_tag "place_latitude", location.latitude %>
-<%= hidden_field_tag "place_longitude", location.longitude %>
-<div id="map_canvas" class="center" style="width: 210px; height: 210px"></div>
-<% if request.host.include? "chixinbugai.com" %>
-    <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRTTDXYzDc0TRohOFh4YJHUphGw3SBQwuFNAVF30rcmzLfjwB71COkb5XA" %>
-<% elsif request.host.include? "meishikezhan.com" %>
-    <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRRYKk8QssvL90kzgRojyloQR74yFBTTZcRrb7pONl7QJYYctP61BODtBQ" %>
-<% elsif request.host.include? "yinkuaizi.com" %>
-    <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRT2H37VFXvrvhgIRNtmutCmy1bfIRQF2i-4uacF69HsVG3ToxsI9xDRkQ" %>
+<% if true %>
+    <%= hidden_field_tag "place_latitude", location.latitude %>
+    <%= hidden_field_tag "place_longitude", location.longitude %>
+    <div id="map_canvas" class="center" style="width: 210px; height: 210px"></div>
+    <% if request.host.include? "chixinbugai.com" %>
+        <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRTTDXYzDc0TRohOFh4YJHUphGw3SBQwuFNAVF30rcmzLfjwB71COkb5XA" %>
+    <% elsif request.host.include? "meishikezhan.com" %>
+        <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRRYKk8QssvL90kzgRojyloQR74yFBTTZcRrb7pONl7QJYYctP61BODtBQ" %>
+    <% elsif request.host.include? "yinkuaizi.com" %>
+        <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRT2H37VFXvrvhgIRNtmutCmy1bfIRQF2i-4uacF69HsVG3ToxsI9xDRkQ" %>
+    <% else %>
+        <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRSA03hF8ZXA_s_TIl9cAo_J0511axR3aE91-8weKsRTZW1rAFETon6tVA" %>
+    <% end %>
+
+    <script src="//maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;hl=zh-CN&amp;key=<%= map_key %>"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map_canvas"));
+        var latitude = document.getElementById("place_latitude").value;
+        var longitude = document.getElementById("place_longitude").value;
+        map.setCenter(new GLatLng(latitude, longitude), 15);
+
+        // Add a marker to the map
+        var point = new GLatLng(latitude, longitude);
+        map.addOverlay(new GMarker(point));
+        map.setUIToDefault();
+      }
+
+    </script>
 <% else %>
-    <% map_key = "ABQIAAAAzu7CXt92NZgriHar1AhtRRSA03hF8ZXA_s_TIl9cAo_J0511axR3aE91-8weKsRTZW1rAFETon6tVA" %>
+    <div id="map_canvas">
+        <img src="http://maps.google.com/maps/api/staticmap?center=<%= location.city %>&zoom=14&size=210x210&maptype=roadmap
+        &markers=color:blue%7Clabel:S%7C<%= location.latitude %>,<%= location.longitude %>
+        &sensor=false&language=zh-CN"/>
+    </div>
 <% end %>
-
-<script src="//maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;hl=zh-CN&amp;key=<%= map_key %>"
-        type="text/javascript"></script>
-<script type="text/javascript">
-  if (GBrowserIsCompatible()) {
-    var map = new GMap2(document.getElementById("map_canvas"));
-    var latitude = document.getElementById("place_latitude").value;
-    var longitude = document.getElementById("place_longitude").value;
-    map.setCenter(new GLatLng(latitude, longitude), 15);
-
-    // Add a marker to the map
-    var point = new GLatLng(latitude, longitude);
-    map.addOverlay(new GMarker(point));
-    map.setUIToDefault();
-  }
-
-</script>

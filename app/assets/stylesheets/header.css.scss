@@ -20,22 +20,6 @@
         background: url("header_bg.png") repeat-x;
     }
 
-    #top_menu {
-        line-height:40px;
-        display:inline-block;
-
-        li {float:left; padding:0 15px; }
-
-        li a {
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
-        }
-        li a:hover, li a.selected {color: $berry_red;}
-
-        .sub_menu {background: $berry_pink;}
-    }
-
     /*  Logo */
     #logo {
       height: 60px;

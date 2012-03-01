@@ -92,7 +92,7 @@ class User
   validates_length_of :biography, :maximum => 200
 
   #Others
-  before_save :encrypt_password, :handle_identity, :sync_cached_fields, :send_notifications
+  before_save :encrypt_password, :handle_identity, :sync_cached_fields
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
   after_update :reprocess_avatar, :if => :cropping?
@@ -214,8 +214,8 @@ class User
     feeds.reject{|f| f.picture_url.blank? }[0..(limit-1)]
   end
 
-  def unread_system_notifications
-    self.notifications.where(read: false).desc(:created_at).to_a.uniq{|n| n.identity}
+  def unread_notifications
+    self.notifications.where(read: false).desc(:created_at)
   end
 
   def has_followed?(target)
@@ -268,12 +268,6 @@ class User
 
   def sync_cached_fields
     self.reviews_count = self.reviews.size
-  end
-
-  def send_notifications
-    if self.is_master_changed? && self.is_master == true
-      NotificationsManager.generate!(self, nil, "become_master")
-    end
   end
 
   def generate_token(column)

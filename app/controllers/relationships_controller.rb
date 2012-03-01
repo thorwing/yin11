@@ -9,7 +9,7 @@ class RelationshipsController < ApplicationController
         current_user.relationships << relationship
         current_user.save!
         @followable.add_follower!(current_user)
-        NotificationsManager.generate!(@followable, current_user, "follow")  if @followable.is_a?(User)
+        NotificationsManager.generate_for_relationship(@followable, current_user, "follow")  if @followable.is_a?(User)
       end
     end
     respond_to do |format|

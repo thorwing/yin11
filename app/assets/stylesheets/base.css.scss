@@ -22,7 +22,7 @@ a {
 	color: $berry_green;
 	text-decoration:none;
 }
-a:hover { text-decoration:underline; }
+a:hover { color: $berry_azure; text-decoration:underline; }
 
 p { margin: 3px 0;}
 
@@ -43,9 +43,9 @@ blockquote {
 	margin: 0;
     padding: 0;}
 blockquote span.quoted:before {
-	content: '"'; color: $trivial_gray; font-size: 2em; margin-right: 5px; }
+	content: '"'; color: $trivial_gray; font-size: 22px; margin-right: 5px; }
 blockquote span.quoted:after {
-	content: '"'; color: $trivial_gray; font-size: 2em; margin-left: 5px;}
+	content: '"'; color: $trivial_gray; font-size: 22px; margin-left: 5px;}
 blockquote span.quoted.blocked {
 	text-decoration: line-through; }
 

@@ -11,13 +11,14 @@
                 <div class="fr mt20">
                     <span class="nav_menu">
                         <% new_pm_count = current_user.messages.where(to_id: current_user.id.to_s, read: false).size %>
-                        <% sys_msg_count = current_user.unread_system_notifications.size %>
+                        <% sys_msg_count = current_user.unread_notifications.size %>
                         <% total_msg_count = new_pm_count + sys_msg_count %>
                         <%= content_tag :span, "", class: "icon bubble" if total_msg_count > 0 %>
-                        <%= link_to t("menu.notifications") + (total_msg_count > 0 ? "(#{total_msg_count.to_s})" : ""), "/info_center" %>
+                        <%= link_to t("menu.notifications"), "/info_center" %>
+                        <%= content_tag :span, "(#{total_msg_count.to_s})", class: "berry_pink" if total_msg_count > 0 %>
                         <ul class="sub_menu">
-                            <li><%= link_to "私信" + (new_pm_count > 0 ? "(#{new_pm_count.to_s})" : ""), "/info_center?mode=inbox"%></li>
-                            <li><%= link_to t("notifications.modes.sys_msg_mode") + (sys_msg_count > 0 ? "(#{sys_msg_count.to_s})" : ""), "/info_center?mode=sys_msg"%></li>
+                            <li><%= link_to "#{new_pm_count} 封未读私信", "/info_center?mode=inbox"%></li>
+                            <li><%= link_to "#{sys_msg_count} 条新通知", "/info_center?mode=notifications"%></li>
                         </ul>
                     </span> |
                     <span class="nav_menu">

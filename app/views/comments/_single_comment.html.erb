@@ -1,7 +1,7 @@
 <div class="comment box_shadow" id='<%= comment.id.to_s %>'>
     <div>
-      <%= image_tag comment.user.get_avatar(:thumb), :width => 24, :height => 24 %>
-      <%= link_to comment.user.login_name, comment.user %>:
+      <%= image_tag comment.user.get_avatar(:thumb), :width => 48, :height => 48 %>
+      <%= link_to comment.user.login_name, comment.user, class: "trivial" %>:
         <blockquote>
           <% if comment.enabled %>
             <span class="ml5 quoted"><%= comment.content %></span>

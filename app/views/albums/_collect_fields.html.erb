@@ -1,5 +1,8 @@
 <div class="collect_fields">
     <% collected, album = current_user.has_collected?(item) %>
+    <% if item.album_ids.size > 0 %>
+          <span class="trivial"><%= "#{item.album_ids.size}次被收集" %></span><br/>
+    <% end %>
     <% if collected %>
         <%= render "albums/has_collected", album: album %>
     <% else %>
@@ -17,8 +20,5 @@
                 </div>
             </div>
         </div>
-    <% end %>
-    <% if item.album_ids.size > 0 %>
-        <span class="trivial"><%= "#{item.album_ids.size}次被收集" %></span>
     <% end %>
 </div>

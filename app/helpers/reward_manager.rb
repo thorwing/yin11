@@ -1,34 +1,30 @@
 class RewardManager
-  def self.reward_for_like(item, user = nil)
+  def self.reward_for_like(item, user)
     if (item.respond_to? :author) && item.author
-      score_value = 5
-      item.author.score += score_value
+      item.author.score += SCORE_LIKE
       item.author.save
 
-      NotificationsManager.generate!(item.author, user, "like", item, nil, score_value)
+      NotificationsManager.generate_for_item(item.author, user, item, "like", SCORE_LIKE)
     end
   end
 
-  def self.reward_for_admire(item, user = nil)
+  def self.reward_for_admire(item, user)
     if (item.respond_to? :author) && item.author
-      score_value = 5
-      item.author.score += score_value
+      item.author.score += SCORE_ADMIRE_DESIRE
       item.author.save
-
-      NotificationsManager.generate!(item.author, user, "admire", item, nil, score_value)
+      NotificationsManager.generate_for_item(item.author, user, item, "admire", SCORE_ADMIRE_DESIRE)
     end
   end
 
-  def self.reward_for_vote(vote, user = nil)
-      score_value = 5
-      solution = vote.solution
-      if solution.author
-        solution.author.score += score_value
-        solution.author.save
+  def self.reward_for_vote(vote, user)
+    solution = vote.solution
+    if solution.author
+      solution.author.score += SCORE_VOTE_SOLUTION
+      solution.author.save
 
-        NotificationsManager.generate!(solution.author, user, "vote", solution.desire, vote.content, score_value)
-      end
+      NotificationsManager.generate_for_item(solution.author, user, solution.desire, "vote", SCORE_VOTE_SOLUTION, vote.content)
     end
+  end
 
   def ask_for_badges
     Badge.enabled.not_belong_to(@user).all.each do |badge|

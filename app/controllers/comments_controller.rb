@@ -30,19 +30,16 @@ class CommentsController < ApplicationController
         @comment = @item.comments.create(:content => params[:content], :user => current_user)
       end
 
-      #if @parent
-      #  NotificationsManager.generate!(@parent.user, current_user, "comment", @parent, @comment.content)
-      #end
-
-      if @item && @item.respond_to?(:author)
-        NotificationsManager.generate!(@item.author, current_user, "comment", @item, @comment.content)
+      if [Desire.name, Album.name, Recipe.name].include? @item.class.name
+        NotificationsManager.generate_for_comment(@item.author, current_user, @item, @comment)
+        NotificationsManager.generate_for_comment(@parent.user, current_user, @item, @comment, true) if @parent
       end
     end
 
     respond_to do |format|
-        format.html {redirect_to @item}
-        format.xml {head :ok}
-        format.js {render :content_type => 'text/javascript'}
+      format.html {redirect_to @item}
+      format.xml {head :ok}
+      format.js {render :content_type => 'text/javascript'}
     end
   end
 

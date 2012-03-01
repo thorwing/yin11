@@ -25,10 +25,15 @@ class Administrator::UsersController < Administrator::BaseController
 
   def update
     @user = User.find(params[:id])
+    was_master = @user.is_master
     @user.role = params[:new_role] if params[:new_role].present?
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        if @user.is_master == true && @user.is_master != was_master
+          NotificationsManager.generate_for_user(@user, current_user, "master")
+        end
+
         format.html { redirect_to([:administrator, @user], :notice => 'User was successfully updated.') }
         format.xml  { head :ok }
       else

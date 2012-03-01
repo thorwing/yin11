@@ -1,0 +1,47 @@
+<div id="<%= notification.id.to_s %>">
+    <div class="grid_1">
+        <% if notification.read %>
+            <%= content_tag :span, "已读", class: "trivial" %>
+        <% else %>
+            <%= content_tag :span, "未读", class: "berry_red" %>
+        <% end %>
+    </div>
+    <div class="fl">
+        <% if notification.person %>
+            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> notification.person.get_avatar(:thumb, false), width:48, height:48), notification.person %><br/>
+        <% end %>
+    </div>
+    <div class="grid_8">
+        <%= link_to notification.person.login_name, notification.person, class: "trivial mr5" if notification.person %>
+        <%= content_tag :span, notification.subject %>
+        <% if notification.content.present? %><blockquote><span class="ml5 quoted"><%= notification.content %></span> </blockquote><% end %>
+        <% if notification.item %>
+            <span class="ml5">
+                <% if notification.item.respond_to? :name %>
+                    <%= link_to notification.item.name, notification.item %>
+                <% elsif notification.item.respond_to? :title %>
+                    <%= link_to notification.item.title, notification.item %>
+                <% else %>
+                  <%= link_to "[查看]", notification.item %>
+                <% end %>
+            </span>
+
+            <div>
+                <% pic_url = notification.item.get_image_url(:thumb) %>
+                <%= link_to image_tag(pic_url, width: 50, height: 50), notification.item, class: "mt2" if pic_url.present? %>
+            </div>
+        <% end %>
+        <% if notification.side_notification.present? %>
+            <div>
+                <%= content_tag :span, notification.side_notification, class: "berry_pink"  %>
+                <span title="积分" class="icon icon_star mr2" style="display: inline-block;"></span>
+            </div>
+        <% end %>
+    </div>
+    <div class="fr">
+        <div class="fr"><%= link_to "删除", notification, :confirm => t("general.are_you_sure_to_delete"), remote: true, method: :delete, class: "btn btn_delete_x lighter_touch" %></div><br/>
+        <div class="fr"><span class="trivial"><%= notification.created_at.strftime(GENERAL_TIME_FORMAT) %></span></div>
+    </div>
+    <div class="clearfix"></div>
+    <hr/>
+</div>

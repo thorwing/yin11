@@ -654,29 +654,30 @@ zh-CN:
     modes:
       inbox_mode: 收件箱
       outbox_mode: 发件箱
-      sys_msg_mode: 系统通知
+      notifications_mode: 通知
       writing_mode: 写信
-    item_notification: %{person_str}%{operation_str}我的%{item_str}
-    reward_notification: "，我获得了%{count}颗星星"
-    master_notification: 我被授予了达人的称号！
-    me_notification: %{person_str}%{operation_str}了我
-    vote_notification: %{person_str}投票给我的解馋攻略
+    user_status:
+      normal_user: 普通用户
+      master: 达人
+      group_admin: 饭桌首席
+    follow_notification: 关注了我
+    solve_notification: 给馋人图片添加了解馋攻略：
+    item_notification: %{action_str}我的%{item_type_str}：
+    comment_notifiction: 评论了我的%{item_type_str}：
+    reply_comment_notifiction: 回复了我在%{item_type_str}中的评论：
+    reward_notification: 我获得了%{count}颗星星
+    master_notification: 恭喜，为了感谢您贡献的那么多精彩内容，您被授予了达人称号！ 希望您再接再厉。
+    vote_notification: 给我的解馋攻略投了一票
     item_types:
-      Review: 分享
       Recipe: 菜谱
       Album: 专辑
       Comment: 评论
       Desire: 馋人图片
       Soluton: 解馋攻略
-    operations:
-      comment: 评论
+    actions:
       like: 喜欢
-      recommend: 推荐
-      edit: 编辑
       admire: 垂涎
+      vote: 投票
       delete: 删除
-      follow: 关注
-      become_master: 成为达人
-      add_review: 分享了如何解馋
-      solve: 分享了解馋攻略
-      vote: 为解馋攻略投票
+      vote: 投票给了
+      solve: 添加解馋攻略给了
