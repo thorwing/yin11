@@ -26,7 +26,7 @@ class User
   field :access_token
   field :access_token_secret
   field :is_master, :type => Boolean, :default => false
-  field :biography, type: String, default: I18n.t("profile.default_bio")
+  field :biography, type: String
   field :score, :type => Integer, :default => 0
   #cached fields
   field :reviews_count, :type => Integer
@@ -46,7 +46,7 @@ class User
   index :auth_token
 
   attr_accessor :password, :crop_x, :crop_y, :crop_h, :crop_w
-  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar, :thumb, :group_ids, :biography
+  attr_accessible :email, :login_name, :password, :password_confirmation, :password_reset_token, :password_reset_sent_at, :email_verification_token, :avatar, :thumb, :group_ids, :biography, :is_master
 
   # strange error when trying to using scope, so using class method instead
   scope :masters, where(:is_master => true)
@@ -291,7 +291,7 @@ class User
   end
 
   def login_name_is_unique
-    if User.first(conditions: { provider: self.provider, login_name: self.login_name})
+    if self.new_record? && User.first(conditions: { provider: self.provider, login_name: self.login_name})
       errors.add(:base, I18n.t("validations.login_name_duplicate"))
     end
   end

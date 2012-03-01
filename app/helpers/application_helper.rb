@@ -165,7 +165,7 @@ module ApplicationHelper
     flash_types = [:error, :alert, :notice]
 
     messages = ((flash_types & flash.keys).collect() do |key|
-      "$.jGrowl('#{flash[key]}', {header: '#{I18n.t("flash.#{key}", :default => key.to_s)}', theme: '#{key.to_s}'});"
+      "$.jGrowl('#{flash[key]}', {header: '#{I18n.t("flash.#{key}", :default => key.to_s)}', theme: '#{key.to_s}', life: 5000});"
     end.join("\n"))
 
     if messages.size > 0
