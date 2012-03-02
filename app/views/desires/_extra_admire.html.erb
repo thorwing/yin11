@@ -1,3 +1,5 @@
-<div class="b_azure_gray pt5 pl10 pr10">
-    <span class="trivial"><%= "#{desire.admirer_ids.size}人被馋到了" if desire.admirer_ids.size > 0 %></span>
-</div>
+<% if desire.admirer_ids.size > 0 %>
+    <div class="b_azure_gray pt5 pl10 pr10">
+        <span class="trivial"><%= "#{desire.admirer_ids.size}人被馋到了" %></span>
+    </div>
+<% end %>
