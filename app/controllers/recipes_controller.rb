@@ -58,7 +58,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
-
+    @recipe = Recipe.find(params[:id])
   end
 
   # POST /recipes
@@ -109,6 +109,7 @@ class RecipesController < ApplicationController
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
+    @recipe = Recipe.find(params[:id])
     #delete ingredients removed by user
     ingredient_ids_to_be_deleted = @recipe.ingredients.map{|i| i.id.to_s } - params[:recipe][:ingredients_attributes].map{|k,v| v["id"]}
     @recipe.ingredients.any_in(_id: ingredient_ids_to_be_deleted).delete_all
@@ -229,6 +230,7 @@ class RecipesController < ApplicationController
     total_chapters = 0
     if chapter.present?
       chapter = chapter.to_i
+      session[:current_recipes_chapter] = chapter
     elsif session[:current_recipes_chapter].present?
       chapter = session[:current_recipes_chapter].to_i
     else

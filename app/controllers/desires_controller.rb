@@ -217,6 +217,7 @@ class DesiresController < ApplicationController
     total_chapters = 0
     if chapter.present?
       chapter = chapter.to_i
+      session[:current_desires_chapter] = chapter
     elsif session[:current_desires_chapter].present?
       chapter = session[:current_desires_chapter].to_i
     else

@@ -41,11 +41,17 @@ class HomeController < ApplicationController
   private
 
   def get_desires(mode, page = 1, chapter = nil)
-    total_chapters = 0
+    total_chapters = Rails.cache.fetch('total_desires_chapters')
+    if total_chapters.nil?
+      total_chapters = (Desire.enabled.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+      Rails.cache.write('total_desires_chapters', total_chapters, :expires_in => 1.minutes)
+    end
+
     if chapter.present?
       chapter = chapter.to_i
-    elsif session[:current_desires_chapter].present?
-      chapter = session[:current_desires_chapter].to_i
+      session[:current_home_chapter] = chapter
+    elsif session[:current_home_chapter].present?
+      chapter = session[:current_home_chapter].to_i
     else
       chapter = 1
     end
@@ -53,7 +59,7 @@ class HomeController < ApplicationController
     page = (page ? page.to_i : 1)
     criteria = Desire.enabled
     desires = []
-    total_chapters = (criteria.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+
     if page <= PAGES_PER_CHAPTER
       if mode == "admire"
         desires = criteria.desc(:admirer_ids, :priority, :created_at).page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW)
