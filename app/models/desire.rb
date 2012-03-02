@@ -9,6 +9,7 @@ class Desire
   field :content
   field :priority, :type => Integer, :default => 0
   field :history_admirer_ids, :type => Array, :default => []
+  field :solved, :type => Boolean, :default => false
 
   search_index(:fields => [:content, :tags],
                 :attributes => [:created_at])
@@ -16,6 +17,7 @@ class Desire
   attr_accessible :content, :priority
 
   #scopes
+  scope :enabled, where(:priority.gte => 0)
   scope :recommended, where(:priority.gt => 0)
 
   #relationships
@@ -32,26 +34,6 @@ class Desire
   validates_presence_of :author
   validates_length_of :content, :maximum => MAX_DESIRE_CONTENT_LENGTH
 
-  def has_solution?
-    unless @result
-      total = 0
-      max = 0
-      @best_solution = nil
-      self.solutions.each do |s|
-        size = s.votes.size
-        total += size
-        if size > max
-          @best_solution = s
-          max = size
-        end
-      end
-      enough_votes = total >= DESIRE_SOLVED_BAR_COUNT
-      @result = enough_votes && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
-    end
-
-    return @result, @best_solution
-  end
-
   #def latest_user_solution
   #  solutions.excludes(author_id: nil).first(sort: [[ :created_at, :desc ]])
   #end
@@ -62,6 +44,27 @@ class Desire
 
   def votes_count
     @votes_count ||= self.solutions.inject(0){|sum, s| sum + s.voter_ids.size }
+  end
+
+  def best_solution
+    @best_solution ||= self.solutions.max_by {|s| s.votes.size}
+    @best_solution
+  end
+
+  def check_solutions
+    unless self.new_record?
+      was_solved = self.solved
+      total = 0
+      max = 0
+      self.solutions.each do |s|
+        size = s.votes.size
+        total += size
+        max = size if size > max
+      end
+      enough_votes = total >= DESIRE_SOLVED_BAR_COUNT
+      self.solved = enough_votes && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
+      self.save if self.solved != was_solved
+    end
   end
 
 end

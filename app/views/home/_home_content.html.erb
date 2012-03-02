@@ -20,7 +20,7 @@
         <div class="inner_frame p5">
             <%= content_tag :span, "美食标签：", class: "trivial f14" %><br/>
             <% @hot_tags.each do |tag| %>
-                <%= link_to tag, desires_path(tag: tag), class: "tag" %>
+                <%= link_to tag, desires_path(tag: tag, mode: @current_mode), class: "tag" %>
             <% end %>
             <hr/>
             <div class="mt10">
@@ -37,7 +37,7 @@
         </div>
     </div>
     <% @desires.each do |desire| %>
-        <%= render "desires/desire_item", desire: desire %>
+        <%= render "desires/desire_item", desire: desire, mode: @current_mode %>
     <% end %>
 </div>
 

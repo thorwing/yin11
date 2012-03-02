@@ -164,6 +164,7 @@ class DesiresController < ApplicationController
       end
 
       RewardManager.reward_for_vote(vote, current_user)
+      desire.check_solutions
     end
 
     respond_to do |format|

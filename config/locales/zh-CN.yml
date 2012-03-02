@@ -296,7 +296,9 @@ zh-CN:
     recommended_products: 推荐商品
     modes:
       hottest: 人气
-      newest: 最新
+      admire: 最馋人
+      solved: 能解馋
+      newest: 最新上传
       collections: "专辑&达人"
 
   control_panel:

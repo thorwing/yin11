@@ -1,0 +1,11 @@
+<div class="b_azure_gray pt5 pl10 pr10">
+    <div>
+        <% desire.comments.desc(:created_at).limit(3).each do |comment| %>
+            <div class="border_top pt5 pb5">
+                <%= link_to image_tag(comment.user.get_avatar(:thumb, false), width: 22, height: 22), comment.user %>
+                <span class="trivial f12"><%= link_to comment.user.login_name, comment.user %></span>
+                <span class="trivial f12 ml5"><%= truncate_content comment.content, 20 %></span>
+            </div>
+        <% end %>
+    </div>
+</div>
