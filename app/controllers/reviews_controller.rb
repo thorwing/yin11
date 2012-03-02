@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
+  before_filter :preload
   before_filter(:except => [:show]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Review.name, c.params[:id], true)}
+  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(@review, false, true)}
+  before_filter(:only => [:delete]) {|c| c.the_author_himself(@review, true, true)}
 
   # GET /reviews/1
   # GET /reviews/1.xml
   def show
-    @review = Review.find(params[:id])
-
     tags = []
     tags += @review.products.inject([]){|memo, p| memo + p.tags} if @review.products
     tags += @review.recipes.inject([]){|memo, r| memo + r.tags} if @review.recipes
@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
-    @review = Review.find(params[:id])
+
   end
 
   # POST /reviews
@@ -102,8 +102,6 @@ class ReviewsController < ApplicationController
   # PUT /reviews/1
   # PUT /reviews/1.xml
   def update
-    @review = Review.find(params[:id])
-
     ImagesHelper.process_uploaded_images(@review, params[:images])
 
     respond_to do |format|
@@ -120,7 +118,6 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.xml
   def destroy
-    @review = Review.find(params[:id])
     @review.destroy
 
     respond_to do |format|
@@ -136,4 +133,10 @@ class ReviewsController < ApplicationController
       format.js
     end
   end
+
+  private
+  def preload
+    @review = Review.find(params[:id]) if params[:id].present?
+  end
+
 end

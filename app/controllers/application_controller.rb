@@ -41,23 +41,30 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def the_author_himself(class_name, object_id, or_editor = false, is_redirect = true)
+  def get_item_by_evaluation(item_type, item_id)
+    begin
+      eval "#{item_type.capitalize}.find(\"#{item_id}\")"
+    rescue
+      nil
+    end
+  end
+
+  def the_author_himself(item, or_admin = false, is_redirect = false)
     has_permission = false
-    if current_user
-      if (or_editor and current_user.has_permission?(:editor))
-        has_permission = true
-      else
-        object = eval "#{class_name.capitalize}.find(\"#{object_id}\")"
-        if object.respond_to?(:author_id)
-          has_permission = (object.author_id == current_user.id)
-        else
-          #raise "The object of " + class_name + " doesn't implement author_id."
-          false
-        end
+
+    if (or_admin && current_user.has_permission?(:administrator))
+      has_permission = true
+    elsif current_user.has_permission?(:normal_user)
+      begin
+        has_permission = (item && item.respond_to?(:author_id)) ? (item.author_id == current_user.id) : false
+      rescue
       end
     end
 
-    (redirect_to :root, :alert => t("alerts.only_author_self")) if (not has_permission and is_redirect)
+    if !has_permission && is_redirect
+      redirect_to :root, :alert => t("alerts.only_author_self")
+    end
+
     has_permission
   end
 

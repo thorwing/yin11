@@ -32,21 +32,23 @@
         <%= render "users/author_panel", author: @album.author %>
     </div>
 
-    <% if the_author_himself(Album.name, @album.id, true, false) %>
+    <% if the_author_himself(@album, true) %>
         <div class="box_shadow mt10 p5 clearfix">
-            <div class="hint_box" style="width: <%= IMAGE_THUMB_WIDTH %>px">
-                 <% cover_url = @album.get_cover_url(:thumb) %>
-                 <% if cover_url.present? %>
-                     <%= image_tag "grey.gif", "data-original"=> cover_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image" %>
-                 <% else %>
-                     <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image" %>
-                 <% end %>
-                 <span class="fix_hint b_black_alpha30 white"><%= t("albums.cover") %></span>
-            </div>
+            <% if the_author_himself(@album) %>
+                <div class="hint_box" style="width: <%= IMAGE_THUMB_WIDTH %>px">
+                     <% cover_url = @album.get_cover_url(:thumb) %>
+                     <% if cover_url.present? %>
+                         <%= image_tag "grey.gif", "data-original"=> cover_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image" %>
+                     <% else %>
+                         <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image" %>
+                     <% end %>
+                     <span class="fix_hint b_black_alpha30 white"><%= t("albums.cover") %></span>
+                </div>
+            <% end %>
 
             <div class="mt5">
-                <%= link_to "", edit_album_path(@album), class: "btn btn_edit fl" %>
-                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "btn btn_delete fl" %><br/>
+                <%= link_to "", edit_album_path(@album), class: "btn btn_edit fl" if the_author_himself(@album) %>
+                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "btn btn_delete fl" if the_author_himself(@album, true) %><br/>
             </div>
         </div>
     <% end %>

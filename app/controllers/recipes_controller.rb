@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
+  before_filter :preload
   before_filter(:except => [:index, :show, :more]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Recipe.name, c.params[:id], true)}
+  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(@recipe, false, true)}
+  before_filter(:only => [:delete]) {|c| c.the_author_himself(@recipe, true, true)}
 
   # GET /recipes
   # GET /recipes.json
@@ -26,7 +28,6 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
-    @recipe = Recipe.find(params[:id])
     #TODO
     @related_recipes = Recipe.tagged_with(@recipe.tags).excludes(id: @recipe.id).limit(10).reject{|r| r.image.blank?}
     prior = {"user_tag"=> 3, "major_tag" => 2, "minor_tag" => 1}
@@ -57,7 +58,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
-    @recipe = Recipe.find(params[:id])
+
   end
 
   # POST /recipes
@@ -108,7 +109,6 @@ class RecipesController < ApplicationController
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
-    @recipe = Recipe.find(params[:id])
     #delete ingredients removed by user
     ingredient_ids_to_be_deleted = @recipe.ingredients.map{|i| i.id.to_s } - params[:recipe][:ingredients_attributes].map{|k,v| v["id"]}
     @recipe.ingredients.any_in(_id: ingredient_ids_to_be_deleted).delete_all
@@ -134,7 +134,6 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
-    @recipe = Recipe.find(params[:id])
     @recipe.destroy
 
     respond_to do |format|
@@ -144,7 +143,6 @@ class RecipesController < ApplicationController
   end
 
   def mark
-    @recipe = Recipe.find(params[:id])
     @review = @recipe.reviews.new(content: params[:content])
     @review.author = current_user
     @review.save!
@@ -169,6 +167,10 @@ class RecipesController < ApplicationController
 
   #for non-action methods
   private
+
+  def preload
+    @recipe = Recipe.find(params[:id]) if params[:id].present?
+  end
 
   def get_related_products(recipe, max, prior)
     @major_tags= []

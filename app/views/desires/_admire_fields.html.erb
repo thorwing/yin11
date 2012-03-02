@@ -1,6 +1,5 @@
 <span class="admire_fields <%= desire.id.to_s %> clearfix">
-
-    <% if current_user_has_permission?(:normal_user) &&  !the_author_himself(Desire.name, desire.id, false, false) %>
+    <% if current_user_has_permission?(:normal_user) &&  !the_author_himself(Desire) %>
         <%= content_tag :span, "如有解馋攻略，第一时间得到通知", class: "trivial f12" unless desire.admirer_ids.include?(current_user.id) %><br/>
         <%= link_to "", admire_desire_path(:id => desire.id), :method => :put, :remote => true,
                 :class => "btn btn_admire " + (desire.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>

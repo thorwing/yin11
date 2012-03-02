@@ -14,12 +14,11 @@
                 </p>
             </div>
 
-            <% if the_author_himself(Review.name, @review.id, true, false) %>
-                <div class="mt10 p5 clearfix">
-                    <%= link_to "", edit_review_path(@review), class: "btn btn_edit fl" %>
-                    <%= link_to "", @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %>
-                </div>
-            <% end %>
+            <div class="mt10 p5 clearfix">
+                <%= link_to "", edit_review_path(@review), class: "btn btn_edit fl" if the_author_himself(@review) %>
+                <%= link_to "", @review, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" if the_author_himself(@review, true) %>
+            </div>
+
 
             <%= render "votes/fans", item: @review %>
         </div>

@@ -1,6 +1,8 @@
 class DesiresController < ApplicationController
+  before_filter :preload
   before_filter(:except => [:index, :show, :more, :feed]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(Desire.name, c.params[:id], true)}
+  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(@desire, false, true)}
+  before_filter(:only => [:delete]) {|c| c.the_author_himself(@desire, true, true)}
 
   # GET /desires
   # GET /desires.json
@@ -25,7 +27,6 @@ class DesiresController < ApplicationController
   # GET /desires/1
   # GET /desires/1.json
   def show
-    @desire = Desire.find(params[:id])
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:created_at).limit(9)
     @solutions = @desire.solutions.desc(:votes, :created_at).reject{|s| s.item.nil? } #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
 
@@ -62,7 +63,7 @@ class DesiresController < ApplicationController
 
   # GET /desires/1/edit
   def edit
-    @desire = Desire.find(params[:id])
+
   end
 
   # POST /desires
@@ -103,8 +104,6 @@ class DesiresController < ApplicationController
   # PUT /desires/1
   # PUT /desires/1.json
   def update
-    @desire = Desire.find(params[:id])
-
     ImagesHelper.process_uploaded_images(@desire, params[:images])
 
     #SolutionManager.generate_solutions(@desire)
@@ -123,7 +122,6 @@ class DesiresController < ApplicationController
   # DELETE /desires/1
   # DELETE /desires/1.json
   def destroy
-    @desire = Desire.find(params[:id])
     @desire.destroy
 
     respond_to do |format|
@@ -133,7 +131,6 @@ class DesiresController < ApplicationController
   end
 
   def admire
-    @desire = Desire.find(params[:id])
     if (@desire.admirer_ids.include? current_user.id)
       @desire.admirers.delete(current_user)
     else
@@ -174,7 +171,6 @@ class DesiresController < ApplicationController
   end
 
   def solve
-    @desire = Desire.find(params[:id])
     solution = @desire.solutions.new(params[:solution])
     solution.author = current_user
 
@@ -238,6 +234,10 @@ class DesiresController < ApplicationController
     else
       return [], total_chapters
     end
+  end
+
+  def preload
+    @desire = Desire.find(params[:id]) if params[:id].present?
   end
 
 end

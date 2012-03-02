@@ -1,5 +1,8 @@
 class AlbumsController < ApplicationController
+  before_filter :preload
   before_filter(:except => [:index, :show]) { |c| c.require_permission :normal_user }
+  before_filter(:only => [:edit, :update]) {|c| c.the_author_himself(@album, false, true)}
+  before_filter(:only => [:delete]) {|c| c.the_author_himself(@album, true, true)}
 
   # GET /albums
   # GET /albums.json
@@ -17,7 +20,6 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
-    @album = Album.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +40,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    @album = Album.find(params[:id])
+
   end
 
   # POST /albums
@@ -61,7 +63,6 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.json
   def update
-    @album = Album.find(params[:id])
     #make sure only the editor can set priority
     if current_user_has_permission?(:editor) && params[:album][:priority].present?
       @album.priority = params[:album][:priority].to_i
@@ -81,7 +82,6 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
-    @album = Album.find(params[:id])
     @album.destroy
 
     respond_to do |format|
@@ -91,7 +91,6 @@ class AlbumsController < ApplicationController
   end
 
   def collect
-    @album = Album.find(params[:id])
     @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
     if @item.is_a? Desire
       @album.desire_ids ||= []
@@ -109,7 +108,6 @@ class AlbumsController < ApplicationController
   end
 
   def remove
-    @album = Album.find(params[:id])
     @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
     if @item.is_a? Desire
       @album.desires.delete(@item)
@@ -122,7 +120,6 @@ class AlbumsController < ApplicationController
   end
 
   def pick_cover
-    @album = Album.find(params[:id])
     @item = find_item_by_type_and_id(params[:item_type], params[:item_id])
     if @item.is_a? Desire
       image = @item.get_image
@@ -136,6 +133,12 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  private
+
+  def preload
+    @album = Album.find(params[:id]) if params[:id].present?
   end
 
 end

@@ -32,14 +32,11 @@
           </div>
       <% end %>
     </div>
-    <% if the_author_himself(Desire.name, @desire.id, true, false) %>
-        <div class="mt10 clearfix">
-          <% if the_author_himself(Desire.name, @desire.id, true, false) %>
-              <%= link_to "", edit_desire_path(@desire), class: "btn btn_edit fl" %>
-              <%= link_to "", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl fl" %>
-          <% end %>
-        </div>
-    <% end %>
+
+    <div class="mt10 clearfix">
+        <%= link_to "编辑", edit_desire_path(@desire), class: "btn btn_edit fl" if the_author_himself(@desire) %>
+        <%= link_to "删除", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl fl" if the_author_himself(@desire, true) %>
+    </div>
   </div>
 
   <% if @desire.admirer_ids.size > 0 %>
