@@ -10,6 +10,7 @@
                 <% if solution.content.present? %><blockquote><span class="quoted"><%= solution.content %></span></blockquote><% end %>
             </div>
         </div>
+        <hr/>
     <% end %>
     <h3 class="mt5">
         <span class="trivial"><%= t("object_types.#{solution.item.class.name.downcase}")%></span>
@@ -31,7 +32,11 @@
     </div>
     <div class="clearfix"></div>
 
-    <%= render "solutions/voters_list", solution: solution %>
+    <!--<= render "solutions/voters_list", solution: solution %>-->
+    <span class="trivial"><%= "#{solution.voter_ids.size}票" %>(<%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%" %>)</span><br/>
+    <%  solution.votes.desc(:created_at).each do |vote| %>
+        <%= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: 24, height: 24, title: vote.voter.login_name), vote.voter %>
+    <% end %>
 
     <% if @my_vote.blank? && current_user && current_user != solution.author %>
         <%= render "solutions/vote_fields", solution: solution %>

@@ -38,16 +38,20 @@ class Desire
   #  solutions.excludes(author_id: nil).first(sort: [[ :created_at, :desc ]])
   #end
 
+  def valid_solutions
+    @valid_solutions ||= self.solutions.reject{|s| s.item.nil? }.uniq{|s| s.identity}
+  end
+
   def voter_ids
-    @voter_ids ||= self.solutions.inject([]){|memo, s| memo | s.voter_ids }
+    @voter_ids ||= valid_solutions.inject([]){|memo, s| memo | s.voter_ids }
   end
 
   def votes_count
-    @votes_count ||= self.solutions.inject(0){|sum, s| sum + s.voter_ids.size }
+    @votes_count ||= valid_solutions.inject(0){|sum, s| sum + s.voter_ids.size }
   end
 
   def best_solution
-    @best_solution ||= self.solutions.max_by {|s| s.votes.size}
+    @best_solution ||= valid_solutions.max_by {|s| s.votes.size}
     @best_solution
   end
 
@@ -56,7 +60,7 @@ class Desire
       was_solved = self.solved
       total = 0
       max = 0
-      self.solutions.each do |s|
+      valid_solutions.each do |s|
         size = s.votes.size
         total += size
         max = size if size > max

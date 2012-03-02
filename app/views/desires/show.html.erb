@@ -9,6 +9,10 @@
         <span class="ml5 trivial"><%= "发布于" %><%= @desire.created_at.strftime(GENERAL_TIME_FORMAT) %></span><br/>
         <%= render "relationships/follow_field", :target => @desire.author %>
       </div>
+      <div class="fr clearfix">
+          <%= link_to "编辑", edit_desire_path(@desire), class: "btn btn_edit" if the_author_himself(@desire) %>
+          <%= link_to "删除", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete" if the_author_himself(@desire, true) %>
+      </div>
     </div>
     <div class="mt10 clearfix">
       <%= image_tag("grey.gif", :alt => "Desire_Img", "class" => 'img_frame restricted lazy overflow_hidden', "data-original" => @desire.get_image_url) %>
@@ -28,26 +32,21 @@
             <%= render "albums/collect_fields", :item => @desire %>
           </div>
           <div class="fr" align="right">
+            <% if current_user_has_permission?(:normal_user) &&  !the_author_himself(@desire) %>
+                <%= content_tag :span, "如有解馋攻略，第一时间得到通知", class: "trivial f12" unless @desire.admirer_ids.include?(current_user.id) %>
+            <% end %>
             <%= render "admire_fields", :desire => @desire %>
+            <% if @desire.admirer_ids.size > 0 %>
+                <br/>
+                <%= content_tag :span, "馋到#{@desire.admirer_ids.size}人：", class: "trivial" %>
+                <% @desire.admirers.each do |admirer| %>
+                    <%= link_to image_tag(admirer.get_avatar(:thumb), width: 32, height: 32), admirer, class: "m2", alt: admirer.login_name, title: admirer.login_name %>
+                <% end %>
+            <% end %>
           </div>
       <% end %>
     </div>
-
-    <div class="mt10 clearfix">
-        <%= link_to "编辑", edit_desire_path(@desire), class: "btn btn_edit fl" if the_author_himself(@desire) %>
-        <%= link_to "删除", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl fl" if the_author_himself(@desire, true) %>
-    </div>
   </div>
-
-  <% if @desire.admirer_ids.size > 0 %>
-      <div class="box_shadow p5 mt10 mb5 admiration_fields">
-        <%= "#{@desire.admirer_ids.size}人被馋到：" %>
-        <br/>
-        <% @desire.admirers.each do |admirer| %>
-            <%= link_to image_tag(admirer.get_avatar(:thumb), width: 32, height: 32), admirer, class: "m2", alt: admirer.login_name, title: admirer.login_name %>
-        <% end %>
-      </div>
-  <% end %>
 
     <div class="mt20 box_shadow clearfix" style="padding:  5px">
     <div class="clearfix">
@@ -64,7 +63,6 @@
                 <span class="trivial">还没有解馋攻略</span>
             <% end %>
         </span><br/>
-        <span class="berry_pink">赶快分享你的解馋攻略，每当有人投票给该解馋攻略，你就可获得相应积分。</span><br/>
         <% number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>
         <% if number_of_groups > 1 %>
             <%= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "berry_pink" %>

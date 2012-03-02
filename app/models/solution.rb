@@ -40,6 +40,10 @@ class Solution
     @voters ||= User.any_in(_id: voter_ids)
   end
 
+  def identity
+    item ? item.id.to_s : ""
+  end
+
   #def can_vote?(user)
   #  user.present? && (!self.desire.vote_ids.include?(user.id)) && (self.author != user)
   #end

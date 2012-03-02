@@ -1,10 +1,6 @@
 <div class="vote_fields">
     <%= form_tag url_for(controller: "desires", action: "vote", method: :post) do %>
         <%= hidden_field_tag "solution_id", solution.id %>
-        <span class="trivial">说说投票理由</span><br/>
-        <%= text_area_tag "vote[content]", "", 'data-comment_max_len' => get_max_length(Vote, :content), class: "not_cleared char_aware" %><br/>
-        <%= content_tag :span, "", class: "char_saver display_none" %>
-        <%= content_tag :span, "", :class => "char_counter block trivial" %>
         <%= submit_tag "投票", class: "mt5 btn btn_vote lighter_touch" %>
     <% end %>
 </div>
