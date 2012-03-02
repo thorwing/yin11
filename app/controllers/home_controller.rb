@@ -15,10 +15,11 @@ class HomeController < ApplicationController
     end
 
     @desires, @total_chapters = get_desires( @current_mode, params[:page], params[:chapter])
+    session[:current_home_chapter] = params[:chapter]
   end
 
   def more_desires
-    @desires, dummy = get_desires(params[:mode], params[:page])
+    @desires, dummy = get_desires(params[:mode], params[:page], session[:current_home_chapter])
 
     respond_to do |format|
       format.html {render :more_desires, :layout => false}
@@ -40,33 +41,27 @@ class HomeController < ApplicationController
 
   private
 
-  def get_desires(mode, page = 1, chapter = nil)
+  def get_desires(mode, page, chapter)
     total_chapters = Rails.cache.fetch('total_desires_chapters')
     if total_chapters.nil?
       total_chapters = (Desire.enabled.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
       Rails.cache.write('total_desires_chapters', total_chapters, :expires_in => 1.minutes)
     end
 
-    if chapter.present?
-      chapter = chapter.to_i
-      session[:current_home_chapter] = chapter
-    elsif session[:current_home_chapter].present?
-      chapter = session[:current_home_chapter].to_i
-    else
-      chapter = 1
-    end
-
-    page = (page ? page.to_i : 1)
+    chapter = (chapter.present? ? chapter.to_i : 1)
+    page = (page.present? ? page.to_i : 1)
     criteria = Desire.enabled
     desires = []
 
     if page <= PAGES_PER_CHAPTER
+      real_page_nr = (chapter - 1) * PAGES_PER_CHAPTER + page
+
       if mode == "admire"
-        desires = criteria.desc(:admirer_ids, :priority, :created_at).page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW)
+        desires = criteria.desc(:admirer_ids, :priority, :created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       elsif mode == "solved"
-        desires = criteria.where(solved: true).desc(:admirer_ids, :priority, :created_at).page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW)
+        desires = criteria.where(solved: true).desc(:admirer_ids, :priority, :created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       elsif mode == "newest"
-        desires = criteria.desc(:created_at).page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW)
+        desires = criteria.desc(:created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       end
 
       return desires, total_chapters

@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
     @primary_tags = get_primary_tag_names
 
     @recipes, @total_chapters = get_recipes(params[:tag], params[:page], params[:chapter])
+    session[:current_recipes_chapter] = params[:chapter]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +19,7 @@ class RecipesController < ApplicationController
   end
 
   def more
-    @recipes, dummy = get_recipes(params[:tag], params[:page])
+    @recipes, dummy = get_recipes(params[:tag], params[:page], session[:current_recipes_chapter])
 
     respond_to do |format|
       format.html { render :more, layout: false}
@@ -226,16 +227,9 @@ class RecipesController < ApplicationController
   end
 
 
-  def get_recipes(tag, page, chapter = nil)
+  def get_recipes(tag, page, chapter)
     total_chapters = 0
-    if chapter.present?
-      chapter = chapter.to_i
-      session[:current_recipes_chapter] = chapter
-    elsif session[:current_recipes_chapter].present?
-      chapter = session[:current_recipes_chapter].to_i
-    else
-      chapter = 1
-    end
+    chapter = (chapter.present? ? chapter.to_i : 1)
     page = (page ? page.to_i : 1)
     if page <= PAGES_PER_CHAPTER
       criteria = Recipe.all

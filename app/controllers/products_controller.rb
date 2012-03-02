@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @catalogs = Catalog.desc(:created_at).to_a
-    @products, @total_chapters = get_products(params[:tag], params[:page])
+    @products, @total_chapters = get_products(params[:tag], params[:page],  params[:chapter])
+    session[:current_products_chapter] = params[:chapter]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def more
-    @products, dummy = get_products(params[:tag], params[:page])
+    @products, dummy = get_products(params[:tag], params[:page], session[:current_products_chapter])
 
     respond_to do |format|
       format.html
@@ -109,14 +110,7 @@ class ProductsController < ApplicationController
 
   def get_products(tag, page, chapter = nil)
     total_chapters = 0
-    if chapter.present?
-      chapter = chapter.to_i
-      session[:current_products_chapter] = chapter
-    elsif session[:current_products_chapter].present?
-      chapter = session[:current_products_chapter].to_i
-    else
-      chapter = 1
-    end
+    chapter = (chapter.present? ? chapter.to_i : 1)
     page = (page ? page.to_i : 1)
     if page <= PAGES_PER_CHAPTER
       criteria = Product.enabled.without(:description)

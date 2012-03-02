@@ -3,7 +3,7 @@
         <% @modes.each do |mode| %>
             <li class="<%= (mode == @current_mode ? "filter_tab selected" : "filter_tab") %>">
               <div class="small_bar">.</div>
-              <%= link_to t("home.modes.#{mode}"), "/?mode=#{mode}&chapter=1", class: "filter" %>
+              <%= link_to t("home.modes.#{mode}"), "/?mode=#{mode}", class: "filter" %>
             </li>
         <% end %>
     </div>
