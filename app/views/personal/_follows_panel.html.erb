@@ -1,7 +1,7 @@
 <div id="follows_panel" class="panel clearfix">
     <h3><%= t_with_colon("user_basic.following_users") %></h3>
     <div class="clearfix">
-        <% current_user.following_users(100).each do |user| %>
+        <% current_user.following_users.each do |user| %>
             <%= link_to image_tag("grey.gif", class: "lazy more_head_img", "data-original"=> user.get_avatar(:thumb, false), width: 24, height: 24, title: user.login_name), user %>
         <% end %>
     </div>
