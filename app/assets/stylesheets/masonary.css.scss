@@ -33,6 +33,14 @@
     .centered img {
         width :200px;
     }
+
+    .extra_info {
+      border-top: 1px solid $light_gray;
+    }
+
+    .extra_info:first-child {
+      border-top: none;
+    }
 }
 
 .corner_stamp {

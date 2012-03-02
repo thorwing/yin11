@@ -253,6 +253,8 @@ ul.menu li {
 .top {vertical-align: top;}
 .bottom {vertical-align: bottom;}
 
+.tight {line-height: 16px; word-break: break-all; word-wrap: break-word;}
+
 .border_top {border-top: 1px solid $berry_gray;}
 .border_bottom {border-bottom: 1px solid $berry_gray;}
 

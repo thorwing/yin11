@@ -21,9 +21,9 @@
             <div class="mt5 clearfix">
                 <span>
                     <%= link_to image_tag(desire.author.get_avatar(:thumb, false), width: 22, height: 22), desire.author %>
-                    <%= link_to desire.author.login_name, desire.author %>
+                    <%= link_to desire.author.login_name, desire.author, class: "trivial" %>
                 </span>
-                <span class="ml5"><%= truncate_content(desire.content, 50) %></span>
+                <span class="ml5 f12 tight"><%= truncate_content(desire.content, 200) %></span>
                 <% if desire.place %>
                     <p>
                         <%= content_tag :span, "来自 " + desire.place.name, class: "trivial" %>
