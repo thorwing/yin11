@@ -4,9 +4,6 @@
     <div class="grid_7">
         <%= render "shared/text_field", :f => f, :label => t("general.title"), :field => :title %>
         <%= render "shared/text_area", :f => f, :label => t("general.description"), :field => :description %>
-        <% if current_user_has_permission? :editor %>
-            <%= render "shared/text_field", :f => f, :label => t("general.priority"), :field => :priority %>
-        <% end %>
     </div>
 
     <div class="fl display_inline" style="width:400px;">
