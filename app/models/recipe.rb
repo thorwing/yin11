@@ -10,6 +10,7 @@ class Recipe
     #fields
     field :name
     field :notice
+    field :priority, :type => Integer, :default => 0
 
     search_index(:fields => [:name, :tags],
               :attributes => [:created_at])
@@ -54,14 +55,7 @@ class Recipe
     end
 
     def instruction
-      #TODO
       text = self.steps.map(&:content).join("    ") || ""
-      limit = 40
-      if text.size > limit
-        text[0..(limit - 4)] + "..."
-      else
-        text
-      end
     end
 
     def major_ingredients

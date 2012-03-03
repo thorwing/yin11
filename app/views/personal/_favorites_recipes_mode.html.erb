@@ -1,3 +1,5 @@
 <%= paginate @liked_recipes %>
-<%= render @liked_recipes %>
+<% @liked_recipes.each do |recipe| %>
+    <%= render "recipes/listed_recipe", recipe: recipe %>
+<% end %>
 

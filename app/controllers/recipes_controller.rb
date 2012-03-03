@@ -7,8 +7,15 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @hot_tags = get_hot_tags(14, :recipes)
-    @primary_tags = get_primary_tag_names
+
+    if params[:tag].present?
+
+    else
+      @hot_tags = get_hot_tags(14, :recipes)
+      @primary_tags = get_primary_tag_names
+      @recommended_recipes = Recipe.desc(:votes).limit(1)
+      @new_recipes = Recipe.desc(:created).limit(4)
+    end
 
     @recipes, @total_chapters = get_recipes(params[:tag], params[:page], params[:chapter])
     session[:current_recipes_chapter] = params[:chapter]

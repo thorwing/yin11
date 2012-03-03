@@ -20,7 +20,7 @@
         <div>
             <% top3_votes_with_content = desire.best_solution.votes.excludes(content: "").desc(:created_at).limit(3) %>
             <% top3_votes_with_content.each do |vote| %>
-                <div class="extra_info pt5 pb5">
+                <div class="listed_info pt5 pb5">
                     <%= link_to image_tag(vote.voter.get_avatar(:thumb, false), width: 22, height: 22), vote.voter %>
                     <span class="trivial f12 tight"><%= link_to vote.voter.login_name, vote.voter %><%= " 投票" %><%= "：" if vote.content.present? %></span>
                     <span class="trivial f12 tight"><%= truncate_content vote.content, 20 %></span>

@@ -374,6 +374,14 @@ body #main { height: auto; padding-bottom: 260px;}
     z-index: 1;
 }
 
+.listed_info {
+  border-top: 1px solid $light_gray;
+}
+
+.listed_info:first-child {
+  border-top: none;
+}
+
 /*input with default value*/
 textarea.not_cleared, input.not_cleared {
     color: $trivial_gray;

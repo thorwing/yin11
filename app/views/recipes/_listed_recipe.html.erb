@@ -1,11 +1,14 @@
-<div class="listed_item commentable clearfix">
+<div class="listed_item listed_info pt5 pb5 commentable clearfix">
     <div class="user_info_area">
-        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> recipe.author.get_avatar(:thumb,false), width: "48", height: "48"), recipe.author %>
-        <%= recipe.author.login_name %><br/>
+        <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> recipe.author.get_avatar(:thumb,false), width: "48", height: "48"), recipe.author %>
+        <%= link_to recipe.author.login_name, recipe.author, class: "trivial" %>
     </div>
     <div class="content_area">
         <div class="clearfix">
-            <p class="f15"><%= link_to recipe.name, recipe %></p>
+            <div class="clearfix">
+                <h3 class="fl f15"><%= link_to recipe.name, recipe %></h3>
+                <span class="fr trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
+            </div>
             <!--avoid assets error when image_url is nil-->
             <div class="clearfix">
                 <div class="fl mr5">
@@ -13,11 +16,10 @@
                     <% if thumb_url.present? %>
                         <p><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> thumb_url, class: "thumbnail"), recipe %></p>
                     <% end %>
+                    <span class="trivial mr5"><%= "#{recipe.votes}人喜欢" %></span><br/>
                 </div>
                 <div class="fl">
-                  <p><%= recipe.instruction %></p>
-                  <span class="trivial mr5"><%= recipe.votes %>人喜欢</span><br/>
-                  <span class="fl trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
+                  <p class="tight f12"><%= recipe.instruction %></p>
                 </div>
             </div>
             <div>
@@ -31,4 +33,3 @@
         </div>
     </div>
 </div>
-<hr/>

@@ -2,7 +2,7 @@
 <% if comments.size > 0 %>
     <div class="b_azure_gray pt5 pl10 pr10">
         <% comments.each do |comment| %>
-            <div class="extra_info pt5 pb5">
+            <div class="listed_info pt5 pb5">
                 <%= link_to image_tag(comment.user.get_avatar(:thumb, false), width: 22, height: 22), comment.user %>
                 <span class="trivial f12 tight trivial"><%= link_to comment.user.login_name, comment.user %></span>
                 <span class="trivial f12 tight ml5 "><%= truncate_content comment.content, 20 %></span>

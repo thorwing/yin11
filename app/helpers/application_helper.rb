@@ -81,7 +81,7 @@ module ApplicationHelper
   end
 
   def get_primary_tag_names
-      tag_names = Rails.cache.fetch('primary_tag_names')
+      tag_names = nil #Rails.cache.fetch('primary_tag_names')
       if tag_names.nil?
          records = YAML::load(File.open("app/seeds/tags.yml"))
 

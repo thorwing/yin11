@@ -1,0 +1,20 @@
+<div class="listed_item pt5 pb5 clearfix">
+    <!--avoid assets error when image_url is nil-->
+    <div class="fl mr10 clearfix">
+        <% thumb_url = recipe.get_image_url(:waterfall) %>
+        <% if thumb_url.present? %>
+            <p><%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> thumb_url, width: IMAGE_WATERFALL_WIDTH, height: IMAGE_WATERFALL_WIDTH), recipe %></p>
+        <% end %>
+    </div>
+
+    <div class="fl clearfix" style="width: 400px;">
+        <h3 class="f15"><%= link_to recipe.name, recipe %></h3>
+        <p class="tight f12"><%= truncate_content recipe.instruction, 200 %></p>
+        <div class="mt10">
+            <%= content_tag :span, "来自", class: "trivial mr5" %>
+            <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> recipe.author.get_avatar(:thumb,false), width: 32, height: 32), recipe.author %>
+            <%= link_to recipe.author.login_name, recipe.author, class: "trivial" %>
+        </div>
+        <span class="trivial mt10"><%= "#{recipe.votes}人喜欢" %></span><br/>
+    </div>
+</div>
