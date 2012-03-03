@@ -5,7 +5,7 @@
     </div>
     <span class="trivial"><%= "热门标签" %></span><span class="trivial f12"></span>
 
-    <% get_hot_tags(7, :desires).each do |tag_name| %>
+    <% get_all_tags(:desires).take(10).each do |tag_name| %>
         <%= link_to_function tag_name, "fill_desire_tag(this);", class: "tag" %>
     <% end %>
 </div>

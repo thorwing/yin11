@@ -59,7 +59,9 @@ class HomeController < ApplicationController
       if mode == "hottest"
         desires = criteria.desc(:admirer_ids, :priority, :created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       elsif mode == "solved"
-        desires = criteria.where(solved: true).desc(:admirer_ids, :priority, :created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
+        criteria = criteria.where(solved: true).desc(:admirer_ids, :priority, :created_at)
+        total_chapters = (criteria.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
+        desires = criteria.page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       elsif mode == "newest"
         desires = criteria.desc(:created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       end

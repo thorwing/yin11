@@ -40,7 +40,7 @@
                             <% left_tags.each do |tag_name| %>
                                 <%= link_to tag_name, {:controller => controller.controller_name, :action => "index", :tag => tag_name}, class: "tag" %>
                             <% end %>
-                        </span>
+                        </span><br/>
                     <% end %>
                 <% end %>
             <% end %>

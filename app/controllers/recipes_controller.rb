@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
       @primary_tags = get_primary_tag_names(all_tags)
 
       @recommended_recipes = Recipe.desc(:priority).limit(1)
-      @new_recipes = Recipe.desc(:created).limit(4)
+      @new_recipes = Recipe.desc(:created_at).limit(4)
     end
 
     @recipes, @total_chapters = get_recipes(params[:tag], params[:page], params[:chapter])
