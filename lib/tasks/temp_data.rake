@@ -49,6 +49,13 @@ namespace :yin11 do
     end
   end
 
+  desc "check solutions for all desires"
+  task :check_solutions => :environment do
+    Desire.all.to_a.each do |desire|
+      desire.check_solutions
+    end
+  end
+
   desc "clean all notifications"
     task :clean_all_notifications => :environment do
       User.all.to_a.each do |user|

@@ -33,9 +33,14 @@
             </div>
         </div>
 
-        <% mode = "comments" unless (defined?(mode) && ["comments", "solved", "admire"].include?(mode) )  %>
-        <%= render "desires/extra_#{mode}", desire: desire %>
-
+        <div class="b_azure_gray">
+            <% mode = "comments" unless (defined?(mode) && mode == "solved" )  %>
+            <% admirers_count = desire.admirer_ids.size %>
+            <% if admirers_count > 0 %>
+                <span class="ml10 mr10 trivial f12"><%= "#{admirers_count}人被馋到了" %></span>
+            <% end %>
+            <%= render "desires/extra_#{mode}", desire: desire %>
+        </div>
 
     </div>
 </div>

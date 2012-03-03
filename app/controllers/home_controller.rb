@@ -5,9 +5,9 @@ class HomeController < ApplicationController
     #@hot_topics = Topic.recommended.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
     #@recommended_albums = Album.recommended.desc(:priority).limit(RECOMENDED_ALBUMS_ON_HOME_PAGE)
     #@stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
-    @hot_tags = get_hot_tags(7, :desires)
+    @hot_tags = get_all_tags(:desires).take(10)
 
-    @modes = ["newest", "admire"]
+    @modes = ["newest", "hottest", "solved"]
     if @modes.include? params[:mode]
       @current_mode = params[:mode]
     else
@@ -56,7 +56,7 @@ class HomeController < ApplicationController
     if page <= PAGES_PER_CHAPTER
       real_page_nr = (chapter - 1) * PAGES_PER_CHAPTER + page
 
-      if mode == "admire"
+      if mode == "hottest"
         desires = criteria.desc(:admirer_ids, :priority, :created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       elsif mode == "solved"
         desires = criteria.where(solved: true).desc(:admirer_ids, :priority, :created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)

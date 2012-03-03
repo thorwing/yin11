@@ -1,31 +1,29 @@
 <% if desire.solved %>
-    <div class="b_azure_gray pt5 pl10 pr10">
-        <div class="clearfix">
-            <% if desire.best_solution.author %>
-                <%= link_to image_tag(desire.best_solution.author.get_avatar(:thumb, false), width: 22, height: 22), desire.best_solution.author %>
-                <%= link_to desire.best_solution.author.login_name, desire.best_solution.author, calss: "trivial f12 tight" %>
-                <span class="trivial f12 mr5 tight">的解馋攻略最受欢迎</span>
-            <% else %>
-                <span class="trivial f12 mr5 tight">最受欢迎的解馋攻略：</span>
-            <% end %>
+    <div class="clearfix ml10 mr10">
+        <% if desire.best_solution.author %>
+            <%= link_to image_tag(desire.best_solution.author.get_avatar(:thumb, false), width: 22, height: 22), desire.best_solution.author %>
+            <%= link_to desire.best_solution.author.login_name, desire.best_solution.author, calss: "trivial f12 tight" %>
+            <span class="trivial f12 mr5 tight">的解馋攻略最受欢迎</span>
+        <% else %>
+            <span class="trivial f12 mr5 tight">最受欢迎的解馋攻略：</span>
+        <% end %>
 
-            <!--< item = best_solution.item %>-->
-            <!--< if item && item.get_image_url(:thumb) %>-->
-                <!--<= link_to image_tag(item.get_image_url(:thumb), width: 22, height: 22), desire %>-->
-            <!--< end %>-->
-            <% if desire.best_solution.content.present? %>
-                  <span class="f12 tight"><%= truncate_content desire.best_solution.content, 20 %></span>
-            <% end %>
-        </div>
-        <div>
-            <% top3_votes_with_content = desire.best_solution.votes.excludes(content: "").desc(:created_at).limit(3) %>
-            <% top3_votes_with_content.each do |vote| %>
-                <div class="listed_info pt5 pb5">
-                    <%= link_to image_tag(vote.voter.get_avatar(:thumb, false), width: 22, height: 22), vote.voter %>
-                    <span class="trivial f12 tight"><%= link_to vote.voter.login_name, vote.voter %><%= " 投票" %><%= "：" if vote.content.present? %></span>
-                    <span class="trivial f12 tight"><%= truncate_content vote.content, 20 %></span>
-                </div>
-            <% end %>
-        </div>
+        <!--< item = best_solution.item %>-->
+        <!--< if item && item.get_image_url(:thumb) %>-->
+            <!--<= link_to image_tag(item.get_image_url(:thumb), width: 22, height: 22), desire %>-->
+        <!--< end %>-->
+        <% if desire.best_solution.content.present? %>
+              <span class="f12 tight"><%= truncate_content desire.best_solution.content, 20 %></span>
+        <% end %>
+    </div>
+    <div class="ml10 mr10">
+        <% top3_votes_with_content = desire.best_solution.votes.excludes(content: "").desc(:created_at).limit(3) %>
+        <% top3_votes_with_content.each do |vote| %>
+            <div class="listed_info pt5 pb5">
+                <%= link_to image_tag(vote.voter.get_avatar(:thumb, false), width: 22, height: 22), vote.voter %>
+                <span class="trivial f12 tight"><%= link_to vote.voter.login_name, vote.voter %><%= " 投票" %><%= "：" if vote.content.present? %></span>
+                <span class="trivial f12 tight"><%= truncate_content vote.content, 20 %></span>
+            </div>
+        <% end %>
     </div>
 <% end %>
