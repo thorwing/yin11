@@ -3,34 +3,27 @@
 <%= paginate @albums %>
 <% @albums = @albums.reject{|a| a.get_cover_url(:waterfall).include?("assets/not_found.png")} %>
 
-<% if params[:tag] %>
-    <div class="ml25 mt5 mb5">
-        <h2><%= "有关“#{params[:tag] }”的专辑"%></h2>
-    </div>
-<% else %>
-    <div class="grid_3">
-        <div style="width:200px; height: 200px;">
-            <span class="f12 trivial">热门标签</span>
-            <div class="mb5">
-                <% get_hot_tags(14, :albums).each do |tag| %>
-                    <%= link_to tag, albums_path(tag: tag), class: "tag" %>
-                <% end %>
-            </div>
-            <hr/>
-            <%= content_tag :p, "把你垂涎的美食统统收集到专辑中，在你想吃的时候方便找到它们，一饱口服！", class: "trivial" %>
-            <%= link_to "", new_album_path, class: "btn btn_new_album" %>
-        </div>
-    </div>
-<% end
-%>
 <div class="clearfix">
-    <% @albums.take(3).each do |album| %>
-        <%= render "albums/album_cover", album: album %>
-    <% end %>
+    <div class="grid_3">
+        <% if params[:tag] %>
+            <h2 class="ml25 mt5 mb5"><%= "有关“#{params[:tag] }”的专辑"%></h2>
+        <% else %>
+            <div style="width:200px; height: 200px;">
+                <%= content_tag :p, "收集心仪美食，打造属于你自己的诱人拼盘", class: "trivial tight" %>
+                <%= link_to "", new_album_path, class: "btn btn_new_album" %>
+            </div>
+        <% end %>
+    </div>
+    <div class="grid_9">
+        <h2 class="trivial">特别推荐：</h2>
+        <% @albums.take(1).each do |album| %>
+            <%= render album %>
+        <% end %>
+    </div>
 </div>
 
-<% if @albums.size > 3 %>
-    <% @albums.drop(3).each_slice(4).each do |albums| %>
+<% if @albums.size > 1 %>
+    <% @albums.drop(1).each_slice(4).each do |albums| %>
         <div class="clearfix">
             <% albums.each do |album| %>
                 <%= render "albums/album_cover", album: album %>

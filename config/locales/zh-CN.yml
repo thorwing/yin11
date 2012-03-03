@@ -160,9 +160,9 @@ zh-CN:
     rapid_user_creation: 你已经在%{cooldown}小时内注册了一个帐号啦
     recipe_created: 菜谱创建成功
     recipe_updated: 菜谱更新成功
-    album_created: 专辑创建成功
-    album_updated: 专辑更新成功
-    album_cover_picked: 专辑封面已更改
+    album_created: 拼盘创建成功
+    album_updated: 拼盘更新成功
+    album_cover_picked: 拼盘封面已更改
     desire_created: 馋人图片创建成功
     desire_updated: 馋人图片修改成功
     place_updated: 地点更新成功
@@ -184,7 +184,7 @@ zh-CN:
     desire: 馋人图片
     review: 分享
     recipe: 菜谱
-    album: 专辑
+    album: 拼盘
     place: 地点
 
   menu:
@@ -197,7 +197,7 @@ zh-CN:
     recipes: 菜谱
     reviews: 美食分享
     desires: 馋人图片
-    albums: 专辑
+    albums: 拼盘
     notifications: 消息
     masters: 达人
     places: 地点
@@ -244,7 +244,7 @@ zh-CN:
     follows: 关注
     following_users: 关注用户
     liked_recipes: 喜欢的菜谱
-    liked_albums: 喜欢的专辑
+    liked_albums: 喜欢的拼盘
     liked_products: 喜欢的商品
     admired_desires: 馋到我的图片
 
@@ -299,7 +299,7 @@ zh-CN:
       admire: 最馋人
       solved: 解馋
       newest: 最新上传
-      collections: "专辑&达人"
+      collections: "拼盘&达人"
 
   control_panel:
     actions: 我要：
@@ -314,7 +314,7 @@ zh-CN:
     add_tag_hint: 为您收集和标签相关的事件，食物安全早知道
     add_location_hint: 关注地点附近的事件全部掌握
     login: 登入
-    album: 专辑
+    album: 拼盘
 
   users:
     index: 所有用户
@@ -342,17 +342,17 @@ zh-CN:
     feeds_mode: 我的动态
     reviews_mode: 我的解馋分享
     recipes_mode: 我的菜谱
-    albums_mode: 我的专辑
+    albums_mode: 我的拼盘
     desires_mode: 我的馋人图片
     feeds: 动态
     reviews: 分享
     recipes: 菜谱
-    albums: 专辑
+    albums: 拼盘
     desires: 馋人图片
     favorites:
       modes:
         recipes: 菜谱
-        albums: 专辑
+        albums: 拼盘
         products: 商品
         desires: 馋人图片
 
@@ -559,19 +559,19 @@ zh-CN:
       truncate: "..."
 
   albums:
-    new: +新专辑
-    new_album: 新建专辑
-    album: 专辑
-    albums: 专辑
+    new: +新拼盘
+    new_album: 新建拼盘
+    album: 拼盘
+    albums: 拼盘
     cover: 封面
-    remove: 从专辑移除
+    remove: 从拼盘移除
     add_content: 添加内容
     pick_cover: 设为封面
     collect: 收集
-    has_collected: 已收集到专辑《%{title}》
-    collect_to_album: 到专辑：
+    has_collected: 已收集到拼盘《%{title}》
+    collect_to_album: 到拼盘：
     items: 个收集
-    recommended: 推荐专辑（全部）
+    recommended: 推荐拼盘（全部）
 
   places:
     places: 地点
@@ -672,7 +672,7 @@ zh-CN:
     vote_notification: 给我的解馋攻略投了一票
     item_types:
       Recipe: 菜谱
-      Album: 专辑
+      Album: 拼盘
       Comment: 评论
       Desire: 馋人图片
       Soluton: 解馋攻略

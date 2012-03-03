@@ -1,15 +1,12 @@
 <div class="grid_3 box_shadow b_white pt10 mb10">
-    <div class="hint_box center lighter_touch" style="width:180px;">
-        <%= link_to image_tag("grey.gif", "data-original"=> album.get_cover_url(:waterfall), width: 180, height: 180, class: 'lazy img_frame'), album %>
-        <span class="fix_hint b_black_alpha30 white center"><%= album.title %></span>
+    <div class="hint_box center lighter_touch" style="width:<%= IMAGE_WATERFALL_WIDTH %>px;">
+        <%= link_to image_tag("grey.gif", "data-original"=> album.get_cover_url(:waterfall), width: IMAGE_WATERFALL_WIDTH, height: IMAGE_WATERFALL_WIDTH, class: 'lazy'), album %>
+        <span class="fix_hint b_black_alpha30 white center f15"><%= album.title %></span>
     </div>
-    <div class="center">
-        <span class="mr5 trivial"><%= album.desires.size %><%= t("albums.items") %></span> |
-        <span class="ml5 trivial"><%= "#{album.votes.to_s}个人喜欢" %></span>
-    </div>
-    <div class="ml20 mr10 mb10">
+    <span class="ml10 trivial"><%= album.desires.size %>张图片 | <%= "#{album.votes.to_s}人喜欢" %></span>
+    <div class="ml10 mr10 mb10">
         <%= link_to image_tag("grey.gif", "data-original"=> album.author.get_avatar(:thumb, false), width: 24, height:24, class: "lazy"), album.author %>
         <%= link_to album.author.login_name, album.author %><br/>
-        <%= album.description %>
+        <%= content_tag :span, truncate_content(album.description, 100), class: "trivial tight f12" %>
     </div>
 </div>

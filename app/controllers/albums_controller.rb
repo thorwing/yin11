@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    criteria = Album.all
+    criteria = Album.desc(:priority, :created_at)
     criteria = criteria.tagged_with(params[:tag]) if params[:tag].present?
     @albums = criteria.page(params[:page]).per(ITEMS_PER_PAGE_FEW)
 

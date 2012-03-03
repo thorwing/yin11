@@ -83,7 +83,7 @@
 
   <% unless @desire.albums.empty? %>
       <div class="box_shadow p5">
-        <h3 class="trivial">被收集到专辑：</h3>
+        <h3 class="trivial">被收集到拼盘：</h3>
         <% @desire.albums.limit(3).each do |album| %>
             <div class="clearfix mb10 lighter_touch">
                 <%= link_to album.title, album %> |

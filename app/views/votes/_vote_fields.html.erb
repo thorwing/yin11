@@ -3,6 +3,7 @@
         <%= link_to "", like_votes_path(:item_id => item.id, :item_type => item.class.name), :method => :put, :remote => true,
                 :class => (item.fan_ids.include?(current_user.id) ? "btn btn_vote liked" : "btn btn_vote to_like")  %>
     </span>
+
     <% if defined?(show_list) && show_list %>
         <% if item.fan_ids.size > 0 %>
             <br/>

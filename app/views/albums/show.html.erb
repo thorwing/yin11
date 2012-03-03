@@ -13,10 +13,8 @@
             <% unless @album.tags.empty? %>
                 <p><span class="trivial">标签：</span><%= render "tags/tags", :item => @album %></p>
             <% end %>
-            <%= render "votes/vote_fields", :item => @album %>
+            <%= render "votes/vote_fields", :item => @album, show_list: true %>
         </div>
-
-        <%= render "votes/fans", item: @album %>
     </div>
     <div class="clearfix"></div>
 

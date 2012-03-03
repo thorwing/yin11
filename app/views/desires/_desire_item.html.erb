@@ -13,7 +13,7 @@
                 <% if @album && the_author_himself(@album) %>
                   <span class="flex_hint top_left">
                       <p><%= link_to "", pick_cover_album_path(@album, item_id: desire.id, item_type: desire.class.name), method: :put, remote: true, class: "btn btn_set_cover" %></p>
-                      <p><%= link_to "", remove_album_path(@album, item_id: desire.id, item_type: desire.class.name), method: :put, class: "btn btn_remove_from_album", confirm: "确定要从专辑中移除吗？"  %></p>
+                      <p><%= link_to "", remove_album_path(@album, item_id: desire.id, item_type: desire.class.name), method: :put, class: "btn btn_remove_from_album", confirm: "确定要从拼盘中移除吗？"  %></p>
                   </span>
                 <% end %>
             </div>
