@@ -26,10 +26,6 @@
             <%= content_tag :span, "", class: "char_saver display_none" %>
             <%= content_tag :span, "", class: "char_counter block trivial" %>
 
-            <% if current_user_has_permission? :editor %>
-                <%= render "shared/text_field", :f => f, :label => t("general.priority"), :field => :priority %>
-            <% end %>
-
             <div class= "mt10"><%= f.submit (f.object.new_record? ? t("general.publish") : t("general.change")), class: "#{f.object.new_record? ? "btn btn_submit_post" : "btn btn_submit_update"}", id: "submit_desire" %> </div>
         </div>
         <div class="grid_5">

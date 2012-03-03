@@ -20,6 +20,7 @@ Yin11::Application.routes.draw do
   end
 
   put 'administrator/base/toggle'
+  put 'administrator/base/tune'
 
   match "me" => "personal#me"
   match "personal/favorites" => "personal#favorites"

@@ -11,6 +11,7 @@
                     <div class="fr clearfix">
                       <%= link_to "编辑", edit_recipe_path(@recipe), class: "btn btn_edit fl" if the_author_himself(@recipe) %>
                       <%= link_to "删除", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" if the_author_himself(@recipe, true) %>
+                      <%= render "administrator/base/tune_fields", item: @recipe if current_user_has_permission? :administrator %>
                     </div>
                 </div>
 

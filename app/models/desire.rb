@@ -4,21 +4,17 @@ class Desire
   include Taggable
   include Imageable
   include Feedable
+  include Recommendable
   include SilverSphinxModel
 
   field :content
-  field :priority, :type => Integer, :default => 0
   field :history_admirer_ids, :type => Array, :default => []
   field :solved, :type => Boolean, :default => false
 
   search_index(:fields => [:content, :tags],
                 :attributes => [:created_at])
 
-  attr_accessible :content, :priority
-
-  #scopes
-  scope :enabled, where(:priority.gte => 0)
-  scope :recommended, where(:priority.gt => 0)
+  attr_accessible :content
 
   #relationships
   has_many :images

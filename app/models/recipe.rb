@@ -5,12 +5,12 @@ class Recipe
     include Votable
     include Imageable
     include Feedable
+    include Recommendable
     include SilverSphinxModel
 
     #fields
     field :name
     field :notice
-    field :priority, :type => Integer, :default => 0
 
     search_index(:fields => [:name, :tags],
               :attributes => [:created_at])

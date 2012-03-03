@@ -1,0 +1,5 @@
+<% if current_user_has_permission?(:administrator) && item && (item.respond_to? :priority) %>
+    <%= link_to "<", administrator_base_tune_path(:id => item.id, :type => item.class.name, :delta => -1), :method => :put, :remote => true, class: "berry_red f20 bold" %>
+    <b class="tune_value <%= item.id.to_s %> trivial f20"><%= item.priority %></b>
+    <%= link_to ">", administrator_base_tune_path(:id => item.id, :type => item.class.name, :delta => 1), :method => :put, :remote => true, class: "berry_red f20 bold" %>
+<% end %>

@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
       @hot_tags = all_tags.take(15)
       @primary_tags = get_primary_tag_names(all_tags)
 
-      @recommended_recipes = Recipe.desc(:votes).limit(1)
+      @recommended_recipes = Recipe.desc(:priority).limit(1)
       @new_recipes = Recipe.desc(:created).limit(4)
     end
 
