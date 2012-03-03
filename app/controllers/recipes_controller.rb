@@ -11,8 +11,10 @@ class RecipesController < ApplicationController
     if params[:tag].present?
 
     else
-      @hot_tags = get_hot_tags(14, :recipes)
-      @primary_tags = get_primary_tag_names
+      all_tags = get_all_tags(:recipes)
+      @hot_tags = all_tags.take(15)
+      @primary_tags = get_primary_tag_names(all_tags)
+
       @recommended_recipes = Recipe.desc(:votes).limit(1)
       @new_recipes = Recipe.desc(:created).limit(4)
     end

@@ -1,13 +1,13 @@
 <div class="listed_item pt5 pb5 clearfix">
     <!--avoid assets error when image_url is nil-->
     <div class="fl mr10 clearfix">
-        <% thumb_url = recipe.get_image_url(:waterfall) %>
+        <% thumb_url = recipe.get_image_url(:thumb) %>
         <% if thumb_url.present? %>
-            <p><%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> thumb_url, width: IMAGE_WATERFALL_WIDTH, height: IMAGE_WATERFALL_WIDTH), recipe %></p>
+            <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> thumb_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT), recipe %>
         <% end %>
     </div>
 
-    <div class="fl clearfix" style="width: 400px;">
+    <div class="fl clearfix" style="width: 480px;">
         <h3 class="f15"><%= link_to recipe.name, recipe %></h3>
         <p class="tight f12"><%= truncate_content recipe.instruction, 200 %></p>
         <div class="mt10">

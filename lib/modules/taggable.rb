@@ -6,7 +6,7 @@ module Taggable
 
       attr_accessible :tags_string, :tags_string_with_spaces
       validates_length_of :tags, :maximum => MAX_TAGS, :message => I18n.translate("validations.tags.max_limit_msg", :max => MAX_TAGS)
-      after_save :sync_tags
+      #after_save :sync_tags
 
       include InstanceMethods
       extend ClassMethods
@@ -30,37 +30,37 @@ module Taggable
       self.tags.join(" ") if tags
     end
 
-    def sync_tags
-      item_str = "#{self.class.name} #{self.id.to_s}"
-
-      #record the item in the existed tags
-      existed_tags = Tag.any_in(name: tags)
-      new_tags = tags - existed_tags.map(&:name)
-      existed_tags.each do |tag|
-        unless tag.items.include?(item_str)
-          tag.items << item_str
-          tag.save
-        end
-      end
-
-      #remove the item from the removed tag
-       old_tags = tags_was.present? ?  tags_was: []
-
-      removed_tags = Tag.any_in(name: old_tags - tags)
-      removed_tags.each do |tag|
-        if tag.items.include?(item_str)
-          tag.items.delete(item_str)  # delete! might be undefined
-          tag.save
-        end
-      end
-
-      #create new tag
-      new_tags.each do |t|
-        Tag.create(:name => t) do |tag|
-          tag.items = [item_str]
-        end
-      end
-    end
+    #def sync_tags
+    #  item_str = "#{self.class.name} #{self.id.to_s}"
+    #
+    #  #record the item in the existed tags
+    #  existed_tags = Tag.any_in(name: tags)
+    #  new_tags = tags - existed_tags.map(&:name)
+    #  existed_tags.each do |tag|
+    #    unless tag.items.include?(item_str)
+    #      tag.items << item_str
+    #      tag.save
+    #    end
+    #  end
+    #
+    #  #remove the item from the removed tag
+    #   old_tags = tags_was.present? ?  tags_was: []
+    #
+    #  removed_tags = Tag.any_in(name: old_tags - tags)
+    #  removed_tags.each do |tag|
+    #    if tag.items.include?(item_str)
+    #      tag.items.delete(item_str)  # delete! might be undefined
+    #      tag.save
+    #    end
+    #  end
+    #
+    #  #create new tag
+    #  new_tags.each do |t|
+    #    Tag.create(:name => t) do |tag|
+    #      tag.items = [item_str]
+    #    end
+    #  end
+    #end
   end
 
   module ClassMethods

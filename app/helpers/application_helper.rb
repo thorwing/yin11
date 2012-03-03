@@ -68,26 +68,28 @@ module ApplicationHelper
     tree
   end
 
-  def handle_record(record)
+  def handle_record(record, control_list)
     if record.is_a?(Hash)
       hash = {}
       record.each do |k, v|
-        hash[k] = handle_record(v)
+        values = handle_record(v, control_list)
+        hash[k] = values unless values.empty?
       end
       hash
     elsif record.is_a?(String)
-      record.split(' ')
+      record.split(' ') & control_list
     end
   end
 
-  def get_primary_tag_names
-      tag_names = nil #Rails.cache.fetch('primary_tag_names')
+  def get_primary_tag_names(control_list = [])
+      tag_names = Rails.cache.fetch('primary_tag_names')
       if tag_names.nil?
          records = YAML::load(File.open("app/seeds/tags.yml"))
 
          tag_names = {}
          records.each do |first_lv, value|
-           tag_names[first_lv] = handle_record(value)
+           values = handle_record(value, control_list)
+           tag_names[first_lv] = values unless values.empty?
          end
          Rails.cache.write('primary_tag_names', tag_names, :expires_in => 3.hours)
       end
@@ -129,36 +131,58 @@ module ApplicationHelper
 
   def pick_hot_primary_tags(tags, limit = 7)
     flat_tag_names = []
-      if tags.is_a?(Array)
-        flat_tag_names |= tags
-      elsif tags.is_a?(Hash)
-        tags.each do |second_lv, v|
-          flat_tag_names |= v
-        end
+    if tags.is_a?(Array)
+      flat_tag_names = tags
+    elsif tags.is_a?(Hash)
+      tags.each do |second_lv, v|
+        flat_tag_names |= v
       end
-    Tag.any_in(name: flat_tag_names.uniq).desc(:items).limit(limit)
+    end
+    left_size = flat_tag_names.size - limit
+    return flat_tag_names.take(limit), left_size
   end
 
-  def get_hot_tags(limit = ITEMS_PER_PAGE_FEW, of = nil)
+  def get_all_tags(of)
     key = "hot_tags_of_#{of.to_s}"
-    tags = Rails.cache.fetch(key)
+    tags = nil #Rails.cache.fetch(key)
     unless tags
       case of
         when :recipes
-          tags = Recipe.tags_with_weight.take(100).map{|tag| tag[0]}
+          tags = Recipe.tags_with_weight.map{|tag| tag[0]}
         when :albums
-          tags = Album.tags_with_weight.take(100).map{|tag| tag[0]}
+          tags = Album.tags_with_weight.map{|tag| tag[0]}
         when :desires
-          tags = Desire.tags_with_weight.take(100).map{|tag| tag[0]}
+          tags = Desire.tags_with_weight.map{|tag| tag[0]}
         else
           tags = []
       end
       Rails.cache.write(key, tags, :expires_in => 1.hours)
     end
 
-    #take some of the cached tags, 100 is too many
-    tags.take(limit)
+    tags
   end
+
+
+  #def get_hot_tags(limit = ITEMS_PER_PAGE_FEW, of = nil)
+  #  key = "hot_tags_of_#{of.to_s}"
+  #  tags = nil #Rails.cache.fetch(key)
+  #  unless tags
+  #    case of
+  #      when :recipes
+  #        tags = Recipe.tags_with_weight.take(100).map{|tag| tag[0]}
+  #      when :albums
+  #        tags = Album.tags_with_weight.take(100).map{|tag| tag[0]}
+  #      when :desires
+  #        tags = Desire.tags_with_weight.take(100).map{|tag| tag[0]}
+  #      else
+  #        tags = []
+  #    end
+  #    Rails.cache.write(key, tags, :expires_in => 1.hours)
+  #  end
+  #
+  #  #take some of the cached tags, 100 is too many
+  #  tags.take(limit)
+  #end
 
 
   def display_flash
