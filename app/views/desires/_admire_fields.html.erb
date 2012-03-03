@@ -1,6 +1,18 @@
 <span class="admire_fields <%= desire.id.to_s %> clearfix">
     <% if current_user_has_permission?(:normal_user) &&  !the_author_himself(desire) %>
+        <% if defined?(show_list) && show_list %>
+            <%= content_tag :span, "如有解馋攻略，第一时间得到通知", class: "trivial f12" unless desire.admirer_ids.include?(current_user.id) %>
+        <% end %>
         <%= link_to "", admire_desire_path(:id => desire.id), :method => :put, :remote => true,
                 :class => "btn btn_admire " + (desire.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
+    <% end %>
+    <% if defined?(show_list) && show_list %>
+        <% if desire.admirer_ids.size > 0 %>
+            <br/>
+            <%= content_tag :span, "馋到#{desire.admirer_ids.size}人：", class: "trivial" %>
+            <% desire.admirers.each do |admirer| %>
+              <%= link_to image_tag(admirer.get_avatar(:thumb), width: 24, height: 24), admirer, class: "m2", alt: admirer.login_name, title: admirer.login_name %>
+            <% end %>
+        <% end %>
     <% end %>
 </span>

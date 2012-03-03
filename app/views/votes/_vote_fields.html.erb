@@ -3,4 +3,13 @@
         <%= link_to "", like_votes_path(:item_id => item.id, :item_type => item.class.name), :method => :put, :remote => true,
                 :class => (item.fan_ids.include?(current_user.id) ? "btn btn_vote liked" : "btn btn_vote to_like")  %>
     </span>
+    <% if defined?(show_list) && show_list %>
+        <% if item.fan_ids.size > 0 %>
+            <br/>
+            <%= content_tag :span, "#{item.fan_ids.size}人喜欢：", class: "trivial" %>
+            <% item.fans.each do |fan| %>
+                <%= link_to image_tag(fan.get_avatar(:thumb), width: 24, height: 24), fan, class: "m2", alt: fan.login_name, title: fan.login_name %>
+            <% end %>
+        <% end %>
+    <% end %>
 <% end %>

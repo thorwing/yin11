@@ -32,17 +32,7 @@
             <%= render "albums/collect_fields", :item => @desire %>
           </div>
           <div class="fr" align="right">
-            <% if current_user_has_permission?(:normal_user) &&  !the_author_himself(@desire) %>
-                <%= content_tag :span, "如有解馋攻略，第一时间得到通知", class: "trivial f12" unless @desire.admirer_ids.include?(current_user.id) %>
-            <% end %>
-            <%= render "admire_fields", :desire => @desire %>
-            <% if @desire.admirer_ids.size > 0 %>
-                <br/>
-                <%= content_tag :span, "馋到#{@desire.admirer_ids.size}人：", class: "trivial" %>
-                <% @desire.admirers.each do |admirer| %>
-                    <%= link_to image_tag(admirer.get_avatar(:thumb), width: 32, height: 32), admirer, class: "m2", alt: admirer.login_name, title: admirer.login_name %>
-                <% end %>
-            <% end %>
+            <%= render "admire_fields", :desire => @desire, :show_hint => true, :show_list => true %>
           </div>
       <% end %>
     </div>

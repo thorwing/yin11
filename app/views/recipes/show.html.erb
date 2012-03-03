@@ -1,10 +1,19 @@
 <div class="grid_9 to_left">
     <div class="box_shadow p10">
-        <%= link_to image_tag("grey.gif", :alt=> @recipe.name, class: 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall), width: IMAGE_WATERFALL_WIDTH, height: @recipe.get_image_height(:waterfall)), @recipe.get_image_url, rel: "facebox"  %>
-
         <div class="clearfix">
-            <div id="recipe_info" class="fl ml10 clearfix">
-                <h1 class="f20"><%= content_tag :span, "菜谱", class: "icon icon_recipe mr5" %><%= @recipe.name %></h1>
+            <div class="fl mr10" style="width: 200px;">
+                <%= link_to image_tag("grey.gif", :alt=> @recipe.name, class: 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall), width: IMAGE_WATERFALL_WIDTH, height: @recipe.get_image_height(:waterfall)), @recipe.get_image_url, rel: "facebox"  %>
+            </div>
+
+            <div id="recipe_info" class="fl ml10 clearfix" style="width: 460px;">
+                <div class="clearfix">
+                    <h1 class="fl f20"><%= content_tag :span, "菜谱", class: "icon icon_recipe mr5" %><%= @recipe.name %></h1>
+                    <div class="fr clearfix">
+                      <%= link_to "编辑", edit_recipe_path(@recipe), class: "btn btn_edit fl" if the_author_himself(@recipe) %>
+                      <%= link_to "删除", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" if the_author_himself(@recipe, true) %>
+                    </div>
+                </div>
+
                 <div class="mt5">
                     <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》。" %>
                     <% summarystr = "大家去看看吧！" %>
@@ -42,20 +51,13 @@
                 <div class="mt10">
                     <% if current_user_has_permission? :normal_user %>
                         <div class="mt5">
-                            <%= render "votes/vote_fields", :item => @recipe %>
+                            <%= render "votes/vote_fields", :item => @recipe, show_list: true %>
                         </div>
                     <% end %>
-
-                    <div class="mt5 clearfix">
-                        <%= link_to "编辑", edit_recipe_path(@recipe), class: "btn btn_edit fl" if the_author_himself(@recipe) %>
-                        <%= link_to "删除", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" if the_author_himself(@recipe, true) %>
-                    </div>
                 </div>
             </div>
 
-            <div class="clearfix"></div>
-
-            <div class="fl mt10 block">
+            <div class="fl mt10 block clearfix">
                 <span class="berry_pink"><%= t_with_colon("recipes.steps") %></span><br/>
                 <% @recipe.steps.each_with_index do |step, index| %>
                     <div class="mt10 mb10 clearfix">
@@ -70,7 +72,6 @@
                 <% end %>
             </div>
 
-            <div class="clearfix"></div>
             <% if @recipe.notice.present? %>
               <div class="mt5">
                   <span class="berry_pink"><%= t_with_colon("recipes.notice") %></span>
