@@ -6,12 +6,8 @@
         <%= render "shared/text_area", :f => f, :label => t("general.description"), :field => :description %>
     </div>
 
-    <div class="fl display_inline" style="width:400px;">
-        <div class="field">
-             <b><%= f.label :tags_string, t("tags.tags") %></b>
-             <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json, class: "tags_input" %>
-        </div>
-        <%= render "tags/tags_options" %>
+    <div class="grid_5">
+        <%= render "tags/tags_field", f: f %>
     </div>
 
     <div class="clearfix"></div>
