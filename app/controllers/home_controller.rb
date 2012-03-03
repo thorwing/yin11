@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     #@stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
     @hot_tags = get_hot_tags(7, :desires)
 
-    @modes = ["newest", "admire", "solved"]
+    @modes = ["newest", "admire"]
     if @modes.include? params[:mode]
       @current_mode = params[:mode]
     else

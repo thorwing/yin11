@@ -52,9 +52,9 @@ class ApplicationController < ActionController::Base
   def the_author_himself(item, or_admin = false, is_redirect = false)
     has_permission = false
 
-    if (or_admin && current_user.has_permission?(:administrator))
+    if (or_admin && current_user_has_permission?(:administrator))
       has_permission = true
-    elsif current_user.has_permission?(:normal_user)
+    elsif current_user_has_permission?(:normal_user)
       begin
         has_permission = (item && item.respond_to?(:author_id)) ? (item.author_id == current_user.id) : false
       rescue
