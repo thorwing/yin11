@@ -1,7 +1,7 @@
 <div id="control_panels">
-    <%= render "profile_panel" %>
+    <%= render "profile_panel", user: current_user %>
     <%= render "actions_panel" %>
-    <%= render "follows_panel" %>
+    <%= render "follows_panel", user: current_user %>
     <%= render "admired_desires_panel" %>
     <%= render "liked_albums_panel" %>
     <%= render "liked_recipes_panel" %>

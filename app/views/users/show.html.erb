@@ -1,8 +1,5 @@
-<div class="grid_9 to_left mt10">
-    <div class="clearfix box_shadow ">
-        <%= render "users/user_header", author: @user %>
-    </div>
-    <div class="tab_control mt20">
+<div class="grid_9">
+    <div class="tab_control">
         <div class="tabContainer ">
             <% @modes.each do |mode| %>
                 <%= link_to t("personal.#{mode}"), user_path(@user, mode: mode), "data-page" => ".#{mode}", class: "tab #{mode == @current_mode ? "selected" : "unselected"}" %>
@@ -16,4 +13,9 @@
           <% end %>
         </div>
     </div>
+</div>
+
+<div class="grid_3">
+    <%= render "personal/profile_panel", user: @user %>
+    <%= render "personal/follows_panel", user: @user %>
 </div>

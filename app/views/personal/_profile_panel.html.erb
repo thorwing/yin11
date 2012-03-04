@@ -1,25 +1,25 @@
 <div class="clearfix box_shadow p5 panel">
-    <%= link_to current_user.login_name, profile_user_path(current_user) %><br/>
-    <%= link_to image_tag(current_user.get_avatar(:thumb, false)), profile_user_path(current_user) %>
+    <%= link_to user.login_name, profile_user_path(user) %><br/>
+    <%= link_to image_tag(user.get_avatar(:thumb, false)), profile_user_path(user) %>
     <div class="clearfix">
     <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
-        <span class="center"><%= current_user.followers.count %></span>
+        <span class="center"><%= user.followers.count %></span>
         <%= content_tag :span, t("user_basic.fans"), class: "center" %>
     </div>
     <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
-        <span class="center"><%= current_user.desires.count %></span>
+        <span class="center"><%= user.desires.count %></span>
         <%= content_tag :span, t("user_basic.desires"), class: "center" %>
     </div>
     <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
-        <span class="center"><%= current_user.albums.count%></span>
-        <%= content_tag :span, t("albums.albums"), class: "center" %>
-    </div>
-    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
-        <span class="center"><%= current_user.recipes.count %></span>
+        <span class="center"><%= user.recipes.count %></span>
         <%= content_tag :span, t("recipes.recipes"), class: "center" %>
     </div>
     <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
-        <span class="center"><%= current_user.score %></span>
+        <span class="center"><%= user.albums.count%></span>
+        <%= content_tag :span, t("albums.albums"), class: "center" %>
+    </div>
+    <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
+        <span class="center"><%= user.score %></span>
         <%= content_tag :span, "积分", class: "icon icon_star center" %>
     </div>
 </div>

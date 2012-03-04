@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @modes = ["desires", "albums", "recipes"]
+    @modes = ["desires", "recipes", "albums" ]
     if @modes.include? params[:mode]
       @current_mode = params[:mode]
     #elsif @modes.include? session[:user_mode]
