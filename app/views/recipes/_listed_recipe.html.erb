@@ -19,7 +19,7 @@
                     <span class="trivial mr5"><%= "#{recipe.votes}人喜欢" %></span><br/>
                 </div>
                 <div class="fl">
-                  <p class="tight f12"><%= recipe.instruction %></p>
+                  <p class="tight f12"><%= truncate_content recipe.instruction, 200 %></p>
                 </div>
             </div>
             <div>

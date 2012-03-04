@@ -16,7 +16,7 @@
                 <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + item.price_as_money_string) %></span>
             <% end %>
         </p>
-        <%= item.instruction if item.is_a?(Recipe) %>
+        <%= truncate_content(item.instruction, 200) if item.is_a?(Recipe) %>
         <%= new_tab_link_to "[查看#{t("object_types.#{item.class.name.downcase}")}]", item_path %>
     </div>
 </div>
