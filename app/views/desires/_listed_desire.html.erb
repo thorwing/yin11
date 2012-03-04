@@ -12,8 +12,7 @@
                 <p><%= truncate_content(desire.content, 200) %></p>
                 <span class="trivial mr5"><%= desire.admirer_ids.size %>人馋到</span> |
                 <span class="ml5 mr5 trivial"><%= desire.solutions.count %>解馋方案</span> |
-                <span class="ml5 mr5 trivial"><%= desire.votes_count %>投票</span>
-                <br/>
+                <span class="ml5 mr5 trivial"><%= desire.votes_count %>投票</span><br/>
                 <span class="fl trivial"><%= time_ago_in_words(desire.created_at) + t("general.ago") %></span>
 
                 <div class="fr">

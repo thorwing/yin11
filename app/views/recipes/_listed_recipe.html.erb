@@ -5,28 +5,22 @@
     </div>
     <div class="content_area">
         <div class="clearfix">
-            <div class="clearfix">
-                <h3 class="fl f15"><%= link_to recipe.name, recipe %></h3>
-                <span class="fr trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
-            </div>
             <!--avoid assets error when image_url is nil-->
-            <div class="clearfix">
-                <div class="fl mr5">
-                    <% thumb_url = recipe.get_image_url(:thumb) %>
-                    <% if thumb_url.present? %>
-                        <p><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> thumb_url, class: "thumbnail"), recipe %></p>
-                    <% end %>
-                    <span class="trivial mr5"><%= "#{recipe.votes}人喜欢" %></span><br/>
-                </div>
-                <div class="fl">
-                  <p class="tight f12"><%= truncate_content recipe.instruction, 200 %></p>
-                </div>
+            <div class="fl mr10">
+                <% thumb_url = recipe.get_image_url(:thumb) %>
+                <% if thumb_url.present? %>
+                    <p><%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> thumb_url, class: "thumbnail"), recipe %></p>
+                <% end %>
             </div>
-            <div>
-              <div class="fr">
-                <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= recipe.comments.size %></span>)
-              </div>
+            <div class="fl" style="width:400px;">
+                <h3 class="f15"><%= link_to recipe.name, recipe %></h3>
+                <span class="tight f12"><%= truncate_content recipe.instruction, 200 %></span><br/>
+                <span class="trivial mr10"><%= "#{recipe.votes}人喜欢" %></span><br/>
+                <span class="trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
             </div>
+        </div>
+        <div class="fr">
+            <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= recipe.comments.size %></span>)
         </div>
         <div class="embedded_comments display_none">
             <%= render "comments/comments", item: recipe %>
