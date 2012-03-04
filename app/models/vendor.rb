@@ -3,6 +3,7 @@ class Vendor
 
   field :name
   field :is_tmall, :type => Boolean
+  field :url
 
   attr_accessible :name, :mall_id
 

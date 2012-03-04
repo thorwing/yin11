@@ -16,6 +16,7 @@ class Product
   field :description
   field :details
   field :url
+  field :iid
   #for indexing of search
   field :vendor_name
   field :editor_score, :type => Integer, :default => 0
@@ -24,7 +25,7 @@ class Product
   #search_index(:fields => [:name],
   #            :attributes => [:updated_at, :created_at])
 
-  attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score
+  attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score, :iid
 
   #scopes
   scope :via_editor, order_by([:editor_score, :desc])
@@ -44,6 +45,7 @@ class Product
   validates_length_of :name, :maximum => 100
   validates_presence_of :vendor
   validates_numericality_of :editor_score, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100
+  validates_uniqueness_of :iid
 
   before_save :sync_vendor
 
