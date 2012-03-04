@@ -7,18 +7,10 @@
 </div>
 
 <div class="mt20 grid_12 clearfix">
-    <h3 class="trivial">更多用户</h3>
+    <h3 class="trivial">更多活跃用户</h3>
     <% @hard_workers.each do |user| %>
-        <div class="fl clearfix mt10" style="width:150px;">
-            <div>
-                <%= link_to image_tag("grey.gif", class: "lazy", "data-original" => user.get_avatar(:thumb, false), width: 48, height: 48), user %><br/>
-                <%= link_to user.login_name, user %>
-            </div>
-            <div>
-                <span class="trivial"><%= "上传了#{user.desires.count}张馋人图片" %></span><br/>
-                <span class="trivial"><%= "分享了#{user.solutions.count}条解馋攻略" %></span><br/>
-                <span class="trivial"><%= "分享了#{user.recipes.count}份菜谱" %></span>
-            </div>
+        <div class="fl clearfix mt10 mr10">
+            <%= link_to image_tag("grey.gif", class: "lazy", "data-original" => user.get_avatar(:thumb, false), width: 48, height: 48, title: user.login_name), user %><br/>
         </div>
     <% end %>
 </div>
