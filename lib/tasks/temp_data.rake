@@ -42,6 +42,17 @@ namespace :yin11 do
     end
   end
 
+  desc "update products for refer url"
+  task :update_products => :environment do
+    top = SilverHornet::TopHornet.new
+    Product.where(iid: nil).each do |product|
+      if product.url.present?
+        valid_url, product = top.update_product(product.url, product)
+        p (product && product.valid? ) ? "update one" : "fail one"
+      end
+    end
+  end
+
   desc "generate solutions for existed desires"
   task :generate_solutions_for_desires => :environment do
     Desire.all.to_a.each do |desire|

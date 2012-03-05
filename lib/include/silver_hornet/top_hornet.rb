@@ -64,15 +64,26 @@ class SilverHornet::TopHornet
   def fetch_product(url)
     product = nil
     id = extract_id(url)
-    #try converting to taobaoke url
-    product = convert_taobaoke(id) if id.present?
+    product = Product.first(conditions: {iid: id})
 
-    unless product
-      product = get_normal_item(id)
+    if id.present? && product.nil?
+      #try converting to taobaoke url
+      product = convert_taobaoke(id)
+      product = get_normal_item(id) unless product
     end
 
     return id.present?, product
   end
+
+  def update_product(url, product)
+      id = extract_id(url)
+      if id.present?
+        product = convert_taobaoke(id)
+        product = get_normal_item(id) unless product && product.iid.present?
+      end
+
+      return id.present?, product
+    end
 
   def send_query(parameters, retry_times = 3)
     response = nil
@@ -98,7 +109,7 @@ class SilverHornet::TopHornet
     response
   end
 
-  def convert_taobaoke(id)
+  def convert_taobaoke(id, product = nil)
     #parameters of http request, outer_code is optional, use it for backtrace
     response = send_query({
         method: "taobao.taobaoke.items.convert",
@@ -114,17 +125,17 @@ class SilverHornet::TopHornet
         is_mobile: false
     })
 
-    p "***response of taobaoke item: " + response
+    #p "***response of taobaoke item: " + response
     xml_doc = Crack::XML.parse(response)
     if xml_doc["taobaoke_items_convert_response"].present?
       item = xml_doc["taobaoke_items_convert_response"]["taobaoke_items"]["taobaoke_item"]
-      product = process_product(item)
+      product = process_product(item, product)
     else
       nil
     end
   end
 
-  def get_normal_item(id)
+  def get_normal_item(id, product = nil)
     #parameters of http request, outer_code is optional, use it for backtrace
     response = send_query({
       method: "taobao.item.get",
@@ -140,58 +151,55 @@ class SilverHornet::TopHornet
       is_mobile: false
     })
 
-    p "***response of normal item: " + response
+    #p "***response of normal item: " + response
     xml_doc = Crack::XML.parse(response)
     if xml_doc["item_get_response"].present?
       item = xml_doc["item_get_response"]["item"]
-      product = process_product(item)
+      product = process_product(item, product)
     else
       nil
     end
   end
 
   #akei
-  def process_product(item)
-    product = nil
+  def process_product(item, product = nil)
     begin
       raise "item or num_iid is nil" unless (item && item["num_iid"].present?)
 
       #according to the name, either find the product from database or initialize a new one
-      product = Product.find_or_initialize_by(iid: item["num_iid"])
+      product = Product.new unless product
+      product.iid = item["num_iid"]
+      product.name = item["title"]
+      product.refer_url = item["click_url"] if item["click_url"].present?
+      product.normal_url = item["detail_url"] if item["detail_url"].present?
+      product.price = item["price"]
+      product.commission = item["commission"]
+      product.commission_rate = item["commission_rate"]
+      product.commission_num = item["commission_num"]
+      product.commission_volume = item["commission_volume"]
+      product.item_location = item["item_location"]
+      product.volume = item["volume"]
 
-      if product.new_record?
-        product.name = item["title"]
-        product.refer_url = item["click_url"] if item["click_url"].present?
-        product.normal_url = item["detail_url"] if item["detail_url"].present?
-        product.price = item["price"]
-        product.commission = item["commission"]
-        product.commission_rate = item["commission_rate"]
-        product.commission_num = item["commission_num"]
-        product.commission_volume = item["commission_volume"]
-        product.item_location = item["item_location"]
-        product.volume = item["volume"]
+      vendor = Vendor.find_or_initialize_by(name: item["nick"])
+      vendor.url = item["shop_click_url"]
+      vendor.seller_credit_score = item["seller_credit_score"]
+      vendor.save if vendor.new_record? || vendor.changed?
+      product.vendor = vendor
 
-        vendor = Vendor.find_or_initialize_by(name: item["nick"])
-        vendor.url = item["shop_click_url"]
-        vendor.seller_credit_score = item["seller_credit_score"]
-        vendor.save if vendor.new_record? || vendor.changed?
-        product.vendor = vendor
-
-        #get the image
-        pic_url = item["pic_url"]
-        if product.image.blank? || product.image.remote_picture_url != pic_url
-          #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
-          pic = product.create_image(remote_picture_url: pic_url)
-        end
-
-        #get the tag
-        product.tags = seg_word(product.name).take(MAX_TAGS)
-
-        #product.catalogs = []
-        ##set the product catalog
-        #get_product_catalog(cat_name, product)
-        product.save!
+      #get the image
+      pic_url = item["pic_url"]
+      if product.image.blank? || product.image.remote_picture_url != pic_url
+        #we are using Carrierwave, so just set the remote_image_url, it will download the image for us
+        pic = product.create_image(remote_picture_url: pic_url)
       end
+
+      #get the tag
+      product.tags = seg_word(product.name).take(MAX_TAGS)
+
+      #product.catalogs = []
+      ##set the product catalog
+      #get_product_catalog(cat_name, product)
+      product.save! if product.new_record? || product.changed?
     rescue StandardError => ex_msg
       p ex_msg
       return nil
