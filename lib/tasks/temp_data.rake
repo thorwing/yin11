@@ -46,7 +46,7 @@ namespace :yin11 do
   task :update_products => :environment do
     top = SilverHornet::TopHornet.new
     Product.where(iid: nil).each do |product|
-      if product.url.present?
+      if product.url.present? && product.solutions.size > 0
         valid_url, product = top.update_product(product.url, product)
         p (product && product.valid? ) ? "update one" : "fail one"
       end
