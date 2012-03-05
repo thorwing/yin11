@@ -53,6 +53,18 @@ namespace :yin11 do
     end
   end
 
+  desc "clean products for refer url"
+  task :clean_products => :environment do
+    Product.where(iid: nil).delete_all
+  end
+
+  desc "clean solutions for refer url"
+  task :clean_solutions => :environment do
+    Solution.all.each do |solution|
+      solution.delete if (solution.item.nil?)
+    end
+  end
+
   desc "generate solutions for existed desires"
   task :generate_solutions_for_desires => :environment do
     Desire.all.to_a.each do |desire|
