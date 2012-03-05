@@ -8,27 +8,29 @@ class Desire
   include SilverSphinxModel
 
   field :content
-  field :history_admirer_ids, :type => Array, :default => []
-  field :solved, :type => Boolean, :default => false
+  field :history_admirer_ids, type: Array, default: []
+  field :solved, type: Boolean, default: false
+  field :via_product, type: Boolean, default: false
+  field :via_recipe, type: Boolean, default: false
 
-  search_index(:fields => [:content, :tags],
-                :attributes => [:created_at])
+  search_index(fields: [:content, :tags],
+                attributes: [:created_at])
 
-  attr_accessible :content
+  attr_accessible :content, :via_product, :via_recipe
 
   #relationships
   has_many :images
   has_many :reviews
   has_many :solutions
-  belongs_to :author, :class_name => "User", index: true
-  has_and_belongs_to_many :admirers, :class_name => "User", :inverse_of => "admired_desires", index: true
+  belongs_to :author, class_name: "User", index: true
+  has_and_belongs_to_many :admirers, class_name: "User", inverse_of: "admired_desires", index: true
   has_and_belongs_to_many :albums, index: true
   belongs_to :place, index: true
   embeds_many :comments
 
   #validations
   validates_presence_of :author
-  validates_length_of :content, :maximum => MAX_DESIRE_CONTENT_LENGTH
+  validates_length_of :content, maximum: MAX_DESIRE_CONTENT_LENGTH
 
   #def latest_user_solution
   #  solutions.excludes(author_id: nil).first(sort: [[ :created_at, :desc ]])

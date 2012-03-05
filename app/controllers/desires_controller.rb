@@ -51,7 +51,7 @@ class DesiresController < ApplicationController
   # GET /desires/new
   # GET /desires/new.json
   def new
-    @desire = Desire.new
+    @desire = Desire.new(via_product: true)
     if params[:place_id].present?
       @place = Place.find(params[:place_id])
     end
@@ -87,7 +87,7 @@ class DesiresController < ApplicationController
     ImagesHelper.process_uploaded_images(@desire, params[:images], params[:remote_image_url])
 
     saved = @desire.save
-    SolutionManager.generate_solutions(@desire, params[:product_id]) if saved
+    SolutionManager.generate_solutions(@desire, params[:product_id], current_user) if saved
 
     respond_to do |format|
       if saved
@@ -191,8 +191,7 @@ class DesiresController < ApplicationController
 
   def afar
     @desire = Desire.new
-
-    valid_url, @product = handle_taobao_product(params[:url])
+    valid_url, @product = SilverHornet::TopHornet.new.fetch_product(params[:url])
 
     respond_to do |format|
       format.html {render "afar", :layout => "dialog"}

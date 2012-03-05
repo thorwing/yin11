@@ -252,28 +252,4 @@ module ApplicationHelper
     return @users_browser
   end
 
-  def handle_taobao_product(url)
-    valid_url = false
-    site = SilverHornet::ProductsSite.new(true)
-    url = site.handle_url(url)
-    if url
-      valid_url = true
-      product = Product.first(conditions: {url: url})
-
-      if product.nil?
-        #It's not in our database, then fetch it now
-        site.name = t("third_party.taobao")
-        conf = YAML::load(ERB.new(IO.read("#{Rails.root}/config/silver_hornet/products.yml")).result)
-        conf[t("third_party.taobao")].each do |key, value|
-          site.send("#{key}=", value) if site.respond_to?("#{key}=")
-        end
-
-        site.agent = Mechanize.new
-        site.agent.get(url)
-        product = site.process_taobao_product
-      end
-    end
-
-    return valid_url, product
-  end
 end
