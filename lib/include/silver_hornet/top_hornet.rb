@@ -76,14 +76,14 @@ class SilverHornet::TopHornet
   end
 
   def update_product(url, product)
-      id = extract_id(url)
-      if id.present?
-        convert_taobaoke(id, product)
-        get_normal_item(id, product) unless product.iid.present?
-      end
-
-      return id.present?, product
+    id = extract_id(url)
+    if id.present?
+      convert_taobaoke(id, product)
+      get_normal_item(id, product) unless product.iid.present?
     end
+
+    return id.present?, product
+  end
 
   def send_query(parameters, retry_times = 3)
     response = nil

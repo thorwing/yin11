@@ -8,7 +8,6 @@ class Product
 
   field :name
   field :price, :type => Float
-  field :url
   field :normal_url
   field :refer_url
   field :iid
@@ -36,9 +35,9 @@ class Product
   validates_presence_of :vendor
   validates_uniqueness_of :iid
 
-  #def url
-  #  self.refer_url.present? ? self.refer_url : self.normal_url
-  #end
+  def url
+    self.refer_url.present? ? self.refer_url : self.normal_url
+  end
 
   def price_as_money_string
     price ? format('%.2f', price) : ''

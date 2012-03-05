@@ -1,13 +1,5 @@
 <% title "商品" %>
 
-<!--TODO-->
-<% if current_user_has_permission? :administrator %>
-    <p>iid: <%= @product.iid %></p>
-    <p>url: <%= @product.url %></p>
-    <p>refer_url: <%= @product.refer_url %></p>
-    <p>normal_url: <%= @product.normal_url %></p>
-<% end %>
-
 <div class="grid_9 to_left overflow_hidden p5 clearfix">
     <div class="product_info clearfix box_shadow p5">
         <div class="fl">
@@ -48,6 +40,7 @@
 
             <% if current_user_has_permission? :administrator %>
                 <div class="mt5">
+                    <%= content_tag :b, "TBK", class: "berry_red f16 fl mr2" if @product.refer_url.present? %>
                     <%= link_to "", edit_product_path(@product), :class => "btn btn_edit fl" %>
                     <%= link_to "", @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %>
                 </div>
