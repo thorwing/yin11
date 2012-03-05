@@ -212,7 +212,7 @@ class User
 
   def get_recent_feeds(limit)
     feeds = self.feeds.desc(:created_at)
-    feeds.reject{|f| f.picture_url.blank? }[0..(limit-1)]
+    feeds.select{|f| [Recipe.name, Desire.name].include? f.target_type }.reject{|f| f.picture_url.blank? }.uniq{|f| f.identity}[0..(limit-1)]
   end
 
   def unread_notifications
