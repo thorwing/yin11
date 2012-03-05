@@ -5,18 +5,6 @@
 
     <%= link_to product.name, product %> <br/>
     <% if product.price.present? %>
-        <%= t_with_colon("products.price") %> <%= t("money.yuan_mark2") %><%= product.price %><br/>
-    <% end %>
-    <% if product.weight.present? %>
-        <%= t_with_colon("products.weight") %> <%= product.weight %><br/>
-    <% end %>
-    <% if product.producer.present? %>
-        <%= t_with_colon("products.producer") %> <%= product.producer %><br/>
-    <% end %>
-    <% if product.area.present? %>
-        <%= t_with_colon("products.area") %> <%= product.area %><br/>
-    <% end %>
-    <% if product.comments && product.comments.size > 0%>
-        <%= product.comments.size.to_s %> <%= t("comments.comment") %><br/>
+        <span class="trivial"><%= t_with_colon("products.price") %></span><%= t("money.yuan_mark2") %><%= product.price %><br/>
     <% end %>
 </div>

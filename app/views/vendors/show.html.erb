@@ -1,6 +1,9 @@
 <% title @vendor.name, false %>
 
-<h2><%= @vendor.name %><span class="trivial"><%= new_tab_link_to "(#{@vendor.mall.name})", @vendor.mall.entry_url if @vendor.mall.name.present? %></span></h2>
+<h2><%= @vendor.name %></h2>
+<!--<= new_tab_link_to "店铺链接", @vendor.url, {force: true} if @vendor.url.present? %><br/>-->
+<%= new_tab_link_to "店铺链接", {:controller => "home", :action => "gateway", :url => @vendor.url, :force => true} if @vendor.url.present? %><br/>
+
 <span><%= "用户们分享了#{@vendor.products.count}款商品" %></span>
 
 <div class="mt10 mb20">

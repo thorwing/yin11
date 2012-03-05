@@ -4,9 +4,9 @@
         <%= text_field_tag "product_url", "" %>
         <%= submit_tag t("general.submit"), id: "link_prod_btn", class: "btn btn_ok lighter_touch", onclick: 'return pre_link_product(this);'%>
         <%= image_tag "loading.gif", id: "link_spinner", class: "display_none" %>
-        <p>已支持以下网上商城：</p>
+        <p class="trivial">已支持以下网上商城：</p>
         <div>
-            <%= new_tab_link_to t("syncs.sites.taobao"), "http://www.taobao.com/", class: "auth_btn_16 via_taobao_small" %><%= new_tab_link_to "淘宝", "http://www.taobao.com/" %>
+            <%= content_tag :span, t("syncs.sites.taobao"), class: "auth_btn_16 via_taobao_small" %>淘宝
         </div>
     <% end %>
 </div>

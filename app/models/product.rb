@@ -1,7 +1,6 @@
 class Product
   include Mongoid::Document
   include Mongoid::Timestamps
-  include AssociatedModels
   include Taggable
   include Available
   include Imageable
@@ -9,48 +8,35 @@ class Product
 
   field :name
   field :price, :type => Float
-  field :weight, :type => Float
-  field :producer
-  field :area
-  field :authenticated
-  field :description
-  field :details
-  field :url
+  field :normal_url
+  field :refer_url
   field :iid
-  #for indexing of search
-  field :vendor_name
-  field :editor_score, :type => Integer, :default => 0
-  field :original_name
 
-  #search_index(:fields => [:name],
-  #            :attributes => [:updated_at, :created_at])
+  field :commission, :type => Float
+  field :commission_rate, :type => Float
+  field :commission_num, :type => Integer
+  field :commission_volume, :type => Float
+  field :item_location
+  field :volume, :type => Integer
 
-  attr_accessible :name, :url, :price, :weight, :vendor_id, :editor_score, :iid
-
-  #scopes
-  scope :via_editor, order_by([:editor_score, :desc])
+  attr_accessible :iid
 
   #relationships
   embeds_many :comments
   belongs_to :vendor, index: true
-  tokenize_one :vendor
   has_one :image
-  has_and_belongs_to_many :reviews, index: true
   has_and_belongs_to_many :catalogs, index: true
-  embeds_many :feeds
   has_many :solutions
 
   #validators
   validates_presence_of :name
-  validates_length_of :name, :maximum => 100
+  #60 bytes limited by tabao
+  validates_length_of :name, :maximum => 120
   validates_presence_of :vendor
-  validates_numericality_of :editor_score, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100
   validates_uniqueness_of :iid
 
-  before_save :sync_vendor
-
-  def sync_vendor
-    self.vendor_name ||= self.vendor.name if self.vendor_id
+  def url
+    self.refer_url.present? ? self.refer_url : self.normal_url
   end
 
   def price_as_money_string

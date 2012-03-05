@@ -10,7 +10,6 @@ class Feed
   embedded_in :tag
   embedded_in :vendor
   embedded_in :user
-  embedded_in :product
   embedded_in :recipe
   embedded_in :group
 

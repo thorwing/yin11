@@ -15,7 +15,6 @@ class Review
   scope :in_days_of, lambda { |days_in_number| where(:created_at.gt => days_in_number.days.ago) }
 
   #relationships
-  has_and_belongs_to_many :products
   has_and_belongs_to_many :recipes, index: true
   embeds_many :comments
   belongs_to :author, :class_name => "User", index: true

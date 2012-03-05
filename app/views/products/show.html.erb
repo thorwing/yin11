@@ -30,7 +30,7 @@
 
 
             <div class="mt5 clearfix">
-                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => @product.url, :force => true}, :class => "btn btn_buy fl"%>
+                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => @product.url, :force => true}, :class => "btn btn_buy fl" if @product.url.present? %>
                 <% if current_user_has_permission? :normal_user %>
                     <div class="fr">
                         <%= render "votes/vote_fields", :item => @product %>

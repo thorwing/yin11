@@ -99,7 +99,7 @@ class ProductsController < ApplicationController
   end
 
   def link
-    @valid_url, @product = handle_taobao_product(params[:product_url])
+    @valid_url, @product = SilverHornet::TopHornet.new.fetch_product(params[:product_url])
 
     respond_to do |format|
       format.js
@@ -113,7 +113,7 @@ class ProductsController < ApplicationController
     chapter = (chapter.present? ? chapter.to_i : 1)
     page = (page ? page.to_i : 1)
     if page <= PAGES_PER_CHAPTER
-      criteria = Product.enabled.without(:description)
+      criteria = Product.enabled.desc(:created_at)
       #if params[:catalog].present?
       #  catalog = Catalog.first(conditions: {name: params[:catalog]})
       #  catalog_ids = [catalog.id] | catalog.descendant_ids
@@ -125,7 +125,7 @@ class ProductsController < ApplicationController
       end
       total_chapters = (criteria.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
 
-      return criteria.via_editor.page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW), total_chapters
+      return criteria.page((chapter - 1) * PAGES_PER_CHAPTER + page).per(ITEMS_PER_PAGE_FEW), total_chapters
     else
       return [], total_chapters
     end
