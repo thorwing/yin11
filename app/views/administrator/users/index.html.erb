@@ -3,7 +3,8 @@
 <%= User.all.size.to_s %> <%= t("users.users") %>
 
 <table class="formatted">
-    <tr>
+    <tr class="head">
+        <th>头像</th>
         <th><%= t("users.login_name") %></th>
         <th><%= t("users.role") %></th>
         <th><%= t("reviews.reviews") %></th>
@@ -15,6 +16,7 @@
 
     <% @users.each do |user| %>
     <tr id='<%= user.id %>'>
+        <td style="width: 28px; height: 28px;"><%= image_tag(user.get_avatar(:thumb, false), width: 24, height: 24, class: "mt2")%></td>
         <td><%= link_to user.login_name, [:administrator, user] %></td>
         <td><%= t("users.role_#{user.role.to_s}")%></td>
         <td><%= user.reviews.size %></td>

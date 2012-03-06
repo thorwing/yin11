@@ -138,46 +138,46 @@ zh-CN:
 
   notices:
     welcome_back: "欢迎, %{name}"
-    logged_out: "您已经登出。"
-    need_permission_logged: "请登入，或注册一个帐号。"
+    logged_out: "您登出了。"
+    need_permission_logged: "请登录，或注册一个帐号。"
     need_permission_not_logged: "此操作需要%{permission}的权限。"
     password_reset_email_sent: "密码恢复邮件已经发出，请查收。"
     email_verified: 邮箱已验证
-    password_reset: 密码已更改
-    review_posted: 分享已发布
+    password_reset: 成功更改密码
+    review_posted: 成功发布分享
     review_post_failure: 分享发布失败,
-    review_updated: 分享已修改
+    review_updated: 成功修改分享
     already_published: 这个...好像发过了嘛
-    group_created: 饭桌已创建
-    group_updated: 饭桌已更新
-    group_joind: 已加入该饭桌
-    group_quited: 已退出该饭桌'
-    post_created: 话题已发表
-    vendor_created: 商户已创建
-    current_city_updated: 当前城市已更新
-    user_basic_info_updated: 基本信息已更新
-    profile_updated: 偏好设定已更新
-    rapid_user_creation: 你已经在%{cooldown}小时内注册了一个帐号啦
-    recipe_created: 菜谱创建成功
-    recipe_updated: 菜谱更新成功
-    album_created: 拼盘创建成功
-    album_updated: 拼盘更新成功
-    album_cover_picked: 拼盘封面已更改
-    desire_created: 馋人图片创建成功
-    desire_updated: 馋人图片修改成功
-    place_updated: 地点更新成功
-    message_sent: 消息已发出
-    solution_created: 解馋攻略提交成功
-    solution_creation_failed: 解馋攻略提交失败
+    group_created: 成功创建饭桌
+    group_updated: 成功更新饭桌
+    group_joind: 成功加入饭桌
+    group_quited: 成功退出饭桌'
+    post_created: 成功发表话题
+    vendor_created: 成功创建商户
+    current_city_updated: 成功更新当前城市
+    user_basic_info_updated: 成功更新基本信息
+    profile_updated: 成功更新偏好设定
+    rapid_user_creation: 你已经在%{cooldown}小时内注册了一个帐号啦，邀请更多人来吃心不改吧
+    recipe_created: 成功添加菜谱
+    recipe_updated: 成功更新菜谱
+    album_created: 成功创建拼盘
+    album_updated: 成功更新拼盘
+    album_cover_picked: 成功更改了拼盘封面
+    desire_created: 成功上传馋人图片
+    desire_updated: 成功更新馋人图片
+    place_updated: 成功更新地点
+    message_sent: 成功发出消息
+    solution_created: 成功分享了解馋攻略
+    solution_creation_failed: 解馋攻略分享失败
     soluton_voted: 投票成功
     temp_third_party_redirect: 网站处于测试阶段，请使用本站账号登陆
 
   alerts:
     password_reset_expired: 密码重置口令已过期
     no_group_specified: 未指定饭桌
-    posted_comment_too_ofen: "感谢您为我们提供了这么多内容，休息一会儿吧"
+    posted_comment_too_ofen: "感情您在短时间为我们提供了这么多内容，服务器表示需要消化一下，请您休息一会儿吧～"
     no_such_profile_or_no_permission: 无此用户，或您的无权访问该页面
-    only_author_self: 只有作者才可以执行此操作
+    only_author_self: 只有作者本人才可执行此操作
 
   object_types:
     product: 商品

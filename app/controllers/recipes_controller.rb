@@ -7,10 +7,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-
-    if params[:tag].present?
-
-    else
+    if params[:tag].blank?
       all_tags = get_all_tags(:recipes)
       @hot_tags = all_tags.take(15)
       @primary_tags = get_primary_tag_names(all_tags)

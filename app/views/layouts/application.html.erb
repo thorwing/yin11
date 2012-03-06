@@ -10,11 +10,7 @@
     <% end %>
     <%= csrf_meta_tag %>
     <title>
-    <% if home_page? %>
-        <%= [t("site.name"), t("site.description")].join(' - ') %>
-    <% else %>
-        <%= @content_for_title + ' - ' if show_title? %><%= [t("site.name"), t("site.description")].join(' - ') %>
-    <% end %>
+        <%= (@content_for_title + '-') if @content_for_title %><%= [t("site.name"), t("site.description")].join('-') %>
     </title>
     <% if request.host.include? "chixinbugai.com" %>
         <meta name="google-site-verification" content="nWzf6pxwY2_AJjgrdYq1wfjcuU1xzJvFtJXD9M1PI8k" />
@@ -51,10 +47,12 @@
     </div>
 
     <div class="grid_3">
-        <!--友情链接-->
-        <!--<ul>-->
-            <!--<li><a href="http://railscasts.com/">Ruby On Rails</a></li>-->
-        <!--</ul>-->
+        <% unless request.host.include? "chixinbugai.com" %>
+            友情链接
+            <ul>
+                <li><a href="http://chixinbugai.com/">吃心不改</a></li>
+            </ul>
+        <% end %>
     </div>
 
     <div class="grid_3">

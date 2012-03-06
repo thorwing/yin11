@@ -1,6 +1,6 @@
 <div class="clearfix box_shadow p5 panel">
-    <%= link_to user.login_name, profile_user_path(user) %><br/>
-    <%= link_to image_tag(user.get_avatar(:thumb, false)), profile_user_path(user) %>
+    <%= link_to user.login_name, user %><br/>
+    <%= link_to image_tag(user.get_avatar(:thumb, false)), user %>
     <div class="clearfix">
     <div class="fl f12" style="width: 30px; height:34px; line-height: 17px;">
         <span class="center"><%= user.followers.count %></span>

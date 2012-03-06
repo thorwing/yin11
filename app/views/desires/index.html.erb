@@ -1,4 +1,4 @@
-<% title t("desires.desire"), false %>
+<% title (params[:tag].present? ? [params[:tag], "馋人图片"].join("-") : "馋人图片"), false %>
 
 <!--<= render "primary_tags" %>-->
 <!--<div class="clearfix mb10"></div>-->

@@ -1,4 +1,4 @@
-<% title t("desires.desire"), false %>
+<% title "馋人图片:" + truncate_content(@desire.content, 10) , false %>
 
 <div class="grid_9">
   <div class="box_shadow p10">
@@ -83,7 +83,7 @@
   <% end %>
 
   <% unless @desire.albums.empty? %>
-      <div class="box_shadow p5">
+      <div class="box_shadow mb10  p5">
         <h3 class="trivial">被收集到拼盘：</h3>
         <% @desire.albums.limit(3).each do |album| %>
             <div class="clearfix mb10 lighter_touch">

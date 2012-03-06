@@ -5,7 +5,7 @@
 
 <% if current_user %>
     <div class="nav_links">
-        <%= link_to t("groups.edit_joined_gorup"), profile_user_path(current_user.profile), :class => "button"  %>
+        <%= link_to t("groups.edit_joined_gorup"), current_user, :class => "button"  %>
     </div>
 <% end %>
 

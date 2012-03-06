@@ -1,4 +1,4 @@
-<% title t("albums.albums"), false %>
+<% title "拼盘", false %>
 
 <%= paginate @albums %>
 <% @albums = @albums.reject{|a| a.get_cover_url(:waterfall).include?("assets/not_found.png")} %>

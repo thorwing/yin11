@@ -16,7 +16,7 @@
     <td><%= invitation.used %></td>
     <td>
       <% if invitation.invitee.present?  %>
-        <%= link_to invitation.invitee, {controller: "/users", action: "show", id: invitation.invitee} %>
+        <%= link_to User.find(invitation.invitee).login_name, {controller: "/users", action: "show", id: invitation.invitee} %>
       <% else %>
           <% invite_path = sign_up_url(invitation: invitation.code)  %>
          <%= link_to invite_path, invite_path %>

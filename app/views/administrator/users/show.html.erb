@@ -1,17 +1,26 @@
-<p>
-  <b><%= t("users.login_name") %></b>
-  <%= @user.login_name %>
-</p>
+<div class="grid_9">
+  <p>
+    <b><%= t("users.login_name") %></b>
+    <%= @user.login_name %>
+  </p>
 
-<p>
-  <b>Email</b>
-  <%= @user.email %>
-</p>
+  <p>
+    <b>Email</b>
+    <%= @user.email %>
+  </p>
 
-<p>
-  <b><%= t("users.role") %></b>
-  <%= @user.role %>
-</p>
+  <p>
+    <b><%= t("users.role") %></b>
+    <%= @user.role %>
+  </p>
+  <div class="mt10">
+    <%= link_to t("general.edit"), edit_administrator_user_path(@user), :class => "btn btn_edit" %>
+  </div>
+</div>
 
-<%= link_to t("general.edit"), edit_administrator_user_path(@user), :class => "button" %>
+<div class="grid_3">
+    <%= render "personal/profile_panel", user: @user %>
+    <%= render "personal/follows_panel", user: @user %>
+</div>
+
 

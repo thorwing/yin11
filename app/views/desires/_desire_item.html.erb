@@ -2,7 +2,7 @@
     <div class="inner_frame">
         <% has_solution, best_solution = desire.solved %>
         <%= content_tag :span, "", class: "icon jiechan_ribbon" if has_solution %>
-        <div class="pt10 pl10 pr10">
+        <div class="pt10 pl10 pr10 pb5">
             <div class="hint_box">
                 <% pic_url = desire.get_image_url(:waterfall) %>
                 <% if pic_url.present? %>
