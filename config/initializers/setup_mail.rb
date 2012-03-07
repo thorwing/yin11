@@ -8,7 +8,7 @@ ActionMailer::Base.smtp_settings = {
   :password		=> "Yin11rocks",
   :authentication		=> "plain",
   :enable_starttls_auto => true
-  }
+}
 
 
 ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?

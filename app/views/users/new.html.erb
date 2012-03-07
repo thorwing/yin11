@@ -5,23 +5,23 @@
       <%= render "shared/error_messages", :target => @user %>
       <p>
         <%= f.label :email, t("authentication.email"), class: "trivial" %><%= mark_required(@user, :email) %><br />
-        <%= f.text_field :email %>
+        <%= f.text_field :email, class: "big_input" %>
       </p>
       <p>
         <%= f.label :login_name, t("authentication.login_name"), class: "trivial"%><%= mark_required(@user, :login_name) %><br />
-        <%= f.text_field :login_name, :maxlength => get_max_length(User, :login_name)  %>
+        <%= f.text_field :login_name, :maxlength => get_max_length(User, :login_name), class: "big_input"  %>
       </p>
       <p>
         <%= f.label :password, t("authentication.password"), class: "trivial" %><%= mark_required(@user, :password) %><br />
-        <%= f.password_field :password %>
+        <%= f.password_field :password, class: "big_input" %>
       </p>
       <p>
         <%= f.label :password_confirmation, t("authentication.password_confirmation"), class: "trivial" %> <br/>
-        <%= f.password_field :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: "big_input" %>
       </p>
       <p class="mt10">
         <span class="trivial">网站当前处于有限范围测试中，注册需要邀请码，敬请谅解。</span><br/>
-        <span class="trivial">如您想索取邀请码，欢迎您关注我们的微博，并取得联系：</span>
+        <span class="trivial">欢迎您联系我们的微博来索取邀请码：</span>
         <%= new_tab_link_to t("syncs.sites.sina"), YIN11_SINA_WEIBO, class: "auth_btn_16 via_sina_small" %><br/>
         <%= f.label t("authentication.invitation_code"), class: "trivial" %><span class="red f20 m2">*</span><br/>
         <%= text_field_tag "invitation", params[:invitation] %>

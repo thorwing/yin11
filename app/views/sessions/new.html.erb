@@ -5,12 +5,12 @@
     <%= form_tag sessions_path, id: "login_form" do %>
         <div>
             <%= label_tag :email, t_with_colon("authentication.email"), class: "trivial" %><br/>
-            <%= email_field_tag :email, params[:email] %>
+            <%= email_field_tag :email, params[:email], class: "big_input" %>
         </div>
 
         <div class="mt5">
             <%= label_tag :password, t_with_colon("authentication.password"), class: "trivial" %><br/>
-            <%= password_field_tag :password %>
+            <%= password_field_tag :password, "", class: "big_input" %>
         </div>
 
         <div class="mt10">

@@ -86,20 +86,6 @@
 
 
 #new_user, #login_form {
-  input[type="text"], input[type="password"], input[type="email"] {
-    width: 280px;
-    height: 30px;
-    font-size: 16px;
-    color: $ink_black;
-
-    -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
-            border-radius: 5px;
-    /*border:1px solid #dbdbdb;*/
-
-    box-shadow: 0 1px 3px rgba(34, 25, 25, 0.2);
-  }               
-  
   /*for login*/
   tr {
     margin: 5px 0;
