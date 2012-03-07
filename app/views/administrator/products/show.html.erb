@@ -1,0 +1,57 @@
+<% title [truncate_content(@product.name, 20), "商品"].join("-"), false %>
+
+<div class="grid_9 to_left overflow_hidden p5 clearfix">
+    <div class="product_info clearfix box_shadow p5">
+        <div class="fl">
+            <%= link_to (image_tag(@product.get_image_url(:waterfall), class: "img_frame")), @product.get_image_url, rel: "facebox" %>
+        </div>
+
+        <div class="product_detail ml10 fl">
+            <h1 class="f20"><%= content_tag :span, "商品", class: "icon icon_product mr5" %><%= @product.name %></h1>
+            <p>
+              <span class="trivial mr5"><%= t("products.price") %></span>
+              <%= [t("money.yuan_mark2"), @product.price_as_money_string].join if @product.price %>
+            </p>
+
+            <p>
+              <span class="trivial mr5"><%= t("catalogs.catalog") %></span>
+              <%= @product.catalogs.map(&:name).join(" ") %>
+            </p>
+
+            <p>
+              <span class="trivial mr5"><%= t("tags.tags") %></span>
+              <%= render "tags/tags", :item => @product %>
+            </p>
+
+            <p>
+              <span class="trivial mr5">佣金</span>
+              <%= @product.commission %>
+            </p>
+
+            <p>
+                <span class="trivial mr5">佣金率</span>
+                <%= (@product.commission_rate / 10000 * 100).to_s + "%" %>
+            </p>
+
+            <p>
+                <span class="trivial mr5">地点</span>
+                <%= @product.item_location %>
+            </p>
+
+            <p>
+                <span class="trivial mr5"><%= t("vendors.vendor") %></span>
+                <%= new_tab_link_to @product.vendor.name, @product.vendor %>
+            </p>
+
+            <p>
+                <span class="trivial mr5">点击次数</span>
+                <%= link_to @outgoing_count, administrator_audits_path(url: @product.url) %>
+            </p>
+
+            <div class="mt10">
+                <%= link_to "", edit_administrator_product_path(@product), :class => "btn btn_edit fl" %>
+                <%= link_to "", [:administrator, @product], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %>
+            </div>
+        </div>
+    </div>
+</div>

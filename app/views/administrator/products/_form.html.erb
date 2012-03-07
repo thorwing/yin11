@@ -30,18 +30,8 @@
   </div>
 
   <div class="field">
-    <b><%= f.label :weight, t("products.weight") %></b><br />
-    <%= f.text_field :weight %>
-  </div>
-
-  <div class="field">
      <b><%= f.label :tags_string, t("tags.tags") %></b><br/>
      <%= f.text_field :tags_string, 'data-pre' => (f.object.tags ? f.object.tags.map { |t| { :id => t, :name => t }} : []).to_json %>
-  </div>
-
-  <div class="field">
-     <b><%= f.label :editor_score, t("products.editor_score")%></b><br />
-     <%= f.text_field :editor_score %>
   </div>
 
   <div class="field">

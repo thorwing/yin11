@@ -40,9 +40,7 @@
 
             <% if current_user_has_permission? :administrator %>
                 <div class="mt5">
-                    <%= content_tag :b, "TBK", class: "berry_red f16 fl mr2" if @product.refer_url.present? %>
-                    <%= link_to "", edit_product_path(@product), :class => "btn btn_edit fl" %>
-                    <%= link_to "", @product, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %>
+                    <%= link_to "管理", [:administrator, @product], :class => "button fl" %>
                 </div>
             <% end %>
         </div>
