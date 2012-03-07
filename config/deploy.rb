@@ -1,4 +1,4 @@
-set :application, "yinkuaizi.com"
+set :application, "chixinbugai.com"
 role :web, application                          # Your HTTP server, Apache/etc
 role :app, application                          # This may be the same as your `Web` server
 role :db,  application, :primary => true # This is where Rails migrations will run

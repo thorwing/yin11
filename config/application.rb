@@ -61,6 +61,10 @@ module Yin11
     config.mongoid.preload_models = false
 
     config.cache_store = :memory_store
+
+    config.action_mailer.delivery_method = :sendmail
+    config.action_mailer.sendmail_settings = {arguments: '-i'}
+
   end
 end
 
