@@ -1,7 +1,10 @@
 <% title "忘记密码了？" %>
 
 <div id="password_reset_form" class="mt10">
-    <div class="block round b_berry_azure p5" style="width: 500px;">请输入您注册时用的邮箱地址，系统会把重置密码的链接发送到该邮箱中。</div>
+    <div class="block round b_berry_azure p5" style="width: 500px;">
+      <span>请输入您注册时用的邮箱地址，系统会把重置密码的链接发送到该邮箱中。</span><br/>
+      <span>依据邮箱的不同，邮件有可能会进入“垃圾邮件”，请注意查收，谢谢。</span>
+    </div>
     <div class="mt10">
         <%= form_tag password_resets_path, :method => :post do %>
             <div class="field">

@@ -8,8 +8,8 @@ class UserMailer < ActionMailer::Base
   #
   def password_reset(user)
     @user = user
-    email_with_name = "#{@user.login_name} <#{@user.email}>"
-    mail :to => email_with_name, :subject => I18n.t("mailers.reset_password_subject")
+    #email_with_name = "#{@user.login_name} <#{@user.email}>"
+    mail :to => @user.email, :subject => I18n.t("mailers.reset_password_subject")
   end
 
   #def email_verify(user)

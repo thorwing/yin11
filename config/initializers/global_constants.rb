@@ -1,7 +1,7 @@
 #encoding utf-8
 # also notice the call to 'freeze'
 #default
-SELF_PROVIDER = 'yin11'
+SELF_PROVIDER = 'chixinbugai'
 DEFAULT_CITY_CODE = "021" #Shaanghai
 PAGES_PER_CHAPTER = 5
 ITEMS_PER_PAGE_FEW = 15
