@@ -59,7 +59,7 @@ class Administrator::ProductsController < Administrator::BaseController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to products_url }
+      format.html { redirect_to administrator_products_url }
       format.json { head :ok }
     end
   end

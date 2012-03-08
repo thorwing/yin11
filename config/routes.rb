@@ -17,6 +17,7 @@ Yin11::Application.routes.draw do
     resources :audits
     resources :recipes
     resources :invitations
+    resources :awards
   end
 
   put 'administrator/base/toggle'

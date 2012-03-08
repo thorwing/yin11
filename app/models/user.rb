@@ -63,15 +63,12 @@ class User
   end
 
   #Relationships
-  has_many :reviews, :inverse_of => "author"
   has_many :recipes, :inverse_of => "author"
   has_many :albums, :inverse_of => "author"
   has_many :desires, :inverse_of => "author"
   has_many :solutions, :inverse_of => "author"
-  has_and_belongs_to_many :groups, :inverse_of => "members"
-  has_and_belongs_to_many :badges
   has_and_belongs_to_many :admired_desires, :class_name => "Desire", :inverse_of => "admirers", index: true
-  has_many :vendors
+  has_and_belongs_to_many :awards, class_name: "Award", inverse_of: "winners", index: true
   embeds_many :relationships
   embeds_many :feeds
   embeds_many :notifications

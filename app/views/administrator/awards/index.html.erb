@@ -1,0 +1,7 @@
+<% @awards.each do |award| %>
+    <div>
+        <%= award.name %>
+    </div>
+<% end %>
+
+<%= link_to t("general.new"), new_administrator_award_path, :class => "button" %>

@@ -19,6 +19,7 @@ class Image
   belongs_to :ingredient, index: true
   belongs_to :album, index: true
   belongs_to :desire, index: true
+  belongs_to :award, index: true
 
   #validations
   validates_presence_of :picture

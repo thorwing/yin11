@@ -1,0 +1,33 @@
+<% title [truncate_content(@award.name, 20), "奖品"].join("-"), false %>
+
+<div class="grid_9 to_left overflow_hidden p5 clearfix">
+    <div class="award_info clearfix box_shadow p5">
+        <div class="fl">
+            <%= link_to (image_tag(@award.get_image_url(:waterfall), class: "img_frame")), @award.get_image_url, rel: "facebox" %>
+        </div>
+
+        <div class="product_detail ml10 fl">
+            <h1 class="f20"><%= content_tag :span, "奖品", class: "icon icon_product mr5" %><%= @award.name %></h1>
+
+            <p>
+                <span class="trivial mr5"><%= t("general.description") %></span>
+                <%= @award.description %>
+            </p>
+
+            <p>
+              <span class="trivial mr5">截止日期</span>
+              <%= @award.due_date.strftime(GENERAL_TIME_FORMAT) %>
+            </p>
+
+            <p>
+              <span class="trivial mr5"><%= t("products.price") %></span>
+              <%= [t("money.yuan_mark2"), @award.price_as_money_string].join %>
+            </p>
+
+            <div class="mt10">
+                <%= link_to "", edit_administrator_award_path(@award), :class => "btn btn_edit fl" %>
+                <%= link_to "", [:administrator, @award], :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %>
+            </div>
+        </div>
+    </div>
+</div>

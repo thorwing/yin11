@@ -297,3 +297,7 @@ function popup_dialog(selector)
 //        threshold : 200}
 //    );
 };
+
+$(function(){
+    $('#date_time').datepicker({dateFormat: "yy-mm-dd"});
+});
