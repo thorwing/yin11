@@ -4,9 +4,9 @@
     <div class="grid_9">
         <div class="box_shadow p5 clearfix">
             <h1 class="fl f20"><%= @album.title %> <span class="ml5 trivial f13"><%= "(#{@album.desires.size}#{t("albums.items")})" %></span></h1>
-            <div class="fr">
-                <%= link_to "", edit_album_path(@album), class: "btn btn_edit" if the_author_himself(@album) %>
-                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "btn btn_delete" if the_author_himself(@album, true) %>
+            <div class="fr clearfix">
+                <%= link_to "", edit_album_path(@album), class: "btn btn_edit fl" if the_author_himself(@album) %>
+                <%= link_to "", @album, confirm: t("general.are_you_sure_to_delete"), method: :delete, class: "btn btn_delete fl" if the_author_himself(@album, true) %>
                 <%= render "administrator/base/tune_fields", item: @album if current_user_has_permission? :administrator %>
             </div>
             <div class="clearfix"></div>

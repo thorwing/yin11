@@ -37,7 +37,9 @@
             <% mode = "comments" unless (defined?(mode) && mode == "solved" )  %>
             <% admirers_count = desire.admirer_ids.size %>
             <% if admirers_count > 0 %>
-                <span class="ml10 mr10 trivial f12"><%= "#{admirers_count}人被馋到了" %></span>
+                <span class="ml10 mr10 trivial f12">
+                    <%= "馋到#{admirers_count}人" %><%= " | ##{desire.solutions.size}个解馋攻略" if desire.solutions.size > 0 %>
+                </span>
             <% end %>
             <%= render "desires/extra_#{mode}", desire: desire %>
         </div>

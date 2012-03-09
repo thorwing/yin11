@@ -7,8 +7,10 @@
         <th>头像</th>
         <th><%= t("users.login_name") %></th>
         <th><%= t("users.role") %></th>
-        <th><%= t("reviews.reviews") %></th>
+        <th>积分</th>
+        <th><%= t("desires.desire") %></th>
         <th><%= t("recipes.recipes") %></th>
+        <th><%= t("albums.albums") %></th>
         <th><%= t("users.master") %></th>
         <th>注册时间</th>
         <th></th>
@@ -19,8 +21,10 @@
         <td style="width: 28px; height: 28px;"><%= image_tag(user.get_avatar(:thumb, false), width: 24, height: 24, class: "mt2")%></td>
         <td><%= link_to user.login_name, [:administrator, user] %></td>
         <td><%= t("users.role_#{user.role.to_s}")%></td>
-        <td><%= user.reviews.size %></td>
+        <td><%= user.left_score %> / <%= user.score %></td>
+        <td><%= user.desires.size %></td>
         <td><%= user.recipes.size %></td>
+        <td><%= user.albums.size %></td>
         <td><%= render "administrator/shared/toggle_fields", :item => user, :field => :is_master %></td>
         <td><%= user.created_at.strftime("%y-%m-%d") %></td>
         <td><%= link_to t("general.edit"), edit_administrator_user_path(user), :class => "button" %></td>
