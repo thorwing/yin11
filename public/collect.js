@@ -4,7 +4,7 @@
 //var base_url = 'http://www.yinkuaizi.com';
 var base_url = 'http://www.chixinbugai.com';
 var afar_url = base_url + '/desires/afar';
-var close_img_url = base_url + '/assets/collout.gif';
+var close_img_url = base_url + '/assets/close.png';
 
 (function (c, t) {
     if (t.MEISHI_COLLECT) {
@@ -181,12 +181,12 @@ var close_img_url = base_url + '/assets/collout.gif';
     function g(i, d) {
         var b = ae;
         b += "?img=" + encodeURIComponent(i) + "&url=" + encodeURIComponent((i == e ? t.referrer || e : e).replace(/&ref=[^&]+/ig, "").replace(/&ali_trackid=[^&]+/ig, "")) + "&alt=" + encodeURI(j(d, 60)) + "&title=" + encodeURI(j(t.title, 80));
-        c.open(b, "meishikezhan" + new Date().getTime(), "status=no,resizable=no,scrollbars=no,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=830,height=530,left=60,top=80")
+        c.open(b, "chixinbugai" + new Date().getTime(), "status=no,resizable=no,scrollbars=no,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=830,height=530,left=60,top=80")
     }
     function Y() {
         var b = [
-            [/^https?:\/\/.*?\.?meishikezhan\.com\//, "很抱歉，不能抓取本站的图片，请去其他网站抓取吧～"],
-            [/^file/, "æœ¬åœ°ç”µè„‘é‡Œçš„å›¾ç‰‡æ˜¯ä¸èƒ½æŠ“å–çš„ï¼ŒåŽ»ç½‘é¡µä¸ŠæŠ“å–å›¾ç‰‡å§~"]
+            [/^https?:\/\/.*?\.?chixinbugai\.com\//, "很抱歉，不能收集本站的图片，请去其他网站把美食收集过来吧～"],
+            [/^file/, "很抱歉，不支持这种方式的收集"]
         ];
         for (var d = 0; d < b.length; d++) {
             if (b[d][0].test(e)) {
@@ -220,14 +220,14 @@ var close_img_url = base_url + '/assets/collout.gif';
         }
         return false
     }
-    var an = "meishikezhan_",
+    var an = "chixinbugai_",
         o = "#" + an + "main",
         ao = "background",
         r = "position:relative",
         ap = ao + "-color:",
         p = "url(" + close_img_url + ")",
         Z = "z-index:90000000",
-        ag = [" #", an, "mask{position:fixed;", Z, "0;top:0;right:0;bottom:0;left:0;", ap, " #000;opacity:.7;filter:alpha(opacity=70);} ", o, "{position: absolute;width:100%;line-height:1.2;padding:0;", Z, "1;top:0;left:0;", ap, "transparent;} #", an, "container{zoom:1;width:904px;margin:0 auto;padding-bottom:24px;color:#666} #", an, "container:after{content:'\\0020';display:block;height:0;overflow:hidden;clear:both;} #", an, "panel{", r, ";float:right;", Z, "4;height:0px;width:0px;} #", an, "panel a:link,#", an, "panel a:visited{position:fixed;_position:absolute;top:12px;right:30px;_right:12px;width:80px;height:80px;padding:0;margin:0;", ap, "transparent;", ao, "-image:", p, "} #", an, "panel a:hover{", ao, "-position:0 -80px} ", o, " .", an, "unit{", r, ";float:left;+display:inline;padding:0;margin:0;height:200px;width:200px;overflow:hidden;margin:24px 12px 0;", Z, "2;border:1px solid #e7e7e7;text-align: center;", ap, "#fff;} ", o, " .", an, "unit .tpmImg{", r, ";width:100%;height:100%;margin:0;padding:0;} ", o, " .", an, "unit a{display:block;overflow:hidden;width:200px;height:200px;margin:0;padding:0;text-align:center;", ao, ":none !important} ", o, " .", an, "unit img{display:block;padding:0;margin:0 auto;border:0 none;vertical-align:top;} ", o, " .", an, "unit a *{cursor:pointer} ", o, " .", an, "unit_sm,", o, " .", an, "unit_sm a{width:150px;height:150px;} ", o, " .", an, "dimen{", r, ";width:56px;margin:-16px auto 0;padding:0 2px 1px;text-align:center;font-size:10px;font-family:tahoma,arial,sans-serif;", Z, "3;", ao, ":#000;opacity:.9;filter:alpha(opacity=90);border-radius:3px;color:#fff} ", o, " .", an, "cover{position:absolute;width:200px;height:200px;top:0;left:0;", ap, "#000;opacity:.15;filter:alpha(opacity=15);display:none} ", o, " .", an, "cross{position:absolute;width:100px;height:59px;line-height:16px;padding:41px 0 0;top:50px;left:50px;", ao, ":", p, " no-repeat 0 -160px;border:0 none;} ", o, " .", an, "action:link .", an, "cross,", o, " .", an, "action:visited .", an, "cross{display:none;} ", o, " .", an, "action:hover .", an, "cross,", o, " .", an, "action:hover .", an, "cover{display:block;} ", o, " .", an, "unit_sm .", an, "cross{top:25px;left:25px;} ", o, " .", an, "seper{float:left;border-top:1px solid #eaeaea;padding:24px 0 0;margin:24px 0 0;color:#ebebeb;font:normal 16px/20px tahoma;} ", o, " img{margin:0 auto} "].join(""),
+        ag = [" #", an, "mask{position:fixed;", Z, "0;top:0;right:0;bottom:0;left:0;", ap, " #fff;opacity:.8;filter:alpha(opacity=80);} ", o, "{position: absolute;width:100%;line-height:1.2;padding:0;", Z, "1;top:0;left:0;", ap, "transparent;} #", an, "container{zoom:1;width:904px;margin:0 auto;padding-bottom:24px;color:#666} #", an, "container:after{content:'\\0020';display:block;height:0;overflow:hidden;clear:both;} #", an, "panel{", r, ";float:right;", Z, "4;height:0px;width:0px;} #", an, "panel a:link,#", an, "panel a:visited{position:fixed;_position:absolute;top:12px;right:30px;_right:12px;width:80px;height:80px;padding:0;margin:0;", ap, "transparent;", ao, "-image:", p, "} #", an, "panel a:hover{", ao, "-position:0 -80px} ", o, " .", an, "unit{", r, ";float:left;+display:inline;padding:0;margin:0;height:200px;width:200px;overflow:hidden;margin:24px 12px 0;", Z, "2;border:1px solid #e7e7e7;text-align: center;", ap, "#fff;} ", o, " .", an, "unit .tpmImg{", r, ";width:100%;height:100%;margin:0;padding:0;} ", o, " .", an, "unit a{display:block;overflow:hidden;width:200px;height:200px;margin:0;padding:0;text-align:center;", ao, ":none !important} ", o, " .", an, "unit img{display:block;padding:0;margin:0 auto;border:0 none;vertical-align:top;} ", o, " .", an, "unit a *{cursor:pointer} ", o, " .", an, "unit_sm,", o, " .", an, "unit_sm a{width:150px;height:150px;} ", o, " .", an, "dimen{", r, ";width:56px;margin:-16px auto 0;padding:0 2px 1px;text-align:center;font-size:10px;font-family:tahoma,arial,sans-serif;", Z, "3;", ao, ":#7A2127;opacity:.7;filter:alpha(opacity=70);border-radius:5px;color:#fff} ", o, " .", an, "cover{position:absolute;width:200px;height:200px;top:0;left:0;", ap, "#000;opacity:.15;filter:alpha(opacity=15);display:none} ", o, " .", an, "cross{position:absolute;width:100px;height:59px;line-height:16px;padding:41px 0 0;top:50px;left:50px;", ao, ":", p, " no-repeat 0 -160px;border:0 none;} ", o, " .", an, "action:link .", an, "cross,", o, " .", an, "action:visited .", an, "cross{display:none;} ", o, " .", an, "action:hover .", an, "cross,", o, " .", an, "action:hover .", an, "cover{display:block;} ", o, " .", an, "unit_sm .", an, "cross{top:25px;left:25px;} ", o, " .", an, "seper{float:left;border-top:1px solid #eaeaea;padding:24px 0 0;margin:24px 0 0;color:#ebebeb;font:normal 16px/20px tahoma;} ", o, " img{margin:0 auto} "].join(""),
         l = R(),
         ak = (l[0] - 904) / 2,
         a = "MEISHISHEET",
@@ -236,9 +236,9 @@ var close_img_url = base_url + '/assets/collout.gif';
         ad = t.createElement("div"),
         am = t.createElement("div"),
         J = t.createElement("div");
-    ag += "#meishikezhan_main{width:auto}#meishikezhan_main .meishikezhan_seper{width:" + l[0] + "px;margin-left:-" + ak + "px;padding-left:" + (ak + 12) + "px}";
+    ag += "#chixinbugai_main{width:auto}#chixinbugai_main .chixinbugai_seper{width:" + l[0] + "px;margin-left:-" + ak + "px;padding-left:" + (ak + 12) + "px}";
     if (C) {
-        ag += "#meishikezhan_mask{position:absolute;width:" + l[0] + "px;height:" + l[1] + "px;}"
+        ag += "#chixinbugai_mask{position:absolute;width:" + l[0] + "px;height:" + l[1] + "px;}"
     }
     if (!K || K.tagName.toLowerCase() !== "style") {
         K = t.createElement("style");
@@ -257,7 +257,7 @@ var close_img_url = base_url + '/assets/collout.gif';
             }
         }
     }
-    ai.setAttribute("id", "meishikezhan_mask");
+    ai.setAttribute("id", "chixinbugai_mask");
     m(ai, "click", ah);
     v.appendChild(ai);
     if (t.defaultView) {
@@ -287,17 +287,17 @@ var close_img_url = base_url + '/assets/collout.gif';
         N.width = (l[0] + (w ? 17 : u ? 17 : 0)) + "px";
         N.height = l[3] + "px"
     }
-    ad.setAttribute("id", "meishikezhan_main");
+    ad.setAttribute("id", "chixinbugai_main");
     m(ad, "click", function (z) {
         var i = z.srcElement || z.target,
             b = i.tagName.toLowerCase(),
             d = i.parentNode.tagName.toLowerCase();
-        if (b !== "a" && b !== "img" && d !== "a" && i.className !== "meishikezhan_dimen") {
+        if (b !== "a" && b !== "img" && d !== "a" && i.className !== "chixinbugai_dimen") {
             ah()
         }
     });
     v.appendChild(ad);
-    am.setAttribute("id", "meishikezhan_container");
+    am.setAttribute("id", "chixinbugai_container");
     ad.appendChild(am);
     var f = {},
         af = "",
@@ -307,12 +307,12 @@ var close_img_url = base_url + '/assets/collout.gif';
     for (var al = 0; al < Q.length; al++) {
         if (!f[Q[al].src]) {
             if (Q[al].power < 0.00015) {
-                aj = "meishikezhan_unit_sm";
+                aj = "chixinbugai_unit_sm";
                 E = Q[al].sst;
                 imw = Q[al].ssw;
                 imh = Q[al].ssh;
                 if (typeof aa != "string") {
-                    aa = '<div class="meishikezhan_seper" ' + (aa == s ? "" : 'style="border-top:0 none;margin-top:0;"') + ">这些图片太小了哦，你确定要收集吗？</div>"
+                    aa = '<div class="chixinbugai_seper" ' + (aa == s ? "" : 'style="border-top:0 none;margin-top:0;"') + ">这些图片太小了哦，你确定要收集吗？</div>"
                 }
             } else {
                 aa = s;
@@ -320,7 +320,7 @@ var close_img_url = base_url + '/assets/collout.gif';
                 imw = Q[al].sw;
                 imh = Q[al].sh
             }
-            af += [aa, '<div class="meishikezhan_unit ', aj, '"><div class="tpmImg"><a class="meishikezhan_action" href="javascript:;"><img style="margin-top:', E, 'px" width="', imw, '" height="', imh, '" src="', Q[al].src, '" alt="', Q[al].alt, '" /><div class="meishikezhan_cover"></div><div class="meishikezhan_cross"></div></a></div><div class="meishikezhan_dimen">', Q[al].w, "x", Q[al].h, "</div></div>"].join("");
+            af += [aa, '<div class="chixinbugai_unit ', aj, '"><div class="tpmImg"><a class="chixinbugai_action" href="javascript:;"><img style="margin-top:', E, 'px" width="', imw, '" height="', imh, '" src="', Q[al].src, '" alt="', Q[al].alt, '" /><div class="chixinbugai_cover"></div><div class="chixinbugai_cross"></div></a></div><div class="chixinbugai_dimen">', Q[al].w, "x", Q[al].h, "</div></div>"].join("");
             f[Q[al].src] = 1;
             if (aa) {
                 aa = ""
@@ -344,8 +344,8 @@ var close_img_url = base_url + '/assets/collout.gif';
             }
         }
     });
-    J.id = "meishikezhan_panel";
-    J.innerHTML = '<a id="meishikezhan_closelink" href="javascript:;" target="_self" title="å…³é—­"></a>';
+    J.id = "chixinbugai_panel";
+    J.innerHTML = '<a id="chixinbugai_closelink" href="javascript:;" target="_self" title="关闭"></a>';
     ad.insertBefore(J, am);
-    t.getElementById("meishikezhan_closelink").onclick = ah
+    t.getElementById("chixinbugai_closelink").onclick = ah
 })(window, document);
