@@ -57,14 +57,19 @@
     /*border-bottom: 5px solid white;*/
 
     .filter_tab {
-        display: inline-block;
+        float: left;
+        display: block;
         margin: 0 2px 0 0;
+        width: 60px;
         height:30px;
+        text-align: center;
 
         //background: $berry_gray;
 
         a {  color: $font_gray;
              text-decoration: none; }
+
+        a:hover {  color: $berry_pink; }
 
         .filter {
             font-size: 15px;
@@ -89,10 +94,6 @@
     }
     .filter_tab.selected :hover {
       cursor: default;
-    }
-
-    .filter_tab.hovered {
-        .small_bar {width: 100%;};
     }
 }
 

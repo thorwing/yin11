@@ -7,6 +7,10 @@
                 <h2><%= t("site.description") %></h2>
             </div>
 
+            <% if (users_browser.include? "ie6") || (users_browser.include? "ie7") %>
+                <span class="berry_pink">为了获得最佳显示效果，请使用8或以上版本的IE，或者Google/火狐等其他浏览器</span>
+            <% end %>
+
             <% if current_user %>
                 <div class="fr mt20">
                     <span class="nav_menu">
@@ -34,7 +38,7 @@
                 <div class="fr mr30 mt15 p5 box_shadow">
                     <span class="ml5 mr5"><%= link_to image_tag(current_user.get_avatar(:thumb), width: 22, height: 22), edit_user_path(current_user) %></span>
                     <span class="mr10"><%= link_to(current_user.login_name, edit_user_path(current_user), :class => "berry_red f16") %></span>
-                    <span title="积分" class="icon icon_star mr2" style="display: inline-block;"/><span title="积分" class="trivial f15 mr5"><%= current_user.score %></span>
+                    <span title="积分" class="icon icon_star mr2" style="display: inline-block;"></span><span title="积分" class="trivial f15 mr5"><%= current_user.score %></span>
 
                 </div>
             <% else %>
@@ -87,10 +91,12 @@
                 <% end %>
             </ul>
             <div id="header_search_form" class="fr" >
-                <%= form_tag '/search', :method => :get do %>
-                    <%= text_field_tag :query, t("search.tip"), class: "not_cleared" %>
-                    <%= submit_tag t("general.search"), id: "search_btn", class: "btn btn_search lighter_touch" %>
-                <% end %>
+                <div class="clearfix">
+                    <%= form_tag '/search', :method => :get do %>
+                        <%= text_field_tag :query, t("search.tip"), class: "not_cleared fl" %>
+                        <%= submit_tag t("general.search"), id: "search_btn", class: "btn btn_search lighter_touch fl m2" %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>

@@ -1,9 +1,10 @@
 /*General style here*/
 .icon {
-  display: inline-block;
+  display: block;
   border: 0;
   background: url("buttons.png") 0 0 no-repeat;
   text-indent:-9999px;
+  text-transform: capitalize;
 }
 
 /*individiual styles*/

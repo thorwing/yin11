@@ -1,12 +1,12 @@
 <div class="clearfix pl10 pr10">
-    <div id="filters" class="fl clearfix">
+    <ul id="filters" class="fl clearfix">
         <% @modes.each do |mode| %>
             <li class="<%= (mode == @current_mode ? "filter_tab selected" : "filter_tab") %>">
               <div class="small_bar">.</div>
               <%= link_to t("home.modes.#{mode}"), "/?mode=#{mode}", class: "filter" %>
             </li>
         <% end %>
-    </div>
+    </ul>
     <div class="fr">
         <span class="mr20"><%= link_to "积分兑换即将展开，规则说明", score_intros_path %></span>
         <span class="mr20"><%= link_to "【小工具，馋人更方便】", collect_intros_path %></span>
@@ -31,7 +31,7 @@
                     <% if current_user_has_permission? :normal_user %>
                         <%= link_to "+上传馋人图片", new_desire_path, class: "btn btn_new_desire" %>
                     <% else %>
-                        <%= link_to "立即注册", new_user_path, class: "btn btn_register_now fl" %>
+                        <%= link_to "立即注册", new_user_path %>
                     <% end %>
                 </div>
             </div>

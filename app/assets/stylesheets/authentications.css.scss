@@ -1,15 +1,17 @@
 @import "attributes";
 
 .auth_btn {
-    display: inline-block;
+    display: block;
     background: url("authentications.png") 0 0 no-repeat;
     text-indent: -9999px;
+    text-transform: capitalize;
 }
 
 .auth_btn_16 {
     display: inline-block;
     background: url("authentications.png") 0 0 no-repeat;
     text-indent: -9999px;
+    text-transform: capitalize;
     width: 16px;
     height: 16px;
 }

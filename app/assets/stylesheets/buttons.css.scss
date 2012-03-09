@@ -21,10 +21,11 @@ a.button:hover, input.button:hover {
 
 /*General style here*/
 input.btn {
-    display: inline-block;
-	border: none;
+    display: block;
+    border:0 none;
     background: url("buttons.png") 0 0 no-repeat;
     text-indent:-9999px;
+    text-transform: capitalize;
 }
 
 input.btn:hover {
@@ -32,9 +33,11 @@ input.btn:hover {
 }
 
 a.btn {
-    display: inline-block;
+    display: block;
+    border:0 none;
     background: url("buttons.png") 0 0 no-repeat;
     text-indent:-9999px;
+    text-transform: capitalize;
 }
 
 a.btn:hover {
