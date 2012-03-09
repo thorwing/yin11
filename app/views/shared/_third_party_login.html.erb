@@ -1,22 +1,24 @@
-<%= label_tag t("authentication.other_logins") %><br/>
-<table>
-    <tr>
-        <th/>
-        <th/>
-    </tr>
-    <tr>
-        <td><%= link_to t("syncs.sites.sina"), "/syncs/sina/new", :class => "auth_btn via_sina lighter_touch m5"%></td>
-        <td><%= link_to t("syncs.sites.renren"), "/syncs/renren/new", :class => "auth_btn via_renren lighter_touch m5"%></td>
-    </tr>
-    <tr>
-        <td><%= link_to t("syncs.sites.taobao"), "/syncs/taobao/new", :class => "auth_btn via_taobao lighter_touch m5" %></td>
-        <td><%= link_to t("syncs.sites.douban"), "/syncs/douban/new", :class => "auth_btn via_douban lighter_touch m5" %></td>
-    </tr>
-    <tr>
-        <td><%= link_to t("syncs.sites.qq"), "/syncs/qq/new", :class => "auth_btn via_qq lighter_touch m5" %></td>
-        <td><%= link_to t("syncs.sites.sohu"), "/syncs/sohu/new", :class => "auth_btn via_sohu lighter_touch m5" %></td>
-    </tr>
-    <tr>
-        <td><%= link_to t("syncs.sites.netease"), "/syncs/netease/new", :class => "auth_btn via_netease lighter_touch m5" %></td>
-    </tr>
-</table>
+<% if false %>
+    <%= label_tag t("authentication.other_logins") %><br/>
+    <table>
+        <tr>
+            <th/>
+            <th/>
+        </tr>
+        <tr>
+            <td><%= link_to t("syncs.sites.sina"), "/syncs/sina/new", :class => "auth_btn via_sina lighter_touch m5"%></td>
+            <td><%= link_to t("syncs.sites.renren"), "/syncs/renren/new", :class => "auth_btn via_renren lighter_touch m5"%></td>
+        </tr>
+        <tr>
+            <td><%= link_to t("syncs.sites.taobao"), "/syncs/taobao/new", :class => "auth_btn via_taobao lighter_touch m5" %></td>
+            <td><%= link_to t("syncs.sites.douban"), "/syncs/douban/new", :class => "auth_btn via_douban lighter_touch m5" %></td>
+        </tr>
+        <tr>
+            <td><%= link_to t("syncs.sites.qq"), "/syncs/qq/new", :class => "auth_btn via_qq lighter_touch m5" %></td>
+            <td><%= link_to t("syncs.sites.sohu"), "/syncs/sohu/new", :class => "auth_btn via_sohu lighter_touch m5" %></td>
+        </tr>
+        <tr>
+            <td><%= link_to t("syncs.sites.netease"), "/syncs/netease/new", :class => "auth_btn via_netease lighter_touch m5" %></td>
+        </tr>
+    </table>
+<% end %>

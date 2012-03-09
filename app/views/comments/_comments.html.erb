@@ -5,8 +5,7 @@
             <%= render "comments/new_comment", :item => item%>
         </div>
     <% else %>
-        <span class = "trivial">想来评论两句？</span><br/>
-        <%= link_to "立即注册", new_user_path, class: "btn btn_register_now" %>
+        <span class = "trivial">想来说两句？</span><%= link_to "立即注册", new_user_path %>
     <% end %>
 
     <div class="comments_container <%= item.id.to_s %> mt10">

@@ -20,8 +20,8 @@
         <%= f.password_field :password_confirmation, class: "big_input" %>
       </p>
       <p class="mt10">
-        <span class="trivial">网站当前处于有限范围测试中，注册需要邀请码，敬请谅解。</span><br/>
-        <span class="trivial">欢迎您联系我们的微博来索取邀请码：</span>
+        <span class="trivial">欢迎参与吃心不改的试运行</span><br/>
+        <span class="berry_pink">邀请码限量派发中，赶快私信我们的微博帐号获得：</span>
         <%= new_tab_link_to t("syncs.sites.sina"), YIN11_SINA_WEIBO, class: "auth_btn_16 via_sina_small" %><br/>
         <%= f.label t("authentication.invitation_code"), class: "trivial" %><span class="red f20 m2">*</span><br/>
         <%= text_field_tag "invitation", params[:invitation] %>

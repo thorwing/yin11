@@ -27,7 +27,7 @@
                 <% if desire.place %>
                     <p>
                         <%= content_tag :span, "来自 " + desire.place.name, class: "trivial" %>
-                        <%= content_tag :span, "地点", class: "icon icon_place" %>
+                        <%= content_tag :span, "参馆", class: "icon icon_place" %>
                     </p>
                 <% end %>
             </div>
@@ -36,12 +36,13 @@
         <div class="b_azure_gray">
             <% mode = "comments" unless (defined?(mode) && mode == "solved" )  %>
             <% admirers_count = desire.admirer_ids.size %>
-            <% if admirers_count > 0 %>
+            <% solutions_count = desire.solutions.size %>
+            <% if admirers_count > 0 || solutions_count > 0 %>
                 <span class="ml10 mr10 trivial f12">
-                    <%= "馋到#{admirers_count}人" %><%= " | ##{desire.solutions.size}个解馋攻略" if desire.solutions.size > 0 %>
+                    <%= "馋到#{admirers_count}人" if admirers_count > 0 %> <%= content_tag :span, "|", class: "ml5 mr5" if admirers_count > 0 && solutions_count > 0 %><%= "#{desire.solutions.size}个解馋攻略" if solutions_count > 0 %>
                 </span>
             <% end %>
-            <%= render "desires/extra_#{mode}", desire: desire %>
+            <%= render "desires/extra_comments", desire: desire %>
         </div>
 
     </div>
