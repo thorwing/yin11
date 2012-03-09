@@ -28,8 +28,8 @@ class User
   field :is_master, :type => Boolean, :default => false
   field :biography, type: String
   field :score, :type => Integer, :default => 0
+  field :left_score, :type => Integer, :default => 0
   #cached fields
-  field :reviews_count, :type => Integer
   field :remote_ip
   field :liked_recipe_ids, :type => Array, :default => []
   field :liked_product_ids, :type => Array, :default => []
@@ -89,7 +89,7 @@ class User
   validates_length_of :biography, :maximum => 200
 
   #Others
-  before_save :encrypt_password, :handle_identity, :sync_cached_fields
+  before_save :encrypt_password, :handle_identity
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
   after_update :reprocess_avatar, :if => :cropping?
@@ -262,10 +262,6 @@ class User
   def handle_identity
     self.provider ||= SELF_PROVIDER
     self.uid ||= self.email
-  end
-
-  def sync_cached_fields
-    self.reviews_count = self.reviews.size
   end
 
   def generate_token(column)

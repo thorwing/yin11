@@ -1,0 +1,34 @@
+<% title "积分规则说明" %>
+
+<div class="block round b_berry_azure p5" style="width: 450px;">
+   积分兑换奖品的活动即将展开，各种奖品（巧克力，优惠券等）已经蠢蠢欲动。所以赶快开始赚积分吧！
+</div>
+
+<table class="formatted mt10">
+    <tr class="head">
+        <th>获得积分的方式</th>
+        <th>积分</th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td class="">有人被你上传的图片馋到了</td>
+        <td class="berry_red">+<%= SCORE_ADMIRE_DESIRE %></td>
+    </tr>
+
+    <tr>
+        <td class="">有人喜欢你的<%= link_to "拼盘", albums_path %></td>
+        <td class="berry_red">+<%= SCORE_LIKE_ALBUM %></td>
+    </tr>
+
+    <tr>
+        <td class="">有人喜欢你的<%= link_to "菜谱", recipes_path %></td>
+        <td class="berry_red">+<%= SCORE_LIKE_RECIPE %></td>
+    </tr>
+
+    <tr>
+        <td class="">有人投票给你的解馋攻略</td>
+        <td class="berry_red">+<%= SCORE_VOTE_SOLUTION %></td>
+    </tr>
+
+</table>

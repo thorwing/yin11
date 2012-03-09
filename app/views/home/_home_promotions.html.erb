@@ -1,0 +1,28 @@
+<div class="clearfix">
+    <div class="grid_7">
+        <%= image_tag "intro.png" %>
+    </div>
+
+    <div id="slides" class="grid_5">
+      <div class="slides_container">
+        <% @awards.each do |award| %>
+            <div class="slide p5 block round ">
+                <%= link_to image_tag(award.get_image_url(:thumb)), award , class: "fr" %>
+                <div class="fl">
+                    <%= content_tag :span, award.score, class: "trivial f20" %>
+                    <span title="积分" class="icon icon_star" style="display: inline-block;"></span>
+                    <%= content_tag :span, " = ", class: "trivial f20" %>
+                    <%= link_to award.name, award, class: "f20" %>
+                    <br/>
+                    <span class="trivial">价值：</span><%= award.price_as_money_string %>
+                    <span class="trivial ml5">数量：</span><%= award.left_volume %>份<br/>
+                    <span class="trivial">还有</span><span class="berry_red"><%= distance_of_time_in_words(Time.now, award.due_date) %></span><span class="trivial">截止</span><br/>
+
+                    <p><%= link_to "领取", award, class: "button" %></p>
+                    <p><%= link_to "查看所有奖品", awards_path, class: "f12" %></p>
+                </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+</div>

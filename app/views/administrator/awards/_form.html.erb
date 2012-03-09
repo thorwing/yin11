@@ -11,6 +11,8 @@
 
   <%= render "shared/text_field", f: f, label: "兑换积分", field: :score %>
 
+  <%= render "shared/text_field", f: f, label: "总数", field: :total_volume %>
+
   <span>上传图片：</span>
   <%= file_field_tag :image, :accept => ACCECPTED_IMAGES %> <br/>
 

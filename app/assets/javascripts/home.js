@@ -114,4 +114,17 @@ $(function(){
 //            }
 //        );
     }
+
+    $("#slides").slides({preload: true,
+        preloadImage: 'loading_big.gif',
+        effect: 'slide, fade',
+        play: 5000,
+        pause: 2500,
+        crossfade: true,
+        slideSpeed: 350,
+        fadeSpeed: 500,
+        generateNextPrev: true,
+        generatePagination: false
+    });
+
 });

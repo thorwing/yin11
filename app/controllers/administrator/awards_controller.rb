@@ -54,6 +54,8 @@ class Administrator::AwardsController < Administrator::BaseController
     end
   end
 
+  private
+
   def preload
     @award = Award.find(params[:id]) if params[:id].present?
   end

@@ -58,6 +58,14 @@ namespace :yin11 do
     Product.where(iid: nil).delete_all
   end
 
+  desc "assign scores for all users"
+  task :assign_score => :environment do
+    User.all.each do |user|
+      user.left_score = user.score
+      user.save
+    end
+  end
+
   desc "clean solutions for refer url"
   task :clean_solutions => :environment do
     Solution.all.each do |solution|

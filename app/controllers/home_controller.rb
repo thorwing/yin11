@@ -14,6 +14,8 @@ class HomeController < ApplicationController
       @current_mode = "newest"
     end
 
+    @awards = Award.limit(4)
+
     @desires, @total_chapters = get_desires( @current_mode, params[:page], params[:chapter])
     session[:current_home_chapter] = params[:chapter]
   end
@@ -33,10 +35,6 @@ class HomeController < ApplicationController
 
     @audit = Audit.create(:user_ip => user_ip, :user_id => user_id, :url => url )
     redirect_to url
-  end
-
-  def collect_intro
-
   end
 
   private

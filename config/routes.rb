@@ -3,7 +3,6 @@ Yin11::Application.routes.draw do
   Mercury::Engine.routes
 
   match '/home/gateway' => 'home#gateway'
-  match '/home/collect_intro' => 'home#collect_intro'
 
   namespace :administrator do
     root :to => "base#index"
@@ -106,11 +105,26 @@ Yin11::Application.routes.draw do
     end
   end
 
+  resources :awards do
+    member do
+      put :claim
+    end
+  end
+
   resources :images
 
   resources :vendors
 
   resources :places
+
+  resources :intros do
+    collection do
+      get :collect
+      get :score
+    end
+  end
+
+
 
   #resources :products, :except => [:new, :create]
   resources :products do

@@ -34,7 +34,7 @@
                 <div class="fr mr30 mt15 p5 box_shadow">
                     <span class="ml5 mr5"><%= link_to image_tag(current_user.get_avatar(:thumb), width: 22, height: 22), edit_user_path(current_user) %></span>
                     <span class="mr10"><%= link_to(current_user.login_name, edit_user_path(current_user), :class => "berry_red f16") %></span>
-                    <span title="积分" class="icon icon_star mr2" style="display: inline-block;"></span><span title="积分" class="trivial f15 mr5"><%= current_user.score %></span>
+                    <span title="积分" class="icon icon_star mr2" style="display: inline-block;"/><span title="积分" class="trivial f15 mr5"><%= current_user.score %></span>
 
                 </div>
             <% else %>

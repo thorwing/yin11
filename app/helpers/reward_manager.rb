@@ -1,7 +1,12 @@
 class RewardManager
   def self.reward_for_like(item, user)
     if (item.respond_to? :author) && item.author
-      item.author.score += SCORE_LIKE
+      if item.is_a(Recipe)
+        item.author.score += SCORE_LIKE_RECIPE
+      elsif item.is_a?(Alubm)
+        item.author.score += SCORE_LIKE_ALBUM
+      end
+
       item.author.save
 
       NotificationsManager.generate_for_item(item.author, user, item, "like", SCORE_LIKE)

@@ -12,6 +12,7 @@
 //= require jquery.masonary
 //= require jquery.infinitescroll
 //= require jquery-ui.min
+//= require slides.jquery
 //= require_tree .
 
 //Jquery_ui is for drag&drop
