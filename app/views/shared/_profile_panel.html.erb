@@ -1,0 +1,5 @@
+<div class="clearfix box_shadow p5 panel">
+    <%= user.login_name %><br/>
+    <%= image_tag(user.get_avatar(:thumb, false)) %>
+    <%= render "users/user_statics", user: user %>
+</div>

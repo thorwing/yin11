@@ -46,6 +46,13 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
+    if current_user.albums.size >= USER_ALBUMS_LIMIT
+      respond_to do |format|
+        format.html { redirect_to :back, notice: t("alerts.over_albums_list", limit: USER_ALBUMS_LIMIT) }
+      end
+      return
+    end
+
     @album = Album.new(params[:album])
     @album.author_id = current_user.id
 

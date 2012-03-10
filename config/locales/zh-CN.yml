@@ -180,6 +180,7 @@ zh-CN:
     posted_comment_too_ofen: "感情您在短时间为我们提供了这么多内容，服务器表示需要消化一下，请您休息一会儿吧～"
     no_such_profile_or_no_permission: 无此用户，或您的无权访问该页面
     only_author_self: 只有作者本人才可执行此操作
+    over_albums_list: 抱歉，您超过了创建%{limit}个拼盘的限制
 
   object_types:
     product: 商品

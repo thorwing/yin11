@@ -1,9 +1,9 @@
 <div class="comment box_shadow" id='<%= comment.id.to_s %>'>
     <div class="clearfix">
-        <div class="fl">
+        <div class="fl" style="width:50px;">
             <%= image_tag comment.user.get_avatar(:thumb), :width => 48, :height => 48 %>
         </div>
-        <div class="fl ml10">
+        <div class="fl ml10" style="width:440px;">
             <%= link_to comment.user.login_name, comment.user, class: "trivial" %>:
             <blockquote>
               <% if comment.enabled %>

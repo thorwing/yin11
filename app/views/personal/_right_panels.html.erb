@@ -1,5 +1,10 @@
 <div id="control_panels">
-    <%= render "profile_panel", user: current_user %>
+    <div class="clearfix box_shadow p5 panel">
+        <%= link_to current_user.login_name, edit_user_path(current_user, step: "custom_basic_info") %><br/>
+        <%= link_to image_tag(current_user.get_avatar(:thumb, false)), edit_user_path(current_user, step: "custom_avatar") %>
+        <%= render "users/user_statics", user: current_user %>
+    </div>
+
     <%= render "actions_panel" %>
     <%= render "follows_panel", user: current_user %>
     <%= render "admired_desires_panel" %>
