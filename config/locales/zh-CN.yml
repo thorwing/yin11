@@ -156,7 +156,7 @@ zh-CN:
     post_created: 成功发表话题
     vendor_created: 成功创建商户
     current_city_updated: 成功更新当前城市
-    user_basic_info_updated: 成功更新基本信息
+    user_basic_info_updated: 成功更新了您的信息
     profile_updated: 成功更新偏好设定
     rapid_user_creation: 你已经在%{cooldown}小时内注册了一个帐号啦，邀请更多人来吃心不改吧
     recipe_created: 成功添加菜谱
@@ -176,6 +176,7 @@ zh-CN:
   alerts:
     password_reset_expired: 密码重置口令已过期
     password_reset_invalid: 密码重置口令无效
+    old_password_invalid: 旧密码不正确
     no_group_specified: 未指定饭桌
     posted_comment_too_ofen: "感情您在短时间为我们提供了这么多内容，服务器表示需要消化一下，请您休息一会儿吧～"
     no_such_profile_or_no_permission: 无此用户，或您的无权访问该页面
@@ -285,7 +286,7 @@ zh-CN:
     steps:
       custom_basic_info: 基本信息
       custom_avatar: 修改头像
-      custom_groups: 加入饭桌
+      custom_password: 修改密码
 
   home:
     foods_buy_question: "您的餐桌安全吗？"

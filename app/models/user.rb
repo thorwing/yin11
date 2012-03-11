@@ -99,7 +99,7 @@ class User
 
   def steps
     #%w[custom_groups custom_basic_info]
-    %w[custom_basic_info custom_avatar]
+    %w[custom_basic_info custom_avatar custom_password]
   end
 
   def current_step

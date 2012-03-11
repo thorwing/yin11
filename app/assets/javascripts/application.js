@@ -172,6 +172,15 @@ $(function () {
             "user[password_confirmation]": {required: true, equalTo: "#user_password"}
         }
     });
+
+
+    $(".edit_user").validate({
+        rules: {
+            "user[old_password]": {required: true, minlength: 6},
+            "user[password]": {required: true, minlength: 6},
+            "user[password_confirmation]": {required: true, equalTo: "#user_password"}
+        }
+    });
 });
 
 $(function(){

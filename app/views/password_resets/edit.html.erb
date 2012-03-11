@@ -1,23 +1,18 @@
-<% title t("authentication.update_password") %>
+<% title "重置密码" %>
 
 <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
-  <%= render "shared/error_messages", :target => @user %>
-  <table>
-    <tr>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr>
-        <td><%= f.label :password, t("authentication.password") %></td>
-        <td><%= f.password_field :password %></td>
-    </tr>
-    <tr>
-        <td><%= f.label :password_confirmation, t("authentication.password_confirmation") %></td>
-        <td><%= f.password_field :password_confirmation %></td>
-    </tr>
-    <tr>
-      <td><%= f.submit t("authentication.update_password"), :class => "button" %></td>
-    </tr>
-  </table>
+    <%= render "shared/error_messages", :target => @user %>
+    <p class="mb5">
+         <%= f.label :password, t("authentication.password"), class: "trivial" %><br/>
+        <%= f.password_field :password, class: "big_input" %>
+    </p>
+    <p class="mb5">
+        <%= f.label :password_confirmation, t("authentication.password_confirmation"), class: "trivial" %><br/>
+        <%= f.password_field :password_confirmation, class: "big_input" %>
+    </p>
+
+    <div class="mt10">
+        <%= f.submit t("authentication.update_password"), :class => "button" %>
+    </div>
 <% end %>
 

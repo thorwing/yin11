@@ -97,6 +97,15 @@ class UsersController < ApplicationController
   end
 
   def update
+    if params[:user][:old_password].present?
+      unless current_user.authenticate(params[:user][:old_password])
+        respond_to do |format|
+          format.html { redirect_to :back, :notice => t("alerts.old_password_invalid") }
+        end
+        return
+      end
+    end
+
     respond_to do |format|
       if current_user.update_attributes(params[:user])
         format.html { redirect_to(profile_user_path(current_user), :notice => t("notices.user_basic_info_updated")) }
