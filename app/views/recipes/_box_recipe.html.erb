@@ -1,10 +1,10 @@
 <div class="fl box_shadow b_white p5 mr20" style="width:130px;">
     <div class="center lighter_touch" >
-        <%= link_to image_tag("grey.gif", "data-original"=> recipe.get_image_url(:thumb), width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_WIDTH, class: 'lazy'), recipe %>
+        <%= link_to image_tag("grey.gif", "data-original"=> recipe.get_image_url(:thumb), width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_WIDTH, class: 'lazy', alt: recipe.name), recipe %>
     </div>
     <div class="ml10 mr10 mb10">
         <span><%= recipe.name %></span><br/>
-        <%= link_to image_tag("grey.gif", "data-original"=> recipe.author.get_avatar(:thumb, false), width: 24, height:24, class: "lazy"), recipe.author %>
+        <%= link_to image_tag("grey.gif", "data-original"=> recipe.author.get_avatar(:thumb, false), width: 24, height:24, class: "lazy", alt: recipe.author.login_name), recipe.author %>
         <%= link_to recipe.author.login_name, recipe.author %><br/>
         <% if recipe.votes > 0 %>
             <span class="trivial"><%= "#{recipe.votes.to_s}人喜欢" %></span>

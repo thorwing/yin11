@@ -1,4 +1,4 @@
-<% title [@album.title,"拼盘"].join("-"), false %>
+<% title [@album.title,"拼盘"].join("_"), false %>
 
 <div class="fl">
     <div class="grid_9">
@@ -50,9 +50,9 @@
                 <div style="width: <%= IMAGE_THUMB_WIDTH %>px">
                      <% cover_url = @album.get_cover_url(:thumb) %>
                      <% if cover_url.present? %>
-                         <%= image_tag "grey.gif", "data-original"=> cover_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image" %>
+                         <%= image_tag "grey.gif", "data-original"=> cover_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image", alt: "封面" %>
                      <% else %>
-                         <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image" %>
+                         <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image", alt: "没找到图片" %>
                      <% end %>
                 </div>
             <% end %>

@@ -2,7 +2,7 @@
 <b><%= t("general.description") %></b>
 <p><%= @image.description %></p>
 <b><%= t("images.image") %></b><br/>
-<%= image_tag "grey.gif", "class" => 'lazy', "data-original"=> @image.picture_url %><br/>
+<%= image_tag "grey.gif", class: 'lazy', "data-original"=> @image.picture_url, :alt => "图片" %><br/>
 <%= @image.picture_url %><br/>
 
 <div class="actions">

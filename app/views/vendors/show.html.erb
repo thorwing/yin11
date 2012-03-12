@@ -1,4 +1,4 @@
-<% title [truncate_content(@vendor.name, 20), "商户"].join("-"), false %>
+<% title [truncate_content(@vendor.name, 20), "商户"].join("_"), false %>
 
 <h2><%= @vendor.name %></h2>
 <!--<= new_tab_link_to "店铺链接", @vendor.url, {force: true} if @vendor.url.present? %><br/>-->

@@ -1,6 +1,6 @@
 <div class="small_product">
     <div class="product_image_frame">
-      <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=>  product.get_image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT), product%>
+      <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=>  product.get_image_url(:thumb), :border => 0, :width => IMAGE_THUMB_WIDTH, :height => IMAGE_THUMB_HEIGHT, alt: product.name), product%>
     </div>
     <div>
         <%= link_to product.name, product %> <br/>

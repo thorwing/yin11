@@ -8,7 +8,7 @@
         <% places.each do |place| %>
             <div class="grid_3 box_shadow b_white pt10 mb10">
                 <div class="hint_box center lighter_touch" style="width:180px;">
-                    <%= link_to image_tag("grey.gif", "data-original"=> place.get_image_url(:waterfall), width: 180, height: 180, class: 'lazy img_frame'), place %>
+                    <%= link_to image_tag("grey.gif", "data-original"=> place.get_image_url(:waterfall), width: 180, height: 180, class: 'lazy img_frame', alt: place.name), place %>
                     <span class="fix_hint b_black_alpha30 white center"><%= place.name %></span>
                 </div>
                 <div class="center">

@@ -10,7 +10,7 @@
     <% end %>
     <%= csrf_meta_tag %>
     <title>
-        <%= (@content_for_title + '-') if @content_for_title %><%= [t("site.name"), t("site.description")].join('-') %>
+        <%= (@content_for_title + '_') if @content_for_title %><%= [t("site.name"), t("site.description")].join('_') %>
     </title>
     <% if request.host.include? "chixinbugai.com" %>
         <meta name="google-site-verification" content="nWzf6pxwY2_AJjgrdYq1wfjcuU1xzJvFtJXD9M1PI8k" />

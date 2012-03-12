@@ -12,7 +12,7 @@
     <%= paginate @images %>
     <% @images.each do |image| %>
       <tr id='<%= image.id %>'>
-        <td><%= image_tag("grey.gif", "data-original"=> image.picture_url(:thumb),  "class" => 'lazy' )%></td>
+        <td><%= image_tag("grey.gif", "data-original"=> image.picture_url(:thumb),  class: 'lazy', alt: "image" )%></td>
         <td><%= link_to image.picture_url, image%></td>
         <td><%= link_to "", edit_image_path(image), :class => "btn btn_edit fl" %></td>
         <td><%= link_to "", image, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %></td>

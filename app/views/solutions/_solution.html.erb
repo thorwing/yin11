@@ -1,17 +1,19 @@
 <div class="block round p5 b_azure_gray clearfix ">
     <% item_path = {:controller => solution.item.class.name.downcase.pluralize, :action => "show", :id => solution.item.id, force: true} %>
-    <% if solution.author %>
-        <div class="clearfix">
-            <div class="fl mr10">
-                <%= link_to image_tag(solution.author.get_avatar(:thumb, false ), width: 48, height: 48), solution.author %>
-            </div>
-            <div class="fl" style="min-height: 50px;">
-                <span class="f12"><%= link_to solution.author.login_name, solution.author %></span><br/>
-                <% if solution.content.present? %><blockquote><span class="quoted"><%= solution.content %></span></blockquote><% end %>
-            </div>
-        </div>
-        <hr/>
-    <% end %>
+    <div class="clearfix">
+        <% if solution.author %>
+            <ul>
+                <li><%= link_to image_tag(solution.author.get_avatar(:thumb, false ), width: 32, height: 32), solution.author, class: "fl mr2 display_inline" %></li>
+                <li><span class="f12"><%= link_to solution.author.login_name, solution.author %></span>分享了攻略：<br/></li>
+            </ul>
+        <% else %>
+            <%= content_tag :span, "我们猜你喜欢", class: "trivial" %>
+        <% end %>
+
+        <% if solution.content.present? %><blockquote><span class="quoted"><%= truncate_content solution.content, 20 %></span></blockquote><% end %>
+    </div>
+    <hr/>
+
     <h3 class="mt5">
         <span class="trivial"><%= t("object_types.#{solution.item.class.name.downcase}")%></span>
         <%= content_tag :span, t("object_types.#{solution.item.class.name.downcase}"), class: "icon icon_#{solution.item.class.name.downcase}", width: 12, height: 12 %>
@@ -21,19 +23,23 @@
             <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + solution.item.price_as_money_string) %></span>
         <% end %>
     </h3>
+
     <div class="item clearfix">
         <div class="fl mr10" style="width:100px;">
             <%= new_tab_link_to image_tag(solution.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
         </div>
         <div class="fl" style="width: 228px;">
             <%= truncate_content(solution.item.instruction, 200) if solution.item.is_a?(Recipe) %>
-            <%= new_tab_link_to "[查看#{t("object_types.#{solution.item.class.name.downcase}")}]", item_path %>
+            <% if solution.item.is_a?(Product) %>
+                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => solution.item.url, :force => true}, :class => "btn btn_buy fl" if solution.item.url.present? %>
+            <% else %>
+                <%= new_tab_link_to "[查看#{t("object_types.#{solution.item.class.name.downcase}")}]", item_path %>
+            <% end %>
         </div>
     </div>
-    <div class="clearfix"></div>
 
     <!--<= render "solutions/voters_list", solution: solution %>-->
-    <span class="trivial"><%= "#{solution.voter_ids.size}票" %>(<%= ((solution.desire.voter_ids.size == 0 ? 0 : (solution.voter_ids.size / solution.desire.voter_ids.size)) * 100).to_s + "%" %>)</span><br/>
+    <span class="trivial"><%= "#{solution.voter_ids.size}票" %></span>
     <%  solution.votes.desc(:created_at).each do |vote| %>
         <%= link_to image_tag(vote.voter.get_avatar(:thumb, false ), width: 24, height: 24, title: vote.voter.login_name), vote.voter %>
     <% end %>
@@ -41,4 +47,5 @@
     <% if @my_vote.blank? && current_user && current_user != solution.author %>
         <%= render "solutions/vote_fields", solution: solution %>
     <% end %>
+
 </div>

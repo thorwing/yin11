@@ -1,6 +1,6 @@
 <div class="grid_3 box_shadow p5">
     <div class="center">
-        <%= link_to image_tag( "grey.gif", "class" => 'lazy', "data-original"=> product.get_image_url(:waterfall), :border => 0, :width => IMAGE_WATERFALL_WIDTH, :height => IMAGE_WATERFALL_WIDTH), product%>
+        <%= link_to image_tag( "grey.gif", class: 'lazy', "data-original"=> product.get_image_url(:waterfall), :border => 0, :width => IMAGE_WATERFALL_WIDTH, :height => IMAGE_WATERFALL_WIDTH, alt: product.name), product%>
     </div>
 
     <%= link_to product.name, product %> <br/>

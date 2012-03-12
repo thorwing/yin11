@@ -4,7 +4,7 @@
             <div class="fl">
               <b class="f15"><%= link_to album.title, album %></b>
               <span class="ml5 mr5 trivial">（<%= album.desires.size %>张图片 | <%= album.votes %>人喜欢）</span>
-              <span class="ml5"><%= link_to image_tag("grey.gif", "data-original"=> album.author.get_avatar(:thumb, false), width: 22, height: 22, "class" => 'lazy' ), album.author %><%= link_to album.author.login_name, album.author %></span>
+              <span class="ml5"><%= link_to image_tag("grey.gif", "data-original"=> album.author.get_avatar(:thumb, false), width: 22, height: 22, class: 'lazy', alt:  album.author.login_name ), album.author %><%= link_to album.author.login_name, album.author %></span>
             </div>
             <div class="fr">
                 <%= render "votes/vote_fields", :item => album %>
@@ -12,7 +12,7 @@
         </div>
         <div class="lighter_touch">
             <div class="fl">
-                <%= link_to image_tag("grey.gif", "data-original"=> album.get_cover_url(:waterfall), width: 160, height: 164, "class" => 'lazy'), album %>
+                <%= link_to image_tag("grey.gif", "data-original"=> album.get_cover_url(:waterfall), width: 160, height: 164, class: 'lazy', alt: album.title), album %>
             </div>
 
             <div class="fl">
@@ -20,14 +20,14 @@
                 <div>
                     <% image_urls.values_at(* image_urls.each_index.select{|i| i.even?}).each do |url| %>
                       <div class="m1 fl" style="width:80px;height: 80px;">
-                        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> url, width: 80, height: 80), album %>
+                        <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> url, width: 80, height: 80, alt: album.title), album %>
                       </div>
                     <% end %>
                 </div>
                 <div>
                     <% image_urls.values_at(* image_urls.each_index.select{|i| i.odd?}).each do |url| %>
                       <div class="m1 fl" style="width:80px;height: 80px;">
-                        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> url, width: 80, height: 80), album %>
+                        <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> url, width: 80, height: 80, alt: album.title), album %>
                       </div>
                     <% end %>
                 </div>

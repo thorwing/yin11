@@ -2,7 +2,7 @@
     <div class="clearfix p5">
         <div class="fl" style="width: 170px;">
             <% last = msg_array.last %>
-            <%= link_to(image_tag("grey.gif", "class" => 'lazy', "data-original"=> last.from.get_avatar(:thumb,false), width: 50, height: 50), last.from) %><br/>
+            <%= link_to(image_tag("grey.gif", class: 'lazy', "data-original"=> last.from.get_avatar(:thumb,false), width: 50, height: 50, alt: last.from.login_name), last.from) %><br/>
             <%= link_to last.from.login_name, last.from %><br/>
             <span class="trivial" style="vertical-align: top;"><%= last.created_at.strftime(GENERAL_TIME_FORMAT) %></span>
         </div>

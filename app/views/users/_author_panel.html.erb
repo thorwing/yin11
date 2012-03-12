@@ -1,6 +1,6 @@
 <div class="clearfix box_shadow p5 panel">
     <%= link_to author.login_name, user_path(author) %><br/>
-    <%= link_to image_tag("grey.gif", "data-original"=> author.get_avatar(:thumb, false), :class => "lazy"), author %>
+    <%= link_to image_tag("grey.gif", "data-original"=> author.get_avatar(:thumb, false), :class => "lazy", alt: author.login_name), author %>
     <%= render "users/user_statics", user: author %>
     <div class="mt10">
         <%= render "relationships/follow_field", :target => author %>

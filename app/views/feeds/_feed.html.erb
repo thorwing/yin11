@@ -1,7 +1,7 @@
 <div class="commentable clearfix">
   <div class="fl mr10">
     <% if feed.author %>
-        <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=>feed.author.get_avatar(:thumb, false), width: "48", height: "48"), feed.author %>
+        <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=>feed.author.get_avatar(:thumb, false), width: "48", height: "48", alt: feed.author.login_name), feed.author %>
     <% end %>
   </div>
   <div class="fl" style="width: 600px;">
@@ -9,7 +9,7 @@
     <% thumb_url = feed.picture_url(:thumb) %>
     <% if thumb_url.present? %>
         <p>
-            <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=>thumb_url, class: "img_frame"), feed.picture_url, rel: "facebox" %>
+            <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=>thumb_url, class: "img_frame", alt: "动态"), feed.picture_url, rel: "facebox" %>
         </p>
     <% end %>
     <div>

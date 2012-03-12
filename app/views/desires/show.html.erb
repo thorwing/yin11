@@ -3,7 +3,7 @@
 <div class="grid_9">
   <div class="box_shadow p10">
     <div class="clearfix">
-      <%= link_to image_tag("grey.gif", "data-original" => @desire.author.get_avatar(:thumb, false), :class => "lazy fl", width: 48, height: 48), @desire.author %>
+      <%= link_to image_tag("grey.gif", "data-original" => @desire.author.get_avatar(:thumb, false), :class => "lazy fl", width: 48, height: 48, alt: @desire.author.login_name), @desire.author %>
       <div class="fl ml5">
         <%= link_to @desire.author.login_name, user_path(@desire.author) %>
         <span class="ml5 trivial"><%= "发布于" %><%= @desire.created_at.strftime(GENERAL_TIME_FORMAT) %></span><br/>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="mt10 clearfix">
-      <%= image_tag("grey.gif", :alt => "Desire_Img", "class" => 'img_frame restricted lazy overflow_hidden', "data-original" => @desire.get_image_url) %>
+      <%= image_tag("grey.gif", :alt => "馋人图片", "class" => 'img_frame restricted lazy overflow_hidden', "data-original" => @desire.get_image_url) %>
       <br/>
       <% if @desire.content.present? %>
           <p>
@@ -92,7 +92,7 @@
                 <%= link_to album.author.login_name, album.author %>
                 <br/>
                 <% album.get_image_urls(3, :thumb).each do |pic_url| %>
-                    <%= link_to image_tag("grey.gif", "data-original" => pic_url, :class => "lazy fl", width: 70, height: 70), album %>
+                    <%= link_to image_tag("grey.gif", "data-original" => pic_url, :class => "lazy fl", width: 70, height: 70, alt: album.title), album %>
                 <% end %>
             </div>
         <% end %>
@@ -104,7 +104,7 @@
         <h3 class="trivial">相似的馋人图片：</h3>
         <div class="mt5">
             <% @related_desires.each do |desire| %>
-                <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:thumb), width: 66, height: 66, class: "lazy"), desire, class: "lighter_touch" %>
+                <%= link_to image_tag("grey.gif", "data-original" => desire.get_image_url(:thumb), width: 66, height: 66, class: "lazy", alt: "馋人图片"), desire, class: "lighter_touch" %>
             <% end %>
         </div>
       </div>

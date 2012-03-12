@@ -14,7 +14,7 @@
         <!--<= new_tab_link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>-->
         <!--< pic_url = item.get_image_url(:thumb) %>-->
         <!--< pic_url = pic_url.present? ? pic_url : "/assets/not_found.png" %>-->
-        <%= image_tag("grey.gif", class: 'lazy', "data-original"=> item.get_image_url(:thumb), width: 100, height: 100, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name) %>
+        <%= image_tag("grey.gif", class: 'lazy', "data-original"=> item.get_image_url(:thumb), width: 100, height: 100, alt: item.name, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name) %>
     <% end %>
     <% if item.present? %>
         <div class="f12" style="width: 100px; height: 26px; overflow: hidden;">
@@ -23,7 +23,7 @@
                 <!--<= new_tab_link_to image_tag("grey.gif", class: 'lazy', "data-original"=> solution.author.get_avatar(:thumb, false ), width: "24", height: "24"), {controller: "users", action: "show", id: solution.author.id, force: true} %>-->
                 <%= new_tab_link_to solution.author.login_name, {controller: "users", action: "show", id: solution.author.id, force: true}, class: "trivial ml2" %>
             <% else %>
-              <%= content_tag :span, "我们猜你喜欢", class: "trivial" %>
+                <%= content_tag :span, "我们猜你喜欢", class: "trivial" %>
             <% end %>
         </div>
     <% end %>

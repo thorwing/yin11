@@ -1,5 +1,5 @@
 <div class="block round p5" style="width: 200px;height:250px;">
     <% item_path = {controller: "products", action: "show", id: product.id, force: true} %>
     <%= new_tab_link_to product.name, item_path %><br/>
-    <%= link_to image_tag("grey.gif", "class" => 'lazy', "data-original"=> product.get_image_url(:waterfall), width: IMAGE_WATERFALL_WIDTH, height: 200 ), item_path %>
+    <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> product.get_image_url(:waterfall), width: IMAGE_WATERFALL_WIDTH, height: 200, alt: product.name ), item_path %>
 </div>
