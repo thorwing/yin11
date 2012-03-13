@@ -4,7 +4,7 @@
         <div class="box_shadow clearfix">
             <div class = "grid_6">
                 <div class="field">
-                    <%= f.label :name, t("recipes.name") %><%= mark_required(@recipe, :name) %><%= mark_required_length(@recipe, :name) %><br/>
+                    <%= f.label :name, t("recipes.name") %><%= mark_required(@recipe, :name) %><br/>
                     <%= f.text_field :name, :maxlength => get_max_length(Recipe, :name) %>
                 </div>
                 <%= render "tags/tags_field", f: f %>
@@ -15,7 +15,7 @@
                         <div>
                             <table>
                                 <tr>
-                                    <th><%= t("recipes.major") %><%= mark_required_length(Ingredient, :name) %></th>
+                                    <th><%= t("recipes.major") %></th>
                                     <th><%= t("recipes.ingredient_amount") %></th>
                                     <th></th>
                                 </tr>
@@ -34,7 +34,7 @@
                         <div>
                             <table>
                                 <tr>
-                                    <th><%= t("recipes.minor") %><%= mark_required_length(Ingredient, :name) %></th>
+                                    <th><%= t("recipes.minor") %></th>
                                     <th><%= t("recipes.ingredient_amount") %></th>
                                     <th></th>
                                 </tr>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="steps box_shadow clearfix mt10 p10">
-            <b><%= f.label :title, t("recipes.steps"), :class => "f16" %></b><br/>
+            <%=  t("recipes.steps") %><br/>
             <ul id="sortable" class ="block ">
                 <%= f.fields_for :steps  do |builder| %>
                     <%= render "step_fields", :f => builder %>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="mt10 p5 box_shadow">
-          <%= f.label :notice, t("recipes.notice") %><%= mark_required_length(@recipe, :notice) %><br/>
+          <%= f.label :notice, t("recipes.notice") %><br/>
           <%= f.text_area :notice, :maxlength => get_max_length(Recipe, :notice), 'data-comment_max_len' => get_max_length(Recipe, :notice), rows: 5, :class => "char_aware " %>
           <%= content_tag :span, "", class: "char_saver display_none" %>
           <%= content_tag :span, "", class: "char_counter block trivial" %>

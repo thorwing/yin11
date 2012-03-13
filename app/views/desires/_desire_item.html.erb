@@ -38,7 +38,7 @@
             <% admirers_count = desire.admirer_ids.size %>
             <% solutions_count = desire.solutions.size %>
             <% if admirers_count > 0 || solutions_count > 0 %>
-                <span class="ml10 mr10 trivial f12">
+                <span class="ml10 mr10 f12 berry_pink" >
                     <%= "馋到#{admirers_count}人" if admirers_count > 0 %> <%= content_tag :span, "|", class: "ml5 mr5" if admirers_count > 0 && solutions_count > 0 %><%= "#{desire.solutions.size}个解馋攻略" if solutions_count > 0 %>
                 </span>
             <% end %>
