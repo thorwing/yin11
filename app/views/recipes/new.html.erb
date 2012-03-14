@@ -1,3 +1,20 @@
-<% title t("recipes.new") %>
+<% title @recipe.first_stage? ? t("recipes.new") : @recipe.name %>
 
-<%= render 'form' %>
+<div id="recipe_form">
+    <%= form_for @recipe, html: {multipart: true} do |f| %>
+        <%= render "shared/error_messages", target: @recipe %>
+
+        <div class="clearfix">
+            <%= render "#{@recipe.current_stage}_stage", f: f %>
+        </div>
+
+        <div class="mt10">
+            <%= f.submit "返回", :name => "back_button", class: "button" unless @recipe.first_stage? %>
+            <% if @recipe.last_stage? %>
+                <%= f.submit "完成", class: "button", id: "recipe_submit" %>
+            <% else %>
+                <%= f.submit "下一步", class: "button", id: "recipe_next" %>
+            <% end %>
+        </div>
+    <% end %>
+</div>

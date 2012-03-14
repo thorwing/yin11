@@ -1,0 +1,20 @@
+<div>
+    <table>
+        <tr>
+            <th><%= is_major ? t("recipes.major") : t("recipes.minor") %></th>
+            <th><%= t("recipes.ingredient_amount") %></th>
+            <th></th>
+        </tr>
+        <%= f.fields_for :ingredients, f.object.ingredients.select{|i| i.is_major_ingredient == is_major} do |builder| %>
+            <%= render "ingredient_fields", :f => builder %>
+        <% end  %>
+    </table>
+</div>
+
+<div class="mt5">
+    <% if is_major %>
+        <%= link_to_add_fields( "+添加主料", f, :ingredients, ".major_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients), "btn btn_add_major_ingredient")  %>
+    <% else %>
+        <%= link_to_add_fields( "+添加辅料", f, :ingredients, ".minor_ingredients table", ".ingredients" , get_max_length(Recipe, :ingredients), "btn btn_add_minor_ingredient")  %>
+    <% end %>
+</div>

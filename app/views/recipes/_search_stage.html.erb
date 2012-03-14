@@ -1,0 +1,10 @@
+<%= content_tag :span, "已经有关于#{@recipe.name}的#{@similar_recipes.size}份菜谱", class: "berry_pink" %>
+
+<% @similar_recipes.each do |recipe| %>
+   <p><%= recipe.name %></p>
+<% end %>
+
+<ul class="mt10">
+   <%= content_tag :span, "我的菜谱不一样" %>
+   <%= f.submit "创建", class: "button ml5" %>
+</ul>

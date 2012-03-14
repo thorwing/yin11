@@ -49,13 +49,10 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   # GET /recipes/new.json
   def new
-    @recipe = Recipe.new
-
-    1.upto(3) {
-      @recipe.steps.build
-      @recipe.ingredients.build {|i| i.is_major_ingredient = true }
-      @recipe.ingredients.build {|i| i.is_major_ingredient = false }
-    }
+    session[:recipe_stage] = nil
+    session[:recipe_params] = {} # ||= {}
+    @recipe = Recipe.new  #Recipe.new(session[:recipe_params])
+    @recipe.current_stage = @recipe.stages.first #session[:recipe_stage]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -71,53 +68,82 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    params[:recipe][:steps_attributes] = sort_steps(params[:recipe][:steps_attributes])
-
-    @recipe = Recipe.new(params[:recipe])
-    @recipe.author_id = current_user.id
-
-    saved = @recipe.save
-
-    if saved
-      #create a desire&solution as well
-      image_id = nil
-      image = nil
-      @recipe.steps.each do |step|
-        image_id = step.img_id if step.img_id.present?
-      end
-      image = Image.first(conditions: {id: image_id}) if image_id
-      if image
-        desire = Desire.create do |d|
-          d.author = current_user
-          d.content = current_user.login_name + I18n.t("desires.new_recipe", name: @recipe.name)
-          cloned_image = image.clone
-          d.images << cloned_image
-        end
-
-        desire.solutions.create do |s|
-          s.recipe_id = @recipe.id
-          s.author = current_user
-        end
-      end
+    #@recipe = Recipe.new(params[:recipe])
+    if params[:recipe] && params[:steps_attributes]
+      sort_steps(params[:recipe][:steps_attributes])
     end
 
-    respond_to do |format|
-      if saved
-        format.html { redirect_to @recipe, notice: t("notices.recipe_created") }
-        format.json { render json: @recipe, status: :created, location: @recipe }
+    saved = false
+    notice = nil
+    session[:recipe_params] ||= {}
+    session[:recipe_params].deep_merge!(params[:recipe]) if params[:recipe]
+    @recipe = Recipe.new(session[:recipe_params]) do |r|
+      r.author_id = current_user.id
+      r.current_stage = session[:recipe_stage]
+    end
+
+    if @recipe.valid?
+      if params[:back_button]
+        @recipe.previous_stage
+      elsif @recipe.last_stage?
+        @recipe.create_image(picture: params[:image])
+        saved = @recipe.save
+
+        #if saved
+        #  #create a desire&solution as well
+        #  image_id = nil
+        #  image = nil
+        #  @recipe.steps.each do |step|
+        #    image_id = step.img_id if step.img_id.present?
+        #  end
+        #  image = Image.first(conditions: {id: image_id}) if image_id
+        #  if image
+        #    desire = Desire.create do |d|
+        #      d.author = current_user
+        #      d.content = current_user.login_name + I18n.t("desires.new_recipe", name: @recipe.name)
+        #      cloned_image = image.clone
+        #      d.images << cloned_image
+        #    end
+        #
+        #    desire.solutions.create do |s|
+        #      s.recipe_id = @recipe.id
+        #      s.author = current_user
+        #    end
+        #  end
+        #end
       else
-        #raise("hi")
-        format.html { render action: "new" }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        @recipe.next_stage
       end
+
+      if @recipe.current_stage == "detail"
+        @similar_recipes = Recipe.where(name: @recipe.name)
+
+        1.upto(3) {
+          @recipe.ingredients.build {|i| i.is_major_ingredient = true }
+          @recipe.ingredients.build {|i| i.is_major_ingredient = false }
+          @recipe.steps.build
+        }
+      end
+
+      session[:recipe_stage] = @recipe.current_stage
+    end
+
+    if saved
+      session[:recipe_stage] =  session[:recipe_params] =  nil
+      redirect_to @recipe, notice: t("notices.recipe_created")
+    else
+      render "new", notice: notice
     end
   end
 
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
-    @recipe = Recipe.find(params[:id])
     #delete ingredients removed by user
+    if params[:image].present?
+      @recipe.image.update_attributes(picture: params[:image])
+    end
+
     ingredient_ids_to_be_deleted = @recipe.ingredients.map{|i| i.id.to_s } - params[:recipe][:ingredients_attributes].map{|k,v| v["id"]}
     @recipe.ingredients.any_in(_id: ingredient_ids_to_be_deleted).delete_all
 

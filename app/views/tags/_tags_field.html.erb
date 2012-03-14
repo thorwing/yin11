@@ -1,4 +1,4 @@
-<div class="fl display_inline mb10" style="width:400px;">
+<div class="fl display_inline mb10 clearfix" style="width:400px;">
     <div class="field">
          <%= f.label :tags_string_with_spaces, t("tags.tags")%><%= content_tag :span, "(用空格隔开，最多#{MAX_TAGS}个)", class: "trivial" %><br/>
          <%= f.text_area :tags_string_with_spaces, rows: 3, cols: 40, class: "tags_to_fill"  %>

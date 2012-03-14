@@ -4,17 +4,22 @@
     .qq-upload-button {
         display:block; /* or inline-block */
         height:128px; width: 210px;
-        margin:10px 10px;
+        margin:5px;
         text-align:center;
         background-position: center;
         background-repeat: no-repeat;
-        background-color: #FFFFFF;
-        border-bottom:1px solid #ddd;color:#fff;
+        background-color: transparent;
+        border-bottom:1px solid #ddd;
+        color:#fff;
         border: none;
 
         /*no text displayed*/
         text-indent:-9999px;
         line-height:0px;
+    }
+
+    .qq-upload-list {
+      list-style:none;
     }
 
     .qq-upload-button-hover {opacity: 0.7;}
@@ -24,7 +29,7 @@
     #recipe_name {width: 343px;}
 
     .step_content{
-        width: 210px;
+        width: 200px;
         height: 100px;
     }
 
@@ -37,7 +42,7 @@
 
     .steps .addedclass
     {
-      height:360px;
+      height:330px;
     }
 
     .step_container .step_content
@@ -79,18 +84,18 @@
 #sortable {
   list-style-type: none;
 
-  li, .place_holder {
-    width:230px;
+  > li, .place_holder {
+    width:215px;
     margin: 10px;
     float: left;
     position:relative;
     text-align: center;
   }                   
   
-  li {border: 1px dashed gray;}
+  > li {border: 1px dashed $berry_gray;}
   
   .place_holder {
-    height: 362px;
+    height: 332px;
     background: $azure_gray;
     opacity: 0.7;
   }

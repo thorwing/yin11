@@ -53,6 +53,19 @@ namespace :yin11 do
     end
   end
 
+  desc "update recipe images"
+  task :update_recipe_images => :environment do
+    Recipe.all.each do |recipe|
+      if recipe.image.nil?
+        steps_with_image = (recipe.steps || []).select{|s| s.image.present?}
+        image = steps_with_image.last.get_image unless steps_with_image.empty?
+        if image
+          recipe.create_image(picture: image.picture)
+        end
+      end
+    end
+  end
+
   desc "clean products for refer url"
   task :clean_products => :environment do
     Product.where(iid: nil).delete_all

@@ -1,0 +1,11 @@
+<div class = "fl block round p5 mr20">
+    <div class="field">
+        <%= f.label :name, "菜谱的名字" %><br/>
+        <%= f.text_field :name, :maxlength => get_max_length(Recipe, :name) %>
+    </div>
+    <div class="field mt10">
+        <%= render "tags/tags_field", f: f %>
+        <div class="clearfix"> </div>
+        <%= content_tag :span, "打上标签，可以方便别人找到哦", class: "berry_pink" %>
+    </div>
+</div>

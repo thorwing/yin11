@@ -25,6 +25,7 @@ class Recipe
     embeds_many :feeds
     embeds_many :comments
     has_many :solutions
+    has_one :image
 
     accepts_nested_attributes_for :ingredients, :reject_if => lambda { |i| i[:name].blank?}, :allow_destroy => true
     accepts_nested_attributes_for :steps, :reject_if => lambda { |s| s[:img_id].blank? && s[:content].blank? }, :allow_destroy => true
@@ -44,15 +45,40 @@ class Recipe
     #mongoid doesn't call create/update callback on embedded documents
     before_save :sync_children
 
-    #TODO use a real image field here
-    def image
-      #the last step who has an image
-      image = nil
-      self.steps ||= []
-      steps_with_image = self.steps.select{|s| s.image.present?}
-      image = steps_with_image.last.get_image unless steps_with_image.empty?
-      image
+    attr_writer :current_stage
+    def current_stage
+      @current_stage || stages.first
     end
+
+    def stages
+      %w[naming detail]
+    end
+
+    def next_stage
+      self.current_stage = stages[stages.index(current_stage)+1]
+    end
+
+    def previous_stage
+      self.current_stage = stages[stages.index(current_stage)-1]
+    end
+
+    def first_stage?
+      current_stage == stages.first
+    end
+
+    def last_stage?
+      current_stage == stages.last
+    end
+
+    #TODO use a real image field here
+    #def image
+    #  #the last step who has an image
+    #  image = nil
+    #  self.steps ||= []
+    #  steps_with_image = self.steps.select{|s| s.image.present?}
+    #  image = steps_with_image.last.get_image unless steps_with_image.empty?
+    #  image
+    #end
 
     def instruction
       text = self.steps.map(&:content).join("    ") || ""
