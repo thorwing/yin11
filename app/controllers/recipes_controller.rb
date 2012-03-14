@@ -88,29 +88,6 @@ class RecipesController < ApplicationController
       elsif @recipe.last_stage?
         @recipe.create_image(picture: params[:image])
         saved = @recipe.save
-
-        #if saved
-        #  #create a desire&solution as well
-        #  image_id = nil
-        #  image = nil
-        #  @recipe.steps.each do |step|
-        #    image_id = step.img_id if step.img_id.present?
-        #  end
-        #  image = Image.first(conditions: {id: image_id}) if image_id
-        #  if image
-        #    desire = Desire.create do |d|
-        #      d.author = current_user
-        #      d.content = current_user.login_name + I18n.t("desires.new_recipe", name: @recipe.name)
-        #      cloned_image = image.clone
-        #      d.images << cloned_image
-        #    end
-        #
-        #    desire.solutions.create do |s|
-        #      s.recipe_id = @recipe.id
-        #      s.author = current_user
-        #    end
-        #  end
-        #end
       else
         @recipe.next_stage
       end
@@ -130,7 +107,7 @@ class RecipesController < ApplicationController
 
     if saved
       session[:recipe_stage] =  session[:recipe_params] =  nil
-      redirect_to @recipe, notice: t("notices.recipe_created")
+      redirect_to show_recipe_path(@recipe, newly_created: true), notice: t("notices.recipe_created")
     else
       render "new", notice: notice
     end
@@ -196,6 +173,32 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       format.js
+    end
+  end
+
+  def seduce
+    #create a desire&solution as well
+    desire = nil
+    if @recipe.image
+      desire = Desire.create do |d|
+        d.author = @recipe.author
+        d.content = params[:content]
+        cloned_image = @recipe.image.clone
+        d.images << cloned_image
+      end
+
+      desire.solutions.create do |s|
+        s.recipe_id = @recipe.id
+        s.author = @recipe.author
+      end
+    end
+
+    respond_to do |format|
+      if desire
+        format.html { redirect_to desire, notice: t("notices.desire_created") }
+      else
+        format.html { redirect_to :back,  notice: t("alerts.fail_to_create_desire")}
+      end
     end
   end
 

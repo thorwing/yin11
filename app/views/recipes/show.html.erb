@@ -98,5 +98,37 @@
     <%= render "products/related_products", products: @related_products %>
 </div>
 
+<% if params[:newly_created] == nil %>
+    <div id="recipe_publisher" class="display_none clearfix">
+        <h2>太棒了！成功添加了菜谱，现在去让大家知道吧！</h2>
+        <div class="fl box_shadow b_berry_gray p5">
+            <%= form_tag url_for(controller: "recipes", action: "seduce", :method => :post) do %>
+                <%= content_tag :span, "拿菜谱去馋馋别人" %><br/>
+                <%= image_tag(@recipe.get_image_url(:thumb)) %><br/>
+                <%= hidden_field_tag "id", @recipe.id %>
+                <%= text_area_tag "content", "我添加了菜谱：#{@recipe.name}, 快来看看吧" , maxlength: get_max_length(Desire, :content), rows: 5, columns: 16 %><br/>
+                <%= submit_tag "确定", class: "btn btn_ok" %>
+            <% end %>
+        </div>
+        <div class="ml20 fl box_shadow b_berry_gray p5">
+            <%= content_tag :span, "或者" %><br/>
+            <div class="mt5">
+              <% titlestr = "我在吃心不改网上添加了一个菜谱:"+ @recipe.name + "。" %>
+              <% summarystr = "大家快去看看吧！" %>
+              <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
+              <% appkeyhash = load_appkey() %>
+              <%= render "shared/jiathis", :titlestr => titlestr, :summarystr => summarystr, :picstr => picstr, :appkeyhash => appkeyhash %>
+            </div>
+        </div>
+    </div>
+
+    <% content_for :foot do %>
+        <script type="text/javascript">
+            jQuery.facebox($('#recipe_publisher').html());
+        </script>
+    <% end %>
+<% end %>
+
+
 
 

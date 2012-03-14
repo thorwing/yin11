@@ -170,6 +170,7 @@ Yin11::Application.routes.draw do
     collection do
       #get :more
       get :browse
+      post :seduce
     end
     member {post :mark}
   end
