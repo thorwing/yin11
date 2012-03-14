@@ -98,10 +98,10 @@
     <%= render "products/related_products", products: @related_products %>
 </div>
 
-<% if params[:newly_created] == nil %>
+<% if params[:newly_created] == true %>
     <div id="recipe_publisher" class="display_none clearfix">
         <h2>太棒了！成功添加了菜谱，现在去让大家知道吧！</h2>
-        <div class="fl box_shadow b_berry_gray p5">
+        <div class="fl box_shadow p5">
             <%= form_tag url_for(controller: "recipes", action: "seduce", :method => :post) do %>
                 <%= content_tag :span, "拿菜谱去馋馋别人" %><br/>
                 <%= image_tag(@recipe.get_image_url(:thumb)) %><br/>
@@ -110,7 +110,7 @@
                 <%= submit_tag "确定", class: "btn btn_ok" %>
             <% end %>
         </div>
-        <div class="ml20 fl box_shadow b_berry_gray p5">
+        <div class="ml20 fl box_shadow p5">
             <%= content_tag :span, "或者" %><br/>
             <div class="mt5">
               <% titlestr = "我在吃心不改网上添加了一个菜谱:"+ @recipe.name + "。" %>
