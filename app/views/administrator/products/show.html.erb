@@ -31,7 +31,7 @@
 
             <p>
                 <span class="trivial mr5">佣金率</span>
-                <%= (@product.commission_rate / 10000 * 100).to_s + "%" %>
+                <%= (@product.commission_rate / 10000 * 100).to_s + "%" if @product.commission_rate.present? %>
             </p>
 
             <p>
