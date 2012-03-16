@@ -3,8 +3,9 @@ $('#facebox #link_spinner').hide();
 //    $('div.popup #recipe_not_found_label').show();
 <% else %>
 //    $('div.popup #recipe_not_found_label').hide();
-    var container = $('#facebox #recipe_hints_container')
-    container.html('');
+    var container = $('#facebox #recipe_hints_container');
+    container.show();
+    container.find("tr:gt(0)").remove();
     <% @recipes.each do |recipe| %>
         var child = '<%= escape_javascript(render("solutions/recipe_hint", recipe: recipe)) %>';
         container.append(child);

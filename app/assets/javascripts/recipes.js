@@ -93,4 +93,40 @@ $(function(){
     }
 });
 
+function listen_recipe_name() {
+    var timerid;
+    jQuery("div.popup #recipe_name").keyup(function() {
+      var input = this;
+      clearTimeout(timerid);
+      timerid = setTimeout(function() {
+        $(input).nextAll('#link_spinner').show();
+        $(input).nextAll("div").html('');
 
+        var name = $(input).val();
+        $.ajax({
+          url: "/recipes/browse",
+          data: {name: name}
+        });
+      }, 500);
+    });
+};
+
+function link_recipe()
+{
+    var count = $('#images_container .recipe').size();
+    if (count >= recipes_limit) {
+        alert("最多只能添加3份菜谱");
+        return;
+    }
+
+    jQuery.facebox($('#recipe_linker').html());
+    listen_recipe_name();
+};
+
+
+function pick_recipe(link, id, name, image_url) {
+    $(document).trigger('close.facebox');
+    var content = $(link).parents(".recipe_hint").find(".recipe_solution").html();
+    $('#image_container').html(content );
+    $('#recipe_id').val(id);
+};

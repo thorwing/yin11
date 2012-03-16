@@ -15,35 +15,6 @@ function pre_link_product(link)
     return true;
 };
 
-function listen_recipe_name() {
-    var bind_name = '';
-    if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
-    else { bind_name = 'input'; }
-
-    $('div.popup #recipe_name').bind(bind_name, function(e) {
-        $(this).nextAll('#link_spinner').show();
-        $(this).nextAll("div").html('');
-
-        var name = $(this).val();
-        $.ajax({
-            url: "/recipes/browse",
-            data: {name: name}
-        });
-    });
-};
-
-function link_recipe()
-{
-    var count = $('#images_container .recipe').size();
-    if (count >= recipes_limit) {
-        alert("最多只能添加3份菜谱");
-        return;
-    }
-
-    jQuery.facebox($('#recipe_linker').html());
-    listen_recipe_name();
-};
-
 
 $(function(){
     if($('#submit_review_btn').length > 0) {
@@ -87,21 +58,21 @@ function delete_related_item(link) {
     $(link).parent().remove();
 }
 
-$(function(){
-    if($('#recipe_linker #recipe_name').length > 0) {
-        var bind_name = '';
-        if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
-        else { bind_name = 'input'; }
-
-        $('#recipe_linker #recipe_name').bind(bind_name, function(e) {
-            $(this).nextAll('#link_spinner').show();
-            $(this).nextAll("div").html('');
-
-            var name = $(this).val();
-            $.ajax({
-                url: "/recipes/browse",
-                data: {name: name}
-            });
-        });
-    }
-});
+//$(function(){
+//    if($('#recipe_linker #recipe_name').length > 0) {
+//        var bind_name = '';
+//        if (navigator.userAgent.indexOf("MSIE") != -1) { bind_name = 'propertychange'; }
+//        else { bind_name = 'input'; }
+//
+//        $('#recipe_linker #recipe_name').bind(bind_name, function(e) {
+//            $(this).nextAll('#link_spinner').show();
+//            $(this).nextAll("div").html('');
+//
+//            var name = $(this).val();
+//            $.ajax({
+//                url: "/recipes/browse",
+//                data: {name: name}
+//            });
+//        });
+//    }
+//});

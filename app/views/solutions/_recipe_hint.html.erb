@@ -1,33 +1,9 @@
-<script type="text/javascript">
-    function pick_recipe(link, id, name, image_url) {
-        $(document).trigger('close.facebox');
+<% item_path = {controller: "recipes", action: "show", id: recipe.id, force: true} %>
 
-        if(document.getElementById("recipe_" + id)) {
-          alert("已添加了该菜谱");
-        }
-        else {
-//            var new_recipe = '<div class="linked_item fl mr5 b_white">'
-//                + '<a href="/recipes/' + id + '">'
-//                + '<img class="thumbnail" src="' + image_url + '" alt="thumbnail"></a>'
-//                + '<span class="f11">' + name + '</span>'
-//                + '<span class="icon icon_recipe">菜谱</span>'
-//                + '<a onclick="delete_related_item(this); return false;" class="del_link btn btn_close lighter_touch" href="#"></a>'
-//                + '<input type="hidden" value="' + id + '" name="review[recipe_ids][]" id="recipe_' + id + '"/>'
-//                + '</div>';
-
-
-            $('#image_container').html($(link).parents(".recipe_hint").find(".recipe_solution").html());
-            $('#recipe_id').val(id);
-//            $('a[rel*=facebox]').facebox();
-        }
-    };
-</script>
-
-<div class="recipe_hint m2 overflow_hidden" style="height: 60px;">
-    <div class="recipe_solution display_none">
-        <%= render "solutions/solution_item", item: recipe %>
-    </div>
-    <span><%= new_tab_link_to(image_tag(recipe.get_image_url(:thumb), width: 48, height: 48), {controller: "recipes", actions: "show", id: recipe.id, force: true})%></span>
-    <span class="ml2"><%= new_tab_link_to(recipe.name, {controller: "recipes", actions: "show", id: recipe.id, force: "true"}) %></span>
-    <span class="ml2"><%= link_to_function("选择", "pick_recipe(this, \"#{recipe.id.to_s}\", \"#{recipe.name}\", \"#{recipe.get_image_url(:thumb)}\");", class: "button") %></span>
-</div>
+<tr class="recipe_hint">
+    <td style="width: 50px;" class="p2"><%= new_tab_link_to(image_tag(recipe.get_image_url(:thumb), width: 48, height: 48), item_path)%></td>
+    <td><%= new_tab_link_to(recipe.name, item_path) %></td>
+    <td><%= recipe.author.login_name %></td>
+    <td><%= link_to_function("", "pick_recipe(this, \"#{recipe.id.to_s}\", \"#{recipe.name}\", \"#{recipe.get_image_url(:thumb)}\");", class: "btn btn_ok") %></td>
+    <td class="recipe_solution display_none"><%= render "solutions/solution_item", item: recipe %></td>
+</tr>
