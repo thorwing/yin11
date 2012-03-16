@@ -19,24 +19,29 @@
     <!--corner stmap-->
     <div class="masonary_item">
         <div class="inner_frame p5">
-            <%= content_tag :span, "美食标签：", class: "trivial f14" %><br/>
+            <%= content_tag :span, "热门美食标签：", class: "trivial f14" %><br/>
             <% @hot_tags.each do |tag| %>
                 <%= link_to tag, desires_path(tag: tag, mode: @current_mode), class: "tag" %>
             <% end %>
-            <hr/>
-            <div class="mt10">
-                <%= content_tag :span, "点击有“解馋”标志的图片看如何把美食吃到！", class: "trivial f14" %><br/>
-                <div class="mt5 clearfix">
-                    <%= content_tag :span, "也想馋馋别人？", class: "trivial f14 mt5" %>
-                    <% if current_user_has_permission? :normal_user %>
-                        <%= link_to "+上传馋人图片", new_desire_path, class: "btn btn_new_desire" %>
-                    <% else %>
-                        <%= link_to "立即注册", new_user_path %>
-                    <% end %>
-                </div>
-            </div>
         </div>
     </div>
+
+    <div class="masonary_item">
+      <div class="inner_frame p5">
+          <div class="mt10">
+              <%= content_tag :span, "点击有“解馋”标志的图片看如何把美食吃到！", class: "trivial f14" %><br/>
+              <div class="mt5 clearfix">
+                  <%= content_tag :span, "也想馋馋别人？", class: "trivial f14 mt5" %>
+                  <% if current_user_has_permission? :normal_user %>
+                      <%= link_to "+上传馋人图片", new_desire_path, class: "btn btn_new_desire" %>
+                  <% else %>
+                      <%= link_to "立即注册", new_user_path %>
+                  <% end %>
+              </div>
+          </div>
+      </div>
+    </div>
+
     <% @desires.each do |desire| %>
         <%= render "desires/desire_item", desire: desire, mode: @current_mode %>
     <% end %>

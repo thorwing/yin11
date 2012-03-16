@@ -39,7 +39,7 @@
             <% solutions_count = desire.solutions.size %>
             <% if admirers_count > 0 || solutions_count > 0 %>
                 <span class="ml10 mr10 f12 berry_pink" >
-                    <%= "馋到#{admirers_count}人" if admirers_count > 0 %> <%= content_tag :span, "|", class: "ml5 mr5" if admirers_count > 0 && solutions_count > 0 %><%= "#{desire.solutions.size}个解馋攻略" if solutions_count > 0 %>
+                    <%= link_to "馋到#{admirers_count}人", desire, class: "berry_pink" if admirers_count > 0 %> <%= content_tag :span, "|", class: "ml5 mr5" if admirers_count > 0 && solutions_count > 0 %><%= link_to "#{desire.solutions.size}个解馋攻略", desire, class: "berry_pink" if solutions_count > 0 %>
                 </span>
             <% end %>
             <%= render "desires/extra_comments", desire: desire %>
