@@ -1,6 +1,10 @@
 <div id="masonry_container" class="clearfix">
-    <% @feeds.each do |feed| %>
-        <%= render "feeds/feed_item", feed: feed %>
+    <% if current_user.relationships.empty? %>
+        <span class="trivial">你还没有关注任何人，</span><%= link_to "赶快去看看有哪些吃货吧", masters_path %>
+    <% else %>
+        <% @feeds.each do |feed| %>
+            <%= render "feeds/feed_item", feed: feed %>
+        <% end %>
     <% end %>
 
     <nav id="page_nav">
