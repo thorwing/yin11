@@ -117,6 +117,7 @@ zh-CN:
     remember_me: "记住我"
     other_logins: "您还可以用站外账号登录:"
     to_reset_your_password: "您好，请点击下方的链接来重置您在吃心不改上的密码"
+    captcha_failed: "噢，验证码没有输对"
 
   mailers:
     reset_password_subject: 重置密码

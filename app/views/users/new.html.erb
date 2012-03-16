@@ -19,13 +19,19 @@
         <%= f.label :password_confirmation, t("authentication.password_confirmation"), class: "trivial" %> <br/>
         <%= f.password_field :password_confirmation, class: "big_input" %>
       </p>
-      <p class="mt10">
-        <span class="trivial">欢迎参与吃心不改的试运行</span><br/>
-        <span class="berry_pink">邀请码限量派发中，赶快私信我们的微博帐号获得：</span>
-        <%= new_tab_link_to t("syncs.sites.sina"), YIN11_SINA_WEIBO, class: "auth_btn_16 via_sina_small" %><br/>
-        <%= f.label t("authentication.invitation_code"), class: "trivial" %><span class="red f20 m2">*</span><br/>
-        <%= text_field_tag "invitation", params[:invitation] %>
-      </p>
+
+      <!--<p class="mt10">-->
+        <!--<span class="trivial">欢迎参与吃心不改的试运行</span><br/>-->
+        <!--<span class="berry_pink">邀请码限量派发中，赶快私信我们的微博帐号获得：</span>-->
+        <!--<= new_tab_link_to t("syncs.sites.sina"), YIN11_SINA_WEIBO, class: "auth_btn_16 via_sina_small" %><br/>-->
+        <!--<= f.label t("authentication.invitation_code"), class: "trivial" %><span class="red f20 m2">*</span><br/>-->
+        <!--<= text_field_tag "invitation", params[:invitation] %>-->
+      <!--</p>-->
+      <div class="mt10">
+        <%= content_tag :span, "验证码", class: "trivial" %> <br/>
+        <%= recaptcha_tags %>
+      </div>
+
       <div class="mt10">
         <%= submit_tag t("authentication.sign_up"), :class => "btn btn_register" %>
       </div>

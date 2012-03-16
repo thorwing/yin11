@@ -50,15 +50,15 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
 
-    #TODO invitation
-    invitation = nil
-    if params[:invitation]
-      invitation = Invitation.first(:conditions => {:code => params[:invitation], :used => false})
-    end
-    if invitation.blank?
-      redirect_to :sign_up, :notice => t("authentication.invalid_invitation")
-      return
-    end
+    ##TODO invitation
+    #invitation = nil
+    #if params[:invitation]
+    #  invitation = Invitation.first(:conditions => {:code => params[:invitation], :used => false})
+    #end
+    #if invitation.blank?
+    #  redirect_to :sign_up, :notice => t("authentication.invalid_invitation")
+    #  return
+    #end
 
     ip = request.remote_ip.to_s
     if Cooler.crazy_register?(ip)
@@ -70,14 +70,14 @@ class UsersController < ApplicationController
     @user.remote_ip = ip
 
     respond_to do |format|
-      if @user.save
+      if verify_recaptcha(:model => @user, :message => t("authentication.captcha_failed")) && @user.save
 
-        #TODO invitation
-        if invitation
-          invitation.used = true
-          invitation.invitee = @user.id.to_s
-          invitation.save
-        end
+        ##TODO invitation
+        #if invitation
+        #  invitation.used = true
+        #  invitation.invitee = @user.id.to_s
+        #  invitation.save
+        #end
 
 
         #sign in
