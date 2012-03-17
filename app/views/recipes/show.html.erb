@@ -98,7 +98,7 @@
     <%= render "products/related_products", products: @related_products %>
 </div>
 
-<% if params[:newly_created] == true %>
+<% if params[:newly_created] == "true" %>
     <div id="recipe_publisher" class="display_none clearfix">
         <h2>太棒了！成功添加了菜谱，现在去让大家知道吧！</h2>
         <div class="fl box_shadow p5">

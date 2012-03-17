@@ -107,7 +107,7 @@ class RecipesController < ApplicationController
 
     if saved
       session[:recipe_stage] =  session[:recipe_params] =  nil
-      redirect_to show_recipe_path(@recipe, newly_created: true), notice: t("notices.recipe_created")
+      redirect_to url_for(contriller: "recipes", action: "show", id: @recipe.id, newly_created: true), notice: t("notices.recipe_created")
     else
       render "new", notice: notice
     end
