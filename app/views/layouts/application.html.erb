@@ -13,6 +13,8 @@
         <%= (@content_for_title + '_') if @content_for_title %><%= [t("site.name"), t("site.description")].join('_') %>
     </title>
     <% if request.host.include? "chixinbugai.com" %>
+        <!--weibo verification-->
+        <meta property="wb:webmaster" content="3cb8f8b3350ab818" />
         <meta name="google-site-verification" content="nWzf6pxwY2_AJjgrdYq1wfjcuU1xzJvFtJXD9M1PI8k" />
 
         <script type="text/javascript">

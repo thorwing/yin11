@@ -1,14 +1,14 @@
 development:
-   key:    "3376020978"
-   secret: "3ad4cff41b46346409de66e5e5c37741"
-   url:    "http://localhost:3000"
-   callback: "http://localhost:3000/syncs/sina/callback"
+   key:    "3136866110"
+   secret: "b645824b7cffd216f97845dcff84f286"
+   url:    "http://192.168.75.131:3000/"
+   callback: "http://192.168.75.131:3000/syncs/sina/callback"
    add_blog_url: "http://api.t.sina.com.cn/statuses/upload.json"
 
 
 production:
-   key:    "3376020978"
-   secret: "3ad4cff41b46346409de66e5e5c37741"
-   url:    "http://www.yinkuaizi.com"
-   callback: "http://www.yinkuaizi.com/syncs/sina/callback"
+   key:    "3136866110"
+   secret: "b645824b7cffd216f97845dcff84f286"
+   url:    "http://www.chixinbugai.com"
+   callback: "http://www.chixinbugai.com/syncs/sina/callback"
    add_blog_url: "http://api.t.sina.com.cn/statuses/upload.json"
