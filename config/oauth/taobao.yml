@@ -1,10 +1,11 @@
 development:
-   key:    "12415656"
-   secret: "0ff2c329679310486b4b1b563f427cb8"
-   url:    "http://www.yinkuaizi.com:"
-   callback: "http://www.yinkuaizi.com:/syncs/taobao/callback"
+   key:    "12530659"
+   secret: "9bf06028c06b37b4f643885700f6d1c6"
+   url:    "http://chixinbugai.com"
+   callback: "http://chixinbugai.com/syncs/taobao/callback"
+
 production:
-   key:    "12415656"
-   secret: "0ff2c329679310486b4b1b563f427cb8"
-   url:    "http://www.yinkuaizi.com"
-   callback: "http://www.yinkuaizi.com/syncs/taobao/callback"
+   key:    "12530659"
+   secret: "9bf06028c06b37b4f643885700f6d1c6"
+   url:    "http://chixinbugai.com"
+   callback: "http://chixinbugai.com/syncs/taobao/callback"

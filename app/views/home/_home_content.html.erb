@@ -28,8 +28,11 @@
 
     <div class="masonary_item">
       <div class="inner_frame p5">
-          <div class="mt10">
-              <%= content_tag :span, "点击有“解馋”标志的图片看如何把美食吃到！", class: "trivial f14" %><br/>
+          <div>
+              <ol>
+                <li><%= content_tag :span, "*  上传馋人的美食图片", class: "berry_pink f14" %></li>
+                <li><%= content_tag :span, "*  分享怎么把图中的美食吃到", class: "berry_pink f14" %></li>
+              </ol>
               <div class="mt5 clearfix">
                   <%= content_tag :span, "也想馋馋别人？", class: "trivial f14 mt5" %>
                   <% if current_user_has_permission? :normal_user %>

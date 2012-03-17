@@ -201,6 +201,7 @@ class SyncsController < ApplicationController
             user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user"]["id"])
             user.uid = credentials["user"]["id"]
             user.login_name = credentials["user"]["screen_name"]
+            user.remote_avatar_url = credentials["user"]["profile_image_url"]
 
           when "douban"
             user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["entry"]["db:uid"])
@@ -250,7 +251,7 @@ class SyncsController < ApplicationController
     end
 
     def sync_account(response, client)
-      #p "response: " + response.to_yaml
+      p "response: " + response.to_yaml
       results =  client.dump
       credentials = Crack::XML.parse(response)
       credentials = Crack::JSON.parse(response) if credentials.blank? # blanck = nil or " "

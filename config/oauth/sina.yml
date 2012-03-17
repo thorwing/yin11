@@ -9,6 +9,6 @@ development:
 production:
    key:    "3136866110"
    secret: "b645824b7cffd216f97845dcff84f286"
-   url:    "http://www.chixinbugai.com"
-   callback: "http://www.chixinbugai.com/syncs/sina/callback"
+   url:    "http://chixinbugai.com"
+   callback: "http://chixinbugai.com/syncs/sina/callback"
    add_blog_url: "http://api.t.sina.com.cn/statuses/upload.json"
