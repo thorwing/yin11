@@ -37,6 +37,10 @@
           </div>
       <% end %>
     </div>
+
+    <div class="mt5">
+        <%= render "shared/jiathis", :titlestr => "我发现了馋人的美食。", :summarystr => "大家快去看看，一起讨论怎么把它吃到！", :picstr => "http://" + request.host_with_port + @desire.get_image_url(:waterfall), :appkeyhash => load_appkey() %>
+    </div>
   </div>
 
     <div class="mt20 box_shadow clearfix" style="padding:  5px">

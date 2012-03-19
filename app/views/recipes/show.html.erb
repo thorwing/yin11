@@ -19,11 +19,7 @@
                 </div>
 
                 <div class="mt5">
-                    <% titlestr = "我发现一个不错的菜谱《"+ @recipe.name + "》。" %>
-                    <% summarystr = "大家去看看吧！" %>
-                    <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
-                    <% appkeyhash = load_appkey() %>
-                    <%= render "shared/jiathis", :titlestr => titlestr, :summarystr => summarystr, :picstr => picstr, :appkeyhash => appkeyhash %>
+                    <%= render "shared/jiathis", :titlestr => "我发现一个不错的菜谱《"+ @recipe.name + "》。", :summarystr => "大家去看看吧！", :picstr => "http://" + request.host_with_port + @recipe.get_image_url(:waterfall), :appkeyhash => load_appkey() %>
                 </div>
 
                 <% unless @recipe.tags.blank? || @recipe.tags.empty? %>
@@ -113,11 +109,7 @@
         <div class="ml20 fl box_shadow p5">
             <%= content_tag :span, "或者" %><br/>
             <div class="mt5">
-              <% titlestr = "我在吃心不改网上添加了一个菜谱:"+ @recipe.name + "。" %>
-              <% summarystr = "大家快去看看吧！" %>
-              <% picstr = "http://" + request.host_with_port + @recipe.get_image_url(:waterfall) %>
-              <% appkeyhash = load_appkey() %>
-              <%= render "shared/jiathis", :titlestr => titlestr, :summarystr => summarystr, :picstr => picstr, :appkeyhash => appkeyhash %>
+                <%= render "shared/jiathis", :titlestr => "我在吃心不改网上添加了一个菜谱:"+ @recipe.name + "。", :summarystr => "大家快去看看吧！", :picstr => "http://" + request.host_with_port + @recipe.get_image_url(:waterfall), :appkeyhash => load_appkey() %>
             </div>
         </div>
     </div>

@@ -35,6 +35,12 @@
             <% else %>
                 <%= new_tab_link_to "[查看#{t("object_types.#{solution.item.class.name.downcase}")}]", item_path %>
             <% end %>
+            <% if solution.item.is_a?(Recipe) %>
+                <p class="trivial">
+                  作者： <%= solution.item.author.login_name  %>
+                  <%= image_tag(solution.author.get_avatar(:thumb, false ), width: 32, height: 32) %>
+                </p>
+            <% end %>
         </div>
     </div>
 
