@@ -1,5 +1,5 @@
 <div class="vote_fields mt5 clearfix <%= solution.id.to_s %>">
-    <span class="votes"><%= "#{solution.fan_ids.size}" %></span>赞同
+    <span class="trivial votes"><%= "#{solution.fan_ids.size}" %></span><span class="trivial">赞同</span>
     <div class="fans_list">
         <% solution.fans.each do |fan| %>
             <span class="fan <%= fan.id.to_s %>"><%= link_to image_tag(fan.get_avatar(:thumb, false ), width: 24, height: 24, title: fan.login_name), fan %></span>
