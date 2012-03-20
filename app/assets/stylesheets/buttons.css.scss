@@ -353,11 +353,21 @@ a.btn.btn_edit:hover{
   padding: 0;
 }
 
-.btn.btn_vote {
-    width: 38px;
+.btn.btn_positive {
+    width: 60px;
     height: 24px;
-    background-position: -242px -286px;
+    background-position: -262px -228px;
 }
+
+.btn.btn_positive.voted { background-position: -262px -257px; }
+
+.btn.btn_negative {
+    width: 60px;
+    height: 24px;
+    background-position: -328px -228px;
+}
+
+.btn.btn_negative.voted { background-position: -328px -257px; }
 
 .btn.btn_ok {
     width: 38px;

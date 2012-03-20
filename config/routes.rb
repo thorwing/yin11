@@ -102,6 +102,7 @@ Yin11::Application.routes.draw do
   resources :votes do
     collection do
       put :like
+      put :hate
     end
   end
 

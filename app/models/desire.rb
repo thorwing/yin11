@@ -44,8 +44,8 @@ class Desire
     @voter_ids ||= valid_solutions.inject([]){|memo, s| memo | s.voter_ids }
   end
 
-  def votes_count
-    @votes_count ||= valid_solutions.inject(0){|sum, s| sum + s.voter_ids.size }
+  def fans_count
+    @fans_count ||= valid_solutions.inject(0){|sum, s| sum + s.fan_ids.size }
   end
 
   def best_solution

@@ -23,13 +23,12 @@ class RewardManager
     end
   end
 
-  def self.reward_for_vote(vote, user)
-    solution = vote.solution
+  def self.reward_for_vote(solution, user)
     if solution.author
       solution.author.score += SCORE_VOTE_SOLUTION
       solution.author.save
 
-      NotificationsManager.generate_for_item(solution.author, user, solution.desire, "vote", SCORE_VOTE_SOLUTION, vote.content)
+      NotificationsManager.generate_for_item(solution.author, user, solution.desire, "vote")
     end
   end
 

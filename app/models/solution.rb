@@ -1,6 +1,7 @@
 class Solution
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Votable
 
   field :percentage, :type => Float, :default => 0
   field :content
@@ -13,7 +14,6 @@ class Solution
   belongs_to :recipe, index: true
   belongs_to :place, index: true
   belongs_to :author, :class_name => "User", index: true
-  embeds_many :votes
 
   #validations
   validates_length_of :content, :maximum => 1000
@@ -30,14 +30,6 @@ class Solution
     pic_url = nil
     pic_url = item.get_image_url(version) if item
     pic_url = pic_url.present? ? pic_url : "/assets/not_found.png"
-  end
-
-  def voter_ids
-    @voter_ids ||= self.votes.map(&:voter_id)
-  end
-
-  def voters
-    @voters ||= User.any_in(_id: voter_ids)
   end
 
   def identity

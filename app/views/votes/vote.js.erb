@@ -1,0 +1,46 @@
+var vote_fields = $('.vote_fields.<%= @item.id.to_s %>');
+var fans_list = vote_fields.find(".fans_list");
+vote_fields.find(".votes").text("<%= @item.fan_ids.size.to_s %>");
+
+<% if @is_fan %>
+    var link = vote_fields.find(".btn.btn_vote.to_like");
+    if(link) {
+        link.removeClass("to_like");
+        link.addClass("liked");
+    }
+
+    var link = vote_fields.find(".btn.btn_positive");
+    if(link) {
+        link.addClass("voted");
+
+        var new_fan = '<span class="fan <%= current_user.id.to_s %>"><%= link_to image_tag(current_user.get_avatar(:thumb, false ), width: 24, height: 24, title: current_user.login_name), current_user %></span>';
+        fans_list.append(new_fan);
+    }
+
+<% else %>
+    var link = vote_fields.find(".btn.btn_vote.liked");
+    if(link) {
+        link.removeClass("liked");
+        link.addClass("to_like");
+    }
+
+    var link = vote_fields.find(".btn.btn_positive.voted");
+    if(link) {
+        link.removeClass("voted");
+        fans_list.find(".fan.<%= current_user.id.to_s %>").remove();
+    }
+<% end %>
+
+<% if @is_hater %>
+    var link = vote_fields.find(".btn.btn_negative");
+    if(link) {link.addClass("voted")}
+<% else %>
+    var link = vote_fields.find(".btn.btn_negative.voted");
+    if(link) {link.removeClass("voted")}
+<% end %>
+
+<% if @item.is_a? Solution %>
+    <% new_ratio_value = ((@item.desire.fans_count == 0 ? 0 : (@item.fan_ids.size.to_f / @item.desire.fans_count.to_f)) * 100) %>
+    var new_ratio = '<b class="ratio f16 ml2 <%= new_ratio_value >= 50 ? "berry_red" : "" %> <%= new_ratio_value < 1 ? "berry_azure" : "" %>"><%= new_ratio_value.round(0).to_s + "%" %></b>';
+    $('.solution_option.<%= @item.id.to_s %> .ratio').replaceWith(new_ratio);
+<% end %>

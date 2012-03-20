@@ -2,83 +2,83 @@
 
 
 <div class="grid_9 to_left">
-    <div class="box_shadow p10">
-        <div class="clearfix">
-            <div class="fl mr10" style="width: 200px;">
-                <%= link_to image_tag("grey.gif", :alt=> @recipe.name, class: 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall), width: IMAGE_WATERFALL_WIDTH, height: @recipe.get_image_height(:waterfall), alt: @recipe.name), @recipe.get_image_url, rel: "facebox"  %>
+    <div class="box_shadow p10 clearfix">
+        <div class="fl mr10" style="width: 200px;">
+            <%= link_to image_tag("grey.gif", :alt=> @recipe.name, class: 'lazy fl img_frame overflow_hidden', "data-original"=>  @recipe.get_image_url(:waterfall), width: IMAGE_WATERFALL_WIDTH, height: @recipe.get_image_height(:waterfall), alt: @recipe.name), @recipe.get_image_url, rel: "facebox"  %>
+        </div>
+
+        <div id="recipe_info" class="fl ml10 clearfix" style="width: 460px;">
+            <div class="clearfix">
+                <h1 class="fl f20"><%= content_tag :span, "菜谱", class: "icon icon_recipe mr5" %><%= @recipe.name %></h1>
+                <div class="fr clearfix">
+                  <%= link_to "编辑", edit_recipe_path(@recipe), class: "btn btn_edit fl" if the_author_himself(@recipe) %>
+                  <%= link_to "删除", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" if the_author_himself(@recipe, true) %>
+                  <%= render "administrator/base/tune_fields", item: @recipe if current_user_has_permission? :administrator %>
+                </div>
             </div>
 
-            <div id="recipe_info" class="fl ml10 clearfix" style="width: 460px;">
+            <div class="mt5">
+                <%= render "shared/jiathis", :titlestr => "我发现一个不错的菜谱《"+ @recipe.name + "》。", :summarystr => "大家去看看吧！", :picstr => "http://" + request.host_with_port + @recipe.get_image_url(:waterfall), :appkeyhash => load_appkey() %>
+            </div>
+
+            <% unless @recipe.tags.blank? || @recipe.tags.empty? %>
+                <div class="mt10">
+                    <span class="berry_pink"><%= t("recipes.tags") %></span>
+                    <%= render "tags/tags", item: @recipe %>
+                </div>
+            <% end %>
+
+            <div class="mt10">
                 <div class="clearfix">
-                    <h1 class="fl f20"><%= content_tag :span, "菜谱", class: "icon icon_recipe mr5" %><%= @recipe.name %></h1>
-                    <div class="fr clearfix">
-                      <%= link_to "编辑", edit_recipe_path(@recipe), class: "btn btn_edit fl" if the_author_himself(@recipe) %>
-                      <%= link_to "删除", @recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" if the_author_himself(@recipe, true) %>
-                      <%= render "administrator/base/tune_fields", item: @recipe if current_user_has_permission? :administrator %>
-                    </div>
+                    <span class="berry_pink"><%= t_with_colon("recipes.major") if @recipe.major_ingredients.length >0 %></span>
+                    <ul>
+                        <% @recipe.major_ingredients.each do |i|%>
+                            <li class="fl" style="width:50%;"> <%= i.name %>  <span class="trivial"><%= i.amount %></span></li>
+                        <% end %>
+                    </ul>
                 </div>
-
-                <div class="mt5">
-                    <%= render "shared/jiathis", :titlestr => "我发现一个不错的菜谱《"+ @recipe.name + "》。", :summarystr => "大家去看看吧！", :picstr => "http://" + request.host_with_port + @recipe.get_image_url(:waterfall), :appkeyhash => load_appkey() %>
-                </div>
-
-                <% unless @recipe.tags.blank? || @recipe.tags.empty? %>
-                    <div class="mt10">
-                        <span class="berry_pink"><%= t("recipes.tags") %></span>
-                        <%= render "tags/tags", item: @recipe %>
-                    </div>
-                <% end %>
-
-                <div class="mt10">
-                    <div class="clearfix">
-                        <span class="berry_pink"><%= t_with_colon("recipes.major") if @recipe.major_ingredients.length >0 %></span>
-                        <ul>
-                            <% @recipe.major_ingredients.each do |i|%>
-                                <li class="fl" style="width:50%;"> <%= i.name %>  <span class="trivial"><%= i.amount %></span></li>
-                            <% end %>
-                        </ul>
-                    </div>
-                    <div class="clearfix">
-                        <span class="berry_pink"><%= t_with_colon("recipes.minor") if @recipe.minor_ingredients.length >0%></span>
-                        <ul>
-                            <% @recipe.minor_ingredients.each do |i|%>
-                                <li class="fl" style="width:50%;"> <%= i.name %> <span class="trivial"><%= i.amount %></span></li>
-                            <% end %>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="mt10">
-                    <% if current_user_has_permission? :normal_user %>
-                        <div class="mt5">
-                            <%= render "votes/vote_fields", :item => @recipe, show_list: true %>
-                        </div>
-                    <% end %>
+                <div class="clearfix">
+                    <span class="berry_pink"><%= t_with_colon("recipes.minor") if @recipe.minor_ingredients.length >0%></span>
+                    <ul>
+                        <% @recipe.minor_ingredients.each do |i|%>
+                            <li class="fl" style="width:50%;"> <%= i.name %> <span class="trivial"><%= i.amount %></span></li>
+                        <% end %>
+                    </ul>
                 </div>
             </div>
 
-            <div class="fl mt10 block clearfix">
-                <span class="berry_pink"><%= t_with_colon("recipes.steps") %></span><br/>
-                <% @recipe.steps.each_with_index do |step, index| %>
-                    <div class="mt10 mb10 clearfix">
-                        <div class="fl" style="width:10%"><b class="trivial f20 middle"><%= index + 1 %></b></div>
-                        <div class="fl" style="width:90%">
-                            <p class="middle"><%= step.content %></p>
-                            <% if step.image.present?%>
-                                <%= link_to image_tag("grey.gif", alt: "步骤图", class: "lazy", "data-original" => step.get_image_url(:waterfall), title: "点击放大", width: IMAGE_WATERFALL_WIDTH, height: step.get_image_height(:waterfall)), step.get_image_url, rel: "facebox" %>
-                            <% end %>
-                        </div>
+            <div class="mt10">
+                <% if current_user_has_permission? :normal_user %>
+                    <div class="mt5">
+                        <%= render "votes/vote_fields", :item => @recipe, show_list: true %>
                     </div>
                 <% end %>
             </div>
+        </div>
 
-            <% if @recipe.notice.present? %>
-              <div class="mt5">
-                  <span class="berry_pink"><%= t_with_colon("recipes.notice") %></span>
-                  <%= @recipe.notice %>
-              </div>
+        <div class="clearfix"></div>
+
+        <div class="mt10 block clearfix">
+            <span class="berry_pink"><%= t_with_colon("recipes.steps") %></span><br/>
+            <% @recipe.steps.each_with_index do |step, index| %>
+                <div class="mt10 mb10 clearfix">
+                    <div class="fl" style="width:5%"><b class="trivial f20 middle"><%= index + 1 %></b></div>
+                    <div class="fl" style="width:95%">
+                        <p class="middle"><%= step.content %></p>
+                        <% if step.image.present?%>
+                            <%= link_to image_tag("grey.gif", alt: "步骤图", class: "lazy", "data-original" => step.get_image_url(:waterfall), title: "点击放大", width: IMAGE_WATERFALL_WIDTH, height: step.get_image_height(:waterfall)), step.get_image_url, rel: "facebox" %>
+                        <% end %>
+                    </div>
+                </div>
             <% end %>
         </div>
+
+        <% if @recipe.notice.present? %>
+          <div class="mt5">
+              <span class="berry_pink"><%= t_with_colon("recipes.notice") %></span>
+              <%= @recipe.notice %>
+          </div>
+        <% end %>
     </div>
 
      <div class="mt10">

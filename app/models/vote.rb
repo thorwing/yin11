@@ -8,7 +8,7 @@ class Vote
   attr_accessible :content
 
   #relationships
-  embedded_in :solution
+  #embedded_in :solution
 
   validates_length_of :content, :maximum => 400
 

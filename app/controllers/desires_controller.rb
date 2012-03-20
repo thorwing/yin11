@@ -31,8 +31,8 @@ class DesiresController < ApplicationController
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:created_at).limit(9)
     @solutions = @desire.solutions.desc(:votes, :created_at).reject{|s| s.item.nil? }.uniq{|s| s.identity} #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
 
-    votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
-    @my_vote = votes.select{|v| v.voter_id == current_user.id.to_s}.first if current_user
+    #votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
+    #@my_vote = votes.select{|v| v.voter_id == current_user.id.to_s}.first if current_user
 
     #dummy ojbect for new_solution_field
     dummy = Solution.new
@@ -161,7 +161,7 @@ class DesiresController < ApplicationController
         v.voter_id = current_user.id.to_s
       end
 
-      RewardManager.reward_for_vote(vote, current_user)
+      RewardManager.reward_for_vote(solution, current_user)
       desire.check_solutions
     end
 

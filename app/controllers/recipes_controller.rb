@@ -153,17 +153,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def mark
-    @review = @recipe.reviews.new(content: params[:content])
-    @review.author = current_user
-    @review.save!
-    @user_message = t("notices.review_posted")
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def browse
     if params[:name].present?
       # not case sensitive

@@ -1,6 +1,18 @@
-<div class="vote_fields">
-    <%= form_tag url_for(controller: "desires", action: "vote", method: :post) do %>
-        <%= hidden_field_tag "solution_id", solution.id %>
-        <%= submit_tag "投票", class: "mt5 btn btn_vote lighter_touch" %>
+<div class="vote_fields mt5 clearfix <%= solution.id.to_s %>">
+    <span class="votes"><%= "#{solution.fan_ids.size}" %></span>赞同
+    <div class="fans_list">
+        <% solution.fans.each do |fan| %>
+            <span class="fan <%= fan.id.to_s %>"><%= link_to image_tag(fan.get_avatar(:thumb, false ), width: 24, height: 24, title: fan.login_name), fan %></span>
+        <% end %>
+    </div>
+
+    <% if current_user && current_user != solution.author %>
+        <%= form_tag url_for(controller: "desires", action: "vote", method: :post) do %>
+            <%= hidden_field_tag "solution_id", solution.id %>
+            <%= link_to "赞成", like_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
+                          :class => "btn btn_positive lighter_touch fl " + (solution.is_fan?(current_user) ? "voted" : ""), title: (solution.is_fan?(current_user) ? "取消赞同" : "赞同")  %>
+            <%= link_to "反对", hate_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
+                          :class => "btn btn_negative lighter_touch fl ml5 " + (solution.is_hater?(current_user) ? "voted" : ""), title: (solution.is_fan?(current_user) ? "取消反对" : "反对")  %>
+        <% end %>
     <% end %>
 </div>

@@ -1,9 +1,9 @@
-<div class="fl solution_option img_frame mb5 mr5 <%= selected ? "selected" : "" %>">
+<div class="fl solution_option img_frame mb5 mr5 <%= selected ? "selected" : "" %> <%= solution.id.to_s %>">
     <% item = solution.product || solution.recipe || solution.place %>
 
     <div class="f12" style="top:0px;left:0px;height: 20px;">
-        <% ratio = ((solution.desire.votes_count == 0 ? 0 : (solution.votes.size.to_f / solution.desire.votes_count.to_f)) * 100) %>
-        <b class="f16 ml2 <%= ratio >= 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.round(0).to_s + "%" %></b>
+        <% ratio = ((solution.desire.fans_count == 0 ? 0 : (solution.fan_ids.size.to_f / solution.desire.fans_count.to_f)) * 100) %>
+        <b class="ratio f16 ml2 <%= ratio >= 50 ? "berry_red" : "" %> <%= ratio < 1 ? "berry_azure" : "" %>"><%= ratio.round(0).to_s + "%" %></b>
         <!--< if solution.voter_ids.include? current_user.id.to_s %>-->
             <!--<span class="trivial">你投了</span>-->
         <!--< end %>-->
