@@ -16,19 +16,25 @@
         <%= content_tag :span, notification.subject %>
         <% if notification.content.present? %><blockquote><span class="ml5 quoted"><%= notification.content %></span> </blockquote><% end %>
         <% if notification.item %>
+            <% if notification.item.is_a? Solution %>
+                <% target = notification.item.desire %>
+            <% else %>
+              <% target = notification.item %>
+            <% end %>
+
             <span class="ml5">
-                <% if notification.item.respond_to? :name %>
-                    <%= link_to notification.item.name, notification.item %>
-                <% elsif notification.item.respond_to? :title %>
-                    <%= link_to notification.item.title, notification.item %>
+                <% if target.respond_to? :name %>
+                    <%= link_to target.name, target %>
+                <% elsif target.respond_to? :title %>
+                    <%= link_to target.title, target%>
                 <% else %>
-                  <%= link_to "[查看]", notification.item %>
+                  <%= link_to "[查看]", target %>
                 <% end %>
             </span>
 
             <div>
-                <% pic_url = notification.item.get_image_url(:thumb) %>
-                <%= link_to image_tag(pic_url, width: 50, height: 50), notification.item, class: "mt2" if pic_url.present? %>
+                <% pic_url = target.get_image_url(:thumb) %>
+                <%= link_to image_tag(pic_url, width: 50, height: 50), target, class: "mt2" if pic_url.present? %>
             </div>
         <% end %>
         <% if notification.side_notification.present? %>

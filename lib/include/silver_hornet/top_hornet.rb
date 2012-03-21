@@ -121,7 +121,6 @@ class SilverHornet::TopHornet
         fields: "num_iid,title,nick,pic_url,price,click_url,commission,commission_rate,commission_num,commission_volume,shop_click_url,seller_credit_score,item_location,volume",
         nick: config["nick"],
         num_iids: id,
-        outer_code: "desire",
         is_mobile: false
     })
 
@@ -145,10 +144,7 @@ class SilverHornet::TopHornet
       sign_method: "md5",
 
       fields: "num_iid,title,nick,pic_url,price,detail_url",
-      nick: config["nick"],
       num_iid: id,
-      outer_code: "desire",
-      is_mobile: false
     })
 
     #p "***response of normal item: " + response
