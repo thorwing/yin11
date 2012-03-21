@@ -9,8 +9,8 @@
         <div class="product_detail ml10 fl">
             <h1 class="f20"><%= content_tag :span, "商品", class: "icon icon_product mr5" %><%= @product.name %></h1>
             <%= content_tag :b, "支持淘宝客", class: "berry_red f15" if @product.refer_url.present?  %>
-            <p><%= @product.refer_url %></p>
-            <p><%= @product.normal_url %></p>
+            <p style="word-break: break-all;"><%= @product.refer_url %></p>
+            <p style="word-break: break-all;"><%= @product.normal_url %></p>
             <p>
               <span class="trivial mr5"><%= t("products.price") %></span>
               <%= [t("money.yuan_mark2"), @product.price_as_money_string].join if @product.price %>

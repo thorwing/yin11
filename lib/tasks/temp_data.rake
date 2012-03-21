@@ -45,9 +45,9 @@ namespace :yin11 do
   desc "update products for refer url"
   task :update_products => :environment do
     top = SilverHornet::TopHornet.new
-    Product.where(iid: nil).each do |product|
-      if product.url.present? && product.solutions.size > 0
-        valid_url, product = top.update_product(product.url, product)
+    Product.all.each do |product|
+      if product.iid.present?
+        top.convert_taobaoke(product.iid, product)
         p (product && product.valid? ) ? "update one" : "fail one"
       end
     end
