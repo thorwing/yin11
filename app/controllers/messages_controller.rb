@@ -3,13 +3,21 @@ class MessagesController < ApplicationController
   before_filter :find_user
 
   def create
+  if @user
     @message = @user.messages.create(from_id: current_user.id.to_s, to_id: @user.id.to_s, content: params[:content])
     current_user.messages.create(from_id: current_user.id.to_s, to_id: @user.id.to_s, content: params[:content])
+  end
 
-    respond_to do |format|
+  respond_to do |format|
+    if @message
       format.html { redirect_to "/info_center?mode=outbox", notice: t("notices.message_sent") }
       format.js
+    else
+      format.html { redirect_to :back, notice: t("alerts.invalid_message") }
+      format.js
     end
+  end
+
   end
 
   def show

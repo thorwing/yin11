@@ -81,7 +81,7 @@
 <div class="grid_3">
   <% if @desire.place %>
       <div class="box_shadow mb10 p5">
-        <h3><%= content_tag :span, "参馆", class: "icon icon_place mr2" %><%= link_to @desire.place.name, @desire.place %></h3>
+        <h3><%= content_tag :span, "餐馆", class: "icon icon_place mr2" %><%= link_to @desire.place.name, @desire.place %></h3>
         <%= content_tag :span, @desire.place.address, class: "trivial" %>
         <%= render "shared/location", location: @desire.place %>
       </div>

@@ -100,7 +100,7 @@ function listen_recipe_name() {
       clearTimeout(timerid);
       timerid = setTimeout(function() {
         $(input).nextAll('#link_spinner').show();
-        $(input).nextAll("div").html('');
+//        $(input).nextAll("div").html('');
 
         var name = $(input).val();
         $.ajax({

@@ -74,15 +74,7 @@ class DesiresController < ApplicationController
     #@desire.content = @desire.content[0..MAX_DESIRE_CONTENT_LENGTH - 1] if (@desire.content.present? && @desire.content.size > MAX_DESIRE_CONTENT_LENGTH)
     @desire.author = current_user
 
-    if params[:place][:name].present? && params[:place][:street].present?
-      place = Place.find_or_initialize_by(name: params[:place][:name])
-      if place.new_record?
-        place.city = params[:place][:city]
-        place.street = params[:place][:street]
-        place.save
-      end
-      @desire.place = place
-    end
+    PlacesHelper.process_place(@desire, params[:place][:city], params[:place][:name], params[:place][:street])
 
     ImagesHelper.process_uploaded_images(@desire, params[:images], params[:remote_image_url])
 
@@ -107,6 +99,7 @@ class DesiresController < ApplicationController
   def update
     ImagesHelper.process_uploaded_images(@desire, params[:images])
 
+    PlacesHelper.process_place(@desire, params[:place][:city], params[:place][:name], params[:place][:street])
     #SolutionManager.generate_solutions(@desire)
 
     respond_to do |format|

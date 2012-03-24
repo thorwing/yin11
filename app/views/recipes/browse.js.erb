@@ -1,9 +1,10 @@
 $('#facebox #link_spinner').hide();
+var container = $('#facebox #recipe_hints_container');
 <% if @recipes.blank? || @recipes.empty? %>
-//    $('div.popup #recipe_not_found_label').show();
+    $('div.popup #recipe_not_found_label').show();
+    container.find("tr").remove();
 <% else %>
-//    $('div.popup #recipe_not_found_label').hide();
-    var container = $('#facebox #recipe_hints_container');
+    $('div.popup #recipe_not_found_label').hide();
     container.show();
     container.find("tr:gt(0)").remove();
     <% @recipes.each do |recipe| %>

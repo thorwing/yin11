@@ -167,7 +167,7 @@ zh-CN:
     album_cover_picked: 成功更改了拼盘封面
     desire_created: 成功上传馋人图片
     desire_updated: 成功更新馋人图片
-    place_updated: 成功更新参馆
+    place_updated: 成功更新餐馆
     message_sent: 成功发出消息
     solution_created: 成功分享了解馋攻略
     solution_creation_failed: 解馋攻略分享失败
@@ -177,6 +177,7 @@ zh-CN:
   alerts:
     password_reset_expired: 密码重置口令已过期
     password_reset_invalid: 密码重置口令无效
+    invalid_message: 消息发送失败
     old_password_invalid: 旧密码不正确
     no_group_specified: 未指定饭桌
     fail_to_create_desire: 馋人图片创建失败
@@ -191,7 +192,7 @@ zh-CN:
     review: 分享
     recipe: 菜谱
     album: 拼盘
-    place: 参馆
+    place: 餐馆
 
   menu:
     administrator_control: 管理面板
@@ -206,7 +207,7 @@ zh-CN:
     albums: 拼盘
     notifications: 消息
     masters: 达人
-    places: 参馆
+    places: 餐馆
     products: 美食
     topics: 策划
     badges: 徽章
@@ -264,10 +265,10 @@ zh-CN:
     edit_leave: 先这样
     edit_hint: 花个几十秒，让吃心不改能更好地为您服务
     edit_groups: 我是...
-    add_place: +参馆
+    add_place: +餐馆
     previous: 上一步
     next: 下一步
-    new_watched_location: 关注的参馆
+    new_watched_location: 关注的餐馆
     watched_distance: 关注范围
     wathced_distance_unit: 公里
     receive_mails: 接受食物安全动向的邮件报告
@@ -580,7 +581,7 @@ zh-CN:
     recommended: 推荐拼盘（全部）
 
   places:
-    places: 参馆
+    places: 餐馆
 
   search:
     kinds:
