@@ -20,7 +20,6 @@ class Desire
 
   #relationships
   has_many :images
-  has_many :reviews
   has_many :solutions
   belongs_to :author, class_name: "User", index: true
   has_and_belongs_to_many :admirers, class_name: "User", inverse_of: "admired_desires", index: true

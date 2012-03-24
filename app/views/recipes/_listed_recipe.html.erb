@@ -15,12 +15,16 @@
             <div class="fl" style="width:400px;">
                 <h3 class="f15"><%= link_to recipe.name, recipe %></h3>
                 <span class="tight f12"><%= truncate_content recipe.instruction, 200 %></span><br/>
-                <span class="trivial mr10"><%= "#{recipe.votes}人喜欢" %></span><br/>
-                <span class="trivial"><%= time_ago_in_words(recipe.created_at) + t("general.ago") %></span>
+            </div>
+            <div class="fr clearfix">
+                <span class="trivial fr"><%= recipe.created_at.strftime("%y-%m-%d %H:%M") %></span><br/>
+                <span class="trivial fr"><%= "#{recipe.votes}人喜欢" %></span>
             </div>
         </div>
         <div class="fr">
-            <%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= recipe.comments.size %></span>)
+            <div class="fl trivial"><%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= recipe.comments.size %></span>)</div>
+            <%= link_to "编辑", edit_recipe_path(recipe), class: "fl ml10" if the_author_himself(recipe) %>
+            <%= link_to "删除", recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "fl ml10" if the_author_himself(recipe) %>
         </div>
         <div class="embedded_comments display_none">
             <%= render "comments/comments", item: recipe %>

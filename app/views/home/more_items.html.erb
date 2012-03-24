@@ -1,5 +1,0 @@
-<% @items.each_with_index do |item, index| %>
-    <%= render "info_items/info_item", :item => item, :index => index %>
-<% end %>
-
-<%= link_to t("info_items.show_more"), reviews_path, :id => "more_items_button", :class => "button" if params[:page].to_i == 3 %>

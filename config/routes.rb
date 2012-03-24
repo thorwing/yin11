@@ -73,12 +73,6 @@ Yin11::Application.routes.draw do
     end
   end
 
-  resources :reviews, :except => [:index] do
-    collection do
-      post :link
-    end
-  end
-
   resources :desires do
     member do
       put :admire

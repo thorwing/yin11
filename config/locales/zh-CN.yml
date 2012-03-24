@@ -202,7 +202,6 @@ zh-CN:
     home: 首页
     me: 我的主页
     recipes: 菜谱
-    reviews: 美食分享
     desires: 馋人图片
     albums: 拼盘
     notifications: 消息
@@ -218,7 +217,6 @@ zh-CN:
     logout: 登出
 
   administrator_control:
-    reviews: 管理分享
     vendors: 管理商户
     products: 管理产品
     users: 管理用户
@@ -348,12 +346,10 @@ zh-CN:
   personal:
     default_mode: 关注的动态
     feeds_mode: 我的动态
-    reviews_mode: 我的解馋分享
     recipes_mode: 我的菜谱
     albums_mode: 我的拼盘
     desires_mode: 我的馋人图片
     feeds: 动态
-    reviews: 分享
     recipes: 菜谱
     albums: 拼盘
     desires: 馋人图片
@@ -420,14 +416,11 @@ zh-CN:
     new_vendor: 新建商户
     edit_vendor: 编辑商户
     create_vendor: 添加商户
-    new_review: +新分享
     new_product: +新产品
-    all_reviews: "所有分享："
     my_vendors: "查看我创建的商户"
     recent: 最近一个月：
     recent_good: 好评
     recent_bad: 差评
-    reviews_total: "总共："
 
   catalogs:
     all: 所有分类
@@ -473,37 +466,6 @@ zh-CN:
     new_recipe: 添加了菜谱“%{name}”
     new: 上传馋人图片
     edit: 编辑馋人图片
-
-
-  reviews:
-    review: 分享
-    head: 我要分享
-    submit: 发表
-    title: 分享
-    new: +新分享
-    reviews: 分享
-    all: 所有分享
-    what: 关于?
-    what_tip: （标签：食物，添加剂等等。最多5个。）
-    where: 哪家商户?
-    when: 什么时候?
-    whats_wrong: 哪里不对劲?
-    post_new_review: 发表新分享
-    edit_review: 编辑分享
-    new_review: 新建分享
-    make_choice_please: 请选择
-    choose_vendor: 选择商户
-    by_user: 发表了%{count}条美食分享
-    new_review_with_vnedor: 先找到针对的商户
-    new_review_without_vendor: 实在想不起在哪儿买的食物了
-    see_more_reviews: 查看更多分享
-    title_review: 报告
-    referenced_tip: 依据锦囊
-    upload_image_tip: "(上传图片可以更好地分享您的经历。最多可上传5张)"
-    faults: 过错
-    title_the: 的
-    content: 补充
-    suggestion_1: "不论是您遇到了食物安全问题，还是想推荐您的放心的一餐。您都可以与大家一起分享。"
 
   comments:
     comment: 评论
