@@ -4,7 +4,7 @@
         <%= new_tab_link_to image_tag(item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), item_path%>
     </div>
 
-    <div class="fl">
+    <div class="fl" style="width:200px;">
         <p>
             <span class="trivial">
               <%= t("object_types.#{item.class.name.downcase}")%>
