@@ -23,8 +23,9 @@
 
 #set :output, "/home/ray/Development/Sites/yin11/log/cron_log.log"
 #
-#every 2.hours do
-#  command "cd /home/ray/Development/Sites/yin11"
+#every 1.minutes do
+#  #command "cd /home/ray/Development/Sites/yin11"
+#  #rake "yin11:clean_images"
 #  command "/usr/local/coreseek/bin/indexer -c /home/ray/Development/Sites/yin11/config/development.sphinx.conf --all --rotate"
 #end
 
@@ -33,6 +34,6 @@
 
 set :output, "/var/www/yin11/current/log/cron_log.log"
 
-every 5.hours do
+every 1.hours do
   command "/usr/local/coreseek/bin/indexer -c /var/www/yin11/current/config/production.sphinx.conf --all --rotate"
 end
