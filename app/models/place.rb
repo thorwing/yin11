@@ -59,4 +59,20 @@ class Place
     desire = self.desires.first
     desire ? desire.get_image_url(version) : "not_found.png"
   end
+
+  def get_image_urls(version = nil)
+    unless @urls
+      @urls = []
+
+      self.desires.each do |desire|
+        @urls << desire.get_image_url(version)
+      end
+      @urls.size.upto(3).each do |i|
+        @urls << "/assets/not_found.png"
+      end
+    end
+
+    @urls
+  end
+
 end

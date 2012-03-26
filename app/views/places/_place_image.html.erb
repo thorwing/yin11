@@ -1,0 +1,5 @@
+<div class="clearfix">
+    <% place.get_image_urls.each do |url| %>
+        <%= image_tag("grey.gif", class: 'lazy fl img_frame', "data-original"=> url, width: size, height: size, alt: place.name, title: t("object_types.place") + " - " + place.name) %>
+    <% end %>
+</div>

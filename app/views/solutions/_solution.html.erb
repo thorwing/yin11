@@ -1,5 +1,6 @@
 <div class="block round p5 b_azure_gray clearfix ">
-    <% item_path = {:controller => solution.item.class.name.downcase.pluralize, :action => "show", :id => solution.item.id, force: true} %>
+    <% item = solution.item %>
+    <% item_path = {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} %>
     <div class="clearfix">
         <% if solution.author %>
             <ul>
@@ -15,30 +16,34 @@
     <hr/>
 
     <h3 class="mt5">
-        <span class="trivial"><%= t("object_types.#{solution.item.class.name.downcase}")%></span>
-        <%= content_tag :span, t("object_types.#{solution.item.class.name.downcase}"), class: "icon icon_#{solution.item.class.name.downcase}", width: 12, height: 12 %>
+        <span class="trivial"><%= t("object_types.#{item.class.name.downcase}")%></span>
+        <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "icon icon_#{item.class.name.downcase}", width: 12, height: 12 %>
         <span class="trivial">：</span>
         <%= new_tab_link_to "#{solution.name}", item_path %>
-        <% if solution.item.is_a?(Product) && solution.item.price? %>
-            <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + solution.item.price_as_money_string) %></span>
+        <% if item.is_a?(Product) && item.price? %>
+            <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + item.price_as_money_string) %></span>
         <% end %>
     </h3>
 
     <div class="item clearfix">
         <div class="fl mr10" style="width:100px;">
-            <%= new_tab_link_to image_tag(solution.get_image_url(:thumb), class: "thumbnail", title: solution.name), item_path %><br/>
+            <% if item.is_a? Place %>
+                <%= render "places/place_image", place: item, size: 46 %>
+            <% else %>
+                <%= new_tab_link_to(image_tag("grey.gif", class: 'lazy', "data-original"=> item.get_image_url(:thumb), width: 100, height: 100, alt: item.name, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), item_path) %>
+            <% end %>
         </div>
         <div class="fl" style="width: 228px;">
-            <%= truncate_content(solution.item.instruction, 200) if solution.item.is_a?(Recipe) %>
-            <% if solution.item.is_a?(Product) %>
-                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => solution.item.url, :force => true}, :class => "btn btn_buy fl" if solution.item.url.present? %>
+            <%= truncate_content(item.instruction, 200) if item.is_a?(Recipe) %>
+            <% if item.is_a?(Product) %>
+                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => item.url, :force => true}, :class => "btn btn_buy fl" if item.url.present? %>
             <% else %>
-                <%= new_tab_link_to "[查看#{t("object_types.#{solution.item.class.name.downcase}")}]", item_path %>
+                <%= new_tab_link_to "[查看#{t("object_types.#{item.class.name.downcase}")}]", item_path %>
             <% end %>
-            <% if solution.item.is_a?(Recipe) %>
+            <% if item.is_a?(Recipe) %>
                 <p class="trivial">
-                  作者： <%= solution.item.author.login_name %>
-                  <%= image_tag(solution.item.author.get_avatar(:thumb, false ), width: 32, height: 32) %>
+                  作者： <%= item.author.login_name %>
+                  <%= image_tag(item.author.get_avatar(:thumb, false ), width: 32, height: 32) %>
                 </p>
             <% end %>
         </div>
