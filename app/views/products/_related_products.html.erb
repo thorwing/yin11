@@ -1,6 +1,6 @@
 <% unless products.blank? || products.empty? %>
     <div class="box_shadow overflow_hidden">
-        <h3 class="m5">相关商品：</h3>
+        <span class="trivial">相关商品：</span><br/>
         <% products.each do |product| %>
             <div class="fl overflow_hidden m5 m" style="width:100px; height:130px;">
               <%= link_to image_tag( "grey.gif", "class" => 'lazy', "data-original"=> product.get_image_url(:thumb), width: 80, height: 80, alt: product.name), product %><br/>

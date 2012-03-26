@@ -1,6 +1,6 @@
 <% unless recipes.blank? || recipes.empty? %>
     <div class="box_shadow overflow_hidden p5">
-        <h3>您可能还喜欢...</h3>
+        <span class="trivial">您可能还喜欢...</span><br/>
         <% recipes.each do |recipe| %>
             <div class="fl center overflow_hidden mt2" style="width:100px; height:130px;">
                 <%= link_to image_tag( "grey.gif", "class" => 'lazy', "data-original"=> recipe.get_image_url(:thumb), width: 80, height: 80, alt: recipe.name), recipe%><br/>

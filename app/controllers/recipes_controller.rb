@@ -36,7 +36,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     #TODO
-    @related_recipes = Recipe.tagged_with(@recipe.tags).excludes(id: @recipe.id).limit(10).reject{|r| r.image.blank?}
+    @related_recipes = Recipe.tagged_with(@recipe.tags).excludes(id: @recipe.id).limit(10).reject{|r| r.image.blank?}.sort{|x, y| (y.tags & @recipe.tags).size <=> (x.tags & @recipe.tags).size }
     #prior = {"user_tag"=> 3, "major_tag" => 2, "minor_tag" => 1}
     @related_products = []#get_related_products(@recipe, RELATED_RPODUCTS_LIMIT, prior)
 
