@@ -6,9 +6,11 @@ module PlacesHelper
         place.city = city
         place.name = place_name
         place.street = place_street
-        place.save
+        #only set the place if it's valid
+        item.place = place if place.save
+      else
+        item.place = place
       end
-      item.place = place
     end
   end
 

@@ -53,6 +53,12 @@ namespace :yin11 do
     end
   end
 
+  desc "clean isolated images"
+  task :clean_images => :environment do
+    #topic_id: nil
+    Image.where(product_id: nil, step_id: nil, ingredient_id: nil, album_id: nil, desire_id: nil, award_id: nil, recipe_id: nil).delete_all
+  end
+
   desc "update recipe images"
   task :update_recipe_images => :environment do
     Recipe.all.each do |recipe|

@@ -4,7 +4,6 @@ class Image
   field :caption
   field :description
   #cached fields
-  field :alone, type: Boolean, default: true
   field :waterfall_width
   field :waterfall_height
   mount_uploader :picture, PictureUploader
@@ -13,7 +12,6 @@ class Image
 
   #relationships
   belongs_to :product, index: true
-  belongs_to :review, index: true
   belongs_to :topic, index: true
   belongs_to :step, index: true
   belongs_to :ingredient, index: true
@@ -26,18 +24,12 @@ class Image
   validates_presence_of :picture
 
   #callback
-  before_save :sync_status
   before_save :saving
 
   #scopes
   scope :lonely, where(alone: true)
 
   private
-
-  def sync_status
-    self.alone = product_id.blank? && review_id.blank? && topic_id.blank? && step_id.blank?
-    true #return true for the callback function
-  end
 
   def saving
     geometry = self.picture.waterfall.geometry

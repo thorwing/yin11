@@ -42,5 +42,29 @@ class PlacesController < ApplicationController
     end
   end
 
+  def query
+    query_str = params[:q]
+    if query_str.present?
+      # not case sensitive
+      @places = Place.where(name: /#{query_str}/i).to_a #CacheManager.all_tags_with_weight.select {|t| t[0] =~ /#{query}?/}
+    else
+      @places = Place.all.to_a
+    end
+
+    #truncate the tag name
+    new_place_name = query_str[0..(MAX_TAG_CHARS - 1)]
+    is_new_place = @places.select{|p| p.name.include?(new_place_name)}.empty?
+    #new_tag = Tag.create(:name => new_tag_name) if is_new_tag
+
+    #TODO to_s
+    @places =  @places.map { |p| {id: p.name, name: p.name, street: p.street } }
+
+    #insert new tag
+    @places.insert(0, {:id => new_place_name, :name => "#{new_place_name} (#{t("places.new_place")})" }) if is_new_place
+
+    respond_to do |format|
+      format.json { render :json => @places }
+    end
+  end
 
 end

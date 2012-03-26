@@ -544,6 +544,7 @@ zh-CN:
 
   places:
     places: 餐馆
+    new_place: 新建餐馆
 
   search:
     kinds:

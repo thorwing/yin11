@@ -116,16 +116,23 @@ $(function() {
             tokenLimit: tokenLimit,
             hintText: "输入关键词",
             noResultsText: "没有结果",
-            searchingText: "搜索中"
+            searchingText: "搜索中",
+            onAdd: function(item){
+                var street_input = $("#desire_fields #place_street");
+                if(street_input.length > 0) {
+                    street_input.val(item["street"]);
+                }
+            }
         });
     }
 
-    tokenize_input("#topic_tags_string", "/tags/query.json", 10);
-    tokenize_input("#product_tags_string", "/tags/query.json", 10);
+    tokenize_input("#desire_fields #place_name", "/places/query.json", 1);
+//    tokenize_input("#topic_tags_string", "/tags/query.json", 10);
+//    tokenize_input("#product_tags_string", "/tags/query.json", 10);
 //    tokenize_input("#recipe_tags_string", "/tags/query.json", 10);
-    tokenize_input("#group_tags_string", "/tags/query.json", 10);
+//    tokenize_input("#group_tags_string", "/tags/query.json", 10);
 //    tokenize_input("#desire_tags_string", "/tags/query.json", 10);
-    tokenize_input("#album_tags_string", "/tags/query.json", 10);
+//    tokenize_input("#album_tags_string", "/tags/query.json", 10);
     tokenize_input("#message_fields .token #user_id", "/users/fans.json", 1);
 });
 

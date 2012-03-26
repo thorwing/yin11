@@ -110,7 +110,11 @@ Yin11::Application.routes.draw do
 
   resources :vendors
 
-  resources :places
+  resources :places do
+    collection do
+      get "query"
+    end
+  end
 
   resources :intros do
     collection do

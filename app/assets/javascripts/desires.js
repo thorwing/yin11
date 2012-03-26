@@ -91,13 +91,23 @@
 //});
 
 $(function(){
-    $('#desire_fields #submit_desire').click(function(e){
+    $('#desire_fields #submit_desire').bind("click keyup", function (e){
         if($('#desire_fields #images_container').length > 0)
         {
             var count = $('#desire_fields #images_container .uploaded_image').size();
             if (count < 1) {
                 alert("要想馋到人，上传一张图片比较好哦");
                 e.preventDefault();
+                return;
+            }
+        }
+        var content_input = $('#desire_fields #desire_content');
+        if(content_input.length > 0)
+        {
+            if (content_input.val() == "") {
+                alert("写得什么吧，让美食变得更诱人～");
+                e.preventDefault();
+                return;
             }
         }
     });
