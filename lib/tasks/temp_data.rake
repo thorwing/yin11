@@ -59,6 +59,15 @@ namespace :yin11 do
     Image.where(product_id: nil, step_id: nil, ingredient_id: nil, album_id: nil, desire_id: nil, award_id: nil, recipe_id: nil).delete_all
   end
 
+  desc "upload images to upyun"
+  task :update_images => :environment do
+    Image.all.each do |image|
+      url = image.picture_url.sub("http://silver-space.b0.upaiyun.com", "http://chixinbugai.com/images")
+      image.remote_picture_url = url
+      image.save
+    end
+  end
+
   desc "update recipe images"
   task :update_recipe_images => :environment do
     Recipe.all.each do |recipe|

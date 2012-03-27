@@ -34,7 +34,12 @@
   CarrierWave.configure do |config|
     config.grid_fs_database = Mongoid.database.name
     config.grid_fs_host = Mongoid.config.master.connection.host
-    config.storage = :grid_fs
+    #config.storage = :grid_fs
     config.grid_fs_access_url = "/images"
+    #config.storage = :upyun
+    config.upyun_username = "editor "
+    config.upyun_password = 'Chi11great!'
+    config.upyun_bucket = "silver-space"
+    config.upyun_bucket_domain = "silver-space.b0.upaiyun.com"
   end
 #end
