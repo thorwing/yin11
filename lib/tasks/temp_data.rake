@@ -61,7 +61,9 @@ namespace :yin11 do
 
   desc "upload images to upyun"
   task :update_images => :environment do
-    Image.where(updated: nil).each do |image|
+    raw_images = Image.where(updated: nil).to_a
+    p "#{raw_images.size} images to process"
+    raw_images.each do |image|
       url = image.picture_url.sub("http://silver-space.b0.upaiyun.com", "http://chixinbugai.com/images")
       image.remote_picture_url = url
       if image.valid?
