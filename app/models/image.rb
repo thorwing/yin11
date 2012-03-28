@@ -6,6 +6,7 @@ class Image
   #cached fields
   field :waterfall_width
   field :waterfall_height
+  field :updated, type: Boolean, default: false
   mount_uploader :picture, PictureUploader
 
   attr_accessible :picture, :remote_picture_url, :caption, :description
