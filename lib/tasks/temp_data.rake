@@ -88,11 +88,14 @@ namespace :yin11 do
     end
   end
 
-  desc "update albums"
-  task :update_albums => :environment do
-    Album.all do |album|
+  desc "update cached fields"
+  task :update_cached_fields => :environment do
+    Album.all.each  do |album|
       album.desires_count = album.desires.count
       album.save!
+    end
+    User.all.each do |user|
+      user.save
     end
   end
 

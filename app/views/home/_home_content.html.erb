@@ -8,7 +8,7 @@
         <% end %>
     </ul>
     <div class="fr">
-        <span class="mr20"><%= link_to "积分兑换即将展开，规则说明", score_intros_path %></span>
+        <span class="mr20"><%= link_to "积分规则说明", score_intros_path %></span>
         <% if current_user %><span class="mr20"><%= link_to "【小工具，馋人更方便】", collect_intros_path %></span><% end %>
         <span><%= new_tab_link_to "关注我们", YIN11_SINA_WEIBO %><%= new_tab_link_to t("syncs.sites.sina"), YIN11_SINA_WEIBO, class: "auth_btn_16 via_sina_small ml2" %></span>
     </div>

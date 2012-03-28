@@ -10,8 +10,8 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :s3
-  storage :grid_fs
-  #storage :upyun
+  #storage :grid_fs
+  storage :upyun
 
 
   # Override the directory where uploaded files will be stored.

@@ -7,17 +7,24 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    if params[:tag].blank?
-      all_tags = get_all_tags(:recipes)
-      @hot_tags = all_tags.take(15)
-      @primary_tags = get_primary_tag_names(all_tags)
+    all_tags = get_all_tags(:recipes)
+    @hot_tags = all_tags.take(15)
+    @primary_tags = get_primary_tag_names(all_tags)
 
-      @recommended_recipes = Recipe.desc(:priority).limit(1)
-      @new_recipes = Recipe.desc(:created_at).limit(4)
+    if params[:tag].blank?
+      @new_recipes = Recipe.desc(:created_at).limit(10)
+      @recommended_recipes = Recipe.desc(:priority).limit(4)
+
+      #TODO
+      @cooks = User.desc(:recipes_count).limit(10).reject{|u| u.avatar.blank?}.take(5)
+
+      @recipes = Recipe.desc(:created_at).page(params[:page]).per(30)
+    else
+      @recipes = Recipe.tagged_with(params[:tag]).desc(:created_at).page(params[:page]).per(30)
     end
 
-    @recipes, @total_chapters = get_recipes(params[:tag], params[:page], params[:chapter])
-    session[:current_recipes_chapter] = params[:chapter]
+    #@recipes, @total_chapters = get_recipes(params[:tag], params[:page], params[:chapter])
+    #session[:current_recipes_chapter] = params[:chapter]
 
     respond_to do |format|
       format.html # index.html.erb

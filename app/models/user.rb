@@ -34,6 +34,7 @@ class User
   field :liked_recipe_ids, :type => Array, :default => []
   field :liked_product_ids, :type => Array, :default => []
   field :liked_album_ids, :type => Array, :default => []
+  field :recipes_count, type: Integer, default: 0
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :thumb, ThumbUploader
@@ -93,6 +94,10 @@ class User
   before_create { generate_token(:auth_token)
                   generate_token(:email_verification_token)}
   after_update :reprocess_avatar, :if => :cropping?
+
+  before_save do |doc|
+    doc.recipes_count = doc.recipes.count
+  end
 
   #for multilstep form
   attr_writer :current_step
