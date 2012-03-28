@@ -61,14 +61,16 @@ namespace :yin11 do
 
   desc "upload images to upyun"
   task :update_images => :environment do
-    raw_images = Image.where(updated: nil).to_a
+    raw_images = Image.where(updated: nil).desc(:created_at).to_a
     p "#{raw_images.size} images to process"
-    raw_images.each do |image|
+    raw_images.each_with_index do |image, i|
+      p "dealing #{i}"
       url = image.picture_url.sub("http://silver-space.b0.upaiyun.com", "http://chixinbugai.com/images")
       image.remote_picture_url = url
       if image.valid?
         image.updated = true
         image.save
+        p "success"
       end
     end
   end
@@ -83,6 +85,14 @@ namespace :yin11 do
           recipe.create_image(picture: image.picture)
         end
       end
+    end
+  end
+
+  desc "update albums"
+  task :update_albums => :environment do
+    Album.all do |album|
+      album.desires_count = album.desires.count
+      album.save!
     end
   end
 

@@ -11,6 +11,11 @@
             <div style="width:200px; height: 200px;">
                 <%= content_tag :p, "收集心仪美食，打造属于你自己的诱人拼盘", class: "trivial tight" %>
                 <%= link_to "", new_album_path, class: "btn btn_new_album" %>
+                <% if current_user %>
+                    <hr/>
+                    <span class="trivial">收集满9张图片，你的拼盘就会出现在这里哦</span><br/>
+                    <%= link_to "查看我的拼盘", "/me?mode=albums" %>
+                <% end %>
             </div>
         <% end %>
     </div>

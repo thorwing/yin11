@@ -8,6 +8,7 @@ class Album
   field :title
   field :description
   field :cover_id
+  field :desires_count, type: Integer, default: 0
 
   attr_accessible :title, :description, :author_id, :priority
 
@@ -21,6 +22,10 @@ class Album
   validates_presence_of :title
   validates_length_of :title, :maximum => 20
   validates_length_of :description, :maximum => 400
+
+  before_save do |doc|
+    doc.desires_count = doc.desires.count
+  end
 
   def get_cover_url(version = nil)
     image_url = nil
