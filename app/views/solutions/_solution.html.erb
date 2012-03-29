@@ -34,7 +34,7 @@
             <% end %>
         </div>
         <div class="fl" style="width: 228px;">
-            <%= truncate_content(item.instruction, 200) if item.is_a?(Recipe) %>
+            <%= truncate_content(item.instruction, 100) if item.is_a?(Recipe) %>
             <% if item.is_a?(Product) %>
                 <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => item.url, :force => true}, :class => "btn btn_buy fl" if item.url.present? %>
             <% else %>
@@ -43,7 +43,6 @@
             <% if item.is_a?(Recipe) %>
                 <p class="trivial">
                   作者： <%= item.author.login_name %>
-                  <%= image_tag(item.author.get_avatar(:thumb, false ), width: 32, height: 32) %>
                 </p>
             <% end %>
         </div>
