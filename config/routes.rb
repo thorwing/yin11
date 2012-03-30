@@ -120,6 +120,7 @@ Yin11::Application.routes.draw do
     collection do
       get :collect
       get :score
+      get :contact_us
     end
   end
 
