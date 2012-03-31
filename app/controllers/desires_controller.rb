@@ -164,24 +164,6 @@ class DesiresController < ApplicationController
     end
   end
 
-  def solve
-    solution = @desire.solutions.new(params[:solution])
-    solution.author = current_user
-
-    respond_to do |format|
-      if solution.save
-        @desire.admirers .each do |admirer|
-          NotificationsManager.generate_for_item(admirer, current_user, @desire, "solve", 0, solution.content) if admirer != current_user
-        end
-        NotificationsManager.generate_for_item(@desire.author, current_user, @desire, "solve", 0, solution.content ) if @desire.author != current_user
-
-        format.html { redirect_to @desire, notice: t("notices.solution_created") }
-      else
-        format.html { redirect_to @desire, notice: t("notices.solution_creation_failed") }
-      end
-    end
-  end
-
   def afar
     @desire = Desire.new
     valid_url, @product = SilverHornet::TopHornet.new.fetch_product(params[:url])

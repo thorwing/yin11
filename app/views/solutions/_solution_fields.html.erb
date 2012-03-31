@@ -1,6 +1,6 @@
 <div class="solution_fields clearfix">
     <% if current_user_has_permission? :normal_user %>
-        <%= form_tag url_for(controller: "desires", action: "solve", method: :post, id: solution.desire_id) do %>
+        <%= form_tag url_for(controller: "solutions", action: "create", method: :post, id: solution.desire_id) do %>
             <div class="block round b_azure_gray p5 clearfix" id = "solution_fields" >
                 <%= hidden_field_tag "solution[product_id]", "", id: "product_id" %>
                 <%= hidden_field_tag "solution[recipe_id]", "", id: "recipe_id" %>

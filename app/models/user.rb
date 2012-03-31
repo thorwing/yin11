@@ -116,7 +116,7 @@ class User
   end
 
   def authenticate(password)
-    if password.present? && self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
+    if password.present? && self.password_hash.present? && self.password_hash == BCrypt::Engine.hash_secret(password, self.password_salt)
       true
     else
       false

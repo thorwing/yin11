@@ -73,10 +73,11 @@ Yin11::Application.routes.draw do
     end
   end
 
+  resources :solutions
+
   resources :desires do
     member do
       put :admire
-      post :solve
       post :vote
     end
     collection do
