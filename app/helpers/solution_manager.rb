@@ -4,13 +4,13 @@ class SolutionManager
       number = 9
 
       #default solution for place
-      if desire.place && user.present?
-        desire.solutions.create do |s|
-          s.place = desire.place
-          s.author = user
-        end
-        number = 8
-      end
+      #if desire.place && user.present?
+      #  desire.solutions.create do |s|
+      #    s.place = desire.place
+      #    s.author = user
+      #  end
+      #  number = 8
+      #end
 
       #default solution for product
       if product_id.present? && user.present?
