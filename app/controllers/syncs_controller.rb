@@ -201,7 +201,7 @@ class SyncsController < ApplicationController
             user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["user"]["id"])
             user.uid = credentials["user"]["id"]
             user.login_name = credentials["user"]["screen_name"]
-            user.remote_avatar_url = credentials["user"]["profile_image_url"]
+            user.remote_avatar_url = credentials["user"]["profile_image_url"] if user.has_avatar?
 
           when "douban"
             user = User.find_or_initialize_by(:provider => params[:type], :uid => credentials["entry"]["db:uid"])

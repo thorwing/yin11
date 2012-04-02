@@ -1,4 +1,5 @@
 <div class="fl solution_option img_frame mb5 mr5 <%= selected ? "selected" : "" %> <%= solution.id.to_s %>">
+    <%= content_tag :span, "", class: "existed_solution_item_id #{solution.item.id.to_s}" if solution.item %>
     <% item = solution.product || solution.recipe || solution.place %>
 
     <div class="f12" style="top:0px;left:0px;height: 20px;">

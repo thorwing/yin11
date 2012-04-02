@@ -150,31 +150,7 @@ $(function(){
     if($('#solution_submit').length > 0) {
         //    check if all the necessory info is given
         $('#solution_submit').click(function(e){
-            var verify_passed = false;
-            var has_one_recipe = false;
-            var has_one_product = false;
 
-            var message = "您忘了添加:\n";
-            //   check if all the neccessary info are given
-
-            if($('.solution_fields #solution_content').text() == "说说解馋理由吧...") {
-                $('.solution_fields #solution_content').text('');
-            }
-
-
-            //        1 recipe name should be given
-            if(String($('.solution_fields #recipe_id').val()) != "") {
-                has_one_recipe = true;
-            }
-
-            if(String($('.solution_fields #product_id').val()) != "") {
-                has_one_product = true;
-            }
-
-            if(has_one_product == false && has_one_recipe == false) {
-                e.preventDefault();
-                alert("请添加至少一个商品或菜谱吧");
-            }
         });
     }
 });
@@ -213,6 +189,47 @@ function link_product()
 
 function pre_link_product(link)
 {
-    $(link).nextAll("#link_spinner").show();
+    $("div.popup #link_spinner").show();
     return true;
 };
+
+function review_solution()
+{
+    var verify_passed = false;
+    var has_one_recipe = false;
+    var has_one_product = false;
+
+    var message = "您忘了添加:\n";
+    //   check if all the neccessary info are given
+
+    if($('.solution_fields #solution_content').text() == "说说解馋理由吧...") {
+        $('.solution_fields #solution_content').text('');
+    }
+
+
+    //        1 recipe name should be given
+    if(String($('.solution_fields #recipe_id').val()) != "") {
+        has_one_recipe = true;
+    }
+
+    if(String($('.solution_fields #product_id').val()) != "") {
+        has_one_product = true;
+    }
+
+    if(has_one_product == false && has_one_recipe == false) {
+        alert("请添加至少一个商品或菜谱吧");
+        return false;
+    }
+
+    var new_item_id = $(".solution_fields .new_solution_item_id").text();
+
+    var existed_items = $(".solutions_container .existed_solution_item_id." + new_item_id);
+
+    if(existed_items.length > 0){
+        alert("已存在类似的解馋攻略哦");
+        return false;
+    }
+    else{
+        return true;
+    }
+}

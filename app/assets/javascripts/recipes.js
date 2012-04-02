@@ -95,7 +95,8 @@ $(function(){
 
 function listen_recipe_name() {
     var timerid;
-    jQuery("div.popup #recipe_name").keyup(function() {
+    jQuery("" +
+        " #recipe_name").keyup(function() {
       var input = this;
       clearTimeout(timerid);
       timerid = setTimeout(function() {
@@ -127,6 +128,6 @@ function link_recipe()
 function pick_recipe(link, id, name, image_url) {
     $(document).trigger('close.facebox');
     var content = $(link).parents(".recipe_hint").find(".recipe_solution").html();
-    $('#image_container').html(content );
+    $('#image_container').html(content);
     $('#recipe_id').val(id);
 };

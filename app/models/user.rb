@@ -169,6 +169,11 @@ class User
     prefix + "default_head_100.jpg"
   end
 
+  def has_avatar?
+    self.avatar_url.present?
+  end
+
+
   #TODO max followed users
   def following_users(limit = 100)
     User.any_in(_id: self.relationships.where(target_type: "User").limit(limit).map(&:target_id))
