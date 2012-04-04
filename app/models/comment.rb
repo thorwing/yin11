@@ -14,6 +14,7 @@ class Comment
   embedded_in :album
   embedded_in :place
   embedded_in :desire
+  embedded_in :solution
   #embedded_in :desire
   belongs_to :user
 

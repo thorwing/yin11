@@ -1,7 +1,8 @@
 <div class="fl box_shadow p5">
-    <% if f.object.image.present? %>
+    <% pic_url = f.object.image.present? ? f.object.get_image_url(:thumb) : ''  %>
+    <% if pic_url.present? %>
         <div class="fl">
-            <%= image_tag f.object.get_image_url(:thumb), alt: f.object.name %>
+            <%= image_tag pic_url, alt: f.object.name %>
         </div>
     <% end %>
     <div class="fl">

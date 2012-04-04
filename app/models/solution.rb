@@ -14,6 +14,7 @@ class Solution
   belongs_to :recipe, index: true
   belongs_to :place, index: true
   belongs_to :author, :class_name => "User", index: true
+  embeds_many :comments
 
   #validations
   validates_length_of :content, :maximum => 1000

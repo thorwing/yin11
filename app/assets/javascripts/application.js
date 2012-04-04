@@ -318,3 +318,14 @@ function popup_dialog(selector)
 $(function(){
     $('#date_time').datepicker({dateFormat: "yy-mm-dd"});
 });
+
+$(function(){
+    $('.hover_area').hover(
+        function(){
+            $(this).find(".display_on_hover").show();
+        },
+        function(){
+            $(this).find(".display_on_hover").hide();
+        }
+    );
+});

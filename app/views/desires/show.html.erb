@@ -43,39 +43,31 @@
     </div>
   </div>
 
-    <div class="mt20 box_shadow clearfix" style="padding:  5px">
+    <div class="mt20 clearfix" style="padding:  5px">
     <div class="clearfix">
         <h2 class="trivial">解馋攻略</h2>
         <%= content_tag :span, "馋到更要吃到, 赶紧行动起来吧！" %><br/>
-        <!--<span class="trivial">-->
-            <!--< if @solutions.size > 0 %>-->
-                <!--<= "总共#{@desire.votes_count}人投票。" %>-->
-                <!--< if @my_vote %>-->
-                    <!--<= "你投给了“#{@my_vote.solution.name}”" %>-->
-                <!--< elsif @solutions.size > 0 %>-->
-                    <!--投票给你觉得解馋的攻略吧！-->
-                <!--< end %>-->
-            <!--< else %>-->
-                <!--<span class="trivial">还没有解馋攻略</span>-->
+
+        <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
+        <!--< number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>-->
+        <!--< if number_of_groups > 1 %>-->
+            <!--<= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "berry_pink" %>-->
+        <!--< end %>-->
+        <!--< index = 0 %>-->
+        <!--<div class="solutions_container mt10 clearfix">-->
+            <!--< @solutions.each_slice(9) do |group| %>-->
+                <!--<= render "solutions/solutions_group", solutions: group, index: index %>-->
+                <!--< index += 1 %>-->
             <!--< end %>-->
-        <!--</span><br/>-->
-        <% number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>
-        <% if number_of_groups > 1 %>
-            <%= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "berry_pink" %>
+        <!--</div>-->
+        <% @solutions.each_with_index do |solution, index| %>
+          <% if solution.item && solution.author %>
+            <%= render "solutions/listed_solution", solution: solution, rank: index + 1 %>
+          <% end %>
         <% end %>
-        <% index = 0 %>
-        <div class="solutions_container mt10 clearfix">
-            <% @solutions.each_slice(9) do |group| %>
-                <%= render "solutions/solutions_group", solutions: group, index: index %>
-                <% index += 1 %>
-            <% end %>
-        </div>
     </div>
   </div>
 
-  <div class="mt10">
-    <%= render "comments/comments", item: @desire %>
-  </div>
 </div>
 
 <div class="grid_3">
@@ -114,4 +106,9 @@
         </div>
       </div>
   <% end %>
+
+  <div class="mt10">
+    <%= render "comments/straight_comments", item: @desire %>
+  </div>
+
 </div>

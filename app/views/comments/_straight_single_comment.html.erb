@@ -1,0 +1,27 @@
+<div class="comment box_shadow" id='<%= comment.id.to_s %>' style="width:190px;">
+    <div class="clearfix">
+        <div class="fl" style="width:50px;">
+            <%= image_tag comment.user.get_avatar(:thumb), :width => 48, :height => 48 %>
+        </div>
+        <div class="fl ml10" style="width:130px;">
+            <%= link_to comment.user.login_name, comment.user %>:
+            <blockquote>
+              <% if comment.enabled %>
+                <span class="ml5 quoted f12"><%= comment.content %></span>
+                <span class="f12 trivial display_inline_block"><%= distance_of_time_in_words(comment.updated_at, Time.now) %><%= t("general.ago") %></span>
+              <% else %>
+                <% if current_user_has_permission?(:editor) %>
+                    <span class="quoted blocked"><%= comment.content %></span>
+                <% else %>
+                    <%= t("comments.deleted") %>
+                <% end %>
+              <% end %>
+            </blockquote>
+        </div>
+    </div>
+    <div>
+        <% if current_user_has_permission?(:editor) %>
+            <%= link_to t("general.toggle"), toggle_comment_path(:id => comment.id, :item_id => item.id, :item_type => item.class.name), :method => :put, :remote => true %>
+        <% end %>
+    </div>
+</div>
