@@ -1,4 +1,5 @@
 <div class="listed_item commentable clearfix box_shadow mt10 mb10 p5 hover_area" xmlns="http://www.w3.org/1999/html">
+    <%= content_tag :span, "", class: "existed_solution_item_id #{solution.item.id.to_s}" if solution.item %>
     <% item = solution.item %>
     <% item_path = {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} if item %>
 
@@ -10,7 +11,7 @@
                     <%= link_to "赞成", like_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
                         :class => "btn btn_positive lighter_touch fl " + (solution.is_fan?(current_user) ? "voted" : ""), title: (solution.is_fan?(current_user) ? "取消赞同" : "赞同")  %><br/>
                     <%= link_to "反对", hate_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
-                        :class => "mt5 btn btn_negative lighter_touch fl " + (solution.is_hater?(current_user) ? "voted" : ""), title: (solution.is_fan?(current_user) ? "取消反对" : "反对")  %>
+                        :class => "mt5 btn btn_negative lighter_touch fl " + (solution.is_hater?(current_user) ? "voted" : ""), title: (solution.is_hater?(current_user) ? "取消反对" : "反对")  %>
                 <% end %>
             </div>
         </div>
@@ -36,7 +37,7 @@
                 <% end %>
             </div>
             <div class="fl" style="width:540px;">
-                <h3 class="mt5">
+                <p>
                   <span class="trivial"><%= t("object_types.#{item.class.name.downcase}")%></span>
                   <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "icon icon_#{item.class.name.downcase}", width: 12, height: 12 %>
                   <span class="trivial">：</span>
@@ -44,22 +45,23 @@
                   <% if item.is_a?(Product) && item.price? %>
                       <%= solution.name %>
                       <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + item.price_as_money_string) %></span>
+                      <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => item.url, :force => true}, :class => "btn btn_buy ml5" if item.url.present? %>
+                      <!--<= link_to "管理", [:administrator, item], :class => "button ml10" if current_user_has_permission? :administrator %>-->
                   <% else %>
                       <%= new_tab_link_to "#{solution.name}", item_path %>
                   <% end %>
-                </h3>
+                </p>
                 <%= truncate_content(item.instruction, 100) if item.is_a?(Recipe) %>
-                <% if item.is_a?(Product) %>
-                    <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => item.url, :force => true}, :class => "btn btn_buy fl" if item.url.present? %>
-                    <%= link_to "管理", [:administrator, item], :class => "button fl ml10" if current_user_has_permission? :administrator %>
-                <% else %>
-                  <%= new_tab_link_to "[查看#{t("object_types.#{item.class.name.downcase}")}]", item_path %>
+                <% unless item.is_a?(Product) %>
+                    <%= new_tab_link_to "[查看#{t("object_types.#{item.class.name.downcase}")}]", item_path %>
                 <% end %>
                 <% if item.is_a?(Recipe) %>
                   <p class="trivial">
                     作者： <%= item.author.login_name %>
                   </p>
                 <% end %>
+
+                <% if solution.content.present? %><blockquote><span class="quoted"><%= truncate_content solution.content, 20 %></span></blockquote><% end %>
             </div>
             <!--<div class="fr clearfix">-->
               <!--< if rank <=3 && solution.votes > 0 %>-->
@@ -69,7 +71,7 @@
         </div>
         <div class="fr">
             <div class="fr trivial ml10"><%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= solution.comments.size %></span>)</div>
-            <% if the_author_himself(solution) %>
+            <% if the_author_himself(solution, true) %>
               <div class="fr display_on_hover">
                   <%= link_to "删除", solution, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "fl" %>
               </div>

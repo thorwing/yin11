@@ -223,7 +223,7 @@ function review_solution()
 
     var new_item_id = $(".solution_fields .new_solution_item_id").text();
 
-    var existed_items = $(".solutions_container .existed_solution_item_id." + new_item_id);
+    var existed_items = $(".listed_item .existed_solution_item_id." + new_item_id);
 
     if(existed_items.length > 0){
         alert("已存在类似的解馋攻略哦");

@@ -2,19 +2,21 @@
     <% if current_user_has_permission? :normal_user %>
         <%= form_tag url_for(controller: "solutions", action: "create", method: :post, id: solution.desire_id) do %>
             <div class="block round b_azure_gray p5 clearfix" id = "solution_fields" >
+                <h2 class="trivial">分享解馋攻略</h2>
                 <%= hidden_field_tag "solution[product_id]", "", id: "product_id" %>
                 <%= hidden_field_tag "solution[recipe_id]", "", id: "recipe_id" %>
 
                 <!--hidden attributes-->
                 <span class="berry_pink">每有人投票给你的解馋攻略，你就可获得相应积分。</span><br/>
 
-                <div id="image_container" class="clearfix">
-                    <%= link_to_function "网上买", "link_product()", class: "btn btn_product_solution m1 lighter_touch fl" %>
-                    <%= link_to_function "自己做", "link_recipe()", class: "btn btn_recipe_solution m1 lighter_touch fl" %>
-                    <%= link_to_function "出去吃", "link_place()", class: "btn btn_place_solution m1 lighter_touch fl" %>
+                <div id="image_container" class="fl clearfix" style="width:330px;">
+                    <%= link_to_function "网上买", "link_product()", class: "btn btn_product_solution m5 lighter_touch fl" %>
+                    <%= link_to_function "自己做", "link_recipe()", class: "btn btn_recipe_solution m5 lighter_touch fl" %>
+                    <%= link_to_function "出去吃", "link_place()", class: "btn btn_place_solution m5 lighter_touch fl" %>
+                    <%= link_to_function "订外卖", "link_order()", class: "btn btn_order_solution m5 lighter_touch fl" %>
                 </div>
 
-                <div class="mt10" >
+                <div class="fl ml10" style="width:330px;">
                     <!--if change the default text, also need to change the js -->
                     <%= text_area_tag "solution[content]", "说说解馋理由吧...",
                                     :maxlength => get_max_length(solution, :content), 'data-comment_max_len' => get_max_length(solution, :content),

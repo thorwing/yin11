@@ -8,9 +8,25 @@
         <span class = "trivial">想来说两句？</span><%= link_to "立即注册", new_user_path %>
     <% end %>
 
+    <% number_of_groups = (item.comments.size.to_f / 9.to_f).ceil %>
+    <% if number_of_groups > 1 %>
+        <div class="clearfix">
+            <%= link_to_function "<<", "shift_comments_group(this, -1);", class: "berry_pink fl mr5" %>
+            <%= content_tag :span, "1", class: "current_comments_group_index fl", "data-current_index" => "0", "data-max_index" => "#{number_of_groups - 1}"  %>
+            <%= link_to_function ">>", "shift_comments_group(this, 1);", class: "berry_pink fl ml5" %>
+        </div>
+    <% end %>
+
     <div class="comments_container <%= item.id.to_s %> mt10">
-        <% item.comments.desc(:created_at).each do |comment| %>
-            <%= render "comments/straight_single_comment", comment: comment, item: item %>
+        <% item.comments.desc(:created_at).each_slice(9).each_with_index do |group, index| %>
+            <div class="comments_group <%= index %> <%= index == 0 ? "display_block" : "display_none" %>">
+                <div class="clearfix">
+                    <% group.each do |comment| %>
+                        <%= render "comments/straight_single_comment", comment: comment, item: item %>
+                    <% end %>
+                </div>
+            </div>
         <% end %>
     </div>
+
 </div>

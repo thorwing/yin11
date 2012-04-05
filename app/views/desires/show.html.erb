@@ -45,26 +45,17 @@
 
     <div class="mt20 clearfix" style="padding:  5px">
     <div class="clearfix">
-        <h2 class="trivial">解馋攻略</h2>
-        <%= content_tag :span, "馋到更要吃到, 赶紧行动起来吧！" %><br/>
-
         <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
-        <!--< number_of_groups = (@solutions.size.to_f / 9.to_f).ceil %>-->
-        <!--< if number_of_groups > 1 %>-->
-            <!--<= link_to_function "换一组看看>>", "shift_solutions_group(this);", "data-current_index" => "#{0}", "data-max_index" => "#{number_of_groups - 1}", class: "berry_pink" %>-->
-        <!--< end %>-->
-        <!--< index = 0 %>-->
-        <!--<div class="solutions_container mt10 clearfix">-->
-            <!--< @solutions.each_slice(9) do |group| %>-->
-                <!--<= render "solutions/solutions_group", solutions: group, index: index %>-->
-                <!--< index += 1 %>-->
-            <!--< end %>-->
-        <!--</div>-->
-        <% @solutions.each_with_index do |solution, index| %>
-          <% if solution.item && solution.author %>
-            <%= render "solutions/listed_solution", solution: solution, rank: index + 1 %>
-          <% end %>
-        <% end %>
+        <div class="mt10 clearfix">
+            <h2 class="trivial">解馋攻略</h2>
+            <%= content_tag :span, "馋到更要吃到, 赶紧行动起来吧！" %><br/>
+            <%= paginate @solutions %>
+            <% @solutions.each_with_index do |solution, index| %>
+              <% if solution.item && solution.author %>
+                <%= render "solutions/listed_solution", solution: solution, rank: index + 1 %>
+              <% end %>
+            <% end %>
+        </div>
     </div>
   </div>
 

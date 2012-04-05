@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter { |c| c.require_permission :normal_user }
+  #before_filter(:only => [:toggle, :delete]) {|c| @comment.present? && c.the_author_himself(@comment, true, true)}
   before_filter :find_item
 
   #used for un-javascript
@@ -47,6 +48,15 @@ class CommentsController < ApplicationController
     @comment = @item.comments.find(params[:id])
     @comment.enabled = !@comment.enabled
     @comment.save
+
+    respond_to do |format|
+        format.js {render :content_type => 'text/javascript'}
+    end
+  end
+
+  def delete
+    @comment = @item.comments.find(params[:id])
+    @comment.delete
 
     respond_to do |format|
         format.js {render :content_type => 'text/javascript'}

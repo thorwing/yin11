@@ -56,6 +56,7 @@ Yin11::Application.routes.draw do
   resources :comments do
     member do
       put "toggle"
+      put "delete"
     end
   end
 

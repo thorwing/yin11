@@ -29,18 +29,18 @@ class DesiresController < ApplicationController
   # GET /desires/1.json
   def show
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:created_at).limit(9)
-    @solutions = @desire.solutions.desc(:votes, :created_at).reject{|s| s.item.nil? } #.uniq{|s| s.identity} #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
+    @solutions = @desire.solutions.desc(:votes, :created_at).page(params[:page]).per(ITEMS_PER_PAGE_FEW) #.uniq{|s| s.identity} #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
 
     #votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
     #@my_vote = votes.select{|v| v.voter_id == current_user.id.to_s}.first if current_user
 
     #dummy ojbect for new_solution_field
-    dummy = Solution.new
-    if @solutions.empty?
-      @solutions += [dummy]
-    else
-      @solutions = @solutions.each_slice(8).inject([]){|memo, group| memo + (group << dummy)}
-    end
+    #dummy = Solution.new
+    #if @solutions.empty?
+    #  @solutions += [dummy]
+    #else
+    #  @solutions = @solutions.each_slice(8).inject([]){|memo, group| memo + (group << dummy)}
+    #end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -141,26 +141,6 @@ class DesiresController < ApplicationController
       else
         format.js { head :unprocessable_entity }
       end
-    end
-  end
-
-  def vote
-    #@desire = Desire.find(params[:id])
-    solution = Solution.find(params[:solution_id])
-    #solution.voter_ids << current_user.id.to_s unless solution.voter_ids.include? current_user.id.to_s
-    desire = solution.desire
-    unless desire.voter_ids.include?(current_user.id)
-      vote = solution.votes.create(params[:vote]) do |v|
-        v.voter_id = current_user.id.to_s
-      end
-
-      RewardManager.reward_for_vote(solution, current_user)
-      desire.check_solutions
-    end
-
-    respond_to do |format|
-      format.html { redirect_to(:back, notice: t("notices.soluton_voted")) }
-      format.js
     end
   end
 
