@@ -49,10 +49,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def the_author_himself(item, or_admin = false, is_redirect = false)
+  def the_author_himself(item, or_editor = false, is_redirect = false)
     has_permission = false
 
-    if (or_admin && current_user_has_permission?(:administrator))
+    if (or_editor && current_user_has_permission?(:editor))
       has_permission = true
     elsif current_user_has_permission?(:normal_user)
       begin

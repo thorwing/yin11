@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_filter(:only => [:join, :quit]) { |c| c.require_permission :normal_user }
-  before_filter(:only => [:new, :update, :edit, :create]) { |c| c.require_permission :administrator }
+  before_filter(:only => [:new, :update, :edit, :create]) { |c| c.require_permission :editor }
 
   def index
     #TODO

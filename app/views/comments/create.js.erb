@@ -1,5 +1,5 @@
 <% if @comment %>
-    var child = '<%= escape_javascript(render("comments/straight_single_comment", :item => @item, :comment => @comment) + content_tag(:div, '', :class => "straight_nested_comments") ) %>';
+    var child = '<%= escape_javascript(render("comments/single_comment", :item => @item, :comment => @comment) + content_tag(:div, '', :class => "straight_nested_comments") ) %>';
     <% if @parent %>
         $('#<%= @parent.id.to_s %>').nextAll('.nested_comments:first').append(child);
     <% else %>

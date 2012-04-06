@@ -105,7 +105,7 @@ $(function(){
         if(content_input.length > 0)
         {
             if (content_input.val() == "") {
-                alert("写得什么吧，让美食变得更诱人～");
+                alert("写得描述吧，让美食变得更诱人～");
                 e.preventDefault();
                 return;
             }

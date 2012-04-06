@@ -4,7 +4,7 @@
 	Comments-Styles
 */
 
-.comments_fields {
+.comments_fields, .straight_comments_fields {
     padding: 5px;
     margin: 5px;
     display:block;
@@ -30,4 +30,8 @@
 .new_comment_fields {
     textarea {width: 190px;}
     .submit_comment_btn {float: right; width:80px; height: 24px; background-position: 0 0; font-size: 14px;  }
+}
+
+.straight_comments_fields .comment {
+    width: 190px;
 }

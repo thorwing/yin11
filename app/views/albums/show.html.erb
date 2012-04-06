@@ -43,19 +43,17 @@
         <%= render "users/author_panel", author: @album.author %>
     </div>
 
-    <% if the_author_himself(@album, true) %>
+    <% if the_author_himself(@album) %>
         <div class="box_shadow mt10 p5 clearfix">
-            <% if the_author_himself(@album) %>
-                <span class="trivial"><%= t_with_colon("albums.cover") %></span>
-                <div style="width: <%= IMAGE_THUMB_WIDTH %>px">
-                     <% cover_url = @album.get_cover_url(:thumb) %>
-                     <% if cover_url.present? %>
-                         <%= image_tag "grey.gif", "data-original"=> cover_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image", alt: "封面" %>
-                     <% else %>
-                         <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image", alt: "没找到图片" %>
-                     <% end %>
-                </div>
-            <% end %>
+            <span class="trivial"><%= t_with_colon("albums.cover") %></span>
+            <div style="width: <%= IMAGE_THUMB_WIDTH %>px">
+                 <% cover_url = @album.get_cover_url(:thumb) %>
+                 <% if cover_url.present? %>
+                     <%= image_tag "grey.gif", "data-original"=> cover_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image", alt: "封面" %>
+                 <% else %>
+                     <%= image_tag "grey.gif", "data-original"=> "/assets/not_found.png", width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, class: "lazy cover_image", alt: "没找到图片" %>
+                 <% end %>
+            </div>
         </div>
     <% end %>
 </div>

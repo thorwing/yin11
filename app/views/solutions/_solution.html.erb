@@ -13,7 +13,7 @@
             <% end %>
         </div>
 
-        <% if the_author_himself(solution) %>
+        <% if the_author_himself(solution, true) %>
             <div class="fr">
                 <%= link_to "", solution, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %>
             </div>

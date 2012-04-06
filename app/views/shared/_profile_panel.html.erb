@@ -2,4 +2,5 @@
     <%= user.login_name %><br/>
     <%= image_tag(user.get_avatar(:thumb, false)) %>
     <%= render "users/user_statics", user: user %>
+    <%= render "relationships/follow_field", target: user %>
 </div>

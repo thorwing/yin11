@@ -1,4 +1,4 @@
-<div class="comments_fields">
+<div class="straight_comments_fields">
     <span class="trivial">用户评论：</span><br/>
     <% if current_user %>
         <div class="mt5 mb10 clearfix">
@@ -22,7 +22,7 @@
             <div class="comments_group <%= index %> <%= index == 0 ? "display_block" : "display_none" %>">
                 <div class="clearfix">
                     <% group.each do |comment| %>
-                        <%= render "comments/straight_single_comment", comment: comment, item: item %>
+                        <%= render "comments/single_comment", comment: comment, item: item %>
                     <% end %>
                 </div>
             </div>

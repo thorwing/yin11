@@ -74,7 +74,7 @@
                 <li><%= render_menu(t("menu.albums"), albums_path) %></li>
                 <li><%= render_menu(t("menu.recipes"), recipes_path) %></li>
                 <li><%= render_menu(t("menu.masters"), masters_path) %></li>
-                <% if current_user && current_user.has_permission?(:editor) %>
+                <% if current_user && current_user.has_permission?(:administrator) %>
                     <li class="nav_menu"><%= render_menu(t("menu.administrator_control"), administrator_root_path) %>
                         <ul class="sub_menu">
                             <li><%= link_to t("administrator_control.products"), administrator_products_path %> </li>

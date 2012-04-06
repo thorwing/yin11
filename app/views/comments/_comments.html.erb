@@ -9,8 +9,11 @@
     <% end %>
 
     <div class="comments_container <%= item.id.to_s %> mt10">
-        <% unless item.comments.empty? %>
-            <%= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>
+        <!--< unless item.comments.empty? %>-->
+            <!--<= nested_comments(item, patch_ancestry(item.comments.arrange(:order => :created_at))) %>-->
+        <!--< end %>-->
+        <% item.comments.each do |comment| %>
+            <%= render "comments/single_comment", comment: comment, item: item %>
         <% end %>
     </div>
 </div>

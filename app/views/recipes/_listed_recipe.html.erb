@@ -24,7 +24,7 @@
         <div class="fr">
             <div class="fl trivial"><%= link_to_function t("comments.new"), "show_embedded_comments(this);" %> (<span class="comments_counter"><%= recipe.comments.size %></span>)</div>
             <%= link_to "编辑", edit_recipe_path(recipe), class: "fl ml10" if the_author_himself(recipe) %>
-            <%= link_to "删除", recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "fl ml10" if the_author_himself(recipe) %>
+            <%= link_to "删除", recipe, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "fl ml10" if the_author_himself(recipe, true) %>
         </div>
         <div class="embedded_comments display_none">
             <%= render "comments/comments", item: recipe %>
