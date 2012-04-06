@@ -74,15 +74,7 @@
       <div class="box_shadow mb10  p5">
         <h3 class="trivial">被收集到拼盘：</h3>
         <% @desire.albums.limit(3).each do |album| %>
-            <div class="clearfix mb15 lighter_touch">
-                <%= link_to album.title, album %> |
-                <%= link_to image_tag(album.author.get_avatar(:thumb), width: 20, height: 20), album.author, class: "m2" %>
-                <%= link_to album.author.login_name, album.author %>
-                <br/>
-                <% album.get_image_urls(3, :thumb).each do |pic_url| %>
-                    <%= link_to image_tag("grey.gif", "data-original" => pic_url, :class => "lazy fl", width: 70, height: 70, alt: album.title), album %>
-                <% end %>
-            </div>
+            <%= render "albums/related_album", album: album %>
         <% end %>
       </div>
   <% end %>

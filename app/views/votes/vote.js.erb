@@ -2,6 +2,7 @@ var vote_fields = $('.vote_fields.<%= @item.id.to_s %>');
 var fans_list = vote_fields.find(".fans_list");
 vote_fields.find(".votes").text("<%= @item.fan_ids.size.to_s %>");
 
+
 <% if @is_fan %>
     var link = vote_fields.find(".btn.btn_vote.to_like");
     if(link) {
@@ -13,7 +14,7 @@ vote_fields.find(".votes").text("<%= @item.fan_ids.size.to_s %>");
     if(link) {
         link.addClass("voted");
 
-        var new_fan = '<span class="fan <%= current_user.id.to_s %>"><%= link_to image_tag(current_user.get_avatar(:thumb, false ), width: 24, height: 24, title: current_user.login_name), current_user %></span>';
+        var new_fan = '<span class="fan <%= current_user.id.to_s %>"><%= link_to current_user.login_name, current_user, class: 'trivial' %></span>';
         fans_list.append(new_fan);
     }
 
@@ -40,7 +41,8 @@ vote_fields.find(".votes").text("<%= @item.fan_ids.size.to_s %>");
 <% end %>
 
 <% if @item.is_a? Solution %>
-    <% new_ratio_value = ((@item.desire.fans_count == 0 ? 0 : (@item.fan_ids.size.to_f / @item.desire.fans_count.to_f)) * 100) %>
-    var new_ratio = '<b class="ratio f16 ml2 <%= new_ratio_value >= 50 ? "berry_red" : "" %> <%= new_ratio_value < 1 ? "berry_azure" : "" %>"><%= new_ratio_value.round(0).to_s + "%" %></b>';
-    $('.solution_option.<%= @item.id.to_s %> .ratio').replaceWith(new_ratio);
+    <!--< new_ratio_value = ((@item.desire.fans_count == 0 ? 0 : (@item.fan_ids.size.to_f / @item.desire.fans_count.to_f)) * 100) %>-->
+//    var new_ratio = '<b class="ratio f16 ml2 <= new_ratio_value >= 50 ? "berry_red" : "" %> <= new_ratio_value < 1 ? "berry_azure" : "" %>"><= new_ratio_value.round(0).to_s + "%" %></b>';
+//    $('.solution_option.<= @item.id.to_s %> .ratio').replaceWith(new_ratio);
+//    $('.listed_item.<= @item.id.to_s %> .votes').replaceWith(@item.fan_ids.size);
 <% end %>

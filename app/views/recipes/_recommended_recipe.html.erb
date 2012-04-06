@@ -3,7 +3,7 @@
     <div class="fl mr10 clearfix">
         <% thumb_url = recipe.get_image_url(:thumb) %>
         <% if thumb_url.present? %>
-            <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> thumb_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, alt: recipe.name), recipe %>
+            <%= link_to image_tag(thumb_url, width: IMAGE_THUMB_WIDTH, height: IMAGE_THUMB_HEIGHT, alt: recipe.name), recipe %>
         <% end %>
     </div>
 

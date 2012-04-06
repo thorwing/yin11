@@ -29,6 +29,17 @@ module Votable
       self.hater_ids.include?(user.id)
     end
 
+    def get_fans(user, limit)
+      ids = []
+      if user && is_fan?(user)
+        ids = fan_ids.insert(0, fan_ids.delete(user.id.to_s))
+      else
+        ids = fan_ids
+      end
+
+      User.any_in(_id: ids).limit(3)
+    end
+
   end
 
   module InstanceMethods

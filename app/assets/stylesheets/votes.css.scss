@@ -6,3 +6,13 @@
 
 /*.vote_fields .vote_button.down_voted { background: image-url('voted_down_button.png') center no-repeat; text-indent:-9999px;}*/
 /*.vote_fields .vote_button.down:hover { background: image-url('voted_down_button.png') center no-repeat; text-indent:-9999px;}*/
+
+
+.votes_background {
+  display: block;
+  border:0 none;
+  background: url("buttons.png") 0 0 no-repeat;
+  width: 20px;
+  height: 20px;
+  background-position: -377px -285px;
+}

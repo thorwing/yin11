@@ -4,10 +4,7 @@
     <div id="liked_albums_panel" class="panel clearfix">
         <%= link_to content_tag(:b, t("user_basic.liked_albums"), class: "f14") + content_tag(:span, "（全部）"), "/personal/favorites?mode=albums" %><br/>
         <% liked_albums.each do |album| %>
-            <div class="clearfix">
-                <%= link_to image_tag(album.get_cover_url(:thumb), width: 32, height: 32), album, class: "fl" %>
-                <%= link_to album.title, album, class: "fl ml5" %>
-            </div>
+            <%= render "albums/related_album", album: album %>
         <% end %>
     </div>
 <% end %>

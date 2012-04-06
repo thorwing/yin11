@@ -1,19 +1,21 @@
-<div class="listed_item commentable clearfix box_shadow mt10 mb10 p5 hover_area" xmlns="http://www.w3.org/1999/html">
+<div class="listed_item commentable clearfix box_shadow mt10 mb10 p5 hover_area vote_fields <%= solution.id.to_s %>" xmlns="http://www.w3.org/1999/html">
     <%= content_tag :span, "", class: "existed_solution_item_id #{solution.item.id.to_s}" if solution.item %>
     <% item = solution.item %>
     <% item_path = {:controller => item.class.name.downcase.pluralize, :action => "show", :id => item.id, force: true} if item %>
 
     <% if current_user && current_user != solution.author %>
-        <div class="fl mr10">
-            <div class="vote_fields clearfix <%= solution.id.to_s %>">
-                <%= form_tag url_for(controller: "desires", action: "vote", method: :post) do %>
-                    <%= hidden_field_tag "solution_id", solution.id %>
-                    <%= link_to "赞成", like_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
-                        :class => "btn btn_positive lighter_touch fl " + (solution.is_fan?(current_user) ? "voted" : ""), title: (solution.is_fan?(current_user) ? "取消赞同" : "赞同")  %><br/>
-                    <%= link_to "反对", hate_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
-                        :class => "mt5 btn btn_negative lighter_touch fl " + (solution.is_hater?(current_user) ? "voted" : ""), title: (solution.is_hater?(current_user) ? "取消反对" : "反对")  %>
-                <% end %>
-            </div>
+        <div class="fl mr10 clearfix">
+            <%= form_tag url_for(controller: "desires", action: "vote", method: :post) do %>
+                <%= hidden_field_tag "solution_id", solution.id %>
+                <%= link_to "赞成", like_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
+                    :class => "btn btn_positive lighter_touch fl " + (solution.is_fan?(current_user) ? "voted" : ""), title: (solution.is_fan?(current_user) ? "取消赞同" : "赞同")  %><br/>
+                <%= link_to "反对", hate_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
+                    :class => "mt5 btn btn_negative lighter_touch fl " + (solution.is_hater?(current_user) ? "voted" : ""), title: (solution.is_hater?(current_user) ? "取消反对" : "反对")  %>
+            <% end %>
+        </div>
+    <% else %>
+        <div class="fl mr10 clearfix">
+            <%= content_tag :span, solution.fan_ids.size, class: "votes_background f15 berry_red", style: "text-align: center;" %>
         </div>
     <% end %>
 
@@ -22,10 +24,13 @@
         <%= link_to solution.author.login_name, solution.author %><br/>
         <span class="votes f15 trivial"><%= "#{solution.fan_ids.size}" %></span><span class="trivial">赞同</span>
         <%= content_tag :span, "来自 ", class: "trivial" if solution.fans.size > 0 %>
-        <% solution.fans.limit(3).each_with_index do |fan, index| %>
-            <%= content_tag :span, "、", calss: 'trivial' unless index == 0 %>
-            <%= link_to fan.login_name, fan, class: 'trivial' %>
-        <% end %>
+        <span class="fans_list">
+            <% solution.get_fans(current_user, 3).each_with_index do |fan, index| %>
+                <span class="fan <%= fan.id.to_s %>">
+                    <%= link_to fan.login_name, fan, class: 'trivial ml2 mr2' %>
+                </span>
+            <% end %>
+        </span>
         <%= content_tag :span, " 等" if solution.fans.size > 3 %>
 
         <div class="clearfix">
