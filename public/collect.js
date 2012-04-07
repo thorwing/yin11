@@ -1,8 +1,8 @@
 //TODO   change via env
-//var base_url = 'http://192.168.75.131:3000';
+var base_url = 'http://192.168.75.131:3000';
 //var base_url = 'http://www.meishikezhan.com';
 //var base_url = 'http://www.yinkuaizi.com';
-var base_url = 'http://www.chixinbugai.com';
+//var base_url = 'http://www.chixinbugai.com';
 var afar_url = base_url + '/desires/afar';
 var close_img_url = base_url + '/assets/close.png';
 
