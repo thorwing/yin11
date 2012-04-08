@@ -12,7 +12,7 @@
       <div class="fr clearfix">
           <%= link_to "编辑", edit_desire_path(@desire), class: "btn btn_edit fl " if the_author_himself(@desire) %>
           <%= link_to "删除", @desire, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl " if the_author_himself(@desire, true) %>
-          <%= render "administrator/base/tune_fields", item: @desire if current_user_has_permission? :administrator %>
+          <%= render "administrator/base/tune_fields", item: @desire if current_user_has_permission? :editor %>
       </div>
     </div>
     <div class="mt10 clearfix">

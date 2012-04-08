@@ -1,5 +1,5 @@
 class Administrator::BaseController < ApplicationController
-  before_filter() { |c| c.require_permission :administrator}
+  before_filter() { |c| c.require_permission :editor}
 
   def index
 

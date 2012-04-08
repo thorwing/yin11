@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     #@stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
     @hot_tags = get_all_tags(:desires).take(10)
 
-    @modes = ["newest", "hottest", "solved"]
+  @modes = ["newest", "solved"] #"hottest"
     if @modes.include? params[:mode]
       @current_mode = params[:mode]
     else
@@ -57,7 +57,7 @@ class HomeController < ApplicationController
       if mode == "hottest"
         desires = criteria.desc(:admirer_ids, :priority, :created_at).page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       elsif mode == "solved"
-        criteria = criteria.where(solved: true).desc(:admirer_ids, :priority, :created_at)
+        criteria = criteria.where(:solutions_count.gt => 0).desc(:solved, :admirer_ids, :priority, :created_at)
         total_chapters = (criteria.size.to_f / PAGES_PER_CHAPTER.to_f / ITEMS_PER_PAGE_FEW.to_f).ceil
         desires = criteria.page(real_page_nr).per(ITEMS_PER_PAGE_FEW)
       elsif mode == "newest"

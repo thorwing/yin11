@@ -10,6 +10,7 @@ class Desire
   field :content
   field :history_admirer_ids, type: Array, default: []
   field :solved, type: Boolean, default: false
+  field :solutions_count, type: Integer, default: 0
   field :via_product, type: Boolean, default: false
   field :via_recipe, type: Boolean, default: false
 
@@ -30,6 +31,8 @@ class Desire
   #validations
   validates_presence_of :author
   validates_length_of :content, maximum: MAX_DESIRE_CONTENT_LENGTH
+
+  before_save :check_solutions
 
   #def latest_user_solution
   #  solutions.excludes(author_id: nil).first(sort: [[ :created_at, :desc ]])
@@ -53,19 +56,15 @@ class Desire
   end
 
   def check_solutions
-    unless self.new_record?
-      was_solved = self.solved
-      total = 0
-      max = 0
-      valid_solutions.each do |s|
-        size = s.votes.size
-        total += size
-        max = size if size > max
-      end
-      enough_votes = total >= DESIRE_SOLVED_BAR_COUNT
-      self.solved = enough_votes && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
-      self.save if self.solved != was_solved
+    total = 0
+    max = 0
+    valid_solutions.each do |s|
+      votes = s.fan_ids.size
+      total += votes
+      max = votes if votes > max
     end
+    self.solved = total >= DESIRE_SOLVED_BAR_COUNT && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
+    self.solutions_count = valid_solutions.size
   end
 
 end

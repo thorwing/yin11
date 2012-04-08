@@ -126,10 +126,10 @@ namespace :yin11 do
     end
   end
 
-  desc "check solutions for all desires"
-  task :check_solutions => :environment do
+  desc "update all desires"
+  task :update_desires => :environment do
     Desire.all.to_a.each do |desire|
-      desire.check_solutions
+      desire.save
     end
   end
 
