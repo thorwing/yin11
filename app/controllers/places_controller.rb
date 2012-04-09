@@ -67,4 +67,16 @@ class PlacesController < ApplicationController
     end
   end
 
+  def browse
+    if params[:name].present?
+      # not case sensitive
+      @places = Place.where(name: /#{params[:name]}/i)
+    end
+    @places ||= []
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

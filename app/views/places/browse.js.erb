@@ -1,0 +1,14 @@
+$('#facebox #link_spinner').hide();
+var container = $('#facebox #place_hints_container');
+<% if @places.blank? || @places.empty? %>
+    $('div.popup #place_not_found_label').show();
+    container.find("tr").remove();
+<% else %>
+    $('div.popup #place_not_found_label').hide();
+    container.show();
+    container.find("tr:gt(0)").remove();
+    <% @places.each do |place| %>
+        var child = '<%= escape_javascript(render("solutions/place_hint", place: place)) %>';
+        container.append(child);
+    <% end %>
+<% end %>

@@ -4,6 +4,6 @@
     <td style="width: 50px;" class="p2"><%= new_tab_link_to(image_tag(recipe.get_image_url(:thumb), width: 48, height: 48), item_path)%></td>
     <td><%= new_tab_link_to(recipe.name, item_path) %></td>
     <td><%= recipe.author.login_name %></td>
-    <td><%= link_to_function("", "pick_recipe(this, \"#{recipe.id.to_s}\", \"#{recipe.name}\", \"#{recipe.get_image_url(:thumb)}\");", class: "btn btn_ok") %></td>
+    <td><%= link_to_function("", "pick_recipe(this, \"#{recipe.id.to_s}\");", class: "btn btn_ok") %></td>
     <td class="recipe_solution display_none"><%= render "solutions/solution_item", item: recipe %></td>
 </tr>

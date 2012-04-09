@@ -115,6 +115,7 @@ Yin11::Application.routes.draw do
   resources :places do
     collection do
       get "query"
+      get :browse
     end
   end
 

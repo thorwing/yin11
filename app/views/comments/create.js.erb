@@ -3,7 +3,7 @@
     <% if @parent %>
         $('#<%= @parent.id.to_s %>').nextAll('.nested_comments:first').append(child);
     <% else %>
-         $(".comments_container.<%= @item.id.to_s %>").prepend(child);
+         $(".comments_container.<%= @item.id.to_s %>").append(child);
 //         jQuery.facebox( '<span><= "评论已添加" %></span>');
     <% end %>
 

@@ -1,0 +1,8 @@
+<% item_path = {controller: "places", action: "show", id: place.id, force: true} %>
+
+<tr class="place_hint">
+    <td><%= new_tab_link_to(place.name, item_path) %></td>
+    <td><%= place.address %></td>
+    <td><%= link_to_function("", "pick_place(this, \"#{place.id.to_s}\");", class: "btn btn_ok") %></td>
+    <td class="place_solution display_none"><%= render "solutions/solution_item", item: place %></td>
+</tr>

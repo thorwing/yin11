@@ -1,0 +1,19 @@
+<div id="place_linker" class="display_none clearfix">
+    <span>搜索餐馆</span><br/>
+    <span class="trivial">请输入餐馆的名字： </span><%= text_field_tag "place_name", "例：全聚德", class: "not_cleared" %><br/>
+    <%= image_tag "loading.gif", id: "link_spinner", class: "display_none" %>
+    <br/>
+    <span id="place_not_found_label" class="display_none">抱歉，没有找到相关的餐馆。请再试试其它的。</span>
+
+    <table id="place_hints_container" class="formatted display_none" style="min-height: 200px;">
+        <tr class="head">
+          <th>名称</th>
+          <th>地址</th>
+          <th></th>
+        </tr>
+    </table>
+
+    <div class="mt5 clearfix">
+      <span class="trivial">找不到？</span><%= new_tab_link_to "+添加餐馆", {controller: "places", action: "new", force: true}, :class => "button" %>
+    </div>
+</div>

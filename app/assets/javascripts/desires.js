@@ -176,6 +176,9 @@ $(function() {
     );
 });
 
+
+//link product
+
 function link_product()
 {
     var count = $('#images_container .product').size();
@@ -193,31 +196,115 @@ function pre_link_product(link)
     return true;
 };
 
+
+//link recipe
+function listen_recipe_name() {
+    var timerid;
+    jQuery("" +
+        " #recipe_name").keyup(function() {
+      var input = this;
+      clearTimeout(timerid);
+      timerid = setTimeout(function() {
+        $(input).nextAll('#link_spinner').show();
+//        $(input).nextAll("div").html('');
+
+        var name = $(input).val();
+        $.ajax({
+          url: "/recipes/browse",
+          data: {name: name}
+        });
+      }, 500);
+    });
+};
+
+function link_recipe()
+{
+//    var count = $('#images_container .recipe').size();
+//    if (count >= recipes_limit) {
+//        alert("最多只能添加3份菜谱");
+//        return;
+//    }
+
+    jQuery.facebox($('#recipe_linker').html());
+    listen_recipe_name();
+};
+
+
+function pick_recipe(link, id) {
+    $(document).trigger('close.facebox');
+    var content = $(link).parents(".recipe_hint").find(".recipe_solution").html();
+    $('#image_container').html(content);
+    $('#recipe_id').val(id);
+};
+
+//link place
+
+function listen_place_name() {
+    var timerid;
+    jQuery("" +
+        " #place_name").keyup(function() {
+      var input = this;
+      clearTimeout(timerid);
+      timerid = setTimeout(function() {
+        $(input).nextAll('#link_spinner').show();
+//        $(input).nextAll("div").html('');
+
+        var name = $(input).val();
+        $.ajax({
+          url: "/places/browse",
+          data: {name: name}
+        });
+      }, 500);
+    });
+};
+
+function link_place()
+{
+    jQuery.facebox($('#place_linker').html());
+    listen_place_name();
+};
+
+function pick_place(link, id) {
+    $(document).trigger('close.facebox');
+    var content = $(link).parents(".place_hint").find(".place_solution").html();
+    $('#image_container').html(content);
+    $('#place_id').val(id);
+};
+
+
+
+
 function review_solution()
 {
-    var verify_passed = false;
     var has_one_recipe = false;
     var has_one_product = false;
+    var has_one_place = false;
 
-    var message = "您忘了添加:\n";
-    //   check if all the neccessary info are given
+    var solution_content = $('.solution_fields #solution_content').val();
 
-    if($('.solution_fields #solution_content').text() == "说说解馋理由吧...") {
-        $('.solution_fields #solution_content').text('');
+    if(solution_content == "说说解馋理由吧..." || solution_content == "") {
+        alert("说说解馋理由吧");
+        return false;
     }
 
-
     //        1 recipe name should be given
-    if(String($('.solution_fields #recipe_id').val()) != "") {
+    var recipe_id = String($('.solution_fields #recipe_id').val());
+    if(recipe_id && recipe_id != "") {
         has_one_recipe = true;
     }
 
-    if(String($('.solution_fields #product_id').val()) != "") {
+    var product_id = String($('.solution_fields #product_id').val());
+    if(product_id && product_id != "") {
         has_one_product = true;
     }
 
-    if(has_one_product == false && has_one_recipe == false) {
-        alert("请添加至少一个商品或菜谱吧");
+    var place_id = String($('.solution_fields #place_id').val());
+    if(place_id && place_id != "") {
+        has_one_place = true;
+    }
+
+    if(has_one_product == false && has_one_recipe == false && has_one_place == false) {
+        alert("请添加至少一个商品、菜谱或餐馆吧");
         return false;
     }
 

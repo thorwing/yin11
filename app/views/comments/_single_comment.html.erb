@@ -17,6 +17,7 @@
               <% end %>
             </blockquote>
         </div>
+        <span class="trivial fr"><%= distance_of_time_in_words(comment.updated_at, Time.now) %><%= t("general.ago") %></span>
     </div>
 
     <div class="display_on_hover">

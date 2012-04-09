@@ -5,6 +5,7 @@
                 <h2 class="trivial">分享解馋攻略</h2>
                 <%= hidden_field_tag "solution[product_id]", "", id: "product_id" %>
                 <%= hidden_field_tag "solution[recipe_id]", "", id: "recipe_id" %>
+                <%= hidden_field_tag "solution[place_id]", "", id: "place_id" %>
 
                 <!--hidden attributes-->
                 <span class="berry_pink">每有人投票给你的解馋攻略，你就可获得相应积分。</span><br/>
@@ -31,6 +32,7 @@
 
         <%= render "solutions/product_linker" %>
         <%= render "solutions/recipe_linker" %>
+        <%= render "solutions/place_linker" %>
     <% else %>
         <span class="trivial">有解馋攻略要分享？</span><br/>
         <%= link_to "立即注册", new_user_path, class: "btn btn_register_now" %>

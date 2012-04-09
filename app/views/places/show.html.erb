@@ -1,19 +1,29 @@
 <% title [@place.name, "餐馆"].join("_"), false %>
 
 <div class="grid_9">
-    <div class="box_shadow p5">
-        <h1 class="fl20"><%= content_tag :span, "餐馆", class: "icon icon_place mr5" %><%= @place.name %></h1>
-        <%= content_tag :span, @place.address %>
-        <div class="mt10">
+    <div class="box_shadow p5 clearfix">
+        <h1 class="fl"><%= content_tag :span, "餐馆", class: "icon icon_place mr5" %><%= @place.name %></h1>
+        <% if current_user_has_permission? :editor %>
+            <div class="fr clearfix">
+                <%= link_to "", edit_place_path(@place), class: "btn btn_edit fl" %>
+                <%= link_to "", @place, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %>
+            </div>
+        <% end %>
+        <div class="clearfix"></div>
+
+        <%= content_tag :p, @place.address %>
+
+        <div class="mt10 clearfix">
             <% if current_user_has_permission? :normal_user %>
-                <div class="mt5">
-                    <%= render "votes/vote_fields", :item => @place %>
+                <div class="fl">
+                    <%= content_tag :span, "有这个餐馆的馋人图片要分享？", class: "trivial" %><br/>
+                    <%= link_to "+上传馋人图片", new_desire_path(place_id: @place.id), class: "btn btn_new_desire" %>
                 </div>
             <% end %>
-            <% if current_user_has_permission? :editor %>
-                <div class="mt5 clearfix">
-                    <%= link_to "", edit_place_path(@place), class: "btn btn_edit fl" %>
-                    <%= link_to "", @place, :confirm => t("general.are_you_sure_to_delete"), :method => :delete, :class => "btn btn_delete fl" %>
+
+            <% if current_user_has_permission? :normal_user %>
+                <div class="fr">
+                  <%= render "votes/vote_fields", :item => @place %>
                 </div>
             <% end %>
         </div>
@@ -31,15 +41,6 @@
     <div class="mt10 fl" style="width: 720px;">
         <%= content_tag :span, "该餐馆的馋人图片：", class: "trivial" %><br/>
         <div id="masonry_container" class="clearfix">
-            <% if current_user_has_permission? :normal_user %>
-                <!--corner stmap-->
-                <div class="masonary_item">
-                    <div class="inner_frame p5">
-                        <%= content_tag :span, "有这个餐馆的馋人图片要分享？", class: "trivial" %><br/>
-                        <%= link_to "+上传馋人图片", new_desire_path(place_id: @place.id), class: "btn btn_new_desire" %>
-                    </div>
-                </div>
-            <% end %>
             <% @place.desires.each do |desire| %>
               <%= render "desires/desire_item", desire: desire %>
             <% end %>
