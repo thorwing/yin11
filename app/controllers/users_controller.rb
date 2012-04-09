@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
     ip = request.remote_ip.to_s
     if Cooler.crazy_register?(ip)
-      redirect_to root_path, :notice => t("notices.rapid_user_creation", cooldown: REGISTRATION_COOLDOWM_INTERVAL)
+      redirect_to root_path, :notice => t("notices.rapid_user_creation", cooldown: REGISTRATION_COOLDOWM_INTERVAL, limit: REGISTRATION_COOLDOWM_LIMIT)
       return
     end
 
@@ -70,7 +70,9 @@ class UsersController < ApplicationController
     @user.remote_ip = ip
 
     respond_to do |format|
-      if verify_recaptcha(:model => @user, :message => t("authentication.captcha_failed")) && @user.save
+      if @user.save
+
+        #verify_recaptcha(:model => @user, :message => t("authentication.captcha_failed")) &&
 
         ##TODO invitation
         #if invitation

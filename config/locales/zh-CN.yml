@@ -159,7 +159,7 @@ zh-CN:
     current_city_updated: 成功更新当前城市
     user_basic_info_updated: 成功更新了您的信息
     profile_updated: 成功更新偏好设定
-    rapid_user_creation: 你已经在%{cooldown}小时内注册了一个帐号啦，邀请更多人来吃心不改吧
+    rapid_user_creation: 你已经在%{cooldown}小时内注册了%{limit}个帐号啦, 不如去邀请更多人来吃心不改吧
     recipe_created: 成功添加菜谱
     recipe_updated: 成功更新菜谱
     album_created: 成功创建拼盘
