@@ -194,6 +194,12 @@ Yin11::Application.routes.draw do
 
   resources :messages
 
+  resources :tuans do
+    collection do
+      post :link
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

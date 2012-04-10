@@ -1,0 +1,20 @@
+$("#facebox #link_spinner").hide();
+
+<% if @valid_url %>
+  <% if @tuan %>
+    $(document).trigger('close.facebox');
+
+    if(document.getElementById("tuan_" + "<%= @tuan.id.to_s %>")) {
+      alert("已添加了该团购");
+    }
+    else {
+        var new_tuan = '<%= escape_javascript(render("solutions/solution_item", :item => @tuan)) %>';
+        $('#image_container').html(new_tuan);
+        $('#tuan_id').val("<%= @tuan.id.to_s %>");
+    }
+  <% else %>
+    alert("抱歉，在获取这个团购的时候出了点错误，要不换个团购试试？");
+  <% end %>
+<% else %>
+  alert("恩...我们在您输入的地址找不到团购，请再检查下？");
+<% end %>

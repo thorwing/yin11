@@ -322,10 +322,10 @@ $(function(){
 $(function(){
     $('.hover_area').hover(
         function(){
-            $(this).children(".display_on_hover").show();
+            $(this).find(".display_on_hover").show();
         },
         function(){
-            $(this).children(".display_on_hover").hide();
+            $(this).find(".display_on_hover").hide();
         }
     );
 });

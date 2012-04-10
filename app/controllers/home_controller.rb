@@ -5,9 +5,12 @@ class HomeController < ApplicationController
     #@hot_topics = Topic.recommended.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
     #@recommended_albums = Album.recommended.desc(:priority).limit(RECOMENDED_ALBUMS_ON_HOME_PAGE)
     #@stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
+
+    #SilverHornet::TuanHornet.new.fetch_all_tuans("lashou")
+
     @hot_tags = get_all_tags(:desires).take(10)
 
-  @modes = ["newest", "solved"] #"hottest"
+    @modes = ["newest", "solved"] #"hottest"
     if @modes.include? params[:mode]
       @current_mode = params[:mode]
     else

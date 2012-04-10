@@ -181,16 +181,30 @@ $(function() {
 
 function link_product()
 {
-    var count = $('#images_container .product').size();
-    if (count >= products_limit) {
-        alert("最多只能添加3件商品");
-        return;
-    }
+//    var count = $('#images_container .product').size();
+//    if (count >= products_limit) {
+//        alert("最多只能添加3件商品");
+//        return;
+//    }
 
     jQuery.facebox($('#product_linker').html());
 };
 
 function pre_link_product(link)
+{
+    $("div.popup #link_spinner").show();
+    return true;
+};
+
+//link tuan
+
+function link_tuan()
+{
+    jQuery.facebox($('#tuan_linker').html());
+
+};
+
+function pre_tuan_product(link)
 {
     $("div.popup #link_spinner").show();
     return true;
@@ -272,14 +286,8 @@ function pick_place(link, id) {
 };
 
 
-
-
 function review_solution()
 {
-    var has_one_recipe = false;
-    var has_one_product = false;
-    var has_one_place = false;
-
     var solution_content = $('.solution_fields #solution_content').val();
 
     if(solution_content == "说说解馋理由吧..." || solution_content == "") {
@@ -287,7 +295,11 @@ function review_solution()
         return false;
     }
 
-    //        1 recipe name should be given
+    var has_one_recipe = false;
+    var has_one_product = false;
+    var has_one_place = false;
+    var has_one_tuan = false;
+
     var recipe_id = String($('.solution_fields #recipe_id').val());
     if(recipe_id && recipe_id != "") {
         has_one_recipe = true;
@@ -303,8 +315,13 @@ function review_solution()
         has_one_place = true;
     }
 
-    if(has_one_product == false && has_one_recipe == false && has_one_place == false) {
-        alert("请添加至少一个商品、菜谱或餐馆吧");
+    var tuan_id = String($('.solution_fields #tuan_id').val());
+    if(tuan_id && tuan_id != "") {
+        has_one_tuan = true;
+    }
+
+    if(has_one_product == false && has_one_recipe == false && has_one_place == false && has_one_tuan == false) {
+        alert("请添加至少一个商品、菜谱、餐馆或团购吧");
         return false;
     }
 

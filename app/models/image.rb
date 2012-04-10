@@ -20,6 +20,7 @@ class Image
   belongs_to :desire, index: true
   belongs_to :award, index: true
   belongs_to :recipe, index: true
+  belongs_to :tuan, index: true
 
   #validations
   validates_presence_of :picture

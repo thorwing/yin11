@@ -15,7 +15,7 @@ class Comment
   embedded_in :place
   embedded_in :desire
   embedded_in :solution
-  #embedded_in :desire
+  embedded_in :tuan
   belongs_to :user
 
   validates_presence_of :user

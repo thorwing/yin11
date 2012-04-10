@@ -43,4 +43,8 @@ class Product
     price ? format('%.2f', price) : ''
   end
 
+  def value_as_money_string
+    value ? format('%.2f', value) : ''
+  end
+
 end

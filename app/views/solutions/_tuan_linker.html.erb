@@ -1,0 +1,13 @@
+<div id="tuan_linker" class="display_none clearfix">
+    <%= form_tag url_for(controller: "tuans", action: "link", method: :post), :remote => true do %>
+        <p><%= "将团购的详细页的地址粘帖在下方框中即可：" %></p>
+        <span class="fl"><%= text_field_tag "tuan_url", "" %></span>
+        <span class="fl"><%= submit_tag t("general.submit"), id: "link_prod_btn", class: "btn btn_ok lighter_touch ml5", onclick: 'return pre_link_tuan(this);'%></span>
+        <div class="clearfix"></div>
+        <%= image_tag "loading.gif", id: "link_spinner", class: "display_none" %>
+        <p class="trivial">已支持以下团购网站：</p>
+        <div>
+            <%= content_tag :span, "拉手网", class: "ml2" %>
+        </div>
+    <% end %>
+</div>

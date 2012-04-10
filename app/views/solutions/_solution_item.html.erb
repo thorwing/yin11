@@ -5,15 +5,15 @@
         <% if item.is_a? Place %>
             <%= render "places/place_image", place: item, size: 46 %>
         <% else %>
-            <%= new_tab_link_to image_tag(item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), item_path%>
+            <%= new_tab_link_to image_tag(item.get_image_url(:thumb), width: 120, height: 120, title: t("object_types.#{item.class.name.downcase}") + " - " + item.name), item_path %>
         <% end %>
     </div>
 
     <div class="fl" style="width:200px;">
         <p>
             <span class="trivial">
-              <%= t("object_types.#{item.class.name.downcase}")%>
                 <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "icon icon_#{item.class.name.downcase}" %>
+                <%= t("object_types.#{item.class.name.downcase}")%>
                 <%= "：" %>
             </span>
             <%= new_tab_link_to item.name, item_path %>

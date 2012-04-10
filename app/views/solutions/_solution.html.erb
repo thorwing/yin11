@@ -28,7 +28,7 @@
         <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "icon icon_#{item.class.name.downcase}", width: 12, height: 12 %>
         <span class="trivial">：</span>
         <%= new_tab_link_to "#{solution.name}", item_path %>
-        <% if item.is_a?(Product) && item.price? %>
+        <% if (item.is_a?(Product) || item.is_a?(Tuan) ) && item.price %>
             <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + item.price_as_money_string) %></span>
         <% end %>
     </h3>

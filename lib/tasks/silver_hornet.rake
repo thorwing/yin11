@@ -15,6 +15,13 @@ namespace :silver_hornet do
     config.sites.each {|site| site.fetch}
   end
 
+  desc "fetch tuans"
+  task :fetch_tuans => :environment do
+    ["meituan", "lashou", "nuomi"].each do |website| # "ftuan"
+      SilverHornet::TuanHornet.new.fetch_all_tuans(website)
+    end
+  end
+
   desc "fetch products from taobao mall"
   task :fetch_taobao => :environment do
     SilverHornet::TaobaoHornet.new.fetch

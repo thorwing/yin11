@@ -65,6 +65,8 @@ class Desire
     end
     self.solved = total >= DESIRE_SOLVED_BAR_COUNT && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
     self.solutions_count = valid_solutions.size
+
+    #self.save if self.changed?
   end
 
 end

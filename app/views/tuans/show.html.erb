@@ -1,0 +1,66 @@
+<% title [truncate_content(@tuan.name, 20), "团购"].join("_"), false %>
+
+<div class="grid_9 to_left overflow_hidden p5 clearfix">
+    <div class="product_info clearfix box_shadow p5">
+        <div class="fl">
+            <%= image_tag(@tuan.image_url, class: "img_frame") %>
+        </div>
+
+        <div class="product_detail ml10 fl">
+            <h1 class="f20"><%= content_tag :span, "团购", class: "icon icon_tuan mr5" %><%= content_tag :span, "团购：", class: "trivial" %><%= @tuan.name %></h1>
+            <p>
+                <span class="trivial mr5">城市</span>
+                <%= @tuan.city %>
+            </p>
+
+            <p>
+              <span class="trivial mr5"><%= t("products.price") %></span>
+              <%= [t("money.yuan_mark2"), @tuan.price_as_money_string].join if @tuan.price %>
+            </p>
+
+            <p>
+              <span class="trivial mr5">原价</span>
+              <span style="text-decoration: line-through;"><%= [t("money.yuan_mark2"), @tuan.value_as_money_string].join if @tuan.value %></span>
+            </p>
+
+            <p>
+                <span class="trivial mr5">折扣</span>
+                <%= @tuan.rebate %>
+            </p>
+
+            <div class="mt5 clearfix">
+                <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => @tuan.url, :force => true}, :class => "btn btn_buy fl" if @tuan.url.present? %>
+                <% if current_user_has_permission? :normal_user %>
+                    <div class="fr">
+                        <%= render "votes/vote_fields", :item => @tuan %>
+                    </div>
+                <% end %>
+            </div>
+
+            <% if current_user_has_permission? :administrator %>
+                <div class="mt5">
+                    <%= link_to "管理", "", :class => "button fl" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+    <% if @tuan.fan_ids.size > 0 %>
+        <div class="box_shadow p5 mt10 mb5 admiration_fields">
+          <%= "#{@tuan.fan_ids.size}人喜欢：" %>
+          <br/>
+          <% @tuan.fans.each do |fan| %>
+              <%= link_to image_tag(fan.get_avatar(:thumb), width: 32, height: 32), fan, class: "m2", alt: fan.login_name, title: fan.login_name %>
+          <% end %>
+        </div>
+    <% end %>
+
+    <div class="mt10">
+        <%= render "comments/comments", item: @tuan %>
+    </div>
+
+</div>
+
+<div class="grid_3 to_right">
+
+</div>

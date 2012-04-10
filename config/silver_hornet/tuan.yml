@@ -1,0 +1,4 @@
+lashou: "http://open.client.lashou.com/api/detail/city/%E4%B8%8A%E6%B5%B7/p/1/"
+meituan: "http://www.meituan.com/api/v2/shanghai/deals"
+nuomi: "http://www.nuomi.com/api/dailydeal?version=v1&city=shanghai"
+ftuan: "http://newapi.ftuan.com/api/v2.aspx?city=shanghai"

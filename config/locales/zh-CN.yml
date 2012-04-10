@@ -94,6 +94,7 @@ zh-CN:
     tags:
       max_limit_msg: 最多可以设置%{max}个标签
     login_name_duplicate: 昵称已被使用
+    tuan_duplicate: 相同团购已存在
 
 
   authentication:
@@ -193,6 +194,8 @@ zh-CN:
     recipe: 菜谱
     album: 拼盘
     place: 餐馆
+    tuan: 团购
+    order: 外卖
 
   menu:
     administrator_control: 管理面板

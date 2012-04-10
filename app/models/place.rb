@@ -7,6 +7,7 @@ class Place
   field :verified, :type => Boolean, :default => false
   field :city
   field :street
+  field :tel
   field :latitude, :type => Float
   field :longitude, :type => Float
   field :location, :type => Array, :geo => true, :lat => :latitude, :lng => :longitude
@@ -25,6 +26,7 @@ class Place
   belongs_to :creator, :class_name => "User", index: true
   embeds_many :feeds
   has_many :solutions
+  #has_and_belongs_to_many :tuans, index: true
 
 
   #validators

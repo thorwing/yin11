@@ -1,0 +1,20 @@
+<% title "团购", false %>
+
+<%= paginate @tuans %>
+
+<% @tuans.each_slice(4).each do |tuans| %>
+    <div class="clearfix">
+        <% tuans.each do |tuan| %>
+            <div class="grid_3 box_shadow b_white pt10 mb10">
+                <div class="center lighter_touch clearfix" style="width:<%= IMAGE_WATERFALL_WIDTH %>px;">
+                    <%= link_to image_tag("grey.gif", class: 'lazy fl img_frame m1', "data-original"=> tuan.image_url, width: IMAGE_WATERFALL_WIDTH, alt: tuan.name, title: tuan.name), tuan %><br/>
+                    <span class="trivial"><%= tuan.website %></span>
+                    <span><%= tuan.name %></span>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>
+
+
+
