@@ -26,6 +26,10 @@ class Tuan
   #validations
   validates :url, presence: true, uniqueness: true
 
+  def expired?
+    self.end_time < DateTime.now
+  end
+
   def price_as_money_string
     price ? format('%.2f', price) : ''
   end

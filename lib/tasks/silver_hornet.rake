@@ -20,6 +20,9 @@ namespace :silver_hornet do
     ["meituan", "lashou", "nuomi"].each do |website| # "ftuan"
       SilverHornet::TuanHornet.new.fetch_all_tuans(website)
     end
+
+    p "expired: " + Tuan.where(:end_time.lt => DateTime.now).size.to_s
+
   end
 
   desc "fetch products from taobao mall"

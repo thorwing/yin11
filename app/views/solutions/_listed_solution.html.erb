@@ -52,11 +52,19 @@
                   <%= content_tag :span, t("object_types.#{item.class.name.downcase}"), class: "icon icon_#{item.class.name.downcase}", width: 12, height: 12 %>
                   <span class="trivial"><%= t("object_types.#{item.class.name.downcase}")%>：</span>
 
-                  <% if (item.is_a?(Product) || item.is_a?(Tuan)) && item.price %>
+                  <% if item.is_a?(Product) %>
                       <%= solution.name %>
-                      <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + item.price_as_money_string) %></span>
+                      <%= content_tag :span, (t("money.yuan_mark1") + item.price_as_money_string), class: "f11 berry_pink" if item.price %>
                       <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => item.url, :force => true}, :class => "btn btn_buy ml5" if item.url.present? %>
-                      <!--<= link_to "管理", [:administrator, item], :class => "button ml10" if current_user_has_permission? :administrator %>-->
+                  <% elsif item.is_a?(Tuan) %>
+                      <% if item.expired? %>
+                        <%= content_tag :span, solution.name, style: "text-decoration: line-through;" %>
+                        <%= content_tag :span, "已结束", class: "trivial" %>
+                      <% else %>
+                        <%= content_tag :span, solution.name %>
+                      <% end %>
+                      <%= content_tag :span, (t("money.yuan_mark1") + item.price_as_money_string), class: "f11 berry_pink" if item.price %>
+                      <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => item.url, :force => true}, :class => "btn btn_buy ml5" if item.url.present? %>
                   <% else %>
                       <%= new_tab_link_to "#{solution.name}", item_path %>
                   <% end %>

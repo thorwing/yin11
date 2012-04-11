@@ -41,35 +41,40 @@ class SilverHornet::TuanHornet
 
   def fetch_all_tuans(website)
     #return the restful WS address
-    uri = URI.parse(config[website])
+    urls = config[website]["urls"]
+    urls.each do |url|
+      p "Dealing " + website + " : " + url
 
-    response = Net::HTTP.get(uri)
-    #p "***response of tuan: " + response
-    xml_doc = Crack::XML.parse(response)
+      uri = URI.parse(url)
 
-    tuan = nil
+      response = Net::HTTP.get(uri)
+      #p "***response of tuan: " + response
+      xml_doc = Crack::XML.parse(response)
 
-    case website
-      when "lashou"
-        url_items = xml_doc["urlset"]["url"]
-        url_items.each do |url_item|
-            tuan = handle_lashou(url_item)
-        end
-      when "meituan"
-        url_items = xml_doc["response"]["deals"]["data"]
-        url_items.each do |url_item|
-          tuan = handle_meituan(url_item)
-        end
-      when "nuomi"
-        url_items = xml_doc["urlset"]["url"]
-        url_items.each do |url_item|
-          tuan = handle_nuomi(url_item)
-        end
-      when "ftuan"
-        url_items = xml_doc["urlset"]["url"]
-        url_items.each do |url_item|
-          tuan = handle_ftuan(url_item)
-        end
+      tuan = nil
+
+      case website
+        when "lashou"
+          url_items = xml_doc["urlset"]["url"]
+          url_items.each do |url_item|
+              tuan = handle_lashou(url_item)
+          end
+        when "meituan"
+          url_items = xml_doc["response"]["deals"]["data"]
+          url_items.each do |url_item|
+            tuan = handle_meituan(url_item)
+          end
+        when "nuomi"
+          url_items = xml_doc["urlset"]["url"]
+          url_items.each do |url_item|
+            tuan = handle_nuomi(url_item)
+          end
+        when "ftuan"
+          url_items = xml_doc["urlset"]["url"]
+          url_items.each do |url_item|
+            tuan = handle_ftuan(url_item)
+          end
+      end
     end
   end
 
