@@ -204,7 +204,7 @@ function link_tuan()
 
 };
 
-function pre_tuan_product(link)
+function pre_link_tuan(link)
 {
     $("div.popup #link_spinner").show();
     return true;
