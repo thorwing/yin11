@@ -9,29 +9,31 @@
                 <%= hidden_field_tag "solution_id", solution.id %>
                 <%= link_to "赞成", like_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
                     :class => "btn btn_positive lighter_touch fl " + (solution.is_fan?(current_user) ? "voted" : ""), title: (solution.is_fan?(current_user) ? "取消赞同" : "赞同")  %><br/>
+                <span style="width:20px"><b class="votes trivial f20 center"><%= "#{solution.votes}" %></b></span>
                 <%= link_to "反对", hate_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
-                    :class => "mt5 btn btn_negative lighter_touch fl " + (solution.is_hater?(current_user) ? "voted" : ""), title: (solution.is_hater?(current_user) ? "取消反对" : "反对")  %>
+                    :class => "btn btn_negative lighter_touch fl " + (solution.is_hater?(current_user) ? "voted" : ""), title: (solution.is_hater?(current_user) ? "取消反对" : "反对")  %>
             <% end %>
         </div>
     <% else %>
         <div class="fl mr10 clearfix">
-            <%= content_tag :span, solution.fan_ids.size, class: "votes_background f15 white", style: "text-align: center;" %>
+            <!--<= content_tag :span, solution.fan_ids.size, class: "votes_background f15 white", style: "text-align: center;" %>-->
+            <span style="width:20px"><b class="votes trivial f20 center"><%= "#{solution.votes}" %></b></span>
         </div>
     <% end %>
 
     <div class="fl clearfix" style="width: 650px">
         <div class="fl">
             <%= link_to solution.author.login_name, solution.author %><br/>
-            <span class="votes trivial"><%= "#{solution.fan_ids.size}" %></span><span class="trivial">赞同</span>
-            <%= content_tag :span, "来自 ", class: "trivial" if solution.fans.size > 0 %>
-            <span class="fans_list">
-                <% solution.get_fans(current_user, 3).each_with_index do |fan, index| %>
-                    <span class="fan <%= fan.id.to_s %>">
-                        <%= link_to fan.login_name, fan, class: 'trivial ml2 mr2' %>
-                    </span>
-                <% end %>
-            </span>
-            <%= content_tag :span, " 等" if solution.fans.size > 3 %>
+            <!--<span class="votes trivial"><= "#{solution.fan_ids.size}" %></span><span class="trivial">赞同</span>-->
+            <!--<= content_tag :span, "来自 ", class: "trivial" if solution.fans.size > 0 %>-->
+            <!--<span class="fans_list">-->
+                <!--< solution.get_fans(current_user, 3).each_with_index do |fan, index| %>-->
+                    <!--<span class="fan <= fan.id.to_s %>">-->
+                        <!--<= link_to fan.login_name, fan, class: 'trivial ml2 mr2' %>-->
+                    <!--</span>-->
+                <!--< end %>-->
+            <!--</span>-->
+            <!--<= content_tag :span, " 等" if solution.fans.size > 3 %>-->
         </div>
 
         <div class="fr">
@@ -53,30 +55,23 @@
                   <span class="trivial"><%= t("object_types.#{item.class.name.downcase}")%>：</span>
 
                   <% if item.is_a?(Product) %>
-                      <%= solution.name %>
+                      <%= new_tab_link_to solution.name, {:controller => "home", :action => "gateway", :url => item.url, :force => true} %>
                       <%= content_tag :span, (t("money.yuan_mark1") + item.price_as_money_string), class: "f11 berry_pink" if item.price %>
-                      <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => item.url, :force => true}, :class => "btn btn_buy ml5" if item.url.present? %>
                   <% elsif item.is_a?(Tuan) %>
                       <% if item.expired? %>
-                        <%= content_tag :span, solution.name, style: "text-decoration: line-through;" %>
-                        <%= content_tag :span, "已结束", class: "trivial" %>
+                          <%= new_tab_link_to solution.name, {:controller => "home", :action => "gateway", :url => item.url, :force => true}, style: "text-decoration: line-through;" %>
+                          <%= content_tag :span, "团购已结束" %>
                       <% else %>
-                        <%= content_tag :span, solution.name %>
+                          <%= new_tab_link_to solution.name, {:controller => "home", :action => "gateway", :url => item.url, :force => true} %>
                       <% end %>
                       <%= content_tag :span, (t("money.yuan_mark1") + item.price_as_money_string), class: "f11 berry_pink" if item.price %>
-                      <%= new_tab_link_to "", {:controller => "home", :action => "gateway", :url => item.url, :force => true}, :class => "btn btn_buy ml5" if item.url.present? %>
                   <% else %>
                       <%= new_tab_link_to "#{solution.name}", item_path %>
                   <% end %>
                 </p>
                 <%= truncate_content(item.instruction, 100) if item.is_a?(Recipe) %>
-                <% unless (item.is_a?(Product) || item.is_a?(Tuan)) %>
-                    <%= new_tab_link_to "[查看#{t("object_types.#{item.class.name.downcase}")}]", item_path %>
-                <% end %>
                 <% if item.is_a?(Recipe) %>
-                  <p class="trivial">
-                    作者： <%= item.author.login_name %>
-                  </p>
+                  <span class="trivial ml5">作者： <%= link_to item.author.login_name, item.author %></span>
                 <% end %>
 
                 <% if solution.content.present? %><blockquote><span class="quoted"><%= truncate_content solution.content, 20 %></span></blockquote><% end %>

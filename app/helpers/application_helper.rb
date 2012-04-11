@@ -252,4 +252,15 @@ module ApplicationHelper
     return @users_browser
   end
 
+  def set_mode(key, modes, new_mode, default)
+    if modes.include? new_mode
+      @current_mode = new_mode
+    #elsif modes.include? session[key]
+    #  @current_mode = session[key]
+    else
+      @current_mode = default
+    end
+    session[key] = @current_mode
+  end
+
 end

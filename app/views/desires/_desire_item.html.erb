@@ -42,7 +42,7 @@
                 <div class="ml10 mr10 f12 clearfix" >
                     <% if solutions_count > 0 %><%= link_to "#{solutions_count}攻略", desire, class: "berry_pink fl"  %><% end %>
                     <% if admirers_count > 0 %><span class="fr trivial ml5"><%= content_tag :span, "", class: "icon icon_heart" %> <%= admirers_count %></span><% end %>
-                    <% if comments_count > 0 %><%= link_to "#{comments_count}评论", desire, class: "trivial fr"  %><% end %>
+                    <% if comments_count > 0 %><%= link_to "#{comments_count}评论", desire_path(desire, mode: "comments"), class: "trivial fr"  %><% end %>
                 </div>
             <% end %>
             <%= render "desires/extra_comments", desire: desire %>

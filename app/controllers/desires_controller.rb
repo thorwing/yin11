@@ -31,6 +31,9 @@ class DesiresController < ApplicationController
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:created_at).limit(9)
     @solutions = @desire.solutions.desc(:votes, :created_at).page(params[:page]).per(ITEMS_PER_PAGE_FEW) #.uniq{|s| s.identity} #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
 
+    @modes = ["solutions", "comments"]
+    set_mode(:personal_mode, @modes, params[:mode], "solutions")
+
     #votes = @solutions.inject([]){|memo, s| memo | s.votes }.sort{|x, y| y.created_at <=> x.created_at}
     #@my_vote = votes.select{|v| v.voter_id == current_user.id.to_s}.first if current_user
 

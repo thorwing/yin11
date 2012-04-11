@@ -1,0 +1,11 @@
+<div class="clearfix">
+  <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
+  <div class="mt10 clearfix">
+      <%= paginate @solutions %>
+      <% @solutions.reject{|s| s.item.nil? }.uniq{|s| s.identity}.each_with_index do |solution, index| %>
+          <% if solution.item && solution.author %>
+              <%= render "solutions/listed_solution", solution: solution, rank: index + 1 %>
+          <% end %>
+      <% end %>
+  </div>
+</div>
