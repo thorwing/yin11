@@ -1,4 +1,6 @@
 var admire_fields  = $('.admire_fields.<%= @desire.id.to_s %>');
+var admirers_list = admire_fields.find(".admirers_list");
+admire_fields.find(".admirers_count").text("<%= @desire.admirers.size.to_s %>");
 
 admire_fields.find(".admiration").html('<a href="#" class="show_admirers_btn"><%= @desire.admirer_ids.size.to_s %>个人被馋到</a>');
 
@@ -7,9 +9,20 @@ if(btn.length > 0) {
     if(btn.hasClass('to_admire')) {
         btn.removeClass('to_admire');
         btn.addClass('admired');
+
+        var new_admirer = '<%= link_to image_tag(current_user.get_avatar(:thumb), width: 24, height: 24), current_user, class: "admirer #{current_user.id.to_s} m2", alt: current_user.login_name, title: current_user.login_name %>';
+        admirers_list.append(new_admirer);
     }
     else{
         btn.removeClass('admired');
         btn.addClass('to_admire');
+
+        admirers_list.find(".admirer.<%= current_user.id.to_s %>").remove();
     }
 }
+
+<% unless @desire.admirer_ids.empty? %>
+    admirers_list.find(".list_hint").show();
+<% else %>
+    admirers_list.find(".list_hint").hide();
+<% end %>

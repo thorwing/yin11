@@ -1,3 +1,6 @@
- <div class="has_collected">
-    <%= link_to t("albums.has_collected", title: album.title), album %>
+<div class="has_collected">
+    <span class="mr2 trivial">已收集到拼盘：</span>
+    <% albums.each do |album| %>
+        <%= new_tab_link_to album.title, {controller: "albums", action: "show", id: album.id, force: true}, class: "mr2" %>
+    <% end %>
 </div>

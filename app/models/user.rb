@@ -248,16 +248,15 @@ class User
     @geometry = {:width => width, :height => height }
   end
 
-  def has_collected?(item)
+  def collected_albums(desire)
+    collected = []
     self.albums.each do |album|
-      if item.is_a? Desire
-        if album.desire_ids.include?(item.id)
-          return true, album
-        end
+      if album.desire_ids.include?(desire.id)
+        collected << album
       end
     end
 
-    return false, nil
+    return collected
   end
 
   private

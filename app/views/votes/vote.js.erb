@@ -40,9 +40,16 @@ vote_fields.find(".votes").text("<%= @item.votes.to_s %>");
     if(link) {link.removeClass("voted")}
 <% end %>
 
-<% if @item.is_a? Solution %>
+<% unless @item.fan_ids.empty? %>
+    fans_list.find(".list_hint").show();
+<% else %>
+    fans_list.find(".list_hint").hide();
+<% end %>
+
+
+//< if @item.is_a? Solution %>
     <!--< new_ratio_value = ((@item.desire.fans_count == 0 ? 0 : (@item.fan_ids.size.to_f / @item.desire.fans_count.to_f)) * 100) %>-->
 //    var new_ratio = '<b class="ratio f16 ml2 <= new_ratio_value >= 50 ? "berry_red" : "" %> <= new_ratio_value < 1 ? "berry_azure" : "" %>"><= new_ratio_value.round(0).to_s + "%" %></b>';
 //    $('.solution_option.<= @item.id.to_s %> .ratio').replaceWith(new_ratio);
 //    $('.listed_item.<= @item.id.to_s %> .votes').replaceWith(@item.fan_ids.size);
-<% end %>
+//< end %>

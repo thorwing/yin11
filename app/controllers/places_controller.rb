@@ -17,9 +17,31 @@ class PlacesController < ApplicationController
     end
   end
 
+  def new
+    @place = Place.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
   def edit
     @place = Place.find(params[:id])
   end
+
+
+  def create
+      @place = Place.new(params[:place])
+      @place.creator_id = current_user.id
+
+      respond_to do |format|
+        if @place.save
+          format.html { redirect_to @place, notice: t("notices.place_created") }
+        else
+          format.html { render action: "new" }
+        end
+      end
+    end
 
   def update
     @place = Place.find(params[:id])

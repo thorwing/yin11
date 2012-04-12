@@ -1,24 +1,22 @@
 <div class="collect_fields">
-    <% collected, album = current_user.has_collected?(item) %>
-    <% if item.album_ids.size > 0 %>
-          <span class="trivial"><%= "#{item.album_ids.size}次被收集" %></span><br/>
+    <% collected_albums = current_user.collected_albums(item) %>
+    <% unless collected_albums.empty? %>
+        <%= render "albums/has_collected", albums: collected_albums %>
     <% end %>
-    <% if collected %>
-        <%= render "albums/has_collected", album: album %>
-    <% else %>
-        <div class="to_collect more_info_container">
-            <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %>
-            <div class="more_info display_none box_shadow" align="left">
-                <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %><span class="ml5 trivial"><%= t("albums.collect_to_album") %></span>
-                <div class="p5 mt10 mb10">
-                    <% current_user.albums.each do |album| %>
-                      <span class="ml5 mr5 display_inline_block f16"><%= link_to album.title, collect_album_path(album, item_type: item.class.name, item_id: item.id.to_s), method: :put, remote: true %></span>
-                    <% end %>
-                </div>
-                <div class="p5">
-                    <%= link_to t("albums.new"), new_album_path, class: "btn btn_new_album m5" %>
-                </div>
+
+    <div class="to_collect more_info_container">
+        <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %>
+        <div class="more_info display_none box_shadow" align="left">
+            <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %><span class="ml5 trivial f15">到拼盘：</span>
+            <div class="p5 mt10 mb10">
+                <% (current_user.albums - collected_albums).each do |album| %>
+                  <span class="ml5 mr5 display_inline_block f16"><%= link_to album.title, collect_album_path(album, item_type: item.class.name, item_id: item.id.to_s), method: :put, remote: true %></span>
+                <% end %>
+            </div>
+            <div class="p5">
+                <%= link_to t("albums.new"), new_album_path, class: "btn btn_new_album m5" %>
             </div>
         </div>
-    <% end %>
+    </div>
+
 </div>

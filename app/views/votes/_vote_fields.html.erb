@@ -1,16 +1,16 @@
 <% if current_user_has_permission?(:normal_user) && !the_author_himself(item) %>
-    <span class="vote_fields <%= item.id.to_s %> clearfix">
-        <%= link_to "", like_votes_path(:item_id => item.id, :item_type => item.class.name), :method => :put, :remote => true,
-                :class => (item.fan_ids.include?(current_user.id) ? "btn btn_vote liked" : "btn btn_vote to_like")  %>
-    </span>
-
-    <% if defined?(show_list) && show_list %>
-        <% if item.fan_ids.size > 0 %>
-            <br/>
-            <%= content_tag :span, "#{item.fan_ids.size}人喜欢：", class: "trivial" %>
-            <% item.fans.each do |fan| %>
-                <%= link_to image_tag(fan.get_avatar(:thumb), width: 24, height: 24), fan, class: "m2", alt: fan.login_name, title: fan.login_name %>
-            <% end %>
+    <div class="vote_fields <%= item.id.to_s %> clearfix">
+        <% if defined?(show_list) && show_list %>
+            <p class="fans_list">
+                <span class="list_hint <%= item.fan_ids.empty? ? "display_none" : "" %>">
+                    <%= content_tag :span, "#{item.fan_ids.size}", class: "votes trivial" %><span class="trivial">人喜欢：</span>
+                </span>
+                <% item.fans.each do |fan| %>
+                    <%= link_to image_tag(fan.get_avatar(:thumb), width: 24, height: 24), fan, class: "fan #{fan.id.to_s} m2", alt: fan.login_name, title: fan.login_name %>
+                <% end %>
+            </p>
         <% end %>
-    <% end %>
+        <%= link_to "", like_votes_path(:item_id => item.id, :item_type => item.class.name), :method => :put, :remote => true,
+            :class => (item.fan_ids.include?(current_user.id) ? "btn btn_vote liked" : "btn btn_vote to_like")  %>
+    </div>
 <% end %>

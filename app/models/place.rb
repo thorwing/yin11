@@ -11,6 +11,7 @@ class Place
   field :latitude, :type => Float
   field :longitude, :type => Float
   field :location, :type => Array, :geo => true, :lat => :latitude, :lng => :longitude
+  field :creator_id
 
   attr_accessible :name, :city, :street, :latitude, :longitude
 

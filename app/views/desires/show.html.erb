@@ -27,6 +27,9 @@
           <p><%= content_tag :span, t_with_colon("tags.tags"), class: "trivial" %><%= render "tags/tags", item: @desire %></p>
       <% end %>
     </div>
+    <div class="mt5">
+        <%= render "shared/jiathis", :titlestr => "我发现了馋人的美食。", :summarystr => "大家快去看看，一起讨论怎么把它吃到！", :picstr => "http://" + request.host_with_port + @desire.get_image_url(:waterfall), :appkeyhash => load_appkey() %>
+    </div>
     <div class="mt10 clearfix">
       <% if current_user_has_permission? :normal_user %>
           <div class="fl">
@@ -36,10 +39,6 @@
             <%= render "admire_fields", :desire => @desire, :show_hint => true, :show_list => true %>
           </div>
       <% end %>
-    </div>
-
-    <div class="mt5">
-        <%= render "shared/jiathis", :titlestr => "我发现了馋人的美食。", :summarystr => "大家快去看看，一起讨论怎么把它吃到！", :picstr => "http://" + request.host_with_port + @desire.get_image_url(:waterfall), :appkeyhash => load_appkey() %>
     </div>
   </div>
 
@@ -59,9 +58,6 @@
       </div>
   </div>
 
-
-
-
 </div>
 
 <div class="grid_3">
@@ -75,7 +71,7 @@
 
   <% unless @desire.albums.empty? %>
       <div class="box_shadow mb10  p5">
-        <h3 class="trivial">被收集到拼盘：</h3>
+        <h3 class="trivial"><%= "被收集到#{@desire.album_ids.size}个拼盘" %></h3>
         <% @desire.albums.limit(3).each do |album| %>
             <%= render "albums/related_album", album: album %>
         <% end %>
