@@ -2,7 +2,7 @@
     <div style="width: 570px;">
         <div class="clearfix">
             <div class="fl">
-              <b class="f15"><%= link_to album.title, album %></b>
+              <h3 class="display_inline f15"><%= link_to album.title, album %></h3>
               <span class="ml5 mr5 trivial">（<%= album.desires.size %>张图片 | <%= album.votes %>人喜欢）</span>
               <span class="ml5"><%= link_to image_tag("grey.gif", "data-original"=> album.author.get_avatar(:thumb, false), width: 22, height: 22, class: 'lazy', alt:  album.author.login_name ), album.author %><%= link_to album.author.login_name, album.author %></span>
             </div>

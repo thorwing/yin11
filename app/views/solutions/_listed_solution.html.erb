@@ -24,16 +24,14 @@
     <div class="fl clearfix" style="width: 650px">
         <div class="fl">
             <%= link_to solution.author.login_name, solution.author %><br/>
-            <!--<span class="votes trivial"><= "#{solution.fan_ids.size}" %></span><span class="trivial">赞同</span>-->
-            <!--<= content_tag :span, "来自 ", class: "trivial" if solution.fans.size > 0 %>-->
-            <!--<span class="fans_list">-->
-                <!--< solution.get_fans(current_user, 3).each_with_index do |fan, index| %>-->
-                    <!--<span class="fan <= fan.id.to_s %>">-->
-                        <!--<= link_to fan.login_name, fan, class: 'trivial ml2 mr2' %>-->
-                    <!--</span>-->
-                <!--< end %>-->
-            <!--</span>-->
-            <!--<= content_tag :span, " 等" if solution.fans.size > 3 %>-->
+            <span class="fans_list">
+                <% solution.fans.each do |fan| %>
+                    <span class="fan <%= fan.id.to_s %>">
+                        <%= link_to fan.login_name, fan, class: 'trivial ml2 mr2' %>
+                    </span>
+                <% end %>
+            </span>
+            <%= content_tag :span, "赞同", class: "trivial" if solution.fans.size > 0 %>
         </div>
 
         <div class="fr">
@@ -71,7 +69,7 @@
                 </p>
                 <%= truncate_content(item.instruction, 100) if item.is_a?(Recipe) %>
                 <% if item.is_a?(Recipe) %>
-                  <span class="trivial ml5">作者： <%= link_to item.author.login_name, item.author %></span>
+                    <span class="trivial ml5">作者： <%= link_to item.author.login_name, item.author %></span><br/>
                 <% end %>
 
                 <% if solution.content.present? %><blockquote><span class="quoted"><%= truncate_content solution.content, 20 %></span></blockquote><% end %>

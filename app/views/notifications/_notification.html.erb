@@ -28,7 +28,11 @@
                 <% elsif target.respond_to? :title %>
                     <%= link_to target.title, target%>
                 <% else %>
-                  <%= link_to "[查看]", target %>
+                  <% if target.is_a?(Desire) && notification.category == "comment" %>
+                    <%= link_to "[查看]", desire_path(target, mode: "comments") %>
+                  <% else %>
+                    <%= link_to "[查看]", target %>
+                  <% end %>
                 <% end %>
             </span>
 

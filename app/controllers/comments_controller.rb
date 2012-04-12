@@ -32,7 +32,12 @@ class CommentsController < ApplicationController
       end
 
       if [Desire.name, Album.name, Recipe.name].include? @item.class.name
-        NotificationsManager.generate_for_comment(@item.author, current_user, @item, @comment)
+        users_to_notify = (@item.comments.map{|c| c.user} + [@item.author]).uniq.reject{|u| u == current_user}
+
+        users_to_notify.each do |user|
+          NotificationsManager.generate_for_comment(user, current_user, @item, @comment)
+        end
+
         NotificationsManager.generate_for_comment(@parent.user, current_user, @item, @comment, true) if @parent
       end
     end

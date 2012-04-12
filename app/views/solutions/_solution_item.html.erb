@@ -22,6 +22,5 @@
             <% end %>
         </p>
         <%= truncate_content(item.instruction, 80) if item.is_a?(Recipe) %>
-        <%= new_tab_link_to "[查看#{t("object_types.#{item.class.name.downcase}")}]", item_path %>
     </div>
 </div>

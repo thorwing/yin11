@@ -638,7 +638,7 @@ zh-CN:
     follow_notification: 关注了我
     solve_notification: 给馋人图片添加了解馋攻略：
     item_notification: %{action_str}我的%{item_type_str}：
-    comment_notifiction: 评论了我的%{item_type_str}：
+    comment_notifiction: 评论了%{item_type_str}：
     reply_comment_notifiction: 回复了我在%{item_type_str}中的评论：
     reward_notification: 我获得了%{count}颗星星
     master_notification: 恭喜，为了感谢您贡献的那么多精彩内容，您被授予了达人称号！ 希望您再接再厉。
