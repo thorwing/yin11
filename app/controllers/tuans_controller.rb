@@ -18,7 +18,7 @@ class TuansController < ApplicationController
   end
 
   def link
-    @valid_url, @tuan = SilverHornet::TuanHornet.new.fetch_tuan(params[:tuan_url])
+    @tuan = SilverHornet::TuanHornet.new.fetch_tuan(params[:tuan_url])
 
     respond_to do |format|
       format.js

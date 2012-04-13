@@ -71,7 +71,7 @@
 
   <% unless @desire.albums.empty? %>
       <div class="box_shadow mb10  p5">
-        <h3 class="trivial"><%= "被收集到#{@desire.album_ids.size}个拼盘" %></h3>
+        <span class="trivial"><%= "被收集到#{@desire.album_ids.size}个拼盘" %></span>
         <% @desire.albums.limit(3).each do |album| %>
             <%= render "albums/related_album", album: album %>
         <% end %>

@@ -1,40 +1,67 @@
-lashou:
-  urls:
-    ["http://open.client.lashou.com/api/detail/city/%E5%8C%97%E4%BA%AC", #beijing
-    "http://open.client.lashou.com/api/detail/city/%E4%B8%8A%E6%B5%B7", #shanghai
-    "http://open.client.lashou.com/api/detail/city/%E5%B9%BF%E5%B7%9E", #guangzhou
-    "http://open.client.lashou.com/api/detail/city/%E6%B7%B1%E5%9C%B3", #shenzheng
-    "http://open.client.lashou.com/api/detail/city/%E6%9D%AD%E5%B7%9E", #hangzhou
-    "http://open.client.lashou.com/api/detail/city/%E6%B5%8E%E5%8D%97", #jinan
-    "http://open.client.lashou.com/api/detail/city/%E5%A4%A9%E6%B4%A5", #tianjing
-    "http://open.client.lashou.com/api/detail/city/%E9%87%8D%E5%BA%86", #chongqing
-    "http://open.client.lashou.com/api/detail/city/%E9%9D%92%E5%B2%9B", #qingdao
-    "http://open.client.lashou.com/api/detail/city/%E5%A4%A7%E8%BF%9E", #dalian
-    "http://open.client.lashou.com/api/detail/city/%E5%AE%81%E6%B3%A2", #ningbo
-    "http://open.client.lashou.com/api/detail/city/%E5%8E%A6%E9%97%A8", #xiamen
-    "http://open.client.lashou.com/api/detail/city/%E6%88%90%E9%83%BD" #chengdu
-    ]
+cities:
+  beijing: ["bejing", "bj"]
+  shanghai: ["shanghai", "sh"]
+  guangzhou: ["guangzhou", "gz"]
+  shenzheng: ["shenzheng", "sz"]
+  hangzhou: ["hangzhou", "hz"]
+  jinan: ["jinan", "jn"]
+  tianjing: ["tianjing", "tj"]
+  chongqing: ["chongqing", "cq"]
+  qingdao: ["qingdao", "qd"]
+  dalian: ["dalian", "dl"]
+  ningbo: ["ningbo", "nb"]
+  xiamen: ["xiamen", "xm"]
+  chengdu: ["chengdu", "cd"]
 
-meituan:
-  urls:
-    ["http://www.meituan.com/api/v2/shanghai/deals",
-    "http://www.meituan.com/api/v2/beijing/deals",
-    "http://www.meituan.com/api/v2/guangzhou/deals",
-    "http://www.meituan.com/api/v2/shenzhen/deals",
-    "http://www.meituan.com/api/v2/hangzhou/deals",
-    "http://www.meituan.com/api/v2/jinan/deals",
-    "http://www.meituan.com/api/v2/tianjin/deals",
-    "http://www.meituan.com/api/v2/chongqing/deals",
-    "http://www.meituan.com/api/v2/qingdao/deals",
-    "http://www.meituan.com/api/v2/dalian/deals",
-    "http://www.meituan.com/api/v2/ningbo/deals",
-    "http://www.meituan.com/api/v2/xiamen/deals",
-    "http://www.meituan.com/api/v2/chengdu/deals"]
+websites:
+  lashou:
+    urls:
+      beijing: "http://open.client.lashou.com/api/detail/city/%E5%8C%97%E4%BA%AC"
+      shanghai: "http://open.client.lashou.com/api/detail/city/%E4%B8%8A%E6%B5%B7"
+      guangzhou: "http://open.client.lashou.com/api/detail/city/%E5%B9%BF%E5%B7%9E"
+      shenzheng: "http://open.client.lashou.com/api/detail/city/%E6%B7%B1%E5%9C%B3"
+      hangzhou: "http://open.client.lashou.com/api/detail/city/%E6%9D%AD%E5%B7%9E"
+      jinan: "http://open.client.lashou.com/api/detail/city/%E6%B5%8E%E5%8D%97"
+      tianjing: "http://open.client.lashou.com/api/detail/city/%E5%A4%A9%E6%B4%A5"
+      chongqing: "http://open.client.lashou.com/api/detail/city/%E9%87%8D%E5%BA%86"
+      qingdao: "http://open.client.lashou.com/api/detail/city/%E9%9D%92%E5%B2%9B"
+      dalian: "http://open.client.lashou.com/api/detail/city/%E5%A4%A7%E8%BF%9E"
+      ningbo: "http://open.client.lashou.com/api/detail/city/%E5%AE%81%E6%B3%A2"
+      xiamen: "http://open.client.lashou.com/api/detail/city/%E5%8E%A6%E9%97%A8"
+      chengdu: "http://open.client.lashou.com/api/detail/city/%E6%88%90%E9%83%BD"
 
-nuomi:
-  urls:
-    ["http://www.nuomi.com/api/dailydeal?version=v1&city=beijing&city=chongqing&city=chengdu&city=dalian&city=guangzhou&city=hangzhou&city=jinan&city=ningbo&city=qingdao&city=shanghai&city=shenzhen&city=tianjin&city=xiamen"]
+  meituan:
+    urls:
+      beijing: "http://www.meituan.com/api/v2/beijing/deals"
+      shanghai: "http://www.meituan.com/api/v2/shanghai/deals"
+      guangzhou: "http://www.meituan.com/api/v2/guangzhou/deals"
+      shenzheng: "http://www.meituan.com/api/v2/shenzhen/deals"
+      hangzhou: "http://www.meituan.com/api/v2/hangzhou/deals"
+      jinan: "http://www.meituan.com/api/v2/jinan/deals"
+      tianjing: "http://www.meituan.com/api/v2/tianjing/deals"
+      chongqing: "http://www.meituan.com/api/v2/chongqing/deals"
+      qingdao: "http://www.meituan.com/api/v2/qingdao/deals"
+      dalian: "http://www.meituan.com/api/v2/dalian/deals"
+      ningbo: "http://www.meituan.com/api/v2/ningbo/deals"
+      xiamen: "http://www.meituan.com/api/v2/xiamen/deals"
+      chengdu: "http://www.meituan.com/api/v2/chengdu/deals"
 
-ftuan:
-  urls:
-    ["http://newapi.ftuan.com/api/v2.aspx"]
+  nuomi:
+    urls:
+      beijing: "http://www.nuomi.com/api/dailydeal?version=v1&city=beijing"
+      shanghai: "http://www.nuomi.com/api/dailydeal?version=v1&city=shanghai"
+      guangzhou: "http://www.nuomi.com/api/dailydeal?version=v1&city=guangzhou"
+      shenzheng: "http://www.nuomi.com/api/dailydeal?version=v1&city=shenzheng"
+      hangzhou: "http://www.nuomi.com/api/dailydeal?version=v1&city=hangzhou"
+      jinan: "http://www.nuomi.com/api/dailydeal?version=v1&city=jinan"
+      tianjing: "http://www.nuomi.com/api/dailydeal?version=v1&city=tianjing"
+      chongqing: "http://www.nuomi.com/api/dailydeal?version=v1&city=chongqing"
+      qingdao: "http://www.nuomi.com/api/dailydeal?version=v1&city=qingdao"
+      dalian: "http://www.nuomi.com/api/dailydeal?version=v1&city=dalian"
+      ningbo: "http://www.nuomi.com/api/dailydeal?version=v1&city=ningbo"
+      xiamen: "http://www.nuomi.com/api/dailydeal?version=v1&city=xiamen"
+      chengdu: "http://www.nuomi.com/api/dailydeal?version=v1&city=chengdu"
+
+#  ftuan:
+#    urls:
+#      ["http://newapi.ftuan.com/api/v2.aspx"]

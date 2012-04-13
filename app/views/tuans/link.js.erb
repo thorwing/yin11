@@ -1,7 +1,6 @@
 $("#facebox #link_spinner").hide();
 
-<% if @valid_url %>
-  <% if @tuan %>
+<% if @tuan %>
     $(document).trigger('close.facebox');
 
     if(document.getElementById("tuan_" + "<%= @tuan.id.to_s %>")) {
@@ -12,9 +11,7 @@ $("#facebox #link_spinner").hide();
         $('#image_container').html(new_tuan);
         $('#tuan_id').val("<%= @tuan.id.to_s %>");
     }
-  <% else %>
-    alert("抱歉，在获取这个团购的时候出了点错误，要不换个团购试试？");
-  <% end %>
 <% else %>
-  alert("恩...我们在您输入的地址找不到团购，请再检查下？");
+    alert("抱歉，在获取这个团购的时候出了点错误，要不换个团购试试？");
 <% end %>
+

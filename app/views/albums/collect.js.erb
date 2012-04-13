@@ -1,4 +1,12 @@
-$(".collect_fields .to_collect").remove();
-var child = '<%= escape_javascript(render("albums/has_collected", :album => @album)) %>';
-$(".collect_fields").append(child);
+var collect_fields = $('.collect_fields');
+collect_fields.find(".to_collect .album.<%= @album.id.to_s %>").remove();
 
+<% unless @item.albums.empty? %>
+    collect_fields.find(".collected_hint").show();
+<% else %>
+    collect_fields.find(".collected_hint").hide();
+<% end %>
+
+var albums_list = collect_fields.find(".albums_list");
+var new_album = '<%= new_tab_link_to @album.title, {controller: "albums", action: "show", id: @album.id, force: true}, class: "mr2" %>';
+albums_list.append(new_album);

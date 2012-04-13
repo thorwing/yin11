@@ -1,8 +1,15 @@
 <div class="collect_fields">
     <% collected_albums = current_user.collected_albums(item) %>
-    <% unless collected_albums.empty? %>
-        <%= render "albums/has_collected", albums: collected_albums %>
-    <% end %>
+
+    <p class="albums_list">
+      <span class="collected_hint <%= item.albums.empty? ? "display_none" : "" %>">
+          <%= content_tag :span, "已收集到拼盘：", class: "mr2 trivial" %>
+      </span>
+
+      <% collected_albums.each do |album| %>
+          <%= new_tab_link_to album.title, {controller: "albums", action: "show", id: album.id, force: true}, class: "mr2" %>
+      <% end %>
+    </p>
 
     <div class="to_collect more_info_container">
         <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %>
@@ -10,7 +17,7 @@
             <%= link_to t("albums.collect"), "", class: "btn btn_collect", onclick: "return false;" %><span class="ml5 trivial f15">到拼盘：</span>
             <div class="p5 mt10 mb10">
                 <% (current_user.albums - collected_albums).each do |album| %>
-                  <span class="ml5 mr5 display_inline_block f16"><%= link_to album.title, collect_album_path(album, item_type: item.class.name, item_id: item.id.to_s), method: :put, remote: true %></span>
+                  <span class="ml5 mr5 display_inline_block f16 album <%= album.id.to_s %>"><%= link_to album.title, collect_album_path(album, item_type: item.class.name, item_id: item.id.to_s), method: :put, remote: true %></span>
                 <% end %>
             </div>
             <div class="p5">

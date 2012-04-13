@@ -11,13 +11,11 @@ class Desire
   field :history_admirer_ids, type: Array, default: []
   field :solved, type: Boolean, default: false
   field :solutions_count, type: Integer, default: 0
-  field :via_product, type: Boolean, default: false
-  field :via_recipe, type: Boolean, default: false
 
   search_index(fields: [:content, :tags],
                 attributes: [:created_at])
 
-  attr_accessible :content, :via_product, :via_recipe
+  attr_accessible :content
 
   #relationships
   has_many :images

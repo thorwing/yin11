@@ -54,7 +54,7 @@ class DesiresController < ApplicationController
   # GET /desires/new
   # GET /desires/new.json
   def new
-    @desire = Desire.new(via_product: true)
+    @desire = Desire.new
     if params[:place_id].present?
       @place = Place.find(params[:place_id])
     end
@@ -149,7 +149,8 @@ class DesiresController < ApplicationController
 
   def afar
     @desire = Desire.new
-    valid_url, @product = SilverHornet::TopHornet.new.fetch_product(params[:url])
+    dummy, @product = SilverHornet::TopHornet.new.fetch_product(params[:url])
+    @tuan = SilverHornet::TuanHornet.new.fetch_tuan(params[:url])
 
     respond_to do |format|
       format.html {render "afar", :layout => "dialog"}
