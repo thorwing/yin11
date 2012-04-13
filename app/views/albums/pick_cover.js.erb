@@ -1,12 +1,13 @@
 <% if @new_cover_url %>
-    jQuery.facebox( '<span><%= t("notices.album_cover_picked") %></span>');
+//    jQuery.facebox( '<span><= t("notices.album_cover_picked") %></span>');
     $("img.cover_image").attr("src","<%= @new_cover_url %>");
+    alert("成功更改了拼盘封面");
 
-    setTimeout("after_delay()", parseInt("<%= REVIEW_CREATED_DELAY %>"));
-
-    function after_delay()
-    {
-        jQuery(document).trigger('close.facebox');
-    }
+//    setTimeout("after_delay()", parseInt("<= REVIEW_CREATED_DELAY %>"));
+//
+//    function after_delay()
+//    {
+//        jQuery(document).trigger('close.facebox');
+//    }
 <% end %>
 

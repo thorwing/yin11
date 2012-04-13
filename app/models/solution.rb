@@ -47,7 +47,7 @@ class Solution
   private
 
   def sync_desire
-    if self.desire
+    if self.new_record? && self.desire
       self.desire.save
     end
   end

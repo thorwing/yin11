@@ -1,4 +1,24 @@
 class SolutionManager
+
+  def self.generate_product_solution(desire, product_id, user = nil)
+    if product_id.present?
+      desire.solutions.create do |s|
+        s.product_id = product_id
+        s.author = user if user.present?
+      end
+    end
+  end
+
+  def self.generate_tuan_solution(desire, tuan_id, user = nil)
+    if tuan_id.present?
+      desire.solutions.create do |s|
+        s.tuan_id = tuan_id
+        s.author = user if user.present?
+      end
+    end
+  end
+
+
   def self.generate_solutions(desire, product_id = nil, user = nil)
     if desire.solutions.size <= 9
       number = 9

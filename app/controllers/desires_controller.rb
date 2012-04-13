@@ -82,7 +82,10 @@ class DesiresController < ApplicationController
     ImagesHelper.process_uploaded_images(@desire, params[:images], params[:remote_image_url])
 
     saved = @desire.save
-    SolutionManager.generate_solutions(@desire, params[:product_id], current_user) if saved
+    if saved
+      SolutionManager.generate_product_solution(@desire, params[:product_id], current_user) if params[:product_id].present?
+      SolutionManager.generate_tuan_solution(@desire, params[:tuan_id], current_user) if params[:tuan_id].present?
+    end
 
     respond_to do |format|
       if saved

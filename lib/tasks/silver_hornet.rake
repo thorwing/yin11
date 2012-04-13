@@ -17,12 +17,20 @@ namespace :silver_hornet do
 
   desc "fetch tuans"
   task :fetch_tuans => :environment do
-    ["meituan", "lashou", "nuomi"].each do |website| # "ftuan"
-      SilverHornet::TuanHornet.new.fetch_all_tuans(website)
+    config = lambda do
+        filename = "#{Rails.root}/config/silver_hornet/tuan.yml"
+        file = File.open(filename)
+        yaml = YAML.load(file)
+        return yaml
+    end.call
+
+    config["websites"].each do |website, values|
+      values["urls"].each do |city, url|
+        SilverHornet::TuanHornet.new.fetch_all_tuans(website, city)
+      end
     end
 
     p "expired: " + Tuan.where(:end_time.lt => DateTime.now).size.to_s
-
   end
 
   desc "fetch products from taobao mall"

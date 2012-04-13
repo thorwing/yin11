@@ -5,7 +5,7 @@ cities:
   shenzheng: ["shenzheng", "sz"]
   hangzhou: ["hangzhou", "hz"]
   jinan: ["jinan", "jn"]
-  tianjing: ["tianjing", "tj"]
+  tianjin: ["tianjin", "tj"]
   chongqing: ["chongqing", "cq"]
   qingdao: ["qingdao", "qd"]
   dalian: ["dalian", "dl"]
@@ -38,7 +38,7 @@ websites:
       shenzheng: "http://www.meituan.com/api/v2/shenzhen/deals"
       hangzhou: "http://www.meituan.com/api/v2/hangzhou/deals"
       jinan: "http://www.meituan.com/api/v2/jinan/deals"
-      tianjing: "http://www.meituan.com/api/v2/tianjing/deals"
+      tianjin: "http://www.meituan.com/api/v2/tianjin/deals"
       chongqing: "http://www.meituan.com/api/v2/chongqing/deals"
       qingdao: "http://www.meituan.com/api/v2/qingdao/deals"
       dalian: "http://www.meituan.com/api/v2/dalian/deals"
@@ -54,7 +54,7 @@ websites:
       shenzheng: "http://www.nuomi.com/api/dailydeal?version=v1&city=shenzheng"
       hangzhou: "http://www.nuomi.com/api/dailydeal?version=v1&city=hangzhou"
       jinan: "http://www.nuomi.com/api/dailydeal?version=v1&city=jinan"
-      tianjing: "http://www.nuomi.com/api/dailydeal?version=v1&city=tianjing"
+      tianjin: "http://www.nuomi.com/api/dailydeal?version=v1&city=tianjin"
       chongqing: "http://www.nuomi.com/api/dailydeal?version=v1&city=chongqing"
       qingdao: "http://www.nuomi.com/api/dailydeal?version=v1&city=qingdao"
       dalian: "http://www.nuomi.com/api/dailydeal?version=v1&city=dalian"

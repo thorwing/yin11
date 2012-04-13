@@ -182,7 +182,7 @@ var close_img_url = base_url + '/assets/close.png';
     function transfer_image(img_src, img_alt) {
         var url = afar_url;
         url += "?img=" + encodeURIComponent(img_src) + "&url=" + encodeURIComponent((img_src == current_url ? myDocument.referrer || current_url : current_url).replace(/&ref=[^&]+/ig, "").replace(/&ali_trackid=[^&]+/ig, "")) + "&alt=" + encodeURI(extract(img_alt, 60)) + "&title=" + encodeURI(extract(myDocument.title, 80));
-        myWindow.open(url, "chixinbugai" + new Date().getTime(), "status=no,resizable=no,scrollbars=no,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=830,height=530,left=60,top=80")
+        myWindow.open(url, "chixinbugai" + new Date().getTime(), "status=no,resizable=no,scrollbars=no,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=850,height=550,left=60,top=80")
     }
     function check() {
         var regs = [

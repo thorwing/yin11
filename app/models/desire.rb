@@ -37,21 +37,19 @@ class Desire
   #end
 
   def valid_solutions
-    @valid_solutions ||= self.solutions.reject{|s| s.item.nil? }.uniq{|s| s.identity}
+    self.solutions.reject{|s| s.item.nil? }.uniq{|s| s.identity}
   end
 
-  def voter_ids
-    @voter_ids ||= valid_solutions.inject([]){|memo, s| memo | s.voter_ids }
-  end
+  #def fans_count
+  #  @fans_count ||= valid_solutions.inject(0){|sum, s| sum + s.fan_ids.size }
+  #end
 
-  def fans_count
-    @fans_count ||= valid_solutions.inject(0){|sum, s| sum + s.fan_ids.size }
-  end
+  #def best_solution
+  #  @best_solution ||= valid_solutions.max_by {|s| s.votes.size}
+  #  @best_solution
+  #end
 
-  def best_solution
-    @best_solution ||= valid_solutions.max_by {|s| s.votes.size}
-    @best_solution
-  end
+  private
 
   def check_solutions
     total = 0

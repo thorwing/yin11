@@ -51,14 +51,14 @@ class SilverHornet::TuanHornet
   end
 
   def fetch_all_tuans(website, city)
-    #p "Dealing " + website + " city " +  city
+    p "Dealing " + website + " city " +  city
 
     #return the restful WS address
     url = config["websites"][website]["urls"][city]
     uri = URI.parse(url)
 
     response = Net::HTTP.get(uri)
-    #p "***response of tuan: " + response
+    #p "***response of " + website + " city " +  city + ": " + response
     xml_doc = Crack::XML.parse(response)
 
     case website
