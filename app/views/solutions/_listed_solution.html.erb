@@ -9,7 +9,7 @@
                 <%= hidden_field_tag "solution_id", solution.id %>
                 <%= link_to "赞成", like_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
                     :class => "btn btn_positive lighter_touch fl " + (solution.is_fan?(current_user) ? "voted" : ""), title: (solution.is_fan?(current_user) ? "取消赞同" : "赞同")  %><br/>
-                <span style="width:20px"><b class="votes trivial f20 center"><%= "#{solution.votes}" %></b></span>
+                <span style="width:20px"><b class="votes trivial f20 center"><%= "#{solution.score}" %></b></span>
                 <%= link_to "反对", hate_votes_path(:item_id => solution.id, :item_type => solution.class.name), :method => :put, :remote => true,
                     :class => "btn btn_negative lighter_touch fl " + (solution.is_hater?(current_user) ? "voted" : ""), title: (solution.is_hater?(current_user) ? "取消反对" : "反对")  %>
             <% end %>
@@ -17,7 +17,7 @@
     <% else %>
         <div class="fl mr10 clearfix">
             <!--<= content_tag :span, solution.fan_ids.size, class: "votes_background f15 white", style: "text-align: center;" %>-->
-            <span style="width:20px"><b class="votes trivial f20 center"><%= "#{solution.votes}" %></b></span>
+            <span style="width:20px"><b class="votes trivial f20 center"><%= solution.score %></b></span>
         </div>
     <% end %>
 
@@ -75,7 +75,7 @@
                 <% if solution.content.present? %><blockquote><span class="quoted"><%= truncate_content solution.content, 20 %></span></blockquote><% end %>
             </div>
             <!--<div class="fr clearfix">-->
-              <!--< if rank <=3 && solution.votes > 0 %>-->
+              <!--< if rank <=3 && solution.score > 0 %>-->
                 <!--<span class="f18 fr trivial"><= rank %></span><div class="clearfix"></div>-->
               <!--< end %>-->
             <!--</div>-->

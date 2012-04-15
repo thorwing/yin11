@@ -45,3 +45,7 @@ set :output, "/var/www/yin11/current/log/cron_log.log"
 every 1.hours do
   command "cd /var/www/yin11/current && /usr/local/coreseek/bin/indexer -c /var/www/yin11/current/config/production.sphinx.conf --all --rotate"
 end
+
+every 1.days do
+  rake "yin11:daily_update"
+end

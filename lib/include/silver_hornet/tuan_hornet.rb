@@ -51,37 +51,41 @@ class SilverHornet::TuanHornet
   end
 
   def fetch_all_tuans(website, city)
-    p "Dealing " + website + " city " +  city
+    begin
+      p "Dealing " + website + " city " +  city
 
-    #return the restful WS address
-    url = config["websites"][website]["urls"][city]
-    uri = URI.parse(url)
+      #return the restful WS address
+      url = config["websites"][website]["urls"][city]
+      uri = URI.parse(url)
 
-    response = Net::HTTP.get(uri)
-    #p "***response of " + website + " city " +  city + ": " + response
-    xml_doc = Crack::XML.parse(response)
+      response = Net::HTTP.get(uri)
+      #p "***response of " + website + " city " +  city + ": " + response
+      xml_doc = Crack::XML.parse(response)
 
-    case website
-      when "lashou"
-        url_items = xml_doc["urlset"]["url"]
-        url_items.each do |url_item|
-          handle_lashou(url_item)
-        end
-      when "meituan"
-        url_items = xml_doc["response"]["deals"]["data"]
-        url_items.each do |url_item|
-          handle_meituan(url_item)
-        end
-      when "nuomi"
-        url_items = xml_doc["urlset"]["url"]
-        url_items.each do |url_item|
-          handle_nuomi(url_item)
-        end
-      #when "ftuan"
-      #  url_items = xml_doc["urlset"]["url"]
-      #  url_items.each do |url_item|
-      #    handle_ftuan(url_item)
-      #  end
+      case website
+        when "lashou"
+          url_items = xml_doc["urlset"]["url"]
+          url_items.each do |url_item|
+            handle_lashou(url_item)
+          end
+        when "meituan"
+          url_items = xml_doc["response"]["deals"]["data"]
+          url_items.each do |url_item|
+            handle_meituan(url_item)
+          end
+        when "nuomi"
+          url_items = xml_doc["urlset"]["url"]
+          url_items.each do |url_item|
+            handle_nuomi(url_item)
+          end
+        #when "ftuan"
+        #  url_items = xml_doc["urlset"]["url"]
+        #  url_items.each do |url_item|
+        #    handle_ftuan(url_item)
+        #  end
+      end
+    rescue StandardError => ex_msg
+      p ex_msg
     end
   end
 

@@ -2,6 +2,14 @@
 #
 
 namespace :yin11 do
+  desc "daily update"
+  task :daily_update => :environment do
+    p "start daily updating"
+    Rake::Task['silver_hornet:fetch_tuans'].invoke
+    Rake::Task['yin11:update_desires'].invoke
+    p "finish daily updating"
+  end
+
   def handle_record(record)
     if record.is_a?(Hash)
       hash = {}
@@ -109,6 +117,13 @@ namespace :yin11 do
     User.all.each do |user|
       user.left_score = user.score
       user.save
+    end
+  end
+
+  desc "update solutions"
+  task :update_solutions => :environment do
+    Solution.all.each do |solution|
+      solution.save
     end
   end
 

@@ -105,6 +105,9 @@ class RecipesController < ApplicationController
         1.upto(3) {
           @recipe.ingredients.build {|i| i.is_major_ingredient = true }
           @recipe.ingredients.build {|i| i.is_major_ingredient = false }
+        }
+
+        1.upto(4) {
           @recipe.steps.build
         }
       end

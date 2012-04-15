@@ -1,4 +1,5 @@
-<div class="listed_item listed_info pt5 pb5 commentable clearfix">
+<hr/>
+<div class="listed_item pt5 pb5 commentable clearfix">
     <div class="user_info_area">
         <%= link_to image_tag("grey.gif", class: 'lazy', "data-original"=> recipe.author.get_avatar(:thumb,false), width: "48", height: "48", alt: recipe.author.login_name), recipe.author %>
         <%= link_to recipe.author.login_name, recipe.author, class: "trivial" %>
@@ -18,7 +19,7 @@
             </div>
             <div class="fr clearfix">
                 <span class="trivial fr"><%= recipe.created_at.strftime("%y-%m-%d %H:%M") %></span><br/>
-                <span class="trivial fr"><%= "#{recipe.votes}人喜欢" %></span>
+                <span class="trivial fr"><%= "#{recipe.score}人喜欢" %></span>
             </div>
         </div>
         <div class="fr">
@@ -31,3 +32,4 @@
         </div>
     </div>
 </div>
+

@@ -11,6 +11,10 @@ class Desire
   field :history_admirer_ids, type: Array, default: []
   field :solved, type: Boolean, default: false
   field :solutions_count, type: Integer, default: 0
+  field :recipes_count, type: Integer, default: 0
+  field :products_count, type: Integer, default: 0
+  field :tuans_count, type: Integer, default: 0
+  field :places_count, type: Integer, default: 0
 
   search_index(fields: [:content, :tags],
                 attributes: [:created_at])
@@ -52,17 +56,41 @@ class Desire
   private
 
   def check_solutions
-    total = 0
-    max = 0
-    valid_solutions.each do |s|
-      votes = s.fan_ids.size
-      total += votes
-      max = votes if votes > max
-    end
-    self.solved = total >= DESIRE_SOLVED_BAR_COUNT && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
-    self.solutions_count = valid_solutions.size
+    #total = 0
+    #max = 0
+    count = 0
+    recipes = 0
+    products = 0
+    tuans = 0
+    places = 0
 
-    #self.save if self.changed?
+    valid_solutions.each do |s|
+      #total += s.score
+      #max = s.score if votes > max
+
+      case s.item.class.name
+        when "Recipe"
+          recipes += 1
+          count += 1
+        when "Product"
+          products += 1
+          count += 1
+        when "Tuan"
+          unless s.item.expired?
+            count += 1
+            tuans += 1
+          end
+        when "Place"
+          places += 1
+          count += 1
+      end
+    end
+    #self.solved = total >= DESIRE_SOLVED_BAR_COUNT && ((max.to_f / total.to_f) >= DESIRE_SOLVED_BAR_RATIO)
+    self.solutions_count = count
+    self.recipes_count = recipes
+    self.products_count = products
+    self.tuans_count = tuans
+    self.places_count = places
   end
 
 end

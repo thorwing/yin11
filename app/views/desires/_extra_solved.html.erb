@@ -17,7 +17,7 @@
         <% end %>
     </div>
     <div class="ml10 mr10">
-        <% top3_votes_with_content = desire.best_solution.votes.excludes(content: "").desc(:created_at).limit(3) %>
+        <% top3_votes_with_content = desire.best_solution.score.excludes(content: "").desc(:created_at).limit(3) %>
         <% top3_votes_with_content.each do |vote| %>
             <div class="listed_info pt5 pb5">
                 <%= link_to image_tag(vote.voter.get_avatar(:thumb, false), width: 22, height: 22), vote.voter %>

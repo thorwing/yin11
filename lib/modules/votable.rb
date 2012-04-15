@@ -1,9 +1,9 @@
 module Votable
   def self.included(base)
     base.class_eval do
-      before_save :sync_votes
+      before_save :sync_score
 
-      field :votes, type: Integer, default: 0
+      field :score, type: Integer, default: 0
       field :fan_ids, type: Array, default: []
       field :hater_ids, type: Array, default: []
       field :history_fan_ids, type: Array, default: []
@@ -43,10 +43,10 @@ module Votable
   end
 
   module InstanceMethods
-    def sync_votes
+    def sync_score
       self.fan_ids ||= []
       self.hater_ids ||= []
-      self.votes = self.fan_ids.size - self.hater_ids.size
+      self.score = self.fan_ids.size - self.hater_ids.size
     end
   end
 end

@@ -1,6 +1,6 @@
 <div class="masonary_item">
     <div class="inner_frame">
-        <%= content_tag :span, "", class: "icon jiechan_ribbon" if desire.solved %>
+        <%= content_tag :span, "", class: "icon jiechan_ribbon" if desire.solutions_count > 0 %>
         <div class="pt10 pl10 pr10 pb5">
             <div class="hint_box">
                 <% pic_url = desire.get_image_url(:waterfall) %>
@@ -33,15 +33,20 @@
         </div>
 
         <div class="b_azure_gray">
-            <% mode = "comments" unless (defined?(mode) && mode == "solved" )  %>
             <% admirers_count = desire.admirer_ids.size %>
             <% solutions_count = desire.solutions_count %>
             <% comments_count = desire.comments.size %>
                 <% if admirers_count > 0 || solutions_count > 0 || comments_count > 0 %>
-                <div class="ml10 mr10 f12 clearfix" >
-                    <% if solutions_count > 0 %><%= link_to "#{solutions_count}攻略", desire, class: "berry_pink fl"  %><% end %>
+                <div class="pt5 ml10 mr10 f12 clearfix" >
+                    <% if solutions_count > 0 %>
+                        <%= content_tag :span, "#{solutions_count}攻略：", class: "berry_red fl mr5"  %>
+                        <%= content_tag :span, "商品", class: "icon icon_product mr2", title: "#{desire.products_count}商品" if desire.products_count > 0 %>
+                        <%= content_tag :span, "菜谱", class: "icon icon_recipe mr2", title: "#{desire.recipes_count}菜谱"  if desire.recipes_count > 0 %>
+                        <%= content_tag :span, "团购", class: "icon icon_tuan mr2", title: "#{desire.tuans_count}团购" if desire.tuans_count > 0 %>
+                        <%= content_tag :span, "餐馆", class: "icon icon_place mr2", title: "#{desire.places_count}餐馆" if desire.places_count > 0 %>
+                    <% end %>
                     <% if admirers_count > 0 %><span class="fr trivial ml5"><%= content_tag :span, "", class: "icon icon_heart" %> <%= admirers_count %></span><% end %>
-                    <% if comments_count > 0 %><%= link_to "#{comments_count}评论", desire_path(desire, mode: "comments"), class: "trivial fr"  %><% end %>
+                    <% if comments_count > 0 %><%= link_to "#{comments_count}评论", desire_path(desire, mode: "comments"), class: "fr"  %><% end %>
                 </div>
             <% end %>
             <%= render "desires/extra_comments", desire: desire %>

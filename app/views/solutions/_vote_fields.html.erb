@@ -1,6 +1,6 @@
 <div class="vote_fields clearfix <%= solution.id.to_s %>">
     <!--<div class="fr"><span class="votes f15"><= "#{solution.fan_ids.size}" %></span>赞同</div><div class="clearfix"></div>-->
-    <!--< if solution.votes > 0 %><span class="trivial fr"><= "来自 " + solution.fans.limit(3).map(&:login_name).join(', ') + " 等" %></span><div class="clearfix"></div>< end %>-->
+    <!--< if solution.score > 0 %><span class="trivial fr"><= "来自 " + solution.fans.limit(3).map(&:login_name).join(', ') + " 等" %></span><div class="clearfix"></div>< end %>-->
     <!--<div class="fans_list">-->
         <!--< solution.fans.limit(3).each do |fan| %>-->
             <!--<span class="fan <= fan.id.to_s %>"><= link_to image_tag(fan.get_avatar(:thumb, false ), width: 24, height: 24, title: fan.login_name), fan %></span>-->

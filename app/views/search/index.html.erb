@@ -8,19 +8,26 @@
         <span class="berry_red"><%= t("search.not_found") %></span>
     <% else %>
         <% @users.each do |user| %>
-            <%= render "users/user", :user => user %>
+            <div class="fl box_shadow p5" style="width: 720px;">
+                <h3 class="berry_red">用户</h3>
+                <div class="fl clearfix mt10 mr10">
+                    <%= link_to image_tag("grey.gif", class: "lazy", "data-original" => user.get_avatar(:thumb, false), width: 48, height: 48, title: user.login_name, alt: user.login_name), user %><br/>
+                </div>
+            </div>
         <% end %>
 
         <% unless @recipes.empty? %>
-            <h3 class="trivial"><%= t("search.kinds.recipe") %></h3>
-            <% @recipes.each do |recipe| %>
-              <%= render "shared/search_result", :item => recipe %>
-            <% end %>
+            <div class="fl box_shadow p5" style="width: 720px;">
+                <h3 class="berry_red"><%= t("search.kinds.recipe") %></h3>
+                <% @recipes.each do |recipe| %>
+                  <%= render "recipes/listed_recipe", :recipe => recipe %>
+                <% end %>
+            </div>
         <% end %>
 
         <% unless @desires.empty? %>
-            <div class="fl" style="width: 720px;">
-                <h3 class="trivial">馋人图片</h3>
+            <div class="fl box_shadow p5 mt20" style="width: 720px;">
+                <h3 class="berry_red">馋人图片</h3>
                 <% @desires.each do |desire| %>
                     <%= render "desires/listed_desire", :desire => desire %>
                 <% end %>
