@@ -24,24 +24,24 @@
 #SHELL=/home/ray/.rvm/bin/rvm-shell
 #RAILS_ENV=development
 
-set :output, "/home/ray/Development/Sites/yin11/log/cron_log.log"
-
-every 1.minutes do
-  #command "source /home/ray/.rvm/environments/ruby-1.9.2-p290"
-  #rake "yin11:clean_images"
-  command "cd /home/ray/Development/Sites/yin11 && /usr/local/coreseek/bin/indexer -c /home/ray/Development/Sites/yin11/config/development.sphinx.conf --all --rotate"
-end
+#set :output, "/home/ray/Development/Sites/yin11/log/cron_log.log"
+#
+#every 1.minutes do
+#  #command "source /home/ray/.rvm/environments/ruby-1.9.2-p290"
+#  #rake "yin11:clean_images"
+#  command "cd /home/ray/Development/Sites/yin11 && /usr/local/coreseek/bin/indexer -c /home/ray/Development/Sites/yin11/config/development.sphinx.conf --all --rotate"
+#end
 
 
 #***Production***
-# PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/rvm/bin:/usr/local/rvm/gems/ruby-1.9.2-p290/bin
-# SHELL=/user/local/rvm/bin/rvm-shell
-# RAILS_ENV=production
+#PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby:/usr/local/rvm/gems/ruby-1.9.2-p290/bin
+##SHELL=/user/local/rvm/bin/rvm-shell
+##RAILS_ENV=production
 
 # 0 * * * * /bin/bash -l -c 'cd /var/www/yin11/current && /usr/local/coreseek/bin/indexer -c /var/www/yin11/current/config/production.sphinx.conf --all --rotate >> /var/www/yin11/current/log/cron_log.log 2>&1'
 
-#set :output, "/var/www/yin11/current/log/cron_log.log"
-#
-#every 1.hours do
-#  command "cd /var/www/yin11/current && /usr/local/coreseek/bin/indexer -c /var/www/yin11/current/config/production.sphinx.conf --all --rotate"
-#end
+set :output, "/var/www/yin11/current/log/cron_log.log"
+
+every 1.hours do
+  command "cd /var/www/yin11/current && /usr/local/coreseek/bin/indexer -c /var/www/yin11/current/config/production.sphinx.conf --all --rotate"
+end
