@@ -10,10 +10,10 @@
         </p>
     <% end %>
 
-    <% if current_user_has_permission?(:normal_user) &&  !the_author_himself(desire) %>
-      <!--< if defined?(show_list) && show_list %>-->
-          <!--<= content_tag :span, "如有解馋攻略，第一时间得到通知", class: "trivial f12" unless desire.admirer_ids.include?(current_user.id) %>-->
-      <!--< end %>-->
+    <% if current_user &&  !the_author_himself(desire) %>
+      <% unless desire.admirer_ids.include?(current_user.id) %>
+        <%= content_tag :span, "如有新解馋攻略，通知我", class: "trivial f12" unless desire.admirer_ids.include?(current_user.id) %><br/>
+      <% end %>
       <%= link_to "", admire_desire_path(:id => desire.id), :method => :put, :remote => true,
               :class => "btn btn_admire " + (desire.admirer_ids.include?(current_user.id) ? "admired" : "to_admire") %>
     <% end %>

@@ -29,6 +29,7 @@ class DesiresController < ApplicationController
   # GET /desires/1.json
   def show
     @related_desires = Desire.tagged_with(@desire.tags).excludes(id: @desire.id).desc(:created_at).limit(9)
+    #TODO incorrect sorting
     @solutions = @desire.solutions.desc(:score, :created_at).page(params[:page]).per(ITEMS_PER_PAGE_FEW) #.uniq{|s| s.identity} #.to_a.reject{|s| s.item.blank? || s.item.get_image_url.blank?}
 
     @modes = ["solutions", "comments"]

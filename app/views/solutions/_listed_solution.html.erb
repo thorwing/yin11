@@ -63,13 +63,18 @@
                           <%= new_tab_link_to solution.name, {:controller => "home", :action => "gateway", :url => item.url, :force => true} %>
                       <% end %>
                       <%= content_tag :span, (t("money.yuan_mark1") + item.price_as_money_string), class: "f11 berry_pink" if item.price %>
+                  <% elsif item.is_a?(Recipe) %>
+                      <%= new_tab_link_to "#{solution.name}", item_path %>
+                      <span class="trivial ml2">(作者： <%= link_to item.author.login_name, item.author, class: "ml2 trivial" %>)</span>
                   <% else %>
                       <%= new_tab_link_to "#{solution.name}", item_path %>
                   <% end %>
                 </p>
-                <%= truncate_content(item.instruction, 100) if item.is_a?(Recipe) %>
+
                 <% if item.is_a?(Recipe) %>
-                    <span class="trivial ml5">作者： <%= link_to item.author.login_name, item.author %></span><br/>
+                    <%= content_tag :p, truncate_content(item.instruction, 100)%>
+                <% elsif item.is_a?(Place) %>
+                    <%= content_tag :p, item.address %>
                 <% end %>
 
                 <% if solution.content.present? %><blockquote><span class="quoted"><%= truncate_content solution.content, 20 %></span></blockquote><% end %>

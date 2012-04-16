@@ -2,10 +2,17 @@
   <%= render "solutions/solution_fields", :solution => @desire.solutions.build %>
   <div class="mt10 clearfix">
       <%= paginate @solutions %>
-      <% @solutions.reject{|s| s.item.nil? }.uniq{|s| s.identity}.each_with_index do |solution, index| %>
-          <% if solution.item && solution.author %>
-              <%= render "solutions/listed_solution", solution: solution, rank: index + 1 %>
-          <% end %>
+      <% @solutions = @solutions.sort{|x, y| y.score <=> x.score }.reject{|s| s.item.nil? || s.author.nil? }.uniq{|s| s.identity} %>
+      <% hidden_solutions = @solutions.take_while{|s| (s.item.is_a?(Tuan) && s.item.expired?) || s.item.score < -3 } %>
+      <% (@solutions - hidden_solutions).each do |solution| %>
+          <%= render "solutions/listed_solution", solution: solution%>
       <% end %>
+
+      <%= link_to_function "#{hidden_solutions.size}个攻略被折叠", '$(this).next().toggle();' %>
+      <div class="mt10 display_none">
+          <% hidden_solutions.each do |solution| %>
+            <%= render "solutions/listed_solution", solution: solution%>
+          <% end %>
+      </div>
   </div>
 </div>

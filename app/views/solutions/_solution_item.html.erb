@@ -16,9 +16,15 @@
                 <%= t("object_types.#{item.class.name.downcase}")%>
                 <%= "：" %>
             </span>
-            <%= new_tab_link_to item.name, item_path %>
-            <% if item.is_a?(Product) && item.price? %>
-                <span class="f11 berry_pink"><%= (t("money.yuan_mark1") + item.price_as_money_string) %></span>
+            <% if item.is_a?(Product) %>
+                <%= new_tab_link_to item.name, item_path %>
+                <%= content_tag :span, (t("money.yuan_mark1") + item.price_as_money_string), class: "f11 berry_pink" if item.price? %>
+            <% elsif item.is_a?(Tuan) && item.expired?  %>
+                <%= new_tab_link_to item.name, item_path, style: "text-decoration: line-through;" %>
+                <%= content_tag :span, (t("money.yuan_mark1") + item.price_as_money_string), class: "f11 berry_pink" if item.price? %>
+                <%= content_tag :span, "团购已结束" %>
+            <% else %>
+                <%= new_tab_link_to item.name, item_path %>
             <% end %>
         </p>
         <%= truncate_content(item.instruction, 80) if item.is_a?(Recipe) %>

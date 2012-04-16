@@ -42,11 +42,10 @@
     </div>
   </div>
 
-  <% mode = @solutions.empty? ? "comments" : "solutions"  %>
   <div class="tab_control mt20">
       <div class="tabContainer">
             <% @modes.each do |mode| %>
-                <%= link_to mode == "solutions" ? "解馋攻略 (#{@solutions.size})" : "评论 (#{@desire.comments.size})" , desire_path(@desire, mode: mode), "data-page" => ".#{mode}", class: "tab #{mode == @current_mode ? "selected" : "unselected"}" %>
+                <%= link_to mode == "solutions" ? "解馋攻略 (#{@solutions.reject{|s| s.item.nil? }.uniq{|s| s.identity}.size})" : "评论 (#{@desire.comments.size})" , desire_path(@desire, mode: mode), "data-page" => ".#{mode}", class: "tab #{mode == @current_mode ? "selected" : "unselected"}" %>
             <% end %>
       </div>
       <div class="tabContent block">
