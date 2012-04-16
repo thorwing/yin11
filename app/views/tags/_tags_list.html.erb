@@ -1,21 +1,22 @@
 <h3 class="trivial mt10">菜谱标签：</h3>
 <div class="m5">
     <h3 class="f13" style="font-weight: normal;">人气</h3>
-    <% hot_tags.each do |tag| %>
+    <% hot_custom_tags.each do |tag| %>
             <%= link_to tag, {:controller => controller.controller_name, :action => "index", :tag => tag}, class: "tag m2" %>
     <% end %><br/>
     <!--<= link_to t("general.more"), tags_path  %>-->
 </div>
 
+<% hot_tags_limit = 10 %>
 <% primary_tags.each do |first_lv, tags| %>
     <div class="m5">
         <div class="first_level clearfix mb5 mt5">
             <div>
-                <% hot_tag_names, left_size = pick_hot_primary_tags(tags, 5) %>
+                <% hot_tag_names, left_size = pick_hot_primary_tags(tags, @tag_weight_hash, hot_tags_limit) %>
                 <div class="clearfix">
                     <h3 class="fl display_inline f13" style="font-weight: normal;"><%= first_lv %></h3>
                     <% if left_size > 0 %>
-                        <span class="fl ml20"><%= link_to_function "+展开", 'expand_tags(this);' unless (tags.is_a?(Array) && tags.size <= 7) %></span>
+                        <span class="fl ml20"><%= link_to_function "+展开", 'expand_tags(this);' unless (tags.is_a?(Array) && tags.size <= hot_tags_limit) %></span>
                     <% end %>
                 </div>
                 <% hot_tag_names.each do |tag| %>

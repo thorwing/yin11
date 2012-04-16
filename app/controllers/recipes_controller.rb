@@ -7,9 +7,14 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    all_tags = get_all_tags(:recipes)
-    @hot_tags = all_tags.take(15)
+    all_tags_with_weight = get_all_tags(:recipes)
+    @tag_weight_hash = {}
+    all_tags_with_weight.each do |tag_with_weight|
+      @tag_weight_hash[tag_with_weight[0]] = tag_with_weight[1]
+    end
+    all_tags = all_tags_with_weight.map{|t| t[0]}
     @primary_tags = get_primary_tag_names(all_tags)
+    @hot_custom_tags = (all_tags - flatten_tags(@primary_tags)).take(10)
 
     if params[:tag].blank?
       @new_recipes = Recipe.desc(:created_at).limit(10)

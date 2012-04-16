@@ -5,7 +5,7 @@
     </div>
     <span class="trivial"><%= "热门标签" %></span><span class="trivial f12"></span>
 
-    <% get_all_tags(:desires).take(10).each do |tag_name| %>
-        <%= link_to_function tag_name, "fill_desire_tag(this);", class: "tag" %>
+    <% get_all_tags(:desires).take(10).each do |tag_with_weight| %>
+        <%= link_to_function tag_with_weight[0], "fill_desire_tag(this);", class: "tag" %>
     <% end %>
 </div>

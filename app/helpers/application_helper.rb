@@ -81,20 +81,27 @@ module ApplicationHelper
     end
   end
 
+  def ask_cache(key, expires_in, &block)
+    contents = Rails.cache.fetch(key)
+    if contents.nil?
+      contents = block.call
+      Rails.cache.write(key, contents, :expires_in => expires_in)
+    end
+
+    contents
+  end
+
   def get_primary_tag_names(control_list = [])
-      tag_names = Rails.cache.fetch('primary_tag_names')
-      if tag_names.nil?
-         records = YAML::load(File.open("app/seeds/tags.yml"))
+    ask_cache('primary_tag_names', 3.hours) do
+      records = YAML::load(File.open("app/seeds/tags.yml"))
 
-         tag_names = {}
-         records.each do |first_lv, value|
-           values = handle_record(value, control_list)
-           tag_names[first_lv] = values unless values.empty?
-         end
-         Rails.cache.write('primary_tag_names', tag_names, :expires_in => 3.hours)
+      tag_names = {}
+      records.each do |first_lv, value|
+       values = handle_record(value, control_list.map{|t| t[0]})
+       tag_names[first_lv] = values unless values.empty?
       end
-
       tag_names
+    end
   end
 
   def get_primary_tags
@@ -129,61 +136,40 @@ module ApplicationHelper
     tags
   end
 
-  def pick_hot_primary_tags(tags, limit = 7)
+  def flatten_tags(nested_tags)
     flat_tag_names = []
-    if tags.is_a?(Array)
-      flat_tag_names = tags
-    elsif tags.is_a?(Hash)
-      tags.each do |second_lv, v|
-        flat_tag_names |= v
+    if nested_tags.is_a?(Array)
+      flat_tag_names |= nested_tags
+    elsif nested_tags.is_a?(Hash)
+      nested_tags.each do |second_lv, v|
+        flat_tag_names |= flatten_tags(v)
       end
     end
+    flat_tag_names
+  end
+
+  def pick_hot_primary_tags(tags, tag_weight_hash, limit = 7)
+    flat_tag_names = flatten_tags(tags)
+    flat_tag_names.sort! {|x, y| tag_weight_hash[y].to_i <=> tag_weight_hash[x].to_i }
+
     left_size = flat_tag_names.size - limit
     return flat_tag_names.take(limit), left_size
   end
 
   def get_all_tags(of)
-    key = "hot_tags_of_#{of.to_s}"
-    tags = nil #Rails.cache.fetch(key)
-    unless tags
+    ask_cache("hot_tags_of_#{of.to_s}", 1.hours) do
+      tags = []
       case of
         when :recipes
-          tags = Recipe.tags_with_weight.map{|tag| tag[0]}
+          tags = Recipe.tags_with_weight
         when :albums
-          tags = Album.tags_with_weight.map{|tag| tag[0]}
+          tags = Album.tags_with_weight
         when :desires
-          tags = Desire.tags_with_weight.map{|tag| tag[0]}
-        else
-          tags = []
+          tags = Desire.tags_with_weight
       end
-      Rails.cache.write(key, tags, :expires_in => 1.hours)
+      tags
     end
-
-    tags
   end
-
-
-  #def get_hot_tags(limit = ITEMS_PER_PAGE_FEW, of = nil)
-  #  key = "hot_tags_of_#{of.to_s}"
-  #  tags = nil #Rails.cache.fetch(key)
-  #  unless tags
-  #    case of
-  #      when :recipes
-  #        tags = Recipe.tags_with_weight.take(100).map{|tag| tag[0]}
-  #      when :albums
-  #        tags = Album.tags_with_weight.take(100).map{|tag| tag[0]}
-  #      when :desires
-  #        tags = Desire.tags_with_weight.take(100).map{|tag| tag[0]}
-  #      else
-  #        tags = []
-  #    end
-  #    Rails.cache.write(key, tags, :expires_in => 1.hours)
-  #  end
-  #
-  #  #take some of the cached tags, 100 is too many
-  #  tags.take(limit)
-  #end
-
 
   def display_flash
     flash_types = [:error, :alert, :notice]

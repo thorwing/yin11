@@ -2,13 +2,14 @@ class HomeController < ApplicationController
   include ApplicationHelper
 
   def index
-    #@hot_topics = Topic.recommended.asc(:priority).limit(HOT_TOPICS_ON_HOME_PAGE)
-    #@recommended_albums = Album.recommended.desc(:priority).limit(RECOMENDED_ALBUMS_ON_HOME_PAGE)
-    #@stars = User.enabled.masters.sort_by{|master| -1 * master.score}[0..7]
-
-    #SilverHornet::TuanHornet.new.fetch_all_tuans("lashou")
-
-    @hot_tags = get_all_tags(:desires).take(10)
+    all_tags_with_weight = get_all_tags(:desires)
+    @tag_weight_hash = {}
+    all_tags_with_weight.each do |tag_with_weight|
+      @tag_weight_hash[tag_with_weight[0]] = tag_with_weight[1]
+    end
+    all_tags = all_tags_with_weight.map{|t| t[0]}
+    @primary_tags = get_primary_tag_names(all_tags)
+    @hot_custom_tags = (all_tags - flatten_tags(@primary_tags)).take(20)
 
     @modes = ["newest", "solved"] #"hottest"
     if @modes.include? params[:mode]

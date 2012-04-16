@@ -1,0 +1,59 @@
+<h3 class="trivial mt10">美食标签：</h3>
+<% hot_tags_limit = 7 %>
+
+<div class="m5 tags_category">
+    <h3 class="f13 fl" style="font-weight: normal;">人气</h3>
+    <%= link_to_function "更多", 'popup_dialog($(this).parents(".tags_category").children(".tags_dialog"));', class: "fl ml20" unless hot_custom_tags.size <= hot_tags_limit %><br/>
+    <% hot_custom_tags.take(hot_tags_limit).each do |tag| %>
+            <%= link_to tag, {:controller => "desires", :action => "index", :tag => tag}, class: "tag m2" %>
+    <% end %>
+    <div class="tags_dialog display_none">
+      <div class="p5">
+          <% hot_custom_tags.drop(hot_tags_limit).each do |tag| %>
+              <%= link_to tag, {:controller => "desires", :action => "index", :tag => tag}, class: "tag" %>
+          <% end %>
+      </div>
+    </div>
+    <!--<= link_to t("general.more"), tags_path  %>-->
+</div>
+
+<% primary_tags.each do |first_lv, tags| %>
+    <div class="m5 tags_category">
+        <div class="first_level clearfix mb5 mt5">
+            <div>
+                <% hot_tag_names, left_size = pick_hot_primary_tags(tags, @tag_weight_hash, hot_tags_limit) %>
+                <div class="clearfix">
+                    <h3 class="fl display_inline f13" style="font-weight: normal;"><%= first_lv %></h3>
+                    <% if left_size > 0 %>
+                        <span class="fl ml20"><%= link_to_function "更多", 'popup_dialog($(this).parents(".tags_category").children(".tags_dialog"));' unless (tags.is_a?(Array) && tags.size <= hot_tags_limit) %></span>
+                    <% end %>
+                </div>
+                <% hot_tag_names.each do |tag| %>
+                    <%= link_to tag, {:controller => "desires", :action => "index", :tag => tag}, class: "tag" %>
+                <% end %>
+            </div>
+        </div>
+      <div class="tags_dialog display_none">
+            <% if tags.is_a?(Array) %>
+                <div class="ml30 mb5 p5">
+                    <% tags.reject{|t| hot_tag_names.include?(t)}.each do |tag_name| %>
+                        <%= link_to tag_name, {:controller => "desires", :action => "index", :tag => tag_name}, class: "tag" %>
+                    <% end %>
+                </div>
+            <% elsif tags.is_a?(Hash) %>
+                <% tags.each do |second_lv, v| %>
+                    <% left_tags = v.reject{|t| hot_tag_names.include?(t)} %>
+                    <% unless left_tags.empty? %>
+                        <span class="trivial f12 display_inline_block"><%= second_lv %>: </span>
+                        <span class="ml5 mb5">
+                            <% left_tags.each do |tag_name| %>
+                                <%= link_to tag_name, {:controller => "desires", :action => "index", :tag => tag_name}, class: "tag" %>
+                            <% end %>
+                        </span><br/>
+                    <% end %>
+                <% end %>
+            <% end %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+<% end %>

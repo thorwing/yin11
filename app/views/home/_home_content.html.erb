@@ -19,10 +19,7 @@
     <!--corner stmap-->
     <div class="masonary_item">
         <div class="inner_frame p5">
-            <%= content_tag :span, "热门美食标签：", class: "trivial f14" %><br/>
-            <% @hot_tags.each do |tag| %>
-                <%= link_to tag, desires_path(tag: tag, mode: @current_mode), class: "tag" %>
-            <% end %>
+            <%= render "tags/tags_item", hot_custom_tags: @hot_custom_tags, primary_tags: @primary_tags %>
         </div>
     </div>
 
