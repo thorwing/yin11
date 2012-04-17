@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     end
     all_tags = all_tags_with_weight.map{|t| t[0]}
     @primary_tags = get_primary_tag_names(all_tags)
+
     @hot_custom_tags = (all_tags - flatten_tags(@primary_tags)).take(20)
 
     @modes = ["newest", "solved"] #"hottest"

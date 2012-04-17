@@ -97,7 +97,7 @@ module ApplicationHelper
 
       tag_names = {}
       records.each do |first_lv, value|
-       values = handle_record(value, control_list.map{|t| t[0]})
+       values = handle_record(value, control_list)
        tag_names[first_lv] = values unless values.empty?
       end
       tag_names

@@ -7,8 +7,9 @@
       <% (@solutions - hidden_solutions).each do |solution| %>
           <%= render "solutions/listed_solution", solution: solution%>
       <% end %>
-
-      <%= link_to_function "#{hidden_solutions.size}个攻略被折叠", '$(this).next().toggle();' %>
+      <% unless hidden_solutions.empty? %>
+          <%= link_to_function "#{hidden_solutions.size}个攻略被折叠", '$(this).next().toggle();' %>
+      <% end %>
       <div class="mt10 display_none">
           <% hidden_solutions.each do |solution| %>
             <%= render "solutions/listed_solution", solution: solution%>
