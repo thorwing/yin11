@@ -116,7 +116,7 @@ class SilverHornet::TuanHornet
   def handle_meituan(xml_node)
     tuan = nil
     item = xml_node["deal"]
-    if item["deal_cate"] == "餐饮"
+    if ["餐饮", "中餐", "自助餐", "异国餐饮", "火锅", "其它餐饮" ].include? item["deal_cate"]
       tuan = Tuan.find_or_initialize_by(url: item["deal_url"])
       tuan.website = item["website"]
       tuan.identity = item["deal_id"]
