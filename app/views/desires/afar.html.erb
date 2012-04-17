@@ -4,7 +4,7 @@
         <%= render "shared/error_messages", target: @desire %>
 
         <div class="grid_7">
-            <div class="b_white"  >
+            <div id="upload_area" class="b_white"  >
                 <%= hidden_field_tag "authenticity_token", form_authenticity_token, :id => "tokentag" %>
                 <div id="images_container"align="center">
                     <div class="uploaded_image"><%= image_tag params[:img] %></div>

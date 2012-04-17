@@ -1,13 +1,13 @@
-<% title "吃心不改工具安装使用说明" %>
+<% title "图片收集工具安装说明" %>
 
-<p class="mt10 trivial">在网上看到了馋人的美食？轻松点击，把美食图片保存到吃心不改上，让更多的人和你一起咽口水！</p>
-<p class="trivial">更重要的是，也许有人知道怎么把它吃到哦～！</p>
+<p class="mt10 trivial">在网上看到了馋人的美食？轻松点击，把美食图片保存到吃心不改上，让大家一起来分享如何吃到图中美食的攻略。</p>
 
 <% caption = "+收集到吃心不改" %>
 
-<div class="mt10">
+<div class="mt10 hover_area" style="position: relative;">
     <% js_src = 'http://' + request.host_with_port + '/collect.js' %>
     <%= link_to caption, 'javascript:void((function(){var d=document,e=d.createElement("script");e.setAttribute("charset","UTF-8");e.setAttribute("src", "' + "#{js_src}" + '");d.body.appendChild(e)})());', class: "button" %>
+    <%= image_tag "collector_hint.png", class: "display_on_hover", style: "position: absolute; top: -65px; left: 120px;opacity: 0.7;" %>
 </div>
 
 <div class="mt10">
@@ -21,3 +21,13 @@
             <span class="trivial"><%="没看到浏览器书签栏？右键点击上边【+收集到吃心不改】 然后“添加到收藏夹...”" %></span>
     <% end %>
 </div>
+
+<h2 class="mt30">图片收集步骤</h2>
+<span class="mt10 mb5">1 发现诱人美食</span><br/>
+<%= image_tag "http://silver-space.b0.upaiyun.com/images/collect_intro_step_1.png", width: 600, height: 300, class: "img_frame" %><br/>
+
+<span class="mt10 mb5">2 点击收集工具， 选择美食图片</span><br/>
+<%= image_tag "http://silver-space.b0.upaiyun.com/images/collect_intro_step_2.png", width: 600, height: 300, class: "img_frame" %><br/>
+
+<span class="mt10 mb5">3 图片就收集到吃心不改啦</span><br/>
+<%= image_tag "http://silver-space.b0.upaiyun.com/images/collect_intro_step_3.png", width: 600, height: 300, class: "img_frame" %><br/>
