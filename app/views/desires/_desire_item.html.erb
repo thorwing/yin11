@@ -25,7 +25,8 @@
                 <span class="ml5 f12 tight"><%= truncate_content(desire.content, 200) %></span>
                 <% if desire.place %>
                     <p>
-                        <%= content_tag :span, "来自 " + desire.place.name, class: "trivial" %>
+                        <%= content_tag :span, "来自 ", class: "trivial" %>
+                        <%= new_tab_link_to desire.place.name, {controller: "places", action: "show", id: desire.place.id, force: true} %>
                         <%= content_tag :span, "餐馆", class: "icon icon_place" %>
                     </p>
                 <% end %>
